@@ -18,17 +18,23 @@ type Ordering =
         | Less -> 2
         | Equal -> 0
         | Greater -> 1
+
     member private this.LawSpecFields: obj list =
         match this with
         | Less -> []
         | Equal -> []
         | Greater -> []
+
     override this.Equals(other: obj) =
         match other with
         | :? Ordering as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
@@ -37,80 +43,105 @@ type Ordering =
 
 /// lawspec.collections::type::Entry
 and [<CustomEquality; CustomComparison>] Entry<'T0, 'T1> =
-    { Key: 'T0
-      Value: 'T1 }
+    {
+        Key: 'T0
+        Value: 'T1
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.Key; box this.Value ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.Key; box this.Value ]
+
     override this.Equals(other: obj) =
         match other with
-        | :? Entry<'T0, 'T1> as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | :? Entry<'T0, 'T1> as o ->
+            Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? Entry<'T0, 'T1> as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? Entry<'T0, 'T1> as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a Entry compares with a Entry"
 
 /// lawspec.collections::type::Pair
 and [<CustomEquality; CustomComparison>] Pair<'T0, 'T1> =
-    { First: 'T0
-      Second: 'T1 }
+    {
+        First: 'T0
+        Second: 'T1
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.First; box this.Second ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.First; box this.Second ]
+
     override this.Equals(other: obj) =
         match other with
         | :? Pair<'T0, 'T1> as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? Pair<'T0, 'T1> as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? Pair<'T0, 'T1> as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a Pair compares with a Pair"
 
 /// lawspec.collections::type::EqSet
 and [<CustomEquality; CustomComparison>] LawspecCollectionsSet<'T0> =
-    { Value: 'T0 list }
+    {
+        Value: 'T0 list
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.Value ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.Value ]
+
     override this.Equals(other: obj) =
         match other with
-        | :? LawspecCollectionsSet<'T0> as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | :? LawspecCollectionsSet<'T0> as o ->
+            Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? LawspecCollectionsSet<'T0> as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? LawspecCollectionsSet<'T0> as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a LawspecCollectionsSet compares with a LawspecCollectionsSet"
 
 /// lawspec.matchers::type::Regex
 and [<CustomEquality; CustomComparison>] Regex =
-    { Pattern: string }
+    {
+        Pattern: string
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.Pattern ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.Pattern ]
+
     override this.Equals(other: obj) =
         match other with
         | :? Regex as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
@@ -126,103 +157,140 @@ and [<CustomEquality; CustomComparison>] PartitionChoice =
         match this with
         | ToPartition _ -> 1
         | ByKey -> 0
+
     member private this.LawSpecFields: obj list =
         match this with
         | ToPartition(f0) -> [ box f0 ]
         | ByKey -> []
+
     override this.Equals(other: obj) =
         match other with
-        | :? PartitionChoice as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | :? PartitionChoice as o ->
+            Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? PartitionChoice as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? PartitionChoice as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a PartitionChoice compares with a PartitionChoice"
 
 /// lawtwin.kafka::type::ProducerRecord
 and [<CustomEquality; CustomComparison>] ProducerRecord =
-    { Destination: string
-      Choice: PartitionChoice
-      Payload: Record }
+    {
+        Destination: string
+        Choice: PartitionChoice
+        Payload: Record
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.Destination; box this.Choice; box this.Payload ]
+
     override this.Equals(other: obj) =
         match other with
         | :? ProducerRecord as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? ProducerRecord as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? ProducerRecord as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a ProducerRecord compares with a ProducerRecord"
 
 /// lawtwin.kafka::type::RecordMetadata
 and [<CustomEquality; CustomComparison>] RecordMetadata =
-    { SentTo: TopicPartition
-      SentAt: int64 }
+    {
+        SentTo: TopicPartition
+        SentAt: int64
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.SentTo; box this.SentAt ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.SentTo; box this.SentAt ]
+
     override this.Equals(other: obj) =
         match other with
         | :? RecordMetadata as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? RecordMetadata as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? RecordMetadata as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a RecordMetadata compares with a RecordMetadata"
 
 /// lawtwin.kafka::type::ConsumerRecord
 and [<CustomEquality; CustomComparison>] ConsumerRecord =
-    { ReceivedFrom: TopicPartition
-      ReceivedAt: int64
-      Received: Record }
+    {
+        ReceivedFrom: TopicPartition
+        ReceivedAt: int64
+        Received: Record
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.ReceivedFrom; box this.ReceivedAt; box this.Received ]
+
     override this.Equals(other: obj) =
         match other with
         | :? ConsumerRecord as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? ConsumerRecord as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? ConsumerRecord as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a ConsumerRecord compares with a ConsumerRecord"
 
 /// lawtwin.kafka::type::LastSend
 and [<CustomEquality; CustomComparison>] LastSend =
-    { LastPartition: TopicPartition
-      LastTag: ProducerTag option
-      LastRecords: Record list }
+    {
+        LastPartition: TopicPartition
+        LastTag: ProducerTag option
+        LastRecords: Record list
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.LastPartition; box this.LastTag; box this.LastRecords ]
+
     override this.Equals(other: obj) =
         match other with
         | :? LastSend as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
@@ -231,96 +299,142 @@ and [<CustomEquality; CustomComparison>] LastSend =
 
 /// lawtwin.kafka::type::ProducerState
 and [<CustomEquality; CustomComparison>] ProducerState =
-    { Identity: ProducerIdAndEpoch option
-      Sequences: Map<TopicPartition, int>
-      LastSend: LastSend option }
+    {
+        Identity: ProducerIdAndEpoch option
+        Sequences: Map<TopicPartition, int>
+        LastSend: LastSend option
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.Identity; box this.Sequences; box this.LastSend ]
+
     override this.Equals(other: obj) =
         match other with
         | :? ProducerState as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? ProducerState as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? ProducerState as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a ProducerState compares with a ProducerState"
 
 /// lawtwin.kafka::type::ConsumerState
 and [<CustomEquality; CustomComparison>] ConsumerState =
-    { Group: string option
-      Member: string
-      Generation: int
-      Subscription: string list
-      Assigned: TopicPartition list
-      Positions: Map<TopicPartition, int64>
-      Isolation: IsolationLevel }
+    {
+        Group: string option
+        Member: string
+        Generation: int
+        Subscription: string list
+        Assigned: TopicPartition list
+        Positions: Map<TopicPartition, int64>
+        Isolation: IsolationLevel
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
-        [ box this.Group; box this.Member; box this.Generation; box this.Subscription; box this.Assigned; box this.Positions; box this.Isolation ]
+        [
+            box this.Group
+            box this.Member
+            box this.Generation
+            box this.Subscription
+            box this.Assigned
+            box this.Positions
+            box this.Isolation
+        ]
+
     override this.Equals(other: obj) =
         match other with
         | :? ConsumerState as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? ConsumerState as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? ConsumerState as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a ConsumerState compares with a ConsumerState"
 
 /// lawtwin.kafka::type::TransactionState
 and [<CustomEquality; CustomComparison>] TransactionState =
-    { TransactionalId: string
-      Producer: ProducerIdAndEpoch option
-      TxnSequences: Map<TopicPartition, int>
-      InTransaction: bool
-      Added: TopicPartition list
-      OffsetsSent: bool }
+    {
+        TransactionalId: string
+        Producer: ProducerIdAndEpoch option
+        TxnSequences: Map<TopicPartition, int>
+        InTransaction: bool
+        Added: TopicPartition list
+        OffsetsSent: bool
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
-        [ box this.TransactionalId; box this.Producer; box this.TxnSequences; box this.InTransaction; box this.Added; box this.OffsetsSent ]
+        [
+            box this.TransactionalId
+            box this.Producer
+            box this.TxnSequences
+            box this.InTransaction
+            box this.Added
+            box this.OffsetsSent
+        ]
+
     override this.Equals(other: obj) =
         match other with
-        | :? TransactionState as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | :? TransactionState as o ->
+            Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? TransactionState as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? TransactionState as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a TransactionState compares with a TransactionState"
 
 /// lawtwin.kafka.model::type::TopicPartition
 and [<CustomEquality; CustomComparison>] TopicPartition =
-    { Topic: string
-      Partition: int }
+    {
+        Topic: string
+        Partition: int
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.Topic; box this.Partition ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.Topic; box this.Partition ]
+
     override this.Equals(other: obj) =
         match other with
         | :? TopicPartition as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? TopicPartition as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? TopicPartition as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a TopicPartition compares with a TopicPartition"
 
 /// lawtwin.kafka.model::type::IsolationLevel
@@ -332,20 +446,27 @@ and [<CustomEquality; CustomComparison>] IsolationLevel =
         match this with
         | ReadUncommitted -> 1
         | ReadCommitted -> 0
+
     member private this.LawSpecFields: obj list =
         match this with
         | ReadUncommitted -> []
         | ReadCommitted -> []
+
     override this.Equals(other: obj) =
         match other with
         | :? IsolationLevel as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? IsolationLevel as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? IsolationLevel as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a IsolationLevel compares with a IsolationLevel"
 
 /// lawtwin.kafka.model::type::OffsetSpec
@@ -357,20 +478,27 @@ and [<CustomEquality; CustomComparison>] OffsetSpec =
         match this with
         | Earliest -> 0
         | Latest -> 1
+
     member private this.LawSpecFields: obj list =
         match this with
         | Earliest -> []
         | Latest -> []
+
     override this.Equals(other: obj) =
         match other with
         | :? OffsetSpec as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? OffsetSpec as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? OffsetSpec as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a OffsetSpec compares with a OffsetSpec"
 
 /// lawtwin.kafka.model::type::KafkaError
@@ -412,6 +540,7 @@ and [<CustomEquality; CustomComparison>] KafkaError =
         | UnknownMemberId -> 14
         | IllegalGeneration -> 0
         | IllegalState -> 1
+
     member private this.LawSpecFields: obj list =
         match this with
         | UnknownTopicOrPartition -> []
@@ -431,33 +560,44 @@ and [<CustomEquality; CustomComparison>] KafkaError =
         | UnknownMemberId -> []
         | IllegalGeneration -> []
         | IllegalState -> []
+
     override this.Equals(other: obj) =
         match other with
         | :? KafkaError as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? KafkaError as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? KafkaError as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a KafkaError compares with a KafkaError"
 
 /// lawtwin.kafka.model::type::Header
 and [<CustomEquality; CustomComparison>] Header =
-    { Name: string
-      Content: byte[] option }
+    {
+        Name: string
+        Content: byte[] option
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.Name; box this.Content ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.Name; box this.Content ]
+
     override this.Equals(other: obj) =
         match other with
         | :? Header as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
@@ -466,20 +606,27 @@ and [<CustomEquality; CustomComparison>] Header =
 
 /// lawtwin.kafka.model::type::Record
 and [<CustomEquality; CustomComparison>] Record =
-    { Key: byte[] option
-      Value: byte[] option
-      Headers: Header list }
+    {
+        Key: byte[] option
+        Value: byte[] option
+        Headers: Header list
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.Key; box this.Value; box this.Headers ]
+
     override this.Equals(other: obj) =
         match other with
         | :? Record as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
@@ -488,173 +635,236 @@ and [<CustomEquality; CustomComparison>] Record =
 
 /// lawtwin.kafka.model::type::ProducerTag
 and [<CustomEquality; CustomComparison>] ProducerTag =
-    { ProducerId: int64
-      ProducerEpoch: int16
-      BaseSequence: int }
+    {
+        ProducerId: int64
+        ProducerEpoch: int16
+        BaseSequence: int
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.ProducerId; box this.ProducerEpoch; box this.BaseSequence ]
+
     override this.Equals(other: obj) =
         match other with
         | :? ProducerTag as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? ProducerTag as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? ProducerTag as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a ProducerTag compares with a ProducerTag"
 
 /// lawtwin.kafka.model::type::ProducerIdAndEpoch
 and [<CustomEquality; CustomComparison>] ProducerIdAndEpoch =
-    { ProducerId: int64
-      ProducerEpoch: int16 }
+    {
+        ProducerId: int64
+        ProducerEpoch: int16
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.ProducerId; box this.ProducerEpoch ]
+
     override this.Equals(other: obj) =
         match other with
-        | :? ProducerIdAndEpoch as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | :? ProducerIdAndEpoch as o ->
+            Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? ProducerIdAndEpoch as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? ProducerIdAndEpoch as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a ProducerIdAndEpoch compares with a ProducerIdAndEpoch"
 
 /// lawtwin.kafka.model::type::FetchedRecord
 and [<CustomEquality; CustomComparison>] FetchedRecord =
-    { Offset: int64
-      Entry: Record }
+    {
+        Offset: int64
+        Entry: Record
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.Offset; box this.Entry ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.Offset; box this.Entry ]
+
     override this.Equals(other: obj) =
         match other with
         | :? FetchedRecord as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? FetchedRecord as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? FetchedRecord as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a FetchedRecord compares with a FetchedRecord"
 
 /// lawtwin.kafka.model::type::FetchResult
 and [<CustomEquality; CustomComparison>] FetchResult =
-    { Records: FetchedRecord list
-      NextOffset: int64
-      HighWatermark: int64
-      LastStableOffset: int64 }
+    {
+        Records: FetchedRecord list
+        NextOffset: int64
+        HighWatermark: int64
+        LastStableOffset: int64
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
-        [ box this.Records; box this.NextOffset; box this.HighWatermark; box this.LastStableOffset ]
+        [
+            box this.Records
+            box this.NextOffset
+            box this.HighWatermark
+            box this.LastStableOffset
+        ]
+
     override this.Equals(other: obj) =
         match other with
         | :? FetchResult as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? FetchResult as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? FetchResult as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a FetchResult compares with a FetchResult"
 
 /// lawtwin.kafka.model::type::OffsetEntry
 and [<CustomEquality; CustomComparison>] OffsetEntry =
-    { TopicPartition: TopicPartition
-      Offset: int64 }
+    {
+        TopicPartition: TopicPartition
+        Offset: int64
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.TopicPartition; box this.Offset ]
+
     override this.Equals(other: obj) =
         match other with
         | :? OffsetEntry as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? OffsetEntry as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? OffsetEntry as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a OffsetEntry compares with a OffsetEntry"
 
 /// lawtwin.kafka.model::type::MemberAssignment
 and [<CustomEquality; CustomComparison>] MemberAssignment =
-    { MemberId: string
-      Assigned: TopicPartition list }
+    {
+        MemberId: string
+        Assigned: TopicPartition list
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.MemberId; box this.Assigned ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.MemberId; box this.Assigned ]
+
     override this.Equals(other: obj) =
         match other with
-        | :? MemberAssignment as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | :? MemberAssignment as o ->
+            Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? MemberAssignment as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? MemberAssignment as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a MemberAssignment compares with a MemberAssignment"
 
 /// lawtwin.kafka.model::type::GroupView
 and [<CustomEquality; CustomComparison>] GroupView =
-    { Generation: int
-      Members: MemberAssignment list }
+    {
+        Generation: int
+        Members: MemberAssignment list
+    }
 
-    member private this.LawSpecRank: int =
-        0
-    member private this.LawSpecFields: obj list =
-        [ box this.Generation; box this.Members ]
+    member private this.LawSpecRank: int = 0
+    member private this.LawSpecFields: obj list = [ box this.Generation; box this.Members ]
+
     override this.Equals(other: obj) =
         match other with
         | :? GroupView as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? GroupView as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? GroupView as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a GroupView compares with a GroupView"
 
 /// lawtwin.kafka.model::type::LogEntry
 and [<CustomEquality; CustomComparison>] LogEntry =
-    | DataEntry of value: Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be
-    | ControlEntry of value: Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3
+    | DataEntry of value: DataEntryDetails
+    | ControlEntry of value: ControlEntryDetails
 
     member private this.LawSpecRank: int =
         match this with
         | DataEntry _ -> 1
         | ControlEntry _ -> 0
+
     member private this.LawSpecFields: obj list =
         match this with
         | DataEntry(f0) -> [ box f0 ]
         | ControlEntry(f0) -> [ box f0 ]
+
     override this.Equals(other: obj) =
         match other with
         | :? LogEntry as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
@@ -663,113 +873,162 @@ and [<CustomEquality; CustomComparison>] LogEntry =
 
 /// lawtwin.kafka.model::type::AbortedTxn
 and [<CustomEquality; CustomComparison>] AbortedTxn =
-    { AbortedWriter: int64
-      FirstOffset: int64
-      LastOffset: int64 }
+    {
+        AbortedWriter: int64
+        FirstOffset: int64
+        LastOffset: int64
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.AbortedWriter; box this.FirstOffset; box this.LastOffset ]
+
     override this.Equals(other: obj) =
         match other with
         | :? AbortedTxn as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? AbortedTxn as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? AbortedTxn as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a AbortedTxn compares with a AbortedTxn"
 
 /// lawtwin.kafka.model::type::BatchMeta
 and [<CustomEquality; CustomComparison>] BatchMeta =
-    { BatchEpoch: int16
-      FirstSequence: int
-      LastSequence: int
-      BatchOffset: int64 }
+    {
+        BatchEpoch: int16
+        FirstSequence: int
+        LastSequence: int
+        BatchOffset: int64
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
-        [ box this.BatchEpoch; box this.FirstSequence; box this.LastSequence; box this.BatchOffset ]
+        [
+            box this.BatchEpoch
+            box this.FirstSequence
+            box this.LastSequence
+            box this.BatchOffset
+        ]
+
     override this.Equals(other: obj) =
         match other with
         | :? BatchMeta as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? BatchMeta as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? BatchMeta as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a BatchMeta compares with a BatchMeta"
 
 /// lawtwin.kafka.model::type::PartitionLog
 and [<CustomEquality; CustomComparison>] PartitionLog =
-    { Entries: LogEntry list
-      LogEndOffset: int64
-      OpenTxns: Map<int64, int64>
-      AbortedTxns: AbortedTxn list
-      Batches: Map<int64, BatchMeta list> }
+    {
+        Entries: LogEntry list
+        LogEndOffset: int64
+        OpenTxns: Map<int64, int64>
+        AbortedTxns: AbortedTxn list
+        Batches: Map<int64, BatchMeta list>
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
-        [ box this.Entries; box this.LogEndOffset; box this.OpenTxns; box this.AbortedTxns; box this.Batches ]
+        [
+            box this.Entries
+            box this.LogEndOffset
+            box this.OpenTxns
+            box this.AbortedTxns
+            box this.Batches
+        ]
+
     override this.Equals(other: obj) =
         match other with
         | :? PartitionLog as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? PartitionLog as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? PartitionLog as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a PartitionLog compares with a PartitionLog"
 
 /// lawtwin.kafka.model::type::PendingOffset
 and [<CustomEquality; CustomComparison>] PendingOffset =
-    { PendingGroup: string
-      PendingEntry: OffsetEntry }
+    {
+        PendingGroup: string
+        PendingEntry: OffsetEntry
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.PendingGroup; box this.PendingEntry ]
+
     override this.Equals(other: obj) =
         match other with
         | :? PendingOffset as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? PendingOffset as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? PendingOffset as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a PendingOffset compares with a PendingOffset"
 
 /// lawtwin.kafka.model::type::TxnState
 and [<CustomEquality; CustomComparison>] TxnState =
     | NoTxn
-    | Ongoing of value: Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee
+    | Ongoing of value: OngoingDetails
 
     member private this.LawSpecRank: int =
         match this with
         | NoTxn -> 0
         | Ongoing _ -> 1
+
     member private this.LawSpecFields: obj list =
         match this with
         | NoTxn -> []
         | Ongoing(f0) -> [ box f0 ]
+
     override this.Equals(other: obj) =
         match other with
         | :? TxnState as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
@@ -778,42 +1037,57 @@ and [<CustomEquality; CustomComparison>] TxnState =
 
 /// lawtwin.kafka.model::type::ProducerEntry
 and [<CustomEquality; CustomComparison>] ProducerEntry =
-    { Epoch: int16
-      TransactionalId: string option
-      Txn: TxnState }
+    {
+        Epoch: int16
+        TransactionalId: string option
+        Txn: TxnState
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.Epoch; box this.TransactionalId; box this.Txn ]
+
     override this.Equals(other: obj) =
         match other with
         | :? ProducerEntry as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? ProducerEntry as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? ProducerEntry as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a ProducerEntry compares with a ProducerEntry"
 
 /// lawtwin.kafka.model::type::Group
 and [<CustomEquality; CustomComparison>] Group =
-    { GroupGeneration: int
-      Subscriptions: Map<string, string list>
-      Assignment: Map<string, TopicPartition list> }
+    {
+        GroupGeneration: int
+        Subscriptions: Map<string, string list>
+        Assignment: Map<string, TopicPartition list>
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.GroupGeneration; box this.Subscriptions; box this.Assignment ]
+
     override this.Equals(other: obj) =
         match other with
         | :? Group as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
@@ -822,113 +1096,168 @@ and [<CustomEquality; CustomComparison>] Group =
 
 /// lawtwin.kafka.model::type::GroupPartition
 and [<CustomEquality; CustomComparison>] GroupPartition =
-    { GroupId: string
-      GroupPartition: TopicPartition }
+    {
+        GroupId: string
+        GroupPartition: TopicPartition
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.GroupId; box this.GroupPartition ]
+
     override this.Equals(other: obj) =
         match other with
         | :? GroupPartition as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? GroupPartition as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? GroupPartition as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a GroupPartition compares with a GroupPartition"
 
 /// lawtwin.kafka.model::type::BrokerState
 and [<CustomEquality; CustomComparison>] BrokerState =
-    { Topics: Map<string, int>
-      Logs: Map<TopicPartition, PartitionLog>
-      Producers: Map<int64, ProducerEntry>
-      TransactionalIds: Map<string, int64>
-      NextProducerId: int64
-      Groups: Map<string, Group>
-      Committed: Map<GroupPartition, int64> }
+    {
+        Topics: Map<string, int>
+        Logs: Map<TopicPartition, PartitionLog>
+        Producers: Map<int64, ProducerEntry>
+        TransactionalIds: Map<string, int64>
+        NextProducerId: int64
+        Groups: Map<string, Group>
+        Committed: Map<GroupPartition, int64>
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
-        [ box this.Topics; box this.Logs; box this.Producers; box this.TransactionalIds; box this.NextProducerId; box this.Groups; box this.Committed ]
+        [
+            box this.Topics
+            box this.Logs
+            box this.Producers
+            box this.TransactionalIds
+            box this.NextProducerId
+            box this.Groups
+            box this.Committed
+        ]
+
     override this.Equals(other: obj) =
         match other with
         | :? BrokerState as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? BrokerState as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | :? BrokerState as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
             | _ -> invalidArg "other" "a BrokerState compares with a BrokerState"
 
 /// lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be
-and [<CustomEquality; CustomComparison>] Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be =
-    { EntryOffset: int64
-      EntryRecord: Record
-      Transactional: bool
-      Writer: int64 }
+and [<CustomEquality; CustomComparison>] DataEntryDetails =
+    {
+        EntryOffset: int64
+        EntryRecord: Record
+        Transactional: bool
+        Writer: int64
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
-        [ box this.EntryOffset; box this.EntryRecord; box this.Transactional; box this.Writer ]
+        [
+            box this.EntryOffset
+            box this.EntryRecord
+            box this.Transactional
+            box this.Writer
+        ]
+
     override this.Equals(other: obj) =
         match other with
-        | :? Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | :? DataEntryDetails as o ->
+            Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
-            | _ -> invalidArg "other" "a Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be compares with a Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be"
+            | :? DataEntryDetails as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | _ -> invalidArg "other" "a DataEntryDetails compares with a DataEntryDetails"
 
 /// lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3
-and [<CustomEquality; CustomComparison>] Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 =
-    { Commits: bool
-      MarkerOffset: int64
-      MarkerWriter: int64 }
+and [<CustomEquality; CustomComparison>] ControlEntryDetails =
+    {
+        Commits: bool
+        MarkerOffset: int64
+        MarkerWriter: int64
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.Commits; box this.MarkerOffset; box this.MarkerWriter ]
+
     override this.Equals(other: obj) =
         match other with
-        | :? Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | :? ControlEntryDetails as o ->
+            Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
-            | _ -> invalidArg "other" "a Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3 compares with a Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3"
+            | :? ControlEntryDetails as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | _ -> invalidArg "other" "a ControlEntryDetails compares with a ControlEntryDetails"
 
 /// lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee
-and [<CustomEquality; CustomComparison>] Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee =
-    { TxnOffsets: PendingOffset list
-      TxnPartitions: TopicPartition list }
+and [<CustomEquality; CustomComparison>] OngoingDetails =
+    {
+        TxnOffsets: PendingOffset list
+        TxnPartitions: TopicPartition list
+    }
 
-    member private this.LawSpecRank: int =
-        0
+    member private this.LawSpecRank: int = 0
+
     member private this.LawSpecFields: obj list =
         [ box this.TxnOffsets; box this.TxnPartitions ]
+
     override this.Equals(other: obj) =
         match other with
-        | :? Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+        | :? OngoingDetails as o -> Portable.equalData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
         | _ -> false
-    override this.GetHashCode() = Portable.hashData this.LawSpecRank this.LawSpecFields
+
+    override this.GetHashCode() =
+        Portable.hashData this.LawSpecRank this.LawSpecFields
+
     interface Portable.IPortable
+
     interface System.IComparable with
         member this.CompareTo(other: obj) =
             match other with
-            | :? Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee as o -> Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
-            | _ -> invalidArg "other" "a Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee compares with a Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee"
+            | :? OngoingDetails as o ->
+                Portable.compareData this.LawSpecRank this.LawSpecFields o.LawSpecRank o.LawSpecFields
+            | _ -> invalidArg "other" "a OngoingDetails compares with a OngoingDetails"

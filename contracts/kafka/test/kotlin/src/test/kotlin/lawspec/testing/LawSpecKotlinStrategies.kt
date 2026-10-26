@@ -51,12 +51,13 @@ object LawSpecKotlinStrategies {
         }
     }
 
-    fun cases(): Arb<Case> = object : Arb<Case>() {
-        override fun edgecase(rs: RandomSource): Case? = null
+    fun cases(): Arb<Case> =
+        object : Arb<Case>() {
+            override fun edgecase(rs: RandomSource): Case? = null
 
-        override fun sample(rs: RandomSource): Sample<Case> =
-            Sample(Case(emptyList(), mutableMapOf()))
-    }
+            override fun sample(rs: RandomSource): Sample<Case> =
+                Sample(Case(emptyList(), mutableMapOf()))
+        }
 
     fun filterCases(source: Arb<Case>, attempts: Int, predicate: (Case) -> Boolean): Arb<Case> {
         require(attempts > 0) { "maxAttempts must be positive" }
@@ -82,7 +83,8 @@ object LawSpecKotlinStrategies {
 
     private class NativeFailure(type: Named, cause: RuntimeException) :
         IllegalArgumentException(
-            "native generator ${LawSpecSchema.key(type)}: ${cause.message}", cause,
+            "native generator ${LawSpecSchema.key(type)}: ${cause.message}",
+            cause,
         )
 
     fun <T> nativeValues(codec: LawSpecSchema.Codec<T>, source: Arb<T>): Arb<Value> =
@@ -105,35 +107,41 @@ object LawSpecKotlinStrategies {
 
     // Retain the native tree, including failures encountered while evaluating a
     // shrink node or enumerating its children. Report those in property callbacks.
-    private fun capture(source: Arb<Checked>): Arb<Checked> = object : Arb<Checked>() {
-        override fun edgecase(rs: RandomSource): Checked? = null
+    private fun capture(source: Arb<Checked>): Arb<Checked> =
+        object : Arb<Checked>() {
+            override fun edgecase(rs: RandomSource): Checked? = null
 
-        fun failure(error: NativeFailure) = RTree({ Checked(null, error) })
+            fun failure(error: NativeFailure) = RTree({ Checked(null, error) })
 
-        fun tree(source: RTree<Checked>): RTree<Checked> {
-            val value = try {
-                source.value()
-            } catch (error: NativeFailure) {
-                return failure(error)
+            fun tree(source: RTree<Checked>): RTree<Checked> {
+                val value =
+                    try {
+                        source.value()
+                    } catch (error: NativeFailure) {
+                        return failure(error)
+                    }
+                return RTree(
+                    { value },
+                    lazy {
+                        try {
+                            source.children.value.map(::tree)
+                        } catch (error: NativeFailure) {
+                            listOf(failure(error))
+                        }
+                    },
+                )
             }
-            return RTree({ value }, lazy {
-                try {
-                    source.children.value.map(::tree)
-                } catch (error: NativeFailure) {
-                    listOf(failure(error))
-                }
-            })
-        }
 
-        override fun sample(rs: RandomSource): Sample<Checked> {
-            val result = try {
-                tree(source.sample(rs).shrinks)
-            } catch (error: NativeFailure) {
-                failure(error)
+            override fun sample(rs: RandomSource): Sample<Checked> {
+                val result =
+                    try {
+                        tree(source.sample(rs).shrinks)
+                    } catch (error: NativeFailure) {
+                        failure(error)
+                    }
+                return Sample(result.value(), result)
             }
-            return Sample(result.value(), result)
         }
-    }
 
     fun checkedGenerator(
         schema: LawSpecSchema,
@@ -144,9 +152,18 @@ object LawSpecKotlinStrategies {
         symbols: MutableMap<String, Any>,
         witnesses: List<Value>,
         scalar: (String) -> Arb<Value>,
-    ): Arb<Checked> = checkedGenerator(
-        schema, type, bits, budget, maxAttempts, symbols, witnesses, emptyMap(), scalar,
-    )
+    ): Arb<Checked> =
+        checkedGenerator(
+            schema,
+            type,
+            bits,
+            budget,
+            maxAttempts,
+            symbols,
+            witnesses,
+            emptyMap(),
+            scalar,
+        )
 
     fun checkedGenerator(
         schema: LawSpecSchema,
@@ -165,50 +182,56 @@ object LawSpecKotlinStrategies {
         schema.isScalar(type)
         val builder = Builder(schema, bits, scalar, symbols, maxAttempts, factories)
         witnesses.forEach { builder.addWitness(type, schema.validate(type, it, bits, symbols)) }
-        val source = requireNotNull(builder.build(type, budget)) {
-            "no value of ${LawSpecSchema.key(type)} within structural node budget $budget"
-        }
-        return capture(source.map { value ->
-            try {
-                Checked(schema.validate(type, value, bits, symbols), null)
-            } catch (error: RuntimeException) {
-                Checked(null, error)
+        val source =
+            requireNotNull(builder.build(type, budget)) {
+                "no value of ${LawSpecSchema.key(type)} within structural node budget $budget"
             }
-        })
+        return capture(
+            source.map { value ->
+                try {
+                    Checked(schema.validate(type, value, bits, symbols), null)
+                } catch (error: RuntimeException) {
+                    Checked(null, error)
+                }
+            }
+        )
     }
 
-    private fun nodes(value: Value): Int = 1 + when (val data = value.data()) {
-        is Data -> data.fields().sumOf(::nodes)
-        is Presence -> if (data.present()) nodes(data.value()) else 0
-        is List<*> -> {
-            if (value.type().startsWith("List ")) {
-                data.sumOf { nodes(it as Value) }
-            } else {
-                0
+    private fun nodes(value: Value): Int =
+        1 +
+            when (val data = value.data()) {
+                is Data -> data.fields().sumOf(::nodes)
+                is Presence -> if (data.present()) nodes(data.value()) else 0
+                is List<*> -> {
+                    if (value.type().startsWith("List ")) {
+                        data.sumOf { nodes(it as Value) }
+                    } else {
+                        0
+                    }
+                }
+                else -> 0
             }
-        }
-        else -> 0
-    }
 
     private fun <T> bounded(
         source: Arb<T>,
         attempts: Int,
         label: String,
         accepted: (T) -> Boolean,
-    ): Arb<T> = object : Arb<T>() {
-        override fun edgecase(rs: RandomSource): T? = null
+    ): Arb<T> =
+        object : Arb<T>() {
+            override fun edgecase(rs: RandomSource): T? = null
 
-        override fun sample(rs: RandomSource): Sample<T> {
-            repeat(attempts) {
-                val sample = source.sample(rs)
-                val tree = sample.shrinks.filter(accepted)
-                if (tree != null) return Sample(tree.value(), tree)
+            override fun sample(rs: RandomSource): Sample<T> {
+                repeat(attempts) {
+                    val sample = source.sample(rs)
+                    val tree = sample.shrinks.filter(accepted)
+                    if (tree != null) return Sample(tree.value(), tree)
+                }
+                throw IllegalArgumentException(
+                    "constructor generation exhausted $attempts attempts for $label"
+                )
             }
-            throw IllegalArgumentException(
-                "constructor generation exhausted $attempts attempts for $label",
-            )
         }
-    }
 
     private const val INDEX_SLACK = 16L
     private const val INDEX_CHOICES = 6
@@ -229,11 +252,12 @@ object LawSpecKotlinStrategies {
         equations: Map<String, List<String>>,
         scalar: (String) -> Arb<Value>,
     ): Arb<Checked> {
-        val k = when (target) {
-            is Value -> (target.data() as Number).toLong()
-            is Number -> target.toLong()
-            else -> throw IllegalArgumentException("index target must be a natural number")
-        }
+        val k =
+            when (target) {
+                is Value -> (target.data() as Number).toLong()
+                is Number -> target.toLong()
+                else -> throw IllegalArgumentException("index target must be a natural number")
+            }
         require(!schema.isScalar(type)) { "indexed generation requires a data type" }
         val limit = maxOf(k, 0L) + INDEX_SLACK
         val indexed = Indexed(schema, bits, budget, limit, equations, Builder(schema, bits, scalar))
@@ -241,28 +265,37 @@ object LawSpecKotlinStrategies {
         // An open target (negative), or one drawn from earlier inputs that breaks their
         // preconditions or names no value, generates from the smallest reachable indices; an index
         // claim rejects a mismatch.
-        val levels = if ((type to k) in indexed.reach) {
-            listOf(k)
-        } else {
-            (0..limit).filter { (type to it) in indexed.reach }.take(INDEX_CHOICES)
-        }
-        require(levels.isNotEmpty()) { "no value of ${LawSpecSchema.key(type)} has an index" }
-        val source = if (levels.size == 1) {
-            indexed.generate(type, levels[0])
-        } else {
-            lawspecFlatMap(Arb.int(levels.indices)) { indexed.generate(type, levels[it]) }
-        }
-        return capture(source.map { value ->
-            try {
-                Checked(schema.validate(type, value, bits, symbols), null)
-            } catch (error: RuntimeException) {
-                Checked(null, error)
+        val levels =
+            if ((type to k) in indexed.reach) {
+                listOf(k)
+            } else {
+                (0..limit).filter { (type to it) in indexed.reach }.take(INDEX_CHOICES)
             }
-        })
+        require(levels.isNotEmpty()) { "no value of ${LawSpecSchema.key(type)} has an index" }
+        val source =
+            if (levels.size == 1) {
+                indexed.generate(type, levels[0])
+            } else {
+                lawspecFlatMap(Arb.int(levels.indices)) { indexed.generate(type, levels[it]) }
+            }
+        return capture(
+            source.map { value ->
+                try {
+                    Checked(schema.validate(type, value, bits, symbols), null)
+                } catch (error: RuntimeException) {
+                    Checked(null, error)
+                }
+            }
+        )
     }
 
     /** A prefix index term: kind is "c", "f" or an operator. */
-    private class IndexTerm(val kind: String, val value: Long, val left: IndexTerm?, val right: IndexTerm?) {
+    private class IndexTerm(
+        val kind: String,
+        val value: Long,
+        val left: IndexTerm?,
+        val right: IndexTerm?,
+    ) {
         /** Natural index arithmetic; null when an operation has no natural value. */
         fun evaluate(fields: Map<Int, Long>): Long? {
             if (kind == "c") return value
@@ -271,14 +304,15 @@ object LawSpecKotlinStrategies {
             val y = right!!.evaluate(fields) ?: return null
             val a = java.math.BigInteger.valueOf(x)
             val b = java.math.BigInteger.valueOf(y)
-            val result = when (kind) {
-                "+" -> a.add(b)
-                "-" -> if (x >= y) a.subtract(b) else null
-                "*" -> a.multiply(b)
-                "div" -> if (y > 0) a.divide(b) else null
-                "mod" -> if (y > 0) a.mod(b) else null
-                else -> if (y <= 64) a.pow(y.toInt()) else null
-            } ?: return null
+            val result =
+                when (kind) {
+                    "+" -> a.add(b)
+                    "-" -> if (x >= y) a.subtract(b) else null
+                    "*" -> a.multiply(b)
+                    "div" -> if (y > 0) a.divide(b) else null
+                    "mod" -> if (y > 0) a.mod(b) else null
+                    else -> if (y <= 64) a.pow(y.toInt()) else null
+                } ?: return null
             return if (result.bitLength() > 63) null else result.toLong()
         }
 
@@ -316,7 +350,11 @@ object LawSpecKotlinStrategies {
         }
     }
 
-    private class IndexEquation(val term: IndexTerm, val guards: List<IndexGuard>, val positions: List<Int>)
+    private class IndexEquation(
+        val term: IndexTerm,
+        val guards: List<IndexGuard>,
+        val positions: List<Int>,
+    )
 
     private class Indexed(
         val schema: LawSpecSchema,
@@ -332,27 +370,29 @@ object LawSpecKotlinStrategies {
         val solutions = mutableMapOf<Triple<Named, String, Long>, List<Map<Int, Long>>>()
         val cache = mutableMapOf<Pair<Named, Long>, Arb<Value>>()
 
-        fun equation(tag: String): IndexEquation = parsed.getOrPut(tag) {
-            val texts = requireNotNull(equations[tag]) { "missing index equation for $tag" }
-            require(texts.isNotEmpty()) { "missing index equation for $tag" }
-            val tokens = texts[0].split(" ")
-            val at = intArrayOf(0)
-            val term = IndexTerm.parse(tokens, at)
-            require(at[0] == tokens.size) { "malformed index term" }
-            val positions = mutableListOf<Int>()
-            term.fields(positions)
-            val guards = texts.drop(1).map { text ->
-                val parts = text.split(" ")
-                require(parts[0] == "==" || parts[0] == ">=") { "malformed index guard" }
-                val position = intArrayOf(1)
-                val left = IndexTerm.parse(parts, position)
-                val right = IndexTerm.parse(parts, position)
-                left.fields(positions)
-                right.fields(positions)
-                IndexGuard(parts[0], left, right)
+        fun equation(tag: String): IndexEquation =
+            parsed.getOrPut(tag) {
+                val texts = requireNotNull(equations[tag]) { "missing index equation for $tag" }
+                require(texts.isNotEmpty()) { "missing index equation for $tag" }
+                val tokens = texts[0].split(" ")
+                val at = intArrayOf(0)
+                val term = IndexTerm.parse(tokens, at)
+                require(at[0] == tokens.size) { "malformed index term" }
+                val positions = mutableListOf<Int>()
+                term.fields(positions)
+                val guards =
+                    texts.drop(1).map { text ->
+                        val parts = text.split(" ")
+                        require(parts[0] == "==" || parts[0] == ">=") { "malformed index guard" }
+                        val position = intArrayOf(1)
+                        val left = IndexTerm.parse(parts, position)
+                        val right = IndexTerm.parse(parts, position)
+                        left.fields(positions)
+                        right.fields(positions)
+                        IndexGuard(parts[0], left, right)
+                    }
+                IndexEquation(term, guards, positions)
             }
-            IndexEquation(term, guards, positions)
-        }
 
         fun plainFields(type: Named, tag: String): Boolean {
             val fields = schema.fields(type, tag)
@@ -417,35 +457,42 @@ object LawSpecKotlinStrategies {
 
         // Assignments are chosen by index, which shrinks toward the first.
         fun generate(type: Named, k: Long): Arb<Value> {
-            cache[type to k]?.let { return it }
-            val variants = schema.constructors(type)
-                .filter { plainFields(type, it) && solve(type, it, k).isNotEmpty() }
-                .map { tag ->
-                    val fields = schema.fields(type, tag)
-                    val choices = solve(type, tag, k)
-                    lawspecFlatMap(Arb.int(choices.indices)) { choice ->
-                        val targets = choices[choice]
-                        val children = fields.mapIndexed { index, field ->
-                            val target = targets[index]
-                            if (target != null) {
-                                generate(field.type() as Named, target)
-                            } else {
-                                requireNotNull(builder.build(field.type() as Named, budget))
+            cache[type to k]?.let {
+                return it
+            }
+            val variants =
+                schema
+                    .constructors(type)
+                    .filter { plainFields(type, it) && solve(type, it, k).isNotEmpty() }
+                    .map { tag ->
+                        val fields = schema.fields(type, tag)
+                        val choices = solve(type, tag, k)
+                        lawspecFlatMap(Arb.int(choices.indices)) { choice ->
+                            val targets = choices[choice]
+                            val children = fields.mapIndexed { index, field ->
+                                val target = targets[index]
+                                if (target != null) {
+                                    generate(field.type() as Named, target)
+                                } else {
+                                    requireNotNull(builder.build(field.type() as Named, budget))
+                                }
                             }
+                            children
+                                .fold(Arb.constant(emptyList<Value>())) { prior, child ->
+                                    Arb.bind(prior, child) { values, value -> values + value }
+                                }
+                                .map { schema.construct(type, tag, it, bits) }
                         }
-                        children.fold(Arb.constant(emptyList<Value>())) { prior, child ->
-                            Arb.bind(prior, child) { values, value -> values + value }
-                        }.map { schema.construct(type, tag, it, bits) }
                     }
-                }
             require(variants.isNotEmpty()) {
                 "no value of ${LawSpecSchema.key(type)} has index $k"
             }
-            val result = if (variants.size == 1) {
-                variants[0]
-            } else {
-                lawspecFlatMap(Arb.int(variants.indices)) { variants[it] }
-            }
+            val result =
+                if (variants.size == 1) {
+                    variants[0]
+                } else {
+                    lawspecFlatMap(Arb.int(variants.indices)) { variants[it] }
+                }
             cache[type to k] = result
             return result
         }
@@ -481,7 +528,8 @@ object LawSpecKotlinStrategies {
                 }
                 else -> {
                     val data = value.data() as Data
-                    schema.fieldsOf(type, data.tag(), data.fields()).forEachIndexed { index, field ->
+                    schema.fieldsOf(type, data.tag(), data.fields()).forEachIndexed { index, field
+                        ->
                         addWitness(field.type() as Named, data.fields()[index])
                     }
                 }
@@ -489,7 +537,7 @@ object LawSpecKotlinStrategies {
         }
 
         fun minimum(type: Named, limit: Int): Int? =
-          (1..limit).firstOrNull { build(type, it) != null }
+            (1..limit).firstOrNull { build(type, it) != null }
 
         fun allocation(fields: List<LawSpecSchema.Field>, available: Int): List<Int>? {
             var remaining = available
@@ -508,77 +556,115 @@ object LawSpecKotlinStrategies {
             val request = Request(type, available)
             if (cache.containsKey(request)) return cache[request]
             factories[type.name()]?.let { factory ->
-                val arguments = type.arguments().map {
-                    build(it as Named, available) ?: object : Arb<Value>() {
-                        // A phantom parameter can be uninhabited. Fail only if
-                        // its factory actually asks this arbitrary for a value.
-                        override fun edgecase(rs: RandomSource): Value? = null
-                        override fun sample(rs: RandomSource): Sample<Value> =
-                            error("no native generator argument for ${LawSpecSchema.key(it)} within node budget $available")
+                val arguments =
+                    type.arguments().map {
+                        build(it as Named, available)
+                            ?: object : Arb<Value>() {
+                                // A phantom parameter can be uninhabited. Fail only if
+                                // its factory actually asks this arbitrary for a value.
+                                override fun edgecase(rs: RandomSource): Value? = null
+
+                                override fun sample(rs: RandomSource): Sample<Value> =
+                                    error(
+                                        "no native generator argument for ${LawSpecSchema.key(it)} within node budget $available"
+                                    )
+                            }
                     }
-                }
                 val context = requireNotNull(symbols)
-                val result = factory.create(schema, type, bits, context, arguments).map { value ->
-                    try {
-                        schema.validate(type, value, bits, context)
-                    } catch (error: RuntimeException) {
-                        throw NativeFailure(type, error)
+                val result =
+                    factory.create(schema, type, bits, context, arguments).map { value ->
+                        try {
+                            schema.validate(type, value, bits, context)
+                        } catch (error: RuntimeException) {
+                            throw NativeFailure(type, error)
+                        }
                     }
-                }
                 cache[request] = result
                 return result
             }
-            var result = when {
-                schema.isScalar(type) -> scalar(type.name()).map { schema.validate(type, it, bits) }
-                type.name() == "List" -> list(type, available)
-                type.name() in listOf("Nullable", "Optional") -> presence(type, available)
-                else -> {
-                    // A field-only existential takes each type of the witness pool.
-                    choice(schema.constructors(type).flatMap { tag ->
-                      schema.instances(type, tag).mapNotNull { instance ->
-                        val fields = instance.fields()
-                        val witnessValues = instance.keys().map { LawSpecSchema.witnessText(it) }
-                        val costs = allocation(fields, available - 1) ?: return@mapNotNull null
-                        val children = fields.mapIndexed { index, field ->
-                            val fieldType = field.type() as Named
-                            val cost = costs[index]
-                            val child = requireNotNull(build(fieldType, cost))
-                            // Retain small sets as growing raw lists saturate finite domains.
-                            if (type.name() == "lawspec.collections::type::EqSet" && cost > 3) {
-                                requireNotNull(choice(listOf(requireNotNull(build(fieldType, 3)), child)))
-                            } else child
-                        }
-                        val product =
-                            children.fold(Arb.constant(emptyList<Value>())) { prior, child ->
-                                Arb.bind(prior, child) { values, value -> values + value }
+            var result =
+                when {
+                    schema.isScalar(type) ->
+                        scalar(type.name()).map { schema.validate(type, it, bits) }
+                    type.name() == "List" -> list(type, available)
+                    type.name() in listOf("Nullable", "Optional") -> presence(type, available)
+                    else -> {
+                        // A field-only existential takes each type of the witness pool.
+                        choice(
+                            schema.constructors(type).flatMap { tag ->
+                                schema.instances(type, tag).mapNotNull { instance ->
+                                    val fields = instance.fields()
+                                    val witnessValues =
+                                        instance.keys().map { LawSpecSchema.witnessText(it) }
+                                    val costs =
+                                        allocation(fields, available - 1) ?: return@mapNotNull null
+                                    val children = fields.mapIndexed { index, field ->
+                                        val fieldType = field.type() as Named
+                                        val cost = costs[index]
+                                        val child = requireNotNull(build(fieldType, cost))
+                                        // Retain small sets as growing raw lists saturate finite
+                                        // domains.
+                                        if (
+                                            type.name() == "lawspec.collections::type::EqSet" &&
+                                                cost > 3
+                                        ) {
+                                            requireNotNull(
+                                                choice(
+                                                    listOf(
+                                                        requireNotNull(build(fieldType, 3)),
+                                                        child,
+                                                    )
+                                                )
+                                            )
+                                        } else child
+                                    }
+                                    val product =
+                                        children.fold(Arb.constant(emptyList<Value>())) {
+                                            prior,
+                                            child ->
+                                            Arb.bind(prior, child) { values, value ->
+                                                values + value
+                                            }
+                                        }
+                                    product
+                                        .map { it + witnessValues }
+                                        .map {
+                                            val value =
+                                                if (
+                                                    symbols == null &&
+                                                        type.name() !=
+                                                            "lawspec.collections::type::EqSet"
+                                                ) {
+                                                    schema.construct(type, tag, it, bits)
+                                                } else {
+                                                    Value(LawSpecSchema.key(type), Data(tag, it))
+                                                }
+                                            // Generated collections are canonicalised rather than
+                                            // filtered.
+                                            if (LawSpecSchema.canonicalCollection(type.name()))
+                                                LawSpecSchema.canonical(value)
+                                            else value
+                                        }
+                                }
                             }
-                        product.map { it + witnessValues }.map {
-                            val value = if (symbols == null && type.name() != "lawspec.collections::type::EqSet") {
-                                schema.construct(type, tag, it, bits)
-                            } else {
-                                Value(LawSpecSchema.key(type), Data(tag, it))
-                            }
-                            // Generated collections are canonicalised rather than filtered.
-                            if (LawSpecSchema.canonicalCollection(type.name())) LawSpecSchema.canonical(value) else value
-                        }
-                      }
-                    })
+                        )
+                    }
                 }
-            }
             if (result != null && symbols != null) {
                 val seeds = witnesses[type].orEmpty().filter { nodes(it) <= available }
                 if (seeds.isNotEmpty()) {
                     val sample = Arb.int(seeds.indices).map { seeds[it] }
                     result = lawspecChoice(result, sample)
                 }
-                result = bounded(result, maxAttempts, LawSpecSchema.key(type)) { value ->
-                    try {
-                        schema.check(type, value, bits, symbols) is LawSpecSchema.Accepted
-                    } catch (error: RuntimeException) {
-                        // Keep evaluator errors for the outer checked result to report.
-                        true
+                result =
+                    bounded(result, maxAttempts, LawSpecSchema.key(type)) { value ->
+                        try {
+                            schema.check(type, value, bits, symbols) is LawSpecSchema.Accepted
+                        } catch (error: RuntimeException) {
+                            // Keep evaluator errors for the outer checked result to report.
+                            true
+                        }
                     }
-                }
             }
             cache[request] = result
             return result
@@ -590,14 +676,18 @@ object LawSpecKotlinStrategies {
             val cost = minimum(element, remaining)
             val maximum = if (cost == null) 0 else remaining / cost
             // Plan before sampling: callbacks only select immutable native arbitraries.
-            val sizes = (0..maximum).map { length ->
-                if (length == 0) {
-                    Arb.constant(Value(LawSpecSchema.key(type), emptyList<Value>()))
-                } else {
-                    lawspecList(requireNotNull(build(element, remaining / length)), length..length)
-                        .map { Value(LawSpecSchema.key(type), it) }
+            val sizes =
+                (0..maximum).map { length ->
+                    if (length == 0) {
+                        Arb.constant(Value(LawSpecSchema.key(type), emptyList<Value>()))
+                    } else {
+                        lawspecList(
+                                requireNotNull(build(element, remaining / length)),
+                                length..length,
+                            )
+                            .map { Value(LawSpecSchema.key(type), it) }
+                    }
                 }
-            }
             return lawspecFlatMap(Arb.int(0..maximum)) { sizes[it] }
         }
 
@@ -608,10 +698,11 @@ object LawSpecKotlinStrategies {
             return requireNotNull(choice(listOf(absent, present)))
         }
 
-        fun choice(alternatives: List<Arb<Value>>): Arb<Value>? = when (alternatives.size) {
-            0 -> null
-            1 -> alternatives[0]
-            else -> lawspecFlatMap(Arb.int(alternatives.indices)) { alternatives[it] }
-        }
+        fun choice(alternatives: List<Arb<Value>>): Arb<Value>? =
+            when (alternatives.size) {
+                0 -> null
+                1 -> alternatives[0]
+                else -> lawspecFlatMap(Arb.int(alternatives.indices)) { alternatives[it] }
+            }
     }
 }

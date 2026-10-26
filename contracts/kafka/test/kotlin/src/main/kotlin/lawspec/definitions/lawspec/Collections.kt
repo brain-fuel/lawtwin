@@ -4,46 +4,67 @@ package lawspec.definitions.lawspec
 import lawspec.runtime.LawSpecDataSchema
 
 object Collections {
-    private val schema = LawSpecDataSchema.create()
+    private val SCHEMA = LawSpecDataSchema.create()
 
-    private const val bits = 64
+    private const val MACHINE_BITS = 64
 
     fun boundedInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Short> = lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.boundedInt16_cdb4a79e(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Short> =
+        lawspec.runtime.LawSpecTyped.toNativeMaybeInt16(
+            lawspec.runtime.LawSpecTyped.boundedInt16(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun boundedInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_b3381d93(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> =
+        lawspec.runtime.LawSpecTyped.toNativeMaybeInt32(
+            lawspec.runtime.LawSpecTyped.boundedInt32(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun boundedInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_13153a18(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> =
+        lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
+            lawspec.runtime.LawSpecTyped.boundedInt64(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun boundedInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Byte> = lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.boundedInt8_9822648b(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Byte> =
+        lawspec.runtime.LawSpecTyped.toNativeMaybeInt8(
+            lawspec.runtime.LawSpecTyped.boundedInt8(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun boundedIntSize(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger> {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate4(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.boundedIntSize(symbols, argument0)
             val resultCodec =
-                schema.maybe(
-                    schema.scalar("IntSize", bits, java.math.BigInteger::class.javaObjectType),
-                    bits,
+                SCHEMA.maybe(
+                    SCHEMA.scalar(
+                        "IntSize",
+                        MACHINE_BITS,
+                        java.math.BigInteger::class.javaObjectType,
+                    ),
+                    MACHINE_BITS,
                     symbols,
                 )
             return resultCodec.decode(result)
@@ -51,7 +72,7 @@ object Collections {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::bou" + "ndedIntSize: ") + error.message,
+                "lawspec.collections::boundedIntSize: " + error.message,
                 error,
             )
         }
@@ -60,27 +81,40 @@ object Collections {
     fun boundedUInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.boundedUInt16_fab24aa3(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> =
+        lawspec.runtime.LawSpecTyped.toNativeMaybeUint16(
+            lawspec.runtime.LawSpecTyped.boundedUint16(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun boundedUInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.boundedUInt32_f7521c17(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> =
+        lawspec.runtime.LawSpecTyped.toNativeMaybeUint32(
+            lawspec.runtime.LawSpecTyped.boundedUint32(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun boundedUInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger> {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate7(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.boundedUint64(symbols, argument0)
             val resultCodec =
-                schema.maybe(
-                    schema.scalar("UInt64", bits, java.math.BigInteger::class.javaObjectType),
-                    bits,
+                SCHEMA.maybe(
+                    SCHEMA.scalar(
+                        "UInt64",
+                        MACHINE_BITS,
+                        java.math.BigInteger::class.javaObjectType,
+                    ),
+                    MACHINE_BITS,
                     symbols,
                 )
             return resultCodec.decode(result)
@@ -88,7 +122,7 @@ object Collections {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::bou" + "ndedUInt64: ") + error.message,
+                "lawspec.collections::boundedUInt64: " + error.message,
                 error,
             )
         }
@@ -97,21 +131,30 @@ object Collections {
     fun boundedUInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Short> = lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.boundedUInt8_8ce0c76e(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Short> =
+        lawspec.runtime.LawSpecTyped.toNativeMaybeUint8(
+            lawspec.runtime.LawSpecTyped.boundedUint8(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun boundedUIntPtr(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger> {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate9(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.boundedUintPtr(symbols, argument0)
             val resultCodec =
-                schema.maybe(
-                    schema.scalar("UIntPtr", bits, java.math.BigInteger::class.javaObjectType),
-                    bits,
+                SCHEMA.maybe(
+                    SCHEMA.scalar(
+                        "UIntPtr",
+                        MACHINE_BITS,
+                        java.math.BigInteger::class.javaObjectType,
+                    ),
+                    MACHINE_BITS,
                     symbols,
                 )
             return resultCodec.decode(result)
@@ -119,7 +162,7 @@ object Collections {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::bou" + "ndedUIntPtr: ") + error.message,
+                "lawspec.collections::boundedUIntPtr: " + error.message,
                 error,
             )
         }
@@ -130,13 +173,18 @@ object Collections {
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger> {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate10(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.boundedUintSize(symbols, argument0)
             val resultCodec =
-                schema.maybe(
-                    schema.scalar("UIntSize", bits, java.math.BigInteger::class.javaObjectType),
-                    bits,
+                SCHEMA.maybe(
+                    SCHEMA.scalar(
+                        "UIntSize",
+                        MACHINE_BITS,
+                        java.math.BigInteger::class.javaObjectType,
+                    ),
+                    MACHINE_BITS,
                     symbols,
                 )
             return resultCodec.decode(result)
@@ -144,7 +192,7 @@ object Collections {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::bou" + "ndedUIntSize: ") + error.message,
+                "lawspec.collections::boundedUIntSize: " + error.message,
                 error,
             )
         }
@@ -153,39 +201,61 @@ object Collections {
     fun saturatingInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_770015a8(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Short =
+        lawspec.runtime.LawSpecTyped.toNativeInt16(
+            lawspec.runtime.LawSpecTyped.saturatingInt16(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun saturatingInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_9e8d3b43(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Int =
+        lawspec.runtime.LawSpecTyped.toNativeInt32(
+            lawspec.runtime.LawSpecTyped.saturatingInt32(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun saturatingInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_5bce4ed8(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Long =
+        lawspec.runtime.LawSpecTyped.toNativeInt64(
+            lawspec.runtime.LawSpecTyped.saturatingInt64(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun saturatingInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Byte = lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.saturatingInt8_54855fd8(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Byte =
+        lawspec.runtime.LawSpecTyped.toNativeInt8(
+            lawspec.runtime.LawSpecTyped.saturatingInt8(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun saturatingIntSize(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): java.math.BigInteger {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate15(symbols, argument0)
+            val result =
+                lawspec.runtime.LawSpecDefinitionBodies.saturatingIntSize(symbols, argument0)
             val resultCodec =
-                schema.scalar("IntSize", bits, java.math.BigInteger::class.javaObjectType)
+                SCHEMA.scalar("IntSize", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
         } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::sat" + "uratingIntSize: ") + error.message,
+                "lawspec.collections::saturatingIntSize: " + error.message,
                 error,
             )
         }
@@ -194,29 +264,41 @@ object Collections {
     fun saturatingUInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.saturatingUInt16_c4c11e3b(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Int =
+        lawspec.runtime.LawSpecTyped.toNativeUint16(
+            lawspec.runtime.LawSpecTyped.saturatingUint16(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun saturatingUInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.saturatingUInt32_6d025357(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Long =
+        lawspec.runtime.LawSpecTyped.toNativeUint32(
+            lawspec.runtime.LawSpecTyped.saturatingUint32(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun saturatingUInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): java.math.BigInteger {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate18(symbols, argument0)
+            val result =
+                lawspec.runtime.LawSpecDefinitionBodies.saturatingUint64(symbols, argument0)
             val resultCodec =
-                schema.scalar("UInt64", bits, java.math.BigInteger::class.javaObjectType)
+                SCHEMA.scalar("UInt64", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
         } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::sat" + "uratingUInt64: ") + error.message,
+                "lawspec.collections::saturatingUInt64: " + error.message,
                 error,
             )
         }
@@ -225,24 +307,31 @@ object Collections {
     fun saturatingUInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.saturatingUInt8_cf40d611(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Short =
+        lawspec.runtime.LawSpecTyped.toNativeUint8(
+            lawspec.runtime.LawSpecTyped.saturatingUint8(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun saturatingUIntPtr(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): java.math.BigInteger {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate20(symbols, argument0)
+            val result =
+                lawspec.runtime.LawSpecDefinitionBodies.saturatingUintPtr(symbols, argument0)
             val resultCodec =
-                schema.scalar("UIntPtr", bits, java.math.BigInteger::class.javaObjectType)
+                SCHEMA.scalar("UIntPtr", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
         } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::sat" + "uratingUIntPtr: ") + error.message,
+                "lawspec.collections::saturatingUIntPtr: " + error.message,
                 error,
             )
         }
@@ -253,17 +342,19 @@ object Collections {
         value0: java.math.BigInteger,
     ): java.math.BigInteger {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate21(symbols, argument0)
+            val result =
+                lawspec.runtime.LawSpecDefinitionBodies.saturatingUintSize(symbols, argument0)
             val resultCodec =
-                schema.scalar("UIntSize", bits, java.math.BigInteger::class.javaObjectType)
+                SCHEMA.scalar("UIntSize", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
         } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::sat" + "uratingUIntSize: ") + error.message,
+                "lawspec.collections::saturatingUIntSize: " + error.message,
                 error,
             )
         }
@@ -272,70 +363,90 @@ object Collections {
     fun wrappingInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_989a4ce2(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Short =
+        lawspec.runtime.LawSpecTyped.toNativeInt16(
+            lawspec.runtime.LawSpecTyped.wrappingInt16(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
-    fun wrappingInt32(
-        symbols: MutableMap<String, Any>,
-        value0: java.math.BigInteger,
-    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_e1b5a7b2(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    fun wrappingInt32(symbols: MutableMap<String, Any>, value0: java.math.BigInteger): kotlin.Int =
+        lawspec.runtime.LawSpecTyped.toNativeInt32(
+            lawspec.runtime.LawSpecTyped.wrappingInt32(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
-    fun wrappingInt64(
-        symbols: MutableMap<String, Any>,
-        value0: java.math.BigInteger,
-    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_698b955a(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    fun wrappingInt64(symbols: MutableMap<String, Any>, value0: java.math.BigInteger): kotlin.Long =
+        lawspec.runtime.LawSpecTyped.toNativeInt64(
+            lawspec.runtime.LawSpecTyped.wrappingInt64(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
-    fun wrappingInt8(
-        symbols: MutableMap<String, Any>,
-        value0: java.math.BigInteger,
-    ): kotlin.Byte = lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.wrappingInt8_728a92af(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    fun wrappingInt8(symbols: MutableMap<String, Any>, value0: java.math.BigInteger): kotlin.Byte =
+        lawspec.runtime.LawSpecTyped.toNativeInt8(
+            lawspec.runtime.LawSpecTyped.wrappingInt8(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun wrappingIntSize(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): java.math.BigInteger {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate26(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.wrappingIntSize(symbols, argument0)
             val resultCodec =
-                schema.scalar("IntSize", bits, java.math.BigInteger::class.javaObjectType)
+                SCHEMA.scalar("IntSize", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
         } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::wra" + "ppingIntSize: ") + error.message,
+                "lawspec.collections::wrappingIntSize: " + error.message,
                 error,
             )
         }
     }
 
-    fun wrappingUInt16(
-        symbols: MutableMap<String, Any>,
-        value0: java.math.BigInteger,
-    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.wrappingUInt16_e5742dd2(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    fun wrappingUInt16(symbols: MutableMap<String, Any>, value0: java.math.BigInteger): kotlin.Int =
+        lawspec.runtime.LawSpecTyped.toNativeUint16(
+            lawspec.runtime.LawSpecTyped.wrappingUint16(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun wrappingUInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.wrappingUInt32_1ef3ce20(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Long =
+        lawspec.runtime.LawSpecTyped.toNativeUint32(
+            lawspec.runtime.LawSpecTyped.wrappingUint32(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun wrappingUInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): java.math.BigInteger {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate29(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.wrappingUint64(symbols, argument0)
             val resultCodec =
-                schema.scalar("UInt64", bits, java.math.BigInteger::class.javaObjectType)
+                SCHEMA.scalar("UInt64", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
         } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::wra" + "ppingUInt64: ") + error.message,
+                "lawspec.collections::wrappingUInt64: " + error.message,
                 error,
             )
         }
@@ -344,24 +455,30 @@ object Collections {
     fun wrappingUInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.wrappingUInt8_6ce2e7d2(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
+    ): kotlin.Short =
+        lawspec.runtime.LawSpecTyped.toNativeUint8(
+            lawspec.runtime.LawSpecTyped.wrappingUint8(
+                lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)
+            )
+        )
 
     fun wrappingUIntPtr(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): java.math.BigInteger {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate31(symbols, argument0)
+            val result = lawspec.runtime.LawSpecDefinitionBodies.wrappingUintPtr(symbols, argument0)
             val resultCodec =
-                schema.scalar("UIntPtr", bits, java.math.BigInteger::class.javaObjectType)
+                SCHEMA.scalar("UIntPtr", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
         } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::wra" + "ppingUIntPtr: ") + error.message,
+                "lawspec.collections::wrappingUIntPtr: " + error.message,
                 error,
             )
         }
@@ -372,17 +489,19 @@ object Collections {
         value0: java.math.BigInteger,
     ): java.math.BigInteger {
         try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
+            val codec0 =
+                SCHEMA.scalar("Integer", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate32(symbols, argument0)
+            val result =
+                lawspec.runtime.LawSpecDefinitionBodies.wrappingUintSize(symbols, argument0)
             val resultCodec =
-                schema.scalar("UIntSize", bits, java.math.BigInteger::class.javaObjectType)
+                SCHEMA.scalar("UIntSize", MACHINE_BITS, java.math.BigInteger::class.javaObjectType)
             return resultCodec.decode(result)
         } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
             throw failure
         } catch (error: RuntimeException) {
             throw IllegalArgumentException(
-                ("lawspec.collections::wra" + "ppingUIntSize: ") + error.message,
+                "lawspec.collections::wrappingUIntSize: " + error.message,
                 error,
             )
         }

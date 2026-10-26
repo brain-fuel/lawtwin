@@ -7,39 +7,255 @@ open LawSpec.Runtime
 type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.IBroker with
         member _.CreateTopicsRequest(value0, value1) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "createTopicsRequest" [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "createTopicsRequest"
+                            [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]
+                    ))
+
         member _.CreatePartitionsRequest(value0, value1) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "createPartitionsRequest" [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "createPartitionsRequest"
+                            [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]
+                    ))
+
         member _.MetadataRequest(value0) =
-            (Codec.option Codec.int32).ToNative (Effects.invoke handler schema "metadataRequest" [ Codec.text.FromNative value0 ])
+            Codec.toNative
+                (Codec.option Codec.int32)
+                (Effects.invoke handler schema "metadataRequest" [ Codec.text.FromNative value0 ])
+
         member _.ProduceRequest(value0, value1, value2) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.int64.ToNative (Effects.invoke handler schema "produceRequest" [ (LawSpec.Data.Codecs.topicPartition ()).FromNative value0; (Codec.option (LawSpec.Data.Codecs.producerTag ())).FromNative value1; (Codec.list (LawSpec.Data.Codecs.record ())).FromNative value2 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.int64.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "produceRequest"
+                            [
+                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
+                                Codec.fromNative (Codec.option (LawSpec.Data.Codecs.producerTag ())) value1
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.record ())) value2
+                            ]
+                    ))
+
         member _.FetchRequest(value0, value1, value2, value3) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> (LawSpec.Data.Codecs.fetchResult ()).ToNative (Effects.invoke handler schema "fetchRequest" [ (LawSpec.Data.Codecs.topicPartition ()).FromNative value0; Codec.int64.FromNative value1; Codec.int32.FromNative value2; (LawSpec.Data.Codecs.isolationLevel ()).FromNative value3 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.toNative
+                        (LawSpec.Data.Codecs.fetchResult ())
+                        (Effects.invoke
+                            handler
+                            schema
+                            "fetchRequest"
+                            [
+                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
+                                Codec.int64.FromNative value1
+                                Codec.int32.FromNative value2
+                                Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value3
+                            ]))
+
         member _.ListOffsetsRequest(value0, value1, value2) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.int64.ToNative (Effects.invoke handler schema "listOffsetsRequest" [ (LawSpec.Data.Codecs.topicPartition ()).FromNative value0; (LawSpec.Data.Codecs.offsetSpec ()).FromNative value1; (LawSpec.Data.Codecs.isolationLevel ()).FromNative value2 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.int64.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "listOffsetsRequest"
+                            [
+                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
+                                Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) value1
+                                Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value2
+                            ]
+                    ))
+
         member _.InitProducerIdRequest(value0) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> (LawSpec.Data.Codecs.producerIdAndEpoch ()).ToNative (Effects.invoke handler schema "initProducerIdRequest" [ (Codec.option Codec.text).FromNative value0 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.toNative
+                        (LawSpec.Data.Codecs.producerIdAndEpoch ())
+                        (Effects.invoke
+                            handler
+                            schema
+                            "initProducerIdRequest"
+                            [ Codec.fromNative (Codec.option Codec.text) value0 ]))
+
         member _.AddPartitionsToTxnRequest(value0, value1, value2, value3) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "addPartitionsToTxnRequest" [ Codec.text.FromNative value0; Codec.int64.FromNative value1; Codec.int16.FromNative value2; (Codec.list (LawSpec.Data.Codecs.topicPartition ())).FromNative value3 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "addPartitionsToTxnRequest"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.int64.FromNative value1
+                                Codec.int16.FromNative value2
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value3
+                            ]
+                    ))
+
         member _.TxnOffsetCommitRequest(value0, value1, value2, value3, value4) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "txnOffsetCommitRequest" [ Codec.text.FromNative value0; Codec.int64.FromNative value1; Codec.int16.FromNative value2; Codec.text.FromNative value3; (Codec.list (LawSpec.Data.Codecs.offsetEntry ())).FromNative value4 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "txnOffsetCommitRequest"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.int64.FromNative value1
+                                Codec.int16.FromNative value2
+                                Codec.text.FromNative value3
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value4
+                            ]
+                    ))
+
         member _.EndTxnRequest(value0, value1, value2, value3) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "endTxnRequest" [ Codec.text.FromNative value0; Codec.int64.FromNative value1; Codec.int16.FromNative value2; Codec.bool.FromNative value3 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "endTxnRequest"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.int64.FromNative value1
+                                Codec.int16.FromNative value2
+                                Codec.bool.FromNative value3
+                            ]
+                    ))
+
         member _.JoinGroupRequest(value0, value1, value2) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.int32.ToNative (Effects.invoke handler schema "joinGroupRequest" [ Codec.text.FromNative value0; Codec.text.FromNative value1; (Codec.list Codec.text).FromNative value2 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.int32.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "joinGroupRequest"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.text.FromNative value1
+                                Codec.fromNative (Codec.list Codec.text) value2
+                            ]
+                    ))
+
         member _.SyncGroupRequest(value0, value1, value2) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> (Codec.list (LawSpec.Data.Codecs.topicPartition ())).ToNative (Effects.invoke handler schema "syncGroupRequest" [ Codec.text.FromNative value0; Codec.text.FromNative value1; Codec.int32.FromNative value2 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.toNative
+                        (Codec.list (LawSpec.Data.Codecs.topicPartition ()))
+                        (Effects.invoke
+                            handler
+                            schema
+                            "syncGroupRequest"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.text.FromNative value1
+                                Codec.int32.FromNative value2
+                            ]))
+
         member _.HeartbeatRequest(value0, value1, value2) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "heartbeatRequest" [ Codec.text.FromNative value0; Codec.text.FromNative value1; Codec.int32.FromNative value2 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "heartbeatRequest"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.text.FromNative value1
+                                Codec.int32.FromNative value2
+                            ]
+                    ))
+
         member _.LeaveGroupRequest(value0, value1) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "leaveGroupRequest" [ Codec.text.FromNative value0; Codec.text.FromNative value1 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "leaveGroupRequest"
+                            [ Codec.text.FromNative value0; Codec.text.FromNative value1 ]
+                    ))
+
         member _.DescribeGroupRequest(value0) =
-            (LawSpec.Data.Codecs.groupView ()).ToNative (Effects.invoke handler schema "describeGroupRequest" [ Codec.text.FromNative value0 ])
+            Codec.toNative
+                (LawSpec.Data.Codecs.groupView ())
+                (Effects.invoke handler schema "describeGroupRequest" [ Codec.text.FromNative value0 ])
+
         member _.OffsetCommitRequest(value0, value1, value2, value3) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "offsetCommitRequest" [ Codec.text.FromNative value0; Codec.text.FromNative value1; Codec.int32.FromNative value2; (Codec.list (LawSpec.Data.Codecs.offsetEntry ())).FromNative value3 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "offsetCommitRequest"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.text.FromNative value1
+                                Codec.int32.FromNative value2
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value3
+                            ]
+                    ))
+
         member _.OffsetFetchRequest(value0, value1) =
-            (Codec.option Codec.int64).ToNative (Effects.invoke handler schema "offsetFetchRequest" [ Codec.text.FromNative value0; (LawSpec.Data.Codecs.topicPartition ()).FromNative value1 ])
+            Codec.toNative
+                (Codec.option Codec.int64)
+                (Effects.invoke
+                    handler
+                    schema
+                    "offsetFetchRequest"
+                    [
+                        Codec.text.FromNative value0
+                        Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value1
+                    ])
+
     interface Effects.IOrigin with
         member _.Ability = "lawtwin.kafka::ability::Broker"
         member _.Symbols = symbols
@@ -48,81 +264,337 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
 
 /// Broker's native interface over a logical handler.
 [<CompiledName("LawtwinKafkaBrokerToNative")>]
-let lawtwinKafkaBrokerToNative (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (handler: Effects.Handler) : LawSpec.Abilities.LawtwinKafka.IBroker =
+let lawtwinKafkaBrokerToNative
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (handler: Effects.Handler)
+    : LawSpec.Abilities.LawtwinKafka.IBroker =
     LawtwinKafkaBrokerBridge(schema, symbols, handler) :> LawSpec.Abilities.LawtwinKafka.IBroker
 
 /// The logical handler of a native Broker.
 [<CompiledName("LawtwinKafkaBrokerFromNative")>]
-let lawtwinKafkaBrokerFromNative (_schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IBroker) : Effects.Handler =
+let lawtwinKafkaBrokerFromNative
+    (_schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IBroker)
+    : Effects.Handler =
+    let createTopicsRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.CreateTopicsRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.int32.ToNative(Runtime.item 1 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let createPartitionsRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.CreatePartitionsRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.int32.ToNative(Runtime.item 1 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let metadataRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.option Codec.int32)
+                (native.MetadataRequest(Codec.text.ToNative(Runtime.item 0 arguments))))
+            (Scalar.typeOf "Maybe (Int32)")
+            current
+
+    let produceRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.int64.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.ProduceRequest(
+                        Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) (Runtime.item 0 arguments),
+                        Codec.toNative (Codec.option (LawSpec.Data.Codecs.producerTag ())) (Runtime.item 1 arguments),
+                        Codec.toNative (Codec.list (LawSpec.Data.Codecs.record ())) (Runtime.item 2 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Int64")
+            current
+
+    let fetchRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (LawSpec.Data.Codecs.fetchResult ())
+                (Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.FetchRequest(
+                        Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) (Runtime.item 0 arguments),
+                        Codec.int64.ToNative(Runtime.item 1 arguments),
+                        Codec.int32.ToNative(Runtime.item 2 arguments),
+                        Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) (Runtime.item 3 arguments)
+                    ))))
+            (Scalar.typeOf "lawtwin.kafka.model::type::FetchResult")
+            current
+
+    let listOffsetsRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.int64.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.ListOffsetsRequest(
+                        Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) (Runtime.item 0 arguments),
+                        Codec.toNative (LawSpec.Data.Codecs.offsetSpec ()) (Runtime.item 1 arguments),
+                        Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) (Runtime.item 2 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Int64")
+            current
+
+    let initProducerIdRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (LawSpec.Data.Codecs.producerIdAndEpoch ())
+                (Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.InitProducerIdRequest(Codec.toNative (Codec.option Codec.text) (Runtime.item 0 arguments)))))
+            (Scalar.typeOf "lawtwin.kafka.model::type::ProducerIdAndEpoch")
+            current
+
+    let addPartitionsToTxnRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.AddPartitionsToTxnRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.int64.ToNative(Runtime.item 1 arguments),
+                        Codec.int16.ToNative(Runtime.item 2 arguments),
+                        Codec.toNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) (Runtime.item 3 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let txnOffsetCommitRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.TxnOffsetCommitRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.int64.ToNative(Runtime.item 1 arguments),
+                        Codec.int16.ToNative(Runtime.item 2 arguments),
+                        Codec.text.ToNative(Runtime.item 3 arguments),
+                        Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) (Runtime.item 4 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let endTxnRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.EndTxnRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.int64.ToNative(Runtime.item 1 arguments),
+                        Codec.int16.ToNative(Runtime.item 2 arguments),
+                        Codec.bool.ToNative(Runtime.item 3 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let joinGroupRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.int32.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.JoinGroupRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments),
+                        Codec.toNative (Codec.list Codec.text) (Runtime.item 2 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Int32")
+            current
+
+    let syncGroupRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.list (LawSpec.Data.Codecs.topicPartition ()))
+                (Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.SyncGroupRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments),
+                        Codec.int32.ToNative(Runtime.item 2 arguments)
+                    ))))
+            (Scalar.typeOf "List (lawtwin.kafka.model::type::TopicPartition)")
+            current
+
+    let heartbeatRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.HeartbeatRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments),
+                        Codec.int32.ToNative(Runtime.item 2 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let leaveGroupRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.LeaveGroupRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let describeGroupRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (LawSpec.Data.Codecs.groupView ())
+                (native.DescribeGroupRequest(Codec.text.ToNative(Runtime.item 0 arguments))))
+            (Scalar.typeOf "lawtwin.kafka.model::type::GroupView")
+            current
+
+    let offsetCommitRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.OffsetCommitRequest(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments),
+                        Codec.int32.ToNative(Runtime.item 2 arguments),
+                        Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) (Runtime.item 3 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let offsetFetchRequest (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.option Codec.int64)
+                (native.OffsetFetchRequest(
+                    Codec.text.ToNative(Runtime.item 0 arguments),
+                    Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) (Runtime.item 1 arguments)
+                )))
+            (Scalar.typeOf "Maybe (Int64)")
+            current
+
     Effects.recover native "lawtwin.kafka::ability::Broker" symbols (fun () ->
         Effects.stateless
-            [ "createTopicsRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.CreateTopicsRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.int32.ToNative (Runtime.item 1 arguments))))) (Scalar.typeOf "Unit") current
-              "createPartitionsRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.CreatePartitionsRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.int32.ToNative (Runtime.item 1 arguments))))) (Scalar.typeOf "Unit") current
-              "metadataRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.option Codec.int32).FromNative (native.MetadataRequest(Codec.text.ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Maybe (Int32)") current
-              "produceRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.int64.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.ProduceRequest((LawSpec.Data.Codecs.topicPartition ()).ToNative (Runtime.item 0 arguments), (Codec.option (LawSpec.Data.Codecs.producerTag ())).ToNative (Runtime.item 1 arguments), (Codec.list (LawSpec.Data.Codecs.record ())).ToNative (Runtime.item 2 arguments))))) (Scalar.typeOf "Int64") current
-              "fetchRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((LawSpec.Data.Codecs.fetchResult ()).FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.FetchRequest((LawSpec.Data.Codecs.topicPartition ()).ToNative (Runtime.item 0 arguments), Codec.int64.ToNative (Runtime.item 1 arguments), Codec.int32.ToNative (Runtime.item 2 arguments), (LawSpec.Data.Codecs.isolationLevel ()).ToNative (Runtime.item 3 arguments))))) (Scalar.typeOf "lawtwin.kafka.model::type::FetchResult") current
-              "listOffsetsRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.int64.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.ListOffsetsRequest((LawSpec.Data.Codecs.topicPartition ()).ToNative (Runtime.item 0 arguments), (LawSpec.Data.Codecs.offsetSpec ()).ToNative (Runtime.item 1 arguments), (LawSpec.Data.Codecs.isolationLevel ()).ToNative (Runtime.item 2 arguments))))) (Scalar.typeOf "Int64") current
-              "initProducerIdRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((LawSpec.Data.Codecs.producerIdAndEpoch ()).FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.InitProducerIdRequest((Codec.option Codec.text).ToNative (Runtime.item 0 arguments))))) (Scalar.typeOf "lawtwin.kafka.model::type::ProducerIdAndEpoch") current
-              "addPartitionsToTxnRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.AddPartitionsToTxnRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.int64.ToNative (Runtime.item 1 arguments), Codec.int16.ToNative (Runtime.item 2 arguments), (Codec.list (LawSpec.Data.Codecs.topicPartition ())).ToNative (Runtime.item 3 arguments))))) (Scalar.typeOf "Unit") current
-              "txnOffsetCommitRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.TxnOffsetCommitRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.int64.ToNative (Runtime.item 1 arguments), Codec.int16.ToNative (Runtime.item 2 arguments), Codec.text.ToNative (Runtime.item 3 arguments), (Codec.list (LawSpec.Data.Codecs.offsetEntry ())).ToNative (Runtime.item 4 arguments))))) (Scalar.typeOf "Unit") current
-              "endTxnRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.EndTxnRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.int64.ToNative (Runtime.item 1 arguments), Codec.int16.ToNative (Runtime.item 2 arguments), Codec.bool.ToNative (Runtime.item 3 arguments))))) (Scalar.typeOf "Unit") current
-              "joinGroupRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.int32.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.JoinGroupRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments), (Codec.list Codec.text).ToNative (Runtime.item 2 arguments))))) (Scalar.typeOf "Int32") current
-              "syncGroupRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.list (LawSpec.Data.Codecs.topicPartition ())).FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.SyncGroupRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments), Codec.int32.ToNative (Runtime.item 2 arguments))))) (Scalar.typeOf "List (lawtwin.kafka.model::type::TopicPartition)") current
-              "heartbeatRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.HeartbeatRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments), Codec.int32.ToNative (Runtime.item 2 arguments))))) (Scalar.typeOf "Unit") current
-              "leaveGroupRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.LeaveGroupRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments))))) (Scalar.typeOf "Unit") current
-              "describeGroupRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((LawSpec.Data.Codecs.groupView ()).FromNative (native.DescribeGroupRequest(Codec.text.ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "lawtwin.kafka.model::type::GroupView") current
-              "offsetCommitRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.OffsetCommitRequest(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments), Codec.int32.ToNative (Runtime.item 2 arguments), (Codec.list (LawSpec.Data.Codecs.offsetEntry ())).ToNative (Runtime.item 3 arguments))))) (Scalar.typeOf "Unit") current
-              "offsetFetchRequest",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.option Codec.int64).FromNative (native.OffsetFetchRequest(Codec.text.ToNative (Runtime.item 0 arguments), (LawSpec.Data.Codecs.topicPartition ()).ToNative (Runtime.item 1 arguments)))) (Scalar.typeOf "Maybe (Int64)") current ])
+            [
+                ("createTopicsRequest", createTopicsRequest)
+                ("createPartitionsRequest", createPartitionsRequest)
+                ("metadataRequest", metadataRequest)
+                ("produceRequest", produceRequest)
+                ("fetchRequest", fetchRequest)
+                ("listOffsetsRequest", listOffsetsRequest)
+                ("initProducerIdRequest", initProducerIdRequest)
+                ("addPartitionsToTxnRequest", addPartitionsToTxnRequest)
+                ("txnOffsetCommitRequest", txnOffsetCommitRequest)
+                ("endTxnRequest", endTxnRequest)
+                ("joinGroupRequest", joinGroupRequest)
+                ("syncGroupRequest", syncGroupRequest)
+                ("heartbeatRequest", heartbeatRequest)
+                ("leaveGroupRequest", leaveGroupRequest)
+                ("describeGroupRequest", describeGroupRequest)
+                ("offsetCommitRequest", offsetCommitRequest)
+                ("offsetFetchRequest", offsetFetchRequest)
+            ])
 
 /// A recording of a native Broker.
 [<CompiledName("LawtwinKafkaBrokerRecording")>]
-let lawtwinKafkaBrokerRecording (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IBroker) : LawSpec.Abilities.LawtwinKafka.IBroker =
+let lawtwinKafkaBrokerRecording
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IBroker)
+    : LawSpec.Abilities.LawtwinKafka.IBroker =
     lawtwinKafkaBrokerToNative schema symbols (Effects.recording (lawtwinKafkaBrokerFromNative schema symbols native))
 
 type private LawtwinKafkaAdminBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.IAdmin with
         member _.CreateTopic(value0, value1) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "createTopic" [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "createTopic"
+                            [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]
+                    ))
+
         member _.CreatePartitions(value0, value1) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "createPartitions" [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "createPartitions"
+                            [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]
+                    ))
+
         member _.PartitionsFor(value0) =
-            (Codec.option Codec.int32).ToNative (Effects.invoke handler schema "partitionsFor" [ Codec.text.FromNative value0 ])
+            Codec.toNative
+                (Codec.option Codec.int32)
+                (Effects.invoke handler schema "partitionsFor" [ Codec.text.FromNative value0 ])
+
         member _.ListOffsets(value0, value1, value2) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.int64.ToNative (Effects.invoke handler schema "listOffsets" [ (LawSpec.Data.Codecs.topicPartition ()).FromNative value0; (LawSpec.Data.Codecs.offsetSpec ()).FromNative value1; (LawSpec.Data.Codecs.isolationLevel ()).FromNative value2 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.int64.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "listOffsets"
+                            [
+                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
+                                Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) value1
+                                Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value2
+                            ]
+                    ))
+
     interface Effects.IOrigin with
         member _.Ability = "lawtwin.kafka::ability::Admin"
         member _.Symbols = symbols
@@ -131,36 +603,104 @@ type private LawtwinKafkaAdminBridge(schema: Schema.Schema, symbols: Scalar.Symb
 
 /// Admin's native interface over a logical handler.
 [<CompiledName("LawtwinKafkaAdminToNative")>]
-let lawtwinKafkaAdminToNative (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (handler: Effects.Handler) : LawSpec.Abilities.LawtwinKafka.IAdmin =
+let lawtwinKafkaAdminToNative
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (handler: Effects.Handler)
+    : LawSpec.Abilities.LawtwinKafka.IAdmin =
     LawtwinKafkaAdminBridge(schema, symbols, handler) :> LawSpec.Abilities.LawtwinKafka.IAdmin
 
 /// The logical handler of a native Admin.
 [<CompiledName("LawtwinKafkaAdminFromNative")>]
-let lawtwinKafkaAdminFromNative (_schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IAdmin) : Effects.Handler =
+let lawtwinKafkaAdminFromNative
+    (_schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IAdmin)
+    : Effects.Handler =
+    let createTopic (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.CreateTopic(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.int32.ToNative(Runtime.item 1 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let createPartitions (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.CreatePartitions(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.int32.ToNative(Runtime.item 1 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let partitionsFor (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.option Codec.int32)
+                (native.PartitionsFor(Codec.text.ToNative(Runtime.item 0 arguments))))
+            (Scalar.typeOf "Maybe (Int32)")
+            current
+
+    let listOffsets (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.int64.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.ListOffsets(
+                        Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) (Runtime.item 0 arguments),
+                        Codec.toNative (LawSpec.Data.Codecs.offsetSpec ()) (Runtime.item 1 arguments),
+                        Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) (Runtime.item 2 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Int64")
+            current
+
     Effects.recover native "lawtwin.kafka::ability::Admin" symbols (fun () ->
         Effects.stateless
-            [ "createTopic",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.CreateTopic(Codec.text.ToNative (Runtime.item 0 arguments), Codec.int32.ToNative (Runtime.item 1 arguments))))) (Scalar.typeOf "Unit") current
-              "createPartitions",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.CreatePartitions(Codec.text.ToNative (Runtime.item 0 arguments), Codec.int32.ToNative (Runtime.item 1 arguments))))) (Scalar.typeOf "Unit") current
-              "partitionsFor",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.option Codec.int32).FromNative (native.PartitionsFor(Codec.text.ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Maybe (Int32)") current
-              "listOffsets",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.int64.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.ListOffsets((LawSpec.Data.Codecs.topicPartition ()).ToNative (Runtime.item 0 arguments), (LawSpec.Data.Codecs.offsetSpec ()).ToNative (Runtime.item 1 arguments), (LawSpec.Data.Codecs.isolationLevel ()).ToNative (Runtime.item 2 arguments))))) (Scalar.typeOf "Int64") current ])
+            [
+                ("createTopic", createTopic)
+                ("createPartitions", createPartitions)
+                ("partitionsFor", partitionsFor)
+                ("listOffsets", listOffsets)
+            ])
 
 /// A recording of a native Admin.
 [<CompiledName("LawtwinKafkaAdminRecording")>]
-let lawtwinKafkaAdminRecording (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IAdmin) : LawSpec.Abilities.LawtwinKafka.IAdmin =
+let lawtwinKafkaAdminRecording
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IAdmin)
+    : LawSpec.Abilities.LawtwinKafka.IAdmin =
     lawtwinKafkaAdminToNative schema symbols (Effects.recording (lawtwinKafkaAdminFromNative schema symbols native))
 
-type private LawtwinKafkaPartitionerBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
+type private LawtwinKafkaPartitionerBridge
+    (schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.IPartitioner with
         member _.ChoosePartition(value0, value1) =
-            Codec.int32.ToNative (Effects.invoke handler schema "choosePartition" [ (Codec.option Codec.bytes).FromNative value0; Codec.int32.FromNative value1 ])
+            Codec.int32.ToNative(
+                Effects.invoke
+                    handler
+                    schema
+                    "choosePartition"
+                    [
+                        Codec.fromNative (Codec.option Codec.bytes) value0
+                        Codec.int32.FromNative value1
+                    ]
+            )
+
     interface Effects.IOrigin with
         member _.Ability = "lawtwin.kafka::ability::Partitioner"
         member _.Symbols = symbols
@@ -169,35 +709,76 @@ type private LawtwinKafkaPartitionerBridge(schema: Schema.Schema, symbols: Scala
 
 /// Partitioner's native interface over a logical handler.
 [<CompiledName("LawtwinKafkaPartitionerToNative")>]
-let lawtwinKafkaPartitionerToNative (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (handler: Effects.Handler) : LawSpec.Abilities.LawtwinKafka.IPartitioner =
+let lawtwinKafkaPartitionerToNative
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (handler: Effects.Handler)
+    : LawSpec.Abilities.LawtwinKafka.IPartitioner =
     LawtwinKafkaPartitionerBridge(schema, symbols, handler) :> LawSpec.Abilities.LawtwinKafka.IPartitioner
 
 /// The logical handler of a native Partitioner.
 [<CompiledName("LawtwinKafkaPartitionerFromNative")>]
-let lawtwinKafkaPartitionerFromNative (_schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IPartitioner) : Effects.Handler =
+let lawtwinKafkaPartitionerFromNative
+    (_schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IPartitioner)
+    : Effects.Handler =
+    let choosePartition (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.int32.FromNative(
+                native.ChoosePartition(
+                    Codec.toNative (Codec.option Codec.bytes) (Runtime.item 0 arguments),
+                    Codec.int32.ToNative(Runtime.item 1 arguments)
+                )
+            ))
+            (Scalar.typeOf "Int32")
+            current
+
     Effects.recover native "lawtwin.kafka::ability::Partitioner" symbols (fun () ->
-        Effects.stateless
-            [ "choosePartition",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.int32.FromNative (native.ChoosePartition((Codec.option Codec.bytes).ToNative (Runtime.item 0 arguments), Codec.int32.ToNative (Runtime.item 1 arguments)))) (Scalar.typeOf "Int32") current ])
+        Effects.stateless [ ("choosePartition", choosePartition) ])
 
 /// A recording of a native Partitioner.
 [<CompiledName("LawtwinKafkaPartitionerRecording")>]
-let lawtwinKafkaPartitionerRecording (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IPartitioner) : LawSpec.Abilities.LawtwinKafka.IPartitioner =
-    lawtwinKafkaPartitionerToNative schema symbols (Effects.recording (lawtwinKafkaPartitionerFromNative schema symbols native))
+let lawtwinKafkaPartitionerRecording
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IPartitioner)
+    : LawSpec.Abilities.LawtwinKafka.IPartitioner =
+    lawtwinKafkaPartitionerToNative
+        schema
+        symbols
+        (Effects.recording (lawtwinKafkaPartitionerFromNative schema symbols native))
 
-type private LawtwinKafkaProducerBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
+type private LawtwinKafkaProducerBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler)
+    =
     interface LawSpec.Abilities.LawtwinKafka.IProducer with
         member _.Send(value0) =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ())).ToNative (Effects.invoke handler schema "send" [ (LawSpec.Data.Codecs.producerRecord ()).FromNative value0 ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ()))
+                (Effects.invoke
+                    handler
+                    schema
+                    "send"
+                    [ Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) value0 ])
+
         member _.Flush() =
-            Codec.unit.ToNative (Effects.invoke handler schema "flush" [  ])
+            Codec.unit.ToNative(Effects.invoke handler schema "flush" [])
+
         member _.EnableIdempotence() =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.producerIdAndEpoch ())).ToNative (Effects.invoke handler schema "enableIdempotence" [  ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.producerIdAndEpoch ()))
+                (Effects.invoke handler schema "enableIdempotence" [])
+
         member _.RetryLastSend() =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ())).ToNative (Effects.invoke handler schema "retryLastSend" [  ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ()))
+                (Effects.invoke handler schema "retryLastSend" [])
+
         member _.ProducerIdentity() =
-            (Codec.option (LawSpec.Data.Codecs.producerIdAndEpoch ())).ToNative (Effects.invoke handler schema "producerIdentity" [  ])
+            Codec.toNative
+                (Codec.option (LawSpec.Data.Codecs.producerIdAndEpoch ()))
+                (Effects.invoke handler schema "producerIdentity" [])
+
     interface Effects.IOrigin with
         member _.Ability = "lawtwin.kafka::ability::Producer"
         member _.Symbols = symbols
@@ -206,55 +787,152 @@ type private LawtwinKafkaProducerBridge(schema: Schema.Schema, symbols: Scalar.S
 
 /// Producer's native interface over a logical handler.
 [<CompiledName("LawtwinKafkaProducerToNative")>]
-let lawtwinKafkaProducerToNative (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (handler: Effects.Handler) : LawSpec.Abilities.LawtwinKafka.IProducer =
+let lawtwinKafkaProducerToNative
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (handler: Effects.Handler)
+    : LawSpec.Abilities.LawtwinKafka.IProducer =
     LawtwinKafkaProducerBridge(schema, symbols, handler) :> LawSpec.Abilities.LawtwinKafka.IProducer
 
 /// The logical handler of a native Producer.
 [<CompiledName("LawtwinKafkaProducerFromNative")>]
-let lawtwinKafkaProducerFromNative (_schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IProducer) : Effects.Handler =
+let lawtwinKafkaProducerFromNative
+    (_schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IProducer)
+    : Effects.Handler =
+    let send (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ()))
+                (native.Send(Codec.toNative (LawSpec.Data.Codecs.producerRecord ()) (Runtime.item 0 arguments))))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)")
+            current
+
+    let flush (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate (Codec.unit.FromNative(native.Flush())) (Scalar.typeOf "Unit") current
+
+    let enableIdempotence (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.producerIdAndEpoch ()))
+                (native.EnableIdempotence()))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)")
+            current
+
+    let retryLastSend (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ()))
+                (native.RetryLastSend()))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)")
+            current
+
+    let producerIdentity (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative (Codec.option (LawSpec.Data.Codecs.producerIdAndEpoch ())) (native.ProducerIdentity()))
+            (Scalar.typeOf "Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)")
+            current
+
     Effects.recover native "lawtwin.kafka::ability::Producer" symbols (fun () ->
         Effects.stateless
-            [ "send",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ())).FromNative (native.Send((LawSpec.Data.Codecs.producerRecord ()).ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)") current
-              "flush",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (native.Flush())) (Scalar.typeOf "Unit") current
-              "enableIdempotence",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.producerIdAndEpoch ())).FromNative (native.EnableIdempotence())) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)") current
-              "retryLastSend",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ())).FromNative (native.RetryLastSend())) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)") current
-              "producerIdentity",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.option (LawSpec.Data.Codecs.producerIdAndEpoch ())).FromNative (native.ProducerIdentity())) (Scalar.typeOf "Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)") current ])
+            [
+                ("send", send)
+                ("flush", flush)
+                ("enableIdempotence", enableIdempotence)
+                ("retryLastSend", retryLastSend)
+                ("producerIdentity", producerIdentity)
+            ])
 
 /// A recording of a native Producer.
 [<CompiledName("LawtwinKafkaProducerRecording")>]
-let lawtwinKafkaProducerRecording (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IProducer) : LawSpec.Abilities.LawtwinKafka.IProducer =
-    lawtwinKafkaProducerToNative schema symbols (Effects.recording (lawtwinKafkaProducerFromNative schema symbols native))
+let lawtwinKafkaProducerRecording
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IProducer)
+    : LawSpec.Abilities.LawtwinKafka.IProducer =
+    lawtwinKafkaProducerToNative
+        schema
+        symbols
+        (Effects.recording (lawtwinKafkaProducerFromNative schema symbols native))
 
-type private LawtwinKafkaConsumerBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
+type private LawtwinKafkaConsumerBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler)
+    =
     interface LawSpec.Abilities.LawtwinKafka.IConsumer with
         member _.Assign(value0) =
-            Codec.unit.ToNative (Effects.invoke handler schema "assign" [ (Codec.list (LawSpec.Data.Codecs.topicPartition ())).FromNative value0 ])
+            Codec.unit.ToNative(
+                Effects.invoke
+                    handler
+                    schema
+                    "assign"
+                    [ Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value0 ]
+            )
+
         member _.Subscribe(value0, value1, value2) =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.topicPartition ()))).ToNative (Effects.invoke handler schema "subscribe" [ Codec.text.FromNative value0; Codec.text.FromNative value1; (Codec.list Codec.text).FromNative value2 ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.topicPartition ())))
+                (Effects.invoke
+                    handler
+                    schema
+                    "subscribe"
+                    [
+                        Codec.text.FromNative value0
+                        Codec.text.FromNative value1
+                        Codec.fromNative (Codec.list Codec.text) value2
+                    ])
+
         member _.Poll(value0) =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.consumerRecord ()))).ToNative (Effects.invoke handler schema "poll" [ Codec.int32.FromNative value0 ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.consumerRecord ())))
+                (Effects.invoke handler schema "poll" [ Codec.int32.FromNative value0 ])
+
         member _.CommitSync() =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).ToNative (Effects.invoke handler schema "commitSync" [  ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (Effects.invoke handler schema "commitSync" [])
+
         member _.Seek(value0, value1) =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).ToNative (Effects.invoke handler schema "seek" [ (LawSpec.Data.Codecs.topicPartition ()).FromNative value0; Codec.int64.FromNative value1 ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (Effects.invoke
+                    handler
+                    schema
+                    "seek"
+                    [
+                        Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
+                        Codec.int64.FromNative value1
+                    ])
+
         member _.Position(value0) =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.int64).ToNative (Effects.invoke handler schema "position" [ (LawSpec.Data.Codecs.topicPartition ()).FromNative value0 ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.int64)
+                (Effects.invoke
+                    handler
+                    schema
+                    "position"
+                    [ Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0 ])
+
         member _.CommittedOffset(value0) =
-            (Codec.option Codec.int64).ToNative (Effects.invoke handler schema "committedOffset" [ (LawSpec.Data.Codecs.topicPartition ()).FromNative value0 ])
+            Codec.toNative
+                (Codec.option Codec.int64)
+                (Effects.invoke
+                    handler
+                    schema
+                    "committedOffset"
+                    [ Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0 ])
+
         member _.SetIsolationLevel(value0) =
-            Codec.unit.ToNative (Effects.invoke handler schema "setIsolationLevel" [ (LawSpec.Data.Codecs.isolationLevel ()).FromNative value0 ])
+            Codec.unit.ToNative(
+                Effects.invoke
+                    handler
+                    schema
+                    "setIsolationLevel"
+                    [ Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value0 ]
+            )
+
         member _.Close() =
-            Codec.unit.ToNative (Effects.invoke handler schema "close" [  ])
+            Codec.unit.ToNative(Effects.invoke handler schema "close" [])
+
     interface Effects.IOrigin with
         member _.Ability = "lawtwin.kafka::ability::Consumer"
         member _.Symbols = symbols
@@ -263,63 +941,226 @@ type private LawtwinKafkaConsumerBridge(schema: Schema.Schema, symbols: Scalar.S
 
 /// Consumer's native interface over a logical handler.
 [<CompiledName("LawtwinKafkaConsumerToNative")>]
-let lawtwinKafkaConsumerToNative (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (handler: Effects.Handler) : LawSpec.Abilities.LawtwinKafka.IConsumer =
+let lawtwinKafkaConsumerToNative
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (handler: Effects.Handler)
+    : LawSpec.Abilities.LawtwinKafka.IConsumer =
     LawtwinKafkaConsumerBridge(schema, symbols, handler) :> LawSpec.Abilities.LawtwinKafka.IConsumer
 
 /// The logical handler of a native Consumer.
 [<CompiledName("LawtwinKafkaConsumerFromNative")>]
-let lawtwinKafkaConsumerFromNative (_schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IConsumer) : Effects.Handler =
+let lawtwinKafkaConsumerFromNative
+    (_schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IConsumer)
+    : Effects.Handler =
+    let assign (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                native.Assign(
+                    Codec.toNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) (Runtime.item 0 arguments)
+                )
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let subscribe (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.topicPartition ())))
+                (native.Subscribe(
+                    Codec.text.ToNative(Runtime.item 0 arguments),
+                    Codec.text.ToNative(Runtime.item 1 arguments),
+                    Codec.toNative (Codec.list Codec.text) (Runtime.item 2 arguments)
+                )))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka.model::type::TopicPartition))")
+            current
+
+    let poll (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.consumerRecord ())))
+                (native.Poll(Codec.int32.ToNative(Runtime.item 0 arguments))))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))")
+            current
+
+    let commitSync (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit) (native.CommitSync()))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)")
+            current
+
+    let seek (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (native.Seek(
+                    Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) (Runtime.item 0 arguments),
+                    Codec.int64.ToNative(Runtime.item 1 arguments)
+                )))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)")
+            current
+
+    let position (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.int64)
+                (native.Position(Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) (Runtime.item 0 arguments))))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Int64)")
+            current
+
+    let committedOffset (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.option Codec.int64)
+                (native.CommittedOffset(
+                    Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) (Runtime.item 0 arguments)
+                )))
+            (Scalar.typeOf "Maybe (Int64)")
+            current
+
+    let setIsolationLevel (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                native.SetIsolationLevel(
+                    Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) (Runtime.item 0 arguments)
+                )
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let close (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate (Codec.unit.FromNative(native.Close())) (Scalar.typeOf "Unit") current
+
     Effects.recover native "lawtwin.kafka::ability::Consumer" symbols (fun () ->
         Effects.stateless
-            [ "assign",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (native.Assign((Codec.list (LawSpec.Data.Codecs.topicPartition ())).ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Unit") current
-              "subscribe",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.topicPartition ()))).FromNative (native.Subscribe(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments), (Codec.list Codec.text).ToNative (Runtime.item 2 arguments)))) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka.model::type::TopicPartition))") current
-              "poll",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.consumerRecord ()))).FromNative (native.Poll(Codec.int32.ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (List (lawtwin.kafka::type::ConsumerRecord))") current
-              "commitSync",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).FromNative (native.CommitSync())) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)") current
-              "seek",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).FromNative (native.Seek((LawSpec.Data.Codecs.topicPartition ()).ToNative (Runtime.item 0 arguments), Codec.int64.ToNative (Runtime.item 1 arguments)))) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)") current
-              "position",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.int64).FromNative (native.Position((LawSpec.Data.Codecs.topicPartition ()).ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Int64)") current
-              "committedOffset",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.option Codec.int64).FromNative (native.CommittedOffset((LawSpec.Data.Codecs.topicPartition ()).ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Maybe (Int64)") current
-              "setIsolationLevel",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (native.SetIsolationLevel((LawSpec.Data.Codecs.isolationLevel ()).ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Unit") current
-              "close",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (native.Close())) (Scalar.typeOf "Unit") current ])
+            [
+                ("assign", assign)
+                ("subscribe", subscribe)
+                ("poll", poll)
+                ("commitSync", commitSync)
+                ("seek", seek)
+                ("position", position)
+                ("committedOffset", committedOffset)
+                ("setIsolationLevel", setIsolationLevel)
+                ("close", close)
+            ])
 
 /// A recording of a native Consumer.
 [<CompiledName("LawtwinKafkaConsumerRecording")>]
-let lawtwinKafkaConsumerRecording (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IConsumer) : LawSpec.Abilities.LawtwinKafka.IConsumer =
-    lawtwinKafkaConsumerToNative schema symbols (Effects.recording (lawtwinKafkaConsumerFromNative schema symbols native))
+let lawtwinKafkaConsumerRecording
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IConsumer)
+    : LawSpec.Abilities.LawtwinKafka.IConsumer =
+    lawtwinKafkaConsumerToNative
+        schema
+        symbols
+        (Effects.recording (lawtwinKafkaConsumerFromNative schema symbols native))
 
-type private LawtwinKafkaGroupCoordinatorBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
+type private LawtwinKafkaGroupCoordinatorBridge
+    (schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.IGroupCoordinator with
         member _.JoinGroup(value0, value1, value2) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.int32.ToNative (Effects.invoke handler schema "joinGroup" [ Codec.text.FromNative value0; Codec.text.FromNative value1; (Codec.list Codec.text).FromNative value2 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.int32.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "joinGroup"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.text.FromNative value1
+                                Codec.fromNative (Codec.list Codec.text) value2
+                            ]
+                    ))
+
         member _.SyncGroup(value0, value1, value2) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> (Codec.list (LawSpec.Data.Codecs.topicPartition ())).ToNative (Effects.invoke handler schema "syncGroup" [ Codec.text.FromNative value0; Codec.text.FromNative value1; Codec.int32.FromNative value2 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.toNative
+                        (Codec.list (LawSpec.Data.Codecs.topicPartition ()))
+                        (Effects.invoke
+                            handler
+                            schema
+                            "syncGroup"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.text.FromNative value1
+                                Codec.int32.FromNative value2
+                            ]))
+
         member _.Heartbeat(value0, value1, value2) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "heartbeat" [ Codec.text.FromNative value0; Codec.text.FromNative value1; Codec.int32.FromNative value2 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "heartbeat"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.text.FromNative value1
+                                Codec.int32.FromNative value2
+                            ]
+                    ))
+
         member _.LeaveGroup(value0, value1) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "leaveGroup" [ Codec.text.FromNative value0; Codec.text.FromNative value1 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "leaveGroup"
+                            [ Codec.text.FromNative value0; Codec.text.FromNative value1 ]
+                    ))
+
         member _.DescribeGroup(value0) =
-            (LawSpec.Data.Codecs.groupView ()).ToNative (Effects.invoke handler schema "describeGroup" [ Codec.text.FromNative value0 ])
+            Codec.toNative
+                (LawSpec.Data.Codecs.groupView ())
+                (Effects.invoke handler schema "describeGroup" [ Codec.text.FromNative value0 ])
+
         member _.CommitOffsets(value0, value1, value2, value3) =
-            Effects.nativeTry "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () -> Codec.unit.ToNative (Effects.invoke handler schema "commitOffsets" [ Codec.text.FromNative value0; Codec.text.FromNative value1; Codec.int32.FromNative value2; (Codec.list (LawSpec.Data.Codecs.offsetEntry ())).FromNative value3 ]))
+            Effects.nativeTry
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    Codec.unit.ToNative(
+                        Effects.invoke
+                            handler
+                            schema
+                            "commitOffsets"
+                            [
+                                Codec.text.FromNative value0
+                                Codec.text.FromNative value1
+                                Codec.int32.FromNative value2
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value3
+                            ]
+                    ))
+
         member _.FetchOffset(value0, value1) =
-            (Codec.option Codec.int64).ToNative (Effects.invoke handler schema "fetchOffset" [ Codec.text.FromNative value0; (LawSpec.Data.Codecs.topicPartition ()).FromNative value1 ])
+            Codec.toNative
+                (Codec.option Codec.int64)
+                (Effects.invoke
+                    handler
+                    schema
+                    "fetchOffset"
+                    [
+                        Codec.text.FromNative value0
+                        Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value1
+                    ])
+
     interface Effects.IOrigin with
         member _.Ability = "lawtwin.kafka::ability::GroupCoordinator"
         member _.Symbols = symbols
@@ -328,57 +1169,191 @@ type private LawtwinKafkaGroupCoordinatorBridge(schema: Schema.Schema, symbols: 
 
 /// GroupCoordinator's native interface over a logical handler.
 [<CompiledName("LawtwinKafkaGroupCoordinatorToNative")>]
-let lawtwinKafkaGroupCoordinatorToNative (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (handler: Effects.Handler) : LawSpec.Abilities.LawtwinKafka.IGroupCoordinator =
+let lawtwinKafkaGroupCoordinatorToNative
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (handler: Effects.Handler)
+    : LawSpec.Abilities.LawtwinKafka.IGroupCoordinator =
     LawtwinKafkaGroupCoordinatorBridge(schema, symbols, handler) :> LawSpec.Abilities.LawtwinKafka.IGroupCoordinator
 
 /// The logical handler of a native GroupCoordinator.
 [<CompiledName("LawtwinKafkaGroupCoordinatorFromNative")>]
-let lawtwinKafkaGroupCoordinatorFromNative (_schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IGroupCoordinator) : Effects.Handler =
+let lawtwinKafkaGroupCoordinatorFromNative
+    (_schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IGroupCoordinator)
+    : Effects.Handler =
+    let joinGroup (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.int32.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.JoinGroup(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments),
+                        Codec.toNative (Codec.list Codec.text) (Runtime.item 2 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Int32")
+            current
+
+    let syncGroup (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.list (LawSpec.Data.Codecs.topicPartition ()))
+                (Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.SyncGroup(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments),
+                        Codec.int32.ToNative(Runtime.item 2 arguments)
+                    ))))
+            (Scalar.typeOf "List (lawtwin.kafka.model::type::TopicPartition)")
+            current
+
+    let heartbeat (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.Heartbeat(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments),
+                        Codec.int32.ToNative(Runtime.item 2 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let leaveGroup (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.LeaveGroup(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let describeGroup (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (LawSpec.Data.Codecs.groupView ())
+                (native.DescribeGroup(Codec.text.ToNative(Runtime.item 0 arguments))))
+            (Scalar.typeOf "lawtwin.kafka.model::type::GroupView")
+            current
+
+    let commitOffsets (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.unit.FromNative(
+                Effects.ofResult
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (native.CommitOffsets(
+                        Codec.text.ToNative(Runtime.item 0 arguments),
+                        Codec.text.ToNative(Runtime.item 1 arguments),
+                        Codec.int32.ToNative(Runtime.item 2 arguments),
+                        Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) (Runtime.item 3 arguments)
+                    ))
+            ))
+            (Scalar.typeOf "Unit")
+            current
+
+    let fetchOffset (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.option Codec.int64)
+                (native.FetchOffset(
+                    Codec.text.ToNative(Runtime.item 0 arguments),
+                    Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) (Runtime.item 1 arguments)
+                )))
+            (Scalar.typeOf "Maybe (Int64)")
+            current
+
     Effects.recover native "lawtwin.kafka::ability::GroupCoordinator" symbols (fun () ->
         Effects.stateless
-            [ "joinGroup",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.int32.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.JoinGroup(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments), (Codec.list Codec.text).ToNative (Runtime.item 2 arguments))))) (Scalar.typeOf "Int32") current
-              "syncGroup",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.list (LawSpec.Data.Codecs.topicPartition ())).FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.SyncGroup(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments), Codec.int32.ToNative (Runtime.item 2 arguments))))) (Scalar.typeOf "List (lawtwin.kafka.model::type::TopicPartition)") current
-              "heartbeat",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.Heartbeat(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments), Codec.int32.ToNative (Runtime.item 2 arguments))))) (Scalar.typeOf "Unit") current
-              "leaveGroup",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.LeaveGroup(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments))))) (Scalar.typeOf "Unit") current
-              "describeGroup",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((LawSpec.Data.Codecs.groupView ()).FromNative (native.DescribeGroup(Codec.text.ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "lawtwin.kafka.model::type::GroupView") current
-              "commitOffsets",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate (Codec.unit.FromNative (Effects.ofResult "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative (native.CommitOffsets(Codec.text.ToNative (Runtime.item 0 arguments), Codec.text.ToNative (Runtime.item 1 arguments), Codec.int32.ToNative (Runtime.item 2 arguments), (Codec.list (LawSpec.Data.Codecs.offsetEntry ())).ToNative (Runtime.item 3 arguments))))) (Scalar.typeOf "Unit") current
-              "fetchOffset",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.option Codec.int64).FromNative (native.FetchOffset(Codec.text.ToNative (Runtime.item 0 arguments), (LawSpec.Data.Codecs.topicPartition ()).ToNative (Runtime.item 1 arguments)))) (Scalar.typeOf "Maybe (Int64)") current ])
+            [
+                ("joinGroup", joinGroup)
+                ("syncGroup", syncGroup)
+                ("heartbeat", heartbeat)
+                ("leaveGroup", leaveGroup)
+                ("describeGroup", describeGroup)
+                ("commitOffsets", commitOffsets)
+                ("fetchOffset", fetchOffset)
+            ])
 
 /// A recording of a native GroupCoordinator.
 [<CompiledName("LawtwinKafkaGroupCoordinatorRecording")>]
-let lawtwinKafkaGroupCoordinatorRecording (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.IGroupCoordinator) : LawSpec.Abilities.LawtwinKafka.IGroupCoordinator =
-    lawtwinKafkaGroupCoordinatorToNative schema symbols (Effects.recording (lawtwinKafkaGroupCoordinatorFromNative schema symbols native))
+let lawtwinKafkaGroupCoordinatorRecording
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.IGroupCoordinator)
+    : LawSpec.Abilities.LawtwinKafka.IGroupCoordinator =
+    lawtwinKafkaGroupCoordinatorToNative
+        schema
+        symbols
+        (Effects.recording (lawtwinKafkaGroupCoordinatorFromNative schema symbols native))
 
-type private LawtwinKafkaTransactionsBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
+type private LawtwinKafkaTransactionsBridge
+    (schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.ITransactions with
         member _.InitTransactions(value0) =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.producerIdAndEpoch ())).ToNative (Effects.invoke handler schema "initTransactions" [ Codec.text.FromNative value0 ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.producerIdAndEpoch ()))
+                (Effects.invoke handler schema "initTransactions" [ Codec.text.FromNative value0 ])
+
         member _.BeginTransaction() =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).ToNative (Effects.invoke handler schema "beginTransaction" [  ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (Effects.invoke handler schema "beginTransaction" [])
+
         member _.AddPartitionsToTransaction(value0) =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).ToNative (Effects.invoke handler schema "addPartitionsToTransaction" [ (Codec.list (LawSpec.Data.Codecs.topicPartition ())).FromNative value0 ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (Effects.invoke
+                    handler
+                    schema
+                    "addPartitionsToTransaction"
+                    [ Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value0 ])
+
         member _.SendInTransaction(value0) =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ())).ToNative (Effects.invoke handler schema "sendInTransaction" [ (LawSpec.Data.Codecs.producerRecord ()).FromNative value0 ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ()))
+                (Effects.invoke
+                    handler
+                    schema
+                    "sendInTransaction"
+                    [ Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) value0 ])
+
         member _.SendOffsetsToTransaction(value0, value1) =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).ToNative (Effects.invoke handler schema "sendOffsetsToTransaction" [ Codec.text.FromNative value0; (Codec.list (LawSpec.Data.Codecs.offsetEntry ())).FromNative value1 ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (Effects.invoke
+                    handler
+                    schema
+                    "sendOffsetsToTransaction"
+                    [
+                        Codec.text.FromNative value0
+                        Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value1
+                    ])
+
         member _.CommitTransaction() =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).ToNative (Effects.invoke handler schema "commitTransaction" [  ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (Effects.invoke handler schema "commitTransaction" [])
+
         member _.AbortTransaction() =
-            (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).ToNative (Effects.invoke handler schema "abortTransaction" [  ])
+            Codec.toNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (Effects.invoke handler schema "abortTransaction" [])
+
     interface Effects.IOrigin with
         member _.Ability = "lawtwin.kafka::ability::Transactions"
         member _.Symbols = symbols
@@ -387,37 +1362,97 @@ type private LawtwinKafkaTransactionsBridge(schema: Schema.Schema, symbols: Scal
 
 /// Transactions's native interface over a logical handler.
 [<CompiledName("LawtwinKafkaTransactionsToNative")>]
-let lawtwinKafkaTransactionsToNative (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (handler: Effects.Handler) : LawSpec.Abilities.LawtwinKafka.ITransactions =
+let lawtwinKafkaTransactionsToNative
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (handler: Effects.Handler)
+    : LawSpec.Abilities.LawtwinKafka.ITransactions =
     LawtwinKafkaTransactionsBridge(schema, symbols, handler) :> LawSpec.Abilities.LawtwinKafka.ITransactions
 
 /// The logical handler of a native Transactions.
 [<CompiledName("LawtwinKafkaTransactionsFromNative")>]
-let lawtwinKafkaTransactionsFromNative (_schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.ITransactions) : Effects.Handler =
+let lawtwinKafkaTransactionsFromNative
+    (_schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.ITransactions)
+    : Effects.Handler =
+    let initTransactions (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.producerIdAndEpoch ()))
+                (native.InitTransactions(Codec.text.ToNative(Runtime.item 0 arguments))))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)")
+            current
+
+    let beginTransaction (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit) (native.BeginTransaction()))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)")
+            current
+
+    let addPartitionsToTransaction (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (native.AddPartitionsToTransaction(
+                    Codec.toNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) (Runtime.item 0 arguments)
+                )))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)")
+            current
+
+    let sendInTransaction (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ()))
+                (native.SendInTransaction(
+                    Codec.toNative (LawSpec.Data.Codecs.producerRecord ()) (Runtime.item 0 arguments)
+                )))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)")
+            current
+
+    let sendOffsetsToTransaction (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative
+                (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
+                (native.SendOffsetsToTransaction(
+                    Codec.text.ToNative(Runtime.item 0 arguments),
+                    Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) (Runtime.item 1 arguments)
+                )))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)")
+            current
+
+    let commitTransaction (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit) (native.CommitTransaction()))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)")
+            current
+
+    let abortTransaction (current: Schema.Schema) (arguments: Value list) =
+        Schema.validate
+            (Codec.fromNative (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit) (native.AbortTransaction()))
+            (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)")
+            current
+
     Effects.recover native "lawtwin.kafka::ability::Transactions" symbols (fun () ->
         Effects.stateless
-            [ "initTransactions",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.producerIdAndEpoch ())).FromNative (native.InitTransactions(Codec.text.ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)") current
-              "beginTransaction",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).FromNative (native.BeginTransaction())) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)") current
-              "addPartitionsToTransaction",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).FromNative (native.AddPartitionsToTransaction((Codec.list (LawSpec.Data.Codecs.topicPartition ())).ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)") current
-              "sendInTransaction",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ())).FromNative (native.SendInTransaction((LawSpec.Data.Codecs.producerRecord ()).ToNative (Runtime.item 0 arguments)))) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)") current
-              "sendOffsetsToTransaction",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).FromNative (native.SendOffsetsToTransaction(Codec.text.ToNative (Runtime.item 0 arguments), (Codec.list (LawSpec.Data.Codecs.offsetEntry ())).ToNative (Runtime.item 1 arguments)))) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)") current
-              "commitTransaction",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).FromNative (native.CommitTransaction())) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)") current
-              "abortTransaction",
-                fun (current: Schema.Schema) (arguments: Value list) ->
-                    Schema.validate ((Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit).FromNative (native.AbortTransaction())) (Scalar.typeOf "Either (lawtwin.kafka.model::type::KafkaError) (Unit)") current ])
+            [
+                ("initTransactions", initTransactions)
+                ("beginTransaction", beginTransaction)
+                ("addPartitionsToTransaction", addPartitionsToTransaction)
+                ("sendInTransaction", sendInTransaction)
+                ("sendOffsetsToTransaction", sendOffsetsToTransaction)
+                ("commitTransaction", commitTransaction)
+                ("abortTransaction", abortTransaction)
+            ])
 
 /// A recording of a native Transactions.
 [<CompiledName("LawtwinKafkaTransactionsRecording")>]
-let lawtwinKafkaTransactionsRecording (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (native: LawSpec.Abilities.LawtwinKafka.ITransactions) : LawSpec.Abilities.LawtwinKafka.ITransactions =
-    lawtwinKafkaTransactionsToNative schema symbols (Effects.recording (lawtwinKafkaTransactionsFromNative schema symbols native))
+let lawtwinKafkaTransactionsRecording
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (native: LawSpec.Abilities.LawtwinKafka.ITransactions)
+    : LawSpec.Abilities.LawtwinKafka.ITransactions =
+    lawtwinKafkaTransactionsToNative
+        schema
+        symbols
+        (Effects.recording (lawtwinKafkaTransactionsFromNative schema symbols native))

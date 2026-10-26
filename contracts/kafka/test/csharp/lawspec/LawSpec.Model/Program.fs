@@ -7,4 +7,562 @@ open LawSpec.Runtime
 /// Every data type of the program, its constructors and their contracts.
 [<CompiledName("Schema")>]
 let schema: Schema.Schema =
-    Schema.create [ Schema.definition "lawspec.collections::type::Ordering" 0 [ Schema.constructor "lawspec.collections::type::Ordering::Less" []; Schema.constructor "lawspec.collections::type::Ordering::Equal" []; Schema.constructor "lawspec.collections::type::Ordering::Greater" [] ] false; Schema.definition "lawspec.collections::type::Entry" 2 [ Schema.constructor "lawspec.collections::type::Entry::Entry" [ Schema.field "key" "$0"; Schema.field "value" "$1" ] ] false; Schema.definition "lawspec.collections::type::Pair" 2 [ Schema.constructor "lawspec.collections::type::Pair::Pair" [ Schema.field "first" "$0"; Schema.field "second" "$1" ] ] false; Schema.definition "lawspec.collections::type::Set" 1 [ Schema.constructor "lawspec.collections::type::Set::SetItems" [ Schema.field "value" "List ($0)" ] ] false; Schema.definition "lawspec.collections::type::EqSet" 1 [ Schema.constructor "lawspec.collections::type::EqSet::EqSetItems" [ Schema.field "value" "List ($0)" ] ] false; Schema.definition "lawspec.collections::type::KeyVal" 2 [ Schema.constructor "lawspec.collections::type::KeyVal::KeyValEntries" [ Schema.field "value" "List (lawspec.collections::type::Entry ($0) ($1))" ] ] false; Schema.definition "lawspec.matchers::type::Regex" 0 [ Schema.constructor "lawspec.matchers::type::Regex::Regex" [ Schema.field "pattern" "Text" ] ] false; Schema.definition "lawtwin.kafka::type::PartitionChoice" 0 [ Schema.constructor "lawtwin.kafka::type::PartitionChoice::ToPartition" [ Schema.field "value" "Int32" ]; Schema.constructor "lawtwin.kafka::type::PartitionChoice::ByKey" [] ] false; Schema.definition "lawtwin.kafka::type::ProducerRecord" 0 [ Schema.constructor "lawtwin.kafka::type::ProducerRecord::ProducerRecord" [ Schema.field "destination" "Text"; Schema.field "choice" "lawtwin.kafka::type::PartitionChoice"; Schema.field "payload" "lawtwin.kafka.model::type::Record" ] ] false; Schema.definition "lawtwin.kafka::type::RecordMetadata" 0 [ Schema.constructor "lawtwin.kafka::type::RecordMetadata::RecordMetadata" [ Schema.field "sentTo" "lawtwin.kafka.model::type::TopicPartition"; Schema.field "sentAt" "Int64" ] ] false; Schema.definition "lawtwin.kafka::type::ConsumerRecord" 0 [ Schema.constructor "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord" [ Schema.field "receivedFrom" "lawtwin.kafka.model::type::TopicPartition"; Schema.field "receivedAt" "Int64"; Schema.field "received" "lawtwin.kafka.model::type::Record" ] ] false; Schema.definition "lawtwin.kafka::type::LastSend" 0 [ Schema.constructor "lawtwin.kafka::type::LastSend::LastSend" [ Schema.field "lastPartition" "lawtwin.kafka.model::type::TopicPartition"; Schema.field "lastTag" "Maybe (lawtwin.kafka.model::type::ProducerTag)"; Schema.field "lastRecords" "List (lawtwin.kafka.model::type::Record)" ] ] false; Schema.definition "lawtwin.kafka::type::ProducerState" 0 [ Schema.constructor "lawtwin.kafka::type::ProducerState::ProducerState" [ Schema.field "identity" "Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"; Schema.field "sequences" "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::TopicPartition) (Int32)"; Schema.field "lastSend" "Maybe (lawtwin.kafka::type::LastSend)" ] ] false; Schema.definition "lawtwin.kafka::type::ConsumerState" 0 [ Schema.constructor "lawtwin.kafka::type::ConsumerState::ConsumerState" [ Schema.field "group" "Maybe (Text)"; Schema.field "member" "Text"; Schema.field "generation" "Int32"; Schema.field "subscription" "List (Text)"; Schema.field "assigned" "List (lawtwin.kafka.model::type::TopicPartition)"; Schema.field "positions" "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::TopicPartition) (Int64)"; Schema.field "isolation" "lawtwin.kafka.model::type::IsolationLevel" ] ] false; Schema.definition "lawtwin.kafka::type::TransactionState" 0 [ Schema.constructor "lawtwin.kafka::type::TransactionState::TransactionState" [ Schema.field "transactionalId" "Text"; Schema.field "producer" "Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"; Schema.field "txnSequences" "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::TopicPartition) (Int32)"; Schema.field "inTransaction" "Bool"; Schema.field "added" "List (lawtwin.kafka.model::type::TopicPartition)"; Schema.field "offsetsSent" "Bool" ] ] false; Schema.definition "lawtwin.kafka::type::Cluster" 0 [] true; Schema.definition "lawtwin.kafka.model::type::TopicPartition" 0 [ Schema.constructor "lawtwin.kafka.model::type::TopicPartition::TopicPartition" [ Schema.field "topic" "Text"; Schema.field "partition" "Int32" ] ] false; Schema.definition "lawtwin.kafka.model::type::IsolationLevel" 0 [ Schema.constructor "lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted" []; Schema.constructor "lawtwin.kafka.model::type::IsolationLevel::ReadCommitted" [] ] false; Schema.definition "lawtwin.kafka.model::type::OffsetSpec" 0 [ Schema.constructor "lawtwin.kafka.model::type::OffsetSpec::Earliest" []; Schema.constructor "lawtwin.kafka.model::type::OffsetSpec::Latest" [] ] false; Schema.definition "lawtwin.kafka.model::type::KafkaError" 0 [ Schema.constructor "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidTopic" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidPartitions" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidRecord" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidRequest" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::ProducerFenced" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::UnknownProducerId" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidTxnState" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidGroupId" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::UnknownMemberId" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::IllegalGeneration" []; Schema.constructor "lawtwin.kafka.model::type::KafkaError::IllegalState" [] ] false; Schema.definition "lawtwin.kafka.model::type::Header" 0 [ Schema.constructor "lawtwin.kafka.model::type::Header::Header" [ Schema.field "name" "Text"; Schema.field "content" "Maybe (Bytes)" ] ] false; Schema.definition "lawtwin.kafka.model::type::Record" 0 [ Schema.constructor "lawtwin.kafka.model::type::Record::Record" [ Schema.field "key" "Maybe (Bytes)"; Schema.field "value" "Maybe (Bytes)"; Schema.field "headers" "List (lawtwin.kafka.model::type::Header)" ] ] false; Schema.definition "lawtwin.kafka.model::type::ProducerTag" 0 [ Schema.constructor "lawtwin.kafka.model::type::ProducerTag::ProducerTag" [ Schema.field "producerId" "Int64"; Schema.field "producerEpoch" "Int16"; Schema.field "baseSequence" "Int32" ] ] false; Schema.definition "lawtwin.kafka.model::type::ProducerIdAndEpoch" 0 [ Schema.constructor "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch" [ Schema.field "producerId" "Int64"; Schema.field "producerEpoch" "Int16" ] ] false; Schema.definition "lawtwin.kafka.model::type::FetchedRecord" 0 [ Schema.constructor "lawtwin.kafka.model::type::FetchedRecord::FetchedRecord" [ Schema.field "offset" "Int64"; Schema.field "entry" "lawtwin.kafka.model::type::Record" ] ] false; Schema.definition "lawtwin.kafka.model::type::FetchResult" 0 [ Schema.constructor "lawtwin.kafka.model::type::FetchResult::FetchResult" [ Schema.field "records" "List (lawtwin.kafka.model::type::FetchedRecord)"; Schema.field "nextOffset" "Int64"; Schema.field "highWatermark" "Int64"; Schema.field "lastStableOffset" "Int64" ] ] false; Schema.definition "lawtwin.kafka.model::type::OffsetEntry" 0 [ Schema.constructor "lawtwin.kafka.model::type::OffsetEntry::OffsetEntry" [ Schema.field "topicPartition" "lawtwin.kafka.model::type::TopicPartition"; Schema.field "offset" "Int64" ] ] false; Schema.definition "lawtwin.kafka.model::type::MemberAssignment" 0 [ Schema.constructor "lawtwin.kafka.model::type::MemberAssignment::MemberAssignment" [ Schema.field "memberId" "Text"; Schema.field "assigned" "List (lawtwin.kafka.model::type::TopicPartition)" ] ] false; Schema.definition "lawtwin.kafka.model::type::GroupView" 0 [ Schema.constructor "lawtwin.kafka.model::type::GroupView::GroupView" [ Schema.field "generation" "Int32"; Schema.field "members" "List (lawtwin.kafka.model::type::MemberAssignment)" ] ] false; Schema.definition "lawtwin.kafka.model::type::LogEntry" 0 [ Schema.constructor "lawtwin.kafka.model::type::LogEntry::DataEntry" [ Schema.field "value" "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be" ]; Schema.constructor "lawtwin.kafka.model::type::LogEntry::ControlEntry" [ Schema.field "value" "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3" ] ] false; Schema.definition "lawtwin.kafka.model::type::AbortedTxn" 0 [ Schema.constructor "lawtwin.kafka.model::type::AbortedTxn::AbortedTxn" [ Schema.field "abortedWriter" "Int64"; Schema.field "firstOffset" "Int64"; Schema.field "lastOffset" "Int64" ] ] false; Schema.definition "lawtwin.kafka.model::type::BatchMeta" 0 [ Schema.constructor "lawtwin.kafka.model::type::BatchMeta::BatchMeta" [ Schema.field "batchEpoch" "Int16"; Schema.field "firstSequence" "Int32"; Schema.field "lastSequence" "Int32"; Schema.field "batchOffset" "Int64" ] ] false; Schema.definition "lawtwin.kafka.model::type::PartitionLog" 0 [ Schema.constructor "lawtwin.kafka.model::type::PartitionLog::PartitionLog" [ Schema.field "entries" "List (lawtwin.kafka.model::type::LogEntry)"; Schema.field "logEndOffset" "Int64"; Schema.field "openTxns" "lawspec.collections::type::KeyVal (Int64) (Int64)"; Schema.field "abortedTxns" "List (lawtwin.kafka.model::type::AbortedTxn)"; Schema.field "batches" "lawspec.collections::type::KeyVal (Int64) (List (lawtwin.kafka.model::type::BatchMeta))" ] ] false; Schema.definition "lawtwin.kafka.model::type::PendingOffset" 0 [ Schema.constructor "lawtwin.kafka.model::type::PendingOffset::PendingOffset" [ Schema.field "pendingGroup" "Text"; Schema.field "pendingEntry" "lawtwin.kafka.model::type::OffsetEntry" ] ] false; Schema.definition "lawtwin.kafka.model::type::TxnState" 0 [ Schema.constructor "lawtwin.kafka.model::type::TxnState::NoTxn" []; Schema.constructor "lawtwin.kafka.model::type::TxnState::Ongoing" [ Schema.field "value" "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee" ] ] false; Schema.definition "lawtwin.kafka.model::type::ProducerEntry" 0 [ Schema.constructor "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry" [ Schema.field "epoch" "Int16"; Schema.field "transactionalId" "Maybe (Text)"; Schema.field "txn" "lawtwin.kafka.model::type::TxnState" ] ] false; Schema.definition "lawtwin.kafka.model::type::Group" 0 [ Schema.constructor "lawtwin.kafka.model::type::Group::Group" [ Schema.field "groupGeneration" "Int32"; Schema.field "subscriptions" "lawspec.collections::type::KeyVal (Text) (List (Text))"; Schema.field "assignment" "lawspec.collections::type::KeyVal (Text) (List (lawtwin.kafka.model::type::TopicPartition))" ] ] false; Schema.definition "lawtwin.kafka.model::type::GroupPartition" 0 [ Schema.constructor "lawtwin.kafka.model::type::GroupPartition::GroupPartition" [ Schema.field "groupId" "Text"; Schema.field "groupPartition" "lawtwin.kafka.model::type::TopicPartition" ] ] false; Schema.definition "lawtwin.kafka.model::type::BrokerState" 0 [ Schema.constructor "lawtwin.kafka.model::type::BrokerState::BrokerState" [ Schema.field "topics" "lawspec.collections::type::KeyVal (Text) (Int32)"; Schema.field "logs" "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::TopicPartition) (lawtwin.kafka.model::type::PartitionLog)"; Schema.field "producers" "lawspec.collections::type::KeyVal (Int64) (lawtwin.kafka.model::type::ProducerEntry)"; Schema.field "transactionalIds" "lawspec.collections::type::KeyVal (Text) (Int64)"; Schema.field "nextProducerId" "Int64"; Schema.field "groups" "lawspec.collections::type::KeyVal (Text) (lawtwin.kafka.model::type::Group)"; Schema.field "committed" "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::GroupPartition) (Int64)" ] ] false; Schema.definition "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be" 0 [ Schema.constructor "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record" [ Schema.field "entryOffset" "Int64"; Schema.field "entryRecord" "lawtwin.kafka.model::type::Record"; Schema.field "transactional" "Bool"; Schema.field "writer" "Int64" ] ] false; Schema.definition "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3" 0 [ Schema.constructor "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record" [ Schema.field "commits" "Bool"; Schema.field "markerOffset" "Int64"; Schema.field "markerWriter" "Int64" ] ] false; Schema.definition "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee" 0 [ Schema.constructor "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record" [ Schema.field "txnOffsets" "List (lawtwin.kafka.model::type::PendingOffset)"; Schema.field "txnPartitions" "List (lawtwin.kafka.model::type::TopicPartition)" ] ] false ] [ "Bool"; "Int8"; "Int16"; "Int32"; "Int64"; "UInt8"; "UInt16"; "UInt32"; "UInt64"; "IntSize"; "UIntSize"; "UIntPtr"; "Integer"; "BigInt"; "BigUInt"; "Decimal"; "Rational"; "Float32"; "Float64"; "Complex64"; "Complex128"; "Char"; "CodePoint"; "CodeUnit16"; "Text"; "CodePointText"; "Utf16Text"; "Bytes"; "Symbol"; "Unit"; "Null"; "Undefined" ] 64
+    Schema.create
+        [
+            Schema.definition
+                "lawspec.collections::type::Ordering"
+                0
+                [
+                    Schema.constructor "lawspec.collections::type::Ordering::Less" []
+                    Schema.constructor "lawspec.collections::type::Ordering::Equal" []
+                    Schema.constructor "lawspec.collections::type::Ordering::Greater" []
+                ]
+                false
+            Schema.definition
+                "lawspec.collections::type::Entry"
+                2
+                [
+                    Schema.constructor
+                        "lawspec.collections::type::Entry::Entry"
+                        [ Schema.field "key" "$0"; Schema.field "value" "$1" ]
+                ]
+                false
+            Schema.definition
+                "lawspec.collections::type::Pair"
+                2
+                [
+                    Schema.constructor
+                        "lawspec.collections::type::Pair::Pair"
+                        [ Schema.field "first" "$0"; Schema.field "second" "$1" ]
+                ]
+                false
+            Schema.definition
+                "lawspec.collections::type::Set"
+                1
+                [
+                    Schema.constructor "lawspec.collections::type::Set::SetItems" [ Schema.field "value" "List ($0)" ]
+                ]
+                false
+            Schema.definition
+                "lawspec.collections::type::EqSet"
+                1
+                [
+                    Schema.constructor
+                        "lawspec.collections::type::EqSet::EqSetItems"
+                        [ Schema.field "value" "List ($0)" ]
+                ]
+                false
+            Schema.definition
+                "lawspec.collections::type::KeyVal"
+                2
+                [
+                    Schema.constructor
+                        "lawspec.collections::type::KeyVal::KeyValEntries"
+                        [ Schema.field "value" "List (lawspec.collections::type::Entry ($0) ($1))" ]
+                ]
+                false
+            Schema.definition
+                "lawspec.matchers::type::Regex"
+                0
+                [
+                    Schema.constructor "lawspec.matchers::type::Regex::Regex" [ Schema.field "pattern" "Text" ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka::type::PartitionChoice"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka::type::PartitionChoice::ToPartition"
+                        [ Schema.field "value" "Int32" ]
+                    Schema.constructor "lawtwin.kafka::type::PartitionChoice::ByKey" []
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka::type::ProducerRecord"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka::type::ProducerRecord::ProducerRecord"
+                        [
+                            Schema.field "destination" "Text"
+                            Schema.field "choice" "lawtwin.kafka::type::PartitionChoice"
+                            Schema.field "payload" "lawtwin.kafka.model::type::Record"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka::type::RecordMetadata"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka::type::RecordMetadata::RecordMetadata"
+                        [
+                            Schema.field "sentTo" "lawtwin.kafka.model::type::TopicPartition"
+                            Schema.field "sentAt" "Int64"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka::type::ConsumerRecord"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord"
+                        [
+                            Schema.field "receivedFrom" "lawtwin.kafka.model::type::TopicPartition"
+                            Schema.field "receivedAt" "Int64"
+                            Schema.field "received" "lawtwin.kafka.model::type::Record"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka::type::LastSend"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka::type::LastSend::LastSend"
+                        [
+                            Schema.field "lastPartition" "lawtwin.kafka.model::type::TopicPartition"
+                            Schema.field "lastTag" "Maybe (lawtwin.kafka.model::type::ProducerTag)"
+                            Schema.field "lastRecords" "List (lawtwin.kafka.model::type::Record)"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka::type::ProducerState"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka::type::ProducerState::ProducerState"
+                        [
+                            Schema.field "identity" "Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"
+                            Schema.field
+                                "sequences"
+                                "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::TopicPartition) (Int32)"
+                            Schema.field "lastSend" "Maybe (lawtwin.kafka::type::LastSend)"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka::type::ConsumerState"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka::type::ConsumerState::ConsumerState"
+                        [
+                            Schema.field "group" "Maybe (Text)"
+                            Schema.field "member" "Text"
+                            Schema.field "generation" "Int32"
+                            Schema.field "subscription" "List (Text)"
+                            Schema.field "assigned" "List (lawtwin.kafka.model::type::TopicPartition)"
+                            Schema.field
+                                "positions"
+                                "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::TopicPartition) (Int64)"
+                            Schema.field "isolation" "lawtwin.kafka.model::type::IsolationLevel"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka::type::TransactionState"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka::type::TransactionState::TransactionState"
+                        [
+                            Schema.field "transactionalId" "Text"
+                            Schema.field "producer" "Maybe (lawtwin.kafka.model::type::ProducerIdAndEpoch)"
+                            Schema.field
+                                "txnSequences"
+                                "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::TopicPartition) (Int32)"
+                            Schema.field "inTransaction" "Bool"
+                            Schema.field "added" "List (lawtwin.kafka.model::type::TopicPartition)"
+                            Schema.field "offsetsSent" "Bool"
+                        ]
+                ]
+                false
+            Schema.definition "lawtwin.kafka::type::Cluster" 0 [] true
+            Schema.definition
+                "lawtwin.kafka.model::type::TopicPartition"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::TopicPartition::TopicPartition"
+                        [ Schema.field "topic" "Text"; Schema.field "partition" "Int32" ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::IsolationLevel"
+                0
+                [
+                    Schema.constructor "lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted" []
+                    Schema.constructor "lawtwin.kafka.model::type::IsolationLevel::ReadCommitted" []
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::OffsetSpec"
+                0
+                [
+                    Schema.constructor "lawtwin.kafka.model::type::OffsetSpec::Earliest" []
+                    Schema.constructor "lawtwin.kafka.model::type::OffsetSpec::Latest" []
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::KafkaError"
+                0
+                [
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidTopic" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidPartitions" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidRecord" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidRequest" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::ProducerFenced" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::UnknownProducerId" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidTxnState" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::InvalidGroupId" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::UnknownMemberId" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::IllegalGeneration" []
+                    Schema.constructor "lawtwin.kafka.model::type::KafkaError::IllegalState" []
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::Header"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::Header::Header"
+                        [ Schema.field "name" "Text"; Schema.field "content" "Maybe (Bytes)" ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::Record"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::Record::Record"
+                        [
+                            Schema.field "key" "Maybe (Bytes)"
+                            Schema.field "value" "Maybe (Bytes)"
+                            Schema.field "headers" "List (lawtwin.kafka.model::type::Header)"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::ProducerTag"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::ProducerTag::ProducerTag"
+                        [
+                            Schema.field "producerId" "Int64"
+                            Schema.field "producerEpoch" "Int16"
+                            Schema.field "baseSequence" "Int32"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::ProducerIdAndEpoch"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch"
+                        [ Schema.field "producerId" "Int64"; Schema.field "producerEpoch" "Int16" ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::FetchedRecord"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::FetchedRecord::FetchedRecord"
+                        [
+                            Schema.field "offset" "Int64"
+                            Schema.field "entry" "lawtwin.kafka.model::type::Record"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::FetchResult"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::FetchResult::FetchResult"
+                        [
+                            Schema.field "records" "List (lawtwin.kafka.model::type::FetchedRecord)"
+                            Schema.field "nextOffset" "Int64"
+                            Schema.field "highWatermark" "Int64"
+                            Schema.field "lastStableOffset" "Int64"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::OffsetEntry"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::OffsetEntry::OffsetEntry"
+                        [
+                            Schema.field "topicPartition" "lawtwin.kafka.model::type::TopicPartition"
+                            Schema.field "offset" "Int64"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::MemberAssignment"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::MemberAssignment::MemberAssignment"
+                        [
+                            Schema.field "memberId" "Text"
+                            Schema.field "assigned" "List (lawtwin.kafka.model::type::TopicPartition)"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::GroupView"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::GroupView::GroupView"
+                        [
+                            Schema.field "generation" "Int32"
+                            Schema.field "members" "List (lawtwin.kafka.model::type::MemberAssignment)"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::LogEntry"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::LogEntry::DataEntry"
+                        [
+                            Schema.field
+                                "value"
+                                "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be"
+                        ]
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::LogEntry::ControlEntry"
+                        [
+                            Schema.field
+                                "value"
+                                "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::AbortedTxn"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::AbortedTxn::AbortedTxn"
+                        [
+                            Schema.field "abortedWriter" "Int64"
+                            Schema.field "firstOffset" "Int64"
+                            Schema.field "lastOffset" "Int64"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::BatchMeta"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::BatchMeta::BatchMeta"
+                        [
+                            Schema.field "batchEpoch" "Int16"
+                            Schema.field "firstSequence" "Int32"
+                            Schema.field "lastSequence" "Int32"
+                            Schema.field "batchOffset" "Int64"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::PartitionLog"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::PartitionLog::PartitionLog"
+                        [
+                            Schema.field "entries" "List (lawtwin.kafka.model::type::LogEntry)"
+                            Schema.field "logEndOffset" "Int64"
+                            Schema.field "openTxns" "lawspec.collections::type::KeyVal (Int64) (Int64)"
+                            Schema.field "abortedTxns" "List (lawtwin.kafka.model::type::AbortedTxn)"
+                            Schema.field
+                                "batches"
+                                "lawspec.collections::type::KeyVal (Int64) (List (lawtwin.kafka.model::type::BatchMeta))"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::PendingOffset"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::PendingOffset::PendingOffset"
+                        [
+                            Schema.field "pendingGroup" "Text"
+                            Schema.field "pendingEntry" "lawtwin.kafka.model::type::OffsetEntry"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::TxnState"
+                0
+                [
+                    Schema.constructor "lawtwin.kafka.model::type::TxnState::NoTxn" []
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::TxnState::Ongoing"
+                        [
+                            Schema.field
+                                "value"
+                                "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::ProducerEntry"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry"
+                        [
+                            Schema.field "epoch" "Int16"
+                            Schema.field "transactionalId" "Maybe (Text)"
+                            Schema.field "txn" "lawtwin.kafka.model::type::TxnState"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::Group"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::Group::Group"
+                        [
+                            Schema.field "groupGeneration" "Int32"
+                            Schema.field "subscriptions" "lawspec.collections::type::KeyVal (Text) (List (Text))"
+                            Schema.field
+                                "assignment"
+                                "lawspec.collections::type::KeyVal (Text) (List (lawtwin.kafka.model::type::TopicPartition))"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::GroupPartition"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::GroupPartition::GroupPartition"
+                        [
+                            Schema.field "groupId" "Text"
+                            Schema.field "groupPartition" "lawtwin.kafka.model::type::TopicPartition"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawtwin.kafka.model::type::BrokerState"
+                0
+                [
+                    Schema.constructor
+                        "lawtwin.kafka.model::type::BrokerState::BrokerState"
+                        [
+                            Schema.field "topics" "lawspec.collections::type::KeyVal (Text) (Int32)"
+                            Schema.field
+                                "logs"
+                                "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::TopicPartition) (lawtwin.kafka.model::type::PartitionLog)"
+                            Schema.field
+                                "producers"
+                                "lawspec.collections::type::KeyVal (Int64) (lawtwin.kafka.model::type::ProducerEntry)"
+                            Schema.field "transactionalIds" "lawspec.collections::type::KeyVal (Text) (Int64)"
+                            Schema.field "nextProducerId" "Int64"
+                            Schema.field
+                                "groups"
+                                "lawspec.collections::type::KeyVal (Text) (lawtwin.kafka.model::type::Group)"
+                            Schema.field
+                                "committed"
+                                "lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::GroupPartition) (Int64)"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be"
+                0
+                [
+                    Schema.constructor
+                        "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record"
+                        [
+                            Schema.field "entryOffset" "Int64"
+                            Schema.field "entryRecord" "lawtwin.kafka.model::type::Record"
+                            Schema.field "transactional" "Bool"
+                            Schema.field "writer" "Int64"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3"
+                0
+                [
+                    Schema.constructor
+                        "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record"
+                        [
+                            Schema.field "commits" "Bool"
+                            Schema.field "markerOffset" "Int64"
+                            Schema.field "markerWriter" "Int64"
+                        ]
+                ]
+                false
+            Schema.definition
+                "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee"
+                0
+                [
+                    Schema.constructor
+                        "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record"
+                        [
+                            Schema.field "txnOffsets" "List (lawtwin.kafka.model::type::PendingOffset)"
+                            Schema.field "txnPartitions" "List (lawtwin.kafka.model::type::TopicPartition)"
+                        ]
+                ]
+                false
+        ]
+        [
+            "Bool"
+            "Int8"
+            "Int16"
+            "Int32"
+            "Int64"
+            "UInt8"
+            "UInt16"
+            "UInt32"
+            "UInt64"
+            "IntSize"
+            "UIntSize"
+            "UIntPtr"
+            "Integer"
+            "BigInt"
+            "BigUInt"
+            "Decimal"
+            "Rational"
+            "Float32"
+            "Float64"
+            "Complex64"
+            "Complex128"
+            "Char"
+            "CodePoint"
+            "CodeUnit16"
+            "Text"
+            "CodePointText"
+            "Utf16Text"
+            "Bytes"
+            "Symbol"
+            "Unit"
+            "Null"
+            "Undefined"
+        ]
+        64

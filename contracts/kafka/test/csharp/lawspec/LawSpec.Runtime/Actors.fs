@@ -34,7 +34,12 @@ type Strategy =
 [<NoEquality; NoComparison>]
 type Spec =
     | ActorSpec of start: (unit -> obj) * restart: (obj -> obj) * metadata: obj
-    | SupervisorSpec of strategy: Strategy * restarts: int * periodMicros: int64 * children: (string * Lifetime * Spec) list * metadata: obj
+    | SupervisorSpec of
+        strategy: Strategy *
+        restarts: int *
+        periodMicros: int64 *
+        children: (string * Lifetime * Spec) list *
+        metadata: obj
 
 /// What an observer is told about a handle.
 [<NoEquality; NoComparison>]
@@ -52,22 +57,28 @@ type internal Operation =
 
 [<NoEquality; NoComparison>]
 type internal Entry =
-    { Reply: TaskCompletionSource<obj> option
-      Operation: Operation
-      Context: ExecutionContext option }
+    {
+        Reply: TaskCompletionSource<obj> option
+        Operation: Operation
+        Context: ExecutionContext option
+    }
 
 /// A mailbox of events from the handles it monitors, received selectively.
 [<Sealed; AllowNullLiteral>]
 type Inbox() =
     let events = ResizeArray<obj * Event>()
     let gate = obj ()
+
     member internal _.Post(handle: obj, event: Event) =
         lock gate (fun () ->
             events.Add((handle, event))
             Monitor.PulseAll gate)
+
     /// The next event of a handle, waiting at most a number of milliseconds.
     member _.Receive(handle: obj, milliseconds: int) : Event option =
-        let deadline = Stopwatch.GetTimestamp() + int64 milliseconds * Stopwatch.Frequency / 1000L
+        let deadline =
+            Stopwatch.GetTimestamp() + int64 milliseconds * Stopwatch.Frequency / 1000L
+
         lock gate (fun () ->
             let rec loop () =
                 match events |> Seq.tryFindIndex (fun (h, _) -> h.Equals handle) with
@@ -77,10 +88,18 @@ type Inbox() =
                     Some event
                 | None ->
                     let left = deadline - Stopwatch.GetTimestamp()
-                    if left <= 0L then None
+
+                    if left <= 0L then
+                        None
                     else
-                        Monitor.Wait(gate, TimeSpan.FromTicks(max 1L (left * TimeSpan.TicksPerSecond / Stopwatch.Frequency))) |> ignore
+                        Monitor.Wait(
+                            gate,
+                            TimeSpan.FromTicks(max 1L (left * TimeSpan.TicksPerSecond / Stopwatch.Frequency))
+                        )
+                        |> ignore
+
                         loop ()
+
             loop ())
 
 [<AllowNullLiteral>]
@@ -107,34 +126,52 @@ type internal Node(path: string list, spec: Spec, parent: string list option, li
     member val Seen = System.Collections.Generic.HashSet<obj>(HashIdentity.Reference) with get
     member val Restarts: int64 list = [] with get, set
     member val StopNotified = false with get, set
-    member _.IsActor = match spec with ActorSpec _ -> true | _ -> false
+
+    member _.IsActor =
+        match spec with
+        | ActorSpec _ -> true
+        | _ -> false
 
 /// A stable handle on an actor or a supervisor of a tree.
 and [<CustomEquality; NoComparison>] Handle =
-    internal { Tree: Tree; Path: string list }
+    internal
+        {
+            Tree: Tree
+            Path: string list
+        }
+
     override this.Equals other =
         match other with
         | :? Handle as h -> obj.ReferenceEquals(this.Tree, h.Tree) && this.Path = h.Path
         | _ -> false
-    override this.GetHashCode() = hash this.Path ^^^ Runtime.CompilerServices.RuntimeHelpers.GetHashCode this.Tree
+
+    override this.GetHashCode() =
+        hash this.Path ^^^ Runtime.CompilerServices.RuntimeHelpers.GetHashCode this.Tree
+
     override this.ToString() = "actor " + String.Join("/", this.Path)
 
 /// The tree of one started spec: its nodes, under one lock. No application
 /// code runs under the lock.
 and [<Sealed; AllowNullLiteral>] Tree internal (context: ExecutionContext) =
     let gate = obj ()
-    let nodes = System.Collections.Generic.Dictionary<string list, Node>(HashIdentity.Structural)
+
+    let nodes =
+        System.Collections.Generic.Dictionary<string list, Node>(HashIdentity.Structural)
+
     member internal _.Gate = gate
     member internal _.Nodes = nodes
     member internal _.Context = context
 
 let private current = new ThreadLocal<Node>()
 
-let private now () = Stopwatch.GetTimestamp() * 1_000_000L / Stopwatch.Frequency
+let private now () =
+    Stopwatch.GetTimestamp() * 1_000_000L / Stopwatch.Frequency
 
-let private stopped () : exn = LawSpecException("ActorStopped", "the actor has stopped") :> exn
+let private stopped () : exn =
+    LawSpecException("ActorStopped", "the actor has stopped") :> exn
 
-let private crashed (cause: exn) : exn = LawSpecException("ActorCrashed", cause.Message, [], cause) :> exn
+let private crashed (cause: exn) : exn =
+    LawSpecException("ActorCrashed", cause.Message, [], cause) :> exn
 
 let private reply (entry: Entry) (result: Choice<obj, exn>) =
     match entry.Reply with
@@ -147,7 +184,9 @@ let private reply (entry: Entry) (result: Choice<obj, exn>) =
 let private node (tree: Tree) path = tree.Nodes.[path]
 
 let rec private descendants (tree: Tree) path : string list list =
-    path :: ((node tree path).Children |> List.collect (fun (_, child) -> descendants tree child))
+    path
+    :: ((node tree path).Children
+        |> List.collect (fun (_, child) -> descendants tree child))
 
 let private notify (tree: Tree) (n: Node) (event: Event) =
     for inbox in n.Observers do
@@ -159,11 +198,18 @@ let private eligible (n: Node) = not n.Removed
 let private halt (tree: Tree) path =
     for p in List.rev (descendants tree path) do
         let n = node tree p
+
         if not n.Removed then
             n.Active |> Option.iter (fun e -> reply e (Choice2Of2(stopped ())))
-            for e in n.Waiting do reply e (Choice2Of2(stopped ()))
+
+            for e in n.Waiting do
+                reply e (Choice2Of2(stopped ()))
+
             n.Waiting.Clear()
-            if not n.StopNotified then notify tree n Stopped
+
+            if not n.StopNotified then
+                notify tree n Stopped
+
             n.Removed <- true
             n.Accepting <- false
             n.Active <- None
@@ -181,48 +227,73 @@ let rec private schedule (tree: Tree) (n: Node) =
 /// restarts after the messages it had already accepted.
 and private restartGroup (tree: Tree) parent failed (origin: string list) =
     let supervisor = node tree parent
-    let live = supervisor.Children |> List.map snd |> List.filter (fun c -> not (node tree c).Removed)
+
+    let live =
+        supervisor.Children
+        |> List.map snd
+        |> List.filter (fun c -> not (node tree c).Removed)
+
     let group =
         match supervisor.Spec with
         | SupervisorSpec(OneForOne, _, _, _, _) -> [ failed ]
         | SupervisorSpec(OneForAll, _, _, _, _) -> live
         | SupervisorSpec(RestForOne, _, _, _, _) -> live |> List.skipWhile (fun c -> c <> failed)
         | ActorSpec _ -> [ failed ]
+
     for member' in group do
-        if (node tree member').Lifetime = Temporary then halt tree member'
+        if (node tree member').Lifetime = Temporary then
+            halt tree member'
         else
             for p in descendants tree member' do
                 let n = node tree p
+
                 if not n.Removed then
                     n.Accepting <- true
                     n.Incarnation <- n.Incarnation + 1
+
                     if n.IsActor then
-                        if p = origin then n.Init <- true
-                        else n.Waiting.Enqueue { Reply = None; Operation = Restart; Context = None }
+                        if p = origin then
+                            n.Init <- true
+                        else
+                            n.Waiting.Enqueue
+                                {
+                                    Reply = None
+                                    Operation = Restart
+                                    Context = None
+                                }
+
                         schedule tree n
-                    else n.Restarts <- []
+                    else
+                        n.Restarts <- []
 
 /// Decide what a stop (normal) or crash (abnormal) means: a restart within the
 /// parent's budget, an escalation, or the end of the subtree.
 and private decide (tree: Tree) path (abnormal: bool) (origin: string list) =
     let n = node tree path
-    let restart = eligible n && (n.Lifetime = Permanent || (n.Lifetime = Transient && abnormal))
+
+    let restart =
+        eligible n && (n.Lifetime = Permanent || (n.Lifetime = Transient && abnormal))
+
     match n.Parent with
     | Some parent when restart ->
         let supervisor = node tree parent
+
         match supervisor.Spec with
         | SupervisorSpec(_, limit, period, _, _) ->
             let at = now ()
             let recent = supervisor.Restarts |> List.filter (fun t -> at - t <= period)
+
             if List.length recent < limit && eligible supervisor then
                 supervisor.Restarts <- recent @ [ at ]
                 restartGroup tree parent path origin
-            else decide tree parent true origin
+            else
+                decide tree parent true origin
         | ActorSpec _ -> halt tree path
     | _ ->
         if not n.IsActor && abnormal then
             notify tree n (Crashed(LawSpecException("RestartLimit", String.Join("/", path)) :> exn))
             n.StopNotified <- true
+
         halt tree path
 
 /// An actor failed: its caller learns why, its observers and linked actors
@@ -232,36 +303,53 @@ and private failed (tree: Tree) (n: Node) (entry: Entry option) (cause: exn) (or
     | Some({ Operation = Crash _ } as e) -> reply e (Choice1Of2(box ()))
     | Some e -> reply e (Choice2Of2(crashed cause))
     | None -> ()
+
     n.Active <- None
     n.Seen.Add origin |> ignore
     notify tree n (Crashed cause)
     n.StopNotified <- true
     let links = n.Links
     decide tree n.Path true n.Path
-    if not n.Removed then n.StopNotified <- false
+
+    if not n.Removed then
+        n.StopNotified <- false
+
     links
 
 and private propagate (links: Handle list) (cause: exn) (origin: obj) =
     for other in links do
         let t = other.Tree
+
         lock t.Gate (fun () ->
             match t.Nodes.TryGetValue other.Path with
             | true, n when n.Accepting && not n.Removed && not (n.Seen.Contains origin) ->
                 n.Seen.Add origin |> ignore
-                n.Waiting.Enqueue { Reply = None; Operation = Crash(cause, origin); Context = None }
+
+                n.Waiting.Enqueue
+                    {
+                        Reply = None
+                        Operation = Crash(cause, origin)
+                        Context = None
+                    }
+
                 schedule t n
             | _ -> ())
 
 and private pump (tree: Tree) (n: Node) (generation: int) =
     let mutable go = true
+
     while go do
         let origin = obj ()
+
         let step =
             lock tree.Gate (fun () ->
                 if n.Worker <> generation || n.Removed then
-                    if n.Worker = generation then n.Running <- false
+                    if n.Worker = generation then
+                        n.Running <- false
+
                     None
-                elif n.Init then Some(Choice1Of2 n.Checkpoint)
+                elif n.Init then
+                    Some(Choice1Of2 n.Checkpoint)
                 elif n.Waiting.Count > 0 then
                     let e = n.Waiting.Dequeue()
                     n.Active <- Some e
@@ -269,6 +357,7 @@ and private pump (tree: Tree) (n: Node) (generation: int) =
                 else
                     n.Running <- false
                     None)
+
         match step with
         | None -> go <- false
         | Some(Choice1Of2 checkpoint) ->
@@ -276,16 +365,29 @@ and private pump (tree: Tree) (n: Node) (generation: int) =
                 match n.Spec with
                 | ActorSpec(s, r, _) -> s, r
                 | SupervisorSpec _ -> failwith "unreachable"
+
             let outcome =
                 try
                     let mutable value = null
-                    ExecutionContext.Run(tree.Context.CreateCopy(), (fun _ ->
-                        value <- (match checkpoint with Some c -> restart c | None -> start ())), null)
+
+                    ExecutionContext.Run(
+                        tree.Context.CreateCopy(),
+                        (fun _ ->
+                            value <-
+                                (match checkpoint with
+                                 | Some c -> restart c
+                                 | None -> start ())),
+                        null
+                    )
+
                     Choice1Of2 value
-                with e -> Choice2Of2 e
+                with e ->
+                    Choice2Of2 e
+
             let links =
                 lock tree.Gate (fun () ->
-                    if n.Worker <> generation then []
+                    if n.Worker <> generation then
+                        []
                     else
                         match outcome with
                         | Choice1Of2 v ->
@@ -294,23 +396,30 @@ and private pump (tree: Tree) (n: Node) (generation: int) =
                             n.Init <- false
                             []
                         | Choice2Of2 e -> failed tree n None e origin)
+
             match outcome with
             | Choice2Of2 e when not (List.isEmpty links) -> propagate links e origin
             | _ -> ()
         | Some(Choice2Of2 entry) ->
             let state = lock tree.Gate (fun () -> n.State)
+
             let run (body: unit -> obj * obj) =
                 current.Value <- n
+
                 try
                     try
                         let mutable result = (null, null)
+
                         match entry.Context with
                         | Some c -> ExecutionContext.Run(c.CreateCopy(), (fun _ -> result <- body ()), null)
                         | None -> ExecutionContext.Run(tree.Context.CreateCopy(), (fun _ -> result <- body ()), null)
+
                         Choice1Of2 result
-                    with e -> Choice2Of2 e
+                    with e ->
+                        Choice2Of2 e
                 finally
                     current.Value <- null
+
             match entry.Operation with
             | Stop ->
                 lock tree.Gate (fun () ->
@@ -319,13 +428,21 @@ and private pump (tree: Tree) (n: Node) (generation: int) =
                         reply entry (Choice1Of2(box ()))
                         decide tree n.Path false n.Path)
             | Crash(cause, origin) ->
-                let links = lock tree.Gate (fun () -> if n.Worker = generation then failed tree n (Some entry) cause origin else [])
+                let links =
+                    lock tree.Gate (fun () ->
+                        if n.Worker = generation then
+                            failed tree n (Some entry) cause origin
+                        else
+                            [])
+
                 propagate links cause origin
             | Run handler ->
                 let outcome = run (fun () -> handler state)
+
                 let links =
                     lock tree.Gate (fun () ->
-                        if n.Worker <> generation then []
+                        if n.Worker <> generation then
+                            []
                         else
                             match outcome with
                             | Choice1Of2(answer, next) ->
@@ -335,15 +452,22 @@ and private pump (tree: Tree) (n: Node) (generation: int) =
                                 reply entry (Choice1Of2 answer)
                                 []
                             | Choice2Of2 e -> failed tree n (Some entry) e origin)
+
                 match outcome with
                 | Choice2Of2 e when not (List.isEmpty links) -> propagate links e origin
                 | _ -> ()
             | Restart ->
-                let restart = match n.Spec with ActorSpec(_, r, _) -> r | _ -> id
+                let restart =
+                    match n.Spec with
+                    | ActorSpec(_, r, _) -> r
+                    | _ -> id
+
                 let outcome = run (fun () -> box (), restart state)
+
                 let links =
                     lock tree.Gate (fun () ->
-                        if n.Worker <> generation then []
+                        if n.Worker <> generation then
+                            []
                         else
                             match outcome with
                             | Choice1Of2(_, next) ->
@@ -352,6 +476,7 @@ and private pump (tree: Tree) (n: Node) (generation: int) =
                                 n.Active <- None
                                 []
                             | Choice2Of2 e -> failed tree n (Some entry) e origin)
+
                 match outcome with
                 | Choice2Of2 e when not (List.isEmpty links) -> propagate links e origin
                 | _ -> ()
@@ -366,16 +491,27 @@ let actor (start: unit -> obj) (restart: obj -> obj) : Spec = ActorSpec(start, r
 
 /// An actor whose state after a crash is a fresh start.
 [<CompiledName("ActorOf")>]
-let actorOf (start: unit -> obj) : Spec = ActorSpec(start, (fun _ -> start ()), null)
+let actorOf (start: unit -> obj) : Spec =
+    ActorSpec(start, (fun _ -> start ()), null)
 
 /// A supervisor: its strategy, at most a number of restarts within a period
 /// (microseconds), and its children in start order, each named and with its
 /// lifetime.
 [<CompiledName("Supervisor")>]
-let supervisor (strategy: Strategy) (restarts: int) (periodMicros: int64) (children: (string * Lifetime * Spec) list) : Spec =
-    if restarts < 0 || periodMicros <= 0L then fail "InvalidSupervisor" "a supervisor needs restarts >= 0 and a positive period"
+let supervisor
+    (strategy: Strategy)
+    (restarts: int)
+    (periodMicros: int64)
+    (children: (string * Lifetime * Spec) list)
+    : Spec =
+    if restarts < 0 || periodMicros <= 0L then
+        fail "InvalidSupervisor" "a supervisor needs restarts >= 0 and a positive period"
+
     let names = children |> List.map (fun (n, _, _) -> n)
-    if List.length names <> List.length (List.distinct names) then fail "InvalidSupervisor" "duplicate child names"
+
+    if List.length names <> List.length (List.distinct names) then
+        fail "InvalidSupervisor" "duplicate child names"
+
     SupervisorSpec(strategy, restarts, periodMicros, children, null)
 
 /// A spec with metadata a generated API reads back from its handle.
@@ -391,9 +527,11 @@ let withMetadata (metadata: obj) (spec: Spec) : Spec =
 let rec private allocate (tree: Tree) path (spec: Spec) parent lifetime =
     let n = Node(path, spec, parent, lifetime)
     tree.Nodes.[path] <- n
+
     match spec with
     | SupervisorSpec(_, _, _, children, _) ->
         n.Children <- children |> List.map (fun (name, _, _) -> name, path @ [ name ])
+
         for name, life, child in children do
             allocate tree (path @ [ name ]) child (Some path) life
     | ActorSpec _ -> n.Init <- true
@@ -403,23 +541,41 @@ let rec private allocate (tree: Tree) path (spec: Spec) parent lifetime =
 [<CompiledName("Stop")>]
 let stop (handle: Handle) =
     let tree = handle.Tree
+
     let wait =
         lock tree.Gate (fun () ->
             let n = node tree handle.Path
-            if n.Removed then None
+
+            if n.Removed then
+                None
             elif n.IsActor then
                 n.Accepting <- n.Parent.IsSome && n.Lifetime = Permanent
-                let r = TaskCompletionSource<obj>(TaskCreationOptions.RunContinuationsAsynchronously)
-                n.Waiting.Enqueue { Reply = Some r; Operation = Stop; Context = None }
+
+                let r =
+                    TaskCompletionSource<obj>(TaskCreationOptions.RunContinuationsAsynchronously)
+
+                n.Waiting.Enqueue
+                    {
+                        Reply = Some r
+                        Operation = Stop
+                        Context = None
+                    }
+
                 schedule tree n
                 Some r.Task
             else
                 match n.Parent with
                 | Some _ when n.Lifetime = Permanent -> decide tree handle.Path false handle.Path
                 | _ -> halt tree handle.Path
+
                 None)
+
     match wait with
-    | Some task -> (try task.Wait() with _ -> ())
+    | Some task ->
+        (try
+            task.Wait()
+         with _ ->
+             ())
     | None -> ()
 
 /// Start a spec. Its actors start in order; a start that fails stops the
@@ -428,12 +584,17 @@ let stop (handle: Handle) =
 [<CompiledName("Start")>]
 let start (spec: Spec) : Handle =
     let tree = Tree(ExecutionContext.Capture())
+
     let root, public' =
         match spec with
         | ActorSpec _ -> supervisor OneForOne 0 1L [ "actor", Temporary, spec ], [ "actor" ]
         | SupervisorSpec _ -> spec, []
+
     allocate tree [] root None Permanent
-    let actors = descendants tree [] |> List.map (node tree) |> List.filter (fun n -> n.IsActor)
+
+    let actors =
+        descendants tree [] |> List.map (node tree) |> List.filter (fun n -> n.IsActor)
+
     for n in actors do
         match n.Spec with
         | ActorSpec(s, _, _) ->
@@ -445,51 +606,72 @@ let start (spec: Spec) : Handle =
                 with e ->
                     lock tree.Gate (fun () -> halt tree [])
                     raise (LawSpecException("ActorStartFailed", e.Message, [], e))
+
             lock tree.Gate (fun () ->
                 n.State <- value
                 n.Checkpoint <- Some value
                 n.Init <- false)
         | SupervisorSpec _ -> ()
+
     { Tree = tree; Path = public' }
 
 /// Run a body with a started spec, stopping its tree afterwards.
 [<CompiledName("WithSpec")>]
 let withSpec (spec: Spec) (body: Handle -> 'a) : 'a =
     let handle = start spec
-    try body handle
-    finally stop { handle with Path = [] }
+
+    try
+        body handle
+    finally
+        stop { handle with Path = [] }
 
 // ---------------------------------------------------------------------------
 // Messages
 
 let private enqueue (handle: Handle) (operation: Operation) (wait: bool) : Task<obj> =
     let tree = handle.Tree
+
     lock tree.Gate (fun () ->
         let n = node tree handle.Path
-        if obj.ReferenceEquals(current.Value, n) && wait then fail "ActorSelfCall" "an actor cannot call itself"
-        if not n.IsActor || not n.Accepting || n.Removed then Task.FromException<obj>(stopped ())
+
+        if obj.ReferenceEquals(current.Value, n) && wait then
+            fail "ActorSelfCall" "an actor cannot call itself"
+
+        if not n.IsActor || not n.Accepting || n.Removed then
+            Task.FromException<obj>(stopped ())
         else
-            let r = TaskCompletionSource<obj>(TaskCreationOptions.RunContinuationsAsynchronously)
+            let r =
+                TaskCompletionSource<obj>(TaskCreationOptions.RunContinuationsAsynchronously)
+
             n.Waiting.Enqueue
-                { Reply = Some r; Operation = operation
-                  Context = Some(ExecutionContext.Capture()) }
+                {
+                    Reply = Some r
+                    Operation = operation
+                    Context = Some(ExecutionContext.Capture())
+                }
+
             schedule tree n
             r.Task)
 
 let private await (task: Task<obj>) =
-    try task.GetAwaiter().GetResult() with
-    | :? LawSpecException -> reraise ()
+    try
+        task.GetAwaiter().GetResult()
+    with :? LawSpecException ->
+        reraise ()
 
 /// Send a handler and wait for its reply. The handler gets the state and
 /// gives the reply and the next state.
 [<CompiledName("Call")>]
-let call (handle: Handle) (handler: obj -> obj * obj) : obj = await (enqueue handle (Run handler) true)
+let call (handle: Handle) (handler: obj -> obj * obj) : obj =
+    await (enqueue handle (Run handler) true)
 
 /// Send a handler without waiting for it.
 [<CompiledName("Tell")>]
 let tell (handle: Handle) (handler: obj -> obj * obj) =
     let task = enqueue handle (Run handler) false
-    if task.IsFaulted then await task |> ignore
+
+    if task.IsFaulted then
+        await task |> ignore
 
 /// The actor's committed state.
 [<CompiledName("State")>]
@@ -498,7 +680,9 @@ let state (handle: Handle) : obj = call handle (fun s -> s, s)
 /// Crash the actor in order with its messages, as a failing handler would.
 [<CompiledName("Crash")>]
 let crash (handle: Handle) =
-    enqueue handle (Crash(LawSpecException("CrashedOnPurpose", "") :> exn, obj ())) true |> await |> ignore
+    enqueue handle (Crash(LawSpecException("CrashedOnPurpose", "") :> exn, obj ())) true
+    |> await
+    |> ignore
 
 /// Kill the actor's worker now, as an external failure: a handler it is
 /// running commits nothing and its caller learns the actor crashed; the
@@ -507,10 +691,13 @@ let crash (handle: Handle) =
 let kill (handle: Handle) =
     let tree = handle.Tree
     let origin = obj ()
+
     let links, cause =
         lock tree.Gate (fun () ->
             let n = node tree handle.Path
-            if n.Removed || not n.IsActor then [], null
+
+            if n.Removed || not n.IsActor then
+                [], null
             else
                 let cause = LawSpecException("ActorKilled", "the actor's worker was killed") :> exn
                 n.Worker <- n.Worker + 1
@@ -519,7 +706,9 @@ let kill (handle: Handle) =
                 let links = failed tree n n.Active cause origin
                 schedule tree n
                 links, cause)
-    if not (isNull cause) then propagate links cause origin
+
+    if not (isNull cause) then
+        propagate links cause origin
 
 /// A supervisor's child by name (stable across restarts).
 [<CompiledName("Child")>]
@@ -539,7 +728,8 @@ let children (handle: Handle) : (string * Handle) list =
 
 /// Restarts a supervisor has made in its current period.
 [<CompiledName("RestartCount")>]
-let restartCount (handle: Handle) : int = lock handle.Tree.Gate (fun () -> List.length (node handle.Tree handle.Path).Restarts)
+let restartCount (handle: Handle) : int =
+    lock handle.Tree.Gate (fun () -> List.length (node handle.Tree handle.Path).Restarts)
 
 /// The worker now behind a handle (it changes when the worker is replaced),
 /// or None when the handle has stopped.
@@ -554,7 +744,8 @@ let worker (handle: Handle) : int option =
 let metadata (handle: Handle) : obj =
     lock handle.Tree.Gate (fun () ->
         match (node handle.Tree handle.Path).Spec with
-        | ActorSpec(_, _, m) | SupervisorSpec(_, _, _, _, m) -> m)
+        | ActorSpec(_, _, m)
+        | SupervisorSpec(_, _, _, _, m) -> m)
 
 /// Tell an inbox about a handle's crashes and its stop.
 [<CompiledName("Monitor")>]
@@ -572,4 +763,5 @@ let link (left: Handle) (right: Handle) =
 /// The next event of a handle in an inbox, waiting at most a number of
 /// milliseconds.
 [<CompiledName("ReceiveEvent")>]
-let receiveEvent (inbox: Inbox) (handle: Handle) (milliseconds: int) : Event option = inbox.Receive(box handle, milliseconds)
+let receiveEvent (inbox: Inbox) (handle: Handle) (milliseconds: int) : Event option =
+    inbox.Receive(box handle, milliseconds)

@@ -9,57 +9,60 @@ import lawspec_runtime as ls
 import lawspec_schema as _schema
 
 _lawspec_schema = data.make_schema()
+# The machine profile's integer width.
+MACHINE_BITS = 64
 
 
+# clusterAddPartitionsToTxnRequest — ../src/contract.lawspec:283
 def clusterAddPartitionsToTxnRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: _builtins.int,
-    value_4: _builtins.list[data.TopicPartition],
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.int,
+    value2: _builtins.int,
+    value3: _builtins.list[data.TopicPartition],
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        value3 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_4,
-            64,
+            value3,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_542(
+        result = _definitions.cluster_add_partitions_to_txn_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            state,
+            value0,
+            value1,
+            value2,
+            value3,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -70,7 +73,7 @@ def clusterAddPartitionsToTxnRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -84,55 +87,56 @@ def clusterAddPartitionsToTxnRequest(
         ) from error
 
 
+# clusterCommitOffsets — ../src/contract.lawspec:302
 def clusterCommitOffsets(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.int,
-    value_4: _builtins.list[data.OffsetEntry],
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
+    value2: _builtins.int,
+    value3: _builtins.list[data.OffsetEntry],
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        value3 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_4,
-            64,
+            value3,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_543(
+        result = _definitions.cluster_commit_offsets_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            state,
+            value0,
+            value1,
+            value2,
+            value3,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -143,7 +147,7 @@ def clusterCommitOffsets(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -152,41 +156,41 @@ def clusterCommitOffsets(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterCommitOffsets: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterCommitOffsets: " + _builtins.str(error),
         ) from error
 
 
+# clusterCreatePartitions — ../src/contract.lawspec:294
 def clusterCreatePartitions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_544(
+        result = _definitions.cluster_create_partitions_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            state,
+            value0,
+            value1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -197,7 +201,7 @@ def clusterCreatePartitions(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -206,41 +210,41 @@ def clusterCreatePartitions(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterCreatePartitions: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterCreatePartitions: " + _builtins.str(error),
         ) from error
 
 
+# clusterCreatePartitionsRequest — ../src/contract.lawspec:277
 def clusterCreatePartitionsRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_545(
+        result = _definitions.cluster_create_partitions_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            state,
+            value0,
+            value1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -251,7 +255,7 @@ def clusterCreatePartitionsRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -265,37 +269,33 @@ def clusterCreatePartitionsRequest(
         ) from error
 
 
+# clusterCreateTopic — ../src/contract.lawspec:293
 def clusterCreateTopic(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_546(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.cluster_create_topic_2(symbols, state, value0, value1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -305,7 +305,7 @@ def clusterCreateTopic(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -318,36 +318,37 @@ def clusterCreateTopic(
         ) from error
 
 
+# clusterCreateTopicsRequest — ../src/contract.lawspec:276
 def clusterCreateTopicsRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_547(
+        result = _definitions.cluster_create_topics_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            state,
+            value0,
+            value1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -358,7 +359,7 @@ def clusterCreateTopicsRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -367,30 +368,30 @@ def clusterCreateTopicsRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterCreateTopicsRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterCreateTopicsRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterDescribeGroup — ../src/contract.lawspec:301
 def clusterDescribeGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
+    state: data.BrokerState,
+    value0: _builtins.str,
 ) -> data.Pair[data.GroupView, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_548(symbols, argument_0, argument_1)
+        result = _definitions.cluster_describe_group_2(symbols, state, value0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -400,7 +401,7 @@ def clusterDescribeGroup(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -409,30 +410,30 @@ def clusterDescribeGroup(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterDescribeGroup: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterDescribeGroup: " + _builtins.str(error),
         ) from error
 
 
+# clusterDescribeGroupRequest — ../src/contract.lawspec:290
 def clusterDescribeGroupRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
+    state: data.BrokerState,
+    value0: _builtins.str,
 ) -> data.Pair[data.GroupView, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_549(symbols, argument_0, argument_1)
+        result = _definitions.cluster_describe_group_request_2(symbols, state, value0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -442,7 +443,7 @@ def clusterDescribeGroupRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -451,57 +452,57 @@ def clusterDescribeGroupRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterDescribeGroupRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterDescribeGroupRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterEndTxnRequest — ../src/contract.lawspec:285
 def clusterEndTxnRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: _builtins.int,
-    value_4: _builtins.bool,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.int,
+    value2: _builtins.int,
+    value3: _builtins.bool,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        value3 = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_4,
-            64,
+            value3,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_550(
+        result = _definitions.cluster_end_txn_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            state,
+            value0,
+            value1,
+            value2,
+            value3,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -512,7 +513,7 @@ def clusterEndTxnRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -521,42 +522,37 @@ def clusterEndTxnRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterEndTxnRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterEndTxnRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterFetchOffset — ../src/contract.lawspec:303
 def clusterFetchOffset(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: data.TopicPartition,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: data.TopicPartition,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_551(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.cluster_fetch_offset_2(symbols, state, value0, value1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -566,7 +562,7 @@ def clusterFetchOffset(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -579,52 +575,53 @@ def clusterFetchOffset(
         ) from error
 
 
+# clusterFetchRequest — ../src/contract.lawspec:280
 def clusterFetchRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: data.TopicPartition,
-    value_2: _builtins.int,
-    value_3: _builtins.int,
-    value_4: data.IsolationLevel,
+    state: data.BrokerState,
+    value0: data.TopicPartition,
+    value1: _builtins.int,
+    value2: _builtins.int,
+    value3: data.IsolationLevel,
 ) -> data.Pair[data.FetchResult, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        value3 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value_4,
-            64,
+            value3,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_552(
+        result = _definitions.cluster_fetch_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            state,
+            value0,
+            value1,
+            value2,
+            value3,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -635,7 +632,7 @@ def clusterFetchRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -648,44 +645,45 @@ def clusterFetchRequest(
         ) from error
 
 
+# clusterHeartbeat — ../src/contract.lawspec:299
 def clusterHeartbeat(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.int,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
+    value2: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_553(
+        result = _definitions.cluster_heartbeat_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -696,7 +694,7 @@ def clusterHeartbeat(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -709,44 +707,45 @@ def clusterHeartbeat(
         ) from error
 
 
+# clusterHeartbeatRequest — ../src/contract.lawspec:288
 def clusterHeartbeatRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.int,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
+    value2: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_554(
+        result = _definitions.cluster_heartbeat_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -757,7 +756,7 @@ def clusterHeartbeatRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -766,42 +765,40 @@ def clusterHeartbeatRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterHeartbeatRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterHeartbeatRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterInitProducerIdRequest — ../src/contract.lawspec:282
 def clusterInitProducerIdRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _schema.Maybe[_builtins.str],
+    state: data.BrokerState,
+    value0: _schema.Maybe[_builtins.str],
 ) -> data.Pair[data.ProducerIdAndEpoch, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_555(symbols, argument_0, argument_1)
+        result = _definitions.cluster_init_producer_id_request_2(symbols, state, value0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
                 [
-                    _schema.Named(
-                        "lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                    ),
+                    _schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch"),
                     _schema.Named("lawtwin.kafka.model::type::BrokerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -810,49 +807,49 @@ def clusterInitProducerIdRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterInitProducerIdRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterInitProducerIdRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterJoinGroup — ../src/contract.lawspec:297
 def clusterJoinGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.list[_builtins.str],
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
+    value2: _builtins.list[_builtins.str],
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_556(
+        result = _definitions.cluster_join_group_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -863,7 +860,7 @@ def clusterJoinGroup(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -876,44 +873,45 @@ def clusterJoinGroup(
         ) from error
 
 
+# clusterJoinGroupRequest — ../src/contract.lawspec:286
 def clusterJoinGroupRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.list[_builtins.str],
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
+    value2: _builtins.list[_builtins.str],
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_557(
+        result = _definitions.cluster_join_group_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -924,7 +922,7 @@ def clusterJoinGroupRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -933,42 +931,37 @@ def clusterJoinGroupRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterJoinGroupRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterJoinGroupRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterLeaveGroup — ../src/contract.lawspec:300
 def clusterLeaveGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_558(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.cluster_leave_group_2(symbols, state, value0, value1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -978,7 +971,7 @@ def clusterLeaveGroup(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -991,36 +984,37 @@ def clusterLeaveGroup(
         ) from error
 
 
+# clusterLeaveGroupRequest — ../src/contract.lawspec:289
 def clusterLeaveGroupRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_559(
+        result = _definitions.cluster_leave_group_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            state,
+            value0,
+            value1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1031,7 +1025,7 @@ def clusterLeaveGroupRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1040,49 +1034,49 @@ def clusterLeaveGroupRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterLeaveGroupRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterLeaveGroupRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterListOffsets — ../src/contract.lawspec:296
 def clusterListOffsets(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: data.TopicPartition,
-    value_2: data.OffsetSpec,
-    value_3: data.IsolationLevel,
+    state: data.BrokerState,
+    value0: data.TopicPartition,
+    value1: data.OffsetSpec,
+    value2: data.IsolationLevel,
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::OffsetSpec"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_560(
+        result = _definitions.cluster_list_offsets_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1093,7 +1087,7 @@ def clusterListOffsets(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1106,44 +1100,45 @@ def clusterListOffsets(
         ) from error
 
 
+# clusterListOffsetsRequest — ../src/contract.lawspec:281
 def clusterListOffsetsRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: data.TopicPartition,
-    value_2: data.OffsetSpec,
-    value_3: data.IsolationLevel,
+    state: data.BrokerState,
+    value0: data.TopicPartition,
+    value1: data.OffsetSpec,
+    value2: data.IsolationLevel,
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::OffsetSpec"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_561(
+        result = _definitions.cluster_list_offsets_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1154,7 +1149,7 @@ def clusterListOffsetsRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1163,30 +1158,30 @@ def clusterListOffsetsRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterListOffsetsRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterListOffsetsRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterMetadataRequest — ../src/contract.lawspec:278
 def clusterMetadataRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
+    state: data.BrokerState,
+    value0: _builtins.str,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_562(symbols, argument_0, argument_1)
+        result = _definitions.cluster_metadata_request_2(symbols, state, value0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1196,7 +1191,7 @@ def clusterMetadataRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1205,60 +1200,60 @@ def clusterMetadataRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterMetadataRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterMetadataRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterOffsetCommitRequest — ../src/contract.lawspec:291
 def clusterOffsetCommitRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.int,
-    value_4: _builtins.list[data.OffsetEntry],
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
+    value2: _builtins.int,
+    value3: _builtins.list[data.OffsetEntry],
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        value3 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_4,
-            64,
+            value3,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_563(
+        result = _definitions.cluster_offset_commit_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            state,
+            value0,
+            value1,
+            value2,
+            value3,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1269,7 +1264,7 @@ def clusterOffsetCommitRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1278,41 +1273,41 @@ def clusterOffsetCommitRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterOffsetCommitRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterOffsetCommitRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterOffsetFetchRequest — ../src/contract.lawspec:292
 def clusterOffsetFetchRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: data.TopicPartition,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: data.TopicPartition,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_564(
+        result = _definitions.cluster_offset_fetch_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            state,
+            value0,
+            value1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1323,7 +1318,7 @@ def clusterOffsetFetchRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1332,30 +1327,30 @@ def clusterOffsetFetchRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterOffsetFetchRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterOffsetFetchRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterPartitionsFor — ../src/contract.lawspec:295
 def clusterPartitionsFor(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
+    state: data.BrokerState,
+    value0: _builtins.str,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_565(symbols, argument_0, argument_1)
+        result = _definitions.cluster_partitions_for_2(symbols, state, value0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1365,7 +1360,7 @@ def clusterPartitionsFor(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1374,55 +1369,52 @@ def clusterPartitionsFor(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterPartitionsFor: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterPartitionsFor: " + _builtins.str(error),
         ) from error
 
 
+# clusterProduceRequest — ../src/contract.lawspec:279
 def clusterProduceRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: data.TopicPartition,
-    value_2: _schema.Maybe[data.ProducerTag],
-    value_3: _builtins.list[data.Record],
+    state: data.BrokerState,
+    value0: data.TopicPartition,
+    value1: _schema.Maybe[data.ProducerTag],
+    value2: _builtins.list[data.Record],
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.kafka.model::type::ProducerTag")],
             ),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
-            value_3,
-            64,
+        value2 = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_566(
+        result = _definitions.cluster_produce_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1433,7 +1425,7 @@ def clusterProduceRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1442,27 +1434,27 @@ def clusterProduceRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterProduceRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterProduceRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterStart — ../src/contract.lawspec:274
 def clusterStart(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    unit: ls.Absence,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        unit = _lawspec_schema.from_native(
             _schema.Named("Unit"),
-            value_0,
-            64,
+            unit,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_567(symbols, argument_0)
+        result = _definitions.cluster_start_2(symbols, unit)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1475,44 +1467,45 @@ def clusterStart(
         ) from error
 
 
+# clusterSyncGroup — ../src/contract.lawspec:298
 def clusterSyncGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.int,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
+    value2: _builtins.int,
 ) -> data.Pair[_builtins.list[data.TopicPartition], data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_568(
+        result = _definitions.cluster_sync_group_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1520,17 +1513,13 @@ def clusterSyncGroup(
                 [
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                     _schema.Named("lawtwin.kafka.model::type::BrokerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1543,44 +1532,45 @@ def clusterSyncGroup(
         ) from error
 
 
+# clusterSyncGroupRequest — ../src/contract.lawspec:287
 def clusterSyncGroupRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.int,
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
+    value2: _builtins.int,
 ) -> data.Pair[_builtins.list[data.TopicPartition], data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_569(
+        result = _definitions.cluster_sync_group_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1588,17 +1578,13 @@ def clusterSyncGroupRequest(
                 [
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                     _schema.Named("lawtwin.kafka.model::type::BrokerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1607,68 +1593,68 @@ def clusterSyncGroupRequest(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterSyncGroupRequest: "
-            + _builtins.str(error),
+            "contracttest.kafka::clusterSyncGroupRequest: " + _builtins.str(error),
         ) from error
 
 
+# clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284
 def clusterTxnOffsetCommitRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.BrokerState,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: _builtins.int,
-    value_4: _builtins.str,
-    value_5: _builtins.list[data.OffsetEntry],
+    state: data.BrokerState,
+    value0: _builtins.str,
+    value1: _builtins.int,
+    value2: _builtins.int,
+    value3: _builtins.str,
+    value4: _builtins.list[data.OffsetEntry],
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_0,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        value3 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_4,
-            64,
+            value3,
+            MACHINE_BITS,
             symbols,
         )
-        argument_5 = _lawspec_schema.from_native(
+        value4 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_5,
-            64,
+            value4,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_570(
+        result = _definitions.cluster_txn_offset_commit_request_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
-            argument_5,
+            state,
+            value0,
+            value1,
+            value2,
+            value3,
+            value4,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1679,7 +1665,7 @@ def clusterTxnOffsetCommitRequest(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1693,28 +1679,29 @@ def clusterTxnOffsetCommitRequest(
         ) from error
 
 
+# kafkaConsumerAssign — ../src/contract.lawspec:1382
 def kafkaConsumerAssign(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.ConsumerState,
-    value_1: _builtins.list[data.TopicPartition],
+    consumer_state: data.ConsumerState,
+    value0: _builtins.list[data.TopicPartition],
 ) -> data.Pair[ls.Absence, data.ConsumerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        consumer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            consumer_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_571(symbols, argument_0, argument_1)
+        result = _definitions.kafka_consumer_assign_2(symbols, consumer_state, value0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1724,7 +1711,7 @@ def kafkaConsumerAssign(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1737,23 +1724,21 @@ def kafkaConsumerAssign(
         ) from error
 
 
+# kafkaConsumerClose — ../src/contract.lawspec:1390
 def kafkaConsumerClose(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ConsumerState,
+    consumer_state: data.ConsumerState,
 ) -> data.Pair[ls.Absence, data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        consumer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            consumer_state,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_572(symbols, argument_0)
+        result = _definitions.kafka_consumer_close_2(symbols, consumer_state)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1763,7 +1748,7 @@ def kafkaConsumerClose(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1776,26 +1761,21 @@ def kafkaConsumerClose(
         ) from error
 
 
+# kafkaConsumerCommitSync — ../src/contract.lawspec:1385
 def kafkaConsumerCommitSync(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ConsumerState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.ConsumerState
-]:
+    consumer_state: data.ConsumerState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        consumer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            consumer_state,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_573(symbols, argument_0)
+        result = _definitions.kafka_consumer_commit_sync_2(symbols, consumer_state)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1803,9 +1783,7 @@ def kafkaConsumerCommitSync(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -1813,7 +1791,7 @@ def kafkaConsumerCommitSync(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1822,35 +1800,36 @@ def kafkaConsumerCommitSync(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaConsumerCommitSync: "
-            + _builtins.str(error),
+            "contracttest.kafka::kafkaConsumerCommitSync: " + _builtins.str(error),
         ) from error
 
 
+# kafkaConsumerCommittedOffset — ../src/contract.lawspec:1388
 def kafkaConsumerCommittedOffset(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ConsumerState,
-    value_1: data.TopicPartition,
+    consumer_state: data.ConsumerState,
+    value0: data.TopicPartition,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        consumer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            consumer_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_574(symbols, argument_0, argument_1)
+        result = _definitions.kafka_consumer_committed_offset_2(
+            symbols,
+            consumer_state,
+            value0,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1860,7 +1839,7 @@ def kafkaConsumerCommittedOffset(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1869,38 +1848,35 @@ def kafkaConsumerCommittedOffset(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaConsumerCommittedOffset: "
-            + _builtins.str(error),
+            "contracttest.kafka::kafkaConsumerCommittedOffset: " + _builtins.str(error),
         ) from error
 
 
+# kafkaConsumerPoll — ../src/contract.lawspec:1384
 def kafkaConsumerPoll(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ConsumerState,
-    value_1: _builtins.int,
+    consumer_state: data.ConsumerState,
+    value0: _builtins.int,
 ) -> data.Pair[
     _schema.Either[data.KafkaError, _builtins.list[data.ConsumerRecord]],
-    data.ConsumerState
+    data.ConsumerState,
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        consumer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            consumer_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_575(symbols, argument_0, argument_1)
+        result = _definitions.kafka_consumer_poll_2(symbols, consumer_state, value0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1908,16 +1884,10 @@ def kafkaConsumerPoll(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named(
                                 "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka::type::ConsumerRecord",
-                                    ),
-                                ],
+                                [_schema.Named("lawtwin.kafka::type::ConsumerRecord")],
                             ),
                         ],
                     ),
@@ -1925,7 +1895,7 @@ def kafkaConsumerPoll(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1938,33 +1908,28 @@ def kafkaConsumerPoll(
         ) from error
 
 
+# kafkaConsumerPosition — ../src/contract.lawspec:1387
 def kafkaConsumerPosition(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ConsumerState,
-    value_1: data.TopicPartition,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, _builtins.int],
-    data.ConsumerState
-]:
+    consumer_state: data.ConsumerState,
+    value0: data.TopicPartition,
+) -> data.Pair[_schema.Either[data.KafkaError, _builtins.int], data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        consumer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            consumer_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_576(symbols, argument_0, argument_1)
+        result = _definitions.kafka_consumer_position_2(symbols, consumer_state, value0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1972,9 +1937,7 @@ def kafkaConsumerPosition(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Int64"),
                         ],
                     ),
@@ -1982,7 +1945,7 @@ def kafkaConsumerPosition(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1991,44 +1954,41 @@ def kafkaConsumerPosition(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaConsumerPosition: "
-            + _builtins.str(error),
+            "contracttest.kafka::kafkaConsumerPosition: " + _builtins.str(error),
         ) from error
 
 
+# kafkaConsumerSeek — ../src/contract.lawspec:1386
 def kafkaConsumerSeek(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.ConsumerState,
-    value_1: data.TopicPartition,
-    value_2: _builtins.int,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.ConsumerState
-]:
+    consumer_state: data.ConsumerState,
+    value0: data.TopicPartition,
+    value1: _builtins.int,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.ConsumerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        consumer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            consumer_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_577(
+        result = _definitions.kafka_consumer_seek_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            consumer_state,
+            value0,
+            value1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2037,9 +1997,7 @@ def kafkaConsumerSeek(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -2047,7 +2005,7 @@ def kafkaConsumerSeek(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2060,25 +2018,30 @@ def kafkaConsumerSeek(
         ) from error
 
 
+# kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389
 def kafkaConsumerSetIsolationLevel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.ConsumerState,
-    value_1: data.IsolationLevel,
+    consumer_state: data.ConsumerState,
+    value0: data.IsolationLevel,
 ) -> data.Pair[ls.Absence, data.ConsumerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        consumer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            consumer_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_578(symbols, argument_0, argument_1)
+        result = _definitions.kafka_consumer_set_isolation_level_2(
+            symbols,
+            consumer_state,
+            value0,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2088,7 +2051,7 @@ def kafkaConsumerSetIsolationLevel(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2102,22 +2065,23 @@ def kafkaConsumerSetIsolationLevel(
         ) from error
 
 
+# kafkaConsumerStart — ../src/contract.lawspec:1380
 def kafkaConsumerStart(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    unit: ls.Absence,
 ) -> data.ConsumerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        unit = _lawspec_schema.from_native(
             _schema.Named("Unit"),
-            value_0,
-            64,
+            unit,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_579(symbols, argument_0)
+        result = _definitions.kafka_consumer_start_2(symbols, unit)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2130,52 +2094,50 @@ def kafkaConsumerStart(
         ) from error
 
 
+# kafkaConsumerSubscribe — ../src/contract.lawspec:1383
 def kafkaConsumerSubscribe(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ConsumerState,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.list[_builtins.str],
+    consumer_state: data.ConsumerState,
+    value0: _builtins.str,
+    value1: _builtins.str,
+    value2: _builtins.list[_builtins.str],
 ) -> data.Pair[
     _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]],
-    data.ConsumerState
+    data.ConsumerState,
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        consumer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            consumer_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        value2 = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_3,
-            64,
+            value2,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_580(
+        result = _definitions.kafka_consumer_subscribe_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            consumer_state,
+            value0,
+            value1,
+            value2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2184,26 +2146,12 @@ def kafkaConsumerSubscribe(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named(
                                 "List",
                                 [
                                     _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
+                                        "lawtwin.kafka.model::type::TopicPartition",
                                     ),
                                 ],
                             ),
@@ -2213,7 +2161,7 @@ def kafkaConsumerSubscribe(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2222,31 +2170,30 @@ def kafkaConsumerSubscribe(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaConsumerSubscribe: "
-            + _builtins.str(error),
+            "contracttest.kafka::kafkaConsumerSubscribe: " + _builtins.str(error),
         ) from error
 
 
+# kafkaProducerEnableIdempotence — ../src/contract.lawspec:1230
 def kafkaProducerEnableIdempotence(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ProducerState,
+    producer_state: data.ProducerState,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.ProducerIdAndEpoch],
-    data.ProducerState
+    _schema.Either[data.KafkaError, data.ProducerIdAndEpoch], data.ProducerState
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        producer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_0,
-            64,
+            producer_state,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_581(symbols, argument_0)
+        result = _definitions.kafka_producer_enable_idempotence_2(
+            symbols,
+            producer_state,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2254,24 +2201,9 @@ def kafkaProducerEnableIdempotence(
                     _schema.Named(
                         "Either",
                         [
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                (
-                                    "lawt"
-                                    "win."
-                                    "kafk"
-                                    "a.mo"
-                                    "del:"
-                                    ":typ"
-                                    "e::P"
-                                    "rodu"
-                                    "cerI"
-                                    "dAnd"
-                                    "Epoc"
-                                    "h"
-                                ),
+                                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
                             ),
                         ],
                     ),
@@ -2279,7 +2211,7 @@ def kafkaProducerEnableIdempotence(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2293,18 +2225,19 @@ def kafkaProducerEnableIdempotence(
         ) from error
 
 
+# kafkaProducerFlush — ../src/contract.lawspec:1229
 def kafkaProducerFlush(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.ProducerState,
+    producer_state: data.ProducerState,
 ) -> data.Pair[ls.Absence, data.ProducerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        producer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_0,
-            64,
+            producer_state,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_582(symbols, argument_0)
+        result = _definitions.kafka_producer_flush_2(symbols, producer_state)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2314,7 +2247,7 @@ def kafkaProducerFlush(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2327,18 +2260,22 @@ def kafkaProducerFlush(
         ) from error
 
 
+# kafkaProducerProducerIdentity — ../src/contract.lawspec:1232
 def kafkaProducerProducerIdentity(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.ProducerState,
+    producer_state: data.ProducerState,
 ) -> data.Pair[_schema.Maybe[data.ProducerIdAndEpoch], data.ProducerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        producer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_0,
-            64,
+            producer_state,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_583(symbols, argument_0)
+        result = _definitions.kafka_producer_producer_identity_2(
+            symbols,
+            producer_state,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2347,20 +2284,7 @@ def kafkaProducerProducerIdentity(
                         "Maybe",
                         [
                             _schema.Named(
-                                (
-                                    "lawt"
-                                    "win."
-                                    "kafk"
-                                    "a.mo"
-                                    "del:"
-                                    ":typ"
-                                    "e::P"
-                                    "rodu"
-                                    "cerI"
-                                    "dAnd"
-                                    "Epoc"
-                                    "h"
-                                ),
+                                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
                             ),
                         ],
                     ),
@@ -2368,7 +2292,7 @@ def kafkaProducerProducerIdentity(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2382,26 +2306,23 @@ def kafkaProducerProducerIdentity(
         ) from error
 
 
+# kafkaProducerRetryLastSend — ../src/contract.lawspec:1231
 def kafkaProducerRetryLastSend(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ProducerState,
+    producer_state: data.ProducerState,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.RecordMetadata],
-    data.ProducerState
+    _schema.Either[data.KafkaError, data.RecordMetadata], data.ProducerState
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        producer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_0,
-            64,
+            producer_state,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_584(symbols, argument_0)
+        result = _definitions.kafka_producer_retry_last_send_2(symbols, producer_state)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2409,19 +2330,15 @@ def kafkaProducerRetryLastSend(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka::type::RecordMetadata",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                         ],
                     ),
                     _schema.Named("lawtwin.kafka::type::ProducerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2430,20 +2347,19 @@ def kafkaProducerRetryLastSend(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaProducerRetryLastSend: "
-            + _builtins.str(error),
+            "contracttest.kafka::kafkaProducerRetryLastSend: " + _builtins.str(error),
         ) from error
 
 
+# kafkaProducerSend — ../src/contract.lawspec:1228
 def kafkaProducerSend(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     partitioner: "lawspec_abilities.lawtwin.kafka.Partitioner",
-    value_0: data.ProducerState,
-    value_1: data.ProducerRecord,
+    producer_state: data.ProducerState,
+    value0: data.ProducerRecord,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.RecordMetadata],
-    data.ProducerState
+    _schema.Either[data.KafkaError, data.RecordMetadata], data.ProducerState
 ]:
     try:
         ls.install_handlers(
@@ -2453,19 +2369,19 @@ def kafkaProducerSend(
                 "lawtwin.kafka::ability::Partitioner": partitioner,
             },
         )
-        argument_0 = _lawspec_schema.from_native(
+        producer_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_0,
-            64,
+            producer_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_585(symbols, argument_0, argument_1)
+        result = _definitions.kafka_producer_send_2(symbols, producer_state, value0)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2473,19 +2389,15 @@ def kafkaProducerSend(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka::type::RecordMetadata",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                         ],
                     ),
                     _schema.Named("lawtwin.kafka::type::ProducerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2498,22 +2410,23 @@ def kafkaProducerSend(
         ) from error
 
 
+# kafkaProducerStart — ../src/contract.lawspec:1226
 def kafkaProducerStart(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    unit: ls.Absence,
 ) -> data.ProducerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        unit = _lawspec_schema.from_native(
             _schema.Named("Unit"),
-            value_0,
-            64,
+            unit,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_586(symbols, argument_0)
+        result = _definitions.kafka_producer_start_2(symbols, unit)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2526,26 +2439,21 @@ def kafkaProducerStart(
         ) from error
 
 
+# kafkaTransactionsAbortTransaction — ../src/contract.lawspec:1738
 def kafkaTransactionsAbortTransaction(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TransactionState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    txn_state: data.TransactionState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        txn_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            txn_state,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_587(symbols, argument_0)
+        result = _definitions.kafka_transactions_abort_transaction_2(symbols, txn_state)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2553,9 +2461,7 @@ def kafkaTransactionsAbortTransaction(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -2563,7 +2469,7 @@ def kafkaTransactionsAbortTransaction(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2577,36 +2483,35 @@ def kafkaTransactionsAbortTransaction(
         ) from error
 
 
+# kafkaTransactionsAddPartitionsToTransaction — ../src/contract.lawspec:1734
 def kafkaTransactionsAddPartitionsToTransaction(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TransactionState,
-    value_1: _builtins.list[data.TopicPartition],
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    txn_state: data.TransactionState,
+    value0: _builtins.list[data.TopicPartition],
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        txn_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            txn_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_588(symbols, argument_0, argument_1)
+        result = _definitions.kafka_transactions_add_partitions_to_transaction_2(
+            symbols,
+            txn_state,
+            value0,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2614,9 +2519,7 @@ def kafkaTransactionsAddPartitionsToTransaction(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -2624,7 +2527,7 @@ def kafkaTransactionsAddPartitionsToTransaction(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2638,21 +2541,19 @@ def kafkaTransactionsAddPartitionsToTransaction(
         ) from error
 
 
+# kafkaTransactionsBeginTransaction — ../src/contract.lawspec:1733
 def kafkaTransactionsBeginTransaction(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TransactionState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    txn_state: data.TransactionState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        txn_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            txn_state,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_589(symbols, argument_0)
+        result = _definitions.kafka_transactions_begin_transaction_2(symbols, txn_state)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2660,9 +2561,7 @@ def kafkaTransactionsBeginTransaction(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -2670,7 +2569,7 @@ def kafkaTransactionsBeginTransaction(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2684,26 +2583,24 @@ def kafkaTransactionsBeginTransaction(
         ) from error
 
 
+# kafkaTransactionsCommitTransaction — ../src/contract.lawspec:1737
 def kafkaTransactionsCommitTransaction(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TransactionState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    txn_state: data.TransactionState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        txn_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            txn_state,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_590(symbols, argument_0)
+        result = _definitions.kafka_transactions_commit_transaction_2(
+            symbols,
+            txn_state,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2711,9 +2608,7 @@ def kafkaTransactionsCommitTransaction(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -2721,7 +2616,7 @@ def kafkaTransactionsCommitTransaction(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2735,33 +2630,34 @@ def kafkaTransactionsCommitTransaction(
         ) from error
 
 
+# kafkaTransactionsInitTransactions — ../src/contract.lawspec:1732
 def kafkaTransactionsInitTransactions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TransactionState,
-    value_1: _builtins.str,
+    txn_state: data.TransactionState,
+    value0: _builtins.str,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.ProducerIdAndEpoch],
-    data.TransactionState
+    _schema.Either[data.KafkaError, data.ProducerIdAndEpoch], data.TransactionState
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        txn_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            txn_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_591(symbols, argument_0, argument_1)
+        result = _definitions.kafka_transactions_init_transactions_2(
+            symbols,
+            txn_state,
+            value0,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2769,24 +2665,9 @@ def kafkaTransactionsInitTransactions(
                     _schema.Named(
                         "Either",
                         [
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                (
-                                    "lawt"
-                                    "win."
-                                    "kafk"
-                                    "a.mo"
-                                    "del:"
-                                    ":typ"
-                                    "e::P"
-                                    "rodu"
-                                    "cerI"
-                                    "dAnd"
-                                    "Epoc"
-                                    "h"
-                                ),
+                                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
                             ),
                         ],
                     ),
@@ -2794,7 +2675,7 @@ def kafkaTransactionsInitTransactions(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2808,15 +2689,15 @@ def kafkaTransactionsInitTransactions(
         ) from error
 
 
+# kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735
 def kafkaTransactionsSendInTransaction(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     partitioner: "lawspec_abilities.lawtwin.kafka.Partitioner",
-    value_0: data.TransactionState,
-    value_1: data.ProducerRecord,
+    txn_state: data.TransactionState,
+    value0: data.ProducerRecord,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.RecordMetadata],
-    data.TransactionState
+    _schema.Either[data.KafkaError, data.RecordMetadata], data.TransactionState
 ]:
     try:
         ls.install_handlers(
@@ -2826,19 +2707,23 @@ def kafkaTransactionsSendInTransaction(
                 "lawtwin.kafka::ability::Partitioner": partitioner,
             },
         )
-        argument_0 = _lawspec_schema.from_native(
+        txn_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            txn_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_592(symbols, argument_0, argument_1)
+        result = _definitions.kafka_transactions_send_in_transaction_2(
+            symbols,
+            txn_state,
+            value0,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2846,19 +2731,15 @@ def kafkaTransactionsSendInTransaction(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka::type::RecordMetadata",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                         ],
                     ),
                     _schema.Named("lawtwin.kafka::type::TransactionState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2872,47 +2753,42 @@ def kafkaTransactionsSendInTransaction(
         ) from error
 
 
+# kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736
 def kafkaTransactionsSendOffsetsToTransaction(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TransactionState,
-    value_1: _builtins.str,
-    value_2: _builtins.list[data.OffsetEntry],
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    txn_state: data.TransactionState,
+    value0: _builtins.str,
+    value1: _builtins.list[data.OffsetEntry],
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        txn_state = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            txn_state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        value0 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            value0,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        value1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_2,
-            64,
+            value1,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_593(
+        result = _definitions.kafka_transactions_send_offsets_to_transaction_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            txn_state,
+            value0,
+            value1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2921,9 +2797,7 @@ def kafkaTransactionsSendOffsetsToTransaction(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -2931,7 +2805,7 @@ def kafkaTransactionsSendOffsetsToTransaction(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2945,22 +2819,23 @@ def kafkaTransactionsSendOffsetsToTransaction(
         ) from error
 
 
+# kafkaTransactionsStart — ../src/contract.lawspec:1730
 def kafkaTransactionsStart(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    unit: ls.Absence,
 ) -> data.TransactionState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        unit = _lawspec_schema.from_native(
             _schema.Named("Unit"),
-            value_0,
-            64,
+            unit,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_594(symbols, argument_0)
+        result = _definitions.kafka_transactions_start_2(symbols, unit)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2969,27 +2844,27 @@ def kafkaTransactionsStart(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaTransactionsStart: "
-            + _builtins.str(error),
+            "contracttest.kafka::kafkaTransactionsStart: " + _builtins.str(error),
         ) from error
 
 
+# boundedInt16 — <lawspec.collections>:358
 def lawspecCollectionsBoundedInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_595(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_int16_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int16")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3003,22 +2878,23 @@ def lawspecCollectionsBoundedInt16(
         ) from error
 
 
+# boundedInt32 — <lawspec.collections>:371
 def lawspecCollectionsBoundedInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_596(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_int32_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3032,22 +2908,23 @@ def lawspecCollectionsBoundedInt32(
         ) from error
 
 
+# boundedInt64 — <lawspec.collections>:384
 def lawspecCollectionsBoundedInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_597(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_int64_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3061,22 +2938,23 @@ def lawspecCollectionsBoundedInt64(
         ) from error
 
 
+# boundedInt8 — <lawspec.collections>:345
 def lawspecCollectionsBoundedInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_598(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_int8_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int8")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3090,22 +2968,23 @@ def lawspecCollectionsBoundedInt8(
         ) from error
 
 
+# boundedIntSize — <lawspec.collections>:449
 def lawspecCollectionsBoundedIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_599(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_int_size_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("IntSize")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3119,22 +2998,23 @@ def lawspecCollectionsBoundedIntSize(
         ) from error
 
 
+# boundedUInt16 — <lawspec.collections>:410
 def lawspecCollectionsBoundedUInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_600(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_u_int16_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt16")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3148,22 +3028,23 @@ def lawspecCollectionsBoundedUInt16(
         ) from error
 
 
+# boundedUInt32 — <lawspec.collections>:423
 def lawspecCollectionsBoundedUInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_601(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_u_int32_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3177,22 +3058,23 @@ def lawspecCollectionsBoundedUInt32(
         ) from error
 
 
+# boundedUInt64 — <lawspec.collections>:436
 def lawspecCollectionsBoundedUInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_602(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_u_int64_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3206,22 +3088,23 @@ def lawspecCollectionsBoundedUInt64(
         ) from error
 
 
+# boundedUInt8 — <lawspec.collections>:397
 def lawspecCollectionsBoundedUInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_603(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_u_int8_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt8")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3235,22 +3118,23 @@ def lawspecCollectionsBoundedUInt8(
         ) from error
 
 
+# boundedUIntPtr — <lawspec.collections>:475
 def lawspecCollectionsBoundedUIntPtr(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_604(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_u_int_ptr_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3264,22 +3148,23 @@ def lawspecCollectionsBoundedUIntPtr(
         ) from error
 
 
+# boundedUIntSize — <lawspec.collections>:462
 def lawspecCollectionsBoundedUIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_605(symbols, argument_0)
+        result = _definitions.lawspec_collections_bounded_u_int_size_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UIntSize")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3293,22 +3178,23 @@ def lawspecCollectionsBoundedUIntSize(
         ) from error
 
 
+# saturatingInt16 — <lawspec.collections>:354
 def lawspecCollectionsSaturatingInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_606(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_int16_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int16"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3322,22 +3208,23 @@ def lawspecCollectionsSaturatingInt16(
         ) from error
 
 
+# saturatingInt32 — <lawspec.collections>:367
 def lawspecCollectionsSaturatingInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_607(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_int32_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3351,22 +3238,23 @@ def lawspecCollectionsSaturatingInt32(
         ) from error
 
 
+# saturatingInt64 — <lawspec.collections>:380
 def lawspecCollectionsSaturatingInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_608(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_int64_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3380,22 +3268,23 @@ def lawspecCollectionsSaturatingInt64(
         ) from error
 
 
+# saturatingInt8 — <lawspec.collections>:341
 def lawspecCollectionsSaturatingInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_609(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_int8_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int8"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3409,22 +3298,23 @@ def lawspecCollectionsSaturatingInt8(
         ) from error
 
 
+# saturatingIntSize — <lawspec.collections>:445
 def lawspecCollectionsSaturatingIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_610(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_int_size_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("IntSize"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3438,22 +3328,23 @@ def lawspecCollectionsSaturatingIntSize(
         ) from error
 
 
+# saturatingUInt16 — <lawspec.collections>:406
 def lawspecCollectionsSaturatingUInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_611(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_u_int16_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt16"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3467,22 +3358,23 @@ def lawspecCollectionsSaturatingUInt16(
         ) from error
 
 
+# saturatingUInt32 — <lawspec.collections>:419
 def lawspecCollectionsSaturatingUInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_612(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_u_int32_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3496,22 +3388,23 @@ def lawspecCollectionsSaturatingUInt32(
         ) from error
 
 
+# saturatingUInt64 — <lawspec.collections>:432
 def lawspecCollectionsSaturatingUInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_613(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_u_int64_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3525,22 +3418,23 @@ def lawspecCollectionsSaturatingUInt64(
         ) from error
 
 
+# saturatingUInt8 — <lawspec.collections>:393
 def lawspecCollectionsSaturatingUInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_614(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_u_int8_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt8"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3554,22 +3448,23 @@ def lawspecCollectionsSaturatingUInt8(
         ) from error
 
 
+# saturatingUIntPtr — <lawspec.collections>:471
 def lawspecCollectionsSaturatingUIntPtr(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_615(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_u_int_ptr_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UIntPtr"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3583,22 +3478,26 @@ def lawspecCollectionsSaturatingUIntPtr(
         ) from error
 
 
+# saturatingUIntSize — <lawspec.collections>:458
 def lawspecCollectionsSaturatingUIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_616(symbols, argument_0)
+        result = _definitions.lawspec_collections_saturating_u_int_size_3(
+            symbols,
+            value,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("UIntSize"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3612,22 +3511,23 @@ def lawspecCollectionsSaturatingUIntSize(
         ) from error
 
 
+# wrappingInt16 — <lawspec.collections>:349
 def lawspecCollectionsWrappingInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_617(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_int16_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int16"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3641,22 +3541,23 @@ def lawspecCollectionsWrappingInt16(
         ) from error
 
 
+# wrappingInt32 — <lawspec.collections>:362
 def lawspecCollectionsWrappingInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_618(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_int32_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3670,22 +3571,23 @@ def lawspecCollectionsWrappingInt32(
         ) from error
 
 
+# wrappingInt64 — <lawspec.collections>:375
 def lawspecCollectionsWrappingInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_619(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_int64_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3699,22 +3601,23 @@ def lawspecCollectionsWrappingInt64(
         ) from error
 
 
+# wrappingInt8 — <lawspec.collections>:336
 def lawspecCollectionsWrappingInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_620(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_int8_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int8"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3728,22 +3631,23 @@ def lawspecCollectionsWrappingInt8(
         ) from error
 
 
+# wrappingIntSize — <lawspec.collections>:440
 def lawspecCollectionsWrappingIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_621(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_int_size_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("IntSize"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3757,22 +3661,23 @@ def lawspecCollectionsWrappingIntSize(
         ) from error
 
 
+# wrappingUInt16 — <lawspec.collections>:401
 def lawspecCollectionsWrappingUInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_622(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_u_int16_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt16"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3786,22 +3691,23 @@ def lawspecCollectionsWrappingUInt16(
         ) from error
 
 
+# wrappingUInt32 — <lawspec.collections>:414
 def lawspecCollectionsWrappingUInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_623(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_u_int32_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3815,22 +3721,23 @@ def lawspecCollectionsWrappingUInt32(
         ) from error
 
 
+# wrappingUInt64 — <lawspec.collections>:427
 def lawspecCollectionsWrappingUInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_624(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_u_int64_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3844,22 +3751,23 @@ def lawspecCollectionsWrappingUInt64(
         ) from error
 
 
+# wrappingUInt8 — <lawspec.collections>:388
 def lawspecCollectionsWrappingUInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_625(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_u_int8_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt8"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3873,22 +3781,23 @@ def lawspecCollectionsWrappingUInt8(
         ) from error
 
 
+# wrappingUIntPtr — <lawspec.collections>:466
 def lawspecCollectionsWrappingUIntPtr(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_626(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_u_int_ptr_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UIntPtr"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3902,22 +3811,23 @@ def lawspecCollectionsWrappingUIntPtr(
         ) from error
 
 
+# wrappingUIntSize — <lawspec.collections>:453
 def lawspecCollectionsWrappingUIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_627(symbols, argument_0)
+        result = _definitions.lawspec_collections_wrapping_u_int_size_3(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UIntSize"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -3931,101 +3841,20 @@ def lawspecCollectionsWrappingUIntSize(
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a214051(
+# keyValDeleteItems — <lawspec.collections>:258
+def lawspec_lawspecCollectionsKeyValDeleteItems_771a72c40608de8894261e455c17e8ec0a69032b95e96bad61d72f5e9c022f486bf4f1e625b9(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
-) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("List", [_schema.Named("Text")]),
-                        ],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_628(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("List", [_schema.Named("Text")]),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "teIt"
-                "ems_"
-                "6231"
-                "8b0a"
-                "9a21"
-                "4051"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
+    k: _builtins.int,
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
 ) -> _builtins.list[data.Entry[_builtins.int, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -4035,11 +3864,15 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_629(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_delete_items_int64_list_entry_int64_int64_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4051,7 +3884,7 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -4060,62 +3893,105 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "teIt"
-                "ems_"
-                "ad1c"
-                "27c4"
-                "ed88"
-                "64c5"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_771a72c40608de8894261e455c17e8ec0a69032b95e96bad61d72f5e9c022f486bf4f1e625b9: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025(
+# keyValDeleteItems — <lawspec.collections>:258
+def lawspec_lawspecCollectionsKeyValDeleteItems_c5a0fd457d76648b8272bd72c23efef210d75beaf06c7718112ae05d617a5f678fcd427a75d3(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.dict[_builtins.int, _builtins.int],
+    k: _builtins.str,
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("List", [_schema.Named("Text")]),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_delete_items_text_list_entry_text_list_text_3(
+            symbols,
+            k,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("List", [_schema.Named("Text")]),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_c5a0fd457d76648b8272bd72c23efef210d75beaf06c7718112ae05d617a5f678fcd427a75d3: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValDelete — <lawspec.collections>:319
+def lawspec_lawspecCollectionsKeyValDelete_7948a0eb1721140fed54d63109fefad40b7572e144ba68bdbb14410810baba90(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.int,
+    m: _builtins.dict[_builtins.int, _builtins.int],
 ) -> _builtins.dict[_builtins.int, _builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [_schema.Named("Int64"), _schema.Named("Int64")],
             ),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_630(symbols, argument_0, argument_1)
+        result = (
+            _definitions.lawspec_collections_key_val_delete_int64_key_val_int64_int64_3(
+                symbols,
+                k,
+                m,
+            )
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [_schema.Named("Int64"), _schema.Named("Int64")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -4124,67 +4000,40 @@ def lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "te_9"
-                "5f14"
-                "dd18"
-                "3eea"
-                "025:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValDelete_7948a0eb1721140fed54d63109fefad40b7572e144ba68bdbb14410810baba90: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91(
+# keyValDelete — <lawspec.collections>:319
+def lawspec_lawspecCollectionsKeyValDelete_a216530866c79a40779ed454d400a8a73d2bc1b6390388ba686f6f6d83c89718(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
+    k: _builtins.str,
+    m: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
 ) -> _builtins.dict[_builtins.str, _builtins.list[_builtins.str]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Text"),
-                    _schema.Named("List", [_schema.Named("Text")]),
-                ],
+                [_schema.Named("Text"), _schema.Named("List", [_schema.Named("Text")])],
             ),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_631(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_delete_text_key_val_text_list_text_3(
+            symbols,
+            k,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Text"),
-                    _schema.Named("List", [_schema.Named("Text")]),
-                ],
+                [_schema.Named("Text"), _schema.Named("List", [_schema.Named("Text")])],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -4193,38 +4042,67 @@ def lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "te_d"
-                "7a33"
-                "8e61"
-                "b94b"
-                "c91:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValDelete_a216530866c79a40779ed454d400a8a73d2bc1b6390388ba686f6f6d83c89718: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
+# keyValEntries — <lawspec.collections>:331
+def lawspec_lawspecCollectionsKeyValEntries_4279527bc1b092d2d6a7a24d656394c2e9f47e1a3ff26a9d4c0bac439b6b1f0ccff2c08c89b8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.dict[_builtins.str, data.Group],
+    m: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]]:
+    try:
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("List", [_schema.Named("Text")])],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = (
+            _definitions.lawspec_collections_key_val_entries_key_val_text_list_text_3(
+                symbols,
+                m,
+            )
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("List", [_schema.Named("Text")]),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValEntries_4279527bc1b092d2d6a7a24d656394c2e9f47e1a3ff26a9d4c0bac439b6b1f0ccff2c08c89b8: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValEntries — <lawspec.collections>:331
+def lawspec_lawspecCollectionsKeyValEntries_4de733d3cb3d7f5e5cc0deb13b86bc72b0660c24f87c2660da3313cd175f28100621279f69d6(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    m: _builtins.dict[_builtins.str, data.Group],
 ) -> _builtins.list[data.Entry[_builtins.str, data.Group]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -4232,11 +4110,14 @@ def lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
                     _schema.Named("lawtwin.kafka.model::type::Group"),
                 ],
             ),
-            value_0,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_632(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_entries_key_val_text_group_3(
+            symbols,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4251,7 +4132,7 @@ def lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -4260,62 +4141,36 @@ def lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Entr"
-                "ies_"
-                "6682"
-                "4193"
-                "1cc1"
-                "53f4"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValEntries_4de733d3cb3d7f5e5cc0deb13b86bc72b0660c24f87c2660da3313cd175f28100621279f69d6: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
+# keyValEntries — <lawspec.collections>:331
+def lawspec_lawspecCollectionsKeyValEntries_b5267df4da8ff53cc44805e45560917db0824358b713aa51a55deb2c121a1ae5c25c6daf5bf7(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.dict[
-        _builtins.str,
-        _builtins.list[data.TopicPartition]
-    ],
-) -> _builtins.list[
-    data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]
-]:
+    m: _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_633(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_entries_key_val_text_list_topic_partition_3(
+            symbols,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4328,19 +4183,7 @@ def lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
                                 "List",
                                 [
                                     _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
+                                        "lawtwin.kafka.model::type::TopicPartition",
                                     ),
                                 ],
                             ),
@@ -4349,7 +4192,7 @@ def lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -4358,186 +4201,19 @@ def lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Entr"
-                "ies_"
-                "6ea9"
-                "a99b"
-                "05e7"
-                "4c: "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValEntries_b5267df4da8ff53cc44805e45560917db0824358b713aa51a55deb2c121a1ae5c25c6daf5bf7: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_12b00ab4b507088f71df1be61bc4d8724805a5b33fd2808bba2243d4f4632a5bd7718ed84e9a(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
-) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Text"),
-                    _schema.Named("List", [_schema.Named("Text")]),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_634(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("List", [_schema.Named("Text")]),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Entr"
-                "ies_"
-                "df54"
-                "3c41"
-                "56f9"
-                "821a"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
-    value_1: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
-) -> _builtins.list[data.Entry[_builtins.int, _builtins.int]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Int64"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Int64"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_635(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Int64"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_18"
-                "7607"
-                "77c3"
-                "6ef5"
-                "87: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
-    value_1: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
+    acc: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
 ) -> _builtins.list[data.Entry[_builtins.str, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -4547,11 +4223,11 @@ def lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -4561,11 +4237,15 @@ def lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_636(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_text_int64_list_entry_text_int64_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4577,7 +4257,7 @@ def lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -4586,344 +4266,57 @@ def lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_20"
-                "1f93"
-                "1497"
-                "38fc"
-                "4f: "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_12b00ab4b507088f71df1be61bc4d8724805a5b33fd2808bba2243d4f4632a5bd7718ed84e9a: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_206952ddd07102141564fa0cbe9efcdc8deac3d31e64f465fb060811b8b65b1611e56d3fdd85(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
-    value_1: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
-) -> _builtins.list[data.Entry[_builtins.str, _builtins.int]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Text"), _schema.Named("Int32")],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Text"), _schema.Named("Int32")],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_637(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Text"), _schema.Named("Int32")],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_22"
-                "4702"
-                "891e"
-                "6ebf"
-                "ba: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
-    value_1: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
-) -> _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::ProducerEntry",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::ProducerEntry",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_638(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::ProducerEntry",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_28"
-                "070f"
-                "e129"
-                "55af"
-                "99: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.str, data.Group]],
-    value_1: _builtins.list[data.Entry[_builtins.str, data.Group]],
-) -> _builtins.list[data.Entry[_builtins.str, data.Group]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("lawtwin.kafka.model::type::Group"),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("lawtwin.kafka.model::type::Group"),
-                        ],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_639(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("lawtwin.kafka.model::type::Group"),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_30"
-                "e250"
-                "7dcc"
-                "3ef9"
-                "ac: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
-    value_1: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
+    es: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
+    acc: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
 ) -> _builtins.list[data.Entry[data.GroupPartition, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::GroupPartition",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
                             _schema.Named("Int64"),
                         ],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::GroupPartition",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
                             _schema.Named("Int64"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_640(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_group_partition_int64_list_entry_group_partition_int64_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -4931,16 +4324,14 @@ def lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::GroupPartition",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
                             _schema.Named("Int64"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -4949,77 +4340,57 @@ def lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_4b"
-                "b0a4"
-                "7f58"
-                "4a2b"
-                "9e: "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_206952ddd07102141564fa0cbe9efcdc8deac3d31e64f465fb060811b8b65b1611e56d3fdd85: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_2165941307baf9f047513c4718506413f48f0fa12b750195ae33cabb2c9efdf1123487b4f16b(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
-    value_1: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
+    es: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
+    acc: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
 ) -> _builtins.list[data.Entry[data.TopicPartition, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int64"),
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int32"),
                         ],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int64"),
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int32"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_641(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_topic_partition_int32_list_entry_topic_partition_int32_2(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -5027,16 +4398,14 @@ def lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int64"),
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int32"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -5045,179 +4414,57 @@ def lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_65"
-                "6b3e"
-                "1b81"
-                "a045"
-                "7e: "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_2165941307baf9f047513c4718506413f48f0fa12b750195ae33cabb2c9efdf1123487b4f16b: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_4c8c229cdff68d090892afbe8a66065b2341be376dd7c9ad381898ede5e949f7a781a528d7ea(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
-    value_1: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
-) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("List", [_schema.Named("Text")]),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("List", [_schema.Named("Text")]),
-                        ],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_642(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("List", [_schema.Named("Text")]),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_85"
-                "bb2e"
-                "ea04"
-                "2e5f"
-                "e3: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[data.TopicPartition, data.PartitionLog]
-    ],
-    value_1: _builtins.list[
-        data.Entry[data.TopicPartition, data.PartitionLog]
-    ],
+    es: _builtins.list[data.Entry[data.TopicPartition, data.PartitionLog]],
+    acc: _builtins.list[data.Entry[data.TopicPartition, data.PartitionLog]],
 ) -> _builtins.list[data.Entry[data.TopicPartition, data.PartitionLog]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::PartitionLog",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
                         ],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::PartitionLog",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_643(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_topic_partition_partition_log_list_entry_topic_partition_partition_log_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -5225,18 +4472,14 @@ def lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::PartitionLog",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -5245,404 +4488,19 @@ def lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_cb"
-                "e112"
-                "dc9d"
-                "d1eb"
-                "10: "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_4c8c229cdff68d090892afbe8a66065b2341be376dd7c9ad381898ede5e949f7a781a528d7ea: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_5d70ef28f9c8857b002bf7c3251cc879c507e7f598d8e0c7882e5b2a40aac742c3c2e4014692(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]
-    ],
-    value_1: _builtins.list[
-        data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]
-    ],
-) -> _builtins.list[data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]]:
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
+    acc: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka.model::type::BatchMeta",
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka.model::type::BatchMeta",
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_644(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka.model::type::BatchMeta",
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_dd"
-                "3ea0"
-                "8b63"
-                "484f"
-                "f8: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]
-    ],
-    value_1: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]
-    ],
-) -> _builtins.list[
-    data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]
-]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_645(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_ea"
-                "d6d6"
-                "bde1"
-                "a20a"
-                "26: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd14e9(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
-    value_1: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
-) -> _builtins.list[data.Entry[data.TopicPartition, _builtins.int]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int32"),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int32"),
-                        ],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_646(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int32"),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_fa"
-                "a46e"
-                "63cb"
-                "cd14"
-                "e9: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
-) -> _builtins.list[_builtins.str]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -5655,346 +4513,11 @@ def lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72(
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_647(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named("List", [_schema.Named("Text")]),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Keys"
-                "Item"
-                "s_e2"
-                "33e4"
-                "9033"
-                "adca"
-                "72: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
-) -> _builtins.list[_builtins.str]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Text"),
-                    _schema.Named("List", [_schema.Named("Text")]),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_648(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named("List", [_schema.Named("Text")]),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Keys"
-                "_c7c"
-                "3320"
-                "4374"
-                "6df9"
-                "8: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.list[
-        data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]
-    ],
-) -> _schema.Maybe[_builtins.list[data.BatchMeta]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka.model::type::BatchMeta",
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_649(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "Maybe",
-                [
-                    _schema.Named(
-                        "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::BatchMeta",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "136c"
-                "c677"
-                "2b4e"
-                "992f"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf3c8f0b(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
-) -> _schema.Maybe[_builtins.int]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int64"),
-                        ],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_650(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "1eb6"
-                "9f0f"
-                "df3c"
-                "8f0b"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
-) -> _schema.Maybe[_builtins.int]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Text"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_651(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "5756"
-                "b261"
-                "8072"
-                "6581"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
-) -> _schema.Maybe[_builtins.list[_builtins.str]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -6007,18 +4530,30 @@ def lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_652(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_text_list_text_list_entry_text_list_text_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "Maybe",
-                [_schema.Named("List", [_schema.Named("Text")])],
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("List", [_schema.Named("Text")]),
+                        ],
+                    ),
+                ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -6027,48 +4562,19 @@ def lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "6928"
-                "0184"
-                "901e"
-                "a585"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_5d70ef28f9c8857b002bf7c3251cc879c507e7f598d8e0c7882e5b2a40aac742c3c2e4014692: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_851d91196db8424dd5c9d525200fdaa65ebc5cc6b460404b2e0268baa1d29757f65344e47ef0(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]
-    ],
-) -> _schema.Maybe[_builtins.list[data.TopicPartition]]:
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]],
+    acc: _builtins.list[data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -6080,19 +4586,7 @@ def lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75(
                                 "List",
                                 [
                                     _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
+                                        "lawtwin.kafka.model::type::TopicPartition",
                                     ),
                                 ],
                             ),
@@ -6100,101 +4594,61 @@ def lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_653(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "Maybe",
-                [
-                    _schema.Named(
-                        "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "8260"
-                "3a59"
-                "3544"
-                "0f75"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
-) -> _schema.Maybe[data.ProducerEntry]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("Int64"),
+                            _schema.Named("Text"),
                             _schema.Named(
-                                "lawtwin.kafka.model::type::ProducerEntry",
+                                "List",
+                                [
+                                    _schema.Named(
+                                        "lawtwin.kafka.model::type::TopicPartition",
+                                    ),
+                                ],
                             ),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_654(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_text_list_topic_partition_list_entry_text_list_topic_partition_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "Maybe",
-                [_schema.Named("lawtwin.kafka.model::type::ProducerEntry")],
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named(
+                                "List",
+                                [
+                                    _schema.Named(
+                                        "lawtwin.kafka.model::type::TopicPartition",
+                                    ),
+                                ],
+                            ),
+                        ],
+                    ),
+                ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -6203,46 +4657,19 @@ def lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "8c8e"
-                "1453"
-                "bfc4"
-                "2ee5"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_851d91196db8424dd5c9d525200fdaa65ebc5cc6b460404b2e0268baa1d29757f65344e47ef0: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_99ecfbec287fe8210a8216fae79282b1f2f8e20b0a6e03caac5b085ec692f8d1a018f5216a9f(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
-) -> _schema.Maybe[_builtins.int]:
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
+    acc: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -6252,157 +4679,41 @@ def lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_655(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named("Maybe", [_schema.Named("Int32")]),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "9428"
-                "a088"
-                "2487"
-                "57a3"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.GroupPartition,
-    value_1: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
-) -> _schema.Maybe[_builtins.int]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::GroupPartition",
-                            ),
-                            _schema.Named("Int64"),
-                        ],
+                        [_schema.Named("Text"), _schema.Named("Int32")],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_656(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_text_int32_list_entry_text_int32_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "b5b7"
-                "30fd"
-                "09d3"
-                "f4b3"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
-) -> _schema.Maybe[_builtins.int]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int32"),
-                        ],
+                        [_schema.Named("Text"), _schema.Named("Int32")],
                     ),
                 ],
             ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_657(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -6411,46 +4722,19 @@ def lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "d4fb"
-                "9cee"
-                "aac3"
-                "76dd"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_99ecfbec287fe8210a8216fae79282b1f2f8e20b0a6e03caac5b085ec692f8d1a018f5216a9f: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_a20141885366dbca72ba87cec55490c009c6922223e89dd2002c19a4f925f72bff63ec43294d(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
-) -> _schema.Maybe[_builtins.int]:
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
+    acc: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
+) -> _builtins.list[data.Entry[_builtins.int, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -6460,15 +4744,41 @@ def lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_658(symbols, argument_0, argument_1)
+        acc = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Int64"), _schema.Named("Int64")],
+                    ),
+                ],
+            ),
+            acc,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_int64_int64_list_entry_int64_int64_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Int64"), _schema.Named("Int64")],
+                    ),
+                ],
+            ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -6477,46 +4787,176 @@ def lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "ecc6"
-                "f3f4"
-                "1725"
-                "375:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_a20141885366dbca72ba87cec55490c009c6922223e89dd2002c19a4f925f72bff63ec43294d: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_a4af21511ac1243dd5d5661c11d19851e37ee7384c618fab59bdd5edd657f4ff91284cbbb461(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.Entry[_builtins.str, data.Group]],
-) -> _schema.Maybe[data.Group]:
+    es: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
+    acc: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
+) -> _builtins.list[data.Entry[data.TopicPartition, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
+                ],
+            ),
+            acc,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_topic_partition_int64_list_entry_topic_partition_int64_2(
+            symbols,
+            es,
+            acc,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_a4af21511ac1243dd5d5661c11d19851e37ee7384c618fab59bdd5edd657f4ff91284cbbb461: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_bb38002a2f1d850669677d22c668164a17ddad1db9738612345e29ce748ebfeb1599415b618f(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]],
+    acc: _builtins.list[data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]],
+) -> _builtins.list[data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]]:
+    try:
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named(
+                                "List",
+                                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        acc = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named(
+                                "List",
+                                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+            acc,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_int64_list_batch_meta_list_entry_int64_list_batch_meta_3(
+            symbols,
+            es,
+            acc,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named(
+                                "List",
+                                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_bb38002a2f1d850669677d22c668164a17ddad1db9738612345e29ce748ebfeb1599415b618f: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_d158874fc0bec8ebd10bd2a13e968c9ef78a0b733a1c43e59ebf043111e4887e5ac3e33c3c0f(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[_builtins.str, data.Group]],
+    acc: _builtins.list[data.Entry[_builtins.str, data.Group]],
+) -> _builtins.list[data.Entry[_builtins.str, data.Group]]:
+    try:
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -6529,18 +4969,47 @@ def lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_659(symbols, argument_0, argument_1)
+        acc = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("lawtwin.kafka.model::type::Group"),
+                        ],
+                    ),
+                ],
+            ),
+            acc,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_text_group_list_entry_text_group_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "Maybe",
-                [_schema.Named("lawtwin.kafka.model::type::Group")],
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("lawtwin.kafka.model::type::Group"),
+                        ],
+                    ),
+                ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -6549,76 +5018,207 @@ def lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "ee46"
-                "f4f9"
-                "6abf"
-                "df11"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_d158874fc0bec8ebd10bd2a13e968c9ef78a0b733a1c43e59ebf043111e4887e5ac3e33c3c0f: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb(
+# keyValFromItems — <lawspec.collections>:284
+def lawspec_lawspecCollectionsKeyValFromItems_d4604ff528aaa38f651ac2fbeceaef78ebcdbcd5d9456ba15eafa454a6ff6f7e129f4d42246f(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.list[
-        data.Entry[data.TopicPartition, data.PartitionLog]
-    ],
-) -> _schema.Maybe[data.PartitionLog]:
+    es: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
+    acc: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
+) -> _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::PartitionLog",
-                            ),
+                            _schema.Named("Int64"),
+                            _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_660(symbols, argument_0, argument_1)
+        acc = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                        ],
+                    ),
+                ],
+            ),
+            acc,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_int64_producer_entry_list_entry_int64_producer_entry_3(
+            symbols,
+            es,
+            acc,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValFromItems_d4604ff528aaa38f651ac2fbeceaef78ebcdbcd5d9456ba15eafa454a6ff6f7e129f4d42246f: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValKeysItems — <lawspec.collections>:293
+def lawspec_lawspecCollectionsKeyValKeysItems_a36fdb08a807d1cf3aff21eca66b1ce64b572b6ff32293450c392afe6d3b6cb6957d58bd687b(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
+) -> _builtins.list[_builtins.str]:
+    try:
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("List", [_schema.Named("Text")]),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_keys_items_list_entry_text_list_text_3(
+            symbols,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("List", [_schema.Named("Text")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValKeysItems_a36fdb08a807d1cf3aff21eca66b1ce64b572b6ff32293450c392afe6d3b6cb6957d58bd687b: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValKeys — <lawspec.collections>:323
+def lawspec_lawspecCollectionsKeyValKeys_629bc663ec16d20555c3c2b5bfd76e9aa805ceda409124c02f610f89fa1a3d9d(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    m: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
+) -> _builtins.list[_builtins.str]:
+    try:
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("List", [_schema.Named("Text")])],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_keys_key_val_text_list_text_3(
+            symbols,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("List", [_schema.Named("Text")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValKeys_629bc663ec16d20555c3c2b5bfd76e9aa805ceda409124c02f610f89fa1a3d9d: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_02a5f4640930535dcc1e38d6b7ef002d91c76b5b3944b7aa1d475bc12b8e358383dc489f1e93(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.TopicPartition,
+    es: _builtins.list[data.Entry[data.TopicPartition, data.PartitionLog]],
+) -> _schema.Maybe[data.PartitionLog]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_items_topic_partition_list_entry_topic_partition_partition_log_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.kafka.model::type::PartitionLog")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -6627,147 +5227,60 @@ def lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "f23b"
-                "5066"
-                "cffb"
-                "d6eb"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_02a5f4640930535dcc1e38d6b7ef002d91c76b5b3944b7aa1d475bc12b8e358383dc489f1e93: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457(
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_06286bb8266146e0f078ab2870d4162ab80af6911000775a1012bde03ce6eb55670483a4229a(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
-) -> _schema.Maybe[_builtins.list[_builtins.str]]:
+    k: _builtins.str,
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]],
+) -> _schema.Maybe[_builtins.list[data.TopicPartition]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("Text"),
-                    _schema.Named("List", [_schema.Named("Text")]),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_661(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "Maybe",
-                [_schema.Named("List", [_schema.Named("Text")])],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_6"
-                "1e51"
-                "0684"
-                "39aa"
-                "457:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.dict[_builtins.int, _builtins.list[data.BatchMeta]],
-) -> _schema.Maybe[_builtins.list[data.BatchMeta]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Int64"),
                     _schema.Named(
-                        "List",
+                        "lawspec.collections::type::Entry",
                         [
+                            _schema.Named("Text"),
                             _schema.Named(
-                                "lawtwin.kafka.model::type::BatchMeta",
+                                "List",
+                                [
+                                    _schema.Named(
+                                        "lawtwin.kafka.model::type::TopicPartition",
+                                    ),
+                                ],
                             ),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_662(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_items_text_list_entry_text_list_topic_partition_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
                 [
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::BatchMeta",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -6776,133 +5289,42 @@ def lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_6"
-                "5f44"
-                "f385"
-                "5baf"
-                "0a5:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_06286bb8266146e0f078ab2870d4162ab80af6911000775a1012bde03ce6eb55670483a4229a: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941(
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_1542f0b4b78a03148e05e47d0eb1bb5b47f8f3afade768099f4a9e477d9a847688313b022294(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, data.PartitionLog],
-        ...
-    ],
-) -> _schema.Maybe[data.PartitionLog]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-                ],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_663(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "Maybe",
-                [_schema.Named("lawtwin.kafka.model::type::PartitionLog")],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_7"
-                "acda"
-                "a8dc"
-                "d255"
-                "941:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, _builtins.int],
-        ...
-    ],
+    k: _builtins.str,
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("Int32"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Text"), _schema.Named("Int32")],
+                    ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_664(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_items_text_list_entry_text_int32_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -6911,58 +5333,61 @@ def lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_7"
-                "e86e"
-                "a7b8"
-                "af5f"
-                "7e9:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_1542f0b4b78a03148e05e47d0eb1bb5b47f8f3afade768099f4a9e477d9a847688313b022294: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1(
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_2f3fdf9bcb9609a8e8cb6019df084bf01a62a0d14e8bc343e363528a84c7525ff68ba09c601e(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.dict[_builtins.int, _builtins.int],
-) -> _schema.Maybe[_builtins.int]:
+    k: _builtins.int,
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]],
+) -> _schema.Maybe[_builtins.list[data.BatchMeta]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Int64"), _schema.Named("Int64")],
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named(
+                                "List",
+                                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                            ),
+                        ],
+                    ),
+                ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_665(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_list_batch_meta_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
+            _schema.Named(
+                "Maybe",
+                [
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                    ),
+                ],
+            ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -6971,64 +5396,50 @@ def lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_a"
-                "6a37"
-                "4938"
-                "d1c1"
-                "ef1:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_2f3fdf9bcb9609a8e8cb6019df084bf01a62a0d14e8bc343e363528a84c7525ff68ba09c601e: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5(
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_380df4f3483e3dbcc70f85df68e3852ba438f1c931acccb449450252f3cce80196bedc949fff(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, _builtins.int],
-        ...
-    ],
+    k: data.TopicPartition,
+    es: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("Int64"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int32"),
+                        ],
+                    ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_666(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_items_topic_partition_list_entry_topic_partition_int32_2(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
+            _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -7037,124 +5448,50 @@ def lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_b"
-                "e6df"
-                "dcf4"
-                "e9ae"
-                "9f5:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_380df4f3483e3dbcc70f85df68e3852ba438f1c931acccb449450252f3cce80196bedc949fff: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b(
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_4e9cb36a024c448f4598aeb103323056c4db4acc2549736c44ebe4bb0e9a18416244993d9a14(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.dict[_builtins.str, _builtins.int],
+    k: data.TopicPartition,
+    es: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Text"), _schema.Named("Int64")],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_667(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_d"
-                "32ec"
-                "cc04"
-                "e0ce"
-                "84b:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.GroupPartition,
-    value_1: _builtins.tuple[
-        _builtins.tuple[data.GroupPartition, _builtins.int],
-        ...
-    ],
-) -> _schema.Maybe[_builtins.int]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
-                    _schema.Named("Int64"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_668(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_items_topic_partition_list_entry_topic_partition_int64_2(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -7163,64 +5500,53 @@ def lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_d"
-                "45d3"
-                "3523"
-                "2ddb"
-                "9f5:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_4e9cb36a024c448f4598aeb103323056c4db4acc2549736c44ebe4bb0e9a18416244993d9a14: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb(
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_6f9e15ba358e7f7c9141540471e2ddd025ec06f4fe72660f1766fbd35c2d859b7ce1c2d8633e(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.dict[_builtins.int, data.ProducerEntry],
+    k: _builtins.int,
+    es: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
 ) -> _schema.Maybe[data.ProducerEntry]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("Int64"),
-                    _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                        ],
+                    ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_669(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_producer_entry_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.kafka.model::type::ProducerEntry")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -7229,58 +5555,539 @@ def lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_e"
-                "7578"
-                "4f29"
-                "3b34"
-                "8fb:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_6f9e15ba358e7f7c9141540471e2ddd025ec06f4fe72660f1766fbd35c2d859b7ce1c2d8633e: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07(
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_a12ee1ed93433b800086520bad6fdbe3eb010208db0238f3c70fe7991558a1f92d69b9dce5d7(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.dict[_builtins.str, _builtins.int],
+    k: _builtins.str,
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
+) -> _schema.Maybe[_builtins.list[_builtins.str]]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("List", [_schema.Named("Text")]),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_items_text_list_entry_text_list_text_3(
+            symbols,
+            k,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("List", [_schema.Named("Text")])]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_a12ee1ed93433b800086520bad6fdbe3eb010208db0238f3c70fe7991558a1f92d69b9dce5d7: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_cc743be601d720792fd7c921e77de7be45cdb4f6eb11857df6bd6eb5303db337400c6936b1fe(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.GroupPartition,
+    es: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_items_group_partition_list_entry_group_partition_int64_3(
+            symbols,
+            k,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("Int64")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_cc743be601d720792fd7c921e77de7be45cdb4f6eb11857df6bd6eb5303db337400c6936b1fe: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_fad3d2928bcb463aa76bb18f1c5efff0620c8c610ed8bb9bce8a671c9d160a9f463ee2024664(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    es: _builtins.list[data.Entry[_builtins.str, data.Group]],
+) -> _schema.Maybe[data.Group]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("lawtwin.kafka.model::type::Group"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_items_text_list_entry_text_group_3(
+            symbols,
+            k,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("lawtwin.kafka.model::type::Group")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_fad3d2928bcb463aa76bb18f1c5efff0620c8c610ed8bb9bce8a671c9d160a9f463ee2024664: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_fc6eb6711aa7de40b7f5cda3e9ee76334862bf4532bd1e5c0c26b0efd1f1462c69a778d2be7f(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.int,
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
+) -> _schema.Maybe[_builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Int64"), _schema.Named("Int64")],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_int64_3(
+            symbols,
+            k,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("Int64")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_fc6eb6711aa7de40b7f5cda3e9ee76334862bf4532bd1e5c0c26b0efd1f1462c69a778d2be7f: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookupItems — <lawspec.collections>:271
+def lawspec_lawspecCollectionsKeyValLookupItems_fee577730e0ef285c24ff8c3864db2cf28af81b603d296fe2d14cc1bb94af7de926635b61fec(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
+) -> _schema.Maybe[_builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Text"), _schema.Named("Int64")],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_items_text_list_entry_text_int64_3(
+            symbols,
+            k,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("Int64")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookupItems_fee577730e0ef285c24ff8c3864db2cf28af81b603d296fe2d14cc1bb94af7de926635b61fec: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_175d2297d5c067b84965ee2dbb11a135aec190c55d45391421c77fcdc72289d0(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.TopicPartition,
+    m: _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...],
+) -> _schema.Maybe[_builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
-                [_schema.Named("Text"), _schema.Named("Int32")],
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("Int64"),
+                ],
             ),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_670(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_topic_partition_key_val_topic_partition_int64_2(
+            symbols,
+            k,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("Int64")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_175d2297d5c067b84965ee2dbb11a135aec190c55d45391421c77fcdc72289d0: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_264fc4814146fd7db601dbb55881f69758e26c2706ebcdb4b554b3c7f8fdd897(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.int,
+    m: _builtins.dict[_builtins.int, _builtins.list[data.BatchMeta]],
+) -> _schema.Maybe[_builtins.list[data.BatchMeta]]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Int64"),
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                    ),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_int64_key_val_int64_list_batch_meta_3(
+            symbols,
+            k,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "Maybe",
+                [
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_264fc4814146fd7db601dbb55881f69758e26c2706ebcdb4b554b3c7f8fdd897: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_391e395a6922834fe110913681779fa444f80d75e83dbac898c59dca8816d5d4(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    m: _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]],
+) -> _schema.Maybe[_builtins.list[data.TopicPartition]]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Text"),
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
+                    ),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_text_key_val_text_list_topic_partition_3(
+            symbols,
+            k,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "Maybe",
+                [
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_391e395a6922834fe110913681779fa444f80d75e83dbac898c59dca8816d5d4: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_567259fed60b6c7369f3a17f4e57286a90cd88a37ebd55973f038196d4f50cfd(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.int,
+    m: _builtins.dict[_builtins.int, data.ProducerEntry],
+) -> _schema.Maybe[data.ProducerEntry]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Int64"),
+                    _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_int64_key_val_int64_producer_entry_3(
+            symbols,
+            k,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "Maybe",
+                [_schema.Named("lawtwin.kafka.model::type::ProducerEntry")],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_567259fed60b6c7369f3a17f4e57286a90cd88a37ebd55973f038196d4f50cfd: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_62061bd15e50f564668bf1e223d92051d54f8dfd14a5c538e9070ec74e76f26e(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.GroupPartition,
+    m: _builtins.tuple[_builtins.tuple[data.GroupPartition, _builtins.int], ...],
+) -> _schema.Maybe[_builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+                    _schema.Named("Int64"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_group_partition_key_val_group_partition_int64_3(
+            symbols,
+            k,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("Int64")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_62061bd15e50f564668bf1e223d92051d54f8dfd14a5c538e9070ec74e76f26e: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_6ec0545e141dae2913ee9d4303801e191be46b26c0b2e5e3594a102a945a123a(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.TopicPartition,
+    m: _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...],
+) -> _schema.Maybe[_builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("Int32"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_topic_partition_key_val_topic_partition_int32_2(
+            symbols,
+            k,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -7289,83 +6096,44 @@ def lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_e"
-                "d82e"
-                "e3bc"
-                "3ed7"
-                "c07:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_6ec0545e141dae2913ee9d4303801e191be46b26c0b2e5e3594a102a945a123a: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb(
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_7065707f7f717f43490fcfc6277608d1e4ee35343c3b56d1770a98bd13e11f95(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.dict[
-        _builtins.str,
-        _builtins.list[data.TopicPartition]
-    ],
-) -> _schema.Maybe[_builtins.list[data.TopicPartition]]:
+    k: _builtins.int,
+    m: _builtins.dict[_builtins.int, _builtins.int],
+) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Text"),
-                    _schema.Named(
-                        "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
-                    ),
-                ],
+                [_schema.Named("Int64"), _schema.Named("Int64")],
             ),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_671(symbols, argument_0, argument_1)
+        result = (
+            _definitions.lawspec_collections_key_val_lookup_int64_key_val_int64_int64_3(
+                symbols,
+                k,
+                m,
+            )
+        )
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "Maybe",
-                [
-                    _schema.Named(
-                        "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
+            _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -7374,45 +6142,20 @@ def lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_f"
-                "0a54"
-                "2740"
-                "4f6c"
-                "2eb:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_7065707f7f717f43490fcfc6277608d1e4ee35343c3b56d1770a98bd13e11f95: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f(
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_73700bbfe216ba51092e0cbefafb46aa4cbd86e94c2883f8160f7b79d4110361(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.dict[_builtins.str, data.Group],
+    k: _builtins.str,
+    m: _builtins.dict[_builtins.str, data.Group],
 ) -> _schema.Maybe[data.Group]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -7420,18 +6163,112 @@ def lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f(
                     _schema.Named("lawtwin.kafka.model::type::Group"),
                 ],
             ),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_672(symbols, argument_0, argument_1)
+        result = (
+            _definitions.lawspec_collections_key_val_lookup_text_key_val_text_group_3(
+                symbols,
+                k,
+                m,
+            )
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("lawtwin.kafka.model::type::Group")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_73700bbfe216ba51092e0cbefafb46aa4cbd86e94c2883f8160f7b79d4110361: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_c7acde11e6c274a032cf5f5a470db5a1ba6e1e4ca52409c49608a23ad257c38d(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    m: _builtins.dict[_builtins.str, _builtins.int],
+) -> _schema.Maybe[_builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("Int32")],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = (
+            _definitions.lawspec_collections_key_val_lookup_text_key_val_text_int32_3(
+                symbols,
+                k,
+                m,
+            )
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("Int32")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_c7acde11e6c274a032cf5f5a470db5a1ba6e1e4ca52409c49608a23ad257c38d: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_d1ce61efc8e6afa8269232e37b0ffc5e54b7a50fd12e4007cfbe4a51998e3c46(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.TopicPartition,
+    m: _builtins.tuple[_builtins.tuple[data.TopicPartition, data.PartitionLog], ...],
+) -> _schema.Maybe[data.PartitionLog]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_topic_partition_key_val_topic_partition_partition_log_3(
+            symbols,
+            k,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
-                [_schema.Named("lawtwin.kafka.model::type::Group")],
+                [_schema.Named("lawtwin.kafka.model::type::PartitionLog")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -7440,40 +6277,98 @@ def lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_f"
-                "1a9f"
-                "8275"
-                "3605"
-                "94f:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_d1ce61efc8e6afa8269232e37b0ffc5e54b7a50fd12e4007cfbe4a51998e3c46: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_da121063aeb5682bc9d28ef1fb8f743b1bb2cf83d4b26fa7f72e553e8b21d97b(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]
-    ],
+    k: _builtins.str,
+    m: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
+) -> _schema.Maybe[_builtins.list[_builtins.str]]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("List", [_schema.Named("Text")])],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_lookup_text_key_val_text_list_text_3(
+            symbols,
+            k,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("List", [_schema.Named("Text")])]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_da121063aeb5682bc9d28ef1fb8f743b1bb2cf83d4b26fa7f72e553e8b21d97b: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValLookup — <lawspec.collections>:311
+def lawspec_lawspecCollectionsKeyValLookup_e59126781dc56e682341114686b1dd6046f3cc48f0b08e17e82f1a9c680d60ce(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    m: _builtins.dict[_builtins.str, _builtins.int],
+) -> _schema.Maybe[_builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("Int64")],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = (
+            _definitions.lawspec_collections_key_val_lookup_text_key_val_text_int64_3(
+                symbols,
+                k,
+                m,
+            )
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("Maybe", [_schema.Named("Int64")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValLookup_e59126781dc56e682341114686b1dd6046f3cc48f0b08e17e82f1a9c680d60ce: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_0e66ddd05d003d5b8a1feae8bab8e1c1dcc50583a2f0fc9ab2f1af808812c0b28f9cb3da8590(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]],
 ) -> _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -7485,19 +6380,7 @@ def lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
                                 "List",
                                 [
                                     _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
+                                        "lawtwin.kafka.model::type::TopicPartition",
                                     ),
                                 ],
                             ),
@@ -7505,11 +6388,14 @@ def lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_673(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_of_list_entry_text_list_topic_partition_3(
+            symbols,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -7517,16 +6403,12 @@ def lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -7535,37 +6417,118 @@ def lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_2"
-                "bb04"
-                "4c13"
-                "a34e"
-                "dfc:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_0e66ddd05d003d5b8a1feae8bab8e1c1dcc50583a2f0fc9ab2f1af808812c0b28f9cb3da8590: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_18597dfd4e5359dc189f7292f834235ad88e459331e8321cfa88ead68fd9398a960b1a0ca3ea(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.str, data.Group]],
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
+) -> _builtins.dict[_builtins.str, _builtins.int]:
+    try:
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Text"), _schema.Named("Int64")],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_of_list_entry_text_int64_3(
+            symbols,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("Int64")],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_18597dfd4e5359dc189f7292f834235ad88e459331e8321cfa88ead68fd9398a960b1a0ca3ea: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_1faab23f3c8be7eba00ded8555960bd371bee5bad556c68d01675302c9daf1fafc7c4c5639d5(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]],
+) -> _builtins.dict[_builtins.int, _builtins.list[data.BatchMeta]]:
+    try:
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named(
+                                "List",
+                                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_of_list_entry_int64_list_batch_meta_3(
+            symbols,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Int64"),
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_1faab23f3c8be7eba00ded8555960bd371bee5bad556c68d01675302c9daf1fafc7c4c5639d5: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_491f3a41470a869cd584ad2f5be3ae058d0df6f7ab952f35c26b8f11543af775a27154b82259(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[_builtins.str, data.Group]],
 ) -> _builtins.dict[_builtins.str, data.Group]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -7578,11 +6541,14 @@ def lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_674(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_of_list_entry_text_group_3(
+            symbols,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -7592,7 +6558,7 @@ def lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -7601,458 +6567,18 @@ def lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_5"
-                "ce58"
-                "c09d"
-                "80cc"
-                "d54:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_491f3a41470a869cd584ad2f5be3ae058d0df6f7ab952f35c26b8f11543af775a27154b82259: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValOf_610caa8fbb581a02(
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_5778d02acfbd32e183c387d522eab01bdbb3641a0f438c9406be1124068d27bff60a9daf3e05(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
-) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int32"),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_675(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("Int32"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_6"
-                "10ca"
-                "a8fb"
-                "b581"
-                "a02:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[data.TopicPartition, data.PartitionLog]
-    ],
-) -> _builtins.tuple[
-    _builtins.tuple[data.TopicPartition, data.PartitionLog],
-    ...
-]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::PartitionLog",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_676(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_a"
-                "0c1d"
-                "9feb"
-                "5051"
-                "d04:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]
-    ],
-) -> _builtins.dict[_builtins.int, _builtins.list[data.BatchMeta]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka.model::type::BatchMeta",
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_677(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Int64"),
-                    _schema.Named(
-                        "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::BatchMeta",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_a"
-                "4eeb"
-                "f20b"
-                "fcd0"
-                "2b4:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValOf_bd30e4f0b318724c(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
-) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int64"),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_678(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("Int64"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_b"
-                "d30e"
-                "4f0b"
-                "3187"
-                "24c:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
 ) -> _builtins.dict[_builtins.str, _builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Text"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_679(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Text"), _schema.Named("Int64")],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_c"
-                "9f1a"
-                "347a"
-                "852b"
-                "1c2:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
-) -> _builtins.dict[_builtins.str, _builtins.list[_builtins.str]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("List", [_schema.Named("Text")]),
-                        ],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_680(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Text"),
-                    _schema.Named("List", [_schema.Named("Text")]),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_c"
-                "a750"
-                "953e"
-                "04bc"
-                "f02:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
-) -> _builtins.dict[_builtins.str, _builtins.int]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -8062,18 +6588,21 @@ def lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e(
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_681(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_of_list_entry_text_int32_3(
+            symbols,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [_schema.Named("Text"), _schema.Named("Int32")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -8082,37 +6611,18 @@ def lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_d"
-                "bc22"
-                "34a1"
-                "277c"
-                "15e:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_5778d02acfbd32e183c387d522eab01bdbb3641a0f438c9406be1124068d27bff60a9daf3e05: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_77737f82dfb9237b7de350e1a9cc87fd6295e59fd9f3d485f51388773a7f6dd07b897b819596(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
+    es: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
 ) -> _builtins.dict[_builtins.int, data.ProducerEntry]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -8120,18 +6630,19 @@ def lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::ProducerEntry",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
                         ],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_682(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_of_list_entry_int64_producer_entry_3(
+            symbols,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -8141,7 +6652,7 @@ def lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -8150,116 +6661,188 @@ def lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_e"
-                "2ff2"
-                "d4e2"
-                "9c69"
-                "36a:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_77737f82dfb9237b7de350e1a9cc87fd6295e59fd9f3d485f51388773a7f6dd07b897b819596: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea(
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_7a105f0350510c4cd6c076d1c99cb8cdb86ea6942e198476b54121d7c41c1231a75633c3e4e1(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
-) -> _builtins.dict[_builtins.int, _builtins.int]:
+    es: _builtins.list[data.Entry[data.TopicPartition, data.PartitionLog]],
+) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, data.PartitionLog], ...]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Int64"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_683(symbols, argument_0)
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Int64"), _schema.Named("Int64")],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_e"
-                "4190"
-                "1007"
-                "f8d5"
-                "eea:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
-) -> _builtins.tuple[_builtins.tuple[data.GroupPartition, _builtins.int], ...]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::GroupPartition",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_of_list_entry_topic_partition_partition_log_3(
+            symbols,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_7a105f0350510c4cd6c076d1c99cb8cdb86ea6942e198476b54121d7c41c1231a75633c3e4e1: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_9a20dc42ac8ec8f8a838381f3a0d6385e7178d2bbebe915a4ac9d480f5337b21abaf497de698(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
+) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...]:
+    try:
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int32"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_of_list_entry_topic_partition_int32_2(
+            symbols,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("Int32"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_9a20dc42ac8ec8f8a838381f3a0d6385e7178d2bbebe915a4ac9d480f5337b21abaf497de698: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_afc36af76056504a8269486890622a098e180b1789874c48e3b6278b8313cb654a9538e22901(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
+) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...]:
+    try:
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
                             _schema.Named("Int64"),
                         ],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_684(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_of_list_entry_topic_partition_int64_2(
+            symbols,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("Int64"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_afc36af76056504a8269486890622a098e180b1789874c48e3b6278b8313cb654a9538e22901: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_dee1b834f9472d41a35b3fcd457cdc3ce21985170cdec649ddec86ed472884e46cd4f96fb5cc(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
+) -> _builtins.tuple[_builtins.tuple[data.GroupPartition, _builtins.int], ...]:
+    try:
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_of_list_entry_group_partition_int64_3(
+            symbols,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -8269,7 +6852,7 @@ def lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -8278,930 +6861,18 @@ def lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_e"
-                "c3a0"
-                "6fbb"
-                "d989"
-                "d48:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_dee1b834f9472d41a35b3fcd457cdc3ce21985170cdec649ddec86ed472884e46cd4f96fb5cc: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c(
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_f22199828a1b1c6cd779f8bda7e674dc88290aadffa9ef003b5a2b9abde0a1ef329055d65333(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
-    value_2: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
-) -> _builtins.list[data.Entry[_builtins.int, _builtins.int]]:
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
+) -> _builtins.dict[_builtins.str, _builtins.list[_builtins.str]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Int64"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_685(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Int64"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_1a6"
-                "0d73"
-                "f2ea"
-                "7655"
-                "c: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: data.ProducerEntry,
-    value_2: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
-) -> _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::ProducerEntry",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_686(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::ProducerEntry",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_1d4"
-                "fced"
-                "c9b0"
-                "136e"
-                "2: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.list[data.BatchMeta],
-    value_2: _builtins.list[
-        data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]
-    ],
-) -> _builtins.list[data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka.model::type::BatchMeta",
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_687(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Int64"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka.model::type::BatchMeta",
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_2a3"
-                "018c"
-                "f45a"
-                "d1ad"
-                "9: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
-) -> _builtins.list[data.Entry[_builtins.str, _builtins.int]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int32"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Text"), _schema.Named("Int32")],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_688(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Text"), _schema.Named("Int32")],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_4b9"
-                "848f"
-                "70e8"
-                "b7f5"
-                "3: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
-) -> _builtins.list[data.Entry[_builtins.str, _builtins.int]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Text"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_689(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [_schema.Named("Text"), _schema.Named("Int64")],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_4c7"
-                "1dc9"
-                "8d55"
-                "46e5"
-                "8: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.TopicPartition],
-    value_2: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]
-    ],
-) -> _builtins.list[
-    data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]
-]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_690(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named(
-                                "List",
-                                [
-                                    _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
-                                    ),
-                                ],
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_565"
-                "019c"
-                "a06d"
-                "e701"
-                "f: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.GroupPartition,
-    value_1: _builtins.int,
-    value_2: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
-) -> _builtins.list[data.Entry[data.GroupPartition, _builtins.int]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::GroupPartition",
-                            ),
-                            _schema.Named("Int64"),
-                        ],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_691(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::GroupPartition",
-                            ),
-                            _schema.Named("Int64"),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_854"
-                "f118"
-                "3117"
-                "f06f"
-                "5: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.Group,
-    value_2: _builtins.list[data.Entry[_builtins.str, data.Group]],
-) -> _builtins.list[data.Entry[_builtins.str, data.Group]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::Group"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("lawtwin.kafka.model::type::Group"),
-                        ],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_692(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("lawtwin.kafka.model::type::Group"),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_9bd"
-                "f97a"
-                "4433"
-                "2ea1"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36750(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
-    value_2: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
-) -> _builtins.list[data.Entry[data.TopicPartition, _builtins.int]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int32"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int32"),
-                        ],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_693(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int32"),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_a22"
-                "9945"
-                "e8cb"
-                "3675"
-                "0: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[_builtins.str],
-    value_2: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
-) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("List", [_schema.Named("Text")]),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -9214,31 +6885,23 @@ def lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4(
                     ),
                 ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_694(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+        result = (
+            _definitions.lawspec_collections_key_val_of_list_entry_text_list_text_3(
+                symbols,
+                es,
+            )
         )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named("Text"),
-                            _schema.Named("List", [_schema.Named("Text")]),
-                        ],
-                    ),
-                ],
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("List", [_schema.Named("Text")])],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -9247,93 +6910,42 @@ def lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_aac"
-                "daad"
-                "dac2"
-                "14c4"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_f22199828a1b1c6cd779f8bda7e674dc88290aadffa9ef003b5a2b9abde0a1ef329055d65333: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d(
+# keyValOf — <lawspec.collections>:307
+def lawspec_lawspecCollectionsKeyValOf_f3588673fc6ba523b8640762f1c8ab87c27b279916f0dbb95cb724c9595db25b5096d67fe081(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
-    value_2: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
-) -> _builtins.list[data.Entry[data.TopicPartition, _builtins.int]]:
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
+) -> _builtins.dict[_builtins.int, _builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int64"),
-                        ],
+                        [_schema.Named("Int64"), _schema.Named("Int64")],
                     ),
                 ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_695(
+        result = _definitions.lawspec_collections_key_val_of_list_entry_int64_int64_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named("Int64"),
-                        ],
-                    ),
-                ],
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Int64"), _schema.Named("Int64")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -9342,79 +6954,53 @@ def lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_b8b"
-                "82d6"
-                "1b25"
-                "bb98"
-                "d: "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValOf_f3588673fc6ba523b8640762f1c8ab87c27b279916f0dbb95cb724c9595db25b5096d67fe081: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b(
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_0a1b9733266d754f74893336299608de67121ffdf3d4b7ab60689be297e9ca52e45157bf3f12(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: data.PartitionLog,
-    value_2: _builtins.list[
-        data.Entry[data.TopicPartition, data.PartitionLog]
-    ],
+    k: data.TopicPartition,
+    v: data.PartitionLog,
+    es: _builtins.list[data.Entry[data.TopicPartition, data.PartitionLog]],
 ) -> _builtins.list[data.Entry[data.TopicPartition, data.PartitionLog]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        v = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-            value_1,
-            64,
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::PartitionLog",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
                         ],
                     ),
                 ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_696(
+        result = _definitions.lawspec_collections_key_val_put_items_topic_partition_partition_log_list_entry_topic_partition_partition_log_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            k,
+            v,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -9423,18 +7009,14 @@ def lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::PartitionLog",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -9443,659 +7025,69 @@ def lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_ee5"
-                "7bfc"
-                "ed88"
-                "cae9"
-                "b: "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_0a1b9733266d754f74893336299608de67121ffdf3d4b7ab60689be297e9ca52e45157bf3f12: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058(
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_131721909ce9b05486d0337e3d9323835ba94343fc59ccfd416bd8df1604aaeb200909b812e4(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
-    value_2: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, _builtins.int],
-        ...
-    ],
-) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...]:
+    k: data.GroupPartition,
+    v: _builtins.int,
+    es: _builtins.list[data.Entry[data.GroupPartition, _builtins.int]],
+) -> _builtins.list[data.Entry[data.GroupPartition, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int32"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("Int32"),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_697(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("Int32"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "1e56"
-                "31cf"
-                "1010"
-                "f058"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.Group,
-    value_2: _builtins.dict[_builtins.str, data.Group],
-) -> _builtins.dict[_builtins.str, data.Group]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::Group"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Text"),
-                    _schema.Named("lawtwin.kafka.model::type::Group"),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_698(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Text"),
-                    _schema.Named("lawtwin.kafka.model::type::Group"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "64ef"
-                "6963"
-                "a054"
-                "fec9"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: data.PartitionLog,
-    value_2: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, data.PartitionLog],
-        ...
-    ],
-) -> _builtins.tuple[
-    _builtins.tuple[data.TopicPartition, data.PartitionLog],
-    ...
-]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_699(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "6a32"
-                "d437"
-                "b06c"
-                "f1fb"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPut_84321765782615b9(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.list[data.BatchMeta],
-    value_2: _builtins.dict[_builtins.int, _builtins.list[data.BatchMeta]],
-) -> _builtins.dict[_builtins.int, _builtins.list[data.BatchMeta]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
-            ),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Int64"),
-                    _schema.Named(
-                        "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::BatchMeta",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_700(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Int64"),
-                    _schema.Named(
-                        "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::BatchMeta",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "8432"
-                "1765"
-                "7826"
-                "15b9"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
-    value_2: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, _builtins.int],
-        ...
-    ],
-) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("Int64"),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_701(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                    _schema.Named("Int64"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "9e5f"
-                "815c"
-                "293a"
-                "c9e1"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: _builtins.dict[_builtins.str, _builtins.int],
-) -> _builtins.dict[_builtins.str, _builtins.int]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Text"), _schema.Named("Int64")],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_702(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Text"), _schema.Named("Int64")],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "a058"
-                "1d6d"
-                "d36c"
-                "2e58"
-                ": "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: _builtins.dict[_builtins.str, _builtins.int],
-) -> _builtins.dict[_builtins.str, _builtins.int]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int32"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Text"), _schema.Named("Int32")],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_703(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Text"), _schema.Named("Int32")],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "a2a3"
-                "5157"
-                "00f0"
-                "a6f:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.GroupPartition,
-    value_1: _builtins.int,
-    value_2: _builtins.tuple[
-        _builtins.tuple[data.GroupPartition, _builtins.int],
-        ...
-    ],
-) -> _builtins.tuple[_builtins.tuple[data.GroupPartition, _builtins.int], ...]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        v = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
-                    _schema.Named("Int64"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
                 ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_704(
+        result = _definitions.lawspec_collections_key_val_put_items_group_partition_int64_list_entry_group_partition_int64_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            k,
+            v,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
-                    _schema.Named("Int64"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10104,78 +7096,135 @@ def lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "cab6"
-                "769a"
-                "52b0"
-                "163d"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_131721909ce9b05486d0337e3d9323835ba94343fc59ccfd416bd8df1604aaeb200909b812e4: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee(
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_1ad16e58f96fca04dc60ea495112c59fce77436b9f9d645c3b98fc8858b9ab2d4c58291c622f(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: data.ProducerEntry,
-    value_2: _builtins.dict[_builtins.int, data.ProducerEntry],
-) -> _builtins.dict[_builtins.int, data.ProducerEntry]:
+    k: _builtins.str,
+    v: data.Group,
+    es: _builtins.list[data.Entry[_builtins.str, data.Group]],
+) -> _builtins.list[data.Entry[_builtins.str, data.Group]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_0,
-            64,
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::Group"),
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("lawtwin.kafka.model::type::Group"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_items_text_group_list_entry_text_group_3(
+            symbols,
+            k,
+            v,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("lawtwin.kafka.model::type::Group"),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_1ad16e58f96fca04dc60ea495112c59fce77436b9f9d645c3b98fc8858b9ab2d4c58291c622f: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_3a20a7fb60a0aeb23bfb639d94eabacd0a7f64b11072854bfd3afaa418a2dd335fc48ddb932e(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.int,
+    v: data.ProducerEntry,
+    es: _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]],
+) -> _builtins.list[data.Entry[_builtins.int, data.ProducerEntry]]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
-            value_1,
-            64,
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("Int64"),
-                    _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                        ],
+                    ),
                 ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_705(
+        result = _definitions.lawspec_collections_key_val_put_items_int64_producer_entry_list_entry_int64_producer_entry_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            k,
+            v,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("Int64"),
-                    _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                        ],
+                    ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10184,78 +7233,58 @@ def lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "d00f"
-                "0719"
-                "b7ec"
-                "97ee"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_3a20a7fb60a0aeb23bfb639d94eabacd0a7f64b11072854bfd3afaa418a2dd335fc48ddb932e: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPut_d378e301aa895004(
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_3dc708b64e20c37052221f049775bf13eec31a283b901ef60e9d4ce71ffbc135a01e35c4dbe3(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[_builtins.str],
-    value_2: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
-) -> _builtins.dict[_builtins.str, _builtins.list[_builtins.str]]:
+    k: _builtins.str,
+    v: _builtins.int,
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int32"),
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("List", [_schema.Named("Text")]),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("Text"),
-                    _schema.Named("List", [_schema.Named("Text")]),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Text"), _schema.Named("Int32")],
+                    ),
                 ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_706(
+        result = _definitions.lawspec_collections_key_val_put_items_text_int32_list_entry_text_int32_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            k,
+            v,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("Text"),
-                    _schema.Named("List", [_schema.Named("Text")]),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Text"), _schema.Named("Int32")],
+                    ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10264,72 +7293,58 @@ def lawspec_lawspecCollectionsKeyValPut_d378e301aa895004(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "d378"
-                "e301"
-                "aa89"
-                "5004"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_3dc708b64e20c37052221f049775bf13eec31a283b901ef60e9d4ce71ffbc135a01e35c4dbe3: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c(
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_77a2b7d91c584bf7026a609afdac00173cd92a53192f3adf24ef1c0f23c89bd4c399edfe99cf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
-    value_2: _builtins.dict[_builtins.int, _builtins.int],
-) -> _builtins.dict[_builtins.int, _builtins.int]:
+    k: _builtins.str,
+    v: _builtins.int,
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.int]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.int]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Int64"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Int64"), _schema.Named("Int64")],
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Text"), _schema.Named("Int64")],
+                    ),
+                ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_707(
+        result = _definitions.lawspec_collections_key_val_put_items_text_int64_list_entry_text_int64_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            k,
+            v,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Int64"), _schema.Named("Int64")],
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Text"), _schema.Named("Int64")],
+                    ),
+                ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10338,98 +7353,81 @@ def lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "d4f4"
-                "392b"
-                "8878"
-                "a23c"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_77a2b7d91c584bf7026a609afdac00173cd92a53192f3adf24ef1c0f23c89bd4c399edfe99cf: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107(
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_835dd399b231a61b9f09d4d973b91c4773d56cb44894338eb093446061a90ac7c73be379044e(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.TopicPartition],
-    value_2: _builtins.dict[
-        _builtins.str,
-        _builtins.list[data.TopicPartition]
-    ],
-) -> _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]]:
+    k: _builtins.str,
+    v: _builtins.list[data.TopicPartition],
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_1,
-            64,
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("Text"),
                     _schema.Named(
-                        "List",
+                        "lawspec.collections::type::Entry",
                         [
+                            _schema.Named("Text"),
                             _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
+                                "List",
+                                [
+                                    _schema.Named(
+                                        "lawtwin.kafka.model::type::TopicPartition",
+                                    ),
+                                ],
                             ),
                         ],
                     ),
                 ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_708(
+        result = _definitions.lawspec_collections_key_val_put_items_text_list_topic_partition_list_entry_text_list_topic_partition_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            k,
+            v,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("Text"),
                     _schema.Named(
-                        "List",
+                        "lawspec.collections::type::Entry",
                         [
+                            _schema.Named("Text"),
                             _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
+                                "List",
+                                [
+                                    _schema.Named(
+                                        "lawtwin.kafka.model::type::TopicPartition",
+                                    ),
+                                ],
                             ),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10438,37 +7436,320 @@ def lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "ee3c"
-                "cd76"
-                "01dd"
-                "f107"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_835dd399b231a61b9f09d4d973b91c4773d56cb44894338eb093446061a90ac7c73be379044e: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae(
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_c46348a9544e09d0b943989f5c350448af32ee947b7e4912957789ad796ed41c48f9deb48b77(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
-) -> _builtins.list[_builtins.int]:
+    k: _builtins.int,
+    v: _builtins.list[data.BatchMeta],
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]],
+) -> _builtins.list[data.Entry[_builtins.int, _builtins.list[data.BatchMeta]]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+            ),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named(
+                                "List",
+                                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_items_int64_list_batch_meta_list_entry_int64_list_batch_meta_3(
+            symbols,
+            k,
+            v,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Int64"),
+                            _schema.Named(
+                                "List",
+                                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_c46348a9544e09d0b943989f5c350448af32ee947b7e4912957789ad796ed41c48f9deb48b77: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_dbe16638369a5c6a1f01a1ccd3058b10a15adad157dd9dd5ae2a671b34e50a56599e194545b2(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    v: _builtins.list[_builtins.str],
+    es: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
+) -> _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("Text")]),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("List", [_schema.Named("Text")]),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_items_text_list_text_list_entry_text_list_text_3(
+            symbols,
+            k,
+            v,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("Text"),
+                            _schema.Named("List", [_schema.Named("Text")]),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_dbe16638369a5c6a1f01a1ccd3058b10a15adad157dd9dd5ae2a671b34e50a56599e194545b2: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_e05c18f0ea82cd0c86bca4cce7b81f598001d5866c3e300e89d5f166c21eb4fb4da0919a1e07(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.TopicPartition,
+    v: _builtins.int,
+    es: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
+) -> _builtins.list[data.Entry[data.TopicPartition, _builtins.int]]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_items_topic_partition_int64_list_entry_topic_partition_int64_2(
+            symbols,
+            k,
+            v,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int64"),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_e05c18f0ea82cd0c86bca4cce7b81f598001d5866c3e300e89d5f166c21eb4fb4da0919a1e07: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_f36429fb0596f2de5f3363057b40f4676201e3d1c6c5912b04635666dc7b1dc0e03316583268(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.TopicPartition,
+    v: _builtins.int,
+    es: _builtins.list[data.Entry[data.TopicPartition, _builtins.int]],
+) -> _builtins.list[data.Entry[data.TopicPartition, _builtins.int]]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int32"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int32"),
+                        ],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_items_topic_partition_int32_list_entry_topic_partition_int32_2(
+            symbols,
+            k,
+            v,
+            es,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                            _schema.Named("Int32"),
+                        ],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_f36429fb0596f2de5f3363057b40f4676201e3d1c6c5912b04635666dc7b1dc0e03316583268: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPutItems — <lawspec.collections>:245
+def lawspec_lawspecCollectionsKeyValPutItems_fad2123e67ec8bb769a90a8cd7b9def636f49e50a806b6421be62535eb84777a19a5f30f7268(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.int,
+    v: _builtins.int,
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
+) -> _builtins.list[data.Entry[_builtins.int, _builtins.int]]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -10478,15 +7759,28 @@ def lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae(
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_709(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_put_items_int64_int64_list_entry_int64_int64_3(
+            symbols,
+            k,
+            v,
+            es,
+        )
         return _lawspec_schema.to_native(
-            _schema.Named("List", [_schema.Named("Int64")]),
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Int64"), _schema.Named("Int64")],
+                    ),
+                ],
+            ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10495,52 +7789,740 @@ def lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Valu"
-                "esIt"
-                "ems_"
-                "6f7c"
-                "c84c"
-                "cef2"
-                "52ae"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPutItems_fad2123e67ec8bb769a90a8cd7b9def636f49e50a806b6421be62535eb84777a19a5f30f7268: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa(
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_3d64473edde6c399f88422c841e62bff2eede7fb5b55c1765b547c521f1b473e(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.dict[_builtins.int, _builtins.int],
-) -> _builtins.list[_builtins.int]:
+    k: data.GroupPartition,
+    v: _builtins.int,
+    m: _builtins.tuple[_builtins.tuple[data.GroupPartition, _builtins.int], ...],
+) -> _builtins.tuple[_builtins.tuple[data.GroupPartition, _builtins.int], ...]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+                    _schema.Named("Int64"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_group_partition_int64_key_val_group_partition_int64_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::GroupPartition"),
+                    _schema.Named("Int64"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_3d64473edde6c399f88422c841e62bff2eede7fb5b55c1765b547c521f1b473e: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_4306dbae3cc578aaafe751a748737b624b5d6c24a9d13b1f99e807645cdb5c04(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    v: _builtins.int,
+    m: _builtins.dict[_builtins.str, _builtins.int],
+) -> _builtins.dict[_builtins.str, _builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int32"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("Int32")],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_text_int32_key_val_text_int32_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("Int32")],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_4306dbae3cc578aaafe751a748737b624b5d6c24a9d13b1f99e807645cdb5c04: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_4a9bd048cb74e47c2a654ffcd425372468357522414e83b2f12ee2a0d8ec8e7f(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    v: _builtins.list[data.TopicPartition],
+    m: _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]],
+) -> _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
+            ),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Text"),
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
+                    ),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_text_list_topic_partition_key_val_text_list_topic_partition_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Text"),
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_4a9bd048cb74e47c2a654ffcd425372468357522414e83b2f12ee2a0d8ec8e7f: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_599fde2b79423a5a4ac46b5d4278367a327c38c00de1d0569fc6b3e94281c2f2(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.TopicPartition,
+    v: _builtins.int,
+    m: _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...],
+) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("Int64"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_topic_partition_int64_key_val_topic_partition_int64_2(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("Int64"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_599fde2b79423a5a4ac46b5d4278367a327c38c00de1d0569fc6b3e94281c2f2: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_5aa627efb082429d66c50cf97f223124ed4dad44cfe85e880fd6a4e9f4da6f33(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.int,
+    v: data.ProducerEntry,
+    m: _builtins.dict[_builtins.int, data.ProducerEntry],
+) -> _builtins.dict[_builtins.int, data.ProducerEntry]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Int64"),
+                    _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_int64_producer_entry_key_val_int64_producer_entry_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Int64"),
+                    _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_5aa627efb082429d66c50cf97f223124ed4dad44cfe85e880fd6a4e9f4da6f33: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_7203da8a31417de3d46e5863266ab81a3ffe3a6498775035867bc03fd7ca2966(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.int,
+    v: _builtins.list[data.BatchMeta],
+    m: _builtins.dict[_builtins.int, _builtins.list[data.BatchMeta]],
+) -> _builtins.dict[_builtins.int, _builtins.list[data.BatchMeta]]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+            ),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Int64"),
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                    ),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_int64_list_batch_meta_key_val_int64_list_batch_meta_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Int64"),
+                    _schema.Named(
+                        "List",
+                        [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
+                    ),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_7203da8a31417de3d46e5863266ab81a3ffe3a6498775035867bc03fd7ca2966: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_90601ba9b9d635715e852e7d00878ec8f73dee705120b10ee3acdd3c49de44a4(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    v: data.Group,
+    m: _builtins.dict[_builtins.str, data.Group],
+) -> _builtins.dict[_builtins.str, data.Group]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::Group"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Text"),
+                    _schema.Named("lawtwin.kafka.model::type::Group"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_text_group_key_val_text_group_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("Text"),
+                    _schema.Named("lawtwin.kafka.model::type::Group"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_90601ba9b9d635715e852e7d00878ec8f73dee705120b10ee3acdd3c49de44a4: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_bb595373612327d8aee3ee8142fb323eaf560132bb3b1f6d9b775cecc2ace41a(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.int,
+    v: _builtins.int,
+    m: _builtins.dict[_builtins.int, _builtins.int],
+) -> _builtins.dict[_builtins.int, _builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [_schema.Named("Int64"), _schema.Named("Int64")],
             ),
-            value_0,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_710(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_put_int64_int64_key_val_int64_int64_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Int64"), _schema.Named("Int64")],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_bb595373612327d8aee3ee8142fb323eaf560132bb3b1f6d9b775cecc2ace41a: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_bead783bb27670c6824e8ec7aafb161501a8c410079818d7971ff5647883592b(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    v: _builtins.list[_builtins.str],
+    m: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
+) -> _builtins.dict[_builtins.str, _builtins.list[_builtins.str]]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("Text")]),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("List", [_schema.Named("Text")])],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_text_list_text_key_val_text_list_text_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("List", [_schema.Named("Text")])],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_bead783bb27670c6824e8ec7aafb161501a8c410079818d7971ff5647883592b: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_ee1a1749ded4e3774d742077b7aac152e9ade2c1e816cae48303b97140e8ff8b(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.TopicPartition,
+    v: data.PartitionLog,
+    m: _builtins.tuple[_builtins.tuple[data.TopicPartition, data.PartitionLog], ...],
+) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, data.PartitionLog], ...]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_topic_partition_partition_log_key_val_topic_partition_partition_log_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_ee1a1749ded4e3774d742077b7aac152e9ade2c1e816cae48303b97140e8ff8b: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_f3796909e1834904b48b284e39f38ef5202d7eb172c93440a67c469a52db9b77(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.TopicPartition,
+    v: _builtins.int,
+    m: _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...],
+) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int32"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("Int32"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_topic_partition_int32_key_val_topic_partition_int32_2(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
+                    _schema.Named("Int32"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_f3796909e1834904b48b284e39f38ef5202d7eb172c93440a67c469a52db9b77: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValPut — <lawspec.collections>:315
+def lawspec_lawspecCollectionsKeyValPut_fb26d256fd1aeec6c0005c04ec82d6804ab9ee99710e36ca6c65361e1bc10971(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: _builtins.str,
+    v: _builtins.int,
+    m: _builtins.dict[_builtins.str, _builtins.int],
+) -> _builtins.dict[_builtins.str, _builtins.int]:
+    try:
+        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        v = _lawspec_schema.from_native(
+            _schema.Named("Int64"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("Int64")],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_text_int64_key_val_text_int64_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Text"), _schema.Named("Int64")],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValPut_fb26d256fd1aeec6c0005c04ec82d6804ab9ee99710e36ca6c65361e1bc10971: "
+            + _builtins.str(error),
+        ) from error
+
+
+# keyValValuesItems — <lawspec.collections>:300
+def lawspec_lawspecCollectionsKeyValValuesItems_355460d89278f38fcb8ead0e19ff5a1c86067a0c02d57787842746523245f5e003fee3811df9(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    es: _builtins.list[data.Entry[_builtins.int, _builtins.int]],
+) -> _builtins.list[_builtins.int]:
+    try:
+        es = _lawspec_schema.from_native(
+            _schema.Named(
+                "List",
+                [
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [_schema.Named("Int64"), _schema.Named("Int64")],
+                    ),
+                ],
+            ),
+            es,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_values_items_list_entry_int64_int64_3(
+            symbols,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10549,112 +8531,34 @@ def lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Valu"
-                "es_1"
-                "52cb"
-                "3cfa"
-                "5a69"
-                "daa:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValValuesItems_355460d89278f38fcb8ead0e19ff5a1c86067a0c02d57787842746523245f5e003fee3811df9: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089(
+# keyValValues — <lawspec.collections>:327
+def lawspec_lawspecCollectionsKeyValValues_670e0d060e6d1fc21bff29dfe84f1a1bc3a44a316df7743c166f24096b73a37a(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.str],
-    value_1: _builtins.list[_builtins.str],
-) -> _builtins.list[_builtins.str]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("List", [_schema.Named("Text")]),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("List", [_schema.Named("Text")]),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_711(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named("List", [_schema.Named("Text")]),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsSe"
-                "tFro"
-                "mIte"
-                "ms_2"
-                "5b20"
-                "70f5"
-                "26ff"
-                "089:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.int],
-    value_1: _builtins.list[_builtins.int],
+    m: _builtins.dict[_builtins.int, _builtins.int],
 ) -> _builtins.list[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("List", [_schema.Named("Int32")]),
-            value_0,
-            64,
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [_schema.Named("Int64"), _schema.Named("Int64")],
+            ),
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("List", [_schema.Named("Int32")]),
-            value_1,
-            64,
+        result = _definitions.lawspec_collections_key_val_values_key_val_int64_int64_3(
             symbols,
+            m,
         )
-        result = _definitions.evaluate_712(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
-            _schema.Named("List", [_schema.Named("Int32")]),
+            _schema.Named("List", [_schema.Named("Int64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10663,112 +8567,123 @@ def lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsSe"
-                "tFro"
-                "mIte"
-                "ms_f"
-                "fc9b"
-                "33e7"
-                "d19d"
-                "87c:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsKeyValValues_670e0d060e6d1fc21bff29dfe84f1a1bc3a44a316df7743c166f24096b73a37a: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977(
+# setFromItems — <lawspec.collections>:123
+def lawspec_lawspecCollectionsSetFromItems_22ba2728bd5db2853d0f761146c0ed21df378b845946024a14f7f3e89ad3ae3d(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[_builtins.str],
-) -> _builtins.list[_builtins.str]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("List", [_schema.Named("Text")]),
-            value_1,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_713(symbols, argument_0, argument_1)
-        return _lawspec_schema.to_native(
-            _schema.Named("List", [_schema.Named("Text")]),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsSe"
-                "tIns"
-                "ertI"
-                "tems"
-                "_a3d"
-                "c35e"
-                "775a"
-                "c997"
-                "7: "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.list[_builtins.int],
+    xs: _builtins.list[_builtins.int],
+    acc: _builtins.list[_builtins.int],
 ) -> _builtins.list[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        xs = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("Int32")]),
+            xs,
+            MACHINE_BITS,
+            symbols,
+        )
+        acc = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("Int32")]),
+            acc,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = (
+            _definitions.lawspec_collections_set_from_items_list_int32_list_int32_2(
+                symbols,
+                xs,
+                acc,
+            )
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("List", [_schema.Named("Int32")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsSetFromItems_22ba2728bd5db2853d0f761146c0ed21df378b845946024a14f7f3e89ad3ae3d: "
+            + _builtins.str(error),
+        ) from error
+
+
+# setFromItems — <lawspec.collections>:123
+def lawspec_lawspecCollectionsSetFromItems_a4e5bb172afe254bc54aa060fdfb159f211925cf73c23011a78f7042f2363a2e(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    xs: _builtins.list[_builtins.str],
+    acc: _builtins.list[_builtins.str],
+) -> _builtins.list[_builtins.str]:
+    try:
+        xs = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("Text")]),
+            xs,
+            MACHINE_BITS,
+            symbols,
+        )
+        acc = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("Text")]),
+            acc,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_set_from_items_list_text_list_text_3(
+            symbols,
+            xs,
+            acc,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("List", [_schema.Named("Text")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsSetFromItems_a4e5bb172afe254bc54aa060fdfb159f211925cf73c23011a78f7042f2363a2e: "
+            + _builtins.str(error),
+        ) from error
+
+
+# setInsertItems — <lawspec.collections>:67
+def lawspec_lawspecCollectionsSetInsertItems_2afa92cf0a84d079f9d87ad2ecdc63656eaf10c36ed4914348c859e960202ed1(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    x: _builtins.int,
+    xs: _builtins.list[_builtins.int],
+) -> _builtins.list[_builtins.int]:
+    try:
+        x = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_0,
-            64,
+            x,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        xs = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Int32")]),
-            value_1,
-            64,
+            xs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_714(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_set_insert_items_int32_list_int32_2(
+            symbols,
+            x,
+            xs,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10777,51 +8692,64 @@ def lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsSe"
-                "tIns"
-                "ertI"
-                "tems"
-                "_fee"
-                "347c"
-                "a5af"
-                "6d96"
-                "6: "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsSetInsertItems_2afa92cf0a84d079f9d87ad2ecdc63656eaf10c36ed4914348c859e960202ed1: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsSetOf_83f32212ffd7f646(
+# setInsertItems — <lawspec.collections>:67
+def lawspec_lawspecCollectionsSetInsertItems_d4152c2b03fb4a8c0f102c550c4c57603634a80400789c66b1b576a718d6b1b6(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.str],
+    x: _builtins.str,
+    xs: _builtins.list[_builtins.str],
+) -> _builtins.list[_builtins.str]:
+    try:
+        x = _lawspec_schema.from_native(_schema.Named("Text"), x, MACHINE_BITS, symbols)
+        xs = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("Text")]),
+            xs,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_set_insert_items_text_list_text_3(
+            symbols,
+            x,
+            xs,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named("List", [_schema.Named("Text")]),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.kafka::lawspec_lawspecCollectionsSetInsertItems_d4152c2b03fb4a8c0f102c550c4c57603634a80400789c66b1b576a718d6b1b6: "
+            + _builtins.str(error),
+        ) from error
+
+
+# setOf — <lawspec.collections>:144
+def lawspec_lawspecCollectionsSetOf_274895909251e0fc2ae91333a8200341ebfe328225fe85a1266ff018edb44412814738a65c9d(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    xs: _builtins.list[_builtins.str],
 ) -> _builtins.frozenset[_builtins.str]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        xs = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_0,
-            64,
+            xs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_715(symbols, argument_0)
+        result = _definitions.lawspec_collections_set_of_list_text_3(symbols, xs)
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::Set",
-                [_schema.Named("Text")],
-            ),
+            _schema.Named("lawspec.collections::type::Set", [_schema.Named("Text")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10830,49 +8758,28 @@ def lawspec_lawspecCollectionsSetOf_83f32212ffd7f646(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsSe"
-                "tOf_"
-                "83f3"
-                "2212"
-                "ffd7"
-                "f646"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsSetOf_274895909251e0fc2ae91333a8200341ebfe328225fe85a1266ff018edb44412814738a65c9d: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsSetOf_9446af497e0eb47e(
+# setOf — <lawspec.collections>:144
+def lawspec_lawspecCollectionsSetOf_5808b4a2820e824665bc7a4e4bd3062600b239824dc0d09735726361b0c40cefe19b50fec5ff(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.int],
+    xs: _builtins.list[_builtins.int],
 ) -> _builtins.frozenset[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        xs = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Int32")]),
-            value_0,
-            64,
+            xs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_716(symbols, argument_0)
+        result = _definitions.lawspec_collections_set_of_list_int32_2(symbols, xs)
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::Set",
-                [_schema.Named("Int32")],
-            ),
+            _schema.Named("lawspec.collections::type::Set", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10881,53 +8788,34 @@ def lawspec_lawspecCollectionsSetOf_9446af497e0eb47e(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsSe"
-                "tOf_"
-                "9446"
-                "af49"
-                "7e0e"
-                "b47e"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsSetOf_5808b4a2820e824665bc7a4e4bd3062600b239824dc0d09735726361b0c40cefe19b50fec5ff: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977(
+# setRemoveItems — <lawspec.collections>:78
+def lawspec_lawspecCollectionsSetRemoveItems_d4152c2b03fb4a8c0f102c550c4c57603634a80400789c66b1b576a718d6b1b6(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[_builtins.str],
+    x: _builtins.str,
+    xs: _builtins.list[_builtins.str],
 ) -> _builtins.list[_builtins.str]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        x = _lawspec_schema.from_native(_schema.Named("Text"), x, MACHINE_BITS, symbols)
+        xs = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_1,
-            64,
+            xs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_717(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_set_remove_items_text_list_text_2(
+            symbols,
+            x,
+            xs,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10936,61 +8824,34 @@ def lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsSe"
-                "tRem"
-                "oveI"
-                "tems"
-                "_a3d"
-                "c35e"
-                "775a"
-                "c997"
-                "7: "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsSetRemoveItems_d4152c2b03fb4a8c0f102c550c4c57603634a80400789c66b1b576a718d6b1b6: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67(
+# setRemove — <lawspec.collections>:154
+def lawspec_lawspecCollectionsSetRemove_096e74bf26bf9094cf3e9a805696e8a9376e455ee400d90aeb8ab029fcef56c8a54f4129b469(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.frozenset[_builtins.str],
+    x: _builtins.str,
+    s: _builtins.frozenset[_builtins.str],
 ) -> _builtins.frozenset[_builtins.str]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
+        x = _lawspec_schema.from_native(_schema.Named("Text"), x, MACHINE_BITS, symbols)
+        s = _lawspec_schema.from_native(
+            _schema.Named("lawspec.collections::type::Set", [_schema.Named("Text")]),
+            s,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::Set",
-                [_schema.Named("Text")],
-            ),
-            value_1,
-            64,
+        result = _definitions.lawspec_collections_set_remove_text_sorted_set_text_2(
             symbols,
+            x,
+            s,
         )
-        result = _definitions.evaluate_718(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::Set",
-                [_schema.Named("Text")],
-            ),
+            _schema.Named("lawspec.collections::type::Set", [_schema.Named("Text")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -10999,63 +8860,39 @@ def lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsSe"
-                "tRem"
-                "ove_"
-                "1fda"
-                "0e8e"
-                "7396"
-                "9c67"
-                ": "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsSetRemove_096e74bf26bf9094cf3e9a805696e8a9376e455ee400d90aeb8ab029fcef56c8a54f4129b469: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsSetUnion_f2139edefc699bed(
+# setUnion — <lawspec.collections>:158
+def lawspec_lawspecCollectionsSetUnion_df16517074a129ba909af77fcda87587de194189db788d2e04dc9836417063c7ee98434fb851(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.frozenset[_builtins.str],
-    value_1: _builtins.frozenset[_builtins.str],
+    s: _builtins.frozenset[_builtins.str],
+    t: _builtins.frozenset[_builtins.str],
 ) -> _builtins.frozenset[_builtins.str]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::Set",
-                [_schema.Named("Text")],
-            ),
-            value_0,
-            64,
+        s = _lawspec_schema.from_native(
+            _schema.Named("lawspec.collections::type::Set", [_schema.Named("Text")]),
+            s,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::Set",
-                [_schema.Named("Text")],
-            ),
-            value_1,
-            64,
+        t = _lawspec_schema.from_native(
+            _schema.Named("lawspec.collections::type::Set", [_schema.Named("Text")]),
+            t,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_719(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_set_union_sorted_set_text_sorted_set_text_3(
+            symbols,
+            s,
+            t,
+        )
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::Set",
-                [_schema.Named("Text")],
-            ),
+            _schema.Named("lawspec.collections::type::Set", [_schema.Named("Text")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11064,54 +8901,35 @@ def lawspec_lawspecCollectionsSetUnion_f2139edefc699bed(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".kaf"
-                "ka::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsSe"
-                "tUni"
-                "on_f"
-                "2139"
-                "edef"
-                "c699"
-                "bed:"
-                " "
-            )
+            "contracttest.kafka::lawspec_lawspecCollectionsSetUnion_df16517074a129ba909af77fcda87587de194189db788d2e04dc9836417063c7ee98434fb851: "
             + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaAllAtLeast — ../src/contract.lawspec:1418
 def lawtwinKafkaAllAtLeast(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.list[_builtins.int],
+    floor: _builtins.int,
+    xs: _builtins.list[_builtins.int],
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        floor = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            floor,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        xs = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Int64")]),
-            value_1,
-            64,
+            xs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_720(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_all_at_least(symbols, floor, xs)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11120,40 +8938,35 @@ def lawtwinKafkaAllAtLeast(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaAllAtLeast: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaAllAtLeast: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaAssignmentIn — ../src/contract.lawspec:1618
 def lawtwinKafkaAssignmentIn(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.MemberAssignment],
+    m: _builtins.str,
+    ms: _builtins.list[data.MemberAssignment],
 ) -> _builtins.list[data.TopicPartition]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(_schema.Named("Text"), m, MACHINE_BITS, symbols)
+        ms = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::MemberAssignment")],
             ),
-            value_1,
-            64,
+            ms,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_721(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_assignment_in(symbols, m, ms)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11162,42 +8975,36 @@ def lawtwinKafkaAssignmentIn(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaAssignmentIn: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaAssignmentIn: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaCommittedFrom — ../src/contract.lawspec:377
 def lawtwinKafkaCommittedFrom(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
+    tp: data.TopicPartition,
+    offset: _builtins.int,
 ) -> _builtins.list[data.Record]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        offset = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            offset,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_722(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_committed_from(symbols, tp, offset)
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11206,33 +9013,33 @@ def lawtwinKafkaCommittedFrom(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaCommittedFrom: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaCommittedFrom: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaConsumerAssign — ../src/contract.lawspec:819
 def lawtwinKafkaConsumerAssign(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.TopicPartition],
-    value_1: data.ConsumerState,
+    tps: _builtins.list[data.TopicPartition],
+    c: data.ConsumerState,
 ) -> data.Pair[ls.Absence, data.ConsumerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_0,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_1,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_723(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_consumer_assign(symbols, tps, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11242,7 +9049,7 @@ def lawtwinKafkaConsumerAssign(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11251,28 +9058,25 @@ def lawtwinKafkaConsumerAssign(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerAssign: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerAssign: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaConsumerClose — ../src/contract.lawspec:802
 def lawtwinKafkaConsumerClose(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ConsumerState,
+    c: data.ConsumerState,
 ) -> data.Pair[ls.Absence, data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_724(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_consumer_close(symbols, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11282,7 +9086,7 @@ def lawtwinKafkaConsumerClose(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11291,31 +9095,25 @@ def lawtwinKafkaConsumerClose(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerClose: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerClose: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaConsumerCommit — ../src/contract.lawspec:793
 def lawtwinKafkaConsumerCommit(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ConsumerState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.ConsumerState
-]:
+    c: data.ConsumerState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_725(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_consumer_commit(symbols, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11323,9 +9121,7 @@ def lawtwinKafkaConsumerCommit(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -11333,7 +9129,7 @@ def lawtwinKafkaConsumerCommit(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11342,35 +9138,32 @@ def lawtwinKafkaConsumerCommit(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerCommit: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerCommit: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaConsumerCommitted — ../src/contract.lawspec:811
 def lawtwinKafkaConsumerCommitted(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TopicPartition,
-    value_1: data.ConsumerState,
+    tp: data.TopicPartition,
+    c: data.ConsumerState,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_1,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_726(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_consumer_committed(symbols, tp, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11380,7 +9173,7 @@ def lawtwinKafkaConsumerCommitted(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11394,25 +9187,26 @@ def lawtwinKafkaConsumerCommitted(
         ) from error
 
 
+# lawtwinKafkaConsumerIsolation — ../src/contract.lawspec:838
 def lawtwinKafkaConsumerIsolation(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.IsolationLevel,
-    value_1: data.ConsumerState,
+    level: data.IsolationLevel,
+    c: data.ConsumerState,
 ) -> data.Pair[ls.Absence, data.ConsumerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        level = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value_0,
-            64,
+            level,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_1,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_727(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_consumer_isolation(symbols, level, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11422,7 +9216,7 @@ def lawtwinKafkaConsumerIsolation(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11436,53 +9230,35 @@ def lawtwinKafkaConsumerIsolation(
         ) from error
 
 
+# lawtwinKafkaConsumerJoin — ../src/contract.lawspec:715
 def lawtwinKafkaConsumerJoin(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.list[_builtins.str],
-    value_3: data.ConsumerState,
+    g: _builtins.str,
+    m: _builtins.str,
+    topics: _builtins.list[_builtins.str],
+    c: data.ConsumerState,
 ) -> data.Pair[
     _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]],
-    data.ConsumerState
+    data.ConsumerState,
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        m = _lawspec_schema.from_native(_schema.Named("Text"), m, MACHINE_BITS, symbols)
+        topics = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_2,
-            64,
+            topics,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_3,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_728(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-        )
+        result = _definitions.lawtwin_kafka_consumer_join(symbols, g, m, topics, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11490,26 +9266,12 @@ def lawtwinKafkaConsumerJoin(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named(
                                 "List",
                                 [
                                     _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
+                                        "lawtwin.kafka.model::type::TopicPartition",
                                     ),
                                 ],
                             ),
@@ -11519,7 +9281,7 @@ def lawtwinKafkaConsumerJoin(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11528,38 +9290,35 @@ def lawtwinKafkaConsumerJoin(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerJoin: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerJoin: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaConsumerPoll — ../src/contract.lawspec:783
 def lawtwinKafkaConsumerPoll(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.int,
-    value_1: data.ConsumerState,
+    n: _builtins.int,
+    c: data.ConsumerState,
 ) -> data.Pair[
     _schema.Either[data.KafkaError, _builtins.list[data.ConsumerRecord]],
-    data.ConsumerState
+    data.ConsumerState,
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        n = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_0,
-            64,
+            n,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_1,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_729(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_consumer_poll(symbols, n, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11567,16 +9326,10 @@ def lawtwinKafkaConsumerPoll(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named(
                                 "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka::type::ConsumerRecord",
-                                    ),
-                                ],
+                                [_schema.Named("lawtwin.kafka::type::ConsumerRecord")],
                             ),
                         ],
                     ),
@@ -11584,7 +9337,7 @@ def lawtwinKafkaConsumerPoll(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11593,35 +9346,32 @@ def lawtwinKafkaConsumerPoll(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerPoll: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerPoll: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaConsumerPosition — ../src/contract.lawspec:753
 def lawtwinKafkaConsumerPosition(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TopicPartition,
-    value_1: data.ConsumerState,
+    tp: data.TopicPartition,
+    c: data.ConsumerState,
 ) -> data.Pair[_builtins.int, data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_1,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_730(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_consumer_position(symbols, tp, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11631,7 +9381,7 @@ def lawtwinKafkaConsumerPosition(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11640,38 +9390,32 @@ def lawtwinKafkaConsumerPosition(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerPosition: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerPosition: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaConsumerPositionOf — ../src/contract.lawspec:831
 def lawtwinKafkaConsumerPositionOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TopicPartition,
-    value_1: data.ConsumerState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, _builtins.int],
-    data.ConsumerState
-]:
+    tp: data.TopicPartition,
+    c: data.ConsumerState,
+) -> data.Pair[_schema.Either[data.KafkaError, _builtins.int], data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_1,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_731(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_consumer_position_of(symbols, tp, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11679,9 +9423,7 @@ def lawtwinKafkaConsumerPositionOf(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Int64"),
                         ],
                     ),
@@ -11689,7 +9431,7 @@ def lawtwinKafkaConsumerPositionOf(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11703,35 +9445,36 @@ def lawtwinKafkaConsumerPositionOf(
         ) from error
 
 
+# lawtwinKafkaConsumerRecords — ../src/contract.lawspec:663
 def lawtwinKafkaConsumerRecords(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.list[data.FetchedRecord],
+    tp: data.TopicPartition,
+    rs: _builtins.list[data.FetchedRecord],
 ) -> _builtins.list[data.ConsumerRecord]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        rs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::FetchedRecord")],
             ),
-            value_1,
-            64,
+            rs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_732(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_consumer_records(symbols, tp, rs)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka::type::ConsumerRecord")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11740,31 +9483,25 @@ def lawtwinKafkaConsumerRecords(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerRecords: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerRecords: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaConsumerRefresh — ../src/contract.lawspec:731
 def lawtwinKafkaConsumerRefresh(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ConsumerState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.ConsumerState
-]:
+    c: data.ConsumerState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.ConsumerState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_0,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_733(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_consumer_refresh(symbols, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11772,9 +9509,7 @@ def lawtwinKafkaConsumerRefresh(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -11782,7 +9517,7 @@ def lawtwinKafkaConsumerRefresh(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11791,45 +9526,37 @@ def lawtwinKafkaConsumerRefresh(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerRefresh: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerRefresh: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaConsumerSeek — ../src/contract.lawspec:824
 def lawtwinKafkaConsumerSeek(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
-    value_2: data.ConsumerState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.ConsumerState
-]:
+    tp: data.TopicPartition,
+    offset: _builtins.int,
+    c: data.ConsumerState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.ConsumerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        offset = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            offset,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_2,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_734(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_consumer_seek(symbols, tp, offset, c)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -11837,9 +9564,7 @@ def lawtwinKafkaConsumerSeek(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -11847,7 +9572,7 @@ def lawtwinKafkaConsumerSeek(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11856,46 +9581,36 @@ def lawtwinKafkaConsumerSeek(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerSeek: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerSeek: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaCoversOnce — ../src/contract.lawspec:469
 def lawtwinKafkaCoversOnce(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: data.GroupView,
+    t: _builtins.str,
+    n: _builtins.int,
+    view: data.GroupView,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        n = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            n,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        view = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::GroupView"),
-            value_2,
-            64,
+            view,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_735(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_covers_once(symbols, t, n, view)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11904,39 +9619,31 @@ def lawtwinKafkaCoversOnce(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaCoversOnce: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaCoversOnce: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaCreated — ../src/contract.lawspec:315
 def lawtwinKafkaCreated(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.str,
-    value_1: _builtins.int,
+    t: _builtins.str,
+    n: _builtins.int,
 ) -> _builtins.bool:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        n = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            n,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_736(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_created(symbols, t, n)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11949,29 +9656,30 @@ def lawtwinKafkaCreated(
         ) from error
 
 
+# lawtwinKafkaFencedBy — ../src/contract.lawspec:348
 def lawtwinKafkaFencedBy(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.ProducerIdAndEpoch,
-    value_1: data.ProducerIdAndEpoch,
+    old: data.ProducerIdAndEpoch,
+    new: data.ProducerIdAndEpoch,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        old = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-            value_0,
-            64,
+            old,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        new = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-            value_1,
-            64,
+            new,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_737(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_fenced_by(symbols, old, new)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -11980,19 +9688,19 @@ def lawtwinKafkaFencedBy(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaFencedBy: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaFencedBy: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaFollowsBatch — ../src/contract.lawspec:329
 def lawtwinKafkaFollowsBatch(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Either[data.KafkaError, _builtins.int],
-    value_1: _builtins.list[data.Record],
-    value_2: _schema.Either[data.KafkaError, _builtins.int],
+    a: _schema.Either[data.KafkaError, _builtins.int],
+    batch: _builtins.list[data.Record],
+    b: _schema.Either[data.KafkaError, _builtins.int],
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named(
                 "Either",
                 [
@@ -12000,20 +9708,17 @@ def lawtwinKafkaFollowsBatch(
                     _schema.Named("Int64"),
                 ],
             ),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
-            value_1,
-            64,
+        batch = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            batch,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named(
                 "Either",
                 [
@@ -12021,20 +9726,15 @@ def lawtwinKafkaFollowsBatch(
                     _schema.Named("Int64"),
                 ],
             ),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_738(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_follows_batch(symbols, a, batch, b)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12043,18 +9743,18 @@ def lawtwinKafkaFollowsBatch(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaFollowsBatch: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaFollowsBatch: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaFollowsOne — ../src/contract.lawspec:1247
 def lawtwinKafkaFollowsOne(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Either[data.KafkaError, data.RecordMetadata],
-    value_1: _schema.Either[data.KafkaError, _builtins.int],
+    a: _schema.Either[data.KafkaError, data.RecordMetadata],
+    latest: _schema.Either[data.KafkaError, _builtins.int],
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named(
                 "Either",
                 [
@@ -12062,11 +9762,11 @@ def lawtwinKafkaFollowsOne(
                     _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                 ],
             ),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        latest = _lawspec_schema.from_native(
             _schema.Named(
                 "Either",
                 [
@@ -12074,15 +9774,15 @@ def lawtwinKafkaFollowsOne(
                     _schema.Named("Int64"),
                 ],
             ),
-            value_1,
-            64,
+            latest,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_739(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_follows_one(symbols, a, latest)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12091,27 +9791,22 @@ def lawtwinKafkaFollowsOne(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaFollowsOne: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaFollowsOne: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaFreshConsumer — ../src/contract.lawspec:557
 def lawtwinKafkaFreshConsumer(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> data.ConsumerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_740(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.lawtwin_kafka_fresh_consumer(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12120,27 +9815,22 @@ def lawtwinKafkaFreshConsumer(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaFreshConsumer: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaFreshConsumer: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaFreshProducer — ../src/contract.lawspec:542
 def lawtwinKafkaFreshProducer(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> data.ProducerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_741(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.lawtwin_kafka_fresh_producer(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12149,27 +9839,22 @@ def lawtwinKafkaFreshProducer(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaFreshProducer: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaFreshProducer: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaFreshTransactions — ../src/contract.lawspec:573
 def lawtwinKafkaFreshTransactions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> data.TransactionState:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_742(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.lawtwin_kafka_fresh_transactions(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12183,18 +9868,19 @@ def lawtwinKafkaFreshTransactions(
         ) from error
 
 
+# lawtwinKafkaIdentityOf — ../src/contract.lawspec:658
 def lawtwinKafkaIdentityOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.ProducerState,
+    st: data.ProducerState,
 ) -> data.Pair[_schema.Maybe[data.ProducerIdAndEpoch], data.ProducerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_0,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_743(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_identity_of(symbols, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -12203,20 +9889,7 @@ def lawtwinKafkaIdentityOf(
                         "Maybe",
                         [
                             _schema.Named(
-                                (
-                                    "lawt"
-                                    "win."
-                                    "kafk"
-                                    "a.mo"
-                                    "del:"
-                                    ":typ"
-                                    "e::P"
-                                    "rodu"
-                                    "cerI"
-                                    "dAnd"
-                                    "Epoc"
-                                    "h"
-                                ),
+                                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
                             ),
                         ],
                     ),
@@ -12224,7 +9897,7 @@ def lawtwinKafkaIdentityOf(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12233,27 +9906,27 @@ def lawtwinKafkaIdentityOf(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaIdentityOf: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaIdentityOf: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaIncreasing — ../src/contract.lawspec:1407
 def lawtwinKafkaIncreasing(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.int],
+    xs: _builtins.list[_builtins.int],
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        xs = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Int64")]),
-            value_0,
-            64,
+            xs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_744(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_increasing(symbols, xs)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12262,51 +9935,38 @@ def lawtwinKafkaIncreasing(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaIncreasing: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaIncreasing: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaJoinAll — ../src/contract.lawspec:442
 def lawtwinKafkaJoinAll(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.str,
-    value_1: _builtins.list[_builtins.str],
-    value_2: _builtins.list[_builtins.str],
+    g: _builtins.str,
+    ms: _builtins.list[_builtins.str],
+    topics: _builtins.list[_builtins.str],
 ) -> _builtins.bool:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        ms = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_1,
-            64,
+            ms,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        topics = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_2,
-            64,
+            topics,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_745(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_join_all(symbols, g, ms, topics)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12319,46 +9979,37 @@ def lawtwinKafkaJoinAll(
         ) from error
 
 
+# lawtwinKafkaJoinEach — ../src/contract.lawspec:1606
 def lawtwinKafkaJoinEach(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     groupCoordinator: "lawspec_abilities.lawtwin.kafka.GroupCoordinator",
-    value_0: _builtins.str,
-    value_1: _builtins.list[_builtins.str],
-    value_2: _builtins.list[_builtins.str],
+    g: _builtins.str,
+    ms: _builtins.list[_builtins.str],
+    topics: _builtins.list[_builtins.str],
 ) -> _builtins.bool:
     try:
         ls.install_handlers(
             symbols,
             {"lawtwin.kafka::ability::GroupCoordinator": groupCoordinator},
         )
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        ms = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_1,
-            64,
+            ms,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        topics = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_2,
-            64,
+            topics,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_746(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_join_each(symbols, g, ms, topics)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12367,34 +10018,30 @@ def lawtwinKafkaJoinEach(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaJoinEach: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaJoinEach: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaKeepPositions — ../src/contract.lawspec:688
 def lawtwinKafkaKeepPositions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.TopicPartition],
-    value_1: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, _builtins.int],
-        ...
+    tps: _builtins.list[data.TopicPartition],
+    positions: _builtins.tuple[
+        _builtins.tuple[data.TopicPartition, _builtins.int], ...
     ],
-    value_2: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, _builtins.int],
-        ...
-    ],
+    acc: _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...],
 ) -> _builtins.tuple[_builtins.tuple[data.TopicPartition, _builtins.int], ...]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_0,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        positions = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -12402,11 +10049,11 @@ def lawtwinKafkaKeepPositions(
                     _schema.Named("Int64"),
                 ],
             ),
-            value_1,
-            64,
+            positions,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -12414,16 +10061,11 @@ def lawtwinKafkaKeepPositions(
                     _schema.Named("Int64"),
                 ],
             ),
-            value_2,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_747(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_keep_positions(symbols, tps, positions, acc)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -12433,7 +10075,7 @@ def lawtwinKafkaKeepPositions(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12442,27 +10084,27 @@ def lawtwinKafkaKeepPositions(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaKeepPositions: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaKeepPositions: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaMemberIds — ../src/contract.lawspec:325
 def lawtwinKafkaMemberIds(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.str],
+    ms: _builtins.list[_builtins.str],
 ) -> _builtins.list[_builtins.str]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        ms = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_0,
-            64,
+            ms,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_748(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_member_ids(symbols, ms)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12471,43 +10113,43 @@ def lawtwinKafkaMemberIds(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaMemberIds: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaMemberIds: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaMissingFrom — ../src/contract.lawspec:884
 def lawtwinKafkaMissingFrom(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.TopicPartition],
-    value_1: _builtins.list[data.TopicPartition],
+    tps: _builtins.list[data.TopicPartition],
+    have: _builtins.list[data.TopicPartition],
 ) -> _builtins.list[data.TopicPartition]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_0,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        have = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_1,
-            64,
+            have,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_749(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_missing_from(symbols, tps, have)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12516,60 +10158,60 @@ def lawtwinKafkaMissingFrom(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaMissingFrom: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaMissingFrom: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelAddPartitionsToTxn — ../src/model.lawspec:618
 def lawtwinKafkaModelAddPartitionsToTxn(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: _builtins.int,
-    value_3: _builtins.list[data.TopicPartition],
-    value_4: data.BrokerState,
+    txid: _builtins.str,
+    pid: _builtins.int,
+    epoch: _builtins.int,
+    tps: _builtins.list[data.TopicPartition],
+    b: data.BrokerState,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        txid = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        pid = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            pid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        epoch = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value_2,
-            64,
+            epoch,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_3,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_4,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_750(
+        result = _definitions.lawtwin_kafka_model_add_partitions_to_txn_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            txid,
+            pid,
+            epoch,
+            tps,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -12580,7 +10222,7 @@ def lawtwinKafkaModelAddPartitionsToTxn(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12594,32 +10236,33 @@ def lawtwinKafkaModelAddPartitionsToTxn(
         ) from error
 
 
+# lawtwinKafkaModelAllKnown — ../src/model.lawspec:597
 def lawtwinKafkaModelAllKnown(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.TopicPartition],
-    value_1: data.BrokerState,
+    tps: _builtins.list[data.TopicPartition],
+    b: data.BrokerState,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_0,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_751(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_all_known_2(symbols, tps, b)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12628,57 +10271,54 @@ def lawtwinKafkaModelAllKnown(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelAllKnown: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelAllKnown: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelAppendBatch — ../src/model.lawspec:337
 def lawtwinKafkaModelAppendBatch(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Record],
-    value_1: _builtins.int,
-    value_2: _builtins.bool,
-    value_3: data.PartitionLog,
+    rs: _builtins.list[data.Record],
+    writer: _builtins.int,
+    transactional: _builtins.bool,
+    l: data.PartitionLog,
 ) -> data.PartitionLog:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
-            value_0,
-            64,
+        rs = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            rs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        writer = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            writer,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        transactional = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_2,
-            64,
+            transactional,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        l = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-            value_3,
-            64,
+            l,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_752(
+        result = _definitions.lawtwin_kafka_model_append_batch_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            rs,
+            writer,
+            transactional,
+            l,
         )
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12687,63 +10327,60 @@ def lawtwinKafkaModelAppendBatch(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelAppendBatch: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelAppendBatch: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelAppendRecords — ../src/model.lawspec:326
 def lawtwinKafkaModelAppendRecords(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Record],
-    value_1: _builtins.int,
-    value_2: _builtins.int,
-    value_3: _builtins.bool,
-    value_4: _builtins.list[data.LogEntry],
+    rs: _builtins.list[data.Record],
+    offset: _builtins.int,
+    writer: _builtins.int,
+    transactional: _builtins.bool,
+    es: _builtins.list[data.LogEntry],
 ) -> data.Pair[_builtins.int, _builtins.list[data.LogEntry]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
-            value_0,
-            64,
+        rs = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            rs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        offset = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            offset,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        writer = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            writer,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        transactional = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_3,
-            64,
+            transactional,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::LogEntry")],
             ),
-            value_4,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_753(
+        result = _definitions.lawtwin_kafka_model_append_records_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            rs,
+            offset,
+            writer,
+            transactional,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -12757,7 +10394,7 @@ def lawtwinKafkaModelAppendRecords(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12771,32 +10408,33 @@ def lawtwinKafkaModelAppendRecords(
         ) from error
 
 
+# lawtwinKafkaModelApplyOffsets — ../src/model.lawspec:686
 def lawtwinKafkaModelApplyOffsets(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.PendingOffset],
-    value_1: data.BrokerState,
+    os: _builtins.list[data.PendingOffset],
+    b: data.BrokerState,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        os = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::PendingOffset")],
             ),
-            value_0,
-            64,
+            os,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_754(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_apply_offsets_2(symbols, os, b)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12810,68 +10448,62 @@ def lawtwinKafkaModelApplyOffsets(
         ) from error
 
 
+# lawtwinKafkaModelAssignPartitions — ../src/model.lawspec:768
 def lawtwinKafkaModelAssignPartitions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[_builtins.int],
-    value_2: _builtins.list[_builtins.str],
-    value_3: _builtins.list[_builtins.str],
-    value_4: _builtins.dict[
-        _builtins.str,
-        _builtins.list[data.TopicPartition]
-    ],
+    topic: _builtins.str,
+    ps: _builtins.list[_builtins.int],
+    owners: _builtins.list[_builtins.str],
+    waiting: _builtins.list[_builtins.str],
+    a: _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]],
 ) -> _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        topic = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            topic,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        ps = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Int32")]),
-            value_1,
-            64,
+            ps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        owners = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_2,
-            64,
+            owners,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        waiting = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_3,
-            64,
+            waiting,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
-            value_4,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_755(
+        result = _definitions.lawtwin_kafka_model_assign_partitions_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            topic,
+            ps,
+            owners,
+            waiting,
+            a,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -12880,16 +10512,12 @@ def lawtwinKafkaModelAssignPartitions(
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12903,53 +10531,42 @@ def lawtwinKafkaModelAssignPartitions(
         ) from error
 
 
+# lawtwinKafkaModelAssignTo — ../src/model.lawspec:756
 def lawtwinKafkaModelAssignTo(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.TopicPartition,
-    value_2: _builtins.dict[
-        _builtins.str,
-        _builtins.list[data.TopicPartition]
-    ],
+    member: _builtins.str,
+    tp: data.TopicPartition,
+    a: _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]],
 ) -> _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        member = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            member,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_1,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
-            value_2,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_756(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_model_assign_to_2(symbols, member, tp, a)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -12957,16 +10574,12 @@ def lawtwinKafkaModelAssignTo(
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -12975,31 +10588,26 @@ def lawtwinKafkaModelAssignTo(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelAssignTo: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelAssignTo: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelAssignTopics — ../src/model.lawspec:799
 def lawtwinKafkaModelAssignTopics(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.str],
-    value_1: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
-    value_2: data.BrokerState,
-    value_3: _builtins.dict[
-        _builtins.str,
-        _builtins.list[data.TopicPartition]
-    ],
+    topics: _builtins.list[_builtins.str],
+    subs: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
+    b: data.BrokerState,
+    a: _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]],
 ) -> _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        topics = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_0,
-            64,
+            topics,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        subs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -13012,41 +10620,37 @@ def lawtwinKafkaModelAssignTopics(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            subs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
-            value_3,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_757(
+        result = _definitions.lawtwin_kafka_model_assign_topics_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            topics,
+            subs,
+            b,
+            a,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -13055,16 +10659,12 @@ def lawtwinKafkaModelAssignTopics(
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13078,49 +10678,45 @@ def lawtwinKafkaModelAssignTopics(
         ) from error
 
 
+# lawtwinKafkaModelCheckMember — ../src/model.lawspec:882
 def lawtwinKafkaModelCheckMember(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: data.BrokerState,
+    g: _builtins.str,
+    member: _builtins.str,
+    generation: _builtins.int,
+    b: data.BrokerState,
 ) -> data.Group:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        member = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            member,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        generation = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            generation,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_3,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_758(
+        result = _definitions.lawtwin_kafka_model_check_member_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            g,
+            member,
+            generation,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13129,54 +10725,54 @@ def lawtwinKafkaModelCheckMember(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelCheckMember: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelCheckMember: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelCheckTxnProducer — ../src/model.lawspec:581
 def lawtwinKafkaModelCheckTxnProducer(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: _builtins.int,
-    value_3: data.BrokerState,
+    txid: _builtins.str,
+    pid: _builtins.int,
+    epoch: _builtins.int,
+    b: data.BrokerState,
 ) -> data.ProducerEntry:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        txid = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        pid = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            pid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        epoch = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value_2,
-            64,
+            epoch,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_3,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_759(
+        result = _definitions.lawtwin_kafka_model_check_txn_producer_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            txid,
+            pid,
+            epoch,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13190,44 +10786,35 @@ def lawtwinKafkaModelCheckTxnProducer(
         ) from error
 
 
+# lawtwinKafkaModelCommitAll — ../src/model.lawspec:935
 def lawtwinKafkaModelCommitAll(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.OffsetEntry],
-    value_2: data.BrokerState,
+    g: _builtins.str,
+    offsets: _builtins.list[data.OffsetEntry],
+    b: data.BrokerState,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        offsets = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_1,
-            64,
+            offsets,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_760(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_model_commit_all_2(symbols, g, offsets, b)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13236,36 +10823,37 @@ def lawtwinKafkaModelCommitAll(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelCommitAll: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelCommitAll: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelComputeAssignment — ../src/model.lawspec:824
 def lawtwinKafkaModelComputeAssignment(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
-    value_1: data.BrokerState,
+    subscriptions: _builtins.dict[_builtins.str, _builtins.list[_builtins.str]],
+    b: data.BrokerState,
 ) -> _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        subscriptions = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
-                [
-                    _schema.Named("Text"),
-                    _schema.Named("List", [_schema.Named("Text")]),
-                ],
+                [_schema.Named("Text"), _schema.Named("List", [_schema.Named("Text")])],
             ),
-            value_0,
-            64,
+            subscriptions,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_761(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_compute_assignment_2(
+            symbols,
+            subscriptions,
+            b,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -13273,16 +10861,12 @@ def lawtwinKafkaModelComputeAssignment(
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13296,36 +10880,37 @@ def lawtwinKafkaModelComputeAssignment(
         ) from error
 
 
+# lawtwinKafkaModelCreatePartitions — ../src/model.lawspec:291
 def lawtwinKafkaModelCreatePartitions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: data.BrokerState,
+    name: _builtins.str,
+    total: _builtins.int,
+    b: data.BrokerState,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        name = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            name,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        total = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            total,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_762(
+        result = _definitions.lawtwin_kafka_model_create_partitions_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            name,
+            total,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -13336,7 +10921,7 @@ def lawtwinKafkaModelCreatePartitions(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13350,37 +10935,33 @@ def lawtwinKafkaModelCreatePartitions(
         ) from error
 
 
+# lawtwinKafkaModelCreateTopic — ../src/model.lawspec:280
 def lawtwinKafkaModelCreateTopic(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: data.BrokerState,
+    name: _builtins.str,
+    n: _builtins.int,
+    b: data.BrokerState,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        name = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            name,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        n = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            n,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_763(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_model_create_topic_2(symbols, name, n, b)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -13390,7 +10971,7 @@ def lawtwinKafkaModelCreateTopic(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13399,30 +10980,25 @@ def lawtwinKafkaModelCreateTopic(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelCreateTopic: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelCreateTopic: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelDescribeGroup — ../src/model.lawspec:928
 def lawtwinKafkaModelDescribeGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.BrokerState,
+    g: _builtins.str,
+    b: data.BrokerState,
 ) -> data.Pair[data.GroupView, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_764(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_describe_group_2(symbols, g, b)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -13432,7 +11008,7 @@ def lawtwinKafkaModelDescribeGroup(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13446,41 +11022,39 @@ def lawtwinKafkaModelDescribeGroup(
         ) from error
 
 
+# lawtwinKafkaModelEmptyAssignments — ../src/model.lawspec:815
 def lawtwinKafkaModelEmptyAssignments(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.str],
-    value_1: _builtins.dict[
-        _builtins.str,
-        _builtins.list[data.TopicPartition]
-    ],
+    members: _builtins.list[_builtins.str],
+    a: _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]],
 ) -> _builtins.dict[_builtins.str, _builtins.list[data.TopicPartition]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        members = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_0,
-            64,
+            members,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_765(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_empty_assignments_2(
+            symbols,
+            members,
+            a,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -13488,16 +11062,12 @@ def lawtwinKafkaModelEmptyAssignments(
                     _schema.Named("Text"),
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13511,22 +11081,18 @@ def lawtwinKafkaModelEmptyAssignments(
         ) from error
 
 
+# lawtwinKafkaModelEmptyBroker — ../src/model.lawspec:203
 def lawtwinKafkaModelEmptyBroker(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_766(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.lawtwin_kafka_model_empty_broker_2(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13535,27 +11101,22 @@ def lawtwinKafkaModelEmptyBroker(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelEmptyBroker: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelEmptyBroker: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelEmptyGroup — ../src/model.lawspec:216
 def lawtwinKafkaModelEmptyGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> data.Group:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_767(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.lawtwin_kafka_model_empty_group_2(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13564,27 +11125,22 @@ def lawtwinKafkaModelEmptyGroup(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelEmptyGroup: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelEmptyGroup: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelEmptyLog — ../src/model.lawspec:210
 def lawtwinKafkaModelEmptyLog(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> data.PartitionLog:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_768(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.lawtwin_kafka_model_empty_log_2(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13593,57 +11149,57 @@ def lawtwinKafkaModelEmptyLog(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelEmptyLog: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelEmptyLog: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelEndTxn — ../src/model.lawspec:718
 def lawtwinKafkaModelEndTxn(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: _builtins.int,
-    value_3: _builtins.bool,
-    value_4: data.BrokerState,
+    txid: _builtins.str,
+    pid: _builtins.int,
+    epoch: _builtins.int,
+    commit: _builtins.bool,
+    b: data.BrokerState,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        txid = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        pid = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            pid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        epoch = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value_2,
-            64,
+            epoch,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        commit = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_3,
-            64,
+            commit,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_4,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_769(
+        result = _definitions.lawtwin_kafka_model_end_txn_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            txid,
+            pid,
+            epoch,
+            commit,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -13654,7 +11210,7 @@ def lawtwinKafkaModelEndTxn(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13663,37 +11219,41 @@ def lawtwinKafkaModelEndTxn(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelEndTxn: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelEndTxn: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelExpectedSequence — ../src/model.lawspec:372
 def lawtwinKafkaModelExpectedSequence(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.list[data.BatchMeta],
+    epoch: _builtins.int,
+    ms: _builtins.list[data.BatchMeta],
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        epoch = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value_0,
-            64,
+            epoch,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        ms = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
             ),
-            value_1,
-            64,
+            ms,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_770(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_expected_sequence_2(
+            symbols,
+            epoch,
+            ms,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13707,52 +11267,53 @@ def lawtwinKafkaModelExpectedSequence(
         ) from error
 
 
+# lawtwinKafkaModelFetch — ../src/model.lawspec:495
 def lawtwinKafkaModelFetch(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
-    value_2: _builtins.int,
-    value_3: data.IsolationLevel,
-    value_4: data.BrokerState,
+    tp: data.TopicPartition,
+    from_: _builtins.int,
+    max_records: _builtins.int,
+    isolation: data.IsolationLevel,
+    b: data.BrokerState,
 ) -> data.Pair[data.FetchResult, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        from_ = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            from_,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        max_records = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            max_records,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        isolation = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value_3,
-            64,
+            isolation,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_4,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_771(
+        result = _definitions.lawtwin_kafka_model_fetch_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            tp,
+            from_,
+            max_records,
+            isolation,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -13763,7 +11324,7 @@ def lawtwinKafkaModelFetch(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13772,57 +11333,57 @@ def lawtwinKafkaModelFetch(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelFetch: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelFetch: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelFindDuplicate — ../src/model.lawspec:360
 def lawtwinKafkaModelFindDuplicate(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
-    value_2: _builtins.int,
-    value_3: _builtins.list[data.BatchMeta],
+    epoch: _builtins.int,
+    first: _builtins.int,
+    last: _builtins.int,
+    ms: _builtins.list[data.BatchMeta],
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        epoch = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value_0,
-            64,
+            epoch,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        first = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            first,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        last = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            last,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        ms = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::BatchMeta")],
             ),
-            value_3,
-            64,
+            ms,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_772(
+        result = _definitions.lawtwin_kafka_model_find_duplicate_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            epoch,
+            first,
+            last,
+            ms,
         )
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13836,49 +11397,50 @@ def lawtwinKafkaModelFindDuplicate(
         ) from error
 
 
+# lawtwinKafkaModelFinishTxn — ../src/model.lawspec:699
 def lawtwinKafkaModelFinishTxn(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.bool,
-    value_2: data.TxnState,
-    value_3: data.BrokerState,
+    pid: _builtins.int,
+    commit: _builtins.bool,
+    txn: data.TxnState,
+    b: data.BrokerState,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        pid = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            pid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        commit = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_1,
-            64,
+            commit,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        txn = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TxnState"),
-            value_2,
-            64,
+            txn,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_3,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_773(
+        result = _definitions.lawtwin_kafka_model_finish_txn_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            pid,
+            commit,
+            txn,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13887,34 +11449,29 @@ def lawtwinKafkaModelFinishTxn(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelFinishTxn: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelFinishTxn: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelGroupOf — ../src/model.lawspec:733
 def lawtwinKafkaModelGroupOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.BrokerState,
+    g: _builtins.str,
+    b: data.BrokerState,
 ) -> data.Group:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_774(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_group_of_2(symbols, g, b)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13923,49 +11480,44 @@ def lawtwinKafkaModelGroupOf(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelGroupOf: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelGroupOf: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelHeartbeat — ../src/model.lawspec:903
 def lawtwinKafkaModelHeartbeat(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: data.BrokerState,
+    g: _builtins.str,
+    member: _builtins.str,
+    generation: _builtins.int,
+    b: data.BrokerState,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        member = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            member,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        generation = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            generation,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_3,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_775(
+        result = _definitions.lawtwin_kafka_model_heartbeat_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            g,
+            member,
+            generation,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -13976,7 +11528,7 @@ def lawtwinKafkaModelHeartbeat(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -13985,27 +11537,27 @@ def lawtwinKafkaModelHeartbeat(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelHeartbeat: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelHeartbeat: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelHighWatermark — ../src/model.lawspec:322
 def lawtwinKafkaModelHighWatermark(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.PartitionLog,
+    l: data.PartitionLog,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        l = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-            value_0,
-            64,
+            l,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_776(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_model_high_watermark_2(symbols, l)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14019,37 +11571,36 @@ def lawtwinKafkaModelHighWatermark(
         ) from error
 
 
+# lawtwinKafkaModelInitProducerId — ../src/model.lawspec:554
 def lawtwinKafkaModelInitProducerId(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Maybe[_builtins.str],
-    value_1: data.BrokerState,
+    txid: _schema.Maybe[_builtins.str],
+    b: data.BrokerState,
 ) -> data.Pair[data.ProducerIdAndEpoch, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        txid = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_777(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_init_producer_id_2(symbols, txid, b)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
                 [
-                    _schema.Named(
-                        "lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                    ),
+                    _schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch"),
                     _schema.Named("lawtwin.kafka.model::type::BrokerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14063,44 +11614,45 @@ def lawtwinKafkaModelInitProducerId(
         ) from error
 
 
+# lawtwinKafkaModelIsAborted — ../src/model.lawspec:437
 def lawtwinKafkaModelIsAborted(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
-    value_2: _builtins.list[data.AbortedTxn],
+    writer: _builtins.int,
+    offset: _builtins.int,
+    aborted: _builtins.list[data.AbortedTxn],
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        writer = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            writer,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        offset = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            offset,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        aborted = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::AbortedTxn")],
             ),
-            value_2,
-            64,
+            aborted,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_778(
+        result = _definitions.lawtwin_kafka_model_is_aborted_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            writer,
+            offset,
+            aborted,
         )
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14109,49 +11661,44 @@ def lawtwinKafkaModelIsAborted(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelIsAborted: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelIsAborted: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelJoinGroup — ../src/model.lawspec:861
 def lawtwinKafkaModelJoinGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.list[_builtins.str],
-    value_3: data.BrokerState,
+    g: _builtins.str,
+    member: _builtins.str,
+    topics: _builtins.list[_builtins.str],
+    b: data.BrokerState,
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        member = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            member,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        topics = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_2,
-            64,
+            topics,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_3,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_779(
+        result = _definitions.lawtwin_kafka_model_join_group_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            g,
+            member,
+            topics,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -14162,7 +11709,7 @@ def lawtwinKafkaModelJoinGroup(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14171,34 +11718,34 @@ def lawtwinKafkaModelJoinGroup(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelJoinGroup: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelJoinGroup: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelKnownPartition — ../src/model.lawspec:261
 def lawtwinKafkaModelKnownPartition(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: data.BrokerState,
+    tp: data.TopicPartition,
+    b: data.BrokerState,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_780(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_known_partition_2(symbols, tp, b)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14212,32 +11759,37 @@ def lawtwinKafkaModelKnownPartition(
         ) from error
 
 
+# lawtwinKafkaModelLastOffsetOf — ../src/model.lawspec:475
 def lawtwinKafkaModelLastOffsetOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.FetchedRecord],
-    value_1: _builtins.int,
+    rs: _builtins.list[data.FetchedRecord],
+    fallback_offset: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        rs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::FetchedRecord")],
             ),
-            value_0,
-            64,
+            rs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        fallback_offset = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            fallback_offset,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_781(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_last_offset_of_2(
+            symbols,
+            rs,
+            fallback_offset,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14251,22 +11803,23 @@ def lawtwinKafkaModelLastOffsetOf(
         ) from error
 
 
+# lawtwinKafkaModelLastStableOffset — ../src/model.lawspec:312
 def lawtwinKafkaModelLastStableOffset(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.PartitionLog,
+    l: data.PartitionLog,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        l = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-            value_0,
-            64,
+            l,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_782(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_model_last_stable_offset_2(symbols, l)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14280,37 +11833,28 @@ def lawtwinKafkaModelLastStableOffset(
         ) from error
 
 
+# lawtwinKafkaModelLeaveGroup — ../src/model.lawspec:908
 def lawtwinKafkaModelLeaveGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: data.BrokerState,
+    g: _builtins.str,
+    member: _builtins.str,
+    b: data.BrokerState,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        member = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            member,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_783(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_model_leave_group_2(symbols, g, member, b)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -14320,7 +11864,7 @@ def lawtwinKafkaModelLeaveGroup(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14329,49 +11873,49 @@ def lawtwinKafkaModelLeaveGroup(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelLeaveGroup: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelLeaveGroup: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelListOffsets — ../src/model.lawspec:517
 def lawtwinKafkaModelListOffsets(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: data.OffsetSpec,
-    value_2: data.IsolationLevel,
-    value_3: data.BrokerState,
+    tp: data.TopicPartition,
+    spec: data.OffsetSpec,
+    isolation: data.IsolationLevel,
+    b: data.BrokerState,
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        spec = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::OffsetSpec"),
-            value_1,
-            64,
+            spec,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        isolation = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value_2,
-            64,
+            isolation,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_3,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_784(
+        result = _definitions.lawtwin_kafka_model_list_offsets_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            tp,
+            spec,
+            isolation,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -14382,7 +11926,7 @@ def lawtwinKafkaModelListOffsets(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14391,34 +11935,34 @@ def lawtwinKafkaModelListOffsets(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelListOffsets: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelListOffsets: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelLogOf — ../src/model.lawspec:268
 def lawtwinKafkaModelLogOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: data.BrokerState,
+    tp: data.TopicPartition,
+    b: data.BrokerState,
 ) -> data.PartitionLog:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_785(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_log_of_2(symbols, tp, b)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14427,34 +11971,34 @@ def lawtwinKafkaModelLogOf(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelLogOf: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelLogOf: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelMax64 — ../src/model.lawspec:227
 def lawtwinKafkaModelMax64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
+    a: _builtins.int,
+    b: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_786(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_max64_2(symbols, a, b)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14463,27 +12007,22 @@ def lawtwinKafkaModelMax64(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMax64: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMax64: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelMaxPartitions — ../src/model.lawspec:231
 def lawtwinKafkaModelMaxPartitions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_787(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.lawtwin_kafka_model_max_partitions_2(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14497,14 +12036,13 @@ def lawtwinKafkaModelMaxPartitions(
         ) from error
 
 
+# lawtwinKafkaModelMemberViews — ../src/model.lawspec:919
 def lawtwinKafkaModelMemberViews(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]
-    ],
+    a: _builtins.list[data.Entry[_builtins.str, _builtins.list[data.TopicPartition]]],
 ) -> _builtins.list[data.MemberAssignment]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -14516,19 +12054,7 @@ def lawtwinKafkaModelMemberViews(
                                 "List",
                                 [
                                     _schema.Named(
-                                        (
-                                            "lawt"
-                                            "win."
-                                            "kafk"
-                                            "a.mo"
-                                            "del:"
-                                            ":typ"
-                                            "e::T"
-                                            "opic"
-                                            "Part"
-                                            "itio"
-                                            "n"
-                                        ),
+                                        "lawtwin.kafka.model::type::TopicPartition",
                                     ),
                                 ],
                             ),
@@ -14536,18 +12062,18 @@ def lawtwinKafkaModelMemberViews(
                     ),
                 ],
             ),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_788(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_model_member_views_2(symbols, a)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::MemberAssignment")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14556,30 +12082,30 @@ def lawtwinKafkaModelMemberViews(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMemberViews: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMemberViews: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelMetadata — ../src/model.lawspec:303
 def lawtwinKafkaModelMetadata(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.BrokerState,
+    name: _builtins.str,
+    b: data.BrokerState,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        name = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            name,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_789(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_metadata_2(symbols, name, b)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -14589,7 +12115,7 @@ def lawtwinKafkaModelMetadata(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14598,34 +12124,34 @@ def lawtwinKafkaModelMetadata(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMetadata: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMetadata: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelMin64 — ../src/model.lawspec:225
 def lawtwinKafkaModelMin64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
+    a: _builtins.int,
+    b: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_790(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_min64_2(symbols, a, b)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14634,34 +12160,34 @@ def lawtwinKafkaModelMin64(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMin64: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMin64: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelMinOf — ../src/model.lawspec:315
 def lawtwinKafkaModelMinOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.int],
-    value_1: _builtins.int,
+    xs: _builtins.list[_builtins.int],
+    m: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        xs = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Int64")]),
-            value_0,
-            64,
+            xs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_791(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_min_of_2(symbols, xs, m)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14670,42 +12196,40 @@ def lawtwinKafkaModelMinOf(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMinOf: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMinOf: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelNewProducer — ../src/model.lawspec:536
 def lawtwinKafkaModelNewProducer(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Maybe[_builtins.str],
-    value_1: data.BrokerState,
+    txid: _schema.Maybe[_builtins.str],
+    b: data.BrokerState,
 ) -> data.Pair[data.ProducerIdAndEpoch, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        txid = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_792(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_new_producer_2(symbols, txid, b)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
                 [
-                    _schema.Named(
-                        "lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                    ),
+                    _schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch"),
                     _schema.Named("lawtwin.kafka.model::type::BrokerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14714,60 +12238,60 @@ def lawtwinKafkaModelNewProducer(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelNewProducer: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelNewProducer: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelNextFetchOffset — ../src/model.lawspec:485
 def lawtwinKafkaModelNextFetchOffset(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
-    value_2: _builtins.list[data.FetchedRecord],
-    value_3: _builtins.list[data.FetchedRecord],
+    from_: _builtins.int,
+    limit: _builtins.int,
+    taken: _builtins.list[data.FetchedRecord],
+    all_: _builtins.list[data.FetchedRecord],
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        from_ = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            from_,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        limit = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            limit,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        taken = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::FetchedRecord")],
             ),
-            value_2,
-            64,
+            taken,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        all_ = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::FetchedRecord")],
             ),
-            value_3,
-            64,
+            all_,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_793(
+        result = _definitions.lawtwin_kafka_model_next_fetch_offset_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            from_,
+            limit,
+            taken,
+            all_,
         )
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14781,55 +12305,51 @@ def lawtwinKafkaModelNextFetchOffset(
         ) from error
 
 
+# lawtwinKafkaModelOffsetCommit — ../src/model.lawspec:957
 def lawtwinKafkaModelOffsetCommit(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: _builtins.list[data.OffsetEntry],
-    value_4: data.BrokerState,
+    g: _builtins.str,
+    member: _builtins.str,
+    generation: _builtins.int,
+    offsets: _builtins.list[data.OffsetEntry],
+    b: data.BrokerState,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        member = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            member,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        generation = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            generation,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        offsets = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_3,
-            64,
+            offsets,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_4,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_794(
+        result = _definitions.lawtwin_kafka_model_offset_commit_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            g,
+            member,
+            generation,
+            offsets,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -14840,7 +12360,7 @@ def lawtwinKafkaModelOffsetCommit(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14854,37 +12374,28 @@ def lawtwinKafkaModelOffsetCommit(
         ) from error
 
 
+# lawtwinKafkaModelOffsetFetch — ../src/model.lawspec:972
 def lawtwinKafkaModelOffsetFetch(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.TopicPartition,
-    value_2: data.BrokerState,
+    g: _builtins.str,
+    tp: data.TopicPartition,
+    b: data.BrokerState,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_1,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_795(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_model_offset_fetch_2(symbols, g, tp, b)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -14894,7 +12405,7 @@ def lawtwinKafkaModelOffsetFetch(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14903,33 +12414,33 @@ def lawtwinKafkaModelOffsetFetch(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelOffsetFetch: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelOffsetFetch: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelOffsetPartitions — ../src/model.lawspec:946
 def lawtwinKafkaModelOffsetPartitions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.OffsetEntry],
+    offsets: _builtins.list[data.OffsetEntry],
 ) -> _builtins.list[data.TopicPartition]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        offsets = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_0,
-            64,
+            offsets,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_796(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_model_offset_partitions_2(symbols, offsets)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14943,29 +12454,34 @@ def lawtwinKafkaModelOffsetPartitions(
         ) from error
 
 
+# lawtwinKafkaModelPartitionCountOf — ../src/model.lawspec:257
 def lawtwinKafkaModelPartitionCountOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.BrokerState,
+    topic: _builtins.str,
+    b: data.BrokerState,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        topic = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            topic,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_797(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_partition_count_of_2(
+            symbols,
+            topic,
+            b,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -14979,22 +12495,23 @@ def lawtwinKafkaModelPartitionCountOf(
         ) from error
 
 
+# lawtwinKafkaModelPartitionsBelow — ../src/model.lawspec:233
 def lawtwinKafkaModelPartitionsBelow(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    n: _builtins.int,
 ) -> _builtins.list[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        n = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_0,
-            64,
+            n,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_798(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_model_partitions_below_2(symbols, n)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15008,42 +12525,43 @@ def lawtwinKafkaModelPartitionsBelow(
         ) from error
 
 
+# lawtwinKafkaModelPendingFor — ../src/model.lawspec:634
 def lawtwinKafkaModelPendingFor(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.OffsetEntry],
-    value_2: _builtins.list[data.PendingOffset],
+    group: _builtins.str,
+    offsets: _builtins.list[data.OffsetEntry],
+    acc: _builtins.list[data.PendingOffset],
 ) -> _builtins.list[data.PendingOffset]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        group = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            group,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        offsets = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_1,
-            64,
+            offsets,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::PendingOffset")],
             ),
-            value_2,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_799(
+        result = _definitions.lawtwin_kafka_model_pending_for_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            group,
+            offsets,
+            acc,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -15051,7 +12569,7 @@ def lawtwinKafkaModelPendingFor(
                 [_schema.Named("lawtwin.kafka.model::type::PendingOffset")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15060,56 +12578,47 @@ def lawtwinKafkaModelPendingFor(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelPendingFor: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelPendingFor: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelProduce — ../src/model.lawspec:381
 def lawtwinKafkaModelProduce(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _schema.Maybe[data.ProducerTag],
-    value_2: _builtins.list[data.Record],
-    value_3: data.BrokerState,
+    tp: data.TopicPartition,
+    tag: _schema.Maybe[data.ProducerTag],
+    rs: _builtins.list[data.Record],
+    b: data.BrokerState,
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        tag = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.kafka.model::type::ProducerTag")],
             ),
-            value_1,
-            64,
+            tag,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
-            value_2,
-            64,
+        rs = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            rs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_3,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_800(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-        )
+        result = _definitions.lawtwin_kafka_model_produce_2(symbols, tp, tag, rs, b)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -15119,7 +12628,7 @@ def lawtwinKafkaModelProduce(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15128,60 +12637,57 @@ def lawtwinKafkaModelProduce(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelProduce: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelProduce: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelProduceTagged — ../src/model.lawspec:394
 def lawtwinKafkaModelProduceTagged(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: data.ProducerTag,
-    value_2: _builtins.list[data.Record],
-    value_3: data.PartitionLog,
-    value_4: data.BrokerState,
+    tp: data.TopicPartition,
+    t: data.ProducerTag,
+    rs: _builtins.list[data.Record],
+    l: data.PartitionLog,
+    b: data.BrokerState,
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        t = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::ProducerTag"),
-            value_1,
-            64,
+            t,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
-            value_2,
-            64,
+        rs = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            rs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        l = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-            value_3,
-            64,
+            l,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_4,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_801(
+        result = _definitions.lawtwin_kafka_model_produce_tagged_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            tp,
+            t,
+            rs,
+            l,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -15192,7 +12698,7 @@ def lawtwinKafkaModelProduceTagged(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15206,41 +12712,32 @@ def lawtwinKafkaModelProduceTagged(
         ) from error
 
 
+# lawtwinKafkaModelPutGroup — ../src/model.lawspec:740
 def lawtwinKafkaModelPutGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.Group,
-    value_2: data.BrokerState,
+    g: _builtins.str,
+    group: data.Group,
+    b: data.BrokerState,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        group = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
-            value_1,
-            64,
+            group,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_802(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_model_put_group_2(symbols, g, group, b)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15249,46 +12746,41 @@ def lawtwinKafkaModelPutGroup(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelPutGroup: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelPutGroup: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelPutLog — ../src/model.lawspec:275
 def lawtwinKafkaModelPutLog(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: data.PartitionLog,
-    value_2: data.BrokerState,
+    tp: data.TopicPartition,
+    l: data.PartitionLog,
+    b: data.BrokerState,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        l = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-            value_1,
-            64,
+            l,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_803(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_model_put_log_2(symbols, tp, l, b)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15297,46 +12789,41 @@ def lawtwinKafkaModelPutLog(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelPutLog: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelPutLog: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelPutProducer — ../src/model.lawspec:613
 def lawtwinKafkaModelPutProducer(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: data.ProducerEntry,
-    value_2: data.BrokerState,
+    pid: _builtins.int,
+    entry: data.ProducerEntry,
+    b: data.BrokerState,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        pid = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            pid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        entry = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::ProducerEntry"),
-            value_1,
-            64,
+            entry,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_804(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_model_put_producer_2(symbols, pid, entry, b)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15345,74 +12832,74 @@ def lawtwinKafkaModelPutProducer(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelPutProducer: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelPutProducer: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelReadable — ../src/model.lawspec:450
 def lawtwinKafkaModelReadable(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.LogEntry],
-    value_1: _builtins.int,
-    value_2: _builtins.int,
-    value_3: _builtins.bool,
-    value_4: _builtins.list[data.AbortedTxn],
-    value_5: _builtins.list[data.FetchedRecord],
+    es: _builtins.list[data.LogEntry],
+    from_: _builtins.int,
+    limit: _builtins.int,
+    committed_only: _builtins.bool,
+    aborted: _builtins.list[data.AbortedTxn],
+    acc: _builtins.list[data.FetchedRecord],
 ) -> _builtins.list[data.FetchedRecord]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::LogEntry")],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        from_ = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            from_,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        limit = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            limit,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        committed_only = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_3,
-            64,
+            committed_only,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        aborted = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::AbortedTxn")],
             ),
-            value_4,
-            64,
+            aborted,
+            MACHINE_BITS,
             symbols,
         )
-        argument_5 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::FetchedRecord")],
             ),
-            value_5,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_805(
+        result = _definitions.lawtwin_kafka_model_readable_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
-            argument_5,
+            es,
+            from_,
+            limit,
+            committed_only,
+            aborted,
+            acc,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -15420,7 +12907,7 @@ def lawtwinKafkaModelReadable(
                 [_schema.Named("lawtwin.kafka.model::type::FetchedRecord")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15429,34 +12916,34 @@ def lawtwinKafkaModelReadable(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelReadable: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelReadable: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelRebalance — ../src/model.lawspec:834
 def lawtwinKafkaModelRebalance(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.Group,
-    value_1: data.BrokerState,
+    group: data.Group,
+    b: data.BrokerState,
 ) -> data.Group:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        group = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
-            value_0,
-            64,
+            group,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_806(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_rebalance_2(symbols, group, b)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15465,26 +12952,26 @@ def lawtwinKafkaModelRebalance(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelRebalance: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelRebalance: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelRebalanceGroups — ../src/model.lawspec:843
 def lawtwinKafkaModelRebalanceGroups(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.Entry[_builtins.str, data.Group]],
-    value_2: data.BrokerState,
-    value_3: _builtins.dict[_builtins.str, data.Group],
+    topic: _builtins.str,
+    gs: _builtins.list[data.Entry[_builtins.str, data.Group]],
+    b: data.BrokerState,
+    acc: _builtins.dict[_builtins.str, data.Group],
 ) -> _builtins.dict[_builtins.str, data.Group]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        topic = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            topic,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        gs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -15497,17 +12984,17 @@ def lawtwinKafkaModelRebalanceGroups(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            gs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_2,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -15515,16 +13002,16 @@ def lawtwinKafkaModelRebalanceGroups(
                     _schema.Named("lawtwin.kafka.model::type::Group"),
                 ],
             ),
-            value_3,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_807(
+        result = _definitions.lawtwin_kafka_model_rebalance_groups_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            topic,
+            gs,
+            b,
+            acc,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -15535,7 +13022,7 @@ def lawtwinKafkaModelRebalanceGroups(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15549,29 +13036,30 @@ def lawtwinKafkaModelRebalanceGroups(
         ) from error
 
 
+# lawtwinKafkaModelRebalanceTopic — ../src/model.lawspec:855
 def lawtwinKafkaModelRebalanceTopic(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.BrokerState,
+    topic: _builtins.str,
+    b: data.BrokerState,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        topic = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            topic,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_808(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_rebalance_topic_2(symbols, topic, b)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15585,41 +13073,42 @@ def lawtwinKafkaModelRebalanceTopic(
         ) from error
 
 
+# lawtwinKafkaModelRememberBatch — ../src/model.lawspec:351
 def lawtwinKafkaModelRememberBatch(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: data.BatchMeta,
-    value_2: data.PartitionLog,
+    writer: _builtins.int,
+    meta: data.BatchMeta,
+    l: data.PartitionLog,
 ) -> data.PartitionLog:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        writer = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            writer,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        meta = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BatchMeta"),
-            value_1,
-            64,
+            meta,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        l = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-            value_2,
-            64,
+            l,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_809(
+        result = _definitions.lawtwin_kafka_model_remember_batch_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            writer,
+            meta,
+            l,
         )
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15633,38 +13122,39 @@ def lawtwinKafkaModelRememberBatch(
         ) from error
 
 
+# lawtwinKafkaModelReversePending — ../src/model.lawspec:710
 def lawtwinKafkaModelReversePending(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.PendingOffset],
-    value_1: _builtins.list[data.PendingOffset],
+    os: _builtins.list[data.PendingOffset],
+    acc: _builtins.list[data.PendingOffset],
 ) -> _builtins.list[data.PendingOffset]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        os = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::PendingOffset")],
             ),
-            value_0,
-            64,
+            os,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::PendingOffset")],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_810(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_reverse_pending_2(symbols, os, acc)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::PendingOffset")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15678,15 +13168,14 @@ def lawtwinKafkaModelReversePending(
         ) from error
 
 
+# lawtwinKafkaModelSubscribedTopics — ../src/model.lawspec:790
 def lawtwinKafkaModelSubscribedTopics(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
-    value_1: _builtins.frozenset[_builtins.str],
+    subs: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
+    acc: _builtins.frozenset[_builtins.str],
 ) -> _builtins.frozenset[_builtins.str]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        subs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -15699,27 +13188,25 @@ def lawtwinKafkaModelSubscribedTopics(
                     ),
                 ],
             ),
-            value_0,
-            64,
+            subs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawspec.collections::type::Set",
-                [_schema.Named("Text")],
-            ),
-            value_1,
-            64,
+        acc = _lawspec_schema.from_native(
+            _schema.Named("lawspec.collections::type::Set", [_schema.Named("Text")]),
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_811(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_subscribed_topics_2(
+            symbols,
+            subs,
+            acc,
+        )
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "lawspec.collections::type::Set",
-                [_schema.Named("Text")],
-            ),
+            _schema.Named("lawspec.collections::type::Set", [_schema.Named("Text")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15733,21 +13220,20 @@ def lawtwinKafkaModelSubscribedTopics(
         ) from error
 
 
+# lawtwinKafkaModelSubscribersOf — ../src/model.lawspec:746
 def lawtwinKafkaModelSubscribersOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[
-        data.Entry[_builtins.str, _builtins.list[_builtins.str]]
-    ],
+    topic: _builtins.str,
+    subs: _builtins.list[data.Entry[_builtins.str, _builtins.list[_builtins.str]]],
 ) -> _builtins.list[_builtins.str]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        topic = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            topic,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        subs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
@@ -15760,15 +13246,15 @@ def lawtwinKafkaModelSubscribersOf(
                     ),
                 ],
             ),
-            value_1,
-            64,
+            subs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_812(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_subscribers_of_2(symbols, topic, subs)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Text")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15782,29 +13268,30 @@ def lawtwinKafkaModelSubscribersOf(
         ) from error
 
 
+# lawtwinKafkaModelSubscribesTo — ../src/model.lawspec:839
 def lawtwinKafkaModelSubscribesTo(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.Group,
+    topic: _builtins.str,
+    group: data.Group,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        topic = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            topic,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        group = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::Group"),
-            value_1,
-            64,
+            group,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_813(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_subscribes_to_2(symbols, topic, group)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15818,44 +13305,40 @@ def lawtwinKafkaModelSubscribesTo(
         ) from error
 
 
+# lawtwinKafkaModelSyncGroup — ../src/model.lawspec:893
 def lawtwinKafkaModelSyncGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: data.BrokerState,
+    g: _builtins.str,
+    member: _builtins.str,
+    generation: _builtins.int,
+    b: data.BrokerState,
 ) -> data.Pair[_builtins.list[data.TopicPartition], data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        member = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            member,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        generation = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            generation,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_3,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_814(
+        result = _definitions.lawtwin_kafka_model_sync_group_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            g,
+            member,
+            generation,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -15863,17 +13346,13 @@ def lawtwinKafkaModelSyncGroup(
                 [
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
                     ),
                     _schema.Named("lawtwin.kafka.model::type::BrokerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15882,34 +13361,34 @@ def lawtwinKafkaModelSyncGroup(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelSyncGroup: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelSyncGroup: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelTxnHasPartition — ../src/model.lawspec:428
 def lawtwinKafkaModelTxnHasPartition(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: data.TxnState,
+    tp: data.TopicPartition,
+    txn: data.TxnState,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        txn = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TxnState"),
-            value_1,
-            64,
+            txn,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_815(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_txn_has_partition_2(symbols, tp, txn)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -15923,63 +13402,64 @@ def lawtwinKafkaModelTxnHasPartition(
         ) from error
 
 
+# lawtwinKafkaModelTxnOffsetCommit — ../src/model.lawspec:645
 def lawtwinKafkaModelTxnOffsetCommit(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.int,
-    value_2: _builtins.int,
-    value_3: _builtins.str,
-    value_4: _builtins.list[data.OffsetEntry],
-    value_5: data.BrokerState,
+    txid: _builtins.str,
+    pid: _builtins.int,
+    epoch: _builtins.int,
+    group: _builtins.str,
+    offsets: _builtins.list[data.OffsetEntry],
+    b: data.BrokerState,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        txid = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        pid = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            pid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        epoch = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value_2,
-            64,
+            epoch,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        group = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_3,
-            64,
+            group,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        offsets = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_4,
-            64,
+            offsets,
+            MACHINE_BITS,
             symbols,
         )
-        argument_5 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_5,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_816(
+        result = _definitions.lawtwin_kafka_model_txn_offset_commit_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
-            argument_5,
+            txid,
+            pid,
+            epoch,
+            group,
+            offsets,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -15990,7 +13470,7 @@ def lawtwinKafkaModelTxnOffsetCommit(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16004,38 +13484,39 @@ def lawtwinKafkaModelTxnOffsetCommit(
         ) from error
 
 
+# lawtwinKafkaModelUnionPartitions — ../src/model.lawspec:604
 def lawtwinKafkaModelUnionPartitions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.TopicPartition],
-    value_1: _builtins.list[data.TopicPartition],
+    xs: _builtins.list[data.TopicPartition],
+    ys: _builtins.list[data.TopicPartition],
 ) -> _builtins.list[data.TopicPartition]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        xs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_0,
-            64,
+            xs,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        ys = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_1,
-            64,
+            ys,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_817(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_model_union_partitions_2(symbols, xs, ys)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16049,22 +13530,23 @@ def lawtwinKafkaModelUnionPartitions(
         ) from error
 
 
+# lawtwinKafkaModelValidTopicName — ../src/model.lawspec:251
 def lawtwinKafkaModelValidTopicName(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
+    name: _builtins.str,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        name = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            name,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_818(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_model_valid_topic_name_2(symbols, name)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16078,41 +13560,42 @@ def lawtwinKafkaModelValidTopicName(
         ) from error
 
 
+# lawtwinKafkaModelWriteMarker — ../src/model.lawspec:662
 def lawtwinKafkaModelWriteMarker(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.bool,
-    value_2: data.PartitionLog,
+    pid: _builtins.int,
+    commit: _builtins.bool,
+    l: data.PartitionLog,
 ) -> data.PartitionLog:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        pid = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            pid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        commit = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_1,
-            64,
+            commit,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        l = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
-            value_2,
-            64,
+            l,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_819(
+        result = _definitions.lawtwin_kafka_model_write_marker_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            pid,
+            commit,
+            l,
         )
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::PartitionLog"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16121,57 +13604,57 @@ def lawtwinKafkaModelWriteMarker(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelWriteMarker: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelWriteMarker: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaModelWriteMarkers — ../src/model.lawspec:677
 def lawtwinKafkaModelWriteMarkers(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.bool,
-    value_2: _builtins.list[data.TopicPartition],
-    value_3: data.BrokerState,
+    pid: _builtins.int,
+    commit: _builtins.bool,
+    tps: _builtins.list[data.TopicPartition],
+    b: data.BrokerState,
 ) -> data.BrokerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        pid = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            pid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        commit = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_1,
-            64,
+            commit,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_2,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
-            value_3,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_820(
+        result = _definitions.lawtwin_kafka_model_write_markers_2(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            pid,
+            commit,
+            tps,
+            b,
         )
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::BrokerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16185,29 +13668,30 @@ def lawtwinKafkaModelWriteMarkers(
         ) from error
 
 
+# lawtwinKafkaMul32 — ../src/contract.lawspec:1103
 def lawtwinKafkaMul32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
+    a: _builtins.int,
+    b: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named("UInt32"),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("UInt32"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_821(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_mul32(symbols, a, b)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16220,22 +13704,23 @@ def lawtwinKafkaMul32(
         ) from error
 
 
+# lawtwinKafkaMurmur2 — ../src/contract.lawspec:1061
 def lawtwinKafkaMurmur2(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.bytes,
+    key: _builtins.bytes,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        key = _lawspec_schema.from_native(
             _schema.Named("Bytes"),
-            value_0,
-            64,
+            key,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_822(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_murmur2(symbols, key)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16248,29 +13733,30 @@ def lawtwinKafkaMurmur2(
         ) from error
 
 
+# lawtwinKafkaMurmurChunks — ../src/contract.lawspec:1071
 def lawtwinKafkaMurmurChunks(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.int],
-    value_1: _builtins.int,
+    octets: _builtins.list[_builtins.int],
+    h: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        octets = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("UInt8")]),
-            value_0,
-            64,
+            octets,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        h = _lawspec_schema.from_native(
             _schema.Named("UInt32"),
-            value_1,
-            64,
+            h,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_823(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_murmur_chunks(symbols, octets, h)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16279,27 +13765,22 @@ def lawtwinKafkaMurmurChunks(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaMurmurChunks: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaMurmurChunks: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaMurmurM — ../src/contract.lawspec:1069
 def lawtwinKafkaMurmurM(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_824(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.lawtwin_kafka_murmur_m(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16312,32 +13793,28 @@ def lawtwinKafkaMurmurM(
         ) from error
 
 
+# lawtwinKafkaOwnedOf — ../src/contract.lawspec:451
 def lawtwinKafkaOwnedOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.MemberAssignment],
+    t: _builtins.str,
+    ms: _builtins.list[data.MemberAssignment],
 ) -> _builtins.list[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        ms = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::MemberAssignment")],
             ),
-            value_1,
-            64,
+            ms,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_825(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_owned_of(symbols, t, ms)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16350,13 +13827,14 @@ def lawtwinKafkaOwnedOf(
         ) from error
 
 
+# lawtwinKafkaPartitionOf — ../src/contract.lawspec:597
 def lawtwinKafkaPartitionOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     partitioner: "lawspec_abilities.lawtwin.kafka.Partitioner",
-    value_0: _builtins.str,
-    value_1: data.PartitionChoice,
-    value_2: data.Record,
+    topic: _builtins.str,
+    choice: data.PartitionChoice,
+    r: data.Record,
 ) -> _schema.Either[data.KafkaError, data.TopicPartition]:
     try:
         ls.install_handlers(
@@ -16366,30 +13844,25 @@ def lawtwinKafkaPartitionOf(
                 "lawtwin.kafka::ability::Partitioner": partitioner,
             },
         )
-        argument_0 = _lawspec_schema.from_native(
+        topic = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            topic,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        choice = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::PartitionChoice"),
-            value_1,
-            64,
+            choice,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        r = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::Record"),
-            value_2,
-            64,
+            r,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_826(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_partition_of(symbols, topic, choice, r)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Either",
@@ -16399,7 +13872,7 @@ def lawtwinKafkaPartitionOf(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16408,37 +13881,32 @@ def lawtwinKafkaPartitionOf(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaPartitionOf: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaPartitionOf: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaPartitionsOfTopic — ../src/contract.lawspec:458
 def lawtwinKafkaPartitionsOfTopic(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.TopicPartition],
+    t: _builtins.str,
+    tps: _builtins.list[data.TopicPartition],
 ) -> _builtins.list[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_1,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_827(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_partitions_of_topic(symbols, t, tps)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16452,59 +13920,51 @@ def lawtwinKafkaPartitionsOfTopic(
         ) from error
 
 
+# lawtwinKafkaPollPartitions — ../src/contract.lawspec:767
 def lawtwinKafkaPollPartitions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.list[data.TopicPartition],
-    value_1: _builtins.int,
-    value_2: data.ConsumerState,
-    value_3: _builtins.list[data.ConsumerRecord],
+    tps: _builtins.list[data.TopicPartition],
+    n: _builtins.int,
+    c: data.ConsumerState,
+    acc: _builtins.list[data.ConsumerRecord],
 ) -> data.Pair[
     _schema.Either[data.KafkaError, _builtins.list[data.ConsumerRecord]],
-    data.ConsumerState
+    data.ConsumerState,
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_0,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        n = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            n,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_2,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka::type::ConsumerRecord")],
             ),
-            value_3,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_828(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-        )
+        result = _definitions.lawtwin_kafka_poll_partitions(symbols, tps, n, c, acc)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -16512,16 +13972,10 @@ def lawtwinKafkaPollPartitions(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named(
                                 "List",
-                                [
-                                    _schema.Named(
-                                        "lawtwin.kafka::type::ConsumerRecord",
-                                    ),
-                                ],
+                                [_schema.Named("lawtwin.kafka::type::ConsumerRecord")],
                             ),
                         ],
                     ),
@@ -16529,7 +13983,7 @@ def lawtwinKafkaPollPartitions(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16538,30 +13992,29 @@ def lawtwinKafkaPollPartitions(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaPollPartitions: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaPollPartitions: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaPositionsToCommit — ../src/contract.lawspec:674
 def lawtwinKafkaPositionsToCommit(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.TopicPartition],
-    value_1: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, _builtins.int],
-        ...
+    tps: _builtins.list[data.TopicPartition],
+    positions: _builtins.tuple[
+        _builtins.tuple[data.TopicPartition, _builtins.int], ...
     ],
 ) -> _builtins.list[data.OffsetEntry]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_0,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        positions = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -16569,18 +14022,18 @@ def lawtwinKafkaPositionsToCommit(
                     _schema.Named("Int64"),
                 ],
             ),
-            value_1,
-            64,
+            positions,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_829(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_positions_to_commit(symbols, tps, positions)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16594,18 +14047,19 @@ def lawtwinKafkaPositionsToCommit(
         ) from error
 
 
+# lawtwinKafkaProducerFlush — ../src/contract.lawspec:656
 def lawtwinKafkaProducerFlush(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.ProducerState,
+    st: data.ProducerState,
 ) -> data.Pair[ls.Absence, data.ProducerState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_0,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_830(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_producer_flush(symbols, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -16615,7 +14069,7 @@ def lawtwinKafkaProducerFlush(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16624,31 +14078,27 @@ def lawtwinKafkaProducerFlush(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaProducerFlush: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaProducerFlush: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaProducerIdempotent — ../src/contract.lawspec:647
 def lawtwinKafkaProducerIdempotent(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ProducerState,
+    st: data.ProducerState,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.ProducerIdAndEpoch],
-    data.ProducerState
+    _schema.Either[data.KafkaError, data.ProducerIdAndEpoch], data.ProducerState
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_0,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_831(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_producer_idempotent(symbols, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -16656,24 +14106,9 @@ def lawtwinKafkaProducerIdempotent(
                     _schema.Named(
                         "Either",
                         [
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                (
-                                    "lawt"
-                                    "win."
-                                    "kafk"
-                                    "a.mo"
-                                    "del:"
-                                    ":typ"
-                                    "e::P"
-                                    "rodu"
-                                    "cerI"
-                                    "dAnd"
-                                    "Epoc"
-                                    "h"
-                                ),
+                                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
                             ),
                         ],
                     ),
@@ -16681,7 +14116,7 @@ def lawtwinKafkaProducerIdempotent(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16695,26 +14130,23 @@ def lawtwinKafkaProducerIdempotent(
         ) from error
 
 
+# lawtwinKafkaProducerRetry — ../src/contract.lawspec:633
 def lawtwinKafkaProducerRetry(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.ProducerState,
+    st: data.ProducerState,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.RecordMetadata],
-    data.ProducerState
+    _schema.Either[data.KafkaError, data.RecordMetadata], data.ProducerState
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_0,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_832(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_producer_retry(symbols, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -16722,19 +14154,15 @@ def lawtwinKafkaProducerRetry(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka::type::RecordMetadata",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                         ],
                     ),
                     _schema.Named("lawtwin.kafka::type::ProducerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16743,20 +14171,19 @@ def lawtwinKafkaProducerRetry(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaProducerRetry: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaProducerRetry: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaProducerSend — ../src/contract.lawspec:612
 def lawtwinKafkaProducerSend(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     partitioner: "lawspec_abilities.lawtwin.kafka.Partitioner",
-    value_0: data.ProducerRecord,
-    value_1: data.ProducerState,
+    pr: data.ProducerRecord,
+    st: data.ProducerState,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.RecordMetadata],
-    data.ProducerState
+    _schema.Either[data.KafkaError, data.RecordMetadata], data.ProducerState
 ]:
     try:
         ls.install_handlers(
@@ -16766,19 +14193,19 @@ def lawtwinKafkaProducerSend(
                 "lawtwin.kafka::ability::Partitioner": partitioner,
             },
         )
-        argument_0 = _lawspec_schema.from_native(
+        pr = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-            value_0,
-            64,
+            pr,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerState"),
-            value_1,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_833(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_producer_send(symbols, pr, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -16786,19 +14213,15 @@ def lawtwinKafkaProducerSend(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka::type::RecordMetadata",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                         ],
                     ),
                     _schema.Named("lawtwin.kafka::type::ProducerState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16807,54 +14230,43 @@ def lawtwinKafkaProducerSend(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaProducerSend: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaProducerSend: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaReadFrom — ../src/contract.lawspec:363
 def lawtwinKafkaReadFrom(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
-    value_2: data.IsolationLevel,
+    tp: data.TopicPartition,
+    offset: _builtins.int,
+    isolation: data.IsolationLevel,
 ) -> _builtins.list[data.Record]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        offset = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            offset,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        isolation = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value_2,
-            64,
+            isolation,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_834(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_read_from(symbols, tp, offset, isolation)
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16863,25 +14275,22 @@ def lawtwinKafkaReadFrom(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaReadFrom: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaReadFrom: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaReadInOrder — ../src/contract.lawspec:1261
 def lawtwinKafkaReadInOrder(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     consumer: "lawspec_abilities.lawtwin.kafka.Consumer",
-    value_0: _schema.Either[data.KafkaError, data.RecordMetadata],
-    value_1: _schema.Either[data.KafkaError, data.RecordMetadata],
-    value_2: data.Record,
-    value_3: data.Record,
+    a: _schema.Either[data.KafkaError, data.RecordMetadata],
+    b: _schema.Either[data.KafkaError, data.RecordMetadata],
+    first: data.Record,
+    second: data.Record,
 ) -> _builtins.bool:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Consumer": consumer},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Consumer": consumer})
+        a = _lawspec_schema.from_native(
             _schema.Named(
                 "Either",
                 [
@@ -16889,11 +14298,11 @@ def lawtwinKafkaReadInOrder(
                     _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                 ],
             ),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named(
                 "Either",
                 [
@@ -16901,33 +14310,27 @@ def lawtwinKafkaReadInOrder(
                     _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                 ],
             ),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        first = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::Record"),
-            value_2,
-            64,
+            first,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        second = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::Record"),
-            value_3,
-            64,
+            second,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_835(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-        )
+        result = _definitions.lawtwin_kafka_read_in_order(symbols, a, b, first, second)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16936,30 +14339,30 @@ def lawtwinKafkaReadInOrder(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaReadInOrder: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaReadInOrder: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaReceivedOffsets — ../src/contract.lawspec:1393
 def lawtwinKafkaReceivedOffsets(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.ConsumerRecord],
+    rs: _builtins.list[data.ConsumerRecord],
 ) -> _builtins.list[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        rs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka::type::ConsumerRecord")],
             ),
-            value_0,
-            64,
+            rs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_836(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_received_offsets(symbols, rs)
         return _lawspec_schema.to_native(
             _schema.Named("List", [_schema.Named("Int64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -16968,33 +14371,30 @@ def lawtwinKafkaReceivedOffsets(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaReceivedOffsets: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaReceivedOffsets: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaReceivedRecords — ../src/contract.lawspec:1400
 def lawtwinKafkaReceivedRecords(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.ConsumerRecord],
+    rs: _builtins.list[data.ConsumerRecord],
 ) -> _builtins.list[data.Record]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        rs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka::type::ConsumerRecord")],
             ),
-            value_0,
-            64,
+            rs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_837(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_received_records(symbols, rs)
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17003,33 +14403,30 @@ def lawtwinKafkaReceivedRecords(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaReceivedRecords: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaReceivedRecords: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaRecordsOf — ../src/contract.lawspec:354
 def lawtwinKafkaRecordsOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.FetchedRecord],
+    rs: _builtins.list[data.FetchedRecord],
 ) -> _builtins.list[data.Record]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        rs = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::FetchedRecord")],
             ),
-            value_0,
-            64,
+            rs,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_838(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_records_of(symbols, rs)
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17038,59 +14435,35 @@ def lawtwinKafkaRecordsOf(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaRecordsOf: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaRecordsOf: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaResumesAtCommitted — ../src/contract.lawspec:1427
 def lawtwinKafkaResumesAtCommitted(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     consumer: "lawspec_abilities.lawtwin.kafka.Consumer",
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.int,
+    t: _builtins.str,
+    g: _builtins.str,
+    m: _builtins.str,
+    n: _builtins.int,
 ) -> _builtins.bool:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Consumer": consumer},
-        )
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_2,
-            64,
-            symbols,
-        )
-        argument_3 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Consumer": consumer})
+        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        m = _lawspec_schema.from_native(_schema.Named("Text"), m, MACHINE_BITS, symbols)
+        n = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_3,
-            64,
+            n,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_839(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-        )
+        result = _definitions.lawtwin_kafka_resumes_at_committed(symbols, t, g, m, n)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17104,13 +14477,14 @@ def lawtwinKafkaResumesAtCommitted(
         ) from error
 
 
+# lawtwinKafkaSamePartition — ../src/contract.lawspec:1235
 def lawtwinKafkaSamePartition(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Either[data.KafkaError, data.RecordMetadata],
-    value_1: _schema.Either[data.KafkaError, data.RecordMetadata],
+    a: _schema.Either[data.KafkaError, data.RecordMetadata],
+    b: _schema.Either[data.KafkaError, data.RecordMetadata],
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named(
                 "Either",
                 [
@@ -17118,11 +14492,11 @@ def lawtwinKafkaSamePartition(
                     _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                 ],
             ),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named(
                 "Either",
                 [
@@ -17130,15 +14504,15 @@ def lawtwinKafkaSamePartition(
                     _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                 ],
             ),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_840(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_same_partition(symbols, a, b)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17147,27 +14521,26 @@ def lawtwinKafkaSamePartition(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaSamePartition: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaSamePartition: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaSequenceFor — ../src/contract.lawspec:579
 def lawtwinKafkaSequenceFor(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.tuple[
-        _builtins.tuple[data.TopicPartition, _builtins.int],
-        ...
+    tp: data.TopicPartition,
+    sequences: _builtins.tuple[
+        _builtins.tuple[data.TopicPartition, _builtins.int], ...
     ],
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        sequences = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -17175,15 +14548,15 @@ def lawtwinKafkaSequenceFor(
                     _schema.Named("Int32"),
                 ],
             ),
-            value_1,
-            64,
+            sequences,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_841(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_sequence_for(symbols, tp, sequences)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17192,30 +14565,27 @@ def lawtwinKafkaSequenceFor(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaSequenceFor: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaSequenceFor: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaSmallBatch — ../src/contract.lawspec:320
 def lawtwinKafkaSmallBatch(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Record],
+    batch: _builtins.list[data.Record],
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
-            value_0,
-            64,
+        batch = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            batch,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_842(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_small_batch(symbols, batch)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17224,54 +14594,38 @@ def lawtwinKafkaSmallBatch(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaSmallBatch: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaSmallBatch: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaStableBelowHigh — ../src/contract.lawspec:475
 def lawtwinKafkaStableBelowHigh(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.list[data.Record],
+    t: _builtins.str,
+    txid: _builtins.str,
+    batch: _builtins.list[data.Record],
 ) -> _builtins.bool:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        txid = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
+        batch = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            batch,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_843(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_stable_below_high(symbols, t, txid, batch)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17280,44 +14634,40 @@ def lawtwinKafkaStableBelowHigh(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaStableBelowHigh: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaStableBelowHigh: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaTagFor — ../src/contract.lawspec:587
 def lawtwinKafkaTagFor(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Maybe[data.ProducerIdAndEpoch],
-    value_1: _builtins.int,
+    identity: _schema.Maybe[data.ProducerIdAndEpoch],
+    sequence: _builtins.int,
 ) -> _schema.Maybe[data.ProducerTag]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        identity = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
-                [
-                    _schema.Named(
-                        "lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                    ),
-                ],
+                [_schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch")],
             ),
-            value_0,
-            64,
+            identity,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        sequence = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            sequence,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_844(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_tag_for(symbols, identity, sequence)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.kafka.model::type::ProducerTag")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17330,29 +14680,30 @@ def lawtwinKafkaTagFor(
         ) from error
 
 
+# lawtwinKafkaTagOf — ../src/contract.lawspec:341
 def lawtwinKafkaTagOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.ProducerIdAndEpoch,
-    value_1: _builtins.int,
+    pe: data.ProducerIdAndEpoch,
+    sequence: _builtins.int,
 ) -> data.ProducerTag:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        pe = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-            value_0,
-            64,
+            pe,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        sequence = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            sequence,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_845(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_tag_of(symbols, pe, sequence)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka.model::type::ProducerTag"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17365,22 +14716,23 @@ def lawtwinKafkaTagOf(
         ) from error
 
 
+# lawtwinKafkaToPositive — ../src/contract.lawspec:1100
 def lawtwinKafkaToPositive(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    h: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        h = _lawspec_schema.from_native(
             _schema.Named("UInt32"),
-            value_0,
-            64,
+            h,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_846(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_to_positive(symbols, h)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17389,62 +14741,51 @@ def lawtwinKafkaToPositive(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaToPositive: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaToPositive: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaTransactionThenRead — ../src/contract.lawspec:384
 def lawtwinKafkaTransactionThenRead(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.list[data.Record],
-    value_3: _builtins.bool,
+    t: _builtins.str,
+    txid: _builtins.str,
+    batch: _builtins.list[data.Record],
+    commit: _builtins.bool,
 ) -> _builtins.bool:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        txid = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
+        batch = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            batch,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        argument_3 = _lawspec_schema.from_native(
+        commit = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_3,
-            64,
+            commit,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_847(
+        result = _definitions.lawtwin_kafka_transaction_then_read(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            t,
+            txid,
+            batch,
+            commit,
         )
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17458,54 +14799,42 @@ def lawtwinKafkaTransactionThenRead(
         ) from error
 
 
+# lawtwinKafkaTransactionalOffsets — ../src/contract.lawspec:414
 def lawtwinKafkaTransactionalOffsets(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _builtins.int,
+    t: _builtins.str,
+    txid: _builtins.str,
+    g: _builtins.str,
+    offset: _builtins.int,
 ) -> _builtins.bool:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        txid = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_2,
-            64,
-            symbols,
-        )
-        argument_3 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        offset = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_3,
-            64,
+            offset,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_848(
+        result = _definitions.lawtwin_kafka_transactional_offsets(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            t,
+            txid,
+            g,
+            offset,
         )
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17519,26 +14848,21 @@ def lawtwinKafkaTransactionalOffsets(
         ) from error
 
 
+# lawtwinKafkaTransactionsAbort — ../src/contract.lawspec:954
 def lawtwinKafkaTransactionsAbort(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TransactionState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    st: data.TransactionState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_849(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_transactions_abort(symbols, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17546,9 +14870,7 @@ def lawtwinKafkaTransactionsAbort(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -17556,7 +14878,7 @@ def lawtwinKafkaTransactionsAbort(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17570,36 +14892,31 @@ def lawtwinKafkaTransactionsAbort(
         ) from error
 
 
+# lawtwinKafkaTransactionsAdd — ../src/contract.lawspec:867
 def lawtwinKafkaTransactionsAdd(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.list[data.TopicPartition],
-    value_1: data.TransactionState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    tps: _builtins.list[data.TopicPartition],
+    st: data.TransactionState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_0,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_1,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_850(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_transactions_add(symbols, tps, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17607,9 +14924,7 @@ def lawtwinKafkaTransactionsAdd(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -17617,7 +14932,7 @@ def lawtwinKafkaTransactionsAdd(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17626,26 +14941,23 @@ def lawtwinKafkaTransactionsAdd(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaTransactionsAdd: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaTransactionsAdd: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaTransactionsBegin — ../src/contract.lawspec:855
 def lawtwinKafkaTransactionsBegin(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TransactionState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    st: data.TransactionState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_851(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_transactions_begin(symbols, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17653,9 +14965,7 @@ def lawtwinKafkaTransactionsBegin(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -17663,7 +14973,7 @@ def lawtwinKafkaTransactionsBegin(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17677,26 +14987,21 @@ def lawtwinKafkaTransactionsBegin(
         ) from error
 
 
+# lawtwinKafkaTransactionsCommit — ../src/contract.lawspec:952
 def lawtwinKafkaTransactionsCommit(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TransactionState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    st: data.TransactionState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_0,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_852(symbols, argument_0)
+        result = _definitions.lawtwin_kafka_transactions_commit(symbols, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17704,9 +15009,7 @@ def lawtwinKafkaTransactionsCommit(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -17714,7 +15017,7 @@ def lawtwinKafkaTransactionsCommit(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17728,33 +15031,28 @@ def lawtwinKafkaTransactionsCommit(
         ) from error
 
 
+# lawtwinKafkaTransactionsEnd — ../src/contract.lawspec:934
 def lawtwinKafkaTransactionsEnd(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.bool,
-    value_1: data.TransactionState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    commit: _builtins.bool,
+    st: data.TransactionState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        commit = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value_0,
-            64,
+            commit,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_1,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_853(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_transactions_end(symbols, commit, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17762,9 +15060,7 @@ def lawtwinKafkaTransactionsEnd(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -17772,7 +15068,7 @@ def lawtwinKafkaTransactionsEnd(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17781,38 +15077,34 @@ def lawtwinKafkaTransactionsEnd(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaTransactionsEnd: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaTransactionsEnd: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaTransactionsInit — ../src/contract.lawspec:845
 def lawtwinKafkaTransactionsInit(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.str,
-    value_1: data.TransactionState,
+    txid: _builtins.str,
+    st: data.TransactionState,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.ProducerIdAndEpoch],
-    data.TransactionState
+    _schema.Either[data.KafkaError, data.ProducerIdAndEpoch], data.TransactionState
 ]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        txid = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_1,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_854(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_transactions_init(symbols, txid, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17820,24 +15112,9 @@ def lawtwinKafkaTransactionsInit(
                     _schema.Named(
                         "Either",
                         [
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                (
-                                    "lawt"
-                                    "win."
-                                    "kafk"
-                                    "a.mo"
-                                    "del:"
-                                    ":typ"
-                                    "e::P"
-                                    "rodu"
-                                    "cerI"
-                                    "dAnd"
-                                    "Epoc"
-                                    "h"
-                                ),
+                                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
                             ),
                         ],
                     ),
@@ -17845,7 +15122,7 @@ def lawtwinKafkaTransactionsInit(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17854,52 +15131,41 @@ def lawtwinKafkaTransactionsInit(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaTransactionsInit: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaTransactionsInit: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaTransactionsOffsets — ../src/contract.lawspec:917
 def lawtwinKafkaTransactionsOffsets(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: _builtins.str,
-    value_1: _builtins.list[data.OffsetEntry],
-    value_2: data.TransactionState,
-) -> data.Pair[
-    _schema.Either[data.KafkaError, ls.Absence],
-    data.TransactionState
-]:
+    g: _builtins.str,
+    offsets: _builtins.list[data.OffsetEntry],
+    st: data.TransactionState,
+) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.TransactionState]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        g = _lawspec_schema.from_native(_schema.Named("Text"), g, MACHINE_BITS, symbols)
+        offsets = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value_1,
-            64,
+            offsets,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_2,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_855(
+        result = _definitions.lawtwin_kafka_transactions_offsets(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            g,
+            offsets,
+            st,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -17908,9 +15174,7 @@ def lawtwinKafkaTransactionsOffsets(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                             _schema.Named("Unit"),
                         ],
                     ),
@@ -17918,7 +15182,7 @@ def lawtwinKafkaTransactionsOffsets(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17932,15 +15196,15 @@ def lawtwinKafkaTransactionsOffsets(
         ) from error
 
 
+# lawtwinKafkaTransactionsSend — ../src/contract.lawspec:893
 def lawtwinKafkaTransactionsSend(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     partitioner: "lawspec_abilities.lawtwin.kafka.Partitioner",
-    value_0: data.ProducerRecord,
-    value_1: data.TransactionState,
+    pr: data.ProducerRecord,
+    st: data.TransactionState,
 ) -> data.Pair[
-    _schema.Either[data.KafkaError, data.RecordMetadata],
-    data.TransactionState
+    _schema.Either[data.KafkaError, data.RecordMetadata], data.TransactionState
 ]:
     try:
         ls.install_handlers(
@@ -17950,19 +15214,19 @@ def lawtwinKafkaTransactionsSend(
                 "lawtwin.kafka::ability::Partitioner": partitioner,
             },
         )
-        argument_0 = _lawspec_schema.from_native(
+        pr = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-            value_0,
-            64,
+            pr,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        st = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::TransactionState"),
-            value_1,
-            64,
+            st,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_856(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_transactions_send(symbols, pr, st)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -17970,19 +15234,15 @@ def lawtwinKafkaTransactionsSend(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::KafkaError",
-                            ),
-                            _schema.Named(
-                                "lawtwin.kafka::type::RecordMetadata",
-                            ),
+                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named("lawtwin.kafka::type::RecordMetadata"),
                         ],
                     ),
                     _schema.Named("lawtwin.kafka::type::TransactionState"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -17991,42 +15251,36 @@ def lawtwinKafkaTransactionsSend(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaTransactionsSend: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaTransactionsSend: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaUncommittedFrom — ../src/contract.lawspec:372
 def lawtwinKafkaUncommittedFrom(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
+    tp: data.TopicPartition,
+    offset: _builtins.int,
 ) -> _builtins.list[data.Record]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        offset = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            offset,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_857(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_uncommitted_from(symbols, tp, offset)
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::Record")],
-            ),
+            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -18035,37 +15289,32 @@ def lawtwinKafkaUncommittedFrom(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaUncommittedFrom: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaUncommittedFrom: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaViewOf — ../src/contract.lawspec:1615
 def lawtwinKafkaViewOf(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.GroupView,
+    m: _builtins.str,
+    view: data.GroupView,
 ) -> _builtins.list[data.TopicPartition]:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(_schema.Named("Text"), m, MACHINE_BITS, symbols)
+        view = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::GroupView"),
-            value_1,
-            64,
+            view,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_858(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_view_of(symbols, m, view)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -18078,68 +15327,64 @@ def lawtwinKafkaViewOf(
         ) from error
 
 
+# lawtwinKafkaWithAssignment — ../src/contract.lawspec:701
 def lawtwinKafkaWithAssignment(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Maybe[_builtins.str],
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: _builtins.list[_builtins.str],
-    value_4: _builtins.list[data.TopicPartition],
-    value_5: data.ConsumerState,
+    g: _schema.Maybe[_builtins.str],
+    m: _builtins.str,
+    gen: _builtins.int,
+    topics: _builtins.list[_builtins.str],
+    tps: _builtins.list[data.TopicPartition],
+    c: data.ConsumerState,
 ) -> data.ConsumerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        g = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value_0,
-            64,
+            g,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(_schema.Named("Text"), m, MACHINE_BITS, symbols)
+        gen = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_2,
-            64,
+            gen,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        topics = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_3,
-            64,
+            topics,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        tps = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value_4,
-            64,
+            tps,
+            MACHINE_BITS,
             symbols,
         )
-        argument_5 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_5,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_859(
+        result = _definitions.lawtwin_kafka_with_assignment(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
-            argument_5,
+            g,
+            m,
+            gen,
+            topics,
+            tps,
+            c,
         )
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -18148,46 +15393,41 @@ def lawtwinKafkaWithAssignment(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaWithAssignment: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaWithAssignment: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaWithPosition — ../src/contract.lawspec:709
 def lawtwinKafkaWithPosition(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.TopicPartition,
-    value_1: _builtins.int,
-    value_2: data.ConsumerState,
+    tp: data.TopicPartition,
+    offset: _builtins.int,
+    c: data.ConsumerState,
 ) -> data.ConsumerState:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        offset = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_1,
-            64,
+            offset,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        c = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
-            value_2,
-            64,
+            c,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_860(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_with_position(symbols, tp, offset, c)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.kafka::type::ConsumerState"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -18196,51 +15436,43 @@ def lawtwinKafkaWithPosition(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaWithPosition: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaWithPosition: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaWriteAborted — ../src/contract.lawspec:1452
 def lawtwinKafkaWriteAborted(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
-    value_0: data.TopicPartition,
-    value_1: _builtins.str,
-    value_2: data.Record,
+    tp: data.TopicPartition,
+    txid: _builtins.str,
+    r: data.Record,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        ls.install_handlers(
-            symbols,
-            {"lawtwin.kafka::ability::Broker": broker},
-        )
-        argument_0 = _lawspec_schema.from_native(
+        ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
+        tp = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value_0,
-            64,
+            tp,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        txid = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            txid,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        r = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::Record"),
-            value_2,
-            64,
+            r,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_861(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_write_aborted(symbols, tp, txid, r)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -18249,34 +15481,34 @@ def lawtwinKafkaWriteAborted(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaWriteAborted: "
-            + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaWriteAborted: " + _builtins.str(error),
         ) from error
 
 
+# lawtwinKafkaXor32 — ../src/contract.lawspec:1106
 def lawtwinKafkaXor32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
+    a: _builtins.int,
+    b: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named("UInt32"),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("UInt32"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_862(symbols, argument_0, argument_1)
+        result = _definitions.lawtwin_kafka_xor32(symbols, a, b)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -18289,41 +15521,37 @@ def lawtwinKafkaXor32(
         ) from error
 
 
+# lawtwinKafkaXorBits — ../src/contract.lawspec:1110
 def lawtwinKafkaXorBits(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _builtins.int,
-    value_2: _builtins.int,
+    a: _builtins.int,
+    b: _builtins.int,
+    bit: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        a = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            a,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        b = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_1,
-            64,
+            b,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        bit = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_2,
-            64,
+            bit,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_863(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.lawtwin_kafka_xor_bits(symbols, a, b, bit)
         return _lawspec_schema.to_native(
             _schema.Named("Integer"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -18336,29 +15564,30 @@ def lawtwinKafkaXorBits(
         ) from error
 
 
+# murmurPartitionerChoosePartition — ../src/contract.lawspec:1050
 def murmurPartitionerChoosePartition(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Maybe[_builtins.bytes],
-    value_1: _builtins.int,
+    key: _schema.Maybe[_builtins.bytes],
+    n: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        key = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-            value_0,
-            64,
+            key,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        n = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value_1,
-            64,
+            n,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_864(symbols, argument_0, argument_1)
+        result = _definitions.murmur_partitioner_choose_partition_2(symbols, key, n)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -18372,22 +15601,18 @@ def murmurPartitionerChoosePartition(
         ) from error
 
 
+# suiteNamesThePackage — laws/suite.lawspec:9
 def suiteNamesThePackage(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> ls.Absence:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_865(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.suite_names_the_package(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("Unit"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -18396,6 +15621,5 @@ def suiteNamesThePackage(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::suiteNamesThePackage: "
-            + _builtins.str(error),
+            "contracttest.kafka::suiteNamesThePackage: " + _builtins.str(error),
         ) from error

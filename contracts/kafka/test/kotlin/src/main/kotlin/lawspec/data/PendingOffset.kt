@@ -3,4 +3,5 @@ package lawspec.data
 
 data class PendingOffset(
     val pendingGroup: kotlin.String,
-    val pendingEntry: lawspec.data.OffsetEntry)
+    val pendingEntry: lawspec.data.OffsetEntry,
+)

@@ -9,31 +9,29 @@ import lawspec_runtime as ls
 import lawspec_schema as _schema
 
 _lawspec_schema = data.make_schema()
+# The machine profile's integer width.
+MACHINE_BITS = 64
 
 
+# matchersMatchesRegex — <lawspec.matchers>:47
 def matchersMatchesRegex(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: data.Regex,
+    t: _builtins.str,
+    r: data.Regex,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Text"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
+        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        r = _lawspec_schema.from_native(
             _schema.Named("lawspec.matchers::type::Regex"),
-            value_1,
-            64,
+            r,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_33(symbols, argument_0, argument_1)
+        result = _definitions.matchers_matches_regex(symbols, t, r)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (

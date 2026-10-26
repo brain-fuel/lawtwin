@@ -19,17 +19,22 @@ let private fail code detail : 'a = Fail.raiseWith code detail
 let private tokenize (text: string) =
     let tokens = ResizeArray<string>()
     let word = StringBuilder()
+
     let flush () =
         if word.Length > 0 then
             tokens.Add(word.ToString())
             word.Clear() |> ignore
+
     for c in text do
         match c with
-        | '(' | ')' ->
+        | '('
+        | ')' ->
             flush ()
             tokens.Add(string c)
-        | ' ' | '\t' -> flush ()
+        | ' '
+        | '\t' -> flush ()
         | c -> word.Append(c) |> ignore
+
     flush ()
     List.ofSeq tokens
 
@@ -48,6 +53,7 @@ let rec private parts tokens acc =
     | ")" :: _ -> List.rev acc, tokens
     | "(" :: rest ->
         let inner, after = parts rest []
+
         match after with
         | ")" :: next -> parts next (application inner :: acc)
         | _ -> fail "InvalidTypeKey" ""
@@ -60,10 +66,16 @@ let private typeCache = ConcurrentDictionary<string, TypeRef>()
 /// Parentheses keep nested Either and presence arguments apart.
 [<CompiledName("TypeOf")>]
 let typeOf (key: string) : TypeRef =
-    typeCache.GetOrAdd(key, fun key ->
-        let found, rest = parts (tokenize key) []
-        if not (List.isEmpty rest) then fail "InvalidTypeKey" key
-        application found)
+    typeCache.GetOrAdd(
+        key,
+        fun key ->
+            let found, rest = parts (tokenize key) []
+
+            if not (List.isEmpty rest) then
+                fail "InvalidTypeKey" key
+
+            application found
+    )
 
 /// The key of a type, as typeOf reads it.
 [<CompiledName("TypeKey")>]
@@ -82,8 +94,23 @@ let private nameOf (t: TypeRef) =
 // Integers
 
 let private integerTypes =
-    set [ "Int8"; "Int16"; "Int32"; "Int64"; "UInt8"; "UInt16"; "UInt32"; "UInt64"
-          "IntSize"; "UIntSize"; "UIntPtr"; "Integer"; "BigInt"; "BigUInt" ]
+    set
+        [
+            "Int8"
+            "Int16"
+            "Int32"
+            "Int64"
+            "UInt8"
+            "UInt16"
+            "UInt32"
+            "UInt64"
+            "IntSize"
+            "UIntSize"
+            "UIntPtr"
+            "Integer"
+            "BigInt"
+            "BigUInt"
+        ]
 
 /// Whether a scalar name is one of LawSpec's integer types.
 [<CompiledName("IsIntegerType")>]
@@ -91,26 +118,42 @@ let isIntegerType name = integerTypes.Contains name
 
 let private pow2 (n: int) = BigInteger.One <<< n
 
-let private signed (width: int) = Some(-(pow2 (width - 1))), Some(pow2 (width - 1) - BigInteger.One)
+let private signed (width: int) =
+    Some(-(pow2 (width - 1))), Some(pow2 (width - 1) - BigInteger.One)
 
 /// An integer type's inclusive bounds under a machine profile (32 or 64 bits).
 [<CompiledName("Bounds")>]
 let bounds (name: string) (bits: int) : BigInteger option * BigInteger option =
-    if bits <> 32 && bits <> 64 then fail "InvalidMachineBits" (string bits)
+    if bits <> 32 && bits <> 64 then
+        fail "InvalidMachineBits" (string bits)
+
     match name with
-    | "Integer" | "BigInt" -> None, None
+    | "Integer"
+    | "BigInt" -> None, None
     | "BigUInt" -> Some BigInteger.Zero, None
     | "IntSize" -> signed bits
-    | "UIntSize" | "UIntPtr" -> Some BigInteger.Zero, Some(pow2 bits - BigInteger.One)
+    | "UIntSize"
+    | "UIntPtr" -> Some BigInteger.Zero, Some(pow2 bits - BigInteger.One)
     | _ when name.StartsWith "UInt" -> Some BigInteger.Zero, Some(pow2 (int (name.Substring 4)) - BigInteger.One)
     | _ when name.StartsWith "Int" -> signed (int (name.Substring 3))
     | _ -> fail "UnknownInteger" name
 
 let private checkBounds (value: BigInteger) name bits =
     let lo, hi = bounds name bits
-    let below = match lo with Some l -> value < l | None -> false
-    let above = match hi with Some h -> value > h | None -> false
-    if below || above then fail "IntegerOutOfRange" (sprintf "%s %O" name value)
+
+    let below =
+        match lo with
+        | Some l -> value < l
+        | None -> false
+
+    let above =
+        match hi with
+        | Some h -> value > h
+        | None -> false
+
+    if below || above then
+        fail "IntegerOutOfRange" (sprintf "%s %O" name value)
+
     Int value
 
 // ---------------------------------------------------------------------------
@@ -119,7 +162,9 @@ let private checkBounds (value: BigInteger) name bits =
 /// A normalized fraction.
 [<CompiledName("Ratio")>]
 let ratio (n: BigInteger) (d: BigInteger) =
-    if d.IsZero then fail "InvalidRational" "zero denominator"
+    if d.IsZero then
+        fail "InvalidRational" "zero denominator"
+
     let g = BigInteger.GreatestCommonDivisor(n, d)
     let s = if d.Sign < 0 then BigInteger.MinusOne else BigInteger.One
     Ratio(s * n / g, BigInteger.Abs d / g)
@@ -149,9 +194,13 @@ let private decode width (bits: uint64) =
     let exponent = int ((bits >>> p) &&& ((1UL <<< e) - 1UL))
     let fraction = bits &&& ((1UL <<< p) - 1UL)
     let top = (1 <<< e) - 1
-    if exponent = top then (if fraction = 0UL then Infinity sign else NaN)
-    elif exponent = 0 then Finite(sign, BigInteger(fraction), 1 - bias - p)
-    else Finite(sign, BigInteger((1UL <<< p) + fraction), exponent - bias - p)
+
+    if exponent = top then
+        (if fraction = 0UL then Infinity sign else NaN)
+    elif exponent = 0 then
+        Finite(sign, BigInteger(fraction), 1 - bias - p)
+    else
+        Finite(sign, BigInteger((1UL <<< p) + fraction), exponent - bias - p)
 
 /// The exact ratio of an exact number or a finite float.
 [<CompiledName("Exact")>]
@@ -166,35 +215,56 @@ let exact (value: Value) : BigInteger * BigInteger =
         match decode w b with
         | Finite(sign, m, e) ->
             let signedM = if sign = 0 then m else -m
-            if e >= 0 then signedM <<< e, BigInteger.One else normalized signedM (pow2 -e)
+
+            if e >= 0 then
+                signedM <<< e, BigInteger.One
+            else
+                normalized signedM (pow2 -e)
         | _ -> fail "NonFiniteExactConversion" ""
     | _ -> fail "ExactNumberRequired" (sprintf "%A" value)
 
 let private isExact value =
     match value with
-    | Int _ | Ratio _ | Decimal _ -> true
+    | Int _
+    | Ratio _
+    | Decimal _ -> true
     | _ -> false
 
 let rec private factors (n: BigInteger) (factor: BigInteger) count =
-    if (n % factor).IsZero then factors (n / factor) factor (count + 1) else n, count
+    if (n % factor).IsZero then
+        factors (n / factor) factor (count + 1)
+    else
+        n, count
 
 /// A decimal for an exact ratio, when its expansion terminates in base ten.
 let private finiteDecimal n d =
     let rn, rd = normalized n d
     let d2, twos = factors rd (BigInteger 2) 0
     let d5, fives = factors d2 (BigInteger 5) 0
-    if not d5.IsOne then fail "NonTerminatingDecimal" ""
+
+    if not d5.IsOne then
+        fail "NonTerminatingDecimal" ""
+
     let scale = max twos fives
-    Value.Decimal(rn * BigInteger.Pow(BigInteger 2, scale - twos) * BigInteger.Pow(BigInteger 5, scale - fives), -scale)
+
+    Value.Decimal(
+        rn
+        * BigInteger.Pow(BigInteger 2, scale - twos)
+        * BigInteger.Pow(BigInteger 5, scale - fives),
+        -scale
+    )
 
 // ---------------------------------------------------------------------------
 // IEEE floats
 
 let private floatValue width (bits: uint64) =
-    if width = 32 && bits > 0xFFFFFFFFUL then fail "InvalidIeeeBits" ""
+    if width = 32 && bits > 0xFFFFFFFFUL then
+        fail "InvalidIeeeBits" ""
+
     Float(width, bits)
 
-let private zero width sign = Float(width, uint64 sign <<< (width - 1))
+let private zero width sign =
+    Float(width, uint64 sign <<< (width - 1))
 
 let private infinity width sign =
     let p, e, _ = format width
@@ -202,6 +272,7 @@ let private infinity width sign =
 
 let private nan width =
     let p, _, _ = format width
+
     match infinity width 0 with
     | Float(_, inf) -> Float(width, inf ||| (1UL <<< (p - 1)))
     | _ -> failwith "unreachable"
@@ -214,25 +285,45 @@ let private floorLog2 (n: BigInteger) (d: BigInteger) =
 let private roundRatio (n: BigInteger) (d: BigInteger) =
     let q = BigInteger.Divide(n, d)
     let r = n - q * d
-    if BigInteger 2 * r > d || (BigInteger 2 * r = d && not q.IsEven) then q + BigInteger.One else q
+
+    if BigInteger 2 * r > d || (BigInteger 2 * r = d && not q.IsEven) then
+        q + BigInteger.One
+    else
+        q
 
 /// The float of a width nearest an exact ratio; a zero takes the given sign.
 [<CompiledName("FloatFromRatio")>]
 let floatFromRatio width (n: BigInteger) (d: BigInteger) zeroSign =
-    if d.IsZero then fail "ZeroDenominator" ""
-    if n.IsZero then zero width zeroSign else
-    let p, _, bias = format width
-    let s = if (n.Sign < 0) <> (d.Sign < 0) then 1 else 0
-    let an, ad = BigInteger.Abs n, BigInteger.Abs d
-    let exponent = max (1 - bias) (floorLog2 an ad)
-    let shift = p - exponent
-    let mantissa = if shift >= 0 then roundRatio (an <<< shift) ad else roundRatio an (ad <<< -shift)
-    let m, e = if mantissa >= pow2 (p + 1) then mantissa >>> 1, exponent + 1 else mantissa, exponent
-    if e > bias then infinity width s
+    if d.IsZero then
+        fail "ZeroDenominator" ""
+
+    if n.IsZero then
+        zero width zeroSign
     else
-        let encoded = if m < pow2 p then 0UL else uint64 (e + bias)
-        let fraction = uint64 (m &&& (pow2 p - BigInteger.One))
-        Float(width, (uint64 s <<< (width - 1)) ||| (encoded <<< p) ||| fraction)
+        let p, _, bias = format width
+        let s = if (n.Sign < 0) <> (d.Sign < 0) then 1 else 0
+        let an, ad = BigInteger.Abs n, BigInteger.Abs d
+        let exponent = max (1 - bias) (floorLog2 an ad)
+        let shift = p - exponent
+
+        let mantissa =
+            if shift >= 0 then
+                roundRatio (an <<< shift) ad
+            else
+                roundRatio an (ad <<< -shift)
+
+        let m, e =
+            if mantissa >= pow2 (p + 1) then
+                mantissa >>> 1, exponent + 1
+            else
+                mantissa, exponent
+
+        if e > bias then
+            infinity width s
+        else
+            let encoded = if m < pow2 p then 0UL else uint64 (e + bias)
+            let fraction = uint64 (m &&& (pow2 p - BigInteger.One))
+            Float(width, (uint64 s <<< (width - 1)) ||| (encoded <<< p) ||| fraction)
 
 /// A float's class: "nan", "infinity", "zero" or "finite".
 [<CompiledName("FloatClass")>]
@@ -301,6 +392,7 @@ let private negateFloat value =
 
 let rec private floatOp op width a b =
     let ca, cb = floatClass a, floatClass b
+
     match op with
     | _ when ca = "nan" || cb = "nan" -> nan width
     | "-" -> floatOp "+" width a (negateFloat b)
@@ -317,12 +409,14 @@ let rec private floatOp op width a b =
     | _ ->
         let an, ad = exact a
         let bn, bd = exact b
+
         let n, d, zeroSign =
             match op with
             | "+" -> an * bd + bn * ad, ad * bd, floatSign a &&& floatSign b
             | "*" -> an * bn, ad * bd, floatSign a ^^^ floatSign b
             | "/" -> an * bd, ad * bn, floatSign a ^^^ floatSign b
             | _ -> fail "UnknownFloatOperation" op
+
         floatFromRatio width n d zeroSign
 
 /// IEEE arithmetic at the wider of the two widths.
@@ -344,7 +438,8 @@ let floatCompare a b : int option =
     match a, b with
     | Float(wa, ba), Float(wb, bb) ->
         match decode wa ba, decode wb bb with
-        | NaN, _ | _, NaN -> None
+        | NaN, _
+        | _, NaN -> None
         | Infinity s, Infinity t when s = t -> Some 0
         | Infinity 1, _ -> Some -1
         | _, Infinity 1 -> Some 1
@@ -366,12 +461,20 @@ let private toComplex value width =
 let isWellFormed (text: string) =
     let mutable i = 0
     let mutable ok = true
+
     while ok && i < text.Length do
         let c = text.[i]
+
         if Char.IsHighSurrogate c then
-            if i + 1 < text.Length && Char.IsLowSurrogate text.[i + 1] then i <- i + 2 else ok <- false
-        elif Char.IsLowSurrogate c then ok <- false
-        else i <- i + 1
+            if i + 1 < text.Length && Char.IsLowSurrogate text.[i + 1] then
+                i <- i + 2
+            else
+                ok <- false
+        elif Char.IsLowSurrogate c then
+            ok <- false
+        else
+            i <- i + 1
+
     ok
 
 /// A text's Unicode scalar values.
@@ -382,20 +485,26 @@ let codePoints (text: string) : int list =
 let private validUnit kind (n: int) =
     match kind with
     | "Bytes" -> n >= 0 && n <= 255
-    | "CodeUnit16" | "Utf16Text" -> n >= 0 && n <= 65535
-    | "CodePoint" | "CodePointText" -> n >= 0 && n <= 0x10FFFF
+    | "CodeUnit16"
+    | "Utf16Text" -> n >= 0 && n <= 65535
+    | "CodePoint"
+    | "CodePointText" -> n >= 0 && n <= 0x10FFFF
     | _ -> n >= 0 && n <= 0x10FFFF && (n < 0xD800 || n > 0xDFFF)
 
 let private checkedUnit kind n =
-    if not (validUnit kind n) then fail "InvalidCharacter" kind
+    if not (validUnit kind n) then
+        fail "InvalidCharacter" kind
+
     n
 
 /// The text of Unicode scalar values.
 [<CompiledName("TextOf")>]
 let textOfPoints (points: int seq) =
     let builder = StringBuilder()
+
     for p in points do
         builder.Append(Rune(checkedUnit "Text" p).ToString()) |> ignore
+
     builder.ToString()
 
 /// Compare two well-formed strings by code point, which is UTF-8's byte order
@@ -404,14 +513,24 @@ let textOfPoints (points: int seq) =
 let compareText (a: string) (b: string) =
     let fix (c: char) =
         let n = int c
-        if n >= 0xD800 then (if n >= 0xE000 then n - 0x800 else n + 0x2000) else n
+
+        if n >= 0xD800 then
+            (if n >= 0xE000 then n - 0x800 else n + 0x2000)
+        else
+            n
+
     let n = min a.Length b.Length
     let mutable i = 0
     let mutable result = 0
+
     while result = 0 && i < n do
         result <- compare (fix a.[i]) (fix b.[i])
         i <- i + 1
-    if result <> 0 then sign result else compare a.Length b.Length
+
+    if result <> 0 then
+        sign result
+    else
+        compare a.Length b.Length
 
 /// Compare two byte arrays as unsigned octets.
 [<CompiledName("CompareBytes")>]
@@ -422,7 +541,8 @@ let compareBytes (a: byte[]) (b: byte[]) =
 // ---------------------------------------------------------------------------
 // Validation and conversion
 
-let private floatType width = if width = 32 then "Float32" else "Float64"
+let private floatType width =
+    if width = 32 then "Float32" else "Float64"
 
 /// Check that a value belongs to a scalar or built-in container type under a
 /// machine profile, and return it.
@@ -430,10 +550,16 @@ let private floatType width = if width = 32 then "Float32" else "Float64"
 let rec validate (value: Value) (t: TypeRef) (bits: int) : Value =
     match t, value with
     | Named("Bool", []), Bool _ -> value
-    | Named("Text", []), Text s -> (if not (isWellFormed s) then fail "InvalidUnicode" ""); value
+    | Named("Text", []), Text s ->
+        (if not (isWellFormed s) then
+             fail "InvalidUnicode" "")
+
+        value
     | Named("Bytes", []), Bytes _ -> value
     | Named(("Char" | "CodePoint" | "CodeUnit16") as kind, []), Int n ->
-        if n < BigInteger.Zero || n > BigInteger(0x10FFFF) then fail "InvalidCharacter" kind
+        if n < BigInteger.Zero || n > BigInteger(0x10FFFF) then
+            fail "InvalidCharacter" kind
+
         checkedUnit kind (int n) |> ignore
         value
     | Named(("CodePointText" | "Utf16Text") as kind, []), Raw(k, units) when k = kind ->
@@ -474,7 +600,10 @@ let rec convert (value: Value) (t: TypeRef) (bits: int) : Value =
     | Named("Complex128", []) -> toComplex value 64
     | Named(name, []) when isIntegerType name ->
         let n, d = exact value
-        if not (n % d).IsZero then fail "FractionalConversion" name
+
+        if not (n % d).IsZero then
+            fail "FractionalConversion" name
+
         checkBounds (n / d) name bits
     | Named("Nullable", [ _ ]) when value = Null -> Presence("Nullable", None)
     | Named("Optional", [ _ ]) when value = Undefined -> Presence("Optional", None)
@@ -499,7 +628,8 @@ let rec equal (a: Value) (b: Value) : bool =
     | Symbol(x, _), Symbol(y, _) -> Object.ReferenceEquals(x, y) || x.Equals y
     | Presence(k1, Some x), Presence(k2, Some y) -> k1 = k2 && equal x y
     | Presence(k1, None), Presence(k2, None) -> k1 = k2
-    | Data("lawspec.collections::type::EqSet::EqSetItems", [ List x ]), Data("lawspec.collections::type::EqSet::EqSetItems", [ List y ]) -> sameMembers x y
+    | Data("lawspec.collections::type::EqSet::EqSetItems", [ List x ]),
+      Data("lawspec.collections::type::EqSet::EqSetItems", [ List y ]) -> sameMembers x y
     | Data(t1, f1), Data(t2, f2) -> t1 = t2 && equalLists f1 f2
     | List x, List y -> equalLists x y
     | _ when isExact a && isExact b -> compareRatios (exact a) (exact b) = 0
@@ -509,8 +639,8 @@ let rec equal (a: Value) (b: Value) : bool =
     | _ -> a = b
 
 and private sameMembers xs ys =
-    (xs |> List.forall (fun value -> ys |> List.exists (equal value))) &&
-    (ys |> List.forall (fun value -> xs |> List.exists (equal value)))
+    (xs |> List.forall (fun value -> ys |> List.exists (equal value)))
+    && (ys |> List.forall (fun value -> xs |> List.exists (equal value)))
 
 and private equalLists xs ys =
     match xs, ys with
@@ -524,6 +654,7 @@ let distinctMembers (items: Value list) =
         match values with
         | [] -> true
         | value :: rest -> not (previous |> List.exists (equal value)) && loop (value :: previous) rest
+
     loop [] items
 
 /// LawSpec's portable total order of keys. Floats, symbols and distinct
@@ -545,7 +676,9 @@ let rec compareValues (a: Value) (b: Value) : int =
     | Data(t1, _), Data(t2, _) -> compareText t1 t2
     | List x, List y -> compareLists x y
     | Handle(n1, i1), Handle(n2, i2) when n1 = n2 && Object.ReferenceEquals(i1, i2) -> 0
-    | Unit, Unit | Null, Null | Undefined, Undefined -> 0
+    | Unit, Unit
+    | Null, Null
+    | Undefined, Undefined -> 0
     | _ when isExact a && isExact b -> compareRatios (exact a) (exact b)
     | _ -> fail "NoPortableOrder" ""
 
@@ -572,8 +705,10 @@ let rec negate value =
 
 let private inexactWidth (key: string) =
     match key with
-    | "Float32" | "Complex64" -> 32
-    | "Float64" | "Complex128" -> 64
+    | "Float32"
+    | "Complex64" -> 32
+    | "Float64"
+    | "Complex128" -> 64
     | _ -> 0
 
 let private isComplexType (key: string) = key = "Complex64" || key = "Complex128"
@@ -597,6 +732,7 @@ let private exactBinary op a b (ta: string) (tb: string) =
     | _ ->
         let an, ad = exact a
         let bn, bd = exact b
+
         let n, d =
             match op with
             | "+" -> an * bd + bn * ad, ad * bd
@@ -604,9 +740,13 @@ let private exactBinary op a b (ta: string) (tb: string) =
             | "*" -> an * bn, ad * bd
             | "/" -> an * bd, ad * bn
             | _ -> fail "InvalidExactOperation" op
+
         let r = ratio n d
-        if op = "/" || ta = "Rational" || tb = "Rational" then r
-        elif ta = "Decimal" || tb = "Decimal" then finiteDecimal n d
+
+        if op = "/" || ta = "Rational" || tb = "Rational" then
+            r
+        elif ta = "Decimal" || tb = "Decimal" then
+            finiteDecimal n d
         else
             match r with
             | Ratio(i, _) -> Int i
@@ -616,14 +756,17 @@ let private complexBinary op a b =
     match a, b with
     | Value.Complex(w, x, y), Value.Complex(_, u, v) ->
         let f = floatBinary
+
         let r, i =
             match op with
-            | "+" | "-" -> f op x u, f op y v
+            | "+"
+            | "-" -> f op x u, f op y v
             | "*" -> f "-" (f "*" x u) (f "*" y v), f "+" (f "*" x v) (f "*" y u)
             | "/" ->
                 let den = f "+" (f "*" u u) (f "*" v v)
                 f "/" (f "+" (f "*" x u) (f "*" y v)) den, f "/" (f "-" (f "*" y u) (f "*" x v)) den
             | _ -> fail "UnknownComplexOperation" op
+
         Value.Complex(w, r, i)
     | _ -> fail "ComplexRequired" op
 
@@ -633,13 +776,21 @@ let binary (op: string) (a: Value) (b: Value) (ta: string) (tb: string) : Value 
     match op with
     | "==" -> Bool(equal a b)
     | "!=" -> Bool(not (equal a b))
-    | "<" | "<=" | ">" | ">=" ->
+    | "<"
+    | "<="
+    | ">"
+    | ">=" ->
         let ordering =
-            if inexactWidth ta > 0 || inexactWidth tb > 0 then floatCompare a b
-            else Some(compareValues a b)
+            if inexactWidth ta > 0 || inexactWidth tb > 0 then
+                floatCompare a b
+            else
+                Some(compareValues a b)
+
         Bool(relation op ordering)
     | _ ->
-        if (inexactWidth ta > 0) <> (inexactWidth tb > 0) then fail "ExactInexactMixing" op
+        if (inexactWidth ta > 0) <> (inexactWidth tb > 0) then
+            fail "ExactInexactMixing" op
+
         match max (inexactWidth ta) (inexactWidth tb) with
         | 0 -> exactBinary op a b ta tb
         | width when isComplexType ta || isComplexType tb -> complexBinary op (toComplex a width) (toComplex b width)
@@ -658,7 +809,12 @@ let private sequenceItems value (kind: string) =
 
 let private sequenceLike value (kind: string) (items: Value list) =
     // Only text and bytes are made of integers; a list keeps its items.
-    let ints () = items |> List.map (function Int n -> int n | _ -> fail "SequenceRequired" kind)
+    let ints () =
+        items
+        |> List.map (function
+            | Int n -> int n
+            | _ -> fail "SequenceRequired" kind)
+
     match value with
     | List _ -> List items
     | Text _ when kind = "Text" -> Text(textOfPoints (ints ()))
@@ -679,7 +835,10 @@ let private text value =
     | Text s -> s
     | _ -> fail "TextRequired" ""
 
-let private clamp (n: BigInteger) (lo: BigInteger) (hi: BigInteger) = if n < lo then lo elif n > hi then hi else n
+let private clamp (n: BigInteger) (lo: BigInteger) (hi: BigInteger) =
+    if n < lo then lo
+    elif n > hi then hi
+    else n
 
 /// A built-in helper by name, with its arguments and their type keys.
 [<CompiledName("Helper")>]
@@ -701,7 +860,13 @@ let helper (name: string) (values: Value list) (types: string list) (bits: int) 
     | "round", [ v; Int places ] ->
         let n, d = exact v
         let places = int places
-        let sn, sd = if places >= 0 then n * pow10 places, d else n, d * pow10 -places
+
+        let sn, sd =
+            if places >= 0 then
+                n * pow10 places, d
+            else
+                n, d * pow10 -places
+
         let q = roundRatio (BigInteger.Abs sn) sd
         Value.Decimal((if sn.Sign < 0 then -q else q), -places)
     | "startsWith", [ Text t; Text p ] -> Bool(t.StartsWith(p, StringComparison.Ordinal))
@@ -715,6 +880,7 @@ let helper (name: string) (values: Value list) (types: string list) (bits: int) 
             | -1 -> "Less"
             | 0 -> "Equal"
             | _ -> "Greater"
+
         Data("lawspec.collections::type::Ordering::" + tag, [])
     | "isPresent", [ Presence(_, p) ] -> Bool(Option.isSome p)
     | "presentValue", [ Presence(_, Some v) ] -> v
@@ -732,13 +898,20 @@ let helper (name: string) (values: Value list) (types: string list) (bits: int) 
         sequenceLike x kind (items |> List.skip (int i) |> List.take (int (j - i)))
     | "at", [ x; Int i ] ->
         let items = sequenceItems x (List.head types)
-        if i.Sign >= 0 && i < BigInteger(List.length items) then Data("Maybe::Present", [ List.item (int i) items ])
-        else Data("Maybe::Absent", [])
+
+        if i.Sign >= 0 && i < BigInteger(List.length items) then
+            Data("Maybe::Present", [ List.item (int i) items ])
+        else
+            Data("Maybe::Absent", [])
     | "range", [ Int lo; Int hi ] ->
-        List [ let mutable n = lo
-               while n < hi do
-                   yield Int n
-                   n <- n + BigInteger.One ]
+        List
+            [
+                let mutable n = lo
+
+                while n < hi do
+                    yield Int n
+                    n <- n + BigInteger.One
+            ]
     | "octets", [ Bytes b ] -> List(b |> Seq.map (int >> BigInteger >> Int) |> List.ofSeq)
     | "bytesOf", [ List items ] -> Bytes(items |> List.map (integer >> int >> byte) |> Array.ofList)
     | "utf8", [ Text t ] -> Bytes(Encoding.UTF8.GetBytes t)
@@ -762,13 +935,15 @@ type SymbolContext() =
 
 /// A literal symbol, interned in its context.
 [<CompiledName("Symbol")>]
-let symbol (context: SymbolContext) (id: string) (description: string) = Symbol(context.Identity id, description)
+let symbol (context: SymbolContext) (id: string) (description: string) =
+    Symbol(context.Identity id, description)
 
 // ---------------------------------------------------------------------------
 // Literals, as the generated code writes them
 
 [<CompiledName("Integer")>]
-let integerLiteral (digits: string) = Int(BigInteger.Parse(digits, Globalization.CultureInfo.InvariantCulture))
+let integerLiteral (digits: string) =
+    Int(BigInteger.Parse(digits, Globalization.CultureInfo.InvariantCulture))
 
 [<CompiledName("DecimalOf")>]
 let decimalOf (coefficient: string) (exponent: int) =
@@ -776,7 +951,8 @@ let decimalOf (coefficient: string) (exponent: int) =
 
 [<CompiledName("RationalOf")>]
 let rationalOf (numerator: string) (denominator: string) =
-    ratio (BigInteger.Parse(numerator, Globalization.CultureInfo.InvariantCulture))
+    ratio
+        (BigInteger.Parse(numerator, Globalization.CultureInfo.InvariantCulture))
         (BigInteger.Parse(denominator, Globalization.CultureInfo.InvariantCulture))
 
 [<CompiledName("FloatBits")>]
@@ -787,7 +963,9 @@ let floatBits (width: int) (hex: string) =
 let textUnits (points: int list) = Text(textOfPoints points)
 
 [<CompiledName("BytesOf")>]
-let bytesOf (units: int list) = Bytes(units |> List.map (checkedUnit "Bytes" >> byte) |> Array.ofList)
+let bytesOf (units: int list) =
+    Bytes(units |> List.map (checkedUnit "Bytes" >> byte) |> Array.ofList)
 
 [<CompiledName("RawOf")>]
-let rawOf (kind: string) (units: int list) = Raw(kind, units |> List.map (checkedUnit kind))
+let rawOf (kind: string) (units: int list) =
+    Raw(kind, units |> List.map (checkedUnit kind))

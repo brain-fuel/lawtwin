@@ -7,6624 +7,10622 @@ module rec LawSpec.TypedProgram
 
 open LawSpec.Runtime
 
-let private literal2 = Scalar.textOfPoints [ 46; 46 ]
+let private ordering (c: int) : LawSpec.Data.Ordering =
+    if c < 0 then LawSpec.Data.Ordering.Less
+    else if c = 0 then LawSpec.Data.Ordering.Equal
+    else LawSpec.Data.Ordering.Greater
 
-let private literal1 = Scalar.textOfPoints [ 46 ]
-
-let private literal3 = Scalar.textOfPoints [ 91; 97; 45; 122; 65; 45; 90; 48; 45; 57; 46; 95; 45; 93; 43 ]
-
-let private literal0 = Scalar.textOfPoints [  ]
-
-/// lawspec.collections::boundedInt16
-[<CompiledName("BoundedInt16_cdb4a79e")>]
-let boundedInt16_cdb4a79e (value_0: bigint) : int16 option =
-    if ((value_0 >= (-32768I)) && (value_0 <= 32767I)) then
-        (Some (Typed.int16 value_0))
+/// boundedInt16 — <lawspec.collections>:358
+[<CompiledName("BoundedInt16")>]
+let boundedInt16 (value: bigint) : int16 option =
+    if ((value >= (-32768I)) && (value <= 32767I)) then
+        Some(Typed.int16 value)
     else
         None
 
-/// lawspec.collections::boundedInt32
-[<CompiledName("BoundedInt32_b3381d93")>]
-let boundedInt32_b3381d93 (value_1: bigint) : int option =
-    if ((value_1 >= (-2147483648I)) && (value_1 <= 2147483647I)) then
-        (Some (Typed.int32 value_1))
+/// boundedInt32 — <lawspec.collections>:371
+[<CompiledName("BoundedInt32")>]
+let boundedInt32 (value: bigint) : int option =
+    if ((value >= (-2147483648I)) && (value <= 2147483647I)) then
+        Some(Typed.int32 value)
     else
         None
 
-/// lawspec.collections::boundedInt64
-[<CompiledName("BoundedInt64_13153a18")>]
-let boundedInt64_13153a18 (value_2: bigint) : int64 option =
-    if ((value_2 >= (-9223372036854775808I)) && (value_2 <= 9223372036854775807I)) then
-        (Some (Typed.int64 value_2))
+/// boundedInt64 — <lawspec.collections>:384
+[<CompiledName("BoundedInt64")>]
+let boundedInt64 (value: bigint) : int64 option =
+    if ((value >= (-9223372036854775808I)) && (value <= 9223372036854775807I)) then
+        Some(Typed.int64 value)
     else
         None
 
-/// lawspec.collections::boundedInt8
-[<CompiledName("BoundedInt8_9822648b")>]
-let boundedInt8_9822648b (value_3: bigint) : sbyte option =
-    if ((value_3 >= (-128I)) && (value_3 <= 127I)) then
-        (Some (Typed.int8 value_3))
+/// boundedInt8 — <lawspec.collections>:345
+[<CompiledName("BoundedInt8")>]
+let boundedInt8 (value: bigint) : sbyte option =
+    if ((value >= (-128I)) && (value <= 127I)) then
+        Some(Typed.int8 value)
     else
         None
 
-/// lawspec.collections::boundedUInt16
-[<CompiledName("BoundedUInt16_fab24aa3")>]
-let boundedUInt16_fab24aa3 (value_4: bigint) : uint16 option =
-    if ((value_4 >= 0I) && (value_4 <= 65535I)) then
-        (Some (Typed.uint16 value_4))
+/// boundedUInt16 — <lawspec.collections>:410
+[<CompiledName("BoundedUInt16")>]
+let boundedUInt16 (value: bigint) : uint16 option =
+    if ((value >= 0I) && (value <= 65535I)) then
+        Some(Typed.uint16 value)
     else
         None
 
-/// lawspec.collections::boundedUInt32
-[<CompiledName("BoundedUInt32_f7521c17")>]
-let boundedUInt32_f7521c17 (value_5: bigint) : uint32 option =
-    if ((value_5 >= 0I) && (value_5 <= 4294967295I)) then
-        (Some (Typed.uint32 value_5))
+/// boundedUInt32 — <lawspec.collections>:423
+[<CompiledName("BoundedUInt32")>]
+let boundedUInt32 (value: bigint) : uint32 option =
+    if ((value >= 0I) && (value <= 4294967295I)) then
+        Some(Typed.uint32 value)
     else
         None
 
-/// lawspec.collections::boundedUInt64
-[<CompiledName("BoundedUInt64_ca410424")>]
-let boundedUInt64_ca410424 (value_6: bigint) : uint64 option =
-    if ((value_6 >= 0I) && (value_6 <= 18446744073709551615I)) then
-        (Some (Typed.uint64 value_6))
+/// boundedUInt64 — <lawspec.collections>:436
+[<CompiledName("BoundedUInt64")>]
+let boundedUInt64 (value: bigint) : uint64 option =
+    if ((value >= 0I) && (value <= 18446744073709551615I)) then
+        Some(Typed.uint64 value)
     else
         None
 
-/// lawspec.collections::boundedUInt8
-[<CompiledName("BoundedUInt8_8ce0c76e")>]
-let boundedUInt8_8ce0c76e (value_7: bigint) : byte option =
-    if ((value_7 >= 0I) && (value_7 <= 255I)) then
-        (Some (Typed.uint8 value_7))
+/// boundedUInt8 — <lawspec.collections>:397
+[<CompiledName("BoundedUInt8")>]
+let boundedUInt8 (value: bigint) : byte option =
+    if ((value >= 0I) && (value <= 255I)) then
+        Some(Typed.uint8 value)
     else
         None
 
-/// lawspec.collections::saturatingInt16
-[<CompiledName("SaturatingInt16_770015a8")>]
-let saturatingInt16_770015a8 (value_8: bigint) : int16 =
-    if (value_8 > 32767I) then
-        (Typed.int16 32767I)
-    else
-        if (value_8 < (-32768I)) then
-            (Typed.int16 (-32768I))
-        else
-            (Typed.int16 value_8)
+/// saturatingInt16 — <lawspec.collections>:354
+[<CompiledName("SaturatingInt16")>]
+let saturatingInt16 (value: bigint) : int16 =
+    if (value > 32767I) then Typed.int16 32767I
+    else if (value < (-32768I)) then Typed.int16 (-32768I)
+    else Typed.int16 value
 
-/// lawspec.collections::saturatingInt32
-[<CompiledName("SaturatingInt32_9e8d3b43")>]
-let saturatingInt32_9e8d3b43 (value_9: bigint) : int =
-    if (value_9 > 2147483647I) then
-        (Typed.int32 2147483647I)
+/// saturatingInt32 — <lawspec.collections>:367
+[<CompiledName("SaturatingInt32")>]
+let saturatingInt32 (value: bigint) : int =
+    if (value > 2147483647I) then
+        Typed.int32 2147483647I
+    else if (value < (-2147483648I)) then
+        Typed.int32 (-2147483648I)
     else
-        if (value_9 < (-2147483648I)) then
-            (Typed.int32 (-2147483648I))
-        else
-            (Typed.int32 value_9)
+        Typed.int32 value
 
-/// lawspec.collections::saturatingInt64
-[<CompiledName("SaturatingInt64_5bce4ed8")>]
-let saturatingInt64_5bce4ed8 (value_10: bigint) : int64 =
-    if (value_10 > 9223372036854775807I) then
-        (Typed.int64 9223372036854775807I)
+/// saturatingInt64 — <lawspec.collections>:380
+[<CompiledName("SaturatingInt64")>]
+let saturatingInt64 (value: bigint) : int64 =
+    if (value > 9223372036854775807I) then
+        Typed.int64 9223372036854775807I
+    else if (value < (-9223372036854775808I)) then
+        Typed.int64 (-9223372036854775808I)
     else
-        if (value_10 < (-9223372036854775808I)) then
-            (Typed.int64 (-9223372036854775808I))
-        else
-            (Typed.int64 value_10)
+        Typed.int64 value
 
-/// lawspec.collections::saturatingInt8
-[<CompiledName("SaturatingInt8_54855fd8")>]
-let saturatingInt8_54855fd8 (value_11: bigint) : sbyte =
-    if (value_11 > 127I) then
-        (Typed.int8 127I)
+/// saturatingInt8 — <lawspec.collections>:341
+[<CompiledName("SaturatingInt8")>]
+let saturatingInt8 (value: bigint) : sbyte =
+    if (value > 127I) then Typed.int8 127I
+    else if (value < (-128I)) then Typed.int8 (-128I)
+    else Typed.int8 value
+
+/// saturatingUInt16 — <lawspec.collections>:406
+[<CompiledName("SaturatingUInt16")>]
+let saturatingUInt16 (value: bigint) : uint16 =
+    if (value > 65535I) then Typed.uint16 65535I
+    else if (value < 0I) then Typed.uint16 0I
+    else Typed.uint16 value
+
+/// saturatingUInt32 — <lawspec.collections>:419
+[<CompiledName("SaturatingUInt32")>]
+let saturatingUInt32 (value: bigint) : uint32 =
+    if (value > 4294967295I) then Typed.uint32 4294967295I
+    else if (value < 0I) then Typed.uint32 0I
+    else Typed.uint32 value
+
+/// saturatingUInt64 — <lawspec.collections>:432
+[<CompiledName("SaturatingUInt64")>]
+let saturatingUInt64 (value: bigint) : uint64 =
+    if (value > 18446744073709551615I) then
+        Typed.uint64 18446744073709551615I
+    else if (value < 0I) then
+        Typed.uint64 0I
     else
-        if (value_11 < (-128I)) then
-            (Typed.int8 (-128I))
-        else
-            (Typed.int8 value_11)
+        Typed.uint64 value
 
-/// lawspec.collections::saturatingUInt16
-[<CompiledName("SaturatingUInt16_c4c11e3b")>]
-let saturatingUInt16_c4c11e3b (value_12: bigint) : uint16 =
-    if (value_12 > 65535I) then
-        (Typed.uint16 65535I)
+/// saturatingUInt8 — <lawspec.collections>:393
+[<CompiledName("SaturatingUInt8")>]
+let saturatingUInt8 (value: bigint) : byte =
+    if (value > 255I) then Typed.uint8 255I
+    else if (value < 0I) then Typed.uint8 0I
+    else Typed.uint8 value
+
+/// wrappingInt16 — <lawspec.collections>:349
+[<CompiledName("WrappingInt16")>]
+let wrappingInt16 (value: bigint) : int16 =
+    let r = Typed.remainder (value - (-32768I)) ((32767I - (-32768I)) + 1I)
+
+    if (r < 0I) then
+        Typed.int16 ((r + ((32767I - (-32768I)) + 1I)) + (-32768I))
     else
-        if (value_12 < 0I) then
-            (Typed.uint16 0I)
-        else
-            (Typed.uint16 value_12)
+        Typed.int16 (r + (-32768I))
 
-/// lawspec.collections::saturatingUInt32
-[<CompiledName("SaturatingUInt32_6d025357")>]
-let saturatingUInt32_6d025357 (value_13: bigint) : uint32 =
-    if (value_13 > 4294967295I) then
-        (Typed.uint32 4294967295I)
+/// wrappingInt32 — <lawspec.collections>:362
+[<CompiledName("WrappingInt32")>]
+let wrappingInt32 (value: bigint) : int =
+    let r =
+        Typed.remainder (value - (-2147483648I)) ((2147483647I - (-2147483648I)) + 1I)
+
+    if (r < 0I) then
+        Typed.int32 ((r + ((2147483647I - (-2147483648I)) + 1I)) + (-2147483648I))
     else
-        if (value_13 < 0I) then
-            (Typed.uint32 0I)
-        else
-            (Typed.uint32 value_13)
+        Typed.int32 (r + (-2147483648I))
 
-/// lawspec.collections::saturatingUInt64
-[<CompiledName("SaturatingUInt64_dce984c8")>]
-let saturatingUInt64_dce984c8 (value_14: bigint) : uint64 =
-    if (value_14 > 18446744073709551615I) then
-        (Typed.uint64 18446744073709551615I)
+/// wrappingInt64 — <lawspec.collections>:375
+[<CompiledName("WrappingInt64")>]
+let wrappingInt64 (value: bigint) : int64 =
+    let r =
+        Typed.remainder (value - (-9223372036854775808I)) ((9223372036854775807I - (-9223372036854775808I)) + 1I)
+
+    if (r < 0I) then
+        Typed.int64 (
+            (r + ((9223372036854775807I - (-9223372036854775808I)) + 1I))
+            + (-9223372036854775808I)
+        )
     else
-        if (value_14 < 0I) then
-            (Typed.uint64 0I)
-        else
-            (Typed.uint64 value_14)
+        Typed.int64 (r + (-9223372036854775808I))
 
-/// lawspec.collections::saturatingUInt8
-[<CompiledName("SaturatingUInt8_cf40d611")>]
-let saturatingUInt8_cf40d611 (value_15: bigint) : byte =
-    if (value_15 > 255I) then
-        (Typed.uint8 255I)
+/// wrappingInt8 — <lawspec.collections>:336
+[<CompiledName("WrappingInt8")>]
+let wrappingInt8 (value: bigint) : sbyte =
+    let r = Typed.remainder (value - (-128I)) ((127I - (-128I)) + 1I)
+
+    if (r < 0I) then
+        Typed.int8 ((r + ((127I - (-128I)) + 1I)) + (-128I))
     else
-        if (value_15 < 0I) then
-            (Typed.uint8 0I)
-        else
-            (Typed.uint8 value_15)
+        Typed.int8 (r + (-128I))
 
-/// lawspec.collections::wrappingInt16
-[<CompiledName("WrappingInt16_989a4ce2")>]
-let wrappingInt16_989a4ce2 (value_16: bigint) : int16 =
-    let r_17 = (Typed.remainder (value_16 - (-32768I)) ((32767I - (-32768I)) + 1I))
-    if (r_17 < 0I) then
-        (Typed.int16 ((r_17 + ((32767I - (-32768I)) + 1I)) + (-32768I)))
+/// wrappingUInt16 — <lawspec.collections>:401
+[<CompiledName("WrappingUInt16")>]
+let wrappingUInt16 (value: bigint) : uint16 =
+    let r = Typed.remainder (value - 0I) ((65535I - 0I) + 1I)
+
+    if (r < 0I) then
+        Typed.uint16 ((r + ((65535I - 0I) + 1I)) + 0I)
     else
-        (Typed.int16 (r_17 + (-32768I)))
+        Typed.uint16 (r + 0I)
 
-/// lawspec.collections::wrappingInt32
-[<CompiledName("WrappingInt32_e1b5a7b2")>]
-let wrappingInt32_e1b5a7b2 (value_18: bigint) : int =
-    let r_19 = (Typed.remainder (value_18 - (-2147483648I)) ((2147483647I - (-2147483648I)) + 1I))
-    if (r_19 < 0I) then
-        (Typed.int32 ((r_19 + ((2147483647I - (-2147483648I)) + 1I)) + (-2147483648I)))
+/// wrappingUInt32 — <lawspec.collections>:414
+[<CompiledName("WrappingUInt32")>]
+let wrappingUInt32 (value: bigint) : uint32 =
+    let r = Typed.remainder (value - 0I) ((4294967295I - 0I) + 1I)
+
+    if (r < 0I) then
+        Typed.uint32 ((r + ((4294967295I - 0I) + 1I)) + 0I)
     else
-        (Typed.int32 (r_19 + (-2147483648I)))
+        Typed.uint32 (r + 0I)
 
-/// lawspec.collections::wrappingInt64
-[<CompiledName("WrappingInt64_698b955a")>]
-let wrappingInt64_698b955a (value_20: bigint) : int64 =
-    let r_21 = (Typed.remainder (value_20 - (-9223372036854775808I)) ((9223372036854775807I - (-9223372036854775808I)) + 1I))
-    if (r_21 < 0I) then
-        (Typed.int64 ((r_21 + ((9223372036854775807I - (-9223372036854775808I)) + 1I)) + (-9223372036854775808I)))
+/// wrappingUInt64 — <lawspec.collections>:427
+[<CompiledName("WrappingUInt64")>]
+let wrappingUInt64 (value: bigint) : uint64 =
+    let r = Typed.remainder (value - 0I) ((18446744073709551615I - 0I) + 1I)
+
+    if (r < 0I) then
+        Typed.uint64 ((r + ((18446744073709551615I - 0I) + 1I)) + 0I)
     else
-        (Typed.int64 (r_21 + (-9223372036854775808I)))
+        Typed.uint64 (r + 0I)
 
-/// lawspec.collections::wrappingInt8
-[<CompiledName("WrappingInt8_728a92af")>]
-let wrappingInt8_728a92af (value_22: bigint) : sbyte =
-    let r_23 = (Typed.remainder (value_22 - (-128I)) ((127I - (-128I)) + 1I))
-    if (r_23 < 0I) then
-        (Typed.int8 ((r_23 + ((127I - (-128I)) + 1I)) + (-128I)))
+/// wrappingUInt8 — <lawspec.collections>:388
+[<CompiledName("WrappingUInt8")>]
+let wrappingUInt8 (value: bigint) : byte =
+    let r = Typed.remainder (value - 0I) ((255I - 0I) + 1I)
+
+    if (r < 0I) then
+        Typed.uint8 ((r + ((255I - 0I) + 1I)) + 0I)
     else
-        (Typed.int8 (r_23 + (-128I)))
+        Typed.uint8 (r + 0I)
 
-/// lawspec.collections::wrappingUInt16
-[<CompiledName("WrappingUInt16_e5742dd2")>]
-let wrappingUInt16_e5742dd2 (value_24: bigint) : uint16 =
-    let r_25 = (Typed.remainder (value_24 - 0I) ((65535I - 0I) + 1I))
-    if (r_25 < 0I) then
-        (Typed.uint16 ((r_25 + ((65535I - 0I) + 1I)) + 0I))
-    else
-        (Typed.uint16 (r_25 + 0I))
+/// matchersMatchesRegex — <lawspec.matchers>:47
+[<CompiledName("MatchersMatchesRegex")>]
+let matchersMatchesRegex (t: string) (r: LawSpec.Data.Regex) : bool =
+    let it = r
 
-/// lawspec.collections::wrappingUInt32
-[<CompiledName("WrappingUInt32_1ef3ce20")>]
-let wrappingUInt32_1ef3ce20 (value_26: bigint) : uint32 =
-    let r_27 = (Typed.remainder (value_26 - 0I) ((4294967295I - 0I) + 1I))
-    if (r_27 < 0I) then
-        (Typed.uint32 ((r_27 + ((4294967295I - 0I) + 1I)) + 0I))
-    else
-        (Typed.uint32 (r_27 + 0I))
-
-/// lawspec.collections::wrappingUInt64
-[<CompiledName("WrappingUInt64_362f8288")>]
-let wrappingUInt64_362f8288 (value_28: bigint) : uint64 =
-    let r_29 = (Typed.remainder (value_28 - 0I) ((18446744073709551615I - 0I) + 1I))
-    if (r_29 < 0I) then
-        (Typed.uint64 ((r_29 + ((18446744073709551615I - 0I) + 1I)) + 0I))
-    else
-        (Typed.uint64 (r_29 + 0I))
-
-/// lawspec.collections::wrappingUInt8
-[<CompiledName("WrappingUInt8_6ce2e7d2")>]
-let wrappingUInt8_6ce2e7d2 (value_30: bigint) : byte =
-    let r_31 = (Typed.remainder (value_30 - 0I) ((255I - 0I) + 1I))
-    if (r_31 < 0I) then
-        (Typed.uint8 ((r_31 + ((255I - 0I) + 1I)) + 0I))
-    else
-        (Typed.uint8 (r_31 + 0I))
-
-/// lawspec.matchers::matchersMatchesRegex
-[<CompiledName("MatchersMatchesRegex_52d1c22e")>]
-let matchersMatchesRegex_52d1c22e (t_32: string) (r_33: LawSpec.Data.Regex) : bool =
-    let it_34 = r_33
-    match it_34 with
+    match it with
     | subject ->
-        let lawspecSelection0x0_35 = subject.Pattern
-        (Regex.matches lawspecSelection0x0_35 t_32)
+        let selection = subject.Pattern
+        Regex.matches selection t
 
-/// lawtwin.kafka::allAtLeast
-[<CompiledName("AllAtLeast_3df55027")>]
-let allAtLeast_3df55027 (floor_36: int64) (xs_37: int64 list) : bool =
-    let it_38 = xs_37
-    match it_38 with
-    | [] ->
-        true
-    | lawspecSelection0x0_39 :: lawspecSelection0x1_40 ->
-        let logic_42 =
-            if (lawspecSelection0x0_39 >= floor_36) then
-                let result_41 = allAtLeast_3df55027 (floor_36) (lawspecSelection0x1_40)
-                result_41
-            else false
-        logic_42
+/// allAtLeast — ../src/contract.lawspec:1418
+[<CompiledName("AllAtLeast")>]
+let allAtLeast (floor: int64) (xs: int64 list) : bool =
+    let it = xs
 
-/// lawtwin.kafka::assignmentIn
-[<CompiledName("AssignmentIn_4b795225")>]
-let assignmentIn_4b795225 (m_43: string) (ms_44: LawSpec.Data.MemberAssignment list) : LawSpec.Data.TopicPartition list =
-    let it_45 = ms_44
-    match it_45 with
-    | [] ->
-        []
-    | lawspecSelection0x0_46 :: lawspecSelection0x1_47 ->
-        let value_48 =
-            match lawspecSelection0x0_46 with
-            | subject ->
-                let lawspecFieldmemberId_49 = subject.MemberId
-                lawspecFieldmemberId_49
-        if (value_48 = m_43) then
-            match lawspecSelection0x0_46 with
-            | subject ->
-                let lawspecFieldassigned_50 = subject.Assigned
-                lawspecFieldassigned_50
-        else
-            let result_51 = assignmentIn_4b795225 (m_43) (lawspecSelection0x1_47)
-            result_51
-
-/// lawtwin.kafka::clusterAddPartitionsToTxnRequest
-[<CompiledName("ClusterAddPartitionsToTxnRequest_026ba83d")>]
-let clusterAddPartitionsToTxnRequest_026ba83d (state_52: LawSpec.Data.BrokerState) (value0_53: string) (value1_54: int64) (value2_55: int16) (value3_56: LawSpec.Data.TopicPartition list) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_57 = lawtwinKafkaModelAddPartitionsToTxn_8d367d82 (value0_53) (value1_54) (value2_55) (value3_56) (state_52)
-    result_57
-
-/// lawtwin.kafka::clusterCommitOffsets
-[<CompiledName("ClusterCommitOffsets_d3b39e4c")>]
-let clusterCommitOffsets_d3b39e4c (state_58: LawSpec.Data.BrokerState) (value0_59: string) (value1_60: string) (value2_61: int) (value3_62: LawSpec.Data.OffsetEntry list) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_63 = lawtwinKafkaModelOffsetCommit_01d91ef0 (value0_59) (value1_60) (value2_61) (value3_62) (state_58)
-    result_63
-
-/// lawtwin.kafka::clusterCreatePartitions
-[<CompiledName("ClusterCreatePartitions_0f2bdce3")>]
-let clusterCreatePartitions_0f2bdce3 (state_64: LawSpec.Data.BrokerState) (value0_65: string) (value1_66: int) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_67 = lawtwinKafkaModelCreatePartitions_8c9ce76b (value0_65) (value1_66) (state_64)
-    result_67
-
-/// lawtwin.kafka::clusterCreateTopic
-[<CompiledName("ClusterCreateTopic_25a8c8e9")>]
-let clusterCreateTopic_25a8c8e9 (state_68: LawSpec.Data.BrokerState) (value0_69: string) (value1_70: int) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_71 = lawtwinKafkaModelCreateTopic_0d831a39 (value0_69) (value1_70) (state_68)
-    result_71
-
-/// lawtwin.kafka::clusterDescribeGroup
-[<CompiledName("ClusterDescribeGroup_c1f8efd4")>]
-let clusterDescribeGroup_c1f8efd4 (state_72: LawSpec.Data.BrokerState) (value0_73: string) : LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> =
-    let result_74 = lawtwinKafkaModelDescribeGroup_bf8df8f8 (value0_73) (state_72)
-    result_74
-
-/// lawtwin.kafka::clusterEndTxnRequest
-[<CompiledName("ClusterEndTxnRequest_e8879acb")>]
-let clusterEndTxnRequest_e8879acb (state_75: LawSpec.Data.BrokerState) (value0_76: string) (value1_77: int64) (value2_78: int16) (value3_79: bool) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_80 = lawtwinKafkaModelEndTxn_b2637a52 (value0_76) (value1_77) (value2_78) (value3_79) (state_75)
-    result_80
-
-/// lawtwin.kafka::clusterFetchOffset
-[<CompiledName("ClusterFetchOffset_53ffef89")>]
-let clusterFetchOffset_53ffef89 (state_81: LawSpec.Data.BrokerState) (value0_82: string) (value1_83: LawSpec.Data.TopicPartition) : LawSpec.Data.Pair<int64 option, LawSpec.Data.BrokerState> =
-    let result_84 = lawtwinKafkaModelOffsetFetch_f56dbfcd (value0_82) (value1_83) (state_81)
-    result_84
-
-/// lawtwin.kafka::clusterFetchRequest
-[<CompiledName("ClusterFetchRequest_53f6507d")>]
-let clusterFetchRequest_53f6507d (state_85: LawSpec.Data.BrokerState) (value0_86: LawSpec.Data.TopicPartition) (value1_87: int64) (value2_88: int) (value3_89: LawSpec.Data.IsolationLevel) : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState> =
-    let result_90 = lawtwinKafkaModelFetch_29936450 (value0_86) (value1_87) (value2_88) (value3_89) (state_85)
-    result_90
-
-/// lawtwin.kafka::clusterHeartbeat
-[<CompiledName("ClusterHeartbeat_3af82cc2")>]
-let clusterHeartbeat_3af82cc2 (state_91: LawSpec.Data.BrokerState) (value0_92: string) (value1_93: string) (value2_94: int) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_95 = lawtwinKafkaModelHeartbeat_0f08a54d (value0_92) (value1_93) (value2_94) (state_91)
-    result_95
-
-/// lawtwin.kafka::clusterInitProducerIdRequest
-[<CompiledName("ClusterInitProducerIdRequest_f11b7e7d")>]
-let clusterInitProducerIdRequest_f11b7e7d (state_96: LawSpec.Data.BrokerState) (value0_97: string option) : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> =
-    let result_98 = lawtwinKafkaModelInitProducerId_cedb7e1b (value0_97) (state_96)
-    result_98
-
-/// lawtwin.kafka::clusterJoinGroup
-[<CompiledName("ClusterJoinGroup_2f7f09cb")>]
-let clusterJoinGroup_2f7f09cb (state_99: LawSpec.Data.BrokerState) (value0_100: string) (value1_101: string) (value2_102: string list) : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState> =
-    let result_103 = lawtwinKafkaModelJoinGroup_9a1e92f5 (value0_100) (value1_101) (value2_102) (state_99)
-    result_103
-
-/// lawtwin.kafka::clusterLeaveGroup
-[<CompiledName("ClusterLeaveGroup_cd94c353")>]
-let clusterLeaveGroup_cd94c353 (state_104: LawSpec.Data.BrokerState) (value0_105: string) (value1_106: string) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_107 = lawtwinKafkaModelLeaveGroup_5e5a3f69 (value0_105) (value1_106) (state_104)
-    result_107
-
-/// lawtwin.kafka::clusterListOffsets
-[<CompiledName("ClusterListOffsets_1dede442")>]
-let clusterListOffsets_1dede442 (state_108: LawSpec.Data.BrokerState) (value0_109: LawSpec.Data.TopicPartition) (value1_110: LawSpec.Data.OffsetSpec) (value2_111: LawSpec.Data.IsolationLevel) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
-    let result_112 = lawtwinKafkaModelListOffsets_9c6c9426 (value0_109) (value1_110) (value2_111) (state_108)
-    result_112
-
-/// lawtwin.kafka::clusterMetadataRequest
-[<CompiledName("ClusterMetadataRequest_3507727c")>]
-let clusterMetadataRequest_3507727c (state_113: LawSpec.Data.BrokerState) (value0_114: string) : LawSpec.Data.Pair<int option, LawSpec.Data.BrokerState> =
-    let result_115 = lawtwinKafkaModelMetadata_97bb5c4c (value0_114) (state_113)
-    result_115
-
-/// lawtwin.kafka::clusterProduceRequest
-[<CompiledName("ClusterProduceRequest_619c7f1f")>]
-let clusterProduceRequest_619c7f1f (state_116: LawSpec.Data.BrokerState) (value0_117: LawSpec.Data.TopicPartition) (value1_118: LawSpec.Data.ProducerTag option) (value2_119: LawSpec.Data.Record list) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
-    let result_120 = lawtwinKafkaModelProduce_834568df (value0_117) (value1_118) (value2_119) (state_116)
-    result_120
-
-/// lawtwin.kafka::clusterStart
-[<CompiledName("ClusterStart_659e952a")>]
-let clusterStart_659e952a (lawspecUnit_121: unit) : LawSpec.Data.BrokerState =
-    let result_122 = lawtwinKafkaModelEmptyBroker_d5fd8237 (())
-    result_122
-
-/// lawtwin.kafka::clusterSyncGroup
-[<CompiledName("ClusterSyncGroup_fa44a945")>]
-let clusterSyncGroup_fa44a945 (state_123: LawSpec.Data.BrokerState) (value0_124: string) (value1_125: string) (value2_126: int) : LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState> =
-    let result_127 = lawtwinKafkaModelSyncGroup_b3d01c80 (value0_124) (value1_125) (value2_126) (state_123)
-    result_127
-
-/// lawtwin.kafka::clusterTxnOffsetCommitRequest
-[<CompiledName("ClusterTxnOffsetCommitRequest_08ba35de")>]
-let clusterTxnOffsetCommitRequest_08ba35de (state_128: LawSpec.Data.BrokerState) (value0_129: string) (value1_130: int64) (value2_131: int16) (value3_132: string) (value4_133: LawSpec.Data.OffsetEntry list) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_134 = lawtwinKafkaModelTxnOffsetCommit_84c6b2bb (value0_129) (value1_130) (value2_131) (value3_132) (value4_133) (state_128)
-    result_134
-
-/// lawtwin.kafka::committedFrom
-[<CompiledName("CommittedFrom_a524f37d")>]
-let committedFrom_a524f37d (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tp_135: LawSpec.Data.TopicPartition) (offset_136: int64) : LawSpec.Data.Record list =
-    let result_137 = readFrom_f028a48d schema symbols (tp_135) (offset_136) (LawSpec.Data.IsolationLevel.ReadCommitted)
-    result_137
-
-/// lawtwin.kafka::consumerAssign
-[<CompiledName("ConsumerAssign_793a07ba")>]
-let consumerAssign_793a07ba (tps_138: LawSpec.Data.TopicPartition list) (c_139: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
-    let result_140 = withAssignment_7d6291b1 (None) (literal0) ((-1)) ([]) (tps_138) (c_139)
-    ({ First = (); Second = result_140 } : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::consumerClose
-[<CompiledName("ConsumerClose_00c5e7f3")>]
-let consumerClose_00c5e7f3 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (c_141: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
-    let value_142 =
-        match c_141 with
-        | subject ->
-            let lawspecFieldgroup_143 = subject.Group
-            lawspecFieldgroup_143
-    let it_144 = value_142
-    match it_144 with
-    | None ->
-        let result_145 = freshConsumer_c2da4184 (())
-        ({ First = (); Second = result_145 } : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState>)
-    | Some lawspecSelection0x0_146 ->
-        let value_147 =
-            let attempted_151 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_148 =
-                        match c_141 with
-                        | subject ->
-                            let lawspecFieldmember_149 = subject.Member
-                            lawspecFieldmember_149
-                    let result_150 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).LeaveGroupRequest(lawspecSelection0x0_146, value_148)))
-                    result_150)
-            match attempted_151 with
-            | LawSpec.Either.Left lawspecFailure_152 ->
-                (LawSpec.Either.Left lawspecFailure_152)
-            | LawSpec.Either.Right lawspecValue_153 ->
-                (LawSpec.Either.Right lawspecValue_153)
-        let left_154 = value_147
-        let result_155 = freshConsumer_c2da4184 (())
-        ({ First = (); Second = result_155 } : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::consumerCommit
-[<CompiledName("ConsumerCommit_787f4c15")>]
-let consumerCommit_787f4c15 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (c_156: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
-    let value_157 =
-        match c_156 with
-        | subject ->
-            let lawspecFieldgroup_158 = subject.Group
-            lawspecFieldgroup_158
-    let it_159 = value_157
-    match it_159 with
-    | None ->
-        ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.InvalidGroupId); Second = c_156 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState>)
-    | Some lawspecSelection0x0_160 ->
-        let value_161 =
-            let attempted_172 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_162 =
-                        match c_156 with
-                        | subject ->
-                            let lawspecFieldmember_163 = subject.Member
-                            lawspecFieldmember_163
-                    let value_164 =
-                        match c_156 with
-                        | subject ->
-                            let lawspecFieldgeneration_165 = subject.Generation
-                            lawspecFieldgeneration_165
-                    let value_166 =
-                        match c_156 with
-                        | subject ->
-                            let lawspecFieldassigned_167 = subject.Assigned
-                            lawspecFieldassigned_167
-                    let value_168 =
-                        match c_156 with
-                        | subject ->
-                            let lawspecFieldpositions_169 = subject.Positions
-                            lawspecFieldpositions_169
-                    let result_170 = positionsToCommit_67969440 (value_166) (value_168)
-                    let result_171 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).OffsetCommitRequest(lawspecSelection0x0_160, value_162, value_164, result_170)))
-                    result_171)
-            match attempted_172 with
-            | LawSpec.Either.Left lawspecFailure_173 ->
-                (LawSpec.Either.Left lawspecFailure_173)
-            | LawSpec.Either.Right lawspecValue_174 ->
-                (LawSpec.Either.Right lawspecValue_174)
-        ({ First = value_161; Second = c_156 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::consumerCommitted
-[<CompiledName("ConsumerCommitted_06365ac2")>]
-let consumerCommitted_06365ac2 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tp_175: LawSpec.Data.TopicPartition) (c_176: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState> =
-    let value_177 =
-        match c_176 with
-        | subject ->
-            let lawspecFieldgroup_178 = subject.Group
-            lawspecFieldgroup_178
-    let it_179 = value_177
-    match it_179 with
-    | None ->
-        ({ First = None; Second = c_176 } : LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState>)
-    | Some lawspecSelection0x0_180 ->
-        let result_181 = ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).OffsetFetchRequest(lawspecSelection0x0_180, tp_175))
-        ({ First = result_181; Second = c_176 } : LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::consumerIsolation
-[<CompiledName("ConsumerIsolation_2aacd289")>]
-let consumerIsolation_2aacd289 (level_182: LawSpec.Data.IsolationLevel) (c_183: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
-    let value_184 =
-        let replacement_185 = level_182
-        match c_183 with
-        | subject ->
-            let lawspecFieldgroup_186 = subject.Group
-            let lawspecFieldmember_187 = subject.Member
-            let lawspecFieldgeneration_188 = subject.Generation
-            let lawspecFieldsubscription_189 = subject.Subscription
-            let lawspecFieldassigned_190 = subject.Assigned
-            let lawspecFieldpositions_191 = subject.Positions
-            ({ Group = lawspecFieldgroup_186; Member = lawspecFieldmember_187; Generation = lawspecFieldgeneration_188; Subscription = lawspecFieldsubscription_189; Assigned = lawspecFieldassigned_190; Positions = lawspecFieldpositions_191; Isolation = replacement_185 } : LawSpec.Data.ConsumerState)
-    ({ First = (); Second = value_184 } : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::consumerJoin
-[<CompiledName("ConsumerJoin_198e034e")>]
-let consumerJoin_198e034e (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (g_192: string) (m_193: string) (topics_194: string list) (c_195: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState> =
-    let value_196 =
-        let attempted_198 =
-            Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                let result_197 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).JoinGroupRequest(g_192, m_193, topics_194)))
-                result_197)
-        match attempted_198 with
-        | LawSpec.Either.Left lawspecFailure_199 ->
-            (LawSpec.Either.Left lawspecFailure_199)
-        | LawSpec.Either.Right lawspecValue_200 ->
-            (LawSpec.Either.Right lawspecValue_200)
-    let it_201 = value_196
-    match it_201 with
-    | LawSpec.Either.Left lawspecSelection0x0_202 ->
-        ({ First = (LawSpec.Either.Left lawspecSelection0x0_202); Second = c_195 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState>)
-    | LawSpec.Either.Right lawspecSelection0x0_203 ->
-        let value_204 =
-            let attempted_206 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let result_205 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).SyncGroupRequest(g_192, m_193, lawspecSelection0x0_203)))
-                    result_205)
-            match attempted_206 with
-            | LawSpec.Either.Left lawspecFailure_207 ->
-                (LawSpec.Either.Left lawspecFailure_207)
-            | LawSpec.Either.Right lawspecValue_208 ->
-                (LawSpec.Either.Right lawspecValue_208)
-        let it_209 = value_204
-        match it_209 with
-        | LawSpec.Either.Left matchlawspecSelection0x00_210 ->
-            ({ First = (LawSpec.Either.Left matchlawspecSelection0x00_210); Second = c_195 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState>)
-        | LawSpec.Either.Right matchlawspecSelection0x00_211 ->
-            let result_212 = withAssignment_7d6291b1 ((Some g_192)) (m_193) (lawspecSelection0x0_203) (topics_194) (matchlawspecSelection0x00_211) (c_195)
-            ({ First = (LawSpec.Either.Right matchlawspecSelection0x00_211); Second = result_212 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::consumerPoll
-[<CompiledName("ConsumerPoll_d12c6262")>]
-let consumerPoll_d12c6262 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (n_213: int) (c_214: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
-    let result_215 = consumerRefresh_99e956fa schema symbols (c_214)
-    let refreshed_216 = result_215
-    let value_217 =
-        match refreshed_216 with
-        | subject ->
-            let lawspecFieldfirst_218 = subject.First
-            lawspecFieldfirst_218
-    let it_219 = value_217
-    match it_219 with
-    | LawSpec.Either.Left lawspecSelection0x0_220 ->
-        let value_221 =
-            match refreshed_216 with
-            | subject ->
-                let lawspecFieldsecond_222 = subject.Second
-                lawspecFieldsecond_222
-        ({ First = (LawSpec.Either.Left lawspecSelection0x0_220); Second = value_221 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState>)
-    | LawSpec.Either.Right _ ->
-        let value_223 =
-            let value_224 =
-                match refreshed_216 with
-                | subject ->
-                    let lawspecFieldsecond_225 = subject.Second
-                    lawspecFieldsecond_225
-            match value_224 with
-            | subject ->
-                let lawspecFieldassigned_226 = subject.Assigned
-                lawspecFieldassigned_226
-        let value_227 =
-            match refreshed_216 with
-            | subject ->
-                let lawspecFieldsecond_228 = subject.Second
-                lawspecFieldsecond_228
-        let result_229 = pollPartitions_9d6feda1 schema symbols (value_223) (n_213) (value_227) ([])
-        result_229
-
-/// lawtwin.kafka::consumerPosition
-[<CompiledName("ConsumerPosition_4da411a3")>]
-let consumerPosition_4da411a3 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tp_230: LawSpec.Data.TopicPartition) (c_231: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<int64, LawSpec.Data.ConsumerState> =
-    let value_232 =
-        match c_231 with
-        | subject ->
-            let lawspecFieldpositions_233 = subject.Positions
-            lawspecFieldpositions_233
-    let result_234 = (Map.tryFind tp_230 value_232)
-    let it_235 = result_234
-    match it_235 with
-    | Some lawspecSelection0x0_236 ->
-        ({ First = lawspecSelection0x0_236; Second = c_231 } : LawSpec.Data.Pair<int64, LawSpec.Data.ConsumerState>)
-    | None ->
-        let value_237 =
-            let value_238 =
-                match c_231 with
-                | subject ->
-                    let lawspecFieldgroup_239 = subject.Group
-                    lawspecFieldgroup_239
-            let it_240 = value_238
-            match it_240 with
-            | None ->
-                0L
-            | Some lawspecSelection0x0_241 ->
-                let result_242 = ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).OffsetFetchRequest(lawspecSelection0x0_241, tp_230))
-                let it_243 = result_242
-                match it_243 with
-                | None ->
-                    0L
-                | Some matchlawspecSelection0x00_244 ->
-                    matchlawspecSelection0x00_244
-        let from_245 = value_237
-        let result_246 = withPosition_867e6b19 (tp_230) (from_245) (c_231)
-        ({ First = from_245; Second = result_246 } : LawSpec.Data.Pair<int64, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::consumerPositionOf
-[<CompiledName("ConsumerPositionOf_71a8a523")>]
-let consumerPositionOf_71a8a523 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tp_247: LawSpec.Data.TopicPartition) (c_248: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState> =
-    let value_249 =
-        match c_248 with
-        | subject ->
-            let lawspecFieldassigned_250 = subject.Assigned
-            lawspecFieldassigned_250
-    let all_252 =
-        List.forall (fun item_251 ->
-            (item_251 <> tp_247)) value_249
-    if (not all_252) then
-        let result_253 = consumerPosition_4da411a3 schema symbols (tp_247) (c_248)
-        let p_254 = result_253
-        let value_255 =
-            match p_254 with
-            | subject ->
-                let lawspecFieldfirst_256 = subject.First
-                lawspecFieldfirst_256
-        let value_257 =
-            match p_254 with
-            | subject ->
-                let lawspecFieldsecond_258 = subject.Second
-                lawspecFieldsecond_258
-        ({ First = (LawSpec.Either.Right value_255); Second = value_257 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState>)
-    else
-        ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = c_248 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::consumerRecords
-[<CompiledName("ConsumerRecords_9d810f29")>]
-let consumerRecords_9d810f29 (tp_259: LawSpec.Data.TopicPartition) (rs_260: LawSpec.Data.FetchedRecord list) : LawSpec.Data.ConsumerRecord list =
-    let it_261 = rs_260
-    match it_261 with
-    | [] ->
-        []
-    | lawspecSelection0x0_262 :: lawspecSelection0x1_263 ->
-        let value_264 =
-            let lawspecRecordField0_265 = tp_259
-            let value_266 =
-                match lawspecSelection0x0_262 with
-                | subject ->
-                    let lawspecFieldoffset_267 = subject.Offset
-                    lawspecFieldoffset_267
-            let lawspecRecordField1_268 = value_266
-            let value_269 =
-                match lawspecSelection0x0_262 with
-                | subject ->
-                    let lawspecFieldentry_270 = subject.Entry
-                    lawspecFieldentry_270
-            let lawspecRecordField2_271 = value_269
-            ({ ReceivedFrom = lawspecRecordField0_265; ReceivedAt = lawspecRecordField1_268; Received = lawspecRecordField2_271 } : LawSpec.Data.ConsumerRecord)
-        let result_272 = consumerRecords_9d810f29 (tp_259) (lawspecSelection0x1_263)
-        (value_264 :: result_272)
-
-/// lawtwin.kafka::consumerRefresh
-[<CompiledName("ConsumerRefresh_99e956fa")>]
-let consumerRefresh_99e956fa (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (c_273: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
-    let value_274 =
-        match c_273 with
-        | subject ->
-            let lawspecFieldgroup_275 = subject.Group
-            lawspecFieldgroup_275
-    let it_276 = value_274
-    match it_276 with
-    | None ->
-        ({ First = (LawSpec.Either.Right ()); Second = c_273 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState>)
-    | Some lawspecSelection0x0_277 ->
-        let value_278 =
-            let attempted_284 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_279 =
-                        match c_273 with
-                        | subject ->
-                            let lawspecFieldmember_280 = subject.Member
-                            lawspecFieldmember_280
-                    let value_281 =
-                        match c_273 with
-                        | subject ->
-                            let lawspecFieldgeneration_282 = subject.Generation
-                            lawspecFieldgeneration_282
-                    let result_283 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).HeartbeatRequest(lawspecSelection0x0_277, value_279, value_281)))
-                    result_283)
-            match attempted_284 with
-            | LawSpec.Either.Left lawspecFailure_285 ->
-                (LawSpec.Either.Left lawspecFailure_285)
-            | LawSpec.Either.Right lawspecValue_286 ->
-                (LawSpec.Either.Right lawspecValue_286)
-        let it_287 = value_278
-        match it_287 with
-        | LawSpec.Either.Right _ ->
-            ({ First = (LawSpec.Either.Right ()); Second = c_273 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState>)
-        | LawSpec.Either.Left matchlawspecSelection0x00_288 ->
-            if ((matchlawspecSelection0x00_288 = LawSpec.Data.KafkaError.IllegalGeneration) || (matchlawspecSelection0x00_288 = LawSpec.Data.KafkaError.UnknownMemberId)) then
-                let value_289 =
-                    match c_273 with
-                    | subject ->
-                        let lawspecFieldmember_290 = subject.Member
-                        lawspecFieldmember_290
-                let value_291 =
-                    match c_273 with
-                    | subject ->
-                        let lawspecFieldsubscription_292 = subject.Subscription
-                        lawspecFieldsubscription_292
-                let result_293 = consumerJoin_198e034e schema symbols (lawspecSelection0x0_277) (value_289) (value_291) (c_273)
-                let s_294 = result_293
-                let value_295 =
-                    match s_294 with
-                    | subject ->
-                        let lawspecFieldfirst_296 = subject.First
-                        lawspecFieldfirst_296
-                let it_297 = value_295
-                match it_297 with
-                | LawSpec.Either.Left matchmatchlawspecSelection0x000_298 ->
-                    let value_299 =
-                        match s_294 with
-                        | subject ->
-                            let lawspecFieldsecond_300 = subject.Second
-                            lawspecFieldsecond_300
-                    ({ First = (LawSpec.Either.Left matchmatchlawspecSelection0x000_298); Second = value_299 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState>)
-                | LawSpec.Either.Right _ ->
-                    let value_301 =
-                        match s_294 with
-                        | subject ->
-                            let lawspecFieldsecond_302 = subject.Second
-                            lawspecFieldsecond_302
-                    ({ First = (LawSpec.Either.Right ()); Second = value_301 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState>)
+    match it with
+    | [] -> true
+    | selection :: selection_2 ->
+        let logic =
+            if (selection >= floor) then
+                let result = allAtLeast floor selection_2
+                result
             else
-                ({ First = (LawSpec.Either.Left matchlawspecSelection0x00_288); Second = c_273 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::consumerSeek
-[<CompiledName("ConsumerSeek_975a7017")>]
-let consumerSeek_975a7017 (tp_303: LawSpec.Data.TopicPartition) (offset_304: int64) (c_305: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
-    let value_306 =
-        match c_305 with
-        | subject ->
-            let lawspecFieldassigned_307 = subject.Assigned
-            lawspecFieldassigned_307
-    let all_309 =
-        List.forall (fun item_308 ->
-            (item_308 <> tp_303)) value_306
-    if ((not all_309) && ((bigint offset_304) >= 0I)) then
-        let result_310 = withPosition_867e6b19 (tp_303) (offset_304) (c_305)
-        ({ First = (LawSpec.Either.Right ()); Second = result_310 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState>)
-    else
-        ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = c_305 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState>)
-
-/// lawtwin.kafka::coversOnce
-[<CompiledName("CoversOnce_231e9ee6")>]
-let coversOnce_231e9ee6 (t_311: string) (n_312: int) (view_313: LawSpec.Data.GroupView) : bool =
-    let value_314 =
-        match view_313 with
-        | subject ->
-            let lawspecFieldmembers_315 = subject.Members
-            lawspecFieldmembers_315
-    let result_316 = ownedOf_0d7fb3ae (t_311) (value_314)
-    let owned_317 = result_316
-    let logic_320 =
-        if ((bigint (List.length owned_317)) = (bigint n_312)) then
-            let result_318 = (Set.ofList owned_317)
-            let result_319 = (Set.ofList (Typed.range (bigint 0) (bigint n_312) |> List.map int32))
-            (result_318 = result_319)
-        else false
-    logic_320
-
-/// lawtwin.kafka::created
-[<CompiledName("Created_5201db31")>]
-let created_5201db31 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (t_321: string) (n_322: int) : bool =
-    let value_323 =
-        let attempted_325 =
-            Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                let result_324 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).CreateTopicsRequest(t_321, n_322)))
-                result_324)
-        match attempted_325 with
-        | LawSpec.Either.Left lawspecFailure_326 ->
-            (LawSpec.Either.Left lawspecFailure_326)
-        | LawSpec.Either.Right lawspecValue_327 ->
-            (LawSpec.Either.Right lawspecValue_327)
-    match value_323 with
-    | LawSpec.Either.Left _ ->
-        false
-    | LawSpec.Either.Right _ ->
-        true
-
-/// lawtwin.kafka::fencedBy
-[<CompiledName("FencedBy_c383bb89")>]
-let fencedBy_c383bb89 (old_328: LawSpec.Data.ProducerIdAndEpoch) (new_329: LawSpec.Data.ProducerIdAndEpoch) : bool =
-    let value_330 =
-        match new_329 with
-        | subject ->
-            let lawspecFieldproducerId_331 = subject.ProducerId
-            lawspecFieldproducerId_331
-    let value_332 =
-        match old_328 with
-        | subject ->
-            let lawspecFieldproducerId_333 = subject.ProducerId
-            lawspecFieldproducerId_333
-    let logic_338 =
-        if (value_330 = value_332) then
-            let value_334 =
-                match new_329 with
-                | subject ->
-                    let lawspecFieldproducerEpoch_335 = subject.ProducerEpoch
-                    lawspecFieldproducerEpoch_335
-            let value_336 =
-                match old_328 with
-                | subject ->
-                    let lawspecFieldproducerEpoch_337 = subject.ProducerEpoch
-                    lawspecFieldproducerEpoch_337
-            (value_334 > value_336)
-        else false
-    let logic_343 =
-        if logic_338 then
-            true
-        else
-            let value_339 =
-                match new_329 with
-                | subject ->
-                    let lawspecFieldproducerId_340 = subject.ProducerId
-                    lawspecFieldproducerId_340
-            let value_341 =
-                match old_328 with
-                | subject ->
-                    let lawspecFieldproducerId_342 = subject.ProducerId
-                    lawspecFieldproducerId_342
-            (value_339 <> value_341)
-    logic_343
-
-/// lawtwin.kafka::followsBatch
-[<CompiledName("FollowsBatch_00cf360a")>]
-let followsBatch_00cf360a (a_344: LawSpec.Either<LawSpec.Data.KafkaError, int64>) (batch_345: LawSpec.Data.Record list) (b_346: LawSpec.Either<LawSpec.Data.KafkaError, int64>) : bool =
-    let it_347 = a_344
-    match it_347 with
-    | LawSpec.Either.Left _ ->
-        false
-    | LawSpec.Either.Right lawspecSelection0x0_348 ->
-        let it_349 = b_346
-        match it_349 with
-        | LawSpec.Either.Left _ ->
-            false
-        | LawSpec.Either.Right matchlawspecSelection0x00_350 ->
-            ((bigint matchlawspecSelection0x00_350) = ((bigint lawspecSelection0x0_348) + (bigint (List.length batch_345))))
-
-/// lawtwin.kafka::followsOne
-[<CompiledName("FollowsOne_4f3a93e2")>]
-let followsOne_4f3a93e2 (a_351: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>) (latest_352: LawSpec.Either<LawSpec.Data.KafkaError, int64>) : bool =
-    let it_353 = a_351
-    match it_353 with
-    | LawSpec.Either.Left _ ->
-        false
-    | LawSpec.Either.Right lawspecSelection0x0_354 ->
-        let it_355 = latest_352
-        match it_355 with
-        | LawSpec.Either.Left _ ->
-            false
-        | LawSpec.Either.Right matchlawspecSelection0x00_356 ->
-            let value_357 =
-                match lawspecSelection0x0_354 with
-                | subject ->
-                    let lawspecFieldsentAt_358 = subject.SentAt
-                    lawspecFieldsentAt_358
-            ((bigint matchlawspecSelection0x00_356) = ((bigint value_357) + 1I))
-
-/// lawtwin.kafka::freshConsumer
-[<CompiledName("FreshConsumer_c2da4184")>]
-let freshConsumer_c2da4184 (u_359: unit) : LawSpec.Data.ConsumerState =
-    let lawspecRecordField0_360 = None
-    let lawspecRecordField1_361 = literal0
-    let lawspecRecordField2_362 = (-1)
-    let lawspecRecordField3_363 = []
-    let lawspecRecordField4_364 = []
-    let result_365 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField5_366 = result_365
-    let lawspecRecordField6_367 = LawSpec.Data.IsolationLevel.ReadUncommitted
-    ({ Group = lawspecRecordField0_360; Member = lawspecRecordField1_361; Generation = lawspecRecordField2_362; Subscription = lawspecRecordField3_363; Assigned = lawspecRecordField4_364; Positions = lawspecRecordField5_366; Isolation = lawspecRecordField6_367 } : LawSpec.Data.ConsumerState)
-
-/// lawtwin.kafka::freshProducer
-[<CompiledName("FreshProducer_deea7b00")>]
-let freshProducer_deea7b00 (u_368: unit) : LawSpec.Data.ProducerState =
-    let lawspecRecordField0_369 = None
-    let result_370 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField1_371 = result_370
-    let lawspecRecordField2_372 = None
-    ({ Identity = lawspecRecordField0_369; Sequences = lawspecRecordField1_371; LastSend = lawspecRecordField2_372 } : LawSpec.Data.ProducerState)
-
-/// lawtwin.kafka::freshTransactions
-[<CompiledName("FreshTransactions_533fb432")>]
-let freshTransactions_533fb432 (u_373: unit) : LawSpec.Data.TransactionState =
-    let lawspecRecordField0_374 = literal0
-    let lawspecRecordField1_375 = None
-    let result_376 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField2_377 = result_376
-    let lawspecRecordField3_378 = false
-    let lawspecRecordField4_379 = []
-    let lawspecRecordField5_380 = false
-    ({ TransactionalId = lawspecRecordField0_374; Producer = lawspecRecordField1_375; TxnSequences = lawspecRecordField2_377; InTransaction = lawspecRecordField3_378; Added = lawspecRecordField4_379; OffsetsSent = lawspecRecordField5_380 } : LawSpec.Data.TransactionState)
-
-/// lawtwin.kafka::identityOf
-[<CompiledName("IdentityOf_96976095")>]
-let identityOf_96976095 (st_381: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch option, LawSpec.Data.ProducerState> =
-    let value_382 =
-        match st_381 with
-        | subject ->
-            let lawspecFieldidentity_383 = subject.Identity
-            lawspecFieldidentity_383
-    ({ First = value_382; Second = st_381 } : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch option, LawSpec.Data.ProducerState>)
-
-/// lawtwin.kafka::increasing
-[<CompiledName("Increasing_d02ccce0")>]
-let increasing_d02ccce0 (xs_384: int64 list) : bool =
-    let it_385 = xs_384
-    match it_385 with
-    | [] ->
-        true
-    | lawspecSelection0x0_386 :: lawspecSelection0x1_387 ->
-        let it_388 = lawspecSelection0x1_387
-        match it_388 with
-        | [] ->
-            true
-        | matchlawspecSelection0x00_389 :: _ ->
-            let logic_391 =
-                if (lawspecSelection0x0_386 < matchlawspecSelection0x00_389) then
-                    let result_390 = increasing_d02ccce0 (lawspecSelection0x1_387)
-                    result_390
-                else false
-            logic_391
-
-/// lawtwin.kafka::joinAll
-[<CompiledName("JoinAll_67d573a5")>]
-let joinAll_67d573a5 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (g_392: string) (ms_393: string list) (topics_394: string list) : bool =
-    let it_395 = ms_393
-    match it_395 with
-    | [] ->
-        true
-    | lawspecSelection0x0_396 :: lawspecSelection0x1_397 ->
-        let value_398 =
-            let value_399 =
-                let attempted_401 =
-                    Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                        let result_400 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).JoinGroupRequest(g_392, lawspecSelection0x0_396, topics_394)))
-                        result_400)
-                match attempted_401 with
-                | LawSpec.Either.Left lawspecFailure_402 ->
-                    (LawSpec.Either.Left lawspecFailure_402)
-                | LawSpec.Either.Right lawspecValue_403 ->
-                    (LawSpec.Either.Right lawspecValue_403)
-            match value_399 with
-            | LawSpec.Either.Left _ ->
                 false
-            | LawSpec.Either.Right _ ->
-                true
-        let logic_405 =
-            if value_398 then
-                let result_404 = joinAll_67d573a5 schema symbols (g_392) (lawspecSelection0x1_397) (topics_394)
-                result_404
-            else false
-        logic_405
 
-/// lawtwin.kafka::joinEach
-[<CompiledName("JoinEach_78c50afb")>]
-let joinEach_78c50afb (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (g_406: string) (ms_407: string list) (topics_408: string list) : bool =
-    let it_409 = ms_407
-    match it_409 with
-    | [] ->
-        true
-    | lawspecSelection0x0_410 :: lawspecSelection0x1_411 ->
-        let value_412 =
-            let value_413 =
-                let attempted_415 =
-                    Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                        let result_414 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaGroupCoordinatorToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::GroupCoordinator")).JoinGroup(g_406, lawspecSelection0x0_410, topics_408)))
-                        result_414)
-                match attempted_415 with
-                | LawSpec.Either.Left lawspecFailure_416 ->
-                    (LawSpec.Either.Left lawspecFailure_416)
-                | LawSpec.Either.Right lawspecValue_417 ->
-                    (LawSpec.Either.Right lawspecValue_417)
-            match value_413 with
-            | LawSpec.Either.Left _ ->
-                false
-            | LawSpec.Either.Right _ ->
-                true
-        let logic_419 =
-            if value_412 then
-                let result_418 = joinEach_78c50afb schema symbols (g_406) (lawspecSelection0x1_411) (topics_408)
-                result_418
-            else false
-        logic_419
-
-/// lawtwin.kafka::kafkaConsumerAssign
-[<CompiledName("KafkaConsumerAssign_6414ad54")>]
-let kafkaConsumerAssign_6414ad54 (consumerState_420: LawSpec.Data.ConsumerState) (value0_421: LawSpec.Data.TopicPartition list) : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
-    let result_422 = consumerAssign_793a07ba (value0_421) (consumerState_420)
-    result_422
-
-/// lawtwin.kafka::kafkaConsumerClose
-[<CompiledName("KafkaConsumerClose_ece19793")>]
-let kafkaConsumerClose_ece19793 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (consumerState_423: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
-    let result_424 = consumerClose_00c5e7f3 schema symbols (consumerState_423)
-    result_424
-
-/// lawtwin.kafka::kafkaConsumerCommitSync
-[<CompiledName("KafkaConsumerCommitSync_d47684fe")>]
-let kafkaConsumerCommitSync_d47684fe (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (consumerState_425: LawSpec.Data.ConsumerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
-    let result_426 = consumerCommit_787f4c15 schema symbols (consumerState_425)
-    result_426
-
-/// lawtwin.kafka::kafkaConsumerCommittedOffset
-[<CompiledName("KafkaConsumerCommittedOffset_c045e1a8")>]
-let kafkaConsumerCommittedOffset_c045e1a8 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (consumerState_427: LawSpec.Data.ConsumerState) (value0_428: LawSpec.Data.TopicPartition) : LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState> =
-    let result_429 = consumerCommitted_06365ac2 schema symbols (value0_428) (consumerState_427)
-    result_429
-
-/// lawtwin.kafka::kafkaConsumerPoll
-[<CompiledName("KafkaConsumerPoll_591504e0")>]
-let kafkaConsumerPoll_591504e0 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (consumerState_430: LawSpec.Data.ConsumerState) (value0_431: int) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
-    let result_432 = consumerPoll_d12c6262 schema symbols (value0_431) (consumerState_430)
-    result_432
-
-/// lawtwin.kafka::kafkaConsumerPosition
-[<CompiledName("KafkaConsumerPosition_7784665f")>]
-let kafkaConsumerPosition_7784665f (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (consumerState_433: LawSpec.Data.ConsumerState) (value0_434: LawSpec.Data.TopicPartition) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState> =
-    let result_435 = consumerPositionOf_71a8a523 schema symbols (value0_434) (consumerState_433)
-    result_435
-
-/// lawtwin.kafka::kafkaConsumerSeek
-[<CompiledName("KafkaConsumerSeek_5fe046a7")>]
-let kafkaConsumerSeek_5fe046a7 (consumerState_436: LawSpec.Data.ConsumerState) (value0_437: LawSpec.Data.TopicPartition) (value1_438: int64) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
-    let result_439 = consumerSeek_975a7017 (value0_437) (value1_438) (consumerState_436)
-    result_439
-
-/// lawtwin.kafka::kafkaConsumerSetIsolationLevel
-[<CompiledName("KafkaConsumerSetIsolationLevel_bc2459d3")>]
-let kafkaConsumerSetIsolationLevel_bc2459d3 (consumerState_440: LawSpec.Data.ConsumerState) (value0_441: LawSpec.Data.IsolationLevel) : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
-    let result_442 = consumerIsolation_2aacd289 (value0_441) (consumerState_440)
-    result_442
-
-/// lawtwin.kafka::kafkaConsumerStart
-[<CompiledName("KafkaConsumerStart_9e580acc")>]
-let kafkaConsumerStart_9e580acc (lawspecUnit_443: unit) : LawSpec.Data.ConsumerState =
-    let result_444 = freshConsumer_c2da4184 (())
-    result_444
-
-/// lawtwin.kafka::kafkaConsumerSubscribe
-[<CompiledName("KafkaConsumerSubscribe_ce34eaf5")>]
-let kafkaConsumerSubscribe_ce34eaf5 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (consumerState_445: LawSpec.Data.ConsumerState) (value0_446: string) (value1_447: string) (value2_448: string list) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState> =
-    let result_449 = consumerJoin_198e034e schema symbols (value0_446) (value1_447) (value2_448) (consumerState_445)
-    result_449
-
-/// lawtwin.kafka::kafkaProducerEnableIdempotence
-[<CompiledName("KafkaProducerEnableIdempotence_a79d2db8")>]
-let kafkaProducerEnableIdempotence_a79d2db8 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (producerState_450: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> =
-    let result_451 = producerIdempotent_c8ab8a13 schema symbols (producerState_450)
-    result_451
-
-/// lawtwin.kafka::kafkaProducerFlush
-[<CompiledName("KafkaProducerFlush_584e906f")>]
-let kafkaProducerFlush_584e906f (producerState_452: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<unit, LawSpec.Data.ProducerState> =
-    let result_453 = producerFlush_f30611db (producerState_452)
-    result_453
-
-/// lawtwin.kafka::kafkaProducerProducerIdentity
-[<CompiledName("KafkaProducerProducerIdentity_a0ee547d")>]
-let kafkaProducerProducerIdentity_a0ee547d (producerState_454: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch option, LawSpec.Data.ProducerState> =
-    let result_455 = identityOf_96976095 (producerState_454)
-    result_455
-
-/// lawtwin.kafka::kafkaProducerRetryLastSend
-[<CompiledName("KafkaProducerRetryLastSend_9cbd6c72")>]
-let kafkaProducerRetryLastSend_9cbd6c72 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (producerState_456: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
-    let result_457 = producerRetry_aaf3a88a schema symbols (producerState_456)
-    result_457
-
-/// lawtwin.kafka::kafkaProducerSend
-[<CompiledName("KafkaProducerSend_a4612365")>]
-let kafkaProducerSend_a4612365 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (producerState_458: LawSpec.Data.ProducerState) (value0_459: LawSpec.Data.ProducerRecord) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
-    let result_460 = producerSend_9064c6b5 schema symbols (value0_459) (producerState_458)
-    result_460
-
-/// lawtwin.kafka::kafkaProducerStart
-[<CompiledName("KafkaProducerStart_58ddcfc8")>]
-let kafkaProducerStart_58ddcfc8 (lawspecUnit_461: unit) : LawSpec.Data.ProducerState =
-    let result_462 = freshProducer_deea7b00 (())
-    result_462
-
-/// lawtwin.kafka::kafkaTransactionsAbortTransaction
-[<CompiledName("KafkaTransactionsAbortTransaction_a2a1e35e")>]
-let kafkaTransactionsAbortTransaction_a2a1e35e (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (txnState_463: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let result_464 = transactionsAbort_256496fb schema symbols (txnState_463)
-    result_464
-
-/// lawtwin.kafka::kafkaTransactionsAddPartitionsToTransaction
-[<CompiledName("KafkaTransactionsAddPartitionsToTransaction_3d7d0621")>]
-let kafkaTransactionsAddPartitionsToTransaction_3d7d0621 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (txnState_465: LawSpec.Data.TransactionState) (value0_466: LawSpec.Data.TopicPartition list) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let result_467 = transactionsAdd_1f41c92e schema symbols (value0_466) (txnState_465)
-    result_467
-
-/// lawtwin.kafka::kafkaTransactionsBeginTransaction
-[<CompiledName("KafkaTransactionsBeginTransaction_3c1e648e")>]
-let kafkaTransactionsBeginTransaction_3c1e648e (txnState_468: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let result_469 = transactionsBegin_5d267b99 (txnState_468)
-    result_469
-
-/// lawtwin.kafka::kafkaTransactionsCommitTransaction
-[<CompiledName("KafkaTransactionsCommitTransaction_e0a5e067")>]
-let kafkaTransactionsCommitTransaction_e0a5e067 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (txnState_470: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let result_471 = transactionsCommit_afadd0fa schema symbols (txnState_470)
-    result_471
-
-/// lawtwin.kafka::kafkaTransactionsInitTransactions
-[<CompiledName("KafkaTransactionsInitTransactions_96f85461")>]
-let kafkaTransactionsInitTransactions_96f85461 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (txnState_472: LawSpec.Data.TransactionState) (value0_473: string) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> =
-    let result_474 = transactionsInit_d69a08bc schema symbols (value0_473) (txnState_472)
-    result_474
-
-/// lawtwin.kafka::kafkaTransactionsSendInTransaction
-[<CompiledName("KafkaTransactionsSendInTransaction_09c804c7")>]
-let kafkaTransactionsSendInTransaction_09c804c7 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (txnState_475: LawSpec.Data.TransactionState) (value0_476: LawSpec.Data.ProducerRecord) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
-    let result_477 = transactionsSend_558d813c schema symbols (value0_476) (txnState_475)
-    result_477
-
-/// lawtwin.kafka::kafkaTransactionsSendOffsetsToTransaction
-[<CompiledName("KafkaTransactionsSendOffsetsToTransaction_d24938fc")>]
-let kafkaTransactionsSendOffsetsToTransaction_d24938fc (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (txnState_478: LawSpec.Data.TransactionState) (value0_479: string) (value1_480: LawSpec.Data.OffsetEntry list) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let result_481 = transactionsOffsets_b33ea106 schema symbols (value0_479) (value1_480) (txnState_478)
-    result_481
-
-/// lawtwin.kafka::kafkaTransactionsStart
-[<CompiledName("KafkaTransactionsStart_68a77cf3")>]
-let kafkaTransactionsStart_68a77cf3 (lawspecUnit_482: unit) : LawSpec.Data.TransactionState =
-    let result_483 = freshTransactions_533fb432 (())
-    result_483
-
-/// lawtwin.kafka::keepPositions
-[<CompiledName("KeepPositions_f10bd26f")>]
-let keepPositions_f10bd26f (tps_484: LawSpec.Data.TopicPartition list) (positions_485: Map<LawSpec.Data.TopicPartition, int64>) (acc_486: Map<LawSpec.Data.TopicPartition, int64>) : Map<LawSpec.Data.TopicPartition, int64> =
-    let it_487 = tps_484
-    match it_487 with
-    | [] ->
-        acc_486
-    | lawspecSelection0x0_488 :: lawspecSelection0x1_489 ->
-        let result_490 = (Map.tryFind lawspecSelection0x0_488 positions_485)
-        let it_491 = result_490
-        match it_491 with
-        | None ->
-            let result_492 = keepPositions_f10bd26f (lawspecSelection0x1_489) (positions_485) (acc_486)
-            result_492
-        | Some matchlawspecSelection0x00_493 ->
-            let result_494 = (Map.add lawspecSelection0x0_488 matchlawspecSelection0x00_493 acc_486)
-            let result_495 = keepPositions_f10bd26f (lawspecSelection0x1_489) (positions_485) (result_494)
-            result_495
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a214051
-[<CompiledName("LawspecCollectionsKeyValDeleteItems_5df79bd1")>]
-let lawspecCollectionsKeyValDeleteItems_5df79bd1 (k_496: string) (es_497: LawSpec.Data.Entry<string, string list> list) : LawSpec.Data.Entry<string, string list> list =
-    let it_498 = es_497
-    match it_498 with
-    | [] ->
-        es_497
-    | lawspecSelection0x0_499 :: lawspecSelection0x1_500 ->
-        let it_501 = lawspecSelection0x0_499
-        match it_501 with
-        | subject ->
-            let matchlawspecSelection0x00_502 = subject.Key
-            let it_503 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_496 matchlawspecSelection0x00_502))
-            match it_503 with
-            | LawSpec.Data.Ordering.Less ->
-                es_497
-            | LawSpec.Data.Ordering.Equal ->
-                lawspecSelection0x1_500
-            | LawSpec.Data.Ordering.Greater ->
-                let result_504 = lawspecCollectionsKeyValDeleteItems_5df79bd1 (k_496) (lawspecSelection0x1_500)
-                (lawspecSelection0x0_499 :: result_504)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5
-[<CompiledName("LawspecCollectionsKeyValDeleteItems_6394b670")>]
-let lawspecCollectionsKeyValDeleteItems_6394b670 (k_505: int64) (es_506: LawSpec.Data.Entry<int64, int64> list) : LawSpec.Data.Entry<int64, int64> list =
-    let it_507 = es_506
-    match it_507 with
-    | [] ->
-        es_506
-    | lawspecSelection0x0_508 :: lawspecSelection0x1_509 ->
-        let it_510 = lawspecSelection0x0_508
-        match it_510 with
-        | subject ->
-            let matchlawspecSelection0x00_511 = subject.Key
-            let it_512 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_505 matchlawspecSelection0x00_511))
-            match it_512 with
-            | LawSpec.Data.Ordering.Less ->
-                es_506
-            | LawSpec.Data.Ordering.Equal ->
-                lawspecSelection0x1_509
-            | LawSpec.Data.Ordering.Greater ->
-                let result_513 = lawspecCollectionsKeyValDeleteItems_6394b670 (k_505) (lawspecSelection0x1_509)
-                (lawspecSelection0x0_508 :: result_513)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025
-[<CompiledName("LawspecCollectionsKeyValDelete_daac10f4")>]
-let lawspecCollectionsKeyValDelete_daac10f4 (k_514: int64) (m_515: Map<int64, int64>) : Map<int64, int64> =
-    (Map.remove k_514 m_515)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91
-[<CompiledName("LawspecCollectionsKeyValDelete_9159aa73")>]
-let lawspecCollectionsKeyValDelete_9159aa73 (k_516: string) (m_517: Map<string, string list>) : Map<string, string list> =
-    (Map.remove k_516 m_517)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4
-[<CompiledName("LawspecCollectionsKeyValEntries_a865cc3f")>]
-let lawspecCollectionsKeyValEntries_a865cc3f (m_518: Map<string, LawSpec.Data.Group>) : LawSpec.Data.Entry<string, LawSpec.Data.Group> list =
-    (Typed.entries (fun k v -> ({ Key = k; Value = v } : LawSpec.Data.Entry<_, _>)) m_518)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c
-[<CompiledName("LawspecCollectionsKeyValEntries_d490695f")>]
-let lawspecCollectionsKeyValEntries_d490695f (m_519: Map<string, LawSpec.Data.TopicPartition list>) : LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list =
-    (Typed.entries (fun k v -> ({ Key = k; Value = v } : LawSpec.Data.Entry<_, _>)) m_519)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a
-[<CompiledName("LawspecCollectionsKeyValEntries_90fdb0cf")>]
-let lawspecCollectionsKeyValEntries_90fdb0cf (m_520: Map<string, string list>) : LawSpec.Data.Entry<string, string list> list =
-    (Typed.entries (fun k v -> ({ Key = k; Value = v } : LawSpec.Data.Entry<_, _>)) m_520)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587
-[<CompiledName("LawspecCollectionsKeyValFromItems_b1d7a6fe")>]
-let lawspecCollectionsKeyValFromItems_b1d7a6fe (es_521: LawSpec.Data.Entry<int64, int64> list) (acc_522: LawSpec.Data.Entry<int64, int64> list) : LawSpec.Data.Entry<int64, int64> list =
-    let it_523 = es_521
-    match it_523 with
-    | [] ->
-        acc_522
-    | lawspecSelection0x0_524 :: lawspecSelection0x1_525 ->
-        let it_526 = lawspecSelection0x0_524
-        match it_526 with
-        | subject ->
-            let matchlawspecSelection0x00_527 = subject.Key
-            let matchlawspecSelection0x10_528 = subject.Value
-            let result_529 = lawspecCollectionsKeyValPutItems_fb1bb5ca (matchlawspecSelection0x00_527) (matchlawspecSelection0x10_528) (acc_522)
-            let result_530 = lawspecCollectionsKeyValFromItems_b1d7a6fe (lawspecSelection0x1_525) (result_529)
-            result_530
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f
-[<CompiledName("LawspecCollectionsKeyValFromItems_06f4d2c6")>]
-let lawspecCollectionsKeyValFromItems_06f4d2c6 (es_531: LawSpec.Data.Entry<string, int64> list) (acc_532: LawSpec.Data.Entry<string, int64> list) : LawSpec.Data.Entry<string, int64> list =
-    let it_533 = es_531
-    match it_533 with
-    | [] ->
-        acc_532
-    | lawspecSelection0x0_534 :: lawspecSelection0x1_535 ->
-        let it_536 = lawspecSelection0x0_534
-        match it_536 with
-        | subject ->
-            let matchlawspecSelection0x00_537 = subject.Key
-            let matchlawspecSelection0x10_538 = subject.Value
-            let result_539 = lawspecCollectionsKeyValPutItems_5d998955 (matchlawspecSelection0x00_537) (matchlawspecSelection0x10_538) (acc_532)
-            let result_540 = lawspecCollectionsKeyValFromItems_06f4d2c6 (lawspecSelection0x1_535) (result_539)
-            result_540
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba
-[<CompiledName("LawspecCollectionsKeyValFromItems_a82586cc")>]
-let lawspecCollectionsKeyValFromItems_a82586cc (es_541: LawSpec.Data.Entry<string, int> list) (acc_542: LawSpec.Data.Entry<string, int> list) : LawSpec.Data.Entry<string, int> list =
-    let it_543 = es_541
-    match it_543 with
-    | [] ->
-        acc_542
-    | lawspecSelection0x0_544 :: lawspecSelection0x1_545 ->
-        let it_546 = lawspecSelection0x0_544
-        match it_546 with
-        | subject ->
-            let matchlawspecSelection0x00_547 = subject.Key
-            let matchlawspecSelection0x10_548 = subject.Value
-            let result_549 = lawspecCollectionsKeyValPutItems_8d4f5385 (matchlawspecSelection0x00_547) (matchlawspecSelection0x10_548) (acc_542)
-            let result_550 = lawspecCollectionsKeyValFromItems_a82586cc (lawspecSelection0x1_545) (result_549)
-            result_550
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99
-[<CompiledName("LawspecCollectionsKeyValFromItems_cbeefea2")>]
-let lawspecCollectionsKeyValFromItems_cbeefea2 (es_551: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list) (acc_552: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list) : LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list =
-    let it_553 = es_551
-    match it_553 with
-    | [] ->
-        acc_552
-    | lawspecSelection0x0_554 :: lawspecSelection0x1_555 ->
-        let it_556 = lawspecSelection0x0_554
-        match it_556 with
-        | subject ->
-            let matchlawspecSelection0x00_557 = subject.Key
-            let matchlawspecSelection0x10_558 = subject.Value
-            let result_559 = lawspecCollectionsKeyValPutItems_97a64264 (matchlawspecSelection0x00_557) (matchlawspecSelection0x10_558) (acc_552)
-            let result_560 = lawspecCollectionsKeyValFromItems_cbeefea2 (lawspecSelection0x1_555) (result_559)
-            result_560
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac
-[<CompiledName("LawspecCollectionsKeyValFromItems_32478a30")>]
-let lawspecCollectionsKeyValFromItems_32478a30 (es_561: LawSpec.Data.Entry<string, LawSpec.Data.Group> list) (acc_562: LawSpec.Data.Entry<string, LawSpec.Data.Group> list) : LawSpec.Data.Entry<string, LawSpec.Data.Group> list =
-    let it_563 = es_561
-    match it_563 with
-    | [] ->
-        acc_562
-    | lawspecSelection0x0_564 :: lawspecSelection0x1_565 ->
-        let it_566 = lawspecSelection0x0_564
-        match it_566 with
-        | subject ->
-            let matchlawspecSelection0x00_567 = subject.Key
-            let matchlawspecSelection0x10_568 = subject.Value
-            let result_569 = lawspecCollectionsKeyValPutItems_883fe52d (matchlawspecSelection0x00_567) (matchlawspecSelection0x10_568) (acc_562)
-            let result_570 = lawspecCollectionsKeyValFromItems_32478a30 (lawspecSelection0x1_565) (result_569)
-            result_570
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e
-[<CompiledName("LawspecCollectionsKeyValFromItems_3a24ccf2")>]
-let lawspecCollectionsKeyValFromItems_3a24ccf2 (es_571: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list) (acc_572: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list) : LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list =
-    let it_573 = es_571
-    match it_573 with
-    | [] ->
-        acc_572
-    | lawspecSelection0x0_574 :: lawspecSelection0x1_575 ->
-        let it_576 = lawspecSelection0x0_574
-        match it_576 with
-        | subject ->
-            let matchlawspecSelection0x00_577 = subject.Key
-            let matchlawspecSelection0x10_578 = subject.Value
-            let result_579 = lawspecCollectionsKeyValPutItems_28cf0caf (matchlawspecSelection0x00_577) (matchlawspecSelection0x10_578) (acc_572)
-            let result_580 = lawspecCollectionsKeyValFromItems_3a24ccf2 (lawspecSelection0x1_575) (result_579)
-            result_580
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e
-[<CompiledName("LawspecCollectionsKeyValFromItems_1e161219")>]
-let lawspecCollectionsKeyValFromItems_1e161219 (es_581: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list) (acc_582: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list) : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list =
-    let it_583 = es_581
-    match it_583 with
-    | [] ->
-        acc_582
-    | lawspecSelection0x0_584 :: lawspecSelection0x1_585 ->
-        let it_586 = lawspecSelection0x0_584
-        match it_586 with
-        | subject ->
-            let matchlawspecSelection0x00_587 = subject.Key
-            let matchlawspecSelection0x10_588 = subject.Value
-            let result_589 = lawspecCollectionsKeyValPutItems_4266176b (matchlawspecSelection0x00_587) (matchlawspecSelection0x10_588) (acc_582)
-            let result_590 = lawspecCollectionsKeyValFromItems_1e161219 (lawspecSelection0x1_585) (result_589)
-            result_590
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3
-[<CompiledName("LawspecCollectionsKeyValFromItems_92b072e4")>]
-let lawspecCollectionsKeyValFromItems_92b072e4 (es_591: LawSpec.Data.Entry<string, string list> list) (acc_592: LawSpec.Data.Entry<string, string list> list) : LawSpec.Data.Entry<string, string list> list =
-    let it_593 = es_591
-    match it_593 with
-    | [] ->
-        acc_592
-    | lawspecSelection0x0_594 :: lawspecSelection0x1_595 ->
-        let it_596 = lawspecSelection0x0_594
-        match it_596 with
-        | subject ->
-            let matchlawspecSelection0x00_597 = subject.Key
-            let matchlawspecSelection0x10_598 = subject.Value
-            let result_599 = lawspecCollectionsKeyValPutItems_c4168a80 (matchlawspecSelection0x00_597) (matchlawspecSelection0x10_598) (acc_592)
-            let result_600 = lawspecCollectionsKeyValFromItems_92b072e4 (lawspecSelection0x1_595) (result_599)
-            result_600
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10
-[<CompiledName("LawspecCollectionsKeyValFromItems_d863ec47")>]
-let lawspecCollectionsKeyValFromItems_d863ec47 (es_601: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list) (acc_602: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list) : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list =
-    let it_603 = es_601
-    match it_603 with
-    | [] ->
-        acc_602
-    | lawspecSelection0x0_604 :: lawspecSelection0x1_605 ->
-        let it_606 = lawspecSelection0x0_604
-        match it_606 with
-        | subject ->
-            let matchlawspecSelection0x00_607 = subject.Key
-            let matchlawspecSelection0x10_608 = subject.Value
-            let result_609 = lawspecCollectionsKeyValPutItems_523d104d (matchlawspecSelection0x00_607) (matchlawspecSelection0x10_608) (acc_602)
-            let result_610 = lawspecCollectionsKeyValFromItems_d863ec47 (lawspecSelection0x1_605) (result_609)
-            result_610
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8
-[<CompiledName("LawspecCollectionsKeyValFromItems_4e4ef1c4")>]
-let lawspecCollectionsKeyValFromItems_4e4ef1c4 (es_611: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list) (acc_612: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list) : LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list =
-    let it_613 = es_611
-    match it_613 with
-    | [] ->
-        acc_612
-    | lawspecSelection0x0_614 :: lawspecSelection0x1_615 ->
-        let it_616 = lawspecSelection0x0_614
-        match it_616 with
-        | subject ->
-            let matchlawspecSelection0x00_617 = subject.Key
-            let matchlawspecSelection0x10_618 = subject.Value
-            let result_619 = lawspecCollectionsKeyValPutItems_054f1ef1 (matchlawspecSelection0x00_617) (matchlawspecSelection0x10_618) (acc_612)
-            let result_620 = lawspecCollectionsKeyValFromItems_4e4ef1c4 (lawspecSelection0x1_615) (result_619)
-            result_620
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26
-[<CompiledName("LawspecCollectionsKeyValFromItems_6be3ca15")>]
-let lawspecCollectionsKeyValFromItems_6be3ca15 (es_621: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list) (acc_622: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list) : LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list =
-    let it_623 = es_621
-    match it_623 with
-    | [] ->
-        acc_622
-    | lawspecSelection0x0_624 :: lawspecSelection0x1_625 ->
-        let it_626 = lawspecSelection0x0_624
-        match it_626 with
-        | subject ->
-            let matchlawspecSelection0x00_627 = subject.Key
-            let matchlawspecSelection0x10_628 = subject.Value
-            let result_629 = lawspecCollectionsKeyValPutItems_80dc1939 (matchlawspecSelection0x00_627) (matchlawspecSelection0x10_628) (acc_622)
-            let result_630 = lawspecCollectionsKeyValFromItems_6be3ca15 (lawspecSelection0x1_625) (result_629)
-            result_630
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd14e9
-[<CompiledName("LawspecCollectionsKeyValFromItems_c033ba9e")>]
-let lawspecCollectionsKeyValFromItems_c033ba9e (es_631: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list) (acc_632: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list) : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list =
-    let it_633 = es_631
-    match it_633 with
-    | [] ->
-        acc_632
-    | lawspecSelection0x0_634 :: lawspecSelection0x1_635 ->
-        let it_636 = lawspecSelection0x0_634
-        match it_636 with
-        | subject ->
-            let matchlawspecSelection0x00_637 = subject.Key
-            let matchlawspecSelection0x10_638 = subject.Value
-            let result_639 = lawspecCollectionsKeyValPutItems_3f0139cf (matchlawspecSelection0x00_637) (matchlawspecSelection0x10_638) (acc_632)
-            let result_640 = lawspecCollectionsKeyValFromItems_c033ba9e (lawspecSelection0x1_635) (result_639)
-            result_640
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72
-[<CompiledName("LawspecCollectionsKeyValKeysItems_e033276a")>]
-let lawspecCollectionsKeyValKeysItems_e033276a (es_641: LawSpec.Data.Entry<string, string list> list) : string list =
-    let it_642 = es_641
-    match it_642 with
-    | [] ->
-        []
-    | lawspecSelection0x0_643 :: lawspecSelection0x1_644 ->
-        let it_645 = lawspecSelection0x0_643
-        match it_645 with
-        | subject ->
-            let matchlawspecSelection0x00_646 = subject.Key
-            let result_647 = lawspecCollectionsKeyValKeysItems_e033276a (lawspecSelection0x1_644)
-            (matchlawspecSelection0x00_646 :: result_647)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98
-[<CompiledName("LawspecCollectionsKeyValKeys_34e9a8ae")>]
-let lawspecCollectionsKeyValKeys_34e9a8ae (m_648: Map<string, string list>) : string list =
-    (Typed.keys m_648)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f
-[<CompiledName("LawspecCollectionsKeyValLookupItems_b9936fbc")>]
-let lawspecCollectionsKeyValLookupItems_b9936fbc (k_649: int64) (es_650: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list) : (LawSpec.Data.BatchMeta list) option =
-    let it_651 = es_650
-    match it_651 with
-    | [] ->
-        None
-    | lawspecSelection0x0_652 :: lawspecSelection0x1_653 ->
-        let it_654 = lawspecSelection0x0_652
-        match it_654 with
-        | subject ->
-            let matchlawspecSelection0x00_655 = subject.Key
-            let matchlawspecSelection0x10_656 = subject.Value
-            let it_657 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_649 matchlawspecSelection0x00_655))
-            match it_657 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_656)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_658 = lawspecCollectionsKeyValLookupItems_b9936fbc (k_649) (lawspecSelection0x1_653)
-                result_658
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf3c8f0b
-[<CompiledName("LawspecCollectionsKeyValLookupItems_154c41d9")>]
-let lawspecCollectionsKeyValLookupItems_154c41d9 (k_659: LawSpec.Data.TopicPartition) (es_660: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list) : int64 option =
-    let it_661 = es_660
-    match it_661 with
-    | [] ->
-        None
-    | lawspecSelection0x0_662 :: lawspecSelection0x1_663 ->
-        let it_664 = lawspecSelection0x0_662
-        match it_664 with
-        | subject ->
-            let matchlawspecSelection0x00_665 = subject.Key
-            let matchlawspecSelection0x10_666 = subject.Value
-            let it_667 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_659 matchlawspecSelection0x00_665))
-            match it_667 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_666)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_668 = lawspecCollectionsKeyValLookupItems_154c41d9 (k_659) (lawspecSelection0x1_663)
-                result_668
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581
-[<CompiledName("LawspecCollectionsKeyValLookupItems_ebcd945a")>]
-let lawspecCollectionsKeyValLookupItems_ebcd945a (k_669: string) (es_670: LawSpec.Data.Entry<string, int64> list) : int64 option =
-    let it_671 = es_670
-    match it_671 with
-    | [] ->
-        None
-    | lawspecSelection0x0_672 :: lawspecSelection0x1_673 ->
-        let it_674 = lawspecSelection0x0_672
-        match it_674 with
-        | subject ->
-            let matchlawspecSelection0x00_675 = subject.Key
-            let matchlawspecSelection0x10_676 = subject.Value
-            let it_677 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_669 matchlawspecSelection0x00_675))
-            match it_677 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_676)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_678 = lawspecCollectionsKeyValLookupItems_ebcd945a (k_669) (lawspecSelection0x1_673)
-                result_678
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585
-[<CompiledName("LawspecCollectionsKeyValLookupItems_71a2ad87")>]
-let lawspecCollectionsKeyValLookupItems_71a2ad87 (k_679: string) (es_680: LawSpec.Data.Entry<string, string list> list) : (string list) option =
-    let it_681 = es_680
-    match it_681 with
-    | [] ->
-        None
-    | lawspecSelection0x0_682 :: lawspecSelection0x1_683 ->
-        let it_684 = lawspecSelection0x0_682
-        match it_684 with
-        | subject ->
-            let matchlawspecSelection0x00_685 = subject.Key
-            let matchlawspecSelection0x10_686 = subject.Value
-            let it_687 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_679 matchlawspecSelection0x00_685))
-            match it_687 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_686)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_688 = lawspecCollectionsKeyValLookupItems_71a2ad87 (k_679) (lawspecSelection0x1_683)
-                result_688
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75
-[<CompiledName("LawspecCollectionsKeyValLookupItems_a13d293f")>]
-let lawspecCollectionsKeyValLookupItems_a13d293f (k_689: string) (es_690: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list) : (LawSpec.Data.TopicPartition list) option =
-    let it_691 = es_690
-    match it_691 with
-    | [] ->
-        None
-    | lawspecSelection0x0_692 :: lawspecSelection0x1_693 ->
-        let it_694 = lawspecSelection0x0_692
-        match it_694 with
-        | subject ->
-            let matchlawspecSelection0x00_695 = subject.Key
-            let matchlawspecSelection0x10_696 = subject.Value
-            let it_697 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_689 matchlawspecSelection0x00_695))
-            match it_697 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_696)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_698 = lawspecCollectionsKeyValLookupItems_a13d293f (k_689) (lawspecSelection0x1_693)
-                result_698
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5
-[<CompiledName("LawspecCollectionsKeyValLookupItems_9c1371ef")>]
-let lawspecCollectionsKeyValLookupItems_9c1371ef (k_699: int64) (es_700: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list) : LawSpec.Data.ProducerEntry option =
-    let it_701 = es_700
-    match it_701 with
-    | [] ->
-        None
-    | lawspecSelection0x0_702 :: lawspecSelection0x1_703 ->
-        let it_704 = lawspecSelection0x0_702
-        match it_704 with
-        | subject ->
-            let matchlawspecSelection0x00_705 = subject.Key
-            let matchlawspecSelection0x10_706 = subject.Value
-            let it_707 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_699 matchlawspecSelection0x00_705))
-            match it_707 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_706)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_708 = lawspecCollectionsKeyValLookupItems_9c1371ef (k_699) (lawspecSelection0x1_703)
-                result_708
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3
-[<CompiledName("LawspecCollectionsKeyValLookupItems_4e6d941b")>]
-let lawspecCollectionsKeyValLookupItems_4e6d941b (k_709: string) (es_710: LawSpec.Data.Entry<string, int> list) : int option =
-    let it_711 = es_710
-    match it_711 with
-    | [] ->
-        None
-    | lawspecSelection0x0_712 :: lawspecSelection0x1_713 ->
-        let it_714 = lawspecSelection0x0_712
-        match it_714 with
-        | subject ->
-            let matchlawspecSelection0x00_715 = subject.Key
-            let matchlawspecSelection0x10_716 = subject.Value
-            let it_717 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_709 matchlawspecSelection0x00_715))
-            match it_717 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_716)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_718 = lawspecCollectionsKeyValLookupItems_4e6d941b (k_709) (lawspecSelection0x1_713)
-                result_718
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3
-[<CompiledName("LawspecCollectionsKeyValLookupItems_634e3159")>]
-let lawspecCollectionsKeyValLookupItems_634e3159 (k_719: LawSpec.Data.GroupPartition) (es_720: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list) : int64 option =
-    let it_721 = es_720
-    match it_721 with
-    | [] ->
-        None
-    | lawspecSelection0x0_722 :: lawspecSelection0x1_723 ->
-        let it_724 = lawspecSelection0x0_722
-        match it_724 with
-        | subject ->
-            let matchlawspecSelection0x00_725 = subject.Key
-            let matchlawspecSelection0x10_726 = subject.Value
-            let it_727 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_719 matchlawspecSelection0x00_725))
-            match it_727 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_726)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_728 = lawspecCollectionsKeyValLookupItems_634e3159 (k_719) (lawspecSelection0x1_723)
-                result_728
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd
-[<CompiledName("LawspecCollectionsKeyValLookupItems_eaf6916f")>]
-let lawspecCollectionsKeyValLookupItems_eaf6916f (k_729: LawSpec.Data.TopicPartition) (es_730: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list) : int option =
-    let it_731 = es_730
-    match it_731 with
-    | [] ->
-        None
-    | lawspecSelection0x0_732 :: lawspecSelection0x1_733 ->
-        let it_734 = lawspecSelection0x0_732
-        match it_734 with
-        | subject ->
-            let matchlawspecSelection0x00_735 = subject.Key
-            let matchlawspecSelection0x10_736 = subject.Value
-            let it_737 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_729 matchlawspecSelection0x00_735))
-            match it_737 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_736)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_738 = lawspecCollectionsKeyValLookupItems_eaf6916f (k_729) (lawspecSelection0x1_733)
-                result_738
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375
-[<CompiledName("LawspecCollectionsKeyValLookupItems_ae57d2cd")>]
-let lawspecCollectionsKeyValLookupItems_ae57d2cd (k_739: int64) (es_740: LawSpec.Data.Entry<int64, int64> list) : int64 option =
-    let it_741 = es_740
-    match it_741 with
-    | [] ->
-        None
-    | lawspecSelection0x0_742 :: lawspecSelection0x1_743 ->
-        let it_744 = lawspecSelection0x0_742
-        match it_744 with
-        | subject ->
-            let matchlawspecSelection0x00_745 = subject.Key
-            let matchlawspecSelection0x10_746 = subject.Value
-            let it_747 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_739 matchlawspecSelection0x00_745))
-            match it_747 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_746)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_748 = lawspecCollectionsKeyValLookupItems_ae57d2cd (k_739) (lawspecSelection0x1_743)
-                result_748
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11
-[<CompiledName("LawspecCollectionsKeyValLookupItems_3c718024")>]
-let lawspecCollectionsKeyValLookupItems_3c718024 (k_749: string) (es_750: LawSpec.Data.Entry<string, LawSpec.Data.Group> list) : LawSpec.Data.Group option =
-    let it_751 = es_750
-    match it_751 with
-    | [] ->
-        None
-    | lawspecSelection0x0_752 :: lawspecSelection0x1_753 ->
-        let it_754 = lawspecSelection0x0_752
-        match it_754 with
-        | subject ->
-            let matchlawspecSelection0x00_755 = subject.Key
-            let matchlawspecSelection0x10_756 = subject.Value
-            let it_757 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_749 matchlawspecSelection0x00_755))
-            match it_757 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_756)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_758 = lawspecCollectionsKeyValLookupItems_3c718024 (k_749) (lawspecSelection0x1_753)
-                result_758
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb
-[<CompiledName("LawspecCollectionsKeyValLookupItems_8d0d5317")>]
-let lawspecCollectionsKeyValLookupItems_8d0d5317 (k_759: LawSpec.Data.TopicPartition) (es_760: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list) : LawSpec.Data.PartitionLog option =
-    let it_761 = es_760
-    match it_761 with
-    | [] ->
-        None
-    | lawspecSelection0x0_762 :: lawspecSelection0x1_763 ->
-        let it_764 = lawspecSelection0x0_762
-        match it_764 with
-        | subject ->
-            let matchlawspecSelection0x00_765 = subject.Key
-            let matchlawspecSelection0x10_766 = subject.Value
-            let it_767 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_759 matchlawspecSelection0x00_765))
-            match it_767 with
-            | LawSpec.Data.Ordering.Less ->
-                None
-            | LawSpec.Data.Ordering.Equal ->
-                (Some matchlawspecSelection0x10_766)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_768 = lawspecCollectionsKeyValLookupItems_8d0d5317 (k_759) (lawspecSelection0x1_763)
-                result_768
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457
-[<CompiledName("LawspecCollectionsKeyValLookup_a9059595")>]
-let lawspecCollectionsKeyValLookup_a9059595 (k_769: string) (m_770: Map<string, string list>) : (string list) option =
-    (Map.tryFind k_769 m_770)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5
-[<CompiledName("LawspecCollectionsKeyValLookup_b2bbd077")>]
-let lawspecCollectionsKeyValLookup_b2bbd077 (k_771: int64) (m_772: Map<int64, LawSpec.Data.BatchMeta list>) : (LawSpec.Data.BatchMeta list) option =
-    (Map.tryFind k_771 m_772)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941
-[<CompiledName("LawspecCollectionsKeyValLookup_8a481efc")>]
-let lawspecCollectionsKeyValLookup_8a481efc (k_773: LawSpec.Data.TopicPartition) (m_774: Map<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>) : LawSpec.Data.PartitionLog option =
-    (Map.tryFind k_773 m_774)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9
-[<CompiledName("LawspecCollectionsKeyValLookup_8e671f4d")>]
-let lawspecCollectionsKeyValLookup_8e671f4d (k_775: LawSpec.Data.TopicPartition) (m_776: Map<LawSpec.Data.TopicPartition, int>) : int option =
-    (Map.tryFind k_775 m_776)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1
-[<CompiledName("LawspecCollectionsKeyValLookup_65e9c66c")>]
-let lawspecCollectionsKeyValLookup_65e9c66c (k_777: int64) (m_778: Map<int64, int64>) : int64 option =
-    (Map.tryFind k_777 m_778)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5
-[<CompiledName("LawspecCollectionsKeyValLookup_a6e9da81")>]
-let lawspecCollectionsKeyValLookup_a6e9da81 (k_779: LawSpec.Data.TopicPartition) (m_780: Map<LawSpec.Data.TopicPartition, int64>) : int64 option =
-    (Map.tryFind k_779 m_780)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b
-[<CompiledName("LawspecCollectionsKeyValLookup_24612a0e")>]
-let lawspecCollectionsKeyValLookup_24612a0e (k_781: string) (m_782: Map<string, int64>) : int64 option =
-    (Map.tryFind k_781 m_782)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5
-[<CompiledName("LawspecCollectionsKeyValLookup_cd13c56f")>]
-let lawspecCollectionsKeyValLookup_cd13c56f (k_783: LawSpec.Data.GroupPartition) (m_784: Map<LawSpec.Data.GroupPartition, int64>) : int64 option =
-    (Map.tryFind k_783 m_784)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb
-[<CompiledName("LawspecCollectionsKeyValLookup_6946d404")>]
-let lawspecCollectionsKeyValLookup_6946d404 (k_785: int64) (m_786: Map<int64, LawSpec.Data.ProducerEntry>) : LawSpec.Data.ProducerEntry option =
-    (Map.tryFind k_785 m_786)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07
-[<CompiledName("LawspecCollectionsKeyValLookup_7f47bbb6")>]
-let lawspecCollectionsKeyValLookup_7f47bbb6 (k_787: string) (m_788: Map<string, int>) : int option =
-    (Map.tryFind k_787 m_788)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb
-[<CompiledName("LawspecCollectionsKeyValLookup_ce7e98b5")>]
-let lawspecCollectionsKeyValLookup_ce7e98b5 (k_789: string) (m_790: Map<string, LawSpec.Data.TopicPartition list>) : (LawSpec.Data.TopicPartition list) option =
-    (Map.tryFind k_789 m_790)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f
-[<CompiledName("LawspecCollectionsKeyValLookup_0bbb87c8")>]
-let lawspecCollectionsKeyValLookup_0bbb87c8 (k_791: string) (m_792: Map<string, LawSpec.Data.Group>) : LawSpec.Data.Group option =
-    (Map.tryFind k_791 m_792)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc
-[<CompiledName("LawspecCollectionsKeyValOf_b3b63ee9")>]
-let lawspecCollectionsKeyValOf_b3b63ee9 (es_793: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list) : Map<string, LawSpec.Data.TopicPartition list> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_793)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54
-[<CompiledName("LawspecCollectionsKeyValOf_315c22fb")>]
-let lawspecCollectionsKeyValOf_315c22fb (es_794: LawSpec.Data.Entry<string, LawSpec.Data.Group> list) : Map<string, LawSpec.Data.Group> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_794)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_610caa8fbb581a02
-[<CompiledName("LawspecCollectionsKeyValOf_8d386a7a")>]
-let lawspecCollectionsKeyValOf_8d386a7a (es_795: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list) : Map<LawSpec.Data.TopicPartition, int> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_795)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04
-[<CompiledName("LawspecCollectionsKeyValOf_66dd9a82")>]
-let lawspecCollectionsKeyValOf_66dd9a82 (es_796: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list) : Map<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_796)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4
-[<CompiledName("LawspecCollectionsKeyValOf_3adee7cf")>]
-let lawspecCollectionsKeyValOf_3adee7cf (es_797: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list) : Map<int64, LawSpec.Data.BatchMeta list> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_797)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_bd30e4f0b318724c
-[<CompiledName("LawspecCollectionsKeyValOf_a1009097")>]
-let lawspecCollectionsKeyValOf_a1009097 (es_798: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list) : Map<LawSpec.Data.TopicPartition, int64> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_798)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2
-[<CompiledName("LawspecCollectionsKeyValOf_eeff9798")>]
-let lawspecCollectionsKeyValOf_eeff9798 (es_799: LawSpec.Data.Entry<string, int64> list) : Map<string, int64> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_799)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02
-[<CompiledName("LawspecCollectionsKeyValOf_afdc1c77")>]
-let lawspecCollectionsKeyValOf_afdc1c77 (es_800: LawSpec.Data.Entry<string, string list> list) : Map<string, string list> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_800)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e
-[<CompiledName("LawspecCollectionsKeyValOf_924ce6dd")>]
-let lawspecCollectionsKeyValOf_924ce6dd (es_801: LawSpec.Data.Entry<string, int> list) : Map<string, int> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_801)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a
-[<CompiledName("LawspecCollectionsKeyValOf_66da004b")>]
-let lawspecCollectionsKeyValOf_66da004b (es_802: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list) : Map<int64, LawSpec.Data.ProducerEntry> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_802)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea
-[<CompiledName("LawspecCollectionsKeyValOf_b2ceee25")>]
-let lawspecCollectionsKeyValOf_b2ceee25 (es_803: LawSpec.Data.Entry<int64, int64> list) : Map<int64, int64> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_803)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48
-[<CompiledName("LawspecCollectionsKeyValOf_14405d63")>]
-let lawspecCollectionsKeyValOf_14405d63 (es_804: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list) : Map<LawSpec.Data.GroupPartition, int64> =
-    (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es_804)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c
-[<CompiledName("LawspecCollectionsKeyValPutItems_fb1bb5ca")>]
-let lawspecCollectionsKeyValPutItems_fb1bb5ca (k_805: int64) (v_806: int64) (es_807: LawSpec.Data.Entry<int64, int64> list) : LawSpec.Data.Entry<int64, int64> list =
-    let it_808 = es_807
-    match it_808 with
-    | [] ->
-        let value_809 =
-            let lawspecRecordField0_810 = k_805
-            let lawspecRecordField1_811 = v_806
-            ({ Key = lawspecRecordField0_810; Value = lawspecRecordField1_811 } : LawSpec.Data.Entry<int64, int64>)
-        (value_809 :: [])
-    | lawspecSelection0x0_812 :: lawspecSelection0x1_813 ->
-        let it_814 = lawspecSelection0x0_812
-        match it_814 with
-        | subject ->
-            let matchlawspecSelection0x00_815 = subject.Key
-            let it_816 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_805 matchlawspecSelection0x00_815))
-            match it_816 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_817 =
-                    let lawspecRecordField0_818 = k_805
-                    let lawspecRecordField1_819 = v_806
-                    ({ Key = lawspecRecordField0_818; Value = lawspecRecordField1_819 } : LawSpec.Data.Entry<int64, int64>)
-                (value_817 :: es_807)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_820 =
-                    let lawspecRecordField0_821 = k_805
-                    let lawspecRecordField1_822 = v_806
-                    ({ Key = lawspecRecordField0_821; Value = lawspecRecordField1_822 } : LawSpec.Data.Entry<int64, int64>)
-                (value_820 :: lawspecSelection0x1_813)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_823 = lawspecCollectionsKeyValPutItems_fb1bb5ca (k_805) (v_806) (lawspecSelection0x1_813)
-                (lawspecSelection0x0_812 :: result_823)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2
-[<CompiledName("LawspecCollectionsKeyValPutItems_97a64264")>]
-let lawspecCollectionsKeyValPutItems_97a64264 (k_824: int64) (v_825: LawSpec.Data.ProducerEntry) (es_826: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list) : LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list =
-    let it_827 = es_826
-    match it_827 with
-    | [] ->
-        let value_828 =
-            let lawspecRecordField0_829 = k_824
-            let lawspecRecordField1_830 = v_825
-            ({ Key = lawspecRecordField0_829; Value = lawspecRecordField1_830 } : LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry>)
-        (value_828 :: [])
-    | lawspecSelection0x0_831 :: lawspecSelection0x1_832 ->
-        let it_833 = lawspecSelection0x0_831
-        match it_833 with
-        | subject ->
-            let matchlawspecSelection0x00_834 = subject.Key
-            let it_835 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_824 matchlawspecSelection0x00_834))
-            match it_835 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_836 =
-                    let lawspecRecordField0_837 = k_824
-                    let lawspecRecordField1_838 = v_825
-                    ({ Key = lawspecRecordField0_837; Value = lawspecRecordField1_838 } : LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry>)
-                (value_836 :: es_826)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_839 =
-                    let lawspecRecordField0_840 = k_824
-                    let lawspecRecordField1_841 = v_825
-                    ({ Key = lawspecRecordField0_840; Value = lawspecRecordField1_841 } : LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry>)
-                (value_839 :: lawspecSelection0x1_832)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_842 = lawspecCollectionsKeyValPutItems_97a64264 (k_824) (v_825) (lawspecSelection0x1_832)
-                (lawspecSelection0x0_831 :: result_842)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9
-[<CompiledName("LawspecCollectionsKeyValPutItems_054f1ef1")>]
-let lawspecCollectionsKeyValPutItems_054f1ef1 (k_843: int64) (v_844: LawSpec.Data.BatchMeta list) (es_845: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list) : LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list =
-    let it_846 = es_845
-    match it_846 with
-    | [] ->
-        let value_847 =
-            let lawspecRecordField0_848 = k_843
-            let lawspecRecordField1_849 = v_844
-            ({ Key = lawspecRecordField0_848; Value = lawspecRecordField1_849 } : LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list>)
-        (value_847 :: [])
-    | lawspecSelection0x0_850 :: lawspecSelection0x1_851 ->
-        let it_852 = lawspecSelection0x0_850
-        match it_852 with
-        | subject ->
-            let matchlawspecSelection0x00_853 = subject.Key
-            let it_854 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_843 matchlawspecSelection0x00_853))
-            match it_854 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_855 =
-                    let lawspecRecordField0_856 = k_843
-                    let lawspecRecordField1_857 = v_844
-                    ({ Key = lawspecRecordField0_856; Value = lawspecRecordField1_857 } : LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list>)
-                (value_855 :: es_845)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_858 =
-                    let lawspecRecordField0_859 = k_843
-                    let lawspecRecordField1_860 = v_844
-                    ({ Key = lawspecRecordField0_859; Value = lawspecRecordField1_860 } : LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list>)
-                (value_858 :: lawspecSelection0x1_851)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_861 = lawspecCollectionsKeyValPutItems_054f1ef1 (k_843) (v_844) (lawspecSelection0x1_851)
-                (lawspecSelection0x0_850 :: result_861)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53
-[<CompiledName("LawspecCollectionsKeyValPutItems_8d4f5385")>]
-let lawspecCollectionsKeyValPutItems_8d4f5385 (k_862: string) (v_863: int) (es_864: LawSpec.Data.Entry<string, int> list) : LawSpec.Data.Entry<string, int> list =
-    let it_865 = es_864
-    match it_865 with
-    | [] ->
-        let value_866 =
-            let lawspecRecordField0_867 = k_862
-            let lawspecRecordField1_868 = v_863
-            ({ Key = lawspecRecordField0_867; Value = lawspecRecordField1_868 } : LawSpec.Data.Entry<string, int>)
-        (value_866 :: [])
-    | lawspecSelection0x0_869 :: lawspecSelection0x1_870 ->
-        let it_871 = lawspecSelection0x0_869
-        match it_871 with
-        | subject ->
-            let matchlawspecSelection0x00_872 = subject.Key
-            let it_873 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_862 matchlawspecSelection0x00_872))
-            match it_873 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_874 =
-                    let lawspecRecordField0_875 = k_862
-                    let lawspecRecordField1_876 = v_863
-                    ({ Key = lawspecRecordField0_875; Value = lawspecRecordField1_876 } : LawSpec.Data.Entry<string, int>)
-                (value_874 :: es_864)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_877 =
-                    let lawspecRecordField0_878 = k_862
-                    let lawspecRecordField1_879 = v_863
-                    ({ Key = lawspecRecordField0_878; Value = lawspecRecordField1_879 } : LawSpec.Data.Entry<string, int>)
-                (value_877 :: lawspecSelection0x1_870)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_880 = lawspecCollectionsKeyValPutItems_8d4f5385 (k_862) (v_863) (lawspecSelection0x1_870)
-                (lawspecSelection0x0_869 :: result_880)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58
-[<CompiledName("LawspecCollectionsKeyValPutItems_5d998955")>]
-let lawspecCollectionsKeyValPutItems_5d998955 (k_881: string) (v_882: int64) (es_883: LawSpec.Data.Entry<string, int64> list) : LawSpec.Data.Entry<string, int64> list =
-    let it_884 = es_883
-    match it_884 with
-    | [] ->
-        let value_885 =
-            let lawspecRecordField0_886 = k_881
-            let lawspecRecordField1_887 = v_882
-            ({ Key = lawspecRecordField0_886; Value = lawspecRecordField1_887 } : LawSpec.Data.Entry<string, int64>)
-        (value_885 :: [])
-    | lawspecSelection0x0_888 :: lawspecSelection0x1_889 ->
-        let it_890 = lawspecSelection0x0_888
-        match it_890 with
-        | subject ->
-            let matchlawspecSelection0x00_891 = subject.Key
-            let it_892 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_881 matchlawspecSelection0x00_891))
-            match it_892 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_893 =
-                    let lawspecRecordField0_894 = k_881
-                    let lawspecRecordField1_895 = v_882
-                    ({ Key = lawspecRecordField0_894; Value = lawspecRecordField1_895 } : LawSpec.Data.Entry<string, int64>)
-                (value_893 :: es_883)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_896 =
-                    let lawspecRecordField0_897 = k_881
-                    let lawspecRecordField1_898 = v_882
-                    ({ Key = lawspecRecordField0_897; Value = lawspecRecordField1_898 } : LawSpec.Data.Entry<string, int64>)
-                (value_896 :: lawspecSelection0x1_889)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_899 = lawspecCollectionsKeyValPutItems_5d998955 (k_881) (v_882) (lawspecSelection0x1_889)
-                (lawspecSelection0x0_888 :: result_899)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f
-[<CompiledName("LawspecCollectionsKeyValPutItems_80dc1939")>]
-let lawspecCollectionsKeyValPutItems_80dc1939 (k_900: string) (v_901: LawSpec.Data.TopicPartition list) (es_902: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list) : LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list =
-    let it_903 = es_902
-    match it_903 with
-    | [] ->
-        let value_904 =
-            let lawspecRecordField0_905 = k_900
-            let lawspecRecordField1_906 = v_901
-            ({ Key = lawspecRecordField0_905; Value = lawspecRecordField1_906 } : LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list>)
-        (value_904 :: [])
-    | lawspecSelection0x0_907 :: lawspecSelection0x1_908 ->
-        let it_909 = lawspecSelection0x0_907
-        match it_909 with
-        | subject ->
-            let matchlawspecSelection0x00_910 = subject.Key
-            let it_911 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_900 matchlawspecSelection0x00_910))
-            match it_911 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_912 =
-                    let lawspecRecordField0_913 = k_900
-                    let lawspecRecordField1_914 = v_901
-                    ({ Key = lawspecRecordField0_913; Value = lawspecRecordField1_914 } : LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list>)
-                (value_912 :: es_902)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_915 =
-                    let lawspecRecordField0_916 = k_900
-                    let lawspecRecordField1_917 = v_901
-                    ({ Key = lawspecRecordField0_916; Value = lawspecRecordField1_917 } : LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list>)
-                (value_915 :: lawspecSelection0x1_908)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_918 = lawspecCollectionsKeyValPutItems_80dc1939 (k_900) (v_901) (lawspecSelection0x1_908)
-                (lawspecSelection0x0_907 :: result_918)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5
-[<CompiledName("LawspecCollectionsKeyValPutItems_28cf0caf")>]
-let lawspecCollectionsKeyValPutItems_28cf0caf (k_919: LawSpec.Data.GroupPartition) (v_920: int64) (es_921: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list) : LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list =
-    let it_922 = es_921
-    match it_922 with
-    | [] ->
-        let value_923 =
-            let lawspecRecordField0_924 = k_919
-            let lawspecRecordField1_925 = v_920
-            ({ Key = lawspecRecordField0_924; Value = lawspecRecordField1_925 } : LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64>)
-        (value_923 :: [])
-    | lawspecSelection0x0_926 :: lawspecSelection0x1_927 ->
-        let it_928 = lawspecSelection0x0_926
-        match it_928 with
-        | subject ->
-            let matchlawspecSelection0x00_929 = subject.Key
-            let it_930 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_919 matchlawspecSelection0x00_929))
-            match it_930 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_931 =
-                    let lawspecRecordField0_932 = k_919
-                    let lawspecRecordField1_933 = v_920
-                    ({ Key = lawspecRecordField0_932; Value = lawspecRecordField1_933 } : LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64>)
-                (value_931 :: es_921)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_934 =
-                    let lawspecRecordField0_935 = k_919
-                    let lawspecRecordField1_936 = v_920
-                    ({ Key = lawspecRecordField0_935; Value = lawspecRecordField1_936 } : LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64>)
-                (value_934 :: lawspecSelection0x1_927)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_937 = lawspecCollectionsKeyValPutItems_28cf0caf (k_919) (v_920) (lawspecSelection0x1_927)
-                (lawspecSelection0x0_926 :: result_937)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1
-[<CompiledName("LawspecCollectionsKeyValPutItems_883fe52d")>]
-let lawspecCollectionsKeyValPutItems_883fe52d (k_938: string) (v_939: LawSpec.Data.Group) (es_940: LawSpec.Data.Entry<string, LawSpec.Data.Group> list) : LawSpec.Data.Entry<string, LawSpec.Data.Group> list =
-    let it_941 = es_940
-    match it_941 with
-    | [] ->
-        let value_942 =
-            let lawspecRecordField0_943 = k_938
-            let lawspecRecordField1_944 = v_939
-            ({ Key = lawspecRecordField0_943; Value = lawspecRecordField1_944 } : LawSpec.Data.Entry<string, LawSpec.Data.Group>)
-        (value_942 :: [])
-    | lawspecSelection0x0_945 :: lawspecSelection0x1_946 ->
-        let it_947 = lawspecSelection0x0_945
-        match it_947 with
-        | subject ->
-            let matchlawspecSelection0x00_948 = subject.Key
-            let it_949 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_938 matchlawspecSelection0x00_948))
-            match it_949 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_950 =
-                    let lawspecRecordField0_951 = k_938
-                    let lawspecRecordField1_952 = v_939
-                    ({ Key = lawspecRecordField0_951; Value = lawspecRecordField1_952 } : LawSpec.Data.Entry<string, LawSpec.Data.Group>)
-                (value_950 :: es_940)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_953 =
-                    let lawspecRecordField0_954 = k_938
-                    let lawspecRecordField1_955 = v_939
-                    ({ Key = lawspecRecordField0_954; Value = lawspecRecordField1_955 } : LawSpec.Data.Entry<string, LawSpec.Data.Group>)
-                (value_953 :: lawspecSelection0x1_946)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_956 = lawspecCollectionsKeyValPutItems_883fe52d (k_938) (v_939) (lawspecSelection0x1_946)
-                (lawspecSelection0x0_945 :: result_956)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36750
-[<CompiledName("LawspecCollectionsKeyValPutItems_3f0139cf")>]
-let lawspecCollectionsKeyValPutItems_3f0139cf (k_957: LawSpec.Data.TopicPartition) (v_958: int) (es_959: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list) : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list =
-    let it_960 = es_959
-    match it_960 with
-    | [] ->
-        let value_961 =
-            let lawspecRecordField0_962 = k_957
-            let lawspecRecordField1_963 = v_958
-            ({ Key = lawspecRecordField0_962; Value = lawspecRecordField1_963 } : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>)
-        (value_961 :: [])
-    | lawspecSelection0x0_964 :: lawspecSelection0x1_965 ->
-        let it_966 = lawspecSelection0x0_964
-        match it_966 with
-        | subject ->
-            let matchlawspecSelection0x00_967 = subject.Key
-            let it_968 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_957 matchlawspecSelection0x00_967))
-            match it_968 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_969 =
-                    let lawspecRecordField0_970 = k_957
-                    let lawspecRecordField1_971 = v_958
-                    ({ Key = lawspecRecordField0_970; Value = lawspecRecordField1_971 } : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>)
-                (value_969 :: es_959)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_972 =
-                    let lawspecRecordField0_973 = k_957
-                    let lawspecRecordField1_974 = v_958
-                    ({ Key = lawspecRecordField0_973; Value = lawspecRecordField1_974 } : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>)
-                (value_972 :: lawspecSelection0x1_965)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_975 = lawspecCollectionsKeyValPutItems_3f0139cf (k_957) (v_958) (lawspecSelection0x1_965)
-                (lawspecSelection0x0_964 :: result_975)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4
-[<CompiledName("LawspecCollectionsKeyValPutItems_c4168a80")>]
-let lawspecCollectionsKeyValPutItems_c4168a80 (k_976: string) (v_977: string list) (es_978: LawSpec.Data.Entry<string, string list> list) : LawSpec.Data.Entry<string, string list> list =
-    let it_979 = es_978
-    match it_979 with
-    | [] ->
-        let value_980 =
-            let lawspecRecordField0_981 = k_976
-            let lawspecRecordField1_982 = v_977
-            ({ Key = lawspecRecordField0_981; Value = lawspecRecordField1_982 } : LawSpec.Data.Entry<string, string list>)
-        (value_980 :: [])
-    | lawspecSelection0x0_983 :: lawspecSelection0x1_984 ->
-        let it_985 = lawspecSelection0x0_983
-        match it_985 with
-        | subject ->
-            let matchlawspecSelection0x00_986 = subject.Key
-            let it_987 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_976 matchlawspecSelection0x00_986))
-            match it_987 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_988 =
-                    let lawspecRecordField0_989 = k_976
-                    let lawspecRecordField1_990 = v_977
-                    ({ Key = lawspecRecordField0_989; Value = lawspecRecordField1_990 } : LawSpec.Data.Entry<string, string list>)
-                (value_988 :: es_978)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_991 =
-                    let lawspecRecordField0_992 = k_976
-                    let lawspecRecordField1_993 = v_977
-                    ({ Key = lawspecRecordField0_992; Value = lawspecRecordField1_993 } : LawSpec.Data.Entry<string, string list>)
-                (value_991 :: lawspecSelection0x1_984)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_994 = lawspecCollectionsKeyValPutItems_c4168a80 (k_976) (v_977) (lawspecSelection0x1_984)
-                (lawspecSelection0x0_983 :: result_994)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d
-[<CompiledName("LawspecCollectionsKeyValPutItems_4266176b")>]
-let lawspecCollectionsKeyValPutItems_4266176b (k_995: LawSpec.Data.TopicPartition) (v_996: int64) (es_997: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list) : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list =
-    let it_998 = es_997
-    match it_998 with
-    | [] ->
-        let value_999 =
-            let lawspecRecordField0_1000 = k_995
-            let lawspecRecordField1_1001 = v_996
-            ({ Key = lawspecRecordField0_1000; Value = lawspecRecordField1_1001 } : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64>)
-        (value_999 :: [])
-    | lawspecSelection0x0_1002 :: lawspecSelection0x1_1003 ->
-        let it_1004 = lawspecSelection0x0_1002
-        match it_1004 with
-        | subject ->
-            let matchlawspecSelection0x00_1005 = subject.Key
-            let it_1006 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_995 matchlawspecSelection0x00_1005))
-            match it_1006 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_1007 =
-                    let lawspecRecordField0_1008 = k_995
-                    let lawspecRecordField1_1009 = v_996
-                    ({ Key = lawspecRecordField0_1008; Value = lawspecRecordField1_1009 } : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64>)
-                (value_1007 :: es_997)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_1010 =
-                    let lawspecRecordField0_1011 = k_995
-                    let lawspecRecordField1_1012 = v_996
-                    ({ Key = lawspecRecordField0_1011; Value = lawspecRecordField1_1012 } : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64>)
-                (value_1010 :: lawspecSelection0x1_1003)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_1013 = lawspecCollectionsKeyValPutItems_4266176b (k_995) (v_996) (lawspecSelection0x1_1003)
-                (lawspecSelection0x0_1002 :: result_1013)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b
-[<CompiledName("LawspecCollectionsKeyValPutItems_523d104d")>]
-let lawspecCollectionsKeyValPutItems_523d104d (k_1014: LawSpec.Data.TopicPartition) (v_1015: LawSpec.Data.PartitionLog) (es_1016: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list) : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list =
-    let it_1017 = es_1016
-    match it_1017 with
-    | [] ->
-        let value_1018 =
-            let lawspecRecordField0_1019 = k_1014
-            let lawspecRecordField1_1020 = v_1015
-            ({ Key = lawspecRecordField0_1019; Value = lawspecRecordField1_1020 } : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>)
-        (value_1018 :: [])
-    | lawspecSelection0x0_1021 :: lawspecSelection0x1_1022 ->
-        let it_1023 = lawspecSelection0x0_1021
-        match it_1023 with
-        | subject ->
-            let matchlawspecSelection0x00_1024 = subject.Key
-            let it_1025 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare k_1014 matchlawspecSelection0x00_1024))
-            match it_1025 with
-            | LawSpec.Data.Ordering.Less ->
-                let value_1026 =
-                    let lawspecRecordField0_1027 = k_1014
-                    let lawspecRecordField1_1028 = v_1015
-                    ({ Key = lawspecRecordField0_1027; Value = lawspecRecordField1_1028 } : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>)
-                (value_1026 :: es_1016)
-            | LawSpec.Data.Ordering.Equal ->
-                let value_1029 =
-                    let lawspecRecordField0_1030 = k_1014
-                    let lawspecRecordField1_1031 = v_1015
-                    ({ Key = lawspecRecordField0_1030; Value = lawspecRecordField1_1031 } : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>)
-                (value_1029 :: lawspecSelection0x1_1022)
-            | LawSpec.Data.Ordering.Greater ->
-                let result_1032 = lawspecCollectionsKeyValPutItems_523d104d (k_1014) (v_1015) (lawspecSelection0x1_1022)
-                (lawspecSelection0x0_1021 :: result_1032)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058
-[<CompiledName("LawspecCollectionsKeyValPut_cabf14cc")>]
-let lawspecCollectionsKeyValPut_cabf14cc (k_1033: LawSpec.Data.TopicPartition) (v_1034: int) (m_1035: Map<LawSpec.Data.TopicPartition, int>) : Map<LawSpec.Data.TopicPartition, int> =
-    (Map.add k_1033 v_1034 m_1035)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9
-[<CompiledName("LawspecCollectionsKeyValPut_ce8624cf")>]
-let lawspecCollectionsKeyValPut_ce8624cf (k_1036: string) (v_1037: LawSpec.Data.Group) (m_1038: Map<string, LawSpec.Data.Group>) : Map<string, LawSpec.Data.Group> =
-    (Map.add k_1036 v_1037 m_1038)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb
-[<CompiledName("LawspecCollectionsKeyValPut_5ab157dd")>]
-let lawspecCollectionsKeyValPut_5ab157dd (k_1039: LawSpec.Data.TopicPartition) (v_1040: LawSpec.Data.PartitionLog) (m_1041: Map<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>) : Map<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> =
-    (Map.add k_1039 v_1040 m_1041)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_84321765782615b9
-[<CompiledName("LawspecCollectionsKeyValPut_c59d14e0")>]
-let lawspecCollectionsKeyValPut_c59d14e0 (k_1042: int64) (v_1043: LawSpec.Data.BatchMeta list) (m_1044: Map<int64, LawSpec.Data.BatchMeta list>) : Map<int64, LawSpec.Data.BatchMeta list> =
-    (Map.add k_1042 v_1043 m_1044)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1
-[<CompiledName("LawspecCollectionsKeyValPut_01a600ed")>]
-let lawspecCollectionsKeyValPut_01a600ed (k_1045: LawSpec.Data.TopicPartition) (v_1046: int64) (m_1047: Map<LawSpec.Data.TopicPartition, int64>) : Map<LawSpec.Data.TopicPartition, int64> =
-    (Map.add k_1045 v_1046 m_1047)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58
-[<CompiledName("LawspecCollectionsKeyValPut_3034b895")>]
-let lawspecCollectionsKeyValPut_3034b895 (k_1048: string) (v_1049: int64) (m_1050: Map<string, int64>) : Map<string, int64> =
-    (Map.add k_1048 v_1049 m_1050)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f
-[<CompiledName("LawspecCollectionsKeyValPut_a8f49e3e")>]
-let lawspecCollectionsKeyValPut_a8f49e3e (k_1051: string) (v_1052: int) (m_1053: Map<string, int>) : Map<string, int> =
-    (Map.add k_1051 v_1052 m_1053)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d
-[<CompiledName("LawspecCollectionsKeyValPut_9fc3570a")>]
-let lawspecCollectionsKeyValPut_9fc3570a (k_1054: LawSpec.Data.GroupPartition) (v_1055: int64) (m_1056: Map<LawSpec.Data.GroupPartition, int64>) : Map<LawSpec.Data.GroupPartition, int64> =
-    (Map.add k_1054 v_1055 m_1056)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee
-[<CompiledName("LawspecCollectionsKeyValPut_87e622e8")>]
-let lawspecCollectionsKeyValPut_87e622e8 (k_1057: int64) (v_1058: LawSpec.Data.ProducerEntry) (m_1059: Map<int64, LawSpec.Data.ProducerEntry>) : Map<int64, LawSpec.Data.ProducerEntry> =
-    (Map.add k_1057 v_1058 m_1059)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d378e301aa895004
-[<CompiledName("LawspecCollectionsKeyValPut_3b439cbe")>]
-let lawspecCollectionsKeyValPut_3b439cbe (k_1060: string) (v_1061: string list) (m_1062: Map<string, string list>) : Map<string, string list> =
-    (Map.add k_1060 v_1061 m_1062)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c
-[<CompiledName("LawspecCollectionsKeyValPut_5cd34b74")>]
-let lawspecCollectionsKeyValPut_5cd34b74 (k_1063: int64) (v_1064: int64) (m_1065: Map<int64, int64>) : Map<int64, int64> =
-    (Map.add k_1063 v_1064 m_1065)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107
-[<CompiledName("LawspecCollectionsKeyValPut_efc6b866")>]
-let lawspecCollectionsKeyValPut_efc6b866 (k_1066: string) (v_1067: LawSpec.Data.TopicPartition list) (m_1068: Map<string, LawSpec.Data.TopicPartition list>) : Map<string, LawSpec.Data.TopicPartition list> =
-    (Map.add k_1066 v_1067 m_1068)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae
-[<CompiledName("LawspecCollectionsKeyValValuesItems_40ef8eee")>]
-let lawspecCollectionsKeyValValuesItems_40ef8eee (es_1069: LawSpec.Data.Entry<int64, int64> list) : int64 list =
-    let it_1070 = es_1069
-    match it_1070 with
-    | [] ->
-        []
-    | lawspecSelection0x0_1071 :: lawspecSelection0x1_1072 ->
-        let it_1073 = lawspecSelection0x0_1071
-        match it_1073 with
-        | subject ->
-            let matchlawspecSelection0x10_1074 = subject.Value
-            let result_1075 = lawspecCollectionsKeyValValuesItems_40ef8eee (lawspecSelection0x1_1072)
-            (matchlawspecSelection0x10_1074 :: result_1075)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa
-[<CompiledName("LawspecCollectionsKeyValValues_33bc036c")>]
-let lawspecCollectionsKeyValValues_33bc036c (m_1076: Map<int64, int64>) : int64 list =
-    (Typed.values m_1076)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_1d74c254059339d3
-[<CompiledName("LawspecCollectionsSetFromItems_8d83ec32")>]
-let lawspecCollectionsSetFromItems_8d83ec32 (xs_1077: int64 list) (acc_1078: int64 list) : int64 list =
-    let it_1079 = xs_1077
-    match it_1079 with
-    | [] ->
-        acc_1078
-    | lawspecSelection0x0_1080 :: lawspecSelection0x1_1081 ->
-        let result_1082 = lawspecCollectionsSetInsertItems_fbbb1c47 (lawspecSelection0x0_1080) (acc_1078)
-        let result_1083 = lawspecCollectionsSetFromItems_8d83ec32 (lawspecSelection0x1_1081) (result_1082)
-        result_1083
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089
-[<CompiledName("LawspecCollectionsSetFromItems_b46ce3bb")>]
-let lawspecCollectionsSetFromItems_b46ce3bb (xs_1084: string list) (acc_1085: string list) : string list =
-    let it_1086 = xs_1084
-    match it_1086 with
-    | [] ->
-        acc_1085
-    | lawspecSelection0x0_1087 :: lawspecSelection0x1_1088 ->
-        let result_1089 = lawspecCollectionsSetInsertItems_fd8b28ec (lawspecSelection0x0_1087) (acc_1085)
-        let result_1090 = lawspecCollectionsSetFromItems_b46ce3bb (lawspecSelection0x1_1088) (result_1089)
-        result_1090
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c
-[<CompiledName("LawspecCollectionsSetFromItems_357dd072")>]
-let lawspecCollectionsSetFromItems_357dd072 (xs_1091: int list) (acc_1092: int list) : int list =
-    let it_1093 = xs_1091
-    match it_1093 with
-    | [] ->
-        acc_1092
-    | lawspecSelection0x0_1094 :: lawspecSelection0x1_1095 ->
-        let result_1096 = lawspecCollectionsSetInsertItems_708d991b (lawspecSelection0x0_1094) (acc_1092)
-        let result_1097 = lawspecCollectionsSetFromItems_357dd072 (lawspecSelection0x1_1095) (result_1096)
-        result_1097
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977
-[<CompiledName("LawspecCollectionsSetInsertItems_fd8b28ec")>]
-let lawspecCollectionsSetInsertItems_fd8b28ec (x_1098: string) (xs_1099: string list) : string list =
-    let it_1100 = xs_1099
-    match it_1100 with
-    | [] ->
-        (x_1098 :: [])
-    | lawspecSelection0x0_1101 :: lawspecSelection0x1_1102 ->
-        let it_1103 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare x_1098 lawspecSelection0x0_1101))
-        match it_1103 with
-        | LawSpec.Data.Ordering.Less ->
-            (x_1098 :: xs_1099)
-        | LawSpec.Data.Ordering.Equal ->
-            xs_1099
-        | LawSpec.Data.Ordering.Greater ->
-            let result_1104 = lawspecCollectionsSetInsertItems_fd8b28ec (x_1098) (lawspecSelection0x1_1102)
-            (lawspecSelection0x0_1101 :: result_1104)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_f40de20825416c4f
-[<CompiledName("LawspecCollectionsSetInsertItems_fbbb1c47")>]
-let lawspecCollectionsSetInsertItems_fbbb1c47 (x_1105: int64) (xs_1106: int64 list) : int64 list =
-    let it_1107 = xs_1106
-    match it_1107 with
-    | [] ->
-        (x_1105 :: [])
-    | lawspecSelection0x0_1108 :: lawspecSelection0x1_1109 ->
-        let it_1110 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare x_1105 lawspecSelection0x0_1108))
-        match it_1110 with
-        | LawSpec.Data.Ordering.Less ->
-            (x_1105 :: xs_1106)
-        | LawSpec.Data.Ordering.Equal ->
-            xs_1106
-        | LawSpec.Data.Ordering.Greater ->
-            let result_1111 = lawspecCollectionsSetInsertItems_fbbb1c47 (x_1105) (lawspecSelection0x1_1109)
-            (lawspecSelection0x0_1108 :: result_1111)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966
-[<CompiledName("LawspecCollectionsSetInsertItems_708d991b")>]
-let lawspecCollectionsSetInsertItems_708d991b (x_1112: int) (xs_1113: int list) : int list =
-    let it_1114 = xs_1113
-    match it_1114 with
-    | [] ->
-        (x_1112 :: [])
-    | lawspecSelection0x0_1115 :: lawspecSelection0x1_1116 ->
-        let it_1117 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare x_1112 lawspecSelection0x0_1115))
-        match it_1117 with
-        | LawSpec.Data.Ordering.Less ->
-            (x_1112 :: xs_1113)
-        | LawSpec.Data.Ordering.Equal ->
-            xs_1113
-        | LawSpec.Data.Ordering.Greater ->
-            let result_1118 = lawspecCollectionsSetInsertItems_708d991b (x_1112) (lawspecSelection0x1_1116)
-            (lawspecSelection0x0_1115 :: result_1118)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetMemberItems_1cf181337c0427e8
-[<CompiledName("LawspecCollectionsSetMemberItems_1ed23db8")>]
-let lawspecCollectionsSetMemberItems_1ed23db8 (x_1119: int64) (xs_1120: int64 list) : bool =
-    let it_1121 = xs_1120
-    match it_1121 with
-    | [] ->
-        false
-    | lawspecSelection0x0_1122 :: lawspecSelection0x1_1123 ->
-        let it_1124 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare x_1119 lawspecSelection0x0_1122))
-        match it_1124 with
-        | LawSpec.Data.Ordering.Less ->
-            false
-        | LawSpec.Data.Ordering.Equal ->
-            true
-        | LawSpec.Data.Ordering.Greater ->
-            let result_1125 = lawspecCollectionsSetMemberItems_1ed23db8 (x_1119) (lawspecSelection0x1_1123)
-            result_1125
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetMember_ad24e518e9752b84
-[<CompiledName("LawspecCollectionsSetMember_b54a7773")>]
-let lawspecCollectionsSetMember_b54a7773 (x_1126: int64) (s_1127: Set<int64>) : bool =
-    (Set.contains x_1126 s_1127)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetOf_83f32212ffd7f646
-[<CompiledName("LawspecCollectionsSetOf_381c9692")>]
-let lawspecCollectionsSetOf_381c9692 (xs_1128: string list) : Set<string> =
-    (Set.ofList xs_1128)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetOf_9446af497e0eb47e
-[<CompiledName("LawspecCollectionsSetOf_04775bf4")>]
-let lawspecCollectionsSetOf_04775bf4 (xs_1129: int list) : Set<int> =
-    (Set.ofList xs_1129)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetOf_b2e15487e0114c0
-[<CompiledName("LawspecCollectionsSetOf_9f2ef842")>]
-let lawspecCollectionsSetOf_9f2ef842 (xs_1130: int64 list) : Set<int64> =
-    (Set.ofList xs_1130)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977
-[<CompiledName("LawspecCollectionsSetRemoveItems_64279e04")>]
-let lawspecCollectionsSetRemoveItems_64279e04 (x_1131: string) (xs_1132: string list) : string list =
-    let it_1133 = xs_1132
-    match it_1133 with
-    | [] ->
-        xs_1132
-    | lawspecSelection0x0_1134 :: lawspecSelection0x1_1135 ->
-        let it_1136 = ((fun c -> if c < 0 then LawSpec.Data.Ordering.Less elif c = 0 then LawSpec.Data.Ordering.Equal else LawSpec.Data.Ordering.Greater) (Typed.compare x_1131 lawspecSelection0x0_1134))
-        match it_1136 with
-        | LawSpec.Data.Ordering.Less ->
-            xs_1132
-        | LawSpec.Data.Ordering.Equal ->
-            lawspecSelection0x1_1135
-        | LawSpec.Data.Ordering.Greater ->
-            let result_1137 = lawspecCollectionsSetRemoveItems_64279e04 (x_1131) (lawspecSelection0x1_1135)
-            (lawspecSelection0x0_1134 :: result_1137)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67
-[<CompiledName("LawspecCollectionsSetRemove_7ffea813")>]
-let lawspecCollectionsSetRemove_7ffea813 (x_1138: string) (s_1139: Set<string>) : Set<string> =
-    (Set.remove x_1138 s_1139)
-
-/// lawtwin.kafka::lawspec_lawspecCollectionsSetUnion_f2139edefc699bed
-[<CompiledName("LawspecCollectionsSetUnion_604ff278")>]
-let lawspecCollectionsSetUnion_604ff278 (s_1140: Set<string>) (t_1141: Set<string>) : Set<string> =
-    (Set.union s_1140 t_1141)
-
-/// lawtwin.kafka::lawtwinKafkaModelAddPartitionsToTxn
-[<CompiledName("LawtwinKafkaModelAddPartitionsToTxn_8d367d82")>]
-let lawtwinKafkaModelAddPartitionsToTxn_8d367d82 (txid_1142: string) (pid_1143: int64) (epoch_1144: int16) (tps_1145: LawSpec.Data.TopicPartition list) (b_1146: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_1147 = lawtwinKafkaModelCheckTxnProducer_2936d9ae (txid_1142) (pid_1143) (epoch_1144) (b_1146)
-    let entry_1148 = result_1147
-    let result_1149 = lawtwinKafkaModelAllKnown_12a378f8 (tps_1145) (b_1146)
-    if (not result_1149) then
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownTopicOrPartition) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
-    else
-        let value_1150 =
-            let value_1151 =
-                match entry_1148 with
-                | subject ->
-                    let lawspecFieldtxn_1152 = subject.Txn
-                    lawspecFieldtxn_1152
-            let it_1153 = value_1151
-            match it_1153 with
-            | LawSpec.Data.TxnState.NoTxn ->
-                let value_1154 =
-                    let result_1155 = lawtwinKafkaModelUnionPartitions_c791d224 (tps_1145) ([])
-                    let txnPartitions_1156 = result_1155
-                    let txnOffsets_1157 = []
-                    ({ TxnOffsets = txnOffsets_1157; TxnPartitions = txnPartitions_1156 } : LawSpec.Data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee)
-                (LawSpec.Data.TxnState.Ongoing(value_1154))
-            | LawSpec.Data.TxnState.Ongoing(lawspecSelection0x0_1158) ->
-                let value_1159 =
-                    match lawspecSelection0x0_1158 with
-                    | subject ->
-                        let lawspecFieldtxnPartitions_1160 = subject.TxnPartitions
-                        lawspecFieldtxnPartitions_1160
-                let lawspecSelection1x0_1161 = value_1159
-                let value_1162 =
-                    match lawspecSelection0x0_1158 with
-                    | subject ->
-                        let lawspecFieldtxnOffsets_1163 = subject.TxnOffsets
-                        lawspecFieldtxnOffsets_1163
-                let lawspecSelection1x1_1164 = value_1162
-                let value_1165 =
-                    let result_1166 = lawtwinKafkaModelUnionPartitions_c791d224 (tps_1145) (lawspecSelection1x0_1161)
-                    let txnPartitions_1167 = result_1166
-                    let txnOffsets_1168 = lawspecSelection1x1_1164
-                    ({ TxnOffsets = txnOffsets_1168; TxnPartitions = txnPartitions_1167 } : LawSpec.Data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee)
-                (LawSpec.Data.TxnState.Ongoing(value_1165))
-        let next_1169 = value_1150
-        let value_1170 =
-            let replacement_1171 = next_1169
-            match entry_1148 with
+        logic
+
+/// assignmentIn — ../src/contract.lawspec:1618
+[<CompiledName("AssignmentIn")>]
+let assignmentIn (m: string) (ms: LawSpec.Data.MemberAssignment list) : LawSpec.Data.TopicPartition list =
+    let it = ms
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value =
+            match selection with
             | subject ->
-                let lawspecFieldepoch_1172 = subject.Epoch
-                let lawspecFieldtransactionalId_1173 = subject.TransactionalId
-                ({ Epoch = lawspecFieldepoch_1172; TransactionalId = lawspecFieldtransactionalId_1173; Txn = replacement_1171 } : LawSpec.Data.ProducerEntry)
-        let result_1174 = lawtwinKafkaModelPutProducer_4ef907a5 (pid_1143) (value_1170) (b_1146)
-        ({ First = (); Second = result_1174 } : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                let memberId = subject.MemberId
+                memberId
 
-/// lawtwin.kafka::lawtwinKafkaModelAllKnown
-[<CompiledName("LawtwinKafkaModelAllKnown_12a378f8")>]
-let lawtwinKafkaModelAllKnown_12a378f8 (tps_1175: LawSpec.Data.TopicPartition list) (b_1176: LawSpec.Data.BrokerState) : bool =
-    let it_1177 = tps_1175
-    match it_1177 with
-    | [] ->
-        true
-    | lawspecSelection0x0_1178 :: lawspecSelection0x1_1179 ->
-        let result_1180 = lawtwinKafkaModelKnownPartition_71d3099f (lawspecSelection0x0_1178) (b_1176)
-        let logic_1182 =
-            if result_1180 then
-                let result_1181 = lawtwinKafkaModelAllKnown_12a378f8 (lawspecSelection0x1_1179) (b_1176)
-                result_1181
-            else false
-        logic_1182
-
-/// lawtwin.kafka::lawtwinKafkaModelAppendBatch
-[<CompiledName("LawtwinKafkaModelAppendBatch_8797ae9f")>]
-let lawtwinKafkaModelAppendBatch_8797ae9f (rs_1183: LawSpec.Data.Record list) (writer_1184: int64) (transactional_1185: bool) (l_1186: LawSpec.Data.PartitionLog) : LawSpec.Data.PartitionLog =
-    let value_1187 =
-        match l_1186 with
-        | subject ->
-            let lawspecFieldlogEndOffset_1188 = subject.LogEndOffset
-            lawspecFieldlogEndOffset_1188
-    let value_1189 =
-        match l_1186 with
-        | subject ->
-            let lawspecFieldentries_1190 = subject.Entries
-            lawspecFieldentries_1190
-    let result_1191 = lawtwinKafkaModelAppendRecords_f5613738 (rs_1183) (value_1187) (writer_1184) (transactional_1185) (value_1189)
-    let appended_1192 = result_1191
-    let value_1193 =
-        if transactional_1185 then
-            let value_1194 =
-                match l_1186 with
-                | subject ->
-                    let lawspecFieldopenTxns_1195 = subject.OpenTxns
-                    lawspecFieldopenTxns_1195
-            let result_1196 = (Map.tryFind writer_1184 value_1194)
-            let it_1197 = result_1196
-            match it_1197 with
-            | None ->
-                let value_1198 =
-                    match l_1186 with
-                    | subject ->
-                        let lawspecFieldlogEndOffset_1199 = subject.LogEndOffset
-                        lawspecFieldlogEndOffset_1199
-                let value_1200 =
-                    match l_1186 with
-                    | subject ->
-                        let lawspecFieldopenTxns_1201 = subject.OpenTxns
-                        lawspecFieldopenTxns_1201
-                let result_1202 = (Map.add writer_1184 value_1198 value_1200)
-                result_1202
-            | Some _ ->
-                match l_1186 with
-                | subject ->
-                    let lawspecFieldopenTxns_1203 = subject.OpenTxns
-                    lawspecFieldopenTxns_1203
+        if (value = m) then
+            match selection with
+            | subject ->
+                let assigned = subject.Assigned
+                assigned
         else
-            match l_1186 with
-            | subject ->
-                let lawspecFieldopenTxns_1204 = subject.OpenTxns
-                lawspecFieldopenTxns_1204
-    let open_1205 = value_1193
-    let replacement_1206 = open_1205
-    let value_1207 =
-        let value_1208 =
-            match appended_1192 with
-            | subject ->
-                let lawspecFieldfirst_1209 = subject.First
-                lawspecFieldfirst_1209
-        let replacement_1210 = value_1208
-        let value_1211 =
-            let value_1212 =
-                match appended_1192 with
-                | subject ->
-                    let lawspecFieldsecond_1213 = subject.Second
-                    lawspecFieldsecond_1213
-            let replacement_1214 = value_1212
-            match l_1186 with
-            | subject ->
-                let lawspecFieldlogEndOffset_1215 = subject.LogEndOffset
-                let lawspecFieldopenTxns_1216 = subject.OpenTxns
-                let lawspecFieldabortedTxns_1217 = subject.AbortedTxns
-                let lawspecFieldbatches_1218 = subject.Batches
-                ({ Entries = replacement_1214; LogEndOffset = lawspecFieldlogEndOffset_1215; OpenTxns = lawspecFieldopenTxns_1216; AbortedTxns = lawspecFieldabortedTxns_1217; Batches = lawspecFieldbatches_1218 } : LawSpec.Data.PartitionLog)
-        match value_1211 with
+            let result = assignmentIn m selection_2
+            result
+
+/// clusterAddPartitionsToTxnRequest — ../src/contract.lawspec:283
+[<CompiledName("ClusterAddPartitionsToTxnRequest")>]
+let clusterAddPartitionsToTxnRequest
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: int64)
+    (value2: int16)
+    (value3: LawSpec.Data.TopicPartition list)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelAddPartitionsToTxn value0 value1 value2 value3 state
+    result
+
+/// clusterCommitOffsets — ../src/contract.lawspec:302
+[<CompiledName("ClusterCommitOffsets")>]
+let clusterCommitOffsets
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: string)
+    (value2: int)
+    (value3: LawSpec.Data.OffsetEntry list)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelOffsetCommit value0 value1 value2 value3 state
+    result
+
+/// clusterCreatePartitions — ../src/contract.lawspec:294
+[<CompiledName("ClusterCreatePartitions")>]
+let clusterCreatePartitions
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: int)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelCreatePartitions value0 value1 state
+    result
+
+/// clusterCreateTopic — ../src/contract.lawspec:293
+[<CompiledName("ClusterCreateTopic")>]
+let clusterCreateTopic
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: int)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelCreateTopic value0 value1 state
+    result
+
+/// clusterDescribeGroup — ../src/contract.lawspec:301
+[<CompiledName("ClusterDescribeGroup")>]
+let clusterDescribeGroup
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    : LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelDescribeGroup value0 state
+    result
+
+/// clusterEndTxnRequest — ../src/contract.lawspec:285
+[<CompiledName("ClusterEndTxnRequest")>]
+let clusterEndTxnRequest
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: int64)
+    (value2: int16)
+    (value3: bool)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelEndTxn value0 value1 value2 value3 state
+    result
+
+/// clusterFetchOffset — ../src/contract.lawspec:303
+[<CompiledName("ClusterFetchOffset")>]
+let clusterFetchOffset
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: LawSpec.Data.TopicPartition)
+    : LawSpec.Data.Pair<int64 option, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelOffsetFetch value0 value1 state
+    result
+
+/// clusterFetchRequest — ../src/contract.lawspec:280
+[<CompiledName("ClusterFetchRequest")>]
+let clusterFetchRequest
+    (state: LawSpec.Data.BrokerState)
+    (value0: LawSpec.Data.TopicPartition)
+    (value1: int64)
+    (value2: int)
+    (value3: LawSpec.Data.IsolationLevel)
+    : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelFetch value0 value1 value2 value3 state
+    result
+
+/// clusterHeartbeat — ../src/contract.lawspec:299
+[<CompiledName("ClusterHeartbeat")>]
+let clusterHeartbeat
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: string)
+    (value2: int)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelHeartbeat value0 value1 value2 state
+    result
+
+/// clusterInitProducerIdRequest — ../src/contract.lawspec:282
+[<CompiledName("ClusterInitProducerIdRequest")>]
+let clusterInitProducerIdRequest
+    (state: LawSpec.Data.BrokerState)
+    (value0: string option)
+    : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelInitProducerId value0 state
+    result
+
+/// clusterJoinGroup — ../src/contract.lawspec:297
+[<CompiledName("ClusterJoinGroup")>]
+let clusterJoinGroup
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: string)
+    (value2: string list)
+    : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelJoinGroup value0 value1 value2 state
+    result
+
+/// clusterLeaveGroup — ../src/contract.lawspec:300
+[<CompiledName("ClusterLeaveGroup")>]
+let clusterLeaveGroup
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: string)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelLeaveGroup value0 value1 state
+    result
+
+/// clusterListOffsets — ../src/contract.lawspec:296
+[<CompiledName("ClusterListOffsets")>]
+let clusterListOffsets
+    (state: LawSpec.Data.BrokerState)
+    (value0: LawSpec.Data.TopicPartition)
+    (value1: LawSpec.Data.OffsetSpec)
+    (value2: LawSpec.Data.IsolationLevel)
+    : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelListOffsets value0 value1 value2 state
+    result
+
+/// clusterMetadataRequest — ../src/contract.lawspec:278
+[<CompiledName("ClusterMetadataRequest")>]
+let clusterMetadataRequest
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    : LawSpec.Data.Pair<int option, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelMetadata value0 state
+    result
+
+/// clusterProduceRequest — ../src/contract.lawspec:279
+[<CompiledName("ClusterProduceRequest")>]
+let clusterProduceRequest
+    (state: LawSpec.Data.BrokerState)
+    (value0: LawSpec.Data.TopicPartition)
+    (value1: LawSpec.Data.ProducerTag option)
+    (value2: LawSpec.Data.Record list)
+    : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelProduce value0 value1 value2 state
+    result
+
+/// clusterStart — ../src/contract.lawspec:274
+[<CompiledName("ClusterStart")>]
+let clusterStart (unit: unit) : LawSpec.Data.BrokerState =
+    let result = lawtwinKafkaModelEmptyBroker ()
+    result
+
+/// clusterSyncGroup — ../src/contract.lawspec:298
+[<CompiledName("ClusterSyncGroup")>]
+let clusterSyncGroup
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: string)
+    (value2: int)
+    : LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelSyncGroup value0 value1 value2 state
+    result
+
+/// clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284
+[<CompiledName("ClusterTxnOffsetCommitRequest")>]
+let clusterTxnOffsetCommitRequest
+    (state: LawSpec.Data.BrokerState)
+    (value0: string)
+    (value1: int64)
+    (value2: int16)
+    (value3: string)
+    (value4: LawSpec.Data.OffsetEntry list)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result =
+        lawtwinKafkaModelTxnOffsetCommit value0 value1 value2 value3 value4 state
+
+    result
+
+/// committedFrom — ../src/contract.lawspec:377
+[<CompiledName("CommittedFrom")>]
+let committedFrom
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (tp: LawSpec.Data.TopicPartition)
+    (offset: int64)
+    : LawSpec.Data.Record list =
+    let result =
+        readFrom schema symbols tp offset LawSpec.Data.IsolationLevel.ReadCommitted
+
+    result
+
+/// consumerAssign — ../src/contract.lawspec:819
+[<CompiledName("ConsumerAssign")>]
+let consumerAssign
+    (tps: LawSpec.Data.TopicPartition list)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+    let result = withAssignment None "" (-1) [] tps c
+
+    let pair: LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+        { First = (); Second = result }
+
+    pair
+
+/// consumerClose — ../src/contract.lawspec:802
+[<CompiledName("ConsumerClose")>]
+let consumerClose
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+    let value =
+        match c with
         | subject ->
-            let lawspecFieldentries_1219 = subject.Entries
-            let lawspecFieldopenTxns_1220 = subject.OpenTxns
-            let lawspecFieldabortedTxns_1221 = subject.AbortedTxns
-            let lawspecFieldbatches_1222 = subject.Batches
-            ({ Entries = lawspecFieldentries_1219; LogEndOffset = replacement_1210; OpenTxns = lawspecFieldopenTxns_1220; AbortedTxns = lawspecFieldabortedTxns_1221; Batches = lawspecFieldbatches_1222 } : LawSpec.Data.PartitionLog)
-    match value_1207 with
-    | subject ->
-        let lawspecFieldentries_1223 = subject.Entries
-        let lawspecFieldlogEndOffset_1224 = subject.LogEndOffset
-        let lawspecFieldabortedTxns_1225 = subject.AbortedTxns
-        let lawspecFieldbatches_1226 = subject.Batches
-        ({ Entries = lawspecFieldentries_1223; LogEndOffset = lawspecFieldlogEndOffset_1224; OpenTxns = replacement_1206; AbortedTxns = lawspecFieldabortedTxns_1225; Batches = lawspecFieldbatches_1226 } : LawSpec.Data.PartitionLog)
+            let group = subject.Group
+            group
 
-/// lawtwin.kafka::lawtwinKafkaModelAppendRecords
-[<CompiledName("LawtwinKafkaModelAppendRecords_f5613738")>]
-let lawtwinKafkaModelAppendRecords_f5613738 (rs_1227: LawSpec.Data.Record list) (offset_1228: int64) (writer_1229: int64) (transactional_1230: bool) (es_1231: LawSpec.Data.LogEntry list) : LawSpec.Data.Pair<int64, LawSpec.Data.LogEntry list> =
-    let it_1232 = rs_1227
-    match it_1232 with
-    | [] ->
-        ({ First = offset_1228; Second = es_1231 } : LawSpec.Data.Pair<int64, LawSpec.Data.LogEntry list>)
-    | lawspecSelection0x0_1233 :: lawspecSelection0x1_1234 ->
-        let result_1235 = saturatingInt64_5bce4ed8 (((bigint offset_1228) + 1I))
-        let value_1236 =
-            let entryOffset_1237 = offset_1228
-            let entryRecord_1238 = lawspecSelection0x0_1233
-            let writer_1239 = writer_1229
-            let transactional_1240 = transactional_1230
-            ({ EntryOffset = entryOffset_1237; EntryRecord = entryRecord_1238; Transactional = transactional_1240; Writer = writer_1239 } : LawSpec.Data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be)
-        let result_1241 = lawtwinKafkaModelAppendRecords_f5613738 (lawspecSelection0x1_1234) (result_1235) (writer_1229) (transactional_1230) (((LawSpec.Data.LogEntry.DataEntry(value_1236)) :: es_1231))
-        result_1241
+    let it = value
 
-/// lawtwin.kafka::lawtwinKafkaModelApplyOffsets
-[<CompiledName("LawtwinKafkaModelApplyOffsets_c0f73b56")>]
-let lawtwinKafkaModelApplyOffsets_c0f73b56 (os_1242: LawSpec.Data.PendingOffset list) (b_1243: LawSpec.Data.BrokerState) : LawSpec.Data.BrokerState =
-    let it_1244 = os_1242
-    match it_1244 with
-    | [] ->
-        b_1243
-    | lawspecSelection0x0_1245 :: lawspecSelection0x1_1246 ->
-        let value_1247 =
-            let value_1248 =
-                let value_1249 =
-                    match lawspecSelection0x0_1245 with
-                    | subject ->
-                        let lawspecFieldpendingGroup_1250 = subject.PendingGroup
-                        lawspecFieldpendingGroup_1250
-                let lawspecRecordField0_1251 = value_1249
-                let value_1252 =
-                    let value_1253 =
-                        match lawspecSelection0x0_1245 with
-                        | subject ->
-                            let lawspecFieldpendingEntry_1254 = subject.PendingEntry
-                            lawspecFieldpendingEntry_1254
-                    match value_1253 with
-                    | subject ->
-                        let lawspecFieldtopicPartition_1255 = subject.TopicPartition
-                        lawspecFieldtopicPartition_1255
-                let lawspecRecordField1_1256 = value_1252
-                ({ GroupId = lawspecRecordField0_1251; GroupPartition = lawspecRecordField1_1256 } : LawSpec.Data.GroupPartition)
-            let value_1257 =
-                let value_1258 =
-                    match lawspecSelection0x0_1245 with
-                    | subject ->
-                        let lawspecFieldpendingEntry_1259 = subject.PendingEntry
-                        lawspecFieldpendingEntry_1259
-                match value_1258 with
-                | subject ->
-                    let lawspecFieldoffset_1260 = subject.Offset
-                    lawspecFieldoffset_1260
-            let value_1261 =
-                match b_1243 with
-                | subject ->
-                    let lawspecFieldcommitted_1262 = subject.Committed
-                    lawspecFieldcommitted_1262
-            let result_1263 = (Map.add value_1248 value_1257 value_1261)
-            let replacement_1264 = result_1263
-            match b_1243 with
-            | subject ->
-                let lawspecFieldtopics_1265 = subject.Topics
-                let lawspecFieldlogs_1266 = subject.Logs
-                let lawspecFieldproducers_1267 = subject.Producers
-                let lawspecFieldtransactionalIds_1268 = subject.TransactionalIds
-                let lawspecFieldnextProducerId_1269 = subject.NextProducerId
-                let lawspecFieldgroups_1270 = subject.Groups
-                ({ Topics = lawspecFieldtopics_1265; Logs = lawspecFieldlogs_1266; Producers = lawspecFieldproducers_1267; TransactionalIds = lawspecFieldtransactionalIds_1268; NextProducerId = lawspecFieldnextProducerId_1269; Groups = lawspecFieldgroups_1270; Committed = replacement_1264 } : LawSpec.Data.BrokerState)
-        let result_1271 = lawtwinKafkaModelApplyOffsets_c0f73b56 (lawspecSelection0x1_1246) (value_1247)
-        result_1271
-
-/// lawtwin.kafka::lawtwinKafkaModelAssignPartitions
-[<CompiledName("LawtwinKafkaModelAssignPartitions_598afda2")>]
-let lawtwinKafkaModelAssignPartitions_598afda2 (topic_1272: string) (ps_1273: int list) (owners_1274: string list) (waiting_1275: string list) (a_1276: Map<string, LawSpec.Data.TopicPartition list>) : Map<string, LawSpec.Data.TopicPartition list> =
-    let it_1277 = ps_1273
-    match it_1277 with
-    | [] ->
-        a_1276
-    | lawspecSelection0x0_1278 :: lawspecSelection0x1_1279 ->
-        let it_1280 = waiting_1275
-        match it_1280 with
-        | matchlawspecSelection0x00_1281 :: matchlawspecSelection0x10_1282 ->
-            let value_1283 =
-                let lawspecRecordField0_1284 = topic_1272
-                let lawspecRecordField1_1285 = lawspecSelection0x0_1278
-                ({ Topic = lawspecRecordField0_1284; Partition = lawspecRecordField1_1285 } : LawSpec.Data.TopicPartition)
-            let result_1286 = lawtwinKafkaModelAssignTo_98dab4ee (matchlawspecSelection0x00_1281) (value_1283) (a_1276)
-            let result_1287 = lawtwinKafkaModelAssignPartitions_598afda2 (topic_1272) (lawspecSelection0x1_1279) (owners_1274) (matchlawspecSelection0x10_1282) (result_1286)
-            result_1287
-        | [] ->
-            let it_1288 = owners_1274
-            match it_1288 with
-            | [] ->
-                a_1276
-            | matchlawspecSelection0x00_1289 :: matchlawspecSelection0x10_1290 ->
-                let value_1291 =
-                    let lawspecRecordField0_1292 = topic_1272
-                    let lawspecRecordField1_1293 = lawspecSelection0x0_1278
-                    ({ Topic = lawspecRecordField0_1292; Partition = lawspecRecordField1_1293 } : LawSpec.Data.TopicPartition)
-                let result_1294 = lawtwinKafkaModelAssignTo_98dab4ee (matchlawspecSelection0x00_1289) (value_1291) (a_1276)
-                let result_1295 = lawtwinKafkaModelAssignPartitions_598afda2 (topic_1272) (lawspecSelection0x1_1279) (owners_1274) (matchlawspecSelection0x10_1290) (result_1294)
-                result_1295
-
-/// lawtwin.kafka::lawtwinKafkaModelAssignTo
-[<CompiledName("LawtwinKafkaModelAssignTo_98dab4ee")>]
-let lawtwinKafkaModelAssignTo_98dab4ee (member_1296: string) (tp_1297: LawSpec.Data.TopicPartition) (a_1298: Map<string, LawSpec.Data.TopicPartition list>) : Map<string, LawSpec.Data.TopicPartition list> =
-    let result_1299 = (Map.tryFind member_1296 a_1298)
-    let it_1300 = result_1299
-    match it_1300 with
+    match it with
     | None ->
-        let result_1301 = (Map.add member_1296 (tp_1297 :: []) a_1298)
-        result_1301
-    | Some lawspecSelection0x0_1302 ->
-        let result_1303 = (Map.add member_1296 (lawspecSelection0x0_1302 @ (tp_1297 :: [])) a_1298)
-        result_1303
+        let result = freshConsumer ()
 
-/// lawtwin.kafka::lawtwinKafkaModelAssignTopics
-[<CompiledName("LawtwinKafkaModelAssignTopics_0d94256d")>]
-let lawtwinKafkaModelAssignTopics_0d94256d (topics_1304: string list) (subs_1305: LawSpec.Data.Entry<string, string list> list) (b_1306: LawSpec.Data.BrokerState) (a_1307: Map<string, LawSpec.Data.TopicPartition list>) : Map<string, LawSpec.Data.TopicPartition list> =
-    let it_1308 = topics_1304
-    match it_1308 with
-    | [] ->
-        a_1307
-    | lawspecSelection0x0_1309 :: lawspecSelection0x1_1310 ->
-        let result_1311 = lawtwinKafkaModelPartitionCountOf_ff180c35 (lawspecSelection0x0_1309) (b_1306)
-        let it_1312 = result_1311
-        match it_1312 with
-        | None ->
-            let result_1313 = lawtwinKafkaModelAssignTopics_0d94256d (lawspecSelection0x1_1310) (subs_1305) (b_1306) (a_1307)
-            result_1313
-        | Some matchlawspecSelection0x00_1314 ->
-            let value_1315 =
-                let result_1316 = lawtwinKafkaModelSubscribersOf_e9347318 (lawspecSelection0x0_1309) (subs_1305)
-                let owners_1317 = result_1316
-                let result_1318 = lawtwinKafkaModelPartitionsBelow_19525eca (matchlawspecSelection0x00_1314)
-                let result_1319 = lawtwinKafkaModelAssignPartitions_598afda2 (lawspecSelection0x0_1309) (result_1318) (owners_1317) (owners_1317) (a_1307)
-                result_1319
-            let result_1320 = lawtwinKafkaModelAssignTopics_0d94256d (lawspecSelection0x1_1310) (subs_1305) (b_1306) (value_1315)
-            result_1320
+        let pair: LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+            { First = (); Second = result }
 
-/// lawtwin.kafka::lawtwinKafkaModelCheckMember
-[<CompiledName("LawtwinKafkaModelCheckMember_f218b850")>]
-let lawtwinKafkaModelCheckMember_f218b850 (g_1321: string) (member_1322: string) (generation_1323: int) (b_1324: LawSpec.Data.BrokerState) : LawSpec.Data.Group =
-    if (g_1321 = literal0) then
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidGroupId) : LawSpec.Data.Group)
-    else
-        let result_1325 = lawtwinKafkaModelGroupOf_abe7cb22 (g_1321) (b_1324)
-        let group_1326 = result_1325
-        let value_1327 =
-            match group_1326 with
+        pair
+    | Some selection ->
+        let value_4 =
+            let attempted =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_2 =
+                            match c with
+                            | subject ->
+                                let member_ = subject.Member
+                                member_
+
+                        let broker =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_2 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker.LeaveGroupRequest(selection, value_2))
+
+                        result_2)
+
+            match attempted with
+            | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+            | LawSpec.Either.Right value_3 -> LawSpec.Either.Right value_3
+
+        let left = value_4
+        let result_3 = freshConsumer ()
+
+        let pair_2: LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+            { First = (); Second = result_3 }
+
+        pair_2
+
+/// consumerCommit — ../src/contract.lawspec:793
+[<CompiledName("ConsumerCommit")>]
+let consumerCommit
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+    let value =
+        match c with
+        | subject ->
+            let group = subject.Group
+            group
+
+    let it = value
+
+    match it with
+    | None ->
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+            {
+                First = LawSpec.Either.Left LawSpec.Data.KafkaError.InvalidGroupId
+                Second = c
+            }
+
+        pair
+    | Some selection ->
+        let value_7 =
+            let attempted =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_2 =
+                            match c with
+                            | subject ->
+                                let member_ = subject.Member
+                                member_
+
+                        let value_3 =
+                            match c with
+                            | subject ->
+                                let generation = subject.Generation
+                                generation
+
+                        let value_4 =
+                            match c with
+                            | subject ->
+                                let assigned = subject.Assigned
+                                assigned
+
+                        let value_5 =
+                            match c with
+                            | subject ->
+                                let positions = subject.Positions
+                                positions
+
+                        let result = positionsToCommit value_4 value_5
+
+                        let broker =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_2 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker.OffsetCommitRequest(selection, value_2, value_3, result))
+
+                        result_2)
+
+            match attempted with
+            | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+            | LawSpec.Either.Right value_6 -> LawSpec.Either.Right value_6
+
+        let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+            { First = value_7; Second = c }
+
+        pair_2
+
+/// consumerCommitted — ../src/contract.lawspec:811
+[<CompiledName("ConsumerCommitted")>]
+let consumerCommitted
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (tp: LawSpec.Data.TopicPartition)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState> =
+    let value =
+        match c with
+        | subject ->
+            let group = subject.Group
+            group
+
+    let it = value
+
+    match it with
+    | None ->
+        let pair: LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState> =
+            { First = None; Second = c }
+
+        pair
+    | Some selection ->
+        let broker =
+            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                schema
+                symbols
+                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+        let result = broker.OffsetFetchRequest(selection, tp)
+
+        let pair_2: LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState> =
+            { First = result; Second = c }
+
+        pair_2
+
+/// consumerIsolation — ../src/contract.lawspec:838
+[<CompiledName("ConsumerIsolation")>]
+let consumerIsolation
+    (level: LawSpec.Data.IsolationLevel)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+    let value =
+        let replacement = level
+
+        match c with
+        | subject ->
+            let group = subject.Group
+            let member_ = subject.Member
+            let generation = subject.Generation
+            let subscription = subject.Subscription
+            let assigned = subject.Assigned
+            let positions = subject.Positions
+
+            let consumerState: LawSpec.Data.ConsumerState =
+                {
+                    Group = group
+                    Member = member_
+                    Generation = generation
+                    Subscription = subscription
+                    Assigned = assigned
+                    Positions = positions
+                    Isolation = replacement
+                }
+
+            consumerState
+
+    let pair: LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+        { First = (); Second = value }
+
+    pair
+
+/// consumerJoin — ../src/contract.lawspec:715
+[<CompiledName("ConsumerJoin")>]
+let consumerJoin
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (g: string)
+    (m: string)
+    (topics: string list)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState> =
+    let value_2 =
+        let attempted =
+            Typed.attempt
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    let broker =
+                        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                            schema
+                            symbols
+                            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                    let result =
+                        Typed.performed
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (broker.JoinGroupRequest(g, m, topics))
+
+                    result)
+
+        match attempted with
+        | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+        | LawSpec.Either.Right value -> LawSpec.Either.Right value
+
+    let it = value_2
+
+    match it with
+    | LawSpec.Either.Left selection ->
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState> =
+            {
+                First = LawSpec.Either.Left selection
+                Second = c
+            }
+
+        pair
+    | LawSpec.Either.Right selection_2 ->
+        let value_4 =
+            let attempted_2 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let broker_2 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_2 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_2.SyncGroupRequest(g, m, selection_2))
+
+                        result_2)
+
+            match attempted_2 with
+            | LawSpec.Either.Left failure_2 -> LawSpec.Either.Left failure_2
+            | LawSpec.Either.Right value_3 -> LawSpec.Either.Right value_3
+
+        let it_2 = value_4
+
+        match it_2 with
+        | LawSpec.Either.Left matchSelection ->
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState> =
+                {
+                    First = LawSpec.Either.Left matchSelection
+                    Second = c
+                }
+
+            pair_2
+        | LawSpec.Either.Right matchSelection_2 ->
+            let result_3 = withAssignment (Some g) m selection_2 topics matchSelection_2 c
+
+            let pair_3: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState> =
+                {
+                    First = LawSpec.Either.Right matchSelection_2
+                    Second = result_3
+                }
+
+            pair_3
+
+/// consumerPoll — ../src/contract.lawspec:783
+[<CompiledName("ConsumerPoll")>]
+let consumerPoll
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (n: int)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
+    let result = consumerRefresh schema symbols c
+    let refreshed = result
+
+    let value =
+        match refreshed with
+        | subject ->
+            let first = subject.First
+            first
+
+    let it = value
+
+    match it with
+    | LawSpec.Either.Left selection ->
+        let value_2 =
+            match refreshed with
             | subject ->
-                let lawspecFieldsubscriptions_1328 = subject.Subscriptions
-                lawspecFieldsubscriptions_1328
-        let result_1329 = (Map.tryFind member_1322 value_1327)
-        let it_1330 = result_1329
-        match it_1330 with
+                let second = subject.Second
+                second
+
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
+            {
+                First = LawSpec.Either.Left selection
+                Second = value_2
+            }
+
+        pair
+    | LawSpec.Either.Right _ ->
+        let value_4 =
+            let value_3 =
+                match refreshed with
+                | subject ->
+                    let second_2 = subject.Second
+                    second_2
+
+            match value_3 with
+            | subject ->
+                let assigned = subject.Assigned
+                assigned
+
+        let value_5 =
+            match refreshed with
+            | subject ->
+                let second_3 = subject.Second
+                second_3
+
+        let result_2 = pollPartitions schema symbols value_4 n value_5 []
+        result_2
+
+/// consumerPosition — ../src/contract.lawspec:753
+[<CompiledName("ConsumerPosition")>]
+let consumerPosition
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (tp: LawSpec.Data.TopicPartition)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<int64, LawSpec.Data.ConsumerState> =
+    let value =
+        match c with
+        | subject ->
+            let positions = subject.Positions
+            positions
+
+    let result = Map.tryFind tp value
+    let it = result
+
+    match it with
+    | Some selection ->
+        let pair: LawSpec.Data.Pair<int64, LawSpec.Data.ConsumerState> =
+            { First = selection; Second = c }
+
+        pair
+    | None ->
+        let value_3 =
+            let value_2 =
+                match c with
+                | subject ->
+                    let group = subject.Group
+                    group
+
+            let it_2 = value_2
+
+            match it_2 with
+            | None -> 0L
+            | Some selection_2 ->
+                let broker =
+                    LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                        schema
+                        symbols
+                        (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                let result_2 = broker.OffsetFetchRequest(selection_2, tp)
+                let it_3 = result_2
+
+                match it_3 with
+                | None -> 0L
+                | Some matchSelection -> matchSelection
+
+        let from = value_3
+        let result_3 = withPosition tp from c
+
+        let pair_2: LawSpec.Data.Pair<int64, LawSpec.Data.ConsumerState> =
+            { First = from; Second = result_3 }
+
+        pair_2
+
+/// consumerPositionOf — ../src/contract.lawspec:831
+[<CompiledName("ConsumerPositionOf")>]
+let consumerPositionOf
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (tp: LawSpec.Data.TopicPartition)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState> =
+    let value =
+        match c with
+        | subject ->
+            let assigned = subject.Assigned
+            assigned
+
+    let all = List.forall (fun item -> (item <> tp)) value
+
+    if not all then
+        let result = consumerPosition schema symbols tp c
+        let p = result
+
+        let value_2 =
+            match p with
+            | subject ->
+                let first = subject.First
+                first
+
+        let value_3 =
+            match p with
+            | subject ->
+                let second = subject.Second
+                second
+
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState> =
+            {
+                First = LawSpec.Either.Right value_2
+                Second = value_3
+            }
+
+        pair
+    else
+        let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState> =
+            {
+                First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                Second = c
+            }
+
+        pair_2
+
+/// consumerRecords — ../src/contract.lawspec:663
+[<CompiledName("ConsumerRecords")>]
+let consumerRecords
+    (tp: LawSpec.Data.TopicPartition)
+    (rs: LawSpec.Data.FetchedRecord list)
+    : LawSpec.Data.ConsumerRecord list =
+    let it = rs
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value_3 =
+            let recordField = tp
+
+            let value =
+                match selection with
+                | subject ->
+                    let offset = subject.Offset
+                    offset
+
+            let recordField_2 = value
+
+            let value_2 =
+                match selection with
+                | subject ->
+                    let entry = subject.Entry
+                    entry
+
+            let recordField_3 = value_2
+
+            let consumerRecord: LawSpec.Data.ConsumerRecord =
+                {
+                    ReceivedFrom = recordField
+                    ReceivedAt = recordField_2
+                    Received = recordField_3
+                }
+
+            consumerRecord
+
+        let result = consumerRecords tp selection_2
+        (value_3 :: result)
+
+/// consumerRefresh — ../src/contract.lawspec:731
+[<CompiledName("ConsumerRefresh")>]
+let consumerRefresh
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+    let value =
+        match c with
+        | subject ->
+            let group = subject.Group
+            group
+
+    let it = value
+
+    match it with
+    | None ->
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+            {
+                First = LawSpec.Either.Right()
+                Second = c
+            }
+
+        pair
+    | Some selection ->
+        let value_5 =
+            let attempted =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_2 =
+                            match c with
+                            | subject ->
+                                let member_ = subject.Member
+                                member_
+
+                        let value_3 =
+                            match c with
+                            | subject ->
+                                let generation = subject.Generation
+                                generation
+
+                        let broker =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker.HeartbeatRequest(selection, value_2, value_3))
+
+                        result)
+
+            match attempted with
+            | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+            | LawSpec.Either.Right value_4 -> LawSpec.Either.Right value_4
+
+        let it_2 = value_5
+
+        match it_2 with
+        | LawSpec.Either.Right _ ->
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+                {
+                    First = LawSpec.Either.Right()
+                    Second = c
+                }
+
+            pair_2
+        | LawSpec.Either.Left matchSelection ->
+            if
+                ((matchSelection = LawSpec.Data.KafkaError.IllegalGeneration)
+                 || (matchSelection = LawSpec.Data.KafkaError.UnknownMemberId))
+            then
+                let value_6 =
+                    match c with
+                    | subject ->
+                        let member__2 = subject.Member
+                        member__2
+
+                let value_7 =
+                    match c with
+                    | subject ->
+                        let subscription = subject.Subscription
+                        subscription
+
+                let result_2 = consumerJoin schema symbols selection value_6 value_7 c
+                let s = result_2
+
+                let value_8 =
+                    match s with
+                    | subject ->
+                        let first = subject.First
+                        first
+
+                let it_3 = value_8
+
+                match it_3 with
+                | LawSpec.Either.Left matchMatchSelection ->
+                    let value_9 =
+                        match s with
+                        | subject ->
+                            let second = subject.Second
+                            second
+
+                    let pair_3: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+                        {
+                            First = LawSpec.Either.Left matchMatchSelection
+                            Second = value_9
+                        }
+
+                    pair_3
+                | LawSpec.Either.Right _ ->
+                    let value_10 =
+                        match s with
+                        | subject ->
+                            let second_2 = subject.Second
+                            second_2
+
+                    let pair_4: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+                        {
+                            First = LawSpec.Either.Right()
+                            Second = value_10
+                        }
+
+                    pair_4
+            else
+                let pair_5: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+                    {
+                        First = LawSpec.Either.Left matchSelection
+                        Second = c
+                    }
+
+                pair_5
+
+/// consumerSeek — ../src/contract.lawspec:824
+[<CompiledName("ConsumerSeek")>]
+let consumerSeek
+    (tp: LawSpec.Data.TopicPartition)
+    (offset: int64)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+    let value =
+        match c with
+        | subject ->
+            let assigned = subject.Assigned
+            assigned
+
+    let all = List.forall (fun item -> (item <> tp)) value
+
+    if (not all && (bigint offset >= 0I)) then
+        let result = withPosition tp offset c
+
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+            {
+                First = LawSpec.Either.Right()
+                Second = result
+            }
+
+        pair
+    else
+        let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+            {
+                First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                Second = c
+            }
+
+        pair_2
+
+/// coversOnce — ../src/contract.lawspec:469
+[<CompiledName("CoversOnce")>]
+let coversOnce (t: string) (n: int) (view: LawSpec.Data.GroupView) : bool =
+    let value =
+        match view with
+        | subject ->
+            let members = subject.Members
+            members
+
+    let result = ownedOf t value
+    let owned = result
+
+    let logic =
+        if (bigint (List.length owned) = bigint n) then
+            let result_2 = Set.ofList owned
+            let result_3 = Set.ofList (Typed.range (bigint 0) (bigint n) |> List.map int32)
+            (result_2 = result_3)
+        else
+            false
+
+    logic
+
+/// created — ../src/contract.lawspec:315
+[<CompiledName("Created")>]
+let created (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (t: string) (n: int) : bool =
+    let value_2 =
+        let attempted =
+            Typed.attempt
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    let broker =
+                        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                            schema
+                            symbols
+                            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                    let result =
+                        Typed.performed
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (broker.CreateTopicsRequest(t, n))
+
+                    result)
+
+        match attempted with
+        | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+        | LawSpec.Either.Right value -> LawSpec.Either.Right value
+
+    match value_2 with
+    | LawSpec.Either.Left _ -> false
+    | LawSpec.Either.Right _ -> true
+
+/// fencedBy — ../src/contract.lawspec:348
+[<CompiledName("FencedBy")>]
+let fencedBy (old: LawSpec.Data.ProducerIdAndEpoch) (new_: LawSpec.Data.ProducerIdAndEpoch) : bool =
+    let value =
+        match new_ with
+        | subject ->
+            let producerId = subject.ProducerId
+            producerId
+
+    let value_2 =
+        match old with
+        | subject ->
+            let producerId_2 = subject.ProducerId
+            producerId_2
+
+    let logic =
+        if (value = value_2) then
+            let value_3 =
+                match new_ with
+                | subject ->
+                    let producerEpoch = subject.ProducerEpoch
+                    producerEpoch
+
+            let value_4 =
+                match old with
+                | subject ->
+                    let producerEpoch_2 = subject.ProducerEpoch
+                    producerEpoch_2
+
+            (value_3 > value_4)
+        else
+            false
+
+    let logic_2 =
+        if logic then
+            true
+        else
+            let value_5 =
+                match new_ with
+                | subject ->
+                    let producerId_3 = subject.ProducerId
+                    producerId_3
+
+            let value_6 =
+                match old with
+                | subject ->
+                    let producerId_4 = subject.ProducerId
+                    producerId_4
+
+            (value_5 <> value_6)
+
+    logic_2
+
+/// followsBatch — ../src/contract.lawspec:329
+[<CompiledName("FollowsBatch")>]
+let followsBatch
+    (a: LawSpec.Either<LawSpec.Data.KafkaError, int64>)
+    (batch: LawSpec.Data.Record list)
+    (b: LawSpec.Either<LawSpec.Data.KafkaError, int64>)
+    : bool =
+    let it = a
+
+    match it with
+    | LawSpec.Either.Left _ -> false
+    | LawSpec.Either.Right selection ->
+        let it_2 = b
+
+        match it_2 with
+        | LawSpec.Either.Left _ -> false
+        | LawSpec.Either.Right matchSelection ->
+            (bigint matchSelection = (bigint selection + bigint (List.length batch)))
+
+/// followsOne — ../src/contract.lawspec:1247
+[<CompiledName("FollowsOne")>]
+let followsOne
+    (a: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>)
+    (latest: LawSpec.Either<LawSpec.Data.KafkaError, int64>)
+    : bool =
+    let it = a
+
+    match it with
+    | LawSpec.Either.Left _ -> false
+    | LawSpec.Either.Right selection ->
+        let it_2 = latest
+
+        match it_2 with
+        | LawSpec.Either.Left _ -> false
+        | LawSpec.Either.Right matchSelection ->
+            let value =
+                match selection with
+                | subject ->
+                    let sentAt = subject.SentAt
+                    sentAt
+
+            (bigint matchSelection = (bigint value + 1I))
+
+/// freshConsumer — ../src/contract.lawspec:557
+[<CompiledName("FreshConsumer")>]
+let freshConsumer (u: unit) : LawSpec.Data.ConsumerState =
+    let recordField = None
+    let recordField_2 = ""
+    let recordField_3 = (-1)
+    let recordField_4 = []
+    let recordField_5 = []
+
+    let result =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_6 = result
+    let recordField_7 = LawSpec.Data.IsolationLevel.ReadUncommitted
+
+    let consumerState: LawSpec.Data.ConsumerState =
+        {
+            Group = recordField
+            Member = recordField_2
+            Generation = recordField_3
+            Subscription = recordField_4
+            Assigned = recordField_5
+            Positions = recordField_6
+            Isolation = recordField_7
+        }
+
+    consumerState
+
+/// freshProducer — ../src/contract.lawspec:542
+[<CompiledName("FreshProducer")>]
+let freshProducer (u: unit) : LawSpec.Data.ProducerState =
+    let recordField = None
+
+    let result =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_2 = result
+    let recordField_3 = None
+
+    let producerState: LawSpec.Data.ProducerState =
+        {
+            Identity = recordField
+            Sequences = recordField_2
+            LastSend = recordField_3
+        }
+
+    producerState
+
+/// freshTransactions — ../src/contract.lawspec:573
+[<CompiledName("FreshTransactions")>]
+let freshTransactions (u: unit) : LawSpec.Data.TransactionState =
+    let recordField = ""
+    let recordField_2 = None
+
+    let result =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_3 = result
+    let recordField_4 = false
+    let recordField_5 = []
+    let recordField_6 = false
+
+    let transactionState: LawSpec.Data.TransactionState =
+        {
+            TransactionalId = recordField
+            Producer = recordField_2
+            TxnSequences = recordField_3
+            InTransaction = recordField_4
+            Added = recordField_5
+            OffsetsSent = recordField_6
+        }
+
+    transactionState
+
+/// identityOf — ../src/contract.lawspec:658
+[<CompiledName("IdentityOf")>]
+let identityOf
+    (st: LawSpec.Data.ProducerState)
+    : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch option, LawSpec.Data.ProducerState> =
+    let value =
+        match st with
+        | subject ->
+            let identity = subject.Identity
+            identity
+
+    let pair: LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch option, LawSpec.Data.ProducerState> =
+        { First = value; Second = st }
+
+    pair
+
+/// increasing — ../src/contract.lawspec:1407
+[<CompiledName("Increasing")>]
+let increasing (xs: int64 list) : bool =
+    let it = xs
+
+    match it with
+    | [] -> true
+    | selection :: selection_2 ->
+        let it_2 = selection_2
+
+        match it_2 with
+        | [] -> true
+        | matchSelection :: _ ->
+            let logic =
+                if (selection < matchSelection) then
+                    let result = increasing selection_2
+                    result
+                else
+                    false
+
+            logic
+
+/// joinAll — ../src/contract.lawspec:442
+[<CompiledName("JoinAll")>]
+let joinAll
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (g: string)
+    (ms: string list)
+    (topics: string list)
+    : bool =
+    let it = ms
+
+    match it with
+    | [] -> true
+    | selection :: selection_2 ->
+        let value_3 =
+            let value_2 =
+                let attempted =
+                    Typed.attempt
+                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                        (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                        (fun () ->
+                            let broker =
+                                LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                    schema
+                                    symbols
+                                    (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                            let result =
+                                Typed.performed
+                                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                    (broker.JoinGroupRequest(g, selection, topics))
+
+                            result)
+
+                match attempted with
+                | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+                | LawSpec.Either.Right value -> LawSpec.Either.Right value
+
+            match value_2 with
+            | LawSpec.Either.Left _ -> false
+            | LawSpec.Either.Right _ -> true
+
+        let logic =
+            if value_3 then
+                let result_2 = joinAll schema symbols g selection_2 topics
+                result_2
+            else
+                false
+
+        logic
+
+/// joinEach — ../src/contract.lawspec:1606
+[<CompiledName("JoinEach")>]
+let joinEach
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (g: string)
+    (ms: string list)
+    (topics: string list)
+    : bool =
+    let it = ms
+
+    match it with
+    | [] -> true
+    | selection :: selection_2 ->
+        let value_3 =
+            let value_2 =
+                let attempted =
+                    Typed.attempt
+                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                        (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                        (fun () ->
+                            let groupCoordinator =
+                                LawSpec.Generated.Abilities.lawtwinKafkaGroupCoordinatorToNative
+                                    schema
+                                    symbols
+                                    (Effects.handler schema "lawtwin.kafka::ability::GroupCoordinator")
+
+                            let result =
+                                Typed.performed
+                                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                    (groupCoordinator.JoinGroup(g, selection, topics))
+
+                            result)
+
+                match attempted with
+                | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+                | LawSpec.Either.Right value -> LawSpec.Either.Right value
+
+            match value_2 with
+            | LawSpec.Either.Left _ -> false
+            | LawSpec.Either.Right _ -> true
+
+        let logic =
+            if value_3 then
+                let result_2 = joinEach schema symbols g selection_2 topics
+                result_2
+            else
+                false
+
+        logic
+
+/// kafkaConsumerAssign — ../src/contract.lawspec:1382
+[<CompiledName("KafkaConsumerAssign")>]
+let kafkaConsumerAssign
+    (consumerState: LawSpec.Data.ConsumerState)
+    (value0: LawSpec.Data.TopicPartition list)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+    let result = consumerAssign value0 consumerState
+    result
+
+/// kafkaConsumerClose — ../src/contract.lawspec:1390
+[<CompiledName("KafkaConsumerClose")>]
+let kafkaConsumerClose
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (consumerState: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+    let result = consumerClose schema symbols consumerState
+    result
+
+/// kafkaConsumerCommitSync — ../src/contract.lawspec:1385
+[<CompiledName("KafkaConsumerCommitSync")>]
+let kafkaConsumerCommitSync
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (consumerState: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+    let result = consumerCommit schema symbols consumerState
+    result
+
+/// kafkaConsumerCommittedOffset — ../src/contract.lawspec:1388
+[<CompiledName("KafkaConsumerCommittedOffset")>]
+let kafkaConsumerCommittedOffset
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (consumerState: LawSpec.Data.ConsumerState)
+    (value0: LawSpec.Data.TopicPartition)
+    : LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState> =
+    let result = consumerCommitted schema symbols value0 consumerState
+    result
+
+/// kafkaConsumerPoll — ../src/contract.lawspec:1384
+[<CompiledName("KafkaConsumerPoll")>]
+let kafkaConsumerPoll
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (consumerState: LawSpec.Data.ConsumerState)
+    (value0: int)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
+    let result = consumerPoll schema symbols value0 consumerState
+    result
+
+/// kafkaConsumerPosition — ../src/contract.lawspec:1387
+[<CompiledName("KafkaConsumerPosition")>]
+let kafkaConsumerPosition
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (consumerState: LawSpec.Data.ConsumerState)
+    (value0: LawSpec.Data.TopicPartition)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState> =
+    let result = consumerPositionOf schema symbols value0 consumerState
+    result
+
+/// kafkaConsumerSeek — ../src/contract.lawspec:1386
+[<CompiledName("KafkaConsumerSeek")>]
+let kafkaConsumerSeek
+    (consumerState: LawSpec.Data.ConsumerState)
+    (value0: LawSpec.Data.TopicPartition)
+    (value1: int64)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
+    let result = consumerSeek value0 value1 consumerState
+    result
+
+/// kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389
+[<CompiledName("KafkaConsumerSetIsolationLevel")>]
+let kafkaConsumerSetIsolationLevel
+    (consumerState: LawSpec.Data.ConsumerState)
+    (value0: LawSpec.Data.IsolationLevel)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
+    let result = consumerIsolation value0 consumerState
+    result
+
+/// kafkaConsumerStart — ../src/contract.lawspec:1380
+[<CompiledName("KafkaConsumerStart")>]
+let kafkaConsumerStart (unit: unit) : LawSpec.Data.ConsumerState =
+    let result = freshConsumer ()
+    result
+
+/// kafkaConsumerSubscribe — ../src/contract.lawspec:1383
+[<CompiledName("KafkaConsumerSubscribe")>]
+let kafkaConsumerSubscribe
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (consumerState: LawSpec.Data.ConsumerState)
+    (value0: string)
+    (value1: string)
+    (value2: string list)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState> =
+    let result = consumerJoin schema symbols value0 value1 value2 consumerState
+    result
+
+/// kafkaProducerEnableIdempotence — ../src/contract.lawspec:1230
+[<CompiledName("KafkaProducerEnableIdempotence")>]
+let kafkaProducerEnableIdempotence
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (producerState: LawSpec.Data.ProducerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> =
+    let result = producerIdempotent schema symbols producerState
+    result
+
+/// kafkaProducerFlush — ../src/contract.lawspec:1229
+[<CompiledName("KafkaProducerFlush")>]
+let kafkaProducerFlush
+    (producerState: LawSpec.Data.ProducerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.ProducerState> =
+    let result = producerFlush producerState
+    result
+
+/// kafkaProducerProducerIdentity — ../src/contract.lawspec:1232
+[<CompiledName("KafkaProducerProducerIdentity")>]
+let kafkaProducerProducerIdentity
+    (producerState: LawSpec.Data.ProducerState)
+    : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch option, LawSpec.Data.ProducerState> =
+    let result = identityOf producerState
+    result
+
+/// kafkaProducerRetryLastSend — ../src/contract.lawspec:1231
+[<CompiledName("KafkaProducerRetryLastSend")>]
+let kafkaProducerRetryLastSend
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (producerState: LawSpec.Data.ProducerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+    let result = producerRetry schema symbols producerState
+    result
+
+/// kafkaProducerSend — ../src/contract.lawspec:1228
+[<CompiledName("KafkaProducerSend")>]
+let kafkaProducerSend
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (producerState: LawSpec.Data.ProducerState)
+    (value0: LawSpec.Data.ProducerRecord)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+    let result = producerSend schema symbols value0 producerState
+    result
+
+/// kafkaProducerStart — ../src/contract.lawspec:1226
+[<CompiledName("KafkaProducerStart")>]
+let kafkaProducerStart (unit: unit) : LawSpec.Data.ProducerState =
+    let result = freshProducer ()
+    result
+
+/// kafkaTransactionsAbortTransaction — ../src/contract.lawspec:1738
+[<CompiledName("KafkaTransactionsAbortTransaction")>]
+let kafkaTransactionsAbortTransaction
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (txnState: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let result = transactionsAbort schema symbols txnState
+    result
+
+/// kafkaTransactionsAddPartitionsToTransaction — ../src/contract.lawspec:1734
+[<CompiledName("KafkaTransactionsAddPartitionsToTransaction")>]
+let kafkaTransactionsAddPartitionsToTransaction
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (txnState: LawSpec.Data.TransactionState)
+    (value0: LawSpec.Data.TopicPartition list)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let result = transactionsAdd schema symbols value0 txnState
+    result
+
+/// kafkaTransactionsBeginTransaction — ../src/contract.lawspec:1733
+[<CompiledName("KafkaTransactionsBeginTransaction")>]
+let kafkaTransactionsBeginTransaction
+    (txnState: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let result = transactionsBegin txnState
+    result
+
+/// kafkaTransactionsCommitTransaction — ../src/contract.lawspec:1737
+[<CompiledName("KafkaTransactionsCommitTransaction")>]
+let kafkaTransactionsCommitTransaction
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (txnState: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let result = transactionsCommit schema symbols txnState
+    result
+
+/// kafkaTransactionsInitTransactions — ../src/contract.lawspec:1732
+[<CompiledName("KafkaTransactionsInitTransactions")>]
+let kafkaTransactionsInitTransactions
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (txnState: LawSpec.Data.TransactionState)
+    (value0: string)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> =
+    let result = transactionsInit schema symbols value0 txnState
+    result
+
+/// kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735
+[<CompiledName("KafkaTransactionsSendInTransaction")>]
+let kafkaTransactionsSendInTransaction
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (txnState: LawSpec.Data.TransactionState)
+    (value0: LawSpec.Data.ProducerRecord)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
+    let result = transactionsSend schema symbols value0 txnState
+    result
+
+/// kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736
+[<CompiledName("KafkaTransactionsSendOffsetsToTransaction")>]
+let kafkaTransactionsSendOffsetsToTransaction
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (txnState: LawSpec.Data.TransactionState)
+    (value0: string)
+    (value1: LawSpec.Data.OffsetEntry list)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let result = transactionsOffsets schema symbols value0 value1 txnState
+    result
+
+/// kafkaTransactionsStart — ../src/contract.lawspec:1730
+[<CompiledName("KafkaTransactionsStart")>]
+let kafkaTransactionsStart (unit: unit) : LawSpec.Data.TransactionState =
+    let result = freshTransactions ()
+    result
+
+/// keepPositions — ../src/contract.lawspec:688
+[<CompiledName("KeepPositions")>]
+let keepPositions
+    (tps: LawSpec.Data.TopicPartition list)
+    (positions: Map<LawSpec.Data.TopicPartition, int64>)
+    (acc: Map<LawSpec.Data.TopicPartition, int64>)
+    : Map<LawSpec.Data.TopicPartition, int64> =
+    let it = tps
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let result = Map.tryFind selection positions
+        let it_2 = result
+
+        match it_2 with
         | None ->
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownMemberId) : LawSpec.Data.Group)
+            let result_2 = keepPositions selection_2 positions acc
+            result_2
+        | Some matchSelection ->
+            let result_3 = Map.add selection matchSelection acc
+            let result_4 = keepPositions selection_2 positions result_3
+            result_4
+
+/// keyValDeleteItems — <lawspec.collections>:258
+[<CompiledName("LawspecCollectionsKeyValDeleteItemsInt64ListEntryInt64Int64")>]
+let lawspecCollectionsKeyValDeleteItemsInt64ListEntryInt64Int64
+    (k: int64)
+    (es: LawSpec.Data.Entry<int64, int64> list)
+    : LawSpec.Data.Entry<int64, int64> list =
+    let it = es
+
+    match it with
+    | [] -> es
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> es
+            | LawSpec.Data.Ordering.Equal -> selection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValDeleteItemsInt64ListEntryInt64Int64 k selection_2
+
+                (selection :: result)
+
+/// keyValDeleteItems — <lawspec.collections>:258
+[<CompiledName("LawspecCollectionsKeyValDeleteItemsTextListEntryTextListText")>]
+let lawspecCollectionsKeyValDeleteItemsTextListEntryTextListText
+    (k: string)
+    (es: LawSpec.Data.Entry<string, string list> list)
+    : LawSpec.Data.Entry<string, string list> list =
+    let it = es
+
+    match it with
+    | [] -> es
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> es
+            | LawSpec.Data.Ordering.Equal -> selection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValDeleteItemsTextListEntryTextListText k selection_2
+
+                (selection :: result)
+
+/// keyValDelete — <lawspec.collections>:319
+[<CompiledName("LawspecCollectionsKeyValDeleteInt64KeyValInt64Int64")>]
+let lawspecCollectionsKeyValDeleteInt64KeyValInt64Int64 (k: int64) (m: Map<int64, int64>) : Map<int64, int64> =
+    Map.remove k m
+
+/// keyValDelete — <lawspec.collections>:319
+[<CompiledName("LawspecCollectionsKeyValDeleteTextKeyValTextListText")>]
+let lawspecCollectionsKeyValDeleteTextKeyValTextListText
+    (k: string)
+    (m: Map<string, string list>)
+    : Map<string, string list> =
+    Map.remove k m
+
+/// keyValEntries — <lawspec.collections>:331
+[<CompiledName("LawspecCollectionsKeyValEntriesKeyValTextListText")>]
+let lawspecCollectionsKeyValEntriesKeyValTextListText
+    (m: Map<string, string list>)
+    : LawSpec.Data.Entry<string, string list> list =
+    Typed.entries (fun k v -> ({ Key = k; Value = v }: LawSpec.Data.Entry<_, _>)) m
+
+/// keyValEntries — <lawspec.collections>:331
+[<CompiledName("LawspecCollectionsKeyValEntriesKeyValTextGroup")>]
+let lawspecCollectionsKeyValEntriesKeyValTextGroup
+    (m: Map<string, LawSpec.Data.Group>)
+    : LawSpec.Data.Entry<string, LawSpec.Data.Group> list =
+    Typed.entries (fun k v -> ({ Key = k; Value = v }: LawSpec.Data.Entry<_, _>)) m
+
+/// keyValEntries — <lawspec.collections>:331
+[<CompiledName("LawspecCollectionsKeyValEntriesKeyValTextListTopicPartition")>]
+let lawspecCollectionsKeyValEntriesKeyValTextListTopicPartition
+    (m: Map<string, LawSpec.Data.TopicPartition list>)
+    : LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list =
+    Typed.entries (fun k v -> ({ Key = k; Value = v }: LawSpec.Data.Entry<_, _>)) m
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryTextInt64ListEntryTextInt64")>]
+let lawspecCollectionsKeyValFromItemsListEntryTextInt64ListEntryTextInt64
+    (es: LawSpec.Data.Entry<string, int64> list)
+    (acc: LawSpec.Data.Entry<string, int64> list)
+    : LawSpec.Data.Entry<string, int64> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsTextInt64ListEntryTextInt64 matchSelection matchSelection_2 acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryTextInt64ListEntryTextInt64 selection_2 result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryGroupPartitionInt64ListEntryGroupPartitionInt64")>]
+let lawspecCollectionsKeyValFromItemsListEntryGroupPartitionInt64ListEntryGroupPartitionInt64
+    (es: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list)
+    (acc: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list)
+    : LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsGroupPartitionInt64ListEntryGroupPartitionInt64
+                    matchSelection
+                    matchSelection_2
+                    acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryGroupPartitionInt64ListEntryGroupPartitionInt64
+                    selection_2
+                    result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt32ListEntryTopicPartitionInt32")>]
+let lawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt32ListEntryTopicPartitionInt32
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list)
+    (acc: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list)
+    : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsTopicPartitionInt32ListEntryTopicPartitionInt32
+                    matchSelection
+                    matchSelection_2
+                    acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt32ListEntryTopicPartitionInt32
+                    selection_2
+                    result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog")>]
+let lawspecCollectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list)
+    (acc: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list)
+    : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog
+                    matchSelection
+                    matchSelection_2
+                    acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog
+                    selection_2
+                    result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryTextListTextListEntryTextListText")>]
+let lawspecCollectionsKeyValFromItemsListEntryTextListTextListEntryTextListText
+    (es: LawSpec.Data.Entry<string, string list> list)
+    (acc: LawSpec.Data.Entry<string, string list> list)
+    : LawSpec.Data.Entry<string, string list> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsTextListTextListEntryTextListText matchSelection matchSelection_2 acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryTextListTextListEntryTextListText selection_2 result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition")>]
+let lawspecCollectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition
+    (es: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list)
+    (acc: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list)
+    : LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition
+                    matchSelection
+                    matchSelection_2
+                    acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition
+                    selection_2
+                    result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryTextInt32ListEntryTextInt32")>]
+let lawspecCollectionsKeyValFromItemsListEntryTextInt32ListEntryTextInt32
+    (es: LawSpec.Data.Entry<string, int> list)
+    (acc: LawSpec.Data.Entry<string, int> list)
+    : LawSpec.Data.Entry<string, int> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsTextInt32ListEntryTextInt32 matchSelection matchSelection_2 acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryTextInt32ListEntryTextInt32 selection_2 result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryInt64Int64ListEntryInt64Int64")>]
+let lawspecCollectionsKeyValFromItemsListEntryInt64Int64ListEntryInt64Int64
+    (es: LawSpec.Data.Entry<int64, int64> list)
+    (acc: LawSpec.Data.Entry<int64, int64> list)
+    : LawSpec.Data.Entry<int64, int64> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsInt64Int64ListEntryInt64Int64 matchSelection matchSelection_2 acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryInt64Int64ListEntryInt64Int64 selection_2 result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt64ListEntryTopicPartitionInt64")>]
+let lawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt64ListEntryTopicPartitionInt64
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list)
+    (acc: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list)
+    : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsTopicPartitionInt64ListEntryTopicPartitionInt64
+                    matchSelection
+                    matchSelection_2
+                    acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt64ListEntryTopicPartitionInt64
+                    selection_2
+                    result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryInt64ListBatchMetaListEntryInt64ListBatchMeta")>]
+let lawspecCollectionsKeyValFromItemsListEntryInt64ListBatchMetaListEntryInt64ListBatchMeta
+    (es: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list)
+    (acc: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list)
+    : LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsInt64ListBatchMetaListEntryInt64ListBatchMeta
+                    matchSelection
+                    matchSelection_2
+                    acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryInt64ListBatchMetaListEntryInt64ListBatchMeta
+                    selection_2
+                    result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup")>]
+let lawspecCollectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup
+    (es: LawSpec.Data.Entry<string, LawSpec.Data.Group> list)
+    (acc: LawSpec.Data.Entry<string, LawSpec.Data.Group> list)
+    : LawSpec.Data.Entry<string, LawSpec.Data.Group> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsTextGroupListEntryTextGroup matchSelection matchSelection_2 acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup selection_2 result
+
+            result_2
+
+/// keyValFromItems — <lawspec.collections>:284
+[<CompiledName("LawspecCollectionsKeyValFromItemsListEntryInt64ProducerEntryListEntryInt64ProducerEntry")>]
+let lawspecCollectionsKeyValFromItemsListEntryInt64ProducerEntryListEntryInt64ProducerEntry
+    (es: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list)
+    (acc: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list)
+    : LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+
+            let result =
+                lawspecCollectionsKeyValPutItemsInt64ProducerEntryListEntryInt64ProducerEntry
+                    matchSelection
+                    matchSelection_2
+                    acc
+
+            let result_2 =
+                lawspecCollectionsKeyValFromItemsListEntryInt64ProducerEntryListEntryInt64ProducerEntry
+                    selection_2
+                    result
+
+            result_2
+
+/// keyValKeysItems — <lawspec.collections>:293
+[<CompiledName("LawspecCollectionsKeyValKeysItemsListEntryTextListText")>]
+let lawspecCollectionsKeyValKeysItemsListEntryTextListText
+    (es: LawSpec.Data.Entry<string, string list> list)
+    : string list =
+    let it = es
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let result = lawspecCollectionsKeyValKeysItemsListEntryTextListText selection_2
+            (matchSelection :: result)
+
+/// keyValKeys — <lawspec.collections>:323
+[<CompiledName("LawspecCollectionsKeyValKeysKeyValTextListText")>]
+let lawspecCollectionsKeyValKeysKeyValTextListText (m: Map<string, string list>) : string list = Typed.keys m
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog")>]
+let lawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog
+    (k: LawSpec.Data.TopicPartition)
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list)
+    : LawSpec.Data.PartitionLog option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog k selection_2
+
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsTextListEntryTextListTopicPartition")>]
+let lawspecCollectionsKeyValLookupItemsTextListEntryTextListTopicPartition
+    (k: string)
+    (es: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list)
+    : (LawSpec.Data.TopicPartition list) option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValLookupItemsTextListEntryTextListTopicPartition k selection_2
+
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsTextListEntryTextInt32")>]
+let lawspecCollectionsKeyValLookupItemsTextListEntryTextInt32
+    (k: string)
+    (es: LawSpec.Data.Entry<string, int> list)
+    : int option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result = lawspecCollectionsKeyValLookupItemsTextListEntryTextInt32 k selection_2
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ListBatchMeta")>]
+let lawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ListBatchMeta
+    (k: int64)
+    (es: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list)
+    : (LawSpec.Data.BatchMeta list) option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ListBatchMeta k selection_2
+
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt32")>]
+let lawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt32
+    (k: LawSpec.Data.TopicPartition)
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list)
+    : int option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt32 k selection_2
+
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt64")>]
+let lawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt64
+    (k: LawSpec.Data.TopicPartition)
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list)
+    : int64 option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt64 k selection_2
+
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ProducerEntry")>]
+let lawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ProducerEntry
+    (k: int64)
+    (es: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list)
+    : LawSpec.Data.ProducerEntry option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ProducerEntry k selection_2
+
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsTextListEntryTextListText")>]
+let lawspecCollectionsKeyValLookupItemsTextListEntryTextListText
+    (k: string)
+    (es: LawSpec.Data.Entry<string, string list> list)
+    : (string list) option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValLookupItemsTextListEntryTextListText k selection_2
+
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt64")>]
+let lawspecCollectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt64
+    (k: LawSpec.Data.GroupPartition)
+    (es: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list)
+    : int64 option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt64 k selection_2
+
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsTextListEntryTextGroup")>]
+let lawspecCollectionsKeyValLookupItemsTextListEntryTextGroup
+    (k: string)
+    (es: LawSpec.Data.Entry<string, LawSpec.Data.Group> list)
+    : LawSpec.Data.Group option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result = lawspecCollectionsKeyValLookupItemsTextListEntryTextGroup k selection_2
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64Int64")>]
+let lawspecCollectionsKeyValLookupItemsInt64ListEntryInt64Int64
+    (k: int64)
+    (es: LawSpec.Data.Entry<int64, int64> list)
+    : int64 option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValLookupItemsInt64ListEntryInt64Int64 k selection_2
+
+                result
+
+/// keyValLookupItems — <lawspec.collections>:271
+[<CompiledName("LawspecCollectionsKeyValLookupItemsTextListEntryTextInt64")>]
+let lawspecCollectionsKeyValLookupItemsTextListEntryTextInt64
+    (k: string)
+    (es: LawSpec.Data.Entry<string, int64> list)
+    : int64 option =
+    let it = es
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let matchSelection_2 = subject.Value
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less -> None
+            | LawSpec.Data.Ordering.Equal -> Some matchSelection_2
+            | LawSpec.Data.Ordering.Greater ->
+                let result = lawspecCollectionsKeyValLookupItemsTextListEntryTextInt64 k selection_2
+                result
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt64")>]
+let lawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt64
+    (k: LawSpec.Data.TopicPartition)
+    (m: Map<LawSpec.Data.TopicPartition, int64>)
+    : int64 option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupInt64KeyValInt64ListBatchMeta")>]
+let lawspecCollectionsKeyValLookupInt64KeyValInt64ListBatchMeta
+    (k: int64)
+    (m: Map<int64, LawSpec.Data.BatchMeta list>)
+    : (LawSpec.Data.BatchMeta list) option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupTextKeyValTextListTopicPartition")>]
+let lawspecCollectionsKeyValLookupTextKeyValTextListTopicPartition
+    (k: string)
+    (m: Map<string, LawSpec.Data.TopicPartition list>)
+    : (LawSpec.Data.TopicPartition list) option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupInt64KeyValInt64ProducerEntry")>]
+let lawspecCollectionsKeyValLookupInt64KeyValInt64ProducerEntry
+    (k: int64)
+    (m: Map<int64, LawSpec.Data.ProducerEntry>)
+    : LawSpec.Data.ProducerEntry option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt64")>]
+let lawspecCollectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt64
+    (k: LawSpec.Data.GroupPartition)
+    (m: Map<LawSpec.Data.GroupPartition, int64>)
+    : int64 option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt32")>]
+let lawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt32
+    (k: LawSpec.Data.TopicPartition)
+    (m: Map<LawSpec.Data.TopicPartition, int>)
+    : int option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupInt64KeyValInt64Int64")>]
+let lawspecCollectionsKeyValLookupInt64KeyValInt64Int64 (k: int64) (m: Map<int64, int64>) : int64 option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupTextKeyValTextGroup")>]
+let lawspecCollectionsKeyValLookupTextKeyValTextGroup
+    (k: string)
+    (m: Map<string, LawSpec.Data.Group>)
+    : LawSpec.Data.Group option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupTextKeyValTextInt32")>]
+let lawspecCollectionsKeyValLookupTextKeyValTextInt32 (k: string) (m: Map<string, int>) : int option = Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog")>]
+let lawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog
+    (k: LawSpec.Data.TopicPartition)
+    (m: Map<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>)
+    : LawSpec.Data.PartitionLog option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupTextKeyValTextListText")>]
+let lawspecCollectionsKeyValLookupTextKeyValTextListText
+    (k: string)
+    (m: Map<string, string list>)
+    : (string list) option =
+    Map.tryFind k m
+
+/// keyValLookup — <lawspec.collections>:311
+[<CompiledName("LawspecCollectionsKeyValLookupTextKeyValTextInt64")>]
+let lawspecCollectionsKeyValLookupTextKeyValTextInt64 (k: string) (m: Map<string, int64>) : int64 option =
+    Map.tryFind k m
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryTextListTopicPartition")>]
+let lawspecCollectionsKeyValOfListEntryTextListTopicPartition
+    (es: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list)
+    : Map<string, LawSpec.Data.TopicPartition list> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryTextInt64")>]
+let lawspecCollectionsKeyValOfListEntryTextInt64 (es: LawSpec.Data.Entry<string, int64> list) : Map<string, int64> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryInt64ListBatchMeta")>]
+let lawspecCollectionsKeyValOfListEntryInt64ListBatchMeta
+    (es: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list)
+    : Map<int64, LawSpec.Data.BatchMeta list> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryTextGroup")>]
+let lawspecCollectionsKeyValOfListEntryTextGroup
+    (es: LawSpec.Data.Entry<string, LawSpec.Data.Group> list)
+    : Map<string, LawSpec.Data.Group> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryTextInt32")>]
+let lawspecCollectionsKeyValOfListEntryTextInt32 (es: LawSpec.Data.Entry<string, int> list) : Map<string, int> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryInt64ProducerEntry")>]
+let lawspecCollectionsKeyValOfListEntryInt64ProducerEntry
+    (es: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list)
+    : Map<int64, LawSpec.Data.ProducerEntry> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryTopicPartitionPartitionLog")>]
+let lawspecCollectionsKeyValOfListEntryTopicPartitionPartitionLog
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list)
+    : Map<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryTopicPartitionInt32")>]
+let lawspecCollectionsKeyValOfListEntryTopicPartitionInt32
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list)
+    : Map<LawSpec.Data.TopicPartition, int> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryTopicPartitionInt64")>]
+let lawspecCollectionsKeyValOfListEntryTopicPartitionInt64
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list)
+    : Map<LawSpec.Data.TopicPartition, int64> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryGroupPartitionInt64")>]
+let lawspecCollectionsKeyValOfListEntryGroupPartitionInt64
+    (es: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list)
+    : Map<LawSpec.Data.GroupPartition, int64> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryTextListText")>]
+let lawspecCollectionsKeyValOfListEntryTextListText
+    (es: LawSpec.Data.Entry<string, string list> list)
+    : Map<string, string list> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValOf — <lawspec.collections>:307
+[<CompiledName("LawspecCollectionsKeyValOfListEntryInt64Int64")>]
+let lawspecCollectionsKeyValOfListEntryInt64Int64 (es: LawSpec.Data.Entry<int64, int64> list) : Map<int64, int64> =
+    Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) es
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog")>]
+let lawspecCollectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog
+    (k: LawSpec.Data.TopicPartition)
+    (v: LawSpec.Data.PartitionLog)
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list)
+    : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog
+                        k
+                        v
+                        selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsGroupPartitionInt64ListEntryGroupPartitionInt64")>]
+let lawspecCollectionsKeyValPutItemsGroupPartitionInt64ListEntryGroupPartitionInt64
+    (k: LawSpec.Data.GroupPartition)
+    (v: int64)
+    (es: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list)
+    : LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<LawSpec.Data.GroupPartition, int64> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsGroupPartitionInt64ListEntryGroupPartitionInt64 k v selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsTextGroupListEntryTextGroup")>]
+let lawspecCollectionsKeyValPutItemsTextGroupListEntryTextGroup
+    (k: string)
+    (v: LawSpec.Data.Group)
+    (es: LawSpec.Data.Entry<string, LawSpec.Data.Group> list)
+    : LawSpec.Data.Entry<string, LawSpec.Data.Group> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<string, LawSpec.Data.Group> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<string, LawSpec.Data.Group> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<string, LawSpec.Data.Group> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsTextGroupListEntryTextGroup k v selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsInt64ProducerEntryListEntryInt64ProducerEntry")>]
+let lawspecCollectionsKeyValPutItemsInt64ProducerEntryListEntryInt64ProducerEntry
+    (k: int64)
+    (v: LawSpec.Data.ProducerEntry)
+    (es: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list)
+    : LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<int64, LawSpec.Data.ProducerEntry> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsInt64ProducerEntryListEntryInt64ProducerEntry k v selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsTextInt32ListEntryTextInt32")>]
+let lawspecCollectionsKeyValPutItemsTextInt32ListEntryTextInt32
+    (k: string)
+    (v: int)
+    (es: LawSpec.Data.Entry<string, int> list)
+    : LawSpec.Data.Entry<string, int> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<string, int> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<string, int> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<string, int> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsTextInt32ListEntryTextInt32 k v selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsTextInt64ListEntryTextInt64")>]
+let lawspecCollectionsKeyValPutItemsTextInt64ListEntryTextInt64
+    (k: string)
+    (v: int64)
+    (es: LawSpec.Data.Entry<string, int64> list)
+    : LawSpec.Data.Entry<string, int64> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<string, int64> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<string, int64> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<string, int64> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsTextInt64ListEntryTextInt64 k v selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition")>]
+let lawspecCollectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition
+    (k: string)
+    (v: LawSpec.Data.TopicPartition list)
+    (es: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list)
+    : LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition
+                        k
+                        v
+                        selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsInt64ListBatchMetaListEntryInt64ListBatchMeta")>]
+let lawspecCollectionsKeyValPutItemsInt64ListBatchMetaListEntryInt64ListBatchMeta
+    (k: int64)
+    (v: LawSpec.Data.BatchMeta list)
+    (es: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list)
+    : LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<int64, LawSpec.Data.BatchMeta list> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsInt64ListBatchMetaListEntryInt64ListBatchMeta k v selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsTextListTextListEntryTextListText")>]
+let lawspecCollectionsKeyValPutItemsTextListTextListEntryTextListText
+    (k: string)
+    (v: string list)
+    (es: LawSpec.Data.Entry<string, string list> list)
+    : LawSpec.Data.Entry<string, string list> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<string, string list> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<string, string list> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<string, string list> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsTextListTextListEntryTextListText k v selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsTopicPartitionInt64ListEntryTopicPartitionInt64")>]
+let lawspecCollectionsKeyValPutItemsTopicPartitionInt64ListEntryTopicPartitionInt64
+    (k: LawSpec.Data.TopicPartition)
+    (v: int64)
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list)
+    : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int64> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsTopicPartitionInt64ListEntryTopicPartitionInt64 k v selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsTopicPartitionInt32ListEntryTopicPartitionInt32")>]
+let lawspecCollectionsKeyValPutItemsTopicPartitionInt32ListEntryTopicPartitionInt32
+    (k: LawSpec.Data.TopicPartition)
+    (v: int)
+    (es: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list)
+    : LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsTopicPartitionInt32ListEntryTopicPartitionInt32 k v selection_2
+
+                (selection :: result)
+
+/// keyValPutItems — <lawspec.collections>:245
+[<CompiledName("LawspecCollectionsKeyValPutItemsInt64Int64ListEntryInt64Int64")>]
+let lawspecCollectionsKeyValPutItemsInt64Int64ListEntryInt64Int64
+    (k: int64)
+    (v: int64)
+    (es: LawSpec.Data.Entry<int64, int64> list)
+    : LawSpec.Data.Entry<int64, int64> list =
+    let it = es
+
+    match it with
+    | [] ->
+        let value =
+            let recordField = k
+            let recordField_2 = v
+
+            let entry: LawSpec.Data.Entry<int64, int64> =
+                {
+                    Key = recordField
+                    Value = recordField_2
+                }
+
+            entry
+
+        (value :: [])
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Key
+            let it_3 = ordering (Typed.compare k matchSelection)
+
+            match it_3 with
+            | LawSpec.Data.Ordering.Less ->
+                let value_2 =
+                    let recordField_3 = k
+                    let recordField_4 = v
+
+                    let entry_2: LawSpec.Data.Entry<int64, int64> =
+                        {
+                            Key = recordField_3
+                            Value = recordField_4
+                        }
+
+                    entry_2
+
+                (value_2 :: es)
+            | LawSpec.Data.Ordering.Equal ->
+                let value_3 =
+                    let recordField_5 = k
+                    let recordField_6 = v
+
+                    let entry_3: LawSpec.Data.Entry<int64, int64> =
+                        {
+                            Key = recordField_5
+                            Value = recordField_6
+                        }
+
+                    entry_3
+
+                (value_3 :: selection_2)
+            | LawSpec.Data.Ordering.Greater ->
+                let result =
+                    lawspecCollectionsKeyValPutItemsInt64Int64ListEntryInt64Int64 k v selection_2
+
+                (selection :: result)
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutGroupPartitionInt64KeyValGroupPartitionInt64")>]
+let lawspecCollectionsKeyValPutGroupPartitionInt64KeyValGroupPartitionInt64
+    (k: LawSpec.Data.GroupPartition)
+    (v: int64)
+    (m: Map<LawSpec.Data.GroupPartition, int64>)
+    : Map<LawSpec.Data.GroupPartition, int64> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutTextInt32KeyValTextInt32")>]
+let lawspecCollectionsKeyValPutTextInt32KeyValTextInt32 (k: string) (v: int) (m: Map<string, int>) : Map<string, int> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition")>]
+let lawspecCollectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition
+    (k: string)
+    (v: LawSpec.Data.TopicPartition list)
+    (m: Map<string, LawSpec.Data.TopicPartition list>)
+    : Map<string, LawSpec.Data.TopicPartition list> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutTopicPartitionInt64KeyValTopicPartitionInt64")>]
+let lawspecCollectionsKeyValPutTopicPartitionInt64KeyValTopicPartitionInt64
+    (k: LawSpec.Data.TopicPartition)
+    (v: int64)
+    (m: Map<LawSpec.Data.TopicPartition, int64>)
+    : Map<LawSpec.Data.TopicPartition, int64> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutInt64ProducerEntryKeyValInt64ProducerEntry")>]
+let lawspecCollectionsKeyValPutInt64ProducerEntryKeyValInt64ProducerEntry
+    (k: int64)
+    (v: LawSpec.Data.ProducerEntry)
+    (m: Map<int64, LawSpec.Data.ProducerEntry>)
+    : Map<int64, LawSpec.Data.ProducerEntry> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutInt64ListBatchMetaKeyValInt64ListBatchMeta")>]
+let lawspecCollectionsKeyValPutInt64ListBatchMetaKeyValInt64ListBatchMeta
+    (k: int64)
+    (v: LawSpec.Data.BatchMeta list)
+    (m: Map<int64, LawSpec.Data.BatchMeta list>)
+    : Map<int64, LawSpec.Data.BatchMeta list> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutTextGroupKeyValTextGroup")>]
+let lawspecCollectionsKeyValPutTextGroupKeyValTextGroup
+    (k: string)
+    (v: LawSpec.Data.Group)
+    (m: Map<string, LawSpec.Data.Group>)
+    : Map<string, LawSpec.Data.Group> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutInt64Int64KeyValInt64Int64")>]
+let lawspecCollectionsKeyValPutInt64Int64KeyValInt64Int64
+    (k: int64)
+    (v: int64)
+    (m: Map<int64, int64>)
+    : Map<int64, int64> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutTextListTextKeyValTextListText")>]
+let lawspecCollectionsKeyValPutTextListTextKeyValTextListText
+    (k: string)
+    (v: string list)
+    (m: Map<string, string list>)
+    : Map<string, string list> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog")>]
+let lawspecCollectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog
+    (k: LawSpec.Data.TopicPartition)
+    (v: LawSpec.Data.PartitionLog)
+    (m: Map<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>)
+    : Map<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutTopicPartitionInt32KeyValTopicPartitionInt32")>]
+let lawspecCollectionsKeyValPutTopicPartitionInt32KeyValTopicPartitionInt32
+    (k: LawSpec.Data.TopicPartition)
+    (v: int)
+    (m: Map<LawSpec.Data.TopicPartition, int>)
+    : Map<LawSpec.Data.TopicPartition, int> =
+    Map.add k v m
+
+/// keyValPut — <lawspec.collections>:315
+[<CompiledName("LawspecCollectionsKeyValPutTextInt64KeyValTextInt64")>]
+let lawspecCollectionsKeyValPutTextInt64KeyValTextInt64
+    (k: string)
+    (v: int64)
+    (m: Map<string, int64>)
+    : Map<string, int64> =
+    Map.add k v m
+
+/// keyValValuesItems — <lawspec.collections>:300
+[<CompiledName("LawspecCollectionsKeyValValuesItemsListEntryInt64Int64")>]
+let lawspecCollectionsKeyValValuesItemsListEntryInt64Int64 (es: LawSpec.Data.Entry<int64, int64> list) : int64 list =
+    let it = es
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | subject ->
+            let matchSelection = subject.Value
+            let result = lawspecCollectionsKeyValValuesItemsListEntryInt64Int64 selection_2
+            (matchSelection :: result)
+
+/// keyValValues — <lawspec.collections>:327
+[<CompiledName("LawspecCollectionsKeyValValuesKeyValInt64Int64")>]
+let lawspecCollectionsKeyValValuesKeyValInt64Int64 (m: Map<int64, int64>) : int64 list = Typed.values m
+
+/// setFromItems — <lawspec.collections>:123
+[<CompiledName("LawspecCollectionsSetFromItemsListInt32ListInt32")>]
+let lawspecCollectionsSetFromItemsListInt32ListInt32 (xs: int list) (acc: int list) : int list =
+    let it = xs
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let result = lawspecCollectionsSetInsertItemsInt32ListInt32 selection acc
+        let result_2 = lawspecCollectionsSetFromItemsListInt32ListInt32 selection_2 result
+        result_2
+
+/// setFromItems — <lawspec.collections>:123
+[<CompiledName("LawspecCollectionsSetFromItemsListInt64ListInt64")>]
+let lawspecCollectionsSetFromItemsListInt64ListInt64 (xs: int64 list) (acc: int64 list) : int64 list =
+    let it = xs
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let result = lawspecCollectionsSetInsertItemsInt64ListInt64 selection acc
+        let result_2 = lawspecCollectionsSetFromItemsListInt64ListInt64 selection_2 result
+        result_2
+
+/// setFromItems — <lawspec.collections>:123
+[<CompiledName("LawspecCollectionsSetFromItemsListTextListText")>]
+let lawspecCollectionsSetFromItemsListTextListText (xs: string list) (acc: string list) : string list =
+    let it = xs
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let result = lawspecCollectionsSetInsertItemsTextListText selection acc
+        let result_2 = lawspecCollectionsSetFromItemsListTextListText selection_2 result
+        result_2
+
+/// setInsertItems — <lawspec.collections>:67
+[<CompiledName("LawspecCollectionsSetInsertItemsInt32ListInt32")>]
+let lawspecCollectionsSetInsertItemsInt32ListInt32 (x: int) (xs: int list) : int list =
+    let it = xs
+
+    match it with
+    | [] -> (x :: [])
+    | selection :: selection_2 ->
+        let it_2 = ordering (Typed.compare x selection)
+
+        match it_2 with
+        | LawSpec.Data.Ordering.Less -> (x :: xs)
+        | LawSpec.Data.Ordering.Equal -> xs
+        | LawSpec.Data.Ordering.Greater ->
+            let result = lawspecCollectionsSetInsertItemsInt32ListInt32 x selection_2
+            (selection :: result)
+
+/// setInsertItems — <lawspec.collections>:67
+[<CompiledName("LawspecCollectionsSetInsertItemsInt64ListInt64")>]
+let lawspecCollectionsSetInsertItemsInt64ListInt64 (x: int64) (xs: int64 list) : int64 list =
+    let it = xs
+
+    match it with
+    | [] -> (x :: [])
+    | selection :: selection_2 ->
+        let it_2 = ordering (Typed.compare x selection)
+
+        match it_2 with
+        | LawSpec.Data.Ordering.Less -> (x :: xs)
+        | LawSpec.Data.Ordering.Equal -> xs
+        | LawSpec.Data.Ordering.Greater ->
+            let result = lawspecCollectionsSetInsertItemsInt64ListInt64 x selection_2
+            (selection :: result)
+
+/// setInsertItems — <lawspec.collections>:67
+[<CompiledName("LawspecCollectionsSetInsertItemsTextListText")>]
+let lawspecCollectionsSetInsertItemsTextListText (x: string) (xs: string list) : string list =
+    let it = xs
+
+    match it with
+    | [] -> (x :: [])
+    | selection :: selection_2 ->
+        let it_2 = ordering (Typed.compare x selection)
+
+        match it_2 with
+        | LawSpec.Data.Ordering.Less -> (x :: xs)
+        | LawSpec.Data.Ordering.Equal -> xs
+        | LawSpec.Data.Ordering.Greater ->
+            let result = lawspecCollectionsSetInsertItemsTextListText x selection_2
+            (selection :: result)
+
+/// setMemberItems — <lawspec.collections>:89
+[<CompiledName("LawspecCollectionsSetMemberItemsInt64ListInt64")>]
+let lawspecCollectionsSetMemberItemsInt64ListInt64 (x: int64) (xs: int64 list) : bool =
+    let it = xs
+
+    match it with
+    | [] -> false
+    | selection :: selection_2 ->
+        let it_2 = ordering (Typed.compare x selection)
+
+        match it_2 with
+        | LawSpec.Data.Ordering.Less -> false
+        | LawSpec.Data.Ordering.Equal -> true
+        | LawSpec.Data.Ordering.Greater ->
+            let result = lawspecCollectionsSetMemberItemsInt64ListInt64 x selection_2
+            result
+
+/// setMember — <lawspec.collections>:146
+[<CompiledName("LawspecCollectionsSetMemberInt64SetInt64")>]
+let lawspecCollectionsSetMemberInt64SetInt64 (x: int64) (s: Set<int64>) : bool = Set.contains x s
+
+/// setOf — <lawspec.collections>:144
+[<CompiledName("LawspecCollectionsSetOfListText")>]
+let lawspecCollectionsSetOfListText (xs: string list) : Set<string> = Set.ofList xs
+
+/// setOf — <lawspec.collections>:144
+[<CompiledName("LawspecCollectionsSetOfListInt32")>]
+let lawspecCollectionsSetOfListInt32 (xs: int list) : Set<int> = Set.ofList xs
+
+/// setOf — <lawspec.collections>:144
+[<CompiledName("LawspecCollectionsSetOfListInt64")>]
+let lawspecCollectionsSetOfListInt64 (xs: int64 list) : Set<int64> = Set.ofList xs
+
+/// setRemoveItems — <lawspec.collections>:78
+[<CompiledName("LawspecCollectionsSetRemoveItemsTextListText")>]
+let lawspecCollectionsSetRemoveItemsTextListText (x: string) (xs: string list) : string list =
+    let it = xs
+
+    match it with
+    | [] -> xs
+    | selection :: selection_2 ->
+        let it_2 = ordering (Typed.compare x selection)
+
+        match it_2 with
+        | LawSpec.Data.Ordering.Less -> xs
+        | LawSpec.Data.Ordering.Equal -> selection_2
+        | LawSpec.Data.Ordering.Greater ->
+            let result = lawspecCollectionsSetRemoveItemsTextListText x selection_2
+            (selection :: result)
+
+/// setRemove — <lawspec.collections>:154
+[<CompiledName("LawspecCollectionsSetRemoveTextSetText")>]
+let lawspecCollectionsSetRemoveTextSetText (x: string) (s: Set<string>) : Set<string> = Set.remove x s
+
+/// setUnion — <lawspec.collections>:158
+[<CompiledName("LawspecCollectionsSetUnionSetTextSetText")>]
+let lawspecCollectionsSetUnionSetTextSetText (s: Set<string>) (t: Set<string>) : Set<string> = Set.union s t
+
+/// lawtwinKafkaModelAddPartitionsToTxn — ../src/model.lawspec:618
+[<CompiledName("LawtwinKafkaModelAddPartitionsToTxn")>]
+let lawtwinKafkaModelAddPartitionsToTxn
+    (txid: string)
+    (pid: int64)
+    (epoch: int16)
+    (tps: LawSpec.Data.TopicPartition list)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelCheckTxnProducer txid pid epoch b
+    let entry = result
+    let result_2 = lawtwinKafkaModelAllKnown tps b
+
+    if not result_2 then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownTopicOrPartition)
+        : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+    else
+        let value_6 =
+            let value =
+                match entry with
+                | subject ->
+                    let txn = subject.Txn
+                    txn
+
+            let it = value
+
+            match it with
+            | LawSpec.Data.TxnState.NoTxn ->
+                let value_2 =
+                    let result_3 = lawtwinKafkaModelUnionPartitions tps []
+                    let txnPartitions = result_3
+                    let txnOffsets = []
+
+                    let ongoingDetails: LawSpec.Data.OngoingDetails =
+                        {
+                            TxnOffsets = txnOffsets
+                            TxnPartitions = txnPartitions
+                        }
+
+                    ongoingDetails
+
+                LawSpec.Data.TxnState.Ongoing(value_2)
+            | LawSpec.Data.TxnState.Ongoing(selection) ->
+                let value_3 =
+                    match selection with
+                    | subject ->
+                        let txnPartitions_2 = subject.TxnPartitions
+                        txnPartitions_2
+
+                let selection_2 = value_3
+
+                let value_4 =
+                    match selection with
+                    | subject ->
+                        let txnOffsets_2 = subject.TxnOffsets
+                        txnOffsets_2
+
+                let selection_3 = value_4
+
+                let value_5 =
+                    let result_4 = lawtwinKafkaModelUnionPartitions tps selection_2
+                    let txnPartitions_3 = result_4
+                    let txnOffsets_3 = selection_3
+
+                    let ongoingDetails_2: LawSpec.Data.OngoingDetails =
+                        {
+                            TxnOffsets = txnOffsets_3
+                            TxnPartitions = txnPartitions_3
+                        }
+
+                    ongoingDetails_2
+
+                LawSpec.Data.TxnState.Ongoing(value_5)
+
+        let next = value_6
+
+        let value_7 =
+            let replacement = next
+
+            match entry with
+            | subject ->
+                let epoch_2 = subject.Epoch
+                let transactionalId = subject.TransactionalId
+
+                let producerEntry: LawSpec.Data.ProducerEntry =
+                    {
+                        Epoch = epoch_2
+                        TransactionalId = transactionalId
+                        Txn = replacement
+                    }
+
+                producerEntry
+
+        let result_5 = lawtwinKafkaModelPutProducer pid value_7 b
+
+        let pair: LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+            { First = (); Second = result_5 }
+
+        pair
+
+/// lawtwinKafkaModelAllKnown — ../src/model.lawspec:597
+[<CompiledName("LawtwinKafkaModelAllKnown")>]
+let lawtwinKafkaModelAllKnown (tps: LawSpec.Data.TopicPartition list) (b: LawSpec.Data.BrokerState) : bool =
+    let it = tps
+
+    match it with
+    | [] -> true
+    | selection :: selection_2 ->
+        let result = lawtwinKafkaModelKnownPartition selection b
+
+        let logic =
+            if result then
+                let result_2 = lawtwinKafkaModelAllKnown selection_2 b
+                result_2
+            else
+                false
+
+        logic
+
+/// lawtwinKafkaModelAppendBatch — ../src/model.lawspec:337
+[<CompiledName("LawtwinKafkaModelAppendBatch")>]
+let lawtwinKafkaModelAppendBatch
+    (rs: LawSpec.Data.Record list)
+    (writer: int64)
+    (transactional: bool)
+    (l: LawSpec.Data.PartitionLog)
+    : LawSpec.Data.PartitionLog =
+    let value =
+        match l with
+        | subject ->
+            let logEndOffset = subject.LogEndOffset
+            logEndOffset
+
+    let value_2 =
+        match l with
+        | subject ->
+            let entries = subject.Entries
+            entries
+
+    let result = lawtwinKafkaModelAppendRecords rs value writer transactional value_2
+    let appended = result
+
+    let value_6 =
+        if transactional then
+            let value_3 =
+                match l with
+                | subject ->
+                    let openTxns = subject.OpenTxns
+                    openTxns
+
+            let result_2 = Map.tryFind writer value_3
+            let it = result_2
+
+            match it with
+            | None ->
+                let value_4 =
+                    match l with
+                    | subject ->
+                        let logEndOffset_2 = subject.LogEndOffset
+                        logEndOffset_2
+
+                let value_5 =
+                    match l with
+                    | subject ->
+                        let openTxns_2 = subject.OpenTxns
+                        openTxns_2
+
+                let result_3 = Map.add writer value_4 value_5
+                result_3
+            | Some _ ->
+                match l with
+                | subject ->
+                    let openTxns_3 = subject.OpenTxns
+                    openTxns_3
+        else
+            match l with
+            | subject ->
+                let openTxns_4 = subject.OpenTxns
+                openTxns_4
+
+    let open_ = value_6
+    let replacement = open_
+
+    let value_10 =
+        let value_7 =
+            match appended with
+            | subject ->
+                let first = subject.First
+                first
+
+        let replacement_2 = value_7
+
+        let value_9 =
+            let value_8 =
+                match appended with
+                | subject ->
+                    let second = subject.Second
+                    second
+
+            let replacement_3 = value_8
+
+            match l with
+            | subject ->
+                let logEndOffset_3 = subject.LogEndOffset
+                let openTxns_5 = subject.OpenTxns
+                let abortedTxns = subject.AbortedTxns
+                let batches = subject.Batches
+
+                let partitionLog: LawSpec.Data.PartitionLog =
+                    {
+                        Entries = replacement_3
+                        LogEndOffset = logEndOffset_3
+                        OpenTxns = openTxns_5
+                        AbortedTxns = abortedTxns
+                        Batches = batches
+                    }
+
+                partitionLog
+
+        match value_9 with
+        | subject ->
+            let entries_2 = subject.Entries
+            let openTxns_6 = subject.OpenTxns
+            let abortedTxns_2 = subject.AbortedTxns
+            let batches_2 = subject.Batches
+
+            let partitionLog_2: LawSpec.Data.PartitionLog =
+                {
+                    Entries = entries_2
+                    LogEndOffset = replacement_2
+                    OpenTxns = openTxns_6
+                    AbortedTxns = abortedTxns_2
+                    Batches = batches_2
+                }
+
+            partitionLog_2
+
+    match value_10 with
+    | subject ->
+        let entries_3 = subject.Entries
+        let logEndOffset_4 = subject.LogEndOffset
+        let abortedTxns_3 = subject.AbortedTxns
+        let batches_3 = subject.Batches
+
+        let partitionLog_3: LawSpec.Data.PartitionLog =
+            {
+                Entries = entries_3
+                LogEndOffset = logEndOffset_4
+                OpenTxns = replacement
+                AbortedTxns = abortedTxns_3
+                Batches = batches_3
+            }
+
+        partitionLog_3
+
+/// lawtwinKafkaModelAppendRecords — ../src/model.lawspec:326
+[<CompiledName("LawtwinKafkaModelAppendRecords")>]
+let lawtwinKafkaModelAppendRecords
+    (rs: LawSpec.Data.Record list)
+    (offset: int64)
+    (writer: int64)
+    (transactional: bool)
+    (es: LawSpec.Data.LogEntry list)
+    : LawSpec.Data.Pair<int64, LawSpec.Data.LogEntry list> =
+    let it = rs
+
+    match it with
+    | [] ->
+        let pair: LawSpec.Data.Pair<int64, LawSpec.Data.LogEntry list> =
+            { First = offset; Second = es }
+
+        pair
+    | selection :: selection_2 ->
+        let result = saturatingInt64 (bigint offset + 1I)
+
+        let value =
+            let entryOffset = offset
+            let entryRecord = selection
+            let writer_2 = writer
+            let transactional_2 = transactional
+
+            let dataEntryDetails: LawSpec.Data.DataEntryDetails =
+                {
+                    EntryOffset = entryOffset
+                    EntryRecord = entryRecord
+                    Transactional = transactional_2
+                    Writer = writer_2
+                }
+
+            dataEntryDetails
+
+        let result_2 =
+            lawtwinKafkaModelAppendRecords
+                selection_2
+                result
+                writer
+                transactional
+                (LawSpec.Data.LogEntry.DataEntry(value) :: es)
+
+        result_2
+
+/// lawtwinKafkaModelApplyOffsets — ../src/model.lawspec:686
+[<CompiledName("LawtwinKafkaModelApplyOffsets")>]
+let lawtwinKafkaModelApplyOffsets
+    (os: LawSpec.Data.PendingOffset list)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.BrokerState =
+    let it = os
+
+    match it with
+    | [] -> b
+    | selection :: selection_2 ->
+        let value_8 =
+            let value_4 =
+                let value =
+                    match selection with
+                    | subject ->
+                        let pendingGroup = subject.PendingGroup
+                        pendingGroup
+
+                let recordField = value
+
+                let value_3 =
+                    let value_2 =
+                        match selection with
+                        | subject ->
+                            let pendingEntry = subject.PendingEntry
+                            pendingEntry
+
+                    match value_2 with
+                    | subject ->
+                        let topicPartition = subject.TopicPartition
+                        topicPartition
+
+                let recordField_2 = value_3
+
+                let groupPartition: LawSpec.Data.GroupPartition =
+                    {
+                        GroupId = recordField
+                        GroupPartition = recordField_2
+                    }
+
+                groupPartition
+
+            let value_6 =
+                let value_5 =
+                    match selection with
+                    | subject ->
+                        let pendingEntry_2 = subject.PendingEntry
+                        pendingEntry_2
+
+                match value_5 with
+                | subject ->
+                    let offset = subject.Offset
+                    offset
+
+            let value_7 =
+                match b with
+                | subject ->
+                    let committed = subject.Committed
+                    committed
+
+            let result = Map.add value_4 value_6 value_7
+            let replacement = result
+
+            match b with
+            | subject ->
+                let topics = subject.Topics
+                let logs = subject.Logs
+                let producers = subject.Producers
+                let transactionalIds = subject.TransactionalIds
+                let nextProducerId = subject.NextProducerId
+                let groups = subject.Groups
+
+                let brokerState: LawSpec.Data.BrokerState =
+                    {
+                        Topics = topics
+                        Logs = logs
+                        Producers = producers
+                        TransactionalIds = transactionalIds
+                        NextProducerId = nextProducerId
+                        Groups = groups
+                        Committed = replacement
+                    }
+
+                brokerState
+
+        let result_2 = lawtwinKafkaModelApplyOffsets selection_2 value_8
+        result_2
+
+/// lawtwinKafkaModelAssignPartitions — ../src/model.lawspec:768
+[<CompiledName("LawtwinKafkaModelAssignPartitions")>]
+let lawtwinKafkaModelAssignPartitions
+    (topic: string)
+    (ps: int list)
+    (owners: string list)
+    (waiting: string list)
+    (a: Map<string, LawSpec.Data.TopicPartition list>)
+    : Map<string, LawSpec.Data.TopicPartition list> =
+    let it = ps
+
+    match it with
+    | [] -> a
+    | selection :: selection_2 ->
+        let it_2 = waiting
+
+        match it_2 with
+        | matchSelection :: matchSelection_2 ->
+            let value =
+                let recordField = topic
+                let recordField_2 = selection
+
+                let topicPartition: LawSpec.Data.TopicPartition =
+                    {
+                        Topic = recordField
+                        Partition = recordField_2
+                    }
+
+                topicPartition
+
+            let result = lawtwinKafkaModelAssignTo matchSelection value a
+
+            let result_2 =
+                lawtwinKafkaModelAssignPartitions topic selection_2 owners matchSelection_2 result
+
+            result_2
+        | [] ->
+            let it_3 = owners
+
+            match it_3 with
+            | [] -> a
+            | matchSelection_3 :: matchSelection_4 ->
+                let value_2 =
+                    let recordField_3 = topic
+                    let recordField_4 = selection
+
+                    let topicPartition_2: LawSpec.Data.TopicPartition =
+                        {
+                            Topic = recordField_3
+                            Partition = recordField_4
+                        }
+
+                    topicPartition_2
+
+                let result_3 = lawtwinKafkaModelAssignTo matchSelection_3 value_2 a
+
+                let result_4 =
+                    lawtwinKafkaModelAssignPartitions topic selection_2 owners matchSelection_4 result_3
+
+                result_4
+
+/// lawtwinKafkaModelAssignTo — ../src/model.lawspec:756
+[<CompiledName("LawtwinKafkaModelAssignTo")>]
+let lawtwinKafkaModelAssignTo
+    (member_: string)
+    (tp: LawSpec.Data.TopicPartition)
+    (a: Map<string, LawSpec.Data.TopicPartition list>)
+    : Map<string, LawSpec.Data.TopicPartition list> =
+    let result = Map.tryFind member_ a
+    let it = result
+
+    match it with
+    | None ->
+        let result_2 = Map.add member_ (tp :: []) a
+        result_2
+    | Some selection ->
+        let result_3 = Map.add member_ (selection @ (tp :: [])) a
+        result_3
+
+/// lawtwinKafkaModelAssignTopics — ../src/model.lawspec:799
+[<CompiledName("LawtwinKafkaModelAssignTopics")>]
+let lawtwinKafkaModelAssignTopics
+    (topics: string list)
+    (subs: LawSpec.Data.Entry<string, string list> list)
+    (b: LawSpec.Data.BrokerState)
+    (a: Map<string, LawSpec.Data.TopicPartition list>)
+    : Map<string, LawSpec.Data.TopicPartition list> =
+    let it = topics
+
+    match it with
+    | [] -> a
+    | selection :: selection_2 ->
+        let result = lawtwinKafkaModelPartitionCountOf selection b
+        let it_2 = result
+
+        match it_2 with
+        | None ->
+            let result_2 = lawtwinKafkaModelAssignTopics selection_2 subs b a
+            result_2
+        | Some matchSelection ->
+            let value =
+                let result_3 = lawtwinKafkaModelSubscribersOf selection subs
+                let owners = result_3
+                let result_4 = lawtwinKafkaModelPartitionsBelow matchSelection
+                let result_5 = lawtwinKafkaModelAssignPartitions selection result_4 owners owners a
+                result_5
+
+            let result_6 = lawtwinKafkaModelAssignTopics selection_2 subs b value
+            result_6
+
+/// lawtwinKafkaModelCheckMember — ../src/model.lawspec:882
+[<CompiledName("LawtwinKafkaModelCheckMember")>]
+let lawtwinKafkaModelCheckMember
+    (g: string)
+    (member_: string)
+    (generation: int)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Group =
+    if (g = "") then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidGroupId)
+        : LawSpec.Data.Group)
+    else
+        let result = lawtwinKafkaModelGroupOf g b
+        let group = result
+
+        let value =
+            match group with
+            | subject ->
+                let subscriptions = subject.Subscriptions
+                subscriptions
+
+        let result_2 = Map.tryFind member_ value
+        let it = result_2
+
+        match it with
+        | None ->
+            (Typed.raiseFailure
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownMemberId)
+            : LawSpec.Data.Group)
         | Some _ ->
-            let value_1331 =
-                match group_1326 with
+            let value_2 =
+                match group with
                 | subject ->
-                    let lawspecFieldgroupGeneration_1332 = subject.GroupGeneration
-                    lawspecFieldgroupGeneration_1332
-            if (generation_1323 <> value_1331) then
-                (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.IllegalGeneration) : LawSpec.Data.Group)
-            else
-                group_1326
+                    let groupGeneration = subject.GroupGeneration
+                    groupGeneration
 
-/// lawtwin.kafka::lawtwinKafkaModelCheckTxnProducer
-[<CompiledName("LawtwinKafkaModelCheckTxnProducer_2936d9ae")>]
-let lawtwinKafkaModelCheckTxnProducer_2936d9ae (txid_1333: string) (pid_1334: int64) (epoch_1335: int16) (b_1336: LawSpec.Data.BrokerState) : LawSpec.Data.ProducerEntry =
-    let value_1337 =
-        match b_1336 with
+            if (generation <> value_2) then
+                (Typed.raiseFailure
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.IllegalGeneration)
+                : LawSpec.Data.Group)
+            else
+                group
+
+/// lawtwinKafkaModelCheckTxnProducer — ../src/model.lawspec:581
+[<CompiledName("LawtwinKafkaModelCheckTxnProducer")>]
+let lawtwinKafkaModelCheckTxnProducer
+    (txid: string)
+    (pid: int64)
+    (epoch: int16)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.ProducerEntry =
+    let value =
+        match b with
         | subject ->
-            let lawspecFieldtransactionalIds_1338 = subject.TransactionalIds
-            lawspecFieldtransactionalIds_1338
-    let result_1339 = (Map.tryFind txid_1333 value_1337)
-    let it_1340 = result_1339
-    match it_1340 with
+            let transactionalIds = subject.TransactionalIds
+            transactionalIds
+
+    let result = Map.tryFind txid value
+    let it = result
+
+    match it with
     | None ->
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidProducerIdMapping) : LawSpec.Data.ProducerEntry)
-    | Some lawspecSelection0x0_1341 ->
-        if (lawspecSelection0x0_1341 <> pid_1334) then
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidProducerIdMapping) : LawSpec.Data.ProducerEntry)
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidProducerIdMapping)
+        : LawSpec.Data.ProducerEntry)
+    | Some selection ->
+        if (selection <> pid) then
+            (Typed.raiseFailure
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidProducerIdMapping)
+            : LawSpec.Data.ProducerEntry)
         else
-            let value_1342 =
-                match b_1336 with
+            let value_2 =
+                match b with
                 | subject ->
-                    let lawspecFieldproducers_1343 = subject.Producers
-                    lawspecFieldproducers_1343
-            let result_1344 = (Map.tryFind pid_1334 value_1342)
-            let it_1345 = result_1344
-            match it_1345 with
+                    let producers = subject.Producers
+                    producers
+
+            let result_2 = Map.tryFind pid value_2
+            let it_2 = result_2
+
+            match it_2 with
             | None ->
-                (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidProducerIdMapping) : LawSpec.Data.ProducerEntry)
-            | Some matchlawspecSelection0x00_1346 ->
-                let value_1347 =
-                    match matchlawspecSelection0x00_1346 with
+                (Typed.raiseFailure
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative
+                        (LawSpec.Data.Codecs.kafkaError ())
+                        LawSpec.Data.KafkaError.InvalidProducerIdMapping)
+                : LawSpec.Data.ProducerEntry)
+            | Some matchSelection ->
+                let value_3 =
+                    match matchSelection with
                     | subject ->
-                        let lawspecFieldepoch_1348 = subject.Epoch
-                        lawspecFieldepoch_1348
-                if (epoch_1335 < value_1347) then
-                    (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.ProducerFenced) : LawSpec.Data.ProducerEntry)
+                        let epoch_2 = subject.Epoch
+                        epoch_2
+
+                if (epoch < value_3) then
+                    (Typed.raiseFailure
+                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                        (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.ProducerFenced)
+                    : LawSpec.Data.ProducerEntry)
                 else
-                    let value_1349 =
-                        match matchlawspecSelection0x00_1346 with
+                    let value_4 =
+                        match matchSelection with
                         | subject ->
-                            let lawspecFieldepoch_1350 = subject.Epoch
-                            lawspecFieldepoch_1350
-                    if (epoch_1335 > value_1349) then
-                        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidProducerEpoch) : LawSpec.Data.ProducerEntry)
+                            let epoch_3 = subject.Epoch
+                            epoch_3
+
+                    if (epoch > value_4) then
+                        (Typed.raiseFailure
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative
+                                (LawSpec.Data.Codecs.kafkaError ())
+                                LawSpec.Data.KafkaError.InvalidProducerEpoch)
+                        : LawSpec.Data.ProducerEntry)
                     else
-                        matchlawspecSelection0x00_1346
+                        matchSelection
 
-/// lawtwin.kafka::lawtwinKafkaModelCommitAll
-[<CompiledName("LawtwinKafkaModelCommitAll_4ae78738")>]
-let lawtwinKafkaModelCommitAll_4ae78738 (g_1351: string) (offsets_1352: LawSpec.Data.OffsetEntry list) (b_1353: LawSpec.Data.BrokerState) : LawSpec.Data.BrokerState =
-    let it_1354 = offsets_1352
-    match it_1354 with
-    | [] ->
-        b_1353
-    | lawspecSelection0x0_1355 :: lawspecSelection0x1_1356 ->
-        let value_1357 =
-            let value_1358 =
-                let lawspecRecordField0_1359 = g_1351
-                let value_1360 =
-                    match lawspecSelection0x0_1355 with
+/// lawtwinKafkaModelCommitAll — ../src/model.lawspec:935
+[<CompiledName("LawtwinKafkaModelCommitAll")>]
+let lawtwinKafkaModelCommitAll
+    (g: string)
+    (offsets: LawSpec.Data.OffsetEntry list)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.BrokerState =
+    let it = offsets
+
+    match it with
+    | [] -> b
+    | selection :: selection_2 ->
+        let value_5 =
+            let value_2 =
+                let recordField = g
+
+                let value =
+                    match selection with
                     | subject ->
-                        let lawspecFieldtopicPartition_1361 = subject.TopicPartition
-                        lawspecFieldtopicPartition_1361
-                let lawspecRecordField1_1362 = value_1360
-                ({ GroupId = lawspecRecordField0_1359; GroupPartition = lawspecRecordField1_1362 } : LawSpec.Data.GroupPartition)
-            let value_1363 =
-                match lawspecSelection0x0_1355 with
+                        let topicPartition = subject.TopicPartition
+                        topicPartition
+
+                let recordField_2 = value
+
+                let groupPartition: LawSpec.Data.GroupPartition =
+                    {
+                        GroupId = recordField
+                        GroupPartition = recordField_2
+                    }
+
+                groupPartition
+
+            let value_3 =
+                match selection with
                 | subject ->
-                    let lawspecFieldoffset_1364 = subject.Offset
-                    lawspecFieldoffset_1364
-            let value_1365 =
-                match b_1353 with
+                    let offset = subject.Offset
+                    offset
+
+            let value_4 =
+                match b with
                 | subject ->
-                    let lawspecFieldcommitted_1366 = subject.Committed
-                    lawspecFieldcommitted_1366
-            let result_1367 = (Map.add value_1358 value_1363 value_1365)
-            let replacement_1368 = result_1367
-            match b_1353 with
+                    let committed = subject.Committed
+                    committed
+
+            let result = Map.add value_2 value_3 value_4
+            let replacement = result
+
+            match b with
             | subject ->
-                let lawspecFieldtopics_1369 = subject.Topics
-                let lawspecFieldlogs_1370 = subject.Logs
-                let lawspecFieldproducers_1371 = subject.Producers
-                let lawspecFieldtransactionalIds_1372 = subject.TransactionalIds
-                let lawspecFieldnextProducerId_1373 = subject.NextProducerId
-                let lawspecFieldgroups_1374 = subject.Groups
-                ({ Topics = lawspecFieldtopics_1369; Logs = lawspecFieldlogs_1370; Producers = lawspecFieldproducers_1371; TransactionalIds = lawspecFieldtransactionalIds_1372; NextProducerId = lawspecFieldnextProducerId_1373; Groups = lawspecFieldgroups_1374; Committed = replacement_1368 } : LawSpec.Data.BrokerState)
-        let result_1375 = lawtwinKafkaModelCommitAll_4ae78738 (g_1351) (lawspecSelection0x1_1356) (value_1357)
-        result_1375
+                let topics = subject.Topics
+                let logs = subject.Logs
+                let producers = subject.Producers
+                let transactionalIds = subject.TransactionalIds
+                let nextProducerId = subject.NextProducerId
+                let groups = subject.Groups
 
-/// lawtwin.kafka::lawtwinKafkaModelComputeAssignment
-[<CompiledName("LawtwinKafkaModelComputeAssignment_07bd1943")>]
-let lawtwinKafkaModelComputeAssignment_07bd1943 (subscriptions_1376: Map<string, string list>) (b_1377: LawSpec.Data.BrokerState) : Map<string, LawSpec.Data.TopicPartition list> =
-    let result_1378 = (Typed.entries (fun k v -> ({ Key = k; Value = v } : LawSpec.Data.Entry<_, _>)) subscriptions_1376)
-    let subs_1379 = result_1378
-    let value_1380 =
-        let result_1381 = (Set.ofList [])
-        let result_1382 = lawtwinKafkaModelSubscribedTopics_c1d720b5 (subs_1379) (result_1381)
-        match result_1382 with
+                let brokerState: LawSpec.Data.BrokerState =
+                    {
+                        Topics = topics
+                        Logs = logs
+                        Producers = producers
+                        TransactionalIds = transactionalIds
+                        NextProducerId = nextProducerId
+                        Groups = groups
+                        Committed = replacement
+                    }
+
+                brokerState
+
+        let result_2 = lawtwinKafkaModelCommitAll g selection_2 value_5
+        result_2
+
+/// lawtwinKafkaModelComputeAssignment — ../src/model.lawspec:824
+[<CompiledName("LawtwinKafkaModelComputeAssignment")>]
+let lawtwinKafkaModelComputeAssignment
+    (subscriptions: Map<string, string list>)
+    (b: LawSpec.Data.BrokerState)
+    : Map<string, LawSpec.Data.TopicPartition list> =
+    let result =
+        Typed.entries (fun k v -> ({ Key = k; Value = v }: LawSpec.Data.Entry<_, _>)) subscriptions
+
+    let subs = result
+
+    let value =
+        let result_2 = Set.ofList []
+        let result_3 = lawtwinKafkaModelSubscribedTopics subs result_2
+
+        match result_3 with
         | subject ->
-            let items_1383 = (Typed.items subject)
-            items_1383
-    let result_1384 = (Typed.keys subscriptions_1376)
-    let result_1385 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let result_1386 = lawtwinKafkaModelEmptyAssignments_91b44e0d (result_1384) (result_1385)
-    let result_1387 = lawtwinKafkaModelAssignTopics_0d94256d (value_1380) (subs_1379) (b_1377) (result_1386)
-    result_1387
+            let items = Typed.items subject
+            items
 
-/// lawtwin.kafka::lawtwinKafkaModelCreatePartitions
-[<CompiledName("LawtwinKafkaModelCreatePartitions_8c9ce76b")>]
-let lawtwinKafkaModelCreatePartitions_8c9ce76b (name_1388: string) (total_1389: int) (b_1390: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_1391 = lawtwinKafkaModelPartitionCountOf_ff180c35 (name_1388) (b_1390)
-    let it_1392 = result_1391
-    match it_1392 with
+    let result_4 = Typed.keys subscriptions
+
+    let result_5 =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let result_6 = lawtwinKafkaModelEmptyAssignments result_4 result_5
+    let result_7 = lawtwinKafkaModelAssignTopics value subs b result_6
+    result_7
+
+/// lawtwinKafkaModelCreatePartitions — ../src/model.lawspec:291
+[<CompiledName("LawtwinKafkaModelCreatePartitions")>]
+let lawtwinKafkaModelCreatePartitions
+    (name: string)
+    (total: int)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelPartitionCountOf name b
+    let it = result
+
+    match it with
     | None ->
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownTopicOrPartition) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
-    | Some lawspecSelection0x0_1393 ->
-        let logic_1395 =
-            if (total_1389 <= lawspecSelection0x0_1393) then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownTopicOrPartition)
+        : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+    | Some selection ->
+        let logic =
+            if (total <= selection) then
                 true
             else
-                let result_1394 = lawtwinKafkaModelMaxPartitions_6be37992 (())
-                (total_1389 > result_1394)
-        if logic_1395 then
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidPartitions) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
-        else
-            let value_1396 =
-                let value_1397 =
-                    match b_1390 with
-                    | subject ->
-                        let lawspecFieldtopics_1398 = subject.Topics
-                        lawspecFieldtopics_1398
-                let result_1399 = (Map.add name_1388 total_1389 value_1397)
-                let replacement_1400 = result_1399
-                match b_1390 with
-                | subject ->
-                    let lawspecFieldlogs_1401 = subject.Logs
-                    let lawspecFieldproducers_1402 = subject.Producers
-                    let lawspecFieldtransactionalIds_1403 = subject.TransactionalIds
-                    let lawspecFieldnextProducerId_1404 = subject.NextProducerId
-                    let lawspecFieldgroups_1405 = subject.Groups
-                    let lawspecFieldcommitted_1406 = subject.Committed
-                    ({ Topics = replacement_1400; Logs = lawspecFieldlogs_1401; Producers = lawspecFieldproducers_1402; TransactionalIds = lawspecFieldtransactionalIds_1403; NextProducerId = lawspecFieldnextProducerId_1404; Groups = lawspecFieldgroups_1405; Committed = lawspecFieldcommitted_1406 } : LawSpec.Data.BrokerState)
-            let result_1407 = lawtwinKafkaModelRebalanceTopic_823cd68b (name_1388) (value_1396)
-            ({ First = (); Second = result_1407 } : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                let result_2 = lawtwinKafkaModelMaxPartitions ()
+                (total > result_2)
 
-/// lawtwin.kafka::lawtwinKafkaModelCreateTopic
-[<CompiledName("LawtwinKafkaModelCreateTopic_0d831a39")>]
-let lawtwinKafkaModelCreateTopic_0d831a39 (name_1408: string) (n_1409: int) (b_1410: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_1411 = lawtwinKafkaModelValidTopicName_39dd4596 (name_1408)
-    if (not result_1411) then
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidTopic) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+        if logic then
+            (Typed.raiseFailure
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidPartitions)
+            : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+        else
+            let value_2 =
+                let value =
+                    match b with
+                    | subject ->
+                        let topics = subject.Topics
+                        topics
+
+                let result_3 = Map.add name total value
+                let replacement = result_3
+
+                match b with
+                | subject ->
+                    let logs = subject.Logs
+                    let producers = subject.Producers
+                    let transactionalIds = subject.TransactionalIds
+                    let nextProducerId = subject.NextProducerId
+                    let groups = subject.Groups
+                    let committed = subject.Committed
+
+                    let brokerState: LawSpec.Data.BrokerState =
+                        {
+                            Topics = replacement
+                            Logs = logs
+                            Producers = producers
+                            TransactionalIds = transactionalIds
+                            NextProducerId = nextProducerId
+                            Groups = groups
+                            Committed = committed
+                        }
+
+                    brokerState
+
+            let result_4 = lawtwinKafkaModelRebalanceTopic name value_2
+
+            let pair: LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+                { First = (); Second = result_4 }
+
+            pair
+
+/// lawtwinKafkaModelCreateTopic — ../src/model.lawspec:280
+[<CompiledName("LawtwinKafkaModelCreateTopic")>]
+let lawtwinKafkaModelCreateTopic
+    (name: string)
+    (n: int)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelValidTopicName name
+
+    if not result then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidTopic)
+        : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
     else
-        let logic_1413 =
-            if ((bigint n_1409) < 1I) then
+        let logic =
+            if (bigint n < 1I) then
                 true
             else
-                let result_1412 = lawtwinKafkaModelMaxPartitions_6be37992 (())
-                (n_1409 > result_1412)
-        if logic_1413 then
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidPartitions) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                let result_2 = lawtwinKafkaModelMaxPartitions ()
+                (n > result_2)
+
+        if logic then
+            (Typed.raiseFailure
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidPartitions)
+            : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
         else
-            let result_1414 = lawtwinKafkaModelPartitionCountOf_ff180c35 (name_1408) (b_1410)
-            let it_1415 = result_1414
-            match it_1415 with
+            let result_3 = lawtwinKafkaModelPartitionCountOf name b
+            let it = result_3
+
+            match it with
             | Some _ ->
-                (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.TopicAlreadyExists) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                (Typed.raiseFailure
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.TopicAlreadyExists)
+                : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
             | None ->
-                let value_1416 =
-                    let value_1417 =
-                        match b_1410 with
+                let value_2 =
+                    let value =
+                        match b with
                         | subject ->
-                            let lawspecFieldtopics_1418 = subject.Topics
-                            lawspecFieldtopics_1418
-                    let result_1419 = (Map.add name_1408 n_1409 value_1417)
-                    let replacement_1420 = result_1419
-                    match b_1410 with
+                            let topics = subject.Topics
+                            topics
+
+                    let result_4 = Map.add name n value
+                    let replacement = result_4
+
+                    match b with
                     | subject ->
-                        let lawspecFieldlogs_1421 = subject.Logs
-                        let lawspecFieldproducers_1422 = subject.Producers
-                        let lawspecFieldtransactionalIds_1423 = subject.TransactionalIds
-                        let lawspecFieldnextProducerId_1424 = subject.NextProducerId
-                        let lawspecFieldgroups_1425 = subject.Groups
-                        let lawspecFieldcommitted_1426 = subject.Committed
-                        ({ Topics = replacement_1420; Logs = lawspecFieldlogs_1421; Producers = lawspecFieldproducers_1422; TransactionalIds = lawspecFieldtransactionalIds_1423; NextProducerId = lawspecFieldnextProducerId_1424; Groups = lawspecFieldgroups_1425; Committed = lawspecFieldcommitted_1426 } : LawSpec.Data.BrokerState)
-                let result_1427 = lawtwinKafkaModelRebalanceTopic_823cd68b (name_1408) (value_1416)
-                ({ First = (); Second = result_1427 } : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                        let logs = subject.Logs
+                        let producers = subject.Producers
+                        let transactionalIds = subject.TransactionalIds
+                        let nextProducerId = subject.NextProducerId
+                        let groups = subject.Groups
+                        let committed = subject.Committed
 
-/// lawtwin.kafka::lawtwinKafkaModelDescribeGroup
-[<CompiledName("LawtwinKafkaModelDescribeGroup_bf8df8f8")>]
-let lawtwinKafkaModelDescribeGroup_bf8df8f8 (g_1428: string) (b_1429: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> =
-    let result_1430 = lawtwinKafkaModelGroupOf_abe7cb22 (g_1428) (b_1429)
-    let group_1431 = result_1430
-    let value_1432 =
-        let value_1433 =
-            match group_1431 with
+                        let brokerState: LawSpec.Data.BrokerState =
+                            {
+                                Topics = replacement
+                                Logs = logs
+                                Producers = producers
+                                TransactionalIds = transactionalIds
+                                NextProducerId = nextProducerId
+                                Groups = groups
+                                Committed = committed
+                            }
+
+                        brokerState
+
+                let result_5 = lawtwinKafkaModelRebalanceTopic name value_2
+
+                let pair: LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+                    { First = (); Second = result_5 }
+
+                pair
+
+/// lawtwinKafkaModelDescribeGroup — ../src/model.lawspec:928
+[<CompiledName("LawtwinKafkaModelDescribeGroup")>]
+let lawtwinKafkaModelDescribeGroup
+    (g: string)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelGroupOf g b
+    let group = result
+
+    let value_3 =
+        let value =
+            match group with
             | subject ->
-                let lawspecFieldgroupGeneration_1434 = subject.GroupGeneration
-                lawspecFieldgroupGeneration_1434
-        let lawspecRecordField0_1435 = value_1433
-        let value_1436 =
-            match group_1431 with
+                let groupGeneration = subject.GroupGeneration
+                groupGeneration
+
+        let recordField = value
+
+        let value_2 =
+            match group with
             | subject ->
-                let lawspecFieldassignment_1437 = subject.Assignment
-                lawspecFieldassignment_1437
-        let result_1438 = (Typed.entries (fun k v -> ({ Key = k; Value = v } : LawSpec.Data.Entry<_, _>)) value_1436)
-        let result_1439 = lawtwinKafkaModelMemberViews_a87b1b1a (result_1438)
-        let lawspecRecordField1_1440 = result_1439
-        ({ Generation = lawspecRecordField0_1435; Members = lawspecRecordField1_1440 } : LawSpec.Data.GroupView)
-    ({ First = value_1432; Second = b_1429 } : LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState>)
+                let assignment = subject.Assignment
+                assignment
 
-/// lawtwin.kafka::lawtwinKafkaModelEmptyAssignments
-[<CompiledName("LawtwinKafkaModelEmptyAssignments_91b44e0d")>]
-let lawtwinKafkaModelEmptyAssignments_91b44e0d (members_1441: string list) (a_1442: Map<string, LawSpec.Data.TopicPartition list>) : Map<string, LawSpec.Data.TopicPartition list> =
-    let it_1443 = members_1441
-    match it_1443 with
-    | [] ->
-        a_1442
-    | lawspecSelection0x0_1444 :: lawspecSelection0x1_1445 ->
-        let result_1446 = (Map.add lawspecSelection0x0_1444 [] a_1442)
-        let result_1447 = lawtwinKafkaModelEmptyAssignments_91b44e0d (lawspecSelection0x1_1445) (result_1446)
-        result_1447
+        let result_2 =
+            Typed.entries (fun k v -> ({ Key = k; Value = v }: LawSpec.Data.Entry<_, _>)) value_2
 
-/// lawtwin.kafka::lawtwinKafkaModelEmptyBroker
-[<CompiledName("LawtwinKafkaModelEmptyBroker_d5fd8237")>]
-let lawtwinKafkaModelEmptyBroker_d5fd8237 (u_1448: unit) : LawSpec.Data.BrokerState =
-    let result_1449 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField0_1450 = result_1449
-    let result_1451 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField1_1452 = result_1451
-    let result_1453 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField2_1454 = result_1453
-    let result_1455 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField3_1456 = result_1455
-    let lawspecRecordField4_1457 = 0L
-    let result_1458 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField5_1459 = result_1458
-    let result_1460 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField6_1461 = result_1460
-    ({ Topics = lawspecRecordField0_1450; Logs = lawspecRecordField1_1452; Producers = lawspecRecordField2_1454; TransactionalIds = lawspecRecordField3_1456; NextProducerId = lawspecRecordField4_1457; Groups = lawspecRecordField5_1459; Committed = lawspecRecordField6_1461 } : LawSpec.Data.BrokerState)
+        let result_3 = lawtwinKafkaModelMemberViews result_2
+        let recordField_2 = result_3
 
-/// lawtwin.kafka::lawtwinKafkaModelEmptyGroup
-[<CompiledName("LawtwinKafkaModelEmptyGroup_2fc4809b")>]
-let lawtwinKafkaModelEmptyGroup_2fc4809b (u_1462: unit) : LawSpec.Data.Group =
-    let lawspecRecordField0_1463 = 0
-    let result_1464 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField1_1465 = result_1464
-    let result_1466 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField2_1467 = result_1466
-    ({ GroupGeneration = lawspecRecordField0_1463; Subscriptions = lawspecRecordField1_1465; Assignment = lawspecRecordField2_1467 } : LawSpec.Data.Group)
+        let groupView: LawSpec.Data.GroupView =
+            {
+                Generation = recordField
+                Members = recordField_2
+            }
 
-/// lawtwin.kafka::lawtwinKafkaModelEmptyLog
-[<CompiledName("LawtwinKafkaModelEmptyLog_a7825ed0")>]
-let lawtwinKafkaModelEmptyLog_a7825ed0 (u_1468: unit) : LawSpec.Data.PartitionLog =
-    let lawspecRecordField0_1469 = []
-    let lawspecRecordField1_1470 = 0L
-    let result_1471 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField2_1472 = result_1471
-    let lawspecRecordField3_1473 = []
-    let result_1474 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let lawspecRecordField4_1475 = result_1474
-    ({ Entries = lawspecRecordField0_1469; LogEndOffset = lawspecRecordField1_1470; OpenTxns = lawspecRecordField2_1472; AbortedTxns = lawspecRecordField3_1473; Batches = lawspecRecordField4_1475 } : LawSpec.Data.PartitionLog)
+        groupView
 
-/// lawtwin.kafka::lawtwinKafkaModelEndTxn
-[<CompiledName("LawtwinKafkaModelEndTxn_b2637a52")>]
-let lawtwinKafkaModelEndTxn_b2637a52 (txid_1476: string) (pid_1477: int64) (epoch_1478: int16) (commit_1479: bool) (b_1480: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_1481 = lawtwinKafkaModelCheckTxnProducer_2936d9ae (txid_1476) (pid_1477) (epoch_1478) (b_1480)
-    let entry_1482 = result_1481
-    let value_1483 =
-        match entry_1482 with
+    let pair: LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> =
+        { First = value_3; Second = b }
+
+    pair
+
+/// lawtwinKafkaModelEmptyAssignments — ../src/model.lawspec:815
+[<CompiledName("LawtwinKafkaModelEmptyAssignments")>]
+let lawtwinKafkaModelEmptyAssignments
+    (members: string list)
+    (a: Map<string, LawSpec.Data.TopicPartition list>)
+    : Map<string, LawSpec.Data.TopicPartition list> =
+    let it = members
+
+    match it with
+    | [] -> a
+    | selection :: selection_2 ->
+        let result = Map.add selection [] a
+        let result_2 = lawtwinKafkaModelEmptyAssignments selection_2 result
+        result_2
+
+/// lawtwinKafkaModelEmptyBroker — ../src/model.lawspec:203
+[<CompiledName("LawtwinKafkaModelEmptyBroker")>]
+let lawtwinKafkaModelEmptyBroker (u: unit) : LawSpec.Data.BrokerState =
+    let result =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField = result
+
+    let result_2 =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_2 = result_2
+
+    let result_3 =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_3 = result_3
+
+    let result_4 =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_4 = result_4
+    let recordField_5 = 0L
+
+    let result_5 =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_6 = result_5
+
+    let result_6 =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_7 = result_6
+
+    let brokerState: LawSpec.Data.BrokerState =
+        {
+            Topics = recordField
+            Logs = recordField_2
+            Producers = recordField_3
+            TransactionalIds = recordField_4
+            NextProducerId = recordField_5
+            Groups = recordField_6
+            Committed = recordField_7
+        }
+
+    brokerState
+
+/// lawtwinKafkaModelEmptyGroup — ../src/model.lawspec:216
+[<CompiledName("LawtwinKafkaModelEmptyGroup")>]
+let lawtwinKafkaModelEmptyGroup (u: unit) : LawSpec.Data.Group =
+    let recordField = 0
+
+    let result =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_2 = result
+
+    let result_2 =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_3 = result_2
+
+    let group: LawSpec.Data.Group =
+        {
+            GroupGeneration = recordField
+            Subscriptions = recordField_2
+            Assignment = recordField_3
+        }
+
+    group
+
+/// lawtwinKafkaModelEmptyLog — ../src/model.lawspec:210
+[<CompiledName("LawtwinKafkaModelEmptyLog")>]
+let lawtwinKafkaModelEmptyLog (u: unit) : LawSpec.Data.PartitionLog =
+    let recordField = []
+    let recordField_2 = 0L
+
+    let result =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_3 = result
+    let recordField_4 = []
+
+    let result_2 =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let recordField_5 = result_2
+
+    let partitionLog: LawSpec.Data.PartitionLog =
+        {
+            Entries = recordField
+            LogEndOffset = recordField_2
+            OpenTxns = recordField_3
+            AbortedTxns = recordField_4
+            Batches = recordField_5
+        }
+
+    partitionLog
+
+/// lawtwinKafkaModelEndTxn — ../src/model.lawspec:718
+[<CompiledName("LawtwinKafkaModelEndTxn")>]
+let lawtwinKafkaModelEndTxn
+    (txid: string)
+    (pid: int64)
+    (epoch: int16)
+    (commit: bool)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelCheckTxnProducer txid pid epoch b
+    let entry = result
+
+    let value =
+        match entry with
         | subject ->
-            let lawspecFieldtxn_1484 = subject.Txn
-            lawspecFieldtxn_1484
-    let it_1485 = value_1483
-    match it_1485 with
-    | LawSpec.Data.TxnState.NoTxn ->
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidTxnState) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
-    | LawSpec.Data.TxnState.Ongoing(lawspecSelection0x0_1486) ->
-        let value_1487 =
-            match lawspecSelection0x0_1486 with
-            | subject ->
-                let lawspecFieldtxnPartitions_1488 = subject.TxnPartitions
-                lawspecFieldtxnPartitions_1488
-        let lawspecSelection1x0_1489 = value_1487
-        let value_1490 =
-            match lawspecSelection0x0_1486 with
-            | subject ->
-                let lawspecFieldtxnOffsets_1491 = subject.TxnOffsets
-                lawspecFieldtxnOffsets_1491
-        let lawspecSelection1x1_1492 = value_1490
-        let value_1493 =
-            let replacement_1494 = LawSpec.Data.TxnState.NoTxn
-            match entry_1482 with
-            | subject ->
-                let lawspecFieldepoch_1495 = subject.Epoch
-                let lawspecFieldtransactionalId_1496 = subject.TransactionalId
-                ({ Epoch = lawspecFieldepoch_1495; TransactionalId = lawspecFieldtransactionalId_1496; Txn = replacement_1494 } : LawSpec.Data.ProducerEntry)
-        let value_1497 =
-            match entry_1482 with
-            | subject ->
-                let lawspecFieldtxn_1498 = subject.Txn
-                lawspecFieldtxn_1498
-        let result_1499 = lawtwinKafkaModelFinishTxn_7545803e (pid_1477) (commit_1479) (value_1497) (b_1480)
-        let result_1500 = lawtwinKafkaModelPutProducer_4ef907a5 (pid_1477) (value_1493) (result_1499)
-        ({ First = (); Second = result_1500 } : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+            let txn = subject.Txn
+            txn
 
-/// lawtwin.kafka::lawtwinKafkaModelExpectedSequence
-[<CompiledName("LawtwinKafkaModelExpectedSequence_83e363c8")>]
-let lawtwinKafkaModelExpectedSequence_83e363c8 (epoch_1501: int16) (ms_1502: LawSpec.Data.BatchMeta list) : int =
-    let it_1503 = ms_1502
-    match it_1503 with
-    | [] ->
-        0
-    | lawspecSelection0x0_1504 :: _ ->
-        let value_1505 =
-            match lawspecSelection0x0_1504 with
+    let it = value
+
+    match it with
+    | LawSpec.Data.TxnState.NoTxn ->
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidTxnState)
+        : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+    | LawSpec.Data.TxnState.Ongoing(selection) ->
+        let value_2 =
+            match selection with
             | subject ->
-                let lawspecFieldbatchEpoch_1506 = subject.BatchEpoch
-                lawspecFieldbatchEpoch_1506
-        if (value_1505 = epoch_1501) then
-            let value_1507 =
-                match lawspecSelection0x0_1504 with
+                let txnPartitions = subject.TxnPartitions
+                txnPartitions
+
+        let selection_2 = value_2
+
+        let value_3 =
+            match selection with
+            | subject ->
+                let txnOffsets = subject.TxnOffsets
+                txnOffsets
+
+        let selection_3 = value_3
+
+        let value_4 =
+            let replacement = LawSpec.Data.TxnState.NoTxn
+
+            match entry with
+            | subject ->
+                let epoch_2 = subject.Epoch
+                let transactionalId = subject.TransactionalId
+
+                let producerEntry: LawSpec.Data.ProducerEntry =
+                    {
+                        Epoch = epoch_2
+                        TransactionalId = transactionalId
+                        Txn = replacement
+                    }
+
+                producerEntry
+
+        let value_5 =
+            match entry with
+            | subject ->
+                let txn_2 = subject.Txn
+                txn_2
+
+        let result_2 = lawtwinKafkaModelFinishTxn pid commit value_5 b
+        let result_3 = lawtwinKafkaModelPutProducer pid value_4 result_2
+
+        let pair: LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+            { First = (); Second = result_3 }
+
+        pair
+
+/// lawtwinKafkaModelExpectedSequence — ../src/model.lawspec:372
+[<CompiledName("LawtwinKafkaModelExpectedSequence")>]
+let lawtwinKafkaModelExpectedSequence (epoch: int16) (ms: LawSpec.Data.BatchMeta list) : int =
+    let it = ms
+
+    match it with
+    | [] -> 0
+    | selection :: _ ->
+        let value =
+            match selection with
+            | subject ->
+                let batchEpoch = subject.BatchEpoch
+                batchEpoch
+
+        if (value = epoch) then
+            let value_2 =
+                match selection with
                 | subject ->
-                    let lawspecFieldlastSequence_1508 = subject.LastSequence
-                    lawspecFieldlastSequence_1508
-            let result_1509 = saturatingInt32_9e8d3b43 (((bigint value_1507) + 1I))
-            result_1509
+                    let lastSequence = subject.LastSequence
+                    lastSequence
+
+            let result = saturatingInt32 (bigint value_2 + 1I)
+            result
         else
             0
 
-/// lawtwin.kafka::lawtwinKafkaModelFetch
-[<CompiledName("LawtwinKafkaModelFetch_29936450")>]
-let lawtwinKafkaModelFetch_29936450 (tp_1510: LawSpec.Data.TopicPartition) (from_1511: int64) (maxRecords_1512: int) (isolation_1513: LawSpec.Data.IsolationLevel) (b_1514: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState> =
-    let result_1515 = lawtwinKafkaModelKnownPartition_71d3099f (tp_1510) (b_1514)
-    if (not result_1515) then
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownTopicOrPartition) : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>)
+/// lawtwinKafkaModelFetch — ../src/model.lawspec:495
+[<CompiledName("LawtwinKafkaModelFetch")>]
+let lawtwinKafkaModelFetch
+    (tp: LawSpec.Data.TopicPartition)
+    (from: int64)
+    (maxRecords: int)
+    (isolation: LawSpec.Data.IsolationLevel)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelKnownPartition tp b
+
+    if not result then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownTopicOrPartition)
+        : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>)
     else
-        let result_1516 = lawtwinKafkaModelLogOf_b86b131a (tp_1510) (b_1514)
-        let l_1517 = result_1516
-        let result_1518 = lawtwinKafkaModelHighWatermark_da6ed677 (l_1517)
-        let hw_1519 = result_1518
-        let result_1520 = lawtwinKafkaModelLastStableOffset_e8497029 (l_1517)
-        let lso_1521 = result_1520
-        if (((bigint from_1511) < 0I) || (from_1511 > hw_1519)) then
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.OffsetOutOfRange) : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>)
-        else
-            let value_1522 =
-                let it_1523 = isolation_1513
-                match it_1523 with
-                | LawSpec.Data.IsolationLevel.ReadUncommitted ->
-                    false
-                | LawSpec.Data.IsolationLevel.ReadCommitted ->
-                    true
-            let committedOnly_1524 = value_1522
-            let value_1525 =
-                if committedOnly_1524 then
-                    lso_1521
-                else
-                    hw_1519
-            let limit_1526 = value_1525
-            let value_1527 =
-                match l_1517 with
-                | subject ->
-                    let lawspecFieldentries_1528 = subject.Entries
-                    lawspecFieldentries_1528
-            let value_1529 =
-                match l_1517 with
-                | subject ->
-                    let lawspecFieldabortedTxns_1530 = subject.AbortedTxns
-                    lawspecFieldabortedTxns_1530
-            let result_1531 = lawtwinKafkaModelReadable_adec3284 (value_1527) (from_1511) (limit_1526) (committedOnly_1524) (value_1529) ([])
-            let all_1532 = result_1531
-            let taken_1533 = (Typed.sliceList all_1532 0I (bigint maxRecords_1512))
-            let value_1534 =
-                let lawspecRecordField0_1535 = taken_1533
-                let result_1536 = lawtwinKafkaModelNextFetchOffset_28fd5a97 (from_1511) (limit_1526) (taken_1533) (all_1532)
-                let lawspecRecordField1_1537 = result_1536
-                let lawspecRecordField2_1538 = hw_1519
-                let lawspecRecordField3_1539 = lso_1521
-                ({ Records = lawspecRecordField0_1535; NextOffset = lawspecRecordField1_1537; HighWatermark = lawspecRecordField2_1538; LastStableOffset = lawspecRecordField3_1539 } : LawSpec.Data.FetchResult)
-            ({ First = value_1534; Second = b_1514 } : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>)
+        let result_2 = lawtwinKafkaModelLogOf tp b
+        let l = result_2
+        let result_3 = lawtwinKafkaModelHighWatermark l
+        let hw = result_3
+        let result_4 = lawtwinKafkaModelLastStableOffset l
+        let lso = result_4
 
-/// lawtwin.kafka::lawtwinKafkaModelFindDuplicate
-[<CompiledName("LawtwinKafkaModelFindDuplicate_3335aea4")>]
-let lawtwinKafkaModelFindDuplicate_3335aea4 (epoch_1540: int16) (first_1541: int) (last_1542: int) (ms_1543: LawSpec.Data.BatchMeta list) : int64 option =
-    let it_1544 = ms_1543
-    match it_1544 with
-    | [] ->
-        None
-    | lawspecSelection0x0_1545 :: lawspecSelection0x1_1546 ->
-        let value_1547 =
-            match lawspecSelection0x0_1545 with
+        if ((bigint from < 0I) || (from > hw)) then
+            (Typed.raiseFailure
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.OffsetOutOfRange)
+            : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>)
+        else
+            let value =
+                let it = isolation
+
+                match it with
+                | LawSpec.Data.IsolationLevel.ReadUncommitted -> false
+                | LawSpec.Data.IsolationLevel.ReadCommitted -> true
+
+            let committedOnly = value
+            let value_2 = if committedOnly then lso else hw
+            let limit = value_2
+
+            let value_3 =
+                match l with
+                | subject ->
+                    let entries = subject.Entries
+                    entries
+
+            let value_4 =
+                match l with
+                | subject ->
+                    let abortedTxns = subject.AbortedTxns
+                    abortedTxns
+
+            let result_5 = lawtwinKafkaModelReadable value_3 from limit committedOnly value_4 []
+            let all = result_5
+            let taken = Typed.sliceList all 0I (bigint maxRecords)
+
+            let value_5 =
+                let recordField = taken
+                let result_6 = lawtwinKafkaModelNextFetchOffset from limit taken all
+                let recordField_2 = result_6
+                let recordField_3 = hw
+                let recordField_4 = lso
+
+                let fetchResult: LawSpec.Data.FetchResult =
+                    {
+                        Records = recordField
+                        NextOffset = recordField_2
+                        HighWatermark = recordField_3
+                        LastStableOffset = recordField_4
+                    }
+
+                fetchResult
+
+            let pair: LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState> =
+                { First = value_5; Second = b }
+
+            pair
+
+/// lawtwinKafkaModelFindDuplicate — ../src/model.lawspec:360
+[<CompiledName("LawtwinKafkaModelFindDuplicate")>]
+let lawtwinKafkaModelFindDuplicate
+    (epoch: int16)
+    (first: int)
+    (last: int)
+    (ms: LawSpec.Data.BatchMeta list)
+    : int64 option =
+    let it = ms
+
+    match it with
+    | [] -> None
+    | selection :: selection_2 ->
+        let value =
+            match selection with
             | subject ->
-                let lawspecFieldbatchEpoch_1548 = subject.BatchEpoch
-                lawspecFieldbatchEpoch_1548
-        let logic_1551 =
-            if (value_1547 = epoch_1540) then
-                let value_1549 =
-                    match lawspecSelection0x0_1545 with
+                let batchEpoch = subject.BatchEpoch
+                batchEpoch
+
+        let logic =
+            if (value = epoch) then
+                let value_2 =
+                    match selection with
                     | subject ->
-                        let lawspecFieldfirstSequence_1550 = subject.FirstSequence
-                        lawspecFieldfirstSequence_1550
-                (value_1549 = first_1541)
-            else false
-        let logic_1554 =
-            if logic_1551 then
-                let value_1552 =
-                    match lawspecSelection0x0_1545 with
+                        let firstSequence = subject.FirstSequence
+                        firstSequence
+
+                (value_2 = first)
+            else
+                false
+
+        let logic_2 =
+            if logic then
+                let value_3 =
+                    match selection with
                     | subject ->
-                        let lawspecFieldlastSequence_1553 = subject.LastSequence
-                        lawspecFieldlastSequence_1553
-                (value_1552 = last_1542)
-            else false
-        if logic_1554 then
-            let value_1555 =
-                match lawspecSelection0x0_1545 with
+                        let lastSequence = subject.LastSequence
+                        lastSequence
+
+                (value_3 = last)
+            else
+                false
+
+        if logic_2 then
+            let value_4 =
+                match selection with
                 | subject ->
-                    let lawspecFieldbatchOffset_1556 = subject.BatchOffset
-                    lawspecFieldbatchOffset_1556
-            (Some value_1555)
-        else
-            let result_1557 = lawtwinKafkaModelFindDuplicate_3335aea4 (epoch_1540) (first_1541) (last_1542) (lawspecSelection0x1_1546)
-            result_1557
+                    let batchOffset = subject.BatchOffset
+                    batchOffset
 
-/// lawtwin.kafka::lawtwinKafkaModelFinishTxn
-[<CompiledName("LawtwinKafkaModelFinishTxn_7545803e")>]
-let lawtwinKafkaModelFinishTxn_7545803e (pid_1558: int64) (commit_1559: bool) (txn_1560: LawSpec.Data.TxnState) (b_1561: LawSpec.Data.BrokerState) : LawSpec.Data.BrokerState =
-    let it_1562 = txn_1560
-    match it_1562 with
-    | LawSpec.Data.TxnState.NoTxn ->
-        b_1561
-    | LawSpec.Data.TxnState.Ongoing(lawspecSelection0x0_1563) ->
-        let value_1564 =
-            match lawspecSelection0x0_1563 with
-            | subject ->
-                let lawspecFieldtxnPartitions_1565 = subject.TxnPartitions
-                lawspecFieldtxnPartitions_1565
-        let lawspecSelection1x0_1566 = value_1564
-        let value_1567 =
-            match lawspecSelection0x0_1563 with
-            | subject ->
-                let lawspecFieldtxnOffsets_1568 = subject.TxnOffsets
-                lawspecFieldtxnOffsets_1568
-        let lawspecSelection1x1_1569 = value_1567
-        let result_1570 = lawtwinKafkaModelWriteMarkers_c507f08e (pid_1558) (commit_1559) (lawspecSelection1x0_1566) (b_1561)
-        let marked_1571 = result_1570
-        if commit_1559 then
-            let result_1572 = lawtwinKafkaModelReversePending_51ca5898 (lawspecSelection1x1_1569) ([])
-            let result_1573 = lawtwinKafkaModelApplyOffsets_c0f73b56 (result_1572) (marked_1571)
-            result_1573
+            Some value_4
         else
-            marked_1571
+            let result = lawtwinKafkaModelFindDuplicate epoch first last selection_2
+            result
 
-/// lawtwin.kafka::lawtwinKafkaModelGroupOf
-[<CompiledName("LawtwinKafkaModelGroupOf_abe7cb22")>]
-let lawtwinKafkaModelGroupOf_abe7cb22 (g_1574: string) (b_1575: LawSpec.Data.BrokerState) : LawSpec.Data.Group =
-    let value_1576 =
-        match b_1575 with
+/// lawtwinKafkaModelFinishTxn — ../src/model.lawspec:699
+[<CompiledName("LawtwinKafkaModelFinishTxn")>]
+let lawtwinKafkaModelFinishTxn
+    (pid: int64)
+    (commit: bool)
+    (txn: LawSpec.Data.TxnState)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.BrokerState =
+    let it = txn
+
+    match it with
+    | LawSpec.Data.TxnState.NoTxn -> b
+    | LawSpec.Data.TxnState.Ongoing(selection) ->
+        let value =
+            match selection with
+            | subject ->
+                let txnPartitions = subject.TxnPartitions
+                txnPartitions
+
+        let selection_2 = value
+
+        let value_2 =
+            match selection with
+            | subject ->
+                let txnOffsets = subject.TxnOffsets
+                txnOffsets
+
+        let selection_3 = value_2
+        let result = lawtwinKafkaModelWriteMarkers pid commit selection_2 b
+        let marked = result
+
+        if commit then
+            let result_2 = lawtwinKafkaModelReversePending selection_3 []
+            let result_3 = lawtwinKafkaModelApplyOffsets result_2 marked
+            result_3
+        else
+            marked
+
+/// lawtwinKafkaModelGroupOf — ../src/model.lawspec:733
+[<CompiledName("LawtwinKafkaModelGroupOf")>]
+let lawtwinKafkaModelGroupOf (g: string) (b: LawSpec.Data.BrokerState) : LawSpec.Data.Group =
+    let value =
+        match b with
         | subject ->
-            let lawspecFieldgroups_1577 = subject.Groups
-            lawspecFieldgroups_1577
-    let result_1578 = (Map.tryFind g_1574 value_1576)
-    let it_1579 = result_1578
-    match it_1579 with
+            let groups = subject.Groups
+            groups
+
+    let result = Map.tryFind g value
+    let it = result
+
+    match it with
     | None ->
-        let result_1580 = lawtwinKafkaModelEmptyGroup_2fc4809b (())
-        result_1580
-    | Some lawspecSelection0x0_1581 ->
-        lawspecSelection0x0_1581
+        let result_2 = lawtwinKafkaModelEmptyGroup ()
+        result_2
+    | Some selection -> selection
 
-/// lawtwin.kafka::lawtwinKafkaModelHeartbeat
-[<CompiledName("LawtwinKafkaModelHeartbeat_0f08a54d")>]
-let lawtwinKafkaModelHeartbeat_0f08a54d (g_1582: string) (member_1583: string) (generation_1584: int) (b_1585: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_1586 = lawtwinKafkaModelCheckMember_f218b850 (g_1582) (member_1583) (generation_1584) (b_1585)
-    let group_1587 = result_1586
-    ({ First = (); Second = b_1585 } : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+/// lawtwinKafkaModelHeartbeat — ../src/model.lawspec:903
+[<CompiledName("LawtwinKafkaModelHeartbeat")>]
+let lawtwinKafkaModelHeartbeat
+    (g: string)
+    (member_: string)
+    (generation: int)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelCheckMember g member_ generation b
+    let group = result
 
-/// lawtwin.kafka::lawtwinKafkaModelHighWatermark
-[<CompiledName("LawtwinKafkaModelHighWatermark_da6ed677")>]
-let lawtwinKafkaModelHighWatermark_da6ed677 (l_1588: LawSpec.Data.PartitionLog) : int64 =
-    match l_1588 with
+    let pair: LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+        { First = (); Second = b }
+
+    pair
+
+/// lawtwinKafkaModelHighWatermark — ../src/model.lawspec:322
+[<CompiledName("LawtwinKafkaModelHighWatermark")>]
+let lawtwinKafkaModelHighWatermark (l: LawSpec.Data.PartitionLog) : int64 =
+    match l with
     | subject ->
-        let lawspecFieldlogEndOffset_1589 = subject.LogEndOffset
-        lawspecFieldlogEndOffset_1589
+        let logEndOffset = subject.LogEndOffset
+        logEndOffset
 
-/// lawtwin.kafka::lawtwinKafkaModelInitProducerId
-[<CompiledName("LawtwinKafkaModelInitProducerId_cedb7e1b")>]
-let lawtwinKafkaModelInitProducerId_cedb7e1b (txid_1590: string option) (b_1591: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> =
-    let it_1592 = txid_1590
-    match it_1592 with
+/// lawtwinKafkaModelInitProducerId — ../src/model.lawspec:554
+[<CompiledName("LawtwinKafkaModelInitProducerId")>]
+let lawtwinKafkaModelInitProducerId
+    (txid: string option)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> =
+    let it = txid
+
+    match it with
     | None ->
-        let result_1593 = lawtwinKafkaModelNewProducer_89b0852d (None) (b_1591)
-        result_1593
-    | Some lawspecSelection0x0_1594 ->
-        if (lawspecSelection0x0_1594 = literal0) then
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidRequest) : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState>)
+        let result = lawtwinKafkaModelNewProducer None b
+        result
+    | Some selection ->
+        if (selection = "") then
+            (Typed.raiseFailure
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidRequest)
+            : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState>)
         else
-            let value_1595 =
-                match b_1591 with
+            let value =
+                match b with
                 | subject ->
-                    let lawspecFieldtransactionalIds_1596 = subject.TransactionalIds
-                    lawspecFieldtransactionalIds_1596
-            let result_1597 = (Map.tryFind lawspecSelection0x0_1594 value_1595)
-            let it_1598 = result_1597
-            match it_1598 with
-            | None ->
-                let result_1599 = lawtwinKafkaModelNewProducer_89b0852d (txid_1590) (b_1591)
-                result_1599
-            | Some matchlawspecSelection0x00_1600 ->
-                let value_1601 =
-                    match b_1591 with
-                    | subject ->
-                        let lawspecFieldproducers_1602 = subject.Producers
-                        lawspecFieldproducers_1602
-                let result_1603 = (Map.tryFind matchlawspecSelection0x00_1600 value_1601)
-                let it_1604 = result_1603
-                match it_1604 with
-                | None ->
-                    let result_1605 = lawtwinKafkaModelNewProducer_89b0852d (txid_1590) (b_1591)
-                    result_1605
-                | Some matchmatchlawspecSelection0x000_1606 ->
-                    let value_1607 =
-                        match matchmatchlawspecSelection0x000_1606 with
-                        | subject ->
-                            let lawspecFieldtxn_1608 = subject.Txn
-                            lawspecFieldtxn_1608
-                    let result_1609 = lawtwinKafkaModelFinishTxn_7545803e (matchlawspecSelection0x00_1600) (false) (value_1607) (b_1591)
-                    let cleared_1610 = result_1609
-                    let value_1611 =
-                        match matchmatchlawspecSelection0x000_1606 with
-                        | subject ->
-                            let lawspecFieldepoch_1612 = subject.Epoch
-                            lawspecFieldepoch_1612
-                    if ((bigint value_1611) < 32767I) then
-                        let value_1613 =
-                            match matchmatchlawspecSelection0x000_1606 with
-                            | subject ->
-                                let lawspecFieldepoch_1614 = subject.Epoch
-                                lawspecFieldepoch_1614
-                        let result_1615 = saturatingInt16_770015a8 (((bigint value_1613) + 1I))
-                        let bumped_1616 = result_1615
-                        let value_1617 =
-                            let lawspecRecordField0_1618 = matchlawspecSelection0x00_1600
-                            let lawspecRecordField1_1619 = bumped_1616
-                            ({ ProducerId = lawspecRecordField0_1618; ProducerEpoch = lawspecRecordField1_1619 } : LawSpec.Data.ProducerIdAndEpoch)
-                        let value_1620 =
-                            let replacement_1621 = LawSpec.Data.TxnState.NoTxn
-                            let value_1622 =
-                                let replacement_1623 = bumped_1616
-                                match matchmatchlawspecSelection0x000_1606 with
-                                | subject ->
-                                    let lawspecFieldtransactionalId_1624 = subject.TransactionalId
-                                    let lawspecFieldtxn_1625 = subject.Txn
-                                    ({ Epoch = replacement_1623; TransactionalId = lawspecFieldtransactionalId_1624; Txn = lawspecFieldtxn_1625 } : LawSpec.Data.ProducerEntry)
-                            match value_1622 with
-                            | subject ->
-                                let lawspecFieldepoch_1626 = subject.Epoch
-                                let lawspecFieldtransactionalId_1627 = subject.TransactionalId
-                                ({ Epoch = lawspecFieldepoch_1626; TransactionalId = lawspecFieldtransactionalId_1627; Txn = replacement_1621 } : LawSpec.Data.ProducerEntry)
-                        let result_1628 = lawtwinKafkaModelPutProducer_4ef907a5 (matchlawspecSelection0x00_1600) (value_1620) (cleared_1610)
-                        ({ First = value_1617; Second = result_1628 } : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState>)
-                    else
-                        let result_1629 = lawtwinKafkaModelNewProducer_89b0852d (txid_1590) (cleared_1610)
-                        result_1629
+                    let transactionalIds = subject.TransactionalIds
+                    transactionalIds
 
-/// lawtwin.kafka::lawtwinKafkaModelIsAborted
-[<CompiledName("LawtwinKafkaModelIsAborted_b12645e5")>]
-let lawtwinKafkaModelIsAborted_b12645e5 (writer_1630: int64) (offset_1631: int64) (aborted_1632: LawSpec.Data.AbortedTxn list) : bool =
-    let it_1633 = aborted_1632
-    match it_1633 with
-    | [] ->
-        false
-    | lawspecSelection0x0_1634 :: lawspecSelection0x1_1635 ->
-        let value_1636 =
-            match lawspecSelection0x0_1634 with
+            let result_2 = Map.tryFind selection value
+            let it_2 = result_2
+
+            match it_2 with
+            | None ->
+                let result_3 = lawtwinKafkaModelNewProducer txid b
+                result_3
+            | Some matchSelection ->
+                let value_2 =
+                    match b with
+                    | subject ->
+                        let producers = subject.Producers
+                        producers
+
+                let result_4 = Map.tryFind matchSelection value_2
+                let it_3 = result_4
+
+                match it_3 with
+                | None ->
+                    let result_5 = lawtwinKafkaModelNewProducer txid b
+                    result_5
+                | Some matchMatchSelection ->
+                    let value_3 =
+                        match matchMatchSelection with
+                        | subject ->
+                            let txn = subject.Txn
+                            txn
+
+                    let result_6 = lawtwinKafkaModelFinishTxn matchSelection false value_3 b
+                    let cleared = result_6
+
+                    let value_4 =
+                        match matchMatchSelection with
+                        | subject ->
+                            let epoch = subject.Epoch
+                            epoch
+
+                    if (bigint value_4 < 32767I) then
+                        let value_5 =
+                            match matchMatchSelection with
+                            | subject ->
+                                let epoch_2 = subject.Epoch
+                                epoch_2
+
+                        let result_7 = saturatingInt16 (bigint value_5 + 1I)
+                        let bumped = result_7
+
+                        let value_6 =
+                            let recordField = matchSelection
+                            let recordField_2 = bumped
+
+                            let producerIdAndEpoch: LawSpec.Data.ProducerIdAndEpoch =
+                                {
+                                    ProducerId = recordField
+                                    ProducerEpoch = recordField_2
+                                }
+
+                            producerIdAndEpoch
+
+                        let value_8 =
+                            let replacement = LawSpec.Data.TxnState.NoTxn
+
+                            let value_7 =
+                                let replacement_2 = bumped
+
+                                match matchMatchSelection with
+                                | subject ->
+                                    let transactionalId = subject.TransactionalId
+                                    let txn_2 = subject.Txn
+
+                                    let producerEntry: LawSpec.Data.ProducerEntry =
+                                        {
+                                            Epoch = replacement_2
+                                            TransactionalId = transactionalId
+                                            Txn = txn_2
+                                        }
+
+                                    producerEntry
+
+                            match value_7 with
+                            | subject ->
+                                let epoch_3 = subject.Epoch
+                                let transactionalId_2 = subject.TransactionalId
+
+                                let producerEntry_2: LawSpec.Data.ProducerEntry =
+                                    {
+                                        Epoch = epoch_3
+                                        TransactionalId = transactionalId_2
+                                        Txn = replacement
+                                    }
+
+                                producerEntry_2
+
+                        let result_8 = lawtwinKafkaModelPutProducer matchSelection value_8 cleared
+
+                        let pair: LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> =
+                            { First = value_6; Second = result_8 }
+
+                        pair
+                    else
+                        let result_9 = lawtwinKafkaModelNewProducer txid cleared
+                        result_9
+
+/// lawtwinKafkaModelIsAborted — ../src/model.lawspec:437
+[<CompiledName("LawtwinKafkaModelIsAborted")>]
+let lawtwinKafkaModelIsAborted (writer: int64) (offset: int64) (aborted: LawSpec.Data.AbortedTxn list) : bool =
+    let it = aborted
+
+    match it with
+    | [] -> false
+    | selection :: selection_2 ->
+        let value =
+            match selection with
             | subject ->
-                let lawspecFieldabortedWriter_1637 = subject.AbortedWriter
-                lawspecFieldabortedWriter_1637
-        let logic_1640 =
-            if (value_1636 = writer_1630) then
-                let value_1638 =
-                    match lawspecSelection0x0_1634 with
+                let abortedWriter = subject.AbortedWriter
+                abortedWriter
+
+        let logic =
+            if (value = writer) then
+                let value_2 =
+                    match selection with
                     | subject ->
-                        let lawspecFieldfirstOffset_1639 = subject.FirstOffset
-                        lawspecFieldfirstOffset_1639
-                (offset_1631 >= value_1638)
-            else false
-        let logic_1643 =
-            if logic_1640 then
-                let value_1641 =
-                    match lawspecSelection0x0_1634 with
+                        let firstOffset = subject.FirstOffset
+                        firstOffset
+
+                (offset >= value_2)
+            else
+                false
+
+        let logic_2 =
+            if logic then
+                let value_3 =
+                    match selection with
                     | subject ->
-                        let lawspecFieldlastOffset_1642 = subject.LastOffset
-                        lawspecFieldlastOffset_1642
-                (offset_1631 <= value_1641)
-            else false
-        let logic_1645 =
-            if logic_1643 then
+                        let lastOffset = subject.LastOffset
+                        lastOffset
+
+                (offset <= value_3)
+            else
+                false
+
+        let logic_3 =
+            if logic_2 then
                 true
             else
-                let result_1644 = lawtwinKafkaModelIsAborted_b12645e5 (writer_1630) (offset_1631) (lawspecSelection0x1_1635)
-                result_1644
-        logic_1645
+                let result = lawtwinKafkaModelIsAborted writer offset selection_2
+                result
 
-/// lawtwin.kafka::lawtwinKafkaModelJoinGroup
-[<CompiledName("LawtwinKafkaModelJoinGroup_9a1e92f5")>]
-let lawtwinKafkaModelJoinGroup_9a1e92f5 (g_1646: string) (member_1647: string) (topics_1648: string list) (b_1649: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState> =
-    if (g_1646 = literal0) then
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidGroupId) : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>)
+        logic_3
+
+/// lawtwinKafkaModelJoinGroup — ../src/model.lawspec:861
+[<CompiledName("LawtwinKafkaModelJoinGroup")>]
+let lawtwinKafkaModelJoinGroup
+    (g: string)
+    (member_: string)
+    (topics: string list)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState> =
+    if (g = "") then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidGroupId)
+        : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>)
+    else if (member_ = "") then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownMemberId)
+        : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>)
     else
-        if (member_1647 = literal0) then
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownMemberId) : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>)
-        else
-            let result_1650 = lawtwinKafkaModelGroupOf_abe7cb22 (g_1646) (b_1649)
-            let group_1651 = result_1650
-            let value_1652 =
-                let result_1653 = (Set.ofList topics_1648)
-                match result_1653 with
-                | subject ->
-                    let items_1654 = (Typed.items subject)
-                    items_1654
-            let wanted_1655 = value_1652
-            let value_1656 =
-                match group_1651 with
-                | subject ->
-                    let lawspecFieldsubscriptions_1657 = subject.Subscriptions
-                    lawspecFieldsubscriptions_1657
-            let result_1658 = (Map.tryFind member_1647 value_1656)
-            let it_1659 = result_1658
-            match it_1659 with
-            | Some lawspecSelection0x0_1660 ->
-                if (lawspecSelection0x0_1660 = wanted_1655) then
-                    let value_1661 =
-                        match group_1651 with
-                        | subject ->
-                            let lawspecFieldgroupGeneration_1662 = subject.GroupGeneration
-                            lawspecFieldgroupGeneration_1662
-                    ({ First = value_1661; Second = b_1649 } : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>)
-                else
-                    let value_1663 =
-                        let value_1664 =
-                            match group_1651 with
-                            | subject ->
-                                let lawspecFieldsubscriptions_1665 = subject.Subscriptions
-                                lawspecFieldsubscriptions_1665
-                        let result_1666 = (Map.add member_1647 wanted_1655 value_1664)
-                        let replacement_1667 = result_1666
-                        match group_1651 with
-                        | subject ->
-                            let lawspecFieldgroupGeneration_1668 = subject.GroupGeneration
-                            let lawspecFieldassignment_1669 = subject.Assignment
-                            ({ GroupGeneration = lawspecFieldgroupGeneration_1668; Subscriptions = replacement_1667; Assignment = lawspecFieldassignment_1669 } : LawSpec.Data.Group)
-                    let result_1670 = lawtwinKafkaModelRebalance_c9984d55 (value_1663) (b_1649)
-                    let next_1671 = result_1670
-                    let value_1672 =
-                        match next_1671 with
-                        | subject ->
-                            let lawspecFieldgroupGeneration_1673 = subject.GroupGeneration
-                            lawspecFieldgroupGeneration_1673
-                    let result_1674 = lawtwinKafkaModelPutGroup_f45eaad0 (g_1646) (next_1671) (b_1649)
-                    ({ First = value_1672; Second = result_1674 } : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>)
-            | None ->
-                let value_1675 =
-                    let value_1676 =
-                        match group_1651 with
-                        | subject ->
-                            let lawspecFieldsubscriptions_1677 = subject.Subscriptions
-                            lawspecFieldsubscriptions_1677
-                    let result_1678 = (Map.add member_1647 wanted_1655 value_1676)
-                    let replacement_1679 = result_1678
-                    match group_1651 with
-                    | subject ->
-                        let lawspecFieldgroupGeneration_1680 = subject.GroupGeneration
-                        let lawspecFieldassignment_1681 = subject.Assignment
-                        ({ GroupGeneration = lawspecFieldgroupGeneration_1680; Subscriptions = replacement_1679; Assignment = lawspecFieldassignment_1681 } : LawSpec.Data.Group)
-                let result_1682 = lawtwinKafkaModelRebalance_c9984d55 (value_1675) (b_1649)
-                let next_1683 = result_1682
-                let value_1684 =
-                    match next_1683 with
-                    | subject ->
-                        let lawspecFieldgroupGeneration_1685 = subject.GroupGeneration
-                        lawspecFieldgroupGeneration_1685
-                let result_1686 = lawtwinKafkaModelPutGroup_f45eaad0 (g_1646) (next_1683) (b_1649)
-                ({ First = value_1684; Second = result_1686 } : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>)
+        let result = lawtwinKafkaModelGroupOf g b
+        let group = result
 
-/// lawtwin.kafka::lawtwinKafkaModelKnownPartition
-[<CompiledName("LawtwinKafkaModelKnownPartition_71d3099f")>]
-let lawtwinKafkaModelKnownPartition_71d3099f (tp_1687: LawSpec.Data.TopicPartition) (b_1688: LawSpec.Data.BrokerState) : bool =
-    let value_1689 =
-        match tp_1687 with
-        | subject ->
-            let lawspecFieldtopic_1690 = subject.Topic
-            lawspecFieldtopic_1690
-    let result_1691 = lawtwinKafkaModelPartitionCountOf_ff180c35 (value_1689) (b_1688)
-    let it_1692 = result_1691
-    match it_1692 with
-    | None ->
-        false
-    | Some lawspecSelection0x0_1693 ->
-        let value_1694 =
-            match tp_1687 with
+        let value =
+            let result_2 = Set.ofList topics
+
+            match result_2 with
             | subject ->
-                let lawspecFieldpartition_1695 = subject.Partition
-                lawspecFieldpartition_1695
-        let logic_1698 =
-            if ((bigint value_1694) >= 0I) then
-                let value_1696 =
-                    match tp_1687 with
-                    | subject ->
-                        let lawspecFieldpartition_1697 = subject.Partition
-                        lawspecFieldpartition_1697
-                (value_1696 < lawspecSelection0x0_1693)
-            else false
-        logic_1698
+                let items = Typed.items subject
+                items
 
-/// lawtwin.kafka::lawtwinKafkaModelLastOffsetOf
-[<CompiledName("LawtwinKafkaModelLastOffsetOf_544a605b")>]
-let lawtwinKafkaModelLastOffsetOf_544a605b (rs_1699: LawSpec.Data.FetchedRecord list) (fallbackOffset_1700: int64) : int64 =
-    let it_1701 = rs_1699
-    match it_1701 with
-    | [] ->
-        fallbackOffset_1700
-    | lawspecSelection0x0_1702 :: lawspecSelection0x1_1703 ->
-        let value_1704 =
-            match lawspecSelection0x0_1702 with
+        let wanted = value
+
+        let value_2 =
+            match group with
             | subject ->
-                let lawspecFieldoffset_1705 = subject.Offset
-                lawspecFieldoffset_1705
-        let result_1706 = lawtwinKafkaModelLastOffsetOf_544a605b (lawspecSelection0x1_1703) (value_1704)
-        result_1706
+                let subscriptions = subject.Subscriptions
+                subscriptions
 
-/// lawtwin.kafka::lawtwinKafkaModelLastStableOffset
-[<CompiledName("LawtwinKafkaModelLastStableOffset_e8497029")>]
-let lawtwinKafkaModelLastStableOffset_e8497029 (l_1707: LawSpec.Data.PartitionLog) : int64 =
-    let value_1708 =
-        match l_1707 with
-        | subject ->
-            let lawspecFieldopenTxns_1709 = subject.OpenTxns
-            lawspecFieldopenTxns_1709
-    let result_1710 = (Typed.values value_1708)
-    let value_1711 =
-        match l_1707 with
-        | subject ->
-            let lawspecFieldlogEndOffset_1712 = subject.LogEndOffset
-            lawspecFieldlogEndOffset_1712
-    let result_1713 = lawtwinKafkaModelMinOf_c4e891de (result_1710) (value_1711)
-    result_1713
+        let result_3 = Map.tryFind member_ value_2
+        let it = result_3
 
-/// lawtwin.kafka::lawtwinKafkaModelLeaveGroup
-[<CompiledName("LawtwinKafkaModelLeaveGroup_5e5a3f69")>]
-let lawtwinKafkaModelLeaveGroup_5e5a3f69 (g_1714: string) (member_1715: string) (b_1716: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result_1717 = lawtwinKafkaModelGroupOf_abe7cb22 (g_1714) (b_1716)
-    let group_1718 = result_1717
-    let value_1719 =
-        match group_1718 with
+        match it with
+        | Some selection ->
+            if (selection = wanted) then
+                let value_3 =
+                    match group with
+                    | subject ->
+                        let groupGeneration = subject.GroupGeneration
+                        groupGeneration
+
+                let pair: LawSpec.Data.Pair<int, LawSpec.Data.BrokerState> =
+                    { First = value_3; Second = b }
+
+                pair
+            else
+                let value_5 =
+                    let value_4 =
+                        match group with
+                        | subject ->
+                            let subscriptions_2 = subject.Subscriptions
+                            subscriptions_2
+
+                    let result_4 = Map.add member_ wanted value_4
+                    let replacement = result_4
+
+                    match group with
+                    | subject ->
+                        let groupGeneration_2 = subject.GroupGeneration
+                        let assignment = subject.Assignment
+
+                        let group_2: LawSpec.Data.Group =
+                            {
+                                GroupGeneration = groupGeneration_2
+                                Subscriptions = replacement
+                                Assignment = assignment
+                            }
+
+                        group_2
+
+                let result_5 = lawtwinKafkaModelRebalance value_5 b
+                let next = result_5
+
+                let value_6 =
+                    match next with
+                    | subject ->
+                        let groupGeneration_3 = subject.GroupGeneration
+                        groupGeneration_3
+
+                let result_6 = lawtwinKafkaModelPutGroup g next b
+
+                let pair_2: LawSpec.Data.Pair<int, LawSpec.Data.BrokerState> =
+                    { First = value_6; Second = result_6 }
+
+                pair_2
+        | None ->
+            let value_8 =
+                let value_7 =
+                    match group with
+                    | subject ->
+                        let subscriptions_3 = subject.Subscriptions
+                        subscriptions_3
+
+                let result_7 = Map.add member_ wanted value_7
+                let replacement_2 = result_7
+
+                match group with
+                | subject ->
+                    let groupGeneration_4 = subject.GroupGeneration
+                    let assignment_2 = subject.Assignment
+
+                    let group_3: LawSpec.Data.Group =
+                        {
+                            GroupGeneration = groupGeneration_4
+                            Subscriptions = replacement_2
+                            Assignment = assignment_2
+                        }
+
+                    group_3
+
+            let result_8 = lawtwinKafkaModelRebalance value_8 b
+            let next_2 = result_8
+
+            let value_9 =
+                match next_2 with
+                | subject ->
+                    let groupGeneration_5 = subject.GroupGeneration
+                    groupGeneration_5
+
+            let result_9 = lawtwinKafkaModelPutGroup g next_2 b
+
+            let pair_3: LawSpec.Data.Pair<int, LawSpec.Data.BrokerState> =
+                { First = value_9; Second = result_9 }
+
+            pair_3
+
+/// lawtwinKafkaModelKnownPartition — ../src/model.lawspec:261
+[<CompiledName("LawtwinKafkaModelKnownPartition")>]
+let lawtwinKafkaModelKnownPartition (tp: LawSpec.Data.TopicPartition) (b: LawSpec.Data.BrokerState) : bool =
+    let value =
+        match tp with
         | subject ->
-            let lawspecFieldsubscriptions_1720 = subject.Subscriptions
-            lawspecFieldsubscriptions_1720
-    let result_1721 = (Map.tryFind member_1715 value_1719)
-    let it_1722 = result_1721
-    match it_1722 with
+            let topic = subject.Topic
+            topic
+
+    let result = lawtwinKafkaModelPartitionCountOf value b
+    let it = result
+
+    match it with
+    | None -> false
+    | Some selection ->
+        let value_2 =
+            match tp with
+            | subject ->
+                let partition = subject.Partition
+                partition
+
+        let logic =
+            if (bigint value_2 >= 0I) then
+                let value_3 =
+                    match tp with
+                    | subject ->
+                        let partition_2 = subject.Partition
+                        partition_2
+
+                (value_3 < selection)
+            else
+                false
+
+        logic
+
+/// lawtwinKafkaModelLastOffsetOf — ../src/model.lawspec:475
+[<CompiledName("LawtwinKafkaModelLastOffsetOf")>]
+let lawtwinKafkaModelLastOffsetOf (rs: LawSpec.Data.FetchedRecord list) (fallbackOffset: int64) : int64 =
+    let it = rs
+
+    match it with
+    | [] -> fallbackOffset
+    | selection :: selection_2 ->
+        let value =
+            match selection with
+            | subject ->
+                let offset = subject.Offset
+                offset
+
+        let result = lawtwinKafkaModelLastOffsetOf selection_2 value
+        result
+
+/// lawtwinKafkaModelLastStableOffset — ../src/model.lawspec:312
+[<CompiledName("LawtwinKafkaModelLastStableOffset")>]
+let lawtwinKafkaModelLastStableOffset (l: LawSpec.Data.PartitionLog) : int64 =
+    let value =
+        match l with
+        | subject ->
+            let openTxns = subject.OpenTxns
+            openTxns
+
+    let result = Typed.values value
+
+    let value_2 =
+        match l with
+        | subject ->
+            let logEndOffset = subject.LogEndOffset
+            logEndOffset
+
+    let result_2 = lawtwinKafkaModelMinOf result value_2
+    result_2
+
+/// lawtwinKafkaModelLeaveGroup — ../src/model.lawspec:908
+[<CompiledName("LawtwinKafkaModelLeaveGroup")>]
+let lawtwinKafkaModelLeaveGroup
+    (g: string)
+    (member_: string)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelGroupOf g b
+    let group = result
+
+    let value =
+        match group with
+        | subject ->
+            let subscriptions = subject.Subscriptions
+            subscriptions
+
+    let result_2 = Map.tryFind member_ value
+    let it = result_2
+
+    match it with
     | None ->
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownMemberId) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownMemberId)
+        : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
     | Some _ ->
-        let value_1723 =
-            let value_1724 =
-                match group_1718 with
+        let value_3 =
+            let value_2 =
+                match group with
                 | subject ->
-                    let lawspecFieldsubscriptions_1725 = subject.Subscriptions
-                    lawspecFieldsubscriptions_1725
-            let result_1726 = (Map.remove member_1715 value_1724)
-            let replacement_1727 = result_1726
-            match group_1718 with
-            | subject ->
-                let lawspecFieldgroupGeneration_1728 = subject.GroupGeneration
-                let lawspecFieldassignment_1729 = subject.Assignment
-                ({ GroupGeneration = lawspecFieldgroupGeneration_1728; Subscriptions = replacement_1727; Assignment = lawspecFieldassignment_1729 } : LawSpec.Data.Group)
-        let result_1730 = lawtwinKafkaModelRebalance_c9984d55 (value_1723) (b_1716)
-        let result_1731 = lawtwinKafkaModelPutGroup_f45eaad0 (g_1714) (result_1730) (b_1716)
-        ({ First = (); Second = result_1731 } : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                    let subscriptions_2 = subject.Subscriptions
+                    subscriptions_2
 
-/// lawtwin.kafka::lawtwinKafkaModelListOffsets
-[<CompiledName("LawtwinKafkaModelListOffsets_9c6c9426")>]
-let lawtwinKafkaModelListOffsets_9c6c9426 (tp_1732: LawSpec.Data.TopicPartition) (spec_1733: LawSpec.Data.OffsetSpec) (isolation_1734: LawSpec.Data.IsolationLevel) (b_1735: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
-    let result_1736 = lawtwinKafkaModelKnownPartition_71d3099f (tp_1732) (b_1735)
-    if (not result_1736) then
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownTopicOrPartition) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+            let result_3 = Map.remove member_ value_2
+            let replacement = result_3
+
+            match group with
+            | subject ->
+                let groupGeneration = subject.GroupGeneration
+                let assignment = subject.Assignment
+
+                let group_2: LawSpec.Data.Group =
+                    {
+                        GroupGeneration = groupGeneration
+                        Subscriptions = replacement
+                        Assignment = assignment
+                    }
+
+                group_2
+
+        let result_4 = lawtwinKafkaModelRebalance value_3 b
+        let result_5 = lawtwinKafkaModelPutGroup g result_4 b
+
+        let pair: LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+            { First = (); Second = result_5 }
+
+        pair
+
+/// lawtwinKafkaModelListOffsets — ../src/model.lawspec:517
+[<CompiledName("LawtwinKafkaModelListOffsets")>]
+let lawtwinKafkaModelListOffsets
+    (tp: LawSpec.Data.TopicPartition)
+    (spec: LawSpec.Data.OffsetSpec)
+    (isolation: LawSpec.Data.IsolationLevel)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelKnownPartition tp b
+
+    if not result then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownTopicOrPartition)
+        : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
     else
-        let result_1737 = lawtwinKafkaModelLogOf_b86b131a (tp_1732) (b_1735)
-        let l_1738 = result_1737
-        let it_1739 = spec_1733
-        match it_1739 with
+        let result_2 = lawtwinKafkaModelLogOf tp b
+        let l = result_2
+        let it = spec
+
+        match it with
         | LawSpec.Data.OffsetSpec.Earliest ->
-            ({ First = 0L; Second = b_1735 } : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+            let pair: LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+                { First = 0L; Second = b }
+
+            pair
         | LawSpec.Data.OffsetSpec.Latest ->
-            let it_1740 = isolation_1734
-            match it_1740 with
+            let it_2 = isolation
+
+            match it_2 with
             | LawSpec.Data.IsolationLevel.ReadUncommitted ->
-                let result_1741 = lawtwinKafkaModelHighWatermark_da6ed677 (l_1738)
-                ({ First = result_1741; Second = b_1735 } : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+                let result_3 = lawtwinKafkaModelHighWatermark l
+
+                let pair_2: LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+                    { First = result_3; Second = b }
+
+                pair_2
             | LawSpec.Data.IsolationLevel.ReadCommitted ->
-                let result_1742 = lawtwinKafkaModelLastStableOffset_e8497029 (l_1738)
-                ({ First = result_1742; Second = b_1735 } : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+                let result_4 = lawtwinKafkaModelLastStableOffset l
 
-/// lawtwin.kafka::lawtwinKafkaModelLogOf
-[<CompiledName("LawtwinKafkaModelLogOf_b86b131a")>]
-let lawtwinKafkaModelLogOf_b86b131a (tp_1743: LawSpec.Data.TopicPartition) (b_1744: LawSpec.Data.BrokerState) : LawSpec.Data.PartitionLog =
-    let value_1745 =
-        match b_1744 with
+                let pair_3: LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+                    { First = result_4; Second = b }
+
+                pair_3
+
+/// lawtwinKafkaModelLogOf — ../src/model.lawspec:268
+[<CompiledName("LawtwinKafkaModelLogOf")>]
+let lawtwinKafkaModelLogOf (tp: LawSpec.Data.TopicPartition) (b: LawSpec.Data.BrokerState) : LawSpec.Data.PartitionLog =
+    let value =
+        match b with
         | subject ->
-            let lawspecFieldlogs_1746 = subject.Logs
-            lawspecFieldlogs_1746
-    let result_1747 = (Map.tryFind tp_1743 value_1745)
-    let it_1748 = result_1747
-    match it_1748 with
+            let logs = subject.Logs
+            logs
+
+    let result = Map.tryFind tp value
+    let it = result
+
+    match it with
     | None ->
-        let result_1749 = lawtwinKafkaModelEmptyLog_a7825ed0 (())
-        result_1749
-    | Some lawspecSelection0x0_1750 ->
-        lawspecSelection0x0_1750
+        let result_2 = lawtwinKafkaModelEmptyLog ()
+        result_2
+    | Some selection -> selection
 
-/// lawtwin.kafka::lawtwinKafkaModelMax64
-[<CompiledName("LawtwinKafkaModelMax64_98542b8b")>]
-let lawtwinKafkaModelMax64_98542b8b (a_1751: int64) (b_1752: int64) : int64 =
-    if (a_1751 >= b_1752) then
-        a_1751
-    else
-        b_1752
+/// lawtwinKafkaModelMax64 — ../src/model.lawspec:227
+[<CompiledName("LawtwinKafkaModelMax64")>]
+let lawtwinKafkaModelMax64 (a: int64) (b: int64) : int64 = if (a >= b) then a else b
 
-/// lawtwin.kafka::lawtwinKafkaModelMaxPartitions
-[<CompiledName("LawtwinKafkaModelMaxPartitions_6be37992")>]
-let lawtwinKafkaModelMaxPartitions_6be37992 (u_1753: unit) : int =
-    1024
+/// lawtwinKafkaModelMaxPartitions — ../src/model.lawspec:231
+[<CompiledName("LawtwinKafkaModelMaxPartitions")>]
+let lawtwinKafkaModelMaxPartitions (u: unit) : int = 1024
 
-/// lawtwin.kafka::lawtwinKafkaModelMemberViews
-[<CompiledName("LawtwinKafkaModelMemberViews_a87b1b1a")>]
-let lawtwinKafkaModelMemberViews_a87b1b1a (a_1754: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list) : LawSpec.Data.MemberAssignment list =
-    let it_1755 = a_1754
-    match it_1755 with
-    | [] ->
-        []
-    | lawspecSelection0x0_1756 :: lawspecSelection0x1_1757 ->
-        let value_1758 =
-            let value_1759 =
-                match lawspecSelection0x0_1756 with
+/// lawtwinKafkaModelMemberViews — ../src/model.lawspec:919
+[<CompiledName("LawtwinKafkaModelMemberViews")>]
+let lawtwinKafkaModelMemberViews
+    (a: LawSpec.Data.Entry<string, LawSpec.Data.TopicPartition list> list)
+    : LawSpec.Data.MemberAssignment list =
+    let it = a
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value_4 =
+            let value =
+                match selection with
                 | subject ->
-                    let lawspecFieldkey_1760 = subject.Key
-                    lawspecFieldkey_1760
-            let lawspecRecordField0_1761 = value_1759
-            let value_1762 =
-                match lawspecSelection0x0_1756 with
+                    let key = subject.Key
+                    key
+
+            let recordField = value
+
+            let value_3 =
+                match selection with
                 | subject ->
-                    let lawspecFieldvalue_1763 = subject.Value
-                    lawspecFieldvalue_1763
-            let lawspecRecordField1_1764 = value_1762
-            ({ MemberId = lawspecRecordField0_1761; Assigned = lawspecRecordField1_1764 } : LawSpec.Data.MemberAssignment)
-        let result_1765 = lawtwinKafkaModelMemberViews_a87b1b1a (lawspecSelection0x1_1757)
-        (value_1758 :: result_1765)
+                    let value_2 = subject.Value
+                    value_2
 
-/// lawtwin.kafka::lawtwinKafkaModelMetadata
-[<CompiledName("LawtwinKafkaModelMetadata_97bb5c4c")>]
-let lawtwinKafkaModelMetadata_97bb5c4c (name_1766: string) (b_1767: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<int option, LawSpec.Data.BrokerState> =
-    let result_1768 = lawtwinKafkaModelPartitionCountOf_ff180c35 (name_1766) (b_1767)
-    ({ First = result_1768; Second = b_1767 } : LawSpec.Data.Pair<int option, LawSpec.Data.BrokerState>)
+            let recordField_2 = value_3
 
-/// lawtwin.kafka::lawtwinKafkaModelMin64
-[<CompiledName("LawtwinKafkaModelMin64_b47ce987")>]
-let lawtwinKafkaModelMin64_b47ce987 (a_1769: int64) (b_1770: int64) : int64 =
-    if (a_1769 <= b_1770) then
-        a_1769
-    else
-        b_1770
+            let memberAssignment: LawSpec.Data.MemberAssignment =
+                {
+                    MemberId = recordField
+                    Assigned = recordField_2
+                }
 
-/// lawtwin.kafka::lawtwinKafkaModelMinOf
-[<CompiledName("LawtwinKafkaModelMinOf_c4e891de")>]
-let lawtwinKafkaModelMinOf_c4e891de (xs_1771: int64 list) (m_1772: int64) : int64 =
-    let it_1773 = xs_1771
-    match it_1773 with
-    | [] ->
-        m_1772
-    | lawspecSelection0x0_1774 :: lawspecSelection0x1_1775 ->
-        let result_1776 = lawtwinKafkaModelMin64_b47ce987 (lawspecSelection0x0_1774) (m_1772)
-        let result_1777 = lawtwinKafkaModelMinOf_c4e891de (lawspecSelection0x1_1775) (result_1776)
-        result_1777
+            memberAssignment
 
-/// lawtwin.kafka::lawtwinKafkaModelNewProducer
-[<CompiledName("LawtwinKafkaModelNewProducer_89b0852d")>]
-let lawtwinKafkaModelNewProducer_89b0852d (txid_1778: string option) (b_1779: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> =
-    let value_1780 =
-        match b_1779 with
+        let result = lawtwinKafkaModelMemberViews selection_2
+        (value_4 :: result)
+
+/// lawtwinKafkaModelMetadata — ../src/model.lawspec:303
+[<CompiledName("LawtwinKafkaModelMetadata")>]
+let lawtwinKafkaModelMetadata
+    (name: string)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<int option, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelPartitionCountOf name b
+
+    let pair: LawSpec.Data.Pair<int option, LawSpec.Data.BrokerState> =
+        { First = result; Second = b }
+
+    pair
+
+/// lawtwinKafkaModelMin64 — ../src/model.lawspec:225
+[<CompiledName("LawtwinKafkaModelMin64")>]
+let lawtwinKafkaModelMin64 (a: int64) (b: int64) : int64 = if (a <= b) then a else b
+
+/// lawtwinKafkaModelMinOf — ../src/model.lawspec:315
+[<CompiledName("LawtwinKafkaModelMinOf")>]
+let lawtwinKafkaModelMinOf (xs: int64 list) (m: int64) : int64 =
+    let it = xs
+
+    match it with
+    | [] -> m
+    | selection :: selection_2 ->
+        let result = lawtwinKafkaModelMin64 selection m
+        let result_2 = lawtwinKafkaModelMinOf selection_2 result
+        result_2
+
+/// lawtwinKafkaModelNewProducer — ../src/model.lawspec:536
+[<CompiledName("LawtwinKafkaModelNewProducer")>]
+let lawtwinKafkaModelNewProducer
+    (txid: string option)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> =
+    let value =
+        match b with
         | subject ->
-            let lawspecFieldnextProducerId_1781 = subject.NextProducerId
-            lawspecFieldnextProducerId_1781
-    let pid_1782 = value_1780
-    let value_1783 =
-        let result_1784 = saturatingInt64_5bce4ed8 (((bigint pid_1782) + 1I))
-        let replacement_1785 = result_1784
-        let value_1786 =
-            let value_1787 =
-                let lawspecRecordField0_1788 = 0s
-                let lawspecRecordField1_1789 = txid_1778
-                let lawspecRecordField2_1790 = LawSpec.Data.TxnState.NoTxn
-                ({ Epoch = lawspecRecordField0_1788; TransactionalId = lawspecRecordField1_1789; Txn = lawspecRecordField2_1790 } : LawSpec.Data.ProducerEntry)
-            let value_1791 =
-                match b_1779 with
-                | subject ->
-                    let lawspecFieldproducers_1792 = subject.Producers
-                    lawspecFieldproducers_1792
-            let result_1793 = (Map.add pid_1782 value_1787 value_1791)
-            let replacement_1794 = result_1793
-            match b_1779 with
-            | subject ->
-                let lawspecFieldtopics_1795 = subject.Topics
-                let lawspecFieldlogs_1796 = subject.Logs
-                let lawspecFieldtransactionalIds_1797 = subject.TransactionalIds
-                let lawspecFieldnextProducerId_1798 = subject.NextProducerId
-                let lawspecFieldgroups_1799 = subject.Groups
-                let lawspecFieldcommitted_1800 = subject.Committed
-                ({ Topics = lawspecFieldtopics_1795; Logs = lawspecFieldlogs_1796; Producers = replacement_1794; TransactionalIds = lawspecFieldtransactionalIds_1797; NextProducerId = lawspecFieldnextProducerId_1798; Groups = lawspecFieldgroups_1799; Committed = lawspecFieldcommitted_1800 } : LawSpec.Data.BrokerState)
-        match value_1786 with
-        | subject ->
-            let lawspecFieldtopics_1801 = subject.Topics
-            let lawspecFieldlogs_1802 = subject.Logs
-            let lawspecFieldproducers_1803 = subject.Producers
-            let lawspecFieldtransactionalIds_1804 = subject.TransactionalIds
-            let lawspecFieldgroups_1805 = subject.Groups
-            let lawspecFieldcommitted_1806 = subject.Committed
-            ({ Topics = lawspecFieldtopics_1801; Logs = lawspecFieldlogs_1802; Producers = lawspecFieldproducers_1803; TransactionalIds = lawspecFieldtransactionalIds_1804; NextProducerId = replacement_1785; Groups = lawspecFieldgroups_1805; Committed = lawspecFieldcommitted_1806 } : LawSpec.Data.BrokerState)
-    let withEntry_1807 = value_1783
-    let value_1808 =
-        let it_1809 = txid_1778
-        match it_1809 with
-        | None ->
-            withEntry_1807
-        | Some lawspecSelection0x0_1810 ->
-            let value_1811 =
-                match withEntry_1807 with
-                | subject ->
-                    let lawspecFieldtransactionalIds_1812 = subject.TransactionalIds
-                    lawspecFieldtransactionalIds_1812
-            let result_1813 = (Map.add lawspecSelection0x0_1810 pid_1782 value_1811)
-            let replacement_1814 = result_1813
-            match withEntry_1807 with
-            | subject ->
-                let lawspecFieldtopics_1815 = subject.Topics
-                let lawspecFieldlogs_1816 = subject.Logs
-                let lawspecFieldproducers_1817 = subject.Producers
-                let lawspecFieldnextProducerId_1818 = subject.NextProducerId
-                let lawspecFieldgroups_1819 = subject.Groups
-                let lawspecFieldcommitted_1820 = subject.Committed
-                ({ Topics = lawspecFieldtopics_1815; Logs = lawspecFieldlogs_1816; Producers = lawspecFieldproducers_1817; TransactionalIds = replacement_1814; NextProducerId = lawspecFieldnextProducerId_1818; Groups = lawspecFieldgroups_1819; Committed = lawspecFieldcommitted_1820 } : LawSpec.Data.BrokerState)
-    let mapped_1821 = value_1808
-    let value_1822 =
-        let lawspecRecordField0_1823 = pid_1782
-        let lawspecRecordField1_1824 = 0s
-        ({ ProducerId = lawspecRecordField0_1823; ProducerEpoch = lawspecRecordField1_1824 } : LawSpec.Data.ProducerIdAndEpoch)
-    ({ First = value_1822; Second = mapped_1821 } : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState>)
+            let nextProducerId = subject.NextProducerId
+            nextProducerId
 
-/// lawtwin.kafka::lawtwinKafkaModelNextFetchOffset
-[<CompiledName("LawtwinKafkaModelNextFetchOffset_28fd5a97")>]
-let lawtwinKafkaModelNextFetchOffset_28fd5a97 (from_1825: int64) (limit_1826: int64) (taken_1827: LawSpec.Data.FetchedRecord list) (all_1828: LawSpec.Data.FetchedRecord list) : int64 =
-    if ((bigint (List.length taken_1827)) < (bigint (List.length all_1828))) then
-        let it_1829 = taken_1827
-        match it_1829 with
-        | [] ->
-            from_1825
+    let pid = value
+
+    let value_5 =
+        let result = saturatingInt64 (bigint pid + 1I)
+        let replacement = result
+
+        let value_4 =
+            let value_2 =
+                let recordField = 0s
+                let recordField_2 = txid
+                let recordField_3 = LawSpec.Data.TxnState.NoTxn
+
+                let producerEntry: LawSpec.Data.ProducerEntry =
+                    {
+                        Epoch = recordField
+                        TransactionalId = recordField_2
+                        Txn = recordField_3
+                    }
+
+                producerEntry
+
+            let value_3 =
+                match b with
+                | subject ->
+                    let producers = subject.Producers
+                    producers
+
+            let result_2 = Map.add pid value_2 value_3
+            let replacement_2 = result_2
+
+            match b with
+            | subject ->
+                let topics = subject.Topics
+                let logs = subject.Logs
+                let transactionalIds = subject.TransactionalIds
+                let nextProducerId_2 = subject.NextProducerId
+                let groups = subject.Groups
+                let committed = subject.Committed
+
+                let brokerState: LawSpec.Data.BrokerState =
+                    {
+                        Topics = topics
+                        Logs = logs
+                        Producers = replacement_2
+                        TransactionalIds = transactionalIds
+                        NextProducerId = nextProducerId_2
+                        Groups = groups
+                        Committed = committed
+                    }
+
+                brokerState
+
+        match value_4 with
+        | subject ->
+            let topics_2 = subject.Topics
+            let logs_2 = subject.Logs
+            let producers_2 = subject.Producers
+            let transactionalIds_2 = subject.TransactionalIds
+            let groups_2 = subject.Groups
+            let committed_2 = subject.Committed
+
+            let brokerState_2: LawSpec.Data.BrokerState =
+                {
+                    Topics = topics_2
+                    Logs = logs_2
+                    Producers = producers_2
+                    TransactionalIds = transactionalIds_2
+                    NextProducerId = replacement
+                    Groups = groups_2
+                    Committed = committed_2
+                }
+
+            brokerState_2
+
+    let withEntry = value_5
+
+    let value_7 =
+        let it = txid
+
+        match it with
+        | None -> withEntry
+        | Some selection ->
+            let value_6 =
+                match withEntry with
+                | subject ->
+                    let transactionalIds_3 = subject.TransactionalIds
+                    transactionalIds_3
+
+            let result_3 = Map.add selection pid value_6
+            let replacement_3 = result_3
+
+            match withEntry with
+            | subject ->
+                let topics_3 = subject.Topics
+                let logs_3 = subject.Logs
+                let producers_3 = subject.Producers
+                let nextProducerId_3 = subject.NextProducerId
+                let groups_3 = subject.Groups
+                let committed_3 = subject.Committed
+
+                let brokerState_3: LawSpec.Data.BrokerState =
+                    {
+                        Topics = topics_3
+                        Logs = logs_3
+                        Producers = producers_3
+                        TransactionalIds = replacement_3
+                        NextProducerId = nextProducerId_3
+                        Groups = groups_3
+                        Committed = committed_3
+                    }
+
+                brokerState_3
+
+    let mapped = value_7
+
+    let value_8 =
+        let recordField_4 = pid
+        let recordField_5 = 0s
+
+        let producerIdAndEpoch: LawSpec.Data.ProducerIdAndEpoch =
+            {
+                ProducerId = recordField_4
+                ProducerEpoch = recordField_5
+            }
+
+        producerIdAndEpoch
+
+    let pair: LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> =
+        { First = value_8; Second = mapped }
+
+    pair
+
+/// lawtwinKafkaModelNextFetchOffset — ../src/model.lawspec:485
+[<CompiledName("LawtwinKafkaModelNextFetchOffset")>]
+let lawtwinKafkaModelNextFetchOffset
+    (from: int64)
+    (limit: int64)
+    (taken: LawSpec.Data.FetchedRecord list)
+    (all: LawSpec.Data.FetchedRecord list)
+    : int64 =
+    if (bigint (List.length taken) < bigint (List.length all)) then
+        let it = taken
+
+        match it with
+        | [] -> from
         | _ :: _ ->
-            let result_1830 = lawtwinKafkaModelLastOffsetOf_544a605b (taken_1827) (from_1825)
-            let result_1831 = saturatingInt64_5bce4ed8 (((bigint result_1830) + 1I))
-            result_1831
+            let result = lawtwinKafkaModelLastOffsetOf taken from
+            let result_2 = saturatingInt64 (bigint result + 1I)
+            result_2
     else
-        let result_1832 = lawtwinKafkaModelMax64_98542b8b (from_1825) (limit_1826)
-        result_1832
+        let result_3 = lawtwinKafkaModelMax64 from limit
+        result_3
 
-/// lawtwin.kafka::lawtwinKafkaModelOffsetCommit
-[<CompiledName("LawtwinKafkaModelOffsetCommit_01d91ef0")>]
-let lawtwinKafkaModelOffsetCommit_01d91ef0 (g_1833: string) (member_1834: string) (generation_1835: int) (offsets_1836: LawSpec.Data.OffsetEntry list) (b_1837: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    if (g_1833 = literal0) then
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidGroupId) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+/// lawtwinKafkaModelOffsetCommit — ../src/model.lawspec:957
+[<CompiledName("LawtwinKafkaModelOffsetCommit")>]
+let lawtwinKafkaModelOffsetCommit
+    (g: string)
+    (member_: string)
+    (generation: int)
+    (offsets: LawSpec.Data.OffsetEntry list)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    if (g = "") then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidGroupId)
+        : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
     else
-        let result_1838 = lawtwinKafkaModelOffsetPartitions_ffb8aecd (offsets_1836)
-        let result_1839 = lawtwinKafkaModelAllKnown_12a378f8 (result_1838) (b_1837)
-        if (not result_1839) then
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownTopicOrPartition) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+        let result = lawtwinKafkaModelOffsetPartitions offsets
+        let result_2 = lawtwinKafkaModelAllKnown result b
+
+        if not result_2 then
+            (Typed.raiseFailure
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownTopicOrPartition)
+            : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
         else
-            let result_1840 = lawtwinKafkaModelGroupOf_abe7cb22 (g_1833) (b_1837)
-            let group_1841 = result_1840
-            if ((member_1834 = literal0) && ((bigint generation_1835) = (-1I))) then
-                let value_1842 =
-                    let value_1843 =
-                        let value_1844 =
-                            match group_1841 with
+            let result_3 = lawtwinKafkaModelGroupOf g b
+            let group = result_3
+
+            if ((member_ = "") && (bigint generation = (-1I))) then
+                let value_3 =
+                    let value_2 =
+                        let value =
+                            match group with
                             | subject ->
-                                let lawspecFieldsubscriptions_1845 = subject.Subscriptions
-                                lawspecFieldsubscriptions_1845
-                        match value_1844 with
+                                let subscriptions = subject.Subscriptions
+                                subscriptions
+
+                        match value with
                         | subject ->
-                            let items_1846 = (Typed.entries (fun k v -> ({ Key = k; Value = v } : LawSpec.Data.Entry<_, _>)) subject)
-                            items_1846
-                    match value_1843 with
-                    | [] ->
-                        true
-                    | _ :: _ ->
-                        false
-                if value_1842 then
-                    let result_1847 = lawtwinKafkaModelCommitAll_4ae78738 (g_1833) (offsets_1836) (b_1837)
-                    ({ First = (); Second = result_1847 } : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                            let items =
+                                Typed.entries (fun k v -> ({ Key = k; Value = v }: LawSpec.Data.Entry<_, _>)) subject
+
+                            items
+
+                    match value_2 with
+                    | [] -> true
+                    | _ :: _ -> false
+
+                if value_3 then
+                    let result_4 = lawtwinKafkaModelCommitAll g offsets b
+
+                    let pair: LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+                        { First = (); Second = result_4 }
+
+                    pair
                 else
-                    (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.IllegalGeneration) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                    (Typed.raiseFailure
+                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                        (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.IllegalGeneration)
+                    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
             else
-                let result_1848 = lawtwinKafkaModelCheckMember_f218b850 (g_1833) (member_1834) (generation_1835) (b_1837)
-                let checked_1849 = result_1848
-                let result_1850 = lawtwinKafkaModelCommitAll_4ae78738 (g_1833) (offsets_1836) (b_1837)
-                ({ First = (); Second = result_1850 } : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                let result_5 = lawtwinKafkaModelCheckMember g member_ generation b
+                let checked_ = result_5
+                let result_6 = lawtwinKafkaModelCommitAll g offsets b
 
-/// lawtwin.kafka::lawtwinKafkaModelOffsetFetch
-[<CompiledName("LawtwinKafkaModelOffsetFetch_f56dbfcd")>]
-let lawtwinKafkaModelOffsetFetch_f56dbfcd (g_1851: string) (tp_1852: LawSpec.Data.TopicPartition) (b_1853: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<int64 option, LawSpec.Data.BrokerState> =
-    let value_1854 =
-        let lawspecRecordField0_1855 = g_1851
-        let lawspecRecordField1_1856 = tp_1852
-        ({ GroupId = lawspecRecordField0_1855; GroupPartition = lawspecRecordField1_1856 } : LawSpec.Data.GroupPartition)
-    let value_1857 =
-        match b_1853 with
+                let pair_2: LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+                    { First = (); Second = result_6 }
+
+                pair_2
+
+/// lawtwinKafkaModelOffsetFetch — ../src/model.lawspec:972
+[<CompiledName("LawtwinKafkaModelOffsetFetch")>]
+let lawtwinKafkaModelOffsetFetch
+    (g: string)
+    (tp: LawSpec.Data.TopicPartition)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<int64 option, LawSpec.Data.BrokerState> =
+    let value =
+        let recordField = g
+        let recordField_2 = tp
+
+        let groupPartition: LawSpec.Data.GroupPartition =
+            {
+                GroupId = recordField
+                GroupPartition = recordField_2
+            }
+
+        groupPartition
+
+    let value_2 =
+        match b with
         | subject ->
-            let lawspecFieldcommitted_1858 = subject.Committed
-            lawspecFieldcommitted_1858
-    let result_1859 = (Map.tryFind value_1854 value_1857)
-    ({ First = result_1859; Second = b_1853 } : LawSpec.Data.Pair<int64 option, LawSpec.Data.BrokerState>)
+            let committed = subject.Committed
+            committed
 
-/// lawtwin.kafka::lawtwinKafkaModelOffsetPartitions
-[<CompiledName("LawtwinKafkaModelOffsetPartitions_ffb8aecd")>]
-let lawtwinKafkaModelOffsetPartitions_ffb8aecd (offsets_1860: LawSpec.Data.OffsetEntry list) : LawSpec.Data.TopicPartition list =
-    let it_1861 = offsets_1860
-    match it_1861 with
-    | [] ->
-        []
-    | lawspecSelection0x0_1862 :: lawspecSelection0x1_1863 ->
-        let value_1864 =
-            match lawspecSelection0x0_1862 with
+    let result = Map.tryFind value value_2
+
+    let pair: LawSpec.Data.Pair<int64 option, LawSpec.Data.BrokerState> =
+        { First = result; Second = b }
+
+    pair
+
+/// lawtwinKafkaModelOffsetPartitions — ../src/model.lawspec:946
+[<CompiledName("LawtwinKafkaModelOffsetPartitions")>]
+let lawtwinKafkaModelOffsetPartitions (offsets: LawSpec.Data.OffsetEntry list) : LawSpec.Data.TopicPartition list =
+    let it = offsets
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value =
+            match selection with
             | subject ->
-                let lawspecFieldtopicPartition_1865 = subject.TopicPartition
-                lawspecFieldtopicPartition_1865
-        let result_1866 = lawtwinKafkaModelOffsetPartitions_ffb8aecd (lawspecSelection0x1_1863)
-        (value_1864 :: result_1866)
+                let topicPartition = subject.TopicPartition
+                topicPartition
 
-/// lawtwin.kafka::lawtwinKafkaModelPartitionCountOf
-[<CompiledName("LawtwinKafkaModelPartitionCountOf_ff180c35")>]
-let lawtwinKafkaModelPartitionCountOf_ff180c35 (topic_1867: string) (b_1868: LawSpec.Data.BrokerState) : int option =
-    let value_1869 =
-        match b_1868 with
+        let result = lawtwinKafkaModelOffsetPartitions selection_2
+        (value :: result)
+
+/// lawtwinKafkaModelPartitionCountOf — ../src/model.lawspec:257
+[<CompiledName("LawtwinKafkaModelPartitionCountOf")>]
+let lawtwinKafkaModelPartitionCountOf (topic: string) (b: LawSpec.Data.BrokerState) : int option =
+    let value =
+        match b with
         | subject ->
-            let lawspecFieldtopics_1870 = subject.Topics
-            lawspecFieldtopics_1870
-    let result_1871 = (Map.tryFind topic_1867 value_1869)
-    result_1871
+            let topics = subject.Topics
+            topics
 
-/// lawtwin.kafka::lawtwinKafkaModelPartitionsBelow
-[<CompiledName("LawtwinKafkaModelPartitionsBelow_19525eca")>]
-let lawtwinKafkaModelPartitionsBelow_19525eca (n_1872: int) : int list =
-    (Typed.range (bigint 0) (bigint n_1872) |> List.map int32)
+    let result = Map.tryFind topic value
+    result
 
-/// lawtwin.kafka::lawtwinKafkaModelPendingFor
-[<CompiledName("LawtwinKafkaModelPendingFor_50512591")>]
-let lawtwinKafkaModelPendingFor_50512591 (group_1873: string) (offsets_1874: LawSpec.Data.OffsetEntry list) (acc_1875: LawSpec.Data.PendingOffset list) : LawSpec.Data.PendingOffset list =
-    let it_1876 = offsets_1874
-    match it_1876 with
-    | [] ->
-        acc_1875
-    | lawspecSelection0x0_1877 :: lawspecSelection0x1_1878 ->
-        let value_1879 =
-            let lawspecRecordField0_1880 = group_1873
-            let lawspecRecordField1_1881 = lawspecSelection0x0_1877
-            ({ PendingGroup = lawspecRecordField0_1880; PendingEntry = lawspecRecordField1_1881 } : LawSpec.Data.PendingOffset)
-        let result_1882 = lawtwinKafkaModelPendingFor_50512591 (group_1873) (lawspecSelection0x1_1878) ((value_1879 :: acc_1875))
-        result_1882
+/// lawtwinKafkaModelPartitionsBelow — ../src/model.lawspec:233
+[<CompiledName("LawtwinKafkaModelPartitionsBelow")>]
+let lawtwinKafkaModelPartitionsBelow (n: int) : int list =
+    (Typed.range (bigint 0) (bigint n) |> List.map int32)
 
-/// lawtwin.kafka::lawtwinKafkaModelProduce
-[<CompiledName("LawtwinKafkaModelProduce_834568df")>]
-let lawtwinKafkaModelProduce_834568df (tp_1883: LawSpec.Data.TopicPartition) (tag_1884: LawSpec.Data.ProducerTag option) (rs_1885: LawSpec.Data.Record list) (b_1886: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
-    let result_1887 = lawtwinKafkaModelKnownPartition_71d3099f (tp_1883) (b_1886)
-    if (not result_1887) then
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownTopicOrPartition) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+/// lawtwinKafkaModelPendingFor — ../src/model.lawspec:634
+[<CompiledName("LawtwinKafkaModelPendingFor")>]
+let lawtwinKafkaModelPendingFor
+    (group: string)
+    (offsets: LawSpec.Data.OffsetEntry list)
+    (acc: LawSpec.Data.PendingOffset list)
+    : LawSpec.Data.PendingOffset list =
+    let it = offsets
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let value =
+            let recordField = group
+            let recordField_2 = selection
+
+            let pendingOffset: LawSpec.Data.PendingOffset =
+                {
+                    PendingGroup = recordField
+                    PendingEntry = recordField_2
+                }
+
+            pendingOffset
+
+        let result = lawtwinKafkaModelPendingFor group selection_2 (value :: acc)
+        result
+
+/// lawtwinKafkaModelProduce — ../src/model.lawspec:381
+[<CompiledName("LawtwinKafkaModelProduce")>]
+let lawtwinKafkaModelProduce
+    (tp: LawSpec.Data.TopicPartition)
+    (tag: LawSpec.Data.ProducerTag option)
+    (rs: LawSpec.Data.Record list)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelKnownPartition tp b
+
+    if not result then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownTopicOrPartition)
+        : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
     else
-        let value_1888 =
-            match rs_1885 with
-            | [] ->
-                true
-            | _ :: _ ->
-                false
-        if (value_1888 || ((bigint (List.length rs_1885)) > 100000I)) then
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidRecord) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
-        else
-            let result_1889 = lawtwinKafkaModelLogOf_b86b131a (tp_1883) (b_1886)
-            let l_1890 = result_1889
-            let it_1891 = tag_1884
-            match it_1891 with
-            | None ->
-                let result_1892 = lawtwinKafkaModelHighWatermark_da6ed677 (l_1890)
-                let result_1893 = lawtwinKafkaModelAppendBatch_8797ae9f (rs_1885) ((-1L)) (false) (l_1890)
-                let result_1894 = lawtwinKafkaModelPutLog_cb3cbf5e (tp_1883) (result_1893) (b_1886)
-                ({ First = result_1892; Second = result_1894 } : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
-            | Some lawspecSelection0x0_1895 ->
-                let result_1896 = lawtwinKafkaModelProduceTagged_86f854e7 (tp_1883) (lawspecSelection0x0_1895) (rs_1885) (l_1890) (b_1886)
-                result_1896
+        let value =
+            match rs with
+            | [] -> true
+            | _ :: _ -> false
 
-/// lawtwin.kafka::lawtwinKafkaModelProduceTagged
-[<CompiledName("LawtwinKafkaModelProduceTagged_86f854e7")>]
-let lawtwinKafkaModelProduceTagged_86f854e7 (tp_1897: LawSpec.Data.TopicPartition) (t_1898: LawSpec.Data.ProducerTag) (rs_1899: LawSpec.Data.Record list) (l_1900: LawSpec.Data.PartitionLog) (b_1901: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
-    let value_1902 =
-        match t_1898 with
-        | subject ->
-            let lawspecFieldproducerId_1903 = subject.ProducerId
-            lawspecFieldproducerId_1903
-    let value_1904 =
-        match b_1901 with
-        | subject ->
-            let lawspecFieldproducers_1905 = subject.Producers
-            lawspecFieldproducers_1905
-    let result_1906 = (Map.tryFind value_1902 value_1904)
-    let it_1907 = result_1906
-    match it_1907 with
-    | None ->
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.UnknownProducerId) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
-    | Some lawspecSelection0x0_1908 ->
-        let value_1909 =
-            match t_1898 with
-            | subject ->
-                let lawspecFieldproducerEpoch_1910 = subject.ProducerEpoch
-                lawspecFieldproducerEpoch_1910
-        let value_1911 =
-            match lawspecSelection0x0_1908 with
-            | subject ->
-                let lawspecFieldepoch_1912 = subject.Epoch
-                lawspecFieldepoch_1912
-        if (value_1909 <> value_1911) then
-            (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidProducerEpoch) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+        if (value || (bigint (List.length rs) > 100000I)) then
+            (Typed.raiseFailure
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidRecord)
+            : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
         else
-            let value_1913 =
-                let value_1914 =
-                    match lawspecSelection0x0_1908 with
+            let result_2 = lawtwinKafkaModelLogOf tp b
+            let l = result_2
+            let it = tag
+
+            match it with
+            | None ->
+                let result_3 = lawtwinKafkaModelHighWatermark l
+                let result_4 = lawtwinKafkaModelAppendBatch rs (-1L) false l
+                let result_5 = lawtwinKafkaModelPutLog tp result_4 b
+
+                let pair: LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+                    { First = result_3; Second = result_5 }
+
+                pair
+            | Some selection ->
+                let result_6 = lawtwinKafkaModelProduceTagged tp selection rs l b
+                result_6
+
+/// lawtwinKafkaModelProduceTagged — ../src/model.lawspec:394
+[<CompiledName("LawtwinKafkaModelProduceTagged")>]
+let lawtwinKafkaModelProduceTagged
+    (tp: LawSpec.Data.TopicPartition)
+    (t: LawSpec.Data.ProducerTag)
+    (rs: LawSpec.Data.Record list)
+    (l: LawSpec.Data.PartitionLog)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+    let value =
+        match t with
+        | subject ->
+            let producerId = subject.ProducerId
+            producerId
+
+    let value_2 =
+        match b with
+        | subject ->
+            let producers = subject.Producers
+            producers
+
+    let result = Map.tryFind value value_2
+    let it = result
+
+    match it with
+    | None ->
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.UnknownProducerId)
+        : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+    | Some selection ->
+        let value_3 =
+            match t with
+            | subject ->
+                let producerEpoch = subject.ProducerEpoch
+                producerEpoch
+
+        let value_4 =
+            match selection with
+            | subject ->
+                let epoch = subject.Epoch
+                epoch
+
+        if (value_3 <> value_4) then
+            (Typed.raiseFailure
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidProducerEpoch)
+            : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+        else
+            let value_6 =
+                let value_5 =
+                    match selection with
                     | subject ->
-                        let lawspecFieldtransactionalId_1915 = subject.TransactionalId
-                        lawspecFieldtransactionalId_1915
-                let it_1916 = value_1914
-                match it_1916 with
-                | None ->
+                        let transactionalId = subject.TransactionalId
+                        transactionalId
+
+                let it_2 = value_5
+
+                match it_2 with
+                | None -> false
+                | Some _ -> true
+
+            let transactional = value_6
+
+            let logic =
+                if transactional then
+                    let value_7 =
+                        match selection with
+                        | subject ->
+                            let txn = subject.Txn
+                            txn
+
+                    let result_2 = lawtwinKafkaModelTxnHasPartition tp value_7
+                    not result_2
+                else
                     false
-                | Some _ ->
-                    true
-            let transactional_1917 = value_1913
-            let logic_1921 =
-                if transactional_1917 then
-                    let value_1918 =
-                        match lawspecSelection0x0_1908 with
-                        | subject ->
-                            let lawspecFieldtxn_1919 = subject.Txn
-                            lawspecFieldtxn_1919
-                    let result_1920 = lawtwinKafkaModelTxnHasPartition_8fa1cfc0 (tp_1897) (value_1918)
-                    (not result_1920)
-                else false
-            if logic_1921 then
-                (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidTxnState) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+
+            if logic then
+                (Typed.raiseFailure
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidTxnState)
+                : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
             else
-                let value_1922 =
-                    match t_1898 with
+                let value_8 =
+                    match t with
                     | subject ->
-                        let lawspecFieldbaseSequence_1923 = subject.BaseSequence
-                        lawspecFieldbaseSequence_1923
-                let result_1924 = saturatingInt32_9e8d3b43 ((((bigint value_1922) + (bigint (List.length rs_1899))) - 1I))
-                let last_1925 = result_1924
-                let value_1926 =
-                    let value_1927 =
-                        match t_1898 with
+                        let baseSequence = subject.BaseSequence
+                        baseSequence
+
+                let result_3 = saturatingInt32 ((bigint value_8 + bigint (List.length rs)) - 1I)
+                let last = result_3
+
+                let value_11 =
+                    let value_9 =
+                        match t with
                         | subject ->
-                            let lawspecFieldproducerId_1928 = subject.ProducerId
-                            lawspecFieldproducerId_1928
-                    let value_1929 =
-                        match l_1900 with
+                            let producerId_2 = subject.ProducerId
+                            producerId_2
+
+                    let value_10 =
+                        match l with
                         | subject ->
-                            let lawspecFieldbatches_1930 = subject.Batches
-                            lawspecFieldbatches_1930
-                    let result_1931 = (Map.tryFind value_1927 value_1929)
-                    let it_1932 = result_1931
-                    match it_1932 with
-                    | None ->
-                        []
-                    | Some matchlawspecSelection0x00_1933 ->
-                        matchlawspecSelection0x00_1933
-                let recent_1934 = value_1926
-                let value_1935 =
-                    match t_1898 with
+                            let batches = subject.Batches
+                            batches
+
+                    let result_4 = Map.tryFind value_9 value_10
+                    let it_3 = result_4
+
+                    match it_3 with
+                    | None -> []
+                    | Some matchSelection -> matchSelection
+
+                let recent = value_11
+
+                let value_12 =
+                    match t with
                     | subject ->
-                        let lawspecFieldproducerEpoch_1936 = subject.ProducerEpoch
-                        lawspecFieldproducerEpoch_1936
-                let value_1937 =
-                    match t_1898 with
+                        let producerEpoch_2 = subject.ProducerEpoch
+                        producerEpoch_2
+
+                let value_13 =
+                    match t with
                     | subject ->
-                        let lawspecFieldbaseSequence_1938 = subject.BaseSequence
-                        lawspecFieldbaseSequence_1938
-                let result_1939 = lawtwinKafkaModelFindDuplicate_3335aea4 (value_1935) (value_1937) (last_1925) (recent_1934)
-                let it_1940 = result_1939
-                match it_1940 with
-                | Some matchlawspecSelection0x00_1941 ->
-                    ({ First = matchlawspecSelection0x00_1941; Second = b_1901 } : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+                        let baseSequence_2 = subject.BaseSequence
+                        baseSequence_2
+
+                let result_5 = lawtwinKafkaModelFindDuplicate value_12 value_13 last recent
+                let it_4 = result_5
+
+                match it_4 with
+                | Some matchSelection_2 ->
+                    let pair: LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+                        { First = matchSelection_2; Second = b }
+
+                    pair
                 | None ->
-                    let value_1942 =
-                        match t_1898 with
+                    let value_14 =
+                        match t with
                         | subject ->
-                            let lawspecFieldbaseSequence_1943 = subject.BaseSequence
-                            lawspecFieldbaseSequence_1943
-                    let value_1944 =
-                        match t_1898 with
+                            let baseSequence_3 = subject.BaseSequence
+                            baseSequence_3
+
+                    let value_15 =
+                        match t with
                         | subject ->
-                            let lawspecFieldproducerEpoch_1945 = subject.ProducerEpoch
-                            lawspecFieldproducerEpoch_1945
-                    let result_1946 = lawtwinKafkaModelExpectedSequence_83e363c8 (value_1944) (recent_1934)
-                    if (value_1942 <> result_1946) then
-                        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.OutOfOrderSequenceNumber) : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+                            let producerEpoch_3 = subject.ProducerEpoch
+                            producerEpoch_3
+
+                    let result_6 = lawtwinKafkaModelExpectedSequence value_15 recent
+
+                    if (value_14 <> result_6) then
+                        (Typed.raiseFailure
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative
+                                (LawSpec.Data.Codecs.kafkaError ())
+                                LawSpec.Data.KafkaError.OutOfOrderSequenceNumber)
+                        : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
                     else
-                        let result_1947 = lawtwinKafkaModelHighWatermark_da6ed677 (l_1900)
-                        let base_1948 = result_1947
-                        let value_1949 =
-                            match t_1898 with
+                        let result_7 = lawtwinKafkaModelHighWatermark l
+                        let base_ = result_7
+
+                        let value_16 =
+                            match t with
                             | subject ->
-                                let lawspecFieldproducerId_1950 = subject.ProducerId
-                                lawspecFieldproducerId_1950
-                        let value_1951 =
-                            let value_1952 =
-                                match t_1898 with
+                                let producerId_3 = subject.ProducerId
+                                producerId_3
+
+                        let value_19 =
+                            let value_17 =
+                                match t with
                                 | subject ->
-                                    let lawspecFieldproducerEpoch_1953 = subject.ProducerEpoch
-                                    lawspecFieldproducerEpoch_1953
-                            let lawspecRecordField0_1954 = value_1952
-                            let value_1955 =
-                                match t_1898 with
+                                    let producerEpoch_4 = subject.ProducerEpoch
+                                    producerEpoch_4
+
+                            let recordField = value_17
+
+                            let value_18 =
+                                match t with
                                 | subject ->
-                                    let lawspecFieldbaseSequence_1956 = subject.BaseSequence
-                                    lawspecFieldbaseSequence_1956
-                            let lawspecRecordField1_1957 = value_1955
-                            let lawspecRecordField2_1958 = last_1925
-                            let lawspecRecordField3_1959 = base_1948
-                            ({ BatchEpoch = lawspecRecordField0_1954; FirstSequence = lawspecRecordField1_1957; LastSequence = lawspecRecordField2_1958; BatchOffset = lawspecRecordField3_1959 } : LawSpec.Data.BatchMeta)
-                        let value_1960 =
-                            match t_1898 with
+                                    let baseSequence_4 = subject.BaseSequence
+                                    baseSequence_4
+
+                            let recordField_2 = value_18
+                            let recordField_3 = last
+                            let recordField_4 = base_
+
+                            let batchMeta: LawSpec.Data.BatchMeta =
+                                {
+                                    BatchEpoch = recordField
+                                    FirstSequence = recordField_2
+                                    LastSequence = recordField_3
+                                    BatchOffset = recordField_4
+                                }
+
+                            batchMeta
+
+                        let value_20 =
+                            match t with
                             | subject ->
-                                let lawspecFieldproducerId_1961 = subject.ProducerId
-                                lawspecFieldproducerId_1961
-                        let result_1962 = lawtwinKafkaModelAppendBatch_8797ae9f (rs_1899) (value_1960) (transactional_1917) (l_1900)
-                        let result_1963 = lawtwinKafkaModelRememberBatch_33fa600f (value_1949) (value_1951) (result_1962)
-                        let l2_1964 = result_1963
-                        let result_1965 = lawtwinKafkaModelPutLog_cb3cbf5e (tp_1897) (l2_1964) (b_1901)
-                        ({ First = base_1948; Second = result_1965 } : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>)
+                                let producerId_4 = subject.ProducerId
+                                producerId_4
 
-/// lawtwin.kafka::lawtwinKafkaModelPutGroup
-[<CompiledName("LawtwinKafkaModelPutGroup_f45eaad0")>]
-let lawtwinKafkaModelPutGroup_f45eaad0 (g_1966: string) (group_1967: LawSpec.Data.Group) (b_1968: LawSpec.Data.BrokerState) : LawSpec.Data.BrokerState =
-    let value_1969 =
-        match b_1968 with
+                        let result_8 = lawtwinKafkaModelAppendBatch rs value_20 transactional l
+                        let result_9 = lawtwinKafkaModelRememberBatch value_16 value_19 result_8
+                        let l2 = result_9
+                        let result_10 = lawtwinKafkaModelPutLog tp l2 b
+
+                        let pair_2: LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
+                            { First = base_; Second = result_10 }
+
+                        pair_2
+
+/// lawtwinKafkaModelPutGroup — ../src/model.lawspec:740
+[<CompiledName("LawtwinKafkaModelPutGroup")>]
+let lawtwinKafkaModelPutGroup
+    (g: string)
+    (group: LawSpec.Data.Group)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.BrokerState =
+    let value =
+        match b with
         | subject ->
-            let lawspecFieldgroups_1970 = subject.Groups
-            lawspecFieldgroups_1970
-    let result_1971 = (Map.add g_1966 group_1967 value_1969)
-    let replacement_1972 = result_1971
-    match b_1968 with
-    | subject ->
-        let lawspecFieldtopics_1973 = subject.Topics
-        let lawspecFieldlogs_1974 = subject.Logs
-        let lawspecFieldproducers_1975 = subject.Producers
-        let lawspecFieldtransactionalIds_1976 = subject.TransactionalIds
-        let lawspecFieldnextProducerId_1977 = subject.NextProducerId
-        let lawspecFieldcommitted_1978 = subject.Committed
-        ({ Topics = lawspecFieldtopics_1973; Logs = lawspecFieldlogs_1974; Producers = lawspecFieldproducers_1975; TransactionalIds = lawspecFieldtransactionalIds_1976; NextProducerId = lawspecFieldnextProducerId_1977; Groups = replacement_1972; Committed = lawspecFieldcommitted_1978 } : LawSpec.Data.BrokerState)
+            let groups = subject.Groups
+            groups
 
-/// lawtwin.kafka::lawtwinKafkaModelPutLog
-[<CompiledName("LawtwinKafkaModelPutLog_cb3cbf5e")>]
-let lawtwinKafkaModelPutLog_cb3cbf5e (tp_1979: LawSpec.Data.TopicPartition) (l_1980: LawSpec.Data.PartitionLog) (b_1981: LawSpec.Data.BrokerState) : LawSpec.Data.BrokerState =
-    let value_1982 =
-        match b_1981 with
+    let result = Map.add g group value
+    let replacement = result
+
+    match b with
+    | subject ->
+        let topics = subject.Topics
+        let logs = subject.Logs
+        let producers = subject.Producers
+        let transactionalIds = subject.TransactionalIds
+        let nextProducerId = subject.NextProducerId
+        let committed = subject.Committed
+
+        let brokerState: LawSpec.Data.BrokerState =
+            {
+                Topics = topics
+                Logs = logs
+                Producers = producers
+                TransactionalIds = transactionalIds
+                NextProducerId = nextProducerId
+                Groups = replacement
+                Committed = committed
+            }
+
+        brokerState
+
+/// lawtwinKafkaModelPutLog — ../src/model.lawspec:275
+[<CompiledName("LawtwinKafkaModelPutLog")>]
+let lawtwinKafkaModelPutLog
+    (tp: LawSpec.Data.TopicPartition)
+    (l: LawSpec.Data.PartitionLog)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.BrokerState =
+    let value =
+        match b with
         | subject ->
-            let lawspecFieldlogs_1983 = subject.Logs
-            lawspecFieldlogs_1983
-    let result_1984 = (Map.add tp_1979 l_1980 value_1982)
-    let replacement_1985 = result_1984
-    match b_1981 with
-    | subject ->
-        let lawspecFieldtopics_1986 = subject.Topics
-        let lawspecFieldproducers_1987 = subject.Producers
-        let lawspecFieldtransactionalIds_1988 = subject.TransactionalIds
-        let lawspecFieldnextProducerId_1989 = subject.NextProducerId
-        let lawspecFieldgroups_1990 = subject.Groups
-        let lawspecFieldcommitted_1991 = subject.Committed
-        ({ Topics = lawspecFieldtopics_1986; Logs = replacement_1985; Producers = lawspecFieldproducers_1987; TransactionalIds = lawspecFieldtransactionalIds_1988; NextProducerId = lawspecFieldnextProducerId_1989; Groups = lawspecFieldgroups_1990; Committed = lawspecFieldcommitted_1991 } : LawSpec.Data.BrokerState)
+            let logs = subject.Logs
+            logs
 
-/// lawtwin.kafka::lawtwinKafkaModelPutProducer
-[<CompiledName("LawtwinKafkaModelPutProducer_4ef907a5")>]
-let lawtwinKafkaModelPutProducer_4ef907a5 (pid_1992: int64) (entry_1993: LawSpec.Data.ProducerEntry) (b_1994: LawSpec.Data.BrokerState) : LawSpec.Data.BrokerState =
-    let value_1995 =
-        match b_1994 with
+    let result = Map.add tp l value
+    let replacement = result
+
+    match b with
+    | subject ->
+        let topics = subject.Topics
+        let producers = subject.Producers
+        let transactionalIds = subject.TransactionalIds
+        let nextProducerId = subject.NextProducerId
+        let groups = subject.Groups
+        let committed = subject.Committed
+
+        let brokerState: LawSpec.Data.BrokerState =
+            {
+                Topics = topics
+                Logs = replacement
+                Producers = producers
+                TransactionalIds = transactionalIds
+                NextProducerId = nextProducerId
+                Groups = groups
+                Committed = committed
+            }
+
+        brokerState
+
+/// lawtwinKafkaModelPutProducer — ../src/model.lawspec:613
+[<CompiledName("LawtwinKafkaModelPutProducer")>]
+let lawtwinKafkaModelPutProducer
+    (pid: int64)
+    (entry: LawSpec.Data.ProducerEntry)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.BrokerState =
+    let value =
+        match b with
         | subject ->
-            let lawspecFieldproducers_1996 = subject.Producers
-            lawspecFieldproducers_1996
-    let result_1997 = (Map.add pid_1992 entry_1993 value_1995)
-    let replacement_1998 = result_1997
-    match b_1994 with
-    | subject ->
-        let lawspecFieldtopics_1999 = subject.Topics
-        let lawspecFieldlogs_2000 = subject.Logs
-        let lawspecFieldtransactionalIds_2001 = subject.TransactionalIds
-        let lawspecFieldnextProducerId_2002 = subject.NextProducerId
-        let lawspecFieldgroups_2003 = subject.Groups
-        let lawspecFieldcommitted_2004 = subject.Committed
-        ({ Topics = lawspecFieldtopics_1999; Logs = lawspecFieldlogs_2000; Producers = replacement_1998; TransactionalIds = lawspecFieldtransactionalIds_2001; NextProducerId = lawspecFieldnextProducerId_2002; Groups = lawspecFieldgroups_2003; Committed = lawspecFieldcommitted_2004 } : LawSpec.Data.BrokerState)
+            let producers = subject.Producers
+            producers
 
-/// lawtwin.kafka::lawtwinKafkaModelReadable
-[<CompiledName("LawtwinKafkaModelReadable_adec3284")>]
-let lawtwinKafkaModelReadable_adec3284 (es_2005: LawSpec.Data.LogEntry list) (from_2006: int64) (limit_2007: int64) (committedOnly_2008: bool) (aborted_2009: LawSpec.Data.AbortedTxn list) (acc_2010: LawSpec.Data.FetchedRecord list) : LawSpec.Data.FetchedRecord list =
-    let it_2011 = es_2005
-    match it_2011 with
-    | [] ->
-        acc_2010
-    | lawspecSelection0x0_2012 :: lawspecSelection0x1_2013 ->
-        let it_2014 = lawspecSelection0x0_2012
-        match it_2014 with
-        | LawSpec.Data.LogEntry.DataEntry(matchlawspecSelection0x00_2015) ->
-            let value_2016 =
-                match matchlawspecSelection0x00_2015 with
+    let result = Map.add pid entry value
+    let replacement = result
+
+    match b with
+    | subject ->
+        let topics = subject.Topics
+        let logs = subject.Logs
+        let transactionalIds = subject.TransactionalIds
+        let nextProducerId = subject.NextProducerId
+        let groups = subject.Groups
+        let committed = subject.Committed
+
+        let brokerState: LawSpec.Data.BrokerState =
+            {
+                Topics = topics
+                Logs = logs
+                Producers = replacement
+                TransactionalIds = transactionalIds
+                NextProducerId = nextProducerId
+                Groups = groups
+                Committed = committed
+            }
+
+        brokerState
+
+/// lawtwinKafkaModelReadable — ../src/model.lawspec:450
+[<CompiledName("LawtwinKafkaModelReadable")>]
+let lawtwinKafkaModelReadable
+    (es: LawSpec.Data.LogEntry list)
+    (from: int64)
+    (limit: int64)
+    (committedOnly: bool)
+    (aborted: LawSpec.Data.AbortedTxn list)
+    (acc: LawSpec.Data.FetchedRecord list)
+    : LawSpec.Data.FetchedRecord list =
+    let it = es
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let it_2 = selection
+
+        match it_2 with
+        | LawSpec.Data.LogEntry.DataEntry(matchSelection) ->
+            let value =
+                match matchSelection with
                 | subject ->
-                    let lawspecFieldentryOffset_2017 = subject.EntryOffset
-                    lawspecFieldentryOffset_2017
-            let lawspecSelection1x0_2018 = value_2016
-            let value_2019 =
-                match matchlawspecSelection0x00_2015 with
+                    let entryOffset = subject.EntryOffset
+                    entryOffset
+
+            let selection_3 = value
+
+            let value_2 =
+                match matchSelection with
                 | subject ->
-                    let lawspecFieldentryRecord_2020 = subject.EntryRecord
-                    lawspecFieldentryRecord_2020
-            let lawspecSelection1x1_2021 = value_2019
-            let value_2022 =
-                match matchlawspecSelection0x00_2015 with
+                    let entryRecord = subject.EntryRecord
+                    entryRecord
+
+            let selection_4 = value_2
+
+            let value_3 =
+                match matchSelection with
                 | subject ->
-                    let lawspecFieldwriter_2023 = subject.Writer
-                    lawspecFieldwriter_2023
-            let lawspecSelection1x2_2024 = value_2022
-            let value_2025 =
-                match matchlawspecSelection0x00_2015 with
+                    let writer = subject.Writer
+                    writer
+
+            let selection_5 = value_3
+
+            let value_4 =
+                match matchSelection with
                 | subject ->
-                    let lawspecFieldtransactional_2026 = subject.Transactional
-                    lawspecFieldtransactional_2026
-            let lawspecSelection1x3_2027 = value_2025
-            if (lawspecSelection1x0_2018 < from_2006) then
-                acc_2010
+                    let transactional = subject.Transactional
+                    transactional
+
+            let selection_6 = value_4
+
+            if (selection_3 < from) then
+                acc
+            else if (selection_3 >= limit) then
+                let result =
+                    lawtwinKafkaModelReadable selection_2 from limit committedOnly aborted acc
+
+                result
             else
-                if (lawspecSelection1x0_2018 >= limit_2007) then
-                    let result_2028 = lawtwinKafkaModelReadable_adec3284 (lawspecSelection0x1_2013) (from_2006) (limit_2007) (committedOnly_2008) (aborted_2009) (acc_2010)
-                    result_2028
+                let logic =
+                    if (committedOnly && selection_6) then
+                        let result_2 = lawtwinKafkaModelIsAborted selection_5 selection_3 aborted
+                        result_2
+                    else
+                        false
+
+                if logic then
+                    let result_3 =
+                        lawtwinKafkaModelReadable selection_2 from limit committedOnly aborted acc
+
+                    result_3
                 else
-                    let logic_2030 =
-                        if (committedOnly_2008 && lawspecSelection1x3_2027) then
-                            let result_2029 = lawtwinKafkaModelIsAborted_b12645e5 (lawspecSelection1x2_2024) (lawspecSelection1x0_2018) (aborted_2009)
-                            result_2029
-                        else false
-                    if logic_2030 then
-                        let result_2031 = lawtwinKafkaModelReadable_adec3284 (lawspecSelection0x1_2013) (from_2006) (limit_2007) (committedOnly_2008) (aborted_2009) (acc_2010)
-                        result_2031
-                    else
-                        let value_2032 =
-                            let lawspecRecordField0_2033 = lawspecSelection1x0_2018
-                            let lawspecRecordField1_2034 = lawspecSelection1x1_2021
-                            ({ Offset = lawspecRecordField0_2033; Entry = lawspecRecordField1_2034 } : LawSpec.Data.FetchedRecord)
-                        let result_2035 = lawtwinKafkaModelReadable_adec3284 (lawspecSelection0x1_2013) (from_2006) (limit_2007) (committedOnly_2008) (aborted_2009) ((value_2032 :: acc_2010))
-                        result_2035
-        | LawSpec.Data.LogEntry.ControlEntry(matchlawspecSelection0x00_2036) ->
-            let value_2037 =
-                match matchlawspecSelection0x00_2036 with
+                    let value_5 =
+                        let recordField = selection_3
+                        let recordField_2 = selection_4
+
+                        let fetchedRecord: LawSpec.Data.FetchedRecord =
+                            {
+                                Offset = recordField
+                                Entry = recordField_2
+                            }
+
+                        fetchedRecord
+
+                    let result_4 =
+                        lawtwinKafkaModelReadable selection_2 from limit committedOnly aborted (value_5 :: acc)
+
+                    result_4
+        | LawSpec.Data.LogEntry.ControlEntry(matchSelection_2) ->
+            let value_6 =
+                match matchSelection_2 with
                 | subject ->
-                    let lawspecFieldmarkerOffset_2038 = subject.MarkerOffset
-                    lawspecFieldmarkerOffset_2038
-            let lawspecSelection1x0_2039 = value_2037
-            let value_2040 =
-                match matchlawspecSelection0x00_2036 with
+                    let markerOffset = subject.MarkerOffset
+                    markerOffset
+
+            let selection_7 = value_6
+
+            let value_7 =
+                match matchSelection_2 with
                 | subject ->
-                    let lawspecFieldmarkerWriter_2041 = subject.MarkerWriter
-                    lawspecFieldmarkerWriter_2041
-            let lawspecSelection1x1_2042 = value_2040
-            let value_2043 =
-                match matchlawspecSelection0x00_2036 with
+                    let markerWriter = subject.MarkerWriter
+                    markerWriter
+
+            let selection_8 = value_7
+
+            let value_8 =
+                match matchSelection_2 with
                 | subject ->
-                    let lawspecFieldcommits_2044 = subject.Commits
-                    lawspecFieldcommits_2044
-            let lawspecSelection1x2_2045 = value_2043
-            if (lawspecSelection1x0_2039 < from_2006) then
-                acc_2010
+                    let commits = subject.Commits
+                    commits
+
+            let selection_9 = value_8
+
+            if (selection_7 < from) then
+                acc
             else
-                let result_2046 = lawtwinKafkaModelReadable_adec3284 (lawspecSelection0x1_2013) (from_2006) (limit_2007) (committedOnly_2008) (aborted_2009) (acc_2010)
-                result_2046
+                let result_5 =
+                    lawtwinKafkaModelReadable selection_2 from limit committedOnly aborted acc
 
-/// lawtwin.kafka::lawtwinKafkaModelRebalance
-[<CompiledName("LawtwinKafkaModelRebalance_c9984d55")>]
-let lawtwinKafkaModelRebalance_c9984d55 (group_2047: LawSpec.Data.Group) (b_2048: LawSpec.Data.BrokerState) : LawSpec.Data.Group =
-    let value_2049 =
-        match group_2047 with
+                result_5
+
+/// lawtwinKafkaModelRebalance — ../src/model.lawspec:834
+[<CompiledName("LawtwinKafkaModelRebalance")>]
+let lawtwinKafkaModelRebalance (group: LawSpec.Data.Group) (b: LawSpec.Data.BrokerState) : LawSpec.Data.Group =
+    let value =
+        match group with
         | subject ->
-            let lawspecFieldsubscriptions_2050 = subject.Subscriptions
-            lawspecFieldsubscriptions_2050
-    let result_2051 = lawtwinKafkaModelComputeAssignment_07bd1943 (value_2049) (b_2048)
-    let replacement_2052 = result_2051
-    let value_2053 =
-        let value_2054 =
-            match group_2047 with
+            let subscriptions = subject.Subscriptions
+            subscriptions
+
+    let result = lawtwinKafkaModelComputeAssignment value b
+    let replacement = result
+
+    let value_3 =
+        let value_2 =
+            match group with
             | subject ->
-                let lawspecFieldgroupGeneration_2055 = subject.GroupGeneration
-                lawspecFieldgroupGeneration_2055
-        let result_2056 = saturatingInt32_9e8d3b43 (((bigint value_2054) + 1I))
-        let replacement_2057 = result_2056
-        match group_2047 with
+                let groupGeneration = subject.GroupGeneration
+                groupGeneration
+
+        let result_2 = saturatingInt32 (bigint value_2 + 1I)
+        let replacement_2 = result_2
+
+        match group with
         | subject ->
-            let lawspecFieldsubscriptions_2058 = subject.Subscriptions
-            let lawspecFieldassignment_2059 = subject.Assignment
-            ({ GroupGeneration = replacement_2057; Subscriptions = lawspecFieldsubscriptions_2058; Assignment = lawspecFieldassignment_2059 } : LawSpec.Data.Group)
-    match value_2053 with
+            let subscriptions_2 = subject.Subscriptions
+            let assignment = subject.Assignment
+
+            let group_2: LawSpec.Data.Group =
+                {
+                    GroupGeneration = replacement_2
+                    Subscriptions = subscriptions_2
+                    Assignment = assignment
+                }
+
+            group_2
+
+    match value_3 with
     | subject ->
-        let lawspecFieldgroupGeneration_2060 = subject.GroupGeneration
-        let lawspecFieldsubscriptions_2061 = subject.Subscriptions
-        ({ GroupGeneration = lawspecFieldgroupGeneration_2060; Subscriptions = lawspecFieldsubscriptions_2061; Assignment = replacement_2052 } : LawSpec.Data.Group)
+        let groupGeneration_2 = subject.GroupGeneration
+        let subscriptions_3 = subject.Subscriptions
 
-/// lawtwin.kafka::lawtwinKafkaModelRebalanceGroups
-[<CompiledName("LawtwinKafkaModelRebalanceGroups_ad90673b")>]
-let lawtwinKafkaModelRebalanceGroups_ad90673b (topic_2062: string) (gs_2063: LawSpec.Data.Entry<string, LawSpec.Data.Group> list) (b_2064: LawSpec.Data.BrokerState) (acc_2065: Map<string, LawSpec.Data.Group>) : Map<string, LawSpec.Data.Group> =
-    let it_2066 = gs_2063
-    match it_2066 with
-    | [] ->
-        acc_2065
-    | lawspecSelection0x0_2067 :: lawspecSelection0x1_2068 ->
-        let value_2069 =
-            match lawspecSelection0x0_2067 with
+        let group_3: LawSpec.Data.Group =
+            {
+                GroupGeneration = groupGeneration_2
+                Subscriptions = subscriptions_3
+                Assignment = replacement
+            }
+
+        group_3
+
+/// lawtwinKafkaModelRebalanceGroups — ../src/model.lawspec:843
+[<CompiledName("LawtwinKafkaModelRebalanceGroups")>]
+let lawtwinKafkaModelRebalanceGroups
+    (topic: string)
+    (gs: LawSpec.Data.Entry<string, LawSpec.Data.Group> list)
+    (b: LawSpec.Data.BrokerState)
+    (acc: Map<string, LawSpec.Data.Group>)
+    : Map<string, LawSpec.Data.Group> =
+    let it = gs
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let value =
+            match selection with
             | subject ->
-                let lawspecFieldkey_2070 = subject.Key
-                lawspecFieldkey_2070
-        let value_2071 =
-            let value_2072 =
-                match lawspecSelection0x0_2067 with
+                let key = subject.Key
+                key
+
+        let value_7 =
+            let value_3 =
+                match selection with
                 | subject ->
-                    let lawspecFieldvalue_2073 = subject.Value
-                    lawspecFieldvalue_2073
-            let result_2074 = lawtwinKafkaModelSubscribesTo_c3c674c3 (topic_2062) (value_2072)
-            if result_2074 then
-                let value_2075 =
-                    match lawspecSelection0x0_2067 with
+                    let value_2 = subject.Value
+                    value_2
+
+            let result = lawtwinKafkaModelSubscribesTo topic value_3
+
+            if result then
+                let value_5 =
+                    match selection with
                     | subject ->
-                        let lawspecFieldvalue_2076 = subject.Value
-                        lawspecFieldvalue_2076
-                let result_2077 = lawtwinKafkaModelRebalance_c9984d55 (value_2075) (b_2064)
-                result_2077
+                        let value_4 = subject.Value
+                        value_4
+
+                let result_2 = lawtwinKafkaModelRebalance value_5 b
+                result_2
             else
-                match lawspecSelection0x0_2067 with
+                match selection with
                 | subject ->
-                    let lawspecFieldvalue_2078 = subject.Value
-                    lawspecFieldvalue_2078
-        let result_2079 = (Map.add value_2069 value_2071 acc_2065)
-        let result_2080 = lawtwinKafkaModelRebalanceGroups_ad90673b (topic_2062) (lawspecSelection0x1_2068) (b_2064) (result_2079)
-        result_2080
+                    let value_6 = subject.Value
+                    value_6
 
-/// lawtwin.kafka::lawtwinKafkaModelRebalanceTopic
-[<CompiledName("LawtwinKafkaModelRebalanceTopic_823cd68b")>]
-let lawtwinKafkaModelRebalanceTopic_823cd68b (topic_2081: string) (b_2082: LawSpec.Data.BrokerState) : LawSpec.Data.BrokerState =
-    let value_2083 =
-        match b_2082 with
+        let result_3 = Map.add value value_7 acc
+        let result_4 = lawtwinKafkaModelRebalanceGroups topic selection_2 b result_3
+        result_4
+
+/// lawtwinKafkaModelRebalanceTopic — ../src/model.lawspec:855
+[<CompiledName("LawtwinKafkaModelRebalanceTopic")>]
+let lawtwinKafkaModelRebalanceTopic (topic: string) (b: LawSpec.Data.BrokerState) : LawSpec.Data.BrokerState =
+    let value =
+        match b with
         | subject ->
-            let lawspecFieldgroups_2084 = subject.Groups
-            lawspecFieldgroups_2084
-    let result_2085 = (Typed.entries (fun k v -> ({ Key = k; Value = v } : LawSpec.Data.Entry<_, _>)) value_2083)
-    let value_2086 =
-        match b_2082 with
+            let groups = subject.Groups
+            groups
+
+    let result =
+        Typed.entries (fun k v -> ({ Key = k; Value = v }: LawSpec.Data.Entry<_, _>)) value
+
+    let value_2 =
+        match b with
         | subject ->
-            let lawspecFieldgroups_2087 = subject.Groups
-            lawspecFieldgroups_2087
-    let result_2088 = lawtwinKafkaModelRebalanceGroups_ad90673b (topic_2081) (result_2085) (b_2082) (value_2086)
-    let replacement_2089 = result_2088
-    match b_2082 with
+            let groups_2 = subject.Groups
+            groups_2
+
+    let result_2 = lawtwinKafkaModelRebalanceGroups topic result b value_2
+    let replacement = result_2
+
+    match b with
     | subject ->
-        let lawspecFieldtopics_2090 = subject.Topics
-        let lawspecFieldlogs_2091 = subject.Logs
-        let lawspecFieldproducers_2092 = subject.Producers
-        let lawspecFieldtransactionalIds_2093 = subject.TransactionalIds
-        let lawspecFieldnextProducerId_2094 = subject.NextProducerId
-        let lawspecFieldcommitted_2095 = subject.Committed
-        ({ Topics = lawspecFieldtopics_2090; Logs = lawspecFieldlogs_2091; Producers = lawspecFieldproducers_2092; TransactionalIds = lawspecFieldtransactionalIds_2093; NextProducerId = lawspecFieldnextProducerId_2094; Groups = replacement_2089; Committed = lawspecFieldcommitted_2095 } : LawSpec.Data.BrokerState)
+        let topics = subject.Topics
+        let logs = subject.Logs
+        let producers = subject.Producers
+        let transactionalIds = subject.TransactionalIds
+        let nextProducerId = subject.NextProducerId
+        let committed = subject.Committed
 
-/// lawtwin.kafka::lawtwinKafkaModelRememberBatch
-[<CompiledName("LawtwinKafkaModelRememberBatch_33fa600f")>]
-let lawtwinKafkaModelRememberBatch_33fa600f (writer_2096: int64) (meta_2097: LawSpec.Data.BatchMeta) (l_2098: LawSpec.Data.PartitionLog) : LawSpec.Data.PartitionLog =
-    let value_2099 =
-        let value_2100 =
-            match l_2098 with
+        let brokerState: LawSpec.Data.BrokerState =
+            {
+                Topics = topics
+                Logs = logs
+                Producers = producers
+                TransactionalIds = transactionalIds
+                NextProducerId = nextProducerId
+                Groups = replacement
+                Committed = committed
+            }
+
+        brokerState
+
+/// lawtwinKafkaModelRememberBatch — ../src/model.lawspec:351
+[<CompiledName("LawtwinKafkaModelRememberBatch")>]
+let lawtwinKafkaModelRememberBatch
+    (writer: int64)
+    (meta: LawSpec.Data.BatchMeta)
+    (l: LawSpec.Data.PartitionLog)
+    : LawSpec.Data.PartitionLog =
+    let value_2 =
+        let value =
+            match l with
             | subject ->
-                let lawspecFieldbatches_2101 = subject.Batches
-                lawspecFieldbatches_2101
-        let result_2102 = (Map.tryFind writer_2096 value_2100)
-        let it_2103 = result_2102
-        match it_2103 with
-        | None ->
-            []
-        | Some lawspecSelection0x0_2104 ->
-            lawspecSelection0x0_2104
-    let previous_2105 = value_2099
-    let value_2106 =
-        match l_2098 with
+                let batches = subject.Batches
+                batches
+
+        let result = Map.tryFind writer value
+        let it = result
+
+        match it with
+        | None -> []
+        | Some selection -> selection
+
+    let previous = value_2
+
+    let value_3 =
+        match l with
         | subject ->
-            let lawspecFieldbatches_2107 = subject.Batches
-            lawspecFieldbatches_2107
-    let result_2108 = (Map.add writer_2096 (Typed.sliceList (meta_2097 :: previous_2105) 0I 5I) value_2106)
-    let replacement_2109 = result_2108
-    match l_2098 with
+            let batches_2 = subject.Batches
+            batches_2
+
+    let result_2 = Map.add writer (Typed.sliceList (meta :: previous) 0I 5I) value_3
+    let replacement = result_2
+
+    match l with
     | subject ->
-        let lawspecFieldentries_2110 = subject.Entries
-        let lawspecFieldlogEndOffset_2111 = subject.LogEndOffset
-        let lawspecFieldopenTxns_2112 = subject.OpenTxns
-        let lawspecFieldabortedTxns_2113 = subject.AbortedTxns
-        ({ Entries = lawspecFieldentries_2110; LogEndOffset = lawspecFieldlogEndOffset_2111; OpenTxns = lawspecFieldopenTxns_2112; AbortedTxns = lawspecFieldabortedTxns_2113; Batches = replacement_2109 } : LawSpec.Data.PartitionLog)
+        let entries = subject.Entries
+        let logEndOffset = subject.LogEndOffset
+        let openTxns = subject.OpenTxns
+        let abortedTxns = subject.AbortedTxns
 
-/// lawtwin.kafka::lawtwinKafkaModelReversePending
-[<CompiledName("LawtwinKafkaModelReversePending_51ca5898")>]
-let lawtwinKafkaModelReversePending_51ca5898 (os_2114: LawSpec.Data.PendingOffset list) (acc_2115: LawSpec.Data.PendingOffset list) : LawSpec.Data.PendingOffset list =
-    let it_2116 = os_2114
-    match it_2116 with
-    | [] ->
-        acc_2115
-    | lawspecSelection0x0_2117 :: lawspecSelection0x1_2118 ->
-        let result_2119 = lawtwinKafkaModelReversePending_51ca5898 (lawspecSelection0x1_2118) ((lawspecSelection0x0_2117 :: acc_2115))
-        result_2119
+        let partitionLog: LawSpec.Data.PartitionLog =
+            {
+                Entries = entries
+                LogEndOffset = logEndOffset
+                OpenTxns = openTxns
+                AbortedTxns = abortedTxns
+                Batches = replacement
+            }
 
-/// lawtwin.kafka::lawtwinKafkaModelSubscribedTopics
-[<CompiledName("LawtwinKafkaModelSubscribedTopics_c1d720b5")>]
-let lawtwinKafkaModelSubscribedTopics_c1d720b5 (subs_2120: LawSpec.Data.Entry<string, string list> list) (acc_2121: Set<string>) : Set<string> =
-    let it_2122 = subs_2120
-    match it_2122 with
-    | [] ->
-        acc_2121
-    | lawspecSelection0x0_2123 :: lawspecSelection0x1_2124 ->
-        let value_2125 =
-            match lawspecSelection0x0_2123 with
+        partitionLog
+
+/// lawtwinKafkaModelReversePending — ../src/model.lawspec:710
+[<CompiledName("LawtwinKafkaModelReversePending")>]
+let lawtwinKafkaModelReversePending
+    (os: LawSpec.Data.PendingOffset list)
+    (acc: LawSpec.Data.PendingOffset list)
+    : LawSpec.Data.PendingOffset list =
+    let it = os
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let result = lawtwinKafkaModelReversePending selection_2 (selection :: acc)
+        result
+
+/// lawtwinKafkaModelSubscribedTopics — ../src/model.lawspec:790
+[<CompiledName("LawtwinKafkaModelSubscribedTopics")>]
+let lawtwinKafkaModelSubscribedTopics
+    (subs: LawSpec.Data.Entry<string, string list> list)
+    (acc: Set<string>)
+    : Set<string> =
+    let it = subs
+
+    match it with
+    | [] -> acc
+    | selection :: selection_2 ->
+        let value_2 =
+            match selection with
             | subject ->
-                let lawspecFieldvalue_2126 = subject.Value
-                lawspecFieldvalue_2126
-        let result_2127 = (Set.ofList value_2125)
-        let result_2128 = (Set.union acc_2121 result_2127)
-        let result_2129 = lawtwinKafkaModelSubscribedTopics_c1d720b5 (lawspecSelection0x1_2124) (result_2128)
-        result_2129
+                let value = subject.Value
+                value
 
-/// lawtwin.kafka::lawtwinKafkaModelSubscribersOf
-[<CompiledName("LawtwinKafkaModelSubscribersOf_e9347318")>]
-let lawtwinKafkaModelSubscribersOf_e9347318 (topic_2130: string) (subs_2131: LawSpec.Data.Entry<string, string list> list) : string list =
-    let it_2132 = subs_2131
-    match it_2132 with
-    | [] ->
-        []
-    | lawspecSelection0x0_2133 :: lawspecSelection0x1_2134 ->
-        let value_2135 =
-            match lawspecSelection0x0_2133 with
+        let result = Set.ofList value_2
+        let result_2 = Set.union acc result
+        let result_3 = lawtwinKafkaModelSubscribedTopics selection_2 result_2
+        result_3
+
+/// lawtwinKafkaModelSubscribersOf — ../src/model.lawspec:746
+[<CompiledName("LawtwinKafkaModelSubscribersOf")>]
+let lawtwinKafkaModelSubscribersOf (topic: string) (subs: LawSpec.Data.Entry<string, string list> list) : string list =
+    let it = subs
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value_2 =
+            match selection with
             | subject ->
-                let lawspecFieldvalue_2136 = subject.Value
-                lawspecFieldvalue_2136
-        let all_2138 =
-            List.forall (fun item_2137 ->
-                (item_2137 <> topic_2130)) value_2135
-        if (not all_2138) then
-            let value_2139 =
-                match lawspecSelection0x0_2133 with
+                let value = subject.Value
+                value
+
+        let all = List.forall (fun item -> (item <> topic)) value_2
+
+        if not all then
+            let value_3 =
+                match selection with
                 | subject ->
-                    let lawspecFieldkey_2140 = subject.Key
-                    lawspecFieldkey_2140
-            let result_2141 = lawtwinKafkaModelSubscribersOf_e9347318 (topic_2130) (lawspecSelection0x1_2134)
-            (value_2139 :: result_2141)
+                    let key = subject.Key
+                    key
+
+            let result = lawtwinKafkaModelSubscribersOf topic selection_2
+            (value_3 :: result)
         else
-            let result_2142 = lawtwinKafkaModelSubscribersOf_e9347318 (topic_2130) (lawspecSelection0x1_2134)
-            result_2142
+            let result_2 = lawtwinKafkaModelSubscribersOf topic selection_2
+            result_2
 
-/// lawtwin.kafka::lawtwinKafkaModelSubscribesTo
-[<CompiledName("LawtwinKafkaModelSubscribesTo_c3c674c3")>]
-let lawtwinKafkaModelSubscribesTo_c3c674c3 (topic_2143: string) (group_2144: LawSpec.Data.Group) : bool =
-    let value_2145 =
-        let value_2146 =
-            match group_2144 with
+/// lawtwinKafkaModelSubscribesTo — ../src/model.lawspec:839
+[<CompiledName("LawtwinKafkaModelSubscribesTo")>]
+let lawtwinKafkaModelSubscribesTo (topic: string) (group: LawSpec.Data.Group) : bool =
+    let value_2 =
+        let value =
+            match group with
             | subject ->
-                let lawspecFieldsubscriptions_2147 = subject.Subscriptions
-                lawspecFieldsubscriptions_2147
-        let result_2148 = (Typed.entries (fun k v -> ({ Key = k; Value = v } : LawSpec.Data.Entry<_, _>)) value_2146)
-        let result_2149 = lawtwinKafkaModelSubscribersOf_e9347318 (topic_2143) (result_2148)
-        match result_2149 with
-        | [] ->
-            true
-        | _ :: _ ->
-            false
-    (not value_2145)
+                let subscriptions = subject.Subscriptions
+                subscriptions
 
-/// lawtwin.kafka::lawtwinKafkaModelSyncGroup
-[<CompiledName("LawtwinKafkaModelSyncGroup_b3d01c80")>]
-let lawtwinKafkaModelSyncGroup_b3d01c80 (g_2150: string) (member_2151: string) (generation_2152: int) (b_2153: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState> =
-    let result_2154 = lawtwinKafkaModelCheckMember_f218b850 (g_2150) (member_2151) (generation_2152) (b_2153)
-    let group_2155 = result_2154
-    let value_2156 =
-        match group_2155 with
+        let result =
+            Typed.entries (fun k v -> ({ Key = k; Value = v }: LawSpec.Data.Entry<_, _>)) value
+
+        let result_2 = lawtwinKafkaModelSubscribersOf topic result
+
+        match result_2 with
+        | [] -> true
+        | _ :: _ -> false
+
+    not value_2
+
+/// lawtwinKafkaModelSyncGroup — ../src/model.lawspec:893
+[<CompiledName("LawtwinKafkaModelSyncGroup")>]
+let lawtwinKafkaModelSyncGroup
+    (g: string)
+    (member_: string)
+    (generation: int)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState> =
+    let result = lawtwinKafkaModelCheckMember g member_ generation b
+    let group = result
+
+    let value =
+        match group with
         | subject ->
-            let lawspecFieldassignment_2157 = subject.Assignment
-            lawspecFieldassignment_2157
-    let result_2158 = (Map.tryFind member_2151 value_2156)
-    let it_2159 = result_2158
-    match it_2159 with
+            let assignment = subject.Assignment
+            assignment
+
+    let result_2 = Map.tryFind member_ value
+    let it = result_2
+
+    match it with
     | None ->
-        ({ First = []; Second = b_2153 } : LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState>)
-    | Some lawspecSelection0x0_2160 ->
-        ({ First = lawspecSelection0x0_2160; Second = b_2153 } : LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState>)
+        let pair: LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState> =
+            { First = []; Second = b }
 
-/// lawtwin.kafka::lawtwinKafkaModelTxnHasPartition
-[<CompiledName("LawtwinKafkaModelTxnHasPartition_8fa1cfc0")>]
-let lawtwinKafkaModelTxnHasPartition_8fa1cfc0 (tp_2161: LawSpec.Data.TopicPartition) (txn_2162: LawSpec.Data.TxnState) : bool =
-    let it_2163 = txn_2162
-    match it_2163 with
-    | LawSpec.Data.TxnState.NoTxn ->
-        false
-    | LawSpec.Data.TxnState.Ongoing(lawspecSelection0x0_2164) ->
-        let value_2165 =
-            match lawspecSelection0x0_2164 with
-            | subject ->
-                let lawspecFieldtxnPartitions_2166 = subject.TxnPartitions
-                lawspecFieldtxnPartitions_2166
-        let lawspecSelection1x0_2167 = value_2165
-        let value_2168 =
-            match lawspecSelection0x0_2164 with
-            | subject ->
-                let lawspecFieldtxnOffsets_2169 = subject.TxnOffsets
-                lawspecFieldtxnOffsets_2169
-        let lawspecSelection1x1_2170 = value_2168
-        let all_2172 =
-            List.forall (fun item_2171 ->
-                (item_2171 <> tp_2161)) lawspecSelection1x0_2167
-        (not all_2172)
+        pair
+    | Some selection ->
+        let pair_2: LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState> =
+            { First = selection; Second = b }
 
-/// lawtwin.kafka::lawtwinKafkaModelTxnOffsetCommit
-[<CompiledName("LawtwinKafkaModelTxnOffsetCommit_84c6b2bb")>]
-let lawtwinKafkaModelTxnOffsetCommit_84c6b2bb (txid_2173: string) (pid_2174: int64) (epoch_2175: int16) (group_2176: string) (offsets_2177: LawSpec.Data.OffsetEntry list) (b_2178: LawSpec.Data.BrokerState) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    if (group_2176 = literal0) then
-        (Typed.raiseFailure "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" ((LawSpec.Data.Codecs.kafkaError ()).FromNative LawSpec.Data.KafkaError.InvalidGroupId) : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+        pair_2
+
+/// lawtwinKafkaModelTxnHasPartition — ../src/model.lawspec:428
+[<CompiledName("LawtwinKafkaModelTxnHasPartition")>]
+let lawtwinKafkaModelTxnHasPartition (tp: LawSpec.Data.TopicPartition) (txn: LawSpec.Data.TxnState) : bool =
+    let it = txn
+
+    match it with
+    | LawSpec.Data.TxnState.NoTxn -> false
+    | LawSpec.Data.TxnState.Ongoing(selection) ->
+        let value =
+            match selection with
+            | subject ->
+                let txnPartitions = subject.TxnPartitions
+                txnPartitions
+
+        let selection_2 = value
+
+        let value_2 =
+            match selection with
+            | subject ->
+                let txnOffsets = subject.TxnOffsets
+                txnOffsets
+
+        let selection_3 = value_2
+        let all = List.forall (fun item -> (item <> tp)) selection_2
+        not all
+
+/// lawtwinKafkaModelTxnOffsetCommit — ../src/model.lawspec:645
+[<CompiledName("LawtwinKafkaModelTxnOffsetCommit")>]
+let lawtwinKafkaModelTxnOffsetCommit
+    (txid: string)
+    (pid: int64)
+    (epoch: int16)
+    (group: string)
+    (offsets: LawSpec.Data.OffsetEntry list)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+    if (group = "") then
+        (Typed.raiseFailure
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()) LawSpec.Data.KafkaError.InvalidGroupId)
+        : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
     else
-        let result_2179 = lawtwinKafkaModelCheckTxnProducer_2936d9ae (txid_2173) (pid_2174) (epoch_2175) (b_2178)
-        let entry_2180 = result_2179
-        let value_2181 =
-            let value_2182 =
-                match entry_2180 with
+        let result = lawtwinKafkaModelCheckTxnProducer txid pid epoch b
+        let entry = result
+
+        let value_6 =
+            let value =
+                match entry with
                 | subject ->
-                    let lawspecFieldtxn_2183 = subject.Txn
-                    lawspecFieldtxn_2183
-            let it_2184 = value_2182
-            match it_2184 with
+                    let txn = subject.Txn
+                    txn
+
+            let it = value
+
+            match it with
             | LawSpec.Data.TxnState.NoTxn ->
-                let value_2185 =
-                    let txnPartitions_2186 = []
-                    let result_2187 = lawtwinKafkaModelPendingFor_50512591 (group_2176) (offsets_2177) ([])
-                    let txnOffsets_2188 = result_2187
-                    ({ TxnOffsets = txnOffsets_2188; TxnPartitions = txnPartitions_2186 } : LawSpec.Data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee)
-                (LawSpec.Data.TxnState.Ongoing(value_2185))
-            | LawSpec.Data.TxnState.Ongoing(lawspecSelection0x0_2189) ->
-                let value_2190 =
-                    match lawspecSelection0x0_2189 with
+                let value_2 =
+                    let txnPartitions = []
+                    let result_2 = lawtwinKafkaModelPendingFor group offsets []
+                    let txnOffsets = result_2
+
+                    let ongoingDetails: LawSpec.Data.OngoingDetails =
+                        {
+                            TxnOffsets = txnOffsets
+                            TxnPartitions = txnPartitions
+                        }
+
+                    ongoingDetails
+
+                LawSpec.Data.TxnState.Ongoing(value_2)
+            | LawSpec.Data.TxnState.Ongoing(selection) ->
+                let value_3 =
+                    match selection with
                     | subject ->
-                        let lawspecFieldtxnPartitions_2191 = subject.TxnPartitions
-                        lawspecFieldtxnPartitions_2191
-                let lawspecSelection1x0_2192 = value_2190
-                let value_2193 =
-                    match lawspecSelection0x0_2189 with
+                        let txnPartitions_2 = subject.TxnPartitions
+                        txnPartitions_2
+
+                let selection_2 = value_3
+
+                let value_4 =
+                    match selection with
                     | subject ->
-                        let lawspecFieldtxnOffsets_2194 = subject.TxnOffsets
-                        lawspecFieldtxnOffsets_2194
-                let lawspecSelection1x1_2195 = value_2193
-                let value_2196 =
-                    let txnPartitions_2197 = lawspecSelection1x0_2192
-                    let result_2198 = lawtwinKafkaModelPendingFor_50512591 (group_2176) (offsets_2177) (lawspecSelection1x1_2195)
-                    let txnOffsets_2199 = result_2198
-                    ({ TxnOffsets = txnOffsets_2199; TxnPartitions = txnPartitions_2197 } : LawSpec.Data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee)
-                (LawSpec.Data.TxnState.Ongoing(value_2196))
-        let next_2200 = value_2181
-        let value_2201 =
-            let replacement_2202 = next_2200
-            match entry_2180 with
+                        let txnOffsets_2 = subject.TxnOffsets
+                        txnOffsets_2
+
+                let selection_3 = value_4
+
+                let value_5 =
+                    let txnPartitions_3 = selection_2
+                    let result_3 = lawtwinKafkaModelPendingFor group offsets selection_3
+                    let txnOffsets_3 = result_3
+
+                    let ongoingDetails_2: LawSpec.Data.OngoingDetails =
+                        {
+                            TxnOffsets = txnOffsets_3
+                            TxnPartitions = txnPartitions_3
+                        }
+
+                    ongoingDetails_2
+
+                LawSpec.Data.TxnState.Ongoing(value_5)
+
+        let next = value_6
+
+        let value_7 =
+            let replacement = next
+
+            match entry with
             | subject ->
-                let lawspecFieldepoch_2203 = subject.Epoch
-                let lawspecFieldtransactionalId_2204 = subject.TransactionalId
-                ({ Epoch = lawspecFieldepoch_2203; TransactionalId = lawspecFieldtransactionalId_2204; Txn = replacement_2202 } : LawSpec.Data.ProducerEntry)
-        let result_2205 = lawtwinKafkaModelPutProducer_4ef907a5 (pid_2174) (value_2201) (b_2178)
-        ({ First = (); Second = result_2205 } : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>)
+                let epoch_2 = subject.Epoch
+                let transactionalId = subject.TransactionalId
 
-/// lawtwin.kafka::lawtwinKafkaModelUnionPartitions
-[<CompiledName("LawtwinKafkaModelUnionPartitions_c791d224")>]
-let lawtwinKafkaModelUnionPartitions_c791d224 (xs_2206: LawSpec.Data.TopicPartition list) (ys_2207: LawSpec.Data.TopicPartition list) : LawSpec.Data.TopicPartition list =
-    let it_2208 = xs_2206
-    match it_2208 with
-    | [] ->
-        ys_2207
-    | lawspecSelection0x0_2209 :: lawspecSelection0x1_2210 ->
-        let all_2212 =
-            List.forall (fun item_2211 ->
-                (item_2211 <> lawspecSelection0x0_2209)) ys_2207
-        if (not all_2212) then
-            let result_2213 = lawtwinKafkaModelUnionPartitions_c791d224 (lawspecSelection0x1_2210) (ys_2207)
-            result_2213
+                let producerEntry: LawSpec.Data.ProducerEntry =
+                    {
+                        Epoch = epoch_2
+                        TransactionalId = transactionalId
+                        Txn = replacement
+                    }
+
+                producerEntry
+
+        let result_4 = lawtwinKafkaModelPutProducer pid value_7 b
+
+        let pair: LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
+            { First = (); Second = result_4 }
+
+        pair
+
+/// lawtwinKafkaModelUnionPartitions — ../src/model.lawspec:604
+[<CompiledName("LawtwinKafkaModelUnionPartitions")>]
+let lawtwinKafkaModelUnionPartitions
+    (xs: LawSpec.Data.TopicPartition list)
+    (ys: LawSpec.Data.TopicPartition list)
+    : LawSpec.Data.TopicPartition list =
+    let it = xs
+
+    match it with
+    | [] -> ys
+    | selection :: selection_2 ->
+        let all = List.forall (fun item -> (item <> selection)) ys
+
+        if not all then
+            let result = lawtwinKafkaModelUnionPartitions selection_2 ys
+            result
         else
-            let result_2214 = lawtwinKafkaModelUnionPartitions_c791d224 (lawspecSelection0x1_2210) ((lawspecSelection0x0_2209 :: ys_2207))
-            result_2214
+            let result_2 = lawtwinKafkaModelUnionPartitions selection_2 (selection :: ys)
+            result_2
 
-/// lawtwin.kafka::lawtwinKafkaModelValidTopicName
-[<CompiledName("LawtwinKafkaModelValidTopicName_39dd4596")>]
-let lawtwinKafkaModelValidTopicName_39dd4596 (name_2215: string) : bool =
-    let n_2216 = (Typed.textLength name_2215)
-    (((((n_2216 >= 1I) && (n_2216 <= 249I)) && (name_2215 <> literal1)) && (name_2215 <> literal2)) && (Regex.matches literal3 name_2215))
+/// lawtwinKafkaModelValidTopicName — ../src/model.lawspec:251
+[<CompiledName("LawtwinKafkaModelValidTopicName")>]
+let lawtwinKafkaModelValidTopicName (name: string) : bool =
+    let n = Typed.textLength name
 
-/// lawtwin.kafka::lawtwinKafkaModelWriteMarker
-[<CompiledName("LawtwinKafkaModelWriteMarker_8dc995f8")>]
-let lawtwinKafkaModelWriteMarker_8dc995f8 (pid_2217: int64) (commit_2218: bool) (l_2219: LawSpec.Data.PartitionLog) : LawSpec.Data.PartitionLog =
-    let value_2220 =
-        if commit_2218 then
-            match l_2219 with
+    (((((n >= 1I) && (n <= 249I)) && (name <> ".")) && (name <> ".."))
+     && Regex.matches "[a-zA-Z0-9._-]+" name)
+
+/// lawtwinKafkaModelWriteMarker — ../src/model.lawspec:662
+[<CompiledName("LawtwinKafkaModelWriteMarker")>]
+let lawtwinKafkaModelWriteMarker
+    (pid: int64)
+    (commit: bool)
+    (l: LawSpec.Data.PartitionLog)
+    : LawSpec.Data.PartitionLog =
+    let value_5 =
+        if commit then
+            match l with
             | subject ->
-                let lawspecFieldabortedTxns_2221 = subject.AbortedTxns
-                lawspecFieldabortedTxns_2221
+                let abortedTxns = subject.AbortedTxns
+                abortedTxns
         else
-            let value_2222 =
-                match l_2219 with
+            let value =
+                match l with
                 | subject ->
-                    let lawspecFieldopenTxns_2223 = subject.OpenTxns
-                    lawspecFieldopenTxns_2223
-            let result_2224 = (Map.tryFind pid_2217 value_2222)
-            let it_2225 = result_2224
-            match it_2225 with
+                    let openTxns = subject.OpenTxns
+                    openTxns
+
+            let result = Map.tryFind pid value
+            let it = result
+
+            match it with
             | None ->
-                match l_2219 with
+                match l with
                 | subject ->
-                    let lawspecFieldabortedTxns_2226 = subject.AbortedTxns
-                    lawspecFieldabortedTxns_2226
-            | Some lawspecSelection0x0_2227 ->
-                let value_2228 =
-                    let lawspecRecordField0_2229 = pid_2217
-                    let lawspecRecordField1_2230 = lawspecSelection0x0_2227
-                    let value_2231 =
-                        match l_2219 with
+                    let abortedTxns_2 = subject.AbortedTxns
+                    abortedTxns_2
+            | Some selection ->
+                let value_3 =
+                    let recordField = pid
+                    let recordField_2 = selection
+
+                    let value_2 =
+                        match l with
                         | subject ->
-                            let lawspecFieldlogEndOffset_2232 = subject.LogEndOffset
-                            lawspecFieldlogEndOffset_2232
-                    let lawspecRecordField2_2233 = value_2231
-                    ({ AbortedWriter = lawspecRecordField0_2229; FirstOffset = lawspecRecordField1_2230; LastOffset = lawspecRecordField2_2233 } : LawSpec.Data.AbortedTxn)
-                let value_2234 =
-                    match l_2219 with
+                            let logEndOffset = subject.LogEndOffset
+                            logEndOffset
+
+                    let recordField_3 = value_2
+
+                    let abortedTxn: LawSpec.Data.AbortedTxn =
+                        {
+                            AbortedWriter = recordField
+                            FirstOffset = recordField_2
+                            LastOffset = recordField_3
+                        }
+
+                    abortedTxn
+
+                let value_4 =
+                    match l with
                     | subject ->
-                        let lawspecFieldabortedTxns_2235 = subject.AbortedTxns
-                        lawspecFieldabortedTxns_2235
-                (value_2228 :: value_2234)
-    let aborted_2236 = value_2220
-    let replacement_2237 = aborted_2236
-    let value_2238 =
-        let value_2239 =
-            match l_2219 with
+                        let abortedTxns_3 = subject.AbortedTxns
+                        abortedTxns_3
+
+                (value_3 :: value_4)
+
+    let aborted = value_5
+    let replacement = aborted
+
+    let value_13 =
+        let value_6 =
+            match l with
             | subject ->
-                let lawspecFieldopenTxns_2240 = subject.OpenTxns
-                lawspecFieldopenTxns_2240
-        let result_2241 = (Map.remove pid_2217 value_2239)
-        let replacement_2242 = result_2241
-        let value_2243 =
-            let value_2244 =
-                match l_2219 with
+                let openTxns_2 = subject.OpenTxns
+                openTxns_2
+
+        let result_2 = Map.remove pid value_6
+        let replacement_2 = result_2
+
+        let value_12 =
+            let value_7 =
+                match l with
                 | subject ->
-                    let lawspecFieldlogEndOffset_2245 = subject.LogEndOffset
-                    lawspecFieldlogEndOffset_2245
-            let result_2246 = saturatingInt64_5bce4ed8 (((bigint value_2244) + 1I))
-            let replacement_2247 = result_2246
-            let value_2248 =
-                let value_2249 =
-                    let value_2250 =
-                        match l_2219 with
+                    let logEndOffset_2 = subject.LogEndOffset
+                    logEndOffset_2
+
+            let result_3 = saturatingInt64 (bigint value_7 + 1I)
+            let replacement_3 = result_3
+
+            let value_11 =
+                let value_9 =
+                    let value_8 =
+                        match l with
                         | subject ->
-                            let lawspecFieldlogEndOffset_2251 = subject.LogEndOffset
-                            lawspecFieldlogEndOffset_2251
-                    let markerOffset_2252 = value_2250
-                    let markerWriter_2253 = pid_2217
-                    let commits_2254 = commit_2218
-                    ({ Commits = commits_2254; MarkerOffset = markerOffset_2252; MarkerWriter = markerWriter_2253 } : LawSpec.Data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3)
-                let value_2255 =
-                    match l_2219 with
+                            let logEndOffset_3 = subject.LogEndOffset
+                            logEndOffset_3
+
+                    let markerOffset = value_8
+                    let markerWriter = pid
+                    let commits = commit
+
+                    let controlEntryDetails: LawSpec.Data.ControlEntryDetails =
+                        {
+                            Commits = commits
+                            MarkerOffset = markerOffset
+                            MarkerWriter = markerWriter
+                        }
+
+                    controlEntryDetails
+
+                let value_10 =
+                    match l with
                     | subject ->
-                        let lawspecFieldentries_2256 = subject.Entries
-                        lawspecFieldentries_2256
-                let replacement_2257 = ((LawSpec.Data.LogEntry.ControlEntry(value_2249)) :: value_2255)
-                match l_2219 with
+                        let entries = subject.Entries
+                        entries
+
+                let replacement_4 = (LawSpec.Data.LogEntry.ControlEntry(value_9) :: value_10)
+
+                match l with
                 | subject ->
-                    let lawspecFieldlogEndOffset_2258 = subject.LogEndOffset
-                    let lawspecFieldopenTxns_2259 = subject.OpenTxns
-                    let lawspecFieldabortedTxns_2260 = subject.AbortedTxns
-                    let lawspecFieldbatches_2261 = subject.Batches
-                    ({ Entries = replacement_2257; LogEndOffset = lawspecFieldlogEndOffset_2258; OpenTxns = lawspecFieldopenTxns_2259; AbortedTxns = lawspecFieldabortedTxns_2260; Batches = lawspecFieldbatches_2261 } : LawSpec.Data.PartitionLog)
-            match value_2248 with
+                    let logEndOffset_4 = subject.LogEndOffset
+                    let openTxns_3 = subject.OpenTxns
+                    let abortedTxns_4 = subject.AbortedTxns
+                    let batches = subject.Batches
+
+                    let partitionLog: LawSpec.Data.PartitionLog =
+                        {
+                            Entries = replacement_4
+                            LogEndOffset = logEndOffset_4
+                            OpenTxns = openTxns_3
+                            AbortedTxns = abortedTxns_4
+                            Batches = batches
+                        }
+
+                    partitionLog
+
+            match value_11 with
             | subject ->
-                let lawspecFieldentries_2262 = subject.Entries
-                let lawspecFieldopenTxns_2263 = subject.OpenTxns
-                let lawspecFieldabortedTxns_2264 = subject.AbortedTxns
-                let lawspecFieldbatches_2265 = subject.Batches
-                ({ Entries = lawspecFieldentries_2262; LogEndOffset = replacement_2247; OpenTxns = lawspecFieldopenTxns_2263; AbortedTxns = lawspecFieldabortedTxns_2264; Batches = lawspecFieldbatches_2265 } : LawSpec.Data.PartitionLog)
-        match value_2243 with
+                let entries_2 = subject.Entries
+                let openTxns_4 = subject.OpenTxns
+                let abortedTxns_5 = subject.AbortedTxns
+                let batches_2 = subject.Batches
+
+                let partitionLog_2: LawSpec.Data.PartitionLog =
+                    {
+                        Entries = entries_2
+                        LogEndOffset = replacement_3
+                        OpenTxns = openTxns_4
+                        AbortedTxns = abortedTxns_5
+                        Batches = batches_2
+                    }
+
+                partitionLog_2
+
+        match value_12 with
         | subject ->
-            let lawspecFieldentries_2266 = subject.Entries
-            let lawspecFieldlogEndOffset_2267 = subject.LogEndOffset
-            let lawspecFieldabortedTxns_2268 = subject.AbortedTxns
-            let lawspecFieldbatches_2269 = subject.Batches
-            ({ Entries = lawspecFieldentries_2266; LogEndOffset = lawspecFieldlogEndOffset_2267; OpenTxns = replacement_2242; AbortedTxns = lawspecFieldabortedTxns_2268; Batches = lawspecFieldbatches_2269 } : LawSpec.Data.PartitionLog)
-    match value_2238 with
+            let entries_3 = subject.Entries
+            let logEndOffset_5 = subject.LogEndOffset
+            let abortedTxns_6 = subject.AbortedTxns
+            let batches_3 = subject.Batches
+
+            let partitionLog_3: LawSpec.Data.PartitionLog =
+                {
+                    Entries = entries_3
+                    LogEndOffset = logEndOffset_5
+                    OpenTxns = replacement_2
+                    AbortedTxns = abortedTxns_6
+                    Batches = batches_3
+                }
+
+            partitionLog_3
+
+    match value_13 with
     | subject ->
-        let lawspecFieldentries_2270 = subject.Entries
-        let lawspecFieldlogEndOffset_2271 = subject.LogEndOffset
-        let lawspecFieldopenTxns_2272 = subject.OpenTxns
-        let lawspecFieldbatches_2273 = subject.Batches
-        ({ Entries = lawspecFieldentries_2270; LogEndOffset = lawspecFieldlogEndOffset_2271; OpenTxns = lawspecFieldopenTxns_2272; AbortedTxns = replacement_2237; Batches = lawspecFieldbatches_2273 } : LawSpec.Data.PartitionLog)
+        let entries_4 = subject.Entries
+        let logEndOffset_6 = subject.LogEndOffset
+        let openTxns_5 = subject.OpenTxns
+        let batches_4 = subject.Batches
 
-/// lawtwin.kafka::lawtwinKafkaModelWriteMarkers
-[<CompiledName("LawtwinKafkaModelWriteMarkers_c507f08e")>]
-let lawtwinKafkaModelWriteMarkers_c507f08e (pid_2274: int64) (commit_2275: bool) (tps_2276: LawSpec.Data.TopicPartition list) (b_2277: LawSpec.Data.BrokerState) : LawSpec.Data.BrokerState =
-    let it_2278 = tps_2276
-    match it_2278 with
-    | [] ->
-        b_2277
-    | lawspecSelection0x0_2279 :: lawspecSelection0x1_2280 ->
-        let result_2281 = lawtwinKafkaModelLogOf_b86b131a (lawspecSelection0x0_2279) (b_2277)
-        let result_2282 = lawtwinKafkaModelWriteMarker_8dc995f8 (pid_2274) (commit_2275) (result_2281)
-        let result_2283 = lawtwinKafkaModelPutLog_cb3cbf5e (lawspecSelection0x0_2279) (result_2282) (b_2277)
-        let result_2284 = lawtwinKafkaModelWriteMarkers_c507f08e (pid_2274) (commit_2275) (lawspecSelection0x1_2280) (result_2283)
-        result_2284
+        let partitionLog_4: LawSpec.Data.PartitionLog =
+            {
+                Entries = entries_4
+                LogEndOffset = logEndOffset_6
+                OpenTxns = openTxns_5
+                AbortedTxns = replacement
+                Batches = batches_4
+            }
 
-/// lawtwin.kafka::memberIds
-[<CompiledName("MemberIds_1e3fa12d")>]
-let memberIds_1e3fa12d (ms_2285: string list) : string list =
-    let result_2286 = (Set.ofList ms_2285)
-    let result_2287 = (Set.remove literal0 result_2286)
-    match result_2287 with
+        partitionLog_4
+
+/// lawtwinKafkaModelWriteMarkers — ../src/model.lawspec:677
+[<CompiledName("LawtwinKafkaModelWriteMarkers")>]
+let lawtwinKafkaModelWriteMarkers
+    (pid: int64)
+    (commit: bool)
+    (tps: LawSpec.Data.TopicPartition list)
+    (b: LawSpec.Data.BrokerState)
+    : LawSpec.Data.BrokerState =
+    let it = tps
+
+    match it with
+    | [] -> b
+    | selection :: selection_2 ->
+        let result = lawtwinKafkaModelLogOf selection b
+        let result_2 = lawtwinKafkaModelWriteMarker pid commit result
+        let result_3 = lawtwinKafkaModelPutLog selection result_2 b
+        let result_4 = lawtwinKafkaModelWriteMarkers pid commit selection_2 result_3
+        result_4
+
+/// memberIds — ../src/contract.lawspec:325
+[<CompiledName("MemberIds")>]
+let memberIds (ms: string list) : string list =
+    let result = Set.ofList ms
+    let result_2 = Set.remove "" result
+
+    match result_2 with
     | subject ->
-        let items_2288 = (Typed.items subject)
-        items_2288
+        let items = Typed.items subject
+        items
 
-/// lawtwin.kafka::missingFrom
-[<CompiledName("MissingFrom_37856ee4")>]
-let missingFrom_37856ee4 (tps_2289: LawSpec.Data.TopicPartition list) (have_2290: LawSpec.Data.TopicPartition list) : LawSpec.Data.TopicPartition list =
-    let it_2291 = tps_2289
-    match it_2291 with
-    | [] ->
-        []
-    | lawspecSelection0x0_2292 :: lawspecSelection0x1_2293 ->
-        let all_2295 =
-            List.forall (fun item_2294 ->
-                (item_2294 <> lawspecSelection0x0_2292)) have_2290
-        if (not all_2295) then
-            let result_2296 = missingFrom_37856ee4 (lawspecSelection0x1_2293) (have_2290)
-            result_2296
+/// missingFrom — ../src/contract.lawspec:884
+[<CompiledName("MissingFrom")>]
+let missingFrom
+    (tps: LawSpec.Data.TopicPartition list)
+    (have: LawSpec.Data.TopicPartition list)
+    : LawSpec.Data.TopicPartition list =
+    let it = tps
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let all = List.forall (fun item -> (item <> selection)) have
+
+        if not all then
+            let result = missingFrom selection_2 have
+            result
         else
-            let result_2297 = missingFrom_37856ee4 (lawspecSelection0x1_2293) (have_2290)
-            (lawspecSelection0x0_2292 :: result_2297)
+            let result_2 = missingFrom selection_2 have
+            (selection :: result_2)
 
-/// lawtwin.kafka::mul32
-[<CompiledName("Mul32_b8774c72")>]
-let mul32_b8774c72 (a_2298: uint32) (b_2299: uint32) : uint32 =
-    let result_2300 = wrappingUInt32_1ef3ce20 (((bigint a_2298) * (bigint b_2299)))
-    result_2300
+/// mul32 — ../src/contract.lawspec:1103
+[<CompiledName("Mul32")>]
+let mul32 (a: uint32) (b: uint32) : uint32 =
+    let result = wrappingUInt32 (bigint a * bigint b)
+    result
 
-/// lawtwin.kafka::murmur2
-[<CompiledName("Murmur2_d0ccf769")>]
-let murmur2_d0ccf769 (key_2301: byte[]) : uint32 =
-    let result_2302 = wrappingUInt32_1ef3ce20 ((bigint (Array.length key_2301)))
-    let result_2303 = xor32_0ea970f5 (2538058380u) (result_2302)
-    let result_2304 = murmurChunks_9898bba5 ((Array.toList key_2301)) (result_2303)
-    let h_2305 = result_2304
-    let result_2306 = wrappingUInt32_1ef3ce20 ((Typed.quotient (bigint h_2305) 8192I))
-    let result_2307 = xor32_0ea970f5 (h_2305) (result_2306)
-    let result_2308 = murmurM_48968914 (())
-    let result_2309 = mul32_b8774c72 (result_2307) (result_2308)
-    let h1_2310 = result_2309
-    let result_2311 = wrappingUInt32_1ef3ce20 ((Typed.quotient (bigint h1_2310) 32768I))
-    let result_2312 = xor32_0ea970f5 (h1_2310) (result_2311)
-    result_2312
+/// murmur2 — ../src/contract.lawspec:1061
+[<CompiledName("Murmur2")>]
+let murmur2 (key: byte[]) : uint32 =
+    let result = wrappingUInt32 (bigint (Array.length key))
+    let result_2 = xor32 2538058380u result
+    let result_3 = murmurChunks (Array.toList key) result_2
+    let h = result_3
+    let result_4 = wrappingUInt32 (Typed.quotient (bigint h) 8192I)
+    let result_5 = xor32 h result_4
+    let result_6 = murmurM ()
+    let result_7 = mul32 result_5 result_6
+    let h1 = result_7
+    let result_8 = wrappingUInt32 (Typed.quotient (bigint h1) 32768I)
+    let result_9 = xor32 h1 result_8
+    result_9
 
-/// lawtwin.kafka::murmurChunks
-[<CompiledName("MurmurChunks_9898bba5")>]
-let murmurChunks_9898bba5 (octets_2313: byte list) (h_2314: uint32) : uint32 =
-    let it_2315 = octets_2313
-    match it_2315 with
-    | [] ->
-        h_2314
-    | lawspecSelection0x0_2316 :: lawspecSelection0x1_2317 ->
-        let it_2318 = lawspecSelection0x1_2317
-        match it_2318 with
+/// murmurChunks — ../src/contract.lawspec:1071
+[<CompiledName("MurmurChunks")>]
+let murmurChunks (octets: byte list) (h: uint32) : uint32 =
+    let it = octets
+
+    match it with
+    | [] -> h
+    | selection :: selection_2 ->
+        let it_2 = selection_2
+
+        match it_2 with
         | [] ->
-            let result_2319 = xor32_0ea970f5 (h_2314) ((uint32 lawspecSelection0x0_2316))
-            let result_2320 = murmurM_48968914 (())
-            let result_2321 = mul32_b8774c72 (result_2319) (result_2320)
-            result_2321
-        | matchlawspecSelection0x00_2322 :: matchlawspecSelection0x10_2323 ->
-            let it_2324 = matchlawspecSelection0x10_2323
-            match it_2324 with
+            let result = xor32 h (uint32 selection)
+            let result_2 = murmurM ()
+            let result_3 = mul32 result result_2
+            result_3
+        | matchSelection :: matchSelection_2 ->
+            let it_3 = matchSelection_2
+
+            match it_3 with
             | [] ->
-                let result_2325 = wrappingUInt32_1ef3ce20 (((bigint matchlawspecSelection0x00_2322) * 256I))
-                let result_2326 = xor32_0ea970f5 (h_2314) (result_2325)
-                let result_2327 = xor32_0ea970f5 (result_2326) ((uint32 lawspecSelection0x0_2316))
-                let result_2328 = murmurM_48968914 (())
-                let result_2329 = mul32_b8774c72 (result_2327) (result_2328)
-                result_2329
-            | matchmatchlawspecSelection0x000_2330 :: matchmatchlawspecSelection0x100_2331 ->
-                let it_2332 = matchmatchlawspecSelection0x100_2331
-                match it_2332 with
+                let result_4 = wrappingUInt32 (bigint matchSelection * 256I)
+                let result_5 = xor32 h result_4
+                let result_6 = xor32 result_5 (uint32 selection)
+                let result_7 = murmurM ()
+                let result_8 = mul32 result_6 result_7
+                result_8
+            | matchMatchSelection :: matchMatchSelection_2 ->
+                let it_4 = matchMatchSelection_2
+
+                match it_4 with
                 | [] ->
-                    let result_2333 = wrappingUInt32_1ef3ce20 (((bigint matchmatchlawspecSelection0x000_2330) * 65536I))
-                    let result_2334 = xor32_0ea970f5 (h_2314) (result_2333)
-                    let result_2335 = wrappingUInt32_1ef3ce20 (((bigint matchlawspecSelection0x00_2322) * 256I))
-                    let result_2336 = xor32_0ea970f5 (result_2334) (result_2335)
-                    let result_2337 = xor32_0ea970f5 (result_2336) ((uint32 lawspecSelection0x0_2316))
-                    let result_2338 = murmurM_48968914 (())
-                    let result_2339 = mul32_b8774c72 (result_2337) (result_2338)
-                    result_2339
-                | matchmatchmatchlawspecSelection0x0000_2340 :: matchmatchmatchlawspecSelection0x1000_2341 ->
-                    let result_2342 = wrappingUInt32_1ef3ce20 (((((bigint lawspecSelection0x0_2316) + ((bigint matchlawspecSelection0x00_2322) * 256I)) + ((bigint matchmatchlawspecSelection0x000_2330) * 65536I)) + ((bigint matchmatchmatchlawspecSelection0x0000_2340) * 16777216I)))
-                    let result_2343 = murmurM_48968914 (())
-                    let result_2344 = mul32_b8774c72 (result_2342) (result_2343)
-                    let k0_2345 = result_2344
-                    let result_2346 = wrappingUInt32_1ef3ce20 ((Typed.quotient (bigint k0_2345) 16777216I))
-                    let result_2347 = xor32_0ea970f5 (k0_2345) (result_2346)
-                    let result_2348 = murmurM_48968914 (())
-                    let result_2349 = mul32_b8774c72 (result_2347) (result_2348)
-                    let k1_2350 = result_2349
-                    let result_2351 = murmurM_48968914 (())
-                    let result_2352 = mul32_b8774c72 (h_2314) (result_2351)
-                    let result_2353 = xor32_0ea970f5 (result_2352) (k1_2350)
-                    let result_2354 = murmurChunks_9898bba5 (matchmatchmatchlawspecSelection0x1000_2341) (result_2353)
-                    result_2354
+                    let result_9 = wrappingUInt32 (bigint matchMatchSelection * 65536I)
+                    let result_10 = xor32 h result_9
+                    let result_11 = wrappingUInt32 (bigint matchSelection * 256I)
+                    let result_12 = xor32 result_10 result_11
+                    let result_13 = xor32 result_12 (uint32 selection)
+                    let result_14 = murmurM ()
+                    let result_15 = mul32 result_13 result_14
+                    result_15
+                | matchMatchMatchSelection :: matchMatchMatchSelection_2 ->
+                    let result_16 =
+                        wrappingUInt32 (
+                            ((bigint selection + (bigint matchSelection * 256I))
+                             + (bigint matchMatchSelection * 65536I))
+                            + (bigint matchMatchMatchSelection * 16777216I)
+                        )
 
-/// lawtwin.kafka::murmurM
-[<CompiledName("MurmurM_48968914")>]
-let murmurM_48968914 (u_2355: unit) : uint32 =
-    1540483477u
+                    let result_17 = murmurM ()
+                    let result_18 = mul32 result_16 result_17
+                    let k0 = result_18
+                    let result_19 = wrappingUInt32 (Typed.quotient (bigint k0) 16777216I)
+                    let result_20 = xor32 k0 result_19
+                    let result_21 = murmurM ()
+                    let result_22 = mul32 result_20 result_21
+                    let k1 = result_22
+                    let result_23 = murmurM ()
+                    let result_24 = mul32 h result_23
+                    let result_25 = xor32 result_24 k1
+                    let result_26 = murmurChunks matchMatchMatchSelection_2 result_25
+                    result_26
 
-/// lawtwin.kafka::murmurPartitionerChoosePartition
-[<CompiledName("MurmurPartitionerChoosePartition_5048c35d")>]
-let murmurPartitionerChoosePartition_5048c35d (key_2356: byte[] option) (n_2357: int) : int =
-    let it_2358 = key_2356
-    match it_2358 with
-    | None ->
-        0
-    | Some lawspecSelection0x0_2359 ->
-        if ((bigint n_2357) >= 1I) then
-            let result_2360 = murmur2_d0ccf769 (lawspecSelection0x0_2359)
-            let result_2361 = toPositive_fc7029c7 (result_2360)
-            (Typed.int32 (Typed.remainder (bigint result_2361) (bigint n_2357)))
+/// murmurM — ../src/contract.lawspec:1069
+[<CompiledName("MurmurM")>]
+let murmurM (u: unit) : uint32 = 1540483477u
+
+/// murmurPartitionerChoosePartition — ../src/contract.lawspec:1050
+[<CompiledName("MurmurPartitionerChoosePartition")>]
+let murmurPartitionerChoosePartition (key: byte[] option) (n: int) : int =
+    let it = key
+
+    match it with
+    | None -> 0
+    | Some selection ->
+        if (bigint n >= 1I) then
+            let result = murmur2 selection
+            let result_2 = toPositive result
+            Typed.int32 (Typed.remainder (bigint result_2) (bigint n))
         else
             0
 
-/// lawtwin.kafka::ownedOf
-[<CompiledName("OwnedOf_0d7fb3ae")>]
-let ownedOf_0d7fb3ae (t_2362: string) (ms_2363: LawSpec.Data.MemberAssignment list) : int list =
-    let it_2364 = ms_2363
-    match it_2364 with
-    | [] ->
-        []
-    | lawspecSelection0x0_2365 :: lawspecSelection0x1_2366 ->
-        let value_2367 =
-            match lawspecSelection0x0_2365 with
-            | subject ->
-                let lawspecFieldassigned_2368 = subject.Assigned
-                lawspecFieldassigned_2368
-        let result_2369 = partitionsOfTopic_194a4a6c (t_2362) (value_2367)
-        let result_2370 = ownedOf_0d7fb3ae (t_2362) (lawspecSelection0x1_2366)
-        (result_2369 @ result_2370)
+/// ownedOf — ../src/contract.lawspec:451
+[<CompiledName("OwnedOf")>]
+let ownedOf (t: string) (ms: LawSpec.Data.MemberAssignment list) : int list =
+    let it = ms
 
-/// lawtwin.kafka::partitionOf
-[<CompiledName("PartitionOf_343af5ef")>]
-let partitionOf_343af5ef (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (topic_2371: string) (choice_2372: LawSpec.Data.PartitionChoice) (r_2373: LawSpec.Data.Record) : LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition> =
-    let result_2374 = ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).MetadataRequest(topic_2371))
-    let it_2375 = result_2374
-    match it_2375 with
-    | None ->
-        (LawSpec.Either.Left LawSpec.Data.KafkaError.UnknownTopicOrPartition)
-    | Some lawspecSelection0x0_2376 ->
-        let it_2377 = choice_2372
-        match it_2377 with
-        | LawSpec.Data.PartitionChoice.ToPartition(matchlawspecSelection0x00_2378) ->
-            if (((bigint matchlawspecSelection0x00_2378) >= 0I) && (matchlawspecSelection0x00_2378 < lawspecSelection0x0_2376)) then
-                let value_2379 =
-                    let lawspecRecordField0_2380 = topic_2371
-                    let lawspecRecordField1_2381 = matchlawspecSelection0x00_2378
-                    ({ Topic = lawspecRecordField0_2380; Partition = lawspecRecordField1_2381 } : LawSpec.Data.TopicPartition)
-                (LawSpec.Either.Right value_2379)
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value =
+            match selection with
+            | subject ->
+                let assigned = subject.Assigned
+                assigned
+
+        let result = partitionsOfTopic t value
+        let result_2 = ownedOf t selection_2
+        (result @ result_2)
+
+/// partitionOf — ../src/contract.lawspec:597
+[<CompiledName("PartitionOf")>]
+let partitionOf
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (topic: string)
+    (choice: LawSpec.Data.PartitionChoice)
+    (r: LawSpec.Data.Record)
+    : LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition> =
+    let broker =
+        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+    let result = broker.MetadataRequest(topic)
+    let it = result
+
+    match it with
+    | None -> LawSpec.Either.Left LawSpec.Data.KafkaError.UnknownTopicOrPartition
+    | Some selection ->
+        let it_2 = choice
+
+        match it_2 with
+        | LawSpec.Data.PartitionChoice.ToPartition(matchSelection) ->
+            if ((bigint matchSelection >= 0I) && (matchSelection < selection)) then
+                let value =
+                    let recordField = topic
+                    let recordField_2 = matchSelection
+
+                    let topicPartition: LawSpec.Data.TopicPartition =
+                        {
+                            Topic = recordField
+                            Partition = recordField_2
+                        }
+
+                    topicPartition
+
+                LawSpec.Either.Right value
             else
-                (LawSpec.Either.Left LawSpec.Data.KafkaError.UnknownTopicOrPartition)
+                LawSpec.Either.Left LawSpec.Data.KafkaError.UnknownTopicOrPartition
         | LawSpec.Data.PartitionChoice.ByKey ->
-            let value_2382 =
-                let lawspecRecordField0_2383 = topic_2371
-                let value_2384 =
-                    match r_2373 with
+            let value_3 =
+                let recordField_3 = topic
+
+                let value_2 =
+                    match r with
                     | subject ->
-                        let lawspecFieldkey_2385 = subject.Key
-                        lawspecFieldkey_2385
-                let result_2386 = ((LawSpec.Generated.Abilities.lawtwinKafkaPartitionerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Partitioner")).ChoosePartition(value_2384, lawspecSelection0x0_2376))
-                let lawspecRecordField1_2387 = result_2386
-                ({ Topic = lawspecRecordField0_2383; Partition = lawspecRecordField1_2387 } : LawSpec.Data.TopicPartition)
-            (LawSpec.Either.Right value_2382)
+                        let key = subject.Key
+                        key
 
-/// lawtwin.kafka::partitionsOfTopic
-[<CompiledName("PartitionsOfTopic_194a4a6c")>]
-let partitionsOfTopic_194a4a6c (t_2388: string) (tps_2389: LawSpec.Data.TopicPartition list) : int list =
-    let it_2390 = tps_2389
-    match it_2390 with
-    | [] ->
-        []
-    | lawspecSelection0x0_2391 :: lawspecSelection0x1_2392 ->
-        let value_2393 =
-            match lawspecSelection0x0_2391 with
+                let partitioner =
+                    LawSpec.Generated.Abilities.lawtwinKafkaPartitionerToNative
+                        schema
+                        symbols
+                        (Effects.handler schema "lawtwin.kafka::ability::Partitioner")
+
+                let result_2 = partitioner.ChoosePartition(value_2, selection)
+                let recordField_4 = result_2
+
+                let topicPartition_2: LawSpec.Data.TopicPartition =
+                    {
+                        Topic = recordField_3
+                        Partition = recordField_4
+                    }
+
+                topicPartition_2
+
+            LawSpec.Either.Right value_3
+
+/// partitionsOfTopic — ../src/contract.lawspec:458
+[<CompiledName("PartitionsOfTopic")>]
+let partitionsOfTopic (t: string) (tps: LawSpec.Data.TopicPartition list) : int list =
+    let it = tps
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value =
+            match selection with
             | subject ->
-                let lawspecFieldtopic_2394 = subject.Topic
-                lawspecFieldtopic_2394
-        if (value_2393 = t_2388) then
-            let value_2395 =
-                match lawspecSelection0x0_2391 with
+                let topic = subject.Topic
+                topic
+
+        if (value = t) then
+            let value_2 =
+                match selection with
                 | subject ->
-                    let lawspecFieldpartition_2396 = subject.Partition
-                    lawspecFieldpartition_2396
-            let result_2397 = partitionsOfTopic_194a4a6c (t_2388) (lawspecSelection0x1_2392)
-            (value_2395 :: result_2397)
+                    let partition = subject.Partition
+                    partition
+
+            let result = partitionsOfTopic t selection_2
+            (value_2 :: result)
         else
-            let result_2398 = partitionsOfTopic_194a4a6c (t_2388) (lawspecSelection0x1_2392)
-            result_2398
+            let result_2 = partitionsOfTopic t selection_2
+            result_2
 
-/// lawtwin.kafka::pollPartitions
-[<CompiledName("PollPartitions_9d6feda1")>]
-let pollPartitions_9d6feda1 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tps_2399: LawSpec.Data.TopicPartition list) (n_2400: int) (c_2401: LawSpec.Data.ConsumerState) (acc_2402: LawSpec.Data.ConsumerRecord list) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
-    let it_2403 = tps_2399
-    match it_2403 with
-    | [] ->
-        ({ First = (LawSpec.Either.Right acc_2402); Second = c_2401 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState>)
-    | lawspecSelection0x0_2404 :: lawspecSelection0x1_2405 ->
-        let result_2406 = consumerPosition_4da411a3 schema symbols (lawspecSelection0x0_2404) (c_2401)
-        let p_2407 = result_2406
-        let value_2408 =
-            let attempted_2414 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_2409 =
-                        match p_2407 with
-                        | subject ->
-                            let lawspecFieldfirst_2410 = subject.First
-                            lawspecFieldfirst_2410
-                    let value_2411 =
-                        match c_2401 with
-                        | subject ->
-                            let lawspecFieldisolation_2412 = subject.Isolation
-                            lawspecFieldisolation_2412
-                    let result_2413 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).FetchRequest(lawspecSelection0x0_2404, value_2409, n_2400, value_2411)))
-                    result_2413)
-            match attempted_2414 with
-            | LawSpec.Either.Left lawspecFailure_2415 ->
-                (LawSpec.Either.Left lawspecFailure_2415)
-            | LawSpec.Either.Right lawspecValue_2416 ->
-                (LawSpec.Either.Right lawspecValue_2416)
-        let it_2417 = value_2408
-        match it_2417 with
-        | LawSpec.Either.Left matchlawspecSelection0x00_2418 ->
-            let value_2419 =
-                match p_2407 with
-                | subject ->
-                    let lawspecFieldsecond_2420 = subject.Second
-                    lawspecFieldsecond_2420
-            ({ First = (LawSpec.Either.Left matchlawspecSelection0x00_2418); Second = value_2419 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState>)
-        | LawSpec.Either.Right matchlawspecSelection0x00_2421 ->
-            let value_2422 =
-                match matchlawspecSelection0x00_2421 with
-                | subject ->
-                    let lawspecFieldnextOffset_2423 = subject.NextOffset
-                    lawspecFieldnextOffset_2423
-            let value_2424 =
-                match p_2407 with
-                | subject ->
-                    let lawspecFieldsecond_2425 = subject.Second
-                    lawspecFieldsecond_2425
-            let result_2426 = withPosition_867e6b19 (lawspecSelection0x0_2404) (value_2422) (value_2424)
-            let value_2427 =
-                match matchlawspecSelection0x00_2421 with
-                | subject ->
-                    let lawspecFieldrecords_2428 = subject.Records
-                    lawspecFieldrecords_2428
-            let result_2429 = consumerRecords_9d810f29 (lawspecSelection0x0_2404) (value_2427)
-            let result_2430 = pollPartitions_9d6feda1 schema symbols (lawspecSelection0x1_2405) (n_2400) (result_2426) ((acc_2402 @ result_2429))
-            result_2430
+/// pollPartitions — ../src/contract.lawspec:767
+[<CompiledName("PollPartitions")>]
+let pollPartitions
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (tps: LawSpec.Data.TopicPartition list)
+    (n: int)
+    (c: LawSpec.Data.ConsumerState)
+    (acc: LawSpec.Data.ConsumerRecord list)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
+    let it = tps
 
-/// lawtwin.kafka::positionsToCommit
-[<CompiledName("PositionsToCommit_67969440")>]
-let positionsToCommit_67969440 (tps_2431: LawSpec.Data.TopicPartition list) (positions_2432: Map<LawSpec.Data.TopicPartition, int64>) : LawSpec.Data.OffsetEntry list =
-    let it_2433 = tps_2431
-    match it_2433 with
+    match it with
     | [] ->
-        []
-    | lawspecSelection0x0_2434 :: lawspecSelection0x1_2435 ->
-        let result_2436 = (Map.tryFind lawspecSelection0x0_2434 positions_2432)
-        let it_2437 = result_2436
-        match it_2437 with
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
+            {
+                First = LawSpec.Either.Right acc
+                Second = c
+            }
+
+        pair
+    | selection :: selection_2 ->
+        let result = consumerPosition schema symbols selection c
+        let p = result
+
+        let value_4 =
+            let attempted =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value =
+                            match p with
+                            | subject ->
+                                let first = subject.First
+                                first
+
+                        let value_2 =
+                            match c with
+                            | subject ->
+                                let isolation = subject.Isolation
+                                isolation
+
+                        let broker =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_2 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker.FetchRequest(selection, value, n, value_2))
+
+                        result_2)
+
+            match attempted with
+            | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+            | LawSpec.Either.Right value_3 -> LawSpec.Either.Right value_3
+
+        let it_2 = value_4
+
+        match it_2 with
+        | LawSpec.Either.Left matchSelection ->
+            let value_5 =
+                match p with
+                | subject ->
+                    let second = subject.Second
+                    second
+
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
+                {
+                    First = LawSpec.Either.Left matchSelection
+                    Second = value_5
+                }
+
+            pair_2
+        | LawSpec.Either.Right matchSelection_2 ->
+            let value_6 =
+                match matchSelection_2 with
+                | subject ->
+                    let nextOffset = subject.NextOffset
+                    nextOffset
+
+            let value_7 =
+                match p with
+                | subject ->
+                    let second_2 = subject.Second
+                    second_2
+
+            let result_3 = withPosition selection value_6 value_7
+
+            let value_8 =
+                match matchSelection_2 with
+                | subject ->
+                    let records = subject.Records
+                    records
+
+            let result_4 = consumerRecords selection value_8
+            let result_5 = pollPartitions schema symbols selection_2 n result_3 (acc @ result_4)
+            result_5
+
+/// positionsToCommit — ../src/contract.lawspec:674
+[<CompiledName("PositionsToCommit")>]
+let positionsToCommit
+    (tps: LawSpec.Data.TopicPartition list)
+    (positions: Map<LawSpec.Data.TopicPartition, int64>)
+    : LawSpec.Data.OffsetEntry list =
+    let it = tps
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let result = Map.tryFind selection positions
+        let it_2 = result
+
+        match it_2 with
         | None ->
-            let result_2438 = positionsToCommit_67969440 (lawspecSelection0x1_2435) (positions_2432)
-            result_2438
-        | Some matchlawspecSelection0x00_2439 ->
-            let value_2440 =
-                let lawspecRecordField0_2441 = lawspecSelection0x0_2434
-                let lawspecRecordField1_2442 = matchlawspecSelection0x00_2439
-                ({ TopicPartition = lawspecRecordField0_2441; Offset = lawspecRecordField1_2442 } : LawSpec.Data.OffsetEntry)
-            let result_2443 = positionsToCommit_67969440 (lawspecSelection0x1_2435) (positions_2432)
-            (value_2440 :: result_2443)
+            let result_2 = positionsToCommit selection_2 positions
+            result_2
+        | Some matchSelection ->
+            let value =
+                let recordField = selection
+                let recordField_2 = matchSelection
 
-/// lawtwin.kafka::producerFlush
-[<CompiledName("ProducerFlush_f30611db")>]
-let producerFlush_f30611db (st_2444: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<unit, LawSpec.Data.ProducerState> =
-    ({ First = (); Second = st_2444 } : LawSpec.Data.Pair<unit, LawSpec.Data.ProducerState>)
+                let offsetEntry: LawSpec.Data.OffsetEntry =
+                    {
+                        TopicPartition = recordField
+                        Offset = recordField_2
+                    }
 
-/// lawtwin.kafka::producerIdempotent
-[<CompiledName("ProducerIdempotent_c8ab8a13")>]
-let producerIdempotent_c8ab8a13 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (st_2445: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> =
-    let value_2446 =
-        let attempted_2448 =
-            Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                let result_2447 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).InitProducerIdRequest(None)))
-                result_2447)
-        match attempted_2448 with
-        | LawSpec.Either.Left lawspecFailure_2449 ->
-            (LawSpec.Either.Left lawspecFailure_2449)
-        | LawSpec.Either.Right lawspecValue_2450 ->
-            (LawSpec.Either.Right lawspecValue_2450)
-    let it_2451 = value_2446
-    match it_2451 with
-    | LawSpec.Either.Left lawspecSelection0x0_2452 ->
-        ({ First = (LawSpec.Either.Left lawspecSelection0x0_2452); Second = st_2445 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState>)
-    | LawSpec.Either.Right lawspecSelection0x0_2453 ->
-        let value_2454 =
-            let lawspecRecordField0_2455 = (Some lawspecSelection0x0_2453)
-            let result_2456 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-            let lawspecRecordField1_2457 = result_2456
-            let lawspecRecordField2_2458 = None
-            ({ Identity = lawspecRecordField0_2455; Sequences = lawspecRecordField1_2457; LastSend = lawspecRecordField2_2458 } : LawSpec.Data.ProducerState)
-        ({ First = (LawSpec.Either.Right lawspecSelection0x0_2453); Second = value_2454 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState>)
+                offsetEntry
 
-/// lawtwin.kafka::producerRetry
-[<CompiledName("ProducerRetry_aaf3a88a")>]
-let producerRetry_aaf3a88a (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (st_2459: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
-    let value_2460 =
-        match st_2459 with
+            let result_3 = positionsToCommit selection_2 positions
+            (value :: result_3)
+
+/// producerFlush — ../src/contract.lawspec:656
+[<CompiledName("ProducerFlush")>]
+let producerFlush (st: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<unit, LawSpec.Data.ProducerState> =
+    let pair: LawSpec.Data.Pair<unit, LawSpec.Data.ProducerState> =
+        { First = (); Second = st }
+
+    pair
+
+/// producerIdempotent — ../src/contract.lawspec:647
+[<CompiledName("ProducerIdempotent")>]
+let producerIdempotent
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (st: LawSpec.Data.ProducerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> =
+    let value_2 =
+        let attempted =
+            Typed.attempt
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    let broker =
+                        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                            schema
+                            symbols
+                            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                    let result =
+                        Typed.performed
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (broker.InitProducerIdRequest(None))
+
+                    result)
+
+        match attempted with
+        | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+        | LawSpec.Either.Right value -> LawSpec.Either.Right value
+
+    let it = value_2
+
+    match it with
+    | LawSpec.Either.Left selection ->
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> =
+            {
+                First = LawSpec.Either.Left selection
+                Second = st
+            }
+
+        pair
+    | LawSpec.Either.Right selection_2 ->
+        let value_3 =
+            let recordField = Some selection_2
+
+            let result_2 =
+                Typed.keyValOf
+                    (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key)
+                    (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value)
+                    []
+
+            let recordField_2 = result_2
+            let recordField_3 = None
+
+            let producerState: LawSpec.Data.ProducerState =
+                {
+                    Identity = recordField
+                    Sequences = recordField_2
+                    LastSend = recordField_3
+                }
+
+            producerState
+
+        let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> =
+            {
+                First = LawSpec.Either.Right selection_2
+                Second = value_3
+            }
+
+        pair_2
+
+/// producerRetry — ../src/contract.lawspec:633
+[<CompiledName("ProducerRetry")>]
+let producerRetry
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (st: LawSpec.Data.ProducerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+    let value =
+        match st with
         | subject ->
-            let lawspecFieldlastSend_2461 = subject.LastSend
-            lawspecFieldlastSend_2461
-    let it_2462 = value_2460
-    match it_2462 with
+            let lastSend = subject.LastSend
+            lastSend
+
+    let it = value
+
+    match it with
     | None ->
-        ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = st_2459 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState>)
-    | Some lawspecSelection0x0_2463 ->
-        let value_2464 =
-            let attempted_2472 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_2465 =
-                        match lawspecSelection0x0_2463 with
-                        | subject ->
-                            let lawspecFieldlastPartition_2466 = subject.LastPartition
-                            lawspecFieldlastPartition_2466
-                    let value_2467 =
-                        match lawspecSelection0x0_2463 with
-                        | subject ->
-                            let lawspecFieldlastTag_2468 = subject.LastTag
-                            lawspecFieldlastTag_2468
-                    let value_2469 =
-                        match lawspecSelection0x0_2463 with
-                        | subject ->
-                            let lawspecFieldlastRecords_2470 = subject.LastRecords
-                            lawspecFieldlastRecords_2470
-                    let result_2471 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).ProduceRequest(value_2465, value_2467, value_2469)))
-                    result_2471)
-            match attempted_2472 with
-            | LawSpec.Either.Left lawspecFailure_2473 ->
-                (LawSpec.Either.Left lawspecFailure_2473)
-            | LawSpec.Either.Right lawspecValue_2474 ->
-                (LawSpec.Either.Right lawspecValue_2474)
-        let it_2475 = value_2464
-        match it_2475 with
-        | LawSpec.Either.Left matchlawspecSelection0x00_2476 ->
-            ({ First = (LawSpec.Either.Left matchlawspecSelection0x00_2476); Second = st_2459 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState>)
-        | LawSpec.Either.Right matchlawspecSelection0x00_2477 ->
-            let value_2478 =
-                let value_2479 =
-                    match lawspecSelection0x0_2463 with
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+            {
+                First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                Second = st
+            }
+
+        pair
+    | Some selection ->
+        let value_6 =
+            let attempted =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_2 =
+                            match selection with
+                            | subject ->
+                                let lastPartition = subject.LastPartition
+                                lastPartition
+
+                        let value_3 =
+                            match selection with
+                            | subject ->
+                                let lastTag = subject.LastTag
+                                lastTag
+
+                        let value_4 =
+                            match selection with
+                            | subject ->
+                                let lastRecords = subject.LastRecords
+                                lastRecords
+
+                        let broker =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker.ProduceRequest(value_2, value_3, value_4))
+
+                        result)
+
+            match attempted with
+            | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+            | LawSpec.Either.Right value_5 -> LawSpec.Either.Right value_5
+
+        let it_2 = value_6
+
+        match it_2 with
+        | LawSpec.Either.Left matchSelection ->
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+                {
+                    First = LawSpec.Either.Left matchSelection
+                    Second = st
+                }
+
+            pair_2
+        | LawSpec.Either.Right matchSelection_2 ->
+            let value_8 =
+                let value_7 =
+                    match selection with
                     | subject ->
-                        let lawspecFieldlastPartition_2480 = subject.LastPartition
-                        lawspecFieldlastPartition_2480
-                let lawspecRecordField0_2481 = value_2479
-                let lawspecRecordField1_2482 = matchlawspecSelection0x00_2477
-                ({ SentTo = lawspecRecordField0_2481; SentAt = lawspecRecordField1_2482 } : LawSpec.Data.RecordMetadata)
-            ({ First = (LawSpec.Either.Right value_2478); Second = st_2459 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState>)
+                        let lastPartition_2 = subject.LastPartition
+                        lastPartition_2
 
-/// lawtwin.kafka::producerSend
-[<CompiledName("ProducerSend_9064c6b5")>]
-let producerSend_9064c6b5 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (pr_2483: LawSpec.Data.ProducerRecord) (st_2484: LawSpec.Data.ProducerState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
-    let value_2485 =
-        match pr_2483 with
+                let recordField = value_7
+                let recordField_2 = matchSelection_2
+
+                let recordMetadata: LawSpec.Data.RecordMetadata =
+                    {
+                        SentTo = recordField
+                        SentAt = recordField_2
+                    }
+
+                recordMetadata
+
+            let pair_3: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+                {
+                    First = LawSpec.Either.Right value_8
+                    Second = st
+                }
+
+            pair_3
+
+/// producerSend — ../src/contract.lawspec:612
+[<CompiledName("ProducerSend")>]
+let producerSend
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (pr: LawSpec.Data.ProducerRecord)
+    (st: LawSpec.Data.ProducerState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+    let value =
+        match pr with
         | subject ->
-            let lawspecFielddestination_2486 = subject.Destination
-            lawspecFielddestination_2486
-    let value_2487 =
-        match pr_2483 with
+            let destination = subject.Destination
+            destination
+
+    let value_2 =
+        match pr with
         | subject ->
-            let lawspecFieldchoice_2488 = subject.Choice
-            lawspecFieldchoice_2488
-    let value_2489 =
-        match pr_2483 with
+            let choice = subject.Choice
+            choice
+
+    let value_3 =
+        match pr with
         | subject ->
-            let lawspecFieldpayload_2490 = subject.Payload
-            lawspecFieldpayload_2490
-    let result_2491 = partitionOf_343af5ef schema symbols (value_2485) (value_2487) (value_2489)
-    let it_2492 = result_2491
-    match it_2492 with
-    | LawSpec.Either.Left lawspecSelection0x0_2493 ->
-        ({ First = (LawSpec.Either.Left lawspecSelection0x0_2493); Second = st_2484 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState>)
-    | LawSpec.Either.Right lawspecSelection0x0_2494 ->
-        let value_2495 =
-            match st_2484 with
+            let payload = subject.Payload
+            payload
+
+    let result = partitionOf schema symbols value value_2 value_3
+    let it = result
+
+    match it with
+    | LawSpec.Either.Left selection ->
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+            {
+                First = LawSpec.Either.Left selection
+                Second = st
+            }
+
+        pair
+    | LawSpec.Either.Right selection_2 ->
+        let value_4 =
+            match st with
             | subject ->
-                let lawspecFieldsequences_2496 = subject.Sequences
-                lawspecFieldsequences_2496
-        let result_2497 = sequenceFor_9d79724c (lawspecSelection0x0_2494) (value_2495)
-        let sequence_2498 = result_2497
-        let value_2499 =
-            match st_2484 with
+                let sequences = subject.Sequences
+                sequences
+
+        let result_2 = sequenceFor selection_2 value_4
+        let sequence = result_2
+
+        let value_5 =
+            match st with
             | subject ->
-                let lawspecFieldidentity_2500 = subject.Identity
-                lawspecFieldidentity_2500
-        let result_2501 = tagFor_a88d3846 (value_2499) (sequence_2498)
-        let tag_2502 = result_2501
-        let value_2503 =
-            let attempted_2507 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_2504 =
-                        match pr_2483 with
+                let identity = subject.Identity
+                identity
+
+        let result_3 = tagFor value_5 sequence
+        let tag = result_3
+
+        let value_8 =
+            let attempted =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_6 =
+                            match pr with
+                            | subject ->
+                                let payload_2 = subject.Payload
+                                payload_2
+
+                        let broker =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_4 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker.ProduceRequest(selection_2, tag, (value_6 :: [])))
+
+                        result_4)
+
+            match attempted with
+            | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+            | LawSpec.Either.Right value_7 -> LawSpec.Either.Right value_7
+
+        let it_2 = value_8
+
+        match it_2 with
+        | LawSpec.Either.Left matchSelection ->
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+                {
+                    First = LawSpec.Either.Left matchSelection
+                    Second = st
+                }
+
+            pair_2
+        | LawSpec.Either.Right matchSelection_2 ->
+            let value_9 =
+                let recordField = selection_2
+                let recordField_2 = matchSelection_2
+
+                let recordMetadata: LawSpec.Data.RecordMetadata =
+                    {
+                        SentTo = recordField
+                        SentAt = recordField_2
+                    }
+
+                recordMetadata
+
+            let value_14 =
+                let value_11 =
+                    let recordField_3 = selection_2
+                    let recordField_4 = tag
+
+                    let value_10 =
+                        match pr with
                         | subject ->
-                            let lawspecFieldpayload_2505 = subject.Payload
-                            lawspecFieldpayload_2505
-                    let result_2506 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).ProduceRequest(lawspecSelection0x0_2494, tag_2502, (value_2504 :: []))))
-                    result_2506)
-            match attempted_2507 with
-            | LawSpec.Either.Left lawspecFailure_2508 ->
-                (LawSpec.Either.Left lawspecFailure_2508)
-            | LawSpec.Either.Right lawspecValue_2509 ->
-                (LawSpec.Either.Right lawspecValue_2509)
-        let it_2510 = value_2503
-        match it_2510 with
-        | LawSpec.Either.Left matchlawspecSelection0x00_2511 ->
-            ({ First = (LawSpec.Either.Left matchlawspecSelection0x00_2511); Second = st_2484 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState>)
-        | LawSpec.Either.Right matchlawspecSelection0x00_2512 ->
-            let value_2513 =
-                let lawspecRecordField0_2514 = lawspecSelection0x0_2494
-                let lawspecRecordField1_2515 = matchlawspecSelection0x00_2512
-                ({ SentTo = lawspecRecordField0_2514; SentAt = lawspecRecordField1_2515 } : LawSpec.Data.RecordMetadata)
-            let value_2516 =
-                let value_2517 =
-                    let lawspecRecordField0_2518 = lawspecSelection0x0_2494
-                    let lawspecRecordField1_2519 = tag_2502
-                    let value_2520 =
-                        match pr_2483 with
+                            let payload_3 = subject.Payload
+                            payload_3
+
+                    let recordField_5 = (value_10 :: [])
+
+                    let lastSend: LawSpec.Data.LastSend =
+                        {
+                            LastPartition = recordField_3
+                            LastTag = recordField_4
+                            LastRecords = recordField_5
+                        }
+
+                    lastSend
+
+                let replacement = Some value_11
+
+                let value_13 =
+                    let result_5 = saturatingInt32 (bigint sequence + 1I)
+
+                    let value_12 =
+                        match st with
                         | subject ->
-                            let lawspecFieldpayload_2521 = subject.Payload
-                            lawspecFieldpayload_2521
-                    let lawspecRecordField2_2522 = (value_2520 :: [])
-                    ({ LastPartition = lawspecRecordField0_2518; LastTag = lawspecRecordField1_2519; LastRecords = lawspecRecordField2_2522 } : LawSpec.Data.LastSend)
-                let replacement_2523 = (Some value_2517)
-                let value_2524 =
-                    let result_2525 = saturatingInt32_9e8d3b43 (((bigint sequence_2498) + 1I))
-                    let value_2526 =
-                        match st_2484 with
-                        | subject ->
-                            let lawspecFieldsequences_2527 = subject.Sequences
-                            lawspecFieldsequences_2527
-                    let result_2528 = (Map.add lawspecSelection0x0_2494 result_2525 value_2526)
-                    let replacement_2529 = result_2528
-                    match st_2484 with
+                            let sequences_2 = subject.Sequences
+                            sequences_2
+
+                    let result_6 = Map.add selection_2 result_5 value_12
+                    let replacement_2 = result_6
+
+                    match st with
                     | subject ->
-                        let lawspecFieldidentity_2530 = subject.Identity
-                        let lawspecFieldlastSend_2531 = subject.LastSend
-                        ({ Identity = lawspecFieldidentity_2530; Sequences = replacement_2529; LastSend = lawspecFieldlastSend_2531 } : LawSpec.Data.ProducerState)
-                match value_2524 with
-                | subject ->
-                    let lawspecFieldidentity_2532 = subject.Identity
-                    let lawspecFieldsequences_2533 = subject.Sequences
-                    ({ Identity = lawspecFieldidentity_2532; Sequences = lawspecFieldsequences_2533; LastSend = replacement_2523 } : LawSpec.Data.ProducerState)
-            ({ First = (LawSpec.Either.Right value_2513); Second = value_2516 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState>)
+                        let identity_2 = subject.Identity
+                        let lastSend_2 = subject.LastSend
 
-/// lawtwin.kafka::readFrom
-[<CompiledName("ReadFrom_f028a48d")>]
-let readFrom_f028a48d (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tp_2534: LawSpec.Data.TopicPartition) (offset_2535: int64) (isolation_2536: LawSpec.Data.IsolationLevel) : LawSpec.Data.Record list =
-    let value_2537 =
-        let attempted_2539 =
-            Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                let result_2538 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).FetchRequest(tp_2534, offset_2535, 1000, isolation_2536)))
-                result_2538)
-        match attempted_2539 with
-        | LawSpec.Either.Left lawspecFailure_2540 ->
-            (LawSpec.Either.Left lawspecFailure_2540)
-        | LawSpec.Either.Right lawspecValue_2541 ->
-            (LawSpec.Either.Right lawspecValue_2541)
-    let it_2542 = value_2537
-    match it_2542 with
-    | LawSpec.Either.Left _ ->
-        []
-    | LawSpec.Either.Right lawspecSelection0x0_2543 ->
-        let value_2544 =
-            match lawspecSelection0x0_2543 with
+                        let producerState: LawSpec.Data.ProducerState =
+                            {
+                                Identity = identity_2
+                                Sequences = replacement_2
+                                LastSend = lastSend_2
+                            }
+
+                        producerState
+
+                match value_13 with
+                | subject ->
+                    let identity_3 = subject.Identity
+                    let sequences_3 = subject.Sequences
+
+                    let producerState_2: LawSpec.Data.ProducerState =
+                        {
+                            Identity = identity_3
+                            Sequences = sequences_3
+                            LastSend = replacement
+                        }
+
+                    producerState_2
+
+            let pair_3: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
+                {
+                    First = LawSpec.Either.Right value_9
+                    Second = value_14
+                }
+
+            pair_3
+
+/// readFrom — ../src/contract.lawspec:363
+[<CompiledName("ReadFrom")>]
+let readFrom
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (tp: LawSpec.Data.TopicPartition)
+    (offset: int64)
+    (isolation: LawSpec.Data.IsolationLevel)
+    : LawSpec.Data.Record list =
+    let value_2 =
+        let attempted =
+            Typed.attempt
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    let broker =
+                        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                            schema
+                            symbols
+                            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                    let result =
+                        Typed.performed
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (broker.FetchRequest(tp, offset, 1000, isolation))
+
+                    result)
+
+        match attempted with
+        | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+        | LawSpec.Either.Right value -> LawSpec.Either.Right value
+
+    let it = value_2
+
+    match it with
+    | LawSpec.Either.Left _ -> []
+    | LawSpec.Either.Right selection ->
+        let value_3 =
+            match selection with
             | subject ->
-                let lawspecFieldrecords_2545 = subject.Records
-                lawspecFieldrecords_2545
-        let result_2546 = recordsOf_a7b339ef (value_2544)
-        result_2546
+                let records = subject.Records
+                records
 
-/// lawtwin.kafka::readInOrder
-[<CompiledName("ReadInOrder_ba595483")>]
-let readInOrder_ba595483 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (a_2547: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>) (b_2548: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>) (first_2549: LawSpec.Data.Record) (second_2550: LawSpec.Data.Record) : bool =
-    let it_2551 = a_2547
-    match it_2551 with
-    | LawSpec.Either.Left _ ->
-        false
-    | LawSpec.Either.Right lawspecSelection0x0_2552 ->
-        let it_2553 = b_2548
-        match it_2553 with
-        | LawSpec.Either.Left _ ->
-            false
-        | LawSpec.Either.Right matchlawspecSelection0x00_2554 ->
-            let value_2555 =
-                match lawspecSelection0x0_2552 with
+        let result_2 = recordsOf value_3
+        result_2
+
+/// readInOrder — ../src/contract.lawspec:1261
+[<CompiledName("ReadInOrder")>]
+let readInOrder
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (a: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>)
+    (b: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>)
+    (first: LawSpec.Data.Record)
+    (second: LawSpec.Data.Record)
+    : bool =
+    let it = a
+
+    match it with
+    | LawSpec.Either.Left _ -> false
+    | LawSpec.Either.Right selection ->
+        let it_2 = b
+
+        match it_2 with
+        | LawSpec.Either.Left _ -> false
+        | LawSpec.Either.Right matchSelection ->
+            let value =
+                match selection with
                 | subject ->
-                    let lawspecFieldsentTo_2556 = subject.SentTo
-                    lawspecFieldsentTo_2556
-            let tp_2557 = value_2555
-            let value_2558 =
-                match matchlawspecSelection0x00_2554 with
+                    let sentTo = subject.SentTo
+                    sentTo
+
+            let tp = value
+
+            let value_2 =
+                match matchSelection with
                 | subject ->
-                    let lawspecFieldsentTo_2559 = subject.SentTo
-                    lawspecFieldsentTo_2559
-            let logic_2564 =
-                if (value_2558 = tp_2557) then
-                    let value_2560 =
-                        match matchlawspecSelection0x00_2554 with
+                    let sentTo_2 = subject.SentTo
+                    sentTo_2
+
+            let logic =
+                if (value_2 = tp) then
+                    let value_3 =
+                        match matchSelection with
                         | subject ->
-                            let lawspecFieldsentAt_2561 = subject.SentAt
-                            lawspecFieldsentAt_2561
-                    let value_2562 =
-                        match lawspecSelection0x0_2552 with
+                            let sentAt = subject.SentAt
+                            sentAt
+
+                    let value_4 =
+                        match selection with
                         | subject ->
-                            let lawspecFieldsentAt_2563 = subject.SentAt
-                            lawspecFieldsentAt_2563
-                    ((bigint value_2560) = ((bigint value_2562) + 1I))
-                else false
-            let logic_2584 =
-                if logic_2564 then
-                    let value_2565 =
-                        let result_2566 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).Assign((tp_2557 :: [])))
-                        let lawspecIgnored_2567 = result_2566
-                        let value_2568 =
-                            let value_2569 =
-                                match lawspecSelection0x0_2552 with
+                            let sentAt_2 = subject.SentAt
+                            sentAt_2
+
+                    (bigint value_3 = (bigint value_4 + 1I))
+                else
+                    false
+
+            let logic_4 =
+                if logic then
+                    let value_10 =
+                        let consumer =
+                            LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+                        let result = consumer.Assign((tp :: []))
+                        let ignored = result
+
+                        let value_6 =
+                            let value_5 =
+                                match selection with
                                 | subject ->
-                                    let lawspecFieldsentAt_2570 = subject.SentAt
-                                    lawspecFieldsentAt_2570
-                            let result_2571 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).Seek(tp_2557, value_2569))
-                            match result_2571 with
-                            | LawSpec.Either.Left _ ->
+                                    let sentAt_3 = subject.SentAt
+                                    sentAt_3
+
+                            let consumer_2 =
+                                LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+                                    schema
+                                    symbols
+                                    (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+                            let result_2 = consumer_2.Seek(tp, value_5)
+
+                            match result_2 with
+                            | LawSpec.Either.Left _ -> false
+                            | LawSpec.Either.Right _ -> true
+
+                        let logic_3 =
+                            if value_6 then
+                                let value_9 =
+                                    let consumer_3 =
+                                        LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+                                            schema
+                                            symbols
+                                            (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+                                    let result_3 = consumer_3.Poll(2)
+                                    let it_3 = result_3
+
+                                    match it_3 with
+                                    | LawSpec.Either.Left _ -> false
+                                    | LawSpec.Either.Right matchMatchSelection ->
+                                        let result_4 = receivedRecords matchMatchSelection
+
+                                        let logic_2 =
+                                            if (result_4 = (first :: (second :: []))) then
+                                                let result_5 = receivedOffsets matchMatchSelection
+
+                                                let value_7 =
+                                                    match selection with
+                                                    | subject ->
+                                                        let sentAt_4 = subject.SentAt
+                                                        sentAt_4
+
+                                                let value_8 =
+                                                    match matchSelection with
+                                                    | subject ->
+                                                        let sentAt_5 = subject.SentAt
+                                                        sentAt_5
+
+                                                (result_5 = (value_7 :: (value_8 :: [])))
+                                            else
+                                                false
+
+                                        logic_2
+
+                                value_9
+                            else
                                 false
-                            | LawSpec.Either.Right _ ->
-                                true
-                        let logic_2583 =
-                            if value_2568 then
-                                let value_2572 =
-                                    let result_2573 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).Poll(2))
-                                    let it_2574 = result_2573
-                                    match it_2574 with
-                                    | LawSpec.Either.Left _ ->
-                                        false
-                                    | LawSpec.Either.Right matchmatchlawspecSelection0x000_2575 ->
-                                        let result_2576 = receivedRecords_c3c84323 (matchmatchlawspecSelection0x000_2575)
-                                        let logic_2582 =
-                                            if (result_2576 = (first_2549 :: (second_2550 :: []))) then
-                                                let result_2577 = receivedOffsets_6c3a7a20 (matchmatchlawspecSelection0x000_2575)
-                                                let value_2578 =
-                                                    match lawspecSelection0x0_2552 with
-                                                    | subject ->
-                                                        let lawspecFieldsentAt_2579 = subject.SentAt
-                                                        lawspecFieldsentAt_2579
-                                                let value_2580 =
-                                                    match matchlawspecSelection0x00_2554 with
-                                                    | subject ->
-                                                        let lawspecFieldsentAt_2581 = subject.SentAt
-                                                        lawspecFieldsentAt_2581
-                                                (result_2577 = (value_2578 :: (value_2580 :: [])))
-                                            else false
-                                        logic_2582
-                                value_2572
-                            else false
-                        logic_2583
-                    value_2565
-                else false
-            logic_2584
 
-/// lawtwin.kafka::receivedOffsets
-[<CompiledName("ReceivedOffsets_6c3a7a20")>]
-let receivedOffsets_6c3a7a20 (rs_2585: LawSpec.Data.ConsumerRecord list) : int64 list =
-    let it_2586 = rs_2585
-    match it_2586 with
-    | [] ->
-        []
-    | lawspecSelection0x0_2587 :: lawspecSelection0x1_2588 ->
-        let value_2589 =
-            match lawspecSelection0x0_2587 with
+                        logic_3
+
+                    value_10
+                else
+                    false
+
+            logic_4
+
+/// receivedOffsets — ../src/contract.lawspec:1393
+[<CompiledName("ReceivedOffsets")>]
+let receivedOffsets (rs: LawSpec.Data.ConsumerRecord list) : int64 list =
+    let it = rs
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value =
+            match selection with
             | subject ->
-                let lawspecFieldreceivedAt_2590 = subject.ReceivedAt
-                lawspecFieldreceivedAt_2590
-        let result_2591 = receivedOffsets_6c3a7a20 (lawspecSelection0x1_2588)
-        (value_2589 :: result_2591)
+                let receivedAt = subject.ReceivedAt
+                receivedAt
 
-/// lawtwin.kafka::receivedRecords
-[<CompiledName("ReceivedRecords_c3c84323")>]
-let receivedRecords_c3c84323 (rs_2592: LawSpec.Data.ConsumerRecord list) : LawSpec.Data.Record list =
-    let it_2593 = rs_2592
-    match it_2593 with
-    | [] ->
-        []
-    | lawspecSelection0x0_2594 :: lawspecSelection0x1_2595 ->
-        let value_2596 =
-            match lawspecSelection0x0_2594 with
+        let result = receivedOffsets selection_2
+        (value :: result)
+
+/// receivedRecords — ../src/contract.lawspec:1400
+[<CompiledName("ReceivedRecords")>]
+let receivedRecords (rs: LawSpec.Data.ConsumerRecord list) : LawSpec.Data.Record list =
+    let it = rs
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value =
+            match selection with
             | subject ->
-                let lawspecFieldreceived_2597 = subject.Received
-                lawspecFieldreceived_2597
-        let result_2598 = receivedRecords_c3c84323 (lawspecSelection0x1_2595)
-        (value_2596 :: result_2598)
+                let received = subject.Received
+                received
 
-/// lawtwin.kafka::recordsOf
-[<CompiledName("RecordsOf_a7b339ef")>]
-let recordsOf_a7b339ef (rs_2599: LawSpec.Data.FetchedRecord list) : LawSpec.Data.Record list =
-    let it_2600 = rs_2599
-    match it_2600 with
-    | [] ->
-        []
-    | lawspecSelection0x0_2601 :: lawspecSelection0x1_2602 ->
-        let value_2603 =
-            match lawspecSelection0x0_2601 with
+        let result = receivedRecords selection_2
+        (value :: result)
+
+/// recordsOf — ../src/contract.lawspec:354
+[<CompiledName("RecordsOf")>]
+let recordsOf (rs: LawSpec.Data.FetchedRecord list) : LawSpec.Data.Record list =
+    let it = rs
+
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value =
+            match selection with
             | subject ->
-                let lawspecFieldentry_2604 = subject.Entry
-                lawspecFieldentry_2604
-        let result_2605 = recordsOf_a7b339ef (lawspecSelection0x1_2602)
-        (value_2603 :: result_2605)
+                let entry = subject.Entry
+                entry
 
-/// lawtwin.kafka::resumesAtCommitted
-[<CompiledName("ResumesAtCommitted_13d41b73")>]
-let resumesAtCommitted_13d41b73 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (t_2606: string) (g_2607: string) (m_2608: string) (n_2609: int) : bool =
-    let value_2610 =
-        let lawspecRecordField0_2611 = t_2606
-        let lawspecRecordField1_2612 = 0
-        ({ Topic = lawspecRecordField0_2611; Partition = lawspecRecordField1_2612 } : LawSpec.Data.TopicPartition)
-    let tp_2613 = value_2610
-    let result_2614 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).Subscribe(g_2607, m_2608, (t_2606 :: [])))
-    let joined_2615 = result_2614
-    let result_2616 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).Poll(n_2609))
-    let polled_2617 = result_2616
-    let result_2618 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).CommitSync())
-    let committed_2619 = result_2618
-    let result_2620 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).Close())
-    let lawspecIgnored_2621 = result_2620
-    let result_2622 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).Subscribe(g_2607, m_2608, (t_2606 :: [])))
-    let rejoined_2623 = result_2622
-    let result_2624 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).Position(tp_2613))
-    let resumed_2625 = result_2624
-    let result_2626 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).CommittedOffset(tp_2613))
-    let after_2627 = result_2626
-    let result_2628 = ((LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Consumer")).Poll(100))
-    let again_2629 = result_2628
-    let value_2630 =
-        match joined_2615 with
-        | LawSpec.Either.Left _ ->
+        let result = recordsOf selection_2
+        (value :: result)
+
+/// resumesAtCommitted — ../src/contract.lawspec:1427
+[<CompiledName("ResumesAtCommitted")>]
+let resumesAtCommitted
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (t: string)
+    (g: string)
+    (m: string)
+    (n: int)
+    : bool =
+    let value =
+        let recordField = t
+        let recordField_2 = 0
+
+        let topicPartition: LawSpec.Data.TopicPartition =
+            {
+                Topic = recordField
+                Partition = recordField_2
+            }
+
+        topicPartition
+
+    let tp = value
+
+    let consumer =
+        LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+    let result = consumer.Subscribe(g, m, (t :: []))
+    let joined = result
+
+    let consumer_2 =
+        LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+    let result_2 = consumer_2.Poll(n)
+    let polled = result_2
+
+    let consumer_3 =
+        LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+    let result_3 = consumer_3.CommitSync()
+    let committed = result_3
+
+    let consumer_4 =
+        LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+    let result_4 = consumer_4.Close()
+    let ignored = result_4
+
+    let consumer_5 =
+        LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+    let result_5 = consumer_5.Subscribe(g, m, (t :: []))
+    let rejoined = result_5
+
+    let consumer_6 =
+        LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+    let result_6 = consumer_6.Position(tp)
+    let resumed = result_6
+
+    let consumer_7 =
+        LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+    let result_7 = consumer_7.CommittedOffset(tp)
+    let after = result_7
+
+    let consumer_8 =
+        LawSpec.Generated.Abilities.lawtwinKafkaConsumerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Consumer")
+
+    let result_8 = consumer_8.Poll(100)
+    let again = result_8
+
+    let value_2 =
+        match joined with
+        | LawSpec.Either.Left _ -> false
+        | LawSpec.Either.Right _ -> true
+
+    let logic =
+        if value_2 then
+            let value_3 =
+                match polled with
+                | LawSpec.Either.Left _ -> false
+                | LawSpec.Either.Right _ -> true
+
+            value_3
+        else
             false
-        | LawSpec.Either.Right _ ->
-            true
-    let logic_2632 =
-        if value_2630 then
-            let value_2631 =
-                match polled_2617 with
-                | LawSpec.Either.Left _ ->
-                    false
-                | LawSpec.Either.Right _ ->
-                    true
-            value_2631
-        else false
-    let logic_2634 =
-        if logic_2632 then
-            let value_2633 =
-                match committed_2619 with
-                | LawSpec.Either.Left _ ->
-                    false
-                | LawSpec.Either.Right _ ->
-                    true
-            value_2633
-        else false
-    let logic_2636 =
-        if logic_2634 then
-            let value_2635 =
-                match rejoined_2623 with
-                | LawSpec.Either.Left _ ->
-                    false
-                | LawSpec.Either.Right _ ->
-                    true
-            value_2635
-        else false
-    let logic_2646 =
-        if logic_2636 then
-            let value_2637 =
-                let it_2638 = after_2627
-                match it_2638 with
-                | None ->
-                    false
-                | Some lawspecSelection0x0_2639 ->
-                    let logic_2645 =
-                        if (resumed_2625 = (LawSpec.Either.Right lawspecSelection0x0_2639)) then
-                            let value_2640 =
-                                let it_2641 = again_2629
-                                match it_2641 with
-                                | LawSpec.Either.Left _ ->
-                                    false
-                                | LawSpec.Either.Right matchlawspecSelection0x00_2642 ->
-                                    let result_2643 = receivedOffsets_6c3a7a20 (matchlawspecSelection0x00_2642)
-                                    let result_2644 = allAtLeast_3df55027 (lawspecSelection0x0_2639) (result_2643)
-                                    result_2644
-                            value_2640
-                        else false
-                    logic_2645
-            value_2637
-        else false
-    logic_2646
 
-/// lawtwin.kafka::samePartition
-[<CompiledName("SamePartition_cee4f2dc")>]
-let samePartition_cee4f2dc (a_2647: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>) (b_2648: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>) : bool =
-    let it_2649 = a_2647
-    match it_2649 with
-    | LawSpec.Either.Left _ ->
-        false
-    | LawSpec.Either.Right lawspecSelection0x0_2650 ->
-        let it_2651 = b_2648
-        match it_2651 with
-        | LawSpec.Either.Left _ ->
+    let logic_2 =
+        if logic then
+            let value_4 =
+                match committed with
+                | LawSpec.Either.Left _ -> false
+                | LawSpec.Either.Right _ -> true
+
+            value_4
+        else
             false
-        | LawSpec.Either.Right matchlawspecSelection0x00_2652 ->
-            let value_2653 =
-                match lawspecSelection0x0_2650 with
-                | subject ->
-                    let lawspecFieldsentTo_2654 = subject.SentTo
-                    lawspecFieldsentTo_2654
-            let value_2655 =
-                match matchlawspecSelection0x00_2652 with
-                | subject ->
-                    let lawspecFieldsentTo_2656 = subject.SentTo
-                    lawspecFieldsentTo_2656
-            (value_2653 = value_2655)
 
-/// lawtwin.kafka::sequenceFor
-[<CompiledName("SequenceFor_9d79724c")>]
-let sequenceFor_9d79724c (tp_2657: LawSpec.Data.TopicPartition) (sequences_2658: Map<LawSpec.Data.TopicPartition, int>) : int =
-    let result_2659 = (Map.tryFind tp_2657 sequences_2658)
-    let it_2660 = result_2659
-    match it_2660 with
-    | None ->
-        0
-    | Some lawspecSelection0x0_2661 ->
-        lawspecSelection0x0_2661
+    let logic_3 =
+        if logic_2 then
+            let value_5 =
+                match rejoined with
+                | LawSpec.Either.Left _ -> false
+                | LawSpec.Either.Right _ -> true
 
-/// lawtwin.kafka::smallBatch
-[<CompiledName("SmallBatch_dc4ae7bb")>]
-let smallBatch_dc4ae7bb (batch_2662: LawSpec.Data.Record list) : bool =
-    (((bigint (List.length batch_2662)) >= 1I) && ((bigint (List.length batch_2662)) <= 100I))
-
-/// lawtwin.kafka::stableBelowHigh
-[<CompiledName("StableBelowHigh_60981bc4")>]
-let stableBelowHigh_60981bc4 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (t_2663: string) (txid_2664: string) (batch_2665: LawSpec.Data.Record list) : bool =
-    let value_2666 =
-        let lawspecRecordField0_2667 = t_2663
-        let lawspecRecordField1_2668 = 0
-        ({ Topic = lawspecRecordField0_2667; Partition = lawspecRecordField1_2668 } : LawSpec.Data.TopicPartition)
-    let tp_2669 = value_2666
-    let value_2670 =
-        let attempted_2672 =
-            Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                let result_2671 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).InitProducerIdRequest((Some txid_2664))))
-                result_2671)
-        match attempted_2672 with
-        | LawSpec.Either.Left lawspecFailure_2673 ->
-            (LawSpec.Either.Left lawspecFailure_2673)
-        | LawSpec.Either.Right lawspecValue_2674 ->
-            (LawSpec.Either.Right lawspecValue_2674)
-    let it_2675 = value_2670
-    match it_2675 with
-    | LawSpec.Either.Left _ ->
-        false
-    | LawSpec.Either.Right lawspecSelection0x0_2676 ->
-        let value_2677 =
-            let attempted_2683 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_2678 =
-                        match lawspecSelection0x0_2676 with
-                        | subject ->
-                            let lawspecFieldproducerId_2679 = subject.ProducerId
-                            lawspecFieldproducerId_2679
-                    let value_2680 =
-                        match lawspecSelection0x0_2676 with
-                        | subject ->
-                            let lawspecFieldproducerEpoch_2681 = subject.ProducerEpoch
-                            lawspecFieldproducerEpoch_2681
-                    let result_2682 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).AddPartitionsToTxnRequest(txid_2664, value_2678, value_2680, (tp_2669 :: []))))
-                    result_2682)
-            match attempted_2683 with
-            | LawSpec.Either.Left lawspecFailure_2684 ->
-                (LawSpec.Either.Left lawspecFailure_2684)
-            | LawSpec.Either.Right lawspecValue_2685 ->
-                (LawSpec.Either.Right lawspecValue_2685)
-        let added_2686 = value_2677
-        let value_2687 =
-            let attempted_2690 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let result_2688 = tagOf_39235de7 (lawspecSelection0x0_2676) (0)
-                    let result_2689 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).ProduceRequest(tp_2669, (Some result_2688), batch_2665)))
-                    result_2689)
-            match attempted_2690 with
-            | LawSpec.Either.Left lawspecFailure_2691 ->
-                (LawSpec.Either.Left lawspecFailure_2691)
-            | LawSpec.Either.Right lawspecValue_2692 ->
-                (LawSpec.Either.Right lawspecValue_2692)
-        let written_2693 = value_2687
-        let value_2694 =
-            let attempted_2696 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let result_2695 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).FetchRequest(tp_2669, 0L, 1000, LawSpec.Data.IsolationLevel.ReadUncommitted)))
-                    result_2695)
-            match attempted_2696 with
-            | LawSpec.Either.Left lawspecFailure_2697 ->
-                (LawSpec.Either.Left lawspecFailure_2697)
-            | LawSpec.Either.Right lawspecValue_2698 ->
-                (LawSpec.Either.Right lawspecValue_2698)
-        let it_2699 = value_2694
-        match it_2699 with
-        | LawSpec.Either.Left _ ->
+            value_5
+        else
             false
-        | LawSpec.Either.Right matchlawspecSelection0x00_2700 ->
-            let value_2701 =
-                match added_2686 with
-                | LawSpec.Either.Left _ ->
-                    false
-                | LawSpec.Either.Right _ ->
-                    true
-            let logic_2703 =
-                if value_2701 then
-                    let value_2702 =
-                        match written_2693 with
-                        | LawSpec.Either.Left _ ->
+
+    let logic_5 =
+        if logic_3 then
+            let value_7 =
+                let it = after
+
+                match it with
+                | None -> false
+                | Some selection ->
+                    let logic_4 =
+                        if (resumed = LawSpec.Either.Right selection) then
+                            let value_6 =
+                                let it_2 = again
+
+                                match it_2 with
+                                | LawSpec.Either.Left _ -> false
+                                | LawSpec.Either.Right matchSelection ->
+                                    let result_9 = receivedOffsets matchSelection
+                                    let result_10 = allAtLeast selection result_9
+                                    result_10
+
+                            value_6
+                        else
                             false
-                        | LawSpec.Either.Right _ ->
-                            true
-                    value_2702
-                else false
-            let logic_2708 =
-                if logic_2703 then
-                    let value_2704 =
-                        match matchlawspecSelection0x00_2700 with
-                        | subject ->
-                            let lawspecFieldlastStableOffset_2705 = subject.LastStableOffset
-                            lawspecFieldlastStableOffset_2705
-                    let value_2706 =
-                        match matchlawspecSelection0x00_2700 with
-                        | subject ->
-                            let lawspecFieldhighWatermark_2707 = subject.HighWatermark
-                            lawspecFieldhighWatermark_2707
-                    (value_2704 <= value_2706)
-                else false
-            let logic_2714 =
-                if logic_2708 then
-                    let value_2709 =
-                        let it_2710 = written_2693
-                        match it_2710 with
-                        | LawSpec.Either.Right matchmatchlawspecSelection0x000_2711 ->
-                            let value_2712 =
-                                match matchlawspecSelection0x00_2700 with
-                                | subject ->
-                                    let lawspecFieldlastStableOffset_2713 = subject.LastStableOffset
-                                    lawspecFieldlastStableOffset_2713
-                            (value_2712 <= matchmatchlawspecSelection0x000_2711)
-                        | LawSpec.Either.Left _ ->
-                            false
-                    value_2709
-                else false
-            logic_2714
 
-/// lawtwin.kafka::tagFor
-[<CompiledName("TagFor_a88d3846")>]
-let tagFor_a88d3846 (identity_2715: LawSpec.Data.ProducerIdAndEpoch option) (sequence_2716: int) : LawSpec.Data.ProducerTag option =
-    let it_2717 = identity_2715
-    match it_2717 with
-    | None ->
-        None
-    | Some lawspecSelection0x0_2718 ->
-        let result_2719 = tagOf_39235de7 (lawspecSelection0x0_2718) (sequence_2716)
-        (Some result_2719)
+                    logic_4
 
-/// lawtwin.kafka::tagOf
-[<CompiledName("TagOf_39235de7")>]
-let tagOf_39235de7 (pe_2720: LawSpec.Data.ProducerIdAndEpoch) (sequence_2721: int) : LawSpec.Data.ProducerTag =
-    let value_2722 =
-        match pe_2720 with
-        | subject ->
-            let lawspecFieldproducerId_2723 = subject.ProducerId
-            lawspecFieldproducerId_2723
-    let lawspecRecordField0_2724 = value_2722
-    let value_2725 =
-        match pe_2720 with
-        | subject ->
-            let lawspecFieldproducerEpoch_2726 = subject.ProducerEpoch
-            lawspecFieldproducerEpoch_2726
-    let lawspecRecordField1_2727 = value_2725
-    let lawspecRecordField2_2728 = sequence_2721
-    ({ ProducerId = lawspecRecordField0_2724; ProducerEpoch = lawspecRecordField1_2727; BaseSequence = lawspecRecordField2_2728 } : LawSpec.Data.ProducerTag)
-
-/// lawtwin.kafka::toPositive
-[<CompiledName("ToPositive_fc7029c7")>]
-let toPositive_fc7029c7 (h_2729: uint32) : uint32 =
-    let result_2730 = wrappingUInt32_1ef3ce20 ((Typed.remainder (bigint h_2729) 2147483648I))
-    result_2730
-
-/// lawtwin.kafka::transactionThenRead
-[<CompiledName("TransactionThenRead_81bf7b1b")>]
-let transactionThenRead_81bf7b1b (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (t_2731: string) (txid_2732: string) (batch_2733: LawSpec.Data.Record list) (commit_2734: bool) : bool =
-    let value_2735 =
-        let lawspecRecordField0_2736 = t_2731
-        let lawspecRecordField1_2737 = 0
-        ({ Topic = lawspecRecordField0_2736; Partition = lawspecRecordField1_2737 } : LawSpec.Data.TopicPartition)
-    let tp_2738 = value_2735
-    let value_2739 =
-        let attempted_2741 =
-            Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                let result_2740 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).InitProducerIdRequest((Some txid_2732))))
-                result_2740)
-        match attempted_2741 with
-        | LawSpec.Either.Left lawspecFailure_2742 ->
-            (LawSpec.Either.Left lawspecFailure_2742)
-        | LawSpec.Either.Right lawspecValue_2743 ->
-            (LawSpec.Either.Right lawspecValue_2743)
-    let it_2744 = value_2739
-    match it_2744 with
-    | LawSpec.Either.Left _ ->
-        false
-    | LawSpec.Either.Right lawspecSelection0x0_2745 ->
-        let value_2746 =
-            let attempted_2752 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_2747 =
-                        match lawspecSelection0x0_2745 with
-                        | subject ->
-                            let lawspecFieldproducerId_2748 = subject.ProducerId
-                            lawspecFieldproducerId_2748
-                    let value_2749 =
-                        match lawspecSelection0x0_2745 with
-                        | subject ->
-                            let lawspecFieldproducerEpoch_2750 = subject.ProducerEpoch
-                            lawspecFieldproducerEpoch_2750
-                    let result_2751 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).AddPartitionsToTxnRequest(txid_2732, value_2747, value_2749, (tp_2738 :: []))))
-                    result_2751)
-            match attempted_2752 with
-            | LawSpec.Either.Left lawspecFailure_2753 ->
-                (LawSpec.Either.Left lawspecFailure_2753)
-            | LawSpec.Either.Right lawspecValue_2754 ->
-                (LawSpec.Either.Right lawspecValue_2754)
-        let it_2755 = value_2746
-        match it_2755 with
-        | LawSpec.Either.Left _ ->
+            value_7
+        else
             false
-        | LawSpec.Either.Right _ ->
-            let value_2756 =
-                let attempted_2759 =
-                    Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                        let result_2757 = tagOf_39235de7 (lawspecSelection0x0_2745) (0)
-                        let result_2758 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).ProduceRequest(tp_2738, (Some result_2757), batch_2733)))
-                        result_2758)
-                match attempted_2759 with
-                | LawSpec.Either.Left lawspecFailure_2760 ->
-                    (LawSpec.Either.Left lawspecFailure_2760)
-                | LawSpec.Either.Right lawspecValue_2761 ->
-                    (LawSpec.Either.Right lawspecValue_2761)
-            let it_2762 = value_2756
-            match it_2762 with
-            | LawSpec.Either.Left _ ->
-                false
-            | LawSpec.Either.Right matchmatchlawspecSelection0x000_2763 ->
-                let result_2764 = committedFrom_a524f37d schema symbols (tp_2738) (matchmatchlawspecSelection0x000_2763)
-                let hiddenWhileOpen_2765 = (result_2764 = [])
-                let result_2766 = uncommittedFrom_8a57847d schema symbols (tp_2738) (matchmatchlawspecSelection0x000_2763)
-                let seenUncommitted_2767 = (result_2766 = batch_2733)
-                let value_2768 =
-                    let attempted_2774 =
-                        Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                            let value_2769 =
-                                match lawspecSelection0x0_2745 with
-                                | subject ->
-                                    let lawspecFieldproducerId_2770 = subject.ProducerId
-                                    lawspecFieldproducerId_2770
-                            let value_2771 =
-                                match lawspecSelection0x0_2745 with
-                                | subject ->
-                                    let lawspecFieldproducerEpoch_2772 = subject.ProducerEpoch
-                                    lawspecFieldproducerEpoch_2772
-                            let result_2773 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).EndTxnRequest(txid_2732, value_2769, value_2771, commit_2734)))
-                            result_2773)
-                    match attempted_2774 with
-                    | LawSpec.Either.Left lawspecFailure_2775 ->
-                        (LawSpec.Either.Left lawspecFailure_2775)
-                    | LawSpec.Either.Right lawspecValue_2776 ->
-                        (LawSpec.Either.Right lawspecValue_2776)
-                let it_2777 = value_2768
-                match it_2777 with
-                | LawSpec.Either.Left _ ->
+
+    logic_5
+
+/// samePartition — ../src/contract.lawspec:1235
+[<CompiledName("SamePartition")>]
+let samePartition
+    (a: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>)
+    (b: LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>)
+    : bool =
+    let it = a
+
+    match it with
+    | LawSpec.Either.Left _ -> false
+    | LawSpec.Either.Right selection ->
+        let it_2 = b
+
+        match it_2 with
+        | LawSpec.Either.Left _ -> false
+        | LawSpec.Either.Right matchSelection ->
+            let value =
+                match selection with
+                | subject ->
+                    let sentTo = subject.SentTo
+                    sentTo
+
+            let value_2 =
+                match matchSelection with
+                | subject ->
+                    let sentTo_2 = subject.SentTo
+                    sentTo_2
+
+            (value = value_2)
+
+/// sequenceFor — ../src/contract.lawspec:579
+[<CompiledName("SequenceFor")>]
+let sequenceFor (tp: LawSpec.Data.TopicPartition) (sequences: Map<LawSpec.Data.TopicPartition, int>) : int =
+    let result = Map.tryFind tp sequences
+    let it = result
+
+    match it with
+    | None -> 0
+    | Some selection -> selection
+
+/// smallBatch — ../src/contract.lawspec:320
+[<CompiledName("SmallBatch")>]
+let smallBatch (batch: LawSpec.Data.Record list) : bool =
+    ((bigint (List.length batch) >= 1I) && (bigint (List.length batch) <= 100I))
+
+/// stableBelowHigh — ../src/contract.lawspec:475
+[<CompiledName("StableBelowHigh")>]
+let stableBelowHigh
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (t: string)
+    (txid: string)
+    (batch: LawSpec.Data.Record list)
+    : bool =
+    let value =
+        let recordField = t
+        let recordField_2 = 0
+
+        let topicPartition: LawSpec.Data.TopicPartition =
+            {
+                Topic = recordField
+                Partition = recordField_2
+            }
+
+        topicPartition
+
+    let tp = value
+
+    let value_3 =
+        let attempted =
+            Typed.attempt
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    let broker =
+                        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                            schema
+                            symbols
+                            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                    let result =
+                        Typed.performed
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (broker.InitProducerIdRequest(Some txid))
+
+                    result)
+
+        match attempted with
+        | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+        | LawSpec.Either.Right value_2 -> LawSpec.Either.Right value_2
+
+    let it = value_3
+
+    match it with
+    | LawSpec.Either.Left _ -> false
+    | LawSpec.Either.Right selection ->
+        let value_7 =
+            let attempted_2 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_4 =
+                            match selection with
+                            | subject ->
+                                let producerId = subject.ProducerId
+                                producerId
+
+                        let value_5 =
+                            match selection with
+                            | subject ->
+                                let producerEpoch = subject.ProducerEpoch
+                                producerEpoch
+
+                        let broker_2 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_2 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_2.AddPartitionsToTxnRequest(txid, value_4, value_5, (tp :: [])))
+
+                        result_2)
+
+            match attempted_2 with
+            | LawSpec.Either.Left failure_2 -> LawSpec.Either.Left failure_2
+            | LawSpec.Either.Right value_6 -> LawSpec.Either.Right value_6
+
+        let added = value_7
+
+        let value_9 =
+            let attempted_3 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let result_3 = tagOf selection 0
+
+                        let broker_3 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_4 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_3.ProduceRequest(tp, Some result_3, batch))
+
+                        result_4)
+
+            match attempted_3 with
+            | LawSpec.Either.Left failure_3 -> LawSpec.Either.Left failure_3
+            | LawSpec.Either.Right value_8 -> LawSpec.Either.Right value_8
+
+        let written = value_9
+
+        let value_11 =
+            let attempted_4 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let broker_4 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_5 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_4.FetchRequest(tp, 0L, 1000, LawSpec.Data.IsolationLevel.ReadUncommitted))
+
+                        result_5)
+
+            match attempted_4 with
+            | LawSpec.Either.Left failure_4 -> LawSpec.Either.Left failure_4
+            | LawSpec.Either.Right value_10 -> LawSpec.Either.Right value_10
+
+        let it_2 = value_11
+
+        match it_2 with
+        | LawSpec.Either.Left _ -> false
+        | LawSpec.Either.Right matchSelection ->
+            let value_12 =
+                match added with
+                | LawSpec.Either.Left _ -> false
+                | LawSpec.Either.Right _ -> true
+
+            let logic =
+                if value_12 then
+                    let value_13 =
+                        match written with
+                        | LawSpec.Either.Left _ -> false
+                        | LawSpec.Either.Right _ -> true
+
+                    value_13
+                else
                     false
+
+            let logic_2 =
+                if logic then
+                    let value_14 =
+                        match matchSelection with
+                        | subject ->
+                            let lastStableOffset = subject.LastStableOffset
+                            lastStableOffset
+
+                    let value_15 =
+                        match matchSelection with
+                        | subject ->
+                            let highWatermark = subject.HighWatermark
+                            highWatermark
+
+                    (value_14 <= value_15)
+                else
+                    false
+
+            let logic_3 =
+                if logic_2 then
+                    let value_17 =
+                        let it_3 = written
+
+                        match it_3 with
+                        | LawSpec.Either.Right matchMatchSelection ->
+                            let value_16 =
+                                match matchSelection with
+                                | subject ->
+                                    let lastStableOffset_2 = subject.LastStableOffset
+                                    lastStableOffset_2
+
+                            (value_16 <= matchMatchSelection)
+                        | LawSpec.Either.Left _ -> false
+
+                    value_17
+                else
+                    false
+
+            logic_3
+
+/// tagFor — ../src/contract.lawspec:587
+[<CompiledName("TagFor")>]
+let tagFor (identity: LawSpec.Data.ProducerIdAndEpoch option) (sequence: int) : LawSpec.Data.ProducerTag option =
+    let it = identity
+
+    match it with
+    | None -> None
+    | Some selection ->
+        let result = tagOf selection sequence
+        Some result
+
+/// tagOf — ../src/contract.lawspec:341
+[<CompiledName("TagOf")>]
+let tagOf (pe: LawSpec.Data.ProducerIdAndEpoch) (sequence: int) : LawSpec.Data.ProducerTag =
+    let value =
+        match pe with
+        | subject ->
+            let producerId = subject.ProducerId
+            producerId
+
+    let recordField = value
+
+    let value_2 =
+        match pe with
+        | subject ->
+            let producerEpoch = subject.ProducerEpoch
+            producerEpoch
+
+    let recordField_2 = value_2
+    let recordField_3 = sequence
+
+    let producerTag: LawSpec.Data.ProducerTag =
+        {
+            ProducerId = recordField
+            ProducerEpoch = recordField_2
+            BaseSequence = recordField_3
+        }
+
+    producerTag
+
+/// toPositive — ../src/contract.lawspec:1100
+[<CompiledName("ToPositive")>]
+let toPositive (h: uint32) : uint32 =
+    let result = wrappingUInt32 (Typed.remainder (bigint h) 2147483648I)
+    result
+
+/// transactionThenRead — ../src/contract.lawspec:384
+[<CompiledName("TransactionThenRead")>]
+let transactionThenRead
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (t: string)
+    (txid: string)
+    (batch: LawSpec.Data.Record list)
+    (commit: bool)
+    : bool =
+    let value =
+        let recordField = t
+        let recordField_2 = 0
+
+        let topicPartition: LawSpec.Data.TopicPartition =
+            {
+                Topic = recordField
+                Partition = recordField_2
+            }
+
+        topicPartition
+
+    let tp = value
+
+    let value_3 =
+        let attempted =
+            Typed.attempt
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    let broker =
+                        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                            schema
+                            symbols
+                            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                    let result =
+                        Typed.performed
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (broker.InitProducerIdRequest(Some txid))
+
+                    result)
+
+        match attempted with
+        | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+        | LawSpec.Either.Right value_2 -> LawSpec.Either.Right value_2
+
+    let it = value_3
+
+    match it with
+    | LawSpec.Either.Left _ -> false
+    | LawSpec.Either.Right selection ->
+        let value_7 =
+            let attempted_2 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_4 =
+                            match selection with
+                            | subject ->
+                                let producerId = subject.ProducerId
+                                producerId
+
+                        let value_5 =
+                            match selection with
+                            | subject ->
+                                let producerEpoch = subject.ProducerEpoch
+                                producerEpoch
+
+                        let broker_2 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_2 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_2.AddPartitionsToTxnRequest(txid, value_4, value_5, (tp :: [])))
+
+                        result_2)
+
+            match attempted_2 with
+            | LawSpec.Either.Left failure_2 -> LawSpec.Either.Left failure_2
+            | LawSpec.Either.Right value_6 -> LawSpec.Either.Right value_6
+
+        let it_2 = value_7
+
+        match it_2 with
+        | LawSpec.Either.Left _ -> false
+        | LawSpec.Either.Right _ ->
+            let value_9 =
+                let attempted_3 =
+                    Typed.attempt
+                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                        (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                        (fun () ->
+                            let result_3 = tagOf selection 0
+
+                            let broker_3 =
+                                LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                    schema
+                                    symbols
+                                    (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                            let result_4 =
+                                Typed.performed
+                                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                    (broker_3.ProduceRequest(tp, Some result_3, batch))
+
+                            result_4)
+
+                match attempted_3 with
+                | LawSpec.Either.Left failure_3 -> LawSpec.Either.Left failure_3
+                | LawSpec.Either.Right value_8 -> LawSpec.Either.Right value_8
+
+            let it_3 = value_9
+
+            match it_3 with
+            | LawSpec.Either.Left _ -> false
+            | LawSpec.Either.Right matchMatchSelection ->
+                let result_5 = committedFrom schema symbols tp matchMatchSelection
+                let hiddenWhileOpen = (result_5 = [])
+                let result_6 = uncommittedFrom schema symbols tp matchMatchSelection
+                let seenUncommitted = (result_6 = batch)
+
+                let value_13 =
+                    let attempted_4 =
+                        Typed.attempt
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (fun () ->
+                                let value_10 =
+                                    match selection with
+                                    | subject ->
+                                        let producerId_2 = subject.ProducerId
+                                        producerId_2
+
+                                let value_11 =
+                                    match selection with
+                                    | subject ->
+                                        let producerEpoch_2 = subject.ProducerEpoch
+                                        producerEpoch_2
+
+                                let broker_4 =
+                                    LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                        schema
+                                        symbols
+                                        (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                                let result_7 =
+                                    Typed.performed
+                                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                        (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                        (broker_4.EndTxnRequest(txid, value_10, value_11, commit))
+
+                                result_7)
+
+                    match attempted_4 with
+                    | LawSpec.Either.Left failure_4 -> LawSpec.Either.Left failure_4
+                    | LawSpec.Either.Right value_12 -> LawSpec.Either.Right value_12
+
+                let it_4 = value_13
+
+                match it_4 with
+                | LawSpec.Either.Left _ -> false
                 | LawSpec.Either.Right _ ->
-                    let logic_2779 =
-                        if (hiddenWhileOpen_2765 && seenUncommitted_2767) then
-                            let result_2778 = uncommittedFrom_8a57847d schema symbols (tp_2738) (matchmatchlawspecSelection0x000_2763)
-                            (result_2778 = batch_2733)
-                        else false
-                    let logic_2783 =
-                        if logic_2779 then
-                            let value_2780 =
-                                if commit_2734 then
-                                    let result_2781 = committedFrom_a524f37d schema symbols (tp_2738) (matchmatchlawspecSelection0x000_2763)
-                                    (result_2781 = batch_2733)
+                    let logic =
+                        if (hiddenWhileOpen && seenUncommitted) then
+                            let result_8 = uncommittedFrom schema symbols tp matchMatchSelection
+                            (result_8 = batch)
+                        else
+                            false
+
+                    let logic_2 =
+                        if logic then
+                            let value_14 =
+                                if commit then
+                                    let result_9 = committedFrom schema symbols tp matchMatchSelection
+                                    (result_9 = batch)
                                 else
-                                    let result_2782 = committedFrom_a524f37d schema symbols (tp_2738) (matchmatchlawspecSelection0x000_2763)
-                                    (result_2782 = [])
-                            value_2780
-                        else false
-                    logic_2783
+                                    let result_10 = committedFrom schema symbols tp matchMatchSelection
+                                    (result_10 = [])
 
-/// lawtwin.kafka::transactionalOffsets
-[<CompiledName("TransactionalOffsets_80320406")>]
-let transactionalOffsets_80320406 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (t_2784: string) (txid_2785: string) (g_2786: string) (offset_2787: int64) : bool =
-    let value_2788 =
-        let lawspecRecordField0_2789 = t_2784
-        let lawspecRecordField1_2790 = 0
-        ({ Topic = lawspecRecordField0_2789; Partition = lawspecRecordField1_2790 } : LawSpec.Data.TopicPartition)
-    let tp_2791 = value_2788
-    let result_2792 = ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).OffsetFetchRequest(g_2786, tp_2791))
-    let before_2793 = result_2792
-    let value_2794 =
-        let attempted_2796 =
-            Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                let result_2795 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).InitProducerIdRequest((Some txid_2785))))
-                result_2795)
-        match attempted_2796 with
-        | LawSpec.Either.Left lawspecFailure_2797 ->
-            (LawSpec.Either.Left lawspecFailure_2797)
-        | LawSpec.Either.Right lawspecValue_2798 ->
-            (LawSpec.Either.Right lawspecValue_2798)
-    let it_2799 = value_2794
-    match it_2799 with
-    | LawSpec.Either.Left _ ->
-        false
-    | LawSpec.Either.Right lawspecSelection0x0_2800 ->
-        let value_2801 =
-            let attempted_2810 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_2802 =
-                        match lawspecSelection0x0_2800 with
-                        | subject ->
-                            let lawspecFieldproducerId_2803 = subject.ProducerId
-                            lawspecFieldproducerId_2803
-                    let value_2804 =
-                        match lawspecSelection0x0_2800 with
-                        | subject ->
-                            let lawspecFieldproducerEpoch_2805 = subject.ProducerEpoch
-                            lawspecFieldproducerEpoch_2805
-                    let value_2806 =
-                        let lawspecRecordField0_2807 = tp_2791
-                        let lawspecRecordField1_2808 = offset_2787
-                        ({ TopicPartition = lawspecRecordField0_2807; Offset = lawspecRecordField1_2808 } : LawSpec.Data.OffsetEntry)
-                    let result_2809 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).TxnOffsetCommitRequest(txid_2785, value_2802, value_2804, g_2786, (value_2806 :: []))))
-                    result_2809)
-            match attempted_2810 with
-            | LawSpec.Either.Left lawspecFailure_2811 ->
-                (LawSpec.Either.Left lawspecFailure_2811)
-            | LawSpec.Either.Right lawspecValue_2812 ->
-                (LawSpec.Either.Right lawspecValue_2812)
-        let sent_2813 = value_2801
-        let value_2814 =
-            let attempted_2820 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_2815 =
-                        match lawspecSelection0x0_2800 with
-                        | subject ->
-                            let lawspecFieldproducerId_2816 = subject.ProducerId
-                            lawspecFieldproducerId_2816
-                    let value_2817 =
-                        match lawspecSelection0x0_2800 with
-                        | subject ->
-                            let lawspecFieldproducerEpoch_2818 = subject.ProducerEpoch
-                            lawspecFieldproducerEpoch_2818
-                    let result_2819 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).EndTxnRequest(txid_2785, value_2815, value_2817, false)))
-                    result_2819)
-            match attempted_2820 with
-            | LawSpec.Either.Left lawspecFailure_2821 ->
-                (LawSpec.Either.Left lawspecFailure_2821)
-            | LawSpec.Either.Right lawspecValue_2822 ->
-                (LawSpec.Either.Right lawspecValue_2822)
-        let aborted_2823 = value_2814
-        let result_2824 = ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).OffsetFetchRequest(g_2786, tp_2791))
-        let afterAbort_2825 = result_2824
-        let value_2826 =
-            let attempted_2835 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_2827 =
-                        match lawspecSelection0x0_2800 with
-                        | subject ->
-                            let lawspecFieldproducerId_2828 = subject.ProducerId
-                            lawspecFieldproducerId_2828
-                    let value_2829 =
-                        match lawspecSelection0x0_2800 with
-                        | subject ->
-                            let lawspecFieldproducerEpoch_2830 = subject.ProducerEpoch
-                            lawspecFieldproducerEpoch_2830
-                    let value_2831 =
-                        let lawspecRecordField0_2832 = tp_2791
-                        let lawspecRecordField1_2833 = offset_2787
-                        ({ TopicPartition = lawspecRecordField0_2832; Offset = lawspecRecordField1_2833 } : LawSpec.Data.OffsetEntry)
-                    let result_2834 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).TxnOffsetCommitRequest(txid_2785, value_2827, value_2829, g_2786, (value_2831 :: []))))
-                    result_2834)
-            match attempted_2835 with
-            | LawSpec.Either.Left lawspecFailure_2836 ->
-                (LawSpec.Either.Left lawspecFailure_2836)
-            | LawSpec.Either.Right lawspecValue_2837 ->
-                (LawSpec.Either.Right lawspecValue_2837)
-        let resent_2838 = value_2826
-        let value_2839 =
-            let attempted_2845 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_2840 =
-                        match lawspecSelection0x0_2800 with
-                        | subject ->
-                            let lawspecFieldproducerId_2841 = subject.ProducerId
-                            lawspecFieldproducerId_2841
-                    let value_2842 =
-                        match lawspecSelection0x0_2800 with
-                        | subject ->
-                            let lawspecFieldproducerEpoch_2843 = subject.ProducerEpoch
-                            lawspecFieldproducerEpoch_2843
-                    let result_2844 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).EndTxnRequest(txid_2785, value_2840, value_2842, true)))
-                    result_2844)
-            match attempted_2845 with
-            | LawSpec.Either.Left lawspecFailure_2846 ->
-                (LawSpec.Either.Left lawspecFailure_2846)
-            | LawSpec.Either.Right lawspecValue_2847 ->
-                (LawSpec.Either.Right lawspecValue_2847)
-        let committed_2848 = value_2839
-        let value_2849 =
-            match sent_2813 with
-            | LawSpec.Either.Left _ ->
+                            value_14
+                        else
+                            false
+
+                    logic_2
+
+/// transactionalOffsets — ../src/contract.lawspec:414
+[<CompiledName("TransactionalOffsets")>]
+let transactionalOffsets
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (t: string)
+    (txid: string)
+    (g: string)
+    (offset: int64)
+    : bool =
+    let value =
+        let recordField = t
+        let recordField_2 = 0
+
+        let topicPartition: LawSpec.Data.TopicPartition =
+            {
+                Topic = recordField
+                Partition = recordField_2
+            }
+
+        topicPartition
+
+    let tp = value
+
+    let broker =
+        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+            schema
+            symbols
+            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+    let result = broker.OffsetFetchRequest(g, tp)
+    let before = result
+
+    let value_3 =
+        let attempted =
+            Typed.attempt
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    let broker_2 =
+                        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                            schema
+                            symbols
+                            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                    let result_2 =
+                        Typed.performed
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (broker_2.InitProducerIdRequest(Some txid))
+
+                    result_2)
+
+        match attempted with
+        | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+        | LawSpec.Either.Right value_2 -> LawSpec.Either.Right value_2
+
+    let it = value_3
+
+    match it with
+    | LawSpec.Either.Left _ -> false
+    | LawSpec.Either.Right selection ->
+        let value_8 =
+            let attempted_2 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_4 =
+                            match selection with
+                            | subject ->
+                                let producerId = subject.ProducerId
+                                producerId
+
+                        let value_5 =
+                            match selection with
+                            | subject ->
+                                let producerEpoch = subject.ProducerEpoch
+                                producerEpoch
+
+                        let value_6 =
+                            let recordField_3 = tp
+                            let recordField_4 = offset
+
+                            let offsetEntry: LawSpec.Data.OffsetEntry =
+                                {
+                                    TopicPartition = recordField_3
+                                    Offset = recordField_4
+                                }
+
+                            offsetEntry
+
+                        let broker_3 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_3 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_3.TxnOffsetCommitRequest(txid, value_4, value_5, g, (value_6 :: [])))
+
+                        result_3)
+
+            match attempted_2 with
+            | LawSpec.Either.Left failure_2 -> LawSpec.Either.Left failure_2
+            | LawSpec.Either.Right value_7 -> LawSpec.Either.Right value_7
+
+        let sent = value_8
+
+        let value_12 =
+            let attempted_3 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_9 =
+                            match selection with
+                            | subject ->
+                                let producerId_2 = subject.ProducerId
+                                producerId_2
+
+                        let value_10 =
+                            match selection with
+                            | subject ->
+                                let producerEpoch_2 = subject.ProducerEpoch
+                                producerEpoch_2
+
+                        let broker_4 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_4 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_4.EndTxnRequest(txid, value_9, value_10, false))
+
+                        result_4)
+
+            match attempted_3 with
+            | LawSpec.Either.Left failure_3 -> LawSpec.Either.Left failure_3
+            | LawSpec.Either.Right value_11 -> LawSpec.Either.Right value_11
+
+        let aborted = value_12
+
+        let broker_5 =
+            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                schema
+                symbols
+                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+        let result_5 = broker_5.OffsetFetchRequest(g, tp)
+        let afterAbort = result_5
+
+        let value_17 =
+            let attempted_4 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_13 =
+                            match selection with
+                            | subject ->
+                                let producerId_3 = subject.ProducerId
+                                producerId_3
+
+                        let value_14 =
+                            match selection with
+                            | subject ->
+                                let producerEpoch_3 = subject.ProducerEpoch
+                                producerEpoch_3
+
+                        let value_15 =
+                            let recordField_5 = tp
+                            let recordField_6 = offset
+
+                            let offsetEntry_2: LawSpec.Data.OffsetEntry =
+                                {
+                                    TopicPartition = recordField_5
+                                    Offset = recordField_6
+                                }
+
+                            offsetEntry_2
+
+                        let broker_6 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_6 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_6.TxnOffsetCommitRequest(txid, value_13, value_14, g, (value_15 :: [])))
+
+                        result_6)
+
+            match attempted_4 with
+            | LawSpec.Either.Left failure_4 -> LawSpec.Either.Left failure_4
+            | LawSpec.Either.Right value_16 -> LawSpec.Either.Right value_16
+
+        let resent = value_17
+
+        let value_21 =
+            let attempted_5 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_18 =
+                            match selection with
+                            | subject ->
+                                let producerId_4 = subject.ProducerId
+                                producerId_4
+
+                        let value_19 =
+                            match selection with
+                            | subject ->
+                                let producerEpoch_4 = subject.ProducerEpoch
+                                producerEpoch_4
+
+                        let broker_7 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_7 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_7.EndTxnRequest(txid, value_18, value_19, true))
+
+                        result_7)
+
+            match attempted_5 with
+            | LawSpec.Either.Left failure_5 -> LawSpec.Either.Left failure_5
+            | LawSpec.Either.Right value_20 -> LawSpec.Either.Right value_20
+
+        let committed = value_21
+
+        let value_22 =
+            match sent with
+            | LawSpec.Either.Left _ -> false
+            | LawSpec.Either.Right _ -> true
+
+        let logic =
+            if value_22 then
+                let value_23 =
+                    match aborted with
+                    | LawSpec.Either.Left _ -> false
+                    | LawSpec.Either.Right _ -> true
+
+                value_23
+            else
                 false
-            | LawSpec.Either.Right _ ->
-                true
-        let logic_2851 =
-            if value_2849 then
-                let value_2850 =
-                    match aborted_2823 with
-                    | LawSpec.Either.Left _ ->
-                        false
-                    | LawSpec.Either.Right _ ->
-                        true
-                value_2850
-            else false
-        let logic_2853 =
-            if (logic_2851 && (afterAbort_2825 = before_2793)) then
-                let value_2852 =
-                    match resent_2838 with
-                    | LawSpec.Either.Left _ ->
-                        false
-                    | LawSpec.Either.Right _ ->
-                        true
-                value_2852
-            else false
-        let logic_2855 =
-            if logic_2853 then
-                let value_2854 =
-                    match committed_2848 with
-                    | LawSpec.Either.Left _ ->
-                        false
-                    | LawSpec.Either.Right _ ->
-                        true
-                value_2854
-            else false
-        let logic_2857 =
-            if logic_2855 then
-                let result_2856 = ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).OffsetFetchRequest(g_2786, tp_2791))
-                (result_2856 = (Some offset_2787))
-            else false
-        logic_2857
 
-/// lawtwin.kafka::transactionsAbort
-[<CompiledName("TransactionsAbort_256496fb")>]
-let transactionsAbort_256496fb (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (st_2858: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let result_2859 = transactionsEnd_fe18afb7 schema symbols (false) (st_2858)
-    result_2859
+        let logic_2 =
+            if (logic && (afterAbort = before)) then
+                let value_24 =
+                    match resent with
+                    | LawSpec.Either.Left _ -> false
+                    | LawSpec.Either.Right _ -> true
 
-/// lawtwin.kafka::transactionsAdd
-[<CompiledName("TransactionsAdd_1f41c92e")>]
-let transactionsAdd_1f41c92e (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tps_2860: LawSpec.Data.TopicPartition list) (st_2861: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let value_2862 =
-        match st_2861 with
-        | subject ->
-            let lawspecFieldproducer_2863 = subject.Producer
-            lawspecFieldproducer_2863
-    let it_2864 = value_2862
-    match it_2864 with
-    | None ->
-        ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = st_2861 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
-    | Some lawspecSelection0x0_2865 ->
-        let value_2866 =
-            match st_2861 with
-            | subject ->
-                let lawspecFieldinTransaction_2867 = subject.InTransaction
-                lawspecFieldinTransaction_2867
-        if (not value_2866) then
-            ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = st_2861 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
-        else
-            let value_2868 =
-                match st_2861 with
-                | subject ->
-                    let lawspecFieldadded_2869 = subject.Added
-                    lawspecFieldadded_2869
-            let result_2870 = missingFrom_37856ee4 (tps_2860) (value_2868)
-            let missing_2871 = result_2870
-            let value_2872 =
-                match missing_2871 with
-                | [] ->
-                    true
-                | _ :: _ ->
-                    false
-            if value_2872 then
-                ({ First = (LawSpec.Either.Right ()); Second = st_2861 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+                value_24
             else
-                let value_2873 =
-                    let attempted_2881 =
-                        Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                            let value_2874 =
-                                match st_2861 with
-                                | subject ->
-                                    let lawspecFieldtransactionalId_2875 = subject.TransactionalId
-                                    lawspecFieldtransactionalId_2875
-                            let value_2876 =
-                                match lawspecSelection0x0_2865 with
-                                | subject ->
-                                    let lawspecFieldproducerId_2877 = subject.ProducerId
-                                    lawspecFieldproducerId_2877
-                            let value_2878 =
-                                match lawspecSelection0x0_2865 with
-                                | subject ->
-                                    let lawspecFieldproducerEpoch_2879 = subject.ProducerEpoch
-                                    lawspecFieldproducerEpoch_2879
-                            let result_2880 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).AddPartitionsToTxnRequest(value_2874, value_2876, value_2878, missing_2871)))
-                            result_2880)
-                    match attempted_2881 with
-                    | LawSpec.Either.Left lawspecFailure_2882 ->
-                        (LawSpec.Either.Left lawspecFailure_2882)
-                    | LawSpec.Either.Right lawspecValue_2883 ->
-                        (LawSpec.Either.Right lawspecValue_2883)
-                let it_2884 = value_2873
-                match it_2884 with
-                | LawSpec.Either.Left matchlawspecSelection0x00_2885 ->
-                    ({ First = (LawSpec.Either.Left matchlawspecSelection0x00_2885); Second = st_2861 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
-                | LawSpec.Either.Right _ ->
-                    let value_2886 =
-                        let value_2887 =
-                            match st_2861 with
-                            | subject ->
-                                let lawspecFieldadded_2888 = subject.Added
-                                lawspecFieldadded_2888
-                        let replacement_2889 = (missing_2871 @ value_2887)
-                        match st_2861 with
-                        | subject ->
-                            let lawspecFieldtransactionalId_2890 = subject.TransactionalId
-                            let lawspecFieldproducer_2891 = subject.Producer
-                            let lawspecFieldtxnSequences_2892 = subject.TxnSequences
-                            let lawspecFieldinTransaction_2893 = subject.InTransaction
-                            let lawspecFieldoffsetsSent_2894 = subject.OffsetsSent
-                            ({ TransactionalId = lawspecFieldtransactionalId_2890; Producer = lawspecFieldproducer_2891; TxnSequences = lawspecFieldtxnSequences_2892; InTransaction = lawspecFieldinTransaction_2893; Added = replacement_2889; OffsetsSent = lawspecFieldoffsetsSent_2894 } : LawSpec.Data.TransactionState)
-                    ({ First = (LawSpec.Either.Right ()); Second = value_2886 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+                false
 
-/// lawtwin.kafka::transactionsBegin
-[<CompiledName("TransactionsBegin_5d267b99")>]
-let transactionsBegin_5d267b99 (st_2895: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let value_2896 =
-        match st_2895 with
+        let logic_3 =
+            if logic_2 then
+                let value_25 =
+                    match committed with
+                    | LawSpec.Either.Left _ -> false
+                    | LawSpec.Either.Right _ -> true
+
+                value_25
+            else
+                false
+
+        let logic_4 =
+            if logic_3 then
+                let broker_8 =
+                    LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                        schema
+                        symbols
+                        (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                let result_8 = broker_8.OffsetFetchRequest(g, tp)
+                (result_8 = Some offset)
+            else
+                false
+
+        logic_4
+
+/// transactionsAbort — ../src/contract.lawspec:954
+[<CompiledName("TransactionsAbort")>]
+let transactionsAbort
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (st: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let result = transactionsEnd schema symbols false st
+    result
+
+/// transactionsAdd — ../src/contract.lawspec:867
+[<CompiledName("TransactionsAdd")>]
+let transactionsAdd
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (tps: LawSpec.Data.TopicPartition list)
+    (st: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let value =
+        match st with
         | subject ->
-            let lawspecFieldproducer_2897 = subject.Producer
-            lawspecFieldproducer_2897
-    let it_2898 = value_2896
-    match it_2898 with
+            let producer = subject.Producer
+            producer
+
+    let it = value
+
+    match it with
     | None ->
-        ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = st_2895 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+            {
+                First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                Second = st
+            }
+
+        pair
+    | Some selection ->
+        let value_2 =
+            match st with
+            | subject ->
+                let inTransaction = subject.InTransaction
+                inTransaction
+
+        if not value_2 then
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                {
+                    First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                    Second = st
+                }
+
+            pair_2
+        else
+            let value_3 =
+                match st with
+                | subject ->
+                    let added = subject.Added
+                    added
+
+            let result = missingFrom tps value_3
+            let missing = result
+
+            let value_4 =
+                match missing with
+                | [] -> true
+                | _ :: _ -> false
+
+            if value_4 then
+                let pair_3: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                    {
+                        First = LawSpec.Either.Right()
+                        Second = st
+                    }
+
+                pair_3
+            else
+                let value_9 =
+                    let attempted =
+                        Typed.attempt
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (fun () ->
+                                let value_5 =
+                                    match st with
+                                    | subject ->
+                                        let transactionalId = subject.TransactionalId
+                                        transactionalId
+
+                                let value_6 =
+                                    match selection with
+                                    | subject ->
+                                        let producerId = subject.ProducerId
+                                        producerId
+
+                                let value_7 =
+                                    match selection with
+                                    | subject ->
+                                        let producerEpoch = subject.ProducerEpoch
+                                        producerEpoch
+
+                                let broker =
+                                    LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                        schema
+                                        symbols
+                                        (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                                let result_2 =
+                                    Typed.performed
+                                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                        (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                        (broker.AddPartitionsToTxnRequest(value_5, value_6, value_7, missing))
+
+                                result_2)
+
+                    match attempted with
+                    | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+                    | LawSpec.Either.Right value_8 -> LawSpec.Either.Right value_8
+
+                let it_2 = value_9
+
+                match it_2 with
+                | LawSpec.Either.Left matchSelection ->
+                    let pair_4: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                        {
+                            First = LawSpec.Either.Left matchSelection
+                            Second = st
+                        }
+
+                    pair_4
+                | LawSpec.Either.Right _ ->
+                    let value_11 =
+                        let value_10 =
+                            match st with
+                            | subject ->
+                                let added_2 = subject.Added
+                                added_2
+
+                        let replacement = (missing @ value_10)
+
+                        match st with
+                        | subject ->
+                            let transactionalId_2 = subject.TransactionalId
+                            let producer_2 = subject.Producer
+                            let txnSequences = subject.TxnSequences
+                            let inTransaction_2 = subject.InTransaction
+                            let offsetsSent = subject.OffsetsSent
+
+                            let transactionState: LawSpec.Data.TransactionState =
+                                {
+                                    TransactionalId = transactionalId_2
+                                    Producer = producer_2
+                                    TxnSequences = txnSequences
+                                    InTransaction = inTransaction_2
+                                    Added = replacement
+                                    OffsetsSent = offsetsSent
+                                }
+
+                            transactionState
+
+                    let pair_5: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                        {
+                            First = LawSpec.Either.Right()
+                            Second = value_11
+                        }
+
+                    pair_5
+
+/// transactionsBegin — ../src/contract.lawspec:855
+[<CompiledName("TransactionsBegin")>]
+let transactionsBegin
+    (st: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let value =
+        match st with
+        | subject ->
+            let producer = subject.Producer
+            producer
+
+    let it = value
+
+    match it with
+    | None ->
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+            {
+                First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                Second = st
+            }
+
+        pair
     | Some _ ->
-        let value_2899 =
-            match st_2895 with
+        let value_2 =
+            match st with
             | subject ->
-                let lawspecFieldinTransaction_2900 = subject.InTransaction
-                lawspecFieldinTransaction_2900
-        if value_2899 then
-            ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = st_2895 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+                let inTransaction = subject.InTransaction
+                inTransaction
+
+        if value_2 then
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                {
+                    First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                    Second = st
+                }
+
+            pair_2
         else
-            let value_2901 =
-                let replacement_2902 = false
-                let value_2903 =
-                    let replacement_2904 = []
-                    let value_2905 =
-                        let replacement_2906 = true
-                        match st_2895 with
+            let value_5 =
+                let replacement = false
+
+                let value_4 =
+                    let replacement_2 = []
+
+                    let value_3 =
+                        let replacement_3 = true
+
+                        match st with
                         | subject ->
-                            let lawspecFieldtransactionalId_2907 = subject.TransactionalId
-                            let lawspecFieldproducer_2908 = subject.Producer
-                            let lawspecFieldtxnSequences_2909 = subject.TxnSequences
-                            let lawspecFieldadded_2910 = subject.Added
-                            let lawspecFieldoffsetsSent_2911 = subject.OffsetsSent
-                            ({ TransactionalId = lawspecFieldtransactionalId_2907; Producer = lawspecFieldproducer_2908; TxnSequences = lawspecFieldtxnSequences_2909; InTransaction = replacement_2906; Added = lawspecFieldadded_2910; OffsetsSent = lawspecFieldoffsetsSent_2911 } : LawSpec.Data.TransactionState)
-                    match value_2905 with
+                            let transactionalId = subject.TransactionalId
+                            let producer_2 = subject.Producer
+                            let txnSequences = subject.TxnSequences
+                            let added = subject.Added
+                            let offsetsSent = subject.OffsetsSent
+
+                            let transactionState: LawSpec.Data.TransactionState =
+                                {
+                                    TransactionalId = transactionalId
+                                    Producer = producer_2
+                                    TxnSequences = txnSequences
+                                    InTransaction = replacement_3
+                                    Added = added
+                                    OffsetsSent = offsetsSent
+                                }
+
+                            transactionState
+
+                    match value_3 with
                     | subject ->
-                        let lawspecFieldtransactionalId_2912 = subject.TransactionalId
-                        let lawspecFieldproducer_2913 = subject.Producer
-                        let lawspecFieldtxnSequences_2914 = subject.TxnSequences
-                        let lawspecFieldinTransaction_2915 = subject.InTransaction
-                        let lawspecFieldoffsetsSent_2916 = subject.OffsetsSent
-                        ({ TransactionalId = lawspecFieldtransactionalId_2912; Producer = lawspecFieldproducer_2913; TxnSequences = lawspecFieldtxnSequences_2914; InTransaction = lawspecFieldinTransaction_2915; Added = replacement_2904; OffsetsSent = lawspecFieldoffsetsSent_2916 } : LawSpec.Data.TransactionState)
-                match value_2903 with
+                        let transactionalId_2 = subject.TransactionalId
+                        let producer_3 = subject.Producer
+                        let txnSequences_2 = subject.TxnSequences
+                        let inTransaction_2 = subject.InTransaction
+                        let offsetsSent_2 = subject.OffsetsSent
+
+                        let transactionState_2: LawSpec.Data.TransactionState =
+                            {
+                                TransactionalId = transactionalId_2
+                                Producer = producer_3
+                                TxnSequences = txnSequences_2
+                                InTransaction = inTransaction_2
+                                Added = replacement_2
+                                OffsetsSent = offsetsSent_2
+                            }
+
+                        transactionState_2
+
+                match value_4 with
                 | subject ->
-                    let lawspecFieldtransactionalId_2917 = subject.TransactionalId
-                    let lawspecFieldproducer_2918 = subject.Producer
-                    let lawspecFieldtxnSequences_2919 = subject.TxnSequences
-                    let lawspecFieldinTransaction_2920 = subject.InTransaction
-                    let lawspecFieldadded_2921 = subject.Added
-                    ({ TransactionalId = lawspecFieldtransactionalId_2917; Producer = lawspecFieldproducer_2918; TxnSequences = lawspecFieldtxnSequences_2919; InTransaction = lawspecFieldinTransaction_2920; Added = lawspecFieldadded_2921; OffsetsSent = replacement_2902 } : LawSpec.Data.TransactionState)
-            ({ First = (LawSpec.Either.Right ()); Second = value_2901 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+                    let transactionalId_3 = subject.TransactionalId
+                    let producer_4 = subject.Producer
+                    let txnSequences_3 = subject.TxnSequences
+                    let inTransaction_3 = subject.InTransaction
+                    let added_2 = subject.Added
 
-/// lawtwin.kafka::transactionsCommit
-[<CompiledName("TransactionsCommit_afadd0fa")>]
-let transactionsCommit_afadd0fa (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (st_2922: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let result_2923 = transactionsEnd_fe18afb7 schema symbols (true) (st_2922)
-    result_2923
+                    let transactionState_3: LawSpec.Data.TransactionState =
+                        {
+                            TransactionalId = transactionalId_3
+                            Producer = producer_4
+                            TxnSequences = txnSequences_3
+                            InTransaction = inTransaction_3
+                            Added = added_2
+                            OffsetsSent = replacement
+                        }
 
-/// lawtwin.kafka::transactionsEnd
-[<CompiledName("TransactionsEnd_fe18afb7")>]
-let transactionsEnd_fe18afb7 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (commit_2924: bool) (st_2925: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let value_2926 =
-        match st_2925 with
+                    transactionState_3
+
+            let pair_3: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                {
+                    First = LawSpec.Either.Right()
+                    Second = value_5
+                }
+
+            pair_3
+
+/// transactionsCommit — ../src/contract.lawspec:952
+[<CompiledName("TransactionsCommit")>]
+let transactionsCommit
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (st: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let result = transactionsEnd schema symbols true st
+    result
+
+/// transactionsEnd — ../src/contract.lawspec:934
+[<CompiledName("TransactionsEnd")>]
+let transactionsEnd
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (commit: bool)
+    (st: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let value =
+        match st with
         | subject ->
-            let lawspecFieldproducer_2927 = subject.Producer
-            lawspecFieldproducer_2927
-    let it_2928 = value_2926
-    match it_2928 with
+            let producer = subject.Producer
+            producer
+
+    let it = value
+
+    match it with
     | None ->
-        ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = st_2925 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
-    | Some lawspecSelection0x0_2929 ->
-        let value_2930 =
-            match st_2925 with
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+            {
+                First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                Second = st
+            }
+
+        pair
+    | Some selection ->
+        let value_2 =
+            match st with
             | subject ->
-                let lawspecFieldinTransaction_2931 = subject.InTransaction
-                lawspecFieldinTransaction_2931
-        if (not value_2930) then
-            ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = st_2925 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+                let inTransaction = subject.InTransaction
+                inTransaction
+
+        if not value_2 then
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                {
+                    First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                    Second = st
+                }
+
+            pair_2
         else
-            let value_2932 =
-                let value_2933 =
-                    match st_2925 with
+            let value_4 =
+                let value_3 =
+                    match st with
                     | subject ->
-                        let lawspecFieldadded_2934 = subject.Added
-                        lawspecFieldadded_2934
-                match value_2933 with
-                | [] ->
-                    true
-                | _ :: _ ->
+                        let added = subject.Added
+                        added
+
+                match value_3 with
+                | [] -> true
+                | _ :: _ -> false
+
+            let logic =
+                if value_4 then
+                    let value_5 =
+                        match st with
+                        | subject ->
+                            let offsetsSent = subject.OffsetsSent
+                            offsetsSent
+
+                    not value_5
+                else
                     false
-            let logic_2937 =
-                if value_2932 then
-                    let value_2935 =
-                        match st_2925 with
-                        | subject ->
-                            let lawspecFieldoffsetsSent_2936 = subject.OffsetsSent
-                            lawspecFieldoffsetsSent_2936
-                    (not value_2935)
-                else false
-            if logic_2937 then
-                let value_2938 =
-                    let replacement_2939 = false
-                    let value_2940 =
-                        let replacement_2941 = []
-                        let value_2942 =
-                            let replacement_2943 = false
-                            match st_2925 with
+
+            if logic then
+                let value_8 =
+                    let replacement = false
+
+                    let value_7 =
+                        let replacement_2 = []
+
+                        let value_6 =
+                            let replacement_3 = false
+
+                            match st with
                             | subject ->
-                                let lawspecFieldtransactionalId_2944 = subject.TransactionalId
-                                let lawspecFieldproducer_2945 = subject.Producer
-                                let lawspecFieldtxnSequences_2946 = subject.TxnSequences
-                                let lawspecFieldadded_2947 = subject.Added
-                                let lawspecFieldoffsetsSent_2948 = subject.OffsetsSent
-                                ({ TransactionalId = lawspecFieldtransactionalId_2944; Producer = lawspecFieldproducer_2945; TxnSequences = lawspecFieldtxnSequences_2946; InTransaction = replacement_2943; Added = lawspecFieldadded_2947; OffsetsSent = lawspecFieldoffsetsSent_2948 } : LawSpec.Data.TransactionState)
-                        match value_2942 with
+                                let transactionalId = subject.TransactionalId
+                                let producer_2 = subject.Producer
+                                let txnSequences = subject.TxnSequences
+                                let added_2 = subject.Added
+                                let offsetsSent_2 = subject.OffsetsSent
+
+                                let transactionState: LawSpec.Data.TransactionState =
+                                    {
+                                        TransactionalId = transactionalId
+                                        Producer = producer_2
+                                        TxnSequences = txnSequences
+                                        InTransaction = replacement_3
+                                        Added = added_2
+                                        OffsetsSent = offsetsSent_2
+                                    }
+
+                                transactionState
+
+                        match value_6 with
                         | subject ->
-                            let lawspecFieldtransactionalId_2949 = subject.TransactionalId
-                            let lawspecFieldproducer_2950 = subject.Producer
-                            let lawspecFieldtxnSequences_2951 = subject.TxnSequences
-                            let lawspecFieldinTransaction_2952 = subject.InTransaction
-                            let lawspecFieldoffsetsSent_2953 = subject.OffsetsSent
-                            ({ TransactionalId = lawspecFieldtransactionalId_2949; Producer = lawspecFieldproducer_2950; TxnSequences = lawspecFieldtxnSequences_2951; InTransaction = lawspecFieldinTransaction_2952; Added = replacement_2941; OffsetsSent = lawspecFieldoffsetsSent_2953 } : LawSpec.Data.TransactionState)
-                    match value_2940 with
+                            let transactionalId_2 = subject.TransactionalId
+                            let producer_3 = subject.Producer
+                            let txnSequences_2 = subject.TxnSequences
+                            let inTransaction_2 = subject.InTransaction
+                            let offsetsSent_3 = subject.OffsetsSent
+
+                            let transactionState_2: LawSpec.Data.TransactionState =
+                                {
+                                    TransactionalId = transactionalId_2
+                                    Producer = producer_3
+                                    TxnSequences = txnSequences_2
+                                    InTransaction = inTransaction_2
+                                    Added = replacement_2
+                                    OffsetsSent = offsetsSent_3
+                                }
+
+                            transactionState_2
+
+                    match value_7 with
                     | subject ->
-                        let lawspecFieldtransactionalId_2954 = subject.TransactionalId
-                        let lawspecFieldproducer_2955 = subject.Producer
-                        let lawspecFieldtxnSequences_2956 = subject.TxnSequences
-                        let lawspecFieldinTransaction_2957 = subject.InTransaction
-                        let lawspecFieldadded_2958 = subject.Added
-                        ({ TransactionalId = lawspecFieldtransactionalId_2954; Producer = lawspecFieldproducer_2955; TxnSequences = lawspecFieldtxnSequences_2956; InTransaction = lawspecFieldinTransaction_2957; Added = lawspecFieldadded_2958; OffsetsSent = replacement_2939 } : LawSpec.Data.TransactionState)
-                ({ First = (LawSpec.Either.Right ()); Second = value_2938 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+                        let transactionalId_3 = subject.TransactionalId
+                        let producer_4 = subject.Producer
+                        let txnSequences_3 = subject.TxnSequences
+                        let inTransaction_3 = subject.InTransaction
+                        let added_3 = subject.Added
+
+                        let transactionState_3: LawSpec.Data.TransactionState =
+                            {
+                                TransactionalId = transactionalId_3
+                                Producer = producer_4
+                                TxnSequences = txnSequences_3
+                                InTransaction = inTransaction_3
+                                Added = added_3
+                                OffsetsSent = replacement
+                            }
+
+                        transactionState_3
+
+                let pair_3: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                    {
+                        First = LawSpec.Either.Right()
+                        Second = value_8
+                    }
+
+                pair_3
             else
-                let value_2959 =
-                    let attempted_2967 =
-                        Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                            let value_2960 =
-                                match st_2925 with
-                                | subject ->
-                                    let lawspecFieldtransactionalId_2961 = subject.TransactionalId
-                                    lawspecFieldtransactionalId_2961
-                            let value_2962 =
-                                match lawspecSelection0x0_2929 with
-                                | subject ->
-                                    let lawspecFieldproducerId_2963 = subject.ProducerId
-                                    lawspecFieldproducerId_2963
-                            let value_2964 =
-                                match lawspecSelection0x0_2929 with
-                                | subject ->
-                                    let lawspecFieldproducerEpoch_2965 = subject.ProducerEpoch
-                                    lawspecFieldproducerEpoch_2965
-                            let result_2966 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).EndTxnRequest(value_2960, value_2962, value_2964, commit_2924)))
-                            result_2966)
-                    match attempted_2967 with
-                    | LawSpec.Either.Left lawspecFailure_2968 ->
-                        (LawSpec.Either.Left lawspecFailure_2968)
-                    | LawSpec.Either.Right lawspecValue_2969 ->
-                        (LawSpec.Either.Right lawspecValue_2969)
-                let it_2970 = value_2959
-                match it_2970 with
-                | LawSpec.Either.Left matchlawspecSelection0x00_2971 ->
-                    ({ First = (LawSpec.Either.Left matchlawspecSelection0x00_2971); Second = st_2925 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+                let value_13 =
+                    let attempted =
+                        Typed.attempt
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (fun () ->
+                                let value_9 =
+                                    match st with
+                                    | subject ->
+                                        let transactionalId_4 = subject.TransactionalId
+                                        transactionalId_4
+
+                                let value_10 =
+                                    match selection with
+                                    | subject ->
+                                        let producerId = subject.ProducerId
+                                        producerId
+
+                                let value_11 =
+                                    match selection with
+                                    | subject ->
+                                        let producerEpoch = subject.ProducerEpoch
+                                        producerEpoch
+
+                                let broker =
+                                    LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                        schema
+                                        symbols
+                                        (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                                let result =
+                                    Typed.performed
+                                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                        (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                        (broker.EndTxnRequest(value_9, value_10, value_11, commit))
+
+                                result)
+
+                    match attempted with
+                    | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+                    | LawSpec.Either.Right value_12 -> LawSpec.Either.Right value_12
+
+                let it_2 = value_13
+
+                match it_2 with
+                | LawSpec.Either.Left matchSelection ->
+                    let pair_4: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                        {
+                            First = LawSpec.Either.Left matchSelection
+                            Second = st
+                        }
+
+                    pair_4
                 | LawSpec.Either.Right _ ->
-                    let value_2972 =
-                        let replacement_2973 = false
-                        let value_2974 =
-                            let replacement_2975 = []
-                            let value_2976 =
-                                let replacement_2977 = false
-                                match st_2925 with
+                    let value_16 =
+                        let replacement_4 = false
+
+                        let value_15 =
+                            let replacement_5 = []
+
+                            let value_14 =
+                                let replacement_6 = false
+
+                                match st with
                                 | subject ->
-                                    let lawspecFieldtransactionalId_2978 = subject.TransactionalId
-                                    let lawspecFieldproducer_2979 = subject.Producer
-                                    let lawspecFieldtxnSequences_2980 = subject.TxnSequences
-                                    let lawspecFieldadded_2981 = subject.Added
-                                    let lawspecFieldoffsetsSent_2982 = subject.OffsetsSent
-                                    ({ TransactionalId = lawspecFieldtransactionalId_2978; Producer = lawspecFieldproducer_2979; TxnSequences = lawspecFieldtxnSequences_2980; InTransaction = replacement_2977; Added = lawspecFieldadded_2981; OffsetsSent = lawspecFieldoffsetsSent_2982 } : LawSpec.Data.TransactionState)
-                            match value_2976 with
+                                    let transactionalId_5 = subject.TransactionalId
+                                    let producer_5 = subject.Producer
+                                    let txnSequences_4 = subject.TxnSequences
+                                    let added_4 = subject.Added
+                                    let offsetsSent_4 = subject.OffsetsSent
+
+                                    let transactionState_4: LawSpec.Data.TransactionState =
+                                        {
+                                            TransactionalId = transactionalId_5
+                                            Producer = producer_5
+                                            TxnSequences = txnSequences_4
+                                            InTransaction = replacement_6
+                                            Added = added_4
+                                            OffsetsSent = offsetsSent_4
+                                        }
+
+                                    transactionState_4
+
+                            match value_14 with
                             | subject ->
-                                let lawspecFieldtransactionalId_2983 = subject.TransactionalId
-                                let lawspecFieldproducer_2984 = subject.Producer
-                                let lawspecFieldtxnSequences_2985 = subject.TxnSequences
-                                let lawspecFieldinTransaction_2986 = subject.InTransaction
-                                let lawspecFieldoffsetsSent_2987 = subject.OffsetsSent
-                                ({ TransactionalId = lawspecFieldtransactionalId_2983; Producer = lawspecFieldproducer_2984; TxnSequences = lawspecFieldtxnSequences_2985; InTransaction = lawspecFieldinTransaction_2986; Added = replacement_2975; OffsetsSent = lawspecFieldoffsetsSent_2987 } : LawSpec.Data.TransactionState)
-                        match value_2974 with
+                                let transactionalId_6 = subject.TransactionalId
+                                let producer_6 = subject.Producer
+                                let txnSequences_5 = subject.TxnSequences
+                                let inTransaction_4 = subject.InTransaction
+                                let offsetsSent_5 = subject.OffsetsSent
+
+                                let transactionState_5: LawSpec.Data.TransactionState =
+                                    {
+                                        TransactionalId = transactionalId_6
+                                        Producer = producer_6
+                                        TxnSequences = txnSequences_5
+                                        InTransaction = inTransaction_4
+                                        Added = replacement_5
+                                        OffsetsSent = offsetsSent_5
+                                    }
+
+                                transactionState_5
+
+                        match value_15 with
                         | subject ->
-                            let lawspecFieldtransactionalId_2988 = subject.TransactionalId
-                            let lawspecFieldproducer_2989 = subject.Producer
-                            let lawspecFieldtxnSequences_2990 = subject.TxnSequences
-                            let lawspecFieldinTransaction_2991 = subject.InTransaction
-                            let lawspecFieldadded_2992 = subject.Added
-                            ({ TransactionalId = lawspecFieldtransactionalId_2988; Producer = lawspecFieldproducer_2989; TxnSequences = lawspecFieldtxnSequences_2990; InTransaction = lawspecFieldinTransaction_2991; Added = lawspecFieldadded_2992; OffsetsSent = replacement_2973 } : LawSpec.Data.TransactionState)
-                    ({ First = (LawSpec.Either.Right ()); Second = value_2972 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+                            let transactionalId_7 = subject.TransactionalId
+                            let producer_7 = subject.Producer
+                            let txnSequences_6 = subject.TxnSequences
+                            let inTransaction_5 = subject.InTransaction
+                            let added_5 = subject.Added
 
-/// lawtwin.kafka::transactionsInit
-[<CompiledName("TransactionsInit_d69a08bc")>]
-let transactionsInit_d69a08bc (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (txid_2993: string) (st_2994: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> =
-    let value_2995 =
-        let attempted_2997 =
-            Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                let result_2996 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).InitProducerIdRequest((Some txid_2993))))
-                result_2996)
-        match attempted_2997 with
-        | LawSpec.Either.Left lawspecFailure_2998 ->
-            (LawSpec.Either.Left lawspecFailure_2998)
-        | LawSpec.Either.Right lawspecValue_2999 ->
-            (LawSpec.Either.Right lawspecValue_2999)
-    let it_3000 = value_2995
-    match it_3000 with
-    | LawSpec.Either.Left lawspecSelection0x0_3001 ->
-        ({ First = (LawSpec.Either.Left lawspecSelection0x0_3001); Second = st_2994 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState>)
-    | LawSpec.Either.Right lawspecSelection0x0_3002 ->
-        let value_3003 =
-            let lawspecRecordField0_3004 = txid_2993
-            let lawspecRecordField1_3005 = (Some lawspecSelection0x0_3002)
-            let result_3006 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-            let lawspecRecordField2_3007 = result_3006
-            let lawspecRecordField3_3008 = false
-            let lawspecRecordField4_3009 = []
-            let lawspecRecordField5_3010 = false
-            ({ TransactionalId = lawspecRecordField0_3004; Producer = lawspecRecordField1_3005; TxnSequences = lawspecRecordField2_3007; InTransaction = lawspecRecordField3_3008; Added = lawspecRecordField4_3009; OffsetsSent = lawspecRecordField5_3010 } : LawSpec.Data.TransactionState)
-        ({ First = (LawSpec.Either.Right lawspecSelection0x0_3002); Second = value_3003 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState>)
+                            let transactionState_6: LawSpec.Data.TransactionState =
+                                {
+                                    TransactionalId = transactionalId_7
+                                    Producer = producer_7
+                                    TxnSequences = txnSequences_6
+                                    InTransaction = inTransaction_5
+                                    Added = added_5
+                                    OffsetsSent = replacement_4
+                                }
 
-/// lawtwin.kafka::transactionsOffsets
-[<CompiledName("TransactionsOffsets_b33ea106")>]
-let transactionsOffsets_b33ea106 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (g_3011: string) (offsets_3012: LawSpec.Data.OffsetEntry list) (st_3013: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let value_3014 =
-        match st_3013 with
+                            transactionState_6
+
+                    let pair_5: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                        {
+                            First = LawSpec.Either.Right()
+                            Second = value_16
+                        }
+
+                    pair_5
+
+/// transactionsInit — ../src/contract.lawspec:845
+[<CompiledName("TransactionsInit")>]
+let transactionsInit
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (txid: string)
+    (st: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> =
+    let value_2 =
+        let attempted =
+            Typed.attempt
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    let broker =
+                        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                            schema
+                            symbols
+                            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                    let result =
+                        Typed.performed
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (broker.InitProducerIdRequest(Some txid))
+
+                    result)
+
+        match attempted with
+        | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+        | LawSpec.Either.Right value -> LawSpec.Either.Right value
+
+    let it = value_2
+
+    match it with
+    | LawSpec.Either.Left selection ->
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> =
+            {
+                First = LawSpec.Either.Left selection
+                Second = st
+            }
+
+        pair
+    | LawSpec.Either.Right selection_2 ->
+        let value_3 =
+            let recordField = txid
+            let recordField_2 = Some selection_2
+
+            let result_2 =
+                Typed.keyValOf
+                    (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key)
+                    (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value)
+                    []
+
+            let recordField_3 = result_2
+            let recordField_4 = false
+            let recordField_5 = []
+            let recordField_6 = false
+
+            let transactionState: LawSpec.Data.TransactionState =
+                {
+                    TransactionalId = recordField
+                    Producer = recordField_2
+                    TxnSequences = recordField_3
+                    InTransaction = recordField_4
+                    Added = recordField_5
+                    OffsetsSent = recordField_6
+                }
+
+            transactionState
+
+        let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> =
+            {
+                First = LawSpec.Either.Right selection_2
+                Second = value_3
+            }
+
+        pair_2
+
+/// transactionsOffsets — ../src/contract.lawspec:917
+[<CompiledName("TransactionsOffsets")>]
+let transactionsOffsets
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (g: string)
+    (offsets: LawSpec.Data.OffsetEntry list)
+    (st: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+    let value =
+        match st with
         | subject ->
-            let lawspecFieldproducer_3015 = subject.Producer
-            lawspecFieldproducer_3015
-    let it_3016 = value_3014
-    match it_3016 with
+            let producer = subject.Producer
+            producer
+
+    let it = value
+
+    match it with
     | None ->
-        ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = st_3013 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
-    | Some lawspecSelection0x0_3017 ->
-        let value_3018 =
-            match st_3013 with
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+            {
+                First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                Second = st
+            }
+
+        pair
+    | Some selection ->
+        let value_2 =
+            match st with
             | subject ->
-                let lawspecFieldinTransaction_3019 = subject.InTransaction
-                lawspecFieldinTransaction_3019
-        if (not value_3018) then
-            ({ First = (LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState); Second = st_3013 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
+                let inTransaction = subject.InTransaction
+                inTransaction
+
+        if not value_2 then
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                {
+                    First = LawSpec.Either.Left LawSpec.Data.KafkaError.IllegalState
+                    Second = st
+                }
+
+            pair_2
         else
-            let value_3020 =
-                let attempted_3028 =
-                    Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                        let value_3021 =
-                            match st_3013 with
-                            | subject ->
-                                let lawspecFieldtransactionalId_3022 = subject.TransactionalId
-                                lawspecFieldtransactionalId_3022
-                        let value_3023 =
-                            match lawspecSelection0x0_3017 with
-                            | subject ->
-                                let lawspecFieldproducerId_3024 = subject.ProducerId
-                                lawspecFieldproducerId_3024
-                        let value_3025 =
-                            match lawspecSelection0x0_3017 with
-                            | subject ->
-                                let lawspecFieldproducerEpoch_3026 = subject.ProducerEpoch
-                                lawspecFieldproducerEpoch_3026
-                        let result_3027 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).TxnOffsetCommitRequest(value_3021, value_3023, value_3025, g_3011, offsets_3012)))
-                        result_3027)
-                match attempted_3028 with
-                | LawSpec.Either.Left lawspecFailure_3029 ->
-                    (LawSpec.Either.Left lawspecFailure_3029)
-                | LawSpec.Either.Right lawspecValue_3030 ->
-                    (LawSpec.Either.Right lawspecValue_3030)
-            let it_3031 = value_3020
-            match it_3031 with
-            | LawSpec.Either.Left matchlawspecSelection0x00_3032 ->
-                ({ First = (LawSpec.Either.Left matchlawspecSelection0x00_3032); Second = st_3013 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
-            | LawSpec.Either.Right _ ->
-                let value_3033 =
-                    let replacement_3034 = true
-                    match st_3013 with
-                    | subject ->
-                        let lawspecFieldtransactionalId_3035 = subject.TransactionalId
-                        let lawspecFieldproducer_3036 = subject.Producer
-                        let lawspecFieldtxnSequences_3037 = subject.TxnSequences
-                        let lawspecFieldinTransaction_3038 = subject.InTransaction
-                        let lawspecFieldadded_3039 = subject.Added
-                        ({ TransactionalId = lawspecFieldtransactionalId_3035; Producer = lawspecFieldproducer_3036; TxnSequences = lawspecFieldtxnSequences_3037; InTransaction = lawspecFieldinTransaction_3038; Added = lawspecFieldadded_3039; OffsetsSent = replacement_3034 } : LawSpec.Data.TransactionState)
-                ({ First = (LawSpec.Either.Right ()); Second = value_3033 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState>)
-
-/// lawtwin.kafka::transactionsSend
-[<CompiledName("TransactionsSend_558d813c")>]
-let transactionsSend_558d813c (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (pr_3040: LawSpec.Data.ProducerRecord) (st_3041: LawSpec.Data.TransactionState) : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
-    let value_3042 =
-        match pr_3040 with
-        | subject ->
-            let lawspecFielddestination_3043 = subject.Destination
-            lawspecFielddestination_3043
-    let value_3044 =
-        match pr_3040 with
-        | subject ->
-            let lawspecFieldchoice_3045 = subject.Choice
-            lawspecFieldchoice_3045
-    let value_3046 =
-        match pr_3040 with
-        | subject ->
-            let lawspecFieldpayload_3047 = subject.Payload
-            lawspecFieldpayload_3047
-    let result_3048 = partitionOf_343af5ef schema symbols (value_3042) (value_3044) (value_3046)
-    let it_3049 = result_3048
-    match it_3049 with
-    | LawSpec.Either.Left lawspecSelection0x0_3050 ->
-        ({ First = (LawSpec.Either.Left lawspecSelection0x0_3050); Second = st_3041 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState>)
-    | LawSpec.Either.Right lawspecSelection0x0_3051 ->
-        let result_3052 = transactionsAdd_1f41c92e schema symbols ((lawspecSelection0x0_3051 :: [])) (st_3041)
-        let a_3053 = result_3052
-        let value_3054 =
-            match a_3053 with
-            | subject ->
-                let lawspecFieldfirst_3055 = subject.First
-                lawspecFieldfirst_3055
-        let it_3056 = value_3054
-        match it_3056 with
-        | LawSpec.Either.Left matchlawspecSelection0x00_3057 ->
-            let value_3058 =
-                match a_3053 with
-                | subject ->
-                    let lawspecFieldsecond_3059 = subject.Second
-                    lawspecFieldsecond_3059
-            ({ First = (LawSpec.Either.Left matchlawspecSelection0x00_3057); Second = value_3058 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState>)
-        | LawSpec.Either.Right _ ->
-            let value_3060 =
-                let value_3061 =
-                    match a_3053 with
-                    | subject ->
-                        let lawspecFieldsecond_3062 = subject.Second
-                        lawspecFieldsecond_3062
-                match value_3061 with
-                | subject ->
-                    let lawspecFieldtxnSequences_3063 = subject.TxnSequences
-                    lawspecFieldtxnSequences_3063
-            let result_3064 = sequenceFor_9d79724c (lawspecSelection0x0_3051) (value_3060)
-            let sequence_3065 = result_3064
-            let value_3066 =
-                let attempted_3075 =
-                    Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                        let value_3067 =
-                            let value_3068 =
-                                match a_3053 with
+            let value_7 =
+                let attempted =
+                    Typed.attempt
+                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                        (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                        (fun () ->
+                            let value_3 =
+                                match st with
                                 | subject ->
-                                    let lawspecFieldsecond_3069 = subject.Second
-                                    lawspecFieldsecond_3069
-                            match value_3068 with
-                            | subject ->
-                                let lawspecFieldproducer_3070 = subject.Producer
-                                lawspecFieldproducer_3070
-                        let result_3071 = tagFor_a88d3846 (value_3067) (sequence_3065)
-                        let value_3072 =
-                            match pr_3040 with
-                            | subject ->
-                                let lawspecFieldpayload_3073 = subject.Payload
-                                lawspecFieldpayload_3073
-                        let result_3074 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).ProduceRequest(lawspecSelection0x0_3051, result_3071, (value_3072 :: []))))
-                        result_3074)
-                match attempted_3075 with
-                | LawSpec.Either.Left lawspecFailure_3076 ->
-                    (LawSpec.Either.Left lawspecFailure_3076)
-                | LawSpec.Either.Right lawspecValue_3077 ->
-                    (LawSpec.Either.Right lawspecValue_3077)
-            let it_3078 = value_3066
-            match it_3078 with
-            | LawSpec.Either.Left matchmatchlawspecSelection0x000_3079 ->
-                let value_3080 =
-                    match a_3053 with
-                    | subject ->
-                        let lawspecFieldsecond_3081 = subject.Second
-                        lawspecFieldsecond_3081
-                ({ First = (LawSpec.Either.Left matchmatchlawspecSelection0x000_3079); Second = value_3080 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState>)
-            | LawSpec.Either.Right matchmatchlawspecSelection0x000_3082 ->
-                let value_3083 =
-                    let lawspecRecordField0_3084 = lawspecSelection0x0_3051
-                    let lawspecRecordField1_3085 = matchmatchlawspecSelection0x000_3082
-                    ({ SentTo = lawspecRecordField0_3084; SentAt = lawspecRecordField1_3085 } : LawSpec.Data.RecordMetadata)
-                let value_3086 =
-                    let result_3087 = saturatingInt32_9e8d3b43 (((bigint sequence_3065) + 1I))
-                    let value_3088 =
-                        let value_3089 =
-                            match a_3053 with
-                            | subject ->
-                                let lawspecFieldsecond_3090 = subject.Second
-                                lawspecFieldsecond_3090
-                        match value_3089 with
-                        | subject ->
-                            let lawspecFieldtxnSequences_3091 = subject.TxnSequences
-                            lawspecFieldtxnSequences_3091
-                    let result_3092 = (Map.add lawspecSelection0x0_3051 result_3087 value_3088)
-                    let replacement_3093 = result_3092
-                    let value_3094 =
-                        match a_3053 with
-                        | subject ->
-                            let lawspecFieldsecond_3095 = subject.Second
-                            lawspecFieldsecond_3095
-                    match value_3094 with
-                    | subject ->
-                        let lawspecFieldtransactionalId_3096 = subject.TransactionalId
-                        let lawspecFieldproducer_3097 = subject.Producer
-                        let lawspecFieldinTransaction_3098 = subject.InTransaction
-                        let lawspecFieldadded_3099 = subject.Added
-                        let lawspecFieldoffsetsSent_3100 = subject.OffsetsSent
-                        ({ TransactionalId = lawspecFieldtransactionalId_3096; Producer = lawspecFieldproducer_3097; TxnSequences = replacement_3093; InTransaction = lawspecFieldinTransaction_3098; Added = lawspecFieldadded_3099; OffsetsSent = lawspecFieldoffsetsSent_3100 } : LawSpec.Data.TransactionState)
-                ({ First = (LawSpec.Either.Right value_3083); Second = value_3086 } : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState>)
+                                    let transactionalId = subject.TransactionalId
+                                    transactionalId
 
-/// lawtwin.kafka::uncommittedFrom
-[<CompiledName("UncommittedFrom_8a57847d")>]
-let uncommittedFrom_8a57847d (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tp_3101: LawSpec.Data.TopicPartition) (offset_3102: int64) : LawSpec.Data.Record list =
-    let result_3103 = readFrom_f028a48d schema symbols (tp_3101) (offset_3102) (LawSpec.Data.IsolationLevel.ReadUncommitted)
-    result_3103
+                            let value_4 =
+                                match selection with
+                                | subject ->
+                                    let producerId = subject.ProducerId
+                                    producerId
 
-/// lawtwin.kafka::viewOf
-[<CompiledName("ViewOf_6e11c6f7")>]
-let viewOf_6e11c6f7 (m_3104: string) (view_3105: LawSpec.Data.GroupView) : LawSpec.Data.TopicPartition list =
-    let value_3106 =
-        match view_3105 with
-        | subject ->
-            let lawspecFieldmembers_3107 = subject.Members
-            lawspecFieldmembers_3107
-    let result_3108 = assignmentIn_4b795225 (m_3104) (value_3106)
-    result_3108
+                            let value_5 =
+                                match selection with
+                                | subject ->
+                                    let producerEpoch = subject.ProducerEpoch
+                                    producerEpoch
 
-/// lawtwin.kafka::withAssignment
-[<CompiledName("WithAssignment_7d6291b1")>]
-let withAssignment_7d6291b1 (g_3109: string option) (m_3110: string) (gen_3111: int) (topics_3112: string list) (tps_3113: LawSpec.Data.TopicPartition list) (c_3114: LawSpec.Data.ConsumerState) : LawSpec.Data.ConsumerState =
-    let value_3115 =
-        match c_3114 with
-        | subject ->
-            let lawspecFieldpositions_3116 = subject.Positions
-            lawspecFieldpositions_3116
-    let result_3117 = (Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) [])
-    let result_3118 = keepPositions_f10bd26f (tps_3113) (value_3115) (result_3117)
-    let replacement_3119 = result_3118
-    let value_3120 =
-        let replacement_3121 = tps_3113
-        let value_3122 =
-            let replacement_3123 = topics_3112
-            let value_3124 =
-                let replacement_3125 = gen_3111
-                let value_3126 =
-                    let replacement_3127 = m_3110
-                    let value_3128 =
-                        let replacement_3129 = g_3109
-                        match c_3114 with
-                        | subject ->
-                            let lawspecFieldmember_3130 = subject.Member
-                            let lawspecFieldgeneration_3131 = subject.Generation
-                            let lawspecFieldsubscription_3132 = subject.Subscription
-                            let lawspecFieldassigned_3133 = subject.Assigned
-                            let lawspecFieldpositions_3134 = subject.Positions
-                            let lawspecFieldisolation_3135 = subject.Isolation
-                            ({ Group = replacement_3129; Member = lawspecFieldmember_3130; Generation = lawspecFieldgeneration_3131; Subscription = lawspecFieldsubscription_3132; Assigned = lawspecFieldassigned_3133; Positions = lawspecFieldpositions_3134; Isolation = lawspecFieldisolation_3135 } : LawSpec.Data.ConsumerState)
-                    match value_3128 with
-                    | subject ->
-                        let lawspecFieldgroup_3136 = subject.Group
-                        let lawspecFieldgeneration_3137 = subject.Generation
-                        let lawspecFieldsubscription_3138 = subject.Subscription
-                        let lawspecFieldassigned_3139 = subject.Assigned
-                        let lawspecFieldpositions_3140 = subject.Positions
-                        let lawspecFieldisolation_3141 = subject.Isolation
-                        ({ Group = lawspecFieldgroup_3136; Member = replacement_3127; Generation = lawspecFieldgeneration_3137; Subscription = lawspecFieldsubscription_3138; Assigned = lawspecFieldassigned_3139; Positions = lawspecFieldpositions_3140; Isolation = lawspecFieldisolation_3141 } : LawSpec.Data.ConsumerState)
-                match value_3126 with
-                | subject ->
-                    let lawspecFieldgroup_3142 = subject.Group
-                    let lawspecFieldmember_3143 = subject.Member
-                    let lawspecFieldsubscription_3144 = subject.Subscription
-                    let lawspecFieldassigned_3145 = subject.Assigned
-                    let lawspecFieldpositions_3146 = subject.Positions
-                    let lawspecFieldisolation_3147 = subject.Isolation
-                    ({ Group = lawspecFieldgroup_3142; Member = lawspecFieldmember_3143; Generation = replacement_3125; Subscription = lawspecFieldsubscription_3144; Assigned = lawspecFieldassigned_3145; Positions = lawspecFieldpositions_3146; Isolation = lawspecFieldisolation_3147 } : LawSpec.Data.ConsumerState)
-            match value_3124 with
-            | subject ->
-                let lawspecFieldgroup_3148 = subject.Group
-                let lawspecFieldmember_3149 = subject.Member
-                let lawspecFieldgeneration_3150 = subject.Generation
-                let lawspecFieldassigned_3151 = subject.Assigned
-                let lawspecFieldpositions_3152 = subject.Positions
-                let lawspecFieldisolation_3153 = subject.Isolation
-                ({ Group = lawspecFieldgroup_3148; Member = lawspecFieldmember_3149; Generation = lawspecFieldgeneration_3150; Subscription = replacement_3123; Assigned = lawspecFieldassigned_3151; Positions = lawspecFieldpositions_3152; Isolation = lawspecFieldisolation_3153 } : LawSpec.Data.ConsumerState)
-        match value_3122 with
-        | subject ->
-            let lawspecFieldgroup_3154 = subject.Group
-            let lawspecFieldmember_3155 = subject.Member
-            let lawspecFieldgeneration_3156 = subject.Generation
-            let lawspecFieldsubscription_3157 = subject.Subscription
-            let lawspecFieldpositions_3158 = subject.Positions
-            let lawspecFieldisolation_3159 = subject.Isolation
-            ({ Group = lawspecFieldgroup_3154; Member = lawspecFieldmember_3155; Generation = lawspecFieldgeneration_3156; Subscription = lawspecFieldsubscription_3157; Assigned = replacement_3121; Positions = lawspecFieldpositions_3158; Isolation = lawspecFieldisolation_3159 } : LawSpec.Data.ConsumerState)
-    match value_3120 with
-    | subject ->
-        let lawspecFieldgroup_3160 = subject.Group
-        let lawspecFieldmember_3161 = subject.Member
-        let lawspecFieldgeneration_3162 = subject.Generation
-        let lawspecFieldsubscription_3163 = subject.Subscription
-        let lawspecFieldassigned_3164 = subject.Assigned
-        let lawspecFieldisolation_3165 = subject.Isolation
-        ({ Group = lawspecFieldgroup_3160; Member = lawspecFieldmember_3161; Generation = lawspecFieldgeneration_3162; Subscription = lawspecFieldsubscription_3163; Assigned = lawspecFieldassigned_3164; Positions = replacement_3119; Isolation = lawspecFieldisolation_3165 } : LawSpec.Data.ConsumerState)
+                            let broker =
+                                LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                    schema
+                                    symbols
+                                    (Effects.handler schema "lawtwin.kafka::ability::Broker")
 
-/// lawtwin.kafka::withPosition
-[<CompiledName("WithPosition_867e6b19")>]
-let withPosition_867e6b19 (tp_3166: LawSpec.Data.TopicPartition) (offset_3167: int64) (c_3168: LawSpec.Data.ConsumerState) : LawSpec.Data.ConsumerState =
-    let value_3169 =
-        match c_3168 with
-        | subject ->
-            let lawspecFieldpositions_3170 = subject.Positions
-            lawspecFieldpositions_3170
-    let result_3171 = (Map.add tp_3166 offset_3167 value_3169)
-    let replacement_3172 = result_3171
-    match c_3168 with
-    | subject ->
-        let lawspecFieldgroup_3173 = subject.Group
-        let lawspecFieldmember_3174 = subject.Member
-        let lawspecFieldgeneration_3175 = subject.Generation
-        let lawspecFieldsubscription_3176 = subject.Subscription
-        let lawspecFieldassigned_3177 = subject.Assigned
-        let lawspecFieldisolation_3178 = subject.Isolation
-        ({ Group = lawspecFieldgroup_3173; Member = lawspecFieldmember_3174; Generation = lawspecFieldgeneration_3175; Subscription = lawspecFieldsubscription_3176; Assigned = lawspecFieldassigned_3177; Positions = replacement_3172; Isolation = lawspecFieldisolation_3178 } : LawSpec.Data.ConsumerState)
+                            let result =
+                                Typed.performed
+                                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                    (broker.TxnOffsetCommitRequest(value_3, value_4, value_5, g, offsets))
 
-/// lawtwin.kafka::writeAborted
-[<CompiledName("WriteAborted_8e3a61e4")>]
-let writeAborted_8e3a61e4 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tp_3179: LawSpec.Data.TopicPartition) (txid_3180: string) (r_3181: LawSpec.Data.Record) : int64 option =
-    let value_3182 =
-        let attempted_3184 =
-            Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                let result_3183 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).InitProducerIdRequest((Some txid_3180))))
-                result_3183)
-        match attempted_3184 with
-        | LawSpec.Either.Left lawspecFailure_3185 ->
-            (LawSpec.Either.Left lawspecFailure_3185)
-        | LawSpec.Either.Right lawspecValue_3186 ->
-            (LawSpec.Either.Right lawspecValue_3186)
-    let it_3187 = value_3182
-    match it_3187 with
-    | LawSpec.Either.Left _ ->
-        None
-    | LawSpec.Either.Right lawspecSelection0x0_3188 ->
-        let value_3189 =
-            let attempted_3195 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let value_3190 =
-                        match lawspecSelection0x0_3188 with
-                        | subject ->
-                            let lawspecFieldproducerId_3191 = subject.ProducerId
-                            lawspecFieldproducerId_3191
-                    let value_3192 =
-                        match lawspecSelection0x0_3188 with
-                        | subject ->
-                            let lawspecFieldproducerEpoch_3193 = subject.ProducerEpoch
-                            lawspecFieldproducerEpoch_3193
-                    let result_3194 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).AddPartitionsToTxnRequest(txid_3180, value_3190, value_3192, (tp_3179 :: []))))
-                    result_3194)
-            match attempted_3195 with
-            | LawSpec.Either.Left lawspecFailure_3196 ->
-                (LawSpec.Either.Left lawspecFailure_3196)
-            | LawSpec.Either.Right lawspecValue_3197 ->
-                (LawSpec.Either.Right lawspecValue_3197)
-        let added_3198 = value_3189
-        let value_3199 =
-            let attempted_3202 =
-                Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                    let result_3200 = tagOf_39235de7 (lawspecSelection0x0_3188) (0)
-                    let result_3201 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).ProduceRequest(tp_3179, (Some result_3200), (r_3181 :: []))))
-                    result_3201)
-            match attempted_3202 with
-            | LawSpec.Either.Left lawspecFailure_3203 ->
-                (LawSpec.Either.Left lawspecFailure_3203)
-            | LawSpec.Either.Right lawspecValue_3204 ->
-                (LawSpec.Either.Right lawspecValue_3204)
-        let it_3205 = value_3199
-        match it_3205 with
-        | LawSpec.Either.Left _ ->
-            None
-        | LawSpec.Either.Right matchlawspecSelection0x00_3206 ->
-            let value_3207 =
-                let attempted_3213 =
-                    Typed.attempt "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).ToNative (fun () ->
-                        let value_3208 =
-                            match lawspecSelection0x0_3188 with
-                            | subject ->
-                                let lawspecFieldproducerId_3209 = subject.ProducerId
-                                lawspecFieldproducerId_3209
-                        let value_3210 =
-                            match lawspecSelection0x0_3188 with
-                            | subject ->
-                                let lawspecFieldproducerEpoch_3211 = subject.ProducerEpoch
-                                lawspecFieldproducerEpoch_3211
-                        let result_3212 = (Typed.performed "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" (LawSpec.Data.Codecs.kafkaError ()).FromNative ((LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative schema symbols (Effects.handler schema "lawtwin.kafka::ability::Broker")).EndTxnRequest(txid_3180, value_3208, value_3210, false)))
-                        result_3212)
-                match attempted_3213 with
-                | LawSpec.Either.Left lawspecFailure_3214 ->
-                    (LawSpec.Either.Left lawspecFailure_3214)
-                | LawSpec.Either.Right lawspecValue_3215 ->
-                    (LawSpec.Either.Right lawspecValue_3215)
-            let it_3216 = value_3207
-            match it_3216 with
-            | LawSpec.Either.Left _ ->
-                None
+                            result)
+
+                match attempted with
+                | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+                | LawSpec.Either.Right value_6 -> LawSpec.Either.Right value_6
+
+            let it_2 = value_7
+
+            match it_2 with
+            | LawSpec.Either.Left matchSelection ->
+                let pair_3: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                    {
+                        First = LawSpec.Either.Left matchSelection
+                        Second = st
+                    }
+
+                pair_3
             | LawSpec.Either.Right _ ->
-                (Some matchlawspecSelection0x00_3206)
+                let value_8 =
+                    let replacement = true
 
-/// lawtwin.kafka::xor32
-[<CompiledName("Xor32_0ea970f5")>]
-let xor32_0ea970f5 (a_3217: uint32) (b_3218: uint32) : uint32 =
-    let result_3219 = xorBits_ea1fb8e2 ((bigint a_3217)) ((bigint b_3218)) (2147483648I)
-    let result_3220 = wrappingUInt32_1ef3ce20 (result_3219)
-    result_3220
+                    match st with
+                    | subject ->
+                        let transactionalId_2 = subject.TransactionalId
+                        let producer_2 = subject.Producer
+                        let txnSequences = subject.TxnSequences
+                        let inTransaction_2 = subject.InTransaction
+                        let added = subject.Added
 
-/// lawtwin.kafka::xorBits
-[<CompiledName("XorBits_ea1fb8e2")>]
-let xorBits_ea1fb8e2 (a_3221: bigint) (b_3222: bigint) (bit_3223: bigint) : bigint =
-    if (((bit_3223 <= 0I) || (a_3221 < 0I)) || (b_3222 < 0I)) then
+                        let transactionState: LawSpec.Data.TransactionState =
+                            {
+                                TransactionalId = transactionalId_2
+                                Producer = producer_2
+                                TxnSequences = txnSequences
+                                InTransaction = inTransaction_2
+                                Added = added
+                                OffsetsSent = replacement
+                            }
+
+                        transactionState
+
+                let pair_4: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
+                    {
+                        First = LawSpec.Either.Right()
+                        Second = value_8
+                    }
+
+                pair_4
+
+/// transactionsSend — ../src/contract.lawspec:893
+[<CompiledName("TransactionsSend")>]
+let transactionsSend
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (pr: LawSpec.Data.ProducerRecord)
+    (st: LawSpec.Data.TransactionState)
+    : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
+    let value =
+        match pr with
+        | subject ->
+            let destination = subject.Destination
+            destination
+
+    let value_2 =
+        match pr with
+        | subject ->
+            let choice = subject.Choice
+            choice
+
+    let value_3 =
+        match pr with
+        | subject ->
+            let payload = subject.Payload
+            payload
+
+    let result = partitionOf schema symbols value value_2 value_3
+    let it = result
+
+    match it with
+    | LawSpec.Either.Left selection ->
+        let pair: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
+            {
+                First = LawSpec.Either.Left selection
+                Second = st
+            }
+
+        pair
+    | LawSpec.Either.Right selection_2 ->
+        let result_2 = transactionsAdd schema symbols (selection_2 :: []) st
+        let a = result_2
+
+        let value_4 =
+            match a with
+            | subject ->
+                let first = subject.First
+                first
+
+        let it_2 = value_4
+
+        match it_2 with
+        | LawSpec.Either.Left matchSelection ->
+            let value_5 =
+                match a with
+                | subject ->
+                    let second = subject.Second
+                    second
+
+            let pair_2: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
+                {
+                    First = LawSpec.Either.Left matchSelection
+                    Second = value_5
+                }
+
+            pair_2
+        | LawSpec.Either.Right _ ->
+            let value_7 =
+                let value_6 =
+                    match a with
+                    | subject ->
+                        let second_2 = subject.Second
+                        second_2
+
+                match value_6 with
+                | subject ->
+                    let txnSequences = subject.TxnSequences
+                    txnSequences
+
+            let result_3 = sequenceFor selection_2 value_7
+            let sequence = result_3
+
+            let value_12 =
+                let attempted =
+                    Typed.attempt
+                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                        (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                        (fun () ->
+                            let value_9 =
+                                let value_8 =
+                                    match a with
+                                    | subject ->
+                                        let second_3 = subject.Second
+                                        second_3
+
+                                match value_8 with
+                                | subject ->
+                                    let producer = subject.Producer
+                                    producer
+
+                            let result_4 = tagFor value_9 sequence
+
+                            let value_10 =
+                                match pr with
+                                | subject ->
+                                    let payload_2 = subject.Payload
+                                    payload_2
+
+                            let broker =
+                                LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                    schema
+                                    symbols
+                                    (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                            let result_5 =
+                                Typed.performed
+                                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                    (broker.ProduceRequest(selection_2, result_4, (value_10 :: [])))
+
+                            result_5)
+
+                match attempted with
+                | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+                | LawSpec.Either.Right value_11 -> LawSpec.Either.Right value_11
+
+            let it_3 = value_12
+
+            match it_3 with
+            | LawSpec.Either.Left matchMatchSelection ->
+                let value_13 =
+                    match a with
+                    | subject ->
+                        let second_4 = subject.Second
+                        second_4
+
+                let pair_3: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
+                    {
+                        First = LawSpec.Either.Left matchMatchSelection
+                        Second = value_13
+                    }
+
+                pair_3
+            | LawSpec.Either.Right matchMatchSelection_2 ->
+                let value_14 =
+                    let recordField = selection_2
+                    let recordField_2 = matchMatchSelection_2
+
+                    let recordMetadata: LawSpec.Data.RecordMetadata =
+                        {
+                            SentTo = recordField
+                            SentAt = recordField_2
+                        }
+
+                    recordMetadata
+
+                let value_18 =
+                    let result_6 = saturatingInt32 (bigint sequence + 1I)
+
+                    let value_16 =
+                        let value_15 =
+                            match a with
+                            | subject ->
+                                let second_5 = subject.Second
+                                second_5
+
+                        match value_15 with
+                        | subject ->
+                            let txnSequences_2 = subject.TxnSequences
+                            txnSequences_2
+
+                    let result_7 = Map.add selection_2 result_6 value_16
+                    let replacement = result_7
+
+                    let value_17 =
+                        match a with
+                        | subject ->
+                            let second_6 = subject.Second
+                            second_6
+
+                    match value_17 with
+                    | subject ->
+                        let transactionalId = subject.TransactionalId
+                        let producer_2 = subject.Producer
+                        let inTransaction = subject.InTransaction
+                        let added = subject.Added
+                        let offsetsSent = subject.OffsetsSent
+
+                        let transactionState: LawSpec.Data.TransactionState =
+                            {
+                                TransactionalId = transactionalId
+                                Producer = producer_2
+                                TxnSequences = replacement
+                                InTransaction = inTransaction
+                                Added = added
+                                OffsetsSent = offsetsSent
+                            }
+
+                        transactionState
+
+                let pair_4: LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
+                    {
+                        First = LawSpec.Either.Right value_14
+                        Second = value_18
+                    }
+
+                pair_4
+
+/// uncommittedFrom — ../src/contract.lawspec:372
+[<CompiledName("UncommittedFrom")>]
+let uncommittedFrom
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (tp: LawSpec.Data.TopicPartition)
+    (offset: int64)
+    : LawSpec.Data.Record list =
+    let result =
+        readFrom schema symbols tp offset LawSpec.Data.IsolationLevel.ReadUncommitted
+
+    result
+
+/// viewOf — ../src/contract.lawspec:1615
+[<CompiledName("ViewOf")>]
+let viewOf (m: string) (view: LawSpec.Data.GroupView) : LawSpec.Data.TopicPartition list =
+    let value =
+        match view with
+        | subject ->
+            let members = subject.Members
+            members
+
+    let result = assignmentIn m value
+    result
+
+/// withAssignment — ../src/contract.lawspec:701
+[<CompiledName("WithAssignment")>]
+let withAssignment
+    (g: string option)
+    (m: string)
+    (gen: int)
+    (topics: string list)
+    (tps: LawSpec.Data.TopicPartition list)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.ConsumerState =
+    let value =
+        match c with
+        | subject ->
+            let positions = subject.Positions
+            positions
+
+    let result =
+        Typed.keyValOf (fun (e: LawSpec.Data.Entry<_, _>) -> e.Key) (fun (e: LawSpec.Data.Entry<_, _>) -> e.Value) []
+
+    let result_2 = keepPositions tps value result
+    let replacement = result_2
+
+    let value_6 =
+        let replacement_2 = tps
+
+        let value_5 =
+            let replacement_3 = topics
+
+            let value_4 =
+                let replacement_4 = gen
+
+                let value_3 =
+                    let replacement_5 = m
+
+                    let value_2 =
+                        let replacement_6 = g
+
+                        match c with
+                        | subject ->
+                            let member_ = subject.Member
+                            let generation = subject.Generation
+                            let subscription = subject.Subscription
+                            let assigned = subject.Assigned
+                            let positions_2 = subject.Positions
+                            let isolation = subject.Isolation
+
+                            let consumerState: LawSpec.Data.ConsumerState =
+                                {
+                                    Group = replacement_6
+                                    Member = member_
+                                    Generation = generation
+                                    Subscription = subscription
+                                    Assigned = assigned
+                                    Positions = positions_2
+                                    Isolation = isolation
+                                }
+
+                            consumerState
+
+                    match value_2 with
+                    | subject ->
+                        let group = subject.Group
+                        let generation_2 = subject.Generation
+                        let subscription_2 = subject.Subscription
+                        let assigned_2 = subject.Assigned
+                        let positions_3 = subject.Positions
+                        let isolation_2 = subject.Isolation
+
+                        let consumerState_2: LawSpec.Data.ConsumerState =
+                            {
+                                Group = group
+                                Member = replacement_5
+                                Generation = generation_2
+                                Subscription = subscription_2
+                                Assigned = assigned_2
+                                Positions = positions_3
+                                Isolation = isolation_2
+                            }
+
+                        consumerState_2
+
+                match value_3 with
+                | subject ->
+                    let group_2 = subject.Group
+                    let member__2 = subject.Member
+                    let subscription_3 = subject.Subscription
+                    let assigned_3 = subject.Assigned
+                    let positions_4 = subject.Positions
+                    let isolation_3 = subject.Isolation
+
+                    let consumerState_3: LawSpec.Data.ConsumerState =
+                        {
+                            Group = group_2
+                            Member = member__2
+                            Generation = replacement_4
+                            Subscription = subscription_3
+                            Assigned = assigned_3
+                            Positions = positions_4
+                            Isolation = isolation_3
+                        }
+
+                    consumerState_3
+
+            match value_4 with
+            | subject ->
+                let group_3 = subject.Group
+                let member__3 = subject.Member
+                let generation_3 = subject.Generation
+                let assigned_4 = subject.Assigned
+                let positions_5 = subject.Positions
+                let isolation_4 = subject.Isolation
+
+                let consumerState_4: LawSpec.Data.ConsumerState =
+                    {
+                        Group = group_3
+                        Member = member__3
+                        Generation = generation_3
+                        Subscription = replacement_3
+                        Assigned = assigned_4
+                        Positions = positions_5
+                        Isolation = isolation_4
+                    }
+
+                consumerState_4
+
+        match value_5 with
+        | subject ->
+            let group_4 = subject.Group
+            let member__4 = subject.Member
+            let generation_4 = subject.Generation
+            let subscription_4 = subject.Subscription
+            let positions_6 = subject.Positions
+            let isolation_5 = subject.Isolation
+
+            let consumerState_5: LawSpec.Data.ConsumerState =
+                {
+                    Group = group_4
+                    Member = member__4
+                    Generation = generation_4
+                    Subscription = subscription_4
+                    Assigned = replacement_2
+                    Positions = positions_6
+                    Isolation = isolation_5
+                }
+
+            consumerState_5
+
+    match value_6 with
+    | subject ->
+        let group_5 = subject.Group
+        let member__5 = subject.Member
+        let generation_5 = subject.Generation
+        let subscription_5 = subject.Subscription
+        let assigned_5 = subject.Assigned
+        let isolation_6 = subject.Isolation
+
+        let consumerState_6: LawSpec.Data.ConsumerState =
+            {
+                Group = group_5
+                Member = member__5
+                Generation = generation_5
+                Subscription = subscription_5
+                Assigned = assigned_5
+                Positions = replacement
+                Isolation = isolation_6
+            }
+
+        consumerState_6
+
+/// withPosition — ../src/contract.lawspec:709
+[<CompiledName("WithPosition")>]
+let withPosition
+    (tp: LawSpec.Data.TopicPartition)
+    (offset: int64)
+    (c: LawSpec.Data.ConsumerState)
+    : LawSpec.Data.ConsumerState =
+    let value =
+        match c with
+        | subject ->
+            let positions = subject.Positions
+            positions
+
+    let result = Map.add tp offset value
+    let replacement = result
+
+    match c with
+    | subject ->
+        let group = subject.Group
+        let member_ = subject.Member
+        let generation = subject.Generation
+        let subscription = subject.Subscription
+        let assigned = subject.Assigned
+        let isolation = subject.Isolation
+
+        let consumerState: LawSpec.Data.ConsumerState =
+            {
+                Group = group
+                Member = member_
+                Generation = generation
+                Subscription = subscription
+                Assigned = assigned
+                Positions = replacement
+                Isolation = isolation
+            }
+
+        consumerState
+
+/// writeAborted — ../src/contract.lawspec:1452
+[<CompiledName("WriteAborted")>]
+let writeAborted
+    (schema: Schema.Schema)
+    (symbols: Scalar.SymbolContext)
+    (tp: LawSpec.Data.TopicPartition)
+    (txid: string)
+    (r: LawSpec.Data.Record)
+    : int64 option =
+    let value_2 =
+        let attempted =
+            Typed.attempt
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                (fun () ->
+                    let broker =
+                        LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                            schema
+                            symbols
+                            (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                    let result =
+                        Typed.performed
+                            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                            (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                            (broker.InitProducerIdRequest(Some txid))
+
+                    result)
+
+        match attempted with
+        | LawSpec.Either.Left failure -> LawSpec.Either.Left failure
+        | LawSpec.Either.Right value -> LawSpec.Either.Right value
+
+    let it = value_2
+
+    match it with
+    | LawSpec.Either.Left _ -> None
+    | LawSpec.Either.Right selection ->
+        let value_6 =
+            let attempted_2 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let value_3 =
+                            match selection with
+                            | subject ->
+                                let producerId = subject.ProducerId
+                                producerId
+
+                        let value_4 =
+                            match selection with
+                            | subject ->
+                                let producerEpoch = subject.ProducerEpoch
+                                producerEpoch
+
+                        let broker_2 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_2 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_2.AddPartitionsToTxnRequest(txid, value_3, value_4, (tp :: [])))
+
+                        result_2)
+
+            match attempted_2 with
+            | LawSpec.Either.Left failure_2 -> LawSpec.Either.Left failure_2
+            | LawSpec.Either.Right value_5 -> LawSpec.Either.Right value_5
+
+        let added = value_6
+
+        let value_8 =
+            let attempted_3 =
+                Typed.attempt
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                    (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                    (fun () ->
+                        let result_3 = tagOf selection 0
+
+                        let broker_3 =
+                            LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                schema
+                                symbols
+                                (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                        let result_4 =
+                            Typed.performed
+                                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                (broker_3.ProduceRequest(tp, Some result_3, (r :: [])))
+
+                        result_4)
+
+            match attempted_3 with
+            | LawSpec.Either.Left failure_3 -> LawSpec.Either.Left failure_3
+            | LawSpec.Either.Right value_7 -> LawSpec.Either.Right value_7
+
+        let it_2 = value_8
+
+        match it_2 with
+        | LawSpec.Either.Left _ -> None
+        | LawSpec.Either.Right matchSelection ->
+            let value_12 =
+                let attempted_4 =
+                    Typed.attempt
+                        "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                        (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
+                        (fun () ->
+                            let value_9 =
+                                match selection with
+                                | subject ->
+                                    let producerId_2 = subject.ProducerId
+                                    producerId_2
+
+                            let value_10 =
+                                match selection with
+                                | subject ->
+                                    let producerEpoch_2 = subject.ProducerEpoch
+                                    producerEpoch_2
+
+                            let broker_4 =
+                                LawSpec.Generated.Abilities.lawtwinKafkaBrokerToNative
+                                    schema
+                                    symbols
+                                    (Effects.handler schema "lawtwin.kafka::ability::Broker")
+
+                            let result_5 =
+                                Typed.performed
+                                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
+                                    (Codec.fromNative (LawSpec.Data.Codecs.kafkaError ()))
+                                    (broker_4.EndTxnRequest(txid, value_9, value_10, false))
+
+                            result_5)
+
+                match attempted_4 with
+                | LawSpec.Either.Left failure_4 -> LawSpec.Either.Left failure_4
+                | LawSpec.Either.Right value_11 -> LawSpec.Either.Right value_11
+
+            let it_3 = value_12
+
+            match it_3 with
+            | LawSpec.Either.Left _ -> None
+            | LawSpec.Either.Right _ -> Some matchSelection
+
+/// xor32 — ../src/contract.lawspec:1106
+[<CompiledName("Xor32")>]
+let xor32 (a: uint32) (b: uint32) : uint32 =
+    let result = xorBits (bigint a) (bigint b) 2147483648I
+    let result_2 = wrappingUInt32 result
+    result_2
+
+/// xorBits — ../src/contract.lawspec:1110
+[<CompiledName("XorBits")>]
+let xorBits (a: bigint) (b: bigint) (bit: bigint) : bigint =
+    if (((bit <= 0I) || (a < 0I)) || (b < 0I)) then
         0I
     else
-        let value_3224 =
-            if ((Typed.quotient a_3221 bit_3223) <> (Typed.quotient b_3222 bit_3223)) then
-                bit_3223
+        let value =
+            if (Typed.quotient a bit <> Typed.quotient b bit) then
+                bit
             else
                 0I
-        let result_3225 = xorBits_ea1fb8e2 ((Typed.remainder a_3221 bit_3223)) ((Typed.remainder b_3222 bit_3223)) ((Typed.quotient bit_3223 2I))
-        (value_3224 + result_3225)
 
-/// lawtwin.kafka.model::topicPartitions
-[<CompiledName("TopicPartitions_a717cef5")>]
-let topicPartitions_a717cef5 (topic_3226: string) (ps_3227: int list) : LawSpec.Data.TopicPartition list =
-    let it_3228 = ps_3227
-    match it_3228 with
-    | [] ->
-        []
-    | lawspecSelection0x0_3229 :: lawspecSelection0x1_3230 ->
-        let value_3231 =
-            let lawspecRecordField0_3232 = topic_3226
-            let lawspecRecordField1_3233 = lawspecSelection0x0_3229
-            ({ Topic = lawspecRecordField0_3232; Partition = lawspecRecordField1_3233 } : LawSpec.Data.TopicPartition)
-        let result_3234 = topicPartitions_a717cef5 (topic_3226) (lawspecSelection0x1_3230)
-        (value_3231 :: result_3234)
+        let result =
+            xorBits (Typed.remainder a bit) (Typed.remainder b bit) (Typed.quotient bit 2I)
 
-/// contracttest.kafka::suiteNamesThePackage
-[<CompiledName("SuiteNamesThePackage_55f330a5")>]
-let suiteNamesThePackage_55f330a5 (u_3235: unit) : unit =
-    ()
+        (value + result)
 
-/// A typed handler's start state.
-[<CompiledName("Start_216e2324")>]
-let start_216e2324 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.BrokerState =
-    let result_3236 = clusterStart_659e952a (())
-    result_3236
+/// topicPartitions — ../src/model.lawspec:236
+[<CompiledName("TopicPartitions")>]
+let topicPartitions (topic: string) (ps: int list) : LawSpec.Data.TopicPartition list =
+    let it = ps
 
-/// A typed handler's start state.
-[<CompiledName("Start_8238db16")>]
-let start_8238db16 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.ProducerState =
-    let result_3237 = kafkaProducerStart_58ddcfc8 (())
-    result_3237
+    match it with
+    | [] -> []
+    | selection :: selection_2 ->
+        let value =
+            let recordField = topic
+            let recordField_2 = selection
+
+            let topicPartition: LawSpec.Data.TopicPartition =
+                {
+                    Topic = recordField
+                    Partition = recordField_2
+                }
+
+            topicPartition
+
+        let result = topicPartitions topic selection_2
+        (value :: result)
+
+/// suiteNamesThePackage — laws/suite.lawspec:9
+[<CompiledName("SuiteNamesThePackage")>]
+let suiteNamesThePackage (u: unit) : unit = ()
 
 /// A typed handler's start state.
-[<CompiledName("Start_d096d859")>]
-let start_d096d859 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.ConsumerState =
-    let result_3238 = kafkaConsumerStart_9e580acc (())
-    result_3238
+[<CompiledName("StartCluster")>]
+let startCluster (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.BrokerState =
+    let result = clusterStart ()
+    result
 
 /// A typed handler's start state.
-[<CompiledName("Start_2072e540")>]
-let start_2072e540 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.TransactionState =
-    let result_3239 = kafkaTransactionsStart_68a77cf3 (())
-    result_3239
+[<CompiledName("StartKafkaProducer")>]
+let startKafkaProducer (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.ProducerState =
+    let result = kafkaProducerStart ()
+    result
 
 /// A typed handler's start state.
-[<CompiledName("Start_6d4551c7")>]
-let start_6d4551c7 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.BrokerState =
-    let result_3240 = clusterStart_659e952a (())
-    result_3240
+[<CompiledName("StartKafkaConsumer")>]
+let startKafkaConsumer (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.ConsumerState =
+    let result = kafkaConsumerStart ()
+    result
 
 /// A typed handler's start state.
-[<CompiledName("Start_830a8330")>]
-let start_830a8330 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.ProducerState =
-    let result_3241 = kafkaProducerStart_58ddcfc8 (())
-    result_3241
+[<CompiledName("StartKafkaTransactions")>]
+let startKafkaTransactions (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.TransactionState =
+    let result = kafkaTransactionsStart ()
+    result
 
 /// A typed handler's start state.
-[<CompiledName("Start_b639b863")>]
-let start_b639b863 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.ConsumerState =
-    let result_3242 = kafkaConsumerStart_9e580acc (())
-    result_3242
+[<CompiledName("StartCluster_2")>]
+let startCluster_2 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.BrokerState =
+    let result = clusterStart ()
+    result
 
 /// A typed handler's start state.
-[<CompiledName("Start_7a059757")>]
-let start_7a059757 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.TransactionState =
-    let result_3243 = kafkaTransactionsStart_68a77cf3 (())
-    result_3243
+[<CompiledName("StartKafkaProducer_2")>]
+let startKafkaProducer_2 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.ProducerState =
+    let result = kafkaProducerStart ()
+    result
+
+/// A typed handler's start state.
+[<CompiledName("StartKafkaConsumer_2")>]
+let startKafkaConsumer_2 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.ConsumerState =
+    let result = kafkaConsumerStart ()
+    result
+
+/// A typed handler's start state.
+[<CompiledName("StartKafkaTransactions_2")>]
+let startKafkaTransactions_2 (schema: Schema.Schema) (symbols: Scalar.SymbolContext) : LawSpec.Data.TransactionState =
+    let result = kafkaTransactionsStart ()
+    result

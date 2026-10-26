@@ -5,30 +5,93 @@ serve(node) lets other nodes evaluate them on this node; evaluate(node,
 address, name, *args) evaluates one on the node at address. Values are
 logical values, as the runtime's checks use them.
 """
+
 import lawspec_runtime as ls
 import lawspec_definition_bodies as _definitions
 
-TYPES = ls.Values({str(f[1]): f for f in ls.read_descriptor("(data lawspec.matchers::type::Regex (ctor lawspec.matchers::type::Regex::Regex (text))) (data lawtwin.petstore.model::type::Order (ctor lawtwin.petstore.model::type::Order::Order (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int32 -2147483648 2147483647)) (maybe (text)) (maybe (ref lawtwin.petstore.model::type::OrderStatus)) (maybe (bool)))) (data lawtwin.petstore.model::type::OrderStatus (ctor lawtwin.petstore.model::type::OrderStatus::Placed) (ctor lawtwin.petstore.model::type::OrderStatus::Approved) (ctor lawtwin.petstore.model::type::OrderStatus::Delivered))")})
+FORMS = "(data lawspec.matchers::type::Regex (ctor lawspec.matchers::type::Regex::Regex (text))) (data lawtwin.petstore.model::type::Order (ctor lawtwin.petstore.model::type::Order::Order (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int32 -2147483648 2147483647)) (maybe (text)) (maybe (ref lawtwin.petstore.model::type::OrderStatus)) (maybe (bool)))) (data lawtwin.petstore.model::type::OrderStatus (ctor lawtwin.petstore.model::type::OrderStatus::Placed) (ctor lawtwin.petstore.model::type::OrderStatus::Approved) (ctor lawtwin.petstore.model::type::OrderStatus::Delivered))"
+TYPES = ls.Values({str(form[1]): form for form in ls.read_descriptor(FORMS)})
+
+
+def _d(text):
+    return ls.read_descriptor(text)[0]
+
 
 # name: (content hash, function, argument descriptors, result descriptor)
 DEFINITIONS = {
-    "lawspec.matchers::matchersMatchesRegex": ("sha3-256:90712f4fe0b8b414485e00fe214dabe06e4188720ece66fe3ba2be11d5515915", lambda *args: _definitions.evaluate_0({}, *args), [ls.read_descriptor("(text)")[0], ls.read_descriptor("(ref lawspec.matchers::type::Regex)")[0]], ls.read_descriptor("(bool)")[0]),
-    "lawtwin.petstore::lawtwinPetstoreModelAfter64": ("sha3-256:c2cbdee0a4bcb1cc71e8894a9d8a99d6ff88ec384073a96a0500ca8b184a1aac", lambda *args: _definitions.evaluate_33({}, *args), [ls.read_descriptor("(int Int64 -9223372036854775808 9223372036854775807)")[0]], ls.read_descriptor("(int Int64 -9223372036854775808 9223372036854775807)")[0]),
-    "lawtwin.petstore::lawtwinPetstoreModelValidOrder": ("sha3-256:5c55a35317aa6ed222fd7689f397bc9c03f63896635303348dfd13c4cfbddccf", lambda *args: _definitions.evaluate_46({}, *args), [ls.read_descriptor("(ref lawtwin.petstore.model::type::Order)")[0]], ls.read_descriptor("(bool)")[0]),
-    "lawtwin.petstore.laws::lawtwinPetstoreModelAfter64": ("sha3-256:1fb469520c67fa036f31fc8333df36e1bce341bc914072f28aa50b0cb3025f38", lambda *args: _definitions.evaluate_107({}, *args), [ls.read_descriptor("(int Int64 -9223372036854775808 9223372036854775807)")[0]], ls.read_descriptor("(int Int64 -9223372036854775808 9223372036854775807)")[0]),
-    "lawtwin.petstore.laws::lawtwinPetstoreModelValidOrder": ("sha3-256:5e3dfaef162004780d97d5d55dbad1aeafe36bd7a55ea757cfd81ebd1b003e56", lambda *args: _definitions.evaluate_120({}, *args), [ls.read_descriptor("(ref lawtwin.petstore.model::type::Order)")[0]], ls.read_descriptor("(bool)")[0]),
-    "lawtwin.petstore.laws::noHandWrittenLawsYet": ("sha3-256:18a029fa4d7c510ea9dc182ec183fb086e79c8dff526dd751dc155dd60e8d7ca", lambda *args: _definitions.evaluate_121({}, *args), [ls.read_descriptor("(unit)")[0]], ls.read_descriptor("(unit)")[0]),
-    "lawtwin.petstore.model::after64": ("sha3-256:956a6c6fe77ae828dc2da0955f67cf1ddb6ebb576e7ec2540d6bde6bfc636b30", lambda *args: _definitions.evaluate_142({}, *args), [ls.read_descriptor("(int Int64 -9223372036854775808 9223372036854775807)")[0]], ls.read_descriptor("(int Int64 -9223372036854775808 9223372036854775807)")[0]),
-    "lawtwin.petstore.model::validOrder": ("sha3-256:d798761b1c51b5764487fb733583bf9a4dee0bddb0d6c2585a0c88e2440a3b5e", lambda *args: _definitions.evaluate_179({}, *args), [ls.read_descriptor("(ref lawtwin.petstore.model::type::Order)")[0]], ls.read_descriptor("(bool)")[0]),
-    "contracttest.petstore::lawtwinPetstoreModelAfter64": ("sha3-256:30155584b3e58c2bad4e5d2b2d41064deeadf78ef2848a360807778f950f9ed5", lambda *args: _definitions.evaluate_212({}, *args), [ls.read_descriptor("(int Int64 -9223372036854775808 9223372036854775807)")[0]], ls.read_descriptor("(int Int64 -9223372036854775808 9223372036854775807)")[0]),
-    "contracttest.petstore::lawtwinPetstoreModelValidOrder": ("sha3-256:6fe1d80e0c072d2a02c0f7a461e1e2444cd9aff87cf0117cf1e85058f4758ee2", lambda *args: _definitions.evaluate_225({}, *args), [ls.read_descriptor("(ref lawtwin.petstore.model::type::Order)")[0]], ls.read_descriptor("(bool)")[0]),
-    "contracttest.petstore::suiteNamesThePackage": ("sha3-256:bad5f7188d674e80002496277cd433c1061e221061d72e560cc8e41af5e470f6", lambda *args: _definitions.evaluate_246({}, *args), [ls.read_descriptor("(unit)")[0]], ls.read_descriptor("(unit)")[0]),
+    "lawspec.matchers::matchersMatchesRegex": (
+        "blake3-semantic-1:073e7ce9bc4e421bbd44abc6ae6f0c494cdc2bd9f3658d452c5265f74309d5d9",
+        lambda *args: _definitions.matchers_matches_regex({}, *args),
+        [_d("(text)"), _d("(ref lawspec.matchers::type::Regex)")],
+        _d("(bool)"),
+    ),
+    "lawtwin.petstore::lawtwinPetstoreModelAfter64": (
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        lambda *args: _definitions.lawtwin_petstore_model_after64({}, *args),
+        [_d("(int Int64 -9223372036854775808 9223372036854775807)")],
+        _d("(int Int64 -9223372036854775808 9223372036854775807)"),
+    ),
+    "lawtwin.petstore::lawtwinPetstoreModelValidOrder": (
+        "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
+        lambda *args: _definitions.lawtwin_petstore_model_valid_order({}, *args),
+        [_d("(ref lawtwin.petstore.model::type::Order)")],
+        _d("(bool)"),
+    ),
+    "lawtwin.petstore.laws::lawtwinPetstoreModelAfter64": (
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        lambda *args: _definitions.lawtwin_petstore_model_after64_2({}, *args),
+        [_d("(int Int64 -9223372036854775808 9223372036854775807)")],
+        _d("(int Int64 -9223372036854775808 9223372036854775807)"),
+    ),
+    "lawtwin.petstore.laws::lawtwinPetstoreModelValidOrder": (
+        "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
+        lambda *args: _definitions.lawtwin_petstore_model_valid_order_2({}, *args),
+        [_d("(ref lawtwin.petstore.model::type::Order)")],
+        _d("(bool)"),
+    ),
+    "lawtwin.petstore.laws::noHandWrittenLawsYet": (
+        "blake3-semantic-1:7e4bcd9c9251b6eb51a5021338ab951613c56db32153451bf2097751bd512b55",
+        lambda *args: _definitions.no_hand_written_laws_yet({}, *args),
+        [_d("(unit)")],
+        _d("(unit)"),
+    ),
+    "lawtwin.petstore.model::after64": (
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        lambda *args: _definitions.after64({}, *args),
+        [_d("(int Int64 -9223372036854775808 9223372036854775807)")],
+        _d("(int Int64 -9223372036854775808 9223372036854775807)"),
+    ),
+    "lawtwin.petstore.model::validOrder": (
+        "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
+        lambda *args: _definitions.valid_order({}, *args),
+        [_d("(ref lawtwin.petstore.model::type::Order)")],
+        _d("(bool)"),
+    ),
+    "contracttest.petstore::lawtwinPetstoreModelAfter64": (
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        lambda *args: _definitions.lawtwin_petstore_model_after64_3({}, *args),
+        [_d("(int Int64 -9223372036854775808 9223372036854775807)")],
+        _d("(int Int64 -9223372036854775808 9223372036854775807)"),
+    ),
+    "contracttest.petstore::lawtwinPetstoreModelValidOrder": (
+        "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
+        lambda *args: _definitions.lawtwin_petstore_model_valid_order_3({}, *args),
+        [_d("(ref lawtwin.petstore.model::type::Order)")],
+        _d("(bool)"),
+    ),
+    "contracttest.petstore::suiteNamesThePackage": (
+        "blake3-semantic-1:7e4bcd9c9251b6eb51a5021338ab951613c56db32153451bf2097751bd512b55",
+        lambda *args: _definitions.suite_names_the_package({}, *args),
+        [_d("(unit)")],
+        _d("(unit)"),
+    ),
 }
 
 
 def serve(node):
     """Lets other nodes evaluate these definitions on node."""
-    return node.serve_definitions({h: (f, a, r) for h, f, a, r in DEFINITIONS.values()}, TYPES)
+    table = {h: (f, a, r) for h, f, a, r in DEFINITIONS.values()}
+    return node.serve_definitions(table, TYPES)
 
 
 def digest(name):

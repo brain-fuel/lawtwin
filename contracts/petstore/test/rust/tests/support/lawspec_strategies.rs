@@ -5,8 +5,35 @@
 //! the strategies for its own types, and shrinking stays within the declared
 //! domain. ref:DEC-native-property-frameworks ref:proptest
 //! ref:DEC-shrink-within-domain
+// A test crate mounts the whole runtime as a module and uses only part of it.
+#![allow(dead_code)]
 use crate::lawspec_runtime::{self as ls, IntoValue, Value};
 use proptest::prelude::*;
+
+/// Proptest's seed: LAWSPEC_SEED fixes it, so a run can be repeated exactly
+/// (lawspec test records the seed of every passing run). Without it,
+/// proptest's own default applies, PROPTEST_RNG_SEED included.
+pub fn rng_seed() -> proptest::test_runner::RngSeed {
+    match std::env::var("LAWSPEC_SEED") {
+        Ok(seed) => proptest::test_runner::RngSeed::Fixed(
+            seed.parse().expect("LAWSPEC_SEED must be a whole number"),
+        ),
+        Err(_) => proptest::test_runner::Config::default().rng_seed,
+    }
+}
+
+/// Under lawspec test, proptest keeps failing cases in its failure database
+/// (LAWSPEC_FAILURES) and replays them first.
+pub fn failure_persistence() -> Option<Box<dyn proptest::test_runner::FailurePersistence>> {
+    match std::env::var("LAWSPEC_FAILURES") {
+        Ok(directory) => Some(Box::new(
+            proptest::test_runner::FileFailurePersistence::Direct(Box::leak(
+                format!("{directory}/proptest-regressions.txt").into_boxed_str(),
+            )),
+        )),
+        Err(_) => proptest::test_runner::Config::default().failure_persistence,
+    }
+}
 
 /// A framework-native factory. Child strategies correspond to type parameters,
 /// not constructor fields. Mapping the returned strategy retains its ValueTree.
@@ -291,7 +318,11 @@ pub struct Case {
 // A case's workflows wait on a virtual clock, as every generated test's do.
 impl Default for Case {
     fn default() -> Self {
-        Case { context: ls::Context::testing(), values: Vec::new(), error: None }
+        Case {
+            context: ls::Context::testing(),
+            values: Vec::new(),
+            error: None,
+        }
     }
 }
 pub fn seeded(strategy: BoxedStrategy<Value>, seeds: Vec<Value>) -> BoxedStrategy<Value> {
@@ -614,31 +645,31 @@ fn shape_strategy_with_generators(
             } else if let Some(constructors) = self.schema.constructor_fields(ty)? {
                 let mut alternatives = Vec::new();
                 for constructor in constructors {
-                  // A field-only existential takes each type of the witness pool.
-                  for (declared, witnesses) in self.schema.witness_choices(&constructor)? {
-                    let Some(costs) = self.allocate(&declared, budget - 1)? else {
-                        continue;
-                    };
-                    let mut fields = Just(Vec::<Value>::new()).boxed();
-                    for (field, cost) in declared.iter().zip(costs) {
-                        let next = self.generate(field, cost)?;
-                        fields = (fields, next)
-                            .prop_map(|(mut values, value)| {
-                                values.push(value);
-                                values
-                            })
-                            .boxed();
+                    // A field-only existential takes each type of the witness pool.
+                    for (declared, witnesses) in self.schema.witness_choices(&constructor)? {
+                        let Some(costs) = self.allocate(&declared, budget - 1)? else {
+                            continue;
+                        };
+                        let mut fields = Just(Vec::<Value>::new()).boxed();
+                        for (field, cost) in declared.iter().zip(costs) {
+                            let next = self.generate(field, cost)?;
+                            fields = (fields, next)
+                                .prop_map(|(mut values, value)| {
+                                    values.push(value);
+                                    values
+                                })
+                                .boxed();
+                        }
+                        let tag = constructor.tag;
+                        alternatives.push(
+                            fields
+                                .prop_map(move |mut fields| {
+                                    fields.extend(witnesses.iter().cloned());
+                                    ls::construct_data(tag, fields)
+                                })
+                                .boxed(),
+                        );
                     }
-                    let tag = constructor.tag;
-                    alternatives.push(
-                        fields
-                            .prop_map(move |mut fields| {
-                                fields.extend(witnesses.iter().cloned());
-                                ls::construct_data(tag, fields)
-                            })
-                            .boxed(),
-                    );
-                  }
                 }
                 let union = proptest::strategy::Union::new(alternatives).boxed();
                 // Generated collections are canonicalised rather than filtered.
@@ -789,17 +820,25 @@ fn parse_index_term(tokens: &[&str], at: &mut usize) -> ls::Result<IndexTerm> {
     let token = *tokens.get(*at).ok_or("malformed index term")?;
     *at += 1;
     if let Some(digits) = token.strip_prefix('c') {
-        return Ok(IndexTerm::Constant(digits.parse().map_err(|_| "malformed index term")?));
+        return Ok(IndexTerm::Constant(
+            digits.parse().map_err(|_| "malformed index term")?,
+        ));
     }
     if let Some(digits) = token.strip_prefix('f') {
-        return Ok(IndexTerm::Field(digits.parse().map_err(|_| "malformed index term")?));
+        return Ok(IndexTerm::Field(
+            digits.parse().map_err(|_| "malformed index term")?,
+        ));
     }
     if !["+", "-", "*", "div", "mod", "^"].contains(&token) {
         return Err("malformed index term".into());
     }
     let left = parse_index_term(tokens, at)?;
     let right = parse_index_term(tokens, at)?;
-    Ok(IndexTerm::Apply(token.to_string(), Box::new(left), Box::new(right)))
+    Ok(IndexTerm::Apply(
+        token.to_string(),
+        Box::new(left),
+        Box::new(right),
+    ))
 }
 
 /// Natural index arithmetic; `None` when an operation has no natural value.
@@ -816,7 +855,10 @@ fn eval_index_term(term: &IndexTerm, fields: &[(usize, u64)]) -> Option<u64> {
                 "*" => x.checked_mul(y),
                 "div" => x.checked_div(y),
                 "mod" => x.checked_rem(y),
-                _ => u32::try_from(y).ok().filter(|e| *e <= 64).and_then(|e| x.checked_pow(e)),
+                _ => u32::try_from(y)
+                    .ok()
+                    .filter(|e| *e <= 64)
+                    .and_then(|e| x.checked_pow(e)),
             }
         }
     }
@@ -879,8 +921,17 @@ impl IndexVariant {
     ) {
         if at == self.positions.len() {
             let holds = self.guards.iter().all(|(equal, left, right)| {
-                match (eval_index_term(left, current), eval_index_term(right, current)) {
-                    (Some(x), Some(y)) => if *equal { x == y } else { x >= y },
+                match (
+                    eval_index_term(left, current),
+                    eval_index_term(right, current),
+                ) {
+                    (Some(x), Some(y)) => {
+                        if *equal {
+                            x == y
+                        } else {
+                            x >= y
+                        }
+                    }
                     _ => false,
                 }
             });
@@ -928,7 +979,10 @@ impl Strategy for IndexedValue {
     type Tree = Box<dyn proptest::strategy::ValueTree<Value = Value>>;
     type Value = Value;
 
-    fn new_tree(&self, runner: &mut proptest::test_runner::TestRunner) -> proptest::strategy::NewTree<Self> {
+    fn new_tree(
+        &self,
+        runner: &mut proptest::test_runner::TestRunner,
+    ) -> proptest::strategy::NewTree<Self> {
         let variants = &self.table.variants[&self.family];
         let alternatives: Vec<BoxedStrategy<Value>> = self.table.solutions
             [&(self.family.clone(), self.level)]
@@ -1000,37 +1054,40 @@ pub fn indexed_strategy(
     };
     let requested: Option<u64> = target.to_string().parse().ok();
     let limit = requested.unwrap_or(0).saturating_add(INDEX_SLACK);
-    let parse = |tag: &str| -> ls::Result<(IndexTerm, Vec<(bool, IndexTerm, IndexTerm)>, Vec<usize>)> {
-        let (_, texts) = equations
-            .iter()
-            .find(|(name, _)| *name == tag)
-            .ok_or_else(|| format!("missing index equation for {tag}"))?;
-        let first = texts.first().ok_or_else(|| format!("missing index equation for {tag}"))?;
-        let tokens: Vec<&str> = first.split(' ').collect();
-        let mut at = 0;
-        let term = parse_index_term(&tokens, &mut at)?;
-        if at != tokens.len() {
-            return Err("malformed index term".into());
-        }
-        let mut positions = Vec::new();
-        index_term_fields(&term, &mut positions);
-        let mut guards = Vec::new();
-        for text in &texts[1..] {
-            let parts: Vec<&str> = text.split(' ').collect();
-            let equal = match parts.first() {
-                Some(&"==") => true,
-                Some(&">=") => false,
-                _ => return Err("malformed index guard".into()),
-            };
-            let mut at = 1;
-            let left = parse_index_term(&parts, &mut at)?;
-            let right = parse_index_term(&parts, &mut at)?;
-            index_term_fields(&left, &mut positions);
-            index_term_fields(&right, &mut positions);
-            guards.push((equal, left, right));
-        }
-        Ok((term, guards, positions))
-    };
+    let parse =
+        |tag: &str| -> ls::Result<(IndexTerm, Vec<(bool, IndexTerm, IndexTerm)>, Vec<usize>)> {
+            let (_, texts) = equations
+                .iter()
+                .find(|(name, _)| *name == tag)
+                .ok_or_else(|| format!("missing index equation for {tag}"))?;
+            let first = texts
+                .first()
+                .ok_or_else(|| format!("missing index equation for {tag}"))?;
+            let tokens: Vec<&str> = first.split(' ').collect();
+            let mut at = 0;
+            let term = parse_index_term(&tokens, &mut at)?;
+            if at != tokens.len() {
+                return Err("malformed index term".into());
+            }
+            let mut positions = Vec::new();
+            index_term_fields(&term, &mut positions);
+            let mut guards = Vec::new();
+            for text in &texts[1..] {
+                let parts: Vec<&str> = text.split(' ').collect();
+                let equal = match parts.first() {
+                    Some(&"==") => true,
+                    Some(&">=") => false,
+                    _ => return Err("malformed index guard".into()),
+                };
+                let mut at = 1;
+                let left = parse_index_term(&parts, &mut at)?;
+                let right = parse_index_term(&parts, &mut at)?;
+                index_term_fields(&left, &mut positions);
+                index_term_fields(&right, &mut positions);
+                guards.push((equal, left, right));
+            }
+            Ok((term, guards, positions))
+        };
     let mut variants: std::collections::HashMap<ls::TypeRef, Vec<IndexVariant>> =
         std::collections::HashMap::new();
     let mut plain: std::collections::HashMap<ls::TypeRef, Option<BoxedStrategy<Value>>> =
@@ -1054,7 +1111,8 @@ pub fn indexed_strategy(
                     continue;
                 }
                 if !plain.contains_key(field) {
-                    let strategy = shape_strategy(schema, field, bits, budget, Witnesses::new()).ok();
+                    let strategy =
+                        shape_strategy(schema, field, bits, budget, Witnesses::new()).ok();
                     plain.insert(field.clone(), strategy);
                 }
                 strategies.push(plain[field].clone());
@@ -1097,23 +1155,39 @@ pub fn indexed_strategy(
     if levels.is_empty() {
         return Err(format!("no value of {ty:?} has an index"));
     }
-    let mut solutions: std::collections::HashMap<(ls::TypeRef, u64), Vec<(usize, Vec<IndexAssignment>)>> =
-        std::collections::HashMap::new();
+    let mut solutions: std::collections::HashMap<
+        (ls::TypeRef, u64),
+        Vec<(usize, Vec<IndexAssignment>)>,
+    > = std::collections::HashMap::new();
     for (family, list) in &variants {
-        for (index, variant) in list.iter().enumerate().filter(|(_, variant)| variant.ready()) {
+        for (index, variant) in list
+            .iter()
+            .enumerate()
+            .filter(|(_, variant)| variant.ready())
+        {
             let mut by_level: std::collections::BTreeMap<u64, Vec<IndexAssignment>> =
                 std::collections::BTreeMap::new();
             for (value, assignment) in variant.assignments(&reach, limit) {
                 by_level.entry(value).or_default().push(assignment);
             }
             for (level, choices) in by_level {
-                solutions.entry((family.clone(), level)).or_default().push((index, choices));
+                solutions
+                    .entry((family.clone(), level))
+                    .or_default()
+                    .push((index, choices));
             }
         }
     }
-    let table = std::sync::Arc::new(IndexTable { variants, solutions });
+    let table = std::sync::Arc::new(IndexTable {
+        variants,
+        solutions,
+    });
     let family = ty.clone();
     Ok(proptest::sample::select(levels)
-        .prop_flat_map(move |level| IndexedValue { table: table.clone(), family: family.clone(), level })
+        .prop_flat_map(move |level| IndexedValue {
+            table: table.clone(),
+            family: family.clone(),
+            level,
+        })
         .boxed())
 }

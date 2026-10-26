@@ -386,12 +386,7 @@ def make_schema():
                     ),
                 ],
             ),
-            _schema.Definition(
-                "lawtwin.github::type::Service",
-                0,
-                [],
-                handle=True,
-            ),
+            _schema.Definition("lawtwin.github::type::Service", 0, [], handle=True),
             _schema.Definition(
                 "lawtwin.github.model::type::ApiError",
                 0,
@@ -431,19 +426,13 @@ def make_schema():
                             _schema.Field("name", _schema.Named("Text")),
                             _schema.Field(
                                 "description_",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field("color", _schema.Named("Text")),
                             _schema.Field("default_", _schema.Named("Bool")),
                             _schema.Field(
                                 "archivedAt",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "archivedBy",
@@ -451,18 +440,7 @@ def make_schema():
                                     "Maybe",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "gith"
-                                                "ub.m"
-                                                "odel"
-                                                "::ty"
-                                                "pe::"
-                                                "Simp"
-                                                "leUs"
-                                                "er"
-                                            ),
+                                            "lawtwin.github.model::type::SimpleUser",
                                         ),
                                     ],
                                 ),
@@ -481,17 +459,11 @@ def make_schema():
                         [
                             _schema.Field(
                                 "name",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "email",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field("login", _schema.Named("Text")),
                             _schema.Field("id", _schema.Named("Int64")),
@@ -499,52 +471,28 @@ def make_schema():
                             _schema.Field("avatarUrl", _schema.Named("Text")),
                             _schema.Field(
                                 "gravatarId",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field("url", _schema.Named("Text")),
                             _schema.Field("htmlUrl", _schema.Named("Text")),
-                            _schema.Field(
-                                "followersUrl",
-                                _schema.Named("Text"),
-                            ),
-                            _schema.Field(
-                                "followingUrl",
-                                _schema.Named("Text"),
-                            ),
+                            _schema.Field("followersUrl", _schema.Named("Text")),
+                            _schema.Field("followingUrl", _schema.Named("Text")),
                             _schema.Field("gistsUrl", _schema.Named("Text")),
                             _schema.Field("starredUrl", _schema.Named("Text")),
-                            _schema.Field(
-                                "subscriptionsUrl",
-                                _schema.Named("Text"),
-                            ),
-                            _schema.Field(
-                                "organizationsUrl",
-                                _schema.Named("Text"),
-                            ),
+                            _schema.Field("subscriptionsUrl", _schema.Named("Text")),
+                            _schema.Field("organizationsUrl", _schema.Named("Text")),
                             _schema.Field("reposUrl", _schema.Named("Text")),
                             _schema.Field("eventsUrl", _schema.Named("Text")),
-                            _schema.Field(
-                                "receivedEventsUrl",
-                                _schema.Named("Text"),
-                            ),
+                            _schema.Field("receivedEventsUrl", _schema.Named("Text")),
                             _schema.Field("type_", _schema.Named("Text")),
                             _schema.Field("siteAdmin", _schema.Named("Bool")),
                             _schema.Field(
                                 "starredAt",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "userViewType",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                         ],
                         SimpleUser,
@@ -561,17 +509,11 @@ def make_schema():
                             _schema.Field("name", _schema.Named("Text")),
                             _schema.Field(
                                 "color",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "description_",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                         ],
                         IssuesCreateLabelBody,
@@ -587,31 +529,19 @@ def make_schema():
                         [
                             _schema.Field(
                                 "newName",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "color",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "description_",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "archived",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Bool")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Bool")]),
                             ),
                         ],
                         IssuesUpdateLabelBody,
@@ -687,28 +617,13 @@ def make_schema():
                             _schema.Field(
                                 "state_",
                                 _schema.Named(
-                                    (
-                                        "lawt"
-                                        "win."
-                                        "gith"
-                                        "ub.m"
-                                        "odel"
-                                        "::ty"
-                                        "pe::"
-                                        "Mile"
-                                        "ston"
-                                        "eSta"
-                                        "te"
-                                    ),
+                                    "lawtwin.github.model::type::MilestoneState",
                                 ),
                             ),
                             _schema.Field("title", _schema.Named("Text")),
                             _schema.Field(
                                 "description_",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "creator",
@@ -716,47 +631,22 @@ def make_schema():
                                     "Maybe",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "gith"
-                                                "ub.m"
-                                                "odel"
-                                                "::ty"
-                                                "pe::"
-                                                "Null"
-                                                "able"
-                                                "Simp"
-                                                "leUs"
-                                                "er"
-                                            ),
+                                            "lawtwin.github.model::type::NullableSimpleUser",
                                         ),
                                     ],
                                 ),
                             ),
-                            _schema.Field(
-                                "openIssues",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field(
-                                "closedIssues",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("openIssues", _schema.Named("Int64")),
+                            _schema.Field("closedIssues", _schema.Named("Int64")),
                             _schema.Field("createdAt", _schema.Named("Text")),
                             _schema.Field("updatedAt", _schema.Named("Text")),
                             _schema.Field(
                                 "closedAt",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "dueOn",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                         ],
                         Milestone,
@@ -788,17 +678,11 @@ def make_schema():
                         [
                             _schema.Field(
                                 "name",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "email",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field("login", _schema.Named("Text")),
                             _schema.Field("id", _schema.Named("Int64")),
@@ -806,52 +690,28 @@ def make_schema():
                             _schema.Field("avatarUrl", _schema.Named("Text")),
                             _schema.Field(
                                 "gravatarId",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field("url", _schema.Named("Text")),
                             _schema.Field("htmlUrl", _schema.Named("Text")),
-                            _schema.Field(
-                                "followersUrl",
-                                _schema.Named("Text"),
-                            ),
-                            _schema.Field(
-                                "followingUrl",
-                                _schema.Named("Text"),
-                            ),
+                            _schema.Field("followersUrl", _schema.Named("Text")),
+                            _schema.Field("followingUrl", _schema.Named("Text")),
                             _schema.Field("gistsUrl", _schema.Named("Text")),
                             _schema.Field("starredUrl", _schema.Named("Text")),
-                            _schema.Field(
-                                "subscriptionsUrl",
-                                _schema.Named("Text"),
-                            ),
-                            _schema.Field(
-                                "organizationsUrl",
-                                _schema.Named("Text"),
-                            ),
+                            _schema.Field("subscriptionsUrl", _schema.Named("Text")),
+                            _schema.Field("organizationsUrl", _schema.Named("Text")),
                             _schema.Field("reposUrl", _schema.Named("Text")),
                             _schema.Field("eventsUrl", _schema.Named("Text")),
-                            _schema.Field(
-                                "receivedEventsUrl",
-                                _schema.Named("Text"),
-                            ),
+                            _schema.Field("receivedEventsUrl", _schema.Named("Text")),
                             _schema.Field("type_", _schema.Named("Text")),
                             _schema.Field("siteAdmin", _schema.Named("Bool")),
                             _schema.Field(
                                 "starredAt",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "userViewType",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                         ],
                         NullableSimpleUser,
@@ -872,36 +732,18 @@ def make_schema():
                                     "Maybe",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "gith"
-                                                "ub.m"
-                                                "odel"
-                                                "::ty"
-                                                "pe::"
-                                                "Mile"
-                                                "ston"
-                                                "eSta"
-                                                "te"
-                                            ),
+                                            "lawtwin.github.model::type::MilestoneState",
                                         ),
                                     ],
                                 ),
                             ),
                             _schema.Field(
                                 "description_",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "dueOn",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                         ],
                         IssuesCreateMilestoneBody,
@@ -917,10 +759,7 @@ def make_schema():
                         [
                             _schema.Field(
                                 "title",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "state_",
@@ -928,36 +767,18 @@ def make_schema():
                                     "Maybe",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "gith"
-                                                "ub.m"
-                                                "odel"
-                                                "::ty"
-                                                "pe::"
-                                                "Mile"
-                                                "ston"
-                                                "eSta"
-                                                "te"
-                                            ),
+                                            "lawtwin.github.model::type::MilestoneState",
                                         ),
                                     ],
                                 ),
                             ),
                             _schema.Field(
                                 "description_",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "dueOn",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                         ],
                         IssuesUpdateMilestoneBody,
@@ -988,10 +809,7 @@ def make_schema():
                         [
                             _schema.Field("owner", _schema.Named("Text")),
                             _schema.Field("repo", _schema.Named("Text")),
-                            _schema.Field(
-                                "milestoneNumber",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("milestoneNumber", _schema.Named("Int64")),
                         ],
                         MilestoneKey,
                     ),
@@ -1010,30 +828,10 @@ def make_schema():
                                     "lawspec.collections::type::KeyVal",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "gith"
-                                                "ub.m"
-                                                "odel"
-                                                "::ty"
-                                                "pe::"
-                                                "Labe"
-                                                "lKey"
-                                            ),
+                                            "lawtwin.github.model::type::LabelKey",
                                         ),
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "gith"
-                                                "ub.m"
-                                                "odel"
-                                                "::ty"
-                                                "pe::"
-                                                "Labe"
-                                                "l"
-                                            ),
+                                            "lawtwin.github.model::type::Label",
                                         ),
                                     ],
                                 ),
@@ -1044,40 +842,15 @@ def make_schema():
                                     "lawspec.collections::type::KeyVal",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "gith"
-                                                "ub.m"
-                                                "odel"
-                                                "::ty"
-                                                "pe::"
-                                                "Mile"
-                                                "ston"
-                                                "eKey"
-                                            ),
+                                            "lawtwin.github.model::type::MilestoneKey",
                                         ),
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "gith"
-                                                "ub.m"
-                                                "odel"
-                                                "::ty"
-                                                "pe::"
-                                                "Mile"
-                                                "ston"
-                                                "e"
-                                            ),
+                                            "lawtwin.github.model::type::Milestone",
                                         ),
                                     ],
                                 ),
                             ),
-                            _schema.Field(
-                                "nextMilestoneKey",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("nextMilestoneKey", _schema.Named("Int64")),
                         ],
                         State,
                     ),

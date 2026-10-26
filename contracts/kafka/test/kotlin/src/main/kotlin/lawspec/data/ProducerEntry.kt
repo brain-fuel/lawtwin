@@ -4,4 +4,5 @@ package lawspec.data
 data class ProducerEntry(
     val epoch: kotlin.Short,
     val transactionalId: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>,
-    val txn: lawspec.data.TxnState)
+    val txn: lawspec.data.TxnState,
+)

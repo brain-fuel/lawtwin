@@ -5,4 +5,5 @@ data class BatchMeta(
     val batchEpoch: kotlin.Short,
     val firstSequence: kotlin.Int,
     val lastSequence: kotlin.Int,
-    val batchOffset: kotlin.Long)
+    val batchOffset: kotlin.Long,
+)

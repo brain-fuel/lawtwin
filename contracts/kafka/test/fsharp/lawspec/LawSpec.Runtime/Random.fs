@@ -12,7 +12,8 @@ type Seed = Seed of uint64
 
 /// The state for a seed (any integer, reduced to 64 bits).
 [<CompiledName("SeedOf")>]
-let seed (n: BigInteger) = Seed(uint64 (n &&& BigInteger(System.UInt64.MaxValue)))
+let seed (n: BigInteger) =
+    Seed(uint64 (n &&& BigInteger(System.UInt64.MaxValue)))
 
 /// The next output and state.
 [<CompiledName("Next")>]
@@ -26,7 +27,8 @@ let next (Seed state) =
 /// runtime reduces it: the output modulo the bound.
 [<CompiledName("Below")>]
 let below (bound: BigInteger) (state: Seed) =
-    if bound.Sign <= 0 then BigInteger.Zero, state
+    if bound.Sign <= 0 then
+        BigInteger.Zero, state
     else
         let n, next' = next state
         BigInteger.Remainder(BigInteger n, bound), next'

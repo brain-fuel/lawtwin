@@ -23,6 +23,7 @@ type Cell(initial: Value) =
     let gate = obj ()
     member _.Read() = lock gate (fun () -> value)
     member _.Write(next: Value) = lock gate (fun () -> value <- next)
+
     /// Run an update under the cell's lock.
     member _.Update(update: Value -> 'a * Value) =
         lock gate (fun () ->
@@ -34,7 +35,10 @@ type Cell(initial: Value) =
 [<Sealed>]
 type Log() =
     let calls = ResizeArray<string * Value list>()
-    member _.Add(operation: string, arguments: Value list) = lock calls (fun () -> calls.Add((operation, arguments)))
+
+    member _.Add(operation: string, arguments: Value list) =
+        lock calls (fun () -> calls.Add((operation, arguments)))
+
     member _.Calls = lock calls (fun () -> List.ofSeq calls)
 
 type Handler =
@@ -47,6 +51,7 @@ type Handler =
 [<Sealed>]
 type Scope() =
     let shared = Dictionary<string, Handler>()
+
     member _.Shared(key: string, make: unit -> Handler) =
         lock shared (fun () ->
             match shared.TryGetValue key with
@@ -72,7 +77,8 @@ let stateless (clauses: (string * Clause) list) = Stateless(Map.ofList clauses)
 
 /// A handler with state, from its start.
 [<CompiledName("Stateful")>]
-let stateful (initial: Value) (clauses: (string * StatefulClause) list) = Stateful(Cell initial, Map.ofList clauses)
+let stateful (initial: Value) (clauses: (string * StatefulClause) list) =
+    Stateful(Cell initial, Map.ofList clauses)
 
 /// A handler that logs every operation, then runs another.
 [<CompiledName("Recording")>]
@@ -81,7 +87,11 @@ let recording (inner: Handler) = Recording(Log(), inner)
 /// Handlers installed in a schema, overriding outer ones.
 [<CompiledName("Install")>]
 let install (schema: Schema.Schema) (handlers: (string * Handler) list) =
-    { schema with Handlers = handlers |> List.fold (fun table (key, h) -> Map.add key (box h) table) schema.Handlers }
+    { schema with
+        Handlers =
+            handlers
+            |> List.fold (fun table (key, h) -> Map.add key (box h) table) schema.Handlers
+    }
 
 /// The handler of an ability in scope.
 [<CompiledName("Handler")>]
@@ -93,8 +103,16 @@ let handler (schema: Schema.Schema) (ability: string) : Handler =
 /// Run a body in a new scope with handlers made by factories. A factory
 /// failing leaves no handler behind.
 [<CompiledName("WithScope")>]
-let withScope (schema: Schema.Schema) (factories: (string * (Schema.Schema -> Handler)) list) (body: Schema.Schema -> 'a) : 'a =
-    let based = { schema with Scope = Some(box (Scope())) }
+let withScope
+    (schema: Schema.Schema)
+    (factories: (string * (Schema.Schema -> Handler)) list)
+    (body: Schema.Schema -> 'a)
+    : 'a =
+    let based =
+        { schema with
+            Scope = Some(box (Scope()))
+        }
+
     let handlers = factories |> List.map (fun (key, make) -> key, make based)
     body (install based handlers)
 
@@ -118,10 +136,19 @@ let rec invoke (h: Handler) (schema: Schema.Schema) (operation: string) (argumen
     | Stateless clauses -> (clause clauses operation) schema arguments
     | Stateful(cell, clauses) ->
         let run = clause clauses operation
+
         if schema.EffectPath |> List.exists (fun c -> obj.ReferenceEquals(c, cell)) then
             fail "RecursiveHandlerCall" operation
+
         cell.Update(fun state ->
-            match run { schema with EffectPath = box cell :: schema.EffectPath } arguments state with
+            match
+                run
+                    { schema with
+                        EffectPath = box cell :: schema.EffectPath
+                    }
+                    arguments
+                    state
+            with
             | Data(_, [ result; next ]) -> result, next
             | other -> fail "InvalidHandlerResult" (sprintf "%A" other))
     | Recording(log, inner) ->
@@ -141,7 +168,10 @@ let countCalls (schema: Schema.Schema) (ability: string) (operation: string) (ar
     | Recording(log, _) ->
         log.Calls
         |> List.filter (fun (name, values) ->
-            name = operation && (match arguments with None -> true | Some args -> Scalar.equal (Value.List values) (Value.List args)))
+            name = operation
+            && (match arguments with
+                | None -> true
+                | Some args -> Scalar.equal (Value.List values) (Value.List args)))
         |> List.length
         |> bigint
         |> Int
@@ -155,8 +185,11 @@ let raiseFailure (ability: string) (failure: Value) : Value = raise (RaisedFailu
 [<CompiledName("Attempt")>]
 let attempt (ability: string) (body: unit -> Value) (right: Value -> Value) (left: Value -> Value) : Value =
     let outcome =
-        try Choice1Of2(body ())
-        with :? RaisedFailure as f when f.Ability = ability -> Choice2Of2 f.Failure
+        try
+            Choice1Of2(body ())
+        with :? RaisedFailure as f when f.Ability = ability ->
+            Choice2Of2 f.Failure
+
     match outcome with
     | Choice1Of2 v -> right v
     | Choice2Of2 f -> left f
@@ -171,7 +204,9 @@ let ofResult (ability: string) (convert: 'E -> Value) (result: Result<'T, 'E>) :
 /// Exceptions of mapped .NET types become typed failures; the others pass.
 [<CompiledName("NativeFailures")>]
 let nativeFailures (ability: string) (body: unit -> Value) (mappings: (exn -> Value option) list) : Value =
-    try body () with
+    try
+        body ()
+    with
     | :? RaisedFailure -> reraise ()
     | :? LawSpecException -> reraise ()
     | e ->
@@ -182,15 +217,18 @@ let nativeFailures (ability: string) (body: unit -> Value) (mappings: (exn -> Va
 /// A logical failure crossing to native code: the Result its native form returns.
 [<CompiledName("NativeTry")>]
 let nativeTry (ability: string) (convert: Value -> 'E) (body: unit -> 'T) : Result<'T, 'E> =
-    try Ok(body ()) with
-    | :? RaisedFailure as f when f.Ability = ability -> Error(convert f.Failure)
+    try
+        Ok(body ())
+    with :? RaisedFailure as f when f.Ability = ability ->
+        Error(convert f.Failure)
 
 /// The handler behind a native interface, if it came from a logical one with
 /// the same symbols.
 [<CompiledName("Recover")>]
 let recover (native: obj) (ability: string) (symbols: Scalar.SymbolContext) (make: unit -> Handler) : Handler =
     match native with
-    | :? IOrigin as origin when origin.Ability = ability && obj.ReferenceEquals(origin.Symbols, symbols) -> origin.Handler
+    | :? IOrigin as origin when origin.Ability = ability && obj.ReferenceEquals(origin.Symbols, symbols) ->
+        origin.Handler
     | :? IOrigin as origin when origin.Ability = ability -> make ()
     | _ -> make ()
 
@@ -230,4 +268,5 @@ let mapException<'E when 'E :> exn> (make: 'E -> Value) : exn -> Value option =
         match e with
         | :? 'E as caught -> Some(make caught)
         | _ -> None
+
     mapping

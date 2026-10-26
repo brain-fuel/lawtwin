@@ -22,12 +22,21 @@ type Fn =
     static member F1(f: Func<'A, 'R>) : FSharpFunc<'A, 'R> = FuncConvert.FromFunc f
     /// A curried F# function of two arguments.
     static member F2(f: Func<'A, 'B, 'R>) : FSharpFunc<'A, FSharpFunc<'B, 'R>> = fun a b -> f.Invoke(a, b)
-    static member F3(f: Func<'A, 'B, 'C, 'R>) : FSharpFunc<'A, FSharpFunc<'B, FSharpFunc<'C, 'R>>> = fun a b c -> f.Invoke(a, b, c)
+
+    static member F3(f: Func<'A, 'B, 'C, 'R>) : FSharpFunc<'A, FSharpFunc<'B, FSharpFunc<'C, 'R>>> =
+        fun a b c -> f.Invoke(a, b, c)
+
     static member F4(f: Func<'A, 'B, 'C, 'D, 'R>) : FSharpFunc<'A, FSharpFunc<'B, FSharpFunc<'C, FSharpFunc<'D, 'R>>>> =
         fun a b c d -> f.Invoke(a, b, c, d)
-    static member F5(f: Func<'A, 'B, 'C, 'D, 'E, 'R>) : FSharpFunc<'A, FSharpFunc<'B, FSharpFunc<'C, FSharpFunc<'D, FSharpFunc<'E, 'R>>>>> =
+
+    static member F5
+        (f: Func<'A, 'B, 'C, 'D, 'E, 'R>)
+        : FSharpFunc<'A, FSharpFunc<'B, FSharpFunc<'C, FSharpFunc<'D, FSharpFunc<'E, 'R>>>>> =
         fun a b c d e -> f.Invoke(a, b, c, d, e)
-    static member F6(f: Func<'A, 'B, 'C, 'D, 'E, 'G, 'R>) : FSharpFunc<'A, FSharpFunc<'B, FSharpFunc<'C, FSharpFunc<'D, FSharpFunc<'E, FSharpFunc<'G, 'R>>>>>> =
+
+    static member F6
+        (f: Func<'A, 'B, 'C, 'D, 'E, 'G, 'R>)
+        : FSharpFunc<'A, FSharpFunc<'B, FSharpFunc<'C, FSharpFunc<'D, FSharpFunc<'E, FSharpFunc<'G, 'R>>>>>> =
         fun a b c d e g -> f.Invoke(a, b, c, d, e, g)
 
     /// An F# function applied to its arguments, one at a time.
@@ -77,17 +86,21 @@ type V =
 type Maybe =
     [<Extension>]
     static member IsSome(option: 'T option) = Option.isSome option
+
     [<Extension>]
     static member IsNone(option: 'T option) = Option.isNone option
+
     /// The value, or fallback when there is none.
     [<Extension>]
     static member GetOrElse(option: 'T option, fallback: 'T) = defaultArg option fallback
+
     /// One function of the value, or the other of nothing.
     [<Extension>]
     static member Match(option: 'T option, some: Func<'T, 'R>, none: Func<'R>) =
         match option with
         | Some v -> some.Invoke v
         | None -> none.Invoke()
+
     /// An option of a nullable reference.
     static member OfObj(value: 'T) : 'T option when 'T: null = Option.ofObj value
     static member Of(value: 'T) : 'T option = Some value

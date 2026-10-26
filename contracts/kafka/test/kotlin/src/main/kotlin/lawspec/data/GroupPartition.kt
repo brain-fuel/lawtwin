@@ -3,4 +3,5 @@ package lawspec.data
 
 data class GroupPartition(
     val groupId: kotlin.String,
-    val groupPartition: lawspec.data.TopicPartition)
+    val groupPartition: lawspec.data.TopicPartition,
+)

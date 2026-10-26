@@ -4,4 +4,5 @@ package lawspec.data
 data class LastSend(
     val lastPartition: lawspec.data.TopicPartition,
     val lastTag: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
-    val lastRecords: kotlin.collections.List<lawspec.data.Record>)
+    val lastRecords: kotlin.collections.List<lawspec.data.Record>,
+)

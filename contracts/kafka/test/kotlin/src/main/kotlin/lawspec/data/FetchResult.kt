@@ -5,4 +5,5 @@ data class FetchResult(
     val records: kotlin.collections.List<lawspec.data.FetchedRecord>,
     val nextOffset: kotlin.Long,
     val highWatermark: kotlin.Long,
-    val lastStableOffset: kotlin.Long)
+    val lastStableOffset: kotlin.Long,
+)

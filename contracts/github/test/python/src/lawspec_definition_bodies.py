@@ -16,9 +16,12 @@ def _adapters(module: _builtins.str):
     return _importlib.import_module(module)
 
 
-def evaluate_0(symbols, value_0, value_1):
+# matchersMatchesRegex — <lawspec.matchers>:47
+def matchers_matches_regex(symbols, t, r):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_matchersMatchesRegex_52d1c22e(_typed.from_437d0abf423f(value_0), _typed.from_d83bd168ba38(value_1)))
+        return _typed.to_bool(
+            _typed.matchers_matches_regex(_typed.from_text(t), _typed.from_regex(r)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -29,648 +32,462 @@ def evaluate_0(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_1(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_label_key_list_entry_label_key_label(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValDeleteItems_d5ca929b(_typed.from_34b1b06e47b2(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_delete_items_label_key_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "teIt"
-                "ems_"
-                "9e05"
-                "1807"
-                "ce8b"
-                "6631"
-                ": "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValDeleteItems_32cb458ab3c301f1bfa1d2dfaccad6b708254e758be96e927b754334eb6a67617425673b99ec: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_2(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_key_milestone(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValDeleteItems_521d9c1e(_typed.from_680e39ab8f85(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "teIt"
-                "ems_"
-                "f3f3"
-                "38a8"
-                "0ea4"
-                "a7a1"
-                ": "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValDeleteItems_db8e2baf113bbfb228fce8821ce6c64c670e1f2b4794b1a58e2bf32910030aca38bd64e38e25: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_3(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_label_key_key_val_label_key_label(symbols, k, m):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValDelete_3d0c071d(_typed.from_34b1b06e47b2(value_0), _typed.from_e875a313d112(value_1)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_delete_label_key_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "te_b"
-                "df93"
-                "b1d3"
-                "cac3"
-                "49: "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValDelete_10a35554bf8579f0c749c9400afc09f1c2325bc888365dfff6223a5e3eaaf763: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_4(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_milestone_key_key_val_milestone_key_milestone(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValDelete_e194c4ee(_typed.from_680e39ab8f85(value_0), _typed.from_7d032b444681(value_1)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_delete_milestone_key_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "te_e"
-                "3162"
-                "f684"
-                "7310"
-                "2d9:"
-                " "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValDelete_29475c645f81d04a5568bb3aff82a0d907811010cbc4b17fa786b7ac6ddfdb34: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_5(symbols, value_0):
+# keyValEntries — <lawspec.collections>:105
+def lawspec_collections_key_val_entries_key_val_label_key_label(symbols, m):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValEntries_e26035bf(_typed.from_e875a313d112(value_0)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_entries_key_val_label_key_label(
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Entr"
-                "ies_"
-                "9115"
-                "306f"
-                "d1dc"
-                "099a"
-                ": "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValEntries_9e91d2555208ebf0d7f58fc191fd99c1a9901da33578ab33c48730c5699c515036c1ec664ade: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_6(symbols, value_0):
+# keyValEntries — <lawspec.collections>:105
+def lawspec_collections_key_val_entries_key_val_milestone_key_milestone(symbols, m):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValEntries_e829e46d(_typed.from_7d032b444681(value_0)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_entries_key_val_milestone_key_milestone(
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Entr"
-                "ies_"
-                "c1a7"
-                "185a"
-                "15b7"
-                "68aa"
-                ": "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValEntries_dda43aef1d45f51bf3489e99bfc052d9e360cfe4a8e2b6c63c3494c4934d9eaaa740b50e4439: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_7(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_milestone_key_milestone_list_entry_milestone_key_milestone(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValFromItems_9e277637(_typed.from_2f28c788b0d8(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_from_items_list_entry_milestone_key_milestone_list_entry_milestone_key_milestone(
+                _typed.from_list_entry_milestone_key_milestone(es),
+                _typed.from_list_entry_milestone_key_milestone(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_1e"
-                "a5c5"
-                "da12"
-                "9708"
-                "a6: "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValFromItems_30b37de557ccb7dda3e990094ab4cafff269a0d0b7b380efd5d9f2f1832e28184563aacdcac6: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_8(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_label_key_label_list_entry_label_key_label(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValFromItems_90be56aa(_typed.from_4358f20fcb96(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_from_items_list_entry_label_key_label_list_entry_label_key_label(
+                _typed.from_list_entry_label_key_label(es),
+                _typed.from_list_entry_label_key_label(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_93"
-                "acf9"
-                "edfd"
-                "00f4"
-                "b6: "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValFromItems_b76a8d5ce410c3b1caa1e78ecc2dac98862c357ca32c026b1c927a5d9a6c0108ecaaa5b2d9c8: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_9(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_milestone_key_list_entry_milestone_key_milestone(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_63f157a347bf(_typed.Def_lawspecCollectionsKeyValLookupItems_90dab4a9(_typed.from_680e39ab8f85(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_maybe_milestone(
+            _typed.lawspec_collections_key_val_lookup_items_milestone_key_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "2bd5"
-                "3328"
-                "f2fa"
-                "920b"
-                ": "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValLookupItems_8ce2bbe1457617eed5ddeaa97c037db5ad8d231d65e356d78a655e42218bac04893ee3e4ad85: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_10(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_label_key_list_entry_label_key_label(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_5527b8ff7350(_typed.Def_lawspecCollectionsKeyValLookupItems_801c71f4(_typed.from_34b1b06e47b2(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_maybe_label(
+            _typed.lawspec_collections_key_val_lookup_items_label_key_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "6840"
-                "b234"
-                "8dfa"
-                "daef"
-                ": "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValLookupItems_933dc128ed55d1160635af90c2092f10bc853a57d1113852772c76173d50ccb09b24cbb632a8: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_11(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_milestone(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_63f157a347bf(_typed.Def_lawspecCollectionsKeyValLookup_a7ef6313(_typed.from_680e39ab8f85(value_0), _typed.from_7d032b444681(value_1)))
+        return _typed.to_maybe_milestone(
+            _typed.lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_8"
-                "2e5e"
-                "d48c"
-                "d416"
-                "92f:"
-                " "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValLookup_9587eb7ad739cc3267edecfb9c6f7f26f52a7e72d075dc19628ec2f1f0ce87bc: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_12(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label(symbols, k, m):
     try:
-        return _typed.to_5527b8ff7350(_typed.Def_lawspecCollectionsKeyValLookup_bb954c82(_typed.from_34b1b06e47b2(value_0), _typed.from_e875a313d112(value_1)))
+        return _typed.to_maybe_label(
+            _typed.lawspec_collections_key_val_lookup_label_key_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_9"
-                "ebe5"
-                "d8a2"
-                "3eff"
-                "7e3:"
-                " "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValLookup_b5640a4d0ededbb4472dd47178bab66c82470ead0303a008551268e299470f31: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_13(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_milestone_key_milestone(symbols, es):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValOf_e4af0442(_typed.from_2f28c788b0d8(value_0)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_of_list_entry_milestone_key_milestone(
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_3"
-                "2834"
-                "b690"
-                "fa17"
-                "862:"
-                " "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValOf_30002a10bf089a68e4254766dc3577d993b211598dacbc7c858e8c4f160fedb0b2a1aee011b3: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_14(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_label_key_label(symbols, es):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValOf_57c642d1(_typed.from_4358f20fcb96(value_0)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_of_list_entry_label_key_label(
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_4"
-                "c6f5"
-                "dd92"
-                "00a2"
-                "e32:"
-                " "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValOf_c4faf59fbe6f393f74929a1314d63406c6ed97d8d0b16f36eaa15a6d9ccf72d23e3266257d5b: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_15(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_label_key_label_list_entry_label_key_label(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValPutItems_009ae3af(_typed.from_680e39ab8f85(value_0), _typed.from_298bd35e8f4d(value_1), _typed.from_2f28c788b0d8(value_2)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_put_items_label_key_label_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_label(v),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_824"
-                "57d1"
-                "9a83"
-                "cfb5"
-                "b: "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValPutItems_5caa8fea9cba1a1eb238f0e3022749b04264686755ec17faabff9909e6d7f096c6228b0d5b98: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_16(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_milestone_key_milestone(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValPutItems_190448ce(_typed.from_34b1b06e47b2(value_0), _typed.from_3ee7c77b169f(value_1), _typed.from_4358f20fcb96(value_2)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_milestone(v),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_fa5"
-                "44d6"
-                "fcf9"
-                "8e50"
-                "b: "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValPutItems_78850bc1189700049c9816f7cdd2025c4fae49df0945cb1b1b4523d7df04efd84814e21a941e: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_17(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_label_key_label_key_val_label_key_label(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValPut_d49491c0(_typed.from_680e39ab8f85(value_0), _typed.from_298bd35e8f4d(value_1), _typed.from_7d032b444681(value_2)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_put_label_key_label_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_label(v),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "85f9"
-                "039d"
-                "bce1"
-                "297f"
-                ": "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValPut_33d702cbdd28c15a2a0c5cd78ca531cfe549d7cb0ece073c7c28e9af2e409cb2: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_18(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_milestone_key_milestone_key_val_milestone_key_milestone(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValPut_21afa008(_typed.from_34b1b06e47b2(value_0), _typed.from_3ee7c77b169f(value_1), _typed.from_e875a313d112(value_2)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_put_milestone_key_milestone_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_milestone(v),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "a375"
-                "65d6"
-                "d8f4"
-                "81df"
-                ": "
-            )
+            "lawtwin.github::lawspec_lawspecCollectionsKeyValPut_5161f7d605da95f395e9c4dcb50c5034a615b624f2946e442f226f4fab77018f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_19(symbols, value_0):
+# lawtwinGithubModelAfter64 — ../src/model.lawspec:239
+def lawtwin_github_model_after64(symbols, k):
     try:
-        return _typed.to_44a08172da10(_typed.Def_lawtwinGithubModelAfter64_6da0e3cc(_typed.from_44a08172da10(value_0)))
+        return _typed.to_int64(
+            _typed.lawtwin_github_model_after64(_typed.from_int64(k)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::lawtwinGithubModelAfter64: "
-            + _builtins.str(error),
+            "lawtwin.github::lawtwinGithubModelAfter64: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_20(symbols, value_0, value_1):
+# lawtwinGithubModelContainsLabel — ../src/model.lawspec:248
+def lawtwin_github_model_contains_label(symbols, wanted, items):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelContainsLabel_309ab147(_typed.from_3ee7c77b169f(value_0), _typed.from_26c1f1aa035f(value_1)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_contains_label(
+                _typed.from_label(wanted),
+                _typed.from_list_label(items),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::lawtwinGithubModelContainsLabel: "
-            + _builtins.str(error),
+            "lawtwin.github::lawtwinGithubModelContainsLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_21(symbols, value_0, value_1):
+# lawtwinGithubModelContainsMilestone — ../src/model.lawspec:256
+def lawtwin_github_model_contains_milestone(symbols, wanted, items):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelContainsMilestone_cd6cafbf(_typed.from_298bd35e8f4d(value_0), _typed.from_6e0c216c458a(value_1)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_contains_milestone(
+                _typed.from_milestone(wanted),
+                _typed.from_list_milestone(items),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -682,23 +499,33 @@ def evaluate_21(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_22(symbols, value_0):
+# lawtwinGithubModelEmptyState — ../src/model.lawspec:208
+def lawtwin_github_model_empty_state(symbols, u):
     try:
-        return _typed.to_fedfb1aaf0b7(_typed.Def_lawtwinGithubModelEmptyState_88944bb0(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(
+            _typed.lawtwin_github_model_empty_state(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::lawtwinGithubModelEmptyState: "
-            + _builtins.str(error),
+            "lawtwin.github::lawtwinGithubModelEmptyState: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_23(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesCreateLabel — ../src/model.lawspec:273
+def lawtwin_github_model_model_issues_create_label(symbols, owner, repo, body, current):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesCreateLabel_9a20de66(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_6dd579d34c7f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_create_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_issues_create_label_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -710,9 +537,23 @@ def evaluate_23(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_24(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesCreateMilestone — ../src/model.lawspec:317
+def lawtwin_github_model_model_issues_create_milestone(
+    symbols,
+    owner,
+    repo,
+    body,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesCreateMilestone_a9dfef0f(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_694e86e76a75(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_create_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_issues_create_milestone_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -724,9 +565,17 @@ def evaluate_24(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_25(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesDeleteLabel — ../src/model.lawspec:293
+def lawtwin_github_model_model_issues_delete_label(symbols, owner, repo, name, current):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_lawtwinGithubModelModelIssuesDeleteLabel_a3cb064c(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_github_model_model_issues_delete_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -738,9 +587,23 @@ def evaluate_25(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_26(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesDeleteMilestone — ../src/model.lawspec:339
+def lawtwin_github_model_model_issues_delete_milestone(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    current,
+):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_lawtwinGithubModelModelIssuesDeleteMilestone_ae89f11e(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_github_model_model_issues_delete_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -752,9 +615,17 @@ def evaluate_26(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_27(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesGetLabel — ../src/model.lawspec:285
+def lawtwin_github_model_model_issues_get_label(symbols, owner, repo, name, current):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesGetLabel_7a98542e(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_get_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -766,9 +637,23 @@ def evaluate_27(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_28(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesGetMilestone — ../src/model.lawspec:331
+def lawtwin_github_model_model_issues_get_milestone(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesGetMilestone_9f093a4d(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_get_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -780,9 +665,25 @@ def evaluate_28(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_29(symbols, value_0, value_1, value_2, value_3, value_4):
+# lawtwinGithubModelModelIssuesListLabelsForRepo — ../src/model.lawspec:268
+def lawtwin_github_model_model_issues_list_labels_for_repo(
+    symbols,
+    owner,
+    repo,
+    per_page,
+    page,
+    current,
+):
     try:
-        return _typed.to_37a4ee138a94(_typed.Def_lawtwinGithubModelModelIssuesListLabelsForRepo_78c35983(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_c09136e29464(value_2), _typed.from_c09136e29464(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_list_label_state(
+            _typed.lawtwin_github_model_model_issues_list_labels_for_repo(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_maybe_int64(per_page),
+                _typed.from_maybe_int64(page),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -794,19 +695,31 @@ def evaluate_29(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_30(
+# lawtwinGithubModelModelIssuesListMilestones — ../src/model.lawspec:312
+def lawtwin_github_model_model_issues_list_milestones(
     symbols,
-    value_0,
-    value_1,
-    value_2,
-    value_3,
-    value_4,
-    value_5,
-    value_6,
-    value_7,
+    owner,
+    repo,
+    state,
+    sort,
+    direction,
+    per_page,
+    page,
+    current,
 ):
     try:
-        return _typed.to_d490ac6a1b0e(_typed.Def_lawtwinGithubModelModelIssuesListMilestones_db0d4fa1(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_79d855388cb1(value_2), _typed.from_f7593a7d6572(value_3), _typed.from_6c9175189927(value_4), _typed.from_c09136e29464(value_5), _typed.from_c09136e29464(value_6), _typed.from_fedfb1aaf0b7(value_7)))
+        return _typed.to_pair_list_milestone_state(
+            _typed.lawtwin_github_model_model_issues_list_milestones(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_maybe_issues_list_milestones_state(state),
+                _typed.from_maybe_issues_list_milestones_sort(sort),
+                _typed.from_maybe_issues_list_milestones_direction(direction),
+                _typed.from_maybe_int64(per_page),
+                _typed.from_maybe_int64(page),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -818,9 +731,25 @@ def evaluate_30(
         ) from error
 
 
-def evaluate_31(symbols, value_0, value_1, value_2, value_3, value_4):
+# lawtwinGithubModelModelIssuesUpdateLabel — ../src/model.lawspec:301
+def lawtwin_github_model_model_issues_update_label(
+    symbols,
+    owner,
+    repo,
+    name,
+    body,
+    current,
+):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesUpdateLabel_910592d4(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_a0758b309515(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_update_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_maybe_issues_update_label_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -832,9 +761,25 @@ def evaluate_31(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_32(symbols, value_0, value_1, value_2, value_3, value_4):
+# lawtwinGithubModelModelIssuesUpdateMilestone — ../src/model.lawspec:347
+def lawtwin_github_model_model_issues_update_milestone(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    body,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesUpdateMilestone_86960b9c(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_b472b5d77510(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_update_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_maybe_issues_update_milestone_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -846,9 +791,16 @@ def evaluate_32(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_33(symbols, value_0, value_1, value_2):
+# lawtwinGithubModelModelLabelsUnder — ../src/model.lawspec:218
+def lawtwin_github_model_model_labels_under(symbols, owner, repo, entries):
     try:
-        return _typed.to_26c1f1aa035f(_typed.Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_4358f20fcb96(value_2)))
+        return _typed.to_list_label(
+            _typed.lawtwin_github_model_model_labels_under(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_list_entry_label_key_label(entries),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -860,9 +812,16 @@ def evaluate_33(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_34(symbols, value_0, value_1, value_2):
+# lawtwinGithubModelModelMilestonesUnder — ../src/model.lawspec:226
+def lawtwin_github_model_model_milestones_under(symbols, owner, repo, entries):
     try:
-        return _typed.to_6e0c216c458a(_typed.Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_2f28c788b0d8(value_2)))
+        return _typed.to_list_milestone(
+            _typed.lawtwin_github_model_model_milestones_under(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_list_entry_milestone_key_milestone(entries),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -874,129 +833,139 @@ def evaluate_34(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_35(symbols, value_0):
+# lawtwinGithubModelValidIssuesCreateMilestoneBody — ../src/model.lawspec:234
+def lawtwin_github_model_valid_issues_create_milestone_body(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelValidIssuesCreateMilestoneBody_b6751680(_typed.from_694e86e76a75(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_valid_issues_create_milestone_body(
+                _typed.from_issues_create_milestone_body(value),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "lawt"
-                "winG"
-                "ithu"
-                "bMod"
-                "elVa"
-                "lidI"
-                "ssue"
-                "sCre"
-                "ateM"
-                "iles"
-                "tone"
-                "Body"
-                ": "
-            )
+            "lawtwin.github::lawtwinGithubModelValidIssuesCreateMilestoneBody: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_36(symbols, value_0):
+# lawtwinGithubModelValidIssuesUpdateMilestoneBody — ../src/model.lawspec:243
+def lawtwin_github_model_valid_issues_update_milestone_body(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelValidIssuesUpdateMilestoneBody_922d307a(_typed.from_b93e2957492a(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_valid_issues_update_milestone_body(
+                _typed.from_issues_update_milestone_body(value),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub::"
-                "lawt"
-                "winG"
-                "ithu"
-                "bMod"
-                "elVa"
-                "lidI"
-                "ssue"
-                "sUpd"
-                "ateM"
-                "iles"
-                "tone"
-                "Body"
-                ": "
-            )
+            "lawtwin.github::lawtwinGithubModelValidIssuesUpdateMilestoneBody: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_37(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesCreateLabel — ../src/api.lawspec:207
+def reference_issues_create_label(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_f82672304359(_typed.Def_referenceIssuesCreateLabel_66a10480(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_6dd579d34c7f(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.reference_issues_create_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_issues_create_label_body(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesCreateLabel: "
-            + _builtins.str(error),
+            "lawtwin.github::referenceIssuesCreateLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_38(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesCreateMilestone — ../src/api.lawspec:212
+def reference_issues_create_milestone(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_referenceIssuesCreateMilestone_819e36f6(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_694e86e76a75(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.reference_issues_create_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_issues_create_milestone_body(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesCreateMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github::referenceIssuesCreateMilestone: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_39(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesDeleteLabel — ../src/api.lawspec:209
+def reference_issues_delete_label(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_referenceIssuesDeleteLabel_91dc9b24(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_437d0abf423f(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_issues_delete_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_text(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesDeleteLabel: "
-            + _builtins.str(error),
+            "lawtwin.github::referenceIssuesDeleteLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_40(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesDeleteMilestone — ../src/api.lawspec:214
+def reference_issues_delete_milestone(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_referenceIssuesDeleteMilestone_1798b0e2(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_44a08172da10(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_issues_delete_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_int64(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesDeleteMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github::referenceIssuesDeleteMilestone: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_41(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesGetLabel — ../src/api.lawspec:208
+def reference_issues_get_label(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_f82672304359(_typed.Def_referenceIssuesGetLabel_caf28965(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_437d0abf423f(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.reference_issues_get_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_text(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1007,89 +976,139 @@ def evaluate_41(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_42(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesGetMilestone — ../src/api.lawspec:213
+def reference_issues_get_milestone(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_referenceIssuesGetMilestone_53f7b6bc(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_44a08172da10(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.reference_issues_get_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_int64(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesGetMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github::referenceIssuesGetMilestone: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_43(symbols, value_0, value_1, value_2, value_3, value_4):
-    try:
-        return _typed.to_37a4ee138a94(_typed.Def_referenceIssuesListLabelsForRepo_074d2d44(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_c09136e29464(value_3), _typed.from_c09136e29464(value_4)))
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesListLabelsForRepo: "
-            + _builtins.str(error),
-        ) from error
-
-
-def evaluate_44(
+# referenceIssuesListLabelsForRepo — ../src/api.lawspec:206
+def reference_issues_list_labels_for_repo(
     symbols,
-    value_0,
-    value_1,
-    value_2,
-    value_3,
-    value_4,
-    value_5,
-    value_6,
-    value_7,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
 ):
     try:
-        return _typed.to_d490ac6a1b0e(_typed.Def_referenceIssuesListMilestones_b04e2ebe(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_79d855388cb1(value_3), _typed.from_f7593a7d6572(value_4), _typed.from_6c9175189927(value_5), _typed.from_c09136e29464(value_6), _typed.from_c09136e29464(value_7)))
+        return _typed.to_pair_list_label_state(
+            _typed.reference_issues_list_labels_for_repo(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_maybe_int64(value2),
+                _typed.from_maybe_int64(value3),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesListMilestones: "
-            + _builtins.str(error),
+            "lawtwin.github::referenceIssuesListLabelsForRepo: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_45(symbols, value_0, value_1, value_2, value_3, value_4):
+# referenceIssuesListMilestones — ../src/api.lawspec:211
+def reference_issues_list_milestones(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+    value4,
+    value5,
+    value6,
+):
     try:
-        return _typed.to_f82672304359(_typed.Def_referenceIssuesUpdateLabel_a2730891(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_437d0abf423f(value_3), _typed.from_a0758b309515(value_4)))
+        return _typed.to_pair_list_milestone_state(
+            _typed.reference_issues_list_milestones(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_maybe_issues_list_milestones_state(value2),
+                _typed.from_maybe_issues_list_milestones_sort(value3),
+                _typed.from_maybe_issues_list_milestones_direction(value4),
+                _typed.from_maybe_int64(value5),
+                _typed.from_maybe_int64(value6),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesUpdateLabel: "
-            + _builtins.str(error),
+            "lawtwin.github::referenceIssuesListMilestones: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_46(symbols, value_0, value_1, value_2, value_3, value_4):
+# referenceIssuesUpdateLabel — ../src/api.lawspec:210
+def reference_issues_update_label(symbols, state, value0, value1, value2, value3):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_referenceIssuesUpdateMilestone_cc0bfe48(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_44a08172da10(value_3), _typed.from_b472b5d77510(value_4)))
+        return _typed.to_pair_label_state(
+            _typed.reference_issues_update_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_text(value2),
+                _typed.from_maybe_issues_update_label_body(value3),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesUpdateMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github::referenceIssuesUpdateLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_47(symbols, value_0):
+# referenceIssuesUpdateMilestone — ../src/api.lawspec:215
+def reference_issues_update_milestone(symbols, state, value0, value1, value2, value3):
     try:
-        return _typed.to_fedfb1aaf0b7(_typed.Def_referenceStart_6abddcfe(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_pair_milestone_state(
+            _typed.reference_issues_update_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_int64(value2),
+                _typed.from_maybe_issues_update_milestone_body(value3),
+            ),
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "lawtwin.github::referenceIssuesUpdateMilestone: " + _builtins.str(error),
+        ) from error
+
+
+# referenceStart — ../src/api.lawspec:205
+def reference_start(symbols, unit):
+    try:
+        return _typed.to_state(_typed.reference_start(_typed.from_unit(unit)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1100,669 +1119,465 @@ def evaluate_47(symbols, value_0):
         ) from error
 
 
-def evaluate_48(symbols, value_0):
+# nothingHandWritten — ../src/handwritten.lawspec:14
+def nothing_hand_written(symbols, u):
     try:
-        return _typed.to_b120ceed78cb(_typed.Def_nothingHandWritten_abc609a3(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_unit(_typed.nothing_hand_written(_typed.from_unit(u)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.handwritten::nothingHandWritten: "
-            + _builtins.str(error),
+            "lawtwin.github.handwritten::nothingHandWritten: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_49(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_label_key_list_entry_label_key_label_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValDeleteItems_d5ca929b(_typed.from_34b1b06e47b2(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_delete_items_label_key_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lDel"
-                "eteI"
-                "tems"
-                "_9e0"
-                "5180"
-                "7ce8"
-                "b663"
-                "1: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValDeleteItems_32cb458ab3c301f1bfa1d2dfaccad6b708254e758be96e927b754334eb6a67617425673b99ec: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_50(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_key_milestone_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValDeleteItems_521d9c1e(_typed.from_680e39ab8f85(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lDel"
-                "eteI"
-                "tems"
-                "_f3f"
-                "338a"
-                "80ea"
-                "4a7a"
-                "1: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValDeleteItems_db8e2baf113bbfb228fce8821ce6c64c670e1f2b4794b1a58e2bf32910030aca38bd64e38e25: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_51(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_label_key_key_val_label_key_label_2(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValDelete_3d0c071d(_typed.from_34b1b06e47b2(value_0), _typed.from_e875a313d112(value_1)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_delete_label_key_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lDel"
-                "ete_"
-                "bdf9"
-                "3b1d"
-                "3cac"
-                "349:"
-                " "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValDelete_10a35554bf8579f0c749c9400afc09f1c2325bc888365dfff6223a5e3eaaf763: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_52(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_milestone_key_key_val_milestone_key_milestone_2(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValDelete_e194c4ee(_typed.from_680e39ab8f85(value_0), _typed.from_7d032b444681(value_1)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_delete_milestone_key_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lDel"
-                "ete_"
-                "e316"
-                "2f68"
-                "4731"
-                "02d9"
-                ": "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValDelete_29475c645f81d04a5568bb3aff82a0d907811010cbc4b17fa786b7ac6ddfdb34: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_53(symbols, value_0):
+# keyValEntries — <lawspec.collections>:105
+def lawspec_collections_key_val_entries_key_val_label_key_label_2(symbols, m):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValEntries_e26035bf(_typed.from_e875a313d112(value_0)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_entries_key_val_label_key_label(
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lEnt"
-                "ries"
-                "_911"
-                "5306"
-                "fd1d"
-                "c099"
-                "a: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValEntries_9e91d2555208ebf0d7f58fc191fd99c1a9901da33578ab33c48730c5699c515036c1ec664ade: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_54(symbols, value_0):
+# keyValEntries — <lawspec.collections>:105
+def lawspec_collections_key_val_entries_key_val_milestone_key_milestone_2(symbols, m):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValEntries_e829e46d(_typed.from_7d032b444681(value_0)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_entries_key_val_milestone_key_milestone(
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lEnt"
-                "ries"
-                "_c1a"
-                "7185"
-                "a15b"
-                "768a"
-                "a: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValEntries_dda43aef1d45f51bf3489e99bfc052d9e360cfe4a8e2b6c63c3494c4934d9eaaa740b50e4439: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_55(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_milestone_key_milestone_list_entry_milestone_key_milestone_2(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValFromItems_9e277637(_typed.from_2f28c788b0d8(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_from_items_list_entry_milestone_key_milestone_list_entry_milestone_key_milestone(
+                _typed.from_list_entry_milestone_key_milestone(es),
+                _typed.from_list_entry_milestone_key_milestone(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lFro"
-                "mIte"
-                "ms_1"
-                "ea5c"
-                "5da1"
-                "2970"
-                "8a6:"
-                " "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValFromItems_30b37de557ccb7dda3e990094ab4cafff269a0d0b7b380efd5d9f2f1832e28184563aacdcac6: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_56(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_label_key_label_list_entry_label_key_label_2(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValFromItems_90be56aa(_typed.from_4358f20fcb96(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_from_items_list_entry_label_key_label_list_entry_label_key_label(
+                _typed.from_list_entry_label_key_label(es),
+                _typed.from_list_entry_label_key_label(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lFro"
-                "mIte"
-                "ms_9"
-                "3acf"
-                "9edf"
-                "d00f"
-                "4b6:"
-                " "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValFromItems_b76a8d5ce410c3b1caa1e78ecc2dac98862c357ca32c026b1c927a5d9a6c0108ecaaa5b2d9c8: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_57(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_milestone_key_list_entry_milestone_key_milestone_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_63f157a347bf(_typed.Def_lawspecCollectionsKeyValLookupItems_90dab4a9(_typed.from_680e39ab8f85(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_maybe_milestone(
+            _typed.lawspec_collections_key_val_lookup_items_milestone_key_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lLoo"
-                "kupI"
-                "tems"
-                "_2bd"
-                "5332"
-                "8f2f"
-                "a920"
-                "b: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValLookupItems_8ce2bbe1457617eed5ddeaa97c037db5ad8d231d65e356d78a655e42218bac04893ee3e4ad85: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_58(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_label_key_list_entry_label_key_label_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_5527b8ff7350(_typed.Def_lawspecCollectionsKeyValLookupItems_801c71f4(_typed.from_34b1b06e47b2(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_maybe_label(
+            _typed.lawspec_collections_key_val_lookup_items_label_key_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lLoo"
-                "kupI"
-                "tems"
-                "_684"
-                "0b23"
-                "48df"
-                "adae"
-                "f: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValLookupItems_933dc128ed55d1160635af90c2092f10bc853a57d1113852772c76173d50ccb09b24cbb632a8: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_59(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_milestone_2(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_63f157a347bf(_typed.Def_lawspecCollectionsKeyValLookup_a7ef6313(_typed.from_680e39ab8f85(value_0), _typed.from_7d032b444681(value_1)))
+        return _typed.to_maybe_milestone(
+            _typed.lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lLoo"
-                "kup_"
-                "82e5"
-                "ed48"
-                "cd41"
-                "692f"
-                ": "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValLookup_9587eb7ad739cc3267edecfb9c6f7f26f52a7e72d075dc19628ec2f1f0ce87bc: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_60(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label_2(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_5527b8ff7350(_typed.Def_lawspecCollectionsKeyValLookup_bb954c82(_typed.from_34b1b06e47b2(value_0), _typed.from_e875a313d112(value_1)))
+        return _typed.to_maybe_label(
+            _typed.lawspec_collections_key_val_lookup_label_key_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lLoo"
-                "kup_"
-                "9ebe"
-                "5d8a"
-                "23ef"
-                "f7e3"
-                ": "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValLookup_b5640a4d0ededbb4472dd47178bab66c82470ead0303a008551268e299470f31: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_61(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_milestone_key_milestone_2(symbols, es):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValOf_e4af0442(_typed.from_2f28c788b0d8(value_0)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_of_list_entry_milestone_key_milestone(
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lOf_"
-                "3283"
-                "4b69"
-                "0fa1"
-                "7862"
-                ": "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValOf_30002a10bf089a68e4254766dc3577d993b211598dacbc7c858e8c4f160fedb0b2a1aee011b3: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_62(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_label_key_label_2(symbols, es):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValOf_57c642d1(_typed.from_4358f20fcb96(value_0)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_of_list_entry_label_key_label(
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lOf_"
-                "4c6f"
-                "5dd9"
-                "200a"
-                "2e32"
-                ": "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValOf_c4faf59fbe6f393f74929a1314d63406c6ed97d8d0b16f36eaa15a6d9ccf72d23e3266257d5b: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_63(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_label_key_label_list_entry_label_key_label_2(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValPutItems_009ae3af(_typed.from_680e39ab8f85(value_0), _typed.from_298bd35e8f4d(value_1), _typed.from_2f28c788b0d8(value_2)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_put_items_label_key_label_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_label(v),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lPut"
-                "Item"
-                "s_82"
-                "457d"
-                "19a8"
-                "3cfb"
-                "5b: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValPutItems_5caa8fea9cba1a1eb238f0e3022749b04264686755ec17faabff9909e6d7f096c6228b0d5b98: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_64(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_milestone_key_milestone_2(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValPutItems_190448ce(_typed.from_34b1b06e47b2(value_0), _typed.from_3ee7c77b169f(value_1), _typed.from_4358f20fcb96(value_2)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_milestone(v),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lPut"
-                "Item"
-                "s_fa"
-                "544d"
-                "6fcf"
-                "98e5"
-                "0b: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValPutItems_78850bc1189700049c9816f7cdd2025c4fae49df0945cb1b1b4523d7df04efd84814e21a941e: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_65(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_label_key_label_key_val_label_key_label_2(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValPut_d49491c0(_typed.from_680e39ab8f85(value_0), _typed.from_298bd35e8f4d(value_1), _typed.from_7d032b444681(value_2)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_put_label_key_label_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_label(v),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lPut"
-                "_85f"
-                "9039"
-                "dbce"
-                "1297"
-                "f: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValPut_33d702cbdd28c15a2a0c5cd78ca531cfe549d7cb0ece073c7c28e9af2e409cb2: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_66(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_milestone_key_milestone_key_val_milestone_key_milestone_2(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValPut_21afa008(_typed.from_34b1b06e47b2(value_0), _typed.from_3ee7c77b169f(value_1), _typed.from_e875a313d112(value_2)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_put_milestone_key_milestone_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_milestone(v),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lPut"
-                "_a37"
-                "565d"
-                "6d8f"
-                "481d"
-                "f: "
-            )
+            "lawtwin.github.laws::lawspec_lawspecCollectionsKeyValPut_5161f7d605da95f395e9c4dcb50c5034a615b624f2946e442f226f4fab77018f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_67(symbols, value_0):
+# lawtwinGithubModelAfter64 — ../src/model.lawspec:239
+def lawtwin_github_model_after64_2(symbols, k):
     try:
-        return _typed.to_44a08172da10(_typed.Def_lawtwinGithubModelAfter64_6da0e3cc(_typed.from_44a08172da10(value_0)))
+        return _typed.to_int64(
+            _typed.lawtwin_github_model_after64(_typed.from_int64(k)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::lawtwinGithubModelAfter64: "
-            + _builtins.str(error),
+            "lawtwin.github.laws::lawtwinGithubModelAfter64: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_68(symbols, value_0, value_1):
+# lawtwinGithubModelContainsLabel — ../src/model.lawspec:248
+def lawtwin_github_model_contains_label_2(symbols, wanted, items):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelContainsLabel_309ab147(_typed.from_3ee7c77b169f(value_0), _typed.from_26c1f1aa035f(value_1)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_contains_label(
+                _typed.from_label(wanted),
+                _typed.from_list_label(items),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1774,9 +1589,15 @@ def evaluate_68(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_69(symbols, value_0, value_1):
+# lawtwinGithubModelContainsMilestone — ../src/model.lawspec:256
+def lawtwin_github_model_contains_milestone_2(symbols, wanted, items):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelContainsMilestone_cd6cafbf(_typed.from_298bd35e8f4d(value_0), _typed.from_6e0c216c458a(value_1)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_contains_milestone(
+                _typed.from_milestone(wanted),
+                _typed.from_list_milestone(items),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1788,9 +1609,12 @@ def evaluate_69(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_70(symbols, value_0):
+# lawtwinGithubModelEmptyState — ../src/model.lawspec:208
+def lawtwin_github_model_empty_state_2(symbols, u):
     try:
-        return _typed.to_fedfb1aaf0b7(_typed.Def_lawtwinGithubModelEmptyState_88944bb0(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(
+            _typed.lawtwin_github_model_empty_state(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1802,9 +1626,23 @@ def evaluate_70(symbols, value_0):
         ) from error
 
 
-def evaluate_71(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesCreateLabel — ../src/model.lawspec:273
+def lawtwin_github_model_model_issues_create_label_2(
+    symbols,
+    owner,
+    repo,
+    body,
+    current,
+):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesCreateLabel_9a20de66(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_6dd579d34c7f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_create_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_issues_create_label_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1816,41 +1654,51 @@ def evaluate_71(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_72(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesCreateMilestone — ../src/model.lawspec:317
+def lawtwin_github_model_model_issues_create_milestone_2(
+    symbols,
+    owner,
+    repo,
+    body,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesCreateMilestone_a9dfef0f(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_694e86e76a75(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_create_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_issues_create_milestone_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esCr"
-                "eate"
-                "Mile"
-                "ston"
-                "e: "
-            )
+            "lawtwin.github.laws::lawtwinGithubModelModelIssuesCreateMilestone: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_73(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesDeleteLabel — ../src/model.lawspec:293
+def lawtwin_github_model_model_issues_delete_label_2(
+    symbols,
+    owner,
+    repo,
+    name,
+    current,
+):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_lawtwinGithubModelModelIssuesDeleteLabel_a3cb064c(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_github_model_model_issues_delete_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1862,41 +1710,45 @@ def evaluate_73(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_74(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesDeleteMilestone — ../src/model.lawspec:339
+def lawtwin_github_model_model_issues_delete_milestone_2(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    current,
+):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_lawtwinGithubModelModelIssuesDeleteMilestone_ae89f11e(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_github_model_model_issues_delete_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esDe"
-                "lete"
-                "Mile"
-                "ston"
-                "e: "
-            )
+            "lawtwin.github.laws::lawtwinGithubModelModelIssuesDeleteMilestone: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_75(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesGetLabel — ../src/model.lawspec:285
+def lawtwin_github_model_model_issues_get_label_2(symbols, owner, repo, name, current):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesGetLabel_7a98542e(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_get_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1908,9 +1760,23 @@ def evaluate_75(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_76(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesGetMilestone — ../src/model.lawspec:331
+def lawtwin_github_model_model_issues_get_milestone_2(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesGetMilestone_9f093a4d(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_get_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1922,84 +1788,91 @@ def evaluate_76(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_77(symbols, value_0, value_1, value_2, value_3, value_4):
-    try:
-        return _typed.to_37a4ee138a94(_typed.Def_lawtwinGithubModelModelIssuesListLabelsForRepo_78c35983(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_c09136e29464(value_2), _typed.from_c09136e29464(value_3), _typed.from_fedfb1aaf0b7(value_4)))
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esLi"
-                "stLa"
-                "bels"
-                "ForR"
-                "epo:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def evaluate_78(
+# lawtwinGithubModelModelIssuesListLabelsForRepo — ../src/model.lawspec:268
+def lawtwin_github_model_model_issues_list_labels_for_repo_2(
     symbols,
-    value_0,
-    value_1,
-    value_2,
-    value_3,
-    value_4,
-    value_5,
-    value_6,
-    value_7,
+    owner,
+    repo,
+    per_page,
+    page,
+    current,
 ):
     try:
-        return _typed.to_d490ac6a1b0e(_typed.Def_lawtwinGithubModelModelIssuesListMilestones_db0d4fa1(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_79d855388cb1(value_2), _typed.from_f7593a7d6572(value_3), _typed.from_6c9175189927(value_4), _typed.from_c09136e29464(value_5), _typed.from_c09136e29464(value_6), _typed.from_fedfb1aaf0b7(value_7)))
+        return _typed.to_pair_list_label_state(
+            _typed.lawtwin_github_model_model_issues_list_labels_for_repo(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_maybe_int64(per_page),
+                _typed.from_maybe_int64(page),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esLi"
-                "stMi"
-                "lest"
-                "ones"
-                ": "
-            )
+            "lawtwin.github.laws::lawtwinGithubModelModelIssuesListLabelsForRepo: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_79(symbols, value_0, value_1, value_2, value_3, value_4):
+# lawtwinGithubModelModelIssuesListMilestones — ../src/model.lawspec:312
+def lawtwin_github_model_model_issues_list_milestones_2(
+    symbols,
+    owner,
+    repo,
+    state,
+    sort,
+    direction,
+    per_page,
+    page,
+    current,
+):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesUpdateLabel_910592d4(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_a0758b309515(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_list_milestone_state(
+            _typed.lawtwin_github_model_model_issues_list_milestones(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_maybe_issues_list_milestones_state(state),
+                _typed.from_maybe_issues_list_milestones_sort(sort),
+                _typed.from_maybe_issues_list_milestones_direction(direction),
+                _typed.from_maybe_int64(per_page),
+                _typed.from_maybe_int64(page),
+                _typed.from_state(current),
+            ),
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "lawtwin.github.laws::lawtwinGithubModelModelIssuesListMilestones: "
+            + _builtins.str(error),
+        ) from error
+
+
+# lawtwinGithubModelModelIssuesUpdateLabel — ../src/model.lawspec:301
+def lawtwin_github_model_model_issues_update_label_2(
+    symbols,
+    owner,
+    repo,
+    name,
+    body,
+    current,
+):
+    try:
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_update_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_maybe_issues_update_label_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2011,41 +1884,46 @@ def evaluate_79(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_80(symbols, value_0, value_1, value_2, value_3, value_4):
+# lawtwinGithubModelModelIssuesUpdateMilestone — ../src/model.lawspec:347
+def lawtwin_github_model_model_issues_update_milestone_2(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    body,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesUpdateMilestone_86960b9c(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_b472b5d77510(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_update_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_maybe_issues_update_milestone_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esUp"
-                "date"
-                "Mile"
-                "ston"
-                "e: "
-            )
+            "lawtwin.github.laws::lawtwinGithubModelModelIssuesUpdateMilestone: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_81(symbols, value_0, value_1, value_2):
+# lawtwinGithubModelModelLabelsUnder — ../src/model.lawspec:218
+def lawtwin_github_model_model_labels_under_2(symbols, owner, repo, entries):
     try:
-        return _typed.to_26c1f1aa035f(_typed.Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_4358f20fcb96(value_2)))
+        return _typed.to_list_label(
+            _typed.lawtwin_github_model_model_labels_under(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_list_entry_label_key_label(entries),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2057,9 +1935,16 @@ def evaluate_81(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_82(symbols, value_0, value_1, value_2):
+# lawtwinGithubModelModelMilestonesUnder — ../src/model.lawspec:226
+def lawtwin_github_model_model_milestones_under_2(symbols, owner, repo, entries):
     try:
-        return _typed.to_6e0c216c458a(_typed.Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_2f28c788b0d8(value_2)))
+        return _typed.to_list_milestone(
+            _typed.lawtwin_github_model_model_milestones_under(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_list_entry_milestone_key_milestone(entries),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2071,103 +1956,90 @@ def evaluate_82(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_83(symbols, value_0):
+# lawtwinGithubModelValidIssuesCreateMilestoneBody — ../src/model.lawspec:234
+def lawtwin_github_model_valid_issues_create_milestone_body_2(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelValidIssuesCreateMilestoneBody_b6751680(_typed.from_694e86e76a75(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_valid_issues_create_milestone_body(
+                _typed.from_issues_create_milestone_body(value),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delV"
-                "alid"
-                "Issu"
-                "esCr"
-                "eate"
-                "Mile"
-                "ston"
-                "eBod"
-                "y: "
-            )
+            "lawtwin.github.laws::lawtwinGithubModelValidIssuesCreateMilestoneBody: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_84(symbols, value_0):
+# lawtwinGithubModelValidIssuesUpdateMilestoneBody — ../src/model.lawspec:243
+def lawtwin_github_model_valid_issues_update_milestone_body_2(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelValidIssuesUpdateMilestoneBody_922d307a(_typed.from_b93e2957492a(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_valid_issues_update_milestone_body(
+                _typed.from_issues_update_milestone_body(value),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.l"
-                "aws:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delV"
-                "alid"
-                "Issu"
-                "esUp"
-                "date"
-                "Mile"
-                "ston"
-                "eBod"
-                "y: "
-            )
+            "lawtwin.github.laws::lawtwinGithubModelValidIssuesUpdateMilestoneBody: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_85(symbols, value_0):
+# noHandWrittenLawsYet — ../src/laws.lawspec:20
+def no_hand_written_laws_yet(symbols, u):
     try:
-        return _typed.to_b120ceed78cb(_typed.Def_nothingHandWritten_abc609a3(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_unit(_typed.nothing_hand_written(_typed.from_unit(u)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::noHandWrittenLawsYet: "
-            + _builtins.str(error),
+            "lawtwin.github.laws::noHandWrittenLawsYet: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_86(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesCreateLabel — ../src/api.lawspec:207
+def reference_issues_create_label_2(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_f82672304359(_typed.Def_referenceIssuesCreateLabel_66a10480(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_6dd579d34c7f(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.reference_issues_create_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_issues_create_label_body(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesCreateLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesCreateLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_87(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesCreateMilestone — ../src/api.lawspec:212
+def reference_issues_create_milestone_2(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_referenceIssuesCreateMilestone_819e36f6(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_694e86e76a75(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.reference_issues_create_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_issues_create_milestone_body(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2179,23 +2051,38 @@ def evaluate_87(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_88(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesDeleteLabel — ../src/api.lawspec:209
+def reference_issues_delete_label_2(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_referenceIssuesDeleteLabel_91dc9b24(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_437d0abf423f(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_issues_delete_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_text(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesDeleteLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesDeleteLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_89(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesDeleteMilestone — ../src/api.lawspec:214
+def reference_issues_delete_milestone_2(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_referenceIssuesDeleteMilestone_1798b0e2(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_44a08172da10(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_issues_delete_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_int64(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2207,37 +2094,67 @@ def evaluate_89(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_90(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesGetLabel — ../src/api.lawspec:208
+def reference_issues_get_label_2(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_f82672304359(_typed.Def_referenceIssuesGetLabel_caf28965(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_437d0abf423f(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.reference_issues_get_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_text(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesGetLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesGetLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_91(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesGetMilestone — ../src/api.lawspec:213
+def reference_issues_get_milestone_2(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_referenceIssuesGetMilestone_53f7b6bc(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_44a08172da10(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.reference_issues_get_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_int64(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesGetMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesGetMilestone: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_92(symbols, value_0, value_1, value_2, value_3, value_4):
+# referenceIssuesListLabelsForRepo — ../src/api.lawspec:206
+def reference_issues_list_labels_for_repo_2(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
-        return _typed.to_37a4ee138a94(_typed.Def_referenceIssuesListLabelsForRepo_074d2d44(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_c09136e29464(value_3), _typed.from_c09136e29464(value_4)))
+        return _typed.to_pair_list_label_state(
+            _typed.reference_issues_list_labels_for_repo(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_maybe_int64(value2),
+                _typed.from_maybe_int64(value3),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2249,19 +2166,31 @@ def evaluate_92(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_93(
+# referenceIssuesListMilestones — ../src/api.lawspec:211
+def reference_issues_list_milestones_2(
     symbols,
-    value_0,
-    value_1,
-    value_2,
-    value_3,
-    value_4,
-    value_5,
-    value_6,
-    value_7,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+    value4,
+    value5,
+    value6,
 ):
     try:
-        return _typed.to_d490ac6a1b0e(_typed.Def_referenceIssuesListMilestones_b04e2ebe(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_79d855388cb1(value_3), _typed.from_f7593a7d6572(value_4), _typed.from_6c9175189927(value_5), _typed.from_c09136e29464(value_6), _typed.from_c09136e29464(value_7)))
+        return _typed.to_pair_list_milestone_state(
+            _typed.reference_issues_list_milestones(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_maybe_issues_list_milestones_state(value2),
+                _typed.from_maybe_issues_list_milestones_sort(value3),
+                _typed.from_maybe_issues_list_milestones_direction(value4),
+                _typed.from_maybe_int64(value5),
+                _typed.from_maybe_int64(value6),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2273,23 +2202,40 @@ def evaluate_93(
         ) from error
 
 
-def evaluate_94(symbols, value_0, value_1, value_2, value_3, value_4):
+# referenceIssuesUpdateLabel — ../src/api.lawspec:210
+def reference_issues_update_label_2(symbols, state, value0, value1, value2, value3):
     try:
-        return _typed.to_f82672304359(_typed.Def_referenceIssuesUpdateLabel_a2730891(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_437d0abf423f(value_3), _typed.from_a0758b309515(value_4)))
+        return _typed.to_pair_label_state(
+            _typed.reference_issues_update_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_text(value2),
+                _typed.from_maybe_issues_update_label_body(value3),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesUpdateLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesUpdateLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_95(symbols, value_0, value_1, value_2, value_3, value_4):
+# referenceIssuesUpdateMilestone — ../src/api.lawspec:215
+def reference_issues_update_milestone_2(symbols, state, value0, value1, value2, value3):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_referenceIssuesUpdateMilestone_cc0bfe48(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_44a08172da10(value_3), _typed.from_b472b5d77510(value_4)))
+        return _typed.to_pair_milestone_state(
+            _typed.reference_issues_update_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_int64(value2),
+                _typed.from_maybe_issues_update_milestone_body(value3),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2301,9 +2247,10 @@ def evaluate_95(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_96(symbols, value_0):
+# referenceStart — ../src/api.lawspec:205
+def reference_start_2(symbols, unit):
     try:
-        return _typed.to_fedfb1aaf0b7(_typed.Def_referenceStart_6abddcfe(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(_typed.reference_start(_typed.from_unit(unit)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2314,9 +2261,12 @@ def evaluate_96(symbols, value_0):
         ) from error
 
 
-def evaluate_97(symbols, value_0):
+# after64 — ../src/model.lawspec:239
+def after64(symbols, k):
     try:
-        return _typed.to_44a08172da10(_typed.Def_lawtwinGithubModelAfter64_6da0e3cc(_typed.from_44a08172da10(value_0)))
+        return _typed.to_int64(
+            _typed.lawtwin_github_model_after64(_typed.from_int64(k)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2327,9 +2277,15 @@ def evaluate_97(symbols, value_0):
         ) from error
 
 
-def evaluate_98(symbols, value_0, value_1):
+# containsLabel — ../src/model.lawspec:248
+def contains_label(symbols, wanted, items):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelContainsLabel_309ab147(_typed.from_3ee7c77b169f(value_0), _typed.from_26c1f1aa035f(value_1)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_contains_label(
+                _typed.from_label(wanted),
+                _typed.from_list_label(items),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2340,9 +2296,15 @@ def evaluate_98(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_99(symbols, value_0, value_1):
+# containsMilestone — ../src/model.lawspec:256
+def contains_milestone(symbols, wanted, items):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelContainsMilestone_cd6cafbf(_typed.from_298bd35e8f4d(value_0), _typed.from_6e0c216c458a(value_1)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_contains_milestone(
+                _typed.from_milestone(wanted),
+                _typed.from_list_milestone(items),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2353,9 +2315,12 @@ def evaluate_99(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_100(symbols, value_0):
+# emptyState — ../src/model.lawspec:208
+def empty_state(symbols, u):
     try:
-        return _typed.to_fedfb1aaf0b7(_typed.Def_lawtwinGithubModelEmptyState_88944bb0(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(
+            _typed.lawtwin_github_model_empty_state(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2366,727 +2331,564 @@ def evaluate_100(symbols, value_0):
         ) from error
 
 
-def evaluate_101(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_label_key_list_entry_label_key_label_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValDeleteItems_d5ca929b(_typed.from_34b1b06e47b2(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_delete_items_label_key_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "Item"
-                "s_9e"
-                "0518"
-                "07ce"
-                "8b66"
-                "31: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValDeleteItems_32cb458ab3c301f1bfa1d2dfaccad6b708254e758be96e927b754334eb6a67617425673b99ec: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_102(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_key_milestone_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValDeleteItems_521d9c1e(_typed.from_680e39ab8f85(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "Item"
-                "s_f3"
-                "f338"
-                "a80e"
-                "a4a7"
-                "a1: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValDeleteItems_db8e2baf113bbfb228fce8821ce6c64c670e1f2b4794b1a58e2bf32910030aca38bd64e38e25: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_103(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_label_key_key_val_label_key_label_3(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValDelete_3d0c071d(_typed.from_34b1b06e47b2(value_0), _typed.from_e875a313d112(value_1)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_delete_label_key_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "_bdf"
-                "93b1"
-                "d3ca"
-                "c349"
-                ": "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValDelete_10a35554bf8579f0c749c9400afc09f1c2325bc888365dfff6223a5e3eaaf763: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_104(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_milestone_key_key_val_milestone_key_milestone_3(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValDelete_e194c4ee(_typed.from_680e39ab8f85(value_0), _typed.from_7d032b444681(value_1)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_delete_milestone_key_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "_e31"
-                "62f6"
-                "8473"
-                "102d"
-                "9: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValDelete_29475c645f81d04a5568bb3aff82a0d907811010cbc4b17fa786b7ac6ddfdb34: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_105(symbols, value_0):
+# keyValEntries — <lawspec.collections>:105
+def lawspec_collections_key_val_entries_key_val_label_key_label_3(symbols, m):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValEntries_e26035bf(_typed.from_e875a313d112(value_0)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_entries_key_val_label_key_label(
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alEn"
-                "trie"
-                "s_91"
-                "1530"
-                "6fd1"
-                "dc09"
-                "9a: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValEntries_9e91d2555208ebf0d7f58fc191fd99c1a9901da33578ab33c48730c5699c515036c1ec664ade: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_106(symbols, value_0):
+# keyValEntries — <lawspec.collections>:105
+def lawspec_collections_key_val_entries_key_val_milestone_key_milestone_3(symbols, m):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValEntries_e829e46d(_typed.from_7d032b444681(value_0)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_entries_key_val_milestone_key_milestone(
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alEn"
-                "trie"
-                "s_c1"
-                "a718"
-                "5a15"
-                "b768"
-                "aa: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValEntries_dda43aef1d45f51bf3489e99bfc052d9e360cfe4a8e2b6c63c3494c4934d9eaaa740b50e4439: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_107(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_milestone_key_milestone_list_entry_milestone_key_milestone_3(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValFromItems_9e277637(_typed.from_2f28c788b0d8(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_from_items_list_entry_milestone_key_milestone_list_entry_milestone_key_milestone(
+                _typed.from_list_entry_milestone_key_milestone(es),
+                _typed.from_list_entry_milestone_key_milestone(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alFr"
-                "omIt"
-                "ems_"
-                "1ea5"
-                "c5da"
-                "1297"
-                "08a6"
-                ": "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValFromItems_30b37de557ccb7dda3e990094ab4cafff269a0d0b7b380efd5d9f2f1832e28184563aacdcac6: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_108(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_label_key_label_list_entry_label_key_label_3(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValFromItems_90be56aa(_typed.from_4358f20fcb96(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_from_items_list_entry_label_key_label_list_entry_label_key_label(
+                _typed.from_list_entry_label_key_label(es),
+                _typed.from_list_entry_label_key_label(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alFr"
-                "omIt"
-                "ems_"
-                "93ac"
-                "f9ed"
-                "fd00"
-                "f4b6"
-                ": "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValFromItems_b76a8d5ce410c3b1caa1e78ecc2dac98862c357ca32c026b1c927a5d9a6c0108ecaaa5b2d9c8: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_109(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_milestone_key_list_entry_milestone_key_milestone_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_63f157a347bf(_typed.Def_lawspecCollectionsKeyValLookupItems_90dab4a9(_typed.from_680e39ab8f85(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_maybe_milestone(
+            _typed.lawspec_collections_key_val_lookup_items_milestone_key_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "Item"
-                "s_2b"
-                "d533"
-                "28f2"
-                "fa92"
-                "0b: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValLookupItems_8ce2bbe1457617eed5ddeaa97c037db5ad8d231d65e356d78a655e42218bac04893ee3e4ad85: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_110(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_label_key_list_entry_label_key_label_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_5527b8ff7350(_typed.Def_lawspecCollectionsKeyValLookupItems_801c71f4(_typed.from_34b1b06e47b2(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_maybe_label(
+            _typed.lawspec_collections_key_val_lookup_items_label_key_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "Item"
-                "s_68"
-                "40b2"
-                "348d"
-                "fada"
-                "ef: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValLookupItems_933dc128ed55d1160635af90c2092f10bc853a57d1113852772c76173d50ccb09b24cbb632a8: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_111(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_milestone_3(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_63f157a347bf(_typed.Def_lawspecCollectionsKeyValLookup_a7ef6313(_typed.from_680e39ab8f85(value_0), _typed.from_7d032b444681(value_1)))
+        return _typed.to_maybe_milestone(
+            _typed.lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "_82e"
-                "5ed4"
-                "8cd4"
-                "1692"
-                "f: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValLookup_9587eb7ad739cc3267edecfb9c6f7f26f52a7e72d075dc19628ec2f1f0ce87bc: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_112(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label_3(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_5527b8ff7350(_typed.Def_lawspecCollectionsKeyValLookup_bb954c82(_typed.from_34b1b06e47b2(value_0), _typed.from_e875a313d112(value_1)))
+        return _typed.to_maybe_label(
+            _typed.lawspec_collections_key_val_lookup_label_key_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "_9eb"
-                "e5d8"
-                "a23e"
-                "ff7e"
-                "3: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValLookup_b5640a4d0ededbb4472dd47178bab66c82470ead0303a008551268e299470f31: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_113(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_milestone_key_milestone_3(symbols, es):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValOf_e4af0442(_typed.from_2f28c788b0d8(value_0)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_of_list_entry_milestone_key_milestone(
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alOf"
-                "_328"
-                "34b6"
-                "90fa"
-                "1786"
-                "2: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValOf_30002a10bf089a68e4254766dc3577d993b211598dacbc7c858e8c4f160fedb0b2a1aee011b3: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_114(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_label_key_label_3(symbols, es):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValOf_57c642d1(_typed.from_4358f20fcb96(value_0)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_of_list_entry_label_key_label(
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alOf"
-                "_4c6"
-                "f5dd"
-                "9200"
-                "a2e3"
-                "2: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValOf_c4faf59fbe6f393f74929a1314d63406c6ed97d8d0b16f36eaa15a6d9ccf72d23e3266257d5b: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_115(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_label_key_label_list_entry_label_key_label_3(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValPutItems_009ae3af(_typed.from_680e39ab8f85(value_0), _typed.from_298bd35e8f4d(value_1), _typed.from_2f28c788b0d8(value_2)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_put_items_label_key_label_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_label(v),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "tIte"
-                "ms_8"
-                "2457"
-                "d19a"
-                "83cf"
-                "b5b:"
-                " "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValPutItems_5caa8fea9cba1a1eb238f0e3022749b04264686755ec17faabff9909e6d7f096c6228b0d5b98: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_116(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_milestone_key_milestone_3(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValPutItems_190448ce(_typed.from_34b1b06e47b2(value_0), _typed.from_3ee7c77b169f(value_1), _typed.from_4358f20fcb96(value_2)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_milestone(v),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "tIte"
-                "ms_f"
-                "a544"
-                "d6fc"
-                "f98e"
-                "50b:"
-                " "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValPutItems_78850bc1189700049c9816f7cdd2025c4fae49df0945cb1b1b4523d7df04efd84814e21a941e: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_117(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_label_key_label_key_val_label_key_label_3(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValPut_d49491c0(_typed.from_680e39ab8f85(value_0), _typed.from_298bd35e8f4d(value_1), _typed.from_7d032b444681(value_2)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_put_label_key_label_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_label(v),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "t_85"
-                "f903"
-                "9dbc"
-                "e129"
-                "7f: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValPut_33d702cbdd28c15a2a0c5cd78ca531cfe549d7cb0ece073c7c28e9af2e409cb2: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_118(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_milestone_key_milestone_key_val_milestone_key_milestone_3(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValPut_21afa008(_typed.from_34b1b06e47b2(value_0), _typed.from_3ee7c77b169f(value_1), _typed.from_e875a313d112(value_2)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_put_milestone_key_milestone_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_milestone(v),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "t_a3"
-                "7565"
-                "d6d8"
-                "f481"
-                "df: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValPut_5161f7d605da95f395e9c4dcb50c5034a615b624f2946e442f226f4fab77018f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_119(symbols, value_0, value_1, value_2, value_3):
+# modelIssuesCreateLabel — ../src/model.lawspec:273
+def model_issues_create_label(symbols, owner, repo, body, current):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesCreateLabel_9a20de66(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_6dd579d34c7f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_create_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_issues_create_label_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesCreateLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesCreateLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_120(symbols, value_0, value_1, value_2, value_3):
+# modelIssuesCreateMilestone — ../src/model.lawspec:317
+def model_issues_create_milestone(symbols, owner, repo, body, current):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesCreateMilestone_a9dfef0f(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_694e86e76a75(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_create_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_issues_create_milestone_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesCreateMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesCreateMilestone: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_121(symbols, value_0, value_1, value_2, value_3):
+# modelIssuesDeleteLabel — ../src/model.lawspec:293
+def model_issues_delete_label(symbols, owner, repo, name, current):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_lawtwinGithubModelModelIssuesDeleteLabel_a3cb064c(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_github_model_model_issues_delete_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesDeleteLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesDeleteLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_122(symbols, value_0, value_1, value_2, value_3):
+# modelIssuesDeleteMilestone — ../src/model.lawspec:339
+def model_issues_delete_milestone(symbols, owner, repo, milestone_number, current):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_lawtwinGithubModelModelIssuesDeleteMilestone_ae89f11e(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_github_model_model_issues_delete_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesDeleteMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesDeleteMilestone: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_123(symbols, value_0, value_1, value_2, value_3):
+# modelIssuesGetLabel — ../src/model.lawspec:285
+def model_issues_get_label(symbols, owner, repo, name, current):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesGetLabel_7a98542e(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_get_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesGetLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesGetLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_124(symbols, value_0, value_1, value_2, value_3):
+# modelIssuesGetMilestone — ../src/model.lawspec:331
+def model_issues_get_milestone(symbols, owner, repo, milestone_number, current):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesGetMilestone_9f093a4d(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_get_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesGetMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesGetMilestone: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_125(symbols, value_0, value_1, value_2, value_3, value_4):
+# modelIssuesListLabelsForRepo — ../src/model.lawspec:268
+def model_issues_list_labels_for_repo(symbols, owner, repo, per_page, page, current):
     try:
-        return _typed.to_37a4ee138a94(_typed.Def_lawtwinGithubModelModelIssuesListLabelsForRepo_78c35983(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_c09136e29464(value_2), _typed.from_c09136e29464(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_list_label_state(
+            _typed.lawtwin_github_model_model_issues_list_labels_for_repo(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_maybe_int64(per_page),
+                _typed.from_maybe_int64(page),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3098,61 +2900,102 @@ def evaluate_125(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_126(
+# modelIssuesListMilestones — ../src/model.lawspec:312
+def model_issues_list_milestones(
     symbols,
-    value_0,
-    value_1,
-    value_2,
-    value_3,
-    value_4,
-    value_5,
-    value_6,
-    value_7,
+    owner,
+    repo,
+    state,
+    sort,
+    direction,
+    per_page,
+    page,
+    current,
 ):
     try:
-        return _typed.to_d490ac6a1b0e(_typed.Def_lawtwinGithubModelModelIssuesListMilestones_db0d4fa1(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_79d855388cb1(value_2), _typed.from_f7593a7d6572(value_3), _typed.from_6c9175189927(value_4), _typed.from_c09136e29464(value_5), _typed.from_c09136e29464(value_6), _typed.from_fedfb1aaf0b7(value_7)))
+        return _typed.to_pair_list_milestone_state(
+            _typed.lawtwin_github_model_model_issues_list_milestones(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_maybe_issues_list_milestones_state(state),
+                _typed.from_maybe_issues_list_milestones_sort(sort),
+                _typed.from_maybe_issues_list_milestones_direction(direction),
+                _typed.from_maybe_int64(per_page),
+                _typed.from_maybe_int64(page),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesListMilestones: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesListMilestones: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_127(symbols, value_0, value_1, value_2, value_3, value_4):
+# modelIssuesUpdateLabel — ../src/model.lawspec:301
+def model_issues_update_label(symbols, owner, repo, name, body, current):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesUpdateLabel_910592d4(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_a0758b309515(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_update_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_maybe_issues_update_label_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesUpdateLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesUpdateLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_128(symbols, value_0, value_1, value_2, value_3, value_4):
+# modelIssuesUpdateMilestone — ../src/model.lawspec:347
+def model_issues_update_milestone(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    body,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesUpdateMilestone_86960b9c(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_b472b5d77510(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_update_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_maybe_issues_update_milestone_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesUpdateMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesUpdateMilestone: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_129(symbols, value_0, value_1, value_2):
+# modelLabelsUnder — ../src/model.lawspec:218
+def model_labels_under(symbols, owner, repo, entries):
     try:
-        return _typed.to_26c1f1aa035f(_typed.Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_4358f20fcb96(value_2)))
+        return _typed.to_list_label(
+            _typed.lawtwin_github_model_model_labels_under(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_list_entry_label_key_label(entries),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3163,23 +3006,34 @@ def evaluate_129(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_130(symbols, value_0, value_1, value_2):
+# modelMilestonesUnder — ../src/model.lawspec:226
+def model_milestones_under(symbols, owner, repo, entries):
     try:
-        return _typed.to_6e0c216c458a(_typed.Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_2f28c788b0d8(value_2)))
+        return _typed.to_list_milestone(
+            _typed.lawtwin_github_model_model_milestones_under(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_list_entry_milestone_key_milestone(entries),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelMilestonesUnder: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelMilestonesUnder: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_131(symbols, value_0):
+# validIssuesCreateMilestoneBody — ../src/model.lawspec:234
+def valid_issues_create_milestone_body(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelValidIssuesCreateMilestoneBody_b6751680(_typed.from_694e86e76a75(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_valid_issues_create_milestone_body(
+                _typed.from_issues_create_milestone_body(value),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3191,9 +3045,14 @@ def evaluate_131(symbols, value_0):
         ) from error
 
 
-def evaluate_132(symbols, value_0):
+# validIssuesUpdateMilestoneBody — ../src/model.lawspec:243
+def valid_issues_update_milestone_body(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelValidIssuesUpdateMilestoneBody_922d307a(_typed.from_b93e2957492a(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_valid_issues_update_milestone_body(
+                _typed.from_issues_update_milestone_body(value),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3205,655 +3064,451 @@ def evaluate_132(symbols, value_0):
         ) from error
 
 
-def evaluate_133(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_label_key_list_entry_label_key_label_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValDeleteItems_d5ca929b(_typed.from_34b1b06e47b2(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_delete_items_label_key_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lDel"
-                "eteI"
-                "tems"
-                "_9e0"
-                "5180"
-                "7ce8"
-                "b663"
-                "1: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValDeleteItems_32cb458ab3c301f1bfa1d2dfaccad6b708254e758be96e927b754334eb6a67617425673b99ec: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_134(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_key_milestone_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValDeleteItems_521d9c1e(_typed.from_680e39ab8f85(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lDel"
-                "eteI"
-                "tems"
-                "_f3f"
-                "338a"
-                "80ea"
-                "4a7a"
-                "1: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValDeleteItems_db8e2baf113bbfb228fce8821ce6c64c670e1f2b4794b1a58e2bf32910030aca38bd64e38e25: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_135(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_label_key_key_val_label_key_label_4(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValDelete_3d0c071d(_typed.from_34b1b06e47b2(value_0), _typed.from_e875a313d112(value_1)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_delete_label_key_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lDel"
-                "ete_"
-                "bdf9"
-                "3b1d"
-                "3cac"
-                "349:"
-                " "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValDelete_10a35554bf8579f0c749c9400afc09f1c2325bc888365dfff6223a5e3eaaf763: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_136(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_milestone_key_key_val_milestone_key_milestone_4(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValDelete_e194c4ee(_typed.from_680e39ab8f85(value_0), _typed.from_7d032b444681(value_1)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_delete_milestone_key_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lDel"
-                "ete_"
-                "e316"
-                "2f68"
-                "4731"
-                "02d9"
-                ": "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValDelete_29475c645f81d04a5568bb3aff82a0d907811010cbc4b17fa786b7ac6ddfdb34: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_137(symbols, value_0):
+# keyValEntries — <lawspec.collections>:105
+def lawspec_collections_key_val_entries_key_val_label_key_label_4(symbols, m):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValEntries_e26035bf(_typed.from_e875a313d112(value_0)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_entries_key_val_label_key_label(
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lEnt"
-                "ries"
-                "_911"
-                "5306"
-                "fd1d"
-                "c099"
-                "a: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValEntries_9e91d2555208ebf0d7f58fc191fd99c1a9901da33578ab33c48730c5699c515036c1ec664ade: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_138(symbols, value_0):
+# keyValEntries — <lawspec.collections>:105
+def lawspec_collections_key_val_entries_key_val_milestone_key_milestone_4(symbols, m):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValEntries_e829e46d(_typed.from_7d032b444681(value_0)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_entries_key_val_milestone_key_milestone(
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lEnt"
-                "ries"
-                "_c1a"
-                "7185"
-                "a15b"
-                "768a"
-                "a: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValEntries_dda43aef1d45f51bf3489e99bfc052d9e360cfe4a8e2b6c63c3494c4934d9eaaa740b50e4439: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_139(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_milestone_key_milestone_list_entry_milestone_key_milestone_4(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValFromItems_9e277637(_typed.from_2f28c788b0d8(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_from_items_list_entry_milestone_key_milestone_list_entry_milestone_key_milestone(
+                _typed.from_list_entry_milestone_key_milestone(es),
+                _typed.from_list_entry_milestone_key_milestone(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lFro"
-                "mIte"
-                "ms_1"
-                "ea5c"
-                "5da1"
-                "2970"
-                "8a6:"
-                " "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValFromItems_30b37de557ccb7dda3e990094ab4cafff269a0d0b7b380efd5d9f2f1832e28184563aacdcac6: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_140(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_label_key_label_list_entry_label_key_label_4(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValFromItems_90be56aa(_typed.from_4358f20fcb96(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_from_items_list_entry_label_key_label_list_entry_label_key_label(
+                _typed.from_list_entry_label_key_label(es),
+                _typed.from_list_entry_label_key_label(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lFro"
-                "mIte"
-                "ms_9"
-                "3acf"
-                "9edf"
-                "d00f"
-                "4b6:"
-                " "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValFromItems_b76a8d5ce410c3b1caa1e78ecc2dac98862c357ca32c026b1c927a5d9a6c0108ecaaa5b2d9c8: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_141(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_milestone_key_list_entry_milestone_key_milestone_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_63f157a347bf(_typed.Def_lawspecCollectionsKeyValLookupItems_90dab4a9(_typed.from_680e39ab8f85(value_0), _typed.from_2f28c788b0d8(value_1)))
+        return _typed.to_maybe_milestone(
+            _typed.lawspec_collections_key_val_lookup_items_milestone_key_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lLoo"
-                "kupI"
-                "tems"
-                "_2bd"
-                "5332"
-                "8f2f"
-                "a920"
-                "b: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValLookupItems_8ce2bbe1457617eed5ddeaa97c037db5ad8d231d65e356d78a655e42218bac04893ee3e4ad85: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_142(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_label_key_list_entry_label_key_label_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_5527b8ff7350(_typed.Def_lawspecCollectionsKeyValLookupItems_801c71f4(_typed.from_34b1b06e47b2(value_0), _typed.from_4358f20fcb96(value_1)))
+        return _typed.to_maybe_label(
+            _typed.lawspec_collections_key_val_lookup_items_label_key_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lLoo"
-                "kupI"
-                "tems"
-                "_684"
-                "0b23"
-                "48df"
-                "adae"
-                "f: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValLookupItems_933dc128ed55d1160635af90c2092f10bc853a57d1113852772c76173d50ccb09b24cbb632a8: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_143(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_milestone_4(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_63f157a347bf(_typed.Def_lawspecCollectionsKeyValLookup_a7ef6313(_typed.from_680e39ab8f85(value_0), _typed.from_7d032b444681(value_1)))
+        return _typed.to_maybe_milestone(
+            _typed.lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lLoo"
-                "kup_"
-                "82e5"
-                "ed48"
-                "cd41"
-                "692f"
-                ": "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValLookup_9587eb7ad739cc3267edecfb9c6f7f26f52a7e72d075dc19628ec2f1f0ce87bc: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_144(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label_4(
+    symbols,
+    k,
+    m,
+):
     try:
-        return _typed.to_5527b8ff7350(_typed.Def_lawspecCollectionsKeyValLookup_bb954c82(_typed.from_34b1b06e47b2(value_0), _typed.from_e875a313d112(value_1)))
+        return _typed.to_maybe_label(
+            _typed.lawspec_collections_key_val_lookup_label_key_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lLoo"
-                "kup_"
-                "9ebe"
-                "5d8a"
-                "23ef"
-                "f7e3"
-                ": "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValLookup_b5640a4d0ededbb4472dd47178bab66c82470ead0303a008551268e299470f31: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_145(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_milestone_key_milestone_4(symbols, es):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValOf_e4af0442(_typed.from_2f28c788b0d8(value_0)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_of_list_entry_milestone_key_milestone(
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lOf_"
-                "3283"
-                "4b69"
-                "0fa1"
-                "7862"
-                ": "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValOf_30002a10bf089a68e4254766dc3577d993b211598dacbc7c858e8c4f160fedb0b2a1aee011b3: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_146(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_label_key_label_4(symbols, es):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValOf_57c642d1(_typed.from_4358f20fcb96(value_0)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_of_list_entry_label_key_label(
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lOf_"
-                "4c6f"
-                "5dd9"
-                "200a"
-                "2e32"
-                ": "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValOf_c4faf59fbe6f393f74929a1314d63406c6ed97d8d0b16f36eaa15a6d9ccf72d23e3266257d5b: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_147(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_label_key_label_list_entry_label_key_label_4(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_2f28c788b0d8(_typed.Def_lawspecCollectionsKeyValPutItems_009ae3af(_typed.from_680e39ab8f85(value_0), _typed.from_298bd35e8f4d(value_1), _typed.from_2f28c788b0d8(value_2)))
+        return _typed.to_list_entry_label_key_label(
+            _typed.lawspec_collections_key_val_put_items_label_key_label_list_entry_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_label(v),
+                _typed.from_list_entry_label_key_label(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lPut"
-                "Item"
-                "s_82"
-                "457d"
-                "19a8"
-                "3cfb"
-                "5b: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValPutItems_5caa8fea9cba1a1eb238f0e3022749b04264686755ec17faabff9909e6d7f096c6228b0d5b98: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_148(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_milestone_key_milestone_4(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_4358f20fcb96(_typed.Def_lawspecCollectionsKeyValPutItems_190448ce(_typed.from_34b1b06e47b2(value_0), _typed.from_3ee7c77b169f(value_1), _typed.from_4358f20fcb96(value_2)))
+        return _typed.to_list_entry_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_milestone(v),
+                _typed.from_list_entry_milestone_key_milestone(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lPut"
-                "Item"
-                "s_fa"
-                "544d"
-                "6fcf"
-                "98e5"
-                "0b: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValPutItems_78850bc1189700049c9816f7cdd2025c4fae49df0945cb1b1b4523d7df04efd84814e21a941e: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_149(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_label_key_label_key_val_label_key_label_4(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
-        return _typed.to_7d032b444681(_typed.Def_lawspecCollectionsKeyValPut_d49491c0(_typed.from_680e39ab8f85(value_0), _typed.from_298bd35e8f4d(value_1), _typed.from_7d032b444681(value_2)))
+        return _typed.to_key_val_label_key_label(
+            _typed.lawspec_collections_key_val_put_label_key_label_key_val_label_key_label(
+                _typed.from_label_key(k),
+                _typed.from_label(v),
+                _typed.from_key_val_label_key_label(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lPut"
-                "_85f"
-                "9039"
-                "dbce"
-                "1297"
-                "f: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValPut_33d702cbdd28c15a2a0c5cd78ca531cfe549d7cb0ece073c7c28e9af2e409cb2: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_150(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_milestone_key_milestone_key_val_milestone_key_milestone_4(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
-        return _typed.to_e875a313d112(_typed.Def_lawspecCollectionsKeyValPut_21afa008(_typed.from_34b1b06e47b2(value_0), _typed.from_3ee7c77b169f(value_1), _typed.from_e875a313d112(value_2)))
+        return _typed.to_key_val_milestone_key_milestone(
+            _typed.lawspec_collections_key_val_put_milestone_key_milestone_key_val_milestone_key_milestone(
+                _typed.from_milestone_key(k),
+                _typed.from_milestone(v),
+                _typed.from_key_val_milestone_key_milestone(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "spec"
-                "_law"
-                "spec"
-                "Coll"
-                "ecti"
-                "onsK"
-                "eyVa"
-                "lPut"
-                "_a37"
-                "565d"
-                "6d8f"
-                "481d"
-                "f: "
-            )
+            "contracttest.github::lawspec_lawspecCollectionsKeyValPut_5161f7d605da95f395e9c4dcb50c5034a615b624f2946e442f226f4fab77018f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_151(symbols, value_0):
+# lawtwinGithubModelAfter64 — ../src/model.lawspec:239
+def lawtwin_github_model_after64_3(symbols, k):
     try:
-        return _typed.to_44a08172da10(_typed.Def_lawtwinGithubModelAfter64_6da0e3cc(_typed.from_44a08172da10(value_0)))
+        return _typed.to_int64(
+            _typed.lawtwin_github_model_after64(_typed.from_int64(k)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::lawtwinGithubModelAfter64: "
-            + _builtins.str(error),
+            "contracttest.github::lawtwinGithubModelAfter64: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_152(symbols, value_0, value_1):
+# lawtwinGithubModelContainsLabel — ../src/model.lawspec:248
+def lawtwin_github_model_contains_label_3(symbols, wanted, items):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelContainsLabel_309ab147(_typed.from_3ee7c77b169f(value_0), _typed.from_26c1f1aa035f(value_1)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_contains_label(
+                _typed.from_label(wanted),
+                _typed.from_list_label(items),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3865,9 +3520,15 @@ def evaluate_152(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_153(symbols, value_0, value_1):
+# lawtwinGithubModelContainsMilestone — ../src/model.lawspec:256
+def lawtwin_github_model_contains_milestone_3(symbols, wanted, items):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelContainsMilestone_cd6cafbf(_typed.from_298bd35e8f4d(value_0), _typed.from_6e0c216c458a(value_1)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_contains_milestone(
+                _typed.from_milestone(wanted),
+                _typed.from_list_milestone(items),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3879,9 +3540,12 @@ def evaluate_153(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_154(symbols, value_0):
+# lawtwinGithubModelEmptyState — ../src/model.lawspec:208
+def lawtwin_github_model_empty_state_3(symbols, u):
     try:
-        return _typed.to_fedfb1aaf0b7(_typed.Def_lawtwinGithubModelEmptyState_88944bb0(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(
+            _typed.lawtwin_github_model_empty_state(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3893,9 +3557,23 @@ def evaluate_154(symbols, value_0):
         ) from error
 
 
-def evaluate_155(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesCreateLabel — ../src/model.lawspec:273
+def lawtwin_github_model_model_issues_create_label_3(
+    symbols,
+    owner,
+    repo,
+    body,
+    current,
+):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesCreateLabel_9a20de66(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_6dd579d34c7f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_create_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_issues_create_label_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3907,41 +3585,51 @@ def evaluate_155(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_156(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesCreateMilestone — ../src/model.lawspec:317
+def lawtwin_github_model_model_issues_create_milestone_3(
+    symbols,
+    owner,
+    repo,
+    body,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesCreateMilestone_a9dfef0f(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_694e86e76a75(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_create_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_issues_create_milestone_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esCr"
-                "eate"
-                "Mile"
-                "ston"
-                "e: "
-            )
+            "contracttest.github::lawtwinGithubModelModelIssuesCreateMilestone: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_157(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesDeleteLabel — ../src/model.lawspec:293
+def lawtwin_github_model_model_issues_delete_label_3(
+    symbols,
+    owner,
+    repo,
+    name,
+    current,
+):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_lawtwinGithubModelModelIssuesDeleteLabel_a3cb064c(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_github_model_model_issues_delete_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3953,41 +3641,45 @@ def evaluate_157(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_158(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesDeleteMilestone — ../src/model.lawspec:339
+def lawtwin_github_model_model_issues_delete_milestone_3(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    current,
+):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_lawtwinGithubModelModelIssuesDeleteMilestone_ae89f11e(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_github_model_model_issues_delete_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esDe"
-                "lete"
-                "Mile"
-                "ston"
-                "e: "
-            )
+            "contracttest.github::lawtwinGithubModelModelIssuesDeleteMilestone: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_159(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesGetLabel — ../src/model.lawspec:285
+def lawtwin_github_model_model_issues_get_label_3(symbols, owner, repo, name, current):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesGetLabel_7a98542e(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_get_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3999,9 +3691,23 @@ def evaluate_159(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_160(symbols, value_0, value_1, value_2, value_3):
+# lawtwinGithubModelModelIssuesGetMilestone — ../src/model.lawspec:331
+def lawtwin_github_model_model_issues_get_milestone_3(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesGetMilestone_9f093a4d(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_fedfb1aaf0b7(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_get_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4013,84 +3719,91 @@ def evaluate_160(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_161(symbols, value_0, value_1, value_2, value_3, value_4):
-    try:
-        return _typed.to_37a4ee138a94(_typed.Def_lawtwinGithubModelModelIssuesListLabelsForRepo_78c35983(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_c09136e29464(value_2), _typed.from_c09136e29464(value_3), _typed.from_fedfb1aaf0b7(value_4)))
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esLi"
-                "stLa"
-                "bels"
-                "ForR"
-                "epo:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def evaluate_162(
+# lawtwinGithubModelModelIssuesListLabelsForRepo — ../src/model.lawspec:268
+def lawtwin_github_model_model_issues_list_labels_for_repo_3(
     symbols,
-    value_0,
-    value_1,
-    value_2,
-    value_3,
-    value_4,
-    value_5,
-    value_6,
-    value_7,
+    owner,
+    repo,
+    per_page,
+    page,
+    current,
 ):
     try:
-        return _typed.to_d490ac6a1b0e(_typed.Def_lawtwinGithubModelModelIssuesListMilestones_db0d4fa1(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_79d855388cb1(value_2), _typed.from_f7593a7d6572(value_3), _typed.from_6c9175189927(value_4), _typed.from_c09136e29464(value_5), _typed.from_c09136e29464(value_6), _typed.from_fedfb1aaf0b7(value_7)))
+        return _typed.to_pair_list_label_state(
+            _typed.lawtwin_github_model_model_issues_list_labels_for_repo(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_maybe_int64(per_page),
+                _typed.from_maybe_int64(page),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esLi"
-                "stMi"
-                "lest"
-                "ones"
-                ": "
-            )
+            "contracttest.github::lawtwinGithubModelModelIssuesListLabelsForRepo: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_163(symbols, value_0, value_1, value_2, value_3, value_4):
+# lawtwinGithubModelModelIssuesListMilestones — ../src/model.lawspec:312
+def lawtwin_github_model_model_issues_list_milestones_3(
+    symbols,
+    owner,
+    repo,
+    state,
+    sort,
+    direction,
+    per_page,
+    page,
+    current,
+):
     try:
-        return _typed.to_f82672304359(_typed.Def_lawtwinGithubModelModelIssuesUpdateLabel_910592d4(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_a0758b309515(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_list_milestone_state(
+            _typed.lawtwin_github_model_model_issues_list_milestones(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_maybe_issues_list_milestones_state(state),
+                _typed.from_maybe_issues_list_milestones_sort(sort),
+                _typed.from_maybe_issues_list_milestones_direction(direction),
+                _typed.from_maybe_int64(per_page),
+                _typed.from_maybe_int64(page),
+                _typed.from_state(current),
+            ),
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "contracttest.github::lawtwinGithubModelModelIssuesListMilestones: "
+            + _builtins.str(error),
+        ) from error
+
+
+# lawtwinGithubModelModelIssuesUpdateLabel — ../src/model.lawspec:301
+def lawtwin_github_model_model_issues_update_label_3(
+    symbols,
+    owner,
+    repo,
+    name,
+    body,
+    current,
+):
+    try:
+        return _typed.to_pair_label_state(
+            _typed.lawtwin_github_model_model_issues_update_label(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_text(name),
+                _typed.from_maybe_issues_update_label_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4102,41 +3815,46 @@ def evaluate_163(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_164(symbols, value_0, value_1, value_2, value_3, value_4):
+# lawtwinGithubModelModelIssuesUpdateMilestone — ../src/model.lawspec:347
+def lawtwin_github_model_model_issues_update_milestone_3(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    body,
+    current,
+):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_lawtwinGithubModelModelIssuesUpdateMilestone_86960b9c(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_44a08172da10(value_2), _typed.from_b472b5d77510(value_3), _typed.from_fedfb1aaf0b7(value_4)))
+        return _typed.to_pair_milestone_state(
+            _typed.lawtwin_github_model_model_issues_update_milestone(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_int64(milestone_number),
+                _typed.from_maybe_issues_update_milestone_body(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delM"
-                "odel"
-                "Issu"
-                "esUp"
-                "date"
-                "Mile"
-                "ston"
-                "e: "
-            )
+            "contracttest.github::lawtwinGithubModelModelIssuesUpdateMilestone: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_165(symbols, value_0, value_1, value_2):
+# lawtwinGithubModelModelLabelsUnder — ../src/model.lawspec:218
+def lawtwin_github_model_model_labels_under_3(symbols, owner, repo, entries):
     try:
-        return _typed.to_26c1f1aa035f(_typed.Def_lawtwinGithubModelModelLabelsUnder_e1b9b631(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_4358f20fcb96(value_2)))
+        return _typed.to_list_label(
+            _typed.lawtwin_github_model_model_labels_under(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_list_entry_label_key_label(entries),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4148,9 +3866,16 @@ def evaluate_165(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_166(symbols, value_0, value_1, value_2):
+# lawtwinGithubModelModelMilestonesUnder — ../src/model.lawspec:226
+def lawtwin_github_model_model_milestones_under_3(symbols, owner, repo, entries):
     try:
-        return _typed.to_6e0c216c458a(_typed.Def_lawtwinGithubModelModelMilestonesUnder_99abfdf7(_typed.from_437d0abf423f(value_0), _typed.from_437d0abf423f(value_1), _typed.from_2f28c788b0d8(value_2)))
+        return _typed.to_list_milestone(
+            _typed.lawtwin_github_model_model_milestones_under(
+                _typed.from_text(owner),
+                _typed.from_text(repo),
+                _typed.from_list_entry_milestone_key_milestone(entries),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4162,89 +3887,76 @@ def evaluate_166(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_167(symbols, value_0):
+# lawtwinGithubModelValidIssuesCreateMilestoneBody — ../src/model.lawspec:234
+def lawtwin_github_model_valid_issues_create_milestone_body_3(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelValidIssuesCreateMilestoneBody_b6751680(_typed.from_694e86e76a75(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_valid_issues_create_milestone_body(
+                _typed.from_issues_create_milestone_body(value),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delV"
-                "alid"
-                "Issu"
-                "esCr"
-                "eate"
-                "Mile"
-                "ston"
-                "eBod"
-                "y: "
-            )
+            "contracttest.github::lawtwinGithubModelValidIssuesCreateMilestoneBody: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_168(symbols, value_0):
+# lawtwinGithubModelValidIssuesUpdateMilestoneBody — ../src/model.lawspec:243
+def lawtwin_github_model_valid_issues_update_milestone_body_3(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinGithubModelValidIssuesUpdateMilestoneBody_922d307a(_typed.from_b93e2957492a(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_github_model_valid_issues_update_milestone_body(
+                _typed.from_issues_update_milestone_body(value),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".git"
-                "hub:"
-                ":law"
-                "twin"
-                "Gith"
-                "ubMo"
-                "delV"
-                "alid"
-                "Issu"
-                "esUp"
-                "date"
-                "Mile"
-                "ston"
-                "eBod"
-                "y: "
-            )
+            "contracttest.github::lawtwinGithubModelValidIssuesUpdateMilestoneBody: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_169(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesCreateLabel — ../src/api.lawspec:207
+def reference_issues_create_label_3(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_f82672304359(_typed.Def_referenceIssuesCreateLabel_66a10480(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_6dd579d34c7f(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.reference_issues_create_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_issues_create_label_body(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesCreateLabel: "
-            + _builtins.str(error),
+            "contracttest.github::referenceIssuesCreateLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_170(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesCreateMilestone — ../src/api.lawspec:212
+def reference_issues_create_milestone_3(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_referenceIssuesCreateMilestone_819e36f6(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_694e86e76a75(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.reference_issues_create_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_issues_create_milestone_body(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4256,23 +3968,38 @@ def evaluate_170(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_171(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesDeleteLabel — ../src/api.lawspec:209
+def reference_issues_delete_label_3(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_referenceIssuesDeleteLabel_91dc9b24(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_437d0abf423f(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_issues_delete_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_text(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesDeleteLabel: "
-            + _builtins.str(error),
+            "contracttest.github::referenceIssuesDeleteLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_172(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesDeleteMilestone — ../src/api.lawspec:214
+def reference_issues_delete_milestone_3(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_a4adaa43b3dc(_typed.Def_referenceIssuesDeleteMilestone_1798b0e2(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_44a08172da10(value_3)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_issues_delete_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_int64(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4284,37 +4011,67 @@ def evaluate_172(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_173(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesGetLabel — ../src/api.lawspec:208
+def reference_issues_get_label_3(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_f82672304359(_typed.Def_referenceIssuesGetLabel_caf28965(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_437d0abf423f(value_3)))
+        return _typed.to_pair_label_state(
+            _typed.reference_issues_get_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_text(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesGetLabel: "
-            + _builtins.str(error),
+            "contracttest.github::referenceIssuesGetLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_174(symbols, value_0, value_1, value_2, value_3):
+# referenceIssuesGetMilestone — ../src/api.lawspec:213
+def reference_issues_get_milestone_3(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_referenceIssuesGetMilestone_53f7b6bc(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_44a08172da10(value_3)))
+        return _typed.to_pair_milestone_state(
+            _typed.reference_issues_get_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_int64(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesGetMilestone: "
-            + _builtins.str(error),
+            "contracttest.github::referenceIssuesGetMilestone: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_175(symbols, value_0, value_1, value_2, value_3, value_4):
+# referenceIssuesListLabelsForRepo — ../src/api.lawspec:206
+def reference_issues_list_labels_for_repo_3(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
-        return _typed.to_37a4ee138a94(_typed.Def_referenceIssuesListLabelsForRepo_074d2d44(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_c09136e29464(value_3), _typed.from_c09136e29464(value_4)))
+        return _typed.to_pair_list_label_state(
+            _typed.reference_issues_list_labels_for_repo(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_maybe_int64(value2),
+                _typed.from_maybe_int64(value3),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4326,19 +4083,31 @@ def evaluate_175(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_176(
+# referenceIssuesListMilestones — ../src/api.lawspec:211
+def reference_issues_list_milestones_3(
     symbols,
-    value_0,
-    value_1,
-    value_2,
-    value_3,
-    value_4,
-    value_5,
-    value_6,
-    value_7,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+    value4,
+    value5,
+    value6,
 ):
     try:
-        return _typed.to_d490ac6a1b0e(_typed.Def_referenceIssuesListMilestones_b04e2ebe(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_79d855388cb1(value_3), _typed.from_f7593a7d6572(value_4), _typed.from_6c9175189927(value_5), _typed.from_c09136e29464(value_6), _typed.from_c09136e29464(value_7)))
+        return _typed.to_pair_list_milestone_state(
+            _typed.reference_issues_list_milestones(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_maybe_issues_list_milestones_state(value2),
+                _typed.from_maybe_issues_list_milestones_sort(value3),
+                _typed.from_maybe_issues_list_milestones_direction(value4),
+                _typed.from_maybe_int64(value5),
+                _typed.from_maybe_int64(value6),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4350,23 +4119,40 @@ def evaluate_176(
         ) from error
 
 
-def evaluate_177(symbols, value_0, value_1, value_2, value_3, value_4):
+# referenceIssuesUpdateLabel — ../src/api.lawspec:210
+def reference_issues_update_label_3(symbols, state, value0, value1, value2, value3):
     try:
-        return _typed.to_f82672304359(_typed.Def_referenceIssuesUpdateLabel_a2730891(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_437d0abf423f(value_3), _typed.from_a0758b309515(value_4)))
+        return _typed.to_pair_label_state(
+            _typed.reference_issues_update_label(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_text(value2),
+                _typed.from_maybe_issues_update_label_body(value3),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesUpdateLabel: "
-            + _builtins.str(error),
+            "contracttest.github::referenceIssuesUpdateLabel: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_178(symbols, value_0, value_1, value_2, value_3, value_4):
+# referenceIssuesUpdateMilestone — ../src/api.lawspec:215
+def reference_issues_update_milestone_3(symbols, state, value0, value1, value2, value3):
     try:
-        return _typed.to_9a68d4c5e20a(_typed.Def_referenceIssuesUpdateMilestone_cc0bfe48(_typed.from_fedfb1aaf0b7(value_0), _typed.from_437d0abf423f(value_1), _typed.from_437d0abf423f(value_2), _typed.from_44a08172da10(value_3), _typed.from_b472b5d77510(value_4)))
+        return _typed.to_pair_milestone_state(
+            _typed.reference_issues_update_milestone(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_text(value1),
+                _typed.from_int64(value2),
+                _typed.from_maybe_issues_update_milestone_body(value3),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4378,9 +4164,10 @@ def evaluate_178(symbols, value_0, value_1, value_2, value_3, value_4):
         ) from error
 
 
-def evaluate_179(symbols, value_0):
+# referenceStart — ../src/api.lawspec:205
+def reference_start_3(symbols, unit):
     try:
-        return _typed.to_fedfb1aaf0b7(_typed.Def_referenceStart_6abddcfe(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(_typed.reference_start(_typed.from_unit(unit)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4391,15 +4178,15 @@ def evaluate_179(symbols, value_0):
         ) from error
 
 
-def evaluate_180(symbols, value_0):
+# suiteNamesThePackage — laws/suite.lawspec:8
+def suite_names_the_package(symbols, u):
     try:
-        return _typed.to_b120ceed78cb(_typed.Def_nothingHandWritten_abc609a3(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_unit(_typed.nothing_hand_written(_typed.from_unit(u)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::suiteNamesThePackage: "
-            + _builtins.str(error),
+            "contracttest.github::suiteNamesThePackage: " + _builtins.str(error),
         ) from error

@@ -11,13 +11,15 @@ open System.Text
 open Xunit.v3
 
 module Schedule =
-    let private chosen = lazy (BigInteger(RandomNumberGenerator.GetBytes 8 |> Array.append [| 0uy |] |> Array.rev))
+    let private chosen =
+        lazy (BigInteger(RandomNumberGenerator.GetBytes 8 |> Array.append [| 0uy |] |> Array.rev))
 
     /// The run's seed for ordering: LAWSPEC_SEED, or one chosen once per run.
     [<CompiledName("Seed")>]
     let seed () =
         match Environment.GetEnvironmentVariable "LAWSPEC_SEED" with
-        | null | "" -> chosen.Value
+        | null
+        | "" -> chosen.Value
         | text -> BigInteger.Parse text
 
     /// Items in the order a seed chooses for a unit: by the hash of the seed,
@@ -26,9 +28,12 @@ module Schedule =
     let order (unitName: string) (items: 'a list) =
         let s = seed ()
         eprintfn "order random seed %O (%s): LAWSPEC_SEED=%O replays this order" s unitName s
+
         items
         |> List.mapi (fun i item ->
-            let key = SHA256.HashData(Encoding.UTF8.GetBytes(s.ToString() + "\u0000" + unitName + "\u0000" + string (i + 1)))
+            let key =
+                SHA256.HashData(Encoding.UTF8.GetBytes(s.ToString() + "\u0000" + unitName + "\u0000" + string (i + 1)))
+
             key, i, item)
         |> List.sortWith (fun (a: byte[], i, _) (b, j, _) ->
             match ReadOnlySpan<byte>(a).SequenceCompareTo(ReadOnlySpan<byte>(b)) with
@@ -40,14 +45,25 @@ module Schedule =
 /// order, then shuffled by the run's seed.
 type SeededOrder() =
     interface ITestCaseOrderer with
-        member _.OrderTestCases<'T when 'T :> Xunit.Sdk.ITestCase>(testCases: Collections.Generic.IReadOnlyCollection<'T>) =
+        member _.OrderTestCases<'T when 'T :> Xunit.Sdk.ITestCase>
+            (testCases: Collections.Generic.IReadOnlyCollection<'T>)
+            =
             let cases = List.ofSeq testCases
+
             let unitName =
                 match cases with
                 | c :: _ -> c.TestClassName
                 | [] -> ""
+
             let declared =
-                cases |> List.sortBy (fun c -> (if c.TestMethodMetadataToken.HasValue then c.TestMethodMetadataToken.Value else 0), c.TestCaseDisplayName)
+                cases
+                |> List.sortBy (fun c ->
+                    (if c.TestMethodMetadataToken.HasValue then
+                         c.TestMethodMetadataToken.Value
+                     else
+                         0),
+                    c.TestCaseDisplayName)
+
             ResizeArray(Schedule.order unitName declared) :> Collections.Generic.IReadOnlyCollection<'T>
 
 /// xUnit v3 orders a class's test methods before each method's cases, so a
@@ -55,11 +71,15 @@ type SeededOrder() =
 /// name, then shuffled.
 type SeededMethodOrder() =
     interface ITestMethodOrderer with
-        member _.OrderTestMethods<'T when 'T :> Xunit.Sdk.ITestMethod>(testMethods: Collections.Generic.IReadOnlyCollection<'T>) =
+        member _.OrderTestMethods<'T when 'T :> Xunit.Sdk.ITestMethod>
+            (testMethods: Collections.Generic.IReadOnlyCollection<'T>)
+            =
             let methods = List.ofSeq testMethods
+
             let unitName =
                 match methods with
                 | m :: _ -> m.TestClass.TestClassName
                 | [] -> ""
+
             let declared = methods |> List.sortBy (fun m -> m.MethodName)
             ResizeArray(Schedule.order unitName declared) :> Collections.Generic.IReadOnlyCollection<'T>

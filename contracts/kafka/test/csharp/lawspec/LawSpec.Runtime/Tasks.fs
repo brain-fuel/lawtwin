@@ -13,8 +13,11 @@ open System.Threading.Tasks
 [<Sealed; AllowNullLiteral>]
 type Scope(parent: Scope, parentToken: CancellationToken) =
     let source =
-        if isNull (box parent) then new CancellationTokenSource()
-        else CancellationTokenSource.CreateLinkedTokenSource(parentToken)
+        if isNull (box parent) then
+            new CancellationTokenSource()
+        else
+            CancellationTokenSource.CreateLinkedTokenSource(parentToken)
+
     let work = ResizeArray<Task>()
     member _.Parent = parent
     member _.Token = source.Token
@@ -22,9 +25,13 @@ type Scope(parent: Scope, parentToken: CancellationToken) =
     /// Register work started in this scope.
     member _.Own(task: Task) = lock work (fun () -> work.Add task)
     member _.Work = lock work (fun () -> List.ofSeq work)
+
     /// Cancel everything the scope owns.
     member _.Close() =
-        try source.Cancel() with _ -> ()
+        try
+            source.Cancel()
+        with _ ->
+            ()
 
 let private current = AsyncLocal<Scope>()
 
@@ -43,9 +50,19 @@ let token () =
 [<CompiledName("WithScope")>]
 let withScope (body: Scope -> 'a) : 'a =
     let previous = current.Value
-    let scope = Scope(previous, (match previous with null -> CancellationToken.None | p -> p.Token))
+
+    let scope =
+        Scope(
+            previous,
+            (match previous with
+             | null -> CancellationToken.None
+             | p -> p.Token)
+        )
+
     current.Value <- scope
-    try body scope
+
+    try
+        body scope
     finally
         current.Value <- previous
         scope.Close()
@@ -55,10 +72,19 @@ let withScope (body: Scope -> 'a) : 'a =
 [<CompiledName("Start")>]
 let start (body: unit -> 'a) : Task<'a> =
     let scope = current.Value
-    let task = Task.Run((fun () -> body ()), (match scope with null -> CancellationToken.None | s -> s.Token))
+
+    let task =
+        Task.Run(
+            (fun () -> body ()),
+            (match scope with
+             | null -> CancellationToken.None
+             | s -> s.Token)
+        )
+
     match scope with
     | null -> ()
     | s -> s.Own task
+
     task
 
 /// Fail with OperationCanceledException if the current scope was closed.

@@ -16,9 +16,12 @@ def _adapters(module: _builtins.str):
     return _importlib.import_module(module)
 
 
-def evaluate_0(symbols, value_0, value_1):
+# matchersMatchesRegex — <lawspec.matchers>:47
+def matchers_matches_regex(symbols, t, r):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_matchersMatchesRegex_52d1c22e(_typed.from_437d0abf423f(value_0), _typed.from_d83bd168ba38(value_1)))
+        return _typed.to_bool(
+            _typed.matchers_matches_regex(_typed.from_text(t), _typed.from_regex(r)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -29,864 +32,553 @@ def evaluate_0(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_1(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_text_list_entry_text_user(symbols, k, es):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValDeleteItems_8ede0895(_typed.from_44a08172da10(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_delete_items_text_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "Item"
-                "s_24"
-                "98b2"
-                "ce1c"
-                "0ae4"
-                "2d: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValDeleteItems_142e693f327da76cb6b13ced49a111b85b6f937e4e18dbbe63f5bad6ed554072a158f16f54f7: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_2(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet(symbols, k, es):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValDeleteItems_306e4a61(_typed.from_437d0abf423f(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "Item"
-                "s_61"
-                "7d84"
-                "abad"
-                "c0cf"
-                "3: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValDeleteItems_42e75a534668c8baab78732ed9c26c6fe9529f2ad141e167ce4d0dfdc2643cbc9f35750df151: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_3(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_order(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValDeleteItems_f46df0ad(_typed.from_44a08172da10(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_delete_items_int64_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "Item"
-                "s_d8"
-                "53b8"
-                "2016"
-                "9aac"
-                "b5: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValDeleteItems_cabed8cd11f3136f1f98e30df55bbf7910063a41dd81f6f4cf817cd9b533f0132c1ec51f464d: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_4(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_text_key_val_text_user(symbols, k, m):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValDelete_c3e7d7f6(_typed.from_437d0abf423f(value_0), _typed.from_028dc11da4a2(value_1)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_delete_text_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "_138"
-                "70e9"
-                "dc25"
-                "991b"
-                "3: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValDelete_180599abfb23f062add1f398c77734253776b20e00dde9735dc210a388d0084f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_5(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_int64_key_val_int64_order(symbols, k, m):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValDelete_e4177076(_typed.from_44a08172da10(value_0), _typed.from_1f8a64f6915e(value_1)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_delete_int64_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "_322"
-                "1376"
-                "c81b"
-                "1179"
-                "d: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValDelete_59887358e6082d38b23002a2c94a03c342994b321d31c599cb0f21143c86fca2: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_6(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_int64_key_val_int64_pet(symbols, k, m):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValDelete_5428b507(_typed.from_44a08172da10(value_0), _typed.from_e53f6261287e(value_1)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_delete_int64_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "_bce"
-                "e84c"
-                "a81b"
-                "37cf"
-                "5: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValDelete_5ce9a3a58573df1ad8ea0947baaa7dceae5d92d85960af4f8cd27388629f6e43: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_7(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_int64_order_list_entry_int64_order(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValFromItems_d7fe858d(_typed.from_7d41fae83a77(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_from_items_list_entry_int64_order_list_entry_int64_order(
+                _typed.from_list_entry_int64_order(es),
+                _typed.from_list_entry_int64_order(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alFr"
-                "omIt"
-                "ems_"
-                "134c"
-                "69b2"
-                "62f9"
-                "14fb"
-                ": "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValFromItems_65eacbcc915c193a39ba7e96c9b4d98015bb89f012558a02450a84db1153457b052ec7b48239: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_8(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_int64_pet_list_entry_int64_pet(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValFromItems_29c5e24f(_typed.from_8ca8e420d6d2(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_from_items_list_entry_int64_pet_list_entry_int64_pet(
+                _typed.from_list_entry_int64_pet(es),
+                _typed.from_list_entry_int64_pet(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alFr"
-                "omIt"
-                "ems_"
-                "3c98"
-                "264c"
-                "c23d"
-                "cd72"
-                ": "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValFromItems_b33e79378074279d59e68258a372729ed10d0276f62ce1a73b20b820e75f3ce75d96278f8493: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_9(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_user(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValFromItems_709d7e45(_typed.from_9cd7aab66a75(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_user(
+                _typed.from_list_entry_text_user(es),
+                _typed.from_list_entry_text_user(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alFr"
-                "omIt"
-                "ems_"
-                "fb92"
-                "0b50"
-                "b03d"
-                "abf2"
-                ": "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValFromItems_bf4788ac7c563098c2f9de58b2e1d9c50cc03520b8d9d1be8adf141a3e1e33e123d16be8a044: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_10(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_text_list_entry_text_user(symbols, k, es):
     try:
-        return _typed.to_e7cb8bef1b25(_typed.Def_lawspecCollectionsKeyValLookupItems_86a23cdf(_typed.from_437d0abf423f(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_maybe_user(
+            _typed.lawspec_collections_key_val_lookup_items_text_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "Item"
-                "s_30"
-                "0a8c"
-                "8122"
-                "e436"
-                "f9: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookupItems_a98132adc874e28d5c051b927cc07b24cb682e7a6f0d1d8d025ff0658afe5d17c69e537c378f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_11(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_ba2e3c57646d(_typed.Def_lawspecCollectionsKeyValLookupItems_86fdea7f(_typed.from_44a08172da10(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_maybe_order(
+            _typed.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "Item"
-                "s_3c"
-                "ded3"
-                "b884"
-                "70c1"
-                "3d: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookupItems_d01bcf683a8ba049e28d1915b6382c2437262ed4bd7f0c11c3c11d8d0c5983748b0789573511: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_12(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet(symbols, k, es):
     try:
-        return _typed.to_2a509216bf80(_typed.Def_lawspecCollectionsKeyValLookupItems_6f0d755e(_typed.from_44a08172da10(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_maybe_pet(
+            _typed.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "Item"
-                "s_ac"
-                "b0eb"
-                "ccff"
-                "390f"
-                "a3: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookupItems_dbde89004483a818dee04300ed31a4f0183695576afee6fd2d2b074718e5f6547e17750d7883: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_13(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_text_key_val_text_user(symbols, k, m):
     try:
-        return _typed.to_ba2e3c57646d(_typed.Def_lawspecCollectionsKeyValLookup_a0748ff1(_typed.from_44a08172da10(value_0), _typed.from_e53f6261287e(value_1)))
+        return _typed.to_maybe_user(
+            _typed.lawspec_collections_key_val_lookup_text_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "_590"
-                "7e6b"
-                "e52c"
-                "2c21"
-                "1: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookup_8d65bd0c2734452e6395969d76310ab7cfb547e33b7abbae71357d72924b1bee: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_14(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_int64_key_val_int64_pet(symbols, k, m):
     try:
-        return _typed.to_e7cb8bef1b25(_typed.Def_lawspecCollectionsKeyValLookup_5beba6da(_typed.from_437d0abf423f(value_0), _typed.from_028dc11da4a2(value_1)))
+        return _typed.to_maybe_pet(
+            _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "_7d1"
-                "4018"
-                "c803"
-                "49f0"
-                "b: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookup_ae11115693cbb35d35b130baa4f5f4bad39a9a209068e27b75bcb2ef170811ff: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_15(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_int64_key_val_int64_order(symbols, k, m):
     try:
-        return _typed.to_2a509216bf80(_typed.Def_lawspecCollectionsKeyValLookup_ef93254e(_typed.from_44a08172da10(value_0), _typed.from_1f8a64f6915e(value_1)))
+        return _typed.to_maybe_order(
+            _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "_bca"
-                "3777"
-                "1110"
-                "1565"
-                "d: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValLookup_dc4b69230473d31ccbd7b40b10cd37174fb98041732e9de8995743e1c330ec62: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_16(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_text_user(symbols, es):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValOf_0ba011fe(_typed.from_7d41fae83a77(value_0)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_of_list_entry_text_user(
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alOf"
-                "_64f"
-                "624e"
-                "ed51"
-                "4eaa"
-                "2: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValOf_3cbfcdcf541f43d6063a6e4265a873a5d214479321157c42f4d68cb2a1f1b1d73ce65cb62c7f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_17(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_int64_order(symbols, es):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValOf_ba53d5a9(_typed.from_9cd7aab66a75(value_0)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_of_list_entry_int64_order(
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alOf"
-                "_a3a"
-                "7f2c"
-                "1aea"
-                "9ea8"
-                "0: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValOf_7a472c842e59e2ccce84f9632b2ae4f26870b48cdfa15074f336b36cf45b5169318f9889f55d: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_18(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_int64_pet(symbols, es):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValOf_8dcea77c(_typed.from_8ca8e420d6d2(value_0)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_of_list_entry_int64_pet(
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alOf"
-                "_aab"
-                "5cf8"
-                "9aee"
-                "e3da"
-                "0: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValOf_c7a16b746509e1225dc68d73360319789c4438d3bd54187cb142000b23fa2dc6b7645a11ed76: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_19(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_text_user_list_entry_text_user(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValPutItems_19d16932(_typed.from_437d0abf423f(value_0), _typed.from_4e0c2eb86b38(value_1), _typed.from_8ca8e420d6d2(value_2)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_put_items_text_user_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_user(v),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "tIte"
-                "ms_2"
-                "18f8"
-                "13dc"
-                "5363"
-                "25b:"
-                " "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValPutItems_d01a79c814f8f913dc0ba0e1ec215cfaa2c13e5c800c25519ba1f2f229a8762cb631f0a0953a: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_20(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValPutItems_102b61ab(_typed.from_44a08172da10(value_0), _typed.from_0205b8dc6a6f(value_1), _typed.from_7d41fae83a77(value_2)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_pet(v),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "tIte"
-                "ms_5"
-                "7d0f"
-                "19a1"
-                "1f0c"
-                "9f0:"
-                " "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValPutItems_d68e99f219f5d6caa3fa0b1b900ad65ab8cc2e2121e1e263d94e8cdb9f994bdbebd1d5c4af14: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_21(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValPutItems_b231a093(_typed.from_44a08172da10(value_0), _typed.from_82d465b8f3fe(value_1), _typed.from_9cd7aab66a75(value_2)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_order(v),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "tIte"
-                "ms_7"
-                "ac75"
-                "f307"
-                "de70"
-                "42f:"
-                " "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValPutItems_ebb9b744591ed3ebfcefbce030268d9f983a8dccb63b71746bfc6dc2ffee4e0e394d6b45ce51: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_22(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_text_user_key_val_text_user(symbols, k, v, m):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValPut_87b84c20(_typed.from_437d0abf423f(value_0), _typed.from_4e0c2eb86b38(value_1), _typed.from_028dc11da4a2(value_2)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_put_text_user_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_user(v),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "t_1f"
-                "633f"
-                "25cc"
-                "61f7"
-                "2b: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValPut_14d9f6337e0ec2561d8e030a06ad9c9e9573446c177fb34bf18116e79b3c0c77: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_23(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(symbols, k, v, m):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValPut_15141812(_typed.from_44a08172da10(value_0), _typed.from_0205b8dc6a6f(value_1), _typed.from_e53f6261287e(value_2)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_pet(v),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "t_49"
-                "69b4"
-                "d201"
-                "ed0c"
-                "70: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValPut_716e4525b608d8fa85d5aa5eaab290869ff2c2a7a8ee04296a8ab43c4b7fc027: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_24(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_int64_order_key_val_int64_order(symbols, k, v, m):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValPut_73b7121f(_typed.from_44a08172da10(value_0), _typed.from_82d465b8f3fe(value_1), _typed.from_1f8a64f6915e(value_2)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_put_int64_order_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_order(v),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "t_53"
-                "079f"
-                "70ee"
-                "92bc"
-                "07: "
-            )
+            "lawtwin.petstore::lawspec_lawspecCollectionsKeyValPut_e16765c1488083b09e856585b415e6c64aa622e62bc1f85e8241737d83176c17: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_25(symbols, value_0, value_1):
+# lawtwinPetstoreHandwrittenCreateUsersWithListInput — ../src/handwritten.lawspec:39
+def lawtwin_petstore_handwritten_create_users_with_list_input(symbols, body, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreHandwrittenCreateUsersWithListInput_f7c111ea(_typed.from_e6c8b33c1e73(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_handwritten_create_users_with_list_input(
+                _typed.from_maybe_list_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                "::la"
-                "wtwi"
-                "nPet"
-                "stor"
-                "eHan"
-                "dwri"
-                "tten"
-                "Crea"
-                "teUs"
-                "ersW"
-                "ithL"
-                "istI"
-                "nput"
-                ": "
-            )
+            "lawtwin.petstore::lawtwinPetstoreHandwrittenCreateUsersWithListInput: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_26(symbols, value_0, value_1):
+# lawtwinPetstoreHandwrittenFindPetsByStatus — ../src/handwritten.lawspec:14
+def lawtwin_petstore_handwritten_find_pets_by_status(symbols, status, current):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_lawtwinPetstoreHandwrittenFindPetsByStatus_e92ff3cf(_typed.from_1ac848e17d05(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.lawtwin_petstore_handwritten_find_pets_by_status(
+                _typed.from_pet_status(status),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -898,9 +590,15 @@ def evaluate_26(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_27(symbols, value_0, value_1):
+# lawtwinPetstoreHandwrittenFindPetsByTags — ../src/handwritten.lawspec:19
+def lawtwin_petstore_handwritten_find_pets_by_tags(symbols, tags, current):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_lawtwinPetstoreHandwrittenFindPetsByTags_afed99b2(_typed.from_8ec0351dc657(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.lawtwin_petstore_handwritten_find_pets_by_tags(
+                _typed.from_list_text(tags),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -912,9 +610,14 @@ def evaluate_27(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_28(symbols, value_0):
+# lawtwinPetstoreHandwrittenGetInventory — ../src/handwritten.lawspec:34
+def lawtwin_petstore_handwritten_get_inventory(symbols, current):
     try:
-        return _typed.to_cf9e580486ca(_typed.Def_lawtwinPetstoreHandwrittenGetInventory_1dac8932(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_key_val_text_int32_state(
+            _typed.lawtwin_petstore_handwritten_get_inventory(
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -926,9 +629,16 @@ def evaluate_28(symbols, value_0):
         ) from error
 
 
-def evaluate_29(symbols, value_0, value_1, value_2):
+# lawtwinPetstoreHandwrittenLoginUser — ../src/handwritten.lawspec:44
+def lawtwin_petstore_handwritten_login_user(symbols, username, password, current):
     try:
-        return _typed.to_42a05c234e0d(_typed.Def_lawtwinPetstoreHandwrittenLoginUser_b8d6606c(_typed.from_01d86fc44f8c(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_text_state(
+            _typed.lawtwin_petstore_handwritten_login_user(
+                _typed.from_maybe_text(username),
+                _typed.from_maybe_text(password),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -940,9 +650,12 @@ def evaluate_29(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_30(symbols, value_0):
+# lawtwinPetstoreHandwrittenLogoutUser — ../src/handwritten.lawspec:49
+def lawtwin_petstore_handwritten_logout_user(symbols, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreHandwrittenLogoutUser_38a24725(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_handwritten_logout_user(_typed.from_state(current)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -954,9 +667,23 @@ def evaluate_30(symbols, value_0):
         ) from error
 
 
-def evaluate_31(symbols, value_0, value_1, value_2, value_3):
+# lawtwinPetstoreHandwrittenUpdatePetWithForm — ../src/handwritten.lawspec:24
+def lawtwin_petstore_handwritten_update_pet_with_form(
+    symbols,
+    pet_id,
+    name,
+    status,
+    current,
+):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreHandwrittenUpdatePetWithForm_9c6a9682(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_ceed401fe9f6(value_3)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_handwritten_update_pet_with_form(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(name),
+                _typed.from_maybe_text(status),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -968,9 +695,23 @@ def evaluate_31(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_32(symbols, value_0, value_1, value_2, value_3):
+# lawtwinPetstoreHandwrittenUploadFile — ../src/handwritten.lawspec:29
+def lawtwin_petstore_handwritten_upload_file(
+    symbols,
+    pet_id,
+    additional_metadata,
+    body,
+    current,
+):
     try:
-        return _typed.to_f21e77101c35(_typed.Def_lawtwinPetstoreHandwrittenUploadFile_db78234a(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_b276e66efd09(value_2), _typed.from_ceed401fe9f6(value_3)))
+        return _typed.to_pair_api_response_state(
+            _typed.lawtwin_petstore_handwritten_upload_file(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(additional_metadata),
+                _typed.from_maybe_bytes(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -982,37 +723,47 @@ def evaluate_32(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_33(symbols, value_0):
+# lawtwinPetstoreModelAfter64 — ../src/model.lawspec:123
+def lawtwin_petstore_model_after64(symbols, k):
     try:
-        return _typed.to_44a08172da10(_typed.Def_lawtwinPetstoreModelAfter64_d44b61a4(_typed.from_44a08172da10(value_0)))
+        return _typed.to_int64(
+            _typed.lawtwin_petstore_model_after64(_typed.from_int64(k)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::lawtwinPetstoreModelAfter64: "
-            + _builtins.str(error),
+            "lawtwin.petstore::lawtwinPetstoreModelAfter64: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_34(symbols, value_0):
+# lawtwinPetstoreModelEmptyState — ../src/model.lawspec:113
+def lawtwin_petstore_model_empty_state(symbols, u):
     try:
-        return _typed.to_ceed401fe9f6(_typed.Def_lawtwinPetstoreModelEmptyState_9f93bc81(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(
+            _typed.lawtwin_petstore_model_empty_state(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::lawtwinPetstoreModelEmptyState: "
-            + _builtins.str(error),
+            "lawtwin.petstore::lawtwinPetstoreModelEmptyState: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_35(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelAddPet — ../src/model.lawspec:151
+def lawtwin_petstore_model_model_add_pet(symbols, body, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelAddPet_443bf61d(_typed.from_82d465b8f3fe(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_add_pet(
+                _typed.from_pet(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1024,9 +775,15 @@ def evaluate_35(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_36(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelCreateUser — ../src/model.lawspec:213
+def lawtwin_petstore_model_model_create_user(symbols, body, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreModelModelCreateUser_90ee772d(_typed.from_e7cb8bef1b25(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_model_model_create_user(
+                _typed.from_maybe_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1038,9 +795,15 @@ def evaluate_36(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_37(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelDeleteOrder — ../src/model.lawspec:205
+def lawtwin_petstore_model_model_delete_order(symbols, order_id, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeleteOrder_ca32659b(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_order(
+                _typed.from_int64(order_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1052,9 +815,16 @@ def evaluate_37(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_38(symbols, value_0, value_1, value_2):
+# lawtwinPetstoreModelModelDeletePet — ../src/model.lawspec:171
+def lawtwin_petstore_model_model_delete_pet(symbols, pet_id, api_key, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeletePet_f79b8631(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_pet(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(api_key),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1066,9 +836,15 @@ def evaluate_38(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_39(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelDeleteUser — ../src/model.lawspec:255
+def lawtwin_petstore_model_model_delete_user(symbols, username, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeleteUser_292d6814(_typed.from_437d0abf423f(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_user(
+                _typed.from_text(username),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1080,9 +856,15 @@ def evaluate_39(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_40(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelGetOrderById — ../src/model.lawspec:197
+def lawtwin_petstore_model_model_get_order_by_id(symbols, order_id, current):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_lawtwinPetstoreModelModelGetOrderById_573aa869(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.lawtwin_petstore_model_model_get_order_by_id(
+                _typed.from_int64(order_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1094,9 +876,15 @@ def evaluate_40(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_41(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelGetPetById — ../src/model.lawspec:163
+def lawtwin_petstore_model_model_get_pet_by_id(symbols, pet_id, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelGetPetById_ed826277(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_get_pet_by_id(
+                _typed.from_int64(pet_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1108,9 +896,15 @@ def evaluate_41(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_42(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelGetUserByName — ../src/model.lawspec:230
+def lawtwin_petstore_model_model_get_user_by_name(symbols, username, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreModelModelGetUserByName_d31e87ba(_typed.from_437d0abf423f(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_model_model_get_user_by_name(
+                _typed.from_text(username),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1122,9 +916,15 @@ def evaluate_42(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_43(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelPlaceOrder — ../src/model.lawspec:179
+def lawtwin_petstore_model_model_place_order(symbols, body, current):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_lawtwinPetstoreModelModelPlaceOrder_d7fd75c4(_typed.from_ba2e3c57646d(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.lawtwin_petstore_model_model_place_order(
+                _typed.from_maybe_order(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1136,9 +936,15 @@ def evaluate_43(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_44(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelUpdatePet — ../src/model.lawspec:136
+def lawtwin_petstore_model_model_update_pet(symbols, body, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelUpdatePet_6803effb(_typed.from_82d465b8f3fe(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_update_pet(
+                _typed.from_pet(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1150,9 +956,16 @@ def evaluate_44(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_45(symbols, value_0, value_1, value_2):
+# lawtwinPetstoreModelModelUpdateUser — ../src/model.lawspec:238
+def lawtwin_petstore_model_model_update_user(symbols, username, body, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelUpdateUser_6c0b8b8d(_typed.from_437d0abf423f(value_0), _typed.from_e7cb8bef1b25(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_update_user(
+                _typed.from_text(username),
+                _typed.from_maybe_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1164,23 +977,28 @@ def evaluate_45(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_46(symbols, value_0):
+# lawtwinPetstoreModelValidOrder — ../src/model.lawspec:127
+def lawtwin_petstore_model_valid_order(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinPetstoreModelValidOrder_62eb4720(_typed.from_0205b8dc6a6f(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_petstore_model_valid_order(_typed.from_order(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::lawtwinPetstoreModelValidOrder: "
-            + _builtins.str(error),
+            "lawtwin.petstore::lawtwinPetstoreModelValidOrder: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_47(symbols, value_0, value_1):
+# referenceAddPet — ../src/api.lawspec:185
+def reference_add_pet(symbols, state, value0):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceAddPet_ae0ddf28(_typed.from_ceed401fe9f6(value_0), _typed.from_82d465b8f3fe(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_add_pet(_typed.from_state(state), _typed.from_pet(value0)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1191,9 +1009,15 @@ def evaluate_47(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_48(symbols, value_0, value_1):
+# referenceCreateUser — ../src/api.lawspec:196
+def reference_create_user(symbols, state, value0):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_referenceCreateUser_8fb4b3e6(_typed.from_ceed401fe9f6(value_0), _typed.from_e7cb8bef1b25(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.reference_create_user(
+                _typed.from_state(state),
+                _typed.from_maybe_user(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1204,9 +1028,15 @@ def evaluate_48(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_49(symbols, value_0, value_1):
+# referenceCreateUsersWithListInput — ../src/api.lawspec:197
+def reference_create_users_with_list_input(symbols, state, value0):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_referenceCreateUsersWithListInput_15c6a40c(_typed.from_ceed401fe9f6(value_0), _typed.from_e6c8b33c1e73(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.reference_create_users_with_list_input(
+                _typed.from_state(state),
+                _typed.from_maybe_list_user(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1218,9 +1048,15 @@ def evaluate_49(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_50(symbols, value_0, value_1):
+# referenceDeleteOrder — ../src/api.lawspec:195
+def reference_delete_order(symbols, state, value0):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceDeleteOrder_bf4c8c24(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_delete_order(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1231,9 +1067,16 @@ def evaluate_50(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_51(symbols, value_0, value_1, value_2):
+# referenceDeletePet — ../src/api.lawspec:190
+def reference_delete_pet(symbols, state, value0, value1):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceDeletePet_4705c2b2(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1), _typed.from_01d86fc44f8c(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_delete_pet(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+                _typed.from_maybe_text(value1),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1244,9 +1087,15 @@ def evaluate_51(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_52(symbols, value_0, value_1):
+# referenceDeleteUser — ../src/api.lawspec:202
+def reference_delete_user(symbols, state, value0):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceDeleteUser_e8d80a94(_typed.from_ceed401fe9f6(value_0), _typed.from_437d0abf423f(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_delete_user(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1257,37 +1106,50 @@ def evaluate_52(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_53(symbols, value_0, value_1):
+# referenceFindPetsByStatus — ../src/api.lawspec:186
+def reference_find_pets_by_status(symbols, state, value0):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_referenceFindPetsByStatus_c60cd17e(_typed.from_ceed401fe9f6(value_0), _typed.from_1ac848e17d05(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.reference_find_pets_by_status(
+                _typed.from_state(state),
+                _typed.from_pet_status(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::referenceFindPetsByStatus: "
-            + _builtins.str(error),
+            "lawtwin.petstore::referenceFindPetsByStatus: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_54(symbols, value_0, value_1):
+# referenceFindPetsByTags — ../src/api.lawspec:187
+def reference_find_pets_by_tags(symbols, state, value0):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_referenceFindPetsByTags_cf5c32e9(_typed.from_ceed401fe9f6(value_0), _typed.from_8ec0351dc657(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.reference_find_pets_by_tags(
+                _typed.from_state(state),
+                _typed.from_list_text(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::referenceFindPetsByTags: "
-            + _builtins.str(error),
+            "lawtwin.petstore::referenceFindPetsByTags: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_55(symbols, value_0):
+# referenceGetInventory — ../src/api.lawspec:192
+def reference_get_inventory(symbols, state):
     try:
-        return _typed.to_cf9e580486ca(_typed.Def_referenceGetInventory_0fb69a3d(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_key_val_text_int32_state(
+            _typed.reference_get_inventory(_typed.from_state(state)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1298,9 +1160,15 @@ def evaluate_55(symbols, value_0):
         ) from error
 
 
-def evaluate_56(symbols, value_0, value_1):
+# referenceGetOrderById — ../src/api.lawspec:194
+def reference_get_order_by_id(symbols, state, value0):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_referenceGetOrderById_3c80a922(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.reference_get_order_by_id(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1311,9 +1179,15 @@ def evaluate_56(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_57(symbols, value_0, value_1):
+# referenceGetPetById — ../src/api.lawspec:188
+def reference_get_pet_by_id(symbols, state, value0):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceGetPetById_cd663b92(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_get_pet_by_id(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1324,23 +1198,35 @@ def evaluate_57(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_58(symbols, value_0, value_1):
+# referenceGetUserByName — ../src/api.lawspec:200
+def reference_get_user_by_name(symbols, state, value0):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_referenceGetUserByName_027f640c(_typed.from_ceed401fe9f6(value_0), _typed.from_437d0abf423f(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.reference_get_user_by_name(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::referenceGetUserByName: "
-            + _builtins.str(error),
+            "lawtwin.petstore::referenceGetUserByName: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_59(symbols, value_0, value_1, value_2):
+# referenceLoginUser — ../src/api.lawspec:198
+def reference_login_user(symbols, state, value0, value1):
     try:
-        return _typed.to_42a05c234e0d(_typed.Def_referenceLoginUser_20c0b3f3(_typed.from_ceed401fe9f6(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_01d86fc44f8c(value_2)))
+        return _typed.to_pair_text_state(
+            _typed.reference_login_user(
+                _typed.from_state(state),
+                _typed.from_maybe_text(value0),
+                _typed.from_maybe_text(value1),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1351,9 +1237,12 @@ def evaluate_59(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_60(symbols, value_0):
+# referenceLogoutUser — ../src/api.lawspec:199
+def reference_logout_user(symbols, state):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceLogoutUser_56bbbb56(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_logout_user(_typed.from_state(state)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1364,9 +1253,15 @@ def evaluate_60(symbols, value_0):
         ) from error
 
 
-def evaluate_61(symbols, value_0, value_1):
+# referencePlaceOrder — ../src/api.lawspec:193
+def reference_place_order(symbols, state, value0):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_referencePlaceOrder_29feae4c(_typed.from_ceed401fe9f6(value_0), _typed.from_ba2e3c57646d(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.reference_place_order(
+                _typed.from_state(state),
+                _typed.from_maybe_order(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1377,9 +1272,10 @@ def evaluate_61(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_62(symbols, value_0):
+# referenceStart — ../src/api.lawspec:183
+def reference_start(symbols, unit):
     try:
-        return _typed.to_ceed401fe9f6(_typed.Def_referenceStart_1a3a0c80(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(_typed.reference_start(_typed.from_unit(unit)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1390,9 +1286,15 @@ def evaluate_62(symbols, value_0):
         ) from error
 
 
-def evaluate_63(symbols, value_0, value_1):
+# referenceUpdatePet — ../src/api.lawspec:184
+def reference_update_pet(symbols, state, value0):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceUpdatePet_3e347085(_typed.from_ceed401fe9f6(value_0), _typed.from_82d465b8f3fe(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_update_pet(
+                _typed.from_state(state),
+                _typed.from_pet(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1403,23 +1305,37 @@ def evaluate_63(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_64(symbols, value_0, value_1, value_2, value_3):
+# referenceUpdatePetWithForm — ../src/api.lawspec:189
+def reference_update_pet_with_form(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceUpdatePetWithForm_dbd33536(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_01d86fc44f8c(value_3)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_update_pet_with_form(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+                _typed.from_maybe_text(value1),
+                _typed.from_maybe_text(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::referenceUpdatePetWithForm: "
-            + _builtins.str(error),
+            "lawtwin.petstore::referenceUpdatePetWithForm: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_65(symbols, value_0, value_1, value_2):
+# referenceUpdateUser — ../src/api.lawspec:201
+def reference_update_user(symbols, state, value0, value1):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceUpdateUser_e08f158a(_typed.from_ceed401fe9f6(value_0), _typed.from_437d0abf423f(value_1), _typed.from_e7cb8bef1b25(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_update_user(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_maybe_user(value1),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1430,9 +1346,17 @@ def evaluate_65(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_66(symbols, value_0, value_1, value_2, value_3):
+# referenceUploadFile — ../src/api.lawspec:191
+def reference_upload_file(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_f21e77101c35(_typed.Def_referenceUploadFile_5fb62a62(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_b276e66efd09(value_3)))
+        return _typed.to_pair_api_response_state(
+            _typed.reference_upload_file(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+                _typed.from_maybe_text(value1),
+                _typed.from_maybe_bytes(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1443,79 +1367,113 @@ def evaluate_66(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_67(symbols, value_0, value_1):
+# findPetsByStatus — ../src/handwritten.lawspec:14
+def find_pets_by_status(symbols, status, current):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_lawtwinPetstoreHandwrittenFindPetsByStatus_e92ff3cf(_typed.from_1ac848e17d05(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.lawtwin_petstore_handwritten_find_pets_by_status(
+                _typed.from_pet_status(status),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::findPetsByStatus: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::findPetsByStatus: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_68(symbols, value_0, value_1):
+# findPetsByTags — ../src/handwritten.lawspec:19
+def find_pets_by_tags(symbols, tags, current):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_lawtwinPetstoreHandwrittenFindPetsByTags_afed99b2(_typed.from_8ec0351dc657(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.lawtwin_petstore_handwritten_find_pets_by_tags(
+                _typed.from_list_text(tags),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::findPetsByTags: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::findPetsByTags: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_69(symbols, value_0, value_1, value_2, value_3):
+# updatePetWithForm — ../src/handwritten.lawspec:24
+def update_pet_with_form(symbols, pet_id, name, status, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreHandwrittenUpdatePetWithForm_9c6a9682(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_ceed401fe9f6(value_3)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_handwritten_update_pet_with_form(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(name),
+                _typed.from_maybe_text(status),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::updatePetWithForm: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::updatePetWithForm: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_70(symbols, value_0, value_1, value_2, value_3):
+# uploadFile — ../src/handwritten.lawspec:29
+def upload_file(symbols, pet_id, additional_metadata, body, current):
     try:
-        return _typed.to_f21e77101c35(_typed.Def_lawtwinPetstoreHandwrittenUploadFile_db78234a(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_b276e66efd09(value_2), _typed.from_ceed401fe9f6(value_3)))
+        return _typed.to_pair_api_response_state(
+            _typed.lawtwin_petstore_handwritten_upload_file(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(additional_metadata),
+                _typed.from_maybe_bytes(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::uploadFile: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::uploadFile: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_71(symbols, value_0):
+# getInventory — ../src/handwritten.lawspec:34
+def get_inventory(symbols, current):
     try:
-        return _typed.to_cf9e580486ca(_typed.Def_lawtwinPetstoreHandwrittenGetInventory_1dac8932(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_key_val_text_int32_state(
+            _typed.lawtwin_petstore_handwritten_get_inventory(
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::getInventory: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::getInventory: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_72(symbols, value_0, value_1):
+# createUsersWithListInput — ../src/handwritten.lawspec:39
+def create_users_with_list_input(symbols, body, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreHandwrittenCreateUsersWithListInput_f7c111ea(_typed.from_e6c8b33c1e73(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_handwritten_create_users_with_list_input(
+                _typed.from_maybe_list_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1527,9 +1485,16 @@ def evaluate_72(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_73(symbols, value_0, value_1, value_2):
+# loginUser — ../src/handwritten.lawspec:44
+def login_user(symbols, username, password, current):
     try:
-        return _typed.to_42a05c234e0d(_typed.Def_lawtwinPetstoreHandwrittenLoginUser_b8d6606c(_typed.from_01d86fc44f8c(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_text_state(
+            _typed.lawtwin_petstore_handwritten_login_user(
+                _typed.from_maybe_text(username),
+                _typed.from_maybe_text(password),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1540,943 +1505,605 @@ def evaluate_73(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_74(symbols, value_0):
+# logoutUser — ../src/handwritten.lawspec:49
+def logout_user(symbols, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreHandwrittenLogoutUser_38a24725(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_handwritten_logout_user(_typed.from_state(current)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::logoutUser: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::logoutUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_75(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_text_list_entry_text_user_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValDeleteItems_8ede0895(_typed.from_44a08172da10(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_delete_items_text_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "eIte"
-                "ms_2"
-                "498b"
-                "2ce1"
-                "c0ae"
-                "42d:"
-                " "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValDeleteItems_142e693f327da76cb6b13ced49a111b85b6f937e4e18dbbe63f5bad6ed554072a158f16f54f7: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_76(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValDeleteItems_306e4a61(_typed.from_437d0abf423f(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "eIte"
-                "ms_6"
-                "17d8"
-                "4aba"
-                "dc0c"
-                "f3: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValDeleteItems_42e75a534668c8baab78732ed9c26c6fe9529f2ad141e167ce4d0dfdc2643cbc9f35750df151: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_77(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_order_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValDeleteItems_f46df0ad(_typed.from_44a08172da10(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_delete_items_int64_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "eIte"
-                "ms_d"
-                "853b"
-                "8201"
-                "69aa"
-                "cb5:"
-                " "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValDeleteItems_cabed8cd11f3136f1f98e30df55bbf7910063a41dd81f6f4cf817cd9b533f0132c1ec51f464d: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_78(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_text_key_val_text_user_2(symbols, k, m):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValDelete_c3e7d7f6(_typed.from_437d0abf423f(value_0), _typed.from_028dc11da4a2(value_1)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_delete_text_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "e_13"
-                "870e"
-                "9dc2"
-                "5991"
-                "b3: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValDelete_180599abfb23f062add1f398c77734253776b20e00dde9735dc210a388d0084f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_79(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_int64_key_val_int64_order_2(symbols, k, m):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValDelete_e4177076(_typed.from_44a08172da10(value_0), _typed.from_1f8a64f6915e(value_1)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_delete_int64_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "e_32"
-                "2137"
-                "6c81"
-                "b117"
-                "9d: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValDelete_59887358e6082d38b23002a2c94a03c342994b321d31c599cb0f21143c86fca2: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_80(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_int64_key_val_int64_pet_2(symbols, k, m):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValDelete_5428b507(_typed.from_44a08172da10(value_0), _typed.from_e53f6261287e(value_1)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_delete_int64_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "e_bc"
-                "ee84"
-                "ca81"
-                "b37c"
-                "f5: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValDelete_5ce9a3a58573df1ad8ea0947baaa7dceae5d92d85960af4f8cd27388629f6e43: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_81(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_int64_order_list_entry_int64_order_2(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValFromItems_d7fe858d(_typed.from_7d41fae83a77(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_from_items_list_entry_int64_order_list_entry_int64_order(
+                _typed.from_list_entry_int64_order(es),
+                _typed.from_list_entry_int64_order(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValF"
-                "romI"
-                "tems"
-                "_134"
-                "c69b"
-                "262f"
-                "914f"
-                "b: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValFromItems_65eacbcc915c193a39ba7e96c9b4d98015bb89f012558a02450a84db1153457b052ec7b48239: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_82(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_int64_pet_list_entry_int64_pet_2(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValFromItems_29c5e24f(_typed.from_8ca8e420d6d2(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_from_items_list_entry_int64_pet_list_entry_int64_pet(
+                _typed.from_list_entry_int64_pet(es),
+                _typed.from_list_entry_int64_pet(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValF"
-                "romI"
-                "tems"
-                "_3c9"
-                "8264"
-                "cc23"
-                "dcd7"
-                "2: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValFromItems_b33e79378074279d59e68258a372729ed10d0276f62ce1a73b20b820e75f3ce75d96278f8493: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_83(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_user_2(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValFromItems_709d7e45(_typed.from_9cd7aab66a75(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_user(
+                _typed.from_list_entry_text_user(es),
+                _typed.from_list_entry_text_user(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValF"
-                "romI"
-                "tems"
-                "_fb9"
-                "20b5"
-                "0b03"
-                "dabf"
-                "2: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValFromItems_bf4788ac7c563098c2f9de58b2e1d9c50cc03520b8d9d1be8adf141a3e1e33e123d16be8a044: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_84(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_text_list_entry_text_user_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_e7cb8bef1b25(_typed.Def_lawspecCollectionsKeyValLookupItems_86a23cdf(_typed.from_437d0abf423f(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_maybe_user(
+            _typed.lawspec_collections_key_val_lookup_items_text_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "pIte"
-                "ms_3"
-                "00a8"
-                "c812"
-                "2e43"
-                "6f9:"
-                " "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValLookupItems_a98132adc874e28d5c051b927cc07b24cb682e7a6f0d1d8d025ff0658afe5d17c69e537c378f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_85(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_ba2e3c57646d(_typed.Def_lawspecCollectionsKeyValLookupItems_86fdea7f(_typed.from_44a08172da10(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_maybe_order(
+            _typed.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "pIte"
-                "ms_3"
-                "cded"
-                "3b88"
-                "470c"
-                "13d:"
-                " "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValLookupItems_d01bcf683a8ba049e28d1915b6382c2437262ed4bd7f0c11c3c11d8d0c5983748b0789573511: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_86(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet_2(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_2a509216bf80(_typed.Def_lawspecCollectionsKeyValLookupItems_6f0d755e(_typed.from_44a08172da10(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_maybe_pet(
+            _typed.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "pIte"
-                "ms_a"
-                "cb0e"
-                "bccf"
-                "f390"
-                "fa3:"
-                " "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValLookupItems_dbde89004483a818dee04300ed31a4f0183695576afee6fd2d2b074718e5f6547e17750d7883: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_87(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_text_key_val_text_user_2(symbols, k, m):
     try:
-        return _typed.to_ba2e3c57646d(_typed.Def_lawspecCollectionsKeyValLookup_a0748ff1(_typed.from_44a08172da10(value_0), _typed.from_e53f6261287e(value_1)))
+        return _typed.to_maybe_user(
+            _typed.lawspec_collections_key_val_lookup_text_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "p_59"
-                "07e6"
-                "be52"
-                "c2c2"
-                "11: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValLookup_8d65bd0c2734452e6395969d76310ab7cfb547e33b7abbae71357d72924b1bee: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_88(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_int64_key_val_int64_pet_2(symbols, k, m):
     try:
-        return _typed.to_e7cb8bef1b25(_typed.Def_lawspecCollectionsKeyValLookup_5beba6da(_typed.from_437d0abf423f(value_0), _typed.from_028dc11da4a2(value_1)))
+        return _typed.to_maybe_pet(
+            _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "p_7d"
-                "1401"
-                "8c80"
-                "349f"
-                "0b: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValLookup_ae11115693cbb35d35b130baa4f5f4bad39a9a209068e27b75bcb2ef170811ff: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_89(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_int64_key_val_int64_order_2(symbols, k, m):
     try:
-        return _typed.to_2a509216bf80(_typed.Def_lawspecCollectionsKeyValLookup_ef93254e(_typed.from_44a08172da10(value_0), _typed.from_1f8a64f6915e(value_1)))
+        return _typed.to_maybe_order(
+            _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "p_bc"
-                "a377"
-                "7111"
-                "0156"
-                "5d: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValLookup_dc4b69230473d31ccbd7b40b10cd37174fb98041732e9de8995743e1c330ec62: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_90(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_text_user_2(symbols, es):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValOf_0ba011fe(_typed.from_7d41fae83a77(value_0)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_of_list_entry_text_user(
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValO"
-                "f_64"
-                "f624"
-                "eed5"
-                "14ea"
-                "a2: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValOf_3cbfcdcf541f43d6063a6e4265a873a5d214479321157c42f4d68cb2a1f1b1d73ce65cb62c7f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_91(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_int64_order_2(symbols, es):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValOf_ba53d5a9(_typed.from_9cd7aab66a75(value_0)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_of_list_entry_int64_order(
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValO"
-                "f_a3"
-                "a7f2"
-                "c1ae"
-                "a9ea"
-                "80: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValOf_7a472c842e59e2ccce84f9632b2ae4f26870b48cdfa15074f336b36cf45b5169318f9889f55d: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_92(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_int64_pet_2(symbols, es):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValOf_8dcea77c(_typed.from_8ca8e420d6d2(value_0)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_of_list_entry_int64_pet(
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValO"
-                "f_aa"
-                "b5cf"
-                "89ae"
-                "ee3d"
-                "a0: "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValOf_c7a16b746509e1225dc68d73360319789c4438d3bd54187cb142000b23fa2dc6b7645a11ed76: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_93(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_text_user_list_entry_text_user_2(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValPutItems_19d16932(_typed.from_437d0abf423f(value_0), _typed.from_4e0c2eb86b38(value_1), _typed.from_8ca8e420d6d2(value_2)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_put_items_text_user_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_user(v),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "utIt"
-                "ems_"
-                "218f"
-                "813d"
-                "c536"
-                "325b"
-                ": "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValPutItems_d01a79c814f8f913dc0ba0e1ec215cfaa2c13e5c800c25519ba1f2f229a8762cb631f0a0953a: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_94(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet_2(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValPutItems_102b61ab(_typed.from_44a08172da10(value_0), _typed.from_0205b8dc6a6f(value_1), _typed.from_7d41fae83a77(value_2)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_pet(v),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "utIt"
-                "ems_"
-                "57d0"
-                "f19a"
-                "11f0"
-                "c9f0"
-                ": "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValPutItems_d68e99f219f5d6caa3fa0b1b900ad65ab8cc2e2121e1e263d94e8cdb9f994bdbebd1d5c4af14: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_95(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order_2(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValPutItems_b231a093(_typed.from_44a08172da10(value_0), _typed.from_82d465b8f3fe(value_1), _typed.from_9cd7aab66a75(value_2)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_order(v),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "utIt"
-                "ems_"
-                "7ac7"
-                "5f30"
-                "7de7"
-                "042f"
-                ": "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValPutItems_ebb9b744591ed3ebfcefbce030268d9f983a8dccb63b71746bfc6dc2ffee4e0e394d6b45ce51: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_96(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_text_user_key_val_text_user_2(symbols, k, v, m):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValPut_87b84c20(_typed.from_437d0abf423f(value_0), _typed.from_4e0c2eb86b38(value_1), _typed.from_028dc11da4a2(value_2)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_put_text_user_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_user(v),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "ut_1"
-                "f633"
-                "f25c"
-                "c61f"
-                "72b:"
-                " "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValPut_14d9f6337e0ec2561d8e030a06ad9c9e9573446c177fb34bf18116e79b3c0c77: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_97(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_2(symbols, k, v, m):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValPut_15141812(_typed.from_44a08172da10(value_0), _typed.from_0205b8dc6a6f(value_1), _typed.from_e53f6261287e(value_2)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_pet(v),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "ut_4"
-                "969b"
-                "4d20"
-                "1ed0"
-                "c70:"
-                " "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValPut_716e4525b608d8fa85d5aa5eaab290869ff2c2a7a8ee04296a8ab43c4b7fc027: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_98(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_int64_order_key_val_int64_order_2(symbols, k, v, m):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValPut_73b7121f(_typed.from_44a08172da10(value_0), _typed.from_82d465b8f3fe(value_1), _typed.from_1f8a64f6915e(value_2)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_put_int64_order_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_order(v),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "ut_5"
-                "3079"
-                "f70e"
-                "e92b"
-                "c07:"
-                " "
-            )
+            "lawtwin.petstore.laws::lawspec_lawspecCollectionsKeyValPut_e16765c1488083b09e856585b415e6c64aa622e62bc1f85e8241737d83176c17: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_99(symbols, value_0, value_1):
+# lawtwinPetstoreHandwrittenCreateUsersWithListInput — ../src/handwritten.lawspec:39
+def lawtwin_petstore_handwritten_create_users_with_list_input_2(symbols, body, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreHandwrittenCreateUsersWithListInput_f7c111ea(_typed.from_e6c8b33c1e73(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_handwritten_create_users_with_list_input(
+                _typed.from_maybe_list_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awtw"
-                "inPe"
-                "tsto"
-                "reHa"
-                "ndwr"
-                "itte"
-                "nCre"
-                "ateU"
-                "sers"
-                "With"
-                "List"
-                "Inpu"
-                "t: "
-            )
+            "lawtwin.petstore.laws::lawtwinPetstoreHandwrittenCreateUsersWithListInput: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_100(symbols, value_0, value_1):
+# lawtwinPetstoreHandwrittenFindPetsByStatus — ../src/handwritten.lawspec:14
+def lawtwin_petstore_handwritten_find_pets_by_status_2(symbols, status, current):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_lawtwinPetstoreHandwrittenFindPetsByStatus_e92ff3cf(_typed.from_1ac848e17d05(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.lawtwin_petstore_handwritten_find_pets_by_status(
+                _typed.from_pet_status(status),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awtw"
-                "inPe"
-                "tsto"
-                "reHa"
-                "ndwr"
-                "itte"
-                "nFin"
-                "dPet"
-                "sByS"
-                "tatu"
-                "s: "
-            )
+            "lawtwin.petstore.laws::lawtwinPetstoreHandwrittenFindPetsByStatus: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_101(symbols, value_0, value_1):
+# lawtwinPetstoreHandwrittenFindPetsByTags — ../src/handwritten.lawspec:19
+def lawtwin_petstore_handwritten_find_pets_by_tags_2(symbols, tags, current):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_lawtwinPetstoreHandwrittenFindPetsByTags_afed99b2(_typed.from_8ec0351dc657(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.lawtwin_petstore_handwritten_find_pets_by_tags(
+                _typed.from_list_text(tags),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2488,9 +2115,14 @@ def evaluate_101(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_102(symbols, value_0):
+# lawtwinPetstoreHandwrittenGetInventory — ../src/handwritten.lawspec:34
+def lawtwin_petstore_handwritten_get_inventory_2(symbols, current):
     try:
-        return _typed.to_cf9e580486ca(_typed.Def_lawtwinPetstoreHandwrittenGetInventory_1dac8932(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_key_val_text_int32_state(
+            _typed.lawtwin_petstore_handwritten_get_inventory(
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2502,9 +2134,16 @@ def evaluate_102(symbols, value_0):
         ) from error
 
 
-def evaluate_103(symbols, value_0, value_1, value_2):
+# lawtwinPetstoreHandwrittenLoginUser — ../src/handwritten.lawspec:44
+def lawtwin_petstore_handwritten_login_user_2(symbols, username, password, current):
     try:
-        return _typed.to_42a05c234e0d(_typed.Def_lawtwinPetstoreHandwrittenLoginUser_b8d6606c(_typed.from_01d86fc44f8c(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_text_state(
+            _typed.lawtwin_petstore_handwritten_login_user(
+                _typed.from_maybe_text(username),
+                _typed.from_maybe_text(password),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2516,9 +2155,12 @@ def evaluate_103(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_104(symbols, value_0):
+# lawtwinPetstoreHandwrittenLogoutUser — ../src/handwritten.lawspec:49
+def lawtwin_petstore_handwritten_logout_user_2(symbols, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreHandwrittenLogoutUser_38a24725(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_handwritten_logout_user(_typed.from_state(current)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2530,41 +2172,51 @@ def evaluate_104(symbols, value_0):
         ) from error
 
 
-def evaluate_105(symbols, value_0, value_1, value_2, value_3):
+# lawtwinPetstoreHandwrittenUpdatePetWithForm — ../src/handwritten.lawspec:24
+def lawtwin_petstore_handwritten_update_pet_with_form_2(
+    symbols,
+    pet_id,
+    name,
+    status,
+    current,
+):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreHandwrittenUpdatePetWithForm_9c6a9682(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_ceed401fe9f6(value_3)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_handwritten_update_pet_with_form(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(name),
+                _typed.from_maybe_text(status),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".law"
-                "s::l"
-                "awtw"
-                "inPe"
-                "tsto"
-                "reHa"
-                "ndwr"
-                "itte"
-                "nUpd"
-                "ateP"
-                "etWi"
-                "thFo"
-                "rm: "
-            )
+            "lawtwin.petstore.laws::lawtwinPetstoreHandwrittenUpdatePetWithForm: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_106(symbols, value_0, value_1, value_2, value_3):
+# lawtwinPetstoreHandwrittenUploadFile — ../src/handwritten.lawspec:29
+def lawtwin_petstore_handwritten_upload_file_2(
+    symbols,
+    pet_id,
+    additional_metadata,
+    body,
+    current,
+):
     try:
-        return _typed.to_f21e77101c35(_typed.Def_lawtwinPetstoreHandwrittenUploadFile_db78234a(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_b276e66efd09(value_2), _typed.from_ceed401fe9f6(value_3)))
+        return _typed.to_pair_api_response_state(
+            _typed.lawtwin_petstore_handwritten_upload_file(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(additional_metadata),
+                _typed.from_maybe_bytes(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2576,9 +2228,12 @@ def evaluate_106(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_107(symbols, value_0):
+# lawtwinPetstoreModelAfter64 — ../src/model.lawspec:123
+def lawtwin_petstore_model_after64_2(symbols, k):
     try:
-        return _typed.to_44a08172da10(_typed.Def_lawtwinPetstoreModelAfter64_d44b61a4(_typed.from_44a08172da10(value_0)))
+        return _typed.to_int64(
+            _typed.lawtwin_petstore_model_after64(_typed.from_int64(k)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2590,9 +2245,12 @@ def evaluate_107(symbols, value_0):
         ) from error
 
 
-def evaluate_108(symbols, value_0):
+# lawtwinPetstoreModelEmptyState — ../src/model.lawspec:113
+def lawtwin_petstore_model_empty_state_2(symbols, u):
     try:
-        return _typed.to_ceed401fe9f6(_typed.Def_lawtwinPetstoreModelEmptyState_9f93bc81(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(
+            _typed.lawtwin_petstore_model_empty_state(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2604,9 +2262,15 @@ def evaluate_108(symbols, value_0):
         ) from error
 
 
-def evaluate_109(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelAddPet — ../src/model.lawspec:151
+def lawtwin_petstore_model_model_add_pet_2(symbols, body, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelAddPet_443bf61d(_typed.from_82d465b8f3fe(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_add_pet(
+                _typed.from_pet(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2618,9 +2282,15 @@ def evaluate_109(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_110(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelCreateUser — ../src/model.lawspec:213
+def lawtwin_petstore_model_model_create_user_2(symbols, body, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreModelModelCreateUser_90ee772d(_typed.from_e7cb8bef1b25(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_model_model_create_user(
+                _typed.from_maybe_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2632,9 +2302,15 @@ def evaluate_110(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_111(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelDeleteOrder — ../src/model.lawspec:205
+def lawtwin_petstore_model_model_delete_order_2(symbols, order_id, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeleteOrder_ca32659b(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_order(
+                _typed.from_int64(order_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2646,9 +2322,16 @@ def evaluate_111(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_112(symbols, value_0, value_1, value_2):
+# lawtwinPetstoreModelModelDeletePet — ../src/model.lawspec:171
+def lawtwin_petstore_model_model_delete_pet_2(symbols, pet_id, api_key, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeletePet_f79b8631(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_pet(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(api_key),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2660,9 +2343,15 @@ def evaluate_112(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_113(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelDeleteUser — ../src/model.lawspec:255
+def lawtwin_petstore_model_model_delete_user_2(symbols, username, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeleteUser_292d6814(_typed.from_437d0abf423f(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_user(
+                _typed.from_text(username),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2674,9 +2363,15 @@ def evaluate_113(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_114(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelGetOrderById — ../src/model.lawspec:197
+def lawtwin_petstore_model_model_get_order_by_id_2(symbols, order_id, current):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_lawtwinPetstoreModelModelGetOrderById_573aa869(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.lawtwin_petstore_model_model_get_order_by_id(
+                _typed.from_int64(order_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2688,9 +2383,15 @@ def evaluate_114(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_115(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelGetPetById — ../src/model.lawspec:163
+def lawtwin_petstore_model_model_get_pet_by_id_2(symbols, pet_id, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelGetPetById_ed826277(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_get_pet_by_id(
+                _typed.from_int64(pet_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2702,9 +2403,15 @@ def evaluate_115(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_116(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelGetUserByName — ../src/model.lawspec:230
+def lawtwin_petstore_model_model_get_user_by_name_2(symbols, username, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreModelModelGetUserByName_d31e87ba(_typed.from_437d0abf423f(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_model_model_get_user_by_name(
+                _typed.from_text(username),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2716,9 +2423,15 @@ def evaluate_116(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_117(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelPlaceOrder — ../src/model.lawspec:179
+def lawtwin_petstore_model_model_place_order_2(symbols, body, current):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_lawtwinPetstoreModelModelPlaceOrder_d7fd75c4(_typed.from_ba2e3c57646d(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.lawtwin_petstore_model_model_place_order(
+                _typed.from_maybe_order(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2730,9 +2443,15 @@ def evaluate_117(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_118(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelUpdatePet — ../src/model.lawspec:136
+def lawtwin_petstore_model_model_update_pet_2(symbols, body, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelUpdatePet_6803effb(_typed.from_82d465b8f3fe(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_update_pet(
+                _typed.from_pet(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2744,9 +2463,16 @@ def evaluate_118(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_119(symbols, value_0, value_1, value_2):
+# lawtwinPetstoreModelModelUpdateUser — ../src/model.lawspec:238
+def lawtwin_petstore_model_model_update_user_2(symbols, username, body, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelUpdateUser_6c0b8b8d(_typed.from_437d0abf423f(value_0), _typed.from_e7cb8bef1b25(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_update_user(
+                _typed.from_text(username),
+                _typed.from_maybe_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2758,9 +2484,12 @@ def evaluate_119(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_120(symbols, value_0):
+# lawtwinPetstoreModelValidOrder — ../src/model.lawspec:127
+def lawtwin_petstore_model_valid_order_2(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinPetstoreModelValidOrder_62eb4720(_typed.from_0205b8dc6a6f(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_petstore_model_valid_order(_typed.from_order(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2772,23 +2501,26 @@ def evaluate_120(symbols, value_0):
         ) from error
 
 
-def evaluate_121(symbols, value_0):
+# noHandWrittenLawsYet — ../src/laws.lawspec:20
+def no_hand_written_laws_yet(symbols, u):
     try:
-        return _typed.to_b120ceed78cb(_typed.Def_noHandWrittenLawsYet_f9ba4d84(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_unit(_typed.no_hand_written_laws_yet(_typed.from_unit(u)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::noHandWrittenLawsYet: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::noHandWrittenLawsYet: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_122(symbols, value_0, value_1):
+# referenceAddPet — ../src/api.lawspec:185
+def reference_add_pet_2(symbols, state, value0):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceAddPet_ae0ddf28(_typed.from_ceed401fe9f6(value_0), _typed.from_82d465b8f3fe(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_add_pet(_typed.from_state(state), _typed.from_pet(value0)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2799,23 +2531,34 @@ def evaluate_122(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_123(symbols, value_0, value_1):
+# referenceCreateUser — ../src/api.lawspec:196
+def reference_create_user_2(symbols, state, value0):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_referenceCreateUser_8fb4b3e6(_typed.from_ceed401fe9f6(value_0), _typed.from_e7cb8bef1b25(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.reference_create_user(
+                _typed.from_state(state),
+                _typed.from_maybe_user(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceCreateUser: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceCreateUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_124(symbols, value_0, value_1):
+# referenceCreateUsersWithListInput — ../src/api.lawspec:197
+def reference_create_users_with_list_input_2(symbols, state, value0):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_referenceCreateUsersWithListInput_15c6a40c(_typed.from_ceed401fe9f6(value_0), _typed.from_e6c8b33c1e73(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.reference_create_users_with_list_input(
+                _typed.from_state(state),
+                _typed.from_maybe_list_user(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2827,177 +2570,234 @@ def evaluate_124(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_125(symbols, value_0, value_1):
+# referenceDeleteOrder — ../src/api.lawspec:195
+def reference_delete_order_2(symbols, state, value0):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceDeleteOrder_bf4c8c24(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_delete_order(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceDeleteOrder: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceDeleteOrder: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_126(symbols, value_0, value_1, value_2):
+# referenceDeletePet — ../src/api.lawspec:190
+def reference_delete_pet_2(symbols, state, value0, value1):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceDeletePet_4705c2b2(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1), _typed.from_01d86fc44f8c(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_delete_pet(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+                _typed.from_maybe_text(value1),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceDeletePet: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceDeletePet: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_127(symbols, value_0, value_1):
+# referenceDeleteUser — ../src/api.lawspec:202
+def reference_delete_user_2(symbols, state, value0):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceDeleteUser_e8d80a94(_typed.from_ceed401fe9f6(value_0), _typed.from_437d0abf423f(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_delete_user(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceDeleteUser: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceDeleteUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_128(symbols, value_0, value_1):
+# referenceFindPetsByStatus — ../src/api.lawspec:186
+def reference_find_pets_by_status_2(symbols, state, value0):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_referenceFindPetsByStatus_c60cd17e(_typed.from_ceed401fe9f6(value_0), _typed.from_1ac848e17d05(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.reference_find_pets_by_status(
+                _typed.from_state(state),
+                _typed.from_pet_status(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceFindPetsByStatus: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceFindPetsByStatus: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_129(symbols, value_0, value_1):
+# referenceFindPetsByTags — ../src/api.lawspec:187
+def reference_find_pets_by_tags_2(symbols, state, value0):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_referenceFindPetsByTags_cf5c32e9(_typed.from_ceed401fe9f6(value_0), _typed.from_8ec0351dc657(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.reference_find_pets_by_tags(
+                _typed.from_state(state),
+                _typed.from_list_text(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceFindPetsByTags: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceFindPetsByTags: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_130(symbols, value_0):
+# referenceGetInventory — ../src/api.lawspec:192
+def reference_get_inventory_2(symbols, state):
     try:
-        return _typed.to_cf9e580486ca(_typed.Def_referenceGetInventory_0fb69a3d(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_key_val_text_int32_state(
+            _typed.reference_get_inventory(_typed.from_state(state)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetInventory: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetInventory: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_131(symbols, value_0, value_1):
+# referenceGetOrderById — ../src/api.lawspec:194
+def reference_get_order_by_id_2(symbols, state, value0):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_referenceGetOrderById_3c80a922(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.reference_get_order_by_id(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetOrderById: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetOrderById: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_132(symbols, value_0, value_1):
+# referenceGetPetById — ../src/api.lawspec:188
+def reference_get_pet_by_id_2(symbols, state, value0):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceGetPetById_cd663b92(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_get_pet_by_id(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetPetById: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetPetById: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_133(symbols, value_0, value_1):
+# referenceGetUserByName — ../src/api.lawspec:200
+def reference_get_user_by_name_2(symbols, state, value0):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_referenceGetUserByName_027f640c(_typed.from_ceed401fe9f6(value_0), _typed.from_437d0abf423f(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.reference_get_user_by_name(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetUserByName: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetUserByName: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_134(symbols, value_0, value_1, value_2):
+# referenceLoginUser — ../src/api.lawspec:198
+def reference_login_user_2(symbols, state, value0, value1):
     try:
-        return _typed.to_42a05c234e0d(_typed.Def_referenceLoginUser_20c0b3f3(_typed.from_ceed401fe9f6(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_01d86fc44f8c(value_2)))
+        return _typed.to_pair_text_state(
+            _typed.reference_login_user(
+                _typed.from_state(state),
+                _typed.from_maybe_text(value0),
+                _typed.from_maybe_text(value1),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceLoginUser: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceLoginUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_135(symbols, value_0):
+# referenceLogoutUser — ../src/api.lawspec:199
+def reference_logout_user_2(symbols, state):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceLogoutUser_56bbbb56(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_logout_user(_typed.from_state(state)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceLogoutUser: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceLogoutUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_136(symbols, value_0, value_1):
+# referencePlaceOrder — ../src/api.lawspec:193
+def reference_place_order_2(symbols, state, value0):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_referencePlaceOrder_29feae4c(_typed.from_ceed401fe9f6(value_0), _typed.from_ba2e3c57646d(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.reference_place_order(
+                _typed.from_state(state),
+                _typed.from_maybe_order(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referencePlaceOrder: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referencePlaceOrder: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_137(symbols, value_0):
+# referenceStart — ../src/api.lawspec:183
+def reference_start_2(symbols, unit):
     try:
-        return _typed.to_ceed401fe9f6(_typed.Def_referenceStart_1a3a0c80(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(_typed.reference_start(_typed.from_unit(unit)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3008,23 +2808,36 @@ def evaluate_137(symbols, value_0):
         ) from error
 
 
-def evaluate_138(symbols, value_0, value_1):
+# referenceUpdatePet — ../src/api.lawspec:184
+def reference_update_pet_2(symbols, state, value0):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceUpdatePet_3e347085(_typed.from_ceed401fe9f6(value_0), _typed.from_82d465b8f3fe(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_update_pet(
+                _typed.from_state(state),
+                _typed.from_pet(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceUpdatePet: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceUpdatePet: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_139(symbols, value_0, value_1, value_2, value_3):
+# referenceUpdatePetWithForm — ../src/api.lawspec:189
+def reference_update_pet_with_form_2(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceUpdatePetWithForm_dbd33536(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_01d86fc44f8c(value_3)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_update_pet_with_form(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+                _typed.from_maybe_text(value1),
+                _typed.from_maybe_text(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3036,37 +2849,53 @@ def evaluate_139(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_140(symbols, value_0, value_1, value_2):
+# referenceUpdateUser — ../src/api.lawspec:201
+def reference_update_user_2(symbols, state, value0, value1):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceUpdateUser_e08f158a(_typed.from_ceed401fe9f6(value_0), _typed.from_437d0abf423f(value_1), _typed.from_e7cb8bef1b25(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_update_user(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_maybe_user(value1),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceUpdateUser: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceUpdateUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_141(symbols, value_0, value_1, value_2, value_3):
+# referenceUploadFile — ../src/api.lawspec:191
+def reference_upload_file_2(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_f21e77101c35(_typed.Def_referenceUploadFile_5fb62a62(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_b276e66efd09(value_3)))
+        return _typed.to_pair_api_response_state(
+            _typed.reference_upload_file(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+                _typed.from_maybe_text(value1),
+                _typed.from_maybe_bytes(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceUploadFile: "
-            + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceUploadFile: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_142(symbols, value_0):
+# after64 — ../src/model.lawspec:123
+def after64(symbols, k):
     try:
-        return _typed.to_44a08172da10(_typed.Def_lawtwinPetstoreModelAfter64_d44b61a4(_typed.from_44a08172da10(value_0)))
+        return _typed.to_int64(
+            _typed.lawtwin_petstore_model_after64(_typed.from_int64(k)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3077,9 +2906,12 @@ def evaluate_142(symbols, value_0):
         ) from error
 
 
-def evaluate_143(symbols, value_0):
+# emptyState — ../src/model.lawspec:113
+def empty_state(symbols, u):
     try:
-        return _typed.to_ceed401fe9f6(_typed.Def_lawtwinPetstoreModelEmptyState_9f93bc81(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(
+            _typed.lawtwin_petstore_model_empty_state(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3090,873 +2922,549 @@ def evaluate_143(symbols, value_0):
         ) from error
 
 
-def evaluate_144(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_text_list_entry_text_user_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValDeleteItems_8ede0895(_typed.from_44a08172da10(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_delete_items_text_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "teIt"
-                "ems_"
-                "2498"
-                "b2ce"
-                "1c0a"
-                "e42d"
-                ": "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValDeleteItems_142e693f327da76cb6b13ced49a111b85b6f937e4e18dbbe63f5bad6ed554072a158f16f54f7: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_145(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValDeleteItems_306e4a61(_typed.from_437d0abf423f(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "teIt"
-                "ems_"
-                "617d"
-                "84ab"
-                "adc0"
-                "cf3:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValDeleteItems_42e75a534668c8baab78732ed9c26c6fe9529f2ad141e167ce4d0dfdc2643cbc9f35750df151: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_146(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_order_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValDeleteItems_f46df0ad(_typed.from_44a08172da10(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_delete_items_int64_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "teIt"
-                "ems_"
-                "d853"
-                "b820"
-                "169a"
-                "acb5"
-                ": "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValDeleteItems_cabed8cd11f3136f1f98e30df55bbf7910063a41dd81f6f4cf817cd9b533f0132c1ec51f464d: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_147(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_text_key_val_text_user_3(symbols, k, m):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValDelete_c3e7d7f6(_typed.from_437d0abf423f(value_0), _typed.from_028dc11da4a2(value_1)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_delete_text_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "te_1"
-                "3870"
-                "e9dc"
-                "2599"
-                "1b3:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValDelete_180599abfb23f062add1f398c77734253776b20e00dde9735dc210a388d0084f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_148(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_int64_key_val_int64_order_3(symbols, k, m):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValDelete_e4177076(_typed.from_44a08172da10(value_0), _typed.from_1f8a64f6915e(value_1)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_delete_int64_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "te_3"
-                "2213"
-                "76c8"
-                "1b11"
-                "79d:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValDelete_59887358e6082d38b23002a2c94a03c342994b321d31c599cb0f21143c86fca2: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_149(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_int64_key_val_int64_pet_3(symbols, k, m):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValDelete_5428b507(_typed.from_44a08172da10(value_0), _typed.from_e53f6261287e(value_1)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_delete_int64_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Dele"
-                "te_b"
-                "cee8"
-                "4ca8"
-                "1b37"
-                "cf5:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValDelete_5ce9a3a58573df1ad8ea0947baaa7dceae5d92d85960af4f8cd27388629f6e43: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_150(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_int64_order_list_entry_int64_order_3(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValFromItems_d7fe858d(_typed.from_7d41fae83a77(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_from_items_list_entry_int64_order_list_entry_int64_order(
+                _typed.from_list_entry_int64_order(es),
+                _typed.from_list_entry_int64_order(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_13"
-                "4c69"
-                "b262"
-                "f914"
-                "fb: "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValFromItems_65eacbcc915c193a39ba7e96c9b4d98015bb89f012558a02450a84db1153457b052ec7b48239: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_151(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_int64_pet_list_entry_int64_pet_3(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValFromItems_29c5e24f(_typed.from_8ca8e420d6d2(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_from_items_list_entry_int64_pet_list_entry_int64_pet(
+                _typed.from_list_entry_int64_pet(es),
+                _typed.from_list_entry_int64_pet(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_3c"
-                "9826"
-                "4cc2"
-                "3dcd"
-                "72: "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValFromItems_b33e79378074279d59e68258a372729ed10d0276f62ce1a73b20b820e75f3ce75d96278f8493: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_152(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_user_3(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValFromItems_709d7e45(_typed.from_9cd7aab66a75(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_user(
+                _typed.from_list_entry_text_user(es),
+                _typed.from_list_entry_text_user(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "From"
-                "Item"
-                "s_fb"
-                "920b"
-                "50b0"
-                "3dab"
-                "f2: "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValFromItems_bf4788ac7c563098c2f9de58b2e1d9c50cc03520b8d9d1be8adf141a3e1e33e123d16be8a044: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_153(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_text_list_entry_text_user_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_e7cb8bef1b25(_typed.Def_lawspecCollectionsKeyValLookupItems_86a23cdf(_typed.from_437d0abf423f(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_maybe_user(
+            _typed.lawspec_collections_key_val_lookup_items_text_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "300a"
-                "8c81"
-                "22e4"
-                "36f9"
-                ": "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValLookupItems_a98132adc874e28d5c051b927cc07b24cb682e7a6f0d1d8d025ff0658afe5d17c69e537c378f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_154(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_ba2e3c57646d(_typed.Def_lawspecCollectionsKeyValLookupItems_86fdea7f(_typed.from_44a08172da10(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_maybe_order(
+            _typed.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "3cde"
-                "d3b8"
-                "8470"
-                "c13d"
-                ": "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValLookupItems_d01bcf683a8ba049e28d1915b6382c2437262ed4bd7f0c11c3c11d8d0c5983748b0789573511: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_155(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet_3(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_2a509216bf80(_typed.Def_lawspecCollectionsKeyValLookupItems_6f0d755e(_typed.from_44a08172da10(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_maybe_pet(
+            _typed.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "upIt"
-                "ems_"
-                "acb0"
-                "ebcc"
-                "ff39"
-                "0fa3"
-                ": "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValLookupItems_dbde89004483a818dee04300ed31a4f0183695576afee6fd2d2b074718e5f6547e17750d7883: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_156(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_text_key_val_text_user_3(symbols, k, m):
     try:
-        return _typed.to_ba2e3c57646d(_typed.Def_lawspecCollectionsKeyValLookup_a0748ff1(_typed.from_44a08172da10(value_0), _typed.from_e53f6261287e(value_1)))
+        return _typed.to_maybe_user(
+            _typed.lawspec_collections_key_val_lookup_text_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_5"
-                "907e"
-                "6be5"
-                "2c2c"
-                "211:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValLookup_8d65bd0c2734452e6395969d76310ab7cfb547e33b7abbae71357d72924b1bee: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_157(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_int64_key_val_int64_pet_3(symbols, k, m):
     try:
-        return _typed.to_e7cb8bef1b25(_typed.Def_lawspecCollectionsKeyValLookup_5beba6da(_typed.from_437d0abf423f(value_0), _typed.from_028dc11da4a2(value_1)))
+        return _typed.to_maybe_pet(
+            _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_7"
-                "d140"
-                "18c8"
-                "0349"
-                "f0b:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValLookup_ae11115693cbb35d35b130baa4f5f4bad39a9a209068e27b75bcb2ef170811ff: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_158(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_int64_key_val_int64_order_3(symbols, k, m):
     try:
-        return _typed.to_2a509216bf80(_typed.Def_lawspecCollectionsKeyValLookup_ef93254e(_typed.from_44a08172da10(value_0), _typed.from_1f8a64f6915e(value_1)))
+        return _typed.to_maybe_order(
+            _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Look"
-                "up_b"
-                "ca37"
-                "7711"
-                "1015"
-                "65d:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValLookup_dc4b69230473d31ccbd7b40b10cd37174fb98041732e9de8995743e1c330ec62: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_159(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_text_user_3(symbols, es):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValOf_0ba011fe(_typed.from_7d41fae83a77(value_0)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_of_list_entry_text_user(
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_6"
-                "4f62"
-                "4eed"
-                "514e"
-                "aa2:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValOf_3cbfcdcf541f43d6063a6e4265a873a5d214479321157c42f4d68cb2a1f1b1d73ce65cb62c7f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_160(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_int64_order_3(symbols, es):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValOf_ba53d5a9(_typed.from_9cd7aab66a75(value_0)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_of_list_entry_int64_order(
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_a"
-                "3a7f"
-                "2c1a"
-                "ea9e"
-                "a80:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValOf_7a472c842e59e2ccce84f9632b2ae4f26870b48cdfa15074f336b36cf45b5169318f9889f55d: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_161(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_int64_pet_3(symbols, es):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValOf_8dcea77c(_typed.from_8ca8e420d6d2(value_0)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_of_list_entry_int64_pet(
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Of_a"
-                "ab5c"
-                "f89a"
-                "eee3"
-                "da0:"
-                " "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValOf_c7a16b746509e1225dc68d73360319789c4438d3bd54187cb142000b23fa2dc6b7645a11ed76: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_162(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_text_user_list_entry_text_user_3(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValPutItems_19d16932(_typed.from_437d0abf423f(value_0), _typed.from_4e0c2eb86b38(value_1), _typed.from_8ca8e420d6d2(value_2)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_put_items_text_user_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_user(v),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_218"
-                "f813"
-                "dc53"
-                "6325"
-                "b: "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValPutItems_d01a79c814f8f913dc0ba0e1ec215cfaa2c13e5c800c25519ba1f2f229a8762cb631f0a0953a: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_163(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet_3(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValPutItems_102b61ab(_typed.from_44a08172da10(value_0), _typed.from_0205b8dc6a6f(value_1), _typed.from_7d41fae83a77(value_2)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_pet(v),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_57d"
-                "0f19"
-                "a11f"
-                "0c9f"
-                "0: "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValPutItems_d68e99f219f5d6caa3fa0b1b900ad65ab8cc2e2121e1e263d94e8cdb9f994bdbebd1d5c4af14: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_164(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order_3(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValPutItems_b231a093(_typed.from_44a08172da10(value_0), _typed.from_82d465b8f3fe(value_1), _typed.from_9cd7aab66a75(value_2)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_order(v),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "PutI"
-                "tems"
-                "_7ac"
-                "75f3"
-                "07de"
-                "7042"
-                "f: "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValPutItems_ebb9b744591ed3ebfcefbce030268d9f983a8dccb63b71746bfc6dc2ffee4e0e394d6b45ce51: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_165(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_text_user_key_val_text_user_3(symbols, k, v, m):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValPut_87b84c20(_typed.from_437d0abf423f(value_0), _typed.from_4e0c2eb86b38(value_1), _typed.from_028dc11da4a2(value_2)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_put_text_user_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_user(v),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "1f63"
-                "3f25"
-                "cc61"
-                "f72b"
-                ": "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValPut_14d9f6337e0ec2561d8e030a06ad9c9e9573446c177fb34bf18116e79b3c0c77: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_166(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_3(symbols, k, v, m):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValPut_15141812(_typed.from_44a08172da10(value_0), _typed.from_0205b8dc6a6f(value_1), _typed.from_e53f6261287e(value_2)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_pet(v),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "4969"
-                "b4d2"
-                "01ed"
-                "0c70"
-                ": "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValPut_716e4525b608d8fa85d5aa5eaab290869ff2c2a7a8ee04296a8ab43c4b7fc027: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_167(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_int64_order_key_val_int64_order_3(symbols, k, v, m):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValPut_73b7121f(_typed.from_44a08172da10(value_0), _typed.from_82d465b8f3fe(value_1), _typed.from_1f8a64f6915e(value_2)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_put_int64_order_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_order(v),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "pets"
-                "tore"
-                ".mod"
-                "el::"
-                "laws"
-                "pec_"
-                "laws"
-                "pecC"
-                "olle"
-                "ctio"
-                "nsKe"
-                "yVal"
-                "Put_"
-                "5307"
-                "9f70"
-                "ee92"
-                "bc07"
-                ": "
-            )
+            "lawtwin.petstore.model::lawspec_lawspecCollectionsKeyValPut_e16765c1488083b09e856585b415e6c64aa622e62bc1f85e8241737d83176c17: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_168(symbols, value_0, value_1):
+# modelAddPet — ../src/model.lawspec:151
+def model_add_pet(symbols, body, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelAddPet_443bf61d(_typed.from_82d465b8f3fe(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_add_pet(
+                _typed.from_pet(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3967,9 +3475,15 @@ def evaluate_168(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_169(symbols, value_0, value_1):
+# modelCreateUser — ../src/model.lawspec:213
+def model_create_user(symbols, body, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreModelModelCreateUser_90ee772d(_typed.from_e7cb8bef1b25(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_model_model_create_user(
+                _typed.from_maybe_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -3980,23 +3494,35 @@ def evaluate_169(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_170(symbols, value_0, value_1):
+# modelDeleteOrder — ../src/model.lawspec:205
+def model_delete_order(symbols, order_id, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeleteOrder_ca32659b(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_order(
+                _typed.from_int64(order_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.model::modelDeleteOrder: "
-            + _builtins.str(error),
+            "lawtwin.petstore.model::modelDeleteOrder: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_171(symbols, value_0, value_1, value_2):
+# modelDeletePet — ../src/model.lawspec:171
+def model_delete_pet(symbols, pet_id, api_key, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeletePet_f79b8631(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_pet(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(api_key),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4007,9 +3533,15 @@ def evaluate_171(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_172(symbols, value_0, value_1):
+# modelDeleteUser — ../src/model.lawspec:255
+def model_delete_user(symbols, username, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeleteUser_292d6814(_typed.from_437d0abf423f(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_user(
+                _typed.from_text(username),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4020,23 +3552,34 @@ def evaluate_172(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_173(symbols, value_0, value_1):
+# modelGetOrderById — ../src/model.lawspec:197
+def model_get_order_by_id(symbols, order_id, current):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_lawtwinPetstoreModelModelGetOrderById_573aa869(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.lawtwin_petstore_model_model_get_order_by_id(
+                _typed.from_int64(order_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.model::modelGetOrderById: "
-            + _builtins.str(error),
+            "lawtwin.petstore.model::modelGetOrderById: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_174(symbols, value_0, value_1):
+# modelGetPetById — ../src/model.lawspec:163
+def model_get_pet_by_id(symbols, pet_id, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelGetPetById_ed826277(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_get_pet_by_id(
+                _typed.from_int64(pet_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4047,23 +3590,34 @@ def evaluate_174(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_175(symbols, value_0, value_1):
+# modelGetUserByName — ../src/model.lawspec:230
+def model_get_user_by_name(symbols, username, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreModelModelGetUserByName_d31e87ba(_typed.from_437d0abf423f(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_model_model_get_user_by_name(
+                _typed.from_text(username),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.model::modelGetUserByName: "
-            + _builtins.str(error),
+            "lawtwin.petstore.model::modelGetUserByName: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_176(symbols, value_0, value_1):
+# modelPlaceOrder — ../src/model.lawspec:179
+def model_place_order(symbols, body, current):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_lawtwinPetstoreModelModelPlaceOrder_d7fd75c4(_typed.from_ba2e3c57646d(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.lawtwin_petstore_model_model_place_order(
+                _typed.from_maybe_order(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4074,9 +3628,15 @@ def evaluate_176(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_177(symbols, value_0, value_1):
+# modelUpdatePet — ../src/model.lawspec:136
+def model_update_pet(symbols, body, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelUpdatePet_6803effb(_typed.from_82d465b8f3fe(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_update_pet(
+                _typed.from_pet(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4087,9 +3647,16 @@ def evaluate_177(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_178(symbols, value_0, value_1, value_2):
+# modelUpdateUser — ../src/model.lawspec:238
+def model_update_user(symbols, username, body, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelUpdateUser_6c0b8b8d(_typed.from_437d0abf423f(value_0), _typed.from_e7cb8bef1b25(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_update_user(
+                _typed.from_text(username),
+                _typed.from_maybe_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4100,9 +3667,12 @@ def evaluate_178(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_179(symbols, value_0):
+# validOrder — ../src/model.lawspec:127
+def valid_order(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinPetstoreModelValidOrder_62eb4720(_typed.from_0205b8dc6a6f(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_petstore_model_valid_order(_typed.from_order(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -4113,929 +3683,589 @@ def evaluate_179(symbols, value_0):
         ) from error
 
 
-def evaluate_180(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_text_list_entry_text_user_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValDeleteItems_8ede0895(_typed.from_44a08172da10(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_delete_items_text_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "eIte"
-                "ms_2"
-                "498b"
-                "2ce1"
-                "c0ae"
-                "42d:"
-                " "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValDeleteItems_142e693f327da76cb6b13ced49a111b85b6f937e4e18dbbe63f5bad6ed554072a158f16f54f7: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_181(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValDeleteItems_306e4a61(_typed.from_437d0abf423f(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "eIte"
-                "ms_6"
-                "17d8"
-                "4aba"
-                "dc0c"
-                "f3: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValDeleteItems_42e75a534668c8baab78732ed9c26c6fe9529f2ad141e167ce4d0dfdc2643cbc9f35750df151: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_182(symbols, value_0, value_1):
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_order_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValDeleteItems_f46df0ad(_typed.from_44a08172da10(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_delete_items_int64_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "eIte"
-                "ms_d"
-                "853b"
-                "8201"
-                "69aa"
-                "cb5:"
-                " "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValDeleteItems_cabed8cd11f3136f1f98e30df55bbf7910063a41dd81f6f4cf817cd9b533f0132c1ec51f464d: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_183(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_text_key_val_text_user_4(symbols, k, m):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValDelete_c3e7d7f6(_typed.from_437d0abf423f(value_0), _typed.from_028dc11da4a2(value_1)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_delete_text_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "e_13"
-                "870e"
-                "9dc2"
-                "5991"
-                "b3: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValDelete_180599abfb23f062add1f398c77734253776b20e00dde9735dc210a388d0084f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_184(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_int64_key_val_int64_order_4(symbols, k, m):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValDelete_e4177076(_typed.from_44a08172da10(value_0), _typed.from_1f8a64f6915e(value_1)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_delete_int64_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "e_32"
-                "2137"
-                "6c81"
-                "b117"
-                "9d: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValDelete_59887358e6082d38b23002a2c94a03c342994b321d31c599cb0f21143c86fca2: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_185(symbols, value_0, value_1):
+# keyValDelete — <lawspec.collections>:93
+def lawspec_collections_key_val_delete_int64_key_val_int64_pet_4(symbols, k, m):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValDelete_5428b507(_typed.from_44a08172da10(value_0), _typed.from_e53f6261287e(value_1)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_delete_int64_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValD"
-                "elet"
-                "e_bc"
-                "ee84"
-                "ca81"
-                "b37c"
-                "f5: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValDelete_5ce9a3a58573df1ad8ea0947baaa7dceae5d92d85960af4f8cd27388629f6e43: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_186(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_int64_order_list_entry_int64_order_4(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValFromItems_d7fe858d(_typed.from_7d41fae83a77(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_from_items_list_entry_int64_order_list_entry_int64_order(
+                _typed.from_list_entry_int64_order(es),
+                _typed.from_list_entry_int64_order(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValF"
-                "romI"
-                "tems"
-                "_134"
-                "c69b"
-                "262f"
-                "914f"
-                "b: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValFromItems_65eacbcc915c193a39ba7e96c9b4d98015bb89f012558a02450a84db1153457b052ec7b48239: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_187(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_int64_pet_list_entry_int64_pet_4(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValFromItems_29c5e24f(_typed.from_8ca8e420d6d2(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_from_items_list_entry_int64_pet_list_entry_int64_pet(
+                _typed.from_list_entry_int64_pet(es),
+                _typed.from_list_entry_int64_pet(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValF"
-                "romI"
-                "tems"
-                "_3c9"
-                "8264"
-                "cc23"
-                "dcd7"
-                "2: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValFromItems_b33e79378074279d59e68258a372729ed10d0276f62ce1a73b20b820e75f3ce75d96278f8493: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_188(symbols, value_0, value_1):
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_user_4(
+    symbols,
+    es,
+    acc,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValFromItems_709d7e45(_typed.from_9cd7aab66a75(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_user(
+                _typed.from_list_entry_text_user(es),
+                _typed.from_list_entry_text_user(acc),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValF"
-                "romI"
-                "tems"
-                "_fb9"
-                "20b5"
-                "0b03"
-                "dabf"
-                "2: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValFromItems_bf4788ac7c563098c2f9de58b2e1d9c50cc03520b8d9d1be8adf141a3e1e33e123d16be8a044: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_189(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_text_list_entry_text_user_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_e7cb8bef1b25(_typed.Def_lawspecCollectionsKeyValLookupItems_86a23cdf(_typed.from_437d0abf423f(value_0), _typed.from_8ca8e420d6d2(value_1)))
+        return _typed.to_maybe_user(
+            _typed.lawspec_collections_key_val_lookup_items_text_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "pIte"
-                "ms_3"
-                "00a8"
-                "c812"
-                "2e43"
-                "6f9:"
-                " "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValLookupItems_a98132adc874e28d5c051b927cc07b24cb682e7a6f0d1d8d025ff0658afe5d17c69e537c378f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_190(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_ba2e3c57646d(_typed.Def_lawspecCollectionsKeyValLookupItems_86fdea7f(_typed.from_44a08172da10(value_0), _typed.from_7d41fae83a77(value_1)))
+        return _typed.to_maybe_order(
+            _typed.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "pIte"
-                "ms_3"
-                "cded"
-                "3b88"
-                "470c"
-                "13d:"
-                " "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValLookupItems_d01bcf683a8ba049e28d1915b6382c2437262ed4bd7f0c11c3c11d8d0c5983748b0789573511: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_191(symbols, value_0, value_1):
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet_4(
+    symbols,
+    k,
+    es,
+):
     try:
-        return _typed.to_2a509216bf80(_typed.Def_lawspecCollectionsKeyValLookupItems_6f0d755e(_typed.from_44a08172da10(value_0), _typed.from_9cd7aab66a75(value_1)))
+        return _typed.to_maybe_pet(
+            _typed.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "pIte"
-                "ms_a"
-                "cb0e"
-                "bccf"
-                "f390"
-                "fa3:"
-                " "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValLookupItems_dbde89004483a818dee04300ed31a4f0183695576afee6fd2d2b074718e5f6547e17750d7883: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_192(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_text_key_val_text_user_4(symbols, k, m):
     try:
-        return _typed.to_ba2e3c57646d(_typed.Def_lawspecCollectionsKeyValLookup_a0748ff1(_typed.from_44a08172da10(value_0), _typed.from_e53f6261287e(value_1)))
+        return _typed.to_maybe_user(
+            _typed.lawspec_collections_key_val_lookup_text_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "p_59"
-                "07e6"
-                "be52"
-                "c2c2"
-                "11: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValLookup_8d65bd0c2734452e6395969d76310ab7cfb547e33b7abbae71357d72924b1bee: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_193(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_int64_key_val_int64_pet_4(symbols, k, m):
     try:
-        return _typed.to_e7cb8bef1b25(_typed.Def_lawspecCollectionsKeyValLookup_5beba6da(_typed.from_437d0abf423f(value_0), _typed.from_028dc11da4a2(value_1)))
+        return _typed.to_maybe_pet(
+            _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "p_7d"
-                "1401"
-                "8c80"
-                "349f"
-                "0b: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValLookup_ae11115693cbb35d35b130baa4f5f4bad39a9a209068e27b75bcb2ef170811ff: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_194(symbols, value_0, value_1):
+# keyValLookup — <lawspec.collections>:85
+def lawspec_collections_key_val_lookup_int64_key_val_int64_order_4(symbols, k, m):
     try:
-        return _typed.to_2a509216bf80(_typed.Def_lawspecCollectionsKeyValLookup_ef93254e(_typed.from_44a08172da10(value_0), _typed.from_1f8a64f6915e(value_1)))
+        return _typed.to_maybe_order(
+            _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValL"
-                "ooku"
-                "p_bc"
-                "a377"
-                "7111"
-                "0156"
-                "5d: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValLookup_dc4b69230473d31ccbd7b40b10cd37174fb98041732e9de8995743e1c330ec62: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_195(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_text_user_4(symbols, es):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValOf_0ba011fe(_typed.from_7d41fae83a77(value_0)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_of_list_entry_text_user(
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValO"
-                "f_64"
-                "f624"
-                "eed5"
-                "14ea"
-                "a2: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValOf_3cbfcdcf541f43d6063a6e4265a873a5d214479321157c42f4d68cb2a1f1b1d73ce65cb62c7f: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_196(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_int64_order_4(symbols, es):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValOf_ba53d5a9(_typed.from_9cd7aab66a75(value_0)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_of_list_entry_int64_order(
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValO"
-                "f_a3"
-                "a7f2"
-                "c1ae"
-                "a9ea"
-                "80: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValOf_7a472c842e59e2ccce84f9632b2ae4f26870b48cdfa15074f336b36cf45b5169318f9889f55d: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_197(symbols, value_0):
+# keyValOf — <lawspec.collections>:81
+def lawspec_collections_key_val_of_list_entry_int64_pet_4(symbols, es):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValOf_8dcea77c(_typed.from_8ca8e420d6d2(value_0)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_of_list_entry_int64_pet(
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValO"
-                "f_aa"
-                "b5cf"
-                "89ae"
-                "ee3d"
-                "a0: "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValOf_c7a16b746509e1225dc68d73360319789c4438d3bd54187cb142000b23fa2dc6b7645a11ed76: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_198(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_text_user_list_entry_text_user_4(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_8ca8e420d6d2(_typed.Def_lawspecCollectionsKeyValPutItems_19d16932(_typed.from_437d0abf423f(value_0), _typed.from_4e0c2eb86b38(value_1), _typed.from_8ca8e420d6d2(value_2)))
+        return _typed.to_list_entry_text_user(
+            _typed.lawspec_collections_key_val_put_items_text_user_list_entry_text_user(
+                _typed.from_text(k),
+                _typed.from_user(v),
+                _typed.from_list_entry_text_user(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "utIt"
-                "ems_"
-                "218f"
-                "813d"
-                "c536"
-                "325b"
-                ": "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValPutItems_d01a79c814f8f913dc0ba0e1ec215cfaa2c13e5c800c25519ba1f2f229a8762cb631f0a0953a: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_199(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet_4(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_7d41fae83a77(_typed.Def_lawspecCollectionsKeyValPutItems_102b61ab(_typed.from_44a08172da10(value_0), _typed.from_0205b8dc6a6f(value_1), _typed.from_7d41fae83a77(value_2)))
+        return _typed.to_list_entry_int64_pet(
+            _typed.lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_pet(v),
+                _typed.from_list_entry_int64_pet(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "utIt"
-                "ems_"
-                "57d0"
-                "f19a"
-                "11f0"
-                "c9f0"
-                ": "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValPutItems_d68e99f219f5d6caa3fa0b1b900ad65ab8cc2e2121e1e263d94e8cdb9f994bdbebd1d5c4af14: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_200(symbols, value_0, value_1, value_2):
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order_4(
+    symbols,
+    k,
+    v,
+    es,
+):
     try:
-        return _typed.to_9cd7aab66a75(_typed.Def_lawspecCollectionsKeyValPutItems_b231a093(_typed.from_44a08172da10(value_0), _typed.from_82d465b8f3fe(value_1), _typed.from_9cd7aab66a75(value_2)))
+        return _typed.to_list_entry_int64_order(
+            _typed.lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order(
+                _typed.from_int64(k),
+                _typed.from_order(v),
+                _typed.from_list_entry_int64_order(es),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "utIt"
-                "ems_"
-                "7ac7"
-                "5f30"
-                "7de7"
-                "042f"
-                ": "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValPutItems_ebb9b744591ed3ebfcefbce030268d9f983a8dccb63b71746bfc6dc2ffee4e0e394d6b45ce51: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_201(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_text_user_key_val_text_user_4(symbols, k, v, m):
     try:
-        return _typed.to_028dc11da4a2(_typed.Def_lawspecCollectionsKeyValPut_87b84c20(_typed.from_437d0abf423f(value_0), _typed.from_4e0c2eb86b38(value_1), _typed.from_028dc11da4a2(value_2)))
+        return _typed.to_key_val_text_user(
+            _typed.lawspec_collections_key_val_put_text_user_key_val_text_user(
+                _typed.from_text(k),
+                _typed.from_user(v),
+                _typed.from_key_val_text_user(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "ut_1"
-                "f633"
-                "f25c"
-                "c61f"
-                "72b:"
-                " "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValPut_14d9f6337e0ec2561d8e030a06ad9c9e9573446c177fb34bf18116e79b3c0c77: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_202(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_4(symbols, k, v, m):
     try:
-        return _typed.to_e53f6261287e(_typed.Def_lawspecCollectionsKeyValPut_15141812(_typed.from_44a08172da10(value_0), _typed.from_0205b8dc6a6f(value_1), _typed.from_e53f6261287e(value_2)))
+        return _typed.to_key_val_int64_pet(
+            _typed.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(
+                _typed.from_int64(k),
+                _typed.from_pet(v),
+                _typed.from_key_val_int64_pet(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "ut_4"
-                "969b"
-                "4d20"
-                "1ed0"
-                "c70:"
-                " "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValPut_716e4525b608d8fa85d5aa5eaab290869ff2c2a7a8ee04296a8ab43c4b7fc027: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_203(symbols, value_0, value_1, value_2):
+# keyValPut — <lawspec.collections>:89
+def lawspec_collections_key_val_put_int64_order_key_val_int64_order_4(symbols, k, v, m):
     try:
-        return _typed.to_1f8a64f6915e(_typed.Def_lawspecCollectionsKeyValPut_73b7121f(_typed.from_44a08172da10(value_0), _typed.from_82d465b8f3fe(value_1), _typed.from_1f8a64f6915e(value_2)))
+        return _typed.to_key_val_int64_order(
+            _typed.lawspec_collections_key_val_put_int64_order_key_val_int64_order(
+                _typed.from_int64(k),
+                _typed.from_order(v),
+                _typed.from_key_val_int64_order(m),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awsp"
-                "ec_l"
-                "awsp"
-                "ecCo"
-                "llec"
-                "tion"
-                "sKey"
-                "ValP"
-                "ut_5"
-                "3079"
-                "f70e"
-                "e92b"
-                "c07:"
-                " "
-            )
+            "contracttest.petstore::lawspec_lawspecCollectionsKeyValPut_e16765c1488083b09e856585b415e6c64aa622e62bc1f85e8241737d83176c17: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_204(symbols, value_0, value_1):
+# lawtwinPetstoreHandwrittenCreateUsersWithListInput — ../src/handwritten.lawspec:39
+def lawtwin_petstore_handwritten_create_users_with_list_input_3(symbols, body, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreHandwrittenCreateUsersWithListInput_f7c111ea(_typed.from_e6c8b33c1e73(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_handwritten_create_users_with_list_input(
+                _typed.from_maybe_list_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awtw"
-                "inPe"
-                "tsto"
-                "reHa"
-                "ndwr"
-                "itte"
-                "nCre"
-                "ateU"
-                "sers"
-                "With"
-                "List"
-                "Inpu"
-                "t: "
-            )
+            "contracttest.petstore::lawtwinPetstoreHandwrittenCreateUsersWithListInput: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_205(symbols, value_0, value_1):
+# lawtwinPetstoreHandwrittenFindPetsByStatus — ../src/handwritten.lawspec:14
+def lawtwin_petstore_handwritten_find_pets_by_status_3(symbols, status, current):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_lawtwinPetstoreHandwrittenFindPetsByStatus_e92ff3cf(_typed.from_1ac848e17d05(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.lawtwin_petstore_handwritten_find_pets_by_status(
+                _typed.from_pet_status(status),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awtw"
-                "inPe"
-                "tsto"
-                "reHa"
-                "ndwr"
-                "itte"
-                "nFin"
-                "dPet"
-                "sByS"
-                "tatu"
-                "s: "
-            )
+            "contracttest.petstore::lawtwinPetstoreHandwrittenFindPetsByStatus: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_206(symbols, value_0, value_1):
+# lawtwinPetstoreHandwrittenFindPetsByTags — ../src/handwritten.lawspec:19
+def lawtwin_petstore_handwritten_find_pets_by_tags_3(symbols, tags, current):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_lawtwinPetstoreHandwrittenFindPetsByTags_afed99b2(_typed.from_8ec0351dc657(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.lawtwin_petstore_handwritten_find_pets_by_tags(
+                _typed.from_list_text(tags),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5047,9 +4277,14 @@ def evaluate_206(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_207(symbols, value_0):
+# lawtwinPetstoreHandwrittenGetInventory — ../src/handwritten.lawspec:34
+def lawtwin_petstore_handwritten_get_inventory_3(symbols, current):
     try:
-        return _typed.to_cf9e580486ca(_typed.Def_lawtwinPetstoreHandwrittenGetInventory_1dac8932(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_key_val_text_int32_state(
+            _typed.lawtwin_petstore_handwritten_get_inventory(
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5061,9 +4296,16 @@ def evaluate_207(symbols, value_0):
         ) from error
 
 
-def evaluate_208(symbols, value_0, value_1, value_2):
+# lawtwinPetstoreHandwrittenLoginUser — ../src/handwritten.lawspec:44
+def lawtwin_petstore_handwritten_login_user_3(symbols, username, password, current):
     try:
-        return _typed.to_42a05c234e0d(_typed.Def_lawtwinPetstoreHandwrittenLoginUser_b8d6606c(_typed.from_01d86fc44f8c(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_text_state(
+            _typed.lawtwin_petstore_handwritten_login_user(
+                _typed.from_maybe_text(username),
+                _typed.from_maybe_text(password),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5075,9 +4317,12 @@ def evaluate_208(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_209(symbols, value_0):
+# lawtwinPetstoreHandwrittenLogoutUser — ../src/handwritten.lawspec:49
+def lawtwin_petstore_handwritten_logout_user_3(symbols, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreHandwrittenLogoutUser_38a24725(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_handwritten_logout_user(_typed.from_state(current)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5089,41 +4334,51 @@ def evaluate_209(symbols, value_0):
         ) from error
 
 
-def evaluate_210(symbols, value_0, value_1, value_2, value_3):
+# lawtwinPetstoreHandwrittenUpdatePetWithForm — ../src/handwritten.lawspec:24
+def lawtwin_petstore_handwritten_update_pet_with_form_3(
+    symbols,
+    pet_id,
+    name,
+    status,
+    current,
+):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreHandwrittenUpdatePetWithForm_9c6a9682(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_ceed401fe9f6(value_3)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_handwritten_update_pet_with_form(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(name),
+                _typed.from_maybe_text(status),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "cont"
-                "ract"
-                "test"
-                ".pet"
-                "stor"
-                "e::l"
-                "awtw"
-                "inPe"
-                "tsto"
-                "reHa"
-                "ndwr"
-                "itte"
-                "nUpd"
-                "ateP"
-                "etWi"
-                "thFo"
-                "rm: "
-            )
+            "contracttest.petstore::lawtwinPetstoreHandwrittenUpdatePetWithForm: "
             + _builtins.str(error),
         ) from error
 
 
-def evaluate_211(symbols, value_0, value_1, value_2, value_3):
+# lawtwinPetstoreHandwrittenUploadFile — ../src/handwritten.lawspec:29
+def lawtwin_petstore_handwritten_upload_file_3(
+    symbols,
+    pet_id,
+    additional_metadata,
+    body,
+    current,
+):
     try:
-        return _typed.to_f21e77101c35(_typed.Def_lawtwinPetstoreHandwrittenUploadFile_db78234a(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_b276e66efd09(value_2), _typed.from_ceed401fe9f6(value_3)))
+        return _typed.to_pair_api_response_state(
+            _typed.lawtwin_petstore_handwritten_upload_file(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(additional_metadata),
+                _typed.from_maybe_bytes(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5135,9 +4390,12 @@ def evaluate_211(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_212(symbols, value_0):
+# lawtwinPetstoreModelAfter64 — ../src/model.lawspec:123
+def lawtwin_petstore_model_after64_3(symbols, k):
     try:
-        return _typed.to_44a08172da10(_typed.Def_lawtwinPetstoreModelAfter64_d44b61a4(_typed.from_44a08172da10(value_0)))
+        return _typed.to_int64(
+            _typed.lawtwin_petstore_model_after64(_typed.from_int64(k)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5149,9 +4407,12 @@ def evaluate_212(symbols, value_0):
         ) from error
 
 
-def evaluate_213(symbols, value_0):
+# lawtwinPetstoreModelEmptyState — ../src/model.lawspec:113
+def lawtwin_petstore_model_empty_state_3(symbols, u):
     try:
-        return _typed.to_ceed401fe9f6(_typed.Def_lawtwinPetstoreModelEmptyState_9f93bc81(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(
+            _typed.lawtwin_petstore_model_empty_state(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5163,9 +4424,15 @@ def evaluate_213(symbols, value_0):
         ) from error
 
 
-def evaluate_214(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelAddPet — ../src/model.lawspec:151
+def lawtwin_petstore_model_model_add_pet_3(symbols, body, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelAddPet_443bf61d(_typed.from_82d465b8f3fe(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_add_pet(
+                _typed.from_pet(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5177,9 +4444,15 @@ def evaluate_214(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_215(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelCreateUser — ../src/model.lawspec:213
+def lawtwin_petstore_model_model_create_user_3(symbols, body, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreModelModelCreateUser_90ee772d(_typed.from_e7cb8bef1b25(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_model_model_create_user(
+                _typed.from_maybe_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5191,9 +4464,15 @@ def evaluate_215(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_216(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelDeleteOrder — ../src/model.lawspec:205
+def lawtwin_petstore_model_model_delete_order_3(symbols, order_id, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeleteOrder_ca32659b(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_order(
+                _typed.from_int64(order_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5205,9 +4484,16 @@ def evaluate_216(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_217(symbols, value_0, value_1, value_2):
+# lawtwinPetstoreModelModelDeletePet — ../src/model.lawspec:171
+def lawtwin_petstore_model_model_delete_pet_3(symbols, pet_id, api_key, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeletePet_f79b8631(_typed.from_44a08172da10(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_pet(
+                _typed.from_int64(pet_id),
+                _typed.from_maybe_text(api_key),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5219,9 +4505,15 @@ def evaluate_217(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_218(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelDeleteUser — ../src/model.lawspec:255
+def lawtwin_petstore_model_model_delete_user_3(symbols, username, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelDeleteUser_292d6814(_typed.from_437d0abf423f(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_delete_user(
+                _typed.from_text(username),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5233,9 +4525,15 @@ def evaluate_218(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_219(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelGetOrderById — ../src/model.lawspec:197
+def lawtwin_petstore_model_model_get_order_by_id_3(symbols, order_id, current):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_lawtwinPetstoreModelModelGetOrderById_573aa869(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.lawtwin_petstore_model_model_get_order_by_id(
+                _typed.from_int64(order_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5247,9 +4545,15 @@ def evaluate_219(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_220(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelGetPetById — ../src/model.lawspec:163
+def lawtwin_petstore_model_model_get_pet_by_id_3(symbols, pet_id, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelGetPetById_ed826277(_typed.from_44a08172da10(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_get_pet_by_id(
+                _typed.from_int64(pet_id),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5261,9 +4565,15 @@ def evaluate_220(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_221(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelGetUserByName — ../src/model.lawspec:230
+def lawtwin_petstore_model_model_get_user_by_name_3(symbols, username, current):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_lawtwinPetstoreModelModelGetUserByName_d31e87ba(_typed.from_437d0abf423f(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.lawtwin_petstore_model_model_get_user_by_name(
+                _typed.from_text(username),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5275,9 +4585,15 @@ def evaluate_221(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_222(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelPlaceOrder — ../src/model.lawspec:179
+def lawtwin_petstore_model_model_place_order_3(symbols, body, current):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_lawtwinPetstoreModelModelPlaceOrder_d7fd75c4(_typed.from_ba2e3c57646d(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.lawtwin_petstore_model_model_place_order(
+                _typed.from_maybe_order(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5289,9 +4605,15 @@ def evaluate_222(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_223(symbols, value_0, value_1):
+# lawtwinPetstoreModelModelUpdatePet — ../src/model.lawspec:136
+def lawtwin_petstore_model_model_update_pet_3(symbols, body, current):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_lawtwinPetstoreModelModelUpdatePet_6803effb(_typed.from_82d465b8f3fe(value_0), _typed.from_ceed401fe9f6(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.lawtwin_petstore_model_model_update_pet(
+                _typed.from_pet(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5303,9 +4625,16 @@ def evaluate_223(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_224(symbols, value_0, value_1, value_2):
+# lawtwinPetstoreModelModelUpdateUser — ../src/model.lawspec:238
+def lawtwin_petstore_model_model_update_user_3(symbols, username, body, current):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_lawtwinPetstoreModelModelUpdateUser_6c0b8b8d(_typed.from_437d0abf423f(value_0), _typed.from_e7cb8bef1b25(value_1), _typed.from_ceed401fe9f6(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.lawtwin_petstore_model_model_update_user(
+                _typed.from_text(username),
+                _typed.from_maybe_user(body),
+                _typed.from_state(current),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5317,9 +4646,12 @@ def evaluate_224(symbols, value_0, value_1, value_2):
         ) from error
 
 
-def evaluate_225(symbols, value_0):
+# lawtwinPetstoreModelValidOrder — ../src/model.lawspec:127
+def lawtwin_petstore_model_valid_order_3(symbols, value):
     try:
-        return _typed.to_d267428fb2ca(_typed.Def_lawtwinPetstoreModelValidOrder_62eb4720(_typed.from_0205b8dc6a6f(value_0)))
+        return _typed.to_bool(
+            _typed.lawtwin_petstore_model_valid_order(_typed.from_order(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5331,9 +4663,12 @@ def evaluate_225(symbols, value_0):
         ) from error
 
 
-def evaluate_226(symbols, value_0, value_1):
+# referenceAddPet — ../src/api.lawspec:185
+def reference_add_pet_3(symbols, state, value0):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceAddPet_ae0ddf28(_typed.from_ceed401fe9f6(value_0), _typed.from_82d465b8f3fe(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_add_pet(_typed.from_state(state), _typed.from_pet(value0)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5344,23 +4679,34 @@ def evaluate_226(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_227(symbols, value_0, value_1):
+# referenceCreateUser — ../src/api.lawspec:196
+def reference_create_user_3(symbols, state, value0):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_referenceCreateUser_8fb4b3e6(_typed.from_ceed401fe9f6(value_0), _typed.from_e7cb8bef1b25(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.reference_create_user(
+                _typed.from_state(state),
+                _typed.from_maybe_user(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceCreateUser: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceCreateUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_228(symbols, value_0, value_1):
+# referenceCreateUsersWithListInput — ../src/api.lawspec:197
+def reference_create_users_with_list_input_3(symbols, state, value0):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_referenceCreateUsersWithListInput_15c6a40c(_typed.from_ceed401fe9f6(value_0), _typed.from_e6c8b33c1e73(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.reference_create_users_with_list_input(
+                _typed.from_state(state),
+                _typed.from_maybe_list_user(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5372,177 +4718,234 @@ def evaluate_228(symbols, value_0, value_1):
         ) from error
 
 
-def evaluate_229(symbols, value_0, value_1):
+# referenceDeleteOrder — ../src/api.lawspec:195
+def reference_delete_order_3(symbols, state, value0):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceDeleteOrder_bf4c8c24(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_delete_order(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceDeleteOrder: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceDeleteOrder: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_230(symbols, value_0, value_1, value_2):
+# referenceDeletePet — ../src/api.lawspec:190
+def reference_delete_pet_3(symbols, state, value0, value1):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceDeletePet_4705c2b2(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1), _typed.from_01d86fc44f8c(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_delete_pet(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+                _typed.from_maybe_text(value1),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceDeletePet: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceDeletePet: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_231(symbols, value_0, value_1):
+# referenceDeleteUser — ../src/api.lawspec:202
+def reference_delete_user_3(symbols, state, value0):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceDeleteUser_e8d80a94(_typed.from_ceed401fe9f6(value_0), _typed.from_437d0abf423f(value_1)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_delete_user(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceDeleteUser: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceDeleteUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_232(symbols, value_0, value_1):
+# referenceFindPetsByStatus — ../src/api.lawspec:186
+def reference_find_pets_by_status_3(symbols, state, value0):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_referenceFindPetsByStatus_c60cd17e(_typed.from_ceed401fe9f6(value_0), _typed.from_1ac848e17d05(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.reference_find_pets_by_status(
+                _typed.from_state(state),
+                _typed.from_pet_status(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceFindPetsByStatus: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceFindPetsByStatus: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_233(symbols, value_0, value_1):
+# referenceFindPetsByTags — ../src/api.lawspec:187
+def reference_find_pets_by_tags_3(symbols, state, value0):
     try:
-        return _typed.to_57874a6538f3(_typed.Def_referenceFindPetsByTags_cf5c32e9(_typed.from_ceed401fe9f6(value_0), _typed.from_8ec0351dc657(value_1)))
+        return _typed.to_pair_list_pet_state(
+            _typed.reference_find_pets_by_tags(
+                _typed.from_state(state),
+                _typed.from_list_text(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceFindPetsByTags: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceFindPetsByTags: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_234(symbols, value_0):
+# referenceGetInventory — ../src/api.lawspec:192
+def reference_get_inventory_3(symbols, state):
     try:
-        return _typed.to_cf9e580486ca(_typed.Def_referenceGetInventory_0fb69a3d(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_key_val_text_int32_state(
+            _typed.reference_get_inventory(_typed.from_state(state)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceGetInventory: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceGetInventory: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_235(symbols, value_0, value_1):
+# referenceGetOrderById — ../src/api.lawspec:194
+def reference_get_order_by_id_3(symbols, state, value0):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_referenceGetOrderById_3c80a922(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.reference_get_order_by_id(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceGetOrderById: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceGetOrderById: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_236(symbols, value_0, value_1):
+# referenceGetPetById — ../src/api.lawspec:188
+def reference_get_pet_by_id_3(symbols, state, value0):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceGetPetById_cd663b92(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_get_pet_by_id(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceGetPetById: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceGetPetById: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_237(symbols, value_0, value_1):
+# referenceGetUserByName — ../src/api.lawspec:200
+def reference_get_user_by_name_3(symbols, state, value0):
     try:
-        return _typed.to_0377c9b2e165(_typed.Def_referenceGetUserByName_027f640c(_typed.from_ceed401fe9f6(value_0), _typed.from_437d0abf423f(value_1)))
+        return _typed.to_pair_user_state(
+            _typed.reference_get_user_by_name(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceGetUserByName: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceGetUserByName: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_238(symbols, value_0, value_1, value_2):
+# referenceLoginUser — ../src/api.lawspec:198
+def reference_login_user_3(symbols, state, value0, value1):
     try:
-        return _typed.to_42a05c234e0d(_typed.Def_referenceLoginUser_20c0b3f3(_typed.from_ceed401fe9f6(value_0), _typed.from_01d86fc44f8c(value_1), _typed.from_01d86fc44f8c(value_2)))
+        return _typed.to_pair_text_state(
+            _typed.reference_login_user(
+                _typed.from_state(state),
+                _typed.from_maybe_text(value0),
+                _typed.from_maybe_text(value1),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceLoginUser: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceLoginUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_239(symbols, value_0):
+# referenceLogoutUser — ../src/api.lawspec:199
+def reference_logout_user_3(symbols, state):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceLogoutUser_56bbbb56(_typed.from_ceed401fe9f6(value_0)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_logout_user(_typed.from_state(state)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceLogoutUser: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceLogoutUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_240(symbols, value_0, value_1):
+# referencePlaceOrder — ../src/api.lawspec:193
+def reference_place_order_3(symbols, state, value0):
     try:
-        return _typed.to_8f051086a2e4(_typed.Def_referencePlaceOrder_29feae4c(_typed.from_ceed401fe9f6(value_0), _typed.from_ba2e3c57646d(value_1)))
+        return _typed.to_pair_order_state(
+            _typed.reference_place_order(
+                _typed.from_state(state),
+                _typed.from_maybe_order(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referencePlaceOrder: "
-            + _builtins.str(error),
+            "contracttest.petstore::referencePlaceOrder: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_241(symbols, value_0):
+# referenceStart — ../src/api.lawspec:183
+def reference_start_3(symbols, unit):
     try:
-        return _typed.to_ceed401fe9f6(_typed.Def_referenceStart_1a3a0c80(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_state(_typed.reference_start(_typed.from_unit(unit)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5553,23 +4956,36 @@ def evaluate_241(symbols, value_0):
         ) from error
 
 
-def evaluate_242(symbols, value_0, value_1):
+# referenceUpdatePet — ../src/api.lawspec:184
+def reference_update_pet_3(symbols, state, value0):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceUpdatePet_3e347085(_typed.from_ceed401fe9f6(value_0), _typed.from_82d465b8f3fe(value_1)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_update_pet(
+                _typed.from_state(state),
+                _typed.from_pet(value0),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceUpdatePet: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceUpdatePet: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_243(symbols, value_0, value_1, value_2, value_3):
+# referenceUpdatePetWithForm — ../src/api.lawspec:189
+def reference_update_pet_with_form_3(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_acc26db0c826(_typed.Def_referenceUpdatePetWithForm_dbd33536(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_01d86fc44f8c(value_3)))
+        return _typed.to_pair_pet_state(
+            _typed.reference_update_pet_with_form(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+                _typed.from_maybe_text(value1),
+                _typed.from_maybe_text(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -5581,43 +4997,56 @@ def evaluate_243(symbols, value_0, value_1, value_2, value_3):
         ) from error
 
 
-def evaluate_244(symbols, value_0, value_1, value_2):
+# referenceUpdateUser — ../src/api.lawspec:201
+def reference_update_user_3(symbols, state, value0, value1):
     try:
-        return _typed.to_d60cdee7f6b5(_typed.Def_referenceUpdateUser_e08f158a(_typed.from_ceed401fe9f6(value_0), _typed.from_437d0abf423f(value_1), _typed.from_e7cb8bef1b25(value_2)))
+        return _typed.to_pair_unit_state(
+            _typed.reference_update_user(
+                _typed.from_state(state),
+                _typed.from_text(value0),
+                _typed.from_maybe_user(value1),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceUpdateUser: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceUpdateUser: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_245(symbols, value_0, value_1, value_2, value_3):
+# referenceUploadFile — ../src/api.lawspec:191
+def reference_upload_file_3(symbols, state, value0, value1, value2):
     try:
-        return _typed.to_f21e77101c35(_typed.Def_referenceUploadFile_5fb62a62(_typed.from_ceed401fe9f6(value_0), _typed.from_44a08172da10(value_1), _typed.from_01d86fc44f8c(value_2), _typed.from_b276e66efd09(value_3)))
+        return _typed.to_pair_api_response_state(
+            _typed.reference_upload_file(
+                _typed.from_state(state),
+                _typed.from_int64(value0),
+                _typed.from_maybe_text(value1),
+                _typed.from_maybe_bytes(value2),
+            ),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceUploadFile: "
-            + _builtins.str(error),
+            "contracttest.petstore::referenceUploadFile: " + _builtins.str(error),
         ) from error
 
 
-def evaluate_246(symbols, value_0):
+# suiteNamesThePackage — laws/suite.lawspec:8
+def suite_names_the_package(symbols, u):
     try:
-        return _typed.to_b120ceed78cb(_typed.Def_noHandWrittenLawsYet_f9ba4d84(_typed.from_b120ceed78cb(value_0)))
+        return _typed.to_unit(_typed.no_hand_written_laws_yet(_typed.from_unit(u)))
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::suiteNamesThePackage: "
-            + _builtins.str(error),
+            "contracttest.petstore::suiteNamesThePackage: " + _builtins.str(error),
         ) from error

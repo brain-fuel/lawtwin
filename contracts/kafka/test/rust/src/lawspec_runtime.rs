@@ -9,6 +9,8 @@
 //!
 //! It is emitted into every generated Rust crate, so the generated tests and
 //! the adapters share one definition of the domain. ref:DEC-typed-core-boundary
+// A test crate mounts the whole runtime as a module and uses only part of it.
+#![allow(dead_code)]
 pub use num_bigint::{BigInt, BigUint};
 pub use num_complex::{Complex32, Complex64};
 pub use num_rational::BigRational;
@@ -20,13 +22,109 @@ pub type Result<T> = std::result::Result<T, String>;
 
 /// Runs a generated test on a thread with a large stack: generated values of
 /// deep data, in debug builds, can exceed the default test thread's stack.
+/// The tests of one file run one at a time: a law's examples, boundaries
+/// and property share what they acquire (a file, a store) as one test's
+/// cases did.
+#[track_caller]
 pub fn with_stack<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) -> T {
+    type Locks = std::sync::Mutex<HashMap<&'static str, Arc<std::sync::Mutex<()>>>>;
+    static FILES: std::sync::OnceLock<Locks> = std::sync::OnceLock::new();
+    let file = std::panic::Location::caller().file();
+    let lock = FILES
+        .get_or_init(Default::default)
+        .lock()
+        .unwrap_or_else(|poisoned| poisoned.into_inner())
+        .entry(file)
+        .or_default()
+        .clone();
+    let _serial = lock.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+    on_stack(body)
+}
+
+/// Runs a generated test on a thread with a large stack, without waiting for
+/// the file's other tests: for tests the harness orders itself.
+pub fn on_stack<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) -> T {
     std::thread::Builder::new()
         .stack_size(64 * 1024 * 1024)
         .spawn(body)
         .expect("test thread")
         .join()
         .unwrap_or_else(|panic| std::panic::resume_unwind(panic))
+}
+
+/// Compact ordered case data. Factories materialize each attempt's values in
+/// its own context; inclusive integer ranges never need an overflowing sentinel.
+/// ref:DEC-planned-generation
+pub type FiniteFactory = fn(&mut Context) -> Result<Value>;
+
+pub enum FiniteCover {
+    Copies(usize),
+    Branches(Vec<(FiniteDomain, FiniteCover)>),
+}
+
+pub enum FiniteDomain {
+    Values(Vec<FiniteFactory>),
+    Integers(BigInt, BigInt),
+}
+
+#[derive(Clone)]
+pub enum FiniteValue {
+    Literal(FiniteFactory),
+    Integer(BigInt),
+}
+
+impl FiniteValue {
+    pub fn materialize(&self, context: &mut Context) -> Result<Value> {
+        match self {
+            Self::Literal(factory) => factory(context),
+            Self::Integer(value) => Ok(Value::Integer(value.clone())),
+        }
+    }
+}
+
+pub fn finite_cases(
+    cover: &FiniteCover,
+    mut visit: impl FnMut(usize, &[FiniteValue]) -> Result<()>,
+) -> Result<()> {
+    fn walk(
+        cover: &FiniteCover,
+        prefix: &mut Vec<FiniteValue>,
+        index: &mut usize,
+        visit: &mut impl FnMut(usize, &[FiniteValue]) -> Result<()>,
+    ) -> Result<()> {
+        match cover {
+            FiniteCover::Copies(count) => {
+                for _ in 0..*count {
+                    visit(*index, prefix)?;
+                    *index = index.checked_add(1).ok_or("finite case index overflow")?;
+                }
+            }
+            FiniteCover::Branches(branches) => {
+                for (domain, suffix) in branches {
+                    match domain {
+                        FiniteDomain::Values(factories) => {
+                            for factory in factories {
+                                prefix.push(FiniteValue::Literal(*factory));
+                                walk(suffix, prefix, index, visit)?;
+                                prefix.pop();
+                            }
+                        }
+                        FiniteDomain::Integers(first, last) => {
+                            let mut value = first.clone();
+                            while value <= *last {
+                                prefix.push(FiniteValue::Integer(value.clone()));
+                                walk(suffix, prefix, index, visit)?;
+                                prefix.pop();
+                                value += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Ok(())
+    }
+    walk(cover, &mut Vec::new(), &mut 0, &mut visit)
 }
 
 /// A logical Integer result accepts any native integer without losing bits.
@@ -198,7 +296,10 @@ pub struct Context {
 impl Context {
     /// A context whose workflows run under the given runtime.
     pub fn with_workflow(runtime: WorkflowRuntime) -> Context {
-        Context { workflow: Some(Arc::new(std::sync::Mutex::new(runtime))), ..Context::default() }
+        Context {
+            workflow: Some(Arc::new(std::sync::Mutex::new(runtime))),
+            ..Context::default()
+        }
     }
     /// A context for a generated test: workflows wait on a virtual clock, and
     /// gates are off (a workflow law calls the workflow and its composition,
@@ -286,8 +387,13 @@ impl Handle {
 
     /// The native value as a T, or an error naming both.
     pub fn native<T: std::any::Any>(&self) -> Result<&T> {
-        self.downcast_ref::<T>()
-            .ok_or_else(|| format!("handle {} does not hold a {}", self.label(), std::any::type_name::<T>()))
+        self.downcast_ref::<T>().ok_or_else(|| {
+            format!(
+                "handle {} does not hold a {}",
+                self.label(),
+                std::any::type_name::<T>()
+            )
+        })
     }
 
     /// Whether two handles are the same one.
@@ -307,7 +413,10 @@ impl Handle {
         let full = self.0.name.get().copied().unwrap_or("Handle");
         let name = full.rsplit("::").next().unwrap_or(full);
         let number = *self.0.number.get_or_init(|| {
-            let mut counts = COUNTS.get_or_init(|| Mutex::new(HashMap::new())).lock().unwrap_or_else(|e| e.into_inner());
+            let mut counts = COUNTS
+                .get_or_init(|| Mutex::new(HashMap::new()))
+                .lock()
+                .unwrap_or_else(|e| e.into_inner());
             let count = counts.entry(name).or_insert(0);
             *count += 1;
             *count
@@ -561,19 +670,33 @@ pub fn equal(a: &Value, b: &Value) -> Result<bool> {
 pub const EQ_SET_TAG: &str = "lawspec.collections::type::EqSet::EqSetItems";
 
 fn member(value: &Value, candidates: &[Value]) -> Result<bool> {
-    for candidate in candidates { if equal(value, candidate)? { return Ok(true); } }
+    for candidate in candidates {
+        if equal(value, candidate)? {
+            return Ok(true);
+        }
+    }
     Ok(false)
 }
 
 pub fn same_members(left: &[Value], right: &[Value]) -> Result<bool> {
-    for value in left { if !member(value, right)? { return Ok(false); } }
-    for value in right { if !member(value, left)? { return Ok(false); } }
+    for value in left {
+        if !member(value, right)? {
+            return Ok(false);
+        }
+    }
+    for value in right {
+        if !member(value, left)? {
+            return Ok(false);
+        }
+    }
     Ok(true)
 }
 
 pub fn distinct_members(items: &[Value]) -> Result<bool> {
     for (index, value) in items.iter().enumerate() {
-        if member(value, &items[..index])? { return Ok(false); }
+        if member(value, &items[..index])? {
+            return Ok(false);
+        }
     }
     Ok(true)
 }
@@ -666,7 +789,9 @@ pub fn binary(op: &str, domain: &str, a: Value, b: Value) -> Result<Value> {
             if exponent.is_negative() {
                 return Err("negative exponent".into());
             }
-            let exponent = exponent.to_u32().ok_or_else(|| "exponent too large".to_string())?;
+            let exponent = exponent
+                .to_u32()
+                .ok_or_else(|| "exponent too large".to_string())?;
             return Ok(Integer(num_traits::Pow::pow(a.integer()?, exponent)));
         }
         "<" => return Ok(Bool(x < y)),
@@ -958,10 +1083,16 @@ impl TypeRef {
 /// Substitute known types, leaving open parameters in place.
 fn substitute_open(ty: &TypeRef, known: &[TypeRef]) -> Result<TypeRef> {
     Ok(match ty {
-        TypeRef::Parameter(index) => known.get(*index).cloned().unwrap_or(TypeRef::Parameter(*index)),
+        TypeRef::Parameter(index) => known
+            .get(*index)
+            .cloned()
+            .unwrap_or(TypeRef::Parameter(*index)),
         TypeRef::Named(name, arguments) => TypeRef::Named(
             name,
-            arguments.iter().map(|argument| substitute_open(argument, known)).collect::<Result<_>>()?,
+            arguments
+                .iter()
+                .map(|argument| substitute_open(argument, known))
+                .collect::<Result<_>>()?,
         ),
     })
 }
@@ -1043,7 +1174,10 @@ pub struct Schema {
 
 /// Types a generator may choose for an existential that only a value fixes.
 pub fn witness_pool() -> Vec<TypeRef> {
-    vec![TypeRef::Named("Bool", vec![]), TypeRef::Named("Int32", vec![])]
+    vec![
+        TypeRef::Named("Bool", vec![]),
+        TypeRef::Named("Int32", vec![]),
+    ]
 }
 
 /// A witness spells a type as its name, or a parenthesized application.
@@ -1091,7 +1225,10 @@ pub fn parse_witness(text: &str) -> Result<TypeRef> {
 fn intern(name: &str) -> &'static str {
     use std::sync::{Mutex, OnceLock};
     static NAMES: OnceLock<Mutex<std::collections::HashSet<&'static str>>> = OnceLock::new();
-    let mut names = NAMES.get_or_init(|| Mutex::new(std::collections::HashSet::new())).lock().unwrap();
+    let mut names = NAMES
+        .get_or_init(|| Mutex::new(std::collections::HashSet::new()))
+        .lock()
+        .unwrap();
     if let Some(found) = names.get(name) {
         return found;
     }
@@ -1115,24 +1252,39 @@ fn parse_schema_index(tokens: &[&'static str], at: &mut usize) -> Result<SchemaI
     *at += 1;
     if let Some(digits) = token.strip_prefix('c') {
         return Ok(SchemaIndexTerm::Constant(
-            digits.parse().map_err(|_| "malformed index term".to_string())?,
+            digits
+                .parse()
+                .map_err(|_| "malformed index term".to_string())?,
         ));
     }
     if token.starts_with('f') || token.starts_with('p') {
         let reference = &token[1..];
         let mut parts = reference.splitn(2, '.');
-        let path = parts.next().unwrap_or("").split('/').map(|p| p.parse::<usize>())
-            .collect::<std::result::Result<Vec<_>, _>>().map_err(|_| "malformed index field path".to_string())?;
-        if token.starts_with('f') && path.len() != 1 { return Err("malformed index field path".into()); }
+        let path = parts
+            .next()
+            .unwrap_or("")
+            .split('/')
+            .map(|p| p.parse::<usize>())
+            .collect::<std::result::Result<Vec<_>, _>>()
+            .map_err(|_| "malformed index field path".to_string())?;
+        if token.starts_with('f') && path.len() != 1 {
+            return Err("malformed index field path".into());
+        }
         let index = match parts.next() {
-            Some(index) => index.parse().map_err(|_| "malformed index term".to_string())?,
+            Some(index) => index
+                .parse()
+                .map_err(|_| "malformed index term".to_string())?,
             None => 0,
         };
         return Ok(SchemaIndexTerm::Field(path, index));
     }
     let left = parse_schema_index(tokens, at)?;
     let right = parse_schema_index(tokens, at)?;
-    Ok(SchemaIndexTerm::Apply(token, Box::new(left), Box::new(right)))
+    Ok(SchemaIndexTerm::Apply(
+        token,
+        Box::new(left),
+        Box::new(right),
+    ))
 }
 
 /// Natural index arithmetic; `None` when an operation has no natural value.
@@ -1144,7 +1296,10 @@ fn eval_schema_index(
         SchemaIndexTerm::Constant(value) => Some(value.clone()),
         SchemaIndexTerm::Field(path, index) => Some(field(path, *index)?),
         SchemaIndexTerm::Apply(op, left, right) => {
-            let (Some(x), Some(y)) = (eval_schema_index(left, field)?, eval_schema_index(right, field)?) else {
+            let (Some(x), Some(y)) = (
+                eval_schema_index(left, field)?,
+                eval_schema_index(right, field)?,
+            ) else {
                 return Ok(None);
             };
             match *op {
@@ -1153,7 +1308,10 @@ fn eval_schema_index(
                 "*" => Some(x * y),
                 "div" => (y.is_positive()).then(|| x / y),
                 "mod" => (y.is_positive()).then(|| x % y),
-                "^" => y.to_u32().filter(|e| *e <= 64).map(|e| num_traits::Pow::pow(x, e)),
+                "^" => y
+                    .to_u32()
+                    .filter(|e| *e <= 64)
+                    .map(|e| num_traits::Pow::pow(x, e)),
                 _ => return Err("malformed index term".into()),
             }
         }
@@ -1229,7 +1387,11 @@ impl Schema {
     /// Mark handle types, whose values are handles rather than data.
     pub fn with_handles(mut self, handles: &[&'static str]) -> Self {
         for name in handles {
-            if self.definitions.get(name).is_some_and(|d| d.constructors.is_empty()) {
+            if self
+                .definitions
+                .get(name)
+                .is_some_and(|d| d.constructors.is_empty())
+            {
                 self.handles.insert(*name);
             }
         }
@@ -1244,7 +1406,12 @@ impl Schema {
 
     /// Field types with witnessed existentials read from the trailing witness
     /// fields of a value.
-    pub fn witnessed_fields(&self, tag: &str, fields: &[TypeRef], values: &[Value]) -> Result<Vec<TypeRef>> {
+    pub fn witnessed_fields(
+        &self,
+        tag: &str,
+        fields: &[TypeRef],
+        values: &[Value],
+    ) -> Result<Vec<TypeRef>> {
         let Some(witnesses) = self.witnesses.get(tag) else {
             return Ok(fields.to_vec());
         };
@@ -1262,7 +1429,12 @@ impl Schema {
     }
 
     /// Field types at the given witness keys; generated codecs use this too.
-    pub fn fields_at_witnesses(&self, tag: &str, fields: &[TypeRef], keys: &[String]) -> Result<Vec<TypeRef>> {
+    pub fn fields_at_witnesses(
+        &self,
+        tag: &str,
+        fields: &[TypeRef],
+        keys: &[String],
+    ) -> Result<Vec<TypeRef>> {
         let witnesses = self.witnesses.get(tag).copied().unwrap_or(&[]);
         let size = witnesses.iter().copied().max().map_or(0, |m| m + 1);
         let mut known: Vec<TypeRef> = (0..size).map(TypeRef::Parameter).collect();
@@ -1271,12 +1443,18 @@ impl Schema {
             self.check_type(&ty, 0)?;
             known[*index] = ty;
         }
-        fields.iter().map(|field| substitute_open(field, &known)).collect()
+        fields
+            .iter()
+            .map(|field| substitute_open(field, &known))
+            .collect()
     }
 
     /// Each choice of witnesses from the pool: the declared fields at it and
     /// the witness values.
-    pub fn witness_choices(&self, constructor: &ConstructorSchema) -> Result<Vec<(Vec<TypeRef>, Vec<Value>)>> {
+    pub fn witness_choices(
+        &self,
+        constructor: &ConstructorSchema,
+    ) -> Result<Vec<(Vec<TypeRef>, Vec<Value>)>> {
         let Some(witnesses) = self.witnesses.get(constructor.tag) else {
             return Ok(vec![(constructor.fields.clone(), vec![])]);
         };
@@ -1322,29 +1500,49 @@ impl Schema {
             .ok_or_else(|| format!("no index for {name}"))?;
         let tokens: Vec<&'static str> = text.split(' ').collect();
         let term = parse_schema_index(&tokens, &mut 0)?;
-        let types = constructor.fields.iter().map(|t| t.instantiate(arguments)).collect::<Result<Vec<_>>>()?;
+        let types = constructor
+            .fields
+            .iter()
+            .map(|t| t.instantiate(arguments))
+            .collect::<Result<Vec<_>>>()?;
         let mut field = |path: &[usize], child: usize| -> Result<BigInt> {
             self.index_at_path(&types, fields, path, child)
         };
-        eval_schema_index(&term, &mut field)?.ok_or_else(|| format!("index of {tag} has no natural value"))
+        eval_schema_index(&term, &mut field)?
+            .ok_or_else(|| format!("index of {tag} has no natural value"))
     }
 
-    fn index_at_path(&self, types: &[TypeRef], values: &[Value], path: &[usize], index: usize) -> Result<BigInt> {
+    fn index_at_path(
+        &self,
+        types: &[TypeRef],
+        values: &[Value],
+        path: &[usize],
+        index: usize,
+    ) -> Result<BigInt> {
         let (position, rest) = path.split_first().ok_or("empty index field path")?;
         let ty = types.get(*position).ok_or("invalid index field path")?;
         let value = values.get(*position).ok_or("invalid index field path")?;
-        if rest.is_empty() { return self.index_of(ty, value, index); }
+        if rest.is_empty() {
+            return self.index_of(ty, value, index);
+        }
         let (TypeRef::Named(name, arguments), Value::Data(tag, fields)) = (ty, value) else {
             return Err("index field path must traverse a structural record".into());
         };
         if !name.starts_with("lawspec::structural::record::") {
             return Err("index field path must traverse a structural record".into());
         }
-        let definition = self.definitions.get(name).ok_or("unknown structural record")?;
+        let definition = self
+            .definitions
+            .get(name)
+            .ok_or("unknown structural record")?;
         if definition.constructors.len() != 1 || definition.constructors[0].tag != *tag {
             return Err("invalid structural record in index field path".into());
         }
-        let types = definition.constructors[0].fields.iter().map(|t| t.instantiate(arguments)).collect::<Result<Vec<_>>>()?;
+        let types = definition.constructors[0]
+            .fields
+            .iter()
+            .map(|t| t.instantiate(arguments))
+            .collect::<Result<Vec<_>>>()?;
         self.index_at_path(&types, fields, rest, index)
     }
 
@@ -1399,7 +1597,10 @@ impl Schema {
         };
         for definition in schema.definitions.values() {
             for constructor in &definition.constructors {
-                let existentials = schema.refinements.get(constructor.tag).map_or(0, |(_, count)| *count);
+                let existentials = schema
+                    .refinements
+                    .get(constructor.tag)
+                    .map_or(0, |(_, count)| *count);
                 for field in &constructor.fields {
                     schema.check_type(field, definition.parameters + existentials)?;
                 }
@@ -1463,7 +1664,12 @@ impl Schema {
 
     /// Arguments extended with the existentials a constructor's refinements
     /// bind; None when the refinements do not match.
-    fn refine(&self, constructor: &ConstructorSchema, arguments: &[TypeRef], parameters: usize) -> Option<Vec<TypeRef>> {
+    fn refine(
+        &self,
+        constructor: &ConstructorSchema,
+        arguments: &[TypeRef],
+        parameters: usize,
+    ) -> Option<Vec<TypeRef>> {
         let Some((patterns, existentials)) = self.refinements.get(constructor.tag) else {
             return Some(arguments.to_vec());
         };
@@ -1475,26 +1681,43 @@ impl Schema {
             bound: &mut HashMap<usize, TypeRef>,
         ) -> bool {
             match (pattern, actual) {
-                (TypeRef::Parameter(index), _) if *index < parameters => arguments.get(*index) == Some(actual),
-                (TypeRef::Parameter(index), _) => bound.entry(*index).or_insert_with(|| actual.clone()) == actual,
+                (TypeRef::Parameter(index), _) if *index < parameters => {
+                    arguments.get(*index) == Some(actual)
+                }
+                (TypeRef::Parameter(index), _) => {
+                    bound.entry(*index).or_insert_with(|| actual.clone()) == actual
+                }
                 (TypeRef::Named(name, children), TypeRef::Named(other, values)) => {
                     name == other
                         && children.len() == values.len()
-                        && children.iter().zip(values).all(|(child, value)| matches(child, value, arguments, parameters, bound))
+                        && children.iter().zip(values).all(|(child, value)| {
+                            matches(child, value, arguments, parameters, bound)
+                        })
                 }
                 _ => false,
             }
         }
         let mut bound = HashMap::new();
         for (index, pattern) in patterns {
-            if !matches(pattern, arguments.get(*index)?, arguments, parameters, &mut bound) {
+            if !matches(
+                pattern,
+                arguments.get(*index)?,
+                arguments,
+                parameters,
+                &mut bound,
+            ) {
                 return None;
             }
         }
         let mut extended = arguments.to_vec();
         for k in 0..*existentials {
             // A witnessed existential stays open until a value supplies it.
-            extended.push(bound.get(&(parameters + k)).cloned().unwrap_or(TypeRef::Parameter(parameters + k)));
+            extended.push(
+                bound
+                    .get(&(parameters + k))
+                    .cloned()
+                    .unwrap_or(TypeRef::Parameter(parameters + k)),
+            );
         }
         Some(extended)
     }
@@ -1703,21 +1926,17 @@ impl Schema {
                 .zip(&field_types)
                 .enumerate()
                 .map(|(index, (field, field_type))| {
-                    self.walk(
-                        field,
-                        field_type,
-                        bits,
-                        native,
-                        context,
-                    )
-                    .map_err(|error| error.context(format!("{tag} field {index}")))
+                    self.walk(field, field_type, bits, native, context)
+                        .map_err(|error| error.context(format!("{tag} field {index}")))
                 })
                 .collect::<std::result::Result<_, ValidationFailure>>()?;
             if !native {
                 if *name == "lawspec.collections::type::EqSet" {
                     if let [Value::List(items)] = checked.as_slice() {
                         if !distinct_members(items)? {
-                            return Err(ValidationFailure::Rejected("Eq-only set: duplicate equal elements".into()));
+                            return Err(ValidationFailure::Rejected(
+                                "Eq-only set: duplicate equal elements".into(),
+                            ));
                         }
                     }
                 }
@@ -1741,18 +1960,30 @@ impl Schema {
                     let mut at = 1;
                     let left = parse_schema_index(&tokens, &mut at)?;
                     let right = parse_schema_index(&tokens, &mut at)?;
-                    let types = constructor.fields.iter().map(|t| t.instantiate(arguments)).collect::<Result<Vec<_>>>()?;
+                    let types = constructor
+                        .fields
+                        .iter()
+                        .map(|t| t.instantiate(arguments))
+                        .collect::<Result<Vec<_>>>()?;
                     let mut field = |path: &[usize], child: usize| -> Result<BigInt> {
                         self.index_at_path(&types, &checked, path, child)
                     };
                     let x = eval_schema_index(&left, &mut field)?;
                     let y = eval_schema_index(&right, &mut field)?;
                     let holds = match (x, y) {
-                        (Some(x), Some(y)) => if tokens[0] == "==" { x == y } else { x >= y },
+                        (Some(x), Some(y)) => {
+                            if tokens[0] == "==" {
+                                x == y
+                            } else {
+                                x >= y
+                            }
+                        }
                         _ => false,
                     };
                     if !holds {
-                        return Err(ValidationFailure::Rejected(format!("{tag}: index guard {text} failed")));
+                        return Err(ValidationFailure::Rejected(format!(
+                            "{tag}: index guard {text} failed"
+                        )));
                     }
                 }
             }
@@ -1849,6 +2080,30 @@ pub fn all_elements(
     Ok(Value::Bool(true))
 }
 
+pub fn search_elements(
+    universal: bool,
+    value: Value,
+    mut predicate: impl FnMut(Value) -> Result<Value>,
+) -> Result<Value> {
+    let Value::List(values) = value else {
+        return Err("finite search requires a List".into());
+    };
+    let decisive = if universal { -1 } else { 1 };
+    let mut result = -decisive;
+    for item in values {
+        let outcome = predicate(item)?.integer()?;
+        if outcome == BigInt::from(decisive) {
+            return Ok(Value::Integer(outcome));
+        }
+        if outcome == BigInt::from(0) {
+            result = 0;
+        } else if outcome != BigInt::from(-decisive) {
+            return Err("invalid finite search outcome".into());
+        }
+    }
+    Ok(Value::Integer(BigInt::from(result)))
+}
+
 pub fn construct(tag: &str, mut fields: Vec<Value>) -> Result<Value> {
     Ok(match (tag, fields.len()) {
         ("List::Nil", 0) => Value::List(vec![]),
@@ -1929,8 +2184,8 @@ pub fn block_on<F: std::future::Future>(future: F) -> F::Output {
 /// element by element, Absent before Present, Left before Right, and other data
 /// by constructor identity, then fields left to right.
 pub fn compare_values(a: &Value, b: &Value) -> Result<std::cmp::Ordering> {
-    use std::cmp::Ordering::*;
     use Value::*;
+    use std::cmp::Ordering::*;
     fn items(a: &[Value], b: &[Value]) -> Result<std::cmp::Ordering> {
         for (x, y) in a.iter().zip(b) {
             let order = compare_values(x, y)?;
@@ -1950,7 +2205,9 @@ pub fn compare_values(a: &Value, b: &Value) -> Result<std::cmp::Ordering> {
     }
     Ok(match (a, b) {
         (Bool(x), Bool(y)) => x.cmp(y),
-        (Integer(_) | Decimal(_) | Rational(_), Integer(_) | Decimal(_) | Rational(_)) => a.exact()?.cmp(&b.exact()?),
+        (Integer(_) | Decimal(_) | Rational(_), Integer(_) | Decimal(_) | Rational(_)) => {
+            a.exact()?.cmp(&b.exact()?)
+        }
         (Text(x), Text(y)) => x.chars().cmp(y.chars()),
         (Char(x), Char(y)) => x.cmp(y),
         (CodePoint(x), CodePoint(y)) => x.cmp(y),
@@ -1959,7 +2216,9 @@ pub fn compare_values(a: &Value, b: &Value) -> Result<std::cmp::Ordering> {
         (Utf16Text(x), Utf16Text(y)) => x.cmp(y),
         (Bytes(x), Bytes(y)) => x.cmp(y),
         (Unit, Unit) | (Null, Null) | (Undefined, Undefined) => Equal,
-        (Nullable(x), Nullable(y)) | (Optional(x), Optional(y)) | (Maybe(x), Maybe(y)) => optional(x, y)?,
+        (Nullable(x), Nullable(y)) | (Optional(x), Optional(y)) | (Maybe(x), Maybe(y)) => {
+            optional(x, y)?
+        }
         (Left(_), Right(_)) => Less,
         (Right(_), Left(_)) => Greater,
         (Left(x), Left(y)) | (Right(x), Right(y)) => compare_values(x, y)?,
@@ -2150,7 +2409,13 @@ pub struct WorkflowRuntime {
     pub gates: bool,
     cache: HashMap<String, Vec<(Value, Value, i64)>>,
     // A frame per running workflow: the undos of its completed stages.
-    frames: Vec<Vec<(&'static str, Value, fn(&mut Context, Value) -> Result<Value>)>>,
+    frames: Vec<
+        Vec<(
+            &'static str,
+            Value,
+            fn(&mut Context, Value) -> Result<Value>,
+        )>,
+    >,
     // When the running attempt of a stage with a timeout must end.
     deadline: Option<std::time::Instant>,
     // The running attempt's stage and hedge (delay, most).
@@ -2165,11 +2430,23 @@ impl std::fmt::Debug for WorkflowRuntime {
 }
 impl WorkflowRuntime {
     pub fn new(clock: Box<dyn Clock>, seed: u64) -> Self {
-        WorkflowRuntime { clock, random: SplitMix64::new(seed), trace: Vec::new(), state: HashMap::new(), gates: true, cache: HashMap::new(), frames: Vec::new(), deadline: None, hedge: None, virtual_hedge: None }
+        WorkflowRuntime {
+            clock,
+            random: SplitMix64::new(seed),
+            trace: Vec::new(),
+            state: HashMap::new(),
+            gates: true,
+            cache: HashMap::new(),
+            frames: Vec::new(),
+            deadline: None,
+            hedge: None,
+            virtual_hedge: None,
+        }
     }
 }
 
-static DEFAULT_RUNTIME: std::sync::OnceLock<Arc<std::sync::Mutex<WorkflowRuntime>>> = std::sync::OnceLock::new();
+static DEFAULT_RUNTIME: std::sync::OnceLock<Arc<std::sync::Mutex<WorkflowRuntime>>> =
+    std::sync::OnceLock::new();
 
 // A runtime attached to the context keeps its own clock. Otherwise workflow
 // time is the Clock ability's: where a law has installed a Clock handler,
@@ -2181,17 +2458,28 @@ fn workflow_runtime(ctx: &Context) -> Arc<std::sync::Mutex<WorkflowRuntime>> {
         return runtime.clone();
     }
     let runtime = DEFAULT_RUNTIME
-        .get_or_init(|| Arc::new(std::sync::Mutex::new(WorkflowRuntime::new(Box::new(RealClock::default()), 0))))
+        .get_or_init(|| {
+            Arc::new(std::sync::Mutex::new(WorkflowRuntime::new(
+                Box::new(RealClock::default()),
+                0,
+            )))
+        })
         .clone();
-    let Some(installed) = ctx.installed_for(CLOCK_KEY) else { return runtime };
-    let Some(reader) = CLOCK_READER.get() else { return runtime };
+    let Some(installed) = ctx.installed_for(CLOCK_KEY) else {
+        return runtime;
+    };
+    let Some(reader) = CLOCK_READER.get() else {
+        return runtime;
+    };
     let mut view = ctx.clock_view.0.lock().unwrap();
     if let Some((handler, under)) = view.as_ref() {
         if Arc::ptr_eq(handler, &installed.handler) {
             return under.clone();
         }
     }
-    let Some(clock) = reader(&installed) else { return runtime };
+    let Some(clock) = reader(&installed) else {
+        return runtime;
+    };
     let mut under = WorkflowRuntime::new(Box::new(AbilityClock(clock)), 0);
     under.gates = runtime.lock().unwrap().gates;
     let under = Arc::new(std::sync::Mutex::new(under));
@@ -2201,7 +2489,16 @@ fn workflow_runtime(ctx: &Context) -> Arc<std::sync::Mutex<WorkflowRuntime>> {
 
 // The workflow runtime a context's Clock handler gives (workflow_runtime).
 #[derive(Clone, Default)]
-struct ClockView(Arc<std::sync::Mutex<Option<(Arc<dyn std::any::Any + Send + Sync>, Arc<std::sync::Mutex<WorkflowRuntime>>)>>>);
+struct ClockView(
+    Arc<
+        std::sync::Mutex<
+            Option<(
+                Arc<dyn std::any::Any + Send + Sync>,
+                Arc<std::sync::Mutex<WorkflowRuntime>>,
+            )>,
+        >,
+    >,
+);
 impl std::fmt::Debug for ClockView {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_str("ClockView")
@@ -2253,7 +2550,10 @@ pub struct StagePolicy {
 
 /// Runs a workflow whose stages compensate: when it fails, the undos of its
 /// completed stages run, last first.
-pub fn run_workflow(ctx: &mut Context, mut attempt: impl FnMut(&mut Context) -> Result<Value>) -> Result<Value> {
+pub fn run_workflow(
+    ctx: &mut Context,
+    mut attempt: impl FnMut(&mut Context) -> Result<Value>,
+) -> Result<Value> {
     let runtime = workflow_runtime(ctx);
     runtime.lock().unwrap().frames.push(Vec::new());
     let result = attempt(ctx);
@@ -2261,7 +2561,12 @@ pub fn run_workflow(ctx: &mut Context, mut attempt: impl FnMut(&mut Context) -> 
     let result = result?;
     if matches!(result, Value::Left(_)) {
         for (stage, value, undo) in frame.into_iter().rev() {
-            runtime.lock().unwrap().trace.push(TraceEvent { kind: "compensate", stage: stage.into(), number: 0, succeeded: true });
+            runtime.lock().unwrap().trace.push(TraceEvent {
+                kind: "compensate",
+                stage: stage.into(),
+                number: 0,
+                succeeded: true,
+            });
             undo(ctx, value)?;
         }
     }
@@ -2272,28 +2577,59 @@ const STAGE_FAILURE: &str = "lawspec.resilience::type::StageFailure::";
 const GATE: &str = "lawspec.resilience::type::Gate::";
 
 fn stage_failure(kind: &str) -> Value {
-    Value::Left(Box::new(Value::Data(format!("{STAGE_FAILURE}{kind}"), vec![])))
+    Value::Left(Box::new(Value::Data(
+        format!("{STAGE_FAILURE}{kind}"),
+        vec![],
+    )))
 }
 
 fn gate_key(policy: &StagePolicy, gate: &Gate) -> String {
-    format!("{}/{}", if policy.key.is_empty() { policy.stage } else { policy.key }, gate.kind)
+    format!(
+        "{}/{}",
+        if policy.key.is_empty() {
+            policy.stage
+        } else {
+            policy.key
+        },
+        gate.kind
+    )
 }
 
 /// Admits the call (None) or gives the failure to return instead.
-fn pass_gate(ctx: &mut Context, runtime: &Arc<std::sync::Mutex<WorkflowRuntime>>, policy: &StagePolicy, gate: &Gate) -> Result<Option<&'static str>> {
+fn pass_gate(
+    ctx: &mut Context,
+    runtime: &Arc<std::sync::Mutex<WorkflowRuntime>>,
+    policy: &StagePolicy,
+    gate: &Gate,
+) -> Result<Option<&'static str>> {
     let key = gate_key(policy, gate);
-    let failure = match gate.kind { "breaker" => "CircuitOpen", "limit" => "RateLimited", _ => "Saturated" };
+    let failure = match gate.kind {
+        "breaker" => "CircuitOpen",
+        "limit" => "RateLimited",
+        _ => "Saturated",
+    };
     let mut waited = 0i64;
     loop {
         let (now, state) = {
             let guard = runtime.lock().unwrap();
             (guard.clock.now(), guard.state.get(&key).cloned())
         };
-        let state = match state { Some(state) => state, None => (gate.start)(ctx, now)? };
-        let Value::Data(_, mut step) = (gate.admit)(ctx, state, now)? else { return Err("expected a Step".into()) };
+        let state = match state {
+            Some(state) => state,
+            None => (gate.start)(ctx, now)?,
+        };
+        let Value::Data(_, mut step) = (gate.admit)(ctx, state, now)? else {
+            return Err("expected a Step".into());
+        };
         let decision = step.pop().unwrap();
-        runtime.lock().unwrap().state.insert(key.clone(), step.pop().unwrap());
-        let Value::Data(tag, fields) = decision else { return Err("expected a Gate".into()) };
+        runtime
+            .lock()
+            .unwrap()
+            .state
+            .insert(key.clone(), step.pop().unwrap());
+        let Value::Data(tag, fields) = decision else {
+            return Err("expected a Gate".into());
+        };
         if tag == format!("{GATE}Admit") {
             return Ok(None);
         }
@@ -2308,18 +2644,32 @@ fn pass_gate(ctx: &mut Context, runtime: &Arc<std::sync::Mutex<WorkflowRuntime>>
             return Ok(Some(failure));
         }
         let mut guard = runtime.lock().unwrap();
-        guard.trace.push(TraceEvent { kind: "wait", stage: policy.stage.into(), number: delay, succeeded: true });
+        guard.trace.push(TraceEvent {
+            kind: "wait",
+            stage: policy.stage.into(),
+            number: delay,
+            succeeded: true,
+        });
         guard.clock.sleep(delay);
         waited += delay;
     }
 }
 
-fn finish_gate(ctx: &mut Context, runtime: &Arc<std::sync::Mutex<WorkflowRuntime>>, policy: &StagePolicy, gate: &Gate, succeeded: bool) -> Result<()> {
+fn finish_gate(
+    ctx: &mut Context,
+    runtime: &Arc<std::sync::Mutex<WorkflowRuntime>>,
+    policy: &StagePolicy,
+    gate: &Gate,
+    succeeded: bool,
+) -> Result<()> {
     if let Some(finish) = gate.finish {
         let key = gate_key(policy, gate);
         let (now, state) = {
             let guard = runtime.lock().unwrap();
-            (guard.clock.now(), guard.state.get(&key).cloned().ok_or("missing gate state")?)
+            (
+                guard.clock.now(),
+                guard.state.get(&key).cloned().ok_or("missing gate state")?,
+            )
         };
         let next = finish(ctx, state, now, succeeded)?;
         runtime.lock().unwrap().state.insert(key, next);
@@ -2352,7 +2702,11 @@ pub fn retry_delay(retry: &Retry, attempt: i64) -> i64 {
                     return retry.cap;
                 }
             }
-            if retry.cap >= 0 && delay > retry.cap { retry.cap } else { delay }
+            if retry.cap >= 0 && delay > retry.cap {
+                retry.cap
+            } else {
+                delay
+            }
         }
         "fibonacci" => retry.delay * fibonacci(n),
         other => panic!("unknown retry strategy: {other}"),
@@ -2361,7 +2715,13 @@ pub fn retry_delay(retry: &Retry, attempt: i64) -> i64 {
 
 /// Full: [0, delay]; equal: delay/2 + [0, delay/2]; decorrelated:
 /// [base, previous * 3], capped at delay.
-pub fn jittered(jitter: &str, delay: i64, previous: i64, base: i64, random: &mut SplitMix64) -> i64 {
+pub fn jittered(
+    jitter: &str,
+    delay: i64,
+    previous: i64,
+    base: i64,
+    random: &mut SplitMix64,
+) -> i64 {
     match jitter {
         "full" => random.below((delay + 1) as u64) as i64,
         "equal" => {
@@ -2386,16 +2746,31 @@ pub fn run_stage(
 ) -> Result<Value> {
     let runtime = workflow_runtime(ctx);
     let gating = runtime.lock().unwrap().gates;
-    let cache_key = format!("{}/cache", if policy.key.is_empty() { policy.stage } else { policy.key });
+    let cache_key = format!(
+        "{}/cache",
+        if policy.key.is_empty() {
+            policy.stage
+        } else {
+            policy.key
+        }
+    );
     let caching = policy.cache > 0 && gating;
     if caching {
         let mut guard = runtime.lock().unwrap();
         let now = guard.clock.now();
         let hit = guard.cache.get(&cache_key).and_then(|entries| {
-            entries.iter().find(|(entry, _, expires)| now < *expires && equal(entry, &key).unwrap_or(false)).map(|(_, value, _)| value.clone())
+            entries
+                .iter()
+                .find(|(entry, _, expires)| now < *expires && equal(entry, &key).unwrap_or(false))
+                .map(|(_, value, _)| value.clone())
         });
         if let Some(value) = hit {
-            guard.trace.push(TraceEvent { kind: "cached", stage: policy.stage.into(), number: 0, succeeded: true });
+            guard.trace.push(TraceEvent {
+                kind: "cached",
+                stage: policy.stage.into(),
+                number: 0,
+                succeeded: true,
+            });
             return Ok(value);
         }
     }
@@ -2452,13 +2827,17 @@ impl NativeAsync {
     }
 
     /// Starts body as a task of its own.
-    pub fn spawn<T: Send + 'static>(&self, body: impl FnOnce() -> T + Send + 'static) -> std::thread::JoinHandle<T> {
+    pub fn spawn<T: Send + 'static>(
+        &self,
+        body: impl FnOnce() -> T + Send + 'static,
+    ) -> std::thread::JoinHandle<T> {
         std::thread::spawn(body)
     }
 
     /// The task's result; a panic in it is resumed here.
     pub fn wait<T>(&self, task: std::thread::JoinHandle<T>) -> T {
-        task.join().unwrap_or_else(|panic| std::panic::resume_unwind(panic))
+        task.join()
+            .unwrap_or_else(|panic| std::panic::resume_unwind(panic))
     }
 
     /// A future's output, polled on this thread (see block_on).
@@ -2474,14 +2853,19 @@ impl NativeAsync {
             let tasks: Vec<_> = bodies.into_iter().map(|body| scope.spawn(body)).collect();
             tasks.into_iter().map(|task| task.join()).collect()
         });
-        results.into_iter().map(|result| result.unwrap_or_else(|panic| std::panic::resume_unwind(panic))).collect()
+        results
+            .into_iter()
+            .map(|result| result.unwrap_or_else(|panic| std::panic::resume_unwind(panic)))
+            .collect()
     }
 }
 
 /// An all group's step results, in declaration order, as the runtime's
 /// NativeAsync runs them: every step finishes before the first failure (or
 /// panic), in declaration order, is the group's.
-pub fn concurrently<'a>(steps: Vec<Box<dyn FnOnce() -> Result<Value> + Send + 'a>>) -> Result<Vec<Value>> {
+pub fn concurrently<'a>(
+    steps: Vec<Box<dyn FnOnce() -> Result<Value> + Send + 'a>>,
+) -> Result<Vec<Value>> {
     ASYNC.all(steps).into_iter().collect()
 }
 
@@ -2519,7 +2903,9 @@ pub fn await_step<F: std::future::Future>(
         return Ok(convert(ASYNC.wait_future(start())));
     }
     let (stage, delay, most) = match hedge {
-        Some((stage, (delay, most))) => (stage, std::time::Duration::from_micros(delay as u64), most),
+        Some((stage, (delay, most))) => {
+            (stage, std::time::Duration::from_micros(delay as u64), most)
+        }
         None => ("", std::time::Duration::ZERO, 1),
     };
     struct Unpark(std::thread::Thread);
@@ -2536,10 +2922,19 @@ pub fn await_step<F: std::future::Future>(
         if launch {
             started += 1;
             if started > 1 {
-                runtime.lock().unwrap().trace.push(TraceEvent { kind: "hedge", stage: stage.into(), number: started, succeeded: true });
+                runtime.lock().unwrap().trace.push(TraceEvent {
+                    kind: "hedge",
+                    stage: stage.into(),
+                    number: started,
+                    succeeded: true,
+                });
             }
             pending.push(Box::pin(start()));
-            next = if started < most { Some(std::time::Instant::now() + delay) } else { None };
+            next = if started < most {
+                Some(std::time::Instant::now() + delay)
+            } else {
+                None
+            };
             launch = false;
         }
         let mut last = None;
@@ -2591,7 +2986,12 @@ fn virtually_hedged<F: std::future::Future>(
     let mut value = convert(ASYNC.wait_future(start()));
     while matches!(value, Value::Left(_)) && started < most {
         started += 1;
-        runtime.lock().unwrap().trace.push(TraceEvent { kind: "hedge", stage: stage.into(), number: started, succeeded: true });
+        runtime.lock().unwrap().trace.push(TraceEvent {
+            kind: "hedge",
+            stage: stage.into(),
+            number: started,
+            succeeded: true,
+        });
         value = convert(ASYNC.wait_future(start()));
     }
     value
@@ -2626,7 +3026,9 @@ fn scoped(
         let mut guard = runtime.lock().unwrap();
         let outer = (guard.deadline, guard.hedge, guard.virtual_hedge);
         if policy.timeout > 0 {
-            guard.deadline = Some(std::time::Instant::now() + std::time::Duration::from_micros(policy.timeout as u64));
+            guard.deadline = Some(
+                std::time::Instant::now() + std::time::Duration::from_micros(policy.timeout as u64),
+            );
         }
         guard.hedge = policy.hedge.map(|hedge| (policy.stage, hedge));
         guard.virtual_hedge = None;
@@ -2667,7 +3069,9 @@ fn virtually_scoped(
     };
     match result {
         Err(error) if error.contains(TIMED_OUT) => Ok(stage_failure("TimedOut")),
-        Ok(_) if policy.timeout > 0 && ended - began > policy.timeout => Ok(stage_failure("TimedOut")),
+        Ok(_) if policy.timeout > 0 && ended - began > policy.timeout => {
+            Ok(stage_failure("TimedOut"))
+        }
         other => other,
     }
 }
@@ -2678,24 +3082,41 @@ fn attempts(
     policy: &StagePolicy,
     mut attempt: impl FnMut(&mut Context) -> Result<Value>,
 ) -> Result<Value> {
-    let event = |kind: &'static str, number: i64, succeeded: bool| TraceEvent { kind, stage: policy.stage.into(), number, succeeded };
+    let event = |kind: &'static str, number: i64, succeeded: bool| TraceEvent {
+        kind,
+        stage: policy.stage.into(),
+        number,
+        succeeded,
+    };
     let (mut number, mut previous) = (1i64, 0i64);
     loop {
-        runtime.lock().unwrap().trace.push(event("start", number, false));
+        runtime
+            .lock()
+            .unwrap()
+            .trace
+            .push(event("start", number, false));
         let result = scoped(ctx, runtime, policy, &mut attempt)?;
         let failure = match &result {
             Value::Left(error) => Some((**error).clone()),
             _ => None,
         };
-        runtime.lock().unwrap().trace.push(event("finish", number, failure.is_none()));
-        let (Some(mut failure), Some(retry)) = (failure, &policy.retry) else { return Ok(result) };
+        runtime
+            .lock()
+            .unwrap()
+            .trace
+            .push(event("finish", number, failure.is_none()));
+        let (Some(mut failure), Some(retry)) = (failure, &policy.retry) else {
+            return Ok(result);
+        };
         if retry.attempts > 0 && number >= retry.attempts {
             return Ok(result);
         }
         if policy.wraps {
             // Only the step's own failures and timeouts are retried.
             match failure {
-                Value::Data(ref tag, ref mut fields) if *tag == format!("{STAGE_FAILURE}StepFailed") && fields.len() == 1 => {
+                Value::Data(ref tag, ref mut fields)
+                    if *tag == format!("{STAGE_FAILURE}StepFailed") && fields.len() == 1 =>
+                {
                     failure = fields.pop().unwrap();
                 }
                 Value::Data(ref tag, _) if *tag == format!("{STAGE_FAILURE}TimedOut") => {}
@@ -2709,14 +3130,26 @@ fn attempts(
         }
         number += 1;
         let delay = if retry.strategy == "custom" {
-            match (retry.decide.expect("a custom strategy decides"))(ctx, number, failure, previous)? {
+            match (retry.decide.expect("a custom strategy decides"))(
+                ctx, number, failure, previous,
+            )? {
                 Some(delay) => delay,
                 None => return Ok(result),
             }
         } else {
-            let base = if retry.strategy == "immediate" { 0 } else { retry_delay(retry, 2) };
+            let base = if retry.strategy == "immediate" {
+                0
+            } else {
+                retry_delay(retry, 2)
+            };
             let mut guard = runtime.lock().unwrap();
-            jittered(retry.jitter, retry_delay(retry, number), previous, base, &mut guard.random)
+            jittered(
+                retry.jitter,
+                retry_delay(retry, number),
+                previous,
+                base,
+                &mut guard.random,
+            )
         };
         let mut guard = runtime.lock().unwrap();
         guard.trace.push(event("sleep", delay, true));
@@ -2727,16 +3160,24 @@ fn attempts(
 
 /// A logical Duration of whole microseconds.
 pub fn duration(micros: i64) -> Value {
-    Value::Data(DURATION_TAG.into(), vec![Value::Integer(BigInt::from(micros))])
+    Value::Data(
+        DURATION_TAG.into(),
+        vec![Value::Integer(BigInt::from(micros))],
+    )
 }
 
 /// A RetryDecision's delay, or None to stop.
 pub fn retry_decision(decision: Value) -> Result<Option<i64>> {
     match decision {
-        Value::Data(tag, mut fields) if tag == "lawspec.time::type::RetryDecision::RetryAfter" && fields.len() == 1 => {
+        Value::Data(tag, mut fields)
+            if tag == "lawspec.time::type::RetryDecision::RetryAfter" && fields.len() == 1 =>
+        {
             match fields.pop().unwrap() {
                 Value::Data(_, mut micros) if micros.len() == 1 => match micros.pop().unwrap() {
-                    Value::Integer(n) => n.to_i64().map(Some).ok_or_else(|| "delay outside i64".into()),
+                    Value::Integer(n) => n
+                        .to_i64()
+                        .map(Some)
+                        .ok_or_else(|| "delay outside i64".into()),
                     _ => Err("expected Duration microseconds".into()),
                 },
                 _ => Err("expected a Duration".into()),
@@ -2758,18 +3199,23 @@ impl IntoValue for std::time::Duration {
             self.subsec_nanos() % 1000 == 0,
             "a Duration is a non-negative whole number of microseconds"
         );
-        Value::Data(DURATION_TAG.into(), vec![Value::Integer(BigInt::from(self.as_micros()))])
+        Value::Data(
+            DURATION_TAG.into(),
+            vec![Value::Integer(BigInt::from(self.as_micros()))],
+        )
     }
 }
 impl FromValue for std::time::Duration {
     fn from_value(value: Value) -> Result<Self> {
         match value {
-            Value::Data(tag, fields) if tag == DURATION_TAG && fields.len() == 1 => match &fields[0] {
-                Value::Integer(micros) => u64::try_from(micros)
-                    .map(std::time::Duration::from_micros)
-                    .map_err(|_| "Duration outside the native range".into()),
-                _ => Err("expected Duration microseconds".into()),
-            },
+            Value::Data(tag, fields) if tag == DURATION_TAG && fields.len() == 1 => {
+                match &fields[0] {
+                    Value::Integer(micros) => u64::try_from(micros)
+                        .map(std::time::Duration::from_micros)
+                        .map_err(|_| "Duration outside the native range".into()),
+                    _ => Err("expected Duration microseconds".into()),
+                }
+            }
             _ => Err("expected Duration".into()),
         }
     }
@@ -2817,14 +3263,22 @@ impl<T: IntoValue> IntoValue for std::collections::BTreeSet<T> {
 }
 impl<T: FromValue + Ord> FromValue for std::collections::BTreeSet<T> {
     fn from_value(value: Value) -> Result<Self> {
-        collection_items(value)?.into_iter().map(T::from_value).collect()
+        collection_items(value)?
+            .into_iter()
+            .map(T::from_value)
+            .collect()
     }
 }
 impl<K: IntoValue, V: IntoValue> IntoValue for std::collections::BTreeMap<K, V> {
     fn into_value(self) -> Value {
         Value::List(
             self.into_iter()
-                .map(|(k, v)| Value::Data("lawspec.collections::type::Entry::Entry".into(), vec![k.into_value(), v.into_value()]))
+                .map(|(k, v)| {
+                    Value::Data(
+                        "lawspec.collections::type::Entry::Entry".into(),
+                        vec![k.into_value(), v.into_value()],
+                    )
+                })
                 .collect(),
         )
     }
@@ -2836,7 +3290,10 @@ impl<K: FromValue + Ord, V: FromValue> FromValue for std::collections::BTreeMap<
             .map(|entry| match entry {
                 Value::Data(_, fields) if fields.len() == 2 => {
                     let mut fields = fields.into_iter();
-                    Ok((K::from_value(fields.next().unwrap())?, V::from_value(fields.next().unwrap())?))
+                    Ok((
+                        K::from_value(fields.next().unwrap())?,
+                        V::from_value(fields.next().unwrap())?,
+                    ))
                 }
                 _ => Err("expected a KeyVal entry".into()),
             })
@@ -2850,7 +3307,10 @@ impl<T: IntoValue> IntoValue for std::collections::VecDeque<T> {
 }
 impl<T: FromValue> FromValue for std::collections::VecDeque<T> {
     fn from_value(value: Value) -> Result<Self> {
-        collection_items(value)?.into_iter().map(T::from_value).collect()
+        collection_items(value)?
+            .into_iter()
+            .map(T::from_value)
+            .collect()
     }
 }
 
@@ -2865,7 +3325,11 @@ pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value> {
     if name == "select" && args.len() == 3 {
         let other = args.pop().unwrap();
         let chosen = args.pop().unwrap();
-        return Ok(if matches!(args[0], Bool(true)) { chosen } else { other });
+        return Ok(if matches!(args[0], Bool(true)) {
+            chosen
+        } else {
+            other
+        });
     }
     if name == "compare" && args.len() == 2 {
         let tag = match compare_values(&args[0], &args[1])? {
@@ -2873,7 +3337,10 @@ pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value> {
             std::cmp::Ordering::Equal => "Equal",
             std::cmp::Ordering::Greater => "Greater",
         };
-        return Ok(Data(format!("lawspec.collections::type::Ordering::{tag}"), vec![]));
+        return Ok(Data(
+            format!("lawspec.collections::type::Ordering::{tag}"),
+            vec![],
+        ));
     }
     if name == "round" && args.len() == 2 {
         let scale = i32::from_value(args.pop().unwrap())?;
@@ -2922,6 +3389,38 @@ pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value> {
     })
 }
 
+/// A mutex's value, even when a panicking holder poisoned it: handlers keep
+/// their state and context behind one.
+pub fn locked<T>(mutex: &std::sync::Mutex<T>) -> std::sync::MutexGuard<'_, T> {
+    mutex
+        .lock()
+        .unwrap_or_else(|poisoned| poisoned.into_inner())
+}
+
+/// A handler operation's result: its error ends the operation, which the
+/// ability's trait cannot return.
+pub fn answered<T>(result: Result<T>) -> T {
+    result.unwrap_or_else(|error| panic!("{error}"))
+}
+
+/// A law's expectation: the values are equal, or the failure says where the
+/// expectation is written, both values and where they first differ.
+pub fn expect_equal(actual: &Value, expected: &Value, context: &str) -> Result<()> {
+    if equal(actual, expected)? {
+        Ok(())
+    } else {
+        Err(format!(
+            "{context}: {actual:?} != {expected:?}{}",
+            difference(actual, expected)
+        ))
+    }
+}
+
+/// A call's result; its error names what was called.
+pub fn called(name: &str, result: Result<Value>) -> Result<Value> {
+    result.map_err(|error| format!("{name}: {error}"))
+}
+
 /// Where a structured actual value first differs from the expected one, by
 /// the portable rendering: "" when they agree or neither has parts.
 pub fn difference(actual: &Value, expected: &Value) -> String {
@@ -2942,11 +3441,19 @@ pub fn difference(actual: &Value, expected: &Value) -> String {
         if ta != tb || (ta.is_some() && xs.len() != ys.len()) {
             break;
         }
-        match xs.iter().zip(ys.iter()).position(|(x, y)| render(x) != render(y)) {
+        match xs
+            .iter()
+            .zip(ys.iter())
+            .position(|(x, y)| render(x) != render(y))
+        {
             Some(i) => {
                 path.push(match &ta {
                     None => format!("item {}", i + 1),
-                    Some(tag) => format!("field {} of {}", i + 1, tag.rsplit("::").next().unwrap_or(tag)),
+                    Some(tag) => format!(
+                        "field {} of {}",
+                        i + 1,
+                        tag.rsplit("::").next().unwrap_or(tag)
+                    ),
                 });
                 (a, b) = (xs[i], ys[i]);
             }
@@ -2965,7 +3472,10 @@ pub fn difference(actual: &Value, expected: &Value) -> String {
         Some((x, y)) => (x.to_string(), y.to_string()),
         None => (render(a), render(b)),
     };
-    format!(" | first difference at {}: expected {shown_b}, actual {shown_a}", path.join(", "))
+    format!(
+        " | first difference at {}: expected {shown_b}, actual {shown_a}",
+        path.join(", ")
+    )
 }
 
 /// The matcher, recording and resource helpers, or None for another helper.
@@ -2989,11 +3499,23 @@ fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
         ("append", [Text(a), Text(b)]) => Text(format!("{a}{b}")),
         ("append", [Bytes(a), Bytes(b)]) => Bytes([a.clone(), b.clone()].concat()),
         ("append", [List(a), List(b)]) => List([a.clone(), b.clone()].concat()),
-        ("slice", [Text(t), from, to]) => Text(slice(&t.chars().collect::<Vec<_>>(), from, to).into_iter().collect()),
+        ("slice", [Text(t), from, to]) => Text(
+            slice(&t.chars().collect::<Vec<_>>(), from, to)
+                .into_iter()
+                .collect(),
+        ),
         ("slice", [Bytes(b), from, to]) => Bytes(slice(b, from, to)),
         ("slice", [List(xs), from, to]) => List(slice(xs, from, to)),
-        ("at", [List(xs), Integer(k)]) => Maybe(k.to_usize().and_then(|i| xs.get(i)).map(|v| Box::new(v.clone()))),
-        ("at", [Bytes(b), Integer(k)]) => Maybe(k.to_usize().and_then(|i| b.get(i)).map(|o| Box::new(Integer(BigInt::from(*o))))),
+        ("at", [List(xs), Integer(k)]) => Maybe(
+            k.to_usize()
+                .and_then(|i| xs.get(i))
+                .map(|v| Box::new(v.clone())),
+        ),
+        ("at", [Bytes(b), Integer(k)]) => Maybe(
+            k.to_usize()
+                .and_then(|i| b.get(i))
+                .map(|o| Box::new(Integer(BigInt::from(*o)))),
+        ),
         ("range", [Integer(lo), Integer(hi)]) => {
             let mut values = vec![];
             let mut k = lo.clone();
@@ -3007,7 +3529,9 @@ fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
         ("bytesOf", [List(xs)]) => Bytes(
             xs.iter()
                 .map(|v| match v {
-                    Integer(k) => k.to_u8().ok_or_else(|| "an octet is from 0 to 255".to_string()),
+                    Integer(k) => k
+                        .to_u8()
+                        .ok_or_else(|| "an octet is from 0 to 255".to_string()),
                     _ => Err("expected an octet".to_string()),
                 })
                 .collect::<Result<Vec<u8>>>()?,
@@ -3041,7 +3565,10 @@ fn matcher_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
         "textContains" => Value::Bool(text(0)?.contains(text(1)?)),
         "regexMatches" => Value::Bool(regex_matches(text(0)?, text(1)?)?),
         "incompleteSearch" => return Err(text(0)?.to_owned()),
-        "recorded" => Value::Bool(recorded(text(0)?, args.get(1).ok_or("recorded expects a value")?)?),
+        "recorded" => Value::Bool(recorded(
+            text(0)?,
+            args.get(1).ok_or("recorded expects a value")?,
+        )?),
         "acquireResource" => Value::Text(acquire_resource(text(0)?)?),
         "releaseResource" => {
             release_resource(text(0)?, text(1)?)?;
@@ -3086,14 +3613,22 @@ impl RegexParser<'_> {
     }
 
     fn fail<T>(&self, message: &str) -> Result<T> {
-        Err(format!("regex {:?} is not portable: {message}", self.pattern))
+        Err(format!(
+            "regex {:?} is not portable: {message}",
+            self.pattern
+        ))
     }
 
     fn escape(&mut self) -> Result<RegexItem> {
         self.pos += 1;
-        let Some(c) = self.peek() else { return self.fail("the regex ends with a lone \\") };
+        let Some(c) = self.peek() else {
+            return self.fail("the regex ends with a lone \\");
+        };
         self.pos += 1;
-        let item = |negated: bool, ranges: &[(u32, u32)]| RegexItem { negated, ranges: ranges.to_vec() };
+        let item = |negated: bool, ranges: &[(u32, u32)]| RegexItem {
+            negated,
+            ranges: ranges.to_vec(),
+        };
         Ok(match char::from_u32(c).unwrap_or('\0') {
             'd' => item(false, REGEX_DIGITS),
             'D' => item(true, REGEX_DIGITS),
@@ -3117,7 +3652,10 @@ impl RegexParser<'_> {
             return self.fail("write \\[ for the character inside a class");
         }
         self.pos += 1;
-        Ok(RegexItem { negated: false, ranges: vec![(c, c)] })
+        Ok(RegexItem {
+            negated: false,
+            ranges: vec![(c, c)],
+        })
     }
 
     fn single(item: &RegexItem) -> bool {
@@ -3133,7 +3671,9 @@ impl RegexParser<'_> {
         let mut items = vec![];
         let mut first = true;
         loop {
-            let Some(c) = self.peek() else { return self.fail("a [ is never closed") };
+            let Some(c) = self.peek() else {
+                return self.fail("a [ is never closed");
+            };
             if c == ']' as u32 {
                 if first {
                     return self.fail("an empty class is not portable");
@@ -3142,20 +3682,34 @@ impl RegexParser<'_> {
                 return Ok(RegexNode::Set(negated, items));
             }
             first = false;
-            let item = if c == '\\' as u32 { self.escape()? } else { self.literal()? };
+            let item = if c == '\\' as u32 {
+                self.escape()?
+            } else {
+                self.literal()?
+            };
             if Self::single(&item)
                 && self.peek() == Some('-' as u32)
-                && self.cs.get(self.pos + 1).is_some_and(|&next| next != ']' as u32)
+                && self
+                    .cs
+                    .get(self.pos + 1)
+                    .is_some_and(|&next| next != ']' as u32)
             {
                 self.pos += 1;
-                let high = if self.peek() == Some('\\' as u32) { self.escape()? } else { self.literal()? };
+                let high = if self.peek() == Some('\\' as u32) {
+                    self.escape()?
+                } else {
+                    self.literal()?
+                };
                 if !Self::single(&high) {
                     return self.fail("a range ends with one character");
                 }
                 if high.ranges[0].0 < item.ranges[0].0 {
                     return self.fail("a range must run from low to high");
                 }
-                items.push(RegexItem { negated: false, ranges: vec![(item.ranges[0].0, high.ranges[0].0)] });
+                items.push(RegexItem {
+                    negated: false,
+                    ranges: vec![(item.ranges[0].0, high.ranges[0].0)],
+                });
             } else {
                 items.push(item);
             }
@@ -3164,10 +3718,16 @@ impl RegexParser<'_> {
 
     fn digits(&mut self) -> String {
         let start = self.pos;
-        while self.peek().is_some_and(|c| ('0' as u32..='9' as u32).contains(&c)) {
+        while self
+            .peek()
+            .is_some_and(|c| ('0' as u32..='9' as u32).contains(&c))
+        {
             self.pos += 1;
         }
-        self.cs[start..self.pos].iter().filter_map(|&c| char::from_u32(c)).collect()
+        self.cs[start..self.pos]
+            .iter()
+            .filter_map(|&c| char::from_u32(c))
+            .collect()
     }
 
     fn atom(&mut self) -> Result<RegexNode> {
@@ -3193,19 +3753,32 @@ impl RegexParser<'_> {
             '[' => self.class(),
             '.' => {
                 self.pos += 1;
-                Ok(RegexNode::Set(true, vec![RegexItem { negated: false, ranges: vec![(10, 10)] }]))
+                Ok(RegexNode::Set(
+                    true,
+                    vec![RegexItem {
+                        negated: false,
+                        ranges: vec![(10, 10)],
+                    }],
+                ))
             }
             '\\' => Ok(RegexNode::Set(false, vec![self.escape()?])),
             _ if "*+?{^$]}".contains(ch) => self.fail(&format!("unexpected {ch}")),
             _ => {
                 self.pos += 1;
-                Ok(RegexNode::Set(false, vec![RegexItem { negated: false, ranges: vec![(c, c)] }]))
+                Ok(RegexNode::Set(
+                    false,
+                    vec![RegexItem {
+                        negated: false,
+                        ranges: vec![(c, c)],
+                    }],
+                ))
             }
         }
     }
 
     fn quantifier(c: Option<u32>) -> bool {
-        c.and_then(char::from_u32).is_some_and(|ch| "*+?{".contains(ch))
+        c.and_then(char::from_u32)
+            .is_some_and(|ch| "*+?{".contains(ch))
     }
 
     fn quantified(&mut self, node: RegexNode) -> Result<RegexNode> {
@@ -3241,7 +3814,8 @@ impl RegexParser<'_> {
                 let low: usize = low_text.parse().unwrap_or(usize::MAX);
                 let high: Option<usize> = high_text.map(|t| t.parse().unwrap_or(usize::MAX));
                 if low > 1000 || high.is_some_and(|h| h > 1000 || h < low) {
-                    return self.fail("a repetition count is at most 1000, and n must not exceed m");
+                    return self
+                        .fail("a repetition count is at most 1000, and n must not exceed m");
                 }
                 repeat(low, high)
             }
@@ -3270,12 +3844,20 @@ impl RegexParser<'_> {
             self.pos += 1;
             branches.push(self.sequence()?);
         }
-        Ok(if branches.len() == 1 { branches.pop().unwrap() } else { RegexNode::Alternatives(branches) })
+        Ok(if branches.len() == 1 {
+            branches.pop().unwrap()
+        } else {
+            RegexNode::Alternatives(branches)
+        })
     }
 }
 
 fn regex_parse(pattern: &str) -> Result<RegexNode> {
-    let mut parser = RegexParser { pattern, cs: pattern.chars().map(|c| c as u32).collect(), pos: 0 };
+    let mut parser = RegexParser {
+        pattern,
+        cs: pattern.chars().map(|c| c as u32).collect(),
+        pos: 0,
+    };
     let node = parser.alternatives()?;
     if parser.pos != parser.cs.len() {
         return parser.fail("a ) has no ( before it");
@@ -3292,19 +3874,24 @@ fn regex_reach(node: &RegexNode, text: &[u32], positions: Vec<bool>) -> Vec<bool
                     continue;
                 }
                 let c = text[p];
-                let inside = items
-                    .iter()
-                    .any(|item| item.negated != item.ranges.iter().any(|&(lo, hi)| lo <= c && c <= hi));
+                let inside = items.iter().any(|item| {
+                    item.negated != item.ranges.iter().any(|&(lo, hi)| lo <= c && c <= hi)
+                });
                 if inside != *negated {
                     next[p + 1] = true;
                 }
             }
             next
         }
-        RegexNode::Sequence(items) => items.iter().fold(positions, |at, item| regex_reach(item, text, at)),
+        RegexNode::Sequence(items) => items
+            .iter()
+            .fold(positions, |at, item| regex_reach(item, text, at)),
         RegexNode::Alternatives(branches) => {
             for branch in branches {
-                for (p, at) in regex_reach(branch, text, positions.clone()).into_iter().enumerate() {
+                for (p, at) in regex_reach(branch, text, positions.clone())
+                    .into_iter()
+                    .enumerate()
+                {
                     next[p] |= at;
                 }
             }
@@ -3349,7 +3936,10 @@ pub fn regex_matches(pattern: &str, text: &str) -> Result<bool> {
         Some(node) => node,
         None => {
             let node = regex_parse(pattern)?;
-            REGEX_CACHE.lock().unwrap().insert(pattern.to_string(), node.clone());
+            REGEX_CACHE
+                .lock()
+                .unwrap()
+                .insert(pattern.to_string(), node.clone());
             node
         }
     };
@@ -3398,7 +3988,9 @@ pub fn recorded(key: &str, value: &Value) -> Result<bool> {
         return Ok(true);
     }
     let Ok(stored) = std::fs::read_to_string(&path) else {
-        return Err(format!("no recording recorded/{key}; run lawspec test --update-recorded to record {text}"));
+        return Err(format!(
+            "no recording recorded/{key}; run lawspec test --update-recorded to record {text}"
+        ));
     };
     let stored = stored.strip_suffix('\n').unwrap_or(&stored);
     if stored != text {
@@ -3458,9 +4050,36 @@ impl Drop for SharedGuard {
     }
 }
 
+/// Runs body, then release, even when body fails or panics: a law's case
+/// with a resource it acquired. Body's failure is reported before
+/// release's.
+pub fn bracket(
+    ctx: &mut Context,
+    body: impl FnOnce(&mut Context) -> Result<()>,
+    release: impl FnOnce(&mut Context) -> Result<Value>,
+) -> Result<()> {
+    let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| body(ctx)));
+    let released = release(ctx);
+    match outcome {
+        Ok(result) => {
+            result?;
+            released?;
+            Ok(())
+        }
+        Err(panic) => std::panic::resume_unwind(panic),
+    }
+}
+
 /// A concurrent resource (resource T is concurrent) is held by any number of
 /// cases at once, and reset only when none holds it.
-pub fn share<A, R, F>(key: &str, ctx: &mut Context, acquire: A, reset: R, release: F, concurrent: bool) -> Result<(Value, SharedGuard)>
+pub fn share<A, R, F>(
+    key: &str,
+    ctx: &mut Context,
+    acquire: A,
+    reset: R,
+    release: F,
+    concurrent: bool,
+) -> Result<(Value, SharedGuard)>
 where
     A: FnOnce(&mut Context) -> Result<Value>,
     R: FnOnce(&mut Context, Value) -> Result<Value>,
@@ -3468,8 +4087,15 @@ where
 {
     if concurrent {
         let mut shared = SHARED.lock().unwrap_or_else(|e| e.into_inner());
-        let entry = shared.get_or_insert_with(HashMap::new).entry(key.to_string())
-            .or_insert(SharedEntry { busy: false, users: 0, concurrent: true, value: None });
+        let entry = shared
+            .get_or_insert_with(HashMap::new)
+            .entry(key.to_string())
+            .or_insert(SharedEntry {
+                busy: false,
+                users: 0,
+                concurrent: true,
+                value: None,
+            });
         let value = match entry.value.clone() {
             Some(value) => {
                 if entry.users == 0 {
@@ -3483,7 +4109,9 @@ where
                 let kept = value.clone();
                 let mut releases = SHARED_RELEASES.lock().unwrap_or_else(|e| e.into_inner());
                 if releases.is_empty() {
-                    unsafe { atexit(release_shared); }
+                    unsafe {
+                        atexit(release_shared);
+                    }
                 }
                 releases.push(Box::new(move || {
                     let ctx = &mut Context::testing();
@@ -3499,8 +4127,15 @@ where
     let held = {
         let mut shared = SHARED.lock().unwrap_or_else(|e| e.into_inner());
         loop {
-            let entry = shared.get_or_insert_with(HashMap::new).entry(key.to_string())
-                .or_insert(SharedEntry { busy: false, users: 0, concurrent: false, value: None });
+            let entry = shared
+                .get_or_insert_with(HashMap::new)
+                .entry(key.to_string())
+                .or_insert(SharedEntry {
+                    busy: false,
+                    users: 0,
+                    concurrent: false,
+                    value: None,
+                });
             if !entry.busy {
                 entry.busy = true;
                 break entry.value.clone();
@@ -3525,7 +4160,9 @@ where
             let kept = value.clone();
             let mut releases = SHARED_RELEASES.lock().unwrap_or_else(|e| e.into_inner());
             if releases.is_empty() {
-                unsafe { atexit(release_shared); }
+                unsafe {
+                    atexit(release_shared);
+                }
             }
             releases.push(Box::new(move || {
                 let ctx = &mut Context::testing();
@@ -3551,7 +4188,8 @@ pub fn acquire_resource(kind: &str) -> Result<String> {
                 .duration_since(std::time::UNIX_EPOCH)
                 .map(|d| d.as_nanos())
                 .unwrap_or(0);
-            let path = std::env::temp_dir().join(format!("lawspec-{}-{nanos}-{unique}", std::process::id()));
+            let path = std::env::temp_dir()
+                .join(format!("lawspec-{}-{nanos}-{unique}", std::process::id()));
             if kind == "temporaryDirectory" {
                 std::fs::create_dir(&path).map_err(|e| e.to_string())?;
             } else {
@@ -3567,7 +4205,10 @@ pub fn acquire_resource(kind: &str) -> Result<String> {
             *held = true;
             let mut saved: Vec<(String, String)> = std::env::vars().collect();
             saved.sort();
-            Ok(saved.into_iter().map(|(k, v)| format!("{k}\0{v}\0")).collect())
+            Ok(saved
+                .into_iter()
+                .map(|(k, v)| format!("{k}\0{v}\0"))
+                .collect())
         }
         _ => Err(format!("unknown resource kind {kind}")),
     }
@@ -3583,7 +4224,11 @@ pub fn release_resource(kind: &str, value: &str) -> Result<()> {
         }
         "environment" => {
             let parts: Vec<&str> = value.split('\0').collect();
-            let saved: HashMap<&str, &str> = parts.chunks(2).filter(|c| c.len() == 2).map(|c| (c[0], c[1])).collect();
+            let saved: HashMap<&str, &str> = parts
+                .chunks(2)
+                .filter(|c| c.len() == 2)
+                .map(|c| (c[0], c[1]))
+                .collect();
             for (name, _) in std::env::vars() {
                 if !saved.contains_key(name.as_str()) {
                     // SAFETY: the saved environment holds the environment for
@@ -3608,7 +4253,10 @@ pub fn release_resource(kind: &str, value: &str) -> Result<()> {
 /// A TCP port on the local host that is free now.
 pub fn free_port() -> Result<u16> {
     let listener = std::net::TcpListener::bind("127.0.0.1:0").map_err(|e| e.to_string())?;
-    listener.local_addr().map(|a| a.port()).map_err(|e| e.to_string())
+    listener
+        .local_addr()
+        .map(|a| a.port())
+        .map_err(|e| e.to_string())
 }
 
 // Portable generation for stateful models. A type descriptor is an
@@ -3699,7 +4347,11 @@ pub fn read_descriptor(text: &str) -> Vec<Sexp> {
             }
             _ => {
                 let start = *at;
-                while *at < chars.len() && !space(chars[*at]) && chars[*at] != '(' && chars[*at] != ')' {
+                while *at < chars.len()
+                    && !space(chars[*at])
+                    && chars[*at] != '('
+                    && chars[*at] != ')'
+                {
                     *at += 1;
                 }
                 let atom: String = chars[start..*at].iter().collect();
@@ -3707,7 +4359,9 @@ pub fn read_descriptor(text: &str) -> Vec<Sexp> {
                 if atom == "_" {
                     Sexp::Blank
                 } else if !digits.is_empty() && digits.chars().all(|c| c.is_ascii_digit()) {
-                    atom.parse::<BigInt>().map(Sexp::Int).unwrap_or(Sexp::Atom(atom))
+                    atom.parse::<BigInt>()
+                        .map(Sexp::Int)
+                        .unwrap_or(Sexp::Atom(atom))
                 } else {
                     Sexp::Atom(atom)
                 }
@@ -3729,11 +4383,19 @@ const UNBOUNDED: i64 = 1_000_000;
 // Uniform in [0, bound) like SplitMix64::below, but for any bound: a range
 // such as UInt64's is 2^64 wide.
 fn below_big(random: &mut SplitMix64, bound: &BigInt) -> BigInt {
-    if bound.is_positive() { BigInt::from(random.next()) % bound } else { BigInt::zero() }
+    if bound.is_positive() {
+        BigInt::from(random.next()) % bound
+    } else {
+        BigInt::zero()
+    }
 }
 
 fn below_len(random: &mut SplitMix64, bound: i64) -> usize {
-    if bound > 0 { random.below(bound as u64) as usize } else { 0 }
+    if bound > 0 {
+        random.below(bound as u64) as usize
+    } else {
+        0
+    }
 }
 
 /// Generation, shrinking and rendering over a table of data types.
@@ -3750,7 +4412,9 @@ impl Values {
     pub fn resolve<'a>(&'a self, d: &'a Sexp) -> &'a Sexp {
         if d.kind() == "ref" {
             let name = d.items()[1].name();
-            self.table.get(&name).unwrap_or_else(|| panic!("unknown data type {name}"))
+            self.table
+                .get(&name)
+                .unwrap_or_else(|| panic!("unknown data type {name}"))
         } else {
             d
         }
@@ -3772,8 +4436,15 @@ impl Values {
     /// The constructors whose fields mention no data type.
     pub fn base<'a>(&self, d: &'a Sexp) -> Vec<&'a Sexp> {
         let ctors = &d.items()[2..];
-        let found: Vec<&Sexp> = ctors.iter().filter(|c| !c.items()[2..].iter().any(mentions_data)).collect();
-        if found.is_empty() { ctors.iter().collect() } else { found }
+        let found: Vec<&Sexp> = ctors
+            .iter()
+            .filter(|c| !c.items()[2..].iter().any(mentions_data))
+            .collect();
+        if found.is_empty() {
+            ctors.iter().collect()
+        } else {
+            found
+        }
     }
 
     pub fn generate(&self, d: &Sexp, random: &mut SplitMix64, size: i64) -> Value {
@@ -3783,7 +4454,12 @@ impl Values {
             "int" => {
                 let (lo, hi) = self.bounds(d);
                 if random.below(10) < 2 {
-                    let specials = [lo.clone(), hi.clone(), clamp(0, &lo, &hi), clamp(1, &lo, &hi)];
+                    let specials = [
+                        lo.clone(),
+                        hi.clone(),
+                        clamp(0, &lo, &hi),
+                        clamp(1, &lo, &hi),
+                    ];
                     return Value::Integer(specials[random.below(4) as usize].clone());
                 }
                 let offset = below_big(random, &(&hi - &lo + 1));
@@ -3792,12 +4468,20 @@ impl Values {
             "bool" => Value::Bool(random.below(2) == 1),
             "text" => {
                 let n = below_len(random, size + 1);
-                Value::Text((0..n).map(|_| char::from(32 + random.below(95) as u8)).collect())
+                Value::Text(
+                    (0..n)
+                        .map(|_| char::from(32 + random.below(95) as u8))
+                        .collect(),
+                )
             }
             "unit" => Value::Unit,
             "list" => {
                 let n = below_len(random, size + 1);
-                Value::List((0..n).map(|_| self.generate(&items[1], random, size)).collect())
+                Value::List(
+                    (0..n)
+                        .map(|_| self.generate(&items[1], random, size))
+                        .collect(),
+                )
             }
             "maybe" => {
                 if random.below(4) == 0 {
@@ -3812,9 +4496,16 @@ impl Values {
                 Value::Right(Box::new(self.generate(&items[2], random, size)))
             }
             "data" => {
-                let choices: Vec<&Sexp> = if size <= 0 { self.base(d) } else { items[2..].iter().collect() };
+                let choices: Vec<&Sexp> = if size <= 0 {
+                    self.base(d)
+                } else {
+                    items[2..].iter().collect()
+                };
                 let ctor = choices[random.below(choices.len() as u64) as usize].items();
-                let fields = ctor[2..].iter().map(|f| self.generate(f, random, (size - 1).max(0))).collect();
+                let fields = ctor[2..]
+                    .iter()
+                    .map(|f| self.generate(f, random, (size - 1).max(0)))
+                    .collect();
                 Value::Data(ctor[1].name(), fields)
             }
             _ => panic!("unknown descriptor {d:?}"),
@@ -3837,7 +4528,10 @@ impl Values {
             "either" => Value::Left(Box::new(self.minimal(&items[1]))),
             _ => {
                 let ctor = self.base(d)[0].items();
-                Value::Data(ctor[1].name(), ctor[2..].iter().map(|f| self.minimal(f)).collect())
+                Value::Data(
+                    ctor[1].name(),
+                    ctor[2..].iter().map(|f| self.minimal(f)).collect(),
+                )
             }
         }
     }
@@ -3854,7 +4548,11 @@ impl Values {
                     _ => unreachable!(),
                 };
                 if *n != target {
-                    let step = if *n > target { BigInt::one() } else { -BigInt::one() };
+                    let step = if *n > target {
+                        BigInt::one()
+                    } else {
+                        -BigInt::one()
+                    };
                     out = vec![
                         Value::Integer(target.clone()),
                         Value::Integer(n - toward_zero(&(n - &target), 2)),
@@ -3882,7 +4580,9 @@ impl Values {
                     out.push(Value::List(Vec::new()));
                     out.push(Value::List(xs[..xs.len() / 2].to_vec()));
                     for i in 0..xs.len() {
-                        out.push(Value::List(xs[..i].iter().chain(&xs[i + 1..]).cloned().collect()));
+                        out.push(Value::List(
+                            xs[..i].iter().chain(&xs[i + 1..]).cloned().collect(),
+                        ));
                     }
                     for (i, x) in xs.iter().enumerate() {
                         for c in self.shrink(&items[1], x) {
@@ -3895,13 +4595,25 @@ impl Values {
             }
             ("maybe", Value::Maybe(Some(x))) => {
                 out.push(Value::Maybe(None));
-                out.extend(self.shrink(&items[1], x).into_iter().map(|c| Value::Maybe(Some(Box::new(c)))));
+                out.extend(
+                    self.shrink(&items[1], x)
+                        .into_iter()
+                        .map(|c| Value::Maybe(Some(Box::new(c)))),
+                );
             }
             ("either", Value::Left(x)) => {
-                out = self.shrink(&items[1], x).into_iter().map(|c| Value::Left(Box::new(c))).collect();
+                out = self
+                    .shrink(&items[1], x)
+                    .into_iter()
+                    .map(|c| Value::Left(Box::new(c)))
+                    .collect();
             }
             ("either", Value::Right(x)) => {
-                out = self.shrink(&items[2], x).into_iter().map(|c| Value::Right(Box::new(c))).collect();
+                out = self
+                    .shrink(&items[2], x)
+                    .into_iter()
+                    .map(|c| Value::Right(Box::new(c)))
+                    .collect();
             }
             ("data", Value::Data(tag, fields)) => {
                 let ctor = items[2..]
@@ -3912,7 +4624,13 @@ impl Values {
                 let own = Sexp::List(vec![Sexp::Atom("ref".into()), items[1].clone()]);
                 out.push(self.minimal(d));
                 // A field of the same type is a smaller value of it.
-                out.extend(fields.iter().zip(&ctor[2..]).filter(|(_, fd)| **fd == own).map(|(f, _)| f.clone()));
+                out.extend(
+                    fields
+                        .iter()
+                        .zip(&ctor[2..])
+                        .filter(|(_, fd)| **fd == own)
+                        .map(|(f, _)| f.clone()),
+                );
                 for (i, (field, fd)) in fields.iter().zip(&ctor[2..]).enumerate() {
                     for c in self.shrink(fd, field) {
                         let mut fs = fields.clone();
@@ -3971,7 +4689,11 @@ pub fn render(v: &Value) -> String {
         Value::Right(x) => format!("Right({})", render(x)),
         Value::Data(tag, fields) => {
             let name = tag.rsplit("::").next().unwrap_or(tag);
-            if fields.is_empty() { name.into() } else { format!("{name}({})", all(fields)) }
+            if fields.is_empty() {
+                name.into()
+            } else {
+                format!("{name}({})", all(fields))
+            }
         }
         Value::Handle(h) => h.label(),
         other => format!("{other:?}"),
@@ -3990,19 +4712,36 @@ pub fn recorded_text(value: &Value) -> String {
         format!("\"{}\"", text.replace('\\', "\\\\").replace('"', "\\\""))
     }
     fn float32(value: f32) -> String {
-        if value.is_nan() { "float32NaN".into() }
-        else { format!("float32Bits(\"{:08x}\")", value.to_bits()) }
+        if value.is_nan() {
+            "float32NaN".into()
+        } else {
+            format!("float32Bits(\"{:08x}\")", value.to_bits())
+        }
     }
     fn float64(value: f64) -> String {
-        if value.is_nan() { "float64NaN".into() }
-        else { format!("float64Bits(\"{:016x}\")", value.to_bits()) }
+        if value.is_nan() {
+            "float64NaN".into()
+        } else {
+            format!("float64Bits(\"{:016x}\")", value.to_bits())
+        }
     }
     fn units<T: std::fmt::Display>(name: &str, values: &[T]) -> String {
-        format!("{name}([{}])", values.iter().map(ToString::to_string).collect::<Vec<_>>().join(", "))
+        format!(
+            "{name}([{}])",
+            values
+                .iter()
+                .map(ToString::to_string)
+                .collect::<Vec<_>>()
+                .join(", ")
+        )
     }
     impl Recording {
         fn values(&mut self, values: &[Value]) -> String {
-            values.iter().map(|value| self.render(value)).collect::<Vec<_>>().join(", ")
+            values
+                .iter()
+                .map(|value| self.render(value))
+                .collect::<Vec<_>>()
+                .join(", ")
         }
         fn render(&mut self, value: &Value) -> String {
             match value {
@@ -4010,8 +4749,13 @@ pub fn recorded_text(value: &Value) -> String {
                 Value::Integer(v) => v.to_string(),
                 Value::Decimal(v) => {
                     let (mut c, mut e) = (v.coefficient.clone(), v.exponent.clone());
-                    if c.is_zero() { return "0e0".into(); }
-                    while (&c % 10u8).is_zero() { c /= 10u8; e += 1u8; }
+                    if c.is_zero() {
+                        return "0e0".into();
+                    }
+                    while (&c % 10u8).is_zero() {
+                        c /= 10u8;
+                        e += 1u8;
+                    }
                     format!("{c}e{e}")
                 }
                 Value::Rational(v) => format!("rational({}, {})", v.numer(), v.denom()),
@@ -4029,7 +4773,10 @@ pub fn recorded_text(value: &Value) -> String {
                 Value::Symbol(v) => {
                     let number = match self.symbols.iter().position(|other| other == v) {
                         Some(i) => i + 1,
-                        None => { self.symbols.push(v.clone()); self.symbols.len() }
+                        None => {
+                            self.symbols.push(v.clone());
+                            self.symbols.len()
+                        }
                     };
                     format!("symbol({number}, {})", quote(v.description()))
                 }
@@ -4045,14 +4792,21 @@ pub fn recorded_text(value: &Value) -> String {
                 Value::Right(v) => format!("Right({})", self.render(v)),
                 Value::Data(tag, vs) => {
                     let name = tag.rsplit("::").next().unwrap_or(tag);
-                    if vs.is_empty() { name.into() } else { format!("{name}({})", self.values(vs)) }
+                    if vs.is_empty() {
+                        name.into()
+                    } else {
+                        format!("{name}({})", self.values(vs))
+                    }
                 }
                 Value::Handle(v) => {
                     let name = v.0.name.get().copied().unwrap_or("Handle");
                     let known = self.handles.entry(name).or_default();
                     let number = match known.iter().position(|other| other.same(v)) {
                         Some(i) => i + 1,
-                        None => { known.push(v.clone()); known.len() }
+                        None => {
+                            known.push(v.clone());
+                            known.len()
+                        }
                     };
                     format!("{}#{number}", name.rsplit("::").next().unwrap_or(name))
                 }
@@ -4084,9 +4838,24 @@ pub fn values_from(text: &str) -> (Values, Sexp) {
 // it tries (at most 400). A case gives its score, or None when its inputs
 // fall outside the law's refinements.
 fn search_file(law: &str) -> Option<std::path::PathBuf> {
-    let directory = std::env::var("LAWSPEC_FAILURES").ok().filter(|d| !d.is_empty())?;
-    let safe: String = law.chars().map(|c| if c.is_ascii_alphanumeric() || c == '-' || c == '_' { c } else { '_' }).collect();
-    Some(std::path::Path::new(&directory).join("inputs").join(safe + ".json"))
+    let directory = std::env::var("LAWSPEC_FAILURES")
+        .ok()
+        .filter(|d| !d.is_empty())?;
+    let safe: String = law
+        .chars()
+        .map(|c| {
+            if c.is_ascii_alphanumeric() || c == '-' || c == '_' {
+                c
+            } else {
+                '_'
+            }
+        })
+        .collect();
+    Some(
+        std::path::Path::new(&directory)
+            .join("inputs")
+            .join(safe + ".json"),
+    )
 }
 
 pub fn search_remember(law: &str, descriptors: &[&str], values: &[Value]) {
@@ -4095,7 +4864,10 @@ pub fn search_remember(law: &str, descriptors: &[&str], values: &[Value]) {
     for (text, value) in descriptors.iter().zip(values) {
         let (table, d) = values_from(text);
         match net::wire_encode(&table, &d, value) {
-            Ok(bytes) => inputs.push(format!("\"{}\"", bytes.iter().map(|b| format!("{b:02x}")).collect::<String>())),
+            Ok(bytes) => inputs.push(format!(
+                "\"{}\"",
+                bytes.iter().map(|b| format!("{b:02x}")).collect::<String>()
+            )),
             Err(_) => return,
         }
     }
@@ -4103,18 +4875,37 @@ pub fn search_remember(law: &str, descriptors: &[&str], values: &[Value]) {
     if let Some(parent) = file.parent() {
         let _ = std::fs::create_dir_all(parent);
     }
-    let _ = std::fs::write(&file, format!("{{\"law\": \"{quoted}\", \"inputs\": [{}]}}", inputs.join(", ")));
+    let _ = std::fs::write(
+        &file,
+        format!(
+            "{{\"law\": \"{quoted}\", \"inputs\": [{}]}}",
+            inputs.join(", ")
+        ),
+    );
 }
 
-pub fn search_replay(law: &str, descriptors: &[&str], mut check: impl FnMut(&[Value]) -> Result<Option<f64>>) -> Result<()> {
-    let Some(file) = search_file(law) else { return Ok(()) };
-    let Ok(text) = std::fs::read_to_string(&file) else { return Ok(()) };
-    let after = text.find("\"inputs\"").map(|i| &text[i + 8..]).unwrap_or("");
+pub fn search_replay(
+    law: &str,
+    descriptors: &[&str],
+    mut check: impl FnMut(&[Value]) -> Result<Option<f64>>,
+) -> Result<()> {
+    let Some(file) = search_file(law) else {
+        return Ok(());
+    };
+    let Ok(text) = std::fs::read_to_string(&file) else {
+        return Ok(());
+    };
+    let after = text
+        .find("\"inputs\"")
+        .map(|i| &text[i + 8..])
+        .unwrap_or("");
     let encoded: Vec<&str> = after.split('"').skip(1).step_by(2).collect();
     let mut values = Vec::new();
     for (i, d) in descriptors.iter().enumerate() {
         let Some(hex) = encoded.get(i) else { break };
-        let bytes: Option<Vec<u8>> = (0..hex.len() / 2).map(|k| u8::from_str_radix(&hex[2 * k..2 * k + 2], 16).ok()).collect();
+        let bytes: Option<Vec<u8>> = (0..hex.len() / 2)
+            .map(|k| u8::from_str_radix(&hex[2 * k..2 * k + 2], 16).ok())
+            .collect();
         let (table, descriptor) = values_from(d);
         match bytes.map(|b| net::wire_decode(&table, &descriptor, &b)) {
             Some(Ok(value)) => values.push(value),
@@ -4137,7 +4928,14 @@ fn search_moves(table: &Values, d: &Sexp, v: &Value) -> Vec<Value> {
         ("int", Value::Integer(x)) => {
             let (lo, hi) = table.bounds(d);
             let two = BigInt::from(2);
-            let candidates = [x + 1, x - 1, x * &two, x / &two, x + (&hi - x) / &two, x - (x - &lo) / &two];
+            let candidates = [
+                x + 1,
+                x - 1,
+                x * &two,
+                x / &two,
+                x + (&hi - x) / &two,
+                x - (x - &lo) / &two,
+            ];
             let mut out: Vec<Value> = Vec::new();
             for c in candidates {
                 if c >= lo && c <= hi && &c != x && !out.contains(&Value::Integer(c.clone())) {
@@ -4147,34 +4945,74 @@ fn search_moves(table: &Values, d: &Sexp, v: &Value) -> Vec<Value> {
             out
         }
         ("list", Value::List(xs)) => (0..xs.len())
-            .flat_map(|i| search_moves(table, &items[1], &xs[i]).into_iter().map(move |m| (i, m)))
-            .map(|(i, m)| { let mut changed = xs.clone(); changed[i] = m; Value::List(changed) })
+            .flat_map(|i| {
+                search_moves(table, &items[1], &xs[i])
+                    .into_iter()
+                    .map(move |m| (i, m))
+            })
+            .map(|(i, m)| {
+                let mut changed = xs.clone();
+                changed[i] = m;
+                Value::List(changed)
+            })
             .collect(),
-        ("maybe", Value::Maybe(Some(inner))) => search_moves(table, &items[1], inner).into_iter().map(|m| Value::Maybe(Some(Box::new(m)))).collect(),
-        ("either", Value::Left(inner)) => search_moves(table, &items[1], inner).into_iter().map(|m| Value::Left(Box::new(m))).collect(),
-        ("either", Value::Right(inner)) => search_moves(table, &items[2], inner).into_iter().map(|m| Value::Right(Box::new(m))).collect(),
+        ("maybe", Value::Maybe(Some(inner))) => search_moves(table, &items[1], inner)
+            .into_iter()
+            .map(|m| Value::Maybe(Some(Box::new(m))))
+            .collect(),
+        ("either", Value::Left(inner)) => search_moves(table, &items[1], inner)
+            .into_iter()
+            .map(|m| Value::Left(Box::new(m)))
+            .collect(),
+        ("either", Value::Right(inner)) => search_moves(table, &items[2], inner)
+            .into_iter()
+            .map(|m| Value::Right(Box::new(m)))
+            .collect(),
         ("data", Value::Data(tag, fields)) => {
-            let Some(ctor) = items[2..].iter().find(|c| &c.items()[1].name() == tag) else { return Vec::new() };
+            let Some(ctor) = items[2..].iter().find(|c| &c.items()[1].name() == tag) else {
+                return Vec::new();
+            };
             let field_forms = &ctor.items()[2..];
             (0..fields.len().min(field_forms.len()))
-                .flat_map(|i| search_moves(table, &field_forms[i], &fields[i]).into_iter().map(move |m| (i, m)))
-                .map(|(i, m)| { let mut changed = fields.clone(); changed[i] = m; Value::Data(tag.clone(), changed) })
+                .flat_map(|i| {
+                    search_moves(table, &field_forms[i], &fields[i])
+                        .into_iter()
+                        .map(move |m| (i, m))
+                })
+                .map(|(i, m)| {
+                    let mut changed = fields.clone();
+                    changed[i] = m;
+                    Value::Data(tag.clone(), changed)
+                })
                 .collect()
         }
         _ => Vec::new(),
     }
 }
 
-pub fn search_climb(law: &str, descriptors: &[&str], mut check: impl FnMut(&[Value]) -> Result<Option<f64>>) -> Result<()> {
+pub fn search_climb(
+    law: &str,
+    descriptors: &[&str],
+    mut check: impl FnMut(&[Value]) -> Result<Option<f64>>,
+) -> Result<()> {
     let tables: Vec<(Values, Sexp)> = descriptors.iter().map(|d| values_from(d)).collect();
-    let base: u64 = std::env::var("LAWSPEC_SEED").ok().and_then(|s| s.parse().ok()).unwrap_or(0);
+    let base: u64 = std::env::var("LAWSPEC_SEED")
+        .ok()
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(0);
     let generate = |seed: u64| -> Vec<Value> {
         let mut random = SplitMix64::new(seed);
-        tables.iter().map(|(table, d)| table.generate(d, &mut random, 8)).collect()
+        tables
+            .iter()
+            .map(|(table, d)| table.generate(d, &mut random, 8))
+            .collect()
     };
     let mut best: Option<(f64, Vec<Value>)> = None;
     let mut tried = 0;
-    let mut attempt = |values: Vec<Value>, best: &mut Option<(f64, Vec<Value>)>, tried: &mut usize| -> Result<bool> {
+    let mut attempt = |values: Vec<Value>,
+                       best: &mut Option<(f64, Vec<Value>)>,
+                       tried: &mut usize|
+     -> Result<bool> {
         if *tried >= 400 {
             return Ok(false);
         }
@@ -4182,12 +5020,21 @@ pub fn search_climb(law: &str, descriptors: &[&str], mut check: impl FnMut(&[Val
         let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| check(&values)));
         let score = match outcome {
             Ok(Ok(score)) => score,
-            Ok(Err(error)) => { search_remember(law, descriptors, &values); return Err(error) }
-            Err(panic) => { search_remember(law, descriptors, &values); std::panic::resume_unwind(panic) }
+            Ok(Err(error)) => {
+                search_remember(law, descriptors, &values);
+                return Err(error);
+            }
+            Err(panic) => {
+                search_remember(law, descriptors, &values);
+                std::panic::resume_unwind(panic)
+            }
         };
         match (score, best.as_ref()) {
             (Some(s), Some((b, _))) if !(s > *b) => Ok(false),
-            (Some(s), _) => { *best = Some((s, values)); Ok(true) }
+            (Some(s), _) => {
+                *best = Some((s, values));
+                Ok(true)
+            }
             (None, _) => Ok(false),
         }
     };
@@ -4216,11 +5063,17 @@ pub fn search_climb(law: &str, descriptors: &[&str], mut check: impl FnMut(&[Val
             }
         }
         if !rose {
-            attempt(generate(base.wrapping_add(1000 + step)), &mut best, &mut tried)?;
+            attempt(
+                generate(base.wrapping_add(1000 + step)),
+                &mut best,
+                &mut tried,
+            )?;
         }
     }
     match &best {
-        Some((score, _)) => println!("{law}: targeted search tried {tried} case(s); best score {score}"),
+        Some((score, _)) => {
+            println!("{law}: targeted search tried {tried} case(s); best score {score}")
+        }
         None => println!("{law}: targeted search tried {tried} case(s)"),
     }
     Ok(())
@@ -4242,7 +5095,9 @@ pub fn search_number(v: &Value) -> f64 {
 pub fn generated(text: &str, seed: u64, size: i64, count: i64) -> Vec<String> {
     let (values, d) = values_from(text);
     let mut random = SplitMix64::new(seed);
-    (0..count).map(|_| render(&values.generate(&d, &mut random, size))).collect()
+    (0..count)
+        .map(|_| render(&values.generate(&d, &mut random, size)))
+        .collect()
 }
 
 /// The shrink candidates of the first value generated, rendered.
@@ -4305,21 +5160,31 @@ struct ModelCommand {
 
 fn sexp_i64(s: &Sexp) -> i64 {
     match s {
-        Sexp::Int(n) => n.to_i64().unwrap_or_else(|| panic!("index {n} out of range")),
+        Sexp::Int(n) => n
+            .to_i64()
+            .unwrap_or_else(|| panic!("index {n} out of range")),
         other => panic!("expected an integer, got {other:?}"),
     }
 }
 
 // The fields of a form, by their first atom.
 fn form_fields(items: &[Sexp]) -> HashMap<String, Vec<Sexp>> {
-    items.iter().map(|f| (f.kind().to_string(), f.items()[1..].to_vec())).collect()
+    items
+        .iter()
+        .map(|f| (f.kind().to_string(), f.items()[1..].to_vec()))
+        .collect()
 }
 
 impl ModelCommand {
     fn new(form: &Sexp, callbacks: &(ModelCallback, ModelCallback, Option<ModelCallback>)) -> Self {
         let items = form.items();
         let fields = form_fields(&items[2..]);
-        let field = |name: &str| fields.get(name).unwrap_or_else(|| panic!("command without {name}")).clone();
+        let field = |name: &str| {
+            fields
+                .get(name)
+                .unwrap_or_else(|| panic!("command without {name}"))
+                .clone()
+        };
         let pair = |f: &Sexp| (f.kind().to_string(), sexp_i64(&f.items()[1]));
         ModelCommand {
             name: items[1].name(),
@@ -4341,10 +5206,18 @@ impl ModelCommand {
                 })
                 .collect(),
             key: match fields.get("key").and_then(|k| k.first()) {
-                Some(Sexp::Int(n)) => Some(n.to_usize().unwrap_or_else(|| panic!("key {n} out of range"))),
+                Some(Sexp::Int(n)) => Some(
+                    n.to_usize()
+                        .unwrap_or_else(|| panic!("key {n} out of range")),
+                ),
                 _ => None,
             },
-            restart: fields.get("restart").and_then(|r| r.first()).map(Sexp::name).as_deref() == Some("true"),
+            restart: fields
+                .get("restart")
+                .and_then(|r| r.first())
+                .map(Sexp::name)
+                .as_deref()
+                == Some("true"),
             run: callbacks.0,
             reference: callbacks.1,
             when: callbacks.2,
@@ -4414,7 +5287,13 @@ fn consistent_words(consistency: &str) -> &'static str {
 // Calls a command: on an actor, its handler bridge (the state first,
 // returning Pair reply state, or the state alone for a Unit reply) runs in
 // the actor's turn, on this thread, so it can use this thread's Context.
-fn call_command(actor: bool, run: ModelCallback, unit: bool, ctx: &mut Context, mut full: Vec<Value>) -> Result<Value> {
+fn call_command(
+    actor: bool,
+    run: ModelCallback,
+    unit: bool,
+    ctx: &mut Context,
+    mut full: Vec<Value>,
+) -> Result<Value> {
     if !actor {
         return run(ctx, full);
     }
@@ -4433,7 +5312,10 @@ fn call_command(actor: bool, run: ModelCallback, unit: bool, ctx: &mut Context, 
                 let reply = fields.next().unwrap();
                 Ok((reply, fields.next().unwrap()))
             }
-            other => Err(format!("a handler returned {}, not a reply and a state", render(&other))),
+            other => Err(format!(
+                "a handler returned {}, not a reply and a state",
+                render(&other)
+            )),
         }
     })
 }
@@ -4447,9 +5329,17 @@ impl<'a> Machine<'a> {
             .filter(|f| f.kind() == "data")
             .map(|f| (f.items()[1].name(), f.clone()))
             .collect();
-        let start = forms.iter().find(|f| f.kind() == "start").expect("a model start");
+        let start = forms
+            .iter()
+            .find(|f| f.kind() == "start")
+            .expect("a model start");
         let start_fields = form_fields(&start.items()[1..]);
-        let kinds = forms.iter().find(|f| f.kind() == "invariants").expect("model invariants").items()[1..].to_vec();
+        let kinds = forms
+            .iter()
+            .find(|f| f.kind() == "invariants")
+            .expect("model invariants")
+            .items()[1..]
+            .to_vec();
         let (restarts, commands): (Vec<ModelCommand>, Vec<ModelCommand>) = forms
             .iter()
             .filter(|f| f.kind() == "command")
@@ -4461,13 +5351,24 @@ impl<'a> Machine<'a> {
             name: head[1].name(),
             shared: head[2].name() == "shared",
             values: Values::new(table),
-            start_indices: start_fields.get("indices").map(|is| is.iter().map(sexp_i64).collect()).unwrap_or_default(),
+            start_indices: start_fields
+                .get("indices")
+                .map(|is| is.iter().map(sexp_i64).collect())
+                .unwrap_or_default(),
             start_arguments: start_fields.get("arguments").cloned().unwrap_or_default(),
             commands,
             restart: restarts.first().map(|c| (c.run, c.reference)),
-            invariants: kinds.iter().map(Sexp::name).zip(model.invariants.iter().copied()).collect(),
-            per_key: forms.iter().any(|f| f.kind() == "perkey" && f.items().get(1).map(Sexp::name).as_deref() == Some("true")),
-            actor: forms.iter().any(|f| f.kind() == "actor" && f.items().get(1).map(Sexp::name).as_deref() == Some("true")),
+            invariants: kinds
+                .iter()
+                .map(Sexp::name)
+                .zip(model.invariants.iter().copied())
+                .collect(),
+            per_key: forms.iter().any(|f| {
+                f.kind() == "perkey" && f.items().get(1).map(Sexp::name).as_deref() == Some("true")
+            }),
+            actor: forms.iter().any(|f| {
+                f.kind() == "actor" && f.items().get(1).map(Sexp::name).as_deref() == Some("true")
+            }),
             consistency: forms
                 .iter()
                 .find(|f| f.kind() == "consistency")
@@ -4479,10 +5380,19 @@ impl<'a> Machine<'a> {
     /// Starts the system: an actor model's start state runs in a new actor.
     fn start_system(&self, ctx: &mut Context, args: Vec<Value>) -> Result<Value> {
         let state = (self.model.start[0])(ctx, args)?;
-        Ok(if self.actor { Value::Handle(Handle::new(actors::Actor::new(state))) } else { state })
+        Ok(if self.actor {
+            Value::Handle(Handle::new(actors::Actor::new(state)))
+        } else {
+            state
+        })
     }
 
-    fn run_command(&self, command: &ModelCommand, ctx: &mut Context, full: Vec<Value>) -> Result<Value> {
+    fn run_command(
+        &self,
+        command: &ModelCommand,
+        ctx: &mut Context,
+        full: Vec<Value>,
+    ) -> Result<Value> {
         call_command(self.actor, command.run, command.unit, ctx, full)
     }
 
@@ -4549,16 +5459,28 @@ impl<'a> Machine<'a> {
         }
     }
 
-    fn generate_run(&self, random: &mut SplitMix64, length: u64, size: i64, crashes: bool) -> ModelRun {
+    fn generate_run(
+        &self,
+        random: &mut SplitMix64,
+        length: u64,
+        size: i64,
+        crashes: bool,
+    ) -> ModelRun {
         let mut ctx = Context::testing();
-        let start_args: Vec<Value> = self.start_arguments.iter().map(|d| self.values.generate(d, random, size)).collect();
+        let start_args: Vec<Value> = self
+            .start_arguments
+            .iter()
+            .map(|d| self.values.generate(d, random, size))
+            .collect();
         let Ok(mut state) = (self.model.start[1])(&mut ctx, start_args.clone()) else {
             return (start_args, Vec::new());
         };
         let mut indices = self.start_indices.clone();
         let mut steps = Vec::new();
         for _ in 0..length {
-            let allowed: Vec<usize> = (0..self.commands.len()).filter(|&i| self.commands[i].admits(&indices)).collect();
+            let allowed: Vec<usize> = (0..self.commands.len())
+                .filter(|&i| self.commands[i].admits(&indices))
+                .collect();
             if allowed.is_empty() {
                 break;
             }
@@ -4573,7 +5495,11 @@ impl<'a> Machine<'a> {
                 continue;
             }
             let command = &self.commands[index];
-            let args: Vec<Value> = command.arguments.iter().map(|d| self.values.generate(d, random, size)).collect();
+            let args: Vec<Value> = command
+                .arguments
+                .iter()
+                .map(|d| self.values.generate(d, random, size))
+                .collect();
             match step_model(command, &mut ctx, &args, state.clone()) {
                 Ok((next, _)) => state = next,
                 Err(ModelFault::Invalid) => continue,
@@ -4597,18 +5523,28 @@ impl<'a> Machine<'a> {
         }
     }
 
-    fn execute_steps(&self, run: &ModelRun, step: &mut usize) -> std::result::Result<Option<String>, ModelFault> {
+    fn execute_steps(
+        &self,
+        run: &ModelRun,
+        step: &mut usize,
+    ) -> std::result::Result<Option<String>, ModelFault> {
         let mut ctx = Context::testing();
-        let mut state = self.start_system(&mut ctx, run.0.clone()).map_err(ModelFault::Error)?;
-        let mut expected = (self.model.start[1])(&mut ctx, run.0.clone()).map_err(ModelFault::Error)?;
+        let mut state = self
+            .start_system(&mut ctx, run.0.clone())
+            .map_err(ModelFault::Error)?;
+        let mut expected =
+            (self.model.start[1])(&mut ctx, run.0.clone()).map_err(ModelFault::Error)?;
         if let Some(failure) = self.check_state(&mut ctx, &state, &expected)? {
             return Ok(Some(failure));
         }
         for (index, args) in &run.1 {
             *step += 1;
             if *index == self.commands.len() {
-                self.crash_system(&mut ctx, &run.0, &state).map_err(ModelFault::Error)?;
-                expected = self.crash_model(&mut ctx, &run.0, expected).map_err(|_| ModelFault::Invalid)?;
+                self.crash_system(&mut ctx, &run.0, &state)
+                    .map_err(ModelFault::Error)?;
+                expected = self
+                    .crash_model(&mut ctx, &run.0, expected)
+                    .map_err(|_| ModelFault::Invalid)?;
                 if let Some(failure) = self.check_state(&mut ctx, &state, &expected)? {
                     return Ok(Some(failure));
                 }
@@ -4617,26 +5553,43 @@ impl<'a> Machine<'a> {
             let command = &self.commands[*index];
             let mut full = args.clone();
             full.insert(command.state, state.clone());
-            let out = self.run_command(command, &mut ctx, full).map_err(ModelFault::Error)?;
+            let out = self
+                .run_command(command, &mut ctx, full)
+                .map_err(ModelFault::Error)?;
             let result = if self.shared {
                 out
             } else {
                 let Value::Data(_, mut fields) = out else {
-                    return Err(ModelFault::Error(format!("command {} did not return its state", command.name)));
+                    return Err(ModelFault::Error(format!(
+                        "command {} did not return its state",
+                        command.name
+                    )));
                 };
                 let Some(last) = fields.pop() else {
-                    return Err(ModelFault::Error(format!("command {} did not return its state", command.name)));
+                    return Err(ModelFault::Error(format!(
+                        "command {} did not return its state",
+                        command.name
+                    )));
                 };
-                let result = if command.unit { Value::Unit } else { fields.into_iter().next().unwrap_or(last.clone()) };
+                let result = if command.unit {
+                    Value::Unit
+                } else {
+                    fields.into_iter().next().unwrap_or(last.clone())
+                };
                 state = last;
                 result
             };
             let (next, wanted) = step_model(command, &mut ctx, args, expected)?;
             expected = next;
             if !command.unit
-                && compare_values(&result, &wanted).map_err(ModelFault::Error)? != std::cmp::Ordering::Equal
+                && compare_values(&result, &wanted).map_err(ModelFault::Error)?
+                    != std::cmp::Ordering::Equal
             {
-                return Ok(Some(format!("returned {}; the model returns {}", render(&result), render(&wanted))));
+                return Ok(Some(format!(
+                    "returned {}; the model returns {}",
+                    render(&result),
+                    render(&wanted)
+                )));
             }
             if let Some(failure) = self.check_state(&mut ctx, &state, &expected)? {
                 return Ok(Some(failure));
@@ -4654,13 +5607,21 @@ impl<'a> Machine<'a> {
         let state = &self.system_state(state).map_err(ModelFault::Error)?;
         if let Some(abstraction) = self.model.abstract_state {
             let actual = abstraction(ctx, vec![state.clone()]).map_err(ModelFault::Error)?;
-            if compare_values(&actual, expected).map_err(ModelFault::Error)? != std::cmp::Ordering::Equal {
-                return Ok(Some(format!("the state is {}; the model is {}", render(&actual), render(expected))));
+            if compare_values(&actual, expected).map_err(ModelFault::Error)?
+                != std::cmp::Ordering::Equal
+            {
+                return Ok(Some(format!(
+                    "the state is {}; the model is {}",
+                    render(&actual),
+                    render(expected)
+                )));
             }
         }
         for (kind, invariant) in &self.invariants {
             let subject = if kind == "model" { expected } else { state };
-            let holds = invariant(ctx, vec![subject.clone()]).and_then(|v| v.boolean()).map_err(ModelFault::Error)?;
+            let holds = invariant(ctx, vec![subject.clone()])
+                .and_then(|v| v.boolean())
+                .map_err(ModelFault::Error)?;
             if !holds {
                 return Ok(Some(format!("an invariant on the {kind} fails")));
             }
@@ -4675,7 +5636,11 @@ impl<'a> Machine<'a> {
         let mut size = n / 2;
         while size >= 1 {
             for begin in (0..n).step_by(size) {
-                let kept = steps[..begin].iter().chain(steps.get(begin + size..).unwrap_or(&[])).cloned().collect();
+                let kept = steps[..begin]
+                    .iter()
+                    .chain(steps.get(begin + size..).unwrap_or(&[]))
+                    .cloned()
+                    .collect();
                 out.push((start_args.clone(), kept));
             }
             size /= 2;
@@ -4702,7 +5667,12 @@ impl<'a> Machine<'a> {
         out
     }
 
-    fn shrink_run(&self, mut run: ModelRun, mut failure: (usize, String), max_shrinks: i64) -> (ModelRun, (usize, String)) {
+    fn shrink_run(
+        &self,
+        mut run: ModelRun,
+        mut failure: (usize, String),
+        max_shrinks: i64,
+    ) -> (ModelRun, (usize, String)) {
         let mut budget = max_shrinks;
         'shrinking: while budget > 0 {
             let mut improved = false;
@@ -4732,7 +5702,11 @@ impl<'a> Machine<'a> {
         let all = |xs: &[Value]| xs.iter().map(render).collect::<Vec<_>>().join(", ");
         let mut parts = vec![format!("start({})", all(&run.0))];
         parts.extend(run.1.iter().map(|(i, args)| {
-            format!("{}({})", self.commands.get(*i).map_or("crash", |c| c.name.as_str()), all(args))
+            format!(
+                "{}({})",
+                self.commands.get(*i).map_or("crash", |c| c.name.as_str()),
+                all(args)
+            )
         }));
         parts.join("; ")
     }
@@ -4780,7 +5754,10 @@ fn step_model(
 /// ref:DEC-stateful-models-linearizability
 pub fn check_model(model: &Model) -> std::result::Result<(), String> {
     let (cases, max_length, max_shrinks) = (100u64, 20u64, 2000i64);
-    let seed = std::env::var("LAWSPEC_SEED").ok().and_then(|s| s.trim().parse::<u64>().ok()).unwrap_or(0);
+    let seed = std::env::var("LAWSPEC_SEED")
+        .ok()
+        .and_then(|s| s.trim().parse::<u64>().ok())
+        .unwrap_or(0);
     let machine = Machine::new(model);
     let mut random = SplitMix64::new(seed);
     for case in 0..cases {
@@ -4869,7 +5846,13 @@ impl<'a> Machine<'a> {
             return false;
         };
         let mut seen = std::collections::HashSet::new();
-        self.allowed_from(&mut ctx, branches, &mut seen, vec![0; branches.len()], start)
+        self.allowed_from(
+            &mut ctx,
+            branches,
+            &mut seen,
+            vec![0; branches.len()],
+            start,
+        )
     }
 
     fn allowed_from(
@@ -4900,13 +5883,23 @@ impl<'a> Machine<'a> {
         true
     }
 
-    fn generate_branch(&self, random: &mut SplitMix64, mut state: Value, length: u64, size: i64) -> ModelBranch {
+    fn generate_branch(
+        &self,
+        random: &mut SplitMix64,
+        mut state: Value,
+        length: u64,
+        size: i64,
+    ) -> ModelBranch {
         let mut ctx = Context::testing();
         let mut steps = Vec::new();
         for _ in 0..length {
             let index = random.below(self.commands.len() as u64) as usize;
             let command = &self.commands[index];
-            let args: Vec<Value> = command.arguments.iter().map(|d| self.values.generate(d, random, size)).collect();
+            let args: Vec<Value> = command
+                .arguments
+                .iter()
+                .map(|d| self.values.generate(d, random, size))
+                .collect();
             match step_model(command, &mut ctx, &args, state.clone()) {
                 Ok((next, _)) => state = next,
                 Err(ModelFault::Invalid) => continue,
@@ -4917,7 +5910,13 @@ impl<'a> Machine<'a> {
         steps
     }
 
-    fn generate_parallel(&self, random: &mut SplitMix64, size: i64, threads: usize, branch_length: u64) -> ParallelCase {
+    fn generate_parallel(
+        &self,
+        random: &mut SplitMix64,
+        size: i64,
+        threads: usize,
+        branch_length: u64,
+    ) -> ParallelCase {
         let length = random.below(4);
         let prefix = self.generate_run(random, length, size, false);
         let Some(state) = self.simulate_state(&mut Context::testing(), &prefix) else {
@@ -4978,7 +5977,9 @@ impl<'a> Machine<'a> {
                     let (tick, errors) = (&tick, &errors);
                     scope.spawn(move || {
                         let mut own = Context::testing();
-                        let mut random = SplitMix64::new(shake ^ ((i as u64 + 1).wrapping_mul(0x9E3779B97F4A7C15)));
+                        let mut random = SplitMix64::new(
+                            shake ^ ((i as u64 + 1).wrapping_mul(0x9E3779B97F4A7C15)),
+                        );
                         let mut out = Vec::new();
                         for (run, unit, name, full) in branch {
                             perturb(&mut random);
@@ -4986,7 +5987,10 @@ impl<'a> Machine<'a> {
                             let result = match call_command(actor, run, unit, &mut own, full) {
                                 Ok(result) => result,
                                 Err(e) => {
-                                    errors.lock().unwrap_or_else(|p| p.into_inner()).push(format!("{name} raised error: {e}"));
+                                    errors
+                                        .lock()
+                                        .unwrap_or_else(|p| p.into_inner())
+                                        .push(format!("{name} raised error: {e}"));
                                     Value::Unit
                                 }
                             };
@@ -4997,12 +6001,22 @@ impl<'a> Machine<'a> {
                     })
                 })
                 .collect();
-            handles.into_iter().map(|h| h.join().unwrap_or_else(|p| std::panic::resume_unwind(p))).collect()
+            handles
+                .into_iter()
+                .map(|h| h.join().unwrap_or_else(|p| std::panic::resume_unwind(p)))
+                .collect()
         });
-        if let Some(error) = errors.into_inner().unwrap_or_else(|p| p.into_inner()).into_iter().next() {
+        if let Some(error) = errors
+            .into_inner()
+            .unwrap_or_else(|p| p.into_inner())
+            .into_iter()
+            .next()
+        {
             return Some(error);
         }
-        let expected = self.simulate_state(&mut ctx, prefix).expect("the model allows the prefix");
+        let expected = self
+            .simulate_state(&mut ctx, prefix)
+            .expect("the model allows the prefix");
         let state = match self.system_state(&state) {
             Ok(state) => state,
             Err(e) => return Some(format!("raised error: {e}")),
@@ -5028,7 +6042,10 @@ impl<'a> Machine<'a> {
                 ));
             }
         }
-        Some(format!("no order of the parallel calls agrees with the model ({})", observed.join("; ")))
+        Some(format!(
+            "no order of the parallel calls agrees with the model ({})",
+            observed.join("; ")
+        ))
     }
 
     // Starts the system and runs the prefix's commands, giving the state.
@@ -5058,13 +6075,19 @@ impl<'a> Machine<'a> {
     ) -> bool {
         let finish = |ctx: &mut Context, model_state: &Value| -> bool {
             if let Some(fin) = fin {
-                if !matches!(compare_values(fin, model_state), Ok(std::cmp::Ordering::Equal)) {
+                if !matches!(
+                    compare_values(fin, model_state),
+                    Ok(std::cmp::Ordering::Equal)
+                ) {
                     return false;
                 }
             }
             for (kind, invariant) in &self.invariants {
                 let subject = if kind == "model" { model_state } else { state };
-                if !matches!(invariant(ctx, vec![subject.clone()]).and_then(|v| v.boolean()), Ok(true)) {
+                if !matches!(
+                    invariant(ctx, vec![subject.clone()]).and_then(|v| v.boolean()),
+                    Ok(true)
+                ) {
                     return false;
                 }
             }
@@ -5078,7 +6101,9 @@ impl<'a> Machine<'a> {
             std::collections::BTreeMap::new();
         for (i, branch) in branches.iter().enumerate() {
             for (k, (index, args)) in branch.iter().enumerate() {
-                let position = self.commands[*index].key.expect("a per-key command names its key");
+                let position = self.commands[*index]
+                    .key
+                    .expect("a per-key command names its key");
                 let parts = groups
                     .entry(render(&args[position]))
                     .or_insert_with(|| vec![(Vec::new(), Vec::new()); branches.len()]);
@@ -5088,7 +6113,8 @@ impl<'a> Machine<'a> {
         }
         let mut model_state = expected;
         for parts in groups.values() {
-            let (steps, calls): (Vec<ModelBranch>, Vec<Vec<ParallelCall>>) = parts.iter().cloned().unzip();
+            let (steps, calls): (Vec<ModelBranch>, Vec<Vec<ParallelCall>>) =
+                parts.iter().cloned().unzip();
             let mut ends = Vec::new();
             if !self.linearize(ctx, &steps, &calls, model_state, &mut |_, end| {
                 ends.push(end.clone());
@@ -5126,7 +6152,12 @@ impl<'a> Machine<'a> {
                         Err(ModelFault::Invalid) => return false,
                         Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
                     };
-                    if !command.unit && !matches!(compare_values(&history[i][k].2, &wanted), Ok(std::cmp::Ordering::Equal)) {
+                    if !command.unit
+                        && !matches!(
+                            compare_values(&history[i][k].2, &wanted),
+                            Ok(std::cmp::Ordering::Equal)
+                        )
+                    {
                         return false;
                     }
                     state = after;
@@ -5135,7 +6166,15 @@ impl<'a> Machine<'a> {
             return true;
         }
         let mut seen = std::collections::HashSet::new();
-        self.visit(ctx, branches, history, &mut seen, vec![0; branches.len()], expected, finish)
+        self.visit(
+            ctx,
+            branches,
+            history,
+            &mut seen,
+            vec![0; branches.len()],
+            expected,
+            finish,
+        )
     }
 
     #[allow(clippy::too_many_arguments)]
@@ -5164,7 +6203,11 @@ impl<'a> Machine<'a> {
             // Sequential and eventual drop real time; each thread's own
             // order remains.
             if self.consistency == "linearizable"
-                && (0..branches.len()).any(|j| j != i && positions[j] < branches[j].len() && history[j][positions[j]].1 < called)
+                && (0..branches.len()).any(|j| {
+                    j != i
+                        && positions[j] < branches[j].len()
+                        && history[j][positions[j]].1 < called
+                })
             {
                 continue;
             }
@@ -5177,11 +6220,22 @@ impl<'a> Machine<'a> {
             };
             if self.consistency != "eventual"
                 && !command.unit
-                && !matches!(compare_values(&history[i][k].2, &wanted), Ok(std::cmp::Ordering::Equal))
+                && !matches!(
+                    compare_values(&history[i][k].2, &wanted),
+                    Ok(std::cmp::Ordering::Equal)
+                )
             {
                 continue;
             }
-            if self.visit(ctx, branches, history, seen, advanced(&positions, i), after, finish) {
+            if self.visit(
+                ctx,
+                branches,
+                history,
+                seen,
+                advanced(&positions, i),
+                after,
+                finish,
+            ) {
                 return true;
             }
         }
@@ -5256,16 +6310,36 @@ impl<'a> Machine<'a> {
             let text = steps
                 .iter()
                 .map(|(i, args)| {
-                    format!("{}({})", self.commands[*i].name, args.iter().map(render).collect::<Vec<_>>().join(", "))
+                    format!(
+                        "{}({})",
+                        self.commands[*i].name,
+                        args.iter().map(render).collect::<Vec<_>>().join(", ")
+                    )
                 })
                 .collect::<Vec<_>>()
                 .join("; ");
-            if text.is_empty() { "nothing".to_string() } else { text }
+            if text.is_empty() {
+                "nothing".to_string()
+            } else {
+                text
+            }
         };
-        let parts: Vec<String> =
-            case.1.iter().enumerate().map(|(i, b)| format!("{}: {}", branch_name(i), describe(b))).collect();
-        let (last, rest) = parts.split_last().map(|(l, r)| (l.as_str(), r)).unwrap_or(("", &[]));
-        format!("{}, then {} and {} at the same time", self.describe_run(&case.0), rest.join(", "), last)
+        let parts: Vec<String> = case
+            .1
+            .iter()
+            .enumerate()
+            .map(|(i, b)| format!("{}: {}", branch_name(i), describe(b)))
+            .collect();
+        let (last, rest) = parts
+            .split_last()
+            .map(|(l, r)| (l.as_str(), r))
+            .unwrap_or(("", &[]));
+        format!(
+            "{}, then {} and {} at the same time",
+            self.describe_run(&case.0),
+            rest.join(", "),
+            last
+        )
     }
 }
 
@@ -5278,7 +6352,10 @@ impl<'a> Machine<'a> {
 /// order of the calls. ref:herlihy-wing-linearizability
 /// ref:DEC-stateful-models-linearizability
 pub fn check_model_parallel(model: &Model) -> std::result::Result<(), String> {
-    let seed = std::env::var("LAWSPEC_SEED").ok().and_then(|s| s.trim().parse::<u64>().ok()).unwrap_or(0);
+    let seed = std::env::var("LAWSPEC_SEED")
+        .ok()
+        .and_then(|s| s.trim().parse::<u64>().ok())
+        .unwrap_or(0);
     check_model_parallel_with(model, 50, 10, 300, seed, PARALLEL_THREADS, PARALLEL_BRANCH)
 }
 
@@ -5295,10 +6372,16 @@ pub fn check_model_parallel_with(
     let machine = Machine::new(model);
     let mut random = SplitMix64::new(seed ^ 0x5BD1E995);
     for case_number in 0..cases {
-        let case = machine.generate_parallel(&mut random, 1 + (case_number % 8) as i64, threads, branch_length);
+        let case = machine.generate_parallel(
+            &mut random,
+            1 + (case_number % 8) as i64,
+            threads,
+            branch_length,
+        );
         let shake = random.next();
         if let Some(failure) = machine.parallel_fails(&case, repeats, shake) {
-            let (case, failure) = machine.shrink_parallel(case, failure, (repeats / 2).max(2), max_shrinks, shake);
+            let (case, failure) =
+                machine.shrink_parallel(case, failure, (repeats / 2).max(2), max_shrinks, shake);
             return Err(format!(
                 "model {} is not {}: {}: {}",
                 machine.name,
@@ -5381,7 +6464,9 @@ struct NetMailbox {
 
 /// How many times these acts (not nested pars) send to name.
 fn scenario_sends(acts: &[Sexp], name: &str) -> usize {
-    acts.iter().filter(|a| a.kind() == "send" && a.items()[1].name() == name).count()
+    acts.iter()
+        .filter(|a| a.kind() == "send" && a.items()[1].name() == name)
+        .count()
 }
 
 /// How many sends to name the whole program makes.
@@ -5391,7 +6476,10 @@ fn all_sends(acts: &[Sexp], name: &str) -> usize {
         if act.kind() == "send" && act.items()[1].name() == name {
             total += 1;
         } else if act.kind() == "par" {
-            total += act.items()[1..].iter().map(|b| all_sends(&b.items()[1..], name)).sum::<usize>();
+            total += act.items()[1..]
+                .iter()
+                .map(|b| all_sends(&b.items()[1..], name))
+                .sum::<usize>();
         }
     }
     total
@@ -5402,7 +6490,16 @@ type ScenarioEnds = HashMap<String, (usize, usize)>;
 // One call: the command, its arguments, its result, when it started and
 // when it returned, its process, and its process's clock at the call and
 // at the return.
-type ScenarioCall = (usize, Vec<Value>, Value, u64, u64, usize, VectorClock, VectorClock);
+type ScenarioCall = (
+    usize,
+    Vec<Value>,
+    Value,
+    u64,
+    u64,
+    usize,
+    VectorClock,
+    VectorClock,
+);
 
 struct ScenarioRun<'m> {
     machine: &'m Machine<'m>,
@@ -5468,7 +6565,12 @@ fn scenario_constant(form: &Sexp) -> Value {
     match form.kind() {
         "int" => match &items[1] {
             Sexp::Int(n) => Value::Integer(n.clone()),
-            other => Value::Integer(other.name().parse().unwrap_or_else(|_| panic!("expected an integer, got {other:?}"))),
+            other => Value::Integer(
+                other
+                    .name()
+                    .parse()
+                    .unwrap_or_else(|_| panic!("expected an integer, got {other:?}")),
+            ),
         },
         "text" => Value::Text(items[1].name()),
         "bool" => Value::Bool(items[1].name() == "true"),
@@ -5478,11 +6580,18 @@ fn scenario_constant(form: &Sexp) -> Value {
 
 impl<'m> ScenarioRun<'m> {
     fn fail(&self, message: String) {
-        self.failures.lock().unwrap_or_else(|p| p.into_inner()).push(message);
+        self.failures
+            .lock()
+            .unwrap_or_else(|p| p.into_inner())
+            .push(message);
     }
 
     fn failed(&self) -> bool {
-        !self.failures.lock().unwrap_or_else(|p| p.into_inner()).is_empty()
+        !self
+            .failures
+            .lock()
+            .unwrap_or_else(|p| p.into_inner())
+            .is_empty()
     }
 
     fn tick(&self) -> u64 {
@@ -5506,7 +6615,10 @@ impl<'m> ScenarioRun<'m> {
     }
 
     fn queues(&self, channel: usize) -> std::sync::MutexGuard<'_, ScenarioQueues> {
-        self.channels[channel].state.lock().unwrap_or_else(|p| p.into_inner())
+        self.channels[channel]
+            .state
+            .lock()
+            .unwrap_or_else(|p| p.into_inner())
     }
 
     /// Sends from side; a channel end sent to a process that has ended is
@@ -5575,7 +6687,9 @@ impl<'m> ScenarioRun<'m> {
     fn receive_on(&self, channel: usize, side: usize) -> Option<Carried> {
         if let Some(net) = &self.channels[channel].net {
             return match net.ends[side].receive(Some(std::time::Duration::from_secs(5))) {
-                Ok(Value::Text(t)) => match t.rsplit_once('#').and_then(|(c, s)| Some((self.channel_numbers.get(c)?, s.parse::<usize>().ok()?))) {
+                Ok(Value::Text(t)) => match t.rsplit_once('#').and_then(|(c, s)| {
+                    Some((self.channel_numbers.get(c)?, s.parse::<usize>().ok()?))
+                }) {
                     Some((c, s)) => Some(Carried::End(*c, s)),
                     None => Some(Carried::Value(Value::Text(t))),
                 },
@@ -5597,7 +6711,11 @@ impl<'m> ScenarioRun<'m> {
             if now >= deadline {
                 return None;
             }
-            waiting = self.channels[channel].ready.wait_timeout(waiting, deadline - now).unwrap_or_else(|p| p.into_inner()).0;
+            waiting = self.channels[channel]
+                .ready
+                .wait_timeout(waiting, deadline - now)
+                .unwrap_or_else(|p| p.into_inner())
+                .0;
         }
     }
 
@@ -5605,7 +6723,12 @@ impl<'m> ScenarioRun<'m> {
         let mailbox = &self.mailboxes[name];
         match &mailbox.net {
             None => {
-                mailbox.state.lock().unwrap_or_else(|p| p.into_inner()).items.push_back((value, clock));
+                mailbox
+                    .state
+                    .lock()
+                    .unwrap_or_else(|p| p.into_inner())
+                    .items
+                    .push_back((value, clock));
                 mailbox.ready.notify_all();
                 true
             }
@@ -5615,7 +6738,12 @@ impl<'m> ScenarioRun<'m> {
                     Carried::Value(v) => v,
                     Carried::Gone => return true,
                 };
-                mailbox.state.lock().unwrap_or_else(|p| p.into_inner()).clocks.push_back(clock);
+                mailbox
+                    .state
+                    .lock()
+                    .unwrap_or_else(|p| p.into_inner())
+                    .clocks
+                    .push_back(clock);
                 if let Err(e) = net.remote.send(&value) {
                     self.fail(format!("a send to mailbox {name} failed: {e}"));
                     return false;
@@ -5628,7 +6756,11 @@ impl<'m> ScenarioRun<'m> {
 
     fn mailbox_give_up(&self, name: &str, count: usize) {
         let mailbox = &self.mailboxes[name];
-        mailbox.state.lock().unwrap_or_else(|p| p.into_inner()).abandoned += count;
+        mailbox
+            .state
+            .lock()
+            .unwrap_or_else(|p| p.into_inner())
+            .abandoned += count;
         mailbox.ready.notify_all();
     }
 
@@ -5654,12 +6786,18 @@ impl<'m> ScenarioRun<'m> {
                     if now >= deadline {
                         return None;
                     }
-                    drop(mailbox.ready.wait_timeout(state, (deadline - now).min(std::time::Duration::from_millis(50))));
+                    drop(mailbox.ready.wait_timeout(
+                        state,
+                        (deadline - now).min(std::time::Duration::from_millis(50)),
+                    ));
                     continue;
                 }
             }
             let net = mailbox.net.as_ref().expect("a network mailbox");
-            match net.inbox.receive(Some(std::time::Duration::from_millis(20))) {
+            match net
+                .inbox
+                .receive(Some(std::time::Duration::from_millis(20)))
+            {
                 Ok(value) => {
                     let clock = {
                         let mut state = mailbox.state.lock().unwrap_or_else(|p| p.into_inner());
@@ -5667,7 +6805,9 @@ impl<'m> ScenarioRun<'m> {
                         state.clocks.pop_front().unwrap_or_default()
                     };
                     let carried = match value {
-                        Value::Text(t) => match t.rsplit_once('#').and_then(|(c, s)| Some((self.channel_numbers.get(c)?, s.parse::<usize>().ok()?))) {
+                        Value::Text(t) => match t.rsplit_once('#').and_then(|(c, s)| {
+                            Some((self.channel_numbers.get(c)?, s.parse::<usize>().ok()?))
+                        }) {
                             Some((c, s)) => Carried::End(*c, s),
                             None => Carried::Value(Value::Text(t)),
                         },
@@ -5682,7 +6822,12 @@ impl<'m> ScenarioRun<'m> {
     }
 
     fn stamp(&self, channel: usize, side: usize, clock: &VectorClock) {
-        self.stamps.lock().unwrap_or_else(|p| p.into_inner()).entry((channel, side)).or_default().push_back(clock.clone());
+        self.stamps
+            .lock()
+            .unwrap_or_else(|p| p.into_inner())
+            .entry((channel, side))
+            .or_default()
+            .push_back(clock.clone());
     }
 
     fn unstamp(&self, channel: usize, side: usize, clock: &mut VectorClock, me: usize) {
@@ -5711,8 +6856,11 @@ impl<'m> ScenarioRun<'m> {
         identity: usize,
         clock: &mut VectorClock,
     ) -> bool {
-        let mut sent: HashMap<String, usize> = self.mailboxes.keys().map(|m| (m.clone(), 0)).collect();
-        let done = self.steps(acts, env, ends, random, identity, clock, identity, &mut sent);
+        let mut sent: HashMap<String, usize> =
+            self.mailboxes.keys().map(|m| (m.clone(), 0)).collect();
+        let done = self.steps(
+            acts, env, ends, random, identity, clock, identity, &mut sent,
+        );
         for (channel, side) in ends.drain().map(|(_, end)| end).collect::<Vec<_>>() {
             self.gone(channel, side);
         }
@@ -5749,7 +6897,10 @@ impl<'m> ScenarioRun<'m> {
             match act.kind() {
                 "call" => {
                     let name = items[1].name();
-                    let command_index = *self.commands.get(&name).unwrap_or_else(|| panic!("no command {name}"));
+                    let command_index = *self
+                        .commands
+                        .get(&name)
+                        .unwrap_or_else(|| panic!("no command {name}"));
                     let command = &self.machine.commands[command_index];
                     let mut args = Vec::new();
                     for o in &items[3..] {
@@ -5776,16 +6927,19 @@ impl<'m> ScenarioRun<'m> {
                     };
                     let returned = self.tick();
                     *clock.entry(me).or_insert(0) += 1;
-                    self.history.lock().unwrap_or_else(|p| p.into_inner()).push((
-                        command_index,
-                        args,
-                        result.clone(),
-                        called,
-                        returned,
-                        me,
-                        at_call,
-                        clock.clone(),
-                    ));
+                    self.history
+                        .lock()
+                        .unwrap_or_else(|p| p.into_inner())
+                        .push((
+                            command_index,
+                            args,
+                            result.clone(),
+                            called,
+                            returned,
+                            me,
+                            at_call,
+                            clock.clone(),
+                        ));
                     if items[2] != Sexp::Blank {
                         env.insert(items[2].name(), result);
                     }
@@ -5793,7 +6947,11 @@ impl<'m> ScenarioRun<'m> {
                 "send" if self.mailboxes.contains_key(&items[1].name()) => {
                     let name = items[1].name();
                     let operand = &items[2];
-                    let held = if operand.kind() == "var" { ends.remove(&operand.items()[1].name()) } else { None };
+                    let held = if operand.kind() == "var" {
+                        ends.remove(&operand.items()[1].name())
+                    } else {
+                        None
+                    };
                     let value = match held {
                         Some((c, s)) => Carried::End(c, s),
                         None => match self.operand(operand, env) {
@@ -5822,7 +6980,16 @@ impl<'m> ScenarioRun<'m> {
                             if act.kind() == "receive" {
                                 return false;
                             }
-                            return self.steps(&items[3].items()[1..], env, ends, random, usize::MAX, clock, me, sent);
+                            return self.steps(
+                                &items[3].items()[1..],
+                                env,
+                                ends,
+                                random,
+                                usize::MAX,
+                                clock,
+                                me,
+                                sent,
+                            );
                         }
                         Some((value, carried)) => {
                             for (p, n) in carried {
@@ -5843,9 +7010,15 @@ impl<'m> ScenarioRun<'m> {
                     }
                 }
                 "send" => {
-                    let Some((channel, side)) = self.end(&items[1].name(), ends) else { return false };
+                    let Some((channel, side)) = self.end(&items[1].name(), ends) else {
+                        return false;
+                    };
                     let operand = &items[2];
-                    let held = if operand.kind() == "var" { ends.remove(&operand.items()[1].name()) } else { None };
+                    let held = if operand.kind() == "var" {
+                        ends.remove(&operand.items()[1].name())
+                    } else {
+                        None
+                    };
                     let value = match held {
                         Some((c, s)) => Carried::End(c, s),
                         None => match self.operand(operand, env) {
@@ -5863,14 +7036,18 @@ impl<'m> ScenarioRun<'m> {
                 }
                 "receive" | "receiveor" => {
                     let name = items[1].name();
-                    let Some((channel, side)) = self.end(&name, ends) else { return false };
+                    let Some((channel, side)) = self.end(&name, ends) else {
+                        return false;
+                    };
                     let value = self.receive_on(channel, side);
                     if !matches!(value, None | Some(Carried::Gone)) {
                         self.unstamp(channel, side, clock, me);
                     }
                     match value {
                         None => {
-                            self.fail(format!("a receive on {name} waited too long: the processes are blocked"));
+                            self.fail(format!(
+                                "a receive on {name} waited too long: the processes are blocked"
+                            ));
                             return false;
                         }
                         // The other process ended: or else runs instead of
@@ -5880,7 +7057,16 @@ impl<'m> ScenarioRun<'m> {
                                 return false;
                             }
                             ends.remove(&name);
-                            return self.steps(&items[3].items()[1..], env, ends, random, usize::MAX, clock, me, sent);
+                            return self.steps(
+                                &items[3].items()[1..],
+                                env,
+                                ends,
+                                random,
+                                usize::MAX,
+                                clock,
+                                me,
+                                sent,
+                            );
                         }
                         Some(Carried::End(c, s)) => {
                             ends.insert(items[2].name(), (c, s));
@@ -5891,7 +7077,8 @@ impl<'m> ScenarioRun<'m> {
                     }
                 }
                 "par" => {
-                    let branches: Vec<&[Sexp]> = items[1..].iter().map(|b| &b.items()[1..]).collect();
+                    let branches: Vec<&[Sexp]> =
+                        items[1..].iter().map(|b| &b.items()[1..]).collect();
                     // Each name's users, in branch order.
                     let mut owned: Vec<(String, Vec<usize>)> = Vec::new();
                     for (i, branch) in branches.iter().enumerate() {
@@ -5931,16 +7118,27 @@ impl<'m> ScenarioRun<'m> {
                             .map(|(i, (branch, mut mine))| {
                                 let mut env = env.clone();
                                 let mut child = parent.clone();
-                                let mut random =
-                                    SplitMix64::new(self.shake ^ ((i as u64 + 1).wrapping_mul(0x9E3779B97F4A7C15)));
+                                let mut random = SplitMix64::new(
+                                    self.shake ^ ((i as u64 + 1).wrapping_mul(0x9E3779B97F4A7C15)),
+                                );
                                 let identity = branch as *const Sexp as usize;
                                 scope.spawn(move || {
-                                    let done = self.process(&branch.items()[1..], &mut env, &mut mine, &mut random, identity, &mut child);
+                                    let done = self.process(
+                                        &branch.items()[1..],
+                                        &mut env,
+                                        &mut mine,
+                                        &mut random,
+                                        identity,
+                                        &mut child,
+                                    );
                                     (done, child)
                                 })
                             })
                             .collect();
-                        running.into_iter().map(|t| t.join().unwrap_or((false, VectorClock::new()))).collect()
+                        running
+                            .into_iter()
+                            .map(|t| t.join().unwrap_or((false, VectorClock::new())))
+                            .collect()
                     });
                     let mut finished = Vec::new();
                     for (done, child) in outcomes {
@@ -5961,11 +7159,16 @@ impl<'m> ScenarioRun<'m> {
                     let wanted = scenario_constant(&items[2]);
                     let actual = env.get(&name);
                     let agrees = actual
-                        .map(|a| matches!(compare_values(a, &wanted), Ok(std::cmp::Ordering::Equal)))
+                        .map(|a| {
+                            matches!(compare_values(a, &wanted), Ok(std::cmp::Ordering::Equal))
+                        })
                         .unwrap_or(false);
                     if !agrees {
                         let shown = actual.map(render).unwrap_or_else(|| "None".into());
-                        self.fail(format!("expect {name} = {} failed: {name} is {shown}", render(&wanted)));
+                        self.fail(format!(
+                            "expect {name} = {} failed: {name} is {shown}",
+                            render(&wanted)
+                        ));
                         return false;
                     }
                 }
@@ -5977,7 +7180,13 @@ impl<'m> ScenarioRun<'m> {
 }
 
 // One run of a scenario: its title, and what went wrong if anything did.
-fn run_scenario(machine: &Machine, spec: &str, shake: u64, crash: bool, network: bool) -> (String, Option<String>) {
+fn run_scenario(
+    machine: &Machine,
+    spec: &str,
+    shake: u64,
+    crash: bool,
+    network: bool,
+) -> (String, Option<String>) {
     let forms = read_descriptor(spec);
     let title = forms[0].items()[1].name();
     let names: Vec<String> = forms
@@ -5985,9 +7194,17 @@ fn run_scenario(machine: &Machine, spec: &str, shake: u64, crash: bool, network:
         .find(|f| f.kind() == "channels")
         .map(|f| f.items()[1..].iter().map(Sexp::name).collect())
         .unwrap_or_default();
-    let body = forms.iter().find(|f| f.kind() == "process").map(|f| &f.items()[1..]).unwrap_or(&[]);
+    let body = forms
+        .iter()
+        .find(|f| f.kind() == "process")
+        .map(|f| &f.items()[1..])
+        .unwrap_or(&[]);
     let mut symbols = Context::testing();
-    let start_args: Vec<Value> = machine.start_arguments.iter().map(|d| machine.values.minimal(d)).collect();
+    let start_args: Vec<Value> = machine
+        .start_arguments
+        .iter()
+        .map(|d| machine.values.minimal(d))
+        .collect();
     let state = match machine.start_system(&mut symbols, start_args.clone()) {
         Ok(state) => state,
         Err(e) => return (title, Some(format!("the start raised error: {e}"))),
@@ -6003,39 +7220,80 @@ fn run_scenario(machine: &Machine, spec: &str, shake: u64, crash: bool, network:
         let mut chooser = SplitMix64::new(shake ^ 0xC3A5C85C97CB3127);
         let branch = processes[chooser.below(processes.len() as u64) as usize];
         let acts = branch.items().len() as u64 - 1;
-        Some((branch as *const Sexp as usize, chooser.below(acts + 1) as usize))
+        Some((
+            branch as *const Sexp as usize,
+            chooser.below(acts + 1) as usize,
+        ))
     } else {
         None
     };
     // Network runs: loss, duplication and delay (which reorders); the
     // channels' numbered, acknowledged frames must hide them all.
-    let wire = forms.iter().find(|f| f.kind() == "wire").filter(|_| network);
-    let faulty = wire.map(|_| net::MemoryNetwork::new(shake ^ 0x7F4A7C159E3779B9, 0.1, 0.1, std::time::Duration::from_millis(2)));
+    let wire = forms
+        .iter()
+        .find(|f| f.kind() == "wire")
+        .filter(|_| network);
+    let faulty = wire.map(|_| {
+        net::MemoryNetwork::new(
+            shake ^ 0x7F4A7C159E3779B9,
+            0.1,
+            0.1,
+            std::time::Duration::from_millis(2),
+        )
+    });
     let types = Values::new(
-        wire.map(|w| w.items()[1..].iter().filter(|f| f.kind() == "data").map(|f| (f.items()[1].name(), f.clone())).collect())
-            .unwrap_or_default(),
+        wire.map(|w| {
+            w.items()[1..]
+                .iter()
+                .filter(|f| f.kind() == "data")
+                .map(|f| (f.items()[1].name(), f.clone()))
+                .collect()
+        })
+        .unwrap_or_default(),
     );
     let new_channel = |name: &String| {
         let net = match (&faulty, wire) {
-            (Some(network), Some(w)) => w.items()[1..].iter().find(|f| f.kind() == "channel" && f.items()[1].name() == *name).map(|f| {
-                let steps: Vec<(bool, Sexp)> = f.items()[2..].iter().map(|s| (s.kind() == "send", s.items()[1].clone())).collect();
-                let nodes = [net::Node::new(network.insecure_transport_for_tests(&format!("{name}-0"))), net::Node::new(network.insecure_transport_for_tests(&format!("{name}-1")))];
-                let deadline = std::time::Duration::from_secs(5);
-                let first = nodes[0].listen(name, steps.clone(), types.clone(), deadline).expect("a fresh node");
-                let second = nodes[1]
-                    .dial(&first.address(), steps.into_iter().map(|(s, d)| (!s, d)).collect(), types.clone(), deadline)
-                    .expect("a fresh node");
-                NetChannel {
-                    nodes,
-                    ends: [first, second],
-                    done: [std::sync::atomic::AtomicBool::new(false), std::sync::atomic::AtomicBool::new(false)],
-                }
-            }),
+            (Some(network), Some(w)) => w.items()[1..]
+                .iter()
+                .find(|f| f.kind() == "channel" && f.items()[1].name() == *name)
+                .map(|f| {
+                    let steps: Vec<(bool, Sexp)> = f.items()[2..]
+                        .iter()
+                        .map(|s| (s.kind() == "send", s.items()[1].clone()))
+                        .collect();
+                    let nodes = [
+                        net::Node::new(network.insecure_transport_for_tests(&format!("{name}-0"))),
+                        net::Node::new(network.insecure_transport_for_tests(&format!("{name}-1"))),
+                    ];
+                    let deadline = std::time::Duration::from_secs(5);
+                    let first = nodes[0]
+                        .listen(name, steps.clone(), types.clone(), deadline)
+                        .expect("a fresh node");
+                    let second = nodes[1]
+                        .dial(
+                            &first.address(),
+                            steps.into_iter().map(|(s, d)| (!s, d)).collect(),
+                            types.clone(),
+                            deadline,
+                        )
+                        .expect("a fresh node");
+                    NetChannel {
+                        nodes,
+                        ends: [first, second],
+                        done: [
+                            std::sync::atomic::AtomicBool::new(false),
+                            std::sync::atomic::AtomicBool::new(false),
+                        ],
+                    }
+                }),
             _ => None,
         };
         ScenarioChannel {
             state: std::sync::Mutex::new(ScenarioQueues {
-                queues: [std::collections::VecDeque::new(), std::collections::VecDeque::new()],
+                queues: [
+                    std::collections::VecDeque::new(),
+                    std::collections::VecDeque::new(),
+                ],
                 ended: [false, false],
             }),
             ready: std::sync::Condvar::new(),
@@ -6049,22 +7307,39 @@ fn run_scenario(machine: &Machine, spec: &str, shake: u64, crash: bool, network:
         .collect();
     let new_mailbox = |name: &String| {
         let net = match (&faulty, wire) {
-            (Some(network), Some(w)) => w.items()[1..].iter().find(|f| f.kind() == "mailbox" && f.items()[1].name() == *name).map(|f| {
-                let d = f.items()[2].clone();
-                let d = if d.kind() == "end" { descriptor("(text)") } else { d };
-                let nodes = [
-                    net::Node::new(network.insecure_transport_for_tests(&format!("{name}-owner"))),
-                    net::Node::new(network.insecure_transport_for_tests(&format!("{name}-senders"))),
-                ];
-                let inbox = nodes[0].mailbox(name, d.clone(), types.clone()).expect("a fresh node");
-                let remote = nodes[1].remote_mailbox_within(
-                    &format!("{}/{name}", nodes[0].address()),
-                    d,
-                    types.clone(),
-                    std::time::Duration::from_secs(5),
-                );
-                NetMailbox { nodes, inbox, remote }
-            }),
+            (Some(network), Some(w)) => w.items()[1..]
+                .iter()
+                .find(|f| f.kind() == "mailbox" && f.items()[1].name() == *name)
+                .map(|f| {
+                    let d = f.items()[2].clone();
+                    let d = if d.kind() == "end" {
+                        descriptor("(text)")
+                    } else {
+                        d
+                    };
+                    let nodes = [
+                        net::Node::new(
+                            network.insecure_transport_for_tests(&format!("{name}-owner")),
+                        ),
+                        net::Node::new(
+                            network.insecure_transport_for_tests(&format!("{name}-senders")),
+                        ),
+                    ];
+                    let inbox = nodes[0]
+                        .mailbox(name, d.clone(), types.clone())
+                        .expect("a fresh node");
+                    let remote = nodes[1].remote_mailbox_within(
+                        &format!("{}/{name}", nodes[0].address()),
+                        d,
+                        types.clone(),
+                        std::time::Duration::from_secs(5),
+                    );
+                    NetMailbox {
+                        nodes,
+                        inbox,
+                        remote,
+                    }
+                }),
             _ => None,
         };
         ScenarioMailbox {
@@ -6077,9 +7352,18 @@ fn run_scenario(machine: &Machine, spec: &str, shake: u64, crash: bool, network:
     let run = ScenarioRun {
         mailboxes: boxes.iter().map(|m| (m.clone(), new_mailbox(m))).collect(),
         machine,
-        commands: machine.commands.iter().enumerate().map(|(i, c)| (c.name.clone(), i)).collect(),
+        commands: machine
+            .commands
+            .iter()
+            .enumerate()
+            .map(|(i, c)| (c.name.clone(), i))
+            .collect(),
         channels: names.iter().map(new_channel).collect(),
-        channel_numbers: names.iter().enumerate().map(|(i, n)| (n.clone(), i)).collect(),
+        channel_numbers: names
+            .iter()
+            .enumerate()
+            .map(|(i, n)| (n.clone(), i))
+            .collect(),
         channel_names: names.clone(),
         stamps: std::sync::Mutex::new(HashMap::new()),
         state: state.clone(),
@@ -6089,7 +7373,14 @@ fn run_scenario(machine: &Machine, spec: &str, shake: u64, crash: bool, network:
         failures: std::sync::Mutex::new(Vec::new()),
         victim,
     };
-    let finished = run.process(body, &mut HashMap::new(), &mut ScenarioEnds::new(), &mut SplitMix64::new(shake), 0, &mut VectorClock::new());
+    let finished = run.process(
+        body,
+        &mut HashMap::new(),
+        &mut ScenarioEnds::new(),
+        &mut SplitMix64::new(shake),
+        0,
+        &mut VectorClock::new(),
+    );
     for channel in &run.channels {
         if let Some(net) = &channel.net {
             for node in &net.nodes {
@@ -6104,8 +7395,18 @@ fn run_scenario(machine: &Machine, spec: &str, shake: u64, crash: bool, network:
             }
         }
     }
-    if let Some(failure) = run.failures.into_inner().unwrap_or_else(|p| p.into_inner()).into_iter().next() {
-        let crashed = if victim.is_some() { " (with a process crashed)" } else { "" };
+    if let Some(failure) = run
+        .failures
+        .into_inner()
+        .unwrap_or_else(|p| p.into_inner())
+        .into_iter()
+        .next()
+    {
+        let crashed = if victim.is_some() {
+            " (with a process crashed)"
+        } else {
+            ""
+        };
         return (title, Some(format!("{failure}{crashed}")));
     }
     if !finished && victim.is_none() {
@@ -6152,7 +7453,8 @@ fn run_scenario(machine: &Machine, spec: &str, shake: u64, crash: bool, network:
 // Whether call a returned before call b began, as far as messages tell:
 // a's return clock is at or below b's call clock everywhere.
 fn happened_before(a: &ScenarioCall, b: &ScenarioCall) -> bool {
-    a.7.iter().all(|(p, n)| b.6.get(p).copied().unwrap_or(0) >= *n)
+    a.7.iter()
+        .all(|(p, n)| b.6.get(p).copied().unwrap_or(0) >= *n)
 }
 
 impl<'a> Machine<'a> {
@@ -6176,24 +7478,58 @@ impl<'a> Machine<'a> {
             processes.sort_unstable();
             processes.dedup();
             for process in processes {
-                let own: Vec<usize> = everything.iter().copied().filter(|i| history[*i].5 == process).collect();
+                let own: Vec<usize> = everything
+                    .iter()
+                    .copied()
+                    .filter(|i| history[*i].5 == process)
+                    .collect();
                 let members: Vec<usize> = everything
                     .iter()
                     .copied()
-                    .filter(|j| own.contains(j) || own.iter().any(|i| i != j && happened_before(&history[*j], &history[*i])))
+                    .filter(|j| {
+                        own.contains(j)
+                            || own
+                                .iter()
+                                .any(|i| i != j && happened_before(&history[*j], &history[*i]))
+                    })
                     .collect();
                 let checked: std::collections::HashSet<usize> = own.into_iter().collect();
                 let mut seen = std::collections::HashSet::new();
-                if !self.scenario_visit(ctx, history, &members, &checked, false, &mut seen, Vec::new(), expected.clone(), fin, state) {
+                if !self.scenario_visit(
+                    ctx,
+                    history,
+                    &members,
+                    &checked,
+                    false,
+                    &mut seen,
+                    Vec::new(),
+                    expected.clone(),
+                    fin,
+                    state,
+                ) {
                     return false;
                 }
             }
             return true;
         }
-        let checked: std::collections::HashSet<usize> =
-            if self.consistency == "eventual" { Default::default() } else { everything.iter().copied().collect() };
+        let checked: std::collections::HashSet<usize> = if self.consistency == "eventual" {
+            Default::default()
+        } else {
+            everything.iter().copied().collect()
+        };
         let mut seen = std::collections::HashSet::new();
-        self.scenario_visit(ctx, history, &everything, &checked, true, &mut seen, Vec::new(), expected, fin, state)
+        self.scenario_visit(
+            ctx,
+            history,
+            &everything,
+            &checked,
+            true,
+            &mut seen,
+            Vec::new(),
+            expected,
+            fin,
+            state,
+        )
     }
 
     fn before(&self, history: &[ScenarioCall], j: usize, i: usize) -> bool {
@@ -6228,20 +7564,29 @@ impl<'a> Machine<'a> {
                 return true;
             }
             if let Some(fin) = fin {
-                if !matches!(compare_values(fin, &model_state), Ok(std::cmp::Ordering::Equal)) {
+                if !matches!(
+                    compare_values(fin, &model_state),
+                    Ok(std::cmp::Ordering::Equal)
+                ) {
                     return false;
                 }
             }
             return self.invariants.iter().all(|(kind, invariant)| {
                 let subject = if kind == "model" { &model_state } else { state };
-                matches!(invariant(ctx, vec![subject.clone()]).and_then(|v| v.boolean()), Ok(true))
+                matches!(
+                    invariant(ctx, vec![subject.clone()]).and_then(|v| v.boolean()),
+                    Ok(true)
+                )
             });
         }
         for &i in members {
             if done.contains(&i) {
                 continue;
             }
-            if members.iter().any(|&j| j != i && !done.contains(&j) && self.before(history, j, i)) {
+            if members
+                .iter()
+                .any(|&j| j != i && !done.contains(&j) && self.before(history, j, i))
+            {
                 continue;
             }
             let (index, args, result) = (&history[i].0, &history[i].1, &history[i].2);
@@ -6251,12 +7596,29 @@ impl<'a> Machine<'a> {
                 Err(ModelFault::Invalid) => continue,
                 Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
             };
-            if checked.contains(&i) && !command.unit && !matches!(compare_values(result, &wanted), Ok(std::cmp::Ordering::Equal)) {
+            if checked.contains(&i)
+                && !command.unit
+                && !matches!(
+                    compare_values(result, &wanted),
+                    Ok(std::cmp::Ordering::Equal)
+                )
+            {
                 continue;
             }
             let mut next = done.clone();
             next.push(i);
-            if self.scenario_visit(ctx, history, members, checked, judge_final, seen, next, after, fin, state) {
+            if self.scenario_visit(
+                ctx,
+                history,
+                members,
+                checked,
+                judge_final,
+                seen,
+                next,
+                after,
+                fin,
+                state,
+            ) {
                 return true;
             }
         }
@@ -6267,13 +7629,17 @@ impl<'a> Machine<'a> {
 /// Runs a scenario on many schedules (30 runs, seeded by LAWSPEC_SEED);
 /// a failure names the scenario and what went wrong.
 pub fn check_scenario(model: &Model, spec: &str) -> std::result::Result<(), String> {
-    let seed = std::env::var("LAWSPEC_SEED").ok().and_then(|s| s.trim().parse::<u64>().ok()).unwrap_or(0);
+    let seed = std::env::var("LAWSPEC_SEED")
+        .ok()
+        .and_then(|s| s.trim().parse::<u64>().ok())
+        .unwrap_or(0);
     let machine = Machine::new(model);
     let mut random = SplitMix64::new(seed ^ 0x2545F4914F6CDD1D);
     for run in 0..30 {
         // Every third run crashes one process of a par at a random point, and
         // every third other one sends each channel over a faulty network.
-        let (title, failure) = run_scenario(&machine, spec, random.next(), run % 3 == 2, run % 3 == 1);
+        let (title, failure) =
+            run_scenario(&machine, spec, random.next(), run % 3 == 2, run % 3 == 1);
         if let Some(failure) = failure {
             return Err(format!("scenario {title} fails: {failure}"));
         }
@@ -6281,9 +7647,101 @@ pub fn check_scenario(model: &Model, spec: &str) -> std::result::Result<(), Stri
     Ok(())
 }
 
-
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn finite_case_covers_preserve_order_correlations_and_laziness() {
+        let collect = |cover: &FiniteCover| {
+            let mut rows = Vec::new();
+            finite_cases(cover, |index, factories| {
+                let context = &mut Context::testing();
+                rows.push((
+                    index,
+                    factories
+                        .iter()
+                        .map(|factory| factory.materialize(context))
+                        .collect::<Result<Vec<_>>>()?,
+                ));
+                Ok(())
+            })
+            .unwrap();
+            rows
+        };
+        let domain = FiniteDomain::Integers(0.into(), 2.into());
+        let cover = FiniteCover::Branches(vec![(
+            domain,
+            FiniteCover::Branches(vec![(
+                FiniteDomain::Values(vec![|_| Ok(Value::Bool(false)), |_| Ok(Value::Bool(true))]),
+                FiniteCover::Copies(1),
+            )]),
+        )]);
+        let expected: Vec<_> = (0..=2)
+            .flat_map(|n| [false, true].map(move |b| vec![int(n), Value::Bool(b)]))
+            .enumerate()
+            .collect();
+        assert_eq!(collect(&cover), expected);
+        let dependent = FiniteCover::Branches(vec![
+            (
+                FiniteDomain::Integers(1.into(), 1.into()),
+                FiniteCover::Copies(2),
+            ),
+            (
+                FiniteDomain::Integers(2.into(), 2.into()),
+                FiniteCover::Copies(1),
+            ),
+        ]);
+        assert_eq!(
+            collect(&dependent),
+            vec![(0, vec![int(1)]), (1, vec![int(1)]), (2, vec![int(2)])]
+        );
+        assert!(collect(&FiniteCover::Branches(vec![])).is_empty());
+        assert_eq!(collect(&FiniteCover::Copies(1)), vec![(0, vec![])]);
+        let maximum = BigInt::from(u64::MAX);
+        assert_eq!(
+            collect(&FiniteCover::Branches(vec![(
+                FiniteDomain::Integers(&maximum - 1, maximum.clone()),
+                FiniteCover::Copies(1)
+            )])),
+            vec![
+                (0, vec![Value::Integer(&maximum - 1)]),
+                (1, vec![Value::Integer(maximum)])
+            ]
+        );
+        let huge = FiniteCover::Branches(vec![(
+            FiniteDomain::Integers(0.into(), BigInt::from(1) << 128),
+            FiniteCover::Copies(1),
+        )]);
+        let mut visited = 0;
+        let result = finite_cases(&huge, |index, _| {
+            assert_eq!(index, visited);
+            visited += 1;
+            if visited == 3 {
+                Err("stop".to_owned())
+            } else {
+                Ok(())
+            }
+        });
+        assert_eq!(result, Err("stop".to_owned()));
+        assert_eq!(visited, 3);
+    }
+
+    #[test]
+    fn finite_case_factories_materialize_fresh_contexts_and_values() {
+        let factory = FiniteValue::Literal(|context| {
+            Ok(Value::List(vec![Value::Symbol(
+                context.symbol("id", "same"),
+            )]))
+        });
+        let first = &mut Context::testing();
+        let second = &mut Context::testing();
+        let mut value = factory.materialize(first).unwrap();
+        assert_eq!(value, factory.materialize(first).unwrap());
+        assert_ne!(value, factory.materialize(second).unwrap());
+        if let Value::List(items) = &mut value {
+            items.clear();
+        }
+        assert_ne!(value, factory.materialize(first).unwrap());
+    }
     use super::*;
     #[test]
     fn nested_structural_index_guards_remain_checked() {
@@ -6292,37 +7750,117 @@ mod tests {
         let outer = TypeRef::named("lawspec::structural::record::outer", vec![]);
         let wrapper = TypeRef::named("PathWrapper", vec![]);
         let schema = Schema::new(vec![
-            DataSchema { name: "PathChain", parameters: 0, constructors: vec![
-                ConstructorSchema { tag: "Stop", fields: vec![] },
-                ConstructorSchema { tag: "Next", fields: vec![chain.clone()] }] },
-            DataSchema { name: "lawspec::structural::record::inner", parameters: 0,
-                constructors: vec![ConstructorSchema { tag: "Inner", fields: vec![chain.clone()] }] },
-            DataSchema { name: "lawspec::structural::record::outer", parameters: 0,
-                constructors: vec![ConstructorSchema { tag: "Outer", fields: vec![inner,chain] }] },
-            DataSchema { name: "PathWrapper", parameters: 0,
-                constructors: vec![ConstructorSchema { tag: "Wrap", fields: vec![outer.clone()] }] },
-        ]).unwrap().with_indices(&[
-            ("Stop", &["c0","c10"]), ("Next", &["+ f0 c1","+ f0.1 c1"]),
+            DataSchema {
+                name: "PathChain",
+                parameters: 0,
+                constructors: vec![
+                    ConstructorSchema {
+                        tag: "Stop",
+                        fields: vec![],
+                    },
+                    ConstructorSchema {
+                        tag: "Next",
+                        fields: vec![chain.clone()],
+                    },
+                ],
+            },
+            DataSchema {
+                name: "lawspec::structural::record::inner",
+                parameters: 0,
+                constructors: vec![ConstructorSchema {
+                    tag: "Inner",
+                    fields: vec![chain.clone()],
+                }],
+            },
+            DataSchema {
+                name: "lawspec::structural::record::outer",
+                parameters: 0,
+                constructors: vec![ConstructorSchema {
+                    tag: "Outer",
+                    fields: vec![inner, chain],
+                }],
+            },
+            DataSchema {
+                name: "PathWrapper",
+                parameters: 0,
+                constructors: vec![ConstructorSchema {
+                    tag: "Wrap",
+                    fields: vec![outer.clone()],
+                }],
+            },
+        ])
+        .unwrap()
+        .with_indices(&[
+            ("Stop", &["c0", "c10"]),
+            ("Next", &["+ f0 c1", "+ f0.1 c1"]),
             ("Outer", &["== p0/0.0 f1"]),
-            ("Wrap", &["p0/0/0.0","p0/0/0.1","== p0/0/0.1 + p0/1.0 c10","== p0/0/0.0 p0/1.0",">= p0/0/0.0 c1"]),
+            (
+                "Wrap",
+                &[
+                    "p0/0/0.0",
+                    "p0/0/0.1",
+                    "== p0/0/0.1 + p0/1.0 c10",
+                    "== p0/0/0.0 p0/1.0",
+                    ">= p0/0/0.0 c1",
+                ],
+            ),
         ]);
         let stop = construct_data("Stop", vec![]);
         let one = construct_data("Next", vec![stop.clone()]);
         let two = construct_data("Next", vec![one.clone()]);
-        let wrap = |left, right| construct_data("Wrap", vec![construct_data("Outer", vec![
-            construct_data("Inner", vec![left]),right])]);
-        for bits in [32,64] {
-            let product = |left, right| construct_data("Outer", vec![construct_data("Inner", vec![left]),right]);
-            assert!(schema.validate(product(two.clone(),two.clone()), &outer, bits).is_ok());
-            assert!(schema.validate(product(two.clone(),stop.clone()), &outer, bits).is_err());
-            let good = wrap(two.clone(),two.clone());
+        let wrap = |left, right| {
+            construct_data(
+                "Wrap",
+                vec![construct_data(
+                    "Outer",
+                    vec![construct_data("Inner", vec![left]), right],
+                )],
+            )
+        };
+        for bits in [32, 64] {
+            let product = |left, right| {
+                construct_data("Outer", vec![construct_data("Inner", vec![left]), right])
+            };
+            assert!(
+                schema
+                    .validate(product(two.clone(), two.clone()), &outer, bits)
+                    .is_ok()
+            );
+            assert!(
+                schema
+                    .validate(product(two.clone(), stop.clone()), &outer, bits)
+                    .is_err()
+            );
+            let good = wrap(two.clone(), two.clone());
             assert!(schema.validate(good.clone(), &wrapper, bits).is_ok());
-            assert_eq!(schema.index_of(&wrapper, &good, 0).unwrap(), BigInt::from(2));
-            assert_eq!(schema.index_of(&wrapper, &good, 1).unwrap(), BigInt::from(12));
-            assert!(schema.validate(wrap(two.clone(),one.clone()), &wrapper, bits).is_err());
-            assert!(schema.validate(wrap(stop.clone(),stop.clone()), &wrapper, bits).is_err());
-            assert!(schema.index_at_path(&[wrapper.clone()], &[good.clone()], &[0,0,1,0], 0).is_err());
-            assert!(schema.index_at_path(&[wrapper.clone()], &[good], &[9], 0).is_err());
+            assert_eq!(
+                schema.index_of(&wrapper, &good, 0).unwrap(),
+                BigInt::from(2)
+            );
+            assert_eq!(
+                schema.index_of(&wrapper, &good, 1).unwrap(),
+                BigInt::from(12)
+            );
+            assert!(
+                schema
+                    .validate(wrap(two.clone(), one.clone()), &wrapper, bits)
+                    .is_err()
+            );
+            assert!(
+                schema
+                    .validate(wrap(stop.clone(), stop.clone()), &wrapper, bits)
+                    .is_err()
+            );
+            assert!(
+                schema
+                    .index_at_path(&[wrapper.clone()], &[good.clone()], &[0, 0, 1, 0], 0)
+                    .is_err()
+            );
+            assert!(
+                schema
+                    .index_at_path(&[wrapper.clone()], &[good], &[9], 0)
+                    .is_err()
+            );
         }
     }
     fn int(n: i64) -> Value {
@@ -6707,20 +8245,33 @@ mod handle_tests {
         let b = Value::Handle(Handle::new(std::sync::Mutex::new(vec![1i32])));
         assert!(equal(&a, &a.clone()).unwrap());
         assert!(!equal(&a, &b).unwrap());
-        assert_eq!(compare_values(&a, &a.clone()).unwrap(), std::cmp::Ordering::Equal);
-        assert!(compare_values(&a, &b).unwrap_err().contains("no portable order"));
+        assert_eq!(
+            compare_values(&a, &a.clone()).unwrap(),
+            std::cmp::Ordering::Equal
+        );
+        assert!(
+            compare_values(&a, &b)
+                .unwrap_err()
+                .contains("no portable order")
+        );
         fn send<T: Send + Sync>(_: &T) {}
         send(&a);
     }
 
     #[test]
     fn a_schema_names_and_passes_handles() {
-        let schema = Schema::new(vec![DataSchema { name: "unit::type::Jobs", parameters: 0, constructors: vec![] }])
-            .unwrap()
-            .with_handles(&["unit::type::Jobs"]);
+        let schema = Schema::new(vec![DataSchema {
+            name: "unit::type::Jobs",
+            parameters: 0,
+            constructors: vec![],
+        }])
+        .unwrap()
+        .with_handles(&["unit::type::Jobs"]);
         let ty = TypeRef::named("unit::type::Jobs", vec![]);
         let handle = Handle::new(7i32);
-        let checked = schema.validate(Value::Handle(handle.clone()), &ty, 64).unwrap();
+        let checked = schema
+            .validate(Value::Handle(handle.clone()), &ty, 64)
+            .unwrap();
         assert_eq!(checked, Value::Handle(handle.clone()));
         assert!(render(&checked).starts_with("Jobs#"));
         assert_eq!(render(&checked), render(&Value::Handle(handle.clone())));
@@ -7276,7 +8827,9 @@ pub mod sessions {
 
     impl std::fmt::Display for PeerFailed {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str("the other end gave up the conversation (its process failed or abandoned it)")
+            f.write_str(
+                "the other end gave up the conversation (its process failed or abandoned it)",
+            )
         }
     }
 
@@ -7352,8 +8905,14 @@ pub mod sessions {
         /// The ends of a channel over the given transport.
         pub fn pair(transport: Arc<dyn Transport>) -> (Endpoint, Endpoint) {
             (
-                Endpoint { transport: transport.clone(), side: Side::First },
-                Endpoint { transport, side: Side::Second },
+                Endpoint {
+                    transport: transport.clone(),
+                    side: Side::First,
+                },
+                Endpoint {
+                    transport,
+                    side: Side::Second,
+                },
             )
         }
 
@@ -7369,7 +8928,8 @@ pub mod sessions {
 
         /// The next value; panics with PeerFailed when the other end gave up.
         pub fn receive<T: Any + Send>(&self) -> T {
-            self.try_receive().unwrap_or_else(|failed| panic!("{failed}"))
+            self.try_receive()
+                .unwrap_or_else(|failed| panic!("{failed}"))
         }
 
         /// The next value, or PeerFailed once the other end gave up and
@@ -7420,7 +8980,9 @@ pub mod sessions {
     impl<T> Process<T> {
         /// Waits for the process; its panic, if any, continues here.
         pub fn join(self) -> T {
-            self.0.join().unwrap_or_else(|panic| std::panic::resume_unwind(panic))
+            self.0
+                .join()
+                .unwrap_or_else(|panic| std::panic::resume_unwind(panic))
         }
     }
 
@@ -7438,7 +9000,9 @@ pub mod sessions {
         std::thread::scope(|scope| {
             let right = scope.spawn(right);
             let left = left();
-            let right = right.join().unwrap_or_else(|panic| std::panic::resume_unwind(panic));
+            let right = right
+                .join()
+                .unwrap_or_else(|panic| std::panic::resume_unwind(panic));
             (left, right)
         })
     }
@@ -7528,7 +9092,9 @@ pub mod actors {
 
     impl<S> Clone for Actor<S> {
         fn clone(&self) -> Self {
-            Actor { inner: self.inner.clone() }
+            Actor {
+                inner: self.inner.clone(),
+            }
         }
     }
 
@@ -7609,7 +9175,11 @@ pub mod actors {
         fn take(&self, ticket: u64) -> std::result::Result<S, String> {
             let mut turns = self.turns();
             while turns.serving != ticket {
-                turns = self.inner.changed.wait(turns).unwrap_or_else(|e| e.into_inner());
+                turns = self
+                    .inner
+                    .changed
+                    .wait(turns)
+                    .unwrap_or_else(|e| e.into_inner());
             }
             if turns.halted {
                 return Err(STOPPED.into());
@@ -7661,11 +9231,17 @@ pub mod actors {
         /// or halt, end the turn, then tell monitors and links.
         fn crashed(&self, cause: String, origin: u64, last: Option<S>) {
             lock(&self.inner.seen).insert(origin);
-            let supervisor = lock(&self.inner.supervisor).clone().and_then(|w| w.upgrade());
+            let supervisor = lock(&self.inner.supervisor)
+                .clone()
+                .and_then(|w| w.upgrade());
             let mut next = None;
-            if let (Some(supervisor), Some(restart), Some(last)) = (supervisor, self.inner.restart.clone(), last) {
+            if let (Some(supervisor), Some(restart), Some(last)) =
+                (supervisor, self.inner.restart.clone(), last)
+            {
                 if supervisor.child_crashed(self.id(), &cause) {
-                    next = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| restart(last))).ok().and_then(|r| r.ok());
+                    next = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| restart(last)))
+                        .ok()
+                        .and_then(|r| r.ok());
                 }
             }
             if next.is_none() {
@@ -7681,7 +9257,11 @@ pub mod actors {
         }
 
         /// Runs one turn's body over the state; a failure crashes the actor.
-        fn turn<R>(&self, state: S, body: impl FnOnce(S) -> super::Result<(R, S)>) -> super::Result<R> {
+        fn turn<R>(
+            &self,
+            state: S,
+            body: impl FnOnce(S) -> super::Result<(R, S)>,
+        ) -> super::Result<R> {
             let snapshot = self.inner.keep.as_ref().map(|keep| keep(&state));
             let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| body(state)))
                 .unwrap_or_else(|panic| Err(panic_text(panic)));
@@ -7700,7 +9280,10 @@ pub mod actors {
         /// Runs handler(state) -> (reply, next state) in turn and returns the
         /// reply. A handler that fails or panics crashes the actor, and call
         /// returns an error starting "the actor crashed: ".
-        pub fn call<R>(&self, handler: impl FnOnce(S) -> super::Result<(R, S)>) -> super::Result<R> {
+        pub fn call<R>(
+            &self,
+            handler: impl FnOnce(S) -> super::Result<(R, S)>,
+        ) -> super::Result<R> {
             let ticket = self.ticket()?;
             match self.take(ticket) {
                 Ok(state) => self.turn(state, handler),
@@ -7713,8 +9296,13 @@ pub mod actors {
 
         /// Queues handler(state) -> (reply, next state) without waiting; the
         /// reply is dropped.
-        pub fn tell<R>(&self, handler: impl FnOnce(S) -> super::Result<(R, S)> + Send + 'static) -> super::Result<()> {
-            self.queue(Message::Run(Box::new(move |s| handler(s).map(|(_, next)| next))))
+        pub fn tell<R>(
+            &self,
+            handler: impl FnOnce(S) -> super::Result<(R, S)> + Send + 'static,
+        ) -> super::Result<()> {
+            self.queue(Message::Run(Box::new(move |s| {
+                handler(s).map(|(_, next)| next)
+            })))
         }
 
         fn drain(&self) {
@@ -7742,7 +9330,9 @@ pub mod actors {
                     }
                     // A crash that already reached this actor by another
                     // link is not repeated.
-                    Message::Crash(_, origin) if lock(&self.inner.seen).contains(&origin) => self.finish(Some(state)),
+                    Message::Crash(_, origin) if lock(&self.inner.seen).contains(&origin) => {
+                        self.finish(Some(state))
+                    }
                     Message::Crash(cause, origin) => self.crashed(cause, origin, Some(state)),
                     Message::Restart => match &self.inner.restart {
                         Some(restart) => {
@@ -7804,7 +9394,9 @@ pub mod actors {
         /// Refuses further messages; those already sent are still handled. A
         /// permanent child of a supervisor restarts instead.
         pub fn stop(&self) {
-            let supervisor = lock(&self.inner.supervisor).clone().and_then(|w| w.upgrade());
+            let supervisor = lock(&self.inner.supervisor)
+                .clone()
+                .and_then(|w| w.upgrade());
             if let Some(supervisor) = supervisor {
                 if supervisor.child_stopped(self.id()) {
                     return;
@@ -7822,7 +9414,10 @@ pub mod actors {
     impl<S: Clone + Send + 'static> Actor<S> {
         /// Starts an actor owning `state` that restarts after a crash, under
         /// a supervisor, with restart(last state).
-        pub fn with_restart(state: S, restart: impl Fn(S) -> super::Result<S> + Send + Sync + 'static) -> Self {
+        pub fn with_restart(
+            state: S,
+            restart: impl Fn(S) -> super::Result<S> + Send + Sync + 'static,
+        ) -> Self {
             Self::make(state, Some(Arc::new(restart)), Some(Arc::new(S::clone)))
         }
 
@@ -7928,7 +9523,11 @@ pub mod actors {
                     strategy,
                     max_restarts,
                     period,
-                    state: Mutex::new(SupervisorState { children: Vec::new(), restarts: VecDeque::new(), stopped: false }),
+                    state: Mutex::new(SupervisorState {
+                        children: Vec::new(),
+                        restarts: VecDeque::new(),
+                        stopped: false,
+                    }),
                     parent: Mutex::new(None),
                     monitors: Mutex::new(Vec::new()),
                 }),
@@ -7938,7 +9537,10 @@ pub mod actors {
         /// Adds a started child (a clone of an actor or a supervisor).
         pub fn supervise(&self, child: impl Supervised + 'static, lifetime: Lifetime) {
             child.attach(Some(self));
-            lock(&self.inner.state).children.push(Child { child: Arc::new(child), lifetime });
+            lock(&self.inner.state).children.push(Child {
+                child: Arc::new(child),
+                lifetime,
+            });
         }
 
         /// notify(Exit::Crashed(cause)) when it passes its restart limit, and
@@ -7960,7 +9562,11 @@ pub mod actors {
 
         fn allow_restart(&self, state: &mut SupervisorState) -> bool {
             let now = Instant::now();
-            while state.restarts.front().is_some_and(|at| now.duration_since(*at) > self.period) {
+            while state
+                .restarts
+                .front()
+                .is_some_and(|at| now.duration_since(*at) > self.period)
+            {
                 state.restarts.pop_front();
             }
             if state.restarts.len() >= self.max_restarts {
@@ -8168,7 +9774,11 @@ pub mod actors {
                 _ => Err(format!("{what} should have stopped")),
             }
         }
-        fn expect<T: PartialEq + std::fmt::Debug>(actual: T, wanted: T, what: &str) -> super::Result<()> {
+        fn expect<T: PartialEq + std::fmt::Debug>(
+            actual: T,
+            wanted: T,
+            what: &str,
+        ) -> super::Result<()> {
             if actual != wanted {
                 return Err(format!("{what}: got {actual:?}, expected {wanted:?}"));
             }
@@ -8195,7 +9805,11 @@ pub mod actors {
         bump(&y)?;
         bump(&y)?;
         fail(&x)?;
-        expect((x.state()?, y.state()?), (0, 2), "one for one restarts only the crashed child")?;
+        expect(
+            (x.state()?, y.state()?),
+            (0, 2),
+            "one for one restarts only the crashed child",
+        )?;
         let sup = Supervisor::new(Strategy::OneForAll, 3, Duration::from_secs(5));
         let (x, y) = (counter(), counter());
         sup.supervise(x.clone(), Lifetime::Permanent);
@@ -8203,7 +9817,11 @@ pub mod actors {
         bump(&x)?;
         bump(&y)?;
         fail(&x)?;
-        expect((x.state()?, y.state()?), (0, 0), "one for all restarts every child")?;
+        expect(
+            (x.state()?, y.state()?),
+            (0, 0),
+            "one for all restarts every child",
+        )?;
         let sup = Supervisor::new(Strategy::RestForOne, 3, Duration::from_secs(5));
         let (x, y, z) = (counter(), counter(), counter());
         for c in [&x, &y, &z] {
@@ -8211,7 +9829,11 @@ pub mod actors {
             bump(c)?;
         }
         fail(&y)?;
-        expect((x.state()?, y.state()?, z.state()?), (1, 0, 0), "rest for one restarts the child and later ones")?;
+        expect(
+            (x.state()?, y.state()?, z.state()?),
+            (1, 0, 0),
+            "rest for one restarts the child and later ones",
+        )?;
         let sup = Supervisor::new(Strategy::OneForOne, 3, Duration::from_secs(5));
         let t = counter();
         sup.supervise(t.clone(), Lifetime::Temporary);
@@ -8238,7 +9860,10 @@ pub mod actors {
         fail(&x)?;
         stopped(&y, "a child of a supervisor past its restart limit")?;
         expect(
-            lock(&events).iter().map(|e| matches!(e, Exit::Crashed(_))).collect::<Vec<_>>(),
+            lock(&events)
+                .iter()
+                .map(|e| matches!(e, Exit::Crashed(_)))
+                .collect::<Vec<_>>(),
             vec![true],
             "a supervisor past its limit tells its monitors",
         )?;
@@ -8251,7 +9876,11 @@ pub mod actors {
         bump(&y)?;
         fail(&x)?;
         fail(&x)?;
-        expect((x.state()?, y.state()?), (0, 0), "a supervisor past its limit is restarted by its own")?;
+        expect(
+            (x.state()?, y.state()?),
+            (0, 0),
+            "a supervisor past its limit is restarted by its own",
+        )?;
         let seen = Arc::new(Mutex::new(Vec::new()));
         let (a, b) = (counter(), counter());
         a.link(&b);
@@ -8261,7 +9890,10 @@ pub mod actors {
         wait_until(|| !lock(&seen).is_empty());
         stopped(&b, "an unsupervised actor linked to one that crashed")?;
         expect(
-            lock(&seen).iter().map(|e| matches!(e, Exit::Crashed(_))).collect::<Vec<_>>(),
+            lock(&seen)
+                .iter()
+                .map(|e| matches!(e, Exit::Crashed(_)))
+                .collect::<Vec<_>>(),
             vec![true],
             "a monitor hears of a crash",
         )?;
@@ -8280,7 +9912,12 @@ pub mod actors {
         wait_until(|| lock(&sup.inner.state).restarts.len() >= 3);
         std::thread::sleep(Duration::from_millis(50));
         expect(
-            (a.state()?, b.state()?, c.state()?, lock(&sup.inner.state).restarts.len()),
+            (
+                a.state()?,
+                b.state()?,
+                c.state()?,
+                lock(&sup.inner.state).restarts.len(),
+            ),
             (0, 0, 0, 3),
             "a crash crosses each link once",
         )?;
@@ -8296,13 +9933,17 @@ pub mod actors {
 
     impl<T> Clone for Mailbox<T> {
         fn clone(&self) -> Self {
-            Mailbox { inner: self.inner.clone() }
+            Mailbox {
+                inner: self.inner.clone(),
+            }
         }
     }
 
     impl<T> Default for Mailbox<T> {
         fn default() -> Self {
-            Mailbox { inner: Arc::new((Mutex::new((VecDeque::new(), false)), Condvar::new())) }
+            Mailbox {
+                inner: Arc::new((Mutex::new((VecDeque::new(), false)), Condvar::new())),
+            }
         }
     }
 
@@ -8341,7 +9982,11 @@ pub mod actors {
                         if now >= at {
                             return Err("no message arrived in time".into());
                         }
-                        self.inner.1.wait_timeout(items, at - now).unwrap_or_else(|e| e.into_inner()).0
+                        self.inner
+                            .1
+                            .wait_timeout(items, at - now)
+                            .unwrap_or_else(|e| e.into_inner())
+                            .0
                     }
                 };
             }
@@ -8387,7 +10032,11 @@ pub mod actors {
                         if now >= at {
                             return Ok(None);
                         }
-                        self.inner.1.wait_timeout(items, at - now).unwrap_or_else(|e| e.into_inner()).0
+                        self.inner
+                            .1
+                            .wait_timeout(items, at - now)
+                            .unwrap_or_else(|e| e.into_inner())
+                            .0
                     }
                 };
             }
@@ -8412,7 +10061,8 @@ mod actor_tests {
             self.0.load(std::sync::atomic::Ordering::SeqCst)
         }
         fn sleep_micros(&self, micros: i64) {
-            self.0.fetch_add(micros, std::sync::atomic::Ordering::SeqCst);
+            self.0
+                .fetch_add(micros, std::sync::atomic::Ordering::SeqCst);
         }
         fn real_time(&self) -> bool {
             false
@@ -8425,10 +10075,18 @@ mod actor_tests {
         let clock = Virtual(std::sync::atomic::AtomicI64::new(0));
         mailbox.send(7).unwrap();
         let within = std::time::Duration::from_secs(60);
-        assert_eq!(mailbox.receive_within(within, Some(&clock)).unwrap(), Some(7));
+        assert_eq!(
+            mailbox.receive_within(within, Some(&clock)).unwrap(),
+            Some(7)
+        );
         assert_eq!(mailbox.receive_within(within, Some(&clock)).unwrap(), None);
         assert_eq!(clock.now_micros(), 60_000_000);
-        assert_eq!(mailbox.receive_within(std::time::Duration::from_millis(10), None).unwrap(), None);
+        assert_eq!(
+            mailbox
+                .receive_within(std::time::Duration::from_millis(10), None)
+                .unwrap(),
+            None
+        );
         mailbox.close();
         assert!(mailbox.receive_within(within, Some(&clock)).is_err());
     }
@@ -8499,7 +10157,10 @@ mod session_tests {
             panic!("boom");
         });
         assert_eq!(second.receive::<i32>(), 1);
-        assert_eq!(second.try_receive::<i32>(), Err(super::sessions::PeerFailed));
+        assert_eq!(
+            second.try_receive::<i32>(),
+            Err(super::sessions::PeerFailed)
+        );
         assert!(std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| worker.join())).is_err());
     }
 
@@ -8508,7 +10169,9 @@ mod session_tests {
         let (first, second) = channel();
         let ((), outcome) = par(
             move || drop(first),
-            move || std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| second.receive::<i32>())),
+            move || {
+                std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| second.receive::<i32>()))
+            },
         );
         assert!(outcome.is_err());
     }
@@ -8528,7 +10191,73 @@ pub fn values_table(text: &str) -> Values {
 
 /// The first form of a descriptor text.
 pub fn descriptor(text: &str) -> Sexp {
-    read_descriptor(text).into_iter().next().expect("a descriptor")
+    read_descriptor(text)
+        .into_iter()
+        .next()
+        .expect("a descriptor")
+}
+
+/// A program's definitions other nodes can evaluate: qualified name,
+/// content hash, function, argument descriptors and result descriptor.
+pub type RemoteDefinitions = [(
+    &'static str,
+    &'static str,
+    ModelCallback,
+    &'static [&'static str],
+    &'static str,
+)];
+
+/// Lets other nodes evaluate a program's definitions on node.
+pub fn serve_remote(
+    node: &net::Node,
+    definitions: &'static RemoteDefinitions,
+    values: Values,
+) -> Result<String> {
+    let table: Vec<net::RemoteDefinition> = definitions
+        .iter()
+        .map(|(_, digest, function, arguments, result)| {
+            let function = *function;
+            let call: std::sync::Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync> =
+                std::sync::Arc::new(move |args| function(&mut Context::default(), args));
+            let arguments = arguments.iter().map(|d| descriptor(d)).collect();
+            (digest.to_string(), call, arguments, descriptor(result))
+        })
+        .collect();
+    node.serve_definitions(table, values, "definitions")
+}
+
+/// The content hash of the definition with this qualified name.
+pub fn remote_digest(definitions: &'static RemoteDefinitions, name: &str) -> Option<&'static str> {
+    definitions.iter().find(|d| d.0 == name).map(|d| d.1)
+}
+
+/// Evaluates the named definition on the node at address, by its content
+/// hash; fails as unreachable when that node does not answer in time.
+pub fn evaluate_remote(
+    node: &net::Node,
+    address: &str,
+    definitions: &'static RemoteDefinitions,
+    values: &Values,
+    name: &str,
+    args: &[Value],
+) -> Result<Value> {
+    let (_, digest, _, arguments, result) = definitions
+        .iter()
+        .find(|d| d.0 == name)
+        .ok_or_else(|| format!("no definition {name}"))?;
+    let arguments: Vec<Sexp> = arguments.iter().map(|d| descriptor(d)).collect();
+    let timeout = std::time::Duration::from_secs(5);
+    let result = descriptor(result);
+    node.evaluate(
+        address,
+        digest,
+        args,
+        &arguments,
+        &result,
+        values,
+        timeout,
+        "definitions",
+    )
 }
 
 // Distribution. Values cross the network in a canonical binary encoding
@@ -8543,7 +10272,10 @@ pub fn descriptor(text: &str) -> Sexp {
 // the bytes follow the Python reference, so nodes on different targets
 // interoperate.
 pub mod net {
-    use super::{BigInt, Result, SplitMix64, Sexp, Value, Values, actors, read_descriptor, render, values_from};
+    use super::{
+        BigInt, Result, Sexp, SplitMix64, Value, Values, actors, read_descriptor, render,
+        values_from,
+    };
     use num_traits::{One, Signed, ToPrimitive, Zero};
     use std::collections::{HashMap, HashSet, VecDeque};
     use std::io::{Read, Write};
@@ -8664,8 +10396,12 @@ pub mod net {
                 wire_put(values, &items[2], x, out)?;
             }
             ("data", Value::Data(tag, fields)) => {
-                let Some(index) = items[2..].iter().position(|c| c.items()[1].name() == *tag) else {
-                    return wire_error(format!("{tag} is not a constructor of {}", items[1].name()));
+                let Some(index) = items[2..].iter().position(|c| c.items()[1].name() == *tag)
+                else {
+                    return wire_error(format!(
+                        "{tag} is not a constructor of {}",
+                        items[1].name()
+                    ));
                 };
                 put_len(out, index);
                 for (field, fd) in fields.iter().zip(&items[2 + index].items()[2..]) {
@@ -8694,7 +10430,11 @@ pub mod net {
             "int" => {
                 let z = get_varint(buf, pos)?;
                 let two = BigInt::from(2);
-                let v = if (&z % &two).is_zero() { &z / &two } else { -((&z + BigInt::one()) / &two) };
+                let v = if (&z % &two).is_zero() {
+                    &z / &two
+                } else {
+                    -((&z + BigInt::one()) / &two)
+                };
                 let below = items[2].bound().is_some_and(|lo| v < lo);
                 let above = items[3].bound().is_some_and(|hi| v > hi);
                 if below || above {
@@ -8809,11 +10549,21 @@ pub mod net {
     }
 
     fn seq_d() -> Sexp {
-        Sexp::List(vec![Sexp::Atom("int".into()), Sexp::Atom("Int64".into()), Sexp::Blank, Sexp::Blank])
+        Sexp::List(vec![
+            Sexp::Atom("int".into()),
+            Sexp::Atom("Int64".into()),
+            Sexp::Blank,
+            Sexp::Blank,
+        ])
     }
 
     fn id_d() -> Sexp {
-        Sexp::List(vec![Sexp::Atom("int".into()), Sexp::Atom("UInt64".into()), Sexp::Int(BigInt::zero()), Sexp::Blank])
+        Sexp::List(vec![
+            Sexp::Atom("int".into()),
+            Sexp::Atom("UInt64".into()),
+            Sexp::Int(BigInt::zero()),
+            Sexp::Blank,
+        ])
     }
 
     fn bytes_d() -> Sexp {
@@ -8842,7 +10592,9 @@ pub mod net {
 
     fn get_seq(buf: &[u8], pos: &mut usize) -> Result<i64> {
         match wire_get(&no_types(), &seq_d(), buf, pos)? {
-            Value::Integer(n) => n.to_i64().map_or_else(|| wire_error("a sequence number too large"), Ok),
+            Value::Integer(n) => n
+                .to_i64()
+                .map_or_else(|| wire_error("a sequence number too large"), Ok),
             _ => wire_error("not a sequence number"),
         }
     }
@@ -8882,16 +10634,26 @@ pub mod net {
         if pos != data.len() {
             return wire_error("extra bytes after a frame");
         }
-        Ok(Frame { kind, to, source, id, payload })
+        Ok(Frame {
+            kind,
+            to,
+            source,
+            id,
+            payload,
+        })
     }
 
     /// "tcp://host:port/name" as ("tcp://host:port", "name").
     fn split_address(address: &str) -> Result<(String, String)> {
         match address.rsplit_once('/') {
-            Some((node, name)) if node.contains("://") && !node.ends_with(':') && !node.ends_with('/') => {
+            Some((node, name))
+                if node.contains("://") && !node.ends_with(':') && !node.ends_with('/') =>
+            {
                 Ok((node.to_string(), name.to_string()))
             }
-            _ => Err(format!("{address:?} is not an address such as tcp://127.0.0.1:7000/name")),
+            _ => Err(format!(
+                "{address:?} is not an address such as tcp://127.0.0.1:7000/name"
+            )),
         }
     }
 
@@ -8948,7 +10710,11 @@ pub mod net {
         pub fn new(seed: u64, loss: f64, duplicate: f64, delay: Duration) -> Self {
             MemoryNetwork {
                 inner: Arc::new(NetworkInner {
-                    state: Mutex::new(NetworkState { random: SplitMix64::new(seed), nodes: HashMap::new(), groups: None }),
+                    state: Mutex::new(NetworkState {
+                        random: SplitMix64::new(seed),
+                        nodes: HashMap::new(),
+                        groups: None,
+                    }),
                     loss,
                     duplicate,
                     delay,
@@ -8974,7 +10740,10 @@ pub mod net {
         /// the clear: for tests of the frame layer only. Only an in-memory
         /// network makes one, and no configuration selects it.
         pub fn insecure_transport_for_tests(&self, name: &str) -> Arc<dyn Transport> {
-            Arc::new(InsecureMemoryTransport(MemoryTransport { network: self.clone(), address: format!("mem://{name}") }))
+            Arc::new(InsecureMemoryTransport(MemoryTransport {
+                network: self.clone(),
+                address: format!("mem://{name}"),
+            }))
         }
 
         /// A network without faults.
@@ -8984,13 +10753,20 @@ pub mod net {
 
         /// A transport for a node named name, at mem://name.
         pub fn transport(&self, name: &str) -> Arc<dyn Transport> {
-            Arc::new(MemoryTransport { network: self.clone(), address: format!("mem://{name}") })
+            Arc::new(MemoryTransport {
+                network: self.clone(),
+                address: format!("mem://{name}"),
+            })
         }
 
         /// Only nodes named in the same group reach each other.
         pub fn partition(&self, groups: &[&[&str]]) {
-            lock(&self.inner.state).groups =
-                Some(groups.iter().map(|g| g.iter().map(|n| format!("mem://{n}")).collect()).collect());
+            lock(&self.inner.state).groups = Some(
+                groups
+                    .iter()
+                    .map(|g| g.iter().map(|n| format!("mem://{n}")).collect())
+                    .collect(),
+            );
         }
 
         pub fn heal(&self) {
@@ -9007,17 +10783,31 @@ pub mod net {
                     return Err(format!("{UNREACHABLE}no node at {node}"));
                 };
                 if let Some(groups) = &state.groups {
-                    if !groups.iter().any(|g| g.contains(source) && g.contains(node)) {
+                    if !groups
+                        .iter()
+                        .any(|g| g.contains(source) && g.contains(node))
+                    {
                         return Ok(());
                     }
                 }
-                let chance = |random: &mut SplitMix64, p: f64| p > 0.0 && (random.below(1 << 30) as f64) < p * (1u64 << 30) as f64;
+                let chance = |random: &mut SplitMix64, p: f64| {
+                    p > 0.0 && (random.below(1 << 30) as f64) < p * (1u64 << 30) as f64
+                };
                 if chance(&mut state.random, self.inner.loss) {
                     return Ok(());
                 }
-                let copies = if chance(&mut state.random, self.inner.duplicate) { 2 } else { 1 };
-                let delays: Vec<Duration> =
-                    (0..copies).map(|_| self.inner.delay.mul_f64(state.random.below(1001) as f64 / 1000.0)).collect();
+                let copies = if chance(&mut state.random, self.inner.duplicate) {
+                    2
+                } else {
+                    1
+                };
+                let delays: Vec<Duration> = (0..copies)
+                    .map(|_| {
+                        self.inner
+                            .delay
+                            .mul_f64(state.random.below(1001) as f64 / 1000.0)
+                    })
+                    .collect();
                 (deliver, delays)
             };
             for wait in delays {
@@ -9044,7 +10834,9 @@ pub mod net {
         }
 
         fn start(&self, deliver: Deliver) {
-            lock(&self.network.inner.state).nodes.insert(self.address.clone(), deliver);
+            lock(&self.network.inner.state)
+                .nodes
+                .insert(self.address.clone(), deliver);
         }
 
         fn send(&self, node: &str, frame: Vec<u8>) -> Result<()> {
@@ -9091,10 +10883,18 @@ pub mod net {
 
     impl Listener {
         fn bind(host: &str, port: u16) -> Result<(Listener, u16)> {
-            let socket = std::net::TcpListener::bind((host, port)).map_err(|e| format!("cannot listen on {host}:{port}: {e}"))?;
+            let socket = std::net::TcpListener::bind((host, port))
+                .map_err(|e| format!("cannot listen on {host}:{port}: {e}"))?;
             let port = socket.local_addr().map_err(|e| e.to_string())?.port();
             socket.set_nonblocking(true).map_err(|e| e.to_string())?;
-            Ok((Listener { socket, closed: Arc::new(AtomicBool::new(false)), accepted: Arc::new(Mutex::new(Vec::new())) }, port))
+            Ok((
+                Listener {
+                    socket,
+                    closed: Arc::new(AtomicBool::new(false)),
+                    accepted: Arc::new(Mutex::new(Vec::new())),
+                },
+                port,
+            ))
         }
 
         // Accepts connections until closed, handing each to serve on its own thread.
@@ -9138,7 +10938,11 @@ pub mod net {
     fn host_port(rest: &str) -> Result<(String, u16)> {
         let rest = rest.split('/').next().unwrap_or(rest);
         match rest.rsplit_once(':') {
-            Some((host, port)) => Ok((host.to_string(), port.parse().map_err(|_| format!("{UNREACHABLE}bad port in {rest}"))?)),
+            Some((host, port)) => Ok((
+                host.to_string(),
+                port.parse()
+                    .map_err(|_| format!("{UNREACHABLE}bad port in {rest}"))?,
+            )),
             None => Err(format!("{UNREACHABLE}no port in {rest}")),
         }
     }
@@ -9169,7 +10973,11 @@ pub mod net {
     impl TcpTransport {
         pub fn new(host: &str, port: u16) -> Result<Arc<dyn Transport>> {
             let (listener, port) = Listener::bind(host, port)?;
-            Ok(Arc::new(TcpTransport { listener, address: format!("tcp://{host}:{port}"), connections: Mutex::new(HashMap::new()) }))
+            Ok(Arc::new(TcpTransport {
+                listener,
+                address: format!("tcp://{host}:{port}"),
+                connections: Mutex::new(HashMap::new()),
+            }))
         }
 
         /// On 127.0.0.1, at a free port.
@@ -9184,13 +10992,17 @@ pub mod net {
         }
 
         fn start(&self, deliver: Deliver) {
-            self.listener.run(Arc::new(move |mut stream: std::net::TcpStream| {
-                while let Some(header) = read_exactly(&mut stream, 4) {
-                    let n = u32::from_be_bytes([header[0], header[1], header[2], header[3]]) as usize;
-                    let Some(frame) = read_exactly(&mut stream, n) else { return };
-                    deliver(frame);
-                }
-            }));
+            self.listener
+                .run(Arc::new(move |mut stream: std::net::TcpStream| {
+                    while let Some(header) = read_exactly(&mut stream, 4) {
+                        let n = u32::from_be_bytes([header[0], header[1], header[2], header[3]])
+                            as usize;
+                        let Some(frame) = read_exactly(&mut stream, n) else {
+                            return;
+                        };
+                        deliver(frame);
+                    }
+                }));
         }
 
         fn send(&self, node: &str, frame: Vec<u8>) -> Result<()> {
@@ -9203,7 +11015,9 @@ pub mod net {
                     Some(stream) => stream,
                     None => match connect(&host, port) {
                         Ok(stream) => connections.entry(node.to_string()).or_insert(stream),
-                        Err(e) if attempt == 1 => return Err(format!("{UNREACHABLE}cannot reach {node}: {e}")),
+                        Err(e) if attempt == 1 => {
+                            return Err(format!("{UNREACHABLE}cannot reach {node}: {e}"));
+                        }
                         Err(_) => continue,
                     },
                 };
@@ -9237,7 +11051,10 @@ pub mod net {
     impl HttpTransport {
         pub fn new(host: &str, port: u16) -> Result<Arc<dyn Transport>> {
             let (listener, port) = Listener::bind(host, port)?;
-            Ok(Arc::new(HttpTransport { listener, address: format!("http://{host}:{port}") }))
+            Ok(Arc::new(HttpTransport {
+                listener,
+                address: format!("http://{host}:{port}"),
+            }))
         }
 
         /// On 127.0.0.1, at a free port.
@@ -9276,38 +11093,56 @@ pub mod net {
         }
 
         fn start(&self, deliver: Deliver) {
-            self.listener.run(Arc::new(move |mut stream: std::net::TcpStream| {
-                while let Some((head, body)) = read_http(&mut stream) {
-                    let first = head.lines().next().unwrap_or("").to_string();
-                    let ours = first.starts_with("POST /lawspec ");
-                    let status = if ours { "204 No Content" } else { "404 Not Found" };
-                    if stream.write_all(format!("HTTP/1.1 {status}\r\nContent-Length: 0\r\n\r\n").as_bytes()).is_err() {
-                        return;
+            self.listener
+                .run(Arc::new(move |mut stream: std::net::TcpStream| {
+                    while let Some((head, body)) = read_http(&mut stream) {
+                        let first = head.lines().next().unwrap_or("").to_string();
+                        let ours = first.starts_with("POST /lawspec ");
+                        let status = if ours {
+                            "204 No Content"
+                        } else {
+                            "404 Not Found"
+                        };
+                        if stream
+                            .write_all(
+                                format!("HTTP/1.1 {status}\r\nContent-Length: 0\r\n\r\n")
+                                    .as_bytes(),
+                            )
+                            .is_err()
+                        {
+                            return;
+                        }
+                        if ours {
+                            deliver(body);
+                        }
+                        if head.to_ascii_lowercase().contains("connection: close") {
+                            return;
+                        }
                     }
-                    if ours {
-                        deliver(body);
-                    }
-                    if head.to_ascii_lowercase().contains("connection: close") {
-                        return;
-                    }
-                }
-            }));
+                }));
         }
 
         fn send(&self, node: &str, frame: Vec<u8>) -> Result<()> {
             let (host, port) = host_port(node.trim_start_matches("http://"))?;
-            let unreachable = |e: &dyn std::fmt::Display| format!("{UNREACHABLE}cannot reach {node}: {e}");
+            let unreachable =
+                |e: &dyn std::fmt::Display| format!("{UNREACHABLE}cannot reach {node}: {e}");
             let mut stream = connect(&host, port).map_err(|e| unreachable(&e))?;
             let _ = stream.set_read_timeout(Some(Duration::from_secs(5)));
             let request = format!(
                 "POST /lawspec HTTP/1.1\r\nHost: {host}:{port}\r\nContent-Type: application/octet-stream\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
                 frame.len()
             );
-            stream.write_all(request.as_bytes()).map_err(|e| unreachable(&e))?;
+            stream
+                .write_all(request.as_bytes())
+                .map_err(|e| unreachable(&e))?;
             stream.write_all(&frame).map_err(|e| unreachable(&e))?;
             let (head, _) = read_http(&mut stream).ok_or_else(|| unreachable(&"no answer"))?;
             let status = head.split_whitespace().nth(1).unwrap_or("");
-            if status.starts_with('2') { Ok(()) } else { Err(unreachable(&format!("HTTP {status}"))) }
+            if status.starts_with('2') {
+                Ok(())
+            } else {
+                Err(unreachable(&format!("HTTP {status}")))
+            }
         }
 
         fn close(&self) {
@@ -9350,7 +11185,10 @@ pub mod net {
         to a unit of the program, and call lawspec_network::install()";
 
     fn secure_network() -> Result<Arc<dyn SecureNetwork>> {
-        SECURE_NETWORK.get().cloned().ok_or_else(|| NO_SECURE_NETWORK.to_string())
+        SECURE_NETWORK
+            .get()
+            .cloned()
+            .ok_or_else(|| NO_SECURE_NETWORK.to_string())
     }
 
     /// What a secure layer holds of its node: its address, sending a record
@@ -9377,7 +11215,9 @@ pub mod net {
         }
 
         pub fn closed(&self) -> bool {
-            self.node.upgrade().is_none_or(|node| node.closed.load(Ordering::SeqCst))
+            self.node
+                .upgrade()
+                .is_none_or(|node| node.closed.load(Ordering::SeqCst))
         }
     }
 
@@ -9427,7 +11267,10 @@ pub mod net {
         entities: Mutex<HashMap<String, Arc<dyn Entity>>>,
         pending: Mutex<HashMap<u64, Arc<Slot>>>,
         // Requests seen, by sender and id, with their reply once sent.
-        seen: Mutex<(HashMap<(String, u64), Option<Vec<u8>>>, VecDeque<(String, u64)>)>,
+        seen: Mutex<(
+            HashMap<(String, u64), Option<Vec<u8>>>,
+            VecDeque<(String, u64)>,
+        )>,
         ids: AtomicU64,
         closed: AtomicBool,
     }
@@ -9441,18 +11284,30 @@ pub mod net {
         /// lawspec_network::node takes an identity and trusted peers.
         pub fn new(transport: Arc<dyn Transport>) -> Node {
             Node::with_secure_layer(transport, |link| {
-                secure_network().and_then(|provider| provider.layer(link)).unwrap_or_else(|error| panic!("{error}"))
+                secure_network()
+                    .and_then(|provider| provider.layer(link))
+                    .unwrap_or_else(|error| panic!("{error}"))
             })
         }
 
         /// A node whose secure layer make gives (it is not called for the
         /// transport made for tests only, whose node sends frames in the
         /// clear; no other transport can skip the layer).
-        pub fn with_secure_layer(transport: Arc<dyn Transport>, make: impl FnOnce(NodeLink) -> Box<dyn SecureLayer>) -> Node {
+        pub fn with_secure_layer(
+            transport: Arc<dyn Transport>,
+            make: impl FnOnce(NodeLink) -> Box<dyn SecureLayer>,
+        ) -> Node {
             let insecure = transport.insecure_for_tests().is_some();
             let address = transport.address();
             let inner = Arc::new_cyclic(|weak: &Weak<NodeInner>| NodeInner {
-                secure: if insecure { None } else { Some(make(NodeLink { node: weak.clone(), address: address.clone() })) },
+                secure: if insecure {
+                    None
+                } else {
+                    Some(make(NodeLink {
+                        node: weak.clone(),
+                        address: address.clone(),
+                    }))
+                },
                 address,
                 transport: transport.clone(),
                 entities: Mutex::new(HashMap::new()),
@@ -9514,23 +11369,40 @@ pub mod net {
 
         fn send_frame(&self, address: &str, kind: &str, payload: &[u8], id: u64) -> Result<()> {
             let (node, name) = split_address(address)?;
-            self.transmit(&node, frame_encode(kind, &name, &self.inner.address, id, payload))
+            self.transmit(
+                &node,
+                frame_encode(kind, &name, &self.inner.address, id, payload),
+            )
         }
 
         fn register(&self, name: &str, entity: Arc<dyn Entity>) -> Result<String> {
             if name.is_empty() || name.contains('/') {
-                return Err(format!("{name:?} is not a name: use letters, digits and dashes"));
+                return Err(format!(
+                    "{name:?} is not a name: use letters, digits and dashes"
+                ));
             }
             let mut entities = lock(&self.inner.entities);
             if entities.contains_key(name) {
-                return Err(format!("{name} is already registered on {}", self.inner.address));
+                return Err(format!(
+                    "{name} is already registered on {}",
+                    self.inner.address
+                ));
             }
             entities.insert(name.to_string(), entity);
             Ok(format!("{}/{name}", self.inner.address))
         }
 
         fn deliver(&self, frame: Vec<u8>) {
-            let Ok(Frame { kind, to, source, id, payload }) = frame_decode(&frame) else { return };
+            let Ok(Frame {
+                kind,
+                to,
+                source,
+                id,
+                payload,
+            }) = frame_decode(&frame)
+            else {
+                return;
+            };
             if kind == "reply" {
                 if let Some(slot) = lock(&self.inner.pending).remove(&id) {
                     *lock(&slot.reply) = Some(payload);
@@ -9541,7 +11413,13 @@ pub mod net {
             let entity = lock(&self.inner.entities).get(&to).cloned();
             let Some(entity) = entity else {
                 if id != 0 {
-                    self.reply(&source, id, 3, format!("nothing is registered as {to} on {}", self.inner.address).as_bytes());
+                    self.reply(
+                        &source,
+                        id,
+                        3,
+                        format!("nothing is registered as {to} on {}", self.inner.address)
+                            .as_bytes(),
+                    );
                 }
                 return;
             };
@@ -9584,9 +11462,18 @@ pub mod net {
         }
 
         /// Sends a request again until answered: (status, body).
-        fn request(&self, address: &str, kind: &str, payload: &[u8], timeout: Duration) -> Result<(u8, Vec<u8>)> {
+        fn request(
+            &self,
+            address: &str,
+            kind: &str,
+            payload: &[u8],
+            timeout: Duration,
+        ) -> Result<(u8, Vec<u8>)> {
             let id = self.next_id();
-            let slot = Arc::new(Slot { reply: Mutex::new(None), ready: Condvar::new() });
+            let slot = Arc::new(Slot {
+                reply: Mutex::new(None),
+                ready: Condvar::new(),
+            });
             lock(&self.inner.pending).insert(id, slot.clone());
             let give_up = Instant::now() + timeout;
             loop {
@@ -9600,7 +11487,11 @@ pub mod net {
                 let wait = Duration::from_millis(100).min(give_up.saturating_duration_since(now));
                 let mut reply = lock(&slot.reply);
                 if reply.is_none() {
-                    reply = slot.ready.wait_timeout(reply, wait).unwrap_or_else(|e| e.into_inner()).0;
+                    reply = slot
+                        .ready
+                        .wait_timeout(reply, wait)
+                        .unwrap_or_else(|e| e.into_inner())
+                        .0;
                 }
                 if let Some(answer) = reply.take() {
                     if answer.is_empty() {
@@ -9611,7 +11502,10 @@ pub mod net {
                 drop(reply);
                 if Instant::now() >= give_up {
                     lock(&self.inner.pending).remove(&id);
-                    return Err(format!("{UNREACHABLE}{address} did not answer within {:?}", timeout));
+                    return Err(format!(
+                        "{UNREACHABLE}{address} did not answer within {:?}",
+                        timeout
+                    ));
                 }
             }
         }
@@ -9619,19 +11513,48 @@ pub mod net {
         // Mailboxes: values of one type sent by any node.
 
         /// A local mailbox that other nodes send to at <address>/name.
-        pub fn mailbox(&self, name: &str, descriptor: Sexp, values: Values) -> Result<actors::Mailbox<Value>> {
+        pub fn mailbox(
+            &self,
+            name: &str,
+            descriptor: Sexp,
+            values: Values,
+        ) -> Result<actors::Mailbox<Value>> {
             let mailbox = actors::Mailbox::new();
-            self.register(name, Arc::new(MailEntity { mailbox: mailbox.clone(), descriptor, values }))?;
+            self.register(
+                name,
+                Arc::new(MailEntity {
+                    mailbox: mailbox.clone(),
+                    descriptor,
+                    values,
+                }),
+            )?;
             Ok(mailbox)
         }
 
-        pub fn remote_mailbox(&self, address: &str, descriptor: Sexp, values: Values) -> RemoteMailbox {
+        pub fn remote_mailbox(
+            &self,
+            address: &str,
+            descriptor: Sexp,
+            values: Values,
+        ) -> RemoteMailbox {
             self.remote_mailbox_within(address, descriptor, values, Duration::from_secs(5))
         }
 
         /// A remote mailbox whose sends wait up to timeout for delivery.
-        pub fn remote_mailbox_within(&self, address: &str, descriptor: Sexp, values: Values, timeout: Duration) -> RemoteMailbox {
-            RemoteMailbox { node: self.clone(), address: address.to_string(), descriptor, values, timeout }
+        pub fn remote_mailbox_within(
+            &self,
+            address: &str,
+            descriptor: Sexp,
+            values: Values,
+            timeout: Duration,
+        ) -> RemoteMailbox {
+            RemoteMailbox {
+                node: self.clone(),
+                address: address.to_string(),
+                descriptor,
+                values,
+                timeout,
+            }
         }
 
         // Actors: calls by message name, with each message's types.
@@ -9639,19 +11562,41 @@ pub mod net {
         /// Lets other nodes call handlers at <address>/name; returns that
         /// address. Each handler takes the message's logical arguments and
         /// gives its logical reply (typically by calling a local actor).
-        pub fn serve(&self, name: &str, handlers: Vec<RemoteHandler>, values: Values) -> Result<String> {
+        pub fn serve(
+            &self,
+            name: &str,
+            handlers: Vec<RemoteHandler>,
+            values: Values,
+        ) -> Result<String> {
             self.register(name, Arc::new(ActorEntity { handlers, values }))
         }
 
         /// A proxy calling the actor at address.
-        pub fn remote_actor(&self, address: &str, signatures: Vec<Signature>, values: Values, timeout: Duration) -> RemoteActor {
-            RemoteActor { node: self.clone(), address: address.to_string(), signatures, values, timeout }
+        pub fn remote_actor(
+            &self,
+            address: &str,
+            signatures: Vec<Signature>,
+            values: Values,
+            timeout: Duration,
+        ) -> RemoteActor {
+            RemoteActor {
+                node: self.clone(),
+                address: address.to_string(),
+                signatures,
+                values,
+                timeout,
+            }
         }
 
         // Definitions, by content hash.
 
         /// Lets other nodes evaluate definitions, by content hash.
-        pub fn serve_definitions(&self, table: Vec<RemoteDefinition>, values: Values, name: &str) -> Result<String> {
+        pub fn serve_definitions(
+            &self,
+            table: Vec<RemoteDefinition>,
+            values: Values,
+            name: &str,
+        ) -> Result<String> {
             self.register(name, Arc::new(DefinitionEntity { table, values }))
         }
 
@@ -9673,7 +11618,8 @@ pub mod net {
             for (d, v) in arguments.iter().zip(args) {
                 wire_put(values, d, v, &mut payload)?;
             }
-            let (status, body) = self.request(&format!("{node}/{name}"), "eval", &payload, timeout)?;
+            let (status, body) =
+                self.request(&format!("{node}/{name}"), "eval", &payload, timeout)?;
             reply_value(status, &body, values, result)
         }
 
@@ -9682,7 +11628,13 @@ pub mod net {
         /// The first end of a channel named name here; its other end is
         /// dialed from any node. steps: (sends, descriptor) per step, from
         /// this end's side.
-        pub fn listen(&self, name: &str, steps: Vec<(bool, Sexp)>, values: Values, deadline: Duration) -> Result<NetEndpoint> {
+        pub fn listen(
+            &self,
+            name: &str,
+            steps: Vec<(bool, Sexp)>,
+            values: Values,
+            deadline: Duration,
+        ) -> Result<NetEndpoint> {
             let endpoint = NetEndpoint::new(self, steps, values, deadline);
             let address = self.register(name, endpoint.inner.clone())?;
             *lock(&endpoint.inner.address) = address;
@@ -9691,7 +11643,13 @@ pub mod net {
 
         /// The second end of the channel listening at address; steps are
         /// from this end's side.
-        pub fn dial(&self, address: &str, steps: Vec<(bool, Sexp)>, values: Values, deadline: Duration) -> Result<NetEndpoint> {
+        pub fn dial(
+            &self,
+            address: &str,
+            steps: Vec<(bool, Sexp)>,
+            values: Values,
+            deadline: Duration,
+        ) -> Result<NetEndpoint> {
             let endpoint = NetEndpoint::new(self, steps, values, deadline);
             let own = self.register(&format!("end-{}", self.next_id()), endpoint.inner.clone())?;
             *lock(&endpoint.inner.address) = own;
@@ -9703,7 +11661,13 @@ pub mod net {
         /// <old address>?take=<token>, as that node offered it. Returns once
         /// the end's state has arrived and its peer has been told (or after
         /// the deadline; the old node then forwards to the end).
-        pub fn take(&self, address: &str, steps: Vec<(bool, Sexp)>, values: Values, deadline: Duration) -> Result<NetEndpoint> {
+        pub fn take(
+            &self,
+            address: &str,
+            steps: Vec<(bool, Sexp)>,
+            values: Values,
+            deadline: Duration,
+        ) -> Result<NetEndpoint> {
             let endpoint = NetEndpoint::new(self, steps, values, deadline);
             let own = self.register(&format!("end-{}", self.next_id()), endpoint.inner.clone())?;
             *lock(&endpoint.inner.address) = own;
@@ -9747,7 +11711,10 @@ pub mod net {
                     Ok(()) => (0u8, Vec::new()),
                     Err(e) => (2, e.into_bytes()),
                 },
-                Err(e) => (3, format!("not a message of this mailbox: {e}").into_bytes()),
+                Err(e) => (
+                    3,
+                    format!("not a message of this mailbox: {e}").into_bytes(),
+                ),
             };
             if id != 0 {
                 node.reply(source, id, status, &body);
@@ -9770,23 +11737,82 @@ pub mod net {
     impl RemoteMailbox {
         pub fn send(&self, value: &Value) -> Result<()> {
             let bytes = wire_encode(&self.values, &self.descriptor, value)?;
-            let (status, body) = self.node.request(&self.address, "mail", &bytes, self.timeout)?;
+            let (status, body) = self
+                .node
+                .request(&self.address, "mail", &bytes, self.timeout)?;
             if status == 0 {
                 Ok(())
             } else {
-                reply_value(status, &body, &self.values, &Sexp::List(vec![Sexp::Atom("unit".into())])).map(|_| ())
+                reply_value(
+                    status,
+                    &body,
+                    &self.values,
+                    &Sexp::List(vec![Sexp::Atom("unit".into())]),
+                )
+                .map(|_| ())
             }
         }
     }
 
     /// A served message: its name, argument and reply descriptors, and
     /// what handles it (logical arguments in, logical reply out).
-    pub type RemoteHandler = (String, Vec<Sexp>, Sexp, Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync>);
+    pub type RemoteHandler = (
+        String,
+        Vec<Sexp>,
+        Sexp,
+        Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync>,
+    );
     /// A message's name, argument descriptors and reply descriptor.
     pub type Signature = (String, Vec<Sexp>, Sexp);
+
+    /// The arguments a served message brings, taken in order.
+    pub struct Arguments(std::vec::IntoIter<Value>);
+
+    impl Arguments {
+        /// The next argument, as its native type.
+        pub fn next<T: super::FromValue>(&mut self) -> Result<T> {
+            let value = self.0.next().ok_or("a missing argument")?;
+            T::from_value(value)
+        }
+    }
+
+    /// A message actor serves: handle takes the actor and the message's
+    /// arguments and gives its reply.
+    pub fn message<A, T>(
+        actor: &A,
+        name: &str,
+        arguments: &[&str],
+        reply: &str,
+        handle: impl Fn(&A, &mut Arguments) -> Result<T> + Send + Sync + 'static,
+    ) -> RemoteHandler
+    where
+        A: Clone + Send + Sync + 'static,
+        T: super::IntoValue,
+    {
+        let actor = actor.clone();
+        let handler: Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync> =
+            Arc::new(move |values: Vec<Value>| {
+                let mut arguments = Arguments(values.into_iter());
+                Ok(handle(&actor, &mut arguments)?.into_value())
+            });
+        let (name, arguments, reply) = signature(name, arguments, reply);
+        (name, arguments, reply, handler)
+    }
+
+    /// A message's signature from its name and its arguments' and reply's
+    /// descriptors.
+    pub fn signature(name: &str, arguments: &[&str], reply: &str) -> Signature {
+        let arguments = arguments.iter().map(|a| super::descriptor(a)).collect();
+        (name.to_string(), arguments, super::descriptor(reply))
+    }
     /// A definition other nodes evaluate: its content hash, the function
     /// (logical arguments in, logical result out), and its descriptors.
-    pub type RemoteDefinition = (String, Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync>, Vec<Sexp>, Sexp);
+    pub type RemoteDefinition = (
+        String,
+        Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync>,
+        Vec<Sexp>,
+        Sexp,
+    );
 
     struct ActorEntity {
         handlers: Vec<RemoteHandler>,
@@ -9800,7 +11826,11 @@ pub mod net {
             }
             let mut pos = 0;
             let decoded = get_text(&payload, &mut pos).and_then(|message| {
-                let handler = self.handlers.iter().find(|h| h.0 == message).ok_or_else(|| format!("no message {message}"))?;
+                let handler = self
+                    .handlers
+                    .iter()
+                    .find(|h| h.0 == message)
+                    .ok_or_else(|| format!("no message {message}"))?;
                 let mut args = Vec::new();
                 for d in &handler.1 {
                     args.push(wire_get(&self.values, d, &payload, &mut pos)?);
@@ -9812,9 +11842,17 @@ pub mod net {
             });
             let (handler, args) = match decoded {
                 Ok(found) => found,
-                Err(e) => return node.reply(source, id, 3, format!("not a message this actor handles: {e}").as_bytes()),
+                Err(e) => {
+                    return node.reply(
+                        source,
+                        id,
+                        3,
+                        format!("not a message this actor handles: {e}").as_bytes(),
+                    );
+                }
             };
-            match (handler.3)(args).and_then(|reply| wire_encode(&self.values, &handler.2, &reply)) {
+            match (handler.3)(args).and_then(|reply| wire_encode(&self.values, &handler.2, &reply))
+            {
                 Ok(bytes) => node.reply(source, id, 0, &bytes),
                 Err(e) if actors::is_stopped(&e) => node.reply(source, id, 2, e.as_bytes()),
                 Err(e) if actors::is_crashed(&e) => node.reply(source, id, 1, e.as_bytes()),
@@ -9836,14 +11874,19 @@ pub mod net {
 
     impl RemoteActor {
         pub fn call(&self, message: &str, args: &[Value]) -> Result<Value> {
-            let (_, arguments, reply) =
-                self.signatures.iter().find(|s| s.0 == message).ok_or_else(|| format!("no message {message}"))?;
+            let (_, arguments, reply) = self
+                .signatures
+                .iter()
+                .find(|s| s.0 == message)
+                .ok_or_else(|| format!("no message {message}"))?;
             let mut payload = Vec::new();
             put_text(&mut payload, message);
             for (d, v) in arguments.iter().zip(args) {
                 wire_put(&self.values, d, v, &mut payload)?;
             }
-            let (status, body) = self.node.request(&self.address, "call", &payload, self.timeout)?;
+            let (status, body) =
+                self.node
+                    .request(&self.address, "call", &payload, self.timeout)?;
             reply_value(status, &body, &self.values, reply)
         }
     }
@@ -9860,7 +11903,11 @@ pub mod net {
             }
             let mut pos = 0;
             let decoded = get_text(&payload, &mut pos).and_then(|digest| {
-                let entry = self.table.iter().find(|e| e.0 == digest).ok_or_else(|| "no such definition".to_string())?;
+                let entry = self
+                    .table
+                    .iter()
+                    .find(|e| e.0 == digest)
+                    .ok_or_else(|| "no such definition".to_string())?;
                 let mut args = Vec::new();
                 for d in &entry.2 {
                     args.push(wire_get(&self.values, d, &payload, &mut pos)?);
@@ -9869,7 +11916,14 @@ pub mod net {
             });
             let (entry, args) = match decoded {
                 Ok(found) => found,
-                Err(_) => return node.reply(source, id, 3, b"this node has no definition with that content hash"),
+                Err(_) => {
+                    return node.reply(
+                        source,
+                        id,
+                        3,
+                        b"this node has no definition with that content hash",
+                    );
+                }
             };
             match (entry.1)(args).and_then(|result| wire_encode(&self.values, &entry.3, &result)) {
                 Ok(bytes) => node.reply(source, id, 0, &bytes),
@@ -9942,7 +11996,12 @@ pub mod net {
     }
 
     impl NetEndpoint {
-        fn new(node: &Node, steps: Vec<(bool, Sexp)>, values: Values, deadline: Duration) -> NetEndpoint {
+        fn new(
+            node: &Node,
+            steps: Vec<(bool, Sexp)>,
+            values: Values,
+            deadline: Duration,
+        ) -> NetEndpoint {
             let inner = Arc::new(EndpointInner {
                 node: node.clone(),
                 steps,
@@ -9993,7 +12052,10 @@ pub mod net {
                 return Err("this channel's protocol has ended".into());
             };
             if *step_sends != sends {
-                return Err(format!("this step {}", if *step_sends { "sends" } else { "receives" }));
+                return Err(format!(
+                    "this step {}",
+                    if *step_sends { "sends" } else { "receives" }
+                ));
             }
             state.step += 1;
             Ok(d.clone())
@@ -10027,13 +12089,21 @@ pub mod net {
                     break item;
                 }
                 inbox = match until {
-                    None => self.inner.arrived.wait(inbox).unwrap_or_else(|e| e.into_inner()),
+                    None => self
+                        .inner
+                        .arrived
+                        .wait(inbox)
+                        .unwrap_or_else(|e| e.into_inner()),
                     Some(at) => {
                         let now = Instant::now();
                         if now >= at {
                             return Err("no message arrived in time".into());
                         }
-                        self.inner.arrived.wait_timeout(inbox, at - now).unwrap_or_else(|e| e.into_inner()).0
+                        self.inner
+                            .arrived
+                            .wait_timeout(inbox, at - now)
+                            .unwrap_or_else(|e| e.into_inner())
+                            .0
                     }
                 };
             };
@@ -10098,7 +12168,9 @@ pub mod net {
                 drop(state);
                 if Instant::now() >= give_up {
                     lock(&self.inner.state).taking = None;
-                    self.inner.fail("the node the end came from did not hand it over in time (unreachable)");
+                    self.inner.fail(
+                        "the node the end came from did not hand it over in time (unreachable)",
+                    );
                     return;
                 }
             }
@@ -10106,7 +12178,11 @@ pub mod net {
             let _ = self
                 .inner
                 .changed
-                .wait_timeout_while(state, give_up.saturating_duration_since(Instant::now()), |s| !s.confirmed)
+                .wait_timeout_while(
+                    state,
+                    give_up.saturating_duration_since(Instant::now()),
+                    |s| !s.confirmed,
+                )
                 .unwrap_or_else(|e| e.into_inner());
         }
     }
@@ -10146,7 +12222,9 @@ pub mod net {
 
     fn get_numbered(buf: &[u8], pos: &mut usize) -> Result<Vec<(i64, Vec<u8>)>> {
         let count = get_len(buf, pos)?;
-        (0..count).map(|_| Ok((get_seq(buf, pos)?, get_bytes(buf, pos)?))).collect()
+        (0..count)
+            .map(|_| Ok((get_seq(buf, pos)?, get_bytes(buf, pos)?)))
+            .collect()
     }
 
     impl EndpointInner {
@@ -10163,7 +12241,15 @@ pub mod net {
             let peer = {
                 let mut state = lock(&self.state);
                 let now = Instant::now();
-                state.unacked.insert(seq, Unacked { payload: payload.clone(), first: now, last: now, body });
+                state.unacked.insert(
+                    seq,
+                    Unacked {
+                        payload: payload.clone(),
+                        first: now,
+                        last: now,
+                        body,
+                    },
+                );
                 state.peer.clone()
             };
             if let Some(peer) = peer {
@@ -10189,8 +12275,12 @@ pub mod net {
         /// the token, and answers that taker's repeats with the same state.
         fn give(&self, payload: &[u8]) {
             let mut pos = 0;
-            let Ok(token) = get_text(payload, &mut pos) else { return };
-            let Ok(taker) = get_text(payload, &mut pos) else { return };
+            let Ok(token) = get_text(payload, &mut pos) else {
+                return;
+            };
+            let Ok(taker) = get_text(payload, &mut pos) else {
+                return;
+            };
             let handed = {
                 let mut state = lock(&self.state);
                 if state.token.as_deref() != Some(token.as_str()) {
@@ -10217,8 +12307,22 @@ pub mod net {
                         put_texts(&mut out, &former);
                         put_seq(&mut out, state.out);
                         put_seq(&mut out, state.expected);
-                        put_numbered(&mut out, state.unacked.iter().map(|(seq, u)| (*seq, u.body.clone())).collect());
-                        put_numbered(&mut out, state.early.iter().map(|(seq, b)| (*seq, b.clone())).collect());
+                        put_numbered(
+                            &mut out,
+                            state
+                                .unacked
+                                .iter()
+                                .map(|(seq, u)| (*seq, u.body.clone()))
+                                .collect(),
+                        );
+                        put_numbered(
+                            &mut out,
+                            state
+                                .early
+                                .iter()
+                                .map(|(seq, b)| (*seq, b.clone()))
+                                .collect(),
+                        );
                         put_len(&mut out, received.len());
                         for body in &received {
                             put_bytes(&mut out, body);
@@ -10246,10 +12350,18 @@ pub mod net {
                 let unacked = get_numbered(payload, &mut pos)?;
                 let early = get_numbered(payload, &mut pos)?;
                 let count = get_len(payload, &mut pos)?;
-                let received = (0..count).map(|_| get_bytes(payload, &mut pos)).collect::<Result<Vec<_>>>()?;
-                Ok((token, failure, peer, history, out, expected, unacked, early, received))
+                let received = (0..count)
+                    .map(|_| get_bytes(payload, &mut pos))
+                    .collect::<Result<Vec<_>>>()?;
+                Ok((
+                    token, failure, peer, history, out, expected, unacked, early, received,
+                ))
             })();
-            let Ok((token, failure, peer, history, out, expected, unacked, early, received)) = parsed else { return };
+            let Ok((token, failure, peer, history, out, expected, unacked, early, received)) =
+                parsed
+            else {
+                return;
+            };
             {
                 let mut state = lock(&self.state);
                 if state.taking.as_deref() != Some(token.as_str()) || state.taken {
@@ -10264,7 +12376,15 @@ pub mod net {
                 // Sent again from here at once, under this end's address.
                 for (seq, body) in unacked {
                     let payload = self.frame(seq, &body);
-                    state.unacked.insert(seq, Unacked { payload, first: now, last: long_ago, body });
+                    state.unacked.insert(
+                        seq,
+                        Unacked {
+                            payload,
+                            first: now,
+                            last: long_ago,
+                            body,
+                        },
+                    );
                 }
                 state.early.extend(early);
                 lock(&self.inbox).extend(received.into_iter().map(Inbox::Value));
@@ -10281,8 +12401,12 @@ pub mod net {
         /// The peer moved: from now on send to its new address.
         fn peer_moved(&self, payload: &[u8]) {
             let mut pos = 0;
-            let Ok(history) = get_texts(payload, &mut pos) else { return };
-            let Ok(to) = get_text(payload, &mut pos) else { return };
+            let Ok(history) = get_texts(payload, &mut pos) else {
+                return;
+            };
+            let Ok(to) = get_text(payload, &mut pos) else {
+                return;
+            };
             let known = {
                 let mut state = lock(&self.state);
                 if state.peer.as_ref().is_none_or(|p| history.contains(p)) {
@@ -10316,7 +12440,10 @@ pub mod net {
                 if state.taking.is_some() && !state.taken {
                     continue;
                 }
-                let stale = state.unacked.values().any(|u| now.duration_since(u.last) > Duration::from_millis(50) && now.duration_since(u.first) > inner.deadline);
+                let stale = state.unacked.values().any(|u| {
+                    now.duration_since(u.last) > Duration::from_millis(50)
+                        && now.duration_since(u.first) > inner.deadline
+                });
                 let mut due = Vec::new();
                 for u in state.unacked.values_mut() {
                     if now.duration_since(u.last) > Duration::from_millis(50) {
@@ -10328,7 +12455,9 @@ pub mod net {
                 if state.announcing
                     && state.peer.is_some()
                     && !state.confirmed
-                    && state.announced_at.is_none_or(|at| now.duration_since(at) > Duration::from_millis(50))
+                    && state
+                        .announced_at
+                        .is_none_or(|at| now.duration_since(at) > Duration::from_millis(50))
                 {
                     state.announced_at = Some(now);
                     let mut payload = Vec::new();
@@ -10361,7 +12490,10 @@ pub mod net {
             }
             let (forward, waiting) = {
                 let state = lock(&self.state);
-                (state.moved_to.clone(), state.taking.is_some() && !state.taken)
+                (
+                    state.moved_to.clone(),
+                    state.taking.is_some() && !state.taken,
+                )
             };
             if let Some(to) = forward {
                 node.forward(&to, kind, source, id, &payload);
@@ -10397,8 +12529,12 @@ pub mod net {
                 "chan" => {}
                 _ => return,
             }
-            let Ok(seq) = get_seq(&payload, &mut pos) else { return };
-            let Ok(sender) = get_text(&payload, &mut pos) else { return };
+            let Ok(seq) = get_seq(&payload, &mut pos) else {
+                return;
+            };
+            let Ok(sender) = get_text(&payload, &mut pos) else {
+                return;
+            };
             let body = payload[pos..].to_vec();
             let forward = {
                 let mut state = lock(&self.state);
@@ -10455,8 +12591,10 @@ pub mod net {
         },
         End {
             wire: Wire,
-            into_endpoint: Box<dyn Fn(super::sessions::Message) -> super::sessions::Endpoint + Send + Sync>,
-            from_endpoint: Box<dyn Fn(super::sessions::Endpoint) -> super::sessions::Message + Send + Sync>,
+            into_endpoint:
+                Box<dyn Fn(super::sessions::Message) -> super::sessions::Endpoint + Send + Sync>,
+            from_endpoint:
+                Box<dyn Fn(super::sessions::Endpoint) -> super::sessions::Message + Send + Sync>,
         },
     }
 
@@ -10491,9 +12629,50 @@ pub mod net {
                     Ok(end) => into(*end),
                     Err(_) => panic!("a session sent a channel end of an unexpected protocol"),
                 }),
-                from_endpoint: Box::new(move |endpoint| Box::new(from(endpoint)) as super::sessions::Message),
+                from_endpoint: Box::new(move |endpoint| {
+                    Box::new(from(endpoint)) as super::sessions::Message
+                }),
             },
         }
+    }
+
+    /// A protocol's steps (direction and descriptor, from the first end)
+    /// and their codecs: how it runs between nodes.
+    pub type SessionWire = (Vec<(bool, Sexp)>, Vec<StepCodec>);
+
+    /// The first end of a protocol's channel named name on node, which
+    /// another node dials at <node address>/name.
+    pub fn listen_session(
+        node: &Node,
+        name: &str,
+        wire: SessionWire,
+        values: Values,
+    ) -> Result<super::sessions::Endpoint> {
+        let (steps, codecs) = wire;
+        let end = node.listen(name, steps, values, Duration::from_secs(5))?;
+        let transport = NetSession::new(end, codecs);
+        Ok(super::sessions::Endpoint::on(
+            transport,
+            super::sessions::Side::First,
+        ))
+    }
+
+    /// The second end of the protocol's channel listening at address on
+    /// another node.
+    pub fn dial_session(
+        node: &Node,
+        address: &str,
+        wire: SessionWire,
+        values: Values,
+    ) -> Result<super::sessions::Endpoint> {
+        let (steps, codecs) = wire;
+        let steps = steps.into_iter().map(|(s, d)| (!s, d)).collect();
+        let end = node.dial(address, steps, values, Duration::from_secs(5))?;
+        let transport = NetSession::new(end, codecs);
+        Ok(super::sessions::Endpoint::on(
+            transport,
+            super::sessions::Side::Second,
+        ))
     }
 
     /// A typed session end's transport over a network channel end: values
@@ -10507,19 +12686,31 @@ pub mod net {
 
     impl NetSession {
         pub fn new(endpoint: NetEndpoint, codecs: Vec<StepCodec>) -> Arc<NetSession> {
-            Arc::new(NetSession { endpoint, codecs, step: AtomicU64::new(0), moved: AtomicBool::new(false) })
+            Arc::new(NetSession {
+                endpoint,
+                codecs,
+                step: AtomicU64::new(0),
+                moved: AtomicBool::new(false),
+            })
         }
 
         fn codec(&self) -> &StepCodec {
             let step = self.step.fetch_add(1, Ordering::SeqCst) as usize;
-            self.codecs.get(step).unwrap_or_else(|| panic!("this channel's protocol has ended"))
+            self.codecs
+                .get(step)
+                .unwrap_or_else(|| panic!("this channel's protocol has ended"))
         }
     }
 
     /// The text that gives an unused channel end to another node. An end
     /// that is itself between nodes moves there; a local end stays here and
     /// a relay on node carries its conversation.
-    fn offer_end(node: &Node, values: &Values, end: super::sessions::Endpoint, wire: Wire) -> Result<String> {
+    fn offer_end(
+        node: &Node,
+        values: &Values,
+        end: super::sessions::Endpoint,
+        wire: Wire,
+    ) -> Result<String> {
         match end.hand_over() {
             Some(address) => Ok(address),
             None => relay_end(node, values, end, wire),
@@ -10530,7 +12721,12 @@ pub mod net {
     /// for the receiver and passes each step between it and the end, which
     /// stays here. Returns the relay's address. A failure on either side
     /// gives up the other.
-    fn relay_end(node: &Node, values: &Values, end: super::sessions::Endpoint, wire: Wire) -> Result<String> {
+    fn relay_end(
+        node: &Node,
+        values: &Values,
+        end: super::sessions::Endpoint,
+        wire: Wire,
+    ) -> Result<String> {
         let (steps, codecs) = wire();
         let relay = node.listen(
             &format!("relay-{}", node.next_id()),
@@ -10562,7 +12758,11 @@ pub mod net {
         fn send(&self, _: super::sessions::Side, message: super::sessions::Message) {
             let value = match &self.codec().kind {
                 CodecKind::Value { to_logical, .. } => to_logical(message),
-                CodecKind::End { wire, into_endpoint, .. } => {
+                CodecKind::End {
+                    wire,
+                    into_endpoint,
+                    ..
+                } => {
                     let inner = &self.endpoint.inner;
                     match offer_end(&inner.node, &inner.values, into_endpoint(message), *wire) {
                         Ok(address) => Value::Text(address),
@@ -10577,7 +12777,10 @@ pub mod net {
             }
         }
 
-        fn receive(&self, _: super::sessions::Side) -> std::result::Result<super::sessions::Message, super::sessions::PeerFailed> {
+        fn receive(
+            &self,
+            _: super::sessions::Side,
+        ) -> std::result::Result<super::sessions::Message, super::sessions::PeerFailed> {
             let codec = self.codec();
             let value = match self.endpoint.receive(None) {
                 Ok(value) => value,
@@ -10585,19 +12788,40 @@ pub mod net {
                 Err(e) => panic!("{e}"),
             };
             match &codec.kind {
-                CodecKind::Value { from_logical, .. } => Ok(from_logical(value).unwrap_or_else(|e| panic!("{e}"))),
-                CodecKind::End { wire, from_endpoint, .. } => {
-                    let Value::Text(address) = value else { panic!("a channel end arrived without its address") };
+                CodecKind::Value { from_logical, .. } => {
+                    Ok(from_logical(value).unwrap_or_else(|e| panic!("{e}")))
+                }
+                CodecKind::End {
+                    wire,
+                    from_endpoint,
+                    ..
+                } => {
+                    let Value::Text(address) = value else {
+                        panic!("a channel end arrived without its address")
+                    };
                     let (steps, codecs) = wire();
                     let inner = &self.endpoint.inner;
                     let dialed = if address.contains("?take=") {
-                        inner.node.take(&address, steps, inner.values.clone(), Duration::from_secs(5))
+                        inner.node.take(
+                            &address,
+                            steps,
+                            inner.values.clone(),
+                            Duration::from_secs(5),
+                        )
                     } else {
-                        inner.node.dial(&address, steps, inner.values.clone(), Duration::from_secs(5))
+                        inner.node.dial(
+                            &address,
+                            steps,
+                            inner.values.clone(),
+                            Duration::from_secs(5),
+                        )
                     }
                     .unwrap_or_else(|e| panic!("{e}"));
                     let session = NetSession::new(dialed, codecs);
-                    Ok(from_endpoint(super::sessions::Endpoint::on(session, super::sessions::Side::First)))
+                    Ok(from_endpoint(super::sessions::Endpoint::on(
+                        session,
+                        super::sessions::Side::First,
+                    )))
                 }
             }
         }
@@ -10619,7 +12843,10 @@ pub mod net {
 
     // Keeps descriptor helpers reachable for generated code.
     pub fn parse(text: &str) -> Sexp {
-        read_descriptor(text).into_iter().next().expect("a descriptor")
+        read_descriptor(text)
+            .into_iter()
+            .next()
+            .expect("a descriptor")
     }
 }
 
@@ -10636,13 +12863,31 @@ mod net_tests {
 
     #[test]
     fn wire_vectors_match_python() {
-        assert_eq!(wire_encoded("(int Integer _ _)", 7, 4, 4), vec!["9ddc4f", "eefb17", "8fc703", "8ee709"]);
-        assert_eq!(wire_encoded("(int Int8 -128 127)", 42, 4, 5), vec!["f901", "28", "00", "48", "5c"]);
-        assert_eq!(wire_encoded("(text)", 3, 4, 3), vec!["037b5b2c", "0134", "024d54"]);
-        assert_eq!(wire_encoded("(list (maybe (bool)))", 5, 3, 3), vec!["02000101", "0100", "010100"]);
-        assert_eq!(wire_encoded("(either (int UInt8 0 255) (text))", 9, 3, 4), vec!["00ec02", "0000", "00d201", "0100"]);
+        assert_eq!(
+            wire_encoded("(int Integer _ _)", 7, 4, 4),
+            vec!["9ddc4f", "eefb17", "8fc703", "8ee709"]
+        );
+        assert_eq!(
+            wire_encoded("(int Int8 -128 127)", 42, 4, 5),
+            vec!["f901", "28", "00", "48", "5c"]
+        );
+        assert_eq!(
+            wire_encoded("(text)", 3, 4, 3),
+            vec!["037b5b2c", "0134", "024d54"]
+        );
+        assert_eq!(
+            wire_encoded("(list (maybe (bool)))", 5, 3, 3),
+            vec!["02000101", "0100", "010100"]
+        );
+        assert_eq!(
+            wire_encoded("(either (int UInt8 0 255) (text))", 9, 3, 4),
+            vec!["00ec02", "0000", "00d201", "0100"]
+        );
         let shape = "(data Shape (ctor Shape::Circle (int Int32 0 100)) (ctor Shape::Box (int Int32 0 100) (int Int32 0 100)) (ctor Shape::Group (list (ref Shape))))";
-        assert_eq!(wire_encoded(shape, 11, 3, 3), vec!["0030", "020201b80100015ac801", "014808"]);
+        assert_eq!(
+            wire_encoded(shape, 11, 3, 3),
+            vec!["0030", "020201b80100015ac801", "014808"]
+        );
         for seed in 0..20 {
             assert!(wire_round_trips(shape, seed, 5, 10));
         }
@@ -10652,33 +12897,87 @@ mod net_tests {
         let (here, there) = (Node::new(a), Node::new(b));
         let counter = actors::Actor::new(BigInt::from(0));
         let served = counter.clone();
-        let handler: Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync> = Arc::new(move |args| {
-            let n = args[0].integer()?;
-            served.call(|s: BigInt| {
-                let next = s + n;
-                Ok((Value::Integer(next.clone()), next))
-            })
-        });
-        let address = there.serve("counter", vec![("add".into(), vec![int64()], int64(), handler)], values_table("")).unwrap();
-        let remote = here.remote_actor(&address, vec![("add".into(), vec![int64()], int64())], values_table(""), Duration::from_secs(3));
-        let replies: Vec<String> = (1..=3).map(|n| render(&remote.call("add", &[Value::Integer(n.into())]).unwrap())).collect();
+        let handler: Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync> =
+            Arc::new(move |args| {
+                let n = args[0].integer()?;
+                served.call(|s: BigInt| {
+                    let next = s + n;
+                    Ok((Value::Integer(next.clone()), next))
+                })
+            });
+        let address = there
+            .serve(
+                "counter",
+                vec![("add".into(), vec![int64()], int64(), handler)],
+                values_table(""),
+            )
+            .unwrap();
+        let remote = here.remote_actor(
+            &address,
+            vec![("add".into(), vec![int64()], int64())],
+            values_table(""),
+            Duration::from_secs(3),
+        );
+        let replies: Vec<String> = (1..=3)
+            .map(|n| render(&remote.call("add", &[Value::Integer(n.into())]).unwrap()))
+            .collect();
         assert_eq!(replies, vec!["1", "3", "6"]);
         let double: Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync> =
             Arc::new(|args| Ok(Value::Integer(args[0].integer()? * 2)));
-        there.serve_definitions(vec![("h".into(), double, vec![int64()], int64())], values_table(""), "definitions").unwrap();
+        there
+            .serve_definitions(
+                vec![("h".into(), double, vec![int64()], int64())],
+                values_table(""),
+                "definitions",
+            )
+            .unwrap();
         let got = here
-            .evaluate(&there.address(), "h", &[Value::Integer(21.into())], &[int64()], &int64(), &values_table(""), Duration::from_secs(3), "definitions")
+            .evaluate(
+                &there.address(),
+                "h",
+                &[Value::Integer(21.into())],
+                &[int64()],
+                &int64(),
+                &values_table(""),
+                Duration::from_secs(3),
+                "definitions",
+            )
             .unwrap();
         assert_eq!(render(&got), "42");
         if !lossy {
             let box_ = there.mailbox("jobs", int64(), values_table("")).unwrap();
-            here.remote_mailbox(&format!("{}/jobs", there.address()), int64(), values_table("")).send(&Value::Integer(41.into())).unwrap();
-            assert_eq!(render(&box_.receive(Some(Duration::from_secs(3))).unwrap()), "41");
+            here.remote_mailbox(
+                &format!("{}/jobs", there.address()),
+                int64(),
+                values_table(""),
+            )
+            .send(&Value::Integer(41.into()))
+            .unwrap();
+            assert_eq!(
+                render(&box_.receive(Some(Duration::from_secs(3))).unwrap()),
+                "41"
+            );
         }
-        let steps = vec![(true, int64()), (false, descriptor("(text)")), (true, int64())];
-        let listener = there.listen("chat", steps.clone(), values_table(""), Duration::from_secs(5)).unwrap();
+        let steps = vec![
+            (true, int64()),
+            (false, descriptor("(text)")),
+            (true, int64()),
+        ];
+        let listener = there
+            .listen(
+                "chat",
+                steps.clone(),
+                values_table(""),
+                Duration::from_secs(5),
+            )
+            .unwrap();
         let dialer = here
-            .dial(&format!("{}/chat", there.address()), steps.iter().map(|(s, d)| (!s, d.clone())).collect(), values_table(""), Duration::from_secs(5))
+            .dial(
+                &format!("{}/chat", there.address()),
+                steps.iter().map(|(s, d)| (!s, d.clone())).collect(),
+                values_table(""),
+                Duration::from_secs(5),
+            )
             .unwrap();
         let worker = std::thread::spawn(move || {
             listener.send(&Value::Integer(10.into())).unwrap();
@@ -10686,9 +12985,15 @@ mod net_tests {
             listener.send(&Value::Integer(20.into())).unwrap();
             said
         });
-        assert_eq!(render(&dialer.receive(Some(Duration::from_secs(5))).unwrap()), "10");
+        assert_eq!(
+            render(&dialer.receive(Some(Duration::from_secs(5))).unwrap()),
+            "10"
+        );
         dialer.send(&Value::Text("hi".into())).unwrap();
-        assert_eq!(render(&dialer.receive(Some(Duration::from_secs(5))).unwrap()), "20");
+        assert_eq!(
+            render(&dialer.receive(Some(Duration::from_secs(5))).unwrap()),
+            "20"
+        );
         assert_eq!(render(&worker.join().unwrap()), "\"hi\"");
         here.close();
         there.close();
@@ -10699,7 +13004,11 @@ mod net_tests {
         // The frame layer alone; lawspec_network's tests cover secure nodes
         // over memory, TCP and HTTP.
         let net = MemoryNetwork::new(3, 0.2, 0.2, Duration::from_millis(10)).with_recording();
-        exercise(net.insecure_transport_for_tests("a"), net.insecure_transport_for_tests("b"), true);
+        exercise(
+            net.insecure_transport_for_tests("a"),
+            net.insecure_transport_for_tests("b"),
+            true,
+        );
         assert!(!net.recorded().is_empty());
     }
 
@@ -10707,11 +13016,14 @@ mod net_tests {
     fn take_tokens_are_secure() {
         let token = secure_token();
         assert_eq!(token.len(), 64);
-        assert!(token.chars().all(|c| c.is_ascii_hexdigit() && !c.is_ascii_uppercase()));
+        assert!(
+            token
+                .chars()
+                .all(|c| c.is_ascii_hexdigit() && !c.is_ascii_uppercase())
+        );
         assert_ne!(token, secure_token());
     }
 }
-
 
 // Abilities (docs/explanation/abilities.md). Handlers travel in the Context
 // generated code passes to every definition: that context is the evidence of
@@ -10732,7 +13044,11 @@ pub struct Installed {
 }
 impl std::fmt::Debug for Installed {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.write_str(if self.calls.is_some() { "<recording handler>" } else { "<handler>" })
+        f.write_str(if self.calls.is_some() {
+            "<recording handler>"
+        } else {
+            "<handler>"
+        })
     }
 }
 
@@ -10741,19 +13057,34 @@ impl std::fmt::Debug for Installed {
 pub struct Calls(Arc<std::sync::Mutex<Vec<(String, Vec<Value>)>>>);
 impl Calls {
     pub fn record(&self, operation: &str, arguments: Vec<Value>) {
-        self.0.lock().unwrap().push((operation.to_string(), arguments));
+        self.0
+            .lock()
+            .unwrap()
+            .push((operation.to_string(), arguments));
     }
 }
 
 pub fn installed<H: Send + Sync + 'static>(handler: H) -> Installed {
-    Installed { handler: Arc::new(handler), calls: None, native: None }
+    Installed {
+        handler: Arc::new(handler),
+        calls: None,
+        native: None,
+    }
 }
 /// A default handler of type N, installed as H (its `Arc<dyn Trait>`).
 pub fn installed_native<N: 'static, H: Send + Sync + 'static>(handler: H) -> Installed {
-    Installed { handler: Arc::new(handler), calls: None, native: Some(std::any::TypeId::of::<N>()) }
+    Installed {
+        handler: Arc::new(handler),
+        calls: None,
+        native: Some(std::any::TypeId::of::<N>()),
+    }
 }
 pub fn installed_recording<H: Send + Sync + 'static>(handler: H, calls: Calls) -> Installed {
-    Installed { handler: Arc::new(handler), calls: Some(calls), native: None }
+    Installed {
+        handler: Arc::new(handler),
+        calls: Some(calls),
+        native: None,
+    }
 }
 
 impl Context {
@@ -10769,7 +13100,10 @@ impl Context {
         let installed = table.get(ability).ok_or_else(|| {
             format!("no handler for the ability {ability}: a law names one with `using`, or runs under each lawful handler")
         })?;
-        installed.handler.downcast_ref::<H>().cloned()
+        installed
+            .handler
+            .downcast_ref::<H>()
+            .cloned()
             .ok_or_else(|| format!("the handler for {ability} has another type"))
     }
     fn installed_for(&self, ability: &str) -> Option<Installed> {
@@ -10784,15 +13118,21 @@ pub fn with_handlers(
     handlers: Vec<(String, Installed)>,
     body: impl FnOnce(&mut Context) -> Result<Value>,
 ) -> Result<Value> {
-    let previous: Vec<(String, Option<Installed>)> =
-        handlers.iter().map(|(key, _)| (key.clone(), ctx.installed_for(key))).collect();
+    let previous: Vec<(String, Option<Installed>)> = handlers
+        .iter()
+        .map(|(key, _)| (key.clone(), ctx.installed_for(key)))
+        .collect();
     ctx.install_handlers(handlers);
     let restore = |ctx: &mut Context| {
         let mut table = ctx.handlers.write().unwrap();
         for (key, before) in &previous {
             match before {
-                Some(handler) => { table.insert(key.clone(), handler.clone()); }
-                None => { table.remove(key); }
+                Some(handler) => {
+                    table.insert(key.clone(), handler.clone());
+                }
+                None => {
+                    table.remove(key);
+                }
             }
         }
     };
@@ -10831,14 +13171,20 @@ pub fn native_failures<E: 'static, T>(
         Err(payload) => {
             let payload = match payload.downcast::<Fail>() {
                 Ok(fail) => match fail.0.downcast::<E>() {
-                    Ok(native) => std::panic::panic_any(Failure { ability: ability.to_string(), value: convert(*native) }),
+                    Ok(native) => std::panic::panic_any(Failure {
+                        ability: ability.to_string(),
+                        value: convert(*native),
+                    }),
                     Err(other) => other,
                 },
                 Err(other) => other,
             };
             for make in &mapped {
                 if let Some(value) = make(payload.as_ref()) {
-                    std::panic::panic_any(Failure { ability: ability.to_string(), value });
+                    std::panic::panic_any(Failure {
+                        ability: ability.to_string(),
+                        value,
+                    });
                 }
             }
             std::panic::resume_unwind(payload)
@@ -10858,7 +13204,9 @@ fn quiet_failures() {
     HOOK.call_once(|| {
         let previous = std::panic::take_hook();
         std::panic::set_hook(Box::new(move |info| {
-            if info.payload().downcast_ref::<Failure>().is_none() && info.payload().downcast_ref::<Fail>().is_none() {
+            if info.payload().downcast_ref::<Failure>().is_none()
+                && info.payload().downcast_ref::<Fail>().is_none()
+            {
                 previous(info);
             }
         }));
@@ -10867,7 +13215,10 @@ fn quiet_failures() {
 
 pub fn raise_failure(ability: &str, value: Value) -> Value {
     quiet_failures();
-    std::panic::panic_any(Failure { ability: ability.to_string(), value })
+    std::panic::panic_any(Failure {
+        ability: ability.to_string(),
+        value,
+    })
 }
 
 /// Right of the body, or Left of the failure it raised with this ability.
@@ -10896,12 +13247,22 @@ pub fn count_calls(
     operation: &str,
     matches: Option<&dyn Fn(&[Value]) -> Result<bool>>,
 ) -> Result<Value> {
-    let installed = ctx.installed_for(ability).ok_or_else(|| format!("no handler for the ability {ability}"))?;
-    let calls = installed.calls.as_ref().ok_or("calls of needs a recording handler: `using recording`")?;
+    let installed = ctx
+        .installed_for(ability)
+        .ok_or_else(|| format!("no handler for the ability {ability}"))?;
+    let calls = installed
+        .calls
+        .as_ref()
+        .ok_or("calls of needs a recording handler: `using recording`")?;
     let recorded = calls.0.lock().unwrap().clone();
     let mut count = 0i64;
     for (name, arguments) in recorded {
-        if name == operation && match matches { None => true, Some(test) => test(&arguments)? } {
+        if name == operation
+            && match matches {
+                None => true,
+                Some(test) => test(&arguments)?,
+            }
+        {
             count += 1;
         }
     }
@@ -11073,7 +13434,9 @@ pub mod fast {
             if exponent.is_negative() {
                 return Err("negative exponent".into());
             }
-            let exponent = exponent.to_u32().ok_or_else(|| "exponent too large".to_string())?;
+            let exponent = exponent
+                .to_u32()
+                .ok_or_else(|| "exponent too large".to_string())?;
             Ok(Int::from_big(num_traits::Pow::pow(self.big(), exponent)))
         }
         pub fn is_zero(&self) -> bool {
@@ -11234,7 +13597,11 @@ pub mod fast {
                     },
                 }
             }
-            if ys.next().is_some() { Ordering::Less } else { Ordering::Equal }
+            if ys.next().is_some() {
+                Ordering::Less
+            } else {
+                Ordering::Equal
+            }
         }
     }
 
@@ -11347,31 +13714,62 @@ pub mod fast {
         fn node(key: K, value: V, left: Map<K, V>, right: Map<K, V>) -> Map<K, V> {
             let height = left.height().max(right.height()) + 1;
             let size = left.len() + right.len() + 1;
-            Map(Some(Arc::new(Node { key, value, left, right, height, size })))
+            Map(Some(Arc::new(Node {
+                key,
+                value,
+                left,
+                right,
+                height,
+                size,
+            })))
         }
         fn balance(key: K, value: V, left: Map<K, V>, right: Map<K, V>) -> Map<K, V> {
             let (hl, hr) = (left.height(), right.height());
             if hl > hr + 1 {
                 let l = left.0.as_ref().unwrap();
                 if l.left.height() >= l.right.height() {
-                    Self::node(l.key.clone(), l.value.clone(), l.left.clone(),
-                        Self::node(key, value, l.right.clone(), right))
+                    Self::node(
+                        l.key.clone(),
+                        l.value.clone(),
+                        l.left.clone(),
+                        Self::node(key, value, l.right.clone(), right),
+                    )
                 } else {
                     let lr = l.right.0.as_ref().unwrap();
-                    Self::node(lr.key.clone(), lr.value.clone(),
-                        Self::node(l.key.clone(), l.value.clone(), l.left.clone(), lr.left.clone()),
-                        Self::node(key, value, lr.right.clone(), right))
+                    Self::node(
+                        lr.key.clone(),
+                        lr.value.clone(),
+                        Self::node(
+                            l.key.clone(),
+                            l.value.clone(),
+                            l.left.clone(),
+                            lr.left.clone(),
+                        ),
+                        Self::node(key, value, lr.right.clone(), right),
+                    )
                 }
             } else if hr > hl + 1 {
                 let r = right.0.as_ref().unwrap();
                 if r.right.height() >= r.left.height() {
-                    Self::node(r.key.clone(), r.value.clone(),
-                        Self::node(key, value, left, r.left.clone()), r.right.clone())
+                    Self::node(
+                        r.key.clone(),
+                        r.value.clone(),
+                        Self::node(key, value, left, r.left.clone()),
+                        r.right.clone(),
+                    )
                 } else {
                     let rl = r.left.0.as_ref().unwrap();
-                    Self::node(rl.key.clone(), rl.value.clone(),
+                    Self::node(
+                        rl.key.clone(),
+                        rl.value.clone(),
                         Self::node(key, value, left, rl.left.clone()),
-                        Self::node(r.key.clone(), r.value.clone(), rl.right.clone(), r.right.clone()))
+                        Self::node(
+                            r.key.clone(),
+                            r.value.clone(),
+                            rl.right.clone(),
+                            r.right.clone(),
+                        ),
+                    )
                 }
             } else {
                 Self::node(key, value, left, right)
@@ -11382,8 +13780,18 @@ pub mod fast {
             match &self.0 {
                 None => Self::node(key, value, Map::new(), Map::new()),
                 Some(n) => match key.pcmp(&n.key) {
-                    Ordering::Less => Self::balance(n.key.clone(), n.value.clone(), n.left.insert(key, value), n.right.clone()),
-                    Ordering::Greater => Self::balance(n.key.clone(), n.value.clone(), n.left.clone(), n.right.insert(key, value)),
+                    Ordering::Less => Self::balance(
+                        n.key.clone(),
+                        n.value.clone(),
+                        n.left.insert(key, value),
+                        n.right.clone(),
+                    ),
+                    Ordering::Greater => Self::balance(
+                        n.key.clone(),
+                        n.value.clone(),
+                        n.left.clone(),
+                        n.right.insert(key, value),
+                    ),
                     Ordering::Equal => Self::node(key, value, n.left.clone(), n.right.clone()),
                 },
             }
@@ -11394,7 +13802,11 @@ pub mod fast {
                 (n.key.clone(), n.value.clone(), n.right.clone())
             } else {
                 let (k, v, left) = n.left.remove_min();
-                (k, v, Self::balance(n.key.clone(), n.value.clone(), left, n.right.clone()))
+                (
+                    k,
+                    v,
+                    Self::balance(n.key.clone(), n.value.clone(), left, n.right.clone()),
+                )
             }
         }
         /// The map without key.
@@ -11403,12 +13815,26 @@ pub mod fast {
                 None => Map::new(),
                 Some(n) => match key.pcmp(&n.key) {
                     Ordering::Less => {
-                        if n.left.is_empty() { return self.clone(); }
-                        Self::balance(n.key.clone(), n.value.clone(), n.left.remove(key), n.right.clone())
+                        if n.left.is_empty() {
+                            return self.clone();
+                        }
+                        Self::balance(
+                            n.key.clone(),
+                            n.value.clone(),
+                            n.left.remove(key),
+                            n.right.clone(),
+                        )
                     }
                     Ordering::Greater => {
-                        if n.right.is_empty() { return self.clone(); }
-                        Self::balance(n.key.clone(), n.value.clone(), n.left.clone(), n.right.remove(key))
+                        if n.right.is_empty() {
+                            return self.clone();
+                        }
+                        Self::balance(
+                            n.key.clone(),
+                            n.value.clone(),
+                            n.left.clone(),
+                            n.right.remove(key),
+                        )
                     }
                     Ordering::Equal => {
                         if n.left.is_empty() {
@@ -11440,7 +13866,11 @@ pub mod fast {
                     return true;
                 }
             }
-            self.len() == other.len() && self.iter().zip(other.iter()).all(|((k1, v1), (k2, v2))| k1 == k2 && v1 == v2)
+            self.len() == other.len()
+                && self
+                    .iter()
+                    .zip(other.iter())
+                    .all(|((k1, v1), (k2, v2))| k1 == k2 && v1 == v2)
         }
     }
     impl<K: Eq, V: Eq> Eq for Map<K, V> {}
@@ -11458,7 +13888,11 @@ pub mod fast {
                     },
                 }
             }
-            if ys.next().is_some() { Ordering::Less } else { Ordering::Equal }
+            if ys.next().is_some() {
+                Ordering::Less
+            } else {
+                Ordering::Equal
+            }
         }
     }
 
@@ -11503,7 +13937,11 @@ pub mod fast {
             self.0.contains(item)
         }
         pub fn insert(&self, item: T) -> Set<T> {
-            if self.0.contains(&item) { self.clone() } else { Set(self.0.insert(item, ())) }
+            if self.0.contains(&item) {
+                self.clone()
+            } else {
+                Set(self.0.insert(item, ()))
+            }
         }
         pub fn remove(&self, item: &T) -> Set<T> {
             Set(self.0.remove(item))
@@ -11516,7 +13954,11 @@ pub mod fast {
             set
         }
         pub fn union(&self, other: &Set<T>) -> Set<T> {
-            let (small, large) = if self.len() <= other.len() { (self, other) } else { (other, self) };
+            let (small, large) = if self.len() <= other.len() {
+                (self, other)
+            } else {
+                (other, self)
+            };
             let mut set = large.clone();
             for item in small.iter() {
                 set = set.insert(item.clone());
@@ -11549,7 +13991,11 @@ pub mod fast {
                     },
                 }
             }
-            if ys.next().is_some() { Ordering::Less } else { Ordering::Equal }
+            if ys.next().is_some() {
+                Ordering::Less
+            } else {
+                Ordering::Equal
+            }
         }
     }
     impl<T: std::fmt::Debug> std::fmt::Debug for Set<T> {
@@ -11633,7 +14079,9 @@ pub mod fast {
                 Value::List(items) => items
                     .into_iter()
                     .map(|item| match item {
-                        Value::Integer(n) => u8::try_from(&n).map_err(|_| "expected a byte".to_string()),
+                        Value::Integer(n) => {
+                            u8::try_from(&n).map_err(|_| "expected a byte".to_string())
+                        }
                         _ => Err("expected a byte".to_string()),
                     })
                     .collect::<Result<Vec<u8>>>()
@@ -11678,7 +14126,12 @@ pub mod fast {
         }
         fn from_dyn(value: Value) -> Result<Self> {
             match value {
-                Value::List(items) => Ok(List::from_vec(items.into_iter().map(T::from_dyn).collect::<Result<Vec<T>>>()?)),
+                Value::List(items) => Ok(List::from_vec(
+                    items
+                        .into_iter()
+                        .map(T::from_dyn)
+                        .collect::<Result<Vec<T>>>()?,
+                )),
                 _ => Err("expected a List".into()),
             }
         }
@@ -11690,7 +14143,10 @@ pub mod fast {
 
     impl<K: Dyn + POrd + Clone, V: Dyn + Clone> Dyn for Map<K, V> {
         fn to_dyn(&self) -> Value {
-            let entries = self.iter().map(|(k, v)| Value::Data(ENTRY.into(), vec![k.to_dyn(), v.to_dyn()])).collect();
+            let entries = self
+                .iter()
+                .map(|(k, v)| Value::Data(ENTRY.into(), vec![k.to_dyn(), v.to_dyn()]))
+                .collect();
             Value::Data(KEYVAL.into(), vec![Value::List(entries)])
         }
         fn from_dyn(value: Value) -> Result<Self> {
@@ -11699,7 +14155,10 @@ pub mod fast {
                 match entry {
                     Value::Data(_, fields) if fields.len() == 2 => {
                         let mut fields = fields.into_iter();
-                        map = map.insert(K::from_dyn(fields.next().unwrap())?, V::from_dyn(fields.next().unwrap())?);
+                        map = map.insert(
+                            K::from_dyn(fields.next().unwrap())?,
+                            V::from_dyn(fields.next().unwrap())?,
+                        );
                     }
                     _ => return Err("expected a KeyVal entry".into()),
                 }
@@ -11710,10 +14169,16 @@ pub mod fast {
 
     impl<T: Dyn + POrd + Clone> Dyn for Set<T> {
         fn to_dyn(&self) -> Value {
-            Value::Data(SET.into(), vec![Value::List(self.iter().map(Dyn::to_dyn).collect())])
+            Value::Data(
+                SET.into(),
+                vec![Value::List(self.iter().map(Dyn::to_dyn).collect())],
+            )
         }
         fn from_dyn(value: Value) -> Result<Self> {
-            let items = super::collection_items(value)?.into_iter().map(T::from_dyn).collect::<Result<Vec<T>>>()?;
+            let items = super::collection_items(value)?
+                .into_iter()
+                .map(T::from_dyn)
+                .collect::<Result<Vec<T>>>()?;
             Ok(Set::from_iter(items.into_iter()))
         }
     }
@@ -11721,7 +14186,9 @@ pub mod fast {
     /// A data value's constructor fields, checked against its tag.
     pub fn fields(value: Value, tag: &str, arity: usize) -> Result<std::vec::IntoIter<Value>> {
         match value {
-            Value::Data(found, fields) if found == tag && fields.len() == arity => Ok(fields.into_iter()),
+            Value::Data(found, fields) if found == tag && fields.len() == arity => {
+                Ok(fields.into_iter())
+            }
             Value::Data(found, _) => Err(format!("expected {tag}, found {found}")),
             _ => Err(format!("expected {tag}")),
         }
@@ -11741,7 +14208,10 @@ pub mod fast {
 
     /// attempt e: the body's value, or the failure it raised with this
     /// ability, as the dynamic attempt catches it.
-    pub fn attempt<A>(ability: &str, body: impl FnOnce() -> Result<A>) -> Result<std::result::Result<A, Value>> {
+    pub fn attempt<A>(
+        ability: &str,
+        body: impl FnOnce() -> Result<A>,
+    ) -> Result<std::result::Result<A, Value>> {
         super::quiet_failures();
         match std::panic::catch_unwind(std::panic::AssertUnwindSafe(body)) {
             Ok(result) => result.map(Ok),
@@ -11992,10 +14462,16 @@ pub mod fast {
     {
         type Native = std::collections::BTreeMap<K::Native, V::Native>;
         fn to_native(&self) -> Self::Native {
-            self.iter().map(|(k, v)| (k.to_native(), v.to_native())).collect()
+            self.iter()
+                .map(|(k, v)| (k.to_native(), v.to_native()))
+                .collect()
         }
         fn from_native(native: Self::Native) -> Self {
-            Map::from_entries(native.into_iter().map(|(k, v)| (K::from_native(k), V::from_native(v))))
+            Map::from_entries(
+                native
+                    .into_iter()
+                    .map(|(k, v)| (K::from_native(k), V::from_native(v))),
+            )
         }
     }
 
@@ -12029,13 +14505,90 @@ pub mod fast {
     direct_call!(direct3, (A, TA), (B, TB), (C, TC));
     direct_call!(direct4, (A, TA), (B, TB), (C, TC), (D, TD));
     direct_call!(direct5, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE));
-    direct_call!(direct6, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF));
-    direct_call!(direct7, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG));
-    direct_call!(direct8, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH));
-    direct_call!(direct9, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI));
-    direct_call!(direct10, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ));
-    direct_call!(direct11, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ), (K, TK));
-    direct_call!(direct12, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ), (K, TK), (L, TL));
+    direct_call!(
+        direct6,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF)
+    );
+    direct_call!(
+        direct7,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG)
+    );
+    direct_call!(
+        direct8,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH)
+    );
+    direct_call!(
+        direct9,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH),
+        (I, TI)
+    );
+    direct_call!(
+        direct10,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH),
+        (I, TI),
+        (J, TJ)
+    );
+    direct_call!(
+        direct11,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH),
+        (I, TI),
+        (J, TJ),
+        (K, TK)
+    );
+    direct_call!(
+        direct12,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH),
+        (I, TI),
+        (J, TJ),
+        (K, TK),
+        (L, TL)
+    );
 
     // A native call of a typed definition: its arguments from native values,
     // its result to one.
@@ -12055,13 +14608,90 @@ pub mod fast {
     native_call!(native3, (A, TA), (B, TB), (C, TC));
     native_call!(native4, (A, TA), (B, TB), (C, TC), (D, TD));
     native_call!(native5, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE));
-    native_call!(native6, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF));
-    native_call!(native7, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG));
-    native_call!(native8, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH));
-    native_call!(native9, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI));
-    native_call!(native10, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ));
-    native_call!(native11, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ), (K, TK));
-    native_call!(native12, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ), (K, TK), (L, TL));
+    native_call!(
+        native6,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF)
+    );
+    native_call!(
+        native7,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG)
+    );
+    native_call!(
+        native8,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH)
+    );
+    native_call!(
+        native9,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH),
+        (I, TI)
+    );
+    native_call!(
+        native10,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH),
+        (I, TI),
+        (J, TJ)
+    );
+    native_call!(
+        native11,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH),
+        (I, TI),
+        (J, TJ),
+        (K, TK)
+    );
+    native_call!(
+        native12,
+        (A, TA),
+        (B, TB),
+        (C, TC),
+        (D, TD),
+        (E, TE),
+        (F, TF),
+        (G, TG),
+        (H, TH),
+        (I, TI),
+        (J, TJ),
+        (K, TK),
+        (L, TL)
+    );
 
     #[allow(dead_code)]
     fn _unused(n: &BigInt) -> bool {
@@ -12114,7 +14744,10 @@ pub mod fast {
             assert_eq!(Int::Small(-7).quot(&Int::Small(2)).unwrap(), Int::Small(-3));
             assert_eq!(Int::Small(-7).rem(&Int::Small(2)).unwrap(), Int::Small(-1));
             assert!(Int::Small(1).quot(&Int::Small(0)).is_err());
-            assert_eq!(narrow::<i32>(i32::MAX as i128 + 1, "Int32"), Err("integer outside Int32 range".to_string()));
+            assert_eq!(
+                narrow::<i32>(i32::MAX as i128 + 1, "Int32"),
+                Err("integer outside Int32 range".to_string())
+            );
         }
 
         #[test]

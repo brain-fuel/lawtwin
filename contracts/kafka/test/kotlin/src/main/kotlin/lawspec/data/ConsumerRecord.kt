@@ -4,4 +4,5 @@ package lawspec.data
 data class ConsumerRecord(
     val receivedFrom: lawspec.data.TopicPartition,
     val receivedAt: kotlin.Long,
-    val received: lawspec.data.Record)
+    val received: lawspec.data.Record,
+)

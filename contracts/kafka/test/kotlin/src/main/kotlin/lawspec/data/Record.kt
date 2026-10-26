@@ -4,4 +4,5 @@ package lawspec.data
 data class Record(
     val key: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>,
     val value: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>,
-    val headers: kotlin.collections.List<lawspec.data.Header>)
+    val headers: kotlin.collections.List<lawspec.data.Header>,
+)

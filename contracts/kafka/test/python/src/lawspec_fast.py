@@ -14,45 +14,47 @@ copied, from one operation to the next. The generated lawspec_typed.py
 converts each typed value to and from the dynamic values where typed and
 dynamic code meet. ref:DEC-typed-native-definitions
 """
+
 import lawspec_runtime as ls
 
 
 def outside(t):
-    raise ValueError('integer outside ' + t + ' range')
+    raise ValueError("integer outside " + t + " range")
 
 
 def narrow(v, lo, hi, t):
     if v < lo or v > hi:
-        raise ValueError('integer outside ' + t + ' range')
+        raise ValueError("integer outside " + t + " range")
     return v
 
 
 def quot(a, b):
     if b == 0:
-        raise ValueError('exact division by zero')
+        raise ValueError("exact division by zero")
     q = abs(a) // abs(b)
     return q if (a < 0) == (b < 0) else -q
 
 
 def rem(a, b):
     if b == 0:
-        raise ValueError('exact division by zero')
+        raise ValueError("exact division by zero")
     return a - quot(a, b) * b
 
 
 def power(a, b):
     if b < 0:
-        raise ValueError('negative exponent')
+        raise ValueError("negative exponent")
     if b > 1 << 31:
-        raise ValueError('exponent too large')
-    return a ** b
+        raise ValueError("exponent too large")
+    return a**b
 
 
 def unreachable():
-    raise ValueError('unreachable branch reached')
+    raise ValueError("unreachable branch reached")
 
 
 # Lists.
+
 
 def cons(h, t):
     return (h, t, 1 if t is None else t[2] + 1)
@@ -193,7 +195,7 @@ def bytes_of(xs):
 
 
 def utf8(s):
-    return s.encode('utf-8', 'surrogatepass')
+    return s.encode("utf-8", "surrogatepass")
 
 
 def join(separator, parts):
@@ -207,6 +209,7 @@ def regex_matches(pattern, text):
 # Persistent maps: None is empty, a node is (key, value, left, right,
 # height). The plain functions order keys with < and ==; the _by functions
 # take an order, cmp(a, b) -> -1, 0 or 1.
+
 
 def _h(m):
     return 0 if m is None else m[4]
@@ -482,11 +485,13 @@ def eq_plain(a, b):
 
 # Failures: raise and attempt, as the dynamic code makes and catches them.
 
+
 def fail(ability, value):
     raise ls.Failure(ability, value)
 
 
 # Dynamic values.
+
 
 def data(tag, *fields):
     return ls.DataValue(tag, fields)

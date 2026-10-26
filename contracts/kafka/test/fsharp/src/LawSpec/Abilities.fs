@@ -9,32 +9,54 @@ type IBroker =
     abstract CreatePartitionsRequest: value0: string * value1: int -> Result<unit, LawSpec.Data.KafkaError>
     /// metadataRequest
     abstract MetadataRequest: value0: string -> int option
+
     /// produceRequest
-    abstract ProduceRequest: value0: LawSpec.Data.TopicPartition * value1: LawSpec.Data.ProducerTag option * value2: LawSpec.Data.Record list -> Result<int64, LawSpec.Data.KafkaError>
+    abstract ProduceRequest:
+        value0: LawSpec.Data.TopicPartition * value1: LawSpec.Data.ProducerTag option * value2: LawSpec.Data.Record list -> Result<int64, LawSpec.Data.KafkaError>
+
     /// fetchRequest
-    abstract FetchRequest: value0: LawSpec.Data.TopicPartition * value1: int64 * value2: int * value3: LawSpec.Data.IsolationLevel -> Result<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError>
+    abstract FetchRequest:
+        value0: LawSpec.Data.TopicPartition * value1: int64 * value2: int * value3: LawSpec.Data.IsolationLevel -> Result<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError>
+
     /// listOffsetsRequest
-    abstract ListOffsetsRequest: value0: LawSpec.Data.TopicPartition * value1: LawSpec.Data.OffsetSpec * value2: LawSpec.Data.IsolationLevel -> Result<int64, LawSpec.Data.KafkaError>
+    abstract ListOffsetsRequest:
+        value0: LawSpec.Data.TopicPartition * value1: LawSpec.Data.OffsetSpec * value2: LawSpec.Data.IsolationLevel -> Result<int64, LawSpec.Data.KafkaError>
+
     /// initProducerIdRequest
-    abstract InitProducerIdRequest: value0: string option -> Result<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError>
+    abstract InitProducerIdRequest:
+        value0: string option -> Result<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError>
+
     /// addPartitionsToTxnRequest
-    abstract AddPartitionsToTxnRequest: value0: string * value1: int64 * value2: int16 * value3: LawSpec.Data.TopicPartition list -> Result<unit, LawSpec.Data.KafkaError>
+    abstract AddPartitionsToTxnRequest:
+        value0: string * value1: int64 * value2: int16 * value3: LawSpec.Data.TopicPartition list -> Result<unit, LawSpec.Data.KafkaError>
+
     /// txnOffsetCommitRequest
-    abstract TxnOffsetCommitRequest: value0: string * value1: int64 * value2: int16 * value3: string * value4: LawSpec.Data.OffsetEntry list -> Result<unit, LawSpec.Data.KafkaError>
+    abstract TxnOffsetCommitRequest:
+        value0: string * value1: int64 * value2: int16 * value3: string * value4: LawSpec.Data.OffsetEntry list -> Result<unit, LawSpec.Data.KafkaError>
+
     /// endTxnRequest
-    abstract EndTxnRequest: value0: string * value1: int64 * value2: int16 * value3: bool -> Result<unit, LawSpec.Data.KafkaError>
+    abstract EndTxnRequest:
+        value0: string * value1: int64 * value2: int16 * value3: bool -> Result<unit, LawSpec.Data.KafkaError>
+
     /// joinGroupRequest
-    abstract JoinGroupRequest: value0: string * value1: string * value2: string list -> Result<int, LawSpec.Data.KafkaError>
+    abstract JoinGroupRequest:
+        value0: string * value1: string * value2: string list -> Result<int, LawSpec.Data.KafkaError>
+
     /// syncGroupRequest
-    abstract SyncGroupRequest: value0: string * value1: string * value2: int -> Result<LawSpec.Data.TopicPartition list, LawSpec.Data.KafkaError>
+    abstract SyncGroupRequest:
+        value0: string * value1: string * value2: int -> Result<LawSpec.Data.TopicPartition list, LawSpec.Data.KafkaError>
+
     /// heartbeatRequest
     abstract HeartbeatRequest: value0: string * value1: string * value2: int -> Result<unit, LawSpec.Data.KafkaError>
     /// leaveGroupRequest
     abstract LeaveGroupRequest: value0: string * value1: string -> Result<unit, LawSpec.Data.KafkaError>
     /// describeGroupRequest
     abstract DescribeGroupRequest: value0: string -> LawSpec.Data.GroupView
+
     /// offsetCommitRequest
-    abstract OffsetCommitRequest: value0: string * value1: string * value2: int * value3: LawSpec.Data.OffsetEntry list -> Result<unit, LawSpec.Data.KafkaError>
+    abstract OffsetCommitRequest:
+        value0: string * value1: string * value2: int * value3: LawSpec.Data.OffsetEntry list -> Result<unit, LawSpec.Data.KafkaError>
+
     /// offsetFetchRequest
     abstract OffsetFetchRequest: value0: string * value1: LawSpec.Data.TopicPartition -> int64 option
 
@@ -46,8 +68,10 @@ type IAdmin =
     abstract CreatePartitions: value0: string * value1: int -> Result<unit, LawSpec.Data.KafkaError>
     /// partitionsFor
     abstract PartitionsFor: value0: string -> int option
+
     /// listOffsets
-    abstract ListOffsets: value0: LawSpec.Data.TopicPartition * value1: LawSpec.Data.OffsetSpec * value2: LawSpec.Data.IsolationLevel -> Result<int64, LawSpec.Data.KafkaError>
+    abstract ListOffsets:
+        value0: LawSpec.Data.TopicPartition * value1: LawSpec.Data.OffsetSpec * value2: LawSpec.Data.IsolationLevel -> Result<int64, LawSpec.Data.KafkaError>
 
 /// The native interface of Partitioner (lawtwin.kafka::ability::Partitioner).
 type IPartitioner =
@@ -57,7 +81,9 @@ type IPartitioner =
 /// The native interface of Producer (lawtwin.kafka::ability::Producer).
 type IProducer =
     /// send
-    abstract Send: value0: LawSpec.Data.ProducerRecord -> LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>
+    abstract Send:
+        value0: LawSpec.Data.ProducerRecord -> LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>
+
     /// flush
     abstract Flush: unit -> unit
     /// enableIdempotence
@@ -71,8 +97,11 @@ type IProducer =
 type IConsumer =
     /// assign
     abstract Assign: value0: LawSpec.Data.TopicPartition list -> unit
+
     /// subscribe
-    abstract Subscribe: value0: string * value1: string * value2: string list -> LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>
+    abstract Subscribe:
+        value0: string * value1: string * value2: string list -> LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>
+
     /// poll
     abstract Poll: value0: int -> LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>
     /// commitSync
@@ -92,31 +121,46 @@ type IConsumer =
 type IGroupCoordinator =
     /// joinGroup
     abstract JoinGroup: value0: string * value1: string * value2: string list -> Result<int, LawSpec.Data.KafkaError>
+
     /// syncGroup
-    abstract SyncGroup: value0: string * value1: string * value2: int -> Result<LawSpec.Data.TopicPartition list, LawSpec.Data.KafkaError>
+    abstract SyncGroup:
+        value0: string * value1: string * value2: int -> Result<LawSpec.Data.TopicPartition list, LawSpec.Data.KafkaError>
+
     /// heartbeat
     abstract Heartbeat: value0: string * value1: string * value2: int -> Result<unit, LawSpec.Data.KafkaError>
     /// leaveGroup
     abstract LeaveGroup: value0: string * value1: string -> Result<unit, LawSpec.Data.KafkaError>
     /// describeGroup
     abstract DescribeGroup: value0: string -> LawSpec.Data.GroupView
+
     /// commitOffsets
-    abstract CommitOffsets: value0: string * value1: string * value2: int * value3: LawSpec.Data.OffsetEntry list -> Result<unit, LawSpec.Data.KafkaError>
+    abstract CommitOffsets:
+        value0: string * value1: string * value2: int * value3: LawSpec.Data.OffsetEntry list -> Result<unit, LawSpec.Data.KafkaError>
+
     /// fetchOffset
     abstract FetchOffset: value0: string * value1: LawSpec.Data.TopicPartition -> int64 option
 
 /// The native interface of Transactions (lawtwin.kafka::ability::Transactions).
 type ITransactions =
     /// initTransactions
-    abstract InitTransactions: value0: string -> LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>
+    abstract InitTransactions:
+        value0: string -> LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>
+
     /// beginTransaction
     abstract BeginTransaction: unit -> LawSpec.Either<LawSpec.Data.KafkaError, unit>
+
     /// addPartitionsToTransaction
-    abstract AddPartitionsToTransaction: value0: LawSpec.Data.TopicPartition list -> LawSpec.Either<LawSpec.Data.KafkaError, unit>
+    abstract AddPartitionsToTransaction:
+        value0: LawSpec.Data.TopicPartition list -> LawSpec.Either<LawSpec.Data.KafkaError, unit>
+
     /// sendInTransaction
-    abstract SendInTransaction: value0: LawSpec.Data.ProducerRecord -> LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>
+    abstract SendInTransaction:
+        value0: LawSpec.Data.ProducerRecord -> LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>
+
     /// sendOffsetsToTransaction
-    abstract SendOffsetsToTransaction: value0: string * value1: LawSpec.Data.OffsetEntry list -> LawSpec.Either<LawSpec.Data.KafkaError, unit>
+    abstract SendOffsetsToTransaction:
+        value0: string * value1: LawSpec.Data.OffsetEntry list -> LawSpec.Either<LawSpec.Data.KafkaError, unit>
+
     /// commitTransaction
     abstract CommitTransaction: unit -> LawSpec.Either<LawSpec.Data.KafkaError, unit>
     /// abortTransaction

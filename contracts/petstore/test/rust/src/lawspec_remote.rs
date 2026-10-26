@@ -4,52 +4,112 @@
 //! serve(node) lets other nodes evaluate them on this node; evaluate(node,
 //! address, name, args) evaluates one on the node at address. Values are
 //! logical values (ls::Value), as the runtime's checks use them.
-#![allow(dead_code)]
 use crate::lawspec_runtime as ls;
 
 fn wire_types() -> ls::Values {
-    ls::values_table("(data lawspec.matchers::type::Regex (ctor lawspec.matchers::type::Regex::Regex (text))) (data lawtwin.petstore.model::type::Order (ctor lawtwin.petstore.model::type::Order::Order (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int32 -2147483648 2147483647)) (maybe (text)) (maybe (ref lawtwin.petstore.model::type::OrderStatus)) (maybe (bool)))) (data lawtwin.petstore.model::type::OrderStatus (ctor lawtwin.petstore.model::type::OrderStatus::Placed) (ctor lawtwin.petstore.model::type::OrderStatus::Approved) (ctor lawtwin.petstore.model::type::OrderStatus::Delivered))")
+    ls::values_table(
+        "(data lawspec.matchers::type::Regex (ctor lawspec.matchers::type::Regex::Regex (text))) (data lawtwin.petstore.model::type::Order (ctor lawtwin.petstore.model::type::Order::Order (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int32 -2147483648 2147483647)) (maybe (text)) (maybe (ref lawtwin.petstore.model::type::OrderStatus)) (maybe (bool)))) (data lawtwin.petstore.model::type::OrderStatus (ctor lawtwin.petstore.model::type::OrderStatus::Placed) (ctor lawtwin.petstore.model::type::OrderStatus::Approved) (ctor lawtwin.petstore.model::type::OrderStatus::Delivered))",
+    )
 }
 
 /// (qualified name, content hash, function, argument descriptors, result descriptor)
-pub const DEFINITIONS: &[(&str, &str, ls::ModelCallback, &[&str], &str)] = &[
-    ("lawspec.matchers::matchersMatchesRegex", "sha3-256:90712f4fe0b8b414485e00fe214dabe06e4188720ece66fe3ba2be11d5515915", crate::lawspec_definitions::evaluate_0 as ls::ModelCallback, &["(text)", "(ref lawspec.matchers::type::Regex)"], "(bool)"),
-    ("lawtwin.petstore::lawtwinPetstoreModelAfter64", "sha3-256:c2cbdee0a4bcb1cc71e8894a9d8a99d6ff88ec384073a96a0500ca8b184a1aac", crate::lawspec_definitions::evaluate_33 as ls::ModelCallback, &["(int Int64 -9223372036854775808 9223372036854775807)"], "(int Int64 -9223372036854775808 9223372036854775807)"),
-    ("lawtwin.petstore::lawtwinPetstoreModelValidOrder", "sha3-256:5c55a35317aa6ed222fd7689f397bc9c03f63896635303348dfd13c4cfbddccf", crate::lawspec_definitions::evaluate_46 as ls::ModelCallback, &["(ref lawtwin.petstore.model::type::Order)"], "(bool)"),
-    ("lawtwin.petstore.laws::lawtwinPetstoreModelAfter64", "sha3-256:1fb469520c67fa036f31fc8333df36e1bce341bc914072f28aa50b0cb3025f38", crate::lawspec_definitions::evaluate_107 as ls::ModelCallback, &["(int Int64 -9223372036854775808 9223372036854775807)"], "(int Int64 -9223372036854775808 9223372036854775807)"),
-    ("lawtwin.petstore.laws::lawtwinPetstoreModelValidOrder", "sha3-256:5e3dfaef162004780d97d5d55dbad1aeafe36bd7a55ea757cfd81ebd1b003e56", crate::lawspec_definitions::evaluate_120 as ls::ModelCallback, &["(ref lawtwin.petstore.model::type::Order)"], "(bool)"),
-    ("lawtwin.petstore.laws::noHandWrittenLawsYet", "sha3-256:18a029fa4d7c510ea9dc182ec183fb086e79c8dff526dd751dc155dd60e8d7ca", crate::lawspec_definitions::evaluate_121 as ls::ModelCallback, &["(unit)"], "(unit)"),
-    ("lawtwin.petstore.model::after64", "sha3-256:956a6c6fe77ae828dc2da0955f67cf1ddb6ebb576e7ec2540d6bde6bfc636b30", crate::lawspec_definitions::evaluate_142 as ls::ModelCallback, &["(int Int64 -9223372036854775808 9223372036854775807)"], "(int Int64 -9223372036854775808 9223372036854775807)"),
-    ("lawtwin.petstore.model::validOrder", "sha3-256:d798761b1c51b5764487fb733583bf9a4dee0bddb0d6c2585a0c88e2440a3b5e", crate::lawspec_definitions::evaluate_179 as ls::ModelCallback, &["(ref lawtwin.petstore.model::type::Order)"], "(bool)"),
-    ("contracttest.petstore::lawtwinPetstoreModelAfter64", "sha3-256:30155584b3e58c2bad4e5d2b2d41064deeadf78ef2848a360807778f950f9ed5", crate::lawspec_definitions::evaluate_212 as ls::ModelCallback, &["(int Int64 -9223372036854775808 9223372036854775807)"], "(int Int64 -9223372036854775808 9223372036854775807)"),
-    ("contracttest.petstore::lawtwinPetstoreModelValidOrder", "sha3-256:6fe1d80e0c072d2a02c0f7a461e1e2444cd9aff87cf0117cf1e85058f4758ee2", crate::lawspec_definitions::evaluate_225 as ls::ModelCallback, &["(ref lawtwin.petstore.model::type::Order)"], "(bool)"),
-    ("contracttest.petstore::suiteNamesThePackage", "sha3-256:bad5f7188d674e80002496277cd433c1061e221061d72e560cc8e41af5e470f6", crate::lawspec_definitions::evaluate_246 as ls::ModelCallback, &["(unit)"], "(unit)"),
+pub const DEFINITIONS: &ls::RemoteDefinitions = &[
+    (
+        "lawspec.matchers::matchersMatchesRegex",
+        "blake3-semantic-1:073e7ce9bc4e421bbd44abc6ae6f0c494cdc2bd9f3658d452c5265f74309d5d9",
+        crate::lawspec_definitions::matchers_matches_regex as ls::ModelCallback,
+        &["(text)", "(ref lawspec.matchers::type::Regex)"],
+        "(bool)",
+    ),
+    (
+        "lawtwin.petstore::lawtwinPetstoreModelAfter64",
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        crate::lawspec_definitions::lawtwin_petstore_model_after64 as ls::ModelCallback,
+        &["(int Int64 -9223372036854775808 9223372036854775807)"],
+        "(int Int64 -9223372036854775808 9223372036854775807)",
+    ),
+    (
+        "lawtwin.petstore::lawtwinPetstoreModelValidOrder",
+        "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
+        crate::lawspec_definitions::lawtwin_petstore_model_valid_order as ls::ModelCallback,
+        &["(ref lawtwin.petstore.model::type::Order)"],
+        "(bool)",
+    ),
+    (
+        "lawtwin.petstore.laws::lawtwinPetstoreModelAfter64",
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        crate::lawspec_definitions::lawtwin_petstore_model_after64_2 as ls::ModelCallback,
+        &["(int Int64 -9223372036854775808 9223372036854775807)"],
+        "(int Int64 -9223372036854775808 9223372036854775807)",
+    ),
+    (
+        "lawtwin.petstore.laws::lawtwinPetstoreModelValidOrder",
+        "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
+        crate::lawspec_definitions::lawtwin_petstore_model_valid_order_2 as ls::ModelCallback,
+        &["(ref lawtwin.petstore.model::type::Order)"],
+        "(bool)",
+    ),
+    (
+        "lawtwin.petstore.laws::noHandWrittenLawsYet",
+        "blake3-semantic-1:7e4bcd9c9251b6eb51a5021338ab951613c56db32153451bf2097751bd512b55",
+        crate::lawspec_definitions::no_hand_written_laws_yet as ls::ModelCallback,
+        &["(unit)"],
+        "(unit)",
+    ),
+    (
+        "lawtwin.petstore.model::after64",
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        crate::lawspec_definitions::after64 as ls::ModelCallback,
+        &["(int Int64 -9223372036854775808 9223372036854775807)"],
+        "(int Int64 -9223372036854775808 9223372036854775807)",
+    ),
+    (
+        "lawtwin.petstore.model::validOrder",
+        "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
+        crate::lawspec_definitions::valid_order as ls::ModelCallback,
+        &["(ref lawtwin.petstore.model::type::Order)"],
+        "(bool)",
+    ),
+    (
+        "contracttest.petstore::lawtwinPetstoreModelAfter64",
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        crate::lawspec_definitions::lawtwin_petstore_model_after64_3 as ls::ModelCallback,
+        &["(int Int64 -9223372036854775808 9223372036854775807)"],
+        "(int Int64 -9223372036854775808 9223372036854775807)",
+    ),
+    (
+        "contracttest.petstore::lawtwinPetstoreModelValidOrder",
+        "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
+        crate::lawspec_definitions::lawtwin_petstore_model_valid_order_3 as ls::ModelCallback,
+        &["(ref lawtwin.petstore.model::type::Order)"],
+        "(bool)",
+    ),
+    (
+        "contracttest.petstore::suiteNamesThePackage",
+        "blake3-semantic-1:7e4bcd9c9251b6eb51a5021338ab951613c56db32153451bf2097751bd512b55",
+        crate::lawspec_definitions::suite_names_the_package as ls::ModelCallback,
+        &["(unit)"],
+        "(unit)",
+    ),
 ];
 
 /// Lets other nodes evaluate these definitions on node.
 pub fn serve(node: &ls::net::Node) -> ls::Result<String> {
-    let table: Vec<ls::net::RemoteDefinition> = DEFINITIONS
-        .iter()
-        .map(|(_, digest, function, arguments, result)| {
-            let function = *function;
-            let call: std::sync::Arc<dyn Fn(Vec<ls::Value>) -> ls::Result<ls::Value> + Send + Sync> =
-                std::sync::Arc::new(move |args| function(&mut ls::Context::default(), args));
-            (digest.to_string(), call, arguments.iter().map(|d| ls::descriptor(d)).collect(), ls::descriptor(result))
-        })
-        .collect();
-    node.serve_definitions(table, wire_types(), "definitions")
+    ls::serve_remote(node, DEFINITIONS, wire_types())
 }
 
 /// The content hash of the definition with this qualified name.
 pub fn digest(name: &str) -> Option<&'static str> {
-    DEFINITIONS.iter().find(|d| d.0 == name).map(|d| d.1)
+    ls::remote_digest(DEFINITIONS, name)
 }
 
 /// Evaluates the named definition on the node at address, by its content
 /// hash; fails as unreachable when that node does not answer in time.
-pub fn evaluate(node: &ls::net::Node, address: &str, name: &str, args: &[ls::Value]) -> ls::Result<ls::Value> {
-    let (_, digest, _, arguments, result) =
-        DEFINITIONS.iter().find(|d| d.0 == name).ok_or_else(|| format!("no definition {name}"))?;
-    let arguments: Vec<ls::Sexp> = arguments.iter().map(|d| ls::descriptor(d)).collect();
-    node.evaluate(address, digest, args, &arguments, &ls::descriptor(result), &wire_types(), std::time::Duration::from_secs(5), "definitions")
+pub fn evaluate(
+    node: &ls::net::Node,
+    address: &str,
+    name: &str,
+    args: &[ls::Value],
+) -> ls::Result<ls::Value> {
+    ls::evaluate_remote(node, address, DEFINITIONS, &wire_types(), name, args)
 }

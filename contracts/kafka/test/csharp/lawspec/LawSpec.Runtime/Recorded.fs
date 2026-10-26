@@ -7,23 +7,30 @@ module LawSpec.Runtime.Recorded
 open System
 open System.Numerics
 
-let private quote (s: string) = "\"" + s.Replace("\\", "\\\\").Replace("\"", "\\\"") + "\""
+let private quote (s: string) =
+    "\"" + s.Replace("\\", "\\\\").Replace("\"", "\\\"") + "\""
 
 let private lastPart (tag: string) =
     let parts = tag.Split("::")
     parts.[parts.Length - 1]
 
 let rec private trimDecimal (c: BigInteger) e =
-    if c.IsZero then BigInteger.Zero, 0
-    elif (c % BigInteger 10).IsZero then trimDecimal (c / BigInteger 10) (e + 1)
-    else c, e
+    if c.IsZero then
+        BigInteger.Zero, 0
+    elif (c % BigInteger 10).IsZero then
+        trimDecimal (c / BigInteger 10) (e + 1)
+    else
+        c, e
 
 let private floatText value =
     match value with
     | Float(w, bits) ->
         let name = "float" + string w
-        if Scalar.floatClass value = "nan" then name + "NaN"
-        else name + "Bits(\"" + bits.ToString(if w = 32 then "x8" else "x16") + "\")"
+
+        if Scalar.floatClass value = "nan" then
+            name + "NaN"
+        else
+            name + "Bits(\"" + bits.ToString(if w = 32 then "x8" else "x16") + "\")"
     | _ -> Fail.raiseWith "InvalidRecordedScalar" "float"
 
 let private units name (values: int seq) =
@@ -55,7 +62,11 @@ type private Ids = Map<string, (obj * int) list>
 
 let private identity kind (value: obj) (ids: Ids) =
     let known = defaultArg (ids.TryFind kind) []
-    match known |> List.tryFind (fun (v, _) -> Object.ReferenceEquals(v, value) || v.Equals value) with
+
+    match
+        known
+        |> List.tryFind (fun (v, _) -> Object.ReferenceEquals(v, value) || v.Equals value)
+    with
     | Some(_, n) -> n, ids
     | None ->
         let n = List.length known + 1
@@ -64,7 +75,9 @@ let private identity kind (value: obj) (ids: Ids) =
 let rec private render (value: Value) (t: TypeRef) (schema: Schema.Schema option) (ids: Ids) : string * Ids =
     match t, value with
     | Named("List", [ element ]), List items ->
-        let (parts: string list), next = sequence items (items |> List.map (fun _ -> element)) schema ids
+        let (parts: string list), next =
+            sequence items (items |> List.map (fun _ -> element)) schema ids
+
         "[" + String.Join(", ", parts) + "]", next
     | Named(kind, [ _ ]), Presence(_, None) -> (if kind = "Nullable" then "null" else "undefined"), ids
     | Named(kind, [ inner ]), Presence(_, Some v) ->
@@ -87,16 +100,24 @@ let rec private render (value: Value) (t: TypeRef) (schema: Schema.Schema option
                 match schema with
                 | Some s -> Schema.fieldTypes value t s
                 | None -> Fail.raiseWith "RecordingNeedsSchema" tag
+
         let (parts: string list), next = sequence fields types schema ids
-        (if List.isEmpty parts then lastPart tag else lastPart tag + "(" + String.Join(", ", parts) + ")"), next
+
+        (if List.isEmpty parts then
+             lastPart tag
+         else
+             lastPart tag + "(" + String.Join(", ", parts) + ")"),
+        next
     | Named(name, []), _ -> scalar value name, ids
     | _ -> Fail.raiseWith "InvalidRecordedValue" (Scalar.typeKey t)
 
 and private sequence (values: Value list) (types: TypeRef list) schema ids : string list * Ids =
     List.zip values types
-    |> List.fold (fun (parts, ids) (v, t) ->
-        let part, next = render v t schema ids
-        parts @ [ part ], next) ([], ids)
+    |> List.fold
+        (fun (parts, ids) (v, t) ->
+            let part, next = render v t schema ids
+            parts @ [ part ], next)
+        ([], ids)
 
 /// A value's recorded text at its type.
 [<CompiledName("Text")>]

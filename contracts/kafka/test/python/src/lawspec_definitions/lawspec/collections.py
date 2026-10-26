@@ -9,24 +9,27 @@ import lawspec_runtime as ls
 import lawspec_schema as _schema
 
 _lawspec_schema = data.make_schema()
+# The machine profile's integer width.
+MACHINE_BITS = 64
 
 
+# boundedInt16 — <lawspec.collections>:358
 def boundedInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_0(symbols, argument_0)
+        result = _definitions.bounded_int16(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int16")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -39,22 +42,23 @@ def boundedInt16(
         ) from error
 
 
+# boundedInt32 — <lawspec.collections>:371
 def boundedInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_1(symbols, argument_0)
+        result = _definitions.bounded_int32(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -67,22 +71,23 @@ def boundedInt32(
         ) from error
 
 
+# boundedInt64 — <lawspec.collections>:384
 def boundedInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_2(symbols, argument_0)
+        result = _definitions.bounded_int64(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -95,22 +100,23 @@ def boundedInt64(
         ) from error
 
 
+# boundedInt8 — <lawspec.collections>:345
 def boundedInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_3(symbols, argument_0)
+        result = _definitions.bounded_int8(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("Int8")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -123,22 +129,23 @@ def boundedInt8(
         ) from error
 
 
+# boundedIntSize — <lawspec.collections>:449
 def boundedIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_4(symbols, argument_0)
+        result = _definitions.bounded_int_size(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("IntSize")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -151,22 +158,23 @@ def boundedIntSize(
         ) from error
 
 
+# boundedUInt16 — <lawspec.collections>:410
 def boundedUInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_5(symbols, argument_0)
+        result = _definitions.bounded_u_int16(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt16")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -179,22 +187,23 @@ def boundedUInt16(
         ) from error
 
 
+# boundedUInt32 — <lawspec.collections>:423
 def boundedUInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_6(symbols, argument_0)
+        result = _definitions.bounded_u_int32(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt32")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -207,22 +216,23 @@ def boundedUInt32(
         ) from error
 
 
+# boundedUInt64 — <lawspec.collections>:436
 def boundedUInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_7(symbols, argument_0)
+        result = _definitions.bounded_u_int64(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt64")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -235,22 +245,23 @@ def boundedUInt64(
         ) from error
 
 
+# boundedUInt8 — <lawspec.collections>:397
 def boundedUInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_8(symbols, argument_0)
+        result = _definitions.bounded_u_int8(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UInt8")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -263,22 +274,23 @@ def boundedUInt8(
         ) from error
 
 
+# boundedUIntPtr — <lawspec.collections>:475
 def boundedUIntPtr(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_9(symbols, argument_0)
+        result = _definitions.bounded_u_int_ptr(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -291,22 +303,23 @@ def boundedUIntPtr(
         ) from error
 
 
+# boundedUIntSize — <lawspec.collections>:462
 def boundedUIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _schema.Maybe[_builtins.int]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_10(symbols, argument_0)
+        result = _definitions.bounded_u_int_size(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Maybe", [_schema.Named("UIntSize")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -319,22 +332,23 @@ def boundedUIntSize(
         ) from error
 
 
+# saturatingInt16 — <lawspec.collections>:354
 def saturatingInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_11(symbols, argument_0)
+        result = _definitions.saturating_int16(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int16"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -347,22 +361,23 @@ def saturatingInt16(
         ) from error
 
 
+# saturatingInt32 — <lawspec.collections>:367
 def saturatingInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_12(symbols, argument_0)
+        result = _definitions.saturating_int32(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -375,22 +390,23 @@ def saturatingInt32(
         ) from error
 
 
+# saturatingInt64 — <lawspec.collections>:380
 def saturatingInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_13(symbols, argument_0)
+        result = _definitions.saturating_int64(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -403,22 +419,23 @@ def saturatingInt64(
         ) from error
 
 
+# saturatingInt8 — <lawspec.collections>:341
 def saturatingInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_14(symbols, argument_0)
+        result = _definitions.saturating_int8(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int8"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -431,22 +448,23 @@ def saturatingInt8(
         ) from error
 
 
+# saturatingIntSize — <lawspec.collections>:445
 def saturatingIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_15(symbols, argument_0)
+        result = _definitions.saturating_int_size(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("IntSize"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -459,22 +477,23 @@ def saturatingIntSize(
         ) from error
 
 
+# saturatingUInt16 — <lawspec.collections>:406
 def saturatingUInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_16(symbols, argument_0)
+        result = _definitions.saturating_u_int16(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt16"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -487,22 +506,23 @@ def saturatingUInt16(
         ) from error
 
 
+# saturatingUInt32 — <lawspec.collections>:419
 def saturatingUInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_17(symbols, argument_0)
+        result = _definitions.saturating_u_int32(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -515,22 +535,23 @@ def saturatingUInt32(
         ) from error
 
 
+# saturatingUInt64 — <lawspec.collections>:432
 def saturatingUInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_18(symbols, argument_0)
+        result = _definitions.saturating_u_int64(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -543,22 +564,23 @@ def saturatingUInt64(
         ) from error
 
 
+# saturatingUInt8 — <lawspec.collections>:393
 def saturatingUInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_19(symbols, argument_0)
+        result = _definitions.saturating_u_int8(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt8"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -571,22 +593,23 @@ def saturatingUInt8(
         ) from error
 
 
+# saturatingUIntPtr — <lawspec.collections>:471
 def saturatingUIntPtr(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_20(symbols, argument_0)
+        result = _definitions.saturating_u_int_ptr(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UIntPtr"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -599,22 +622,23 @@ def saturatingUIntPtr(
         ) from error
 
 
+# saturatingUIntSize — <lawspec.collections>:458
 def saturatingUIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_21(symbols, argument_0)
+        result = _definitions.saturating_u_int_size(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UIntSize"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -627,22 +651,23 @@ def saturatingUIntSize(
         ) from error
 
 
+# wrappingInt16 — <lawspec.collections>:349
 def wrappingInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_22(symbols, argument_0)
+        result = _definitions.wrapping_int16(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int16"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -655,22 +680,23 @@ def wrappingInt16(
         ) from error
 
 
+# wrappingInt32 — <lawspec.collections>:362
 def wrappingInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_23(symbols, argument_0)
+        result = _definitions.wrapping_int32(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -683,22 +709,23 @@ def wrappingInt32(
         ) from error
 
 
+# wrappingInt64 — <lawspec.collections>:375
 def wrappingInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_24(symbols, argument_0)
+        result = _definitions.wrapping_int64(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -711,22 +738,23 @@ def wrappingInt64(
         ) from error
 
 
+# wrappingInt8 — <lawspec.collections>:336
 def wrappingInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_25(symbols, argument_0)
+        result = _definitions.wrapping_int8(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Int8"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -739,22 +767,23 @@ def wrappingInt8(
         ) from error
 
 
+# wrappingIntSize — <lawspec.collections>:440
 def wrappingIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_26(symbols, argument_0)
+        result = _definitions.wrapping_int_size(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("IntSize"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -767,22 +796,23 @@ def wrappingIntSize(
         ) from error
 
 
+# wrappingUInt16 — <lawspec.collections>:401
 def wrappingUInt16(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_27(symbols, argument_0)
+        result = _definitions.wrapping_u_int16(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt16"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -795,22 +825,23 @@ def wrappingUInt16(
         ) from error
 
 
+# wrappingUInt32 — <lawspec.collections>:414
 def wrappingUInt32(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_28(symbols, argument_0)
+        result = _definitions.wrapping_u_int32(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt32"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -823,22 +854,23 @@ def wrappingUInt32(
         ) from error
 
 
+# wrappingUInt64 — <lawspec.collections>:427
 def wrappingUInt64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_29(symbols, argument_0)
+        result = _definitions.wrapping_u_int64(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -851,22 +883,23 @@ def wrappingUInt64(
         ) from error
 
 
+# wrappingUInt8 — <lawspec.collections>:388
 def wrappingUInt8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_30(symbols, argument_0)
+        result = _definitions.wrapping_u_int8(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UInt8"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -879,22 +912,23 @@ def wrappingUInt8(
         ) from error
 
 
+# wrappingUIntPtr — <lawspec.collections>:466
 def wrappingUIntPtr(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_31(symbols, argument_0)
+        result = _definitions.wrapping_u_int_ptr(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UIntPtr"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -907,22 +941,23 @@ def wrappingUIntPtr(
         ) from error
 
 
+# wrappingUIntSize — <lawspec.collections>:453
 def wrappingUIntSize(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    value: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        value = _lawspec_schema.from_native(
             _schema.Named("Integer"),
-            value_0,
-            64,
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_32(symbols, argument_0)
+        result = _definitions.wrapping_u_int_size(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("UIntSize"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (

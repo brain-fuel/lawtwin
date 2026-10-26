@@ -10,20 +10,40 @@ open System.Numerics
 /// An exact fraction in lowest terms, with a positive denominator.
 [<CustomEquality; CustomComparison>]
 type Rational =
-    private { N: BigInteger; D: BigInteger }
+    private
+        {
+            N: BigInteger
+            D: BigInteger
+        }
+
     member this.Numerator = this.N
     member this.Denominator = this.D
+
     static member Create(numerator: BigInteger, denominator: BigInteger) =
-        if denominator.IsZero then invalidArg (nameof denominator) "a rational's denominator is not zero"
+        if denominator.IsZero then
+            invalidArg (nameof denominator) "a rational's denominator is not zero"
+
         let g = BigInteger.GreatestCommonDivisor(numerator, denominator)
-        let s = if denominator.Sign < 0 then BigInteger.MinusOne else BigInteger.One
-        { N = s * numerator / g; D = BigInteger.Abs denominator / g }
+
+        let s =
+            if denominator.Sign < 0 then
+                BigInteger.MinusOne
+            else
+                BigInteger.One
+
+        {
+            N = s * numerator / g
+            D = BigInteger.Abs denominator / g
+        }
+
     override this.Equals other =
         match other with
         | :? Rational as r -> this.N = r.N && this.D = r.D
         | _ -> false
+
     override this.GetHashCode() = hash (this.N, this.D)
     override this.ToString() = sprintf "%O/%O" this.N this.D
+
     interface System.IComparable with
         member this.CompareTo other =
             match other with
@@ -33,30 +53,46 @@ type Rational =
 /// coefficient * 10 ^ exponent, exactly; 1.50 keeps its two places.
 [<Struct; CustomEquality; NoComparison>]
 type ExactDecimal =
-    { Coefficient: BigInteger
-      Exponent: int }
+    {
+        Coefficient: BigInteger
+        Exponent: int
+    }
+
     override this.Equals other =
         match other with
         | :? ExactDecimal as d -> this.Coefficient = d.Coefficient && this.Exponent = d.Exponent
         | _ -> false
+
     override this.GetHashCode() = hash (this.Coefficient, this.Exponent)
-    override this.ToString() = sprintf "%Oe%d" this.Coefficient this.Exponent
+
+    override this.ToString() =
+        sprintf "%Oe%d" this.Coefficient this.Exponent
+
     /// Both decimals at the smaller exponent.
     static member private Aligned(a: ExactDecimal, b: ExactDecimal) =
         let e = min a.Exponent b.Exponent
-        let scale (d: ExactDecimal) = d.Coefficient * BigInteger.Pow(BigInteger 10, d.Exponent - e)
+
+        let scale (d: ExactDecimal) =
+            d.Coefficient * BigInteger.Pow(BigInteger 10, d.Exponent - e)
+
         scale a, scale b, e
+
     /// Exact sum, at the finer of the two scales.
     static member (+)(a: ExactDecimal, b: ExactDecimal) =
         let x, y, e = ExactDecimal.Aligned(a, b)
         { Coefficient = x + y; Exponent = e }
+
     /// Exact difference, at the finer of the two scales.
     static member (-)(a: ExactDecimal, b: ExactDecimal) =
         let x, y, e = ExactDecimal.Aligned(a, b)
         { Coefficient = x - y; Exponent = e }
+
     /// Exact product.
     static member (*)(a: ExactDecimal, b: ExactDecimal) =
-        { Coefficient = a.Coefficient * b.Coefficient; Exponent = a.Exponent + b.Exponent }
+        {
+            Coefficient = a.Coefficient * b.Coefficient
+            Exponent = a.Exponent + b.Exponent
+        }
 
 /// A complex number of two single precision floats (Complex128 is
 /// System.Numerics.Complex).
@@ -93,9 +129,13 @@ type Symbol(identity: obj, description: string) =
     new(description) = Symbol(obj (), description)
     member _.Identity = identity
     member _.Description = description
+
     override _.Equals other =
         match other with
         | :? Symbol as s -> obj.ReferenceEquals(identity, s.Identity)
         | _ -> false
-    override _.GetHashCode() = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode identity
+
+    override _.GetHashCode() =
+        System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode identity
+
     override _.ToString() = "Symbol(" + description + ")"

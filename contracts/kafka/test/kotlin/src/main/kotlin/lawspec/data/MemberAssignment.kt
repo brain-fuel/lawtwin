@@ -3,4 +3,5 @@ package lawspec.data
 
 data class MemberAssignment(
     val memberId: kotlin.String,
-    val assigned: kotlin.collections.List<lawspec.data.TopicPartition>)
+    val assigned: kotlin.collections.List<lawspec.data.TopicPartition>,
+)

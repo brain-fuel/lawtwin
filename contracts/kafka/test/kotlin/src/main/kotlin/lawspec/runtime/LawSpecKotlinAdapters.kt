@@ -2,499 +2,832 @@
 package lawspec.runtime
 
 object LawSpecKotlinAdapters {
-    private val schema = LawSpecDataSchema.create()
+    private val SCHEMA = LawSpecDataSchema.create()
 
-    private const val bits = 64
+    private const val MACHINE_BITS = 64
 
     @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__leaveGroupRequest(
+    fun performLawtwinKafkaAbilityBrokerLeavegrouprequest(
         symbols: MutableMap<String, Any>,
         value0: LawSpecRuntime.Value,
         value1: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { LawSpecKotlinCodecs.unit(
-            schema,
-            bits,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).leaveGroupRequest(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value1),
-        )) },
-    )
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .leaveGroupRequest(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                            )
+                    )
+            },
+        )
 
     @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__offsetCommitRequest(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-        value3: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { LawSpecKotlinCodecs.unit(
-            schema,
-            bits,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).offsetCommitRequest(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value1),
-            schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(value2),
-            schema.list(
-                LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(value3),
-        )) },
-    )
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__syncGroupRequest(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { schema.list(
-            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-            bits,
-            symbols,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).syncGroupRequest(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value1),
-            schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(value2),
-        )) },
-    )
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__heartbeatRequest(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { LawSpecKotlinCodecs.unit(
-            schema,
-            bits,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).heartbeatRequest(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value1),
-            schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(value2),
-        )) },
-    )
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__createTopicsRequest(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { LawSpecKotlinCodecs.unit(
-            schema,
-            bits,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).createTopicsRequest(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(value1),
-        )) },
-    )
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__joinGroupRequest(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { schema.scalar(
-            "Int32",
-            bits,
-            kotlin.Int::class.javaObjectType,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).joinGroupRequest(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value1),
-            schema.list(
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                bits,
-                symbols,
-            ).decode(value2),
-        )) },
-    )
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__GroupCoordinator__joinGroup(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { schema.scalar(
-            "Int32",
-            bits,
-            kotlin.Int::class.javaObjectType,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::GroupCoordinator") as lawspec.abilities.lawtwin.Kafka.GroupCoordinator).joinGroup(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value1),
-            schema.list(
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                bits,
-                symbols,
-            ).decode(value2),
-        )) },
-    )
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__metadataRequest(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = schema.maybe(
-        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-        bits,
-        symbols,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).metadataRequest(
-        schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-    ))
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Partitioner__choosePartition(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = schema.scalar(
-        "Int32",
-        bits,
-        kotlin.Int::class.javaObjectType,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Partitioner") as lawspec.abilities.lawtwin.Kafka.Partitioner).choosePartition(
-        schema.maybe(
-            schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
-            bits,
-            symbols,
-        ).decode(value0),
-        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(value1),
-    ))
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Consumer__assign(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecKotlinCodecs.unit(
-        schema,
-        bits,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer") as lawspec.abilities.lawtwin.Kafka.Consumer).assign(
-        schema.list(
-            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-            bits,
-            symbols,
-        ).decode(value0),
-    ))
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Consumer__seek(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = schema.either(
-        LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-        LawSpecKotlinCodecs.unit(schema, bits),
-        bits,
-        symbols,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer") as lawspec.abilities.lawtwin.Kafka.Consumer).seek(
-        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).decode(value0),
-        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).decode(value1),
-    ))
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Consumer__commitSync(
-        symbols: MutableMap<String, Any>,
-    ): LawSpecRuntime.Value = schema.either(
-        LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-        LawSpecKotlinCodecs.unit(schema, bits),
-        bits,
-        symbols,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer") as lawspec.abilities.lawtwin.Kafka.Consumer).commitSync())
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Consumer__close(
-        symbols: MutableMap<String, Any>,
-    ): LawSpecRuntime.Value = LawSpecKotlinCodecs.unit(
-        schema,
-        bits,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer") as lawspec.abilities.lawtwin.Kafka.Consumer).close())
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Consumer__subscribe(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = schema.either(
-        LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-        schema.list(LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols), bits, symbols),
-        bits,
-        symbols,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer") as lawspec.abilities.lawtwin.Kafka.Consumer).subscribe(
-        schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-        schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value1),
-        schema.list(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-            bits,
-            symbols,
-        ).decode(value2),
-    ))
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Consumer__position(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = schema.either(
-        LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-        bits,
-        symbols,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer") as lawspec.abilities.lawtwin.Kafka.Consumer).position(
-        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).decode(value0),
-    ))
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Consumer__committedOffset(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = schema.maybe(
-        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-        bits,
-        symbols,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer") as lawspec.abilities.lawtwin.Kafka.Consumer).committedOffset(
-        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).decode(value0),
-    ))
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Consumer__poll(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = schema.either(
-        LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-        schema.list(LawSpecDataCodecs.consumerRecordCodec(schema, bits, symbols), bits, symbols),
-        bits,
-        symbols,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer") as lawspec.abilities.lawtwin.Kafka.Consumer).poll(
-        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(value0),
-    ))
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__fetchRequest(
+    fun performLawtwinKafkaAbilityBrokerOffsetcommitrequest(
         symbols: MutableMap<String, Any>,
         value0: LawSpecRuntime.Value,
         value1: LawSpecRuntime.Value,
         value2: LawSpecRuntime.Value,
         value3: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { LawSpecDataCodecs.fetchResultCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).fetchRequest(
-            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).decode(value0),
-            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).decode(value1),
-            schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(value2),
-            LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols).decode(value3),
-        )) },
-    )
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .offsetCommitRequest(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.scalar(
+                                        "Int32",
+                                        MACHINE_BITS,
+                                        kotlin.Int::class.javaObjectType,
+                                    )
+                                    .decode(value2),
+                                SCHEMA.list(
+                                        LawSpecDataCodecs.offsetEntryCodec(
+                                            SCHEMA,
+                                            MACHINE_BITS,
+                                            symbols,
+                                        ),
+                                        MACHINE_BITS,
+                                        symbols,
+                                    )
+                                    .decode(value3),
+                            )
+                    )
+            },
+        )
 
     @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__offsetFetchRequest(
+    fun performLawtwinKafkaAbilityBrokerSyncgrouprequest(
         symbols: MutableMap<String, Any>,
         value0: LawSpecRuntime.Value,
         value1: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = schema.maybe(
-        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-        bits,
-        symbols,
-    ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).offsetFetchRequest(
-        schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).decode(value1),
-    ))
+        value2: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                SCHEMA.list(
+                        LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols),
+                        MACHINE_BITS,
+                        symbols,
+                    )
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .syncGroupRequest(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.scalar(
+                                        "Int32",
+                                        MACHINE_BITS,
+                                        kotlin.Int::class.javaObjectType,
+                                    )
+                                    .decode(value2),
+                            )
+                    )
+            },
+        )
 
     @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(
+    fun performLawtwinKafkaAbilityBrokerHeartbeatrequest(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+        value2: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .heartbeatRequest(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.scalar(
+                                        "Int32",
+                                        MACHINE_BITS,
+                                        kotlin.Int::class.javaObjectType,
+                                    )
+                                    .decode(value2),
+                            )
+                    )
+            },
+        )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityBrokerCreatetopicsrequest(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .createTopicsRequest(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Int32",
+                                        MACHINE_BITS,
+                                        kotlin.Int::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                            )
+                    )
+            },
+        )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityBrokerJoingrouprequest(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+        value2: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .joinGroupRequest(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.list(
+                                        SCHEMA.scalar(
+                                            "Text",
+                                            MACHINE_BITS,
+                                            kotlin.String::class.javaObjectType,
+                                        ),
+                                        MACHINE_BITS,
+                                        symbols,
+                                    )
+                                    .decode(value2),
+                            )
+                    )
+            },
+        )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityGroupcoordinatorJoingroup(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+        value2: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::GroupCoordinator")
+                                as lawspec.abilities.lawtwin.Kafka.GroupCoordinator)
+                            .joinGroup(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.list(
+                                        SCHEMA.scalar(
+                                            "Text",
+                                            MACHINE_BITS,
+                                            kotlin.String::class.javaObjectType,
+                                        ),
+                                        MACHINE_BITS,
+                                        symbols,
+                                    )
+                                    .decode(value2),
+                            )
+                    )
+            },
+        )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityBrokerMetadatarequest(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        SCHEMA.maybe(
+                SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType),
+                MACHINE_BITS,
+                symbols,
+            )
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                        as lawspec.abilities.lawtwin.Kafka.Broker)
+                    .metadataRequest(
+                        SCHEMA.scalar("Text", MACHINE_BITS, kotlin.String::class.javaObjectType)
+                            .decode(value0)
+                    )
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityPartitionerChoosepartition(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType)
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Partitioner")
+                        as lawspec.abilities.lawtwin.Kafka.Partitioner)
+                    .choosePartition(
+                        SCHEMA.maybe(
+                                SCHEMA.scalar(
+                                    "Bytes",
+                                    MACHINE_BITS,
+                                    kotlin.ByteArray::class.javaObjectType,
+                                ),
+                                MACHINE_BITS,
+                                symbols,
+                            )
+                            .decode(value0),
+                        SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType)
+                            .decode(value1),
+                    )
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityConsumerAssign(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer")
+                        as lawspec.abilities.lawtwin.Kafka.Consumer)
+                    .assign(
+                        SCHEMA.list(
+                                LawSpecDataCodecs.topicPartitionCodec(
+                                    SCHEMA,
+                                    MACHINE_BITS,
+                                    symbols,
+                                ),
+                                MACHINE_BITS,
+                                symbols,
+                            )
+                            .decode(value0)
+                    )
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityConsumerSeek(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        SCHEMA.either(
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols),
+                LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS),
+                MACHINE_BITS,
+                symbols,
+            )
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer")
+                        as lawspec.abilities.lawtwin.Kafka.Consumer)
+                    .seek(
+                        LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
+                            .decode(value0),
+                        SCHEMA.scalar("Int64", MACHINE_BITS, kotlin.Long::class.javaObjectType)
+                            .decode(value1),
+                    )
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityConsumerCommitsync(
+        symbols: MutableMap<String, Any>
+    ): LawSpecRuntime.Value =
+        SCHEMA.either(
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols),
+                LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS),
+                MACHINE_BITS,
+                symbols,
+            )
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer")
+                        as lawspec.abilities.lawtwin.Kafka.Consumer)
+                    .commitSync()
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityConsumerClose(
+        symbols: MutableMap<String, Any>
+    ): LawSpecRuntime.Value =
+        LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer")
+                        as lawspec.abilities.lawtwin.Kafka.Consumer)
+                    .close()
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityConsumerSubscribe(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+        value2: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        SCHEMA.either(
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols),
+                SCHEMA.list(
+                    LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols),
+                    MACHINE_BITS,
+                    symbols,
+                ),
+                MACHINE_BITS,
+                symbols,
+            )
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer")
+                        as lawspec.abilities.lawtwin.Kafka.Consumer)
+                    .subscribe(
+                        SCHEMA.scalar("Text", MACHINE_BITS, kotlin.String::class.javaObjectType)
+                            .decode(value0),
+                        SCHEMA.scalar("Text", MACHINE_BITS, kotlin.String::class.javaObjectType)
+                            .decode(value1),
+                        SCHEMA.list(
+                                SCHEMA.scalar(
+                                    "Text",
+                                    MACHINE_BITS,
+                                    kotlin.String::class.javaObjectType,
+                                ),
+                                MACHINE_BITS,
+                                symbols,
+                            )
+                            .decode(value2),
+                    )
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityConsumerPosition(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        SCHEMA.either(
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols),
+                SCHEMA.scalar("Int64", MACHINE_BITS, kotlin.Long::class.javaObjectType),
+                MACHINE_BITS,
+                symbols,
+            )
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer")
+                        as lawspec.abilities.lawtwin.Kafka.Consumer)
+                    .position(
+                        LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
+                            .decode(value0)
+                    )
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityConsumerCommittedoffset(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        SCHEMA.maybe(
+                SCHEMA.scalar("Int64", MACHINE_BITS, kotlin.Long::class.javaObjectType),
+                MACHINE_BITS,
+                symbols,
+            )
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer")
+                        as lawspec.abilities.lawtwin.Kafka.Consumer)
+                    .committedOffset(
+                        LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
+                            .decode(value0)
+                    )
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityConsumerPoll(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        SCHEMA.either(
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols),
+                SCHEMA.list(
+                    LawSpecDataCodecs.consumerRecordCodec(SCHEMA, MACHINE_BITS, symbols),
+                    MACHINE_BITS,
+                    symbols,
+                ),
+                MACHINE_BITS,
+                symbols,
+            )
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Consumer")
+                        as lawspec.abilities.lawtwin.Kafka.Consumer)
+                    .poll(
+                        SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType)
+                            .decode(value0)
+                    )
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityBrokerFetchrequest(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+        value2: LawSpecRuntime.Value,
+        value3: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                LawSpecDataCodecs.fetchResultCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .fetchRequest(
+                                LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Int64",
+                                        MACHINE_BITS,
+                                        kotlin.Long::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.scalar(
+                                        "Int32",
+                                        MACHINE_BITS,
+                                        kotlin.Int::class.javaObjectType,
+                                    )
+                                    .decode(value2),
+                                LawSpecDataCodecs.isolationLevelCodec(SCHEMA, MACHINE_BITS, symbols)
+                                    .decode(value3),
+                            )
+                    )
+            },
+        )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityBrokerOffsetfetchrequest(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        SCHEMA.maybe(
+                SCHEMA.scalar("Int64", MACHINE_BITS, kotlin.Long::class.javaObjectType),
+                MACHINE_BITS,
+                symbols,
+            )
+            .encode(
+                (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                        as lawspec.abilities.lawtwin.Kafka.Broker)
+                    .offsetFetchRequest(
+                        SCHEMA.scalar("Text", MACHINE_BITS, kotlin.String::class.javaObjectType)
+                            .decode(value0),
+                        LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
+                            .decode(value1),
+                    )
+            )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityBrokerTxnoffsetcommitrequest(
         symbols: MutableMap<String, Any>,
         value0: LawSpecRuntime.Value,
         value1: LawSpecRuntime.Value,
         value2: LawSpecRuntime.Value,
         value3: LawSpecRuntime.Value,
         value4: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { LawSpecKotlinCodecs.unit(
-            schema,
-            bits,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).txnOffsetCommitRequest(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).decode(value1),
-            schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType).decode(value2),
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value3),
-            schema.list(
-                LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(value4),
-        )) },
-    )
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .txnOffsetCommitRequest(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Int64",
+                                        MACHINE_BITS,
+                                        kotlin.Long::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.scalar(
+                                        "Int16",
+                                        MACHINE_BITS,
+                                        kotlin.Short::class.javaObjectType,
+                                    )
+                                    .decode(value2),
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value3),
+                                SCHEMA.list(
+                                        LawSpecDataCodecs.offsetEntryCodec(
+                                            SCHEMA,
+                                            MACHINE_BITS,
+                                            symbols,
+                                        ),
+                                        MACHINE_BITS,
+                                        symbols,
+                                    )
+                                    .decode(value4),
+                            )
+                    )
+            },
+        )
 
     @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__initProducerIdRequest(
+    fun performLawtwinKafkaAbilityBrokerInitproduceridrequest(
         symbols: MutableMap<String, Any>,
         value0: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { LawSpecDataCodecs.producerIdAndEpochCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).initProducerIdRequest(
-            schema.maybe(
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                bits,
-                symbols,
-            ).decode(value0),
-        )) },
-    )
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                LawSpecDataCodecs.producerIdAndEpochCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .initProducerIdRequest(
+                                SCHEMA.maybe(
+                                        SCHEMA.scalar(
+                                            "Text",
+                                            MACHINE_BITS,
+                                            kotlin.String::class.javaObjectType,
+                                        ),
+                                        MACHINE_BITS,
+                                        symbols,
+                                    )
+                                    .decode(value0)
+                            )
+                    )
+            },
+        )
 
     @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-        value3: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { LawSpecKotlinCodecs.unit(
-            schema,
-            bits,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).addPartitionsToTxnRequest(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).decode(value1),
-            schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType).decode(value2),
-            schema.list(
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(value3),
-        )) },
-    )
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__produceRequest(
-        symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { schema.scalar(
-            "Int64",
-            bits,
-            kotlin.Long::class.javaObjectType,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).produceRequest(
-            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).decode(value0),
-            schema.maybe(
-                LawSpecDataCodecs.producerTagCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(value1),
-            schema.list(
-                LawSpecDataCodecs.recordCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(value2),
-        )) },
-    )
-
-    @JvmStatic
-    fun perform_lawtwin_kafka__ability__Broker__endTxnRequest(
+    fun performLawtwinKafkaAbilityBrokerAddpartitionstotxnrequest(
         symbols: MutableMap<String, Any>,
         value0: LawSpecRuntime.Value,
         value1: LawSpecRuntime.Value,
         value2: LawSpecRuntime.Value,
         value3: LawSpecRuntime.Value,
-    ): LawSpecRuntime.Value = LawSpecRuntime.nativeFailures(
-        ("lawspec::ability::Fail(l" + "awtwin.kafka.model::type" + "::KafkaError)"),
-        { _native -> LawSpecDataCodecs.kafkaErrorCodec(
-            schema,
-            bits,
-            symbols,
-        ).encode(_native as lawspec.data.KafkaError) },
-        { LawSpecKotlinCodecs.unit(
-            schema,
-            bits,
-        ).encode((LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker") as lawspec.abilities.lawtwin.Kafka.Broker).endTxnRequest(
-            schema.scalar("Text", bits, kotlin.String::class.javaObjectType).decode(value0),
-            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).decode(value1),
-            schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType).decode(value2),
-            schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType).decode(value3),
-        )) },
-    )
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .addPartitionsToTxnRequest(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Int64",
+                                        MACHINE_BITS,
+                                        kotlin.Long::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.scalar(
+                                        "Int16",
+                                        MACHINE_BITS,
+                                        kotlin.Short::class.javaObjectType,
+                                    )
+                                    .decode(value2),
+                                SCHEMA.list(
+                                        LawSpecDataCodecs.topicPartitionCodec(
+                                            SCHEMA,
+                                            MACHINE_BITS,
+                                            symbols,
+                                        ),
+                                        MACHINE_BITS,
+                                        symbols,
+                                    )
+                                    .decode(value3),
+                            )
+                    )
+            },
+        )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityBrokerProducerequest(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+        value2: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                SCHEMA.scalar("Int64", MACHINE_BITS, kotlin.Long::class.javaObjectType)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .produceRequest(
+                                LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
+                                    .decode(value0),
+                                SCHEMA.maybe(
+                                        LawSpecDataCodecs.producerTagCodec(
+                                            SCHEMA,
+                                            MACHINE_BITS,
+                                            symbols,
+                                        ),
+                                        MACHINE_BITS,
+                                        symbols,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.list(
+                                        LawSpecDataCodecs.recordCodec(
+                                            SCHEMA,
+                                            MACHINE_BITS,
+                                            symbols,
+                                        ),
+                                        MACHINE_BITS,
+                                        symbols,
+                                    )
+                                    .decode(value2),
+                            )
+                    )
+            },
+        )
+
+    @JvmStatic
+    fun performLawtwinKafkaAbilityBrokerEndtxnrequest(
+        symbols: MutableMap<String, Any>,
+        value0: LawSpecRuntime.Value,
+        value1: LawSpecRuntime.Value,
+        value2: LawSpecRuntime.Value,
+        value3: LawSpecRuntime.Value,
+    ): LawSpecRuntime.Value =
+        LawSpecRuntime.nativeFailures(
+            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+            { nativeValue ->
+                LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols)
+                    .encode(nativeValue as lawspec.data.KafkaError)
+            },
+            {
+                LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
+                    .encode(
+                        (LawSpecRuntime.handler(symbols, "lawtwin.kafka::ability::Broker")
+                                as lawspec.abilities.lawtwin.Kafka.Broker)
+                            .endTxnRequest(
+                                SCHEMA.scalar(
+                                        "Text",
+                                        MACHINE_BITS,
+                                        kotlin.String::class.javaObjectType,
+                                    )
+                                    .decode(value0),
+                                SCHEMA.scalar(
+                                        "Int64",
+                                        MACHINE_BITS,
+                                        kotlin.Long::class.javaObjectType,
+                                    )
+                                    .decode(value1),
+                                SCHEMA.scalar(
+                                        "Int16",
+                                        MACHINE_BITS,
+                                        kotlin.Short::class.javaObjectType,
+                                    )
+                                    .decode(value2),
+                                SCHEMA.scalar(
+                                        "Bool",
+                                        MACHINE_BITS,
+                                        kotlin.Boolean::class.javaObjectType,
+                                    )
+                                    .decode(value3),
+                            )
+                    )
+            },
+        )
 }

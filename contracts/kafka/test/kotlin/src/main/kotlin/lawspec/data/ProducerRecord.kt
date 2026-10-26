@@ -4,4 +4,5 @@ package lawspec.data
 data class ProducerRecord(
     val destination: kotlin.String,
     val choice: lawspec.data.PartitionChoice,
-    val payload: lawspec.data.Record)
+    val payload: lawspec.data.Record,
+)

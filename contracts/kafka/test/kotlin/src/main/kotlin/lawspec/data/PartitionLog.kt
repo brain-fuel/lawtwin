@@ -6,6 +6,6 @@ data class PartitionLog(
     val logEndOffset: kotlin.Long,
     val openTxns: kotlin.collections.Map<kotlin.Long, kotlin.Long>,
     val abortedTxns: kotlin.collections.List<lawspec.data.AbortedTxn>,
-    val batches: kotlin.collections.Map<
-        kotlin.Long,
-        kotlin.collections.List<lawspec.data.BatchMeta>>)
+    val batches:
+        kotlin.collections.Map<kotlin.Long, kotlin.collections.List<lawspec.data.BatchMeta>>,
+)

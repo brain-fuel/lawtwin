@@ -4,4 +4,5 @@ package lawspec.data
 data class ProducerTag(
     val producerId: kotlin.Long,
     val producerEpoch: kotlin.Short,
-    val baseSequence: kotlin.Int)
+    val baseSequence: kotlin.Int,
+)

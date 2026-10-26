@@ -7,4 +7,5 @@ data class TransactionState(
     val txnSequences: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Int>,
     val inTransaction: kotlin.Boolean,
     val added: kotlin.collections.List<lawspec.data.TopicPartition>,
-    val offsetsSent: kotlin.Boolean)
+    val offsetsSent: kotlin.Boolean,
+)

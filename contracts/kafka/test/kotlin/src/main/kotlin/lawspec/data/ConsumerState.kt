@@ -8,4 +8,5 @@ data class ConsumerState(
     val subscription: kotlin.collections.List<kotlin.String>,
     val assigned: kotlin.collections.List<lawspec.data.TopicPartition>,
     val positions: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Long>,
-    val isolation: lawspec.data.IsolationLevel)
+    val isolation: lawspec.data.IsolationLevel,
+)

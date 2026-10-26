@@ -3,4 +3,5 @@ package lawspec.data
 
 data class Header(
     val name: kotlin.String,
-    val content: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>)
+    val content: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>,
+)

@@ -9,27 +9,30 @@ import lawspec_runtime as ls
 import lawspec_schema as _schema
 
 _lawspec_schema = data.make_schema()
+# The machine profile's integer width.
+MACHINE_BITS = 64
 
 
+# findPetsByStatus — ../src/handwritten.lawspec:14
 def findPetsByStatus(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.PetStatus,
-    value_1: data.State,
+    status: data.PetStatus,
+    current: data.State,
 ) -> data.Pair[_builtins.list[data.Pet], data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        status = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::PetStatus"),
-            value_0,
-            64,
+            status,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::State"),
-            value_1,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_67(symbols, argument_0, argument_1)
+        result = _definitions.find_pets_by_status(symbols, status, current)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -42,7 +45,7 @@ def findPetsByStatus(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -51,30 +54,30 @@ def findPetsByStatus(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::findPetsByStatus: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::findPetsByStatus: " + _builtins.str(error),
         ) from error
 
 
+# findPetsByTags — ../src/handwritten.lawspec:19
 def findPetsByTags(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[_builtins.str],
-    value_1: data.State,
+    tags: _builtins.list[_builtins.str],
+    current: data.State,
 ) -> data.Pair[_builtins.list[data.Pet], data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        tags = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value_0,
-            64,
+            tags,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::State"),
-            value_1,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_68(symbols, argument_0, argument_1)
+        result = _definitions.find_pets_by_tags(symbols, tags, current)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -87,7 +90,7 @@ def findPetsByTags(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -96,49 +99,49 @@ def findPetsByTags(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::findPetsByTags: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::findPetsByTags: " + _builtins.str(error),
         ) from error
 
 
+# updatePetWithForm — ../src/handwritten.lawspec:24
 def updatePetWithForm(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _schema.Maybe[_builtins.str],
-    value_2: _schema.Maybe[_builtins.str],
-    value_3: data.State,
+    pet_id: _builtins.int,
+    name: _schema.Maybe[_builtins.str],
+    status: _schema.Maybe[_builtins.str],
+    current: data.State,
 ) -> data.Pair[data.Pet, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        pet_id = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            pet_id,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        name = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value_1,
-            64,
+            name,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        status = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value_2,
-            64,
+            status,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::State"),
-            value_3,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_69(
+        result = _definitions.update_pet_with_form(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            pet_id,
+            name,
+            status,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -149,7 +152,7 @@ def updatePetWithForm(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -158,49 +161,49 @@ def updatePetWithForm(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::updatePetWithForm: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::updatePetWithForm: " + _builtins.str(error),
         ) from error
 
 
+# uploadFile — ../src/handwritten.lawspec:29
 def uploadFile(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
-    value_1: _schema.Maybe[_builtins.str],
-    value_2: _schema.Maybe[_builtins.bytes],
-    value_3: data.State,
+    pet_id: _builtins.int,
+    additional_metadata: _schema.Maybe[_builtins.str],
+    body: _schema.Maybe[_builtins.bytes],
+    current: data.State,
 ) -> data.Pair[data.ApiResponse, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        pet_id = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            pet_id,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        additional_metadata = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value_1,
-            64,
+            additional_metadata,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        body = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-            value_2,
-            64,
+            body,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::State"),
-            value_3,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_70(
+        result = _definitions.upload_file(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            pet_id,
+            additional_metadata,
+            body,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -211,7 +214,7 @@ def uploadFile(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -220,23 +223,23 @@ def uploadFile(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::uploadFile: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::uploadFile: " + _builtins.str(error),
         ) from error
 
 
+# getInventory — ../src/handwritten.lawspec:34
 def getInventory(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.State,
+    current: data.State,
 ) -> data.Pair[_builtins.dict[_builtins.str, _builtins.int], data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::State"),
-            value_0,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_71(symbols, argument_0)
+        result = _definitions.get_inventory(symbols, current)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -249,7 +252,7 @@ def getInventory(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -258,18 +261,18 @@ def getInventory(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::getInventory: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::getInventory: " + _builtins.str(error),
         ) from error
 
 
+# createUsersWithListInput — ../src/handwritten.lawspec:39
 def createUsersWithListInput(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Maybe[_builtins.list[data.User]],
-    value_1: data.State,
+    body: _schema.Maybe[_builtins.list[data.User]],
+    current: data.State,
 ) -> data.Pair[data.User, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        body = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
@@ -279,17 +282,17 @@ def createUsersWithListInput(
                     ),
                 ],
             ),
-            value_0,
-            64,
+            body,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::State"),
-            value_1,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_72(symbols, argument_0, argument_1)
+        result = _definitions.create_users_with_list_input(symbols, body, current)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -299,7 +302,7 @@ def createUsersWithListInput(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -313,37 +316,33 @@ def createUsersWithListInput(
         ) from error
 
 
+# loginUser — ../src/handwritten.lawspec:44
 def loginUser(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _schema.Maybe[_builtins.str],
-    value_1: _schema.Maybe[_builtins.str],
-    value_2: data.State,
+    username: _schema.Maybe[_builtins.str],
+    password: _schema.Maybe[_builtins.str],
+    current: data.State,
 ) -> data.Pair[_builtins.str, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        username = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value_0,
-            64,
+            username,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        password = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value_1,
-            64,
+            password,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::State"),
-            value_2,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_73(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.login_user(symbols, username, password, current)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -353,7 +352,7 @@ def loginUser(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -366,18 +365,19 @@ def loginUser(
         ) from error
 
 
+# logoutUser — ../src/handwritten.lawspec:49
 def logoutUser(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.State,
+    current: data.State,
 ) -> data.Pair[ls.Absence, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::State"),
-            value_0,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_74(symbols, argument_0)
+        result = _definitions.logout_user(symbols, current)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -387,7 +387,7 @@ def logoutUser(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -396,6 +396,5 @@ def logoutUser(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::logoutUser: "
-            + _builtins.str(error),
+            "lawtwin.petstore.handwritten::logoutUser: " + _builtins.str(error),
         ) from error

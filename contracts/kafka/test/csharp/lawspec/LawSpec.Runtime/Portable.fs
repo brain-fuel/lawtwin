@@ -11,7 +11,8 @@ open System.Numerics
 open System.Text
 open LawSpec
 
-let private noOrder (a: obj) = Fail.raiseWith "NoPortableOrder" (if isNull a then "null" else a.GetType().Name)
+let private noOrder (a: obj) =
+    Fail.raiseWith "NoPortableOrder" (if isNull a then "null" else a.GetType().Name)
 
 /// Equality: structural, with floats compared by their bits (so it is
 /// reflexive, as .NET collections require).
@@ -19,12 +20,14 @@ let private noOrder (a: obj) = Fail.raiseWith "NoPortableOrder" (if isNull a the
 let rec equal (a: obj) (b: obj) : bool =
     match a, b with
     | null, null -> true
-    | null, _ | _, null -> false
+    | null, _
+    | _, null -> false
     | (:? float as x), (:? float as y) -> BitConverter.DoubleToInt64Bits x = BitConverter.DoubleToInt64Bits y
     | (:? float32 as x), (:? float32 as y) -> BitConverter.SingleToInt32Bits x = BitConverter.SingleToInt32Bits y
     | (:? string as x), (:? string as y) -> String.Equals(x, y, StringComparison.Ordinal)
     | (:? (byte[]) as x), (:? (byte[]) as y) -> ReadOnlySpan<byte>(x).SequenceEqual(ReadOnlySpan<byte>(y))
-    | (:? IStructuralEquatable as x), _ when not (a :? string) -> x.Equals(b, StructuralComparisons.StructuralEqualityComparer)
+    | (:? IStructuralEquatable as x), _ when not (a :? string) ->
+        x.Equals(b, StructuralComparisons.StructuralEqualityComparer)
     | _ -> a.Equals b
 
 /// A hash consistent with equal.
@@ -36,7 +39,10 @@ let rec hash (a: obj) : int =
     | :? float32 as x -> BitConverter.SingleToInt32Bits(x)
     | :? (byte[]) as x ->
         let mutable h = 17
-        for b in x do h <- h * 31 + int b
+
+        for b in x do
+            h <- h * 31 + int b
+
         h
     | :? IStructuralEquatable as x -> x.GetHashCode(StructuralComparisons.StructuralEqualityComparer)
     | _ -> a.GetHashCode()
@@ -46,15 +52,21 @@ let rec hash (a: obj) : int =
 type IPortable =
     inherit IComparable
 
-let private unionCache = Collections.Concurrent.ConcurrentDictionary<Type, (obj -> int) * (obj -> obj[])>()
+let private unionCache =
+    Collections.Concurrent.ConcurrentDictionary<Type, (obj -> int) * (obj -> obj[])>()
 
 let private unionParts (t: Type) =
-    unionCache.GetOrAdd(t, fun t ->
-        let tag = Reflection.FSharpValue.PreComputeUnionTagReader(t)
-        let readers =
-            Reflection.FSharpType.GetUnionCases(t)
-            |> Array.map (fun c -> Reflection.FSharpValue.PreComputeUnionReader(c))
-        tag, (fun v -> readers.[tag v] v))
+    unionCache.GetOrAdd(
+        t,
+        fun t ->
+            let tag = Reflection.FSharpValue.PreComputeUnionTagReader(t)
+
+            let readers =
+                Reflection.FSharpType.GetUnionCases(t)
+                |> Array.map (fun c -> Reflection.FSharpValue.PreComputeUnionReader(c))
+
+            tag, (fun v -> readers.[tag v]v)
+    )
 
 /// Text by code point, for a .NET collection that takes a comparer
 /// (StringComparer.Ordinal orders by UTF-16 unit, which differs for
@@ -62,7 +74,8 @@ let private unionParts (t: Type) =
 [<CompiledName("TextOrder")>]
 let textOrder: Collections.Generic.IComparer<string> =
     { new Collections.Generic.IComparer<string> with
-        member _.Compare(a, b) = Scalar.compareText a b }
+        member _.Compare(a, b) = Scalar.compareText a b
+    }
 
 let private orderCache = Collections.Concurrent.ConcurrentDictionary<Type, bool>()
 
@@ -75,11 +88,17 @@ let rec reorders (t: Type) : bool =
     | true, known -> known
     | _ ->
         let result =
-            if t = typeof<string> then true
-            elif typeof<IPortable>.IsAssignableFrom t then false
-            elif t.IsArray then reorders (t.GetElementType())
-            elif t.IsGenericType then t.GetGenericArguments() |> Array.exists reorders
-            else false
+            if t = typeof<string> then
+                true
+            elif typeof<IPortable>.IsAssignableFrom t then
+                false
+            elif t.IsArray then
+                reorders (t.GetElementType())
+            elif t.IsGenericType then
+                t.GetGenericArguments() |> Array.exists reorders
+            else
+                false
+
         orderCache.[t] <- result
         result
 
@@ -110,8 +129,11 @@ let rec compare (a: obj) (b: obj) : int =
     | _ when Reflection.FSharpType.IsUnion(a.GetType()) && not (a :? IEnumerable) ->
         let tag, fields = unionParts (a.GetType())
         let ta, tb = tag a, tag b
-        if ta <> tb then Operators.compare ta tb
-        else compareSequence (fields a :> IEnumerable) (fields b :> IEnumerable)
+
+        if ta <> tb then
+            Operators.compare ta tb
+        else
+            compareSequence (fields a :> IEnumerable) (fields b :> IEnumerable)
     | (:? IEnumerable as xs), (:? IEnumerable as ys) -> compareSequence xs ys
     | (:? IComparable as x), _ -> sign (x.CompareTo b)
     | _ -> noOrder a
@@ -124,18 +146,21 @@ and private portableItems (s: obj) : IEnumerable =
 /// A Map's entries, each key then its value, in the portable order of the keys.
 and private portableEntries (m: obj) : IEnumerable =
     let entries =
-        (m :?> IEnumerable) |> Seq.cast<obj>
+        (m :?> IEnumerable)
+        |> Seq.cast<obj>
         |> Seq.map (fun e ->
             let t = e.GetType()
             t.GetProperty("Key").GetValue e, t.GetProperty("Value").GetValue e)
         |> Array.ofSeq
         |> Array.sortWith (fun (k, _) (l, _) -> compare k l)
+
     entries |> Seq.collect (fun (k, v) -> [ k; v ]) |> Seq.toArray :> IEnumerable
 
 and private compareSequence (xs: IEnumerable) (ys: IEnumerable) =
     let ys = ys.GetEnumerator()
     let xs = xs.GetEnumerator()
     let mutable result = None
+
     while result.IsNone do
         match xs.MoveNext(), ys.MoveNext() with
         | false, false -> result <- Some 0
@@ -145,12 +170,14 @@ and private compareSequence (xs: IEnumerable) (ys: IEnumerable) =
             match compare xs.Current ys.Current with
             | 0 -> ()
             | c -> result <- Some c
+
     result.Value
 
 /// Compare two constructors' ranks and then their fields.
 [<CompiledName("CompareData")>]
 let compareData (rankA: int) (fieldsA: obj list) (rankB: int) (fieldsB: obj list) =
-    if rankA <> rankB then Operators.compare rankA rankB
+    if rankA <> rankB then
+        Operators.compare rankA rankB
     else
         let rec go xs ys =
             match xs, ys with
@@ -161,13 +188,17 @@ let compareData (rankA: int) (fieldsA: obj list) (rankB: int) (fieldsB: obj list
             | [], [] -> 0
             | [], _ -> -1
             | _, [] -> 1
+
         go fieldsA fieldsB
 
 /// Whether two constructors' fields are equal.
 [<CompiledName("EqualData")>]
 let equalData (rankA: int) (fieldsA: obj list) (rankB: int) (fieldsB: obj list) =
-    rankA = rankB && List.length fieldsA = List.length fieldsB && List.forall2 equal fieldsA fieldsB
+    rankA = rankB
+    && List.length fieldsA = List.length fieldsB
+    && List.forall2 equal fieldsA fieldsB
 
 /// A hash of a constructor and its fields.
 [<CompiledName("HashData")>]
-let hashData (rank: int) (fields: obj list) = fields |> List.fold (fun h f -> h * 31 + hash f) (rank + 7)
+let hashData (rank: int) (fields: obj list) =
+    fields |> List.fold (fun h f -> h * 31 + hash f) (rank + 7)

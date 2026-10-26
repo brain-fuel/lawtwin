@@ -4,4 +4,5 @@ package lawspec.data
 data class ProducerState(
     val identity: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerIdAndEpoch>,
     val sequences: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Int>,
-    val lastSend: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.LastSend>)
+    val lastSend: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.LastSend>,
+)

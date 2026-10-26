@@ -9,24 +9,22 @@ import lawspec_runtime as ls
 import lawspec_schema as _schema
 
 _lawspec_schema = data.make_schema()
+# The machine profile's integer width.
+MACHINE_BITS = 64
 
 
+# nothingHandWritten — ../src/handwritten.lawspec:14
 def nothingHandWritten(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> ls.Absence:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_48(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.nothing_hand_written(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("Unit"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -35,6 +33,5 @@ def nothingHandWritten(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.handwritten::nothingHandWritten: "
-            + _builtins.str(error),
+            "lawtwin.github.handwritten::nothingHandWritten: " + _builtins.str(error),
         ) from error

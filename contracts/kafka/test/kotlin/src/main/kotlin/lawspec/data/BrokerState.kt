@@ -8,4 +8,5 @@ data class BrokerState(
     val transactionalIds: kotlin.collections.Map<kotlin.String, kotlin.Long>,
     val nextProducerId: kotlin.Long,
     val groups: kotlin.collections.Map<kotlin.String, lawspec.data.Group>,
-    val committed: kotlin.collections.Map<lawspec.data.GroupPartition, kotlin.Long>)
+    val committed: kotlin.collections.Map<lawspec.data.GroupPartition, kotlin.Long>,
+)

@@ -28,11 +28,13 @@ type Jitter =
 
 /// Attempts count the first try; zero attempts retries without a bound.
 type Retry =
-    { Strategy: Strategy
-      Attempts: int64
-      Jitter: Jitter
-      /// Whether an error is worth retrying (a portable Bool).
-      When: (Value -> Value) option }
+    {
+        Strategy: Strategy
+        Attempts: int64
+        Jitter: Jitter
+        /// Whether an error is worth retrying (a portable Bool).
+        When: (Value -> Value) option
+    }
 
 type GateKind =
     | Breaker
@@ -49,24 +51,28 @@ type Wait =
 /// state and a Gate decision), and may record how an admitted call ended.
 /// Times are portable Ints, the outcome a portable Bool.
 type Gate =
-    { Kind: GateKind
-      Start: Value -> Value
-      Admit: Value -> Value -> Value
-      Finish: (Value -> Value -> Value -> Value) option
-      Wait: Wait }
+    {
+        Kind: GateKind
+        Start: Value -> Value
+        Admit: Value -> Value -> Value
+        Finish: (Value -> Value -> Value -> Value) option
+        Wait: Wait
+    }
 
 /// A stage's policies, as a definition with a policy declares them.
 type StagePolicy =
-    { Key: string
-      Stage: string
-      Retry: Retry option
-      Timeout: int64 option
-      Gates: Gate list
-      Cache: int64 option
-      Compensate: (Value -> Value) option
-      Wraps: bool
-      /// A further attempt starts after the delay, up to most in all.
-      Hedge: (int64 * int64) option }
+    {
+        Key: string
+        Stage: string
+        Retry: Retry option
+        Timeout: int64 option
+        Gates: Gate list
+        Cache: int64 option
+        Compensate: (Value -> Value) option
+        Wraps: bool
+        /// A further attempt starts after the delay, up to most in all.
+        Hedge: (int64 * int64) option
+    }
 
 let private fail code detail : 'a = Fail.raiseWith code detail
 
@@ -75,18 +81,22 @@ let rec private power (b: int64) (n: int64) : int64 =
     elif n % 2L = 0L then power (b * b) (n / 2L)
     else b * power (b * b) (n / 2L)
 
-let rec private fibonacci (n: int64) (a: int64) (b: int64) = if n <= 1L then a else fibonacci (n - 1L) b (a + b)
+let rec private fibonacci (n: int64) (a: int64) (b: int64) =
+    if n <= 1L then a else fibonacci (n - 1L) b (a + b)
 
 /// The delay before an attempt (from the second) of a strategy.
 [<CompiledName("RetryDelay")>]
 let retryDelay (strategy: Strategy) (attempt: int64) : int64 =
-    if attempt < 2L then fail "InvalidRetryAttempt" (string attempt)
+    if attempt < 2L then
+        fail "InvalidRetryAttempt" (string attempt)
+
     match strategy with
     | Immediate -> 0L
     | Fixed delay -> delay
     | Linear(delay, step) -> delay + step * (attempt - 2L)
     | Exponential(delay, factor, cap) ->
         let value = delay * power factor (attempt - 2L)
+
         match cap with
         | Some c -> min value c
         | None -> value
@@ -99,7 +109,13 @@ let private below (bound: int64) state =
 
 /// A jittered delay and the next random state.
 [<CompiledName("Jittered")>]
-let jitter (kind: Jitter) (delay: int64) (previous: int64) (baseDelay: int64) (state: Random.Seed) : int64 * Random.Seed =
+let jitter
+    (kind: Jitter)
+    (delay: int64)
+    (previous: int64)
+    (baseDelay: int64)
+    (state: Random.Seed)
+    : int64 * Random.Seed =
     match kind with
     | NoJitter -> delay, state
     | FullJitter -> below (delay + 1L) state
@@ -131,8 +147,10 @@ let failed (result: Value) =
 [<CompiledName("StageFailure")>]
 let stageFailure (kind: string) : Value =
     match kind with
-    | "TimedOut" | "RateLimited" | "CircuitOpen" | "Saturated" ->
-        Data("Either::Left", [ Data("lawspec.resilience::type::StageFailure::" + kind, []) ])
+    | "TimedOut"
+    | "RateLimited"
+    | "CircuitOpen"
+    | "Saturated" -> Data("Either::Left", [ Data("lawspec.resilience::type::StageFailure::" + kind, []) ])
     | _ -> fail "UnknownStageFailure" kind
 
 // ---------------------------------------------------------------------------
@@ -168,7 +186,12 @@ let jitterOf (name: string) =
 
 [<CompiledName("Retry")>]
 let retry (strategy: Strategy) (attempts: int64) (jitter: Jitter) (condition: (Value -> Value) option) =
-    { Strategy = strategy; Attempts = attempts; Jitter = jitter; When = condition }
+    {
+        Strategy = strategy
+        Attempts = attempts
+        Jitter = jitter
+        When = condition
+    }
 
 [<CompiledName("NoWait")>]
 let noWait () = NoWait
@@ -181,19 +204,60 @@ let within (micros: int64) = Within micros
 
 [<CompiledName("Breaker")>]
 let breaker (start: Value -> Value) (admit: Value -> Value -> Value) (finish: Value -> Value -> Value -> Value) =
-    { Kind = Breaker; Start = start; Admit = admit; Finish = Some finish; Wait = NoWait }
+    {
+        Kind = Breaker
+        Start = start
+        Admit = admit
+        Finish = Some finish
+        Wait = NoWait
+    }
 
 [<CompiledName("Limit")>]
 let limit (start: Value -> Value) (admit: Value -> Value -> Value) (wait: Wait) =
-    { Kind = Limit; Start = start; Admit = admit; Finish = None; Wait = wait }
+    {
+        Kind = Limit
+        Start = start
+        Admit = admit
+        Finish = None
+        Wait = wait
+    }
 
 [<CompiledName("Bulkhead")>]
-let bulkhead (start: Value -> Value) (admit: Value -> Value -> Value) (finish: Value -> Value -> Value -> Value) (wait: Wait) =
-    { Kind = Bulkhead; Start = start; Admit = admit; Finish = Some finish; Wait = wait }
+let bulkhead
+    (start: Value -> Value)
+    (admit: Value -> Value -> Value)
+    (finish: Value -> Value -> Value -> Value)
+    (wait: Wait)
+    =
+    {
+        Kind = Bulkhead
+        Start = start
+        Admit = admit
+        Finish = Some finish
+        Wait = wait
+    }
 
 /// A stage's policy.
 [<CompiledName("Stage")>]
-let stage (key: string) (stageName: string) (retry: Retry option) (timeout: int64 option) (gates: Gate list)
-          (cache: int64 option) (compensate: (Value -> Value) option) (wraps: bool) (hedge: (int64 * int64) option) =
-    { Key = key; Stage = stageName; Retry = retry; Timeout = timeout; Gates = gates; Cache = cache
-      Compensate = compensate; Wraps = wraps; Hedge = hedge }
+let stage
+    (key: string)
+    (stageName: string)
+    (retry: Retry option)
+    (timeout: int64 option)
+    (gates: Gate list)
+    (cache: int64 option)
+    (compensate: (Value -> Value) option)
+    (wraps: bool)
+    (hedge: (int64 * int64) option)
+    =
+    {
+        Key = key
+        Stage = stageName
+        Retry = retry
+        Timeout = timeout
+        Gates = gates
+        Cache = cache
+        Compensate = compensate
+        Wraps = wraps
+        Hedge = hedge
+    }

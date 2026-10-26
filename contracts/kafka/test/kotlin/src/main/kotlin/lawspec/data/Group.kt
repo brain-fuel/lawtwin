@@ -3,9 +3,8 @@ package lawspec.data
 
 data class Group(
     val groupGeneration: kotlin.Int,
-    val subscriptions: kotlin.collections.Map<
-        kotlin.String,
-        kotlin.collections.List<kotlin.String>>,
-    val assignment: kotlin.collections.Map<
-        kotlin.String,
-        kotlin.collections.List<lawspec.data.TopicPartition>>)
+    val subscriptions:
+        kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>,
+    val assignment:
+        kotlin.collections.Map<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>>,
+)

@@ -1,11 +1,11 @@
 package lawspec.runtime
 
+import kotlin.time.toJavaDuration
+import kotlin.time.toKotlinDuration
 import lawspec.runtime.LawSpecKotlin as Native
 import lawspec.runtime.LawSpecRuntime as Runtime
 import lawspec.runtime.LawSpecSchema.Codec
 import lawspec.runtime.LawSpecSchema.Named
-import kotlin.time.toJavaDuration
-import kotlin.time.toKotlinDuration
 
 /**
  * Framework-independent bridges for Kotlin-specific native representations.
@@ -24,14 +24,15 @@ object LawSpecKotlinCodecs {
         symbols: MutableMap<String, Any> = mutableMapOf(),
     ): Runtime.Value {
         if (type.name() != "List") return schema.construct(type, tag, fields, bits, symbols)
-        val values = when {
-            tag == "List::Nil" && fields.isEmpty() -> emptyList()
-            tag == "List::Cons" && fields.size == 2 -> {
-                val tail = fields[1].data() as List<*>
-                listOf(fields[0]) + tail.map { it as Runtime.Value }
+        val values =
+            when {
+                tag == "List::Nil" && fields.isEmpty() -> emptyList()
+                tag == "List::Cons" && fields.size == 2 -> {
+                    val tail = fields[1].data() as List<*>
+                    listOf(fields[0]) + tail.map { it as Runtime.Value }
+                }
+                else -> throw IllegalArgumentException("invalid List constructor or field count")
             }
-            else -> throw IllegalArgumentException("invalid List constructor or field count")
-        }
         return Runtime.Value(LawSpecSchema.key(type), values)
     }
 
@@ -70,66 +71,100 @@ object LawSpecKotlinCodecs {
     }
 
     /** A Duration natively: a kotlin.time.Duration of whole microseconds. */
-    fun duration(schema: LawSpecSchema, bits: Int, symbols: MutableMap<String, Any> = mutableMapOf()): Codec<kotlin.time.Duration> {
+    fun duration(
+        schema: LawSpecSchema,
+        bits: Int,
+        symbols: MutableMap<String, Any> = mutableMapOf(),
+    ): Codec<kotlin.time.Duration> {
         val codec = schema.duration(bits, symbols)
-        return schema.codec(codec.type(), bits, symbols, { codec.encode(it.toJavaDuration()) }, { codec.decode(it).toKotlinDuration() })
+        return schema.codec(
+            codec.type(),
+            bits,
+            symbols,
+            { codec.encode(it.toJavaDuration()) },
+            { codec.decode(it).toKotlinDuration() },
+        )
     }
 
     /** A Set natively, in canonical order when LawSpec builds it. */
-    fun <T> set(schema: LawSpecSchema, bits: Int, element: Codec<T>, symbols: MutableMap<String, Any> = mutableMapOf()): Codec<Set<T>> {
+    fun <T> set(
+        schema: LawSpecSchema,
+        bits: Int,
+        element: Codec<T>,
+        symbols: MutableMap<String, Any> = mutableMapOf(),
+    ): Codec<Set<T>> {
         val codec = schema.set(element, bits, symbols)
         return schema.codec(codec.type(), bits, symbols, { codec.encode(it) }, { codec.decode(it) })
     }
 
     /** A KeyVal natively, in canonical key order when LawSpec builds it. */
     fun <K, V> keyVal(
-        schema: LawSpecSchema, bits: Int, keys: Codec<K>, values: Codec<V>,
+        schema: LawSpecSchema,
+        bits: Int,
+        keys: Codec<K>,
+        values: Codec<V>,
         symbols: MutableMap<String, Any> = mutableMapOf(),
     ): Codec<Map<K, V>> {
         val codec = schema.keyVal(keys, values, bits, symbols)
         return schema.codec(codec.type(), bits, symbols, { codec.encode(it) }, { codec.decode(it) })
     }
 
-    /** A Queue, Stack or Deque natively: an ArrayDeque from its first item (a Stack's top is last). */
+    /**
+     * A Queue, Stack or Deque natively: an ArrayDeque from its first item (a Stack's top is last).
+     */
     fun <T> sequence(
-        schema: LawSpecSchema, bits: Int, name: String, element: Codec<T>,
+        schema: LawSpecSchema,
+        bits: Int,
+        name: String,
+        element: Codec<T>,
         symbols: MutableMap<String, Any> = mutableMapOf(),
     ): Codec<ArrayDeque<T>> {
         val codec = schema.sequence(name, element, bits, symbols)
         val stack = name == "Stack"
         return schema.codec(
-            codec.type(), bits, symbols,
+            codec.type(),
+            bits,
+            symbols,
             { deque -> codec.encode(java.util.ArrayDeque(if (stack) deque.reversed() else deque)) },
-            { value -> codec.decode(value).toList().let { if (stack) it.reversed() else it }.let { ArrayDeque(it) } },
+            { value ->
+                codec
+                    .decode(value)
+                    .toList()
+                    .let { if (stack) it.reversed() else it }
+                    .let { ArrayDeque(it) }
+            },
         )
     }
 
     fun unit(schema: LawSpecSchema, bits: Int): Codec<Unit> =
-      schema.codec(Named("Unit"), bits, { Runtime.absent("Unit") }, { })
+        schema.codec(Named("Unit"), bits, { Runtime.absent("Unit") }, {})
 
     fun nullValue(schema: LawSpecSchema, bits: Int): Codec<Native.Null> =
-      schema.codec(Named("Null"), bits, { Runtime.absent("Null") }, { Native.Null })
+        schema.codec(Named("Null"), bits, { Runtime.absent("Null") }, { Native.Null })
 
     fun undefined(schema: LawSpecSchema, bits: Int): Codec<Native.Undefined> =
-      schema.codec(
-          Named("Undefined"), bits, { Runtime.absent("Undefined") }, { Native.Undefined },
-      )
+        schema.codec(
+            Named("Undefined"),
+            bits,
+            { Runtime.absent("Undefined") },
+            { Native.Undefined },
+        )
 
     fun symbol(schema: LawSpecSchema, bits: Int): Codec<Native.Symbol> =
-      schema.codec(
-          Named("Symbol"),
-          bits,
-          { Runtime.Value("Symbol", it.token) },
-          { Native.Symbol(it.data() as Runtime.SymbolValue) },
-      )
+        schema.codec(
+            Named("Symbol"),
+            bits,
+            { Runtime.Value("Symbol", it.token) },
+            { Native.Symbol(it.data() as Runtime.SymbolValue) },
+        )
 
     fun codePointText(schema: LawSpecSchema, bits: Int): Codec<IntArray> =
-      schema.codec(
-          Named("CodePointText"),
-          bits,
-          { Runtime.sequence("CodePointText", it) },
-          { value -> (value.data() as List<*>).map { it as Int }.toIntArray() },
-      )
+        schema.codec(
+            Named("CodePointText"),
+            bits,
+            { Runtime.sequence("CodePointText", it) },
+            { value -> (value.data() as List<*>).map { it as Int }.toIntArray() },
+        )
 
     fun <T> nullable(
         schema: LawSpecSchema,
@@ -143,14 +178,16 @@ object LawSpecKotlinCodecs {
             bits,
             symbols,
             { value ->
-                val payload = when (value) {
-                    is Native.Nullable.Null -> Runtime.Presence(false, null)
-                    is Native.Nullable.Present -> {
-                        Runtime.Presence(
-                            true, LawSpecSchema.encodeField(element, value.value, "present"),
-                        )
+                val payload =
+                    when (value) {
+                        is Native.Nullable.Null -> Runtime.Presence(false, null)
+                        is Native.Nullable.Present -> {
+                            Runtime.Presence(
+                                true,
+                                LawSpecSchema.encodeField(element, value.value, "present"),
+                            )
+                        }
                     }
-                }
                 Runtime.Value(LawSpecSchema.key(type), payload)
             },
             { value ->
@@ -176,14 +213,16 @@ object LawSpecKotlinCodecs {
             bits,
             symbols,
             { value ->
-                val payload = when (value) {
-                    is Native.Optional.Undefined -> Runtime.Presence(false, null)
-                    is Native.Optional.Present -> {
-                        Runtime.Presence(
-                            true, LawSpecSchema.encodeField(element, value.value, "present"),
-                        )
+                val payload =
+                    when (value) {
+                        is Native.Optional.Undefined -> Runtime.Presence(false, null)
+                        is Native.Optional.Present -> {
+                            Runtime.Presence(
+                                true,
+                                LawSpecSchema.encodeField(element, value.value, "present"),
+                            )
+                        }
                     }
-                }
                 Runtime.Value(LawSpecSchema.key(type), payload)
             },
             { value ->

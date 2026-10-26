@@ -49,17 +49,21 @@ type TypeRef =
 /// kind of failure (StrategyOutsideRefinement, EquationFailed, ...), so test
 /// output names it the same way on every .NET target.
 type LawSpecException(code: string, detail: string, context: string list, inner: exn) =
-    inherit Exception(
-        (match context with
-         | [] -> ""
-         | _ -> String.Join(": ", List.rev context) + ": ")
-        + code
-        + (if String.IsNullOrEmpty detail then "" else " " + detail),
-        inner)
+    inherit
+        Exception(
+            (match context with
+             | [] -> ""
+             | _ -> String.Join(": ", List.rev context) + ": ")
+            + code
+            + (if String.IsNullOrEmpty detail then "" else " " + detail),
+            inner
+        )
+
     new(code, detail) = LawSpecException(code, detail, [], null)
     member _.Code = code
     member _.Detail = detail
     member _.Context = context
+
     /// The same failure, inside one more definition or law.
     member this.Within(identity: string) =
         LawSpecException(code, detail, identity :: context, this.InnerException)
@@ -80,4 +84,5 @@ module Fail =
     /// Fail unless the condition holds.
     [<CompiledName("Require")>]
     let inline require condition code detail =
-        if not condition then raiseWith code detail
+        if not condition then
+            raiseWith code detail

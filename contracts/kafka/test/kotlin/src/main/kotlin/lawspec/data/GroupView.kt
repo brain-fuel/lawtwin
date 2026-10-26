@@ -3,4 +3,5 @@ package lawspec.data
 
 data class GroupView(
     val generation: kotlin.Int,
-    val members: kotlin.collections.List<lawspec.data.MemberAssignment>)
+    val members: kotlin.collections.List<lawspec.data.MemberAssignment>,
+)

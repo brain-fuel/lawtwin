@@ -4,65 +4,233 @@
 //! serve(node) lets other nodes evaluate them on this node; evaluate(node,
 //! address, name, args) evaluates one on the node at address. Values are
 //! logical values (ls::Value), as the runtime's checks use them.
-#![allow(dead_code)]
 use crate::lawspec_runtime as ls;
 
 fn wire_types() -> ls::Values {
-    ls::values_table("(data lawspec.matchers::type::Regex (ctor lawspec.matchers::type::Regex::Regex (text))) (data lawtwin.github.model::type::Label (ctor lawtwin.github.model::type::Label::Label (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (text) (maybe (text)) (text) (bool) (maybe (text)) (maybe (ref lawtwin.github.model::type::SimpleUser)))) (data lawtwin.github.model::type::SimpleUser (ctor lawtwin.github.model::type::SimpleUser::SimpleUser (maybe (text)) (maybe (text)) (text) (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (maybe (text)) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (bool) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::Milestone (ctor lawtwin.github.model::type::Milestone::Milestone (text) (text) (text) (int Int64 -9223372036854775808 9223372036854775807) (text) (int Int64 -9223372036854775808 9223372036854775807) (ref lawtwin.github.model::type::MilestoneState) (text) (maybe (text)) (maybe (ref lawtwin.github.model::type::NullableSimpleUser)) (int Int64 -9223372036854775808 9223372036854775807) (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::MilestoneState (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateOpen) (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateClosed)) (data lawtwin.github.model::type::NullableSimpleUser (ctor lawtwin.github.model::type::NullableSimpleUser::NullableSimpleUser (maybe (text)) (maybe (text)) (text) (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (maybe (text)) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (bool) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::IssuesCreateMilestoneBody (ctor lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody (text) (maybe (ref lawtwin.github.model::type::MilestoneState)) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::IssuesUpdateMilestoneBody (ctor lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody (maybe (text)) (maybe (ref lawtwin.github.model::type::MilestoneState)) (maybe (text)) (maybe (text))))")
+    ls::values_table(
+        "(data lawspec.matchers::type::Regex (ctor lawspec.matchers::type::Regex::Regex (text))) (data lawtwin.github.model::type::Label (ctor lawtwin.github.model::type::Label::Label (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (text) (maybe (text)) (text) (bool) (maybe (text)) (maybe (ref lawtwin.github.model::type::SimpleUser)))) (data lawtwin.github.model::type::SimpleUser (ctor lawtwin.github.model::type::SimpleUser::SimpleUser (maybe (text)) (maybe (text)) (text) (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (maybe (text)) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (bool) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::Milestone (ctor lawtwin.github.model::type::Milestone::Milestone (text) (text) (text) (int Int64 -9223372036854775808 9223372036854775807) (text) (int Int64 -9223372036854775808 9223372036854775807) (ref lawtwin.github.model::type::MilestoneState) (text) (maybe (text)) (maybe (ref lawtwin.github.model::type::NullableSimpleUser)) (int Int64 -9223372036854775808 9223372036854775807) (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::MilestoneState (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateOpen) (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateClosed)) (data lawtwin.github.model::type::NullableSimpleUser (ctor lawtwin.github.model::type::NullableSimpleUser::NullableSimpleUser (maybe (text)) (maybe (text)) (text) (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (maybe (text)) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (bool) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::IssuesCreateMilestoneBody (ctor lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody (text) (maybe (ref lawtwin.github.model::type::MilestoneState)) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::IssuesUpdateMilestoneBody (ctor lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody (maybe (text)) (maybe (ref lawtwin.github.model::type::MilestoneState)) (maybe (text)) (maybe (text))))",
+    )
 }
 
 /// (qualified name, content hash, function, argument descriptors, result descriptor)
-pub const DEFINITIONS: &[(&str, &str, ls::ModelCallback, &[&str], &str)] = &[
-    ("lawspec.matchers::matchersMatchesRegex", "sha3-256:90712f4fe0b8b414485e00fe214dabe06e4188720ece66fe3ba2be11d5515915", crate::lawspec_definitions::evaluate_0 as ls::ModelCallback, &["(text)", "(ref lawspec.matchers::type::Regex)"], "(bool)"),
-    ("lawtwin.github::lawtwinGithubModelAfter64", "sha3-256:9bdd8efdf77edf3151cf088a8b9d4ad1bdab8c5cb77f4b60b7589dbe44990986", crate::lawspec_definitions::evaluate_19 as ls::ModelCallback, &["(int Int64 -9223372036854775808 9223372036854775807)"], "(int Int64 -9223372036854775808 9223372036854775807)"),
-    ("lawtwin.github::lawtwinGithubModelContainsLabel", "sha3-256:7283648618b7c1f5878c49675a55178da5d18569415596fee82070b4576453da", crate::lawspec_definitions::evaluate_20 as ls::ModelCallback, &["(ref lawtwin.github.model::type::Label)", "(list (ref lawtwin.github.model::type::Label))"], "(bool)"),
-    ("lawtwin.github::lawtwinGithubModelContainsMilestone", "sha3-256:c586b5ef2ed272aeb5516f46fe6a4008d3f990050523abd0dbcb1069528c960a", crate::lawspec_definitions::evaluate_21 as ls::ModelCallback, &["(ref lawtwin.github.model::type::Milestone)", "(list (ref lawtwin.github.model::type::Milestone))"], "(bool)"),
-    ("lawtwin.github::lawtwinGithubModelValidIssuesCreateMilestoneBody", "sha3-256:f5f440ccf2aea18f8b71899c0fc17e4f5759b3b467ca3dac78486e58d21b53c5", crate::lawspec_definitions::evaluate_35 as ls::ModelCallback, &["(ref lawtwin.github.model::type::IssuesCreateMilestoneBody)"], "(bool)"),
-    ("lawtwin.github::lawtwinGithubModelValidIssuesUpdateMilestoneBody", "sha3-256:7e15769651c1e9b17fe510bc68f71e910dd9bafe1f4f8ab14e26c7dff1e17ac5", crate::lawspec_definitions::evaluate_36 as ls::ModelCallback, &["(ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)"], "(bool)"),
-    ("lawtwin.github.handwritten::nothingHandWritten", "sha3-256:1a27ece38f0eaee679aeb86a00731fe490534f559640e62ad16fe75a9e09a6a6", crate::lawspec_definitions::evaluate_48 as ls::ModelCallback, &["(unit)"], "(unit)"),
-    ("lawtwin.github.laws::lawtwinGithubModelAfter64", "sha3-256:c24c785482d673f9e7046eda0755322045c0a9694b22cb746a4a6e6b36dcd910", crate::lawspec_definitions::evaluate_67 as ls::ModelCallback, &["(int Int64 -9223372036854775808 9223372036854775807)"], "(int Int64 -9223372036854775808 9223372036854775807)"),
-    ("lawtwin.github.laws::lawtwinGithubModelContainsLabel", "sha3-256:1170ea114373a0e41dd7c16166ccfa07ee84cdf257c3730e94a16e26684f0f23", crate::lawspec_definitions::evaluate_68 as ls::ModelCallback, &["(ref lawtwin.github.model::type::Label)", "(list (ref lawtwin.github.model::type::Label))"], "(bool)"),
-    ("lawtwin.github.laws::lawtwinGithubModelContainsMilestone", "sha3-256:3287bb45f0fd5da5f599eea2604a3c031d60da884d8ba35571b3a2f62de7623b", crate::lawspec_definitions::evaluate_69 as ls::ModelCallback, &["(ref lawtwin.github.model::type::Milestone)", "(list (ref lawtwin.github.model::type::Milestone))"], "(bool)"),
-    ("lawtwin.github.laws::lawtwinGithubModelValidIssuesCreateMilestoneBody", "sha3-256:716f8e8cf9b6bb62d47cbac02ee94251fc253bb0e36c7d9b85b7057afca931ff", crate::lawspec_definitions::evaluate_83 as ls::ModelCallback, &["(ref lawtwin.github.model::type::IssuesCreateMilestoneBody)"], "(bool)"),
-    ("lawtwin.github.laws::lawtwinGithubModelValidIssuesUpdateMilestoneBody", "sha3-256:dd79cd5420757ff42c6d9c3f9cf447164b3d273db14af6a74afc8b6196bb0373", crate::lawspec_definitions::evaluate_84 as ls::ModelCallback, &["(ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)"], "(bool)"),
-    ("lawtwin.github.laws::noHandWrittenLawsYet", "sha3-256:4017bcde4a37e8d33642bb06a882e5a28ddcacc14b96d4be84fa904669b28d0a", crate::lawspec_definitions::evaluate_85 as ls::ModelCallback, &["(unit)"], "(unit)"),
-    ("lawtwin.github.model::after64", "sha3-256:de317ff8c05cfeaf79c0c50ad407a0fe109ea480fabaf815a2ed3e553d844c4e", crate::lawspec_definitions::evaluate_97 as ls::ModelCallback, &["(int Int64 -9223372036854775808 9223372036854775807)"], "(int Int64 -9223372036854775808 9223372036854775807)"),
-    ("lawtwin.github.model::containsLabel", "sha3-256:aab39a5fa4d3bd2add84f56ca12b6e40c4a806645d20099cd93c93cb8ef2c3b9", crate::lawspec_definitions::evaluate_98 as ls::ModelCallback, &["(ref lawtwin.github.model::type::Label)", "(list (ref lawtwin.github.model::type::Label))"], "(bool)"),
-    ("lawtwin.github.model::containsMilestone", "sha3-256:a804190140564bb7428de8aa15af3bb6f12433ba56984359927a2d610e40d11d", crate::lawspec_definitions::evaluate_99 as ls::ModelCallback, &["(ref lawtwin.github.model::type::Milestone)", "(list (ref lawtwin.github.model::type::Milestone))"], "(bool)"),
-    ("lawtwin.github.model::validIssuesCreateMilestoneBody", "sha3-256:d19ed5320e7d3f63e91b41f2636b15d492ba6a3ec04c0506c8084d358a64e52c", crate::lawspec_definitions::evaluate_131 as ls::ModelCallback, &["(ref lawtwin.github.model::type::IssuesCreateMilestoneBody)"], "(bool)"),
-    ("lawtwin.github.model::validIssuesUpdateMilestoneBody", "sha3-256:515c028d1f23d84b5842ea79a4106f0ef6c787580c8930c80dc256eb636e1c74", crate::lawspec_definitions::evaluate_132 as ls::ModelCallback, &["(ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)"], "(bool)"),
-    ("contracttest.github::lawtwinGithubModelAfter64", "sha3-256:2f0d7b40b2d3a68e467a9a372b16b640181e885ef63e38584e66bce8d1e70762", crate::lawspec_definitions::evaluate_151 as ls::ModelCallback, &["(int Int64 -9223372036854775808 9223372036854775807)"], "(int Int64 -9223372036854775808 9223372036854775807)"),
-    ("contracttest.github::lawtwinGithubModelContainsLabel", "sha3-256:6ab529dc68b0c2a5c008423b88964881b2b2959e4f4bb02bd467175f667ed7a5", crate::lawspec_definitions::evaluate_152 as ls::ModelCallback, &["(ref lawtwin.github.model::type::Label)", "(list (ref lawtwin.github.model::type::Label))"], "(bool)"),
-    ("contracttest.github::lawtwinGithubModelContainsMilestone", "sha3-256:1b0134445cc90bd11f7bd2dbdc19f15664e4cc5322bb1c95e94f496100c78684", crate::lawspec_definitions::evaluate_153 as ls::ModelCallback, &["(ref lawtwin.github.model::type::Milestone)", "(list (ref lawtwin.github.model::type::Milestone))"], "(bool)"),
-    ("contracttest.github::lawtwinGithubModelValidIssuesCreateMilestoneBody", "sha3-256:b52b11ca8d61bc58daaeb9f06f4c08dc6b19765b69d33513547418610b4f50ea", crate::lawspec_definitions::evaluate_167 as ls::ModelCallback, &["(ref lawtwin.github.model::type::IssuesCreateMilestoneBody)"], "(bool)"),
-    ("contracttest.github::lawtwinGithubModelValidIssuesUpdateMilestoneBody", "sha3-256:e5da21bd2d76bc29b15d8ab9eeace6f01883e897e97f79befc48937c729bc29c", crate::lawspec_definitions::evaluate_168 as ls::ModelCallback, &["(ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)"], "(bool)"),
-    ("contracttest.github::suiteNamesThePackage", "sha3-256:a0e4530c14737d9a9671d94b5f988ee0c4bb9fced11b861533555290fbcf0303", crate::lawspec_definitions::evaluate_180 as ls::ModelCallback, &["(unit)"], "(unit)"),
+pub const DEFINITIONS: &ls::RemoteDefinitions = &[
+    (
+        "lawspec.matchers::matchersMatchesRegex",
+        "blake3-semantic-1:073e7ce9bc4e421bbd44abc6ae6f0c494cdc2bd9f3658d452c5265f74309d5d9",
+        crate::lawspec_definitions::matchers_matches_regex as ls::ModelCallback,
+        &["(text)", "(ref lawspec.matchers::type::Regex)"],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github::lawtwinGithubModelAfter64",
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        crate::lawspec_definitions::lawtwin_github_model_after64 as ls::ModelCallback,
+        &["(int Int64 -9223372036854775808 9223372036854775807)"],
+        "(int Int64 -9223372036854775808 9223372036854775807)",
+    ),
+    (
+        "lawtwin.github::lawtwinGithubModelContainsLabel",
+        "blake3-semantic-1:6cc9ef39e855be966a2566a9b7e8bdeaca8a703f277d75a3dae0b04bda0b16c3",
+        crate::lawspec_definitions::lawtwin_github_model_contains_label as ls::ModelCallback,
+        &[
+            "(ref lawtwin.github.model::type::Label)",
+            "(list (ref lawtwin.github.model::type::Label))",
+        ],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github::lawtwinGithubModelContainsMilestone",
+        "blake3-semantic-1:415c06c01357bd85a3b468671ab3ede3eda713e2e553c014e60a04c8f6d7bb10",
+        crate::lawspec_definitions::lawtwin_github_model_contains_milestone as ls::ModelCallback,
+        &[
+            "(ref lawtwin.github.model::type::Milestone)",
+            "(list (ref lawtwin.github.model::type::Milestone))",
+        ],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github::lawtwinGithubModelValidIssuesCreateMilestoneBody",
+        "blake3-semantic-1:60b48f9cdbedfe031b89467160da254b95224bea7979b7e1e595bd109671789f",
+        crate::lawspec_definitions::lawtwin_github_model_valid_issues_create_milestone_body
+            as ls::ModelCallback,
+        &["(ref lawtwin.github.model::type::IssuesCreateMilestoneBody)"],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github::lawtwinGithubModelValidIssuesUpdateMilestoneBody",
+        "blake3-semantic-1:0ea58072e0f6f9b50c775ff801fb67e2f5f964084e5bdae01f634febae2c3b69",
+        crate::lawspec_definitions::lawtwin_github_model_valid_issues_update_milestone_body
+            as ls::ModelCallback,
+        &["(ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)"],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github.handwritten::nothingHandWritten",
+        "blake3-semantic-1:7e4bcd9c9251b6eb51a5021338ab951613c56db32153451bf2097751bd512b55",
+        crate::lawspec_definitions::nothing_hand_written as ls::ModelCallback,
+        &["(unit)"],
+        "(unit)",
+    ),
+    (
+        "lawtwin.github.laws::lawtwinGithubModelAfter64",
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        crate::lawspec_definitions::lawtwin_github_model_after64_2 as ls::ModelCallback,
+        &["(int Int64 -9223372036854775808 9223372036854775807)"],
+        "(int Int64 -9223372036854775808 9223372036854775807)",
+    ),
+    (
+        "lawtwin.github.laws::lawtwinGithubModelContainsLabel",
+        "blake3-semantic-1:6cc9ef39e855be966a2566a9b7e8bdeaca8a703f277d75a3dae0b04bda0b16c3",
+        crate::lawspec_definitions::lawtwin_github_model_contains_label_2 as ls::ModelCallback,
+        &[
+            "(ref lawtwin.github.model::type::Label)",
+            "(list (ref lawtwin.github.model::type::Label))",
+        ],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github.laws::lawtwinGithubModelContainsMilestone",
+        "blake3-semantic-1:415c06c01357bd85a3b468671ab3ede3eda713e2e553c014e60a04c8f6d7bb10",
+        crate::lawspec_definitions::lawtwin_github_model_contains_milestone_2 as ls::ModelCallback,
+        &[
+            "(ref lawtwin.github.model::type::Milestone)",
+            "(list (ref lawtwin.github.model::type::Milestone))",
+        ],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github.laws::lawtwinGithubModelValidIssuesCreateMilestoneBody",
+        "blake3-semantic-1:60b48f9cdbedfe031b89467160da254b95224bea7979b7e1e595bd109671789f",
+        crate::lawspec_definitions::lawtwin_github_model_valid_issues_create_milestone_body_2
+            as ls::ModelCallback,
+        &["(ref lawtwin.github.model::type::IssuesCreateMilestoneBody)"],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github.laws::lawtwinGithubModelValidIssuesUpdateMilestoneBody",
+        "blake3-semantic-1:0ea58072e0f6f9b50c775ff801fb67e2f5f964084e5bdae01f634febae2c3b69",
+        crate::lawspec_definitions::lawtwin_github_model_valid_issues_update_milestone_body_2
+            as ls::ModelCallback,
+        &["(ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)"],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github.laws::noHandWrittenLawsYet",
+        "blake3-semantic-1:7e4bcd9c9251b6eb51a5021338ab951613c56db32153451bf2097751bd512b55",
+        crate::lawspec_definitions::no_hand_written_laws_yet as ls::ModelCallback,
+        &["(unit)"],
+        "(unit)",
+    ),
+    (
+        "lawtwin.github.model::after64",
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        crate::lawspec_definitions::after64 as ls::ModelCallback,
+        &["(int Int64 -9223372036854775808 9223372036854775807)"],
+        "(int Int64 -9223372036854775808 9223372036854775807)",
+    ),
+    (
+        "lawtwin.github.model::containsLabel",
+        "blake3-semantic-1:6cc9ef39e855be966a2566a9b7e8bdeaca8a703f277d75a3dae0b04bda0b16c3",
+        crate::lawspec_definitions::contains_label as ls::ModelCallback,
+        &[
+            "(ref lawtwin.github.model::type::Label)",
+            "(list (ref lawtwin.github.model::type::Label))",
+        ],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github.model::containsMilestone",
+        "blake3-semantic-1:415c06c01357bd85a3b468671ab3ede3eda713e2e553c014e60a04c8f6d7bb10",
+        crate::lawspec_definitions::contains_milestone as ls::ModelCallback,
+        &[
+            "(ref lawtwin.github.model::type::Milestone)",
+            "(list (ref lawtwin.github.model::type::Milestone))",
+        ],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github.model::validIssuesCreateMilestoneBody",
+        "blake3-semantic-1:60b48f9cdbedfe031b89467160da254b95224bea7979b7e1e595bd109671789f",
+        crate::lawspec_definitions::valid_issues_create_milestone_body as ls::ModelCallback,
+        &["(ref lawtwin.github.model::type::IssuesCreateMilestoneBody)"],
+        "(bool)",
+    ),
+    (
+        "lawtwin.github.model::validIssuesUpdateMilestoneBody",
+        "blake3-semantic-1:0ea58072e0f6f9b50c775ff801fb67e2f5f964084e5bdae01f634febae2c3b69",
+        crate::lawspec_definitions::valid_issues_update_milestone_body as ls::ModelCallback,
+        &["(ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)"],
+        "(bool)",
+    ),
+    (
+        "contracttest.github::lawtwinGithubModelAfter64",
+        "blake3-semantic-1:d47d9848907a59f9f7b91e693036bed52f3943655823f792daf75e39aaeb264f",
+        crate::lawspec_definitions::lawtwin_github_model_after64_3 as ls::ModelCallback,
+        &["(int Int64 -9223372036854775808 9223372036854775807)"],
+        "(int Int64 -9223372036854775808 9223372036854775807)",
+    ),
+    (
+        "contracttest.github::lawtwinGithubModelContainsLabel",
+        "blake3-semantic-1:6cc9ef39e855be966a2566a9b7e8bdeaca8a703f277d75a3dae0b04bda0b16c3",
+        crate::lawspec_definitions::lawtwin_github_model_contains_label_3 as ls::ModelCallback,
+        &[
+            "(ref lawtwin.github.model::type::Label)",
+            "(list (ref lawtwin.github.model::type::Label))",
+        ],
+        "(bool)",
+    ),
+    (
+        "contracttest.github::lawtwinGithubModelContainsMilestone",
+        "blake3-semantic-1:415c06c01357bd85a3b468671ab3ede3eda713e2e553c014e60a04c8f6d7bb10",
+        crate::lawspec_definitions::lawtwin_github_model_contains_milestone_3 as ls::ModelCallback,
+        &[
+            "(ref lawtwin.github.model::type::Milestone)",
+            "(list (ref lawtwin.github.model::type::Milestone))",
+        ],
+        "(bool)",
+    ),
+    (
+        "contracttest.github::lawtwinGithubModelValidIssuesCreateMilestoneBody",
+        "blake3-semantic-1:60b48f9cdbedfe031b89467160da254b95224bea7979b7e1e595bd109671789f",
+        crate::lawspec_definitions::lawtwin_github_model_valid_issues_create_milestone_body_3
+            as ls::ModelCallback,
+        &["(ref lawtwin.github.model::type::IssuesCreateMilestoneBody)"],
+        "(bool)",
+    ),
+    (
+        "contracttest.github::lawtwinGithubModelValidIssuesUpdateMilestoneBody",
+        "blake3-semantic-1:0ea58072e0f6f9b50c775ff801fb67e2f5f964084e5bdae01f634febae2c3b69",
+        crate::lawspec_definitions::lawtwin_github_model_valid_issues_update_milestone_body_3
+            as ls::ModelCallback,
+        &["(ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)"],
+        "(bool)",
+    ),
+    (
+        "contracttest.github::suiteNamesThePackage",
+        "blake3-semantic-1:7e4bcd9c9251b6eb51a5021338ab951613c56db32153451bf2097751bd512b55",
+        crate::lawspec_definitions::suite_names_the_package as ls::ModelCallback,
+        &["(unit)"],
+        "(unit)",
+    ),
 ];
 
 /// Lets other nodes evaluate these definitions on node.
 pub fn serve(node: &ls::net::Node) -> ls::Result<String> {
-    let table: Vec<ls::net::RemoteDefinition> = DEFINITIONS
-        .iter()
-        .map(|(_, digest, function, arguments, result)| {
-            let function = *function;
-            let call: std::sync::Arc<dyn Fn(Vec<ls::Value>) -> ls::Result<ls::Value> + Send + Sync> =
-                std::sync::Arc::new(move |args| function(&mut ls::Context::default(), args));
-            (digest.to_string(), call, arguments.iter().map(|d| ls::descriptor(d)).collect(), ls::descriptor(result))
-        })
-        .collect();
-    node.serve_definitions(table, wire_types(), "definitions")
+    ls::serve_remote(node, DEFINITIONS, wire_types())
 }
 
 /// The content hash of the definition with this qualified name.
 pub fn digest(name: &str) -> Option<&'static str> {
-    DEFINITIONS.iter().find(|d| d.0 == name).map(|d| d.1)
+    ls::remote_digest(DEFINITIONS, name)
 }
 
 /// Evaluates the named definition on the node at address, by its content
 /// hash; fails as unreachable when that node does not answer in time.
-pub fn evaluate(node: &ls::net::Node, address: &str, name: &str, args: &[ls::Value]) -> ls::Result<ls::Value> {
-    let (_, digest, _, arguments, result) =
-        DEFINITIONS.iter().find(|d| d.0 == name).ok_or_else(|| format!("no definition {name}"))?;
-    let arguments: Vec<ls::Sexp> = arguments.iter().map(|d| ls::descriptor(d)).collect();
-    node.evaluate(address, digest, args, &arguments, &ls::descriptor(result), &wire_types(), std::time::Duration::from_secs(5), "definitions")
+pub fn evaluate(
+    node: &ls::net::Node,
+    address: &str,
+    name: &str,
+    args: &[ls::Value],
+) -> ls::Result<ls::Value> {
+    ls::evaluate_remote(node, address, DEFINITIONS, &wire_types(), name, args)
 }

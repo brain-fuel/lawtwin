@@ -1,29 +1,29 @@
 {
   "version": 1,
   "files": {
-    "tests/lawspec_collections_lawspec.rs": "eef6028b561353ad7e9cac2bd8029828d931f6fc0763049057fda994d72e47fc",
-    "tests/lawspec_matchers_lawspec.rs": "4edf7171c6c071ac848ba9134f2b6212dc572f57a879c9bcca6572e8846b0346",
-    "tests/lawtwin_github_lawspec.rs": "385a8c9cc685e6719fe8b25f51cf1662d47d862032d4e6c2ebf090890af00821",
-    "tests/lawtwin_github_handwritten_lawspec.rs": "4c693021d1f41e659f815913b983b33502fb497af34c831284ba39d440d640d6",
-    "tests/lawtwin_github_laws_lawspec.rs": "d48c8ef1941308c8a25d3730218916379b47f2382ed177fa40c9c77cb94d4f80",
-    "tests/lawtwin_github_model_lawspec.rs": "299fec165f7ac1c0ef4becc99636205be34bad7a79ad9aeedcac05cd2c476152",
-    "tests/contracttest_github_lawspec.rs": "e7b87ce2892d2b2ae078a275f93a21950e000810ac71b4a6c0672a57b417b133",
-    "src/lawspec_data.rs": "f338a8ec1118a9ca704fc7c4db3f84adc5185fa897103c4bd707e82bef6831ae",
-    "src/lawspec_schema.rs": "d42e5d77a29f8fd2d5a47f713469027b6e5ea8208539b54d743a6a4c6775739d",
-    "src/lawspec_definitions.rs": "260507dc2e25d8f61a4a1b7e07361620c2cfa594532620a4f5c8d8df57db1c44",
-    "src/lawspec_abilities.rs": "a7196c0ded190911bdd721f764cb099c8d7ad5149e63a616b748a890eb808a54",
-    "src/lawspec_runtime.rs": "5b2f37743d26aa3b70368e479ff63eddfb2386ec97a4b50bd62525e99d988887",
+    "tests/lawspec_collections_lawspec.rs": "a880301072a33bc704ef7371cda9bb8b3424bebaf0ca777d38e01db9f65abf34",
+    "tests/lawspec_matchers_lawspec.rs": "790c8d3ed4f640cf3f9fef56372e095afa29ce509fb2acc0ecdbcb71d35711c0",
+    "tests/lawtwin_github_lawspec.rs": "a7db71fce6f435a3c41b2abf66d8796f1ef582ec9d4016c9958b0f1948a32f56",
+    "tests/lawtwin_github_handwritten_lawspec.rs": "396b7b82d43674066fbb32e4d9dd41ec0e9636c13bbe4aa991e1c490aa8d3d01",
+    "tests/lawtwin_github_laws_lawspec.rs": "0a22ea4b59f8b0025d911d68b21d2cf10eb0c5d2060b3604c0bac6786ab5e1a1",
+    "tests/lawtwin_github_model_lawspec.rs": "bc15bd29fb063d414bd7ecfc1571385afd90fb6e280ecb65fd84f7911e8c072f",
+    "tests/contracttest_github_lawspec.rs": "c104d3797fd61bd1686437ef1f9535ada5f7cbdf47ac790f55ac8232dc415fcb",
+    "src/lawspec_data.rs": "9a3d1f3b4a08995101bbaaf405f990ce8860210749495b6ae3f2f611595c52fb",
+    "src/lawspec_schema.rs": "f873d4c7295344afd38b91d5d2d7cd1681b734809f641bae9837ca457ad4c6b5",
+    "src/lawspec_definitions.rs": "433d85ba93e741fe7a416b2863fac361d88bfb2cea6c7ad4c48b888b08d70251",
+    "src/lawspec_abilities.rs": "1c75e178eb8190e5175f28dacb21ece300f46c703010dd5d38ed040904bb9b0b",
+    "src/lawspec_runtime.rs": "019c3b7bfa3ff7c84824ef4e03c5eca82921ef9ca06a6b782fb6ccfa5f3c0ac1",
     "src/lawspec_modules.rs": "9678d4f33db9710a2ea8081e77cbf3e14abd2702a844c6e8fc2bfeffc624cf17",
-    "tests/support/lawspec_strategies.rs": "b801c9ddc702588b6b30e6a14c1e7b200ae2e0229f4f3ca8f6fb5510e8238df6",
-    "src/lawspec_remote.rs": "18cf885aadd49fcab3738b108af0d6e630c267f9e27399f31872d477d2e91a1e"
+    "tests/support/lawspec_strategies.rs": "b434afecf05ddb056b03257c3b9646821161938c7acae222ef981e16a8e6d492",
+    "src/lawspec_remote.rs": "4cd8cded7757c494ec6cb396af48aaa3f5a949481dc48463e131e1d100460619"
   },
   "adapters": {
-    "src/lawspec/collections.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",
-    "src/lawspec/matchers.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",
-    "src/lawtwin/github.rs": "78351f3dd7a1f5f5d4c3f0d36d32aea3672d93e3047e1b4ebdefaf013f9a88e4",
-    "src/lawtwin/github/handwritten.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",
-    "src/lawtwin/github/laws.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",
-    "src/lawtwin/github/model.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",
-    "src/contracttest/github.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032"
+    "src/lawspec/collections.rs": "8bc2223055885a7e95a3988a10711d8fd0daeb31a58c748dd79ef11193e7fbfe",
+    "src/lawspec/matchers.rs": "483b2aec53f4d644db378af17bd100afc68873874e9d2107542e32f2a7e82dbd",
+    "src/lawtwin/github.rs": "525230a1571839501e86a9d60b69596cced613870997c20c3f46ba5f94e5f418",
+    "src/lawtwin/github/handwritten.rs": "f40944cda394b6bc923030a8a52c012bdea16a613f6db5a4d21cc05aa074f824",
+    "src/lawtwin/github/laws.rs": "a328ae51cbd2d81ab45c9173eb725518d78a2738e4059fcfc969dfc868adf8a7",
+    "src/lawtwin/github/model.rs": "f93c0938b3c5025492eebffab64b94d927be30bce4f031fd711300518a7f0a46",
+    "src/contracttest/github.rs": "a328ae51cbd2d81ab45c9173eb725518d78a2738e4059fcfc969dfc868adf8a7"
   }
 }

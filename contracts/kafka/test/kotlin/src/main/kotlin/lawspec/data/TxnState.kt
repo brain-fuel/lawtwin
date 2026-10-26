@@ -4,6 +4,5 @@ package lawspec.data
 sealed interface TxnState {
     data object NoTxn : lawspec.data.TxnState
 
-    data class Ongoing(
-        val value: lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee) : lawspec.data.TxnState
+    data class Ongoing(val value: lawspec.data.OngoingDetails) : lawspec.data.TxnState
 }

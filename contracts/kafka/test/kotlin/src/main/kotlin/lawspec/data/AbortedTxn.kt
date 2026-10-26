@@ -4,4 +4,5 @@ package lawspec.data
 data class AbortedTxn(
     val abortedWriter: kotlin.Long,
     val firstOffset: kotlin.Long,
-    val lastOffset: kotlin.Long)
+    val lastOffset: kotlin.Long,
+)

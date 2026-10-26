@@ -103,10 +103,7 @@ class LastSend:
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class ProducerState:
     identity: _schema.Maybe[ProducerIdAndEpoch]
-    sequences: _builtins.tuple[
-        _builtins.tuple[TopicPartition, _builtins.int],
-        ...
-    ]
+    sequences: _builtins.tuple[_builtins.tuple[TopicPartition, _builtins.int], ...]
     lastSend: _schema.Maybe[LastSend]
 
 
@@ -117,10 +114,7 @@ class ConsumerState:
     generation: _builtins.int
     subscription: _builtins.list[_builtins.str]
     assigned: _builtins.list[TopicPartition]
-    positions: _builtins.tuple[
-        _builtins.tuple[TopicPartition, _builtins.int],
-        ...
-    ]
+    positions: _builtins.tuple[_builtins.tuple[TopicPartition, _builtins.int], ...]
     isolation: IsolationLevel
 
 
@@ -128,10 +122,7 @@ class ConsumerState:
 class TransactionState:
     transactionalId: _builtins.str
     producer: _schema.Maybe[ProducerIdAndEpoch]
-    txnSequences: _builtins.tuple[
-        _builtins.tuple[TopicPartition, _builtins.int],
-        ...
-    ]
+    txnSequences: _builtins.tuple[_builtins.tuple[TopicPartition, _builtins.int], ...]
     inTransaction: _builtins.bool
     added: _builtins.list[TopicPartition]
     offsetsSent: _builtins.bool
@@ -344,12 +335,12 @@ class LogEntry:
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class LogEntryDataEntry(LogEntry):
-    value: Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be
+    value: DataEntryDetails
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class LogEntryControlEntry(LogEntry):
-    value: Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3
+    value: ControlEntryDetails
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
@@ -398,7 +389,7 @@ class TxnStateNoTxn(TxnState):
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class TxnStateOngoing(TxnState):
-    value: Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee
+    value: OngoingDetails
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
@@ -429,14 +420,11 @@ class BrokerState:
     transactionalIds: _builtins.dict[_builtins.str, _builtins.int]
     nextProducerId: _builtins.int
     groups: _builtins.dict[_builtins.str, Group]
-    committed: _builtins.tuple[
-        _builtins.tuple[GroupPartition, _builtins.int],
-        ...
-    ]
+    committed: _builtins.tuple[_builtins.tuple[GroupPartition, _builtins.int], ...]
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
-class Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be:
+class DataEntryDetails:
     entryOffset: _builtins.int
     entryRecord: Record
     transactional: _builtins.bool
@@ -444,14 +432,14 @@ class Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be:
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
-class Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3:
+class ControlEntryDetails:
     commits: _builtins.bool
     markerOffset: _builtins.int
     markerWriter: _builtins.int
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
-class Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee:
+class OngoingDetails:
     txnOffsets: _builtins.list[PendingOffset]
     txnPartitions: _builtins.list[TopicPartition]
 
@@ -601,21 +589,14 @@ def make_schema():
                     _schema.Constructor(
                         "lawtwin.kafka::type::ProducerRecord::ProducerRecord",
                         [
-                            _schema.Field(
-                                "destination",
-                                _schema.Named("Text"),
-                            ),
+                            _schema.Field("destination", _schema.Named("Text")),
                             _schema.Field(
                                 "choice",
-                                _schema.Named(
-                                    "lawtwin.kafka::type::PartitionChoice",
-                                ),
+                                _schema.Named("lawtwin.kafka::type::PartitionChoice"),
                             ),
                             _schema.Field(
                                 "payload",
-                                _schema.Named(
-                                    "lawtwin.kafka.model::type::Record",
-                                ),
+                                _schema.Named("lawtwin.kafka.model::type::Record"),
                             ),
                         ],
                         ProducerRecord,
@@ -632,19 +613,7 @@ def make_schema():
                             _schema.Field(
                                 "sentTo",
                                 _schema.Named(
-                                    (
-                                        "lawt"
-                                        "win."
-                                        "kafk"
-                                        "a.mo"
-                                        "del:"
-                                        ":typ"
-                                        "e::T"
-                                        "opic"
-                                        "Part"
-                                        "itio"
-                                        "n"
-                                    ),
+                                    "lawtwin.kafka.model::type::TopicPartition",
                                 ),
                             ),
                             _schema.Field("sentAt", _schema.Named("Int64")),
@@ -663,30 +632,13 @@ def make_schema():
                             _schema.Field(
                                 "receivedFrom",
                                 _schema.Named(
-                                    (
-                                        "lawt"
-                                        "win."
-                                        "kafk"
-                                        "a.mo"
-                                        "del:"
-                                        ":typ"
-                                        "e::T"
-                                        "opic"
-                                        "Part"
-                                        "itio"
-                                        "n"
-                                    ),
+                                    "lawtwin.kafka.model::type::TopicPartition",
                                 ),
                             ),
-                            _schema.Field(
-                                "receivedAt",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("receivedAt", _schema.Named("Int64")),
                             _schema.Field(
                                 "received",
-                                _schema.Named(
-                                    "lawtwin.kafka.model::type::Record",
-                                ),
+                                _schema.Named("lawtwin.kafka.model::type::Record"),
                             ),
                         ],
                         ConsumerRecord,
@@ -703,19 +655,7 @@ def make_schema():
                             _schema.Field(
                                 "lastPartition",
                                 _schema.Named(
-                                    (
-                                        "lawt"
-                                        "win."
-                                        "kafk"
-                                        "a.mo"
-                                        "del:"
-                                        ":typ"
-                                        "e::T"
-                                        "opic"
-                                        "Part"
-                                        "itio"
-                                        "n"
-                                    ),
+                                    "lawtwin.kafka.model::type::TopicPartition",
                                 ),
                             ),
                             _schema.Field(
@@ -724,18 +664,7 @@ def make_schema():
                                     "Maybe",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::P"
-                                                "rodu"
-                                                "cerT"
-                                                "ag"
-                                            ),
+                                            "lawtwin.kafka.model::type::ProducerTag",
                                         ),
                                     ],
                                 ),
@@ -746,17 +675,7 @@ def make_schema():
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::R"
-                                                "ecor"
-                                                "d"
-                                            ),
+                                            "lawtwin.kafka.model::type::Record",
                                         ),
                                     ],
                                 ),
@@ -779,20 +698,7 @@ def make_schema():
                                     "Maybe",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::P"
-                                                "rodu"
-                                                "cerI"
-                                                "dAnd"
-                                                "Epoc"
-                                                "h"
-                                            ),
+                                            "lawtwin.kafka.model::type::ProducerIdAndEpoch",
                                         ),
                                     ],
                                 ),
@@ -803,19 +709,7 @@ def make_schema():
                                     "lawspec.collections::type::KeyVal",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::T"
-                                                "opic"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::TopicPartition",
                                         ),
                                         _schema.Named("Int32"),
                                     ],
@@ -825,11 +719,7 @@ def make_schema():
                                 "lastSend",
                                 _schema.Named(
                                     "Maybe",
-                                    [
-                                        _schema.Named(
-                                            "lawtwin.kafka::type::LastSend",
-                                        ),
-                                    ],
+                                    [_schema.Named("lawtwin.kafka::type::LastSend")],
                                 ),
                             ),
                         ],
@@ -846,16 +736,10 @@ def make_schema():
                         [
                             _schema.Field(
                                 "group",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field("member", _schema.Named("Text")),
-                            _schema.Field(
-                                "generation",
-                                _schema.Named("Int32"),
-                            ),
+                            _schema.Field("generation", _schema.Named("Int32")),
                             _schema.Field(
                                 "subscription",
                                 _schema.Named("List", [_schema.Named("Text")]),
@@ -866,19 +750,7 @@ def make_schema():
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::T"
-                                                "opic"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::TopicPartition",
                                         ),
                                     ],
                                 ),
@@ -889,19 +761,7 @@ def make_schema():
                                     "lawspec.collections::type::KeyVal",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::T"
-                                                "opic"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::TopicPartition",
                                         ),
                                         _schema.Named("Int64"),
                                     ],
@@ -910,19 +770,7 @@ def make_schema():
                             _schema.Field(
                                 "isolation",
                                 _schema.Named(
-                                    (
-                                        "lawt"
-                                        "win."
-                                        "kafk"
-                                        "a.mo"
-                                        "del:"
-                                        ":typ"
-                                        "e::I"
-                                        "sola"
-                                        "tion"
-                                        "Leve"
-                                        "l"
-                                    ),
+                                    "lawtwin.kafka.model::type::IsolationLevel",
                                 ),
                             ),
                         ],
@@ -937,30 +785,14 @@ def make_schema():
                     _schema.Constructor(
                         "lawtwin.kafka::type::TransactionState::TransactionState",
                         [
-                            _schema.Field(
-                                "transactionalId",
-                                _schema.Named("Text"),
-                            ),
+                            _schema.Field("transactionalId", _schema.Named("Text")),
                             _schema.Field(
                                 "producer",
                                 _schema.Named(
                                     "Maybe",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::P"
-                                                "rodu"
-                                                "cerI"
-                                                "dAnd"
-                                                "Epoc"
-                                                "h"
-                                            ),
+                                            "lawtwin.kafka.model::type::ProducerIdAndEpoch",
                                         ),
                                     ],
                                 ),
@@ -971,66 +803,31 @@ def make_schema():
                                     "lawspec.collections::type::KeyVal",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::T"
-                                                "opic"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::TopicPartition",
                                         ),
                                         _schema.Named("Int32"),
                                     ],
                                 ),
                             ),
-                            _schema.Field(
-                                "inTransaction",
-                                _schema.Named("Bool"),
-                            ),
+                            _schema.Field("inTransaction", _schema.Named("Bool")),
                             _schema.Field(
                                 "added",
                                 _schema.Named(
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::T"
-                                                "opic"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::TopicPartition",
                                         ),
                                     ],
                                 ),
                             ),
-                            _schema.Field(
-                                "offsetsSent",
-                                _schema.Named("Bool"),
-                            ),
+                            _schema.Field("offsetsSent", _schema.Named("Bool")),
                         ],
                         TransactionState,
                     ),
                 ],
             ),
-            _schema.Definition(
-                "lawtwin.kafka::type::Cluster",
-                0,
-                [],
-                handle=True,
-            ),
+            _schema.Definition("lawtwin.kafka::type::Cluster", 0, [], handle=True),
             _schema.Definition(
                 "lawtwin.kafka.model::type::TopicPartition",
                 0,
@@ -1178,10 +975,7 @@ def make_schema():
                             _schema.Field("name", _schema.Named("Text")),
                             _schema.Field(
                                 "content",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Bytes")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Bytes")]),
                             ),
                         ],
                         Header,
@@ -1197,17 +991,11 @@ def make_schema():
                         [
                             _schema.Field(
                                 "key",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Bytes")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Bytes")]),
                             ),
                             _schema.Field(
                                 "value",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Bytes")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Bytes")]),
                             ),
                             _schema.Field(
                                 "headers",
@@ -1215,17 +1003,7 @@ def make_schema():
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::H"
-                                                "eade"
-                                                "r"
-                                            ),
+                                            "lawtwin.kafka.model::type::Header",
                                         ),
                                     ],
                                 ),
@@ -1242,18 +1020,9 @@ def make_schema():
                     _schema.Constructor(
                         "lawtwin.kafka.model::type::ProducerTag::ProducerTag",
                         [
-                            _schema.Field(
-                                "producerId",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field(
-                                "producerEpoch",
-                                _schema.Named("Int16"),
-                            ),
-                            _schema.Field(
-                                "baseSequence",
-                                _schema.Named("Int32"),
-                            ),
+                            _schema.Field("producerId", _schema.Named("Int64")),
+                            _schema.Field("producerEpoch", _schema.Named("Int16")),
+                            _schema.Field("baseSequence", _schema.Named("Int32")),
                         ],
                         ProducerTag,
                     ),
@@ -1266,14 +1035,8 @@ def make_schema():
                     _schema.Constructor(
                         "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch",
                         [
-                            _schema.Field(
-                                "producerId",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field(
-                                "producerEpoch",
-                                _schema.Named("Int16"),
-                            ),
+                            _schema.Field("producerId", _schema.Named("Int64")),
+                            _schema.Field("producerEpoch", _schema.Named("Int16")),
                         ],
                         ProducerIdAndEpoch,
                     ),
@@ -1289,9 +1052,7 @@ def make_schema():
                             _schema.Field("offset", _schema.Named("Int64")),
                             _schema.Field(
                                 "entry",
-                                _schema.Named(
-                                    "lawtwin.kafka.model::type::Record",
-                                ),
+                                _schema.Named("lawtwin.kafka.model::type::Record"),
                             ),
                         ],
                         FetchedRecord,
@@ -1311,34 +1072,14 @@ def make_schema():
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::F"
-                                                "etch"
-                                                "edRe"
-                                                "cord"
-                                            ),
+                                            "lawtwin.kafka.model::type::FetchedRecord",
                                         ),
                                     ],
                                 ),
                             ),
-                            _schema.Field(
-                                "nextOffset",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field(
-                                "highWatermark",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field(
-                                "lastStableOffset",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("nextOffset", _schema.Named("Int64")),
+                            _schema.Field("highWatermark", _schema.Named("Int64")),
+                            _schema.Field("lastStableOffset", _schema.Named("Int64")),
                         ],
                         FetchResult,
                     ),
@@ -1354,19 +1095,7 @@ def make_schema():
                             _schema.Field(
                                 "topicPartition",
                                 _schema.Named(
-                                    (
-                                        "lawt"
-                                        "win."
-                                        "kafk"
-                                        "a.mo"
-                                        "del:"
-                                        ":typ"
-                                        "e::T"
-                                        "opic"
-                                        "Part"
-                                        "itio"
-                                        "n"
-                                    ),
+                                    "lawtwin.kafka.model::type::TopicPartition",
                                 ),
                             ),
                             _schema.Field("offset", _schema.Named("Int64")),
@@ -1389,19 +1118,7 @@ def make_schema():
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::T"
-                                                "opic"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::TopicPartition",
                                         ),
                                     ],
                                 ),
@@ -1418,29 +1135,14 @@ def make_schema():
                     _schema.Constructor(
                         "lawtwin.kafka.model::type::GroupView::GroupView",
                         [
-                            _schema.Field(
-                                "generation",
-                                _schema.Named("Int32"),
-                            ),
+                            _schema.Field("generation", _schema.Named("Int32")),
                             _schema.Field(
                                 "members",
                                 _schema.Named(
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::M"
-                                                "embe"
-                                                "rAss"
-                                                "ignm"
-                                                "ent"
-                                            ),
+                                            "lawtwin.kafka.model::type::MemberAssignment",
                                         ),
                                     ],
                                 ),
@@ -1460,32 +1162,7 @@ def make_schema():
                             _schema.Field(
                                 "value",
                                 _schema.Named(
-                                    (
-                                        "laws"
-                                        "pec:"
-                                        ":str"
-                                        "uctu"
-                                        "ral:"
-                                        ":rec"
-                                        "ord:"
-                                        ":71d"
-                                        "dc69"
-                                        "2ac9"
-                                        "521d"
-                                        "9d1f"
-                                        "5404"
-                                        "c573"
-                                        "37ef"
-                                        "3fb4"
-                                        "c795"
-                                        "693e"
-                                        "c774"
-                                        "d544"
-                                        "3d94"
-                                        "5ea3"
-                                        "4e0b"
-                                        "e"
-                                    ),
+                                    "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be",
                                 ),
                             ),
                         ],
@@ -1497,32 +1174,7 @@ def make_schema():
                             _schema.Field(
                                 "value",
                                 _schema.Named(
-                                    (
-                                        "laws"
-                                        "pec:"
-                                        ":str"
-                                        "uctu"
-                                        "ral:"
-                                        ":rec"
-                                        "ord:"
-                                        ":25c"
-                                        "3f95"
-                                        "0e34"
-                                        "31c9"
-                                        "1cee"
-                                        "db89"
-                                        "b1ad"
-                                        "b06d"
-                                        "a7d2"
-                                        "d7d2"
-                                        "0322"
-                                        "b03e"
-                                        "1f64"
-                                        "f634"
-                                        "18e4"
-                                        "5d7e"
-                                        "3"
-                                    ),
+                                    "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3",
                                 ),
                             ),
                         ],
@@ -1537,18 +1189,9 @@ def make_schema():
                     _schema.Constructor(
                         "lawtwin.kafka.model::type::AbortedTxn::AbortedTxn",
                         [
-                            _schema.Field(
-                                "abortedWriter",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field(
-                                "firstOffset",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field(
-                                "lastOffset",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("abortedWriter", _schema.Named("Int64")),
+                            _schema.Field("firstOffset", _schema.Named("Int64")),
+                            _schema.Field("lastOffset", _schema.Named("Int64")),
                         ],
                         AbortedTxn,
                     ),
@@ -1561,22 +1204,10 @@ def make_schema():
                     _schema.Constructor(
                         "lawtwin.kafka.model::type::BatchMeta::BatchMeta",
                         [
-                            _schema.Field(
-                                "batchEpoch",
-                                _schema.Named("Int16"),
-                            ),
-                            _schema.Field(
-                                "firstSequence",
-                                _schema.Named("Int32"),
-                            ),
-                            _schema.Field(
-                                "lastSequence",
-                                _schema.Named("Int32"),
-                            ),
-                            _schema.Field(
-                                "batchOffset",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("batchEpoch", _schema.Named("Int16")),
+                            _schema.Field("firstSequence", _schema.Named("Int32")),
+                            _schema.Field("lastSequence", _schema.Named("Int32")),
+                            _schema.Field("batchOffset", _schema.Named("Int64")),
                         ],
                         BatchMeta,
                     ),
@@ -1595,33 +1226,17 @@ def make_schema():
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::L"
-                                                "ogEn"
-                                                "try"
-                                            ),
+                                            "lawtwin.kafka.model::type::LogEntry",
                                         ),
                                     ],
                                 ),
                             ),
-                            _schema.Field(
-                                "logEndOffset",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("logEndOffset", _schema.Named("Int64")),
                             _schema.Field(
                                 "openTxns",
                                 _schema.Named(
                                     "lawspec.collections::type::KeyVal",
-                                    [
-                                        _schema.Named("Int64"),
-                                        _schema.Named("Int64"),
-                                    ],
+                                    [_schema.Named("Int64"), _schema.Named("Int64")],
                                 ),
                             ),
                             _schema.Field(
@@ -1630,18 +1245,7 @@ def make_schema():
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::A"
-                                                "bort"
-                                                "edTx"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::AbortedTxn",
                                         ),
                                     ],
                                 ),
@@ -1656,17 +1260,7 @@ def make_schema():
                                             "List",
                                             [
                                                 _schema.Named(
-                                                    (
-                                                        "lawt"
-                                                        "win."
-                                                        "kafk"
-                                                        "a.mo"
-                                                        "del:"
-                                                        ":typ"
-                                                        "e::B"
-                                                        "atch"
-                                                        "Meta"
-                                                    ),
+                                                    "lawtwin.kafka.model::type::BatchMeta",
                                                 ),
                                             ],
                                         ),
@@ -1685,15 +1279,10 @@ def make_schema():
                     _schema.Constructor(
                         "lawtwin.kafka.model::type::PendingOffset::PendingOffset",
                         [
-                            _schema.Field(
-                                "pendingGroup",
-                                _schema.Named("Text"),
-                            ),
+                            _schema.Field("pendingGroup", _schema.Named("Text")),
                             _schema.Field(
                                 "pendingEntry",
-                                _schema.Named(
-                                    "lawtwin.kafka.model::type::OffsetEntry",
-                                ),
+                                _schema.Named("lawtwin.kafka.model::type::OffsetEntry"),
                             ),
                         ],
                         PendingOffset,
@@ -1715,32 +1304,7 @@ def make_schema():
                             _schema.Field(
                                 "value",
                                 _schema.Named(
-                                    (
-                                        "laws"
-                                        "pec:"
-                                        ":str"
-                                        "uctu"
-                                        "ral:"
-                                        ":rec"
-                                        "ord:"
-                                        ":d32"
-                                        "5eb2"
-                                        "8450"
-                                        "b9e0"
-                                        "9a62"
-                                        "7168"
-                                        "741f"
-                                        "b2db"
-                                        "9ff0"
-                                        "8256"
-                                        "d915"
-                                        "4032"
-                                        "ca57"
-                                        "f8e9"
-                                        "7660"
-                                        "258e"
-                                        "e"
-                                    ),
+                                    "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee",
                                 ),
                             ),
                         ],
@@ -1758,16 +1322,11 @@ def make_schema():
                             _schema.Field("epoch", _schema.Named("Int16")),
                             _schema.Field(
                                 "transactionalId",
-                                _schema.Named(
-                                    "Maybe",
-                                    [_schema.Named("Text")],
-                                ),
+                                _schema.Named("Maybe", [_schema.Named("Text")]),
                             ),
                             _schema.Field(
                                 "txn",
-                                _schema.Named(
-                                    "lawtwin.kafka.model::type::TxnState",
-                                ),
+                                _schema.Named("lawtwin.kafka.model::type::TxnState"),
                             ),
                         ],
                         ProducerEntry,
@@ -1781,20 +1340,14 @@ def make_schema():
                     _schema.Constructor(
                         "lawtwin.kafka.model::type::Group::Group",
                         [
-                            _schema.Field(
-                                "groupGeneration",
-                                _schema.Named("Int32"),
-                            ),
+                            _schema.Field("groupGeneration", _schema.Named("Int32")),
                             _schema.Field(
                                 "subscriptions",
                                 _schema.Named(
                                     "lawspec.collections::type::KeyVal",
                                     [
                                         _schema.Named("Text"),
-                                        _schema.Named(
-                                            "List",
-                                            [_schema.Named("Text")],
-                                        ),
+                                        _schema.Named("List", [_schema.Named("Text")]),
                                     ],
                                 ),
                             ),
@@ -1808,19 +1361,7 @@ def make_schema():
                                             "List",
                                             [
                                                 _schema.Named(
-                                                    (
-                                                        "lawt"
-                                                        "win."
-                                                        "kafk"
-                                                        "a.mo"
-                                                        "del:"
-                                                        ":typ"
-                                                        "e::T"
-                                                        "opic"
-                                                        "Part"
-                                                        "itio"
-                                                        "n"
-                                                    ),
+                                                    "lawtwin.kafka.model::type::TopicPartition",
                                                 ),
                                             ],
                                         ),
@@ -1843,19 +1384,7 @@ def make_schema():
                             _schema.Field(
                                 "groupPartition",
                                 _schema.Named(
-                                    (
-                                        "lawt"
-                                        "win."
-                                        "kafk"
-                                        "a.mo"
-                                        "del:"
-                                        ":typ"
-                                        "e::T"
-                                        "opic"
-                                        "Part"
-                                        "itio"
-                                        "n"
-                                    ),
+                                    "lawtwin.kafka.model::type::TopicPartition",
                                 ),
                             ),
                         ],
@@ -1874,10 +1403,7 @@ def make_schema():
                                 "topics",
                                 _schema.Named(
                                     "lawspec.collections::type::KeyVal",
-                                    [
-                                        _schema.Named("Text"),
-                                        _schema.Named("Int32"),
-                                    ],
+                                    [_schema.Named("Text"), _schema.Named("Int32")],
                                 ),
                             ),
                             _schema.Field(
@@ -1886,33 +1412,10 @@ def make_schema():
                                     "lawspec.collections::type::KeyVal",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::T"
-                                                "opic"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::TopicPartition",
                                         ),
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::P"
-                                                "arti"
-                                                "tion"
-                                                "Log"
-                                            ),
+                                            "lawtwin.kafka.model::type::PartitionLog",
                                         ),
                                     ],
                                 ),
@@ -1924,18 +1427,7 @@ def make_schema():
                                     [
                                         _schema.Named("Int64"),
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::P"
-                                                "rodu"
-                                                "cerE"
-                                                "ntry"
-                                            ),
+                                            "lawtwin.kafka.model::type::ProducerEntry",
                                         ),
                                     ],
                                 ),
@@ -1944,16 +1436,10 @@ def make_schema():
                                 "transactionalIds",
                                 _schema.Named(
                                     "lawspec.collections::type::KeyVal",
-                                    [
-                                        _schema.Named("Text"),
-                                        _schema.Named("Int64"),
-                                    ],
+                                    [_schema.Named("Text"), _schema.Named("Int64")],
                                 ),
                             ),
-                            _schema.Field(
-                                "nextProducerId",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("nextProducerId", _schema.Named("Int64")),
                             _schema.Field(
                                 "groups",
                                 _schema.Named(
@@ -1972,19 +1458,7 @@ def make_schema():
                                     "lawspec.collections::type::KeyVal",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::G"
-                                                "roup"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::GroupPartition",
                                         ),
                                         _schema.Named("Int64"),
                                     ],
@@ -2002,23 +1476,15 @@ def make_schema():
                     _schema.Constructor(
                         "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record",
                         [
-                            _schema.Field(
-                                "entryOffset",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("entryOffset", _schema.Named("Int64")),
                             _schema.Field(
                                 "entryRecord",
-                                _schema.Named(
-                                    "lawtwin.kafka.model::type::Record",
-                                ),
+                                _schema.Named("lawtwin.kafka.model::type::Record"),
                             ),
-                            _schema.Field(
-                                "transactional",
-                                _schema.Named("Bool"),
-                            ),
+                            _schema.Field("transactional", _schema.Named("Bool")),
                             _schema.Field("writer", _schema.Named("Int64")),
                         ],
-                        Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be,
+                        DataEntryDetails,
                     ),
                 ],
             ),
@@ -2030,16 +1496,10 @@ def make_schema():
                         "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record",
                         [
                             _schema.Field("commits", _schema.Named("Bool")),
-                            _schema.Field(
-                                "markerOffset",
-                                _schema.Named("Int64"),
-                            ),
-                            _schema.Field(
-                                "markerWriter",
-                                _schema.Named("Int64"),
-                            ),
+                            _schema.Field("markerOffset", _schema.Named("Int64")),
+                            _schema.Field("markerWriter", _schema.Named("Int64")),
                         ],
-                        Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3,
+                        ControlEntryDetails,
                     ),
                 ],
             ),
@@ -2056,18 +1516,7 @@ def make_schema():
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::P"
-                                                "endi"
-                                                "ngOf"
-                                                "fset"
-                                            ),
+                                            "lawtwin.kafka.model::type::PendingOffset",
                                         ),
                                     ],
                                 ),
@@ -2078,25 +1527,13 @@ def make_schema():
                                     "List",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.mo"
-                                                "del:"
-                                                ":typ"
-                                                "e::T"
-                                                "opic"
-                                                "Part"
-                                                "itio"
-                                                "n"
-                                            ),
+                                            "lawtwin.kafka.model::type::TopicPartition",
                                         ),
                                     ],
                                 ),
                             ),
                         ],
-                        Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee,
+                        OngoingDetails,
                     ),
                 ],
             ),

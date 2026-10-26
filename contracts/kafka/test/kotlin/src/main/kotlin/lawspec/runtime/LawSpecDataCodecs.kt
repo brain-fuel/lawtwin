@@ -70,11 +70,8 @@ object LawSpecDataCodecs {
         type1: Codec<T1>,
         symbols: MutableMap<String, Any> = mutableMapOf(),
     ): Codec<lawspec.data.Entry<T0, T1>> {
-        val type = LawSpecSchema.Named(
-            "lawspec.collections::type::Entry",
-            type0.type(),
-            type1.type(),
-        )
+        val type =
+            LawSpecSchema.Named("lawspec.collections::type::Entry", type0.type(), type1.type())
         return schema.codec<lawspec.data.Entry<T0, T1>>(
             type,
             bits,
@@ -125,11 +122,8 @@ object LawSpecDataCodecs {
         type1: Codec<T1>,
         symbols: MutableMap<String, Any> = mutableMapOf(),
     ): Codec<lawspec.data.Pair<T0, T1>> {
-        val type = LawSpecSchema.Named(
-            "lawspec.collections::type::Pair",
-            type0.type(),
-            type1.type(),
-        )
+        val type =
+            LawSpecSchema.Named("lawspec.collections::type::Pair", type0.type(), type1.type())
         return schema.codec<lawspec.data.Pair<T0, T1>>(
             type,
             bits,
@@ -194,7 +188,7 @@ object LawSpecDataCodecs {
                             field0,
                             value.value,
                             "lawspec.collections::type::EqSet::EqSetItems.value",
-                        ),
+                        )
                     ),
                     bits,
                     symbols,
@@ -233,7 +227,7 @@ object LawSpecDataCodecs {
                             field0,
                             value.pattern,
                             "lawspec.matchers::type::Regex::Regex.pattern",
-                        ),
+                        )
                     ),
                     bits,
                     symbols,
@@ -243,11 +237,8 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawspec.matchers::type::Regex::Regex" -> {
-                        val field0 = schema.scalar(
-                            "Text",
-                            bits,
-                            kotlin.String::class.javaObjectType,
-                        )
+                        val field0 =
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
                         lawspec.data.Regex(field0.decode(data.fields()[0]))
                     }
                     else -> throw IllegalArgumentException("uninhabited or invalid native data")
@@ -278,7 +269,7 @@ object LawSpecDataCodecs {
                                     field0,
                                     value.value,
                                     "lawtwin.kafka::type::PartitionChoice::ToPartition.value",
-                                ),
+                                )
                             ),
                             bits,
                             symbols,
@@ -353,11 +344,8 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka::type::ProducerRecord::ProducerRecord" -> {
-                        val field0 = schema.scalar(
-                            "Text",
-                            bits,
-                            kotlin.String::class.javaObjectType,
-                        )
+                        val field0 =
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
                         val field1 = LawSpecDataCodecs.partitionChoiceCodec(schema, bits, symbols)
                         val field2 = LawSpecDataCodecs.recordCodec(schema, bits, symbols)
                         lawspec.data.ProducerRecord(
@@ -490,16 +478,14 @@ object LawSpecDataCodecs {
             symbols,
             { value ->
                 val field0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-                val field1 = schema.maybe(
-                    LawSpecDataCodecs.producerTagCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-                val field2 = schema.list(
-                    LawSpecDataCodecs.recordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
+                val field1 =
+                    schema.maybe(
+                        LawSpecDataCodecs.producerTagCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
+                val field2 =
+                    schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
                 schema.construct(
                     type,
                     "lawtwin.kafka::type::LastSend::LastSend",
@@ -529,16 +515,18 @@ object LawSpecDataCodecs {
                 when (data.tag()) {
                     "lawtwin.kafka::type::LastSend::LastSend" -> {
                         val field0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-                        val field1 = schema.maybe(
-                            LawSpecDataCodecs.producerTagCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
-                        val field2 = schema.list(
-                            LawSpecDataCodecs.recordCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
+                        val field1 =
+                            schema.maybe(
+                                LawSpecDataCodecs.producerTagCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
+                        val field2 =
+                            schema.list(
+                                LawSpecDataCodecs.recordCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
                         lawspec.data.LastSend(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -562,23 +550,26 @@ object LawSpecDataCodecs {
             bits,
             symbols,
             { value ->
-                val field0 = schema.maybe(
-                    LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-                val field1 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-                val field2 = schema.maybe(
-                    LawSpecDataCodecs.lastSendCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
+                val field0 =
+                    schema.maybe(
+                        LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
+                val field1 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
+                        symbols,
+                    )
+                val field2 =
+                    schema.maybe(
+                        LawSpecDataCodecs.lastSendCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
                 schema.construct(
                     type,
                     "lawtwin.kafka::type::ProducerState::ProducerState",
@@ -607,23 +598,26 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka::type::ProducerState::ProducerState" -> {
-                        val field0 = schema.maybe(
-                            LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
-                        val field1 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                            symbols,
-                        )
-                        val field2 = schema.maybe(
-                            LawSpecDataCodecs.lastSendCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
+                        val field0 =
+                            schema.maybe(
+                                LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
+                        val field1 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
+                                symbols,
+                            )
+                        val field2 =
+                            schema.maybe(
+                                LawSpecDataCodecs.lastSendCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
                         lawspec.data.ProducerState(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -647,30 +641,34 @@ object LawSpecDataCodecs {
             bits,
             symbols,
             { value ->
-                val field0 = schema.maybe(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
+                val field0 =
+                    schema.maybe(
+                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                        bits,
+                        symbols,
+                    )
                 val field1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
                 val field2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-                val field3 = schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-                val field4 = schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-                val field5 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
+                val field3 =
+                    schema.list(
+                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                        bits,
+                        symbols,
+                    )
+                val field4 =
+                    schema.list(
+                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
+                val field5 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                        symbols,
+                    )
                 val field6 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
                 schema.construct(
                     type,
@@ -720,34 +718,35 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka::type::ConsumerState::ConsumerState" -> {
-                        val field0 = schema.maybe(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        )
-                        val field1 = schema.scalar(
-                            "Text",
-                            bits,
-                            kotlin.String::class.javaObjectType,
-                        )
+                        val field0 =
+                            schema.maybe(
+                                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                                bits,
+                                symbols,
+                            )
+                        val field1 =
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
                         val field2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-                        val field3 = schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        )
-                        val field4 = schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
-                        val field5 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                            symbols,
-                        )
+                        val field3 =
+                            schema.list(
+                                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                                bits,
+                                symbols,
+                            )
+                        val field4 =
+                            schema.list(
+                                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
+                        val field5 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                                symbols,
+                            )
                         val field6 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
                         lawspec.data.ConsumerState(
                             field0.decode(data.fields()[0]),
@@ -777,24 +776,27 @@ object LawSpecDataCodecs {
             symbols,
             { value ->
                 val field0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-                val field1 = schema.maybe(
-                    LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-                val field2 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
+                val field1 =
+                    schema.maybe(
+                        LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
+                val field2 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
+                        symbols,
+                    )
                 val field3 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-                val field4 = schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
+                val field4 =
+                    schema.list(
+                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
                 val field5 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
                 schema.construct(
                     type,
@@ -839,38 +841,32 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka::type::TransactionState::TransactionState" -> {
-                        val field0 = schema.scalar(
-                            "Text",
-                            bits,
-                            kotlin.String::class.javaObjectType,
-                        )
-                        val field1 = schema.maybe(
-                            LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
-                        val field2 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                            symbols,
-                        )
-                        val field3 = schema.scalar(
-                            "Bool",
-                            bits,
-                            kotlin.Boolean::class.javaObjectType,
-                        )
-                        val field4 = schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
-                        val field5 = schema.scalar(
-                            "Bool",
-                            bits,
-                            kotlin.Boolean::class.javaObjectType,
-                        )
+                        val field0 =
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
+                        val field1 =
+                            schema.maybe(
+                                LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
+                        val field2 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
+                                symbols,
+                            )
+                        val field3 =
+                            schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
+                        val field4 =
+                            schema.list(
+                                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
+                        val field5 =
+                            schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
                         lawspec.data.TransactionState(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -937,11 +933,8 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::TopicPartition::TopicPartition" -> {
-                        val field0 = schema.scalar(
-                            "Text",
-                            bits,
-                            kotlin.String::class.javaObjectType,
-                        )
+                        val field0 =
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
                         val field1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
                         lawspec.data.TopicPartition(
                             field0.decode(data.fields()[0]),
@@ -1287,11 +1280,12 @@ object LawSpecDataCodecs {
             symbols,
             { value ->
                 val field0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-                val field1 = schema.maybe(
-                    schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
+                val field1 =
+                    schema.maybe(
+                        schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
+                        bits,
+                        symbols,
+                    )
                 schema.construct(
                     type,
                     "lawtwin.kafka.model::type::Header::Header",
@@ -1315,16 +1309,18 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::Header::Header" -> {
-                        val field0 = schema.scalar(
-                            "Text",
-                            bits,
-                            kotlin.String::class.javaObjectType,
-                        )
-                        val field1 = schema.maybe(
-                            schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
-                            bits,
-                            symbols,
-                        )
+                        val field0 =
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
+                        val field1 =
+                            schema.maybe(
+                                schema.scalar(
+                                    "Bytes",
+                                    bits,
+                                    kotlin.ByteArray::class.javaObjectType,
+                                ),
+                                bits,
+                                symbols,
+                            )
                         lawspec.data.Header(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -1347,21 +1343,20 @@ object LawSpecDataCodecs {
             bits,
             symbols,
             { value ->
-                val field0 = schema.maybe(
-                    schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-                val field1 = schema.maybe(
-                    schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-                val field2 = schema.list(
-                    LawSpecDataCodecs.headerCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
+                val field0 =
+                    schema.maybe(
+                        schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
+                        bits,
+                        symbols,
+                    )
+                val field1 =
+                    schema.maybe(
+                        schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
+                        bits,
+                        symbols,
+                    )
+                val field2 =
+                    schema.list(LawSpecDataCodecs.headerCodec(schema, bits, symbols), bits, symbols)
                 schema.construct(
                     type,
                     "lawtwin.kafka.model::type::Record::Record",
@@ -1390,21 +1385,32 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::Record::Record" -> {
-                        val field0 = schema.maybe(
-                            schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
-                            bits,
-                            symbols,
-                        )
-                        val field1 = schema.maybe(
-                            schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
-                            bits,
-                            symbols,
-                        )
-                        val field2 = schema.list(
-                            LawSpecDataCodecs.headerCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
+                        val field0 =
+                            schema.maybe(
+                                schema.scalar(
+                                    "Bytes",
+                                    bits,
+                                    kotlin.ByteArray::class.javaObjectType,
+                                ),
+                                bits,
+                                symbols,
+                            )
+                        val field1 =
+                            schema.maybe(
+                                schema.scalar(
+                                    "Bytes",
+                                    bits,
+                                    kotlin.ByteArray::class.javaObjectType,
+                                ),
+                                bits,
+                                symbols,
+                            )
+                        val field2 =
+                            schema.list(
+                                LawSpecDataCodecs.headerCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
                         lawspec.data.Record(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -1460,11 +1466,8 @@ object LawSpecDataCodecs {
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::ProducerTag::ProducerTag" -> {
                         val field0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-                        val field1 = schema.scalar(
-                            "Int16",
-                            bits,
-                            kotlin.Short::class.javaObjectType,
-                        )
+                        val field1 =
+                            schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
                         val field2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
                         lawspec.data.ProducerTag(
                             field0.decode(data.fields()[0]),
@@ -1515,11 +1518,8 @@ object LawSpecDataCodecs {
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch" -> {
                         val field0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-                        val field1 = schema.scalar(
-                            "Int16",
-                            bits,
-                            kotlin.Short::class.javaObjectType,
-                        )
+                        val field1 =
+                            schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
                         lawspec.data.ProducerIdAndEpoch(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -1591,11 +1591,12 @@ object LawSpecDataCodecs {
             bits,
             symbols,
             { value ->
-                val field0 = schema.list(
-                    LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
+                val field0 =
+                    schema.list(
+                        LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
                 val field1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
                 val field2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
                 val field3 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
@@ -1632,11 +1633,12 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::FetchResult::FetchResult" -> {
-                        val field0 = schema.list(
-                            LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
+                        val field0 =
+                            schema.list(
+                                LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
                         val field1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
                         val field2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
                         val field3 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
@@ -1714,11 +1716,12 @@ object LawSpecDataCodecs {
             symbols,
             { value ->
                 val field0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-                val field1 = schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
+                val field1 =
+                    schema.list(
+                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
                 schema.construct(
                     type,
                     "lawtwin.kafka.model::type::MemberAssignment::MemberAssignment",
@@ -1742,16 +1745,14 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::MemberAssignment::MemberAssignment" -> {
-                        val field0 = schema.scalar(
-                            "Text",
-                            bits,
-                            kotlin.String::class.javaObjectType,
-                        )
-                        val field1 = schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
+                        val field0 =
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
+                        val field1 =
+                            schema.list(
+                                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
                         lawspec.data.MemberAssignment(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -1775,11 +1776,12 @@ object LawSpecDataCodecs {
             symbols,
             { value ->
                 val field0 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-                val field1 = schema.list(
-                    LawSpecDataCodecs.memberAssignmentCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
+                val field1 =
+                    schema.list(
+                        LawSpecDataCodecs.memberAssignmentCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
                 schema.construct(
                     type,
                     "lawtwin.kafka.model::type::GroupView::GroupView",
@@ -1804,11 +1806,12 @@ object LawSpecDataCodecs {
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::GroupView::GroupView" -> {
                         val field0 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-                        val field1 = schema.list(
-                            LawSpecDataCodecs.memberAssignmentCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
+                        val field1 =
+                            schema.list(
+                                LawSpecDataCodecs.memberAssignmentCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
                         lawspec.data.GroupView(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -1833,11 +1836,7 @@ object LawSpecDataCodecs {
             { value ->
                 when (value) {
                     is lawspec.data.LogEntry.DataEntry -> {
-                        val field0 = LawSpecDataCodecs.record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(
-                            schema,
-                            bits,
-                            symbols,
-                        )
+                        val field0 = LawSpecDataCodecs.dataEntryDetailsCodec(schema, bits, symbols)
                         schema.construct(
                             type,
                             "lawtwin.kafka.model::type::LogEntry::DataEntry",
@@ -1846,18 +1845,15 @@ object LawSpecDataCodecs {
                                     field0,
                                     value.value,
                                     "lawtwin.kafka.model::type::LogEntry::DataEntry.value",
-                                ),
+                                )
                             ),
                             bits,
                             symbols,
                         )
                     }
                     is lawspec.data.LogEntry.ControlEntry -> {
-                        val field0 = LawSpecDataCodecs.record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(
-                            schema,
-                            bits,
-                            symbols,
-                        )
+                        val field0 =
+                            LawSpecDataCodecs.controlEntryDetailsCodec(schema, bits, symbols)
                         schema.construct(
                             type,
                             "lawtwin.kafka.model::type::LogEntry::ControlEntry",
@@ -1866,7 +1862,7 @@ object LawSpecDataCodecs {
                                     field0,
                                     value.value,
                                     "lawtwin.kafka.model::type::LogEntry::ControlEntry.value",
-                                ),
+                                )
                             ),
                             bits,
                             symbols,
@@ -1878,19 +1874,12 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::LogEntry::DataEntry" -> {
-                        val field0 = LawSpecDataCodecs.record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(
-                            schema,
-                            bits,
-                            symbols,
-                        )
+                        val field0 = LawSpecDataCodecs.dataEntryDetailsCodec(schema, bits, symbols)
                         lawspec.data.LogEntry.DataEntry(field0.decode(data.fields()[0]))
                     }
                     "lawtwin.kafka.model::type::LogEntry::ControlEntry" -> {
-                        val field0 = LawSpecDataCodecs.record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(
-                            schema,
-                            bits,
-                            symbols,
-                        )
+                        val field0 =
+                            LawSpecDataCodecs.controlEntryDetailsCodec(schema, bits, symbols)
                         lawspec.data.LogEntry.ControlEntry(field0.decode(data.fields()[0]))
                     }
                     else -> throw IllegalArgumentException("uninhabited or invalid native data")
@@ -2004,11 +1993,8 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::BatchMeta::BatchMeta" -> {
-                        val field0 = schema.scalar(
-                            "Int16",
-                            bits,
-                            kotlin.Short::class.javaObjectType,
-                        )
+                        val field0 =
+                            schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
                         val field1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
                         val field2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
                         val field3 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
@@ -2036,35 +2022,39 @@ object LawSpecDataCodecs {
             bits,
             symbols,
             { value ->
-                val field0 = schema.list(
-                    LawSpecDataCodecs.logEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-                val field1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-                val field2 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-                val field3 = schema.list(
-                    LawSpecDataCodecs.abortedTxnCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-                val field4 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                val field0 =
                     schema.list(
-                        LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
+                        LawSpecDataCodecs.logEntryCodec(schema, bits, symbols),
                         bits,
                         symbols,
-                    ),
-                    symbols,
-                )
+                    )
+                val field1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
+                val field2 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                        symbols,
+                    )
+                val field3 =
+                    schema.list(
+                        LawSpecDataCodecs.abortedTxnCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
+                val field4 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                        schema.list(
+                            LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
+                            bits,
+                            symbols,
+                        ),
+                        symbols,
+                    )
                 schema.construct(
                     type,
                     "lawtwin.kafka.model::type::PartitionLog::PartitionLog",
@@ -2103,35 +2093,39 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::PartitionLog::PartitionLog" -> {
-                        val field0 = schema.list(
-                            LawSpecDataCodecs.logEntryCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
-                        val field1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-                        val field2 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                            symbols,
-                        )
-                        val field3 = schema.list(
-                            LawSpecDataCodecs.abortedTxnCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
-                        val field4 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                        val field0 =
                             schema.list(
-                                LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
+                                LawSpecDataCodecs.logEntryCodec(schema, bits, symbols),
                                 bits,
                                 symbols,
-                            ),
-                            symbols,
-                        )
+                            )
+                        val field1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
+                        val field2 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                                symbols,
+                            )
+                        val field3 =
+                            schema.list(
+                                LawSpecDataCodecs.abortedTxnCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
+                        val field4 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                                schema.list(
+                                    LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
+                                    bits,
+                                    symbols,
+                                ),
+                                symbols,
+                            )
                         lawspec.data.PartitionLog(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -2182,11 +2176,8 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::PendingOffset::PendingOffset" -> {
-                        val field0 = schema.scalar(
-                            "Text",
-                            bits,
-                            kotlin.String::class.javaObjectType,
-                        )
+                        val field0 =
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
                         val field1 = LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols)
                         lawspec.data.PendingOffset(
                             field0.decode(data.fields()[0]),
@@ -2221,11 +2212,7 @@ object LawSpecDataCodecs {
                         )
                     }
                     is lawspec.data.TxnState.Ongoing -> {
-                        val field0 = LawSpecDataCodecs.recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(
-                            schema,
-                            bits,
-                            symbols,
-                        )
+                        val field0 = LawSpecDataCodecs.ongoingDetailsCodec(schema, bits, symbols)
                         schema.construct(
                             type,
                             "lawtwin.kafka.model::type::TxnState::Ongoing",
@@ -2234,7 +2221,7 @@ object LawSpecDataCodecs {
                                     field0,
                                     value.value,
                                     "lawtwin.kafka.model::type::TxnState::Ongoing.value",
-                                ),
+                                )
                             ),
                             bits,
                             symbols,
@@ -2249,11 +2236,7 @@ object LawSpecDataCodecs {
                         lawspec.data.TxnState.NoTxn
                     }
                     "lawtwin.kafka.model::type::TxnState::Ongoing" -> {
-                        val field0 = LawSpecDataCodecs.recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(
-                            schema,
-                            bits,
-                            symbols,
-                        )
+                        val field0 = LawSpecDataCodecs.ongoingDetailsCodec(schema, bits, symbols)
                         lawspec.data.TxnState.Ongoing(field0.decode(data.fields()[0]))
                     }
                     else -> throw IllegalArgumentException("uninhabited or invalid native data")
@@ -2274,11 +2257,12 @@ object LawSpecDataCodecs {
             symbols,
             { value ->
                 val field0 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-                val field1 = schema.maybe(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
+                val field1 =
+                    schema.maybe(
+                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                        bits,
+                        symbols,
+                    )
                 val field2 = LawSpecDataCodecs.txnStateCodec(schema, bits, symbols)
                 schema.construct(
                     type,
@@ -2308,16 +2292,14 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry" -> {
-                        val field0 = schema.scalar(
-                            "Int16",
-                            bits,
-                            kotlin.Short::class.javaObjectType,
-                        )
-                        val field1 = schema.maybe(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        )
+                        val field0 =
+                            schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
+                        val field1 =
+                            schema.maybe(
+                                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                                bits,
+                                symbols,
+                            )
                         val field2 = LawSpecDataCodecs.txnStateCodec(schema, bits, symbols)
                         lawspec.data.ProducerEntry(
                             field0.decode(data.fields()[0]),
@@ -2343,28 +2325,30 @@ object LawSpecDataCodecs {
             symbols,
             { value ->
                 val field0 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-                val field1 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
+                val field1 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
                         schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
+                        schema.list(
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                            bits,
+                            symbols,
+                        ),
                         symbols,
-                    ),
-                    symbols,
-                )
-                val field2 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                    )
+                val field2 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
                         bits,
+                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                        schema.list(
+                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                            bits,
+                            symbols,
+                        ),
                         symbols,
-                    ),
-                    symbols,
-                )
+                    )
                 schema.construct(
                     type,
                     "lawtwin.kafka.model::type::Group::Group",
@@ -2394,28 +2378,34 @@ object LawSpecDataCodecs {
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::Group::Group" -> {
                         val field0 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-                        val field1 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            schema.list(
+                        val field1 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
                                 schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                                bits,
+                                schema.list(
+                                    schema.scalar(
+                                        "Text",
+                                        bits,
+                                        kotlin.String::class.javaObjectType,
+                                    ),
+                                    bits,
+                                    symbols,
+                                ),
                                 symbols,
-                            ),
-                            symbols,
-                        )
-                        val field2 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            schema.list(
-                                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                            )
+                        val field2 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
                                 bits,
+                                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                                schema.list(
+                                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                                    bits,
+                                    symbols,
+                                ),
                                 symbols,
-                            ),
-                            symbols,
-                        )
+                            )
                         lawspec.data.Group(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -2464,11 +2454,8 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::GroupPartition::GroupPartition" -> {
-                        val field0 = schema.scalar(
-                            "Text",
-                            bits,
-                            kotlin.String::class.javaObjectType,
-                        )
+                        val field0 =
+                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
                         val field1 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
                         lawspec.data.GroupPartition(
                             field0.decode(data.fields()[0]),
@@ -2492,49 +2479,55 @@ object LawSpecDataCodecs {
             bits,
             symbols,
             { value ->
-                val field0 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-                val field1 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                    symbols,
-                )
-                val field2 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                    symbols,
-                )
-                val field3 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
+                val field0 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
+                        symbols,
+                    )
+                val field1 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                        LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
+                        symbols,
+                    )
+                val field2 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                        LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
+                        symbols,
+                    )
+                val field3 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                        symbols,
+                    )
                 val field4 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-                val field5 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                    symbols,
-                )
-                val field6 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
+                val field5 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
+                        symbols,
+                    )
+                val field6 =
+                    lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                        schema,
+                        bits,
+                        LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
+                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                        symbols,
+                    )
                 schema.construct(
                     type,
                     "lawtwin.kafka.model::type::BrokerState::BrokerState",
@@ -2583,49 +2576,55 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawtwin.kafka.model::type::BrokerState::BrokerState" -> {
-                        val field0 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                            symbols,
-                        )
-                        val field1 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                            symbols,
-                        )
-                        val field2 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                            LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                            symbols,
-                        )
-                        val field3 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                            symbols,
-                        )
+                        val field0 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
+                                symbols,
+                            )
+                        val field1 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                                LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
+                                symbols,
+                            )
+                        val field2 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                                LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
+                                symbols,
+                            )
+                        val field3 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                                symbols,
+                            )
                         val field4 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-                        val field5 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                            symbols,
-                        )
-                        val field6 = lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                            schema,
-                            bits,
-                            LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                            schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                            symbols,
-                        )
+                        val field5 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
+                                LawSpecDataCodecs.groupCodec(schema, bits, symbols),
+                                symbols,
+                            )
+                        val field6 =
+                            lawspec.runtime.LawSpecKotlinCodecs.keyVal(
+                                schema,
+                                bits,
+                                LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
+                                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
+                                symbols,
+                            )
                         lawspec.data.BrokerState(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
@@ -2642,15 +2641,16 @@ object LawSpecDataCodecs {
         )
     }
 
-    fun record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0beCodec(
+    fun dataEntryDetailsCodec(
         schema: LawSpecSchema,
         bits: Int,
         symbols: MutableMap<String, Any> = mutableMapOf(),
-    ): Codec<lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be> {
-        val type = LawSpecSchema.Named(
-            "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be",
-        )
-        return schema.codec<lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be>(
+    ): Codec<lawspec.data.DataEntryDetails> {
+        val type =
+            LawSpecSchema.Named(
+                "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be"
+            )
+        return schema.codec<lawspec.data.DataEntryDetails>(
             type,
             bits,
             symbols,
@@ -2694,13 +2694,10 @@ object LawSpecDataCodecs {
                     "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record" -> {
                         val field0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
                         val field1 = LawSpecDataCodecs.recordCodec(schema, bits, symbols)
-                        val field2 = schema.scalar(
-                            "Bool",
-                            bits,
-                            kotlin.Boolean::class.javaObjectType,
-                        )
+                        val field2 =
+                            schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
                         val field3 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-                        lawspec.data.Record71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be(
+                        lawspec.data.DataEntryDetails(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
                             field2.decode(data.fields()[2]),
@@ -2713,15 +2710,16 @@ object LawSpecDataCodecs {
         )
     }
 
-    fun record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3Codec(
+    fun controlEntryDetailsCodec(
         schema: LawSpecSchema,
         bits: Int,
         symbols: MutableMap<String, Any> = mutableMapOf(),
-    ): Codec<lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3> {
-        val type = LawSpecSchema.Named(
-            "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3",
-        )
-        return schema.codec<lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3>(
+    ): Codec<lawspec.data.ControlEntryDetails> {
+        val type =
+            LawSpecSchema.Named(
+                "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3"
+            )
+        return schema.codec<lawspec.data.ControlEntryDetails>(
             type,
             bits,
             symbols,
@@ -2757,14 +2755,11 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record" -> {
-                        val field0 = schema.scalar(
-                            "Bool",
-                            bits,
-                            kotlin.Boolean::class.javaObjectType,
-                        )
+                        val field0 =
+                            schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
                         val field1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
                         val field2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-                        lawspec.data.Record25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3(
+                        lawspec.data.ControlEntryDetails(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
                             field2.decode(data.fields()[2]),
@@ -2776,29 +2771,32 @@ object LawSpecDataCodecs {
         )
     }
 
-    fun recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258eeCodec(
+    fun ongoingDetailsCodec(
         schema: LawSpecSchema,
         bits: Int,
         symbols: MutableMap<String, Any> = mutableMapOf(),
-    ): Codec<lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee> {
-        val type = LawSpecSchema.Named(
-            "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee",
-        )
-        return schema.codec<lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee>(
+    ): Codec<lawspec.data.OngoingDetails> {
+        val type =
+            LawSpecSchema.Named(
+                "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee"
+            )
+        return schema.codec<lawspec.data.OngoingDetails>(
             type,
             bits,
             symbols,
             { value ->
-                val field0 = schema.list(
-                    LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-                val field1 = schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
+                val field0 =
+                    schema.list(
+                        LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
+                val field1 =
+                    schema.list(
+                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                        bits,
+                        symbols,
+                    )
                 schema.construct(
                     type,
                     "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record",
@@ -2822,17 +2820,19 @@ object LawSpecDataCodecs {
                 val data = value.data() as LawSpecRuntime.Data
                 when (data.tag()) {
                     "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record" -> {
-                        val field0 = schema.list(
-                            LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
-                        val field1 = schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        )
-                        lawspec.data.Recordd325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee(
+                        val field0 =
+                            schema.list(
+                                LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
+                        val field1 =
+                            schema.list(
+                                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
+                                bits,
+                                symbols,
+                            )
+                        lawspec.data.OngoingDetails(
                             field0.decode(data.fields()[0]),
                             field1.decode(data.fields()[1]),
                         )

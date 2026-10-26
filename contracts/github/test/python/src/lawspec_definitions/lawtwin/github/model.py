@@ -9,24 +9,27 @@ import lawspec_runtime as ls
 import lawspec_schema as _schema
 
 _lawspec_schema = data.make_schema()
+# The machine profile's integer width.
+MACHINE_BITS = 64
 
 
+# after64 — ../src/model.lawspec:239
 def after64(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.int,
+    k: _builtins.int,
 ) -> _builtins.int:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_97(symbols, argument_0)
+        result = _definitions.after64(symbols, k)
         return _lawspec_schema.to_native(
             _schema.Named("Int64"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -39,32 +42,30 @@ def after64(
         ) from error
 
 
+# containsLabel — ../src/model.lawspec:248
 def containsLabel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.Label,
-    value_1: _builtins.list[data.Label],
+    wanted: data.Label,
+    items: _builtins.list[data.Label],
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        wanted = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::Label"),
-            value_0,
-            64,
+            wanted,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.github.model::type::Label")],
-            ),
-            value_1,
-            64,
+        items = _lawspec_schema.from_native(
+            _schema.Named("List", [_schema.Named("lawtwin.github.model::type::Label")]),
+            items,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_98(symbols, argument_0, argument_1)
+        result = _definitions.contains_label(symbols, wanted, items)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -77,32 +78,33 @@ def containsLabel(
         ) from error
 
 
+# containsMilestone — ../src/model.lawspec:256
 def containsMilestone(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.Milestone,
-    value_1: _builtins.list[data.Milestone],
+    wanted: data.Milestone,
+    items: _builtins.list[data.Milestone],
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        wanted = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::Milestone"),
-            value_0,
-            64,
+            wanted,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        items = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.github.model::type::Milestone")],
             ),
-            value_1,
-            64,
+            items,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_99(symbols, argument_0, argument_1)
+        result = _definitions.contains_milestone(symbols, wanted, items)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -115,22 +117,18 @@ def containsMilestone(
         ) from error
 
 
+# emptyState — ../src/model.lawspec:208
 def emptyState(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: ls.Absence,
+    u: ls.Absence,
 ) -> data.State:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("Unit"),
-            value_0,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_100(symbols, argument_0)
+        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        result = _definitions.empty_state(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.github.model::type::State"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -143,38 +141,41 @@ def emptyState(
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValDeleteItems_9e051807ce8b6631(
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_lawspecCollectionsKeyValDeleteItems_32cb458ab3c301f1bfa1d2dfaccad6b708254e758be96e927b754334eb6a67617425673b99ec(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.LabelKey,
-    value_1: _builtins.list[data.Entry[data.LabelKey, data.Label]],
+    k: data.LabelKey,
+    es: _builtins.list[data.Entry[data.LabelKey, data.Label]],
 ) -> _builtins.list[data.Entry[data.LabelKey, data.Label]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::LabelKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_101(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_delete_items_label_key_list_entry_label_key_label_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -182,16 +183,14 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_9e051807ce8b6631(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -200,67 +199,46 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_9e051807ce8b6631(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "Item"
-                "s_9e"
-                "0518"
-                "07ce"
-                "8b66"
-                "31: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValDeleteItems_32cb458ab3c301f1bfa1d2dfaccad6b708254e758be96e927b754334eb6a67617425673b99ec: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValDeleteItems_f3f338a80ea4a7a1(
+# keyValDeleteItems — <lawspec.collections>:32
+def lawspec_lawspecCollectionsKeyValDeleteItems_db8e2baf113bbfb228fce8821ce6c64c670e1f2b4794b1a58e2bf32910030aca38bd64e38e25(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.MilestoneKey,
-    value_1: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
+    k: data.MilestoneKey,
+    es: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
 ) -> _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_102(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_key_milestone_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -268,18 +246,14 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_f3f338a80ea4a7a1(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -288,46 +262,25 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_f3f338a80ea4a7a1(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "Item"
-                "s_f3"
-                "f338"
-                "a80e"
-                "a4a7"
-                "a1: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValDeleteItems_db8e2baf113bbfb228fce8821ce6c64c670e1f2b4794b1a58e2bf32910030aca38bd64e38e25: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValDelete_bdf93b1d3cac349(
+# keyValDelete — <lawspec.collections>:93
+def lawspec_lawspecCollectionsKeyValDelete_10a35554bf8579f0c749c9400afc09f1c2325bc888365dfff6223a5e3eaaf763(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.LabelKey,
-    value_1: _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...],
+    k: data.LabelKey,
+    m: _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...],
 ) -> _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::LabelKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -335,11 +288,15 @@ def lawspec_lawspecCollectionsKeyValDelete_bdf93b1d3cac349(
                     _schema.Named("lawtwin.github.model::type::Label"),
                 ],
             ),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_103(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_delete_label_key_key_val_label_key_label_3(
+            symbols,
+            k,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -349,7 +306,7 @@ def lawspec_lawspecCollectionsKeyValDelete_bdf93b1d3cac349(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -358,48 +315,25 @@ def lawspec_lawspecCollectionsKeyValDelete_bdf93b1d3cac349(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "_bdf"
-                "93b1"
-                "d3ca"
-                "c349"
-                ": "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValDelete_10a35554bf8579f0c749c9400afc09f1c2325bc888365dfff6223a5e3eaaf763: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValDelete_e3162f68473102d9(
+# keyValDelete — <lawspec.collections>:93
+def lawspec_lawspecCollectionsKeyValDelete_29475c645f81d04a5568bb3aff82a0d907811010cbc4b17fa786b7ac6ddfdb34(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.MilestoneKey,
-    value_1: _builtins.tuple[
-        _builtins.tuple[data.MilestoneKey, data.Milestone],
-        ...
-    ],
+    k: data.MilestoneKey,
+    m: _builtins.tuple[_builtins.tuple[data.MilestoneKey, data.Milestone], ...],
 ) -> _builtins.tuple[_builtins.tuple[data.MilestoneKey, data.Milestone], ...]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -407,11 +341,15 @@ def lawspec_lawspecCollectionsKeyValDelete_e3162f68473102d9(
                     _schema.Named("lawtwin.github.model::type::Milestone"),
                 ],
             ),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_104(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_delete_milestone_key_key_val_milestone_key_milestone_3(
+            symbols,
+            k,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -421,7 +359,7 @@ def lawspec_lawspecCollectionsKeyValDelete_e3162f68473102d9(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -430,38 +368,18 @@ def lawspec_lawspecCollectionsKeyValDelete_e3162f68473102d9(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alDe"
-                "lete"
-                "_e31"
-                "62f6"
-                "8473"
-                "102d"
-                "9: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValDelete_29475c645f81d04a5568bb3aff82a0d907811010cbc4b17fa786b7ac6ddfdb34: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValEntries_9115306fd1dc099a(
+# keyValEntries — <lawspec.collections>:105
+def lawspec_lawspecCollectionsKeyValEntries_9e91d2555208ebf0d7f58fc191fd99c1a9901da33578ab33c48730c5699c515036c1ec664ade(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...],
+    m: _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...],
 ) -> _builtins.list[data.Entry[data.LabelKey, data.Label]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -469,11 +387,16 @@ def lawspec_lawspecCollectionsKeyValEntries_9115306fd1dc099a(
                     _schema.Named("lawtwin.github.model::type::Label"),
                 ],
             ),
-            value_0,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_105(symbols, argument_0)
+        result = (
+            _definitions.lawspec_collections_key_val_entries_key_val_label_key_label_3(
+                symbols,
+                m,
+            )
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -481,16 +404,14 @@ def lawspec_lawspecCollectionsKeyValEntries_9115306fd1dc099a(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -499,41 +420,18 @@ def lawspec_lawspecCollectionsKeyValEntries_9115306fd1dc099a(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alEn"
-                "trie"
-                "s_91"
-                "1530"
-                "6fd1"
-                "dc09"
-                "9a: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValEntries_9e91d2555208ebf0d7f58fc191fd99c1a9901da33578ab33c48730c5699c515036c1ec664ade: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValEntries_c1a7185a15b768aa(
+# keyValEntries — <lawspec.collections>:105
+def lawspec_lawspecCollectionsKeyValEntries_dda43aef1d45f51bf3489e99bfc052d9e360cfe4a8e2b6c63c3494c4934d9eaaa740b50e4439(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.tuple[
-        _builtins.tuple[data.MilestoneKey, data.Milestone],
-        ...
-    ],
+    m: _builtins.tuple[_builtins.tuple[data.MilestoneKey, data.Milestone], ...],
 ) -> _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -541,11 +439,14 @@ def lawspec_lawspecCollectionsKeyValEntries_c1a7185a15b768aa(
                     _schema.Named("lawtwin.github.model::type::Milestone"),
                 ],
             ),
-            value_0,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_106(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_entries_key_val_milestone_key_milestone_3(
+            symbols,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -553,18 +454,14 @@ def lawspec_lawspecCollectionsKeyValEntries_c1a7185a15b768aa(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -573,81 +470,57 @@ def lawspec_lawspecCollectionsKeyValEntries_c1a7185a15b768aa(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alEn"
-                "trie"
-                "s_c1"
-                "a718"
-                "5a15"
-                "b768"
-                "aa: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValEntries_dda43aef1d45f51bf3489e99bfc052d9e360cfe4a8e2b6c63c3494c4934d9eaaa740b50e4439: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValFromItems_1ea5c5da129708a6(
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_lawspecCollectionsKeyValFromItems_30b37de557ccb7dda3e990094ab4cafff269a0d0b7b380efd5d9f2f1832e28184563aacdcac6(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
-    value_1: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
+    es: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
+    acc: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
 ) -> _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
                         ],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_107(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_milestone_key_milestone_list_entry_milestone_key_milestone_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -655,18 +528,14 @@ def lawspec_lawspecCollectionsKeyValFromItems_1ea5c5da129708a6(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -675,78 +544,57 @@ def lawspec_lawspecCollectionsKeyValFromItems_1ea5c5da129708a6(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alFr"
-                "omIt"
-                "ems_"
-                "1ea5"
-                "c5da"
-                "1297"
-                "08a6"
-                ": "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValFromItems_30b37de557ccb7dda3e990094ab4cafff269a0d0b7b380efd5d9f2f1832e28184563aacdcac6: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValFromItems_93acf9edfd00f4b6(
+# keyValFromItems — <lawspec.collections>:58
+def lawspec_lawspecCollectionsKeyValFromItems_b76a8d5ce410c3b1caa1e78ecc2dac98862c357ca32c026b1c927a5d9a6c0108ecaaa5b2d9c8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.LabelKey, data.Label]],
-    value_1: _builtins.list[data.Entry[data.LabelKey, data.Label]],
+    es: _builtins.list[data.Entry[data.LabelKey, data.Label]],
+    acc: _builtins.list[data.Entry[data.LabelKey, data.Label]],
 ) -> _builtins.list[data.Entry[data.LabelKey, data.Label]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        acc = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            acc,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_108(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_from_items_list_entry_label_key_label_list_entry_label_key_label_3(
+            symbols,
+            es,
+            acc,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
@@ -754,16 +602,14 @@ def lawspec_lawspecCollectionsKeyValFromItems_93acf9edfd00f4b6(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -772,74 +618,53 @@ def lawspec_lawspecCollectionsKeyValFromItems_93acf9edfd00f4b6(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alFr"
-                "omIt"
-                "ems_"
-                "93ac"
-                "f9ed"
-                "fd00"
-                "f4b6"
-                ": "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValFromItems_b76a8d5ce410c3b1caa1e78ecc2dac98862c357ca32c026b1c927a5d9a6c0108ecaaa5b2d9c8: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookupItems_2bd53328f2fa920b(
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_lawspecCollectionsKeyValLookupItems_8ce2bbe1457617eed5ddeaa97c037db5ad8d231d65e356d78a655e42218bac04893ee3e4ad85(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.MilestoneKey,
-    value_1: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
+    k: data.MilestoneKey,
+    es: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
 ) -> _schema.Maybe[data.Milestone]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_109(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_items_milestone_key_list_entry_milestone_key_milestone_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.github.model::type::Milestone")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -848,72 +673,53 @@ def lawspec_lawspecCollectionsKeyValLookupItems_2bd53328f2fa920b(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "Item"
-                "s_2b"
-                "d533"
-                "28f2"
-                "fa92"
-                "0b: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValLookupItems_8ce2bbe1457617eed5ddeaa97c037db5ad8d231d65e356d78a655e42218bac04893ee3e4ad85: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookupItems_6840b2348dfadaef(
+# keyValLookupItems — <lawspec.collections>:45
+def lawspec_lawspecCollectionsKeyValLookupItems_933dc128ed55d1160635af90c2092f10bc853a57d1113852772c76173d50ccb09b24cbb632a8(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.LabelKey,
-    value_1: _builtins.list[data.Entry[data.LabelKey, data.Label]],
+    k: data.LabelKey,
+    es: _builtins.list[data.Entry[data.LabelKey, data.Label]],
 ) -> _schema.Maybe[data.Label]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::LabelKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
-            value_1,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_110(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_items_label_key_list_entry_label_key_label_3(
+            symbols,
+            k,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.github.model::type::Label")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -922,49 +728,25 @@ def lawspec_lawspecCollectionsKeyValLookupItems_6840b2348dfadaef(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "Item"
-                "s_68"
-                "40b2"
-                "348d"
-                "fada"
-                "ef: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValLookupItems_933dc128ed55d1160635af90c2092f10bc853a57d1113852772c76173d50ccb09b24cbb632a8: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_82e5ed48cd41692f(
+# keyValLookup — <lawspec.collections>:85
+def lawspec_lawspecCollectionsKeyValLookup_9587eb7ad739cc3267edecfb9c6f7f26f52a7e72d075dc19628ec2f1f0ce87bc(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.MilestoneKey,
-    value_1: _builtins.tuple[
-        _builtins.tuple[data.MilestoneKey, data.Milestone],
-        ...
-    ],
+    k: data.MilestoneKey,
+    m: _builtins.tuple[_builtins.tuple[data.MilestoneKey, data.Milestone], ...],
 ) -> _schema.Maybe[data.Milestone]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -972,18 +754,22 @@ def lawspec_lawspecCollectionsKeyValLookup_82e5ed48cd41692f(
                     _schema.Named("lawtwin.github.model::type::Milestone"),
                 ],
             ),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_111(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_milestone_3(
+            symbols,
+            k,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.github.model::type::Milestone")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -992,45 +778,25 @@ def lawspec_lawspecCollectionsKeyValLookup_82e5ed48cd41692f(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "_82e"
-                "5ed4"
-                "8cd4"
-                "1692"
-                "f: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValLookup_9587eb7ad739cc3267edecfb9c6f7f26f52a7e72d075dc19628ec2f1f0ce87bc: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValLookup_9ebe5d8a23eff7e3(
+# keyValLookup — <lawspec.collections>:85
+def lawspec_lawspecCollectionsKeyValLookup_b5640a4d0ededbb4472dd47178bab66c82470ead0303a008551268e299470f31(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.LabelKey,
-    value_1: _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...],
+    k: data.LabelKey,
+    m: _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...],
 ) -> _schema.Maybe[data.Label]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::LabelKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -1038,18 +804,22 @@ def lawspec_lawspecCollectionsKeyValLookup_9ebe5d8a23eff7e3(
                     _schema.Named("lawtwin.github.model::type::Label"),
                 ],
             ),
-            value_1,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_112(symbols, argument_0, argument_1)
+        result = _definitions.lawspec_collections_key_val_lookup_label_key_key_val_label_key_label_3(
+            symbols,
+            k,
+            m,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.github.model::type::Label")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1058,59 +828,38 @@ def lawspec_lawspecCollectionsKeyValLookup_9ebe5d8a23eff7e3(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alLo"
-                "okup"
-                "_9eb"
-                "e5d8"
-                "a23e"
-                "ff7e"
-                "3: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValLookup_b5640a4d0ededbb4472dd47178bab66c82470ead0303a008551268e299470f31: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValOf_32834b690fa17862(
+# keyValOf — <lawspec.collections>:81
+def lawspec_lawspecCollectionsKeyValOf_30002a10bf089a68e4254766dc3577d993b211598dacbc7c858e8c4f160fedb0b2a1aee011b3(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
+    es: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
 ) -> _builtins.tuple[_builtins.tuple[data.MilestoneKey, data.Milestone], ...]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
                         ],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_113(symbols, argument_0)
+        result = _definitions.lawspec_collections_key_val_of_list_entry_milestone_key_milestone_3(
+            symbols,
+            es,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -1120,7 +869,7 @@ def lawspec_lawspecCollectionsKeyValOf_32834b690fa17862(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1129,56 +878,40 @@ def lawspec_lawspecCollectionsKeyValOf_32834b690fa17862(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alOf"
-                "_328"
-                "34b6"
-                "90fa"
-                "1786"
-                "2: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValOf_30002a10bf089a68e4254766dc3577d993b211598dacbc7c858e8c4f160fedb0b2a1aee011b3: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValOf_4c6f5dd9200a2e32(
+# keyValOf — <lawspec.collections>:81
+def lawspec_lawspecCollectionsKeyValOf_c4faf59fbe6f393f74929a1314d63406c6ed97d8d0b16f36eaa15a6d9ccf72d23e3266257d5b(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.list[data.Entry[data.LabelKey, data.Label]],
+    es: _builtins.list[data.Entry[data.LabelKey, data.Label]],
 ) -> _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
-            value_0,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_114(symbols, argument_0)
+        result = (
+            _definitions.lawspec_collections_key_val_of_list_entry_label_key_label_3(
+                symbols,
+                es,
+            )
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -1188,7 +921,7 @@ def lawspec_lawspecCollectionsKeyValOf_4c6f5dd9200a2e32(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1197,174 +930,53 @@ def lawspec_lawspecCollectionsKeyValOf_4c6f5dd9200a2e32(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alOf"
-                "_4c6"
-                "f5dd"
-                "9200"
-                "a2e3"
-                "2: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValOf_c4faf59fbe6f393f74929a1314d63406c6ed97d8d0b16f36eaa15a6d9ccf72d23e3266257d5b: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPutItems_82457d19a83cfb5b(
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_lawspecCollectionsKeyValPutItems_5caa8fea9cba1a1eb238f0e3022749b04264686755ec17faabff9909e6d7f096c6228b0d5b98(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.MilestoneKey,
-    value_1: data.Milestone,
-    value_2: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
-) -> _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]]:
-    try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-            value_0,
-            64,
-            symbols,
-        )
-        argument_1 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.github.model::type::Milestone"),
-            value_1,
-            64,
-            symbols,
-        )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            value_2,
-            64,
-            symbols,
-        )
-        result = _definitions.evaluate_115(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
-        return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [
-                    _schema.Named(
-                        "lawspec.collections::type::Entry",
-                        [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
-    except (
-        _builtins.ValueError,
-        _builtins.TypeError,
-        _builtins.OverflowError,
-    ) as error:
-        raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "tIte"
-                "ms_8"
-                "2457"
-                "d19a"
-                "83cf"
-                "b5b:"
-                " "
-            )
-            + _builtins.str(error),
-        ) from error
-
-
-def lawspec_lawspecCollectionsKeyValPutItems_fa544d6fcf98e50b(
-    symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.LabelKey,
-    value_1: data.Label,
-    value_2: _builtins.list[data.Entry[data.LabelKey, data.Label]],
+    k: data.LabelKey,
+    v: data.Label,
+    es: _builtins.list[data.Entry[data.LabelKey, data.Label]],
 ) -> _builtins.list[data.Entry[data.LabelKey, data.Label]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::LabelKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        v = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::Label"),
-            value_1,
-            64,
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_116(
+        result = _definitions.lawspec_collections_key_val_put_items_label_key_label_list_entry_label_key_label_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            k,
+            v,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1373,16 +985,14 @@ def lawspec_lawspecCollectionsKeyValPutItems_fa544d6fcf98e50b(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1391,83 +1001,69 @@ def lawspec_lawspecCollectionsKeyValPutItems_fa544d6fcf98e50b(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "tIte"
-                "ms_f"
-                "a544"
-                "d6fc"
-                "f98e"
-                "50b:"
-                " "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValPutItems_5caa8fea9cba1a1eb238f0e3022749b04264686755ec17faabff9909e6d7f096c6228b0d5b98: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPut_85f9039dbce1297f(
+# keyValPutItems — <lawspec.collections>:19
+def lawspec_lawspecCollectionsKeyValPutItems_78850bc1189700049c9816f7cdd2025c4fae49df0945cb1b1b4523d7df04efd84814e21a941e(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.MilestoneKey,
-    value_1: data.Milestone,
-    value_2: _builtins.tuple[
-        _builtins.tuple[data.MilestoneKey, data.Milestone],
-        ...
-    ],
-) -> _builtins.tuple[_builtins.tuple[data.MilestoneKey, data.Milestone], ...]:
+    k: data.MilestoneKey,
+    v: data.Milestone,
+    es: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
+) -> _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        v = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::Milestone"),
-            value_1,
-            64,
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        es = _lawspec_schema.from_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                    _schema.Named("lawtwin.github.model::type::Milestone"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                        ],
+                    ),
                 ],
             ),
-            value_2,
-            64,
+            es,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_117(
+        result = _definitions.lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_milestone_key_milestone_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            k,
+            v,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
-                "lawspec.collections::type::KeyVal",
+                "List",
                 [
-                    _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                    _schema.Named("lawtwin.github.model::type::Milestone"),
+                    _schema.Named(
+                        "lawspec.collections::type::Entry",
+                        [
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                        ],
+                    ),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1476,51 +1072,32 @@ def lawspec_lawspecCollectionsKeyValPut_85f9039dbce1297f(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "t_85"
-                "f903"
-                "9dbc"
-                "e129"
-                "7f: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValPutItems_78850bc1189700049c9816f7cdd2025c4fae49df0945cb1b1b4523d7df04efd84814e21a941e: "
             + _builtins.str(error),
         ) from error
 
 
-def lawspec_lawspecCollectionsKeyValPut_a37565d6d8f481df(
+# keyValPut — <lawspec.collections>:89
+def lawspec_lawspecCollectionsKeyValPut_33d702cbdd28c15a2a0c5cd78ca531cfe549d7cb0ece073c7c28e9af2e409cb2(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.LabelKey,
-    value_1: data.Label,
-    value_2: _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...],
+    k: data.LabelKey,
+    v: data.Label,
+    m: _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...],
 ) -> _builtins.tuple[_builtins.tuple[data.LabelKey, data.Label], ...]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        k = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::LabelKey"),
-            value_0,
-            64,
+            k,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        v = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::Label"),
-            value_1,
-            64,
+            v,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
                 [
@@ -1528,15 +1105,15 @@ def lawspec_lawspecCollectionsKeyValPut_a37565d6d8f481df(
                     _schema.Named("lawtwin.github.model::type::Label"),
                 ],
             ),
-            value_2,
-            64,
+            m,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_118(
+        result = _definitions.lawspec_collections_key_val_put_label_key_label_key_val_label_key_label_3(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
+            k,
+            v,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1547,7 +1124,7 @@ def lawspec_lawspecCollectionsKeyValPut_a37565d6d8f481df(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1556,69 +1133,111 @@ def lawspec_lawspecCollectionsKeyValPut_a37565d6d8f481df(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            (
-                "lawt"
-                "win."
-                "gith"
-                "ub.m"
-                "odel"
-                "::la"
-                "wspe"
-                "c_la"
-                "wspe"
-                "cCol"
-                "lect"
-                "ions"
-                "KeyV"
-                "alPu"
-                "t_a3"
-                "7565"
-                "d6d8"
-                "f481"
-                "df: "
-            )
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValPut_33d702cbdd28c15a2a0c5cd78ca531cfe549d7cb0ece073c7c28e9af2e409cb2: "
             + _builtins.str(error),
         ) from error
 
 
+# keyValPut — <lawspec.collections>:89
+def lawspec_lawspecCollectionsKeyValPut_5161f7d605da95f395e9c4dcb50c5034a615b624f2946e442f226f4fab77018f(
+    symbols: _builtins.dict[_builtins.str, _builtins.object],
+    k: data.MilestoneKey,
+    v: data.Milestone,
+    m: _builtins.tuple[_builtins.tuple[data.MilestoneKey, data.Milestone], ...],
+) -> _builtins.tuple[_builtins.tuple[data.MilestoneKey, data.Milestone], ...]:
+    try:
+        k = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
+        v = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.github.model::type::Milestone"),
+            v,
+            MACHINE_BITS,
+            symbols,
+        )
+        m = _lawspec_schema.from_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                    _schema.Named("lawtwin.github.model::type::Milestone"),
+                ],
+            ),
+            m,
+            MACHINE_BITS,
+            symbols,
+        )
+        result = _definitions.lawspec_collections_key_val_put_milestone_key_milestone_key_val_milestone_key_milestone_3(
+            symbols,
+            k,
+            v,
+            m,
+        )
+        return _lawspec_schema.to_native(
+            _schema.Named(
+                "lawspec.collections::type::KeyVal",
+                [
+                    _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                    _schema.Named("lawtwin.github.model::type::Milestone"),
+                ],
+            ),
+            result,
+            MACHINE_BITS,
+            symbols,
+        )
+    except (
+        _builtins.ValueError,
+        _builtins.TypeError,
+        _builtins.OverflowError,
+    ) as error:
+        raise _builtins.ValueError(
+            "lawtwin.github.model::lawspec_lawspecCollectionsKeyValPut_5161f7d605da95f395e9c4dcb50c5034a615b624f2946e442f226f4fab77018f: "
+            + _builtins.str(error),
+        ) from error
+
+
+# modelIssuesCreateLabel — ../src/model.lawspec:273
 def modelIssuesCreateLabel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: data.IssuesCreateLabelBody,
-    value_3: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    body: data.IssuesCreateLabelBody,
+    current: data.State,
 ) -> data.Pair[data.Label, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        body = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::IssuesCreateLabelBody"),
-            value_2,
-            64,
+            body,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_3,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_119(
+        result = _definitions.model_issues_create_label(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            owner,
+            repo,
+            body,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1629,7 +1248,7 @@ def modelIssuesCreateLabel(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1638,51 +1257,49 @@ def modelIssuesCreateLabel(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesCreateLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesCreateLabel: " + _builtins.str(error),
         ) from error
 
 
+# modelIssuesCreateMilestone — ../src/model.lawspec:317
 def modelIssuesCreateMilestone(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: data.IssuesCreateMilestoneBody,
-    value_3: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    body: data.IssuesCreateMilestoneBody,
+    current: data.State,
 ) -> data.Pair[data.Milestone, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawtwin.github.model::type::IssuesCreateMilestoneBody",
-            ),
-            value_2,
-            64,
+        body = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.github.model::type::IssuesCreateMilestoneBody"),
+            body,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_3,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_120(
+        result = _definitions.model_issues_create_milestone(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            owner,
+            repo,
+            body,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1693,7 +1310,7 @@ def modelIssuesCreateMilestone(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1702,49 +1319,49 @@ def modelIssuesCreateMilestone(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesCreateMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesCreateMilestone: " + _builtins.str(error),
         ) from error
 
 
+# modelIssuesDeleteLabel — ../src/model.lawspec:293
 def modelIssuesDeleteLabel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    name: _builtins.str,
+    current: data.State,
 ) -> data.Pair[ls.Absence, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        name = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            name,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_3,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_121(
+        result = _definitions.model_issues_delete_label(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            owner,
+            repo,
+            name,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1755,7 +1372,7 @@ def modelIssuesDeleteLabel(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1764,49 +1381,49 @@ def modelIssuesDeleteLabel(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesDeleteLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesDeleteLabel: " + _builtins.str(error),
         ) from error
 
 
+# modelIssuesDeleteMilestone — ../src/model.lawspec:339
 def modelIssuesDeleteMilestone(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    milestone_number: _builtins.int,
+    current: data.State,
 ) -> data.Pair[ls.Absence, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        milestone_number = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            milestone_number,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_3,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_122(
+        result = _definitions.model_issues_delete_milestone(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            owner,
+            repo,
+            milestone_number,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1817,7 +1434,7 @@ def modelIssuesDeleteMilestone(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1826,49 +1443,49 @@ def modelIssuesDeleteMilestone(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesDeleteMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesDeleteMilestone: " + _builtins.str(error),
         ) from error
 
 
+# modelIssuesGetLabel — ../src/model.lawspec:285
 def modelIssuesGetLabel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    name: _builtins.str,
+    current: data.State,
 ) -> data.Pair[data.Label, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        name = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            name,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_3,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_123(
+        result = _definitions.model_issues_get_label(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            owner,
+            repo,
+            name,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1879,7 +1496,7 @@ def modelIssuesGetLabel(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1888,49 +1505,49 @@ def modelIssuesGetLabel(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesGetLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesGetLabel: " + _builtins.str(error),
         ) from error
 
 
+# modelIssuesGetMilestone — ../src/model.lawspec:331
 def modelIssuesGetMilestone(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    milestone_number: _builtins.int,
+    current: data.State,
 ) -> data.Pair[data.Milestone, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        milestone_number = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            milestone_number,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_3,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_124(
+        result = _definitions.model_issues_get_milestone(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
+            owner,
+            repo,
+            milestone_number,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1941,7 +1558,7 @@ def modelIssuesGetMilestone(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -1950,57 +1567,57 @@ def modelIssuesGetMilestone(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesGetMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesGetMilestone: " + _builtins.str(error),
         ) from error
 
 
+# modelIssuesListLabelsForRepo — ../src/model.lawspec:268
 def modelIssuesListLabelsForRepo(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _schema.Maybe[_builtins.int],
-    value_3: _schema.Maybe[_builtins.int],
-    value_4: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    per_page: _schema.Maybe[_builtins.int],
+    page: _schema.Maybe[_builtins.int],
+    current: data.State,
 ) -> data.Pair[_builtins.list[data.Label], data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        per_page = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
-            value_2,
-            64,
+            per_page,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        page = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
-            value_3,
-            64,
+            page,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_4,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_125(
+        result = _definitions.model_issues_list_labels_for_repo(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            owner,
+            repo,
+            per_page,
+            page,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2014,7 +1631,7 @@ def modelIssuesListLabelsForRepo(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2028,128 +1645,94 @@ def modelIssuesListLabelsForRepo(
         ) from error
 
 
+# modelIssuesListMilestones — ../src/model.lawspec:312
 def modelIssuesListMilestones(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _schema.Maybe[data.IssuesListMilestonesState],
-    value_3: _schema.Maybe[data.IssuesListMilestonesSort],
-    value_4: _schema.Maybe[data.IssuesListMilestonesDirection],
-    value_5: _schema.Maybe[_builtins.int],
-    value_6: _schema.Maybe[_builtins.int],
-    value_7: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    state: _schema.Maybe[data.IssuesListMilestonesState],
+    sort: _schema.Maybe[data.IssuesListMilestonesSort],
+    direction: _schema.Maybe[data.IssuesListMilestonesDirection],
+    per_page: _schema.Maybe[_builtins.int],
+    page: _schema.Maybe[_builtins.int],
+    current: data.State,
 ) -> data.Pair[_builtins.list[data.Milestone], data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        state = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
                     _schema.Named(
-                        (
-                            "lawt"
-                            "win."
-                            "gith"
-                            "ub.m"
-                            "odel"
-                            "::ty"
-                            "pe::"
-                            "Issu"
-                            "esLi"
-                            "stMi"
-                            "lest"
-                            "ones"
-                            "Stat"
-                            "e"
-                        ),
+                        "lawtwin.github.model::type::IssuesListMilestonesState",
                     ),
                 ],
             ),
-            value_2,
-            64,
+            state,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        sort = _lawspec_schema.from_native(
+            _schema.Named(
+                "Maybe",
+                [_schema.Named("lawtwin.github.model::type::IssuesListMilestonesSort")],
+            ),
+            sort,
+            MACHINE_BITS,
+            symbols,
+        )
+        direction = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
                     _schema.Named(
-                        "lawtwin.github.model::type::IssuesListMilestonesSort",
+                        "lawtwin.github.model::type::IssuesListMilestonesDirection",
                     ),
                 ],
             ),
-            value_3,
-            64,
+            direction,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
-            _schema.Named(
-                "Maybe",
-                [
-                    _schema.Named(
-                        (
-                            "lawt"
-                            "win."
-                            "gith"
-                            "ub.m"
-                            "odel"
-                            "::ty"
-                            "pe::"
-                            "Issu"
-                            "esLi"
-                            "stMi"
-                            "lest"
-                            "ones"
-                            "Dire"
-                            "ctio"
-                            "n"
-                        ),
-                    ),
-                ],
-            ),
-            value_4,
-            64,
-            symbols,
-        )
-        argument_5 = _lawspec_schema.from_native(
+        per_page = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
-            value_5,
-            64,
+            per_page,
+            MACHINE_BITS,
             symbols,
         )
-        argument_6 = _lawspec_schema.from_native(
+        page = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
-            value_6,
-            64,
+            page,
+            MACHINE_BITS,
             symbols,
         )
-        argument_7 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_7,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_126(
+        result = _definitions.model_issues_list_milestones(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
-            argument_5,
-            argument_6,
-            argument_7,
+            owner,
+            repo,
+            state,
+            sort,
+            direction,
+            per_page,
+            page,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2157,17 +1740,13 @@ def modelIssuesListMilestones(
                 [
                     _schema.Named(
                         "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
-                        ],
+                        [_schema.Named("lawtwin.github.model::type::Milestone")],
                     ),
                     _schema.Named("lawtwin.github.model::type::State"),
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2176,64 +1755,60 @@ def modelIssuesListMilestones(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesListMilestones: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesListMilestones: " + _builtins.str(error),
         ) from error
 
 
+# modelIssuesUpdateLabel — ../src/model.lawspec:301
 def modelIssuesUpdateLabel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.str,
-    value_3: _schema.Maybe[data.IssuesUpdateLabelBody],
-    value_4: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    name: _builtins.str,
+    body: _schema.Maybe[data.IssuesUpdateLabelBody],
+    current: data.State,
 ) -> data.Pair[data.Label, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        name = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_2,
-            64,
+            name,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        body = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
-                [
-                    _schema.Named(
-                        "lawtwin.github.model::type::IssuesUpdateLabelBody",
-                    ),
-                ],
+                [_schema.Named("lawtwin.github.model::type::IssuesUpdateLabelBody")],
             ),
-            value_3,
-            64,
+            body,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_4,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_127(
+        result = _definitions.model_issues_update_label(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            owner,
+            repo,
+            name,
+            body,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2244,7 +1819,7 @@ def modelIssuesUpdateLabel(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2253,79 +1828,64 @@ def modelIssuesUpdateLabel(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesUpdateLabel: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesUpdateLabel: " + _builtins.str(error),
         ) from error
 
 
+# modelIssuesUpdateMilestone — ../src/model.lawspec:347
 def modelIssuesUpdateMilestone(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.int,
-    value_3: _schema.Maybe[data.IssuesUpdateMilestoneBody],
-    value_4: data.State,
+    owner: _builtins.str,
+    repo: _builtins.str,
+    milestone_number: _builtins.int,
+    body: _schema.Maybe[data.IssuesUpdateMilestoneBody],
+    current: data.State,
 ) -> data.Pair[data.Milestone, data.State]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        milestone_number = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value_2,
-            64,
+            milestone_number,
+            MACHINE_BITS,
             symbols,
         )
-        argument_3 = _lawspec_schema.from_native(
+        body = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
                     _schema.Named(
-                        (
-                            "lawt"
-                            "win."
-                            "gith"
-                            "ub.m"
-                            "odel"
-                            "::ty"
-                            "pe::"
-                            "Issu"
-                            "esUp"
-                            "date"
-                            "Mile"
-                            "ston"
-                            "eBod"
-                            "y"
-                        ),
+                        "lawtwin.github.model::type::IssuesUpdateMilestoneBody",
                     ),
                 ],
             ),
-            value_3,
-            64,
+            body,
+            MACHINE_BITS,
             symbols,
         )
-        argument_4 = _lawspec_schema.from_native(
+        current = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::State"),
-            value_4,
-            64,
+            current,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_128(
+        result = _definitions.model_issues_update_milestone(
             symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-            argument_3,
-            argument_4,
+            owner,
+            repo,
+            milestone_number,
+            body,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2336,7 +1896,7 @@ def modelIssuesUpdateMilestone(
                 ],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2345,62 +1905,52 @@ def modelIssuesUpdateMilestone(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesUpdateMilestone: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesUpdateMilestone: " + _builtins.str(error),
         ) from error
 
 
+# modelLabelsUnder — ../src/model.lawspec:218
 def modelLabelsUnder(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.list[data.Entry[data.LabelKey, data.Label]],
+    owner: _builtins.str,
+    repo: _builtins.str,
+    entries: _builtins.list[data.Entry[data.LabelKey, data.Label]],
 ) -> _builtins.list[data.Label]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        entries = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::LabelKey",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::LabelKey"),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
                 ],
             ),
-            value_2,
-            64,
+            entries,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_129(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.model_labels_under(symbols, owner, repo, entries)
         return _lawspec_schema.to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.github.model::type::Label")],
-            ),
+            _schema.Named("List", [_schema.Named("lawtwin.github.model::type::Label")]),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2413,59 +1963,51 @@ def modelLabelsUnder(
         ) from error
 
 
+# modelMilestonesUnder — ../src/model.lawspec:226
 def modelMilestonesUnder(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: _builtins.str,
-    value_1: _builtins.str,
-    value_2: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
+    owner: _builtins.str,
+    repo: _builtins.str,
+    entries: _builtins.list[data.Entry[data.MilestoneKey, data.Milestone]],
 ) -> _builtins.list[data.Milestone]:
     try:
-        argument_0 = _lawspec_schema.from_native(
+        owner = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_0,
-            64,
+            owner,
+            MACHINE_BITS,
             symbols,
         )
-        argument_1 = _lawspec_schema.from_native(
+        repo = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value_1,
-            64,
+            repo,
+            MACHINE_BITS,
             symbols,
         )
-        argument_2 = _lawspec_schema.from_native(
+        entries = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named(
-                                "lawtwin.github.model::type::MilestoneKey",
-                            ),
-                            _schema.Named(
-                                "lawtwin.github.model::type::Milestone",
-                            ),
+                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
+                            _schema.Named("lawtwin.github.model::type::Milestone"),
                         ],
                     ),
                 ],
             ),
-            value_2,
-            64,
+            entries,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_130(
-            symbols,
-            argument_0,
-            argument_1,
-            argument_2,
-        )
+        result = _definitions.model_milestones_under(symbols, owner, repo, entries)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.github.model::type::Milestone")],
             ),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2474,29 +2016,27 @@ def modelMilestonesUnder(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelMilestonesUnder: "
-            + _builtins.str(error),
+            "lawtwin.github.model::modelMilestonesUnder: " + _builtins.str(error),
         ) from error
 
 
+# validIssuesCreateMilestoneBody — ../src/model.lawspec:234
 def validIssuesCreateMilestoneBody(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.IssuesCreateMilestoneBody,
+    value: data.IssuesCreateMilestoneBody,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawtwin.github.model::type::IssuesCreateMilestoneBody",
-            ),
-            value_0,
-            64,
+        value = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.github.model::type::IssuesCreateMilestoneBody"),
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_131(symbols, argument_0)
+        result = _definitions.valid_issues_create_milestone_body(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
@@ -2510,24 +2050,23 @@ def validIssuesCreateMilestoneBody(
         ) from error
 
 
+# validIssuesUpdateMilestoneBody — ../src/model.lawspec:243
 def validIssuesUpdateMilestoneBody(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
-    value_0: data.IssuesUpdateMilestoneBody,
+    value: data.IssuesUpdateMilestoneBody,
 ) -> _builtins.bool:
     try:
-        argument_0 = _lawspec_schema.from_native(
-            _schema.Named(
-                "lawtwin.github.model::type::IssuesUpdateMilestoneBody",
-            ),
-            value_0,
-            64,
+        value = _lawspec_schema.from_native(
+            _schema.Named("lawtwin.github.model::type::IssuesUpdateMilestoneBody"),
+            value,
+            MACHINE_BITS,
             symbols,
         )
-        result = _definitions.evaluate_132(symbols, argument_0)
+        result = _definitions.valid_issues_update_milestone_body(symbols, value)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
-            64,
+            MACHINE_BITS,
             symbols,
         )
     except (
