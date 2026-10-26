@@ -1,0 +1,196 @@
+{
+  "contract": "lawtwin.petstore",
+  "real": {
+    "contract": "lawtwin.petstore",
+    "target": "http://127.0.0.1:38000",
+    "seed": 1,
+    "requests": 84,
+    "calls": 44,
+    "laws": [
+      "a created pet reads back",
+      "a deleted pet is not found",
+      "a replaced pet reads back as replaced",
+      "a created order reads back",
+      "a deleted order is not found",
+      "a created user reads back",
+      "a deleted user is not found"
+    ],
+    "violations": [],
+    "findings": [],
+    "problems": [],
+    "holds": true
+  },
+  "twin": {
+    "contract": "lawtwin.petstore",
+    "target": "http://127.0.0.1:38080",
+    "seed": 1,
+    "requests": 84,
+    "calls": 44,
+    "laws": [
+      "a created pet reads back",
+      "a deleted pet is not found",
+      "a replaced pet reads back as replaced",
+      "a created order reads back",
+      "a deleted order is not found",
+      "a created user reads back",
+      "a deleted user is not found"
+    ],
+    "violations": [],
+    "findings": [],
+    "problems": [],
+    "holds": true
+  },
+  "divergences": [
+    {
+      "op": "updatePetWithForm",
+      "real": {
+        "exchange": 30,
+        "op": "updatePetWithForm",
+        "method": "POST",
+        "target": "/pet/not-a-number?status=ember-2470",
+        "status": 501,
+        "answer": {
+          "error": "Unmodelled"
+        },
+        "sent": "the path parameter petId is not an integer"
+      },
+      "twin": {
+        "exchange": 30,
+        "op": "updatePetWithForm",
+        "method": "POST",
+        "target": "/pet/not-a-number?status=ember-2470",
+        "status": 400,
+        "answer": {
+          "error": "BadRequest"
+        },
+        "sent": "the path parameter petId is not an integer"
+      }
+    },
+    {
+      "op": "uploadFile",
+      "real": {
+        "exchange": 32,
+        "op": "uploadFile",
+        "method": "POST",
+        "target": "/pet/not-a-number/uploadImage",
+        "status": 501,
+        "answer": {
+          "error": "Unmodelled"
+        },
+        "sent": "the path parameter petId is not an integer"
+      },
+      "twin": {
+        "exchange": 32,
+        "op": "uploadFile",
+        "method": "POST",
+        "target": "/pet/not-a-number/uploadImage",
+        "status": 400,
+        "answer": {
+          "error": "BadRequest"
+        },
+        "sent": "the path parameter petId is not an integer"
+      }
+    },
+    {
+      "op": "createUsersWithListInput",
+      "real": {
+        "exchange": 40,
+        "op": "createUsersWithListInput",
+        "method": "POST",
+        "target": "/user/createWithList",
+        "status": 501,
+        "answer": {
+          "error": "Unmodelled"
+        },
+        "sent": "the body is not JSON"
+      },
+      "twin": {
+        "exchange": 40,
+        "op": "createUsersWithListInput",
+        "method": "POST",
+        "target": "/user/createWithList",
+        "status": 400,
+        "answer": {
+          "error": "BadRequest"
+        },
+        "sent": "the body is not JSON"
+      }
+    },
+    {
+      "op": "updatePetWithForm",
+      "real": {
+        "exchange": 72,
+        "op": "updatePetWithForm",
+        "method": "POST",
+        "target": "/pet/not-a-number?name=juniper-3827",
+        "status": 501,
+        "answer": {
+          "error": "Unmodelled"
+        },
+        "sent": "the path parameter petId is not an integer"
+      },
+      "twin": {
+        "exchange": 72,
+        "op": "updatePetWithForm",
+        "method": "POST",
+        "target": "/pet/not-a-number?name=juniper-3827",
+        "status": 400,
+        "answer": {
+          "error": "BadRequest"
+        },
+        "sent": "the path parameter petId is not an integer"
+      }
+    },
+    {
+      "op": "uploadFile",
+      "real": {
+        "exchange": 74,
+        "op": "uploadFile",
+        "method": "POST",
+        "target": "/pet/not-a-number/uploadImage",
+        "status": 501,
+        "answer": {
+          "error": "Unmodelled"
+        },
+        "sent": "the path parameter petId is not an integer"
+      },
+      "twin": {
+        "exchange": 74,
+        "op": "uploadFile",
+        "method": "POST",
+        "target": "/pet/not-a-number/uploadImage",
+        "status": 400,
+        "answer": {
+          "error": "BadRequest"
+        },
+        "sent": "the path parameter petId is not an integer"
+      }
+    },
+    {
+      "op": "createUsersWithListInput",
+      "real": {
+        "exchange": 82,
+        "op": "createUsersWithListInput",
+        "method": "POST",
+        "target": "/user/createWithList",
+        "status": 501,
+        "answer": {
+          "error": "Unmodelled"
+        },
+        "sent": "the body is not JSON"
+      },
+      "twin": {
+        "exchange": 82,
+        "op": "createUsersWithListInput",
+        "method": "POST",
+        "target": "/user/createWithList",
+        "status": 400,
+        "answer": {
+          "error": "BadRequest"
+        },
+        "sent": "the body is not JSON"
+      }
+    }
+  ],
+  "level": "lawful"
+}

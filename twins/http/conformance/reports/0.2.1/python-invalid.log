@@ -1,0 +1,9 @@
+real: lawtwin.petstore against http://127.0.0.1:38000: 84 requests, 7 laws checked over 44 calls; 0 violation(s), 0 finding(s), 0 problem(s)
+twin: lawtwin.petstore against http://127.0.0.1:38080: 84 requests, 7 laws checked over 44 calls; 0 violation(s), 0 finding(s), 0 problem(s)
+  divergence: POST /pet/not-a-number?status=ember-2470: real 501 {"error":"Unmodelled"}, twin 400 {"error":"BadRequest"}
+  divergence: POST /pet/not-a-number/uploadImage: real 501 {"error":"Unmodelled"}, twin 400 {"error":"BadRequest"}
+  divergence: POST /user/createWithList: real 501 {"error":"Unmodelled"}, twin 400 {"error":"BadRequest"}
+  divergence: POST /pet/not-a-number?name=juniper-3827: real 501 {"error":"Unmodelled"}, twin 400 {"error":"BadRequest"}
+  divergence: POST /pet/not-a-number/uploadImage: real 501 {"error":"Unmodelled"}, twin 400 {"error":"BadRequest"}
+  divergence: POST /user/createWithList: real 501 {"error":"Unmodelled"}, twin 400 {"error":"BadRequest"}
+lawtwin conform http: 6 divergence(s); lawful: the laws hold on the real service; it does what the document forbids, or the twin answers some requests differently

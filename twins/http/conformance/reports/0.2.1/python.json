@@ -1,0 +1,45 @@
+{
+  "contract": "lawtwin.petstore",
+  "real": {
+    "contract": "lawtwin.petstore",
+    "target": "http://127.0.0.1:38000",
+    "seed": 1,
+    "requests": 44,
+    "calls": 44,
+    "laws": [
+      "a created pet reads back",
+      "a deleted pet is not found",
+      "a replaced pet reads back as replaced",
+      "a created order reads back",
+      "a deleted order is not found",
+      "a created user reads back",
+      "a deleted user is not found"
+    ],
+    "violations": [],
+    "findings": [],
+    "problems": [],
+    "holds": true
+  },
+  "twin": {
+    "contract": "lawtwin.petstore",
+    "target": "http://127.0.0.1:38080",
+    "seed": 1,
+    "requests": 44,
+    "calls": 44,
+    "laws": [
+      "a created pet reads back",
+      "a deleted pet is not found",
+      "a replaced pet reads back as replaced",
+      "a created order reads back",
+      "a deleted order is not found",
+      "a created user reads back",
+      "a deleted user is not found"
+    ],
+    "violations": [],
+    "findings": [],
+    "problems": [],
+    "holds": true
+  },
+  "divergences": [],
+  "level": "conformant"
+}

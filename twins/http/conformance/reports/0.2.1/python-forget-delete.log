@@ -1,0 +1,16 @@
+real: lawtwin.petstore against http://127.0.0.1:38000: 44 requests, 7 laws checked over 44 calls; 6 violation(s), 0 finding(s), 0 problem(s)
+  violation: `a deleted pet is not found`: getPetById [66428520] answered {"ok":{"id":66428520,"name":"willow-5644","category":{"id":274787744,"name":"lumen-2231"},"photoUrls":["sable-93","pebble-2780"],"tags":[],"status":"pending"}} after a delete, not NotFound
+  violation: `a deleted order is not found`: getOrderById [1] answered {"ok":{"id":1,"quantity":239}} after a delete, not NotFound
+  violation: `a deleted user is not found`: getUserByName ["delta-1403"] answered {"ok":{"id":308409174,"username":"delta-1403","lastName":"birch-7198","email":"iris-7150","password":"willow-6168","phone":"sable-7153","userStatus":220}} after a delete, not NotFound
+  violation: `a deleted pet is not found`: getPetById [251067231] answered {"ok":{"id":251067231,"name":"nectar-2454","category":{"id":877823638,"name":"delta-5324"},"photoUrls":[],"tags":[{}],"status":"pending"}} after a delete, not NotFound
+  violation: `a deleted order is not found`: getOrderById [823276448] answered {"ok":{"id":823276448,"petId":329724615,"quantity":825,"shipDate":"2026-07-06T06:12:18Z","status":"approved"}} after a delete, not NotFound
+  violation: `a deleted user is not found`: getUserByName ["fjord-4613"] answered {"ok":{"id":260862631,"username":"fjord-4613","lastName":"nectar-7386","email":"quartz-3719","password":"harbor-5195"}} after a delete, not NotFound
+twin: lawtwin.petstore against http://127.0.0.1:38080: 44 requests, 7 laws checked over 44 calls; 0 violation(s), 0 finding(s), 0 problem(s)
+  divergence: GET /pet/66428520: real 200 {"ok":{"id":66428520,"name":"willow-5644","category":{"id":274787744,"name":"lumen-2231"},"photoUrls":["sable-93","pebble-2780"],"tags":[],"status":"pending"}}, twin 404 {"error":"NotFound"}
+  divergence: GET /store/order/1: real 200 {"ok":{"id":1,"quantity":239}}, twin 404 {"error":"NotFound"}
+  divergence: GET /user/delta-1403: real 200 {"ok":{"id":308409174,"username":"delta-1403","lastName":"birch-7198","email":"iris-7150","password":"willow-6168","phone":"sable-7153","userStatus":220}}, twin 404 {"error":"NotFound"}
+  divergence: GET /pet/251067231: real 200 {"ok":{"id":251067231,"name":"nectar-2454","category":{"id":877823638,"name":"delta-5324"},"photoUrls":[],"tags":[{}],"status":"pending"}}, twin 404 {"error":"NotFound"}
+  divergence: GET /store/order/823276448: real 200 {"ok":{"id":823276448,"petId":329724615,"quantity":825,"shipDate":"2026-07-06T06:12:18Z","status":"approved"}}, twin 404 {"error":"NotFound"}
+  divergence: GET /user/fjord-4613: real 200 {"ok":{"id":260862631,"username":"fjord-4613","lastName":"nectar-7386","email":"quartz-3719","password":"harbor-5195"}}, twin 404 {"error":"NotFound"}
+lawtwin conform http: 6 divergence(s); divergent: the real service breaks a law of the contract
+lawtwin: the real service breaks a law of the contract

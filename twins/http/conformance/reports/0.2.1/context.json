@@ -1,0 +1,720 @@
+{
+  "release": "0.2.1",
+  "startedAt": "2026-10-26T06:10:43.320367+00:00",
+  "sourceCommit": "914a95c0b8d68d19c3664b790cce4fff31524558",
+  "cli": {
+    "path": "target/release/lawtwin",
+    "version": "lawtwin 0.2.1",
+    "sha256": "820dd8a8c4063829ce9ca37181a0c07122db4d975a756626479d24b09c64b82f"
+  },
+  "nativeCore": {
+    "path": "target/release/lawtwin-http",
+    "version": "lawtwin-http 0.2.1 (rust core)",
+    "sha256": "e785a43b1a6e9b70ff176b6acf4332c5965434905eaea27e7062dacabe425fce"
+  },
+  "twin": {
+    "reference": "lawtwin/http:0.2.1",
+    "localImageId": "f49f2d766b70cf51507fc41a45186832825df032668f483f2193217e92c774f8",
+    "repoDigests": [
+      "docker.io/lawtwin/http@sha256:9370c65967081cb382c9cbf9b2fa8d1dae758e989b3c69ae91345e0c908a84e0",
+      "localhost/lawtwin/http@sha256:9370c65967081cb382c9cbf9b2fa8d1dae758e989b3c69ae91345e0c908a84e0"
+    ],
+    "architecture": "arm64",
+    "created": "2026-10-26T05:55:16.461843298Z",
+    "containerId": "a6631f402320c027cc0f2d4fb0f7c01b75adb1d5ae7e09f4e5c7ca6248d1be6b"
+  },
+  "swaggerProvider": {
+    "reference": "localhost/lawtwin/petstore3-native:latest",
+    "localImageId": "b68c3900da8d09557b248ecb3b80887d04ee08548b630c0db67bd254eea3831d",
+    "repoDigests": [
+      "localhost/lawtwin/petstore3-native@sha256:1b25a3e5974cf603e3e9ffbf562c563631dccd38b75dad59bce68d312c368f61"
+    ],
+    "architecture": "arm64",
+    "created": "2026-10-10T13:47:19.06678683Z"
+  },
+  "files": {
+    "contracts/petstore/lawspec.edn": "87c3a579996dd6b70b9c62ef0559359e6d276d86fc93b550a535cc5b5306afcd",
+    "contracts/petstore/lawtwin-openapi.json": "6a2c906fce226dfe80eb5c2337eec54386220949afd856b0ba33f9b690ada476",
+    "contracts/petstore/lawtwin-embed.rs": "d5b5be8c7ed751895e17f3aed6820c1f3931f24a15c82c1e75711525ca4f442f",
+    "openapi/petstore3.json": "00441c05add60f28da55eb4563d3fb6bbda364ba8eb7b381e2e2c98613005c82",
+    "examples/http/petstore-app/app.py": "81447951f06c254327a3886b2872b9ad04d92d33bcbad372a759837610c4fcc1",
+    "crates/lawtwin/src/http/session.rs": "08858647913a1d04a775f13ae52687c5d65caa62633024457e0510961ef632ca",
+    "crates/lawtwin/src/http/mod.rs": "0ff23c37c67634249197714711a863b82e0477e035dc5a14ee588e09146062f7",
+    "contracts/petstore/src/api.lawspec": "7aab7717d808887f432995b6d1870f5ea36cae7a8d7c8d809ebbfd051d60e819",
+    "contracts/petstore/src/handwritten.lawspec": "8b6841b57fa3fdb2778f836e50446764df30b6faee05fcb6d4d1151f15ec2cd8",
+    "contracts/petstore/src/laws.lawspec": "65d476b74e2684d58ca437721cf5edd58576cbe4a79b6a9f432a535ae589d504",
+    "contracts/petstore/src/model.lawspec": "df7c2a376f2099cc2b6ae06033e1495f0513aad0ec657c090762df9b333a4e74"
+  },
+  "runs": [
+    {
+      "name": "python-invalid",
+      "command": [
+        "/Users/mattlaine/para/projects/lawtwin/target/release/lawtwin",
+        "conform",
+        "http",
+        "--contract",
+        "petstore",
+        "--real",
+        "http://127.0.0.1:38000",
+        "--twin",
+        "http://127.0.0.1:38080",
+        "--twin-admin",
+        "http://127.0.0.1:39644",
+        "--seed",
+        "1",
+        "--rounds",
+        "2",
+        "--retries",
+        "--invalid",
+        "--report",
+        "/Users/mattlaine/para/projects/lawtwin/twins/http/conformance/reports/0.2.1/python.json"
+      ],
+      "startedAt": "2026-10-26T06:10:44.000764+00:00",
+      "exitCode": 0,
+      "level": "lawful",
+      "providerCommand": [
+        "python3",
+        "examples/http/petstore-app/app.py",
+        "--port",
+        "38000"
+      ],
+      "providerImage": null,
+      "report": "python-invalid.json",
+      "reportSha256": "17d95c91906c4206d4da4119a0e5477359cf3b0628508468424ac8bc553f168e",
+      "stdout": "python-invalid.log",
+      "settings": {
+        "seed": 1,
+        "rounds": 2,
+        "retries": true,
+        "invalid": true,
+        "duplicates": false,
+        "timeouts": false,
+        "allOperations": false,
+        "timeout": "10s",
+        "twinClock": "frozen",
+        "twinResetBeforeSession": true
+      },
+      "retentionNote": "The original output was python.json; it was retained as python-invalid.json to distinguish the broader invalid-request selection from the fresh modeled-resource-only run.",
+      "observed": {
+        "requestsPerSide": 84,
+        "validCallsPerSide": 44,
+        "resourceLaws": 7,
+        "realViolations": 0,
+        "realFindings": 0,
+        "realProblems": 0,
+        "twinViolations": 0,
+        "twinFindings": 0,
+        "twinProblems": 0,
+        "answerDivergences": 6
+      }
+    },
+    {
+      "name": "python",
+      "command": [
+        "/Users/mattlaine/para/projects/lawtwin/target/release/lawtwin",
+        "conform",
+        "http",
+        "--contract",
+        "petstore",
+        "--real",
+        "http://127.0.0.1:38000",
+        "--twin",
+        "http://127.0.0.1:38080",
+        "--twin-admin",
+        "http://127.0.0.1:39644",
+        "--seed",
+        "1",
+        "--rounds",
+        "2",
+        "--retries",
+        "--report",
+        "/Users/mattlaine/para/projects/lawtwin/twins/http/conformance/reports/0.2.1/python.json"
+      ],
+      "startedAt": "2026-10-26T06:12:21.710089+00:00",
+      "exitCode": 0,
+      "level": "conformant",
+      "providerCommand": [
+        "python3",
+        "examples/http/petstore-app/app.py",
+        "--port",
+        "38000"
+      ],
+      "providerImage": null,
+      "report": "python.json",
+      "reportSha256": "b29ce2a0a58d464e92a5edd221d7727cbfe7f1ea66ac7887652c7e0041d30fff",
+      "stdout": "python.log",
+      "settings": {
+        "seed": 1,
+        "rounds": 2,
+        "retries": true,
+        "invalid": false,
+        "duplicates": false,
+        "timeouts": false,
+        "allOperations": false,
+        "timeout": "10s",
+        "twinClock": "frozen",
+        "twinResetBeforeSession": true
+      },
+      "observed": {
+        "requestsPerSide": 44,
+        "validCallsPerSide": 44,
+        "resourceLaws": 7,
+        "realViolations": 0,
+        "realFindings": 0,
+        "realProblems": 0,
+        "twinViolations": 0,
+        "twinFindings": 0,
+        "twinProblems": 0,
+        "answerDivergences": 0
+      }
+    },
+    {
+      "name": "python-forget-delete",
+      "command": [
+        "/Users/mattlaine/para/projects/lawtwin/target/release/lawtwin",
+        "conform",
+        "http",
+        "--contract",
+        "petstore",
+        "--real",
+        "http://127.0.0.1:38000",
+        "--twin",
+        "http://127.0.0.1:38080",
+        "--twin-admin",
+        "http://127.0.0.1:39644",
+        "--seed",
+        "1",
+        "--rounds",
+        "2",
+        "--retries",
+        "--report",
+        "/Users/mattlaine/para/projects/lawtwin/twins/http/conformance/reports/0.2.1/python-forget-delete.json"
+      ],
+      "startedAt": "2026-10-26T06:12:21.875088+00:00",
+      "exitCode": 1,
+      "level": "divergent",
+      "providerCommand": [
+        "python3",
+        "examples/http/petstore-app/app.py",
+        "--port",
+        "38000",
+        "--bug",
+        "forget-delete"
+      ],
+      "providerImage": null,
+      "report": "python-forget-delete.json",
+      "reportSha256": "d0ec5b92384478ecc788712b2fd8caa4da8f13707d203846c331e39858f2c4aa",
+      "stdout": "python-forget-delete.log",
+      "settings": {
+        "seed": 1,
+        "rounds": 2,
+        "retries": true,
+        "invalid": false,
+        "duplicates": false,
+        "timeouts": false,
+        "allOperations": false,
+        "timeout": "10s",
+        "twinClock": "frozen",
+        "twinResetBeforeSession": true
+      },
+      "observed": {
+        "requestsPerSide": 44,
+        "validCallsPerSide": 44,
+        "resourceLaws": 7,
+        "realViolations": 6,
+        "realFindings": 0,
+        "realProblems": 0,
+        "twinViolations": 0,
+        "twinFindings": 0,
+        "twinProblems": 0,
+        "answerDivergences": 6
+      }
+    },
+    {
+      "name": "swagger-petstore3",
+      "command": [
+        "/Users/mattlaine/para/projects/lawtwin/target/release/lawtwin",
+        "conform",
+        "http",
+        "--contract",
+        "petstore",
+        "--real",
+        "http://127.0.0.1:38000/api/v3",
+        "--twin",
+        "http://127.0.0.1:38080",
+        "--twin-admin",
+        "http://127.0.0.1:39644",
+        "--seed",
+        "1",
+        "--rounds",
+        "2",
+        "--retries",
+        "--invalid",
+        "--report",
+        "/Users/mattlaine/para/projects/lawtwin/twins/http/conformance/reports/0.2.1/swagger-petstore3.json"
+      ],
+      "startedAt": "2026-10-26T06:12:23.361312+00:00",
+      "exitCode": 0,
+      "level": "lawful",
+      "providerCommand": null,
+      "providerImage": "localhost/lawtwin/petstore3-native:latest",
+      "report": "swagger-petstore3.json",
+      "reportSha256": "390a2068376e692a7f5986e18fc7dda296907ffb1009e1208219b1a12d366e21",
+      "stdout": "swagger-petstore3.log",
+      "settings": {
+        "seed": 1,
+        "rounds": 2,
+        "retries": true,
+        "invalid": true,
+        "duplicates": false,
+        "timeouts": false,
+        "allOperations": false,
+        "timeout": "10s",
+        "twinClock": "frozen",
+        "twinResetBeforeSession": true
+      },
+      "observed": {
+        "requestsPerSide": 84,
+        "validCallsPerSide": 44,
+        "resourceLaws": 7,
+        "realViolations": 0,
+        "realFindings": 2,
+        "realProblems": 0,
+        "twinViolations": 0,
+        "twinFindings": 0,
+        "twinProblems": 0,
+        "answerDivergences": 36
+      }
+    }
+  ],
+  "imageCliVersion": "lawtwin 0.2.1",
+  "imageCoreVersion": "lawtwin-http 0.2.1 (rust core)",
+  "finishedAt": "2026-10-26T06:12:34.200439+00:00",
+  "contract": {
+    "selector": "petstore",
+    "package": "lawtwin.petstore",
+    "version": "0.1.0",
+    "openApiSource": {
+      "file": "petstore3.json",
+      "title": "Swagger Petstore - OpenAPI 3.0",
+      "version": "1.0.27"
+    },
+    "identityNote": "The 0.2.1 CLI/core release still uses the declared lawtwin.petstore 0.1.0 contract; its version was not relabelled.",
+    "trackedTreeIdentity": {
+      "algorithm": "sha256 over compact JSON array of sorted path/sha256 entries",
+      "sha256": "c1d1c563ce39752daa9368a1b6cc2e606f06094733f734867e36304a121ed4be",
+      "entries": [
+        {
+          "path": "contracts/petstore/lawspec.edn",
+          "sha256": "87c3a579996dd6b70b9c62ef0559359e6d276d86fc93b550a535cc5b5306afcd"
+        },
+        {
+          "path": "contracts/petstore/lawtwin-embed.rs",
+          "sha256": "d5b5be8c7ed751895e17f3aed6820c1f3931f24a15c82c1e75711525ca4f442f"
+        },
+        {
+          "path": "contracts/petstore/lawtwin-openapi.json",
+          "sha256": "6a2c906fce226dfe80eb5c2337eec54386220949afd856b0ba33f9b690ada476"
+        },
+        {
+          "path": "contracts/petstore/lawtwin.json",
+          "sha256": "6568c79012aeeef59fb8e773a64936bb31386afae7d78d53243ab551bdb7af30"
+        },
+        {
+          "path": "contracts/petstore/src/api.lawspec",
+          "sha256": "7aab7717d808887f432995b6d1870f5ea36cae7a8d7c8d809ebbfd051d60e819"
+        },
+        {
+          "path": "contracts/petstore/src/handwritten.lawspec",
+          "sha256": "8b6841b57fa3fdb2778f836e50446764df30b6faee05fcb6d4d1151f15ec2cd8"
+        },
+        {
+          "path": "contracts/petstore/src/laws.lawspec",
+          "sha256": "65d476b74e2684d58ca437721cf5edd58576cbe4a79b6a9f432a535ae589d504"
+        },
+        {
+          "path": "contracts/petstore/src/model.lawspec",
+          "sha256": "df7c2a376f2099cc2b6ae06033e1495f0513aad0ec657c090762df9b333a4e74"
+        },
+        {
+          "path": "contracts/petstore/test/laws/suite.lawspec",
+          "sha256": "b80c6c84f872ddd2dce701ab65aaee68007cf77a9adb911a7bd9d0b0490c7b1e"
+        },
+        {
+          "path": "contracts/petstore/test/lawspec.edn",
+          "sha256": "ea6ccd4a7ba12a70e501015de04ae47d5f53ef6094af97d30625a8c9512c796a"
+        },
+        {
+          "path": "contracts/petstore/test/lawspec.lock.edn",
+          "sha256": "41d67a8265bc9d9d25e764fff4ef1b69fe989dc4bd42e90ecef2dd091c9a3b25"
+        },
+        {
+          "path": "contracts/petstore/test/python/.lawspec/generated.json",
+          "sha256": "6c6e1391499be98107850c40f44bdd1aef4f33b8671181b13d2ec72df4928e9e"
+        },
+        {
+          "path": "contracts/petstore/test/python/pyproject.toml",
+          "sha256": "8e3d6530a6dbe628f7d9abb3eeccf4e838c0e897b01e89b8ea370a80ef783ec8"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/contracttest/petstore.py",
+          "sha256": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec/matchers.py",
+          "sha256": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_abilities/contracttest/petstore.py",
+          "sha256": "d61bb3c8d0c2f0452873781532ea7add104488cf80ff319973f200b5d67aa8f3"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_abilities/lawtwin/petstore/__init__.py",
+          "sha256": "309228bffc0fa05c79cfcb825842d82d3b992c48d1741129de25a99dc9331e34"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_abilities/lawtwin/petstore/laws.py",
+          "sha256": "7a1cf7cfcfd399a48c86aaf7d2147c2d50df792740e819cfc7bcea43f5b9435d"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_data.py",
+          "sha256": "0a9b5493ce5cc3c8e3c8333faaa72ca7b55b942fc7ed6b8d2a1ce3c0f4e9b47a"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_definition_bodies.py",
+          "sha256": "ddd03d48f4575d37439df9accb16b85cf8e9f8da1d7e24c1cf4ab92d467f87a4"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_definitions/contracttest/petstore.py",
+          "sha256": "3ff25e8d7539c19246e854e99e8743215d7804c5383ffed4a774a4efe6d3e4c9"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_definitions/lawspec/matchers.py",
+          "sha256": "2db4dbe1e3d355d3f9df6e17878e225fd2446278f6ae0de517c20b16cd91a173"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_definitions/lawtwin/petstore/__init__.py",
+          "sha256": "34c9a2ca4de9a3e219cc5725c84c092be3114fc0484695112565f4984d705fa3"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_definitions/lawtwin/petstore/handwritten.py",
+          "sha256": "d87d853e456e6529225059601f95fd409bf167384ca11753f127de95d31d276c"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_definitions/lawtwin/petstore/laws.py",
+          "sha256": "3710971a7abcf236269db25c5ea373b1d886a4e01d7b07aa7044ad0a482744a6"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_definitions/lawtwin/petstore/model.py",
+          "sha256": "c14f2bc7ea626069eceda1f0d34dcc77965319d30f2ae24fde7a19829b85f870"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_fast.py",
+          "sha256": "cc3384ca2ab955c7f259bb52cec944ef50a0b73ace947396333b01a2f16d4528"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_remote.py",
+          "sha256": "bfa3feb432c4f69d284347ec81b5d1768aee4fe41a934e7cbeaa85c57b141c9b"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_runtime.py",
+          "sha256": "7147552c9a78f715eafacefddfe0cd3d6d8e200047f7f8cfc51781db1330ffb0"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_schema.py",
+          "sha256": "db690189506bf485f7692505ada87d142e2d842f595520e071db38edaea64bfe"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawspec_typed.py",
+          "sha256": "dc6b4e2a632948c3a51b71ee461c67c61446717e85d44bf91d00ca08f65e33cf"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawtwin/petstore/__init__.py",
+          "sha256": "e482ffec2a6aee145d6382e1a3c4ead77d33beecb550458530f60594ef329df8"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawtwin/petstore/handwritten.py",
+          "sha256": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawtwin/petstore/laws.py",
+          "sha256": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a"
+        },
+        {
+          "path": "contracts/petstore/test/python/src/lawtwin/petstore/model.py",
+          "sha256": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a"
+        },
+        {
+          "path": "contracts/petstore/test/python/tests/lawspec_data_strategies.py",
+          "sha256": "34e06527eea876fcefc7f2d0be5b194b5b7f7d0d30759a44b645bb1beee5b552"
+        },
+        {
+          "path": "contracts/petstore/test/python/tests/test_contracttest_petstore_lawspec.py",
+          "sha256": "10962a32824e51144009d3ed43193544bf4836d9b1f0c797192fd12e786254b5"
+        },
+        {
+          "path": "contracts/petstore/test/python/tests/test_lawspec_matchers_lawspec.py",
+          "sha256": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69"
+        },
+        {
+          "path": "contracts/petstore/test/python/tests/test_lawtwin_petstore_handwritten_lawspec.py",
+          "sha256": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69"
+        },
+        {
+          "path": "contracts/petstore/test/python/tests/test_lawtwin_petstore_laws_lawspec.py",
+          "sha256": "947e76ef2e2d55d8a60bd0b4df068926ef14a725c6e5b50760ef73f55e4f39ef"
+        },
+        {
+          "path": "contracts/petstore/test/python/tests/test_lawtwin_petstore_lawspec.py",
+          "sha256": "4d86b137a52b5fc4b11bfe7af0f5e446ffab2cd6b9f28dfffcfad4e56001b3a2"
+        },
+        {
+          "path": "contracts/petstore/test/python/tests/test_lawtwin_petstore_model_lawspec.py",
+          "sha256": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69"
+        },
+        {
+          "path": "contracts/petstore/test/rust/.lawspec/generated.json",
+          "sha256": "640f4d16ee5e570739682a92e4b4a17f00172e0a21313260561236b875b8f013"
+        },
+        {
+          "path": "contracts/petstore/test/rust/Cargo.lock",
+          "sha256": "1217758a485d7d7b1c1c5e7bdee3c1019dc5559dc9227646619df53136a46f95"
+        },
+        {
+          "path": "contracts/petstore/test/rust/Cargo.toml",
+          "sha256": "098358733729ca5bc99ab03867bbc130ed4cc26b6b7a95c6930ff4018296bf08"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/contracttest/petstore.rs",
+          "sha256": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawspec/collections.rs",
+          "sha256": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawspec/matchers.rs",
+          "sha256": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawspec_abilities.rs",
+          "sha256": "7b896ec632e4cf31807091cf21558bfdf5626dc7cbda1f92d171e7fd7aa39cf4"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawspec_data.rs",
+          "sha256": "143fc31a4cc2485dfb59158e1b80fcaf063ac916ec16b9675902ef594c4022cc"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawspec_definitions.rs",
+          "sha256": "8c8a69a7646fbefee8dcdec2b572a96ab9965d1b96007571c2544a31f5a05cdd"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawspec_modules.rs",
+          "sha256": "1225ddb4add7209cdf1100352b793e926f7b0c67ece34fd1a7f008e6b61b9086"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawspec_remote.rs",
+          "sha256": "fefc6e4d8b1564d6e210f4988ae8603abb9148e0bf240aeebef188b16eda5c4b"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawspec_runtime.rs",
+          "sha256": "5b2f37743d26aa3b70368e479ff63eddfb2386ec97a4b50bd62525e99d988887"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawspec_schema.rs",
+          "sha256": "5754c22eedc0f4f604ca3f695969ba6fe3467ba55cad8a43c0a23a0b81c5c8ae"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawtwin/petstore.rs",
+          "sha256": "2aa27712ec4a2115cba0f5302cfa2b66e55bc8f0b5e9232b3ddb2ad25d0d9447"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawtwin/petstore/handwritten.rs",
+          "sha256": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawtwin/petstore/laws.rs",
+          "sha256": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lawtwin/petstore/model.rs",
+          "sha256": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032"
+        },
+        {
+          "path": "contracts/petstore/test/rust/src/lib.rs",
+          "sha256": "cb6206d68b878f564d709ae1b99bdf192a8f653280bcdcd6da03f9b65e837c00"
+        },
+        {
+          "path": "contracts/petstore/test/rust/tests/contracttest_petstore_lawspec.rs",
+          "sha256": "087ab7e4108fe03e05cc91d203a4d802b02131bf54f796931406df8af59facdd"
+        },
+        {
+          "path": "contracts/petstore/test/rust/tests/lawspec_collections_lawspec.rs",
+          "sha256": "eef6028b561353ad7e9cac2bd8029828d931f6fc0763049057fda994d72e47fc"
+        },
+        {
+          "path": "contracts/petstore/test/rust/tests/lawspec_matchers_lawspec.rs",
+          "sha256": "4edf7171c6c071ac848ba9134f2b6212dc572f57a879c9bcca6572e8846b0346"
+        },
+        {
+          "path": "contracts/petstore/test/rust/tests/lawtwin_petstore_handwritten_lawspec.rs",
+          "sha256": "ef77ae7c2808cd6b1ab084eb71719f018453e2479c8eb02f5dec8b466094dced"
+        },
+        {
+          "path": "contracts/petstore/test/rust/tests/lawtwin_petstore_laws_lawspec.rs",
+          "sha256": "fff8fdabbaef022519c794bd021f1cdf69edcd6d5af0c1ad9bfaf6364511a3dc"
+        },
+        {
+          "path": "contracts/petstore/test/rust/tests/lawtwin_petstore_lawspec.rs",
+          "sha256": "96e381f142b7a25c40915745507f4d889de30778bbb7090fd7a4009e7bbca315"
+        },
+        {
+          "path": "contracts/petstore/test/rust/tests/lawtwin_petstore_model_lawspec.rs",
+          "sha256": "1ba894fb1cc0f29057e6a7f57b586e8f992c841f5d752246d4cd8128b34403e5"
+        },
+        {
+          "path": "contracts/petstore/test/rust/tests/support/lawspec_strategies.rs",
+          "sha256": "b801c9ddc702588b6b30e6a14c1e7b200ae2e0229f4f3ca8f6fb5510e8238df6"
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "resourceRecords": [
+      "Pet",
+      "Order",
+      "User"
+    ],
+    "resourceLaws": [
+      "a created pet reads back",
+      "a deleted pet is not found",
+      "a replaced pet reads back as replaced",
+      "a created order reads back",
+      "a deleted order is not found",
+      "a created user reads back",
+      "a deleted user is not found"
+    ],
+    "validOperations": [
+      {
+        "operation": "updatePet",
+        "method": "PUT",
+        "path": "/pet"
+      },
+      {
+        "operation": "addPet",
+        "method": "POST",
+        "path": "/pet"
+      },
+      {
+        "operation": "getPetById",
+        "method": "GET",
+        "path": "/pet/{petId}"
+      },
+      {
+        "operation": "deletePet",
+        "method": "DELETE",
+        "path": "/pet/{petId}"
+      },
+      {
+        "operation": "placeOrder",
+        "method": "POST",
+        "path": "/store/order"
+      },
+      {
+        "operation": "getOrderById",
+        "method": "GET",
+        "path": "/store/order/{orderId}"
+      },
+      {
+        "operation": "deleteOrder",
+        "method": "DELETE",
+        "path": "/store/order/{orderId}"
+      },
+      {
+        "operation": "createUser",
+        "method": "POST",
+        "path": "/user"
+      },
+      {
+        "operation": "getUserByName",
+        "method": "GET",
+        "path": "/user/{username}"
+      },
+      {
+        "operation": "updateUser",
+        "method": "PUT",
+        "path": "/user/{username}"
+      },
+      {
+        "operation": "deleteUser",
+        "method": "DELETE",
+        "path": "/user/{username}"
+      }
+    ],
+    "unmodelledOperations": [
+      {
+        "operation": "findPetsByStatus",
+        "method": "GET",
+        "path": "/pet/findByStatus"
+      },
+      {
+        "operation": "findPetsByTags",
+        "method": "GET",
+        "path": "/pet/findByTags"
+      },
+      {
+        "operation": "updatePetWithForm",
+        "method": "POST",
+        "path": "/pet/{petId}"
+      },
+      {
+        "operation": "uploadFile",
+        "method": "POST",
+        "path": "/pet/{petId}/uploadImage"
+      },
+      {
+        "operation": "getInventory",
+        "method": "GET",
+        "path": "/store/inventory"
+      },
+      {
+        "operation": "createUsersWithListInput",
+        "method": "POST",
+        "path": "/user/createWithList"
+      },
+      {
+        "operation": "loginUser",
+        "method": "GET",
+        "path": "/user/login"
+      },
+      {
+        "operation": "logoutUser",
+        "method": "GET",
+        "path": "/user/logout"
+      }
+    ],
+    "invalidSelection": "--invalid tries generated invalid arguments for every imported operation, including unmodelled ones; it does not establish valid behavior for those operations."
+  },
+  "limits": [
+    "These are seeded finite sessions, not a proof of complete provider fidelity.",
+    "Seven resource laws are checked over 44 valid calls per provider; valid behavior for eight unmodelled operations is outside this selection.",
+    "Duplicated-write, abandoned-response/timeout and --all-operations modes are disabled. --retries is enabled.",
+    "The Python invalid run and Swagger run remain lawful with answer divergences; lawful does not mean conformant.",
+    "The Swagger report has holds=false because of two invalid-input findings, while its resource-law violation list is empty.",
+    "Locally built image IDs identify tested content; no registry publication or registry digest is asserted.",
+    "sourceCommit identifies the inspected source tree, not independently attested binary/image build provenance.",
+    "Each real provider was a fresh process/container. Swagger uses its image initialization; an empty backing store is not asserted."
+  ],
+  "cleanup": {
+    "ownedPythonProcessesTerminated": true,
+    "ownedContainersRemoved": true,
+    "ports": [
+      38000,
+      38080,
+      39644
+    ],
+    "otherProcessesOrContainersStopped": false
+  },
+  "trackedSourceCleanBeforeReports": true,
+  "identitiesUnchangedAfterRuns": true
+}
