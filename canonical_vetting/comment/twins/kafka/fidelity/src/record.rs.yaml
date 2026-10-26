@@ -46,6 +46,9 @@ decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/frames:
 decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/history:
   digest: sha256:703aad13fc544fe5
   verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/leader_endpoints:
+  digest: sha256:6118cf5c3a622b2a
+  verdict: pending
 decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/not_leader_answer:
   digest: sha256:03a8139fc93f126c
   verdict: pending

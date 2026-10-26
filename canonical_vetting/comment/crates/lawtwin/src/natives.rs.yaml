@@ -10,6 +10,15 @@ decision/rust/crates/lawtwin/src/natives.rs/const/LIB_RS:
 decision/rust/crates/lawtwin/src/natives.rs/const/PYPROJECT:
   digest: sha256:0a722c0f8ffd58f7
   verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/function/cargo_toml:
+  digest: sha256:ea7d8275543dad4f
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/function/embedding:
+  digest: sha256:9940b779629997ea
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/function/encode:
+  digest: sha256:31c19b7c53512f9b
+  verdict: pending
 decision/rust/crates/lawtwin/src/natives.rs/function/python:
   digest: sha256:37ec70e009237fc0
   verdict: pending

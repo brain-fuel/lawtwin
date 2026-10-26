@@ -1,0 +1,9 @@
+decision/python/tools/check-openapi.py:
+  digest: sha256:4a0298f47fa0e1f9
+  verdict: pending
+decision/python/tools/check-openapi.py/function/main:
+  digest: sha256:5caac649bd00ce1d
+  verdict: pending
+decision/python/tools/check-openapi.py/function/run:
+  digest: sha256:e11c419ba30204ff
+  verdict: pending

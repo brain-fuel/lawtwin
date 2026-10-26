@@ -4,6 +4,9 @@ ledger/DEC-classic-groups-over-coordinator:
 ledger/DEC-compare-up-to-renaming:
   digest: sha256:096b6a53b2acc1ee
   verdict: pending
+ledger/DEC-component-edn:
+  digest: sha256:c80d823f15b2479c
+  verdict: pending
 ledger/DEC-conformance-levels:
   digest: sha256:6d71d57876c7e773
   verdict: pending

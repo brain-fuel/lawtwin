@@ -28,11 +28,17 @@ registry/kafka-classic-group-protocol:
 registry/kafka-design:
   digest: sha256:df8b9399f4536f0a
   verdict: pending
+registry/kafka-fetch-leader-endpoints:
+  digest: sha256:7fafc316c10daa63
+  verdict: pending
 registry/kafka-java-client:
   digest: sha256:85f422b44093ae9f
   verdict: pending
 registry/kafka-murmur2:
   digest: sha256:d7a162cc5cbe8f57
+  verdict: pending
+registry/kafka-produce-leader-endpoints:
+  digest: sha256:470ba95603a9e413
   verdict: pending
 registry/kafka-protocol:
   digest: sha256:66b8335f549e8d61

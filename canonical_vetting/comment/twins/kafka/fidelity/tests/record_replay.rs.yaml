@@ -1,6 +1,9 @@
 decision/rust/twins/kafka/fidelity/tests/record_replay.rs:
   digest: sha256:31d2fc95207e83da
   verdict: pending
+decision/rust/twins/kafka/fidelity/tests/record_replay.rs/function/a_captured_coordinator_retry_does_not_drop_application_requests:
+  digest: sha256:bb39f64ed47dcc49
+  verdict: pending
 decision/rust/twins/kafka/fidelity/tests/record_replay.rs/function/session:
   digest: sha256:4512010c4b2bd340
   verdict: pending

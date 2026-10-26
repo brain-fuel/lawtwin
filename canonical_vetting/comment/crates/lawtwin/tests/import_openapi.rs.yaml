@@ -7,6 +7,9 @@ decision/rust/crates/lawtwin/tests/import_openapi.rs/function/features_of_3_1:
 decision/rust/crates/lawtwin/tests/import_openapi.rs/function/hand_written_units_are_kept:
   digest: sha256:fd0a476f8994fb67
   verdict: pending
+decision/rust/crates/lawtwin/tests/import_openapi.rs/function/maintained_contract_projects_select_law_execution:
+  digest: sha256:7157bef96d577a6a
+  verdict: pending
 decision/rust/crates/lawtwin/tests/import_openapi.rs/function/paths_select_operations:
   digest: sha256:bbcf8018c28ce97d
   verdict: pending
