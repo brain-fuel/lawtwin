@@ -1,0 +1,25 @@
+real: lawtwin.petstore against http://127.0.0.1:38000/api/v3: 84 requests, 7 laws checked over 44 calls; 0 violation(s), 2 finding(s), 0 problem(s)
+  finding: addPet accepted a request that breaks the document (the required field name is left out), answering 200
+  finding: addPet accepted a request that breaks the document (the required field name is left out), answering 200
+twin: lawtwin.petstore against http://127.0.0.1:38080: 84 requests, 7 laws checked over 44 calls; 0 violation(s), 0 finding(s), 0 problem(s)
+  divergence: POST /pet: real 200 {"ok":{"id":66428520,"name":"lumen-8761","category":{"id":68060534},"photoUrls":["willow-784"],"tags":[]}}, twin 200 {"ok":{"id":66428520,"name":"lumen-8761","category":{"id":68060534},"photoUrls":["willow-784"]}}
+  divergence: GET /pet/66428520: real 200 {"ok":{"id":66428520,"name":"lumen-8761","category":{"id":68060534},"photoUrls":["willow-784"],"tags":[]}}, twin 200 {"ok":{"id":66428520,"name":"lumen-8761","category":{"id":68060534},"photoUrls":["willow-784"]}}
+  divergence: POST /pet: real 200 {"ok":{"id":66428520,"name":"lumen-8761","category":{"id":68060534},"photoUrls":["willow-784"],"tags":[]}}, twin 422 {"error":"UnprocessableEntity"}
+  divergence: GET /pet/66428520: real 200 {"ok":{"id":66428520,"name":"lumen-8761","category":{"id":68060534},"photoUrls":["willow-784"],"tags":[]}}, twin 200 {"ok":{"id":66428520,"name":"lumen-8761","category":{"id":68060534},"photoUrls":["willow-784"]}}
+  divergence: POST /store/order: real 200 {"ok":{"id":0,"petId":0,"quantity":239,"complete":false}}, twin 200 {"ok":{"id":1,"quantity":239}}
+  divergence: GET /store/order/0: real 200 {"ok":{"id":0,"petId":0,"quantity":239,"complete":false}}, twin 200 {"ok":{"id":1,"quantity":239}}
+  divergence: POST /store/order: real 200 {"ok":{"id":0,"petId":0,"quantity":239,"complete":false}}, twin 200 {"ok":{"id":2,"quantity":239}}
+  divergence: GET /store/order/0: real 200 {"ok":{"id":0,"petId":0,"quantity":239,"complete":false}}, twin 200 {"ok":{"id":1,"quantity":239}}
+  divergence: DELETE /store/order/0: real 200 {"ok":null}, twin 200 {"ok":null}
+  divergence: GET /store/order/0: real 404 {"error":"NotFound"}, twin 404 {"error":"NotFound"}
+  divergence: POST /user: real 200 {"ok":{"id":342716080,"username":"delta-1403","firstName":"cedar-9700","userStatus":0}}, twin 200 {"ok":{"id":342716080,"username":"delta-1403","firstName":"cedar-9700"}}
+  divergence: GET /user/delta-1403: real 200 {"ok":{"id":342716080,"username":"delta-1403","firstName":"cedar-9700","userStatus":0}}, twin 200 {"ok":{"id":342716080,"username":"delta-1403","firstName":"cedar-9700"}}
+  divergence: POST /user: real 200 {"ok":{"id":342716080,"username":"delta-1403","firstName":"cedar-9700","userStatus":0}}, twin 200 {"ok":{"id":342716080,"username":"delta-1403","firstName":"cedar-9700"}}
+  divergence: GET /user/delta-1403: real 200 {"ok":{"id":342716080,"username":"delta-1403","firstName":"cedar-9700","userStatus":0}}, twin 200 {"ok":{"id":342716080,"username":"delta-1403","firstName":"cedar-9700"}}
+  divergence: GET /user/delta-1403: real 404 {"error":"NotFound"}, twin 200 {"ok":{"id":308409174,"username":"delta-1403","lastName":"birch-7198","email":"iris-7150","password":"willow-6168","phone":"sable-7153","userStatus":220}}
+  divergence: PUT /pet: real 404 {"error":"NotFound"}, twin 400 {"error":"BadRequest"}
+  divergence: POST /pet: real 200 {"ok":{"id":814666142,"photoUrls":["iris-3637","sable-403"],"tags":[],"status":"pending"}}, twin 400 {"error":"BadRequest"}
+  divergence: POST /store/order: real 400 {"error":"BadRequest"}, twin 422 {"error":"UnprocessableEntity"}
+  divergence: POST /pet: real 200 {"ok":{"id":53707500,"name":"iris-3786","photoUrls":["harbor-9537","tundra-1668"],"tags":[{"id":0,"name":"pebble-1653"}]}}, twin 200 {"ok":{"id":53707500,"name":"iris-3786","photoUrls":["harbor-9537","tundra-1668"],"tags":[{"name":"pebble-1653"}]}}
+  divergence: GET /pet/53707500: real 200 {"ok":{"id":53707500,"name":"iris-3786","photoUrls":["harbor-9537","tundra-1668"],"tags":[{"id":0,"name":"pebble-1653"}]}}, twin 200 {"ok":{"id":53707500,"name":"iris-3786","photoUrls":["harbor-9537","tundra-1668"],"tags":[{"name":"pebble-1653"}]}}
+lawtwin conform http: 36 divergence(s); lawful: the laws hold on the real service; it does what the document forbids, or the twin answers some requests differently

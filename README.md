@@ -37,7 +37,7 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 | --- | --- |
 | `contracts/kafka/` | The Kafka dependency contract, the LawSpec package `lawtwin.kafka` 0.1.0, and its twin file `lawtwin.json`, which declares the twin's faults |
 | `contracts/kafka/test/` | The project that runs the contract's laws on the Rust, Python, Go, Java, Kotlin, F# and C# targets |
-| `twins/kafka/rust/` | The Kafka twin's Rust core: the contract's generated model behind the Kafka wire protocol, with the control plane; its image is `lawtwin/kafka:0.2.1` |
+| `twins/kafka/rust/` | The Kafka twin's Rust core: the contract's generated model behind the Kafka wire protocol, with the control plane; its image is `lawtwin/kafka:0.3.0` |
 | `twins/kafka/conformance/` | The core conformance kit every Kafka core must pass, with librdkafka, kafkajs, franz-go and the Java client |
 | `twins/kafka/shared/` | The golden wire session every core answers byte for byte |
 | `twins/kafka/fidelity/` | The Kafka twin's fidelity tools (`lawtwin-kafka-fidelity`): conformance against real Kafka, record and replay, and the simulated producer and consumer |
@@ -46,7 +46,7 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 | `examples/kafka/` | Running the Kafka twin with podman compose |
 | `contracts/petstore/lawtwin.json`, `contracts/github/lawtwin.json` | The twin files of the imported contracts: the HTTP twin's faults and their effect on each law |
 | `crates/lawtwin-wire/` | The wire map of an imported contract, read once for the HTTP cores, the client twin and conformance runs |
-| `twins/http/rust/` | The HTTP twin's Rust core: any imported contract's generated model behind HTTP/1.1, with the control plane; its image is `lawtwin/http:0.2.1` |
+| `twins/http/rust/` | The HTTP twin's Rust core: any imported contract's generated model behind HTTP/1.1, with the control plane; its image is `lawtwin/http:0.3.0` |
 | `twins/http/conformance/`, `twins/http/shared/` | The core conformance kit every HTTP core must pass, and its golden sessions |
 | `examples/http/` | Running the HTTP twin with podman compose; a hand-written Petstore; the Swagger Petstore 3 built for this machine |
 | `contracts/petstore/`, `contracts/github/` | Contracts imported from the Swagger Petstore and from GitHub's label and milestone endpoints, with their test projects |
@@ -65,8 +65,8 @@ Every request is answered by the Kafka contract's reference model, the code
 LawSpec generates from it, and a test drives it through the control plane:
 
 ```sh
-make image                                         # lawtwin/kafka:0.2.1
-podman run --rm -p 9092:9092 -p 9644:9644 lawtwin/kafka:0.2.1
+make image                                         # lawtwin/kafka:0.3.0
+podman run --rm -p 9092:9092 -p 9644:9644 lawtwin/kafka:0.3.0
 lawtwin force state.json                           # a state, or the law that forbids it
 lawtwin fault duplicate-delivery count=2           # a declared fault
 lawtwin advance 30s                                # the twin clock
@@ -84,9 +84,9 @@ twin](docs/how-to/run-the-kafka-twin.md) say more.
 
 Against real Kafka, `make conform-kafka` runs the same scenarios against
 `apache/kafka:4.3.1` in podman through a recording proxy and checks the
-contract's laws over what it recorded: release 0.1.0 reaches level 3, every
+contract's laws over what it recorded: release 0.3.0 reaches level 3, every
 scenario passing and every law holding, with each divergence a ledger
-decision ([the report](twins/kafka/conformance/reports/0.1.0/report.md)).
+decision ([the report](twins/kafka/conformance/reports/0.3.0/report.md)).
 `lawtwin record kafka` records a real broker's traffic, `lawtwin replay kafka`
 replays it through a core, and `lawtwin peer kafka produce` and `consume`
 play the producers and consumers around an application
@@ -131,8 +131,8 @@ describes. The same control plane forces states, raises faults (latency,
 laws:
 
 ```sh
-make image-http                                    # lawtwin/http:0.2.1
-podman run --rm -p 8080:8080 -p 9644:9644 -e TWIN_CONFIG='{"contract":"petstore"}' lawtwin/http:0.2.1
+make image-http                                    # lawtwin/http:0.3.0
+podman run --rm -p 8080:8080 -p 9644:9644 -e TWIN_CONFIG='{"contract":"petstore"}' lawtwin/http:0.3.0
 lawtwin fault rate-limit limit=10 window=1s        # a declared fault
 lawtwin peer http call --contract petstore --target http://localhost:3000 --invalid --retries
 lawtwin record http --contract petstore --upstream http://real:8080 --listen 127.0.0.1:8081

@@ -1,0 +1,60 @@
+{"seq":1,"at":1793030251323,"source":"observed","op":"createTopicsRequest","name":"conform-6adf7848-kafkajs-group-rebalance-work","partitions":4,"answer":{"ok":null}}
+{"seq":2,"at":1793030251323,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-group-rebalance-work","answer":{"ok":4}}
+{"seq":3,"at":1793030251323,"source":"observed","op":"createTopicsRequest","name":"conform-6adf7848-kafkajs-produce-consume-orders","partitions":3,"answer":{"ok":null}}
+{"seq":4,"at":1793030251323,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-produce-consume-orders","answer":{"ok":3}}
+{"seq":5,"at":1793030251323,"source":"observed","op":"createTopicsRequest","name":"conform-6adf7848-librdkafka-faults-f","partitions":1,"answer":{"ok":null}}
+{"seq":6,"at":1793030251323,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-faults-f","answer":{"ok":1}}
+{"seq":7,"at":1793030251323,"source":"observed","op":"createTopicsRequest","name":"conform-6adf7848-librdkafka-force-orders","partitions":1,"answer":{"ok":null}}
+{"seq":8,"at":1793030251323,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-force-orders","answer":{"ok":1}}
+{"seq":9,"at":1793030251323,"source":"observed","op":"createTopicsRequest","name":"conform-6adf7848-librdkafka-group-rebalance-work","partitions":4,"answer":{"ok":null}}
+{"seq":10,"at":1793030251323,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-group-rebalance-work","answer":{"ok":4}}
+{"seq":11,"at":1793030251323,"source":"observed","op":"createTopicsRequest","name":"conform-6adf7848-librdkafka-idempotent-pay","partitions":1,"answer":{"ok":null}}
+{"seq":12,"at":1793030251323,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-idempotent-pay","answer":{"ok":1}}
+{"seq":13,"at":1793030251323,"source":"observed","op":"createTopicsRequest","name":"conform-6adf7848-librdkafka-produce-consume-orders","partitions":3,"answer":{"ok":null}}
+{"seq":14,"at":1793030251323,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-produce-consume-orders","answer":{"ok":3}}
+{"seq":15,"at":1793030251323,"source":"observed","op":"createTopicsRequest","name":"conform-6adf7848-librdkafka-transactions-ledger","partitions":2,"answer":{"ok":null}}
+{"seq":16,"at":1793030251323,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-transactions-ledger","answer":{"ok":2}}
+{"seq":17,"at":1793030251354,"source":"wire","op":"createTopicsRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","partitions":1,"answer":{"ok":null}}
+{"seq":18,"at":1793030251455,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":19,"at":1767225600000,"source":"fault","control":"fault raised","detail":{"id":1,"name":"duplicate-delivery","count":2,"topic":null}}
+{"seq":20,"at":1793030251474,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-group-rebalance-work","answer":{"ok":4}}
+{"seq":21,"at":1793030251474,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":22,"at":1793030251474,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-produce-consume-orders","answer":{"ok":3}}
+{"seq":23,"at":1793030251474,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-faults-f","answer":{"ok":1}}
+{"seq":24,"at":1793030251474,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-force-orders","answer":{"ok":1}}
+{"seq":25,"at":1793030251474,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-group-rebalance-work","answer":{"ok":4}}
+{"seq":26,"at":1793030251474,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-idempotent-pay","answer":{"ok":1}}
+{"seq":27,"at":1793030251474,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-produce-consume-orders","answer":{"ok":3}}
+{"seq":28,"at":1793030251474,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-librdkafka-transactions-ledger","answer":{"ok":2}}
+{"seq":29,"at":1793030251476,"source":"wire","op":"initProducerIdRequest","transactionalId":null,"answer":{"ok":{"producerId":2,"producerEpoch":0}}}
+{"seq":30,"at":1793030251477,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":31,"at":1767225600000,"source":"fault","control":"fault applied","detail":{"name":"duplicate-delivery","written":[{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0,"offset":0}]}}
+{"seq":32,"at":1793030251481,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"tag":{"producerId":2,"producerEpoch":0,"baseSequence":0},"records":[{"key":"k","value":"idem-0"}],"answer":{"ok":0}}
+{"seq":33,"at":1793030251482,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":34,"at":1767225600000,"source":"fault","control":"fault applied","detail":{"name":"duplicate-delivery","written":[{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0,"offset":0}]}}
+{"seq":35,"at":1793030251595,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"tag":{"producerId":2,"producerEpoch":0,"baseSequence":0},"records":[{"key":"k","value":"idem-0"}],"answer":{"ok":0}}
+{"seq":36,"at":1793030251595,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":37,"at":1793030251785,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"tag":{"producerId":2,"producerEpoch":0,"baseSequence":0},"records":[{"key":"k","value":"idem-0"}],"answer":{"ok":0}}
+{"seq":38,"at":1793030251786,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"tag":{"producerId":2,"producerEpoch":0,"baseSequence":1},"records":[{"key":"k","value":"idem-1"}],"answer":{"ok":1}}
+{"seq":39,"at":1793030251787,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"tag":{"producerId":2,"producerEpoch":0,"baseSequence":2},"records":[{"key":"k","value":"idem-2"}],"answer":{"ok":2}}
+{"seq":40,"at":1793030251788,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"tag":{"producerId":2,"producerEpoch":0,"baseSequence":3},"records":[{"key":"k","value":"idem-3"}],"answer":{"ok":3}}
+{"seq":41,"at":1793030251789,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"tag":{"producerId":2,"producerEpoch":0,"baseSequence":4},"records":[{"key":"k","value":"idem-4"}],"answer":{"ok":4}}
+{"seq":42,"at":1767225600000,"source":"fault","control":"fault raised","detail":{"id":2,"name":"duplicate-delivery","count":1,"topic":null}}
+{"seq":43,"at":1793030251794,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":44,"at":1767225600000,"source":"fault","control":"fault applied","detail":{"name":"duplicate-delivery","written":[{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0,"offset":5}]}}
+{"seq":45,"at":1793030251796,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"tag":null,"records":[{"key":"k","value":"plain"}],"answer":{"ok":5}}
+{"seq":46,"at":1793030251796,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":47,"at":1793030251906,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"tag":null,"records":[{"key":"k","value":"plain"}],"answer":{"ok":6}}
+{"seq":48,"at":1793030251909,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":49,"at":1793030251914,"source":"wire","op":"joinGroupRequest","group":"conform-6adf7848-kafkajs-idempotent-audit","member":"kafkajs-scenarios-5ad0c338-1f36-4a30-a733-262a4350fe99","topics":["conform-6adf7848-kafkajs-idempotent-pay"],"answer":{"ok":1}}
+{"seq":50,"at":1793030251915,"source":"wire","op":"metadataRequest","name":"conform-6adf7848-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":51,"at":1793030251916,"source":"wire","op":"syncGroupRequest","group":"conform-6adf7848-kafkajs-idempotent-audit","member":"kafkajs-scenarios-5ad0c338-1f36-4a30-a733-262a4350fe99","generation":1,"answer":{"ok":[{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0}]}}
+{"seq":52,"at":1793030251918,"source":"wire","op":"offsetFetchRequest","group":"conform-6adf7848-kafkajs-idempotent-audit","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"answer":{"ok":null}}
+{"seq":53,"at":1793030251920,"source":"wire","op":"listOffsetsRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"spec":"Earliest","isolation":"ReadCommitted","answer":{"ok":0}}
+{"seq":54,"at":1793030251923,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"offset":0,"maxRecords":7,"isolation":"ReadCommitted","answer":{"ok":{"records":[{"offset":0,"key":"k","value":"idem-0"},{"offset":1,"key":"k","value":"idem-1"},{"offset":2,"key":"k","value":"idem-2"},{"offset":3,"key":"k","value":"idem-3"},{"offset":4,"key":"k","value":"idem-4"},{"offset":5,"key":"k","value":"plain"},{"offset":6,"key":"k","value":"plain"}],"nextOffset":7,"highWatermark":7,"lastStableOffset":7}}}
+{"seq":55,"at":1793030251926,"source":"wire","op":"offsetCommitRequest","group":"conform-6adf7848-kafkajs-idempotent-audit","member":"kafkajs-scenarios-5ad0c338-1f36-4a30-a733-262a4350fe99","generation":1,"offsets":[{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0,"offset":7}],"answer":{"ok":null}}
+{"seq":56,"at":1793030252028,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"offset":7,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":7,"highWatermark":7,"lastStableOffset":7}}}
+{"seq":57,"at":1793030252129,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"offset":7,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":7,"highWatermark":7,"lastStableOffset":7}}}
+{"seq":58,"at":1793030252230,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"offset":7,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":7,"highWatermark":7,"lastStableOffset":7}}}
+{"seq":59,"at":1793030252332,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6adf7848-kafkajs-idempotent-pay","partition":0},"offset":7,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":7,"highWatermark":7,"lastStableOffset":7}}}
+{"seq":60,"at":1793030252334,"source":"wire","op":"leaveGroupRequest","group":"conform-6adf7848-kafkajs-idempotent-audit","member":"kafkajs-scenarios-5ad0c338-1f36-4a30-a733-262a4350fe99","answer":{"ok":null}}

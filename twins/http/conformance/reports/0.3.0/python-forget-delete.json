@@ -1,0 +1,275 @@
+{
+  "contract": "lawtwin.petstore",
+  "real": {
+    "contract": "lawtwin.petstore",
+    "target": "http://127.0.0.1:38000",
+    "seed": 1,
+    "requests": 44,
+    "calls": 44,
+    "laws": [
+      "a created pet reads back",
+      "a deleted pet is not found",
+      "a replaced pet reads back as replaced",
+      "a created order reads back",
+      "a deleted order is not found",
+      "a created user reads back",
+      "a deleted user is not found"
+    ],
+    "violations": [
+      {
+        "law": "a deleted pet is not found",
+        "detail": "getPetById [66428520] answered {\"ok\":{\"id\":66428520,\"name\":\"willow-5644\",\"category\":{\"id\":274787744,\"name\":\"lumen-2231\"},\"photoUrls\":[\"sable-93\",\"pebble-2780\"],\"tags\":[],\"status\":\"pending\"}} after a delete, not NotFound",
+        "seq": 8
+      },
+      {
+        "law": "a deleted order is not found",
+        "detail": "getOrderById [1] answered {\"ok\":{\"id\":1,\"quantity\":239}} after a delete, not NotFound",
+        "seq": 14
+      },
+      {
+        "law": "a deleted user is not found",
+        "detail": "getUserByName [\"delta-1403\"] answered {\"ok\":{\"id\":308409174,\"username\":\"delta-1403\",\"lastName\":\"birch-7198\",\"email\":\"iris-7150\",\"password\":\"willow-6168\",\"phone\":\"sable-7153\",\"userStatus\":220}} after a delete, not NotFound",
+        "seq": 22
+      },
+      {
+        "law": "a deleted pet is not found",
+        "detail": "getPetById [251067231] answered {\"ok\":{\"id\":251067231,\"name\":\"nectar-2454\",\"category\":{\"id\":877823638,\"name\":\"delta-5324\"},\"photoUrls\":[],\"tags\":[{}],\"status\":\"pending\"}} after a delete, not NotFound",
+        "seq": 30
+      },
+      {
+        "law": "a deleted order is not found",
+        "detail": "getOrderById [823276448] answered {\"ok\":{\"id\":823276448,\"petId\":329724615,\"quantity\":825,\"shipDate\":\"2026-07-06T06:12:18Z\",\"status\":\"approved\"}} after a delete, not NotFound",
+        "seq": 36
+      },
+      {
+        "law": "a deleted user is not found",
+        "detail": "getUserByName [\"fjord-4613\"] answered {\"ok\":{\"id\":260862631,\"username\":\"fjord-4613\",\"lastName\":\"nectar-7386\",\"email\":\"quartz-3719\",\"password\":\"harbor-5195\"}} after a delete, not NotFound",
+        "seq": 44
+      }
+    ],
+    "findings": [],
+    "problems": [],
+    "holds": false
+  },
+  "twin": {
+    "contract": "lawtwin.petstore",
+    "target": "http://127.0.0.1:38080",
+    "seed": 1,
+    "requests": 44,
+    "calls": 44,
+    "laws": [
+      "a created pet reads back",
+      "a deleted pet is not found",
+      "a replaced pet reads back as replaced",
+      "a created order reads back",
+      "a deleted order is not found",
+      "a created user reads back",
+      "a deleted user is not found"
+    ],
+    "violations": [],
+    "findings": [],
+    "problems": [],
+    "holds": true
+  },
+  "divergences": [
+    {
+      "op": "getPetById",
+      "real": {
+        "exchange": 8,
+        "op": "getPetById",
+        "method": "GET",
+        "target": "/pet/66428520",
+        "status": 200,
+        "answer": {
+          "ok": {
+            "id": 66428520,
+            "name": "willow-5644",
+            "category": {
+              "id": 274787744,
+              "name": "lumen-2231"
+            },
+            "photoUrls": [
+              "sable-93",
+              "pebble-2780"
+            ],
+            "tags": [],
+            "status": "pending"
+          }
+        },
+        "sent": null
+      },
+      "twin": {
+        "exchange": 8,
+        "op": "getPetById",
+        "method": "GET",
+        "target": "/pet/66428520",
+        "status": 404,
+        "answer": {
+          "error": "NotFound"
+        },
+        "sent": null
+      }
+    },
+    {
+      "op": "getOrderById",
+      "real": {
+        "exchange": 14,
+        "op": "getOrderById",
+        "method": "GET",
+        "target": "/store/order/1",
+        "status": 200,
+        "answer": {
+          "ok": {
+            "id": 1,
+            "quantity": 239
+          }
+        },
+        "sent": null
+      },
+      "twin": {
+        "exchange": 14,
+        "op": "getOrderById",
+        "method": "GET",
+        "target": "/store/order/1",
+        "status": 404,
+        "answer": {
+          "error": "NotFound"
+        },
+        "sent": null
+      }
+    },
+    {
+      "op": "getUserByName",
+      "real": {
+        "exchange": 22,
+        "op": "getUserByName",
+        "method": "GET",
+        "target": "/user/delta-1403",
+        "status": 200,
+        "answer": {
+          "ok": {
+            "id": 308409174,
+            "username": "delta-1403",
+            "lastName": "birch-7198",
+            "email": "iris-7150",
+            "password": "willow-6168",
+            "phone": "sable-7153",
+            "userStatus": 220
+          }
+        },
+        "sent": null
+      },
+      "twin": {
+        "exchange": 22,
+        "op": "getUserByName",
+        "method": "GET",
+        "target": "/user/delta-1403",
+        "status": 404,
+        "answer": {
+          "error": "NotFound"
+        },
+        "sent": null
+      }
+    },
+    {
+      "op": "getPetById",
+      "real": {
+        "exchange": 30,
+        "op": "getPetById",
+        "method": "GET",
+        "target": "/pet/251067231",
+        "status": 200,
+        "answer": {
+          "ok": {
+            "id": 251067231,
+            "name": "nectar-2454",
+            "category": {
+              "id": 877823638,
+              "name": "delta-5324"
+            },
+            "photoUrls": [],
+            "tags": [
+              {}
+            ],
+            "status": "pending"
+          }
+        },
+        "sent": null
+      },
+      "twin": {
+        "exchange": 30,
+        "op": "getPetById",
+        "method": "GET",
+        "target": "/pet/251067231",
+        "status": 404,
+        "answer": {
+          "error": "NotFound"
+        },
+        "sent": null
+      }
+    },
+    {
+      "op": "getOrderById",
+      "real": {
+        "exchange": 36,
+        "op": "getOrderById",
+        "method": "GET",
+        "target": "/store/order/823276448",
+        "status": 200,
+        "answer": {
+          "ok": {
+            "id": 823276448,
+            "petId": 329724615,
+            "quantity": 825,
+            "shipDate": "2026-07-06T06:12:18Z",
+            "status": "approved"
+          }
+        },
+        "sent": null
+      },
+      "twin": {
+        "exchange": 36,
+        "op": "getOrderById",
+        "method": "GET",
+        "target": "/store/order/823276448",
+        "status": 404,
+        "answer": {
+          "error": "NotFound"
+        },
+        "sent": null
+      }
+    },
+    {
+      "op": "getUserByName",
+      "real": {
+        "exchange": 44,
+        "op": "getUserByName",
+        "method": "GET",
+        "target": "/user/fjord-4613",
+        "status": 200,
+        "answer": {
+          "ok": {
+            "id": 260862631,
+            "username": "fjord-4613",
+            "lastName": "nectar-7386",
+            "email": "quartz-3719",
+            "password": "harbor-5195"
+          }
+        },
+        "sent": null
+      },
+      "twin": {
+        "exchange": 44,
+        "op": "getUserByName",
+        "method": "GET",
+        "target": "/user/fjord-4613",
+        "status": 404,
+        "answer": {
+          "error": "NotFound"
+        },
+        "sent": null
+      }
+    }
+  ],
+  "level": "divergent"
+}

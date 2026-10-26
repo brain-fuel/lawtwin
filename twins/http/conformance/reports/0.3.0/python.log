@@ -1,0 +1,3 @@
+real: lawtwin.petstore against http://127.0.0.1:38000: 44 requests, 7 laws checked over 44 calls; 0 violation(s), 0 finding(s), 0 problem(s)
+twin: lawtwin.petstore against http://127.0.0.1:38080: 44 requests, 7 laws checked over 44 calls; 0 violation(s), 0 finding(s), 0 problem(s)
+lawtwin conform http: 0 divergence(s); conformant: the laws hold on the real service and the twin answers every request as it does
