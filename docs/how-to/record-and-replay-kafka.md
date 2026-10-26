@@ -38,7 +38,7 @@ held before the recording are not in the trace.
 
 ```sh
 lawtwin replay kafka session --core rust
-lawtwin replay kafka session --core image:lawtwin/kafka:0.2.1 --report replay.json
+lawtwin replay kafka session --core image:lawtwin/kafka:0.3.0 --report replay.json
 ```
 
 The core starts fresh, gets the recorded requests in the order the

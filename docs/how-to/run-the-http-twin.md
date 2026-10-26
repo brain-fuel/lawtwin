@@ -16,9 +16,9 @@ lists every command.
 With podman, from the image:
 
 ```sh
-make image-http             # builds lawtwin/http:0.2.1
+make image-http             # builds lawtwin/http:0.3.0
 podman run --rm -p 8080:8080 -p 9644:9644 \
-  -e TWIN_CONFIG='{"contract": "petstore", "seed": 42}' lawtwin/http:0.2.1
+  -e TWIN_CONFIG='{"contract": "petstore", "seed": 42}' lawtwin/http:0.3.0
 ```
 
 With podman compose, from `examples/http/compose.yaml`, which runs the

@@ -16,7 +16,7 @@ wire session, the conformance kit, and these pages.
 
 | Core | Directory | Deploys as | Status |
 | --- | --- | --- | --- |
-| Rust | `twins/kafka/rust/` | the `lawtwin-kafka` program; the image `lawtwin/kafka:0.2.1` | passes the conformance kit |
+| Rust | `twins/kafka/rust/` | the `lawtwin-kafka` program; the image `lawtwin/kafka:0.3.0` | passes the conformance kit |
 | Go | `twins/kafka/go/` | a program and an image | next |
 | JVM (Java and Kotlin) | `twins/kafka/jvm/` | a jar and an image | next |
 | Python, JavaScript and TypeScript, Haskell | `twins/kafka/<language>/` | a program or package and an image | later |

@@ -8,7 +8,7 @@
 name: lawtwin-kafka
 services:
   kafka:
-    image: docker.io/lawtwin/kafka:0.2.1
+    image: docker.io/lawtwin/kafka:0.3.0
     ports:
       - "9092:9092"
       - "9644:9644"

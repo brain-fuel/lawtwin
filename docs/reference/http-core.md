@@ -15,7 +15,7 @@ sessions, the conformance kit, and these pages.
 
 | Core | Directory | Deploys as | Status |
 | --- | --- | --- | --- |
-| Rust | `twins/http/rust/` | the `lawtwin-http` program; the image `lawtwin/http:0.2.1` | passes the conformance kit |
+| Rust | `twins/http/rust/` | the `lawtwin-http` program; the image `lawtwin/http:0.3.0` | passes the conformance kit |
 | Go | `twins/http/go/` | a program and an image | next |
 | JVM (Java and Kotlin) | `twins/http/jvm/` | a jar and an image | next |
 | Python, JavaScript and TypeScript, Haskell | `twins/http/<language>/` | a program or package and an image | later |

@@ -15,8 +15,8 @@ laws. [The Kafka twin](../reference/kafka-twin.md) says what it answers;
 With podman, from the image:
 
 ```sh
-make image                  # builds lawtwin/kafka:0.2.1
-podman run --rm -p 9092:9092 -p 9644:9644 lawtwin/kafka:0.2.1
+make image                  # builds lawtwin/kafka:0.3.0
+podman run --rm -p 9092:9092 -p 9644:9644 lawtwin/kafka:0.3.0
 ```
 
 With podman compose, from the example in `examples/kafka/compose.yaml`:

@@ -40,7 +40,7 @@ lawtwin conform kafka --real kafka.test:9092 --real-name "our staging Kafka" \
   --client librdkafka --client java --out conformance --frames
 ```
 
-`--no-twin` leaves out the runs against the twin; `--twin image:lawtwin/kafka:0.2.1`
+`--no-twin` leaves out the runs against the twin; `--twin image:lawtwin/kafka:0.3.0`
 checks the image instead of the Rust core in process.
 
 ## Read the report

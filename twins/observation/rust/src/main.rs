@@ -9,6 +9,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut admin = "127.0.0.1:9646".to_string();
     while let Some(option) = args.next() {
         match option.as_str() {
+            "--version" | "-V" => {
+                println!("lawtwin-observation {}", env!("CARGO_PKG_VERSION"));
+                return Ok(());
+            }
             "--config" => config = Some(args.next().ok_or("--config needs a file")?),
             "--listen" => listen = args.next().ok_or("--listen needs an address")?,
             "--admin-listen" => admin = args.next().ok_or("--admin-listen needs an address")?,

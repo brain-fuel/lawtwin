@@ -94,6 +94,6 @@ and compare independent provider outcomes.
 
 `make test-observation` exercises lifecycle and negative controls without running
 the full Kafka/HTTP contract harnesses. `make image-observation` builds a local
-development image without publishing it. Administration has no authentication;
+0.3.0 image without publishing it. Administration has no authentication;
 keep it on the runner's private network. Normal protocol twins still own their
 existing histories, deterministic models, resets, replay and conformance suites.

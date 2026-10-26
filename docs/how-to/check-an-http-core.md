@@ -30,7 +30,7 @@ instead with:
 
 ```sh
 make image-http
-make core-conformance-http CORE=image:lawtwin/http:0.2.1
+make core-conformance-http CORE=image:lawtwin/http:0.3.0
 ```
 
 Without `CORE`, `cargo test -p lawtwin-http-conformance` checks the Rust
