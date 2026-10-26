@@ -41,7 +41,7 @@ history, or the twin fails its own checks.
 `make conform-kafka` starts `apache/kafka` (ref:apache-kafka-image)
 version 4.3.1 in podman with `tools/real-kafka.sh` (one KRaft node with
 transactions, `KAFKA_PORT`, 39092 by default), runs the command with
-`--frames` for the release `RELEASE` (0.1.0), and stops the broker. The
+`--frames` for the release `RELEASE` (0.3.0), and stops the broker. The
 broker listens on the same port inside its container and out, so it
 reaches its own advertised address, which Kafka's transaction
 verification (KIP-890, ref:kip-890) needs.

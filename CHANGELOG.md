@@ -19,6 +19,12 @@ and this project adheres to
   count mismatches and persistence failures. Existing provider fidelity receipts
   and the Cassandra roadmap are unchanged.
 
+### Changed
+
+- Version the Kafka, HTTP and observation images as 0.3.0. Retain fresh
+  Kafka/independent HTTP provider runs under `conformance/reports/0.3.0`;
+  earlier release receipts remain unchanged. Image builds are local.
+
 ## [0.2.1] - 2026-10-26
 
 All eleven maintained consumers are regenerated through the verified LawSpec
