@@ -1,0 +1,979 @@
+{
+  "twin": "kafka",
+  "release": "0.2.1",
+  "contract": {
+    "package": "lawtwin.kafka",
+    "version": "0.1.0"
+  },
+  "real": {
+    "dependency": "apache/kafka:4.3.1",
+    "version": "Produce up to v13; finalized features group.version=1, streams.version=1, transaction.version=2, eligible.leader.replicas.version=1, share.version=1, metadata.version=30",
+    "bootstrap": "127.0.0.1:39092"
+  },
+  "twinCore": "the Rust core",
+  "level": {
+    "number": 3,
+    "name": "answers",
+    "means": "Level 2, and every answer of the real dependency is the reference model's, up to renaming, except divergences each accounted for by a ledger decision."
+  },
+  "levels": [
+    {
+      "number": 0,
+      "name": "unchecked",
+      "means": "No conformance run against the real dependency."
+    },
+    {
+      "number": 1,
+      "name": "lawful",
+      "means": "The real dependency's histories satisfy every law the kit checks, in every scenario run: the contract describes the real thing."
+    },
+    {
+      "number": 2,
+      "name": "scenarios",
+      "means": "Level 1, and every client scenario that passes against the twin passes against the real dependency, unchanged."
+    },
+    {
+      "number": 3,
+      "name": "answers",
+      "means": "Level 2, and every answer of the real dependency is the reference model's, up to renaming, except divergences each accounted for by a ledger decision."
+    },
+    {
+      "number": 4,
+      "name": "exact",
+      "means": "Level 3 with no divergence at all."
+    }
+  ],
+  "summary": {
+    "runs": 24,
+    "realPassed": 24,
+    "twinPassed": 24,
+    "realLawful": true,
+    "twinLawful": true,
+    "operations": 1057,
+    "divergences": 8
+  },
+  "clients": [
+    {
+      "client": "librdkafka",
+      "version": "2.12.1",
+      "skipped": null
+    },
+    {
+      "client": "kafkajs",
+      "version": "2.2.4",
+      "skipped": null
+    },
+    {
+      "client": "franz-go",
+      "version": "1.22.1",
+      "skipped": null
+    },
+    {
+      "client": "java",
+      "version": "4.3.1",
+      "skipped": null
+    }
+  ],
+  "wireNotes": [
+    {
+      "note": "rebalance in progress",
+      "count": 16,
+      "decision": "DEC-kafka-divergence-rebalance-heartbeat"
+    },
+    {
+      "note": "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS",
+      "count": 7,
+      "decision": "DEC-kafka-divergence-coordinator-timing"
+    },
+    {
+      "note": "retriable error: InitProducerId COORDINATOR_LOAD_IN_PROGRESS",
+      "count": 1,
+      "decision": "DEC-kafka-divergence-coordinator-timing"
+    }
+  ],
+  "divergenceKinds": [
+    {
+      "kind": "assignment by the client's assignor",
+      "decision": "DEC-kafka-divergence-group-assignment",
+      "summary": "Kafka's classic protocol gives each member the partitions the leader's assignor chose; the contract's coordinator assigns round robin in member id order",
+      "count": 8,
+      "examples": [
+        {
+          "client": "librdkafka",
+          "scenario": "group-rebalance",
+          "divergence": {
+            "seq": 34,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-librdkafka-group-rebalance-workers",
+              "member": "rdkafka-02e25f78-fb23-4655-b278-2b5e9cb61b54",
+              "generation": 2
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 1
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 2
+                }
+              ]
+            }
+          }
+        },
+        {
+          "client": "librdkafka",
+          "scenario": "group-rebalance",
+          "divergence": {
+            "seq": 35,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-librdkafka-group-rebalance-workers",
+              "member": "rdkafka-34f2bbd7-6afd-4635-ad93-f6265dd5af18",
+              "generation": 2
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 2
+                },
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 3
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 1
+                },
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 3
+                }
+              ]
+            }
+          }
+        },
+        {
+          "client": "franz-go",
+          "scenario": "group-rebalance",
+          "divergence": {
+            "seq": 26,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
+              "member": "kgo-17695cf6-6362-4c48-8304-dd36bb30799e",
+              "generation": 2
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 1
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 2
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "client": "librdkafka",
+      "scenario": "produce-consume",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"produce-consume\",\"ok\":true}",
+        "operations": 27,
+        "violations": [],
+        "divergences": [],
+        "millis": 3412
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"produce-consume\",\"ok\":true}",
+        "operations": 25,
+        "violations": [],
+        "divergences": [],
+        "millis": 361
+      }
+    },
+    {
+      "client": "librdkafka",
+      "scenario": "group-rebalance",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"group-rebalance\",\"ok\":true}",
+        "operations": 60,
+        "violations": [],
+        "divergences": [
+          {
+            "seq": 34,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-librdkafka-group-rebalance-workers",
+              "member": "rdkafka-02e25f78-fb23-4655-b278-2b5e9cb61b54",
+              "generation": 2
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 1
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 2
+                }
+              ]
+            }
+          },
+          {
+            "seq": 35,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-librdkafka-group-rebalance-workers",
+              "member": "rdkafka-34f2bbd7-6afd-4635-ad93-f6265dd5af18",
+              "generation": 2
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 2
+                },
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 3
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 1
+                },
+                {
+                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
+                  "partition": 3
+                }
+              ]
+            }
+          }
+        ],
+        "notes": {
+          "rebalance in progress": 2
+        },
+        "millis": 1233
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"group-rebalance\",\"ok\":true}",
+        "operations": 64,
+        "violations": [],
+        "divergences": [],
+        "millis": 1182
+      }
+    },
+    {
+      "client": "librdkafka",
+      "scenario": "idempotent",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"idempotent\",\"ok\":true}",
+        "operations": 28,
+        "violations": [],
+        "divergences": [],
+        "notes": {
+          "retriable error: InitProducerId COORDINATOR_LOAD_IN_PROGRESS": 1
+        },
+        "millis": 2270
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"idempotent\",\"ok\":true}",
+        "operations": 26,
+        "violations": [],
+        "divergences": [],
+        "millis": 1601
+      }
+    },
+    {
+      "client": "librdkafka",
+      "scenario": "transactions",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"transactions\",\"ok\":true}",
+        "operations": 60,
+        "violations": [],
+        "divergences": [],
+        "notes": {
+          "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS": 2
+        },
+        "millis": 1790
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"transactions\",\"ok\":true}",
+        "operations": 54,
+        "violations": [],
+        "divergences": [],
+        "millis": 1047
+      }
+    },
+    {
+      "client": "librdkafka",
+      "scenario": "faults",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"faults\",\"ok\":true}",
+        "operations": 51,
+        "violations": [],
+        "divergences": [],
+        "millis": 4746
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"faults\",\"ok\":true}",
+        "operations": 53,
+        "violations": [],
+        "divergences": [],
+        "millis": 5337
+      }
+    },
+    {
+      "client": "librdkafka",
+      "scenario": "force",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"force\",\"ok\":true}",
+        "operations": 14,
+        "violations": [],
+        "divergences": [],
+        "millis": 203
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"librdkafka\",\"scenario\":\"force\",\"ok\":true}",
+        "operations": 13,
+        "violations": [],
+        "divergences": [],
+        "millis": 159
+      }
+    },
+    {
+      "client": "kafkajs",
+      "scenario": "produce-consume",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"produce-consume\",\"ok\":true,\"records\":30,\"partitions\":3}",
+        "operations": 65,
+        "violations": [],
+        "divergences": [],
+        "millis": 414
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"produce-consume\",\"ok\":true,\"records\":30,\"partitions\":3}",
+        "operations": 53,
+        "violations": [],
+        "divergences": [],
+        "millis": 308
+      }
+    },
+    {
+      "client": "kafkajs",
+      "scenario": "group-rebalance",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"group-rebalance\",\"ok\":true,\"joinsOfA\":3}",
+        "operations": 94,
+        "violations": [],
+        "divergences": [],
+        "notes": {
+          "rebalance in progress": 6
+        },
+        "millis": 1457
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"group-rebalance\",\"ok\":true,\"joinsOfA\":3}",
+        "operations": 77,
+        "violations": [],
+        "divergences": [],
+        "millis": 938
+      }
+    },
+    {
+      "client": "kafkajs",
+      "scenario": "idempotent",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"idempotent\",\"ok\":true,\"values\":[\"idem-0\",\"idem-1\",\"idem-2\",\"idem-3\",\"idem-4\",\"plain\",\"plain\"]}",
+        "operations": 55,
+        "violations": [],
+        "divergences": [],
+        "millis": 1137
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"idempotent\",\"ok\":true,\"values\":[\"idem-0\",\"idem-1\",\"idem-2\",\"idem-3\",\"idem-4\",\"plain\",\"plain\"]}",
+        "operations": 31,
+        "violations": [],
+        "divergences": [],
+        "millis": 1062
+      }
+    },
+    {
+      "client": "kafkajs",
+      "scenario": "transactions",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"transactions\",\"ok\":true,\"readCommitted\":4,\"readUncommitted\":6,\"fenced\":true}",
+        "operations": 86,
+        "violations": [],
+        "divergences": [],
+        "millis": 744
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"transactions\",\"ok\":true,\"readCommitted\":4,\"readUncommitted\":6,\"fenced\":true}",
+        "operations": 48,
+        "violations": [],
+        "divergences": [],
+        "millis": 627
+      }
+    },
+    {
+      "client": "kafkajs",
+      "scenario": "faults",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"faults\",\"ok\":true,\"joins\":3}",
+        "operations": 61,
+        "violations": [],
+        "divergences": [],
+        "millis": 3514
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"faults\",\"ok\":true,\"joins\":3}",
+        "operations": 45,
+        "violations": [],
+        "divergences": [],
+        "millis": 3311
+      }
+    },
+    {
+      "client": "kafkajs",
+      "scenario": "force",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"force\",\"ok\":true,\"resumedAt\":2}",
+        "operations": 16,
+        "violations": [],
+        "divergences": [],
+        "millis": 624
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"kafkajs\",\"scenario\":\"force\",\"ok\":true,\"resumedAt\":2}",
+        "operations": 15,
+        "violations": [],
+        "divergences": [],
+        "millis": 520
+      }
+    },
+    {
+      "client": "franz-go",
+      "scenario": "produce-consume",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"franz-go\",\"ok\":true,\"partitions\":3,\"records\":30,\"scenario\":\"produce-consume\"}",
+        "operations": 50,
+        "violations": [],
+        "divergences": [],
+        "millis": 626
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"franz-go\",\"ok\":true,\"partitions\":3,\"records\":30,\"scenario\":\"produce-consume\"}",
+        "operations": 50,
+        "violations": [],
+        "divergences": [],
+        "millis": 306
+      }
+    },
+    {
+      "client": "franz-go",
+      "scenario": "group-rebalance",
+      "real": {
+        "passed": true,
+        "output": "{\"assignmentsOfA\":4,\"client\":\"franz-go\",\"ok\":true,\"scenario\":\"group-rebalance\"}",
+        "operations": 61,
+        "violations": [],
+        "divergences": [
+          {
+            "seq": 26,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
+              "member": "kgo-17695cf6-6362-4c48-8304-dd36bb30799e",
+              "generation": 2
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 1
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 2
+                }
+              ]
+            }
+          },
+          {
+            "seq": 27,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
+              "member": "kgo-37a81cf5-c6e2-4a7f-82c1-452cdb022d0a",
+              "generation": 2
+            },
+            "recorded": {
+              "ok": []
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 1
+                },
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 3
+                }
+              ]
+            }
+          },
+          {
+            "seq": 40,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
+              "member": "kgo-37a81cf5-c6e2-4a7f-82c1-452cdb022d0a",
+              "generation": 3
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 2
+                },
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 3
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 1
+                },
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 3
+                }
+              ]
+            }
+          },
+          {
+            "seq": 41,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
+              "member": "kgo-17695cf6-6362-4c48-8304-dd36bb30799e",
+              "generation": 3
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 1
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "partition": 2
+                }
+              ]
+            }
+          }
+        ],
+        "notes": {
+          "rebalance in progress": 6
+        },
+        "millis": 1665
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"assignmentsOfA\":4,\"client\":\"franz-go\",\"ok\":true,\"scenario\":\"group-rebalance\"}",
+        "operations": 55,
+        "violations": [],
+        "divergences": [],
+        "millis": 1238
+      }
+    },
+    {
+      "client": "franz-go",
+      "scenario": "idempotent",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"franz-go\",\"ok\":true,\"scenario\":\"idempotent\",\"values\":[\"idem-0\",\"idem-1\",\"idem-2\",\"idem-3\",\"idem-4\",\"plain\",\"plain\"]}",
+        "operations": 22,
+        "violations": [],
+        "divergences": [],
+        "millis": 1350
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"franz-go\",\"ok\":true,\"scenario\":\"idempotent\",\"values\":[\"idem-0\",\"idem-1\",\"idem-2\",\"idem-3\",\"idem-4\",\"plain\",\"plain\"]}",
+        "operations": 22,
+        "violations": [],
+        "divergences": [],
+        "millis": 1343
+      }
+    },
+    {
+      "client": "franz-go",
+      "scenario": "transactions",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"franz-go\",\"fenced\":\"PRODUCER_FENCED: There is a newer producer with the same transactionalId which fences the current one.\",\"ok\":true,\"readCommitted\":4,\"readUncommitted\":6,\"scenario\":\"transactions\"}",
+        "operations": 42,
+        "violations": [],
+        "divergences": [],
+        "notes": {
+          "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS": 3
+        },
+        "millis": 827
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"franz-go\",\"fenced\":\"PRODUCER_FENCED: There is a newer producer with the same transactionalId which fences the current one.\",\"ok\":true,\"readCommitted\":4,\"readUncommitted\":6,\"scenario\":\"transactions\"}",
+        "operations": 42,
+        "violations": [],
+        "divergences": [],
+        "millis": 727
+      }
+    },
+    {
+      "client": "franz-go",
+      "scenario": "faults",
+      "real": {
+        "passed": true,
+        "output": "{\"assigned\":3,\"assignedBeforeStorm\":1,\"client\":\"franz-go\",\"ok\":true,\"scenario\":\"faults\"}",
+        "operations": 33,
+        "violations": [],
+        "divergences": [],
+        "millis": 11298
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"assigned\":3,\"assignedBeforeStorm\":1,\"client\":\"franz-go\",\"ok\":true,\"scenario\":\"faults\"}",
+        "operations": 37,
+        "violations": [],
+        "divergences": [],
+        "millis": 11286
+      }
+    },
+    {
+      "client": "franz-go",
+      "scenario": "force",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"franz-go\",\"ok\":true,\"resumedAt\":2,\"scenario\":\"force\"}",
+        "operations": 12,
+        "violations": [],
+        "divergences": [],
+        "millis": 514
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"franz-go\",\"ok\":true,\"resumedAt\":2,\"scenario\":\"force\"}",
+        "operations": 11,
+        "violations": [],
+        "divergences": [],
+        "millis": 413
+      }
+    },
+    {
+      "client": "java",
+      "scenario": "produce-consume",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"produce-consume\",\"ok\":true,\"records\":30,\"partitions\":3}",
+        "operations": 50,
+        "violations": [],
+        "divergences": [],
+        "millis": 1040
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"produce-consume\",\"ok\":true,\"records\":30,\"partitions\":3}",
+        "operations": 50,
+        "violations": [],
+        "divergences": [],
+        "millis": 837
+      }
+    },
+    {
+      "client": "java",
+      "scenario": "group-rebalance",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"group-rebalance\",\"ok\":true,\"assignmentsOfA\":3}",
+        "operations": 65,
+        "violations": [],
+        "divergences": [
+          {
+            "seq": 29,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-java-group-rebalance-workers",
+              "member": "consumer-conform-6adee96a-java-group-rebalance-workers-1-59c78057-5a07-4623-90c0-760b9950af0e",
+              "generation": 2
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "partition": 1
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "partition": 2
+                }
+              ]
+            }
+          },
+          {
+            "seq": 32,
+            "op": {
+              "op": "syncGroupRequest",
+              "group": "conform-6adee96a-java-group-rebalance-workers",
+              "member": "consumer-conform-6adee96a-java-group-rebalance-workers-2-d34a042b-3fad-4257-836b-a567725f043d",
+              "generation": 2
+            },
+            "recorded": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "partition": 2
+                },
+                {
+                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "partition": 3
+                }
+              ]
+            },
+            "model": {
+              "ok": [
+                {
+                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "partition": 1
+                },
+                {
+                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "partition": 3
+                }
+              ]
+            }
+          }
+        ],
+        "notes": {
+          "rebalance in progress": 2
+        },
+        "millis": 1852
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"group-rebalance\",\"ok\":true,\"assignmentsOfA\":3}",
+        "operations": 67,
+        "violations": [],
+        "divergences": [],
+        "millis": 1867
+      }
+    },
+    {
+      "client": "java",
+      "scenario": "idempotent",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"idempotent\",\"ok\":true,\"values\":[\"idem-0\",\"idem-1\",\"idem-2\",\"idem-3\",\"idem-4\",\"plain\",\"plain\"]}",
+        "operations": 23,
+        "violations": [],
+        "divergences": [],
+        "millis": 1348
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"idempotent\",\"ok\":true,\"values\":[\"idem-0\",\"idem-1\",\"idem-2\",\"idem-3\",\"idem-4\",\"plain\",\"plain\"]}",
+        "operations": 23,
+        "violations": [],
+        "divergences": [],
+        "millis": 1344
+      }
+    },
+    {
+      "client": "java",
+      "scenario": "transactions",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"transactions\",\"ok\":true,\"readCommitted\":4,\"readUncommitted\":6,\"fenced\":\"ProducerFencedException\"}",
+        "operations": 33,
+        "violations": [],
+        "divergences": [],
+        "notes": {
+          "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS": 2
+        },
+        "millis": 1142
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"transactions\",\"ok\":true,\"readCommitted\":4,\"readUncommitted\":6,\"fenced\":\"ProducerFencedException\"}",
+        "operations": 33,
+        "violations": [],
+        "divergences": [],
+        "millis": 940
+      }
+    },
+    {
+      "client": "java",
+      "scenario": "faults",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"faults\",\"ok\":true,\"assignmentsBeforeStorm\":1,\"assignments\":3}",
+        "operations": 38,
+        "violations": [],
+        "divergences": [],
+        "millis": 3795
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"faults\",\"ok\":true,\"assignmentsBeforeStorm\":1,\"assignments\":3}",
+        "operations": 42,
+        "violations": [],
+        "divergences": [],
+        "millis": 4149
+      }
+    },
+    {
+      "client": "java",
+      "scenario": "force",
+      "real": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"force\",\"ok\":true,\"resumedAt\":2}",
+        "operations": 11,
+        "violations": [],
+        "divergences": [],
+        "millis": 925
+      },
+      "twin": {
+        "passed": true,
+        "output": "{\"client\":\"java\",\"scenario\":\"force\",\"ok\":true,\"resumedAt\":2}",
+        "operations": 10,
+        "violations": [],
+        "divergences": [],
+        "millis": 827
+      }
+    }
+  ]
+}
