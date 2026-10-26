@@ -4,7 +4,7 @@ Written by `lawtwin conform kafka`; do not edit. The JSON beside it has every ru
 
 **Level 3 (answers)**: Level 2, and every answer of the real dependency is the reference model's, up to renaming, except divergences each accounted for by a ledger decision.
 
-24 runs: 24 pass against the real broker and 24 against the twin; 1057 operations recorded from the real broker; 8 divergence(s); the real broker's histories satisfy every law the kit checks.
+24 runs: 24 pass against the real broker and 24 against the twin; 1050 operations recorded from the real broker; 8 divergence(s); the real broker's histories satisfy every law the kit checks.
 
 | Client | Scenario | Real broker, through the recorder | Twin |
 | --- | --- | --- | --- |
@@ -46,8 +46,9 @@ Exchanges that are not operations of the contract, written to the history as not
 | Note | Count | Accounted for by |
 | --- | --- | --- |
 | rebalance in progress | 16 | ref:DEC-kafka-divergence-rebalance-heartbeat |
-| retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS | 7 | ref:DEC-kafka-divergence-coordinator-timing |
+| retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS | 8 | ref:DEC-kafka-divergence-coordinator-timing |
 | retriable error: InitProducerId COORDINATOR_LOAD_IN_PROGRESS | 1 | ref:DEC-kafka-divergence-coordinator-timing |
+| retriable error: InitProducerId NOT_COORDINATOR | 1 | ref:DEC-kafka-divergence-coordinator-timing |
 
 ## Levels
 

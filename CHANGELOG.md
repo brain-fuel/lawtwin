@@ -8,11 +8,12 @@ and this project adheres to
 
 ## [Unreleased]
 
-## [0.2.1] - 2026-10-25
+## [0.2.1] - 2026-10-26
 
-Release preparation: consumer regeneration and fresh Kafka/HTTP conformance are
-pending the final verified LawSpec 0.31.0 archive. Existing evidence retains its
-original release and run identities.
+All eleven maintained consumers are regenerated through the verified LawSpec
+0.31.0 WASM compiler. Fresh rebuilt-image reports retain their implementation
+and contract identities, scoped conformance levels and independent negative
+controls; historical receipts keep their original identities.
 
 ### Changed
 

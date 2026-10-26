@@ -8,9 +8,9 @@
   "real": {
     "dependency": "apache/kafka:4.3.1",
     "version": "Produce up to v13; finalized features group.version=1, streams.version=1, transaction.version=2, eligible.leader.replicas.version=1, share.version=1, metadata.version=30",
-    "bootstrap": "127.0.0.1:39092"
+    "bootstrap": "127.0.0.1:39094"
   },
-  "twinCore": "the Rust core",
+  "twinCore": "image:lawtwin/kafka:0.2.1",
   "level": {
     "number": 3,
     "name": "answers",
@@ -49,7 +49,7 @@
     "twinPassed": 24,
     "realLawful": true,
     "twinLawful": true,
-    "operations": 1057,
+    "operations": 1050,
     "divergences": 8
   },
   "clients": [
@@ -82,11 +82,16 @@
     },
     {
       "note": "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS",
-      "count": 7,
+      "count": 8,
       "decision": "DEC-kafka-divergence-coordinator-timing"
     },
     {
       "note": "retriable error: InitProducerId COORDINATOR_LOAD_IN_PROGRESS",
+      "count": 1,
+      "decision": "DEC-kafka-divergence-coordinator-timing"
+    },
+    {
+      "note": "retriable error: InitProducerId NOT_COORDINATOR",
       "count": 1,
       "decision": "DEC-kafka-divergence-coordinator-timing"
     }
@@ -102,34 +107,34 @@
           "client": "librdkafka",
           "scenario": "group-rebalance",
           "divergence": {
-            "seq": 34,
+            "seq": 30,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-librdkafka-group-rebalance-workers",
-              "member": "rdkafka-02e25f78-fb23-4655-b278-2b5e9cb61b54",
+              "group": "conform-6adf01a9-librdkafka-group-rebalance-workers",
+              "member": "rdkafka-fecfd418-a5d9-45f1-9228-4162354268ff",
               "generation": 2
             },
             "recorded": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 0
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 2
                 },
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 1
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 3
                 }
               ]
             },
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 0
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 1
                 },
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 2
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 3
                 }
               ]
             }
@@ -139,34 +144,34 @@
           "client": "librdkafka",
           "scenario": "group-rebalance",
           "divergence": {
-            "seq": 35,
+            "seq": 31,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-librdkafka-group-rebalance-workers",
-              "member": "rdkafka-34f2bbd7-6afd-4635-ad93-f6265dd5af18",
+              "group": "conform-6adf01a9-librdkafka-group-rebalance-workers",
+              "member": "rdkafka-ce7795a9-c9cc-4510-a823-052620ad56d2",
               "generation": 2
             },
             "recorded": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 2
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 3
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 1
                 }
               ]
             },
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 1
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 3
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 2
                 }
               ]
             }
@@ -179,30 +184,21 @@
             "seq": 26,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
-              "member": "kgo-17695cf6-6362-4c48-8304-dd36bb30799e",
+              "group": "conform-6adf01a9-franz-go-group-rebalance-workers",
+              "member": "kgo-2766b452-a039-4bcb-bc86-48db15f926b3",
               "generation": 2
             },
             "recorded": {
-              "ok": [
-                {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
-                  "partition": 0
-                },
-                {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
-                  "partition": 1
-                }
-              ]
+              "ok": []
             },
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 2
                 }
               ]
@@ -222,15 +218,15 @@
         "operations": 27,
         "violations": [],
         "divergences": [],
-        "millis": 3412
+        "millis": 4880
       },
       "twin": {
         "passed": true,
         "output": "{\"client\":\"librdkafka\",\"scenario\":\"produce-consume\",\"ok\":true}",
-        "operations": 25,
+        "operations": 26,
         "violations": [],
         "divergences": [],
-        "millis": 361
+        "millis": 412
       }
     },
     {
@@ -239,71 +235,71 @@
       "real": {
         "passed": true,
         "output": "{\"client\":\"librdkafka\",\"scenario\":\"group-rebalance\",\"ok\":true}",
-        "operations": 60,
+        "operations": 56,
         "violations": [],
         "divergences": [
           {
-            "seq": 34,
+            "seq": 30,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-librdkafka-group-rebalance-workers",
-              "member": "rdkafka-02e25f78-fb23-4655-b278-2b5e9cb61b54",
+              "group": "conform-6adf01a9-librdkafka-group-rebalance-workers",
+              "member": "rdkafka-fecfd418-a5d9-45f1-9228-4162354268ff",
               "generation": 2
             },
             "recorded": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 0
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 2
                 },
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 1
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 3
                 }
               ]
             },
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 0
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 1
                 },
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 2
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 3
                 }
               ]
             }
           },
           {
-            "seq": 35,
+            "seq": 31,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-librdkafka-group-rebalance-workers",
-              "member": "rdkafka-34f2bbd7-6afd-4635-ad93-f6265dd5af18",
+              "group": "conform-6adf01a9-librdkafka-group-rebalance-workers",
+              "member": "rdkafka-ce7795a9-c9cc-4510-a823-052620ad56d2",
               "generation": 2
             },
             "recorded": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 2
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 3
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 1
                 }
               ]
             },
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 1
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-librdkafka-group-rebalance-work",
-                  "partition": 3
+                  "topic": "conform-6adf01a9-librdkafka-group-rebalance-work",
+                  "partition": 2
                 }
               ]
             }
@@ -312,15 +308,15 @@
         "notes": {
           "rebalance in progress": 2
         },
-        "millis": 1233
+        "millis": 1356
       },
       "twin": {
         "passed": true,
         "output": "{\"client\":\"librdkafka\",\"scenario\":\"group-rebalance\",\"ok\":true}",
-        "operations": 64,
+        "operations": 63,
         "violations": [],
         "divergences": [],
-        "millis": 1182
+        "millis": 1201
       }
     },
     {
@@ -335,7 +331,7 @@
         "notes": {
           "retriable error: InitProducerId COORDINATOR_LOAD_IN_PROGRESS": 1
         },
-        "millis": 2270
+        "millis": 2445
       },
       "twin": {
         "passed": true,
@@ -343,7 +339,7 @@
         "operations": 26,
         "violations": [],
         "divergences": [],
-        "millis": 1601
+        "millis": 1669
       }
     },
     {
@@ -352,13 +348,14 @@
       "real": {
         "passed": true,
         "output": "{\"client\":\"librdkafka\",\"scenario\":\"transactions\",\"ok\":true}",
-        "operations": 60,
+        "operations": 65,
         "violations": [],
         "divergences": [],
         "notes": {
-          "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS": 2
+          "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS": 2,
+          "retriable error: InitProducerId NOT_COORDINATOR": 1
         },
-        "millis": 1790
+        "millis": 2716
       },
       "twin": {
         "passed": true,
@@ -366,7 +363,7 @@
         "operations": 54,
         "violations": [],
         "divergences": [],
-        "millis": 1047
+        "millis": 1180
       }
     },
     {
@@ -375,10 +372,10 @@
       "real": {
         "passed": true,
         "output": "{\"client\":\"librdkafka\",\"scenario\":\"faults\",\"ok\":true}",
-        "operations": 51,
+        "operations": 50,
         "violations": [],
         "divergences": [],
-        "millis": 4746
+        "millis": 5247
       },
       "twin": {
         "passed": true,
@@ -386,7 +383,7 @@
         "operations": 53,
         "violations": [],
         "divergences": [],
-        "millis": 5337
+        "millis": 5510
       }
     },
     {
@@ -398,7 +395,7 @@
         "operations": 14,
         "violations": [],
         "divergences": [],
-        "millis": 203
+        "millis": 248
       },
       "twin": {
         "passed": true,
@@ -406,7 +403,7 @@
         "operations": 13,
         "violations": [],
         "divergences": [],
-        "millis": 159
+        "millis": 179
       }
     },
     {
@@ -418,7 +415,7 @@
         "operations": 65,
         "violations": [],
         "divergences": [],
-        "millis": 414
+        "millis": 643
       },
       "twin": {
         "passed": true,
@@ -426,7 +423,7 @@
         "operations": 53,
         "violations": [],
         "divergences": [],
-        "millis": 308
+        "millis": 516
       }
     },
     {
@@ -435,21 +432,21 @@
       "real": {
         "passed": true,
         "output": "{\"client\":\"kafkajs\",\"scenario\":\"group-rebalance\",\"ok\":true,\"joinsOfA\":3}",
-        "operations": 94,
+        "operations": 90,
         "violations": [],
         "divergences": [],
         "notes": {
           "rebalance in progress": 6
         },
-        "millis": 1457
+        "millis": 1688
       },
       "twin": {
         "passed": true,
         "output": "{\"client\":\"kafkajs\",\"scenario\":\"group-rebalance\",\"ok\":true,\"joinsOfA\":3}",
-        "operations": 77,
+        "operations": 86,
         "violations": [],
         "divergences": [],
-        "millis": 938
+        "millis": 1622
       }
     },
     {
@@ -458,10 +455,10 @@
       "real": {
         "passed": true,
         "output": "{\"client\":\"kafkajs\",\"scenario\":\"idempotent\",\"ok\":true,\"values\":[\"idem-0\",\"idem-1\",\"idem-2\",\"idem-3\",\"idem-4\",\"plain\",\"plain\"]}",
-        "operations": 55,
+        "operations": 54,
         "violations": [],
         "divergences": [],
-        "millis": 1137
+        "millis": 1483
       },
       "twin": {
         "passed": true,
@@ -469,7 +466,7 @@
         "operations": 31,
         "violations": [],
         "divergences": [],
-        "millis": 1062
+        "millis": 1258
       }
     },
     {
@@ -481,7 +478,10 @@
         "operations": 86,
         "violations": [],
         "divergences": [],
-        "millis": 744
+        "notes": {
+          "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS": 1
+        },
+        "millis": 1142
       },
       "twin": {
         "passed": true,
@@ -489,7 +489,7 @@
         "operations": 48,
         "violations": [],
         "divergences": [],
-        "millis": 627
+        "millis": 1061
       }
     },
     {
@@ -498,10 +498,10 @@
       "real": {
         "passed": true,
         "output": "{\"client\":\"kafkajs\",\"scenario\":\"faults\",\"ok\":true,\"joins\":3}",
-        "operations": 61,
+        "operations": 60,
         "violations": [],
         "divergences": [],
-        "millis": 3514
+        "millis": 3376
       },
       "twin": {
         "passed": true,
@@ -509,7 +509,7 @@
         "operations": 45,
         "violations": [],
         "divergences": [],
-        "millis": 3311
+        "millis": 3087
       }
     },
     {
@@ -518,10 +518,10 @@
       "real": {
         "passed": true,
         "output": "{\"client\":\"kafkajs\",\"scenario\":\"force\",\"ok\":true,\"resumedAt\":2}",
-        "operations": 16,
+        "operations": 15,
         "violations": [],
         "divergences": [],
-        "millis": 624
+        "millis": 777
       },
       "twin": {
         "passed": true,
@@ -529,7 +529,7 @@
         "operations": 15,
         "violations": [],
         "divergences": [],
-        "millis": 520
+        "millis": 793
       }
     },
     {
@@ -541,7 +541,7 @@
         "operations": 50,
         "violations": [],
         "divergences": [],
-        "millis": 626
+        "millis": 722
       },
       "twin": {
         "passed": true,
@@ -549,7 +549,7 @@
         "operations": 50,
         "violations": [],
         "divergences": [],
-        "millis": 306
+        "millis": 320
       }
     },
     {
@@ -565,30 +565,21 @@
             "seq": 26,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
-              "member": "kgo-17695cf6-6362-4c48-8304-dd36bb30799e",
+              "group": "conform-6adf01a9-franz-go-group-rebalance-workers",
+              "member": "kgo-2766b452-a039-4bcb-bc86-48db15f926b3",
               "generation": 2
             },
             "recorded": {
-              "ok": [
-                {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
-                  "partition": 0
-                },
-                {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
-                  "partition": 1
-                }
-              ]
+              "ok": []
             },
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 2
                 }
               ]
@@ -598,21 +589,30 @@
             "seq": 27,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
-              "member": "kgo-37a81cf5-c6e2-4a7f-82c1-452cdb022d0a",
+              "group": "conform-6adf01a9-franz-go-group-rebalance-workers",
+              "member": "kgo-5f3cceeb-c240-4f88-b0d7-57f24b279ab3",
               "generation": 2
             },
             "recorded": {
-              "ok": []
+              "ok": [
+                {
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
+                  "partition": 0
+                },
+                {
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
+                  "partition": 1
+                }
+              ]
             },
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 1
                 },
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 3
                 }
               ]
@@ -622,18 +622,18 @@
             "seq": 40,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
-              "member": "kgo-37a81cf5-c6e2-4a7f-82c1-452cdb022d0a",
+              "group": "conform-6adf01a9-franz-go-group-rebalance-workers",
+              "member": "kgo-2766b452-a039-4bcb-bc86-48db15f926b3",
               "generation": 3
             },
             "recorded": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 2
                 },
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 3
                 }
               ]
@@ -641,12 +641,12 @@
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
-                  "partition": 1
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
+                  "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
-                  "partition": 3
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
+                  "partition": 2
                 }
               ]
             }
@@ -655,18 +655,18 @@
             "seq": 41,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-franz-go-group-rebalance-workers",
-              "member": "kgo-17695cf6-6362-4c48-8304-dd36bb30799e",
+              "group": "conform-6adf01a9-franz-go-group-rebalance-workers",
+              "member": "kgo-5f3cceeb-c240-4f88-b0d7-57f24b279ab3",
               "generation": 3
             },
             "recorded": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
                   "partition": 1
                 }
               ]
@@ -674,12 +674,12 @@
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
-                  "partition": 0
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
+                  "partition": 1
                 },
                 {
-                  "topic": "conform-6adee96a-franz-go-group-rebalance-work",
-                  "partition": 2
+                  "topic": "conform-6adf01a9-franz-go-group-rebalance-work",
+                  "partition": 3
                 }
               ]
             }
@@ -688,7 +688,7 @@
         "notes": {
           "rebalance in progress": 6
         },
-        "millis": 1665
+        "millis": 1689
       },
       "twin": {
         "passed": true,
@@ -696,7 +696,7 @@
         "operations": 55,
         "violations": [],
         "divergences": [],
-        "millis": 1238
+        "millis": 1256
       }
     },
     {
@@ -708,7 +708,7 @@
         "operations": 22,
         "violations": [],
         "divergences": [],
-        "millis": 1350
+        "millis": 1288
       },
       "twin": {
         "passed": true,
@@ -716,7 +716,7 @@
         "operations": 22,
         "violations": [],
         "divergences": [],
-        "millis": 1343
+        "millis": 1279
       }
     },
     {
@@ -731,7 +731,7 @@
         "notes": {
           "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS": 3
         },
-        "millis": 827
+        "millis": 838
       },
       "twin": {
         "passed": true,
@@ -739,7 +739,7 @@
         "operations": 42,
         "violations": [],
         "divergences": [],
-        "millis": 727
+        "millis": 735
       }
     },
     {
@@ -751,7 +751,7 @@
         "operations": 33,
         "violations": [],
         "divergences": [],
-        "millis": 11298
+        "millis": 11332
       },
       "twin": {
         "passed": true,
@@ -759,7 +759,7 @@
         "operations": 37,
         "violations": [],
         "divergences": [],
-        "millis": 11286
+        "millis": 11266
       }
     },
     {
@@ -779,7 +779,7 @@
         "operations": 11,
         "violations": [],
         "divergences": [],
-        "millis": 413
+        "millis": 534
       }
     },
     {
@@ -791,7 +791,7 @@
         "operations": 50,
         "violations": [],
         "divergences": [],
-        "millis": 1040
+        "millis": 1380
       },
       "twin": {
         "passed": true,
@@ -799,7 +799,7 @@
         "operations": 50,
         "violations": [],
         "divergences": [],
-        "millis": 837
+        "millis": 1266
       }
     },
     {
@@ -815,18 +815,18 @@
             "seq": 29,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-java-group-rebalance-workers",
-              "member": "consumer-conform-6adee96a-java-group-rebalance-workers-1-59c78057-5a07-4623-90c0-760b9950af0e",
+              "group": "conform-6adf01a9-java-group-rebalance-workers",
+              "member": "consumer-conform-6adf01a9-java-group-rebalance-workers-1-e90ebee0-519b-4877-8145-93d229b7b95d",
               "generation": 2
             },
             "recorded": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "topic": "conform-6adf01a9-java-group-rebalance-work",
                   "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "topic": "conform-6adf01a9-java-group-rebalance-work",
                   "partition": 1
                 }
               ]
@@ -834,32 +834,32 @@
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "topic": "conform-6adf01a9-java-group-rebalance-work",
                   "partition": 0
                 },
                 {
-                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "topic": "conform-6adf01a9-java-group-rebalance-work",
                   "partition": 2
                 }
               ]
             }
           },
           {
-            "seq": 32,
+            "seq": 38,
             "op": {
               "op": "syncGroupRequest",
-              "group": "conform-6adee96a-java-group-rebalance-workers",
-              "member": "consumer-conform-6adee96a-java-group-rebalance-workers-2-d34a042b-3fad-4257-836b-a567725f043d",
+              "group": "conform-6adf01a9-java-group-rebalance-workers",
+              "member": "consumer-conform-6adf01a9-java-group-rebalance-workers-2-a5e58c5b-e054-4e6d-8730-4d8b4a4aaca7",
               "generation": 2
             },
             "recorded": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "topic": "conform-6adf01a9-java-group-rebalance-work",
                   "partition": 2
                 },
                 {
-                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "topic": "conform-6adf01a9-java-group-rebalance-work",
                   "partition": 3
                 }
               ]
@@ -867,11 +867,11 @@
             "model": {
               "ok": [
                 {
-                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "topic": "conform-6adf01a9-java-group-rebalance-work",
                   "partition": 1
                 },
                 {
-                  "topic": "conform-6adee96a-java-group-rebalance-work",
+                  "topic": "conform-6adf01a9-java-group-rebalance-work",
                   "partition": 3
                 }
               ]
@@ -881,15 +881,15 @@
         "notes": {
           "rebalance in progress": 2
         },
-        "millis": 1852
+        "millis": 2118
       },
       "twin": {
         "passed": true,
         "output": "{\"client\":\"java\",\"scenario\":\"group-rebalance\",\"ok\":true,\"assignmentsOfA\":3}",
-        "operations": 67,
+        "operations": 63,
         "violations": [],
         "divergences": [],
-        "millis": 1867
+        "millis": 1894
       }
     },
     {
@@ -901,7 +901,7 @@
         "operations": 23,
         "violations": [],
         "divergences": [],
-        "millis": 1348
+        "millis": 1571
       },
       "twin": {
         "passed": true,
@@ -909,7 +909,7 @@
         "operations": 23,
         "violations": [],
         "divergences": [],
-        "millis": 1344
+        "millis": 1465
       }
     },
     {
@@ -924,7 +924,7 @@
         "notes": {
           "retriable error: AddPartitionsToTxn CONCURRENT_TRANSACTIONS": 2
         },
-        "millis": 1142
+        "millis": 1471
       },
       "twin": {
         "passed": true,
@@ -932,7 +932,7 @@
         "operations": 33,
         "violations": [],
         "divergences": [],
-        "millis": 940
+        "millis": 1248
       }
     },
     {
@@ -944,15 +944,15 @@
         "operations": 38,
         "violations": [],
         "divergences": [],
-        "millis": 3795
+        "millis": 4322
       },
       "twin": {
         "passed": true,
         "output": "{\"client\":\"java\",\"scenario\":\"faults\",\"ok\":true,\"assignmentsBeforeStorm\":1,\"assignments\":3}",
-        "operations": 42,
+        "operations": 43,
         "violations": [],
         "divergences": [],
-        "millis": 4149
+        "millis": 3590
       }
     },
     {
@@ -964,7 +964,7 @@
         "operations": 11,
         "violations": [],
         "divergences": [],
-        "millis": 925
+        "millis": 1068
       },
       "twin": {
         "passed": true,
@@ -972,7 +972,7 @@
         "operations": 10,
         "violations": [],
         "divergences": [],
-        "millis": 827
+        "millis": 1056
       }
     }
   ]
