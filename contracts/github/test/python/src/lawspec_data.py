@@ -137,7 +137,9 @@ class IssuesListMilestonesState:
 
     def __new__(cls, *args, **kwargs):
         if cls is IssuesListMilestonesState:
-            raise _builtins.TypeError("construct a variant of IssuesListMilestonesState")
+            raise _builtins.TypeError(
+                "construct a variant of IssuesListMilestonesState",
+            )
         return _builtins.object.__new__(cls)
 
 
@@ -161,7 +163,9 @@ class IssuesListMilestonesSort:
 
     def __new__(cls, *args, **kwargs):
         if cls is IssuesListMilestonesSort:
-            raise _builtins.TypeError("construct a variant of IssuesListMilestonesSort")
+            raise _builtins.TypeError(
+                "construct a variant of IssuesListMilestonesSort",
+            )
         return _builtins.object.__new__(cls)
 
 
@@ -180,7 +184,9 @@ class IssuesListMilestonesDirection:
 
     def __new__(cls, *args, **kwargs):
         if cls is IssuesListMilestonesDirection:
-            raise _builtins.TypeError("construct a variant of IssuesListMilestonesDirection")
+            raise _builtins.TypeError(
+                "construct a variant of IssuesListMilestonesDirection",
+            )
         return _builtins.object.__new__(cls)
 
 
@@ -386,7 +392,12 @@ def make_schema():
                     ),
                 ],
             ),
-            _schema.Definition("lawtwin.github::type::Service", 0, [], handle=True),
+            _schema.Definition(
+                "lawtwin.github::type::Service",
+                0,
+                [],
+                handle=True,
+            ),
             _schema.Definition(
                 "lawtwin.github.model::type::ApiError",
                 0,
@@ -475,15 +486,30 @@ def make_schema():
                             ),
                             _schema.Field("url", _schema.Named("Text")),
                             _schema.Field("htmlUrl", _schema.Named("Text")),
-                            _schema.Field("followersUrl", _schema.Named("Text")),
-                            _schema.Field("followingUrl", _schema.Named("Text")),
+                            _schema.Field(
+                                "followersUrl",
+                                _schema.Named("Text"),
+                            ),
+                            _schema.Field(
+                                "followingUrl",
+                                _schema.Named("Text"),
+                            ),
                             _schema.Field("gistsUrl", _schema.Named("Text")),
                             _schema.Field("starredUrl", _schema.Named("Text")),
-                            _schema.Field("subscriptionsUrl", _schema.Named("Text")),
-                            _schema.Field("organizationsUrl", _schema.Named("Text")),
+                            _schema.Field(
+                                "subscriptionsUrl",
+                                _schema.Named("Text"),
+                            ),
+                            _schema.Field(
+                                "organizationsUrl",
+                                _schema.Named("Text"),
+                            ),
                             _schema.Field("reposUrl", _schema.Named("Text")),
                             _schema.Field("eventsUrl", _schema.Named("Text")),
-                            _schema.Field("receivedEventsUrl", _schema.Named("Text")),
+                            _schema.Field(
+                                "receivedEventsUrl",
+                                _schema.Named("Text"),
+                            ),
                             _schema.Field("type_", _schema.Named("Text")),
                             _schema.Field("siteAdmin", _schema.Named("Bool")),
                             _schema.Field(
@@ -637,7 +663,10 @@ def make_schema():
                                 ),
                             ),
                             _schema.Field("openIssues", _schema.Named("Int64")),
-                            _schema.Field("closedIssues", _schema.Named("Int64")),
+                            _schema.Field(
+                                "closedIssues",
+                                _schema.Named("Int64"),
+                            ),
                             _schema.Field("createdAt", _schema.Named("Text")),
                             _schema.Field("updatedAt", _schema.Named("Text")),
                             _schema.Field(
@@ -694,15 +723,30 @@ def make_schema():
                             ),
                             _schema.Field("url", _schema.Named("Text")),
                             _schema.Field("htmlUrl", _schema.Named("Text")),
-                            _schema.Field("followersUrl", _schema.Named("Text")),
-                            _schema.Field("followingUrl", _schema.Named("Text")),
+                            _schema.Field(
+                                "followersUrl",
+                                _schema.Named("Text"),
+                            ),
+                            _schema.Field(
+                                "followingUrl",
+                                _schema.Named("Text"),
+                            ),
                             _schema.Field("gistsUrl", _schema.Named("Text")),
                             _schema.Field("starredUrl", _schema.Named("Text")),
-                            _schema.Field("subscriptionsUrl", _schema.Named("Text")),
-                            _schema.Field("organizationsUrl", _schema.Named("Text")),
+                            _schema.Field(
+                                "subscriptionsUrl",
+                                _schema.Named("Text"),
+                            ),
+                            _schema.Field(
+                                "organizationsUrl",
+                                _schema.Named("Text"),
+                            ),
                             _schema.Field("reposUrl", _schema.Named("Text")),
                             _schema.Field("eventsUrl", _schema.Named("Text")),
-                            _schema.Field("receivedEventsUrl", _schema.Named("Text")),
+                            _schema.Field(
+                                "receivedEventsUrl",
+                                _schema.Named("Text"),
+                            ),
                             _schema.Field("type_", _schema.Named("Text")),
                             _schema.Field("siteAdmin", _schema.Named("Bool")),
                             _schema.Field(
@@ -809,7 +853,10 @@ def make_schema():
                         [
                             _schema.Field("owner", _schema.Named("Text")),
                             _schema.Field("repo", _schema.Named("Text")),
-                            _schema.Field("milestoneNumber", _schema.Named("Int64")),
+                            _schema.Field(
+                                "milestoneNumber",
+                                _schema.Named("Int64"),
+                            ),
                         ],
                         MilestoneKey,
                     ),
@@ -850,7 +897,10 @@ def make_schema():
                                     ],
                                 ),
                             ),
-                            _schema.Field("nextMilestoneKey", _schema.Named("Int64")),
+                            _schema.Field(
+                                "nextMilestoneKey",
+                                _schema.Named("Int64"),
+                            ),
                         ],
                         State,
                     ),

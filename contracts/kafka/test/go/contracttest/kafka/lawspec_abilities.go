@@ -2,6 +2,14 @@
 
 package kafka
 
+// Admin is the Admin ability: a handler answers each of its operations.
+type Admin interface {
+	CreateTopic(value0 string, value1 int32)
+	CreatePartitions(value0 string, value1 int32)
+	PartitionsFor(value0 string) LawSpecMaybe[int32]
+	ListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64
+}
+
 // Broker is the Broker ability: a handler answers each of its operations.
 type Broker interface {
 	CreateTopicsRequest(value0 string, value1 int32)
@@ -21,28 +29,6 @@ type Broker interface {
 	DescribeGroupRequest(value0 string) GroupView
 	OffsetCommitRequest(value0 string, value1 string, value2 int32, value3 []OffsetEntry)
 	OffsetFetchRequest(value0 string, value1 TopicPartition) LawSpecMaybe[int64]
-}
-
-// Admin is the Admin ability: a handler answers each of its operations.
-type Admin interface {
-	CreateTopic(value0 string, value1 int32)
-	CreatePartitions(value0 string, value1 int32)
-	PartitionsFor(value0 string) LawSpecMaybe[int32]
-	ListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64
-}
-
-// Partitioner is the Partitioner ability: a handler answers each of its operations.
-type Partitioner interface {
-	ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32
-}
-
-// Producer is the Producer ability: a handler answers each of its operations.
-type Producer interface {
-	Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata]
-	Flush()
-	EnableIdempotence() LawSpecEither[KafkaError, ProducerIdAndEpoch]
-	RetryLastSend() LawSpecEither[KafkaError, RecordMetadata]
-	ProducerIdentity() LawSpecMaybe[ProducerIdAndEpoch]
 }
 
 // Consumer is the Consumer ability: a handler answers each of its operations.
@@ -67,6 +53,20 @@ type GroupCoordinator interface {
 	DescribeGroup(value0 string) GroupView
 	CommitOffsets(value0 string, value1 string, value2 int32, value3 []OffsetEntry)
 	FetchOffset(value0 string, value1 TopicPartition) LawSpecMaybe[int64]
+}
+
+// Partitioner is the Partitioner ability: a handler answers each of its operations.
+type Partitioner interface {
+	ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32
+}
+
+// Producer is the Producer ability: a handler answers each of its operations.
+type Producer interface {
+	Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata]
+	Flush()
+	EnableIdempotence() LawSpecEither[KafkaError, ProducerIdAndEpoch]
+	RetryLastSend() LawSpecEither[KafkaError, RecordMetadata]
+	ProducerIdentity() LawSpecMaybe[ProducerIdAndEpoch]
 }
 
 // Transactions is the Transactions ability: a handler answers each of its operations.
@@ -738,114 +738,6 @@ func (handler *Cluster) TryCommitOffsets(value0 string, value1 string, value2 in
 	return nil
 }
 
-// MurmurPartitioner is the spec handler murmurPartitioner for Partitioner, with its state typed.
-type MurmurPartitioner struct {
-	symbols map[string]*LawSpecSymbol
-}
-
-// NewMurmurPartitioner makes murmurPartitioner; symbols is the context of the law it serves.
-func NewMurmurPartitioner(symbols map[string]*LawSpecSymbol) *MurmurPartitioner {
-	handler := &MurmurPartitioner{symbols: symbols}
-	return handler
-}
-
-// StartMurmurPartitioner makes murmurPartitioner on its own, outside any law: the embedding entry point.
-func StartMurmurPartitioner() *MurmurPartitioner {
-	return NewMurmurPartitioner(map[string]*LawSpecSymbol{})
-}
-
-func (handler *MurmurPartitioner) ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32 {
-	result := lsfMurmurPartitionerChoosePartition(lsfFromNativeMaybeBytes(value0), lsfFromNativeInt32(value1))
-	return lsfToNativeInt32(result)
-}
-
-// KafkaProducer is the spec handler kafkaProducer for Producer, with its state typed.
-type KafkaProducer struct {
-	symbols map[string]*LawSpecSymbol
-	state   *lsfProducerState
-	lock    lsfLock
-}
-
-// NewKafkaProducer makes kafkaProducer; symbols is the context of the law it serves.
-func NewKafkaProducer(symbols map[string]*LawSpecSymbol) *KafkaProducer {
-	handler := &KafkaProducer{symbols: symbols}
-	handler.state = lsfKafkaProducerStart(lsfUnit{})
-	return handler
-}
-
-// StartKafkaProducer makes kafkaProducer on its own, outside any law: the embedding entry point.
-func StartKafkaProducer() *KafkaProducer {
-	return NewKafkaProducer(map[string]*LawSpecSymbol{})
-}
-
-func (handler *KafkaProducer) Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
-	handler.lock.Lock()
-	defer handler.lock.Unlock()
-	pair := lsfKafkaProducerSend(handler.symbols, handler.state, lsfFromNativeProducerRecord(value0))
-	handler.state = pair.fSecond
-	return lsfToNativeEitherKafkaErrorRecordMetadata(pair.fFirst)
-}
-
-func (handler *KafkaProducer) Flush() {
-	handler.lock.Lock()
-	defer handler.lock.Unlock()
-	pair := lsfKafkaProducerFlush(handler.state)
-	handler.state = pair.fSecond
-	_ = pair.fFirst
-}
-
-func (handler *KafkaProducer) EnableIdempotence() LawSpecEither[KafkaError, ProducerIdAndEpoch] {
-	handler.lock.Lock()
-	defer handler.lock.Unlock()
-	pair := lsfKafkaProducerEnableIdempotence(handler.symbols, handler.state)
-	handler.state = pair.fSecond
-	return lsfToNativeEitherKafkaErrorProducerIdAndEpoch(pair.fFirst)
-}
-
-func (handler *KafkaProducer) RetryLastSend() LawSpecEither[KafkaError, RecordMetadata] {
-	handler.lock.Lock()
-	defer handler.lock.Unlock()
-	pair := lsfKafkaProducerRetryLastSend(handler.symbols, handler.state)
-	handler.state = pair.fSecond
-	return lsfToNativeEitherKafkaErrorRecordMetadata(pair.fFirst)
-}
-
-func (handler *KafkaProducer) ProducerIdentity() LawSpecMaybe[ProducerIdAndEpoch] {
-	handler.lock.Lock()
-	defer handler.lock.Unlock()
-	pair := lsfKafkaProducerProducerIdentity(handler.state)
-	handler.state = pair.fSecond
-	return lsfToNativeMaybeProducerIdAndEpoch(pair.fFirst)
-}
-
-// State is the handler's state, in its native types: a snapshot to show or keep.
-func (handler *KafkaProducer) State() ProducerState {
-	handler.lock.Lock()
-	defer handler.lock.Unlock()
-	return lsfToNativeProducerState(handler.state)
-}
-
-// SetState replaces the handler's state: to force it, reset it or restore a snapshot.
-func (handler *KafkaProducer) SetState(state ProducerState) {
-	handler.lock.Lock()
-	defer handler.lock.Unlock()
-	handler.state = lsfFromNativeProducerState(state)
-}
-
-// TypedState is the typed state, shared rather than copied.
-func (handler *KafkaProducer) TypedState() *lsfProducerState {
-	handler.lock.Lock()
-	defer handler.lock.Unlock()
-	return handler.state
-}
-
-// SetTypedState replaces the typed state.
-func (handler *KafkaProducer) SetTypedState(state *lsfProducerState) {
-	handler.lock.Lock()
-	defer handler.lock.Unlock()
-	handler.state = state
-}
-
 // KafkaConsumer is the spec handler kafkaConsumer for Consumer, with its state typed.
 type KafkaConsumer struct {
 	symbols map[string]*LawSpecSymbol
@@ -965,6 +857,93 @@ func (handler *KafkaConsumer) SetTypedState(state *lsfConsumerState) {
 	handler.state = state
 }
 
+// KafkaProducer is the spec handler kafkaProducer for Producer, with its state typed.
+type KafkaProducer struct {
+	symbols map[string]*LawSpecSymbol
+	state   *lsfProducerState
+	lock    lsfLock
+}
+
+// NewKafkaProducer makes kafkaProducer; symbols is the context of the law it serves.
+func NewKafkaProducer(symbols map[string]*LawSpecSymbol) *KafkaProducer {
+	handler := &KafkaProducer{symbols: symbols}
+	handler.state = lsfKafkaProducerStart(lsfUnit{})
+	return handler
+}
+
+// StartKafkaProducer makes kafkaProducer on its own, outside any law: the embedding entry point.
+func StartKafkaProducer() *KafkaProducer {
+	return NewKafkaProducer(map[string]*LawSpecSymbol{})
+}
+
+func (handler *KafkaProducer) Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerSend(handler.symbols, handler.state, lsfFromNativeProducerRecord(value0))
+	handler.state = pair.fSecond
+	return lsfToNativeEitherKafkaErrorRecordMetadata(pair.fFirst)
+}
+
+func (handler *KafkaProducer) Flush() {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerFlush(handler.state)
+	handler.state = pair.fSecond
+	_ = pair.fFirst
+}
+
+func (handler *KafkaProducer) EnableIdempotence() LawSpecEither[KafkaError, ProducerIdAndEpoch] {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerEnableIdempotence(handler.symbols, handler.state)
+	handler.state = pair.fSecond
+	return lsfToNativeEitherKafkaErrorProducerIdAndEpoch(pair.fFirst)
+}
+
+func (handler *KafkaProducer) RetryLastSend() LawSpecEither[KafkaError, RecordMetadata] {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerRetryLastSend(handler.symbols, handler.state)
+	handler.state = pair.fSecond
+	return lsfToNativeEitherKafkaErrorRecordMetadata(pair.fFirst)
+}
+
+func (handler *KafkaProducer) ProducerIdentity() LawSpecMaybe[ProducerIdAndEpoch] {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerProducerIdentity(handler.state)
+	handler.state = pair.fSecond
+	return lsfToNativeMaybeProducerIdAndEpoch(pair.fFirst)
+}
+
+// State is the handler's state, in its native types: a snapshot to show or keep.
+func (handler *KafkaProducer) State() ProducerState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return lsfToNativeProducerState(handler.state)
+}
+
+// SetState replaces the handler's state: to force it, reset it or restore a snapshot.
+func (handler *KafkaProducer) SetState(state ProducerState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = lsfFromNativeProducerState(state)
+}
+
+// TypedState is the typed state, shared rather than copied.
+func (handler *KafkaProducer) TypedState() *lsfProducerState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return handler.state
+}
+
+// SetTypedState replaces the typed state.
+func (handler *KafkaProducer) SetTypedState(state *lsfProducerState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = state
+}
+
 // KafkaTransactions is the spec handler kafkaTransactions for Transactions, with its state typed.
 type KafkaTransactions struct {
 	symbols map[string]*LawSpecSymbol
@@ -1066,6 +1045,80 @@ func (handler *KafkaTransactions) SetTypedState(state *lsfTransactionState) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
 	handler.state = state
+}
+
+// MurmurPartitioner is the spec handler murmurPartitioner for Partitioner, with its state typed.
+type MurmurPartitioner struct {
+	symbols map[string]*LawSpecSymbol
+}
+
+// NewMurmurPartitioner makes murmurPartitioner; symbols is the context of the law it serves.
+func NewMurmurPartitioner(symbols map[string]*LawSpecSymbol) *MurmurPartitioner {
+	handler := &MurmurPartitioner{symbols: symbols}
+	return handler
+}
+
+// StartMurmurPartitioner makes murmurPartitioner on its own, outside any law: the embedding entry point.
+func StartMurmurPartitioner() *MurmurPartitioner {
+	return NewMurmurPartitioner(map[string]*LawSpecSymbol{})
+}
+
+func (handler *MurmurPartitioner) ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32 {
+	result := lsfMurmurPartitionerChoosePartition(lsfFromNativeMaybeBytes(value0), lsfFromNativeInt32(value1))
+	return lsfToNativeInt32(result)
+}
+
+// AdminRecording records each call to a Admin handler, then passes it on.
+type AdminRecording struct {
+	Inner   Admin
+	Calls   []LawSpecCall
+	symbols map[string]*LawSpecSymbol
+}
+
+// NewAdminRecording records the calls to inner.
+func NewAdminRecording(inner Admin, symbols map[string]*LawSpecSymbol) *AdminRecording {
+	return &AdminRecording{Inner: inner, symbols: symbols}
+}
+
+func (recording *AdminRecording) lawSpecCalls() []LawSpecCall {
+	return recording.Calls
+}
+
+func (recording *AdminRecording) CreateTopic(value0 string, value1 int32) {
+	schema := _lawSpecDefinitionSchema
+	bits := 64
+	codec0 := lsScalarCodec[string](schema, bits, "Text")
+	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createTopic", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
+	recording.Inner.CreateTopic(value0, value1)
+}
+
+func (recording *AdminRecording) CreatePartitions(value0 string, value1 int32) {
+	schema := _lawSpecDefinitionSchema
+	bits := 64
+	codec0 := lsScalarCodec[string](schema, bits, "Text")
+	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createPartitions", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
+	recording.Inner.CreatePartitions(value0, value1)
+}
+
+func (recording *AdminRecording) PartitionsFor(value0 string) LawSpecMaybe[int32] {
+	schema := _lawSpecDefinitionSchema
+	bits := 64
+	codec0 := lsScalarCodec[string](schema, bits, "Text")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "partitionsFor", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
+	return recording.Inner.PartitionsFor(value0)
+}
+
+func (recording *AdminRecording) ListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
+	symbols := recording.symbols
+	schema := _lawSpecDefinitionSchema
+	bits := 64
+	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	codec1 := lawSpecOffsetSpecCodec(schema, bits, symbols)
+	codec2 := lawSpecIsolationLevelCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "listOffsets", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
+	return recording.Inner.ListOffsets(value0, value1, value2)
 }
 
 // BrokerRecording records each call to a Broker handler, then passes it on.
@@ -1259,130 +1312,6 @@ func (recording *BrokerRecording) OffsetFetchRequest(value0 string, value1 Topic
 	return recording.Inner.OffsetFetchRequest(value0, value1)
 }
 
-// AdminRecording records each call to a Admin handler, then passes it on.
-type AdminRecording struct {
-	Inner   Admin
-	Calls   []LawSpecCall
-	symbols map[string]*LawSpecSymbol
-}
-
-// NewAdminRecording records the calls to inner.
-func NewAdminRecording(inner Admin, symbols map[string]*LawSpecSymbol) *AdminRecording {
-	return &AdminRecording{Inner: inner, symbols: symbols}
-}
-
-func (recording *AdminRecording) lawSpecCalls() []LawSpecCall {
-	return recording.Calls
-}
-
-func (recording *AdminRecording) CreateTopic(value0 string, value1 int32) {
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createTopic", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	recording.Inner.CreateTopic(value0, value1)
-}
-
-func (recording *AdminRecording) CreatePartitions(value0 string, value1 int32) {
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createPartitions", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	recording.Inner.CreatePartitions(value0, value1)
-}
-
-func (recording *AdminRecording) PartitionsFor(value0 string) LawSpecMaybe[int32] {
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "partitionsFor", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.PartitionsFor(value0)
-}
-
-func (recording *AdminRecording) ListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
-	symbols := recording.symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lawSpecOffsetSpecCodec(schema, bits, symbols)
-	codec2 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "listOffsets", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	return recording.Inner.ListOffsets(value0, value1, value2)
-}
-
-// PartitionerRecording records each call to a Partitioner handler, then passes it on.
-type PartitionerRecording struct {
-	Inner   Partitioner
-	Calls   []LawSpecCall
-	symbols map[string]*LawSpecSymbol
-}
-
-// NewPartitionerRecording records the calls to inner.
-func NewPartitionerRecording(inner Partitioner, symbols map[string]*LawSpecSymbol) *PartitionerRecording {
-	return &PartitionerRecording{Inner: inner, symbols: symbols}
-}
-
-func (recording *PartitionerRecording) lawSpecCalls() []LawSpecCall {
-	return recording.Calls
-}
-
-func (recording *PartitionerRecording) ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32 {
-	symbols := recording.symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[[]byte](schema, bits, "Bytes"), symbols)
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "choosePartition", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	return recording.Inner.ChoosePartition(value0, value1)
-}
-
-// ProducerRecording records each call to a Producer handler, then passes it on.
-type ProducerRecording struct {
-	Inner   Producer
-	Calls   []LawSpecCall
-	symbols map[string]*LawSpecSymbol
-}
-
-// NewProducerRecording records the calls to inner.
-func NewProducerRecording(inner Producer, symbols map[string]*LawSpecSymbol) *ProducerRecording {
-	return &ProducerRecording{Inner: inner, symbols: symbols}
-}
-
-func (recording *ProducerRecording) lawSpecCalls() []LawSpecCall {
-	return recording.Calls
-}
-
-func (recording *ProducerRecording) Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
-	symbols := recording.symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	codec0 := lawSpecProducerRecordCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "send", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.Send(value0)
-}
-
-func (recording *ProducerRecording) Flush() {
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "flush", Arguments: []LawSpecValue{}})
-	recording.Inner.Flush()
-}
-
-func (recording *ProducerRecording) EnableIdempotence() LawSpecEither[KafkaError, ProducerIdAndEpoch] {
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "enableIdempotence", Arguments: []LawSpecValue{}})
-	return recording.Inner.EnableIdempotence()
-}
-
-func (recording *ProducerRecording) RetryLastSend() LawSpecEither[KafkaError, RecordMetadata] {
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "retryLastSend", Arguments: []LawSpecValue{}})
-	return recording.Inner.RetryLastSend()
-}
-
-func (recording *ProducerRecording) ProducerIdentity() LawSpecMaybe[ProducerIdAndEpoch] {
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "producerIdentity", Arguments: []LawSpecValue{}})
-	return recording.Inner.ProducerIdentity()
-}
-
 // ConsumerRecording records each call to a Consumer handler, then passes it on.
 type ConsumerRecording struct {
 	Inner   Consumer
@@ -1558,6 +1487,77 @@ func (recording *GroupCoordinatorRecording) FetchOffset(value0 string, value1 To
 	codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
 	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "fetchOffset", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
 	return recording.Inner.FetchOffset(value0, value1)
+}
+
+// PartitionerRecording records each call to a Partitioner handler, then passes it on.
+type PartitionerRecording struct {
+	Inner   Partitioner
+	Calls   []LawSpecCall
+	symbols map[string]*LawSpecSymbol
+}
+
+// NewPartitionerRecording records the calls to inner.
+func NewPartitionerRecording(inner Partitioner, symbols map[string]*LawSpecSymbol) *PartitionerRecording {
+	return &PartitionerRecording{Inner: inner, symbols: symbols}
+}
+
+func (recording *PartitionerRecording) lawSpecCalls() []LawSpecCall {
+	return recording.Calls
+}
+
+func (recording *PartitionerRecording) ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32 {
+	symbols := recording.symbols
+	schema := _lawSpecDefinitionSchema
+	bits := 64
+	codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[[]byte](schema, bits, "Bytes"), symbols)
+	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "choosePartition", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
+	return recording.Inner.ChoosePartition(value0, value1)
+}
+
+// ProducerRecording records each call to a Producer handler, then passes it on.
+type ProducerRecording struct {
+	Inner   Producer
+	Calls   []LawSpecCall
+	symbols map[string]*LawSpecSymbol
+}
+
+// NewProducerRecording records the calls to inner.
+func NewProducerRecording(inner Producer, symbols map[string]*LawSpecSymbol) *ProducerRecording {
+	return &ProducerRecording{Inner: inner, symbols: symbols}
+}
+
+func (recording *ProducerRecording) lawSpecCalls() []LawSpecCall {
+	return recording.Calls
+}
+
+func (recording *ProducerRecording) Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
+	symbols := recording.symbols
+	schema := _lawSpecDefinitionSchema
+	bits := 64
+	codec0 := lawSpecProducerRecordCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "send", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
+	return recording.Inner.Send(value0)
+}
+
+func (recording *ProducerRecording) Flush() {
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "flush", Arguments: []LawSpecValue{}})
+	recording.Inner.Flush()
+}
+
+func (recording *ProducerRecording) EnableIdempotence() LawSpecEither[KafkaError, ProducerIdAndEpoch] {
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "enableIdempotence", Arguments: []LawSpecValue{}})
+	return recording.Inner.EnableIdempotence()
+}
+
+func (recording *ProducerRecording) RetryLastSend() LawSpecEither[KafkaError, RecordMetadata] {
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "retryLastSend", Arguments: []LawSpecValue{}})
+	return recording.Inner.RetryLastSend()
+}
+
+func (recording *ProducerRecording) ProducerIdentity() LawSpecMaybe[ProducerIdAndEpoch] {
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "producerIdentity", Arguments: []LawSpecValue{}})
+	return recording.Inner.ProducerIdentity()
 }
 
 // TransactionsRecording records each call to a Transactions handler, then passes it on.

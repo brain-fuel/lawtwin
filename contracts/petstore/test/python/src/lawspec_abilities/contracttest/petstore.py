@@ -45,7 +45,10 @@ class Reference:
             self._state = pair[1]
         return _typed.nout_pet(pair[0], symbols)
 
-    def findPetsByStatus(self, value0: data.PetStatus) -> _builtins.list[data.Pet]:
+    def findPetsByStatus(
+        self,
+        value0: data.PetStatus,
+    ) -> _builtins.list[data.Pet]:
         symbols = self._symbols
         argument0 = _typed.nin_pet_status(value0, symbols)
         with self._lock:
@@ -101,7 +104,11 @@ class Reference:
         argument0 = _typed.nin_int64(value0, symbols)
         argument1 = _typed.nin_maybe_text(value1, symbols)
         with self._lock:
-            pair = _typed.reference_delete_pet(self._state, argument0, argument1)
+            pair = _typed.reference_delete_pet(
+                self._state,
+                argument0,
+                argument1,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
@@ -171,7 +178,10 @@ class Reference:
         symbols = self._symbols
         argument0 = _typed.nin_maybe_list_user(value0, symbols)
         with self._lock:
-            pair = _typed.reference_create_users_with_list_input(self._state, argument0)
+            pair = _typed.reference_create_users_with_list_input(
+                self._state,
+                argument0,
+            )
             self._state = pair[1]
         return _typed.nout_user(pair[0], symbols)
 
@@ -184,7 +194,11 @@ class Reference:
         argument0 = _typed.nin_maybe_text(value0, symbols)
         argument1 = _typed.nin_maybe_text(value1, symbols)
         with self._lock:
-            pair = _typed.reference_login_user(self._state, argument0, argument1)
+            pair = _typed.reference_login_user(
+                self._state,
+                argument0,
+                argument1,
+            )
             self._state = pair[1]
         return _typed.nout_text(pair[0], symbols)
 
@@ -212,7 +226,11 @@ class Reference:
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_maybe_user(value1, symbols)
         with self._lock:
-            pair = _typed.reference_update_user(self._state, argument0, argument1)
+            pair = _typed.reference_update_user(
+                self._state,
+                argument0,
+                argument1,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
@@ -266,7 +284,10 @@ class Reference:
                 ),
             )
 
-    def try_addPet(self, value0: data.Pet) -> _schema.Either[data.ApiError, data.Pet]:
+    def try_addPet(
+        self,
+        value0: data.Pet,
+    ) -> _schema.Either[data.ApiError, data.Pet]:
         """addPet, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.addPet(value0))

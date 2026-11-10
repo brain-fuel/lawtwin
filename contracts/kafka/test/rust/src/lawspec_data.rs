@@ -2,24 +2,31 @@
 use crate::lawspec_runtime as ls;
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum Ordering {
+pub enum Ordering
+{
     Less,
     Equal,
     Greater,
 }
 
-impl ls::IntoValue for Ordering {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::Less => {
+impl ls::IntoValue for Ordering
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::Less =>
+            {
                 let fields = vec![];
                 ls::Value::Data("lawspec.collections::type::Ordering::Less".into(), fields)
             }
-            Self::Equal => {
+            Self::Equal =>
+            {
                 let fields = vec![];
                 ls::Value::Data("lawspec.collections::type::Ordering::Equal".into(), fields)
             }
-            Self::Greater => {
+            Self::Greater =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawspec.collections::type::Ordering::Greater".into(),
@@ -30,18 +37,25 @@ impl ls::IntoValue for Ordering {
     }
 }
 
-impl ls::FromValue for Ordering {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Ordering
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::Ordering".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawspec.collections::type::Ordering::Less" if fields.len() == 0 => Ok(Self::Less),
             "lawspec.collections::type::Ordering::Equal" if fields.len() == 0 => Ok(Self::Equal),
-            "lawspec.collections::type::Ordering::Greater" if fields.len() == 0 => {
+            "lawspec.collections::type::Ordering::Greater" if fields.len() == 0 =>
+            {
                 Ok(Self::Greater)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawspec.collections::type::Ordering";
                 Err(message.into())
@@ -51,13 +65,16 @@ impl ls::FromValue for Ordering {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Entry<T0, T1> {
+pub struct Entry<T0, T1>
+{
     pub key: T0,
     pub value: T1,
 }
 
-impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Entry<T0, T1> {
-    fn into_value(self) -> ls::Value {
+impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Entry<T0, T1>
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { key, value } = self;
         let fields = vec![
             ls::IntoValue::into_value(key),
@@ -67,19 +84,34 @@ impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Entry<T0, T1> {
     }
 }
 
-impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Entry<T0, T1> {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Entry<T0, T1>
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::Entry".into());
         };
-        match tag.as_str() {
-            "lawspec.collections::type::Entry::Entry" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawspec.collections::type::Entry::Entry" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let key: T0 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let value: T1 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let key: T0 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let value: T1 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { key, value })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.collections::type::Entry";
                 Err(message.into())
             }
@@ -88,13 +120,16 @@ impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Entry<T0, T1> {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Pair<T0, T1> {
+pub struct Pair<T0, T1>
+{
     pub first: T0,
     pub second: T1,
 }
 
-impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Pair<T0, T1> {
-    fn into_value(self) -> ls::Value {
+impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Pair<T0, T1>
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { first, second } = self;
         let fields = vec![
             ls::IntoValue::into_value(first),
@@ -104,19 +139,34 @@ impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Pair<T0, T1> {
     }
 }
 
-impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1> {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1>
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::Pair".into());
         };
-        match tag.as_str() {
-            "lawspec.collections::type::Pair::Pair" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawspec.collections::type::Pair::Pair" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let first: T0 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let second: T1 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let first: T0 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let second: T1 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { first, second })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.collections::type::Pair";
                 Err(message.into())
             }
@@ -125,12 +175,15 @@ impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1> {
 }
 
 #[derive(Clone, Debug)]
-pub struct Set<T0> {
+pub struct Set<T0>
+{
     pub value: std::vec::Vec<T0>,
 }
 
-impl<T0: ls::IntoValue> ls::IntoValue for Set<T0> {
-    fn into_value(self) -> ls::Value {
+impl<T0: ls::IntoValue> ls::IntoValue for Set<T0>
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { value } = self;
         let fields = vec![ls::IntoValue::into_value(value)];
         ls::Value::Data(
@@ -140,18 +193,29 @@ impl<T0: ls::IntoValue> ls::IntoValue for Set<T0> {
     }
 }
 
-impl<T0: ls::FromValue> ls::FromValue for Set<T0> {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl<T0: ls::FromValue> ls::FromValue for Set<T0>
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::EqSet".into());
         };
-        match tag.as_str() {
-            "lawspec.collections::type::EqSet::EqSetItems" if fields.len() == 1 => {
+        match tag.as_str()
+        {
+            "lawspec.collections::type::EqSet::EqSetItems" if fields.len() == 1 =>
+            {
                 let mut fields = fields.into_iter();
-                let value: std::vec::Vec<T0> = ls::FromValue::from_value(fields.next().unwrap())?;
+                let value: std::vec::Vec<T0> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { value })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.collections::type::EqSet";
                 Err(message.into())
             }
@@ -160,31 +224,44 @@ impl<T0: ls::FromValue> ls::FromValue for Set<T0> {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Regex {
+pub struct Regex
+{
     pub pattern: std::string::String,
 }
 
-impl ls::IntoValue for Regex {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Regex
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { pattern } = self;
         let fields = vec![ls::IntoValue::into_value(pattern)];
         ls::Value::Data("lawspec.matchers::type::Regex::Regex".into(), fields)
     }
 }
 
-impl ls::FromValue for Regex {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Regex
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.matchers::type::Regex".into());
         };
-        match tag.as_str() {
-            "lawspec.matchers::type::Regex::Regex" if fields.len() == 1 => {
+        match tag.as_str()
+        {
+            "lawspec.matchers::type::Regex::Regex" if fields.len() == 1 =>
+            {
                 let mut fields = fields.into_iter();
-                let pattern: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let pattern: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { pattern })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.matchers::type::Regex";
                 Err(message.into())
             }
@@ -193,22 +270,31 @@ impl ls::FromValue for Regex {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum PartitionChoice {
-    ToPartition { value: i32 },
+pub enum PartitionChoice
+{
+    ToPartition
+    {
+        value: i32,
+    },
     ByKey,
 }
 
-impl ls::IntoValue for PartitionChoice {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::ToPartition { value } => {
+impl ls::IntoValue for PartitionChoice
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::ToPartition { value } =>
+            {
                 let fields = vec![ls::IntoValue::into_value(value)];
                 ls::Value::Data(
                     "lawtwin.kafka::type::PartitionChoice::ToPartition".into(),
                     fields,
                 )
             }
-            Self::ByKey => {
+            Self::ByKey =>
+            {
                 let fields = vec![];
                 ls::Value::Data("lawtwin.kafka::type::PartitionChoice::ByKey".into(), fields)
             }
@@ -216,19 +302,30 @@ impl ls::IntoValue for PartitionChoice {
     }
 }
 
-impl ls::FromValue for PartitionChoice {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for PartitionChoice
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka::type::PartitionChoice".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka::type::PartitionChoice::ToPartition" if fields.len() == 1 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka::type::PartitionChoice::ToPartition" if fields.len() == 1 =>
+            {
                 let mut fields = fields.into_iter();
-                let value: i32 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let value: i32 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self::ToPartition { value })
             }
             "lawtwin.kafka::type::PartitionChoice::ByKey" if fields.len() == 0 => Ok(Self::ByKey),
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka::type::PartitionChoice";
                 Err(message.into())
@@ -238,14 +335,17 @@ impl ls::FromValue for PartitionChoice {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct ProducerRecord {
+pub struct ProducerRecord
+{
     pub destination: std::string::String,
     pub choice: PartitionChoice,
     pub payload: Record,
 }
 
-impl ls::IntoValue for ProducerRecord {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for ProducerRecord
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             destination,
             choice,
@@ -263,25 +363,43 @@ impl ls::IntoValue for ProducerRecord {
     }
 }
 
-impl ls::FromValue for ProducerRecord {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ProducerRecord
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka::type::ProducerRecord".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka::type::ProducerRecord::ProducerRecord" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka::type::ProducerRecord::ProducerRecord" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let destination: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let choice: PartitionChoice = ls::FromValue::from_value(fields.next().unwrap())?;
-                let payload: Record = ls::FromValue::from_value(fields.next().unwrap())?;
+                let destination: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let choice: PartitionChoice = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let payload: Record = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     destination,
                     choice,
                     payload,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka::type::ProducerRecord";
                 Err(message.into())
@@ -292,13 +410,16 @@ impl ls::FromValue for ProducerRecord {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct RecordMetadata {
+pub struct RecordMetadata
+{
     pub sentTo: TopicPartition,
     pub sentAt: i64,
 }
 
-impl ls::IntoValue for RecordMetadata {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for RecordMetadata
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             sentTo: sent_to,
             sentAt: sent_at,
@@ -314,22 +435,37 @@ impl ls::IntoValue for RecordMetadata {
     }
 }
 
-impl ls::FromValue for RecordMetadata {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for RecordMetadata
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka::type::RecordMetadata".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka::type::RecordMetadata::RecordMetadata" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka::type::RecordMetadata::RecordMetadata" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let sent_to: TopicPartition = ls::FromValue::from_value(fields.next().unwrap())?;
-                let sent_at: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let sent_to: TopicPartition = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let sent_at: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     sentTo: sent_to,
                     sentAt: sent_at,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka::type::RecordMetadata";
                 Err(message.into())
@@ -340,14 +476,17 @@ impl ls::FromValue for RecordMetadata {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct ConsumerRecord {
+pub struct ConsumerRecord
+{
     pub receivedFrom: TopicPartition,
     pub receivedAt: i64,
     pub received: Record,
 }
 
-impl ls::IntoValue for ConsumerRecord {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for ConsumerRecord
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             receivedFrom: received_from,
             receivedAt: received_at,
@@ -365,25 +504,43 @@ impl ls::IntoValue for ConsumerRecord {
     }
 }
 
-impl ls::FromValue for ConsumerRecord {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ConsumerRecord
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka::type::ConsumerRecord".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let received_from: TopicPartition =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let received_at: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let received: Record = ls::FromValue::from_value(fields.next().unwrap())?;
+                let received_from: TopicPartition = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let received_at: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let received: Record = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     receivedFrom: received_from,
                     receivedAt: received_at,
                     received,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka::type::ConsumerRecord";
                 Err(message.into())
@@ -394,14 +551,17 @@ impl ls::FromValue for ConsumerRecord {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct LastSend {
+pub struct LastSend
+{
     pub lastPartition: TopicPartition,
     pub lastTag: std::option::Option<ProducerTag>,
     pub lastRecords: std::vec::Vec<Record>,
 }
 
-impl ls::IntoValue for LastSend {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for LastSend
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             lastPartition: last_partition,
             lastTag: last_tag,
@@ -416,27 +576,43 @@ impl ls::IntoValue for LastSend {
     }
 }
 
-impl ls::FromValue for LastSend {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for LastSend
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka::type::LastSend".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka::type::LastSend::LastSend" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka::type::LastSend::LastSend" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let last_partition: TopicPartition =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let last_tag: std::option::Option<ProducerTag> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let last_records: std::vec::Vec<Record> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let last_partition: TopicPartition = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let last_tag: std::option::Option<ProducerTag> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let last_records: std::vec::Vec<Record> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     lastPartition: last_partition,
                     lastTag: last_tag,
                     lastRecords: last_records,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.kafka::type::LastSend";
                 Err(message.into())
             }
@@ -446,14 +622,17 @@ impl ls::FromValue for LastSend {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct ProducerState {
+pub struct ProducerState
+{
     pub identity: std::option::Option<ProducerIdAndEpoch>,
     pub sequences: std::collections::BTreeMap<TopicPartition, i32>,
     pub lastSend: std::option::Option<LastSend>,
 }
 
-impl ls::IntoValue for ProducerState {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for ProducerState
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             identity,
             sequences,
@@ -471,27 +650,44 @@ impl ls::IntoValue for ProducerState {
     }
 }
 
-impl ls::FromValue for ProducerState {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ProducerState
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka::type::ProducerState".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka::type::ProducerState::ProducerState" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka::type::ProducerState::ProducerState" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let identity: std::option::Option<ProducerIdAndEpoch> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let identity: std::option::Option<ProducerIdAndEpoch> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let sequences: std::collections::BTreeMap<TopicPartition, i32> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let last_send: std::option::Option<LastSend> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let last_send: std::option::Option<LastSend> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     identity,
                     sequences,
                     lastSend: last_send,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka::type::ProducerState";
                 Err(message.into())
@@ -501,7 +697,8 @@ impl ls::FromValue for ProducerState {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct ConsumerState {
+pub struct ConsumerState
+{
     pub group: std::option::Option<std::string::String>,
     pub member: std::string::String,
     pub generation: i32,
@@ -511,8 +708,10 @@ pub struct ConsumerState {
     pub isolation: IsolationLevel,
 }
 
-impl ls::IntoValue for ConsumerState {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for ConsumerState
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             group,
             member,
@@ -538,26 +737,56 @@ impl ls::IntoValue for ConsumerState {
     }
 }
 
-impl ls::FromValue for ConsumerState {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ConsumerState
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka::type::ConsumerState".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka::type::ConsumerState::ConsumerState" if fields.len() == 7 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka::type::ConsumerState::ConsumerState" if fields.len() == 7 =>
+            {
                 let mut fields = fields.into_iter();
-                let group: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let member: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let generation: i32 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let subscription: std::vec::Vec<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let assigned: std::vec::Vec<TopicPartition> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let group: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let member: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let generation: i32 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let subscription: std::vec::Vec<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let assigned: std::vec::Vec<TopicPartition> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let positions: std::collections::BTreeMap<TopicPartition, i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let isolation: IsolationLevel = ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let isolation: IsolationLevel = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     group,
                     member,
@@ -568,7 +797,8 @@ impl ls::FromValue for ConsumerState {
                     isolation,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka::type::ConsumerState";
                 Err(message.into())
@@ -579,7 +809,8 @@ impl ls::FromValue for ConsumerState {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct TransactionState {
+pub struct TransactionState
+{
     pub transactionalId: std::string::String,
     pub producer: std::option::Option<ProducerIdAndEpoch>,
     pub txnSequences: std::collections::BTreeMap<TopicPartition, i32>,
@@ -588,8 +819,10 @@ pub struct TransactionState {
     pub offsetsSent: bool,
 }
 
-impl ls::IntoValue for TransactionState {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for TransactionState
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             transactionalId: transactional_id,
             producer,
@@ -613,24 +846,51 @@ impl ls::IntoValue for TransactionState {
     }
 }
 
-impl ls::FromValue for TransactionState {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for TransactionState
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka::type::TransactionState".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka::type::TransactionState::TransactionState" if fields.len() == 6 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka::type::TransactionState::TransactionState" if fields.len() == 6 =>
+            {
                 let mut fields = fields.into_iter();
-                let transactional_id: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let producer: std::option::Option<ProducerIdAndEpoch> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let transactional_id: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let producer: std::option::Option<ProducerIdAndEpoch> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let txn_sequences: std::collections::BTreeMap<TopicPartition, i32> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let in_transaction: bool = ls::FromValue::from_value(fields.next().unwrap())?;
-                let added: std::vec::Vec<TopicPartition> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let offsets_sent: bool = ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let in_transaction: bool = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let added: std::vec::Vec<TopicPartition> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let offsets_sent: bool = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     transactionalId: transactional_id,
                     producer,
@@ -640,7 +900,8 @@ impl ls::FromValue for TransactionState {
                     offsetsSent: offsets_sent,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka::type::TransactionState";
                 Err(message.into())
@@ -653,13 +914,16 @@ impl ls::FromValue for TransactionState {
 pub type Cluster = ls::Handle;
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct TopicPartition {
+pub struct TopicPartition
+{
     pub topic: std::string::String,
     pub partition: i32,
 }
 
-impl ls::IntoValue for TopicPartition {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for TopicPartition
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { topic, partition } = self;
         let fields = vec![
             ls::IntoValue::into_value(topic),
@@ -672,19 +936,34 @@ impl ls::IntoValue for TopicPartition {
     }
 }
 
-impl ls::FromValue for TopicPartition {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for TopicPartition
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::TopicPartition".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::TopicPartition::TopicPartition" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::TopicPartition::TopicPartition" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let topic: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let partition: i32 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let topic: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let partition: i32 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { topic, partition })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::TopicPartition";
                 Err(message.into())
@@ -694,22 +973,28 @@ impl ls::FromValue for TopicPartition {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum IsolationLevel {
+pub enum IsolationLevel
+{
     ReadUncommitted,
     ReadCommitted,
 }
 
-impl ls::IntoValue for IsolationLevel {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::ReadUncommitted => {
+impl ls::IntoValue for IsolationLevel
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::ReadUncommitted =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted".into(),
                     fields,
                 )
             }
-            Self::ReadCommitted => {
+            Self::ReadCommitted =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::IsolationLevel::ReadCommitted".into(),
@@ -720,19 +1005,27 @@ impl ls::IntoValue for IsolationLevel {
     }
 }
 
-impl ls::FromValue for IsolationLevel {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for IsolationLevel
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::IsolationLevel".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted" if fields.len() == 0 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted" if fields.len() == 0 =>
+            {
                 Ok(Self::ReadUncommitted)
             }
-            "lawtwin.kafka.model::type::IsolationLevel::ReadCommitted" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::IsolationLevel::ReadCommitted" if fields.len() == 0 =>
+            {
                 Ok(Self::ReadCommitted)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::IsolationLevel";
                 Err(message.into())
@@ -742,22 +1035,28 @@ impl ls::FromValue for IsolationLevel {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum OffsetSpec {
+pub enum OffsetSpec
+{
     Earliest,
     Latest,
 }
 
-impl ls::IntoValue for OffsetSpec {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::Earliest => {
+impl ls::IntoValue for OffsetSpec
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::Earliest =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::OffsetSpec::Earliest".into(),
                     fields,
                 )
             }
-            Self::Latest => {
+            Self::Latest =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::OffsetSpec::Latest".into(),
@@ -768,19 +1067,27 @@ impl ls::IntoValue for OffsetSpec {
     }
 }
 
-impl ls::FromValue for OffsetSpec {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for OffsetSpec
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::OffsetSpec".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::OffsetSpec::Earliest" if fields.len() == 0 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::OffsetSpec::Earliest" if fields.len() == 0 =>
+            {
                 Ok(Self::Earliest)
             }
-            "lawtwin.kafka.model::type::OffsetSpec::Latest" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::OffsetSpec::Latest" if fields.len() == 0 =>
+            {
                 Ok(Self::Latest)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::OffsetSpec";
                 Err(message.into())
@@ -790,7 +1097,8 @@ impl ls::FromValue for OffsetSpec {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum KafkaError {
+pub enum KafkaError
+{
     UnknownTopicOrPartition,
     TopicAlreadyExists,
     InvalidTopic,
@@ -810,122 +1118,142 @@ pub enum KafkaError {
     IllegalState,
 }
 
-impl ls::IntoValue for KafkaError {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::UnknownTopicOrPartition => {
+impl ls::IntoValue for KafkaError
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::UnknownTopicOrPartition =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition".into(),
                     fields,
                 )
             }
-            Self::TopicAlreadyExists => {
+            Self::TopicAlreadyExists =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists".into(),
                     fields,
                 )
             }
-            Self::InvalidTopic => {
+            Self::InvalidTopic =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::InvalidTopic".into(),
                     fields,
                 )
             }
-            Self::InvalidPartitions => {
+            Self::InvalidPartitions =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::InvalidPartitions".into(),
                     fields,
                 )
             }
-            Self::InvalidRecord => {
+            Self::InvalidRecord =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::InvalidRecord".into(),
                     fields,
                 )
             }
-            Self::InvalidRequest => {
+            Self::InvalidRequest =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::InvalidRequest".into(),
                     fields,
                 )
             }
-            Self::OffsetOutOfRange => {
+            Self::OffsetOutOfRange =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange".into(),
                     fields,
                 )
             }
-            Self::OutOfOrderSequenceNumber => {
+            Self::OutOfOrderSequenceNumber =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber".into(),
                     fields,
                 )
             }
-            Self::InvalidProducerEpoch => {
+            Self::InvalidProducerEpoch =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch".into(),
                     fields,
                 )
             }
-            Self::ProducerFenced => {
+            Self::ProducerFenced =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::ProducerFenced".into(),
                     fields,
                 )
             }
-            Self::UnknownProducerId => {
+            Self::UnknownProducerId =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::UnknownProducerId".into(),
                     fields,
                 )
             }
-            Self::InvalidProducerIdMapping => {
+            Self::InvalidProducerIdMapping =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping".into(),
                     fields,
                 )
             }
-            Self::InvalidTxnState => {
+            Self::InvalidTxnState =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::InvalidTxnState".into(),
                     fields,
                 )
             }
-            Self::InvalidGroupId => {
+            Self::InvalidGroupId =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::InvalidGroupId".into(),
                     fields,
                 )
             }
-            Self::UnknownMemberId => {
+            Self::UnknownMemberId =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::UnknownMemberId".into(),
                     fields,
                 )
             }
-            Self::IllegalGeneration => {
+            Self::IllegalGeneration =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::IllegalGeneration".into(),
                     fields,
                 )
             }
-            Self::IllegalState => {
+            Self::IllegalState =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::KafkaError::IllegalState".into(),
@@ -936,33 +1264,44 @@ impl ls::IntoValue for KafkaError {
     }
 }
 
-impl ls::FromValue for KafkaError {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for KafkaError
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::KafkaError".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition"
                 if fields.len() == 0 =>
             {
                 Ok(Self::UnknownTopicOrPartition)
             }
-            "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists" if fields.len() == 0 =>
+            {
                 Ok(Self::TopicAlreadyExists)
             }
-            "lawtwin.kafka.model::type::KafkaError::InvalidTopic" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::InvalidTopic" if fields.len() == 0 =>
+            {
                 Ok(Self::InvalidTopic)
             }
-            "lawtwin.kafka.model::type::KafkaError::InvalidPartitions" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::InvalidPartitions" if fields.len() == 0 =>
+            {
                 Ok(Self::InvalidPartitions)
             }
-            "lawtwin.kafka.model::type::KafkaError::InvalidRecord" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::InvalidRecord" if fields.len() == 0 =>
+            {
                 Ok(Self::InvalidRecord)
             }
-            "lawtwin.kafka.model::type::KafkaError::InvalidRequest" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::InvalidRequest" if fields.len() == 0 =>
+            {
                 Ok(Self::InvalidRequest)
             }
-            "lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange" if fields.len() == 0 =>
+            {
                 Ok(Self::OffsetOutOfRange)
             }
             "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber"
@@ -970,13 +1309,16 @@ impl ls::FromValue for KafkaError {
             {
                 Ok(Self::OutOfOrderSequenceNumber)
             }
-            "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch" if fields.len() == 0 =>
+            {
                 Ok(Self::InvalidProducerEpoch)
             }
-            "lawtwin.kafka.model::type::KafkaError::ProducerFenced" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::ProducerFenced" if fields.len() == 0 =>
+            {
                 Ok(Self::ProducerFenced)
             }
-            "lawtwin.kafka.model::type::KafkaError::UnknownProducerId" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::UnknownProducerId" if fields.len() == 0 =>
+            {
                 Ok(Self::UnknownProducerId)
             }
             "lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping"
@@ -984,22 +1326,28 @@ impl ls::FromValue for KafkaError {
             {
                 Ok(Self::InvalidProducerIdMapping)
             }
-            "lawtwin.kafka.model::type::KafkaError::InvalidTxnState" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::InvalidTxnState" if fields.len() == 0 =>
+            {
                 Ok(Self::InvalidTxnState)
             }
-            "lawtwin.kafka.model::type::KafkaError::InvalidGroupId" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::InvalidGroupId" if fields.len() == 0 =>
+            {
                 Ok(Self::InvalidGroupId)
             }
-            "lawtwin.kafka.model::type::KafkaError::UnknownMemberId" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::UnknownMemberId" if fields.len() == 0 =>
+            {
                 Ok(Self::UnknownMemberId)
             }
-            "lawtwin.kafka.model::type::KafkaError::IllegalGeneration" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::IllegalGeneration" if fields.len() == 0 =>
+            {
                 Ok(Self::IllegalGeneration)
             }
-            "lawtwin.kafka.model::type::KafkaError::IllegalState" if fields.len() == 0 => {
+            "lawtwin.kafka.model::type::KafkaError::IllegalState" if fields.len() == 0 =>
+            {
                 Ok(Self::IllegalState)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::KafkaError";
                 Err(message.into())
@@ -1009,13 +1357,16 @@ impl ls::FromValue for KafkaError {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Header {
+pub struct Header
+{
     pub name: std::string::String,
     pub content: std::option::Option<std::vec::Vec<u8>>,
 }
 
-impl ls::IntoValue for Header {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Header
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { name, content } = self;
         let fields = vec![
             ls::IntoValue::into_value(name),
@@ -1025,20 +1376,34 @@ impl ls::IntoValue for Header {
     }
 }
 
-impl ls::FromValue for Header {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Header
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::Header".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::Header::Header" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::Header::Header" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let name: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let content: std::option::Option<std::vec::Vec<u8>> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let name: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let content: std::option::Option<std::vec::Vec<u8>> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { name, content })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.kafka.model::type::Header";
                 Err(message.into())
             }
@@ -1047,14 +1412,17 @@ impl ls::FromValue for Header {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Record {
+pub struct Record
+{
     pub key: std::option::Option<std::vec::Vec<u8>>,
     pub value: std::option::Option<std::vec::Vec<u8>>,
     pub headers: std::vec::Vec<Header>,
 }
 
-impl ls::IntoValue for Record {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Record
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             key,
             value,
@@ -1069,27 +1437,43 @@ impl ls::IntoValue for Record {
     }
 }
 
-impl ls::FromValue for Record {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Record
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::Record".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::Record::Record" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::Record::Record" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let key: std::option::Option<std::vec::Vec<u8>> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let value: std::option::Option<std::vec::Vec<u8>> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let headers: std::vec::Vec<Header> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let key: std::option::Option<std::vec::Vec<u8>> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let value: std::option::Option<std::vec::Vec<u8>> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let headers: std::vec::Vec<Header> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     key,
                     value,
                     headers,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.kafka.model::type::Record";
                 Err(message.into())
             }
@@ -1099,14 +1483,17 @@ impl ls::FromValue for Record {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct ProducerTag {
+pub struct ProducerTag
+{
     pub producerId: i64,
     pub producerEpoch: i16,
     pub baseSequence: i32,
 }
 
-impl ls::IntoValue for ProducerTag {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for ProducerTag
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             producerId: producer_id,
             producerEpoch: producer_epoch,
@@ -1124,24 +1511,43 @@ impl ls::IntoValue for ProducerTag {
     }
 }
 
-impl ls::FromValue for ProducerTag {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ProducerTag
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::ProducerTag".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::ProducerTag::ProducerTag" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::ProducerTag::ProducerTag" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let producer_id: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let producer_epoch: i16 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let base_sequence: i32 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let producer_id: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let producer_epoch: i16 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let base_sequence: i32 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     producerId: producer_id,
                     producerEpoch: producer_epoch,
                     baseSequence: base_sequence,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::ProducerTag";
                 Err(message.into())
@@ -1152,13 +1558,16 @@ impl ls::FromValue for ProducerTag {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct ProducerIdAndEpoch {
+pub struct ProducerIdAndEpoch
+{
     pub producerId: i64,
     pub producerEpoch: i16,
 }
 
-impl ls::IntoValue for ProducerIdAndEpoch {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for ProducerIdAndEpoch
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             producerId: producer_id,
             producerEpoch: producer_epoch,
@@ -1174,24 +1583,38 @@ impl ls::IntoValue for ProducerIdAndEpoch {
     }
 }
 
-impl ls::FromValue for ProducerIdAndEpoch {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ProducerIdAndEpoch
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::ProducerIdAndEpoch".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch"
                 if fields.len() == 2 =>
             {
                 let mut fields = fields.into_iter();
-                let producer_id: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let producer_epoch: i16 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let producer_id: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let producer_epoch: i16 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     producerId: producer_id,
                     producerEpoch: producer_epoch,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.kafka.model::type::ProducerIdAndEpoch";
                 Err(message.into())
             }
@@ -1200,13 +1623,16 @@ impl ls::FromValue for ProducerIdAndEpoch {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct FetchedRecord {
+pub struct FetchedRecord
+{
     pub offset: i64,
     pub entry: Record,
 }
 
-impl ls::IntoValue for FetchedRecord {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for FetchedRecord
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { offset, entry } = self;
         let fields = vec![
             ls::IntoValue::into_value(offset),
@@ -1219,19 +1645,34 @@ impl ls::IntoValue for FetchedRecord {
     }
 }
 
-impl ls::FromValue for FetchedRecord {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for FetchedRecord
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::FetchedRecord".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::FetchedRecord::FetchedRecord" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::FetchedRecord::FetchedRecord" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let entry: Record = ls::FromValue::from_value(fields.next().unwrap())?;
+                let offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let entry: Record = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { offset, entry })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::FetchedRecord";
                 Err(message.into())
@@ -1242,15 +1683,18 @@ impl ls::FromValue for FetchedRecord {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct FetchResult {
+pub struct FetchResult
+{
     pub records: std::vec::Vec<FetchedRecord>,
     pub nextOffset: i64,
     pub highWatermark: i64,
     pub lastStableOffset: i64,
 }
 
-impl ls::IntoValue for FetchResult {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for FetchResult
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             records,
             nextOffset: next_offset,
@@ -1270,19 +1714,40 @@ impl ls::IntoValue for FetchResult {
     }
 }
 
-impl ls::FromValue for FetchResult {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for FetchResult
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::FetchResult".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::FetchResult::FetchResult" if fields.len() == 4 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::FetchResult::FetchResult" if fields.len() == 4 =>
+            {
                 let mut fields = fields.into_iter();
-                let records: std::vec::Vec<FetchedRecord> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let next_offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let high_watermark: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let last_stable_offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let records: std::vec::Vec<FetchedRecord> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let next_offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let high_watermark: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let last_stable_offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     records,
                     nextOffset: next_offset,
@@ -1290,7 +1755,8 @@ impl ls::FromValue for FetchResult {
                     lastStableOffset: last_stable_offset,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::FetchResult";
                 Err(message.into())
@@ -1301,13 +1767,16 @@ impl ls::FromValue for FetchResult {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct OffsetEntry {
+pub struct OffsetEntry
+{
     pub topicPartition: TopicPartition,
     pub offset: i64,
 }
 
-impl ls::IntoValue for OffsetEntry {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for OffsetEntry
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             topicPartition: topic_partition,
             offset,
@@ -1323,23 +1792,37 @@ impl ls::IntoValue for OffsetEntry {
     }
 }
 
-impl ls::FromValue for OffsetEntry {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for OffsetEntry
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::OffsetEntry".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::OffsetEntry::OffsetEntry" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::OffsetEntry::OffsetEntry" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let topic_partition: TopicPartition =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let topic_partition: TopicPartition = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     topicPartition: topic_partition,
                     offset,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::OffsetEntry";
                 Err(message.into())
@@ -1350,13 +1833,16 @@ impl ls::FromValue for OffsetEntry {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct MemberAssignment {
+pub struct MemberAssignment
+{
     pub memberId: std::string::String,
     pub assigned: std::vec::Vec<TopicPartition>,
 }
 
-impl ls::IntoValue for MemberAssignment {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for MemberAssignment
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             memberId: member_id,
             assigned,
@@ -1372,26 +1858,38 @@ impl ls::IntoValue for MemberAssignment {
     }
 }
 
-impl ls::FromValue for MemberAssignment {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for MemberAssignment
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::MemberAssignment".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.kafka.model::type::MemberAssignment::MemberAssignment"
                 if fields.len() == 2 =>
             {
                 let mut fields = fields.into_iter();
-                let member_id: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let assigned: std::vec::Vec<TopicPartition> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let member_id: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let assigned: std::vec::Vec<TopicPartition> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     memberId: member_id,
                     assigned,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::MemberAssignment";
                 Err(message.into())
@@ -1401,13 +1899,16 @@ impl ls::FromValue for MemberAssignment {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct GroupView {
+pub struct GroupView
+{
     pub generation: i32,
     pub members: std::vec::Vec<MemberAssignment>,
 }
 
-impl ls::IntoValue for GroupView {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for GroupView
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             generation,
             members,
@@ -1423,23 +1924,37 @@ impl ls::IntoValue for GroupView {
     }
 }
 
-impl ls::FromValue for GroupView {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for GroupView
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::GroupView".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::GroupView::GroupView" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::GroupView::GroupView" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let generation: i32 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let members: std::vec::Vec<MemberAssignment> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let generation: i32 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let members: std::vec::Vec<MemberAssignment> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     generation,
                     members,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::GroupView";
                 Err(message.into())
@@ -1449,22 +1964,34 @@ impl ls::FromValue for GroupView {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum LogEntry {
-    DataEntry { value: DataEntryDetails },
-    ControlEntry { value: ControlEntryDetails },
+pub enum LogEntry
+{
+    DataEntry
+    {
+        value: DataEntryDetails
+    },
+    ControlEntry
+    {
+        value: ControlEntryDetails
+    },
 }
 
-impl ls::IntoValue for LogEntry {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::DataEntry { value } => {
+impl ls::IntoValue for LogEntry
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::DataEntry { value } =>
+            {
                 let fields = vec![ls::IntoValue::into_value(value)];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::LogEntry::DataEntry".into(),
                     fields,
                 )
             }
-            Self::ControlEntry { value } => {
+            Self::ControlEntry { value } =>
+            {
                 let fields = vec![ls::IntoValue::into_value(value)];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::LogEntry::ControlEntry".into(),
@@ -1475,23 +2002,39 @@ impl ls::IntoValue for LogEntry {
     }
 }
 
-impl ls::FromValue for LogEntry {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for LogEntry
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::LogEntry".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::LogEntry::DataEntry" if fields.len() == 1 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::LogEntry::DataEntry" if fields.len() == 1 =>
+            {
                 let mut fields = fields.into_iter();
-                let value: DataEntryDetails = ls::FromValue::from_value(fields.next().unwrap())?;
+                let value: DataEntryDetails = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self::DataEntry { value })
             }
-            "lawtwin.kafka.model::type::LogEntry::ControlEntry" if fields.len() == 1 => {
+            "lawtwin.kafka.model::type::LogEntry::ControlEntry" if fields.len() == 1 =>
+            {
                 let mut fields = fields.into_iter();
-                let value: ControlEntryDetails = ls::FromValue::from_value(fields.next().unwrap())?;
+                let value: ControlEntryDetails = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self::ControlEntry { value })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::LogEntry";
                 Err(message.into())
@@ -1502,14 +2045,17 @@ impl ls::FromValue for LogEntry {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct AbortedTxn {
+pub struct AbortedTxn
+{
     pub abortedWriter: i64,
     pub firstOffset: i64,
     pub lastOffset: i64,
 }
 
-impl ls::IntoValue for AbortedTxn {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for AbortedTxn
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             abortedWriter: aborted_writer,
             firstOffset: first_offset,
@@ -1527,24 +2073,43 @@ impl ls::IntoValue for AbortedTxn {
     }
 }
 
-impl ls::FromValue for AbortedTxn {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for AbortedTxn
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::AbortedTxn".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::AbortedTxn::AbortedTxn" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::AbortedTxn::AbortedTxn" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let aborted_writer: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let first_offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let last_offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let aborted_writer: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let first_offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let last_offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     abortedWriter: aborted_writer,
                     firstOffset: first_offset,
                     lastOffset: last_offset,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::AbortedTxn";
                 Err(message.into())
@@ -1555,15 +2120,18 @@ impl ls::FromValue for AbortedTxn {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct BatchMeta {
+pub struct BatchMeta
+{
     pub batchEpoch: i16,
     pub firstSequence: i32,
     pub lastSequence: i32,
     pub batchOffset: i64,
 }
 
-impl ls::IntoValue for BatchMeta {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for BatchMeta
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             batchEpoch: batch_epoch,
             firstSequence: first_sequence,
@@ -1583,18 +2151,40 @@ impl ls::IntoValue for BatchMeta {
     }
 }
 
-impl ls::FromValue for BatchMeta {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for BatchMeta
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::BatchMeta".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::BatchMeta::BatchMeta" if fields.len() == 4 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::BatchMeta::BatchMeta" if fields.len() == 4 =>
+            {
                 let mut fields = fields.into_iter();
-                let batch_epoch: i16 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let first_sequence: i32 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let last_sequence: i32 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let batch_offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let batch_epoch: i16 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let first_sequence: i32 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let last_sequence: i32 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let batch_offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     batchEpoch: batch_epoch,
                     firstSequence: first_sequence,
@@ -1602,7 +2192,8 @@ impl ls::FromValue for BatchMeta {
                     batchOffset: batch_offset,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::BatchMeta";
                 Err(message.into())
@@ -1613,7 +2204,8 @@ impl ls::FromValue for BatchMeta {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct PartitionLog {
+pub struct PartitionLog
+{
     pub entries: std::vec::Vec<LogEntry>,
     pub logEndOffset: i64,
     pub openTxns: std::collections::BTreeMap<i64, i64>,
@@ -1621,8 +2213,10 @@ pub struct PartitionLog {
     pub batches: std::collections::BTreeMap<i64, std::vec::Vec<BatchMeta>>,
 }
 
-impl ls::IntoValue for PartitionLog {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for PartitionLog
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             entries,
             logEndOffset: log_end_offset,
@@ -1644,23 +2238,46 @@ impl ls::IntoValue for PartitionLog {
     }
 }
 
-impl ls::FromValue for PartitionLog {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for PartitionLog
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::PartitionLog".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::PartitionLog::PartitionLog" if fields.len() == 5 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::PartitionLog::PartitionLog" if fields.len() == 5 =>
+            {
                 let mut fields = fields.into_iter();
-                let entries: std::vec::Vec<LogEntry> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let log_end_offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let open_txns: std::collections::BTreeMap<i64, i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let aborted_txns: std::vec::Vec<AbortedTxn> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let entries: std::vec::Vec<LogEntry> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let log_end_offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let open_txns: std::collections::BTreeMap<i64, i64> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let aborted_txns: std::vec::Vec<AbortedTxn> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let batches: std::collections::BTreeMap<i64, std::vec::Vec<BatchMeta>> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 Ok(Self {
                     entries,
                     logEndOffset: log_end_offset,
@@ -1669,7 +2286,8 @@ impl ls::FromValue for PartitionLog {
                     batches,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::PartitionLog";
                 Err(message.into())
@@ -1680,13 +2298,16 @@ impl ls::FromValue for PartitionLog {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct PendingOffset {
+pub struct PendingOffset
+{
     pub pendingGroup: std::string::String,
     pub pendingEntry: OffsetEntry,
 }
 
-impl ls::IntoValue for PendingOffset {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for PendingOffset
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             pendingGroup: pending_group,
             pendingEntry: pending_entry,
@@ -1702,23 +2323,37 @@ impl ls::IntoValue for PendingOffset {
     }
 }
 
-impl ls::FromValue for PendingOffset {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for PendingOffset
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::PendingOffset".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::PendingOffset::PendingOffset" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::PendingOffset::PendingOffset" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let pending_group: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let pending_entry: OffsetEntry = ls::FromValue::from_value(fields.next().unwrap())?;
+                let pending_group: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let pending_entry: OffsetEntry = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     pendingGroup: pending_group,
                     pendingEntry: pending_entry,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::PendingOffset";
                 Err(message.into())
@@ -1728,19 +2363,28 @@ impl ls::FromValue for PendingOffset {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum TxnState {
+pub enum TxnState
+{
     NoTxn,
-    Ongoing { value: OngoingDetails },
+    Ongoing
+    {
+        value: OngoingDetails,
+    },
 }
 
-impl ls::IntoValue for TxnState {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::NoTxn => {
+impl ls::IntoValue for TxnState
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::NoTxn =>
+            {
                 let fields = vec![];
                 ls::Value::Data("lawtwin.kafka.model::type::TxnState::NoTxn".into(), fields)
             }
-            Self::Ongoing { value } => {
+            Self::Ongoing { value } =>
+            {
                 let fields = vec![ls::IntoValue::into_value(value)];
                 ls::Value::Data(
                     "lawtwin.kafka.model::type::TxnState::Ongoing".into(),
@@ -1751,19 +2395,30 @@ impl ls::IntoValue for TxnState {
     }
 }
 
-impl ls::FromValue for TxnState {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for TxnState
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::TxnState".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.kafka.model::type::TxnState::NoTxn" if fields.len() == 0 => Ok(Self::NoTxn),
-            "lawtwin.kafka.model::type::TxnState::Ongoing" if fields.len() == 1 => {
+            "lawtwin.kafka.model::type::TxnState::Ongoing" if fields.len() == 1 =>
+            {
                 let mut fields = fields.into_iter();
-                let value: OngoingDetails = ls::FromValue::from_value(fields.next().unwrap())?;
+                let value: OngoingDetails = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self::Ongoing { value })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::TxnState";
                 Err(message.into())
@@ -1774,14 +2429,17 @@ impl ls::FromValue for TxnState {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct ProducerEntry {
+pub struct ProducerEntry
+{
     pub epoch: i16,
     pub transactionalId: std::option::Option<std::string::String>,
     pub txn: TxnState,
 }
 
-impl ls::IntoValue for ProducerEntry {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for ProducerEntry
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             epoch,
             transactionalId: transactional_id,
@@ -1799,25 +2457,44 @@ impl ls::IntoValue for ProducerEntry {
     }
 }
 
-impl ls::FromValue for ProducerEntry {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ProducerEntry
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::ProducerEntry".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let epoch: i16 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let epoch: i16 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let transactional_id: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let txn: TxnState = ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let txn: TxnState = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     epoch,
                     transactionalId: transactional_id,
                     txn,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::ProducerEntry";
                 Err(message.into())
@@ -1828,15 +2505,18 @@ impl ls::FromValue for ProducerEntry {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Group {
+pub struct Group
+{
     pub groupGeneration: i32,
     pub subscriptions:
         std::collections::BTreeMap<std::string::String, std::vec::Vec<std::string::String>>,
     pub assignment: std::collections::BTreeMap<std::string::String, std::vec::Vec<TopicPartition>>,
 }
 
-impl ls::IntoValue for Group {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Group
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             groupGeneration: group_generation,
             subscriptions,
@@ -1851,30 +2531,49 @@ impl ls::IntoValue for Group {
     }
 }
 
-impl ls::FromValue for Group {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Group
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::Group".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::Group::Group" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::Group::Group" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let group_generation: i32 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let group_generation: i32 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let subscriptions: std::collections::BTreeMap<
                     std::string::String,
                     std::vec::Vec<std::string::String>,
-                > = ls::FromValue::from_value(fields.next().unwrap())?;
+                > = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let assignment: std::collections::BTreeMap<
                     std::string::String,
                     std::vec::Vec<TopicPartition>,
-                > = ls::FromValue::from_value(fields.next().unwrap())?;
+                > = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     groupGeneration: group_generation,
                     subscriptions,
                     assignment,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.kafka.model::type::Group";
                 Err(message.into())
             }
@@ -1884,13 +2583,16 @@ impl ls::FromValue for Group {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct GroupPartition {
+pub struct GroupPartition
+{
     pub groupId: std::string::String,
     pub groupPartition: TopicPartition,
 }
 
-impl ls::IntoValue for GroupPartition {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for GroupPartition
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             groupId: group_id,
             groupPartition: group_partition,
@@ -1906,24 +2608,37 @@ impl ls::IntoValue for GroupPartition {
     }
 }
 
-impl ls::FromValue for GroupPartition {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for GroupPartition
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::GroupPartition".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::GroupPartition::GroupPartition" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::GroupPartition::GroupPartition" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let group_id: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let group_partition: TopicPartition =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let group_id: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let group_partition: TopicPartition = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     groupId: group_id,
                     groupPartition: group_partition,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::GroupPartition";
                 Err(message.into())
@@ -1934,7 +2649,8 @@ impl ls::FromValue for GroupPartition {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct BrokerState {
+pub struct BrokerState
+{
     pub topics: std::collections::BTreeMap<std::string::String, i32>,
     pub logs: std::collections::BTreeMap<TopicPartition, PartitionLog>,
     pub producers: std::collections::BTreeMap<i64, ProducerEntry>,
@@ -1944,8 +2660,10 @@ pub struct BrokerState {
     pub committed: std::collections::BTreeMap<GroupPartition, i64>,
 }
 
-impl ls::IntoValue for BrokerState {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for BrokerState
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             topics,
             logs,
@@ -1971,27 +2689,61 @@ impl ls::IntoValue for BrokerState {
     }
 }
 
-impl ls::FromValue for BrokerState {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for BrokerState
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.kafka.model::type::BrokerState".into());
         };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::BrokerState::BrokerState" if fields.len() == 7 => {
+        match tag.as_str()
+        {
+            "lawtwin.kafka.model::type::BrokerState::BrokerState" if fields.len() == 7 =>
+            {
                 let mut fields = fields.into_iter();
                 let topics: std::collections::BTreeMap<std::string::String, i32> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 let logs: std::collections::BTreeMap<TopicPartition, PartitionLog> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 let producers: std::collections::BTreeMap<i64, ProducerEntry> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 let transactional_ids: std::collections::BTreeMap<std::string::String, i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let next_producer_id: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let next_producer_id: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let groups: std::collections::BTreeMap<std::string::String, Group> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 let committed: std::collections::BTreeMap<GroupPartition, i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 Ok(Self {
                     topics,
                     logs,
@@ -2002,7 +2754,8 @@ impl ls::FromValue for BrokerState {
                     committed,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::BrokerState";
                 Err(message.into())
@@ -2013,15 +2766,18 @@ impl ls::FromValue for BrokerState {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct DataEntryDetails {
+pub struct DataEntryDetails
+{
     pub entryOffset: i64,
     pub entryRecord: Record,
     pub transactional: bool,
     pub writer: i64,
 }
 
-impl ls::IntoValue for DataEntryDetails {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for DataEntryDetails
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             entryOffset: entry_offset,
             entryRecord: entry_record,
@@ -2042,23 +2798,44 @@ impl ls::IntoValue for DataEntryDetails {
     }
 }
 
-impl ls::FromValue for DataEntryDetails {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for DataEntryDetails
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err(
                 "expected lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be"
                     .into(),
             );
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record"
                 if fields.len() == 4 =>
             {
                 let mut fields = fields.into_iter();
-                let entry_offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let entry_record: Record = ls::FromValue::from_value(fields.next().unwrap())?;
-                let transactional: bool = ls::FromValue::from_value(fields.next().unwrap())?;
-                let writer: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let entry_offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let entry_record: Record = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let transactional: bool = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let writer: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     entryOffset: entry_offset,
                     entryRecord: entry_record,
@@ -2066,7 +2843,8 @@ impl ls::FromValue for DataEntryDetails {
                     writer,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be";
                 Err(message.into())
             }
@@ -2076,14 +2854,17 @@ impl ls::FromValue for DataEntryDetails {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct ControlEntryDetails {
+pub struct ControlEntryDetails
+{
     pub commits: bool,
     pub markerOffset: i64,
     pub markerWriter: i64,
 }
 
-impl ls::IntoValue for ControlEntryDetails {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for ControlEntryDetails
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             commits,
             markerOffset: marker_offset,
@@ -2102,29 +2883,47 @@ impl ls::IntoValue for ControlEntryDetails {
     }
 }
 
-impl ls::FromValue for ControlEntryDetails {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ControlEntryDetails
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err(
                 "expected lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3"
                     .into(),
             );
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record"
                 if fields.len() == 3 =>
             {
                 let mut fields = fields.into_iter();
-                let commits: bool = ls::FromValue::from_value(fields.next().unwrap())?;
-                let marker_offset: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let marker_writer: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let commits: bool = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let marker_offset: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let marker_writer: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     commits,
                     markerOffset: marker_offset,
                     markerWriter: marker_writer,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3";
                 Err(message.into())
             }
@@ -2134,13 +2933,16 @@ impl ls::FromValue for ControlEntryDetails {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct OngoingDetails {
+pub struct OngoingDetails
+{
     pub txnOffsets: std::vec::Vec<PendingOffset>,
     pub txnPartitions: std::vec::Vec<TopicPartition>,
 }
 
-impl ls::IntoValue for OngoingDetails {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for OngoingDetails
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             txnOffsets: txn_offsets,
             txnPartitions: txn_partitions,
@@ -2157,29 +2959,41 @@ impl ls::IntoValue for OngoingDetails {
     }
 }
 
-impl ls::FromValue for OngoingDetails {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for OngoingDetails
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err(
                 "expected lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee"
                     .into(),
             );
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record"
                 if fields.len() == 2 =>
             {
                 let mut fields = fields.into_iter();
-                let txn_offsets: std::vec::Vec<PendingOffset> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let txn_partitions: std::vec::Vec<TopicPartition> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let txn_offsets: std::vec::Vec<PendingOffset> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let txn_partitions: std::vec::Vec<TopicPartition> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     txnOffsets: txn_offsets,
                     txnPartitions: txn_partitions,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee";
                 Err(message.into())
             }

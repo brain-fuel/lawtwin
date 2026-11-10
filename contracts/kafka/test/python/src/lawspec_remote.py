@@ -235,7 +235,10 @@ DEFINITIONS = {
     "lawtwin.kafka::assignmentIn": (
         "blake3-semantic-1:7fe4b7aff29c797d384c1ab550235eecb5ab341bf4a0585cea7c88477a63b2c1",
         lambda *args: _definitions.assignment_in({}, *args),
-        [_d("(text)"), _d("(list (ref lawtwin.kafka.model::type::MemberAssignment))")],
+        [
+            _d("(text)"),
+            _d("(list (ref lawtwin.kafka.model::type::MemberAssignment))"),
+        ],
         _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
     ),
     "lawtwin.kafka::coversOnce": (
@@ -320,127 +323,190 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawspecCollectionsBoundedIntSize": (
         "blake3-semantic-1:0eb8a13eccc9fdfe8ac40470ad215619b470d9ebbe05e7b6786df3fa0bb9334d",
-        lambda *args: _definitions.lawspec_collections_bounded_int_size({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int_size(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int IntSize -9223372036854775808 9223372036854775807))"),
     ),
     "lawtwin.kafka::lawspecCollectionsBoundedUInt16": (
         "blake3-semantic-1:90c545dda204636e15151e8ae3d643d39fcde2559b8e17807db76d76aa71bf9f",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int16({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int16(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt16 0 65535))"),
     ),
     "lawtwin.kafka::lawspecCollectionsBoundedUInt32": (
         "blake3-semantic-1:f03a2b95bd55dbbdb2f2650889bdbcc20cc7495c16f9696555b0fe24f8c5d787",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int32({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int32(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt32 0 4294967295))"),
     ),
     "lawtwin.kafka::lawspecCollectionsBoundedUInt64": (
         "blake3-semantic-1:391acbdb29a6c847a8c6881b4fea85ae691f13dbb28f3185ebbbd9ee1bc3c496",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int64({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int64(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt64 0 18446744073709551615))"),
     ),
     "lawtwin.kafka::lawspecCollectionsBoundedUInt8": (
         "blake3-semantic-1:0765d51e5c2b68a48327e4bb3cca348234e83f14bd71c992c06d54a6b736b3c6",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int8({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int8(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt8 0 255))"),
     ),
     "lawtwin.kafka::lawspecCollectionsBoundedUIntPtr": (
         "blake3-semantic-1:a8b2efab8f6454c084597768eab1e86963972799cd7ef32a7909ea0c74b9299c",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int_ptr({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int_ptr(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UIntPtr 0 18446744073709551615))"),
     ),
     "lawtwin.kafka::lawspecCollectionsBoundedUIntSize": (
         "blake3-semantic-1:bd63ddd8bb48a4c62e318fcc621bb60d16614e2841fe4ea6cf694babd968bfd8",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int_size({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int_size(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UIntSize 0 18446744073709551615))"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingInt16": (
         "blake3-semantic-1:8af66152e51360d1b8d0b7b0906e43bd0f7749eb8c7deb6fc2c16d20c0ca2851",
-        lambda *args: _definitions.lawspec_collections_saturating_int16({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int16(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int16 -32768 32767)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingInt32": (
         "blake3-semantic-1:3301cd66dbdf91496d110346c62f10784d997b60f12feec8be48f22d687bba23",
-        lambda *args: _definitions.lawspec_collections_saturating_int32({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int32(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int32 -2147483648 2147483647)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingInt64": (
         "blake3-semantic-1:b36e6f4e3e65631e903712317b864f944b57ab551684f3d742a0e3b76147c2be",
-        lambda *args: _definitions.lawspec_collections_saturating_int64({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int64(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int64 -9223372036854775808 9223372036854775807)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingInt8": (
         "blake3-semantic-1:af281aca3cb2aa1358da30de5b5395c5ec831361038df2040800ce959c7ddd7b",
-        lambda *args: _definitions.lawspec_collections_saturating_int8({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int8(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int8 -128 127)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingIntSize": (
         "blake3-semantic-1:30de7f905147a4fdcc9721e98032b5990a437b6988c74cd5837b3075b2c0e946",
-        lambda *args: _definitions.lawspec_collections_saturating_int_size({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int_size(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int IntSize -9223372036854775808 9223372036854775807)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingUInt16": (
         "blake3-semantic-1:09b582eb02fa5a906ddfbf7ac28c0cd8999b20ae870e813838f1c8d024715cee",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int16({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int16(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt16 0 65535)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingUInt32": (
         "blake3-semantic-1:1a6f13f3a236a363be4e543031e09e874eaadb798d8a4846a7b79a78d8dee208",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int32({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int32(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt32 0 4294967295)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingUInt64": (
         "blake3-semantic-1:09a4598d077b0a0bdd5162dc968196ef9877ff5c8c8fb9a12349ac3546813042",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int64({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int64(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt64 0 18446744073709551615)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingUInt8": (
         "blake3-semantic-1:dc2833905560a9e32423135bf75c63f8b5b4ff5a0ed68de0206578e29e5a5d56",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int8({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int8(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt8 0 255)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingUIntPtr": (
         "blake3-semantic-1:5935b8e6383357197923b62ccd12e178b29cc88d1c7cce50ec562a9d376f5c97",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int_ptr({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int_ptr(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UIntPtr 0 18446744073709551615)"),
     ),
     "lawtwin.kafka::lawspecCollectionsSaturatingUIntSize": (
         "blake3-semantic-1:bd3defa9234e4574fd05ae53756d1a3025000b118fbbdbc35027fde1cc627756",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int_size({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int_size(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UIntSize 0 18446744073709551615)"),
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingInt16": (
         "blake3-semantic-1:676e778c161330176516e7db84d1c12ae922df062cde36f41efac0ed4210b642",
-        lambda *args: _definitions.lawspec_collections_wrapping_int16({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int16(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int16 -32768 32767)"),
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingInt32": (
         "blake3-semantic-1:629eaed4b97fb09b392c645c9cb66489529a1852edb71c5881a963b05317bea6",
-        lambda *args: _definitions.lawspec_collections_wrapping_int32({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int32(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int32 -2147483648 2147483647)"),
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingInt64": (
         "blake3-semantic-1:7e5919b2d73a15d4723369b9f183ff7550782e0cb3ca608b575e50b42735351b",
-        lambda *args: _definitions.lawspec_collections_wrapping_int64({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int64(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int64 -9223372036854775808 9223372036854775807)"),
     ),
@@ -452,43 +518,64 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingIntSize": (
         "blake3-semantic-1:80060752538c99c807a50e98d562ac29ce9337ae62afe9dd018a6cff6dd91054",
-        lambda *args: _definitions.lawspec_collections_wrapping_int_size({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int_size(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int IntSize -9223372036854775808 9223372036854775807)"),
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingUInt16": (
         "blake3-semantic-1:3313acd31e483c412d23823076dc928a4adf5e02db7fce5ffb5b0df90023e18c",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int16({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int16(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt16 0 65535)"),
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingUInt32": (
         "blake3-semantic-1:0ed6976b72d396e5a3099cf56c8d3100e145238f7ca310ec57cc536491ad9443",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int32({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int32(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt32 0 4294967295)"),
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingUInt64": (
         "blake3-semantic-1:1cf62f1a8f984bf383a5009302732363e992eaf5a7f091918a4771caf231e5c9",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int64({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int64(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt64 0 18446744073709551615)"),
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingUInt8": (
         "blake3-semantic-1:d2ebf6a153882d9cf077b4a1405a31f0a20b429338df12f009bc60e3a2a78e71",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int8({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int8(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt8 0 255)"),
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingUIntPtr": (
         "blake3-semantic-1:0a1ebdb45662b6bce545c3058d384987d893e1966defcc6eddaff9aa0cea5979",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int_ptr({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int_ptr(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UIntPtr 0 18446744073709551615)"),
     ),
     "lawtwin.kafka::lawspecCollectionsWrappingUIntSize": (
         "blake3-semantic-1:78742f6fa4c0b0efc644448d291c74dddaa56efd352e42bbbc9e3b4a6b2b5c5c",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int_size({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int_size(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UIntSize 0 18446744073709551615)"),
     ),
@@ -561,9 +648,11 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_d4152c2b03fb4a8c0f102c550c4c57603634a80400789c66b1b576a718d6b1b6": (
         "blake3-semantic-1:992c7075d6cfcbe31c07d9984f980aff6752f38027b4ae8d4d274b186ae01cd9",
-        lambda *args: _definitions.lawspec_collections_set_insert_items_text_list_text(
-            {},
-            *args,
+        lambda *args: (
+            _definitions.lawspec_collections_set_insert_items_text_list_text(
+                {},
+                *args,
+            )
         ),
         [_d("(text)"), _d("(list (text))")],
         _d("(list (text))"),
@@ -584,16 +673,21 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawspec_lawspecCollectionsSetRemoveItems_d4152c2b03fb4a8c0f102c550c4c57603634a80400789c66b1b576a718d6b1b6": (
         "blake3-semantic-1:d67c164db02ebc3a74c61197921e525dcd5109a4967f8eb442466318256fc913",
-        lambda *args: _definitions.lawspec_collections_set_remove_items_text_list_text(
-            {},
-            *args,
+        lambda *args: (
+            _definitions.lawspec_collections_set_remove_items_text_list_text(
+                {},
+                *args,
+            )
         ),
         [_d("(text)"), _d("(list (text))")],
         _d("(list (text))"),
     ),
     "lawtwin.kafka::lawtwinKafkaModelExpectedSequence": (
         "blake3-semantic-1:5dcc6e3d8f173e23a532e643e28917d1a42483eb905444c1cb806e8bab8b47c9",
-        lambda *args: _definitions.lawtwin_kafka_model_expected_sequence({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_expected_sequence(
+            {},
+            *args,
+        ),
         [
             _d("(int Int16 -32768 32767)"),
             _d("(list (ref lawtwin.kafka.model::type::BatchMeta))"),
@@ -602,7 +696,10 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawtwinKafkaModelFindDuplicate": (
         "blake3-semantic-1:cca63a40f91d9c6f3a98afadfa3c40de773d68255ee8d4aedcae16452999cd0d",
-        lambda *args: _definitions.lawtwin_kafka_model_find_duplicate({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_find_duplicate(
+            {},
+            *args,
+        ),
         [
             _d("(int Int16 -32768 32767)"),
             _d("(int Int32 -2147483648 2147483647)"),
@@ -632,7 +729,10 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawtwinKafkaModelMaxPartitions": (
         "blake3-semantic-1:da05c8a13fd41a5815c0de60c8cd4331768c30963fb15e5cafed4512dfa9fdf0",
-        lambda *args: _definitions.lawtwin_kafka_model_max_partitions({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_max_partitions(
+            {},
+            *args,
+        ),
         [_d("(unit)")],
         _d("(int Int32 -2147483648 2147483647)"),
     ),
@@ -656,13 +756,19 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawtwinKafkaModelOffsetPartitions": (
         "blake3-semantic-1:3b6ba2edfd1fa6beb846e50c4bd4033242f20977092929756c65383d3812dd56",
-        lambda *args: _definitions.lawtwin_kafka_model_offset_partitions({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_offset_partitions(
+            {},
+            *args,
+        ),
         [_d("(list (ref lawtwin.kafka.model::type::OffsetEntry))")],
         _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
     ),
     "lawtwin.kafka::lawtwinKafkaModelPartitionsBelow": (
         "blake3-semantic-1:692ef7cdfd2c844e11892c88ca4d686a4291abb6670ffb878da9a9d2d8737bc9",
-        lambda *args: _definitions.lawtwin_kafka_model_partitions_below({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_partitions_below(
+            {},
+            *args,
+        ),
         [_d("(int Int32 -2147483648 2147483647)")],
         _d("(list (int Int32 -2147483648 2147483647))"),
     ),
@@ -678,7 +784,10 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawtwinKafkaModelReversePending": (
         "blake3-semantic-1:8468bcb2a31f02a62f7d8d0f1f62444328585e789bdb9f54f617214b2fe6a845",
-        lambda *args: _definitions.lawtwin_kafka_model_reverse_pending({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_reverse_pending(
+            {},
+            *args,
+        ),
         [
             _d("(list (ref lawtwin.kafka.model::type::PendingOffset))"),
             _d("(list (ref lawtwin.kafka.model::type::PendingOffset))"),
@@ -687,7 +796,10 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawtwinKafkaModelTxnHasPartition": (
         "blake3-semantic-1:5c1201d4b26d8d6efa690fc6941b903444e50a6ff3ae90513d2d2cf253a5de96",
-        lambda *args: _definitions.lawtwin_kafka_model_txn_has_partition({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_txn_has_partition(
+            {},
+            *args,
+        ),
         [
             _d("(ref lawtwin.kafka.model::type::TopicPartition)"),
             _d("(ref lawtwin.kafka.model::type::TxnState)"),
@@ -696,7 +808,10 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawtwinKafkaModelUnionPartitions": (
         "blake3-semantic-1:95b506c126961dbf012fc02671f0491b814d3a49687bd26d35d8cb29088b70ab",
-        lambda *args: _definitions.lawtwin_kafka_model_union_partitions({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_union_partitions(
+            {},
+            *args,
+        ),
         [
             _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
             _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
@@ -705,7 +820,10 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka::lawtwinKafkaModelValidTopicName": (
         "blake3-semantic-1:f50f16fdcec6f65cf4f58f8a7430fd2ec33be2426c51ca9c5b3415d49c73df67",
-        lambda *args: _definitions.lawtwin_kafka_model_valid_topic_name({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_valid_topic_name(
+            {},
+            *args,
+        ),
         [_d("(text)")],
         _d("(bool)"),
     ),
@@ -745,13 +863,19 @@ DEFINITIONS = {
     "lawtwin.kafka::ownedOf": (
         "blake3-semantic-1:fb9ce5c3bf861614221fa45fcb63164452b9bd08db6723a779226f5e36563d42",
         lambda *args: _definitions.owned_of({}, *args),
-        [_d("(text)"), _d("(list (ref lawtwin.kafka.model::type::MemberAssignment))")],
+        [
+            _d("(text)"),
+            _d("(list (ref lawtwin.kafka.model::type::MemberAssignment))"),
+        ],
         _d("(list (int Int32 -2147483648 2147483647))"),
     ),
     "lawtwin.kafka::partitionsOfTopic": (
         "blake3-semantic-1:79fbfd15b1ee53f873b228f53656f806bba38eb85c6123bee7b15e50746eba93",
         lambda *args: _definitions.partitions_of_topic({}, *args),
-        [_d("(text)"), _d("(list (ref lawtwin.kafka.model::type::TopicPartition))")],
+        [
+            _d("(text)"),
+            _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
+        ],
         _d("(list (int Int32 -2147483648 2147483647))"),
     ),
     "lawtwin.kafka::resumesAtCommitted": (
@@ -828,7 +952,11 @@ DEFINITIONS = {
     "lawtwin.kafka::xorBits": (
         "blake3-semantic-1:7575c53f1bfd09d42ebb130299e86d012e9846dc5f179425ecef537c04afd383",
         lambda *args: _definitions.xor_bits({}, *args),
-        [_d("(int Integer _ _)"), _d("(int Integer _ _)"), _d("(int Integer _ _)")],
+        [
+            _d("(int Integer _ _)"),
+            _d("(int Integer _ _)"),
+            _d("(int Integer _ _)"),
+        ],
         _d("(int Integer _ _)"),
     ),
     "lawtwin.kafka.model::expectedSequence": (
@@ -863,121 +991,181 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedInt16": (
         "blake3-semantic-1:a8079f7554b39c17e6aebe3fd63cf0309c2a42a1d102aa092d147c25237220e2",
-        lambda *args: _definitions.lawspec_collections_bounded_int16_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int16_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int Int16 -32768 32767))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedInt32": (
         "blake3-semantic-1:d720126d50f468999f1d638b6de048e8eaef160bbdaa608e699dbb93a9a54d68",
-        lambda *args: _definitions.lawspec_collections_bounded_int32_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int32_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int Int32 -2147483648 2147483647))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedInt64": (
         "blake3-semantic-1:b0409acd3276603549403fa1a9e349f50f882e9daa47357c5010b29a9b74dba6",
-        lambda *args: _definitions.lawspec_collections_bounded_int64_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int64_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int Int64 -9223372036854775808 9223372036854775807))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedInt8": (
         "blake3-semantic-1:3738ae820e5ca7b498c9e63ce2725f8573a0fce7861b3298a16650e53aef443e",
-        lambda *args: _definitions.lawspec_collections_bounded_int8_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int8_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int Int8 -128 127))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedIntSize": (
         "blake3-semantic-1:0eb8a13eccc9fdfe8ac40470ad215619b470d9ebbe05e7b6786df3fa0bb9334d",
-        lambda *args: _definitions.lawspec_collections_bounded_int_size_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int_size_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int IntSize -9223372036854775808 9223372036854775807))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedUInt16": (
         "blake3-semantic-1:90c545dda204636e15151e8ae3d643d39fcde2559b8e17807db76d76aa71bf9f",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int16_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int16_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt16 0 65535))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedUInt32": (
         "blake3-semantic-1:f03a2b95bd55dbbdb2f2650889bdbcc20cc7495c16f9696555b0fe24f8c5d787",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int32_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int32_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt32 0 4294967295))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedUInt64": (
         "blake3-semantic-1:391acbdb29a6c847a8c6881b4fea85ae691f13dbb28f3185ebbbd9ee1bc3c496",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int64_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int64_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt64 0 18446744073709551615))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedUInt8": (
         "blake3-semantic-1:0765d51e5c2b68a48327e4bb3cca348234e83f14bd71c992c06d54a6b736b3c6",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int8_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int8_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt8 0 255))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedUIntPtr": (
         "blake3-semantic-1:a8b2efab8f6454c084597768eab1e86963972799cd7ef32a7909ea0c74b9299c",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int_ptr_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int_ptr_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UIntPtr 0 18446744073709551615))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsBoundedUIntSize": (
         "blake3-semantic-1:bd63ddd8bb48a4c62e318fcc621bb60d16614e2841fe4ea6cf694babd968bfd8",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int_size_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int_size_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UIntSize 0 18446744073709551615))"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsSaturatingInt16": (
         "blake3-semantic-1:8af66152e51360d1b8d0b7b0906e43bd0f7749eb8c7deb6fc2c16d20c0ca2851",
-        lambda *args: _definitions.lawspec_collections_saturating_int16_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int16_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int16 -32768 32767)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsSaturatingInt32": (
         "blake3-semantic-1:3301cd66dbdf91496d110346c62f10784d997b60f12feec8be48f22d687bba23",
-        lambda *args: _definitions.lawspec_collections_saturating_int32_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int32_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int32 -2147483648 2147483647)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsSaturatingInt64": (
         "blake3-semantic-1:b36e6f4e3e65631e903712317b864f944b57ab551684f3d742a0e3b76147c2be",
-        lambda *args: _definitions.lawspec_collections_saturating_int64_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int64_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int64 -9223372036854775808 9223372036854775807)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsSaturatingInt8": (
         "blake3-semantic-1:af281aca3cb2aa1358da30de5b5395c5ec831361038df2040800ce959c7ddd7b",
-        lambda *args: _definitions.lawspec_collections_saturating_int8_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int8_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int8 -128 127)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsSaturatingIntSize": (
         "blake3-semantic-1:30de7f905147a4fdcc9721e98032b5990a437b6988c74cd5837b3075b2c0e946",
-        lambda *args: _definitions.lawspec_collections_saturating_int_size_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int_size_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int IntSize -9223372036854775808 9223372036854775807)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsSaturatingUInt16": (
         "blake3-semantic-1:09b582eb02fa5a906ddfbf7ac28c0cd8999b20ae870e813838f1c8d024715cee",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int16_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int16_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt16 0 65535)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsSaturatingUInt32": (
         "blake3-semantic-1:1a6f13f3a236a363be4e543031e09e874eaadb798d8a4846a7b79a78d8dee208",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int32_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int32_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt32 0 4294967295)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsSaturatingUInt64": (
         "blake3-semantic-1:09a4598d077b0a0bdd5162dc968196ef9877ff5c8c8fb9a12349ac3546813042",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int64_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int64_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt64 0 18446744073709551615)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsSaturatingUInt8": (
         "blake3-semantic-1:dc2833905560a9e32423135bf75c63f8b5b4ff5a0ed68de0206578e29e5a5d56",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int8_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int8_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt8 0 255)"),
     ),
@@ -1001,67 +1189,100 @@ DEFINITIONS = {
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingInt16": (
         "blake3-semantic-1:676e778c161330176516e7db84d1c12ae922df062cde36f41efac0ed4210b642",
-        lambda *args: _definitions.lawspec_collections_wrapping_int16_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int16_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int16 -32768 32767)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingInt32": (
         "blake3-semantic-1:629eaed4b97fb09b392c645c9cb66489529a1852edb71c5881a963b05317bea6",
-        lambda *args: _definitions.lawspec_collections_wrapping_int32_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int32_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int32 -2147483648 2147483647)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingInt64": (
         "blake3-semantic-1:7e5919b2d73a15d4723369b9f183ff7550782e0cb3ca608b575e50b42735351b",
-        lambda *args: _definitions.lawspec_collections_wrapping_int64_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int64_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int64 -9223372036854775808 9223372036854775807)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingInt8": (
         "blake3-semantic-1:83803dcb6ad5be919c2ef9e2d5710d4f721cd80b82fbdad82ee9d00b615dc2a4",
-        lambda *args: _definitions.lawspec_collections_wrapping_int8_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int8_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int8 -128 127)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingIntSize": (
         "blake3-semantic-1:80060752538c99c807a50e98d562ac29ce9337ae62afe9dd018a6cff6dd91054",
-        lambda *args: _definitions.lawspec_collections_wrapping_int_size_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int_size_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int IntSize -9223372036854775808 9223372036854775807)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingUInt16": (
         "blake3-semantic-1:3313acd31e483c412d23823076dc928a4adf5e02db7fce5ffb5b0df90023e18c",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int16_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int16_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt16 0 65535)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingUInt32": (
         "blake3-semantic-1:0ed6976b72d396e5a3099cf56c8d3100e145238f7ca310ec57cc536491ad9443",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int32_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int32_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt32 0 4294967295)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingUInt64": (
         "blake3-semantic-1:1cf62f1a8f984bf383a5009302732363e992eaf5a7f091918a4771caf231e5c9",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int64_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int64_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt64 0 18446744073709551615)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingUInt8": (
         "blake3-semantic-1:d2ebf6a153882d9cf077b4a1405a31f0a20b429338df12f009bc60e3a2a78e71",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int8_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int8_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt8 0 255)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingUIntPtr": (
         "blake3-semantic-1:0a1ebdb45662b6bce545c3058d384987d893e1966defcc6eddaff9aa0cea5979",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int_ptr_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int_ptr_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UIntPtr 0 18446744073709551615)"),
     ),
     "lawtwin.kafka.model::lawspecCollectionsWrappingUIntSize": (
         "blake3-semantic-1:78742f6fa4c0b0efc644448d291c74dddaa56efd352e42bbbc9e3b4a6b2b5c5c",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int_size_2({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int_size_2(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UIntSize 0 18446744073709551615)"),
     ),
@@ -1183,121 +1404,181 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawspecCollectionsBoundedInt16": (
         "blake3-semantic-1:a8079f7554b39c17e6aebe3fd63cf0309c2a42a1d102aa092d147c25237220e2",
-        lambda *args: _definitions.lawspec_collections_bounded_int16_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int16_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int Int16 -32768 32767))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedInt32": (
         "blake3-semantic-1:d720126d50f468999f1d638b6de048e8eaef160bbdaa608e699dbb93a9a54d68",
-        lambda *args: _definitions.lawspec_collections_bounded_int32_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int32_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int Int32 -2147483648 2147483647))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedInt64": (
         "blake3-semantic-1:b0409acd3276603549403fa1a9e349f50f882e9daa47357c5010b29a9b74dba6",
-        lambda *args: _definitions.lawspec_collections_bounded_int64_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int64_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int Int64 -9223372036854775808 9223372036854775807))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedInt8": (
         "blake3-semantic-1:3738ae820e5ca7b498c9e63ce2725f8573a0fce7861b3298a16650e53aef443e",
-        lambda *args: _definitions.lawspec_collections_bounded_int8_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int8_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int Int8 -128 127))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedIntSize": (
         "blake3-semantic-1:0eb8a13eccc9fdfe8ac40470ad215619b470d9ebbe05e7b6786df3fa0bb9334d",
-        lambda *args: _definitions.lawspec_collections_bounded_int_size_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_int_size_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int IntSize -9223372036854775808 9223372036854775807))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedUInt16": (
         "blake3-semantic-1:90c545dda204636e15151e8ae3d643d39fcde2559b8e17807db76d76aa71bf9f",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int16_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int16_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt16 0 65535))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedUInt32": (
         "blake3-semantic-1:f03a2b95bd55dbbdb2f2650889bdbcc20cc7495c16f9696555b0fe24f8c5d787",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int32_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int32_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt32 0 4294967295))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedUInt64": (
         "blake3-semantic-1:391acbdb29a6c847a8c6881b4fea85ae691f13dbb28f3185ebbbd9ee1bc3c496",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int64_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int64_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt64 0 18446744073709551615))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedUInt8": (
         "blake3-semantic-1:0765d51e5c2b68a48327e4bb3cca348234e83f14bd71c992c06d54a6b736b3c6",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int8_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int8_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UInt8 0 255))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedUIntPtr": (
         "blake3-semantic-1:a8b2efab8f6454c084597768eab1e86963972799cd7ef32a7909ea0c74b9299c",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int_ptr_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int_ptr_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UIntPtr 0 18446744073709551615))"),
     ),
     "contracttest.kafka::lawspecCollectionsBoundedUIntSize": (
         "blake3-semantic-1:bd63ddd8bb48a4c62e318fcc621bb60d16614e2841fe4ea6cf694babd968bfd8",
-        lambda *args: _definitions.lawspec_collections_bounded_u_int_size_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_bounded_u_int_size_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(maybe (int UIntSize 0 18446744073709551615))"),
     ),
     "contracttest.kafka::lawspecCollectionsSaturatingInt16": (
         "blake3-semantic-1:8af66152e51360d1b8d0b7b0906e43bd0f7749eb8c7deb6fc2c16d20c0ca2851",
-        lambda *args: _definitions.lawspec_collections_saturating_int16_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int16_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int16 -32768 32767)"),
     ),
     "contracttest.kafka::lawspecCollectionsSaturatingInt32": (
         "blake3-semantic-1:3301cd66dbdf91496d110346c62f10784d997b60f12feec8be48f22d687bba23",
-        lambda *args: _definitions.lawspec_collections_saturating_int32_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int32_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int32 -2147483648 2147483647)"),
     ),
     "contracttest.kafka::lawspecCollectionsSaturatingInt64": (
         "blake3-semantic-1:b36e6f4e3e65631e903712317b864f944b57ab551684f3d742a0e3b76147c2be",
-        lambda *args: _definitions.lawspec_collections_saturating_int64_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int64_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int64 -9223372036854775808 9223372036854775807)"),
     ),
     "contracttest.kafka::lawspecCollectionsSaturatingInt8": (
         "blake3-semantic-1:af281aca3cb2aa1358da30de5b5395c5ec831361038df2040800ce959c7ddd7b",
-        lambda *args: _definitions.lawspec_collections_saturating_int8_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int8_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int8 -128 127)"),
     ),
     "contracttest.kafka::lawspecCollectionsSaturatingIntSize": (
         "blake3-semantic-1:30de7f905147a4fdcc9721e98032b5990a437b6988c74cd5837b3075b2c0e946",
-        lambda *args: _definitions.lawspec_collections_saturating_int_size_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_int_size_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int IntSize -9223372036854775808 9223372036854775807)"),
     ),
     "contracttest.kafka::lawspecCollectionsSaturatingUInt16": (
         "blake3-semantic-1:09b582eb02fa5a906ddfbf7ac28c0cd8999b20ae870e813838f1c8d024715cee",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int16_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int16_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt16 0 65535)"),
     ),
     "contracttest.kafka::lawspecCollectionsSaturatingUInt32": (
         "blake3-semantic-1:1a6f13f3a236a363be4e543031e09e874eaadb798d8a4846a7b79a78d8dee208",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int32_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int32_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt32 0 4294967295)"),
     ),
     "contracttest.kafka::lawspecCollectionsSaturatingUInt64": (
         "blake3-semantic-1:09a4598d077b0a0bdd5162dc968196ef9877ff5c8c8fb9a12349ac3546813042",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int64_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int64_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt64 0 18446744073709551615)"),
     ),
     "contracttest.kafka::lawspecCollectionsSaturatingUInt8": (
         "blake3-semantic-1:dc2833905560a9e32423135bf75c63f8b5b4ff5a0ed68de0206578e29e5a5d56",
-        lambda *args: _definitions.lawspec_collections_saturating_u_int8_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_saturating_u_int8_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt8 0 255)"),
     ),
@@ -1321,67 +1602,100 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawspecCollectionsWrappingInt16": (
         "blake3-semantic-1:676e778c161330176516e7db84d1c12ae922df062cde36f41efac0ed4210b642",
-        lambda *args: _definitions.lawspec_collections_wrapping_int16_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int16_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int16 -32768 32767)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingInt32": (
         "blake3-semantic-1:629eaed4b97fb09b392c645c9cb66489529a1852edb71c5881a963b05317bea6",
-        lambda *args: _definitions.lawspec_collections_wrapping_int32_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int32_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int32 -2147483648 2147483647)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingInt64": (
         "blake3-semantic-1:7e5919b2d73a15d4723369b9f183ff7550782e0cb3ca608b575e50b42735351b",
-        lambda *args: _definitions.lawspec_collections_wrapping_int64_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int64_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int64 -9223372036854775808 9223372036854775807)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingInt8": (
         "blake3-semantic-1:83803dcb6ad5be919c2ef9e2d5710d4f721cd80b82fbdad82ee9d00b615dc2a4",
-        lambda *args: _definitions.lawspec_collections_wrapping_int8_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int8_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int Int8 -128 127)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingIntSize": (
         "blake3-semantic-1:80060752538c99c807a50e98d562ac29ce9337ae62afe9dd018a6cff6dd91054",
-        lambda *args: _definitions.lawspec_collections_wrapping_int_size_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_int_size_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int IntSize -9223372036854775808 9223372036854775807)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingUInt16": (
         "blake3-semantic-1:3313acd31e483c412d23823076dc928a4adf5e02db7fce5ffb5b0df90023e18c",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int16_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int16_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt16 0 65535)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingUInt32": (
         "blake3-semantic-1:0ed6976b72d396e5a3099cf56c8d3100e145238f7ca310ec57cc536491ad9443",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int32_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int32_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt32 0 4294967295)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingUInt64": (
         "blake3-semantic-1:1cf62f1a8f984bf383a5009302732363e992eaf5a7f091918a4771caf231e5c9",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int64_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int64_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt64 0 18446744073709551615)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingUInt8": (
         "blake3-semantic-1:d2ebf6a153882d9cf077b4a1405a31f0a20b429338df12f009bc60e3a2a78e71",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int8_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int8_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UInt8 0 255)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingUIntPtr": (
         "blake3-semantic-1:0a1ebdb45662b6bce545c3058d384987d893e1966defcc6eddaff9aa0cea5979",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int_ptr_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int_ptr_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UIntPtr 0 18446744073709551615)"),
     ),
     "contracttest.kafka::lawspecCollectionsWrappingUIntSize": (
         "blake3-semantic-1:78742f6fa4c0b0efc644448d291c74dddaa56efd352e42bbbc9e3b4a6b2b5c5c",
-        lambda *args: _definitions.lawspec_collections_wrapping_u_int_size_3({}, *args),
+        lambda *args: _definitions.lawspec_collections_wrapping_u_int_size_3(
+            {},
+            *args,
+        ),
         [_d("(int Integer _ _)")],
         _d("(int UIntSize 0 18446744073709551615)"),
     ),
@@ -1458,7 +1772,10 @@ DEFINITIONS = {
     "contracttest.kafka::lawtwinKafkaAssignmentIn": (
         "blake3-semantic-1:7fe4b7aff29c797d384c1ab550235eecb5ab341bf4a0585cea7c88477a63b2c1",
         lambda *args: _definitions.lawtwin_kafka_assignment_in({}, *args),
-        [_d("(text)"), _d("(list (ref lawtwin.kafka.model::type::MemberAssignment))")],
+        [
+            _d("(text)"),
+            _d("(list (ref lawtwin.kafka.model::type::MemberAssignment))"),
+        ],
         _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
     ),
     "contracttest.kafka::lawtwinKafkaCoversOnce": (
@@ -1534,7 +1851,10 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawtwinKafkaModelExpectedSequence": (
         "blake3-semantic-1:5dcc6e3d8f173e23a532e643e28917d1a42483eb905444c1cb806e8bab8b47c9",
-        lambda *args: _definitions.lawtwin_kafka_model_expected_sequence_2({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_expected_sequence_2(
+            {},
+            *args,
+        ),
         [
             _d("(int Int16 -32768 32767)"),
             _d("(list (ref lawtwin.kafka.model::type::BatchMeta))"),
@@ -1543,7 +1863,10 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawtwinKafkaModelFindDuplicate": (
         "blake3-semantic-1:cca63a40f91d9c6f3a98afadfa3c40de773d68255ee8d4aedcae16452999cd0d",
-        lambda *args: _definitions.lawtwin_kafka_model_find_duplicate_2({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_find_duplicate_2(
+            {},
+            *args,
+        ),
         [
             _d("(int Int16 -32768 32767)"),
             _d("(int Int32 -2147483648 2147483647)"),
@@ -1573,7 +1896,10 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawtwinKafkaModelMaxPartitions": (
         "blake3-semantic-1:da05c8a13fd41a5815c0de60c8cd4331768c30963fb15e5cafed4512dfa9fdf0",
-        lambda *args: _definitions.lawtwin_kafka_model_max_partitions_2({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_max_partitions_2(
+            {},
+            *args,
+        ),
         [_d("(unit)")],
         _d("(int Int32 -2147483648 2147483647)"),
     ),
@@ -1597,13 +1923,19 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawtwinKafkaModelOffsetPartitions": (
         "blake3-semantic-1:3b6ba2edfd1fa6beb846e50c4bd4033242f20977092929756c65383d3812dd56",
-        lambda *args: _definitions.lawtwin_kafka_model_offset_partitions_2({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_offset_partitions_2(
+            {},
+            *args,
+        ),
         [_d("(list (ref lawtwin.kafka.model::type::OffsetEntry))")],
         _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
     ),
     "contracttest.kafka::lawtwinKafkaModelPartitionsBelow": (
         "blake3-semantic-1:692ef7cdfd2c844e11892c88ca4d686a4291abb6670ffb878da9a9d2d8737bc9",
-        lambda *args: _definitions.lawtwin_kafka_model_partitions_below_2({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_partitions_below_2(
+            {},
+            *args,
+        ),
         [_d("(int Int32 -2147483648 2147483647)")],
         _d("(list (int Int32 -2147483648 2147483647))"),
     ),
@@ -1619,7 +1951,10 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawtwinKafkaModelReversePending": (
         "blake3-semantic-1:8468bcb2a31f02a62f7d8d0f1f62444328585e789bdb9f54f617214b2fe6a845",
-        lambda *args: _definitions.lawtwin_kafka_model_reverse_pending_2({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_reverse_pending_2(
+            {},
+            *args,
+        ),
         [
             _d("(list (ref lawtwin.kafka.model::type::PendingOffset))"),
             _d("(list (ref lawtwin.kafka.model::type::PendingOffset))"),
@@ -1628,7 +1963,10 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawtwinKafkaModelTxnHasPartition": (
         "blake3-semantic-1:5c1201d4b26d8d6efa690fc6941b903444e50a6ff3ae90513d2d2cf253a5de96",
-        lambda *args: _definitions.lawtwin_kafka_model_txn_has_partition_2({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_txn_has_partition_2(
+            {},
+            *args,
+        ),
         [
             _d("(ref lawtwin.kafka.model::type::TopicPartition)"),
             _d("(ref lawtwin.kafka.model::type::TxnState)"),
@@ -1637,7 +1975,10 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawtwinKafkaModelUnionPartitions": (
         "blake3-semantic-1:95b506c126961dbf012fc02671f0491b814d3a49687bd26d35d8cb29088b70ab",
-        lambda *args: _definitions.lawtwin_kafka_model_union_partitions_2({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_union_partitions_2(
+            {},
+            *args,
+        ),
         [
             _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
             _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
@@ -1646,7 +1987,10 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawtwinKafkaModelValidTopicName": (
         "blake3-semantic-1:f50f16fdcec6f65cf4f58f8a7430fd2ec33be2426c51ca9c5b3415d49c73df67",
-        lambda *args: _definitions.lawtwin_kafka_model_valid_topic_name_2({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_model_valid_topic_name_2(
+            {},
+            *args,
+        ),
         [_d("(text)")],
         _d("(bool)"),
     ),
@@ -1671,18 +2015,27 @@ DEFINITIONS = {
     "contracttest.kafka::lawtwinKafkaOwnedOf": (
         "blake3-semantic-1:fb9ce5c3bf861614221fa45fcb63164452b9bd08db6723a779226f5e36563d42",
         lambda *args: _definitions.lawtwin_kafka_owned_of({}, *args),
-        [_d("(text)"), _d("(list (ref lawtwin.kafka.model::type::MemberAssignment))")],
+        [
+            _d("(text)"),
+            _d("(list (ref lawtwin.kafka.model::type::MemberAssignment))"),
+        ],
         _d("(list (int Int32 -2147483648 2147483647))"),
     ),
     "contracttest.kafka::lawtwinKafkaPartitionsOfTopic": (
         "blake3-semantic-1:79fbfd15b1ee53f873b228f53656f806bba38eb85c6123bee7b15e50746eba93",
         lambda *args: _definitions.lawtwin_kafka_partitions_of_topic({}, *args),
-        [_d("(text)"), _d("(list (ref lawtwin.kafka.model::type::TopicPartition))")],
+        [
+            _d("(text)"),
+            _d("(list (ref lawtwin.kafka.model::type::TopicPartition))"),
+        ],
         _d("(list (int Int32 -2147483648 2147483647))"),
     ),
     "contracttest.kafka::lawtwinKafkaResumesAtCommitted": (
         "blake3-semantic-1:28c457a36119e70a662ea85b3750e2ecc0a5c28e0d1c22f5bacbadcc25867862",
-        lambda *args: _definitions.lawtwin_kafka_resumes_at_committed({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_resumes_at_committed(
+            {},
+            *args,
+        ),
         [
             _d("(text)"),
             _d("(text)"),
@@ -1730,7 +2083,10 @@ DEFINITIONS = {
     ),
     "contracttest.kafka::lawtwinKafkaTransactionalOffsets": (
         "blake3-semantic-1:c46d74b43906aa2c7897d5f7ee0669a8e781b04f7a7388d5273edb02e3b3ffe7",
-        lambda *args: _definitions.lawtwin_kafka_transactional_offsets({}, *args),
+        lambda *args: _definitions.lawtwin_kafka_transactional_offsets(
+            {},
+            *args,
+        ),
         [
             _d("(text)"),
             _d("(text)"),
@@ -1754,7 +2110,11 @@ DEFINITIONS = {
     "contracttest.kafka::lawtwinKafkaXorBits": (
         "blake3-semantic-1:7575c53f1bfd09d42ebb130299e86d012e9846dc5f179425ecef537c04afd383",
         lambda *args: _definitions.lawtwin_kafka_xor_bits({}, *args),
-        [_d("(int Integer _ _)"), _d("(int Integer _ _)"), _d("(int Integer _ _)")],
+        [
+            _d("(int Integer _ _)"),
+            _d("(int Integer _ _)"),
+            _d("(int Integer _ _)"),
+        ],
         _d("(int Integer _ _)"),
     ),
     "contracttest.kafka::suiteNamesThePackage": (

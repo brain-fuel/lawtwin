@@ -228,12 +228,16 @@ def _balance(k, v, l, r):
         lk, lv, ll, lr, _ = l
         if _h(ll) >= _h(lr):
             return _node(lk, lv, ll, _node(k, v, lr, r))
-        return _node(lr[0], lr[1], _node(lk, lv, ll, lr[2]), _node(k, v, lr[3], r))
+        return _node(
+            lr[0], lr[1], _node(lk, lv, ll, lr[2]), _node(k, v, lr[3], r)
+        )
     if hr > hl + 1:
         rk, rv, rl, rr, _ = r
         if _h(rr) >= _h(rl):
             return _node(rk, rv, _node(k, v, l, rl), rr)
-        return _node(rl[0], rl[1], _node(k, v, l, rl[2]), _node(rk, rv, rl[3], rr))
+        return _node(
+            rl[0], rl[1], _node(k, v, l, rl[2]), _node(rk, rv, rl[3], rr)
+        )
     return (k, v, l, r, (hl if hl > hr else hr) + 1)
 
 

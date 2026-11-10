@@ -6,7 +6,8 @@
 //! logical values (ls::Value), as the runtime's checks use them.
 use crate::lawspec_runtime as ls;
 
-fn wire_types() -> ls::Values {
+fn wire_types() -> ls::Values
+{
     ls::values_table(
         "(data lawspec.matchers::type::Regex (ctor lawspec.matchers::type::Regex::Regex (text))) (data lawtwin.kafka.model::type::MemberAssignment (ctor lawtwin.kafka.model::type::MemberAssignment::MemberAssignment (text) (list (ref lawtwin.kafka.model::type::TopicPartition)))) (data lawtwin.kafka.model::type::TopicPartition (ctor lawtwin.kafka.model::type::TopicPartition::TopicPartition (text) (int Int32 -2147483648 2147483647))) (data lawtwin.kafka.model::type::GroupView (ctor lawtwin.kafka.model::type::GroupView::GroupView (int Int32 -2147483648 2147483647) (list (ref lawtwin.kafka.model::type::MemberAssignment)))) (data lawtwin.kafka.model::type::ProducerIdAndEpoch (ctor lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch (int Int64 -9223372036854775808 9223372036854775807) (int Int16 -32768 32767))) (data lawtwin.kafka.model::type::KafkaError (ctor lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition) (ctor lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists) (ctor lawtwin.kafka.model::type::KafkaError::InvalidTopic) (ctor lawtwin.kafka.model::type::KafkaError::InvalidPartitions) (ctor lawtwin.kafka.model::type::KafkaError::InvalidRecord) (ctor lawtwin.kafka.model::type::KafkaError::InvalidRequest) (ctor lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange) (ctor lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber) (ctor lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch) (ctor lawtwin.kafka.model::type::KafkaError::ProducerFenced) (ctor lawtwin.kafka.model::type::KafkaError::UnknownProducerId) (ctor lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping) (ctor lawtwin.kafka.model::type::KafkaError::InvalidTxnState) (ctor lawtwin.kafka.model::type::KafkaError::InvalidGroupId) (ctor lawtwin.kafka.model::type::KafkaError::UnknownMemberId) (ctor lawtwin.kafka.model::type::KafkaError::IllegalGeneration) (ctor lawtwin.kafka.model::type::KafkaError::IllegalState)) (data lawtwin.kafka::type::RecordMetadata (ctor lawtwin.kafka::type::RecordMetadata::RecordMetadata (ref lawtwin.kafka.model::type::TopicPartition) (int Int64 -9223372036854775808 9223372036854775807))) (data lawtwin.kafka.model::type::BatchMeta (ctor lawtwin.kafka.model::type::BatchMeta::BatchMeta (int Int16 -32768 32767) (int Int32 -2147483648 2147483647) (int Int32 -2147483648 2147483647) (int Int64 -9223372036854775808 9223372036854775807))) (data lawtwin.kafka.model::type::AbortedTxn (ctor lawtwin.kafka.model::type::AbortedTxn::AbortedTxn (int Int64 -9223372036854775808 9223372036854775807) (int Int64 -9223372036854775808 9223372036854775807) (int Int64 -9223372036854775808 9223372036854775807))) (data lawtwin.kafka.model::type::OffsetEntry (ctor lawtwin.kafka.model::type::OffsetEntry::OffsetEntry (ref lawtwin.kafka.model::type::TopicPartition) (int Int64 -9223372036854775808 9223372036854775807))) (data lawtwin.kafka.model::type::PendingOffset (ctor lawtwin.kafka.model::type::PendingOffset::PendingOffset (text) (ref lawtwin.kafka.model::type::OffsetEntry))) (data lawtwin.kafka.model::type::TxnState (ctor lawtwin.kafka.model::type::TxnState::NoTxn) (ctor lawtwin.kafka.model::type::TxnState::Ongoing (ref lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee))) (data lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee (ctor lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record (list (ref lawtwin.kafka.model::type::PendingOffset)) (list (ref lawtwin.kafka.model::type::TopicPartition)))) (data lawtwin.kafka.model::type::ProducerTag (ctor lawtwin.kafka.model::type::ProducerTag::ProducerTag (int Int64 -9223372036854775808 9223372036854775807) (int Int16 -32768 32767) (int Int32 -2147483648 2147483647)))",
     )
@@ -1947,12 +1948,14 @@ pub const DEFINITIONS: &ls::RemoteDefinitions = &[
 ];
 
 /// Lets other nodes evaluate these definitions on node.
-pub fn serve(node: &ls::net::Node) -> ls::Result<String> {
+pub fn serve(node: &ls::net::Node) -> ls::Result<String>
+{
     ls::serve_remote(node, DEFINITIONS, wire_types())
 }
 
 /// The content hash of the definition with this qualified name.
-pub fn digest(name: &str) -> Option<&'static str> {
+pub fn digest(name: &str) -> Option<&'static str>
+{
     ls::remote_digest(DEFINITIONS, name)
 }
 
@@ -1963,6 +1966,7 @@ pub fn evaluate(
     address: &str,
     name: &str,
     args: &[ls::Value],
-) -> ls::Result<ls::Value> {
+) -> ls::Result<ls::Value>
+{
     ls::evaluate_remote(node, address, DEFINITIONS, &wire_types(), name, args)
 }

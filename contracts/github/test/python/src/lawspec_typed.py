@@ -321,7 +321,11 @@ def lawspec_collections_key_val_put_items_milestone_key_milestone_list_entry_mil
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_label_key_label_key_val_label_key_label(k, v, m):
+def lawspec_collections_key_val_put_label_key_label_key_val_label_key_label(
+    k,
+    v,
+    m,
+):
     return lsf_put(m, k, v)
 
 
@@ -444,7 +448,12 @@ def lawtwin_github_model_model_issues_create_label(owner, repo, body, current):
 
 
 # lawtwinGithubModelModelIssuesCreateMilestone — ../src/model.lawspec:317
-def lawtwin_github_model_model_issues_create_milestone(owner, repo, body, current):
+def lawtwin_github_model_model_issues_create_milestone(
+    owner,
+    repo,
+    body,
+    current,
+):
     if not lawtwin_github_model_valid_issues_create_milestone_body(body):
         raise ls.Failure(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
@@ -656,7 +665,11 @@ def lawtwin_github_model_model_issues_list_labels_for_repo(
     labels = current[0]
     value = labels
     return (
-        lawtwin_github_model_model_labels_under(owner, repo, lsf_entries_list(value)),
+        lawtwin_github_model_model_labels_under(
+            owner,
+            repo,
+            lsf_entries_list(value),
+        ),
         current,
     )
 
@@ -685,7 +698,13 @@ def lawtwin_github_model_model_issues_list_milestones(
 
 
 # lawtwinGithubModelModelIssuesUpdateLabel — ../src/model.lawspec:301
-def lawtwin_github_model_model_issues_update_label(owner, repo, name, body, current):
+def lawtwin_github_model_model_issues_update_label(
+    owner,
+    repo,
+    name,
+    body,
+    current,
+):
     record_field = owner
     record_field_2 = repo
     record_field_3 = name
@@ -789,7 +808,9 @@ def lawtwin_github_model_model_issues_update_milestone(
     it = body
     if it:
         selection = it[0]
-        value = lawtwin_github_model_valid_issues_update_milestone_body(selection)
+        value = lawtwin_github_model_valid_issues_update_milestone_body(
+            selection,
+        )
     else:
         value = True
     if not value:
@@ -1033,7 +1054,11 @@ def lawtwin_github_model_model_labels_under(owner, repo, entries):
                 value_5 = value_6
                 return lsf_cons(
                     value_5,
-                    lawtwin_github_model_model_labels_under(owner, repo, selection_2),
+                    lawtwin_github_model_model_labels_under(
+                        owner,
+                        repo,
+                        selection_2,
+                    ),
                 )
             else:
                 next_value = selection_2
@@ -1112,7 +1137,12 @@ def lawtwin_github_model_valid_issues_update_milestone_body(value):
 
 # referenceIssuesCreateLabel — ../src/api.lawspec:207
 def reference_issues_create_label(state, value0, value1, value2):
-    return lawtwin_github_model_model_issues_create_label(value0, value1, value2, state)
+    return lawtwin_github_model_model_issues_create_label(
+        value0,
+        value1,
+        value2,
+        state,
+    )
 
 
 # referenceIssuesCreateMilestone — ../src/api.lawspec:212
@@ -1127,7 +1157,12 @@ def reference_issues_create_milestone(state, value0, value1, value2):
 
 # referenceIssuesDeleteLabel — ../src/api.lawspec:209
 def reference_issues_delete_label(state, value0, value1, value2):
-    return lawtwin_github_model_model_issues_delete_label(value0, value1, value2, state)
+    return lawtwin_github_model_model_issues_delete_label(
+        value0,
+        value1,
+        value2,
+        state,
+    )
 
 
 # referenceIssuesDeleteMilestone — ../src/api.lawspec:214
@@ -1142,7 +1177,12 @@ def reference_issues_delete_milestone(state, value0, value1, value2):
 
 # referenceIssuesGetLabel — ../src/api.lawspec:208
 def reference_issues_get_label(state, value0, value1, value2):
-    return lawtwin_github_model_model_issues_get_label(value0, value1, value2, state)
+    return lawtwin_github_model_model_issues_get_label(
+        value0,
+        value1,
+        value2,
+        state,
+    )
 
 
 # referenceIssuesGetMilestone — ../src/api.lawspec:213
@@ -1156,7 +1196,13 @@ def reference_issues_get_milestone(state, value0, value1, value2):
 
 
 # referenceIssuesListLabelsForRepo — ../src/api.lawspec:206
-def reference_issues_list_labels_for_repo(state, value0, value1, value2, value3):
+def reference_issues_list_labels_for_repo(
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     return lawtwin_github_model_model_issues_list_labels_for_repo(
         value0,
         value1,
@@ -1337,7 +1383,11 @@ def from_unit(v):
 def from_key_val_label_key_label(v):
     out = None
     for item in v.fields[0]:
-        out = lsf_put(out, from_label_key(item.fields[0]), from_label(item.fields[1]))
+        out = lsf_put(
+            out,
+            from_label_key(item.fields[0]),
+            from_label(item.fields[1]),
+        )
     return out
 
 
@@ -1401,7 +1451,11 @@ def from_issues_create_label_body(v):
         v.tag
         == "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody"
     ):
-        return (v.fields[0], from_maybe_text(v.fields[1]), from_maybe_text(v.fields[2]))
+        return (
+            v.fields[0],
+            from_maybe_text(v.fields[1]),
+            from_maybe_text(v.fields[2]),
+        )
     raise ValueError("expected IssuesCreateLabelBody, found " + v.tag)
 
 
@@ -1521,7 +1575,10 @@ def nin_list_label(n, symbols):
         return fromnative_list_label(n)
     return from_list_label(
         ls.handler_schema(_lawspec_schema).from_native(
-            _schema.Named("List", [_schema.Named("lawtwin.github.model::type::Label")]),
+            _schema.Named(
+                "List",
+                [_schema.Named("lawtwin.github.model::type::Label")],
+            ),
             n,
             MACHINE_BITS,
             symbols,
@@ -1589,7 +1646,11 @@ def nin_maybe_issues_list_milestones_sort(n, symbols):
         ls.handler_schema(_lawspec_schema).from_native(
             _schema.Named(
                 "Maybe",
-                [_schema.Named("lawtwin.github.model::type::IssuesListMilestonesSort")],
+                [
+                    _schema.Named(
+                        "lawtwin.github.model::type::IssuesListMilestonesSort",
+                    ),
+                ],
             ),
             n,
             MACHINE_BITS,
@@ -1627,7 +1688,11 @@ def nin_maybe_issues_update_label_body(n, symbols):
         ls.handler_schema(_lawspec_schema).from_native(
             _schema.Named(
                 "Maybe",
-                [_schema.Named("lawtwin.github.model::type::IssuesUpdateLabelBody")],
+                [
+                    _schema.Named(
+                        "lawtwin.github.model::type::IssuesUpdateLabelBody",
+                    ),
+                ],
             ),
             n,
             MACHINE_BITS,
@@ -1710,7 +1775,9 @@ def nin_issues_create_milestone_body(n, symbols):
         return fromnative_issues_create_milestone_body(n)
     return from_issues_create_milestone_body(
         ls.handler_schema(_lawspec_schema).from_native(
-            _schema.Named("lawtwin.github.model::type::IssuesCreateMilestoneBody"),
+            _schema.Named(
+                "lawtwin.github.model::type::IssuesCreateMilestoneBody",
+            ),
             n,
             MACHINE_BITS,
             symbols,
@@ -1777,7 +1844,10 @@ def nout_list_label(x, symbols):
     if ls._HANDLER_SCHEMA is None:
         return tonative_list_label(x)
     return ls.handler_schema(_lawspec_schema).to_native(
-        _schema.Named("List", [_schema.Named("lawtwin.github.model::type::Label")]),
+        _schema.Named(
+            "List",
+            [_schema.Named("lawtwin.github.model::type::Label")],
+        ),
         to_list_label(x),
         MACHINE_BITS,
         symbols,
@@ -1789,7 +1859,10 @@ def nout_list_milestone(x, symbols):
     if ls._HANDLER_SCHEMA is None:
         return tonative_list_milestone(x)
     return ls.handler_schema(_lawspec_schema).to_native(
-        _schema.Named("List", [_schema.Named("lawtwin.github.model::type::Milestone")]),
+        _schema.Named(
+            "List",
+            [_schema.Named("lawtwin.github.model::type::Milestone")],
+        ),
         to_list_milestone(x),
         MACHINE_BITS,
         symbols,
@@ -1834,7 +1907,11 @@ def nout_maybe_issues_list_milestones_sort(x, symbols):
     return ls.handler_schema(_lawspec_schema).to_native(
         _schema.Named(
             "Maybe",
-            [_schema.Named("lawtwin.github.model::type::IssuesListMilestonesSort")],
+            [
+                _schema.Named(
+                    "lawtwin.github.model::type::IssuesListMilestonesSort",
+                ),
+            ],
         ),
         to_maybe_issues_list_milestones_sort(x),
         MACHINE_BITS,
@@ -1849,7 +1926,11 @@ def nout_maybe_issues_list_milestones_state(x, symbols):
     return ls.handler_schema(_lawspec_schema).to_native(
         _schema.Named(
             "Maybe",
-            [_schema.Named("lawtwin.github.model::type::IssuesListMilestonesState")],
+            [
+                _schema.Named(
+                    "lawtwin.github.model::type::IssuesListMilestonesState",
+                ),
+            ],
         ),
         to_maybe_issues_list_milestones_state(x),
         MACHINE_BITS,
@@ -1864,7 +1945,11 @@ def nout_maybe_issues_update_label_body(x, symbols):
     return ls.handler_schema(_lawspec_schema).to_native(
         _schema.Named(
             "Maybe",
-            [_schema.Named("lawtwin.github.model::type::IssuesUpdateLabelBody")],
+            [
+                _schema.Named(
+                    "lawtwin.github.model::type::IssuesUpdateLabelBody",
+                ),
+            ],
         ),
         to_maybe_issues_update_label_body(x),
         MACHINE_BITS,
@@ -1879,7 +1964,11 @@ def nout_maybe_issues_update_milestone_body(x, symbols):
     return ls.handler_schema(_lawspec_schema).to_native(
         _schema.Named(
             "Maybe",
-            [_schema.Named("lawtwin.github.model::type::IssuesUpdateMilestoneBody")],
+            [
+                _schema.Named(
+                    "lawtwin.github.model::type::IssuesUpdateMilestoneBody",
+                ),
+            ],
         ),
         to_maybe_issues_update_milestone_body(x),
         MACHINE_BITS,
@@ -2018,7 +2107,10 @@ def to_maybe_int64(x):
 # To the dynamic value of a Maybe IssuesListMilestonesDirection.
 def to_maybe_issues_list_milestones_direction(x):
     return (
-        ls.DataValue("Maybe::Present", (to_issues_list_milestones_direction(x[0]),))
+        ls.DataValue(
+            "Maybe::Present",
+            (to_issues_list_milestones_direction(x[0]),),
+        )
         if x
         else ls.DataValue("Maybe::Absent", ())
     )
@@ -2290,13 +2382,19 @@ def from_maybe_text(v):
 
 # From the dynamic value of a Maybe MilestoneState.
 def from_maybe_milestone_state(v):
-    return (from_milestone_state(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    return (
+        (from_milestone_state(v.fields[0]),)
+        if v.tag == "Maybe::Present"
+        else ()
+    )
 
 
 # From the dynamic value of a Maybe NullableSimpleUser.
 def from_maybe_nullable_simple_user(v):
     return (
-        (from_nullable_simple_user(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+        (from_nullable_simple_user(v.fields[0]),)
+        if v.tag == "Maybe::Present"
+        else ()
     )
 
 
@@ -2334,9 +2432,15 @@ def from_api_error(v):
 
 # From the dynamic value of a IssuesListMilestonesDirection.
 def from_issues_list_milestones_direction(v):
-    if v.tag == "lawtwin.github.model::type::IssuesListMilestonesDirection::Asc":
+    if (
+        v.tag
+        == "lawtwin.github.model::type::IssuesListMilestonesDirection::Asc"
+    ):
         return 0
-    if v.tag == "lawtwin.github.model::type::IssuesListMilestonesDirection::Desc":
+    if (
+        v.tag
+        == "lawtwin.github.model::type::IssuesListMilestonesDirection::Desc"
+    ):
         return 1
     raise ValueError("expected IssuesListMilestonesDirection, found " + v.tag)
 
@@ -2345,7 +2449,10 @@ def from_issues_list_milestones_direction(v):
 def from_issues_list_milestones_sort(v):
     if v.tag == "lawtwin.github.model::type::IssuesListMilestonesSort::DueOn":
         return 1
-    if v.tag == "lawtwin.github.model::type::IssuesListMilestonesSort::Completeness":
+    if (
+        v.tag
+        == "lawtwin.github.model::type::IssuesListMilestonesSort::Completeness"
+    ):
         return 0
     raise ValueError("expected IssuesListMilestonesSort, found " + v.tag)
 
@@ -2378,9 +2485,15 @@ def from_issues_update_label_body(v):
 
 # From the dynamic value of a MilestoneState.
 def from_milestone_state(v):
-    if v.tag == "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen":
+    if (
+        v.tag
+        == "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen"
+    ):
         return 1
-    if v.tag == "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed":
+    if (
+        v.tag
+        == "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed"
+    ):
         return 0
     raise ValueError("expected MilestoneState, found " + v.tag)
 
@@ -2796,7 +2909,10 @@ def from_maybe_bool(v):
 
 # From the dynamic value of a NullableSimpleUser.
 def from_nullable_simple_user(v):
-    if v.tag == "lawtwin.github.model::type::NullableSimpleUser::NullableSimpleUser":
+    if (
+        v.tag
+        == "lawtwin.github.model::type::NullableSimpleUser::NullableSimpleUser"
+    ):
         return (
             from_maybe_text(v.fields[0]),
             from_maybe_text(v.fields[1]),
@@ -2862,7 +2978,9 @@ def fromnative_maybe_text(n):
 # From the native value of a Maybe MilestoneState.
 def fromnative_maybe_milestone_state(n):
     return (
-        (fromnative_milestone_state(n.value),) if isinstance(n, _schema.Present) else ()
+        (fromnative_milestone_state(n.value),)
+        if isinstance(n, _schema.Present)
+        else ()
     )
 
 
@@ -2877,7 +2995,11 @@ def fromnative_maybe_nullable_simple_user(n):
 
 # From the native value of a Maybe SimpleUser.
 def fromnative_maybe_simple_user(n):
-    return (fromnative_simple_user(n.value),) if isinstance(n, _schema.Present) else ()
+    return (
+        (fromnative_simple_user(n.value),)
+        if isinstance(n, _schema.Present)
+        else ()
+    )
 
 
 # From the native value of a KeyVal LabelKey Label.
@@ -3036,30 +3158,41 @@ def tonative_maybe_text(x):
 
 # To the native value of a Maybe MilestoneState.
 def tonative_maybe_milestone_state(x):
-    return _schema.Present(tonative_milestone_state(x[0])) if x else _schema.Absent()
+    return (
+        _schema.Present(tonative_milestone_state(x[0]))
+        if x
+        else _schema.Absent()
+    )
 
 
 # To the native value of a Maybe NullableSimpleUser.
 def tonative_maybe_nullable_simple_user(x):
     return (
-        _schema.Present(tonative_nullable_simple_user(x[0])) if x else _schema.Absent()
+        _schema.Present(tonative_nullable_simple_user(x[0]))
+        if x
+        else _schema.Absent()
     )
 
 
 # To the native value of a Maybe SimpleUser.
 def tonative_maybe_simple_user(x):
-    return _schema.Present(tonative_simple_user(x[0])) if x else _schema.Absent()
+    return (
+        _schema.Present(tonative_simple_user(x[0])) if x else _schema.Absent()
+    )
 
 
 # To the native value of a KeyVal LabelKey Label.
 def tonative_key_val_label_key_label(x):
-    return tuple((tonative_label_key(k), tonative_label(v)) for k, v in lsf_entries(x))
+    return tuple(
+        (tonative_label_key(k), tonative_label(v)) for k, v in lsf_entries(x)
+    )
 
 
 # To the native value of a KeyVal MilestoneKey Milestone.
 def tonative_key_val_milestone_key_milestone(x):
     return tuple(
-        (tonative_milestone_key(k), tonative_milestone(v)) for k, v in lsf_entries(x)
+        (tonative_milestone_key(k), tonative_milestone(v))
+        for k, v in lsf_entries(x)
     )
 
 

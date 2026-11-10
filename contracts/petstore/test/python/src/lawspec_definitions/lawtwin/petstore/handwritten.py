@@ -54,7 +54,8 @@ def findPetsByStatus(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::findPetsByStatus: " + _builtins.str(error),
+            "lawtwin.petstore.handwritten::findPetsByStatus: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -99,7 +100,8 @@ def findPetsByTags(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::findPetsByTags: " + _builtins.str(error),
+            "lawtwin.petstore.handwritten::findPetsByTags: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -161,7 +163,8 @@ def updatePetWithForm(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::updatePetWithForm: " + _builtins.str(error),
+            "lawtwin.petstore.handwritten::updatePetWithForm: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -261,7 +264,8 @@ def getInventory(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::getInventory: " + _builtins.str(error),
+            "lawtwin.petstore.handwritten::getInventory: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -292,7 +296,11 @@ def createUsersWithListInput(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.create_users_with_list_input(symbols, body, current)
+        result = _definitions.create_users_with_list_input(
+            symbols,
+            body,
+            current,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",

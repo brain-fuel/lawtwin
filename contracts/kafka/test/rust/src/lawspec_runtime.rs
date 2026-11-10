@@ -26,7 +26,8 @@ pub type Result<T> = std::result::Result<T, String>;
 /// and property share what they acquire (a file, a store) as one test's
 /// cases did.
 #[track_caller]
-pub fn with_stack<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) -> T {
+pub fn with_stack<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) -> T
+{
     type Locks = std::sync::Mutex<HashMap<&'static str, Arc<std::sync::Mutex<()>>>>;
     static FILES: std::sync::OnceLock<Locks> = std::sync::OnceLock::new();
     let file = std::panic::Location::caller().file();
@@ -43,7 +44,8 @@ pub fn with_stack<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) 
 
 /// Runs a generated test on a thread with a large stack, without waiting for
 /// the file's other tests: for tests the harness orders itself.
-pub fn on_stack<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) -> T {
+pub fn on_stack<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) -> T
+{
     std::thread::Builder::new()
         .stack_size(64 * 1024 * 1024)
         .spawn(body)
@@ -57,25 +59,31 @@ pub fn on_stack<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) ->
 /// ref:DEC-planned-generation
 pub type FiniteFactory = fn(&mut Context) -> Result<Value>;
 
-pub enum FiniteCover {
+pub enum FiniteCover
+{
     Copies(usize),
     Branches(Vec<(FiniteDomain, FiniteCover)>),
 }
 
-pub enum FiniteDomain {
+pub enum FiniteDomain
+{
     Values(Vec<FiniteFactory>),
     Integers(BigInt, BigInt),
 }
 
 #[derive(Clone)]
-pub enum FiniteValue {
+pub enum FiniteValue
+{
     Literal(FiniteFactory),
     Integer(BigInt),
 }
 
-impl FiniteValue {
-    pub fn materialize(&self, context: &mut Context) -> Result<Value> {
-        match self {
+impl FiniteValue
+{
+    pub fn materialize(&self, context: &mut Context) -> Result<Value>
+    {
+        match self
+        {
             Self::Literal(factory) => factory(context),
             Self::Integer(value) => Ok(Value::Integer(value.clone())),
         }
@@ -85,33 +93,45 @@ impl FiniteValue {
 pub fn finite_cases(
     cover: &FiniteCover,
     mut visit: impl FnMut(usize, &[FiniteValue]) -> Result<()>,
-) -> Result<()> {
+) -> Result<()>
+{
     fn walk(
         cover: &FiniteCover,
         prefix: &mut Vec<FiniteValue>,
         index: &mut usize,
         visit: &mut impl FnMut(usize, &[FiniteValue]) -> Result<()>,
-    ) -> Result<()> {
-        match cover {
-            FiniteCover::Copies(count) => {
-                for _ in 0..*count {
+    ) -> Result<()>
+    {
+        match cover
+        {
+            FiniteCover::Copies(count) =>
+            {
+                for _ in 0..*count
+                {
                     visit(*index, prefix)?;
                     *index = index.checked_add(1).ok_or("finite case index overflow")?;
                 }
             }
-            FiniteCover::Branches(branches) => {
-                for (domain, suffix) in branches {
-                    match domain {
-                        FiniteDomain::Values(factories) => {
-                            for factory in factories {
+            FiniteCover::Branches(branches) =>
+            {
+                for (domain, suffix) in branches
+                {
+                    match domain
+                    {
+                        FiniteDomain::Values(factories) =>
+                        {
+                            for factory in factories
+                            {
                                 prefix.push(FiniteValue::Literal(*factory));
                                 walk(suffix, prefix, index, visit)?;
                                 prefix.pop();
                             }
                         }
-                        FiniteDomain::Integers(first, last) => {
+                        FiniteDomain::Integers(first, last) =>
+                        {
                             let mut value = first.clone();
-                            while value <= *last {
+                            while value <= *last
+                            {
                                 prefix.push(FiniteValue::Integer(value.clone()));
                                 walk(suffix, prefix, index, visit)?;
                                 prefix.pop();
@@ -141,59 +161,77 @@ integer_from!(
 
 /// Finite base-ten value; arithmetic is independent of ambient rounding modes.
 #[derive(Clone, Debug)]
-pub struct Decimal {
+pub struct Decimal
+{
     pub coefficient: BigInt,
     pub exponent: BigInt,
 }
 // Decimals compare by value, so 1.0 and 1.00 are one key.
 impl Eq for Decimal {}
-impl PartialOrd for Decimal {
-    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+impl PartialOrd for Decimal
+{
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering>
+    {
         Some(self.cmp(other))
     }
 }
-impl Ord for Decimal {
-    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
-        match (self.ratio(), other.ratio()) {
+impl Ord for Decimal
+{
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering
+    {
+        match (self.ratio(), other.ratio())
+        {
             (Ok(a), Ok(b)) => a.cmp(&b),
             _ => (&self.coefficient, &self.exponent).cmp(&(&other.coefficient, &other.exponent)),
         }
     }
 }
 
-impl Decimal {
-    pub fn new(coefficient: BigInt, exponent: BigInt) -> Self {
+impl Decimal
+{
+    pub fn new(coefficient: BigInt, exponent: BigInt) -> Self
+    {
         Self {
             coefficient,
             exponent,
         }
     }
-    pub fn ratio(&self) -> Result<BigRational> {
+    pub fn ratio(&self) -> Result<BigRational>
+    {
         let exponent = self
             .exponent
             .abs()
             .to_u32()
             .ok_or("decimal exponent exceeds runtime capacity")?;
         let power = BigInt::from(10u8).pow(exponent);
-        Ok(if self.exponent.is_negative() {
-            BigRational::new(self.coefficient.clone(), power)
-        } else {
-            BigRational::from_integer(&self.coefficient * power)
-        })
+        Ok(
+            if self.exponent.is_negative()
+            {
+                BigRational::new(self.coefficient.clone(), power)
+            }
+            else
+            {
+                BigRational::from_integer(&self.coefficient * power)
+            },
+        )
     }
-    pub fn from_ratio(value: BigRational) -> Result<Self> {
+    pub fn from_ratio(value: BigRational) -> Result<Self>
+    {
         let mut denominator = value.denom().clone();
         let mut twos = 0u32;
         let mut fives = 0u32;
-        while (&denominator % 2u8).is_zero() {
+        while (&denominator % 2u8).is_zero()
+        {
             denominator /= 2u8;
             twos += 1;
         }
-        while (&denominator % 5u8).is_zero() {
+        while (&denominator % 5u8).is_zero()
+        {
             denominator /= 5u8;
             fives += 1;
         }
-        if !denominator.is_one() {
+        if !denominator.is_one()
+        {
             return Err("conversion to Decimal is not finite; use prelude.round".into());
         }
         let scale = twos.max(fives);
@@ -204,20 +242,27 @@ impl Decimal {
             -BigInt::from(scale),
         ))
     }
-    pub fn add(&self, other: &Self) -> Result<Self> {
+    pub fn add(&self, other: &Self) -> Result<Self>
+    {
         Self::from_ratio(self.ratio()? + other.ratio()?)
     }
-    pub fn sub(&self, other: &Self) -> Result<Self> {
+    pub fn sub(&self, other: &Self) -> Result<Self>
+    {
         Self::from_ratio(self.ratio()? - other.ratio()?)
     }
-    pub fn mul(&self, other: &Self) -> Result<Self> {
+    pub fn mul(&self, other: &Self) -> Result<Self>
+    {
         Self::from_ratio(self.ratio()? * other.ratio()?)
     }
-    pub fn round(value: BigRational, scale: i32) -> Result<Self> {
+    pub fn round(value: BigRational, scale: i32) -> Result<Self>
+    {
         let power = BigInt::from(10u8).pow(scale.unsigned_abs());
-        let factor = if scale < 0 {
+        let factor = if scale < 0
+        {
             BigRational::new(BigInt::one(), power)
-        } else {
+        }
+        else
+        {
             BigRational::from_integer(power)
         };
         let scaled = &value * &factor;
@@ -228,19 +273,26 @@ impl Decimal {
             || twice == *scaled.denom() && !(&quotient % 2u8).is_zero()
         {
             quotient
-                + if scaled.is_negative() {
+                + if scaled.is_negative()
+                {
                     -BigInt::one()
-                } else {
+                }
+                else
+                {
                     BigInt::one()
                 }
-        } else {
+        }
+        else
+        {
             quotient
         };
         Self::from_ratio(BigRational::from_integer(rounded) / factor)
     }
 }
-impl PartialEq for Decimal {
-    fn eq(&self, other: &Self) -> bool {
+impl PartialEq for Decimal
+{
+    fn eq(&self, other: &Self) -> bool
+    {
         matches!((self.ratio(),other.ratio()), (Ok(a),Ok(b)) if a==b)
     }
 }
@@ -256,33 +308,41 @@ pub struct Null;
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Undefined;
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum Nullable<T> {
+pub enum Nullable<T>
+{
     Null,
     Present(T),
 }
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum Optional<T> {
+pub enum Optional<T>
+{
     Undefined,
     Present(T),
 }
 #[derive(Clone, Debug)]
 pub struct Symbol(Arc<String>);
-impl Symbol {
-    pub fn new(description: String) -> Self {
+impl Symbol
+{
+    pub fn new(description: String) -> Self
+    {
         Self(Arc::new(description))
     }
-    pub fn description(&self) -> &str {
+    pub fn description(&self) -> &str
+    {
         &self.0
     }
 }
-impl PartialEq for Symbol {
-    fn eq(&self, other: &Self) -> bool {
+impl PartialEq for Symbol
+{
+    fn eq(&self, other: &Self) -> bool
+    {
         Arc::ptr_eq(&self.0, &other.0)
     }
 }
 impl Eq for Symbol {}
 #[derive(Clone, Debug, Default)]
-pub struct Context {
+pub struct Context
+{
     symbols: HashMap<String, Symbol>,
     /// The workflow runtime this call runs under; None is the default one.
     pub workflow: Option<Arc<std::sync::Mutex<WorkflowRuntime>>>,
@@ -293,9 +353,11 @@ pub struct Context {
     // The default runtime's view under the installed Clock handler.
     clock_view: ClockView,
 }
-impl Context {
+impl Context
+{
     /// A context whose workflows run under the given runtime.
-    pub fn with_workflow(runtime: WorkflowRuntime) -> Context {
+    pub fn with_workflow(runtime: WorkflowRuntime) -> Context
+    {
         Context {
             workflow: Some(Arc::new(std::sync::Mutex::new(runtime))),
             ..Context::default()
@@ -305,12 +367,14 @@ impl Context {
     /// gates are off (a workflow law calls the workflow and its composition,
     /// which would see each other's state). Timeouts and hedges stay on: they
     /// count virtual time (see scoped).
-    pub fn testing() -> Context {
+    pub fn testing() -> Context
+    {
         let mut runtime = WorkflowRuntime::new(Box::new(VirtualClock::default()), 0);
         runtime.gates = false;
         Context::with_workflow(runtime)
     }
-    pub fn symbol(&mut self, id: &str, description: &str) -> Symbol {
+    pub fn symbol(&mut self, id: &str, description: &str) -> Symbol
+    {
         self.symbols
             .entry(id.into())
             .or_insert_with(|| Symbol::new(description.into()))
@@ -322,7 +386,8 @@ impl Context {
 /// cannot say whether it is an Int32, a BigInt or a Decimal, and the law's
 /// semantics depend on which. ref:DEC-portable-exact-arithmetic
 #[derive(Clone, Debug, PartialEq)]
-pub enum Value {
+pub enum Value
+{
     Integer(BigInt),
     Decimal(Decimal),
     Rational(BigRational),
@@ -362,7 +427,8 @@ pub enum Value {
 #[derive(Clone)]
 pub struct Handle(Arc<HandleCell>);
 
-struct HandleCell {
+struct HandleCell
+{
     value: Box<dyn std::any::Any + Send + Sync>,
     // The handle type's name, recorded when a schema first checks it, and
     // its number among that type's handles, given when it is first shown.
@@ -370,9 +436,11 @@ struct HandleCell {
     number: std::sync::OnceLock<u64>,
 }
 
-impl Handle {
+impl Handle
+{
     /// A new handle around a native value.
-    pub fn new<T: std::any::Any + Send + Sync>(value: T) -> Self {
+    pub fn new<T: std::any::Any + Send + Sync>(value: T) -> Self
+    {
         Handle(Arc::new(HandleCell {
             value: Box::new(value),
             name: std::sync::OnceLock::new(),
@@ -381,12 +449,14 @@ impl Handle {
     }
 
     /// The native value, when it is a T.
-    pub fn downcast_ref<T: std::any::Any>(&self) -> Option<&T> {
+    pub fn downcast_ref<T: std::any::Any>(&self) -> Option<&T>
+    {
         self.0.value.downcast_ref::<T>()
     }
 
     /// The native value as a T, or an error naming both.
-    pub fn native<T: std::any::Any>(&self) -> Result<&T> {
+    pub fn native<T: std::any::Any>(&self) -> Result<&T>
+    {
         self.downcast_ref::<T>().ok_or_else(|| {
             format!(
                 "handle {} does not hold a {}",
@@ -397,17 +467,20 @@ impl Handle {
     }
 
     /// Whether two handles are the same one.
-    pub fn same(&self, other: &Handle) -> bool {
+    pub fn same(&self, other: &Handle) -> bool
+    {
         Arc::ptr_eq(&self.0, &other.0)
     }
 
-    fn named(&self, name: &'static str) {
+    fn named(&self, name: &'static str)
+    {
         let _ = self.0.name.set(name);
     }
 
     /// A stable label, such as Jobs#1: the type's name, then the handle's
     /// number among that type's handles in order of first appearance.
-    pub fn label(&self) -> String {
+    pub fn label(&self) -> String
+    {
         use std::sync::{Mutex, OnceLock};
         static COUNTS: OnceLock<Mutex<HashMap<&'static str, u64>>> = OnceLock::new();
         let full = self.0.name.get().copied().unwrap_or("Handle");
@@ -425,76 +498,100 @@ impl Handle {
     }
 }
 
-impl PartialEq for Handle {
-    fn eq(&self, other: &Self) -> bool {
+impl PartialEq for Handle
+{
+    fn eq(&self, other: &Self) -> bool
+    {
         self.same(other)
     }
 }
 impl Eq for Handle {}
-impl std::hash::Hash for Handle {
-    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+impl std::hash::Hash for Handle
+{
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H)
+    {
         (Arc::as_ptr(&self.0) as *const () as usize).hash(state);
     }
 }
-impl std::fmt::Debug for Handle {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl std::fmt::Debug for Handle
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+    {
         f.write_str(&self.label())
     }
 }
 
-impl Value {
-    pub fn exact(&self) -> Result<BigRational> {
-        match self {
+impl Value
+{
+    pub fn exact(&self) -> Result<BigRational>
+    {
+        match self
+        {
             Self::Integer(n) => Ok(BigRational::from_integer(n.clone())),
             Self::Decimal(d) => d.ratio(),
             Self::Rational(r) => Ok(r.clone()),
             _ => Err("requires exact number".into()),
         }
     }
-    pub fn integer(&self) -> Result<BigInt> {
+    pub fn integer(&self) -> Result<BigInt>
+    {
         let r = self.exact()?;
-        if !r.is_integer() {
+        if !r.is_integer()
+        {
             return Err("fractional integer conversion".into());
         }
         Ok(r.to_integer())
     }
-    pub fn boolean(&self) -> Result<bool> {
-        match self {
+    pub fn boolean(&self) -> Result<bool>
+    {
+        match self
+        {
             Self::Bool(b) => Ok(*b),
             _ => Err("expected Bool".into()),
         }
     }
-    fn real64(&self) -> Result<f64> {
-        match self {
+    fn real64(&self) -> Result<f64>
+    {
+        match self
+        {
             Self::Float32(f) => Ok(f64::from(*f)),
             Self::Float64(f) => Ok(*f),
             _ => Ok(f64::from_bits(exact_float_bits(&self.exact()?, false)?)),
         }
     }
-    fn complex64(&self) -> Result<Complex64> {
-        match self {
+    fn complex64(&self) -> Result<Complex64>
+    {
+        match self
+        {
             Self::Complex32(c) => Ok(Complex64::new(f64::from(c.re), f64::from(c.im))),
             Self::Complex64(c) => Ok(*c),
             _ => Ok(Complex64::new(self.real64()?, 0.0)),
         }
     }
-    pub fn convert(self, target: &str, machine_bits: u32) -> Result<Self> {
-        if target == "Float32" {
+    pub fn convert(self, target: &str, machine_bits: u32) -> Result<Self>
+    {
+        if target == "Float32"
+        {
             // Rational-to-f32 is direct, avoiding double rounding through f64.
-            return Ok(Self::Float32(match &self {
+            return Ok(Self::Float32(match &self
+            {
                 Self::Float32(x) => *x,
                 Self::Float64(x) => *x as f32,
                 _ => f32::from_bits(exact_float_bits(&self.exact()?, true)? as u32),
             }));
         }
-        if target == "Float64" {
+        if target == "Float64"
+        {
             return Ok(Self::Float64(self.real64()?));
         }
-        if target == "Complex64" || target == "Complex128" {
-            if target == "Complex128" {
+        if target == "Complex64" || target == "Complex128"
+        {
+            if target == "Complex128"
+            {
                 return Ok(Self::Complex64(self.complex64()?));
             }
-            let (real, imag) = match self {
+            let (real, imag) = match self
+            {
                 Self::Complex32(c) => return Ok(Self::Complex32(c)),
                 Self::Complex64(c) => (Self::Float64(c.re), Self::Float64(c.im)),
                 x => (x, Self::Float32(0.0)),
@@ -504,22 +601,28 @@ impl Value {
                 f32::from_value(imag.convert("Float32", machine_bits)?)?,
             )));
         }
-        let exact = match self {
-            Self::Float32(f) => {
+        let exact = match self
+        {
+            Self::Float32(f) =>
+            {
                 Self::Rational(BigRational::from_f32(f).ok_or("non-finite exact conversion")?)
             }
-            Self::Float64(f) => {
+            Self::Float64(f) =>
+            {
                 Self::Rational(BigRational::from_f64(f).ok_or("non-finite exact conversion")?)
             }
             x => x,
         };
-        if target == "Decimal" {
+        if target == "Decimal"
+        {
             return Ok(Self::Decimal(Decimal::from_ratio(exact.exact()?)?));
         }
-        if target == "Rational" {
+        if target == "Rational"
+        {
             return Ok(Self::Rational(exact.exact()?));
         }
-        let (signed, width) = match target {
+        let (signed, width) = match target
+        {
             "Int8" => (true, 8),
             "Int16" => (true, 16),
             "Int32" => (true, 32),
@@ -531,9 +634,11 @@ impl Value {
             "IntSize" => (true, machine_bits),
             "UIntSize" | "UIntPtr" => (false, machine_bits),
             "Integer" | "BigInt" => return Ok(Self::Integer(exact.integer()?)),
-            "BigUInt" => {
+            "BigUInt" =>
+            {
                 let n = exact.integer()?;
-                if n.is_negative() {
+                if n.is_negative()
+                {
                     return Err("BigUInt cannot be negative".into());
                 }
                 return Ok(Self::Integer(n));
@@ -541,13 +646,17 @@ impl Value {
             _ => return Err(format!("unsupported numeric conversion: {target}")),
         };
         let n = exact.integer()?;
-        let (lo, hi) = if signed {
+        let (lo, hi) = if signed
+        {
             let bound = BigInt::one() << (width - 1);
             (-&bound, &bound - 1u8)
-        } else {
+        }
+        else
+        {
             (BigInt::zero(), (BigInt::one() << width) - 1u8)
         };
-        if n < lo || n > hi {
+        if n < lo || n > hi
+        {
             return Err(format!("integer outside {target} range"));
         }
         Ok(Self::Integer(n))
@@ -555,32 +664,43 @@ impl Value {
 }
 
 /// Round the exact ratio once, directly into an IEEE significand and exponent.
-pub fn exact_float_bits(ratio: &BigRational, single: bool) -> Result<u64> {
-    let (precision, bias, sign_shift) = if single {
+pub fn exact_float_bits(ratio: &BigRational, single: bool) -> Result<u64>
+{
+    let (precision, bias, sign_shift) = if single
+    {
         (24i64, 127i64, 31)
-    } else {
+    }
+    else
+    {
         (53i64, 1023i64, 63)
     };
     let sign = u64::from(ratio.is_negative()) << sign_shift;
-    if ratio.is_zero() {
+    if ratio.is_zero()
+    {
         return Ok(sign);
     }
     let n = ratio.numer().abs();
     let d = ratio.denom().clone();
     let mut exponent = n.bits() as i64 - d.bits() as i64;
-    if if exponent >= 0 {
+    if if exponent >= 0
+    {
         n < (&d << exponent as usize)
-    } else {
+    }
+    else
+    {
         (&n << (-exponent) as usize) < d
-    } {
+    }
+    {
         exponent -= 1;
     }
     let infinity = sign | (((2 * bias + 1) as u64) << (precision - 1));
-    if exponent > bias {
+    if exponent > bias
+    {
         return Ok(infinity);
     }
     let minimum = 1 - bias;
-    if exponent < minimum - precision {
+    if exponent < minimum - precision
+    {
         return Ok(sign);
     }
     let scale = exponent.max(minimum) - (precision - 1);
@@ -588,31 +708,40 @@ pub fn exact_float_bits(ratio: &BigRational, single: bool) -> Result<u64> {
     let den = if scale > 0 { d << scale as usize } else { d };
     let mut q = &num / &den;
     let twice = (&num % &den) * 2u8;
-    if twice > den || twice == den && !(&q % 2u8).is_zero() {
+    if twice > den || twice == den && !(&q % 2u8).is_zero()
+    {
         q += 1u8;
     }
     exponent = exponent.max(minimum);
-    if q == (BigInt::one() << precision as usize) {
+    if q == (BigInt::one() << precision as usize)
+    {
         q >>= 1usize;
         exponent += 1;
     }
-    if exponent > bias {
+    if exponent > bias
+    {
         return Ok(infinity);
     }
     let hidden = 1u64 << (precision - 1);
     let significand = q.to_u64().ok_or("invalid IEEE significand")?;
-    let (exp, mantissa) = if significand < hidden {
+    let (exp, mantissa) = if significand < hidden
+    {
         (0, significand)
-    } else {
+    }
+    else
+    {
         ((exponent + bias) as u64, significand - hidden)
     };
     Ok(sign | (exp << (precision - 1)) | mantissa)
 }
 
-fn numeric_class(value: &Value) -> Option<bool> {
-    match value {
+fn numeric_class(value: &Value) -> Option<bool>
+{
+    match value
+    {
         Value::Integer(_) | Value::Decimal(_) | Value::Rational(_) => Some(true),
-        Value::Float32(_) | Value::Float64(_) | Value::Complex32(_) | Value::Complex64(_) => {
+        Value::Float32(_) | Value::Float64(_) | Value::Complex32(_) | Value::Complex64(_) =>
+        {
             Some(false)
         }
         _ => None,
@@ -622,18 +751,23 @@ fn numeric_class(value: &Value) -> Option<bool> {
 /// Equality defined once for all targets: NaN differs from itself, signed zeros
 /// are equal, handles and symbols compare by identity, and data compares field
 /// by field. ref:DEC-portable-exact-arithmetic
-pub fn equal(a: &Value, b: &Value) -> Result<bool> {
-    if let (Some(x), Some(y)) = (numeric_class(a), numeric_class(b)) {
-        if x != y {
+pub fn equal(a: &Value, b: &Value) -> Result<bool>
+{
+    if let (Some(x), Some(y)) = (numeric_class(a), numeric_class(b))
+    {
+        if x != y
+        {
             return Err("exact/inexact mixing requires an explicit conversion".into());
         }
     }
-    match (a, b) {
+    match (a, b)
+    {
         (
             Value::Integer(_) | Value::Decimal(_) | Value::Rational(_),
             Value::Integer(_) | Value::Decimal(_) | Value::Rational(_),
         ) => Ok(a.exact()? == b.exact()?),
-        (Value::Float32(_) | Value::Float64(_), Value::Float32(_) | Value::Float64(_)) => {
+        (Value::Float32(_) | Value::Float64(_), Value::Float32(_) | Value::Float64(_)) =>
+        {
             Ok(a.real64()? == b.real64()?)
         }
         (
@@ -646,18 +780,24 @@ pub fn equal(a: &Value, b: &Value) -> Result<bool> {
         | (Value::Left(x), Value::Left(y))
         | (Value::Right(x), Value::Right(y)) => equal(x, y),
         (Value::Data(left_tag, _), Value::Data(right_tag, _)) if left_tag != right_tag => Ok(false),
-        (Value::Data(tag, left), Value::Data(_, right)) if tag == EQ_SET_TAG => {
-            match (left.as_slice(), right.as_slice()) {
+        (Value::Data(tag, left), Value::Data(_, right)) if tag == EQ_SET_TAG =>
+        {
+            match (left.as_slice(), right.as_slice())
+            {
                 ([Value::List(xs)], [Value::List(ys)]) => same_members(xs, ys),
                 _ => Err("Eq-only set equality requires one List field".into()),
             }
         }
-        (Value::List(xs), Value::List(ys)) | (Value::Data(_, xs), Value::Data(_, ys)) => {
-            if xs.len() != ys.len() {
+        (Value::List(xs), Value::List(ys)) | (Value::Data(_, xs), Value::Data(_, ys)) =>
+        {
+            if xs.len() != ys.len()
+            {
                 return Ok(false);
             }
-            for (x, y) in xs.iter().zip(ys) {
-                if !equal(x, y)? {
+            for (x, y) in xs.iter().zip(ys)
+            {
+                if !equal(x, y)?
+                {
                     return Ok(false);
                 }
             }
@@ -669,32 +809,43 @@ pub fn equal(a: &Value, b: &Value) -> Result<bool> {
 
 pub const EQ_SET_TAG: &str = "lawspec.collections::type::EqSet::EqSetItems";
 
-fn member(value: &Value, candidates: &[Value]) -> Result<bool> {
-    for candidate in candidates {
-        if equal(value, candidate)? {
+fn member(value: &Value, candidates: &[Value]) -> Result<bool>
+{
+    for candidate in candidates
+    {
+        if equal(value, candidate)?
+        {
             return Ok(true);
         }
     }
     Ok(false)
 }
 
-pub fn same_members(left: &[Value], right: &[Value]) -> Result<bool> {
-    for value in left {
-        if !member(value, right)? {
+pub fn same_members(left: &[Value], right: &[Value]) -> Result<bool>
+{
+    for value in left
+    {
+        if !member(value, right)?
+        {
             return Ok(false);
         }
     }
-    for value in right {
-        if !member(value, left)? {
+    for value in right
+    {
+        if !member(value, left)?
+        {
             return Ok(false);
         }
     }
     Ok(true)
 }
 
-pub fn distinct_members(items: &[Value]) -> Result<bool> {
-    for (index, value) in items.iter().enumerate() {
-        if member(value, &items[..index])? {
+pub fn distinct_members(items: &[Value]) -> Result<bool>
+{
+    for (index, value) in items.iter().enumerate()
+    {
+        if member(value, &items[..index])?
+        {
             return Ok(false);
         }
     }
@@ -706,20 +857,24 @@ pub fn distinct_members(items: &[Value]) -> Result<bool> {
 /// The operator has LawSpec's semantics rather than Rust's, so a law computes
 /// the same result on every target. ref:DEC-portable-exact-arithmetic
 /// ref:ieee-754
-pub fn binary(op: &str, domain: &str, a: Value, b: Value) -> Result<Value> {
+pub fn binary(op: &str, domain: &str, a: Value, b: Value) -> Result<Value>
+{
     use Value::*;
-    if op == "==" || op == "!=" {
+    if op == "==" || op == "!="
+    {
         return Ok(Bool(equal(&a, &b)? == (op == "==")));
     }
     let exact_domain = !matches!(domain, "Float32" | "Float64" | "Complex64" | "Complex128");
-    if numeric_class(&a) != Some(exact_domain) || numeric_class(&b) != Some(exact_domain) {
+    if numeric_class(&a) != Some(exact_domain) || numeric_class(&b) != Some(exact_domain)
+    {
         return Err("numeric operands must match the resolved arithmetic domain; use an explicit conversion".into());
     }
     macro_rules! calculate {
-        ($x:expr,$y:expr,$variant:ident) => {{
+        ($x:expr, $y:expr, $variant:ident) => {{
             let x = $x;
             let y = $y;
-            match op {
+            match op
+            {
                 "+" => Ok($variant(x + y)),
                 "-" => Ok($variant(x - y)),
                 "*" => Ok($variant(x * y)),
@@ -732,25 +887,29 @@ pub fn binary(op: &str, domain: &str, a: Value, b: Value) -> Result<Value> {
             }
         }};
     }
-    if domain == "Float32" {
+    if domain == "Float32"
+    {
         return calculate!(
             f32::from_value(a.convert("Float32", 64)?)?,
             f32::from_value(b.convert("Float32", 64)?)?,
             Float32
         );
     }
-    if domain == "Float64" {
+    if domain == "Float64"
+    {
         return calculate!(a.real64()?, b.real64()?, Float64);
     }
     macro_rules! complex {
-        ($x:expr,$y:expr,$variant:ident) => {{
+        ($x:expr, $y:expr, $variant:ident) => {{
             let x = $x;
             let y = $y;
-            match op {
+            match op
+            {
                 "+" => Ok($variant(x + y)),
                 "-" => Ok($variant(x - y)),
                 "*" => Ok($variant(x * y)),
-                "/" => {
+                "/" =>
+                {
                     // Match portable componentwise IEEE operations at declared precision.
                     let d = y.re * y.re + y.im * y.im;
                     Ok($variant(num_complex::Complex::new(
@@ -762,31 +921,37 @@ pub fn binary(op: &str, domain: &str, a: Value, b: Value) -> Result<Value> {
             }
         }};
     }
-    if domain == "Complex64" {
+    if domain == "Complex64"
+    {
         return complex!(
             num_complex::Complex32::from_value(a.convert("Complex64", 64)?)?,
             num_complex::Complex32::from_value(b.convert("Complex64", 64)?)?,
             Complex32
         );
     }
-    if domain == "Complex128" {
+    if domain == "Complex128"
+    {
         return complex!(a.complex64()?, b.complex64()?, Complex64);
     }
     let x = a.exact()?;
     let y = b.exact()?;
-    if matches!(op, "/" | "quot" | "rem") && y.is_zero() {
+    if matches!(op, "/" | "quot" | "rem") && y.is_zero()
+    {
         return Err("exact division by zero".into());
     }
-    let result = match op {
+    let result = match op
+    {
         "+" => x + y,
         "-" => x - y,
         "*" => x * y,
         "/" => x / y,
         "quot" => return Ok(Integer(a.integer()? / b.integer()?)),
         "rem" => return Ok(Integer(a.integer()? % b.integer()?)),
-        "pow" => {
+        "pow" =>
+        {
             let exponent = b.integer()?;
-            if exponent.is_negative() {
+            if exponent.is_negative()
+            {
                 return Err("negative exponent".into());
             }
             let exponent = exponent
@@ -803,8 +968,10 @@ pub fn binary(op: &str, domain: &str, a: Value, b: Value) -> Result<Value> {
     Rational(result).convert(domain, 64)
 }
 
-pub fn negate(value: Value) -> Result<Value> {
-    Ok(match value {
+pub fn negate(value: Value) -> Result<Value>
+{
+    Ok(match value
+    {
         Value::Integer(x) => Value::Integer(-x),
         Value::Rational(x) => Value::Rational(-x),
         Value::Decimal(x) => Value::Decimal(Decimal::new(-x.coefficient, x.exponent)),
@@ -816,24 +983,33 @@ pub fn negate(value: Value) -> Result<Value> {
     })
 }
 
-pub trait IntoValue {
+pub trait IntoValue
+{
     fn into_value(self) -> Value;
 }
-pub trait FromValue: Sized {
+pub trait FromValue: Sized
+{
     fn from_value(value: Value) -> Result<Self>;
 }
 macro_rules! native {
-    ($t:ty,$variant:ident) => {
-        impl IntoValue for $t {
-            fn into_value(self) -> Value {
+    ($t:ty, $variant:ident) => {
+        impl IntoValue for $t
+        {
+            fn into_value(self) -> Value
+            {
                 Value::$variant(self)
             }
         }
-        impl FromValue for $t {
-            fn from_value(value: Value) -> Result<Self> {
-                if let Value::$variant(x) = value {
+        impl FromValue for $t
+        {
+            fn from_value(value: Value) -> Result<Self>
+            {
+                if let Value::$variant(x) = value
+                {
                     Ok(x)
-                } else {
+                }
+                else
+                {
                     Err(concat!("expected ", stringify!($t)).into())
                 }
             }
@@ -853,23 +1029,31 @@ native!(String, Text);
 
 native!(Symbol, Symbol);
 native!(Handle, Handle);
-impl IntoValue for Integer {
-    fn into_value(self) -> Value {
+impl IntoValue for Integer
+{
+    fn into_value(self) -> Value
+    {
         Value::Integer(self.0)
     }
 }
-impl FromValue for Integer {
-    fn from_value(value: Value) -> Result<Self> {
+impl FromValue for Integer
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
         Ok(Self(value.integer()?))
     }
 }
-impl IntoValue for BigUint {
-    fn into_value(self) -> Value {
+impl IntoValue for BigUint
+{
+    fn into_value(self) -> Value
+    {
         Value::Integer(self.into())
     }
 }
-impl FromValue for BigUint {
-    fn from_value(value: Value) -> Result<Self> {
+impl FromValue for BigUint
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
         value
             .integer()?
             .to_biguint()
@@ -892,15 +1076,20 @@ primitive_int!(
     i8, i16, i32, i64, i128, isize, u8, u16, u32, u64, u128, usize
 );
 macro_rules! raw {
-    ($t:ident,$variant:ident,$valid:expr) => {
-        impl IntoValue for $t {
-            fn into_value(self) -> Value {
+    ($t:ident, $variant:ident, $valid:expr) => {
+        impl IntoValue for $t
+        {
+            fn into_value(self) -> Value
+            {
                 Value::$variant(self.0)
             }
         }
-        impl FromValue for $t {
-            fn from_value(value: Value) -> Result<Self> {
-                match value {
+        impl FromValue for $t
+        {
+            fn from_value(value: Value) -> Result<Self>
+            {
+                match value
+                {
                     Value::$variant(x) if ($valid)(&x) => Ok(Self(x)),
                     _ => Err(concat!("invalid ", stringify!($t)).into()),
                 }
@@ -914,17 +1103,24 @@ raw!(CodePointText, CodePointText, |x: &Vec<u32>| x
     .all(|c| *c <= 0x10ffff));
 raw!(Utf16Text, Utf16Text, |_: &Vec<u16>| true);
 macro_rules! absence {
-    ($t:ty,$variant:ident,$value:expr) => {
-        impl IntoValue for $t {
-            fn into_value(self) -> Value {
+    ($t:ty, $variant:ident, $value:expr) => {
+        impl IntoValue for $t
+        {
+            fn into_value(self) -> Value
+            {
                 Value::$variant
             }
         }
-        impl FromValue for $t {
-            fn from_value(value: Value) -> Result<Self> {
-                if matches!(value, Value::$variant) {
+        impl FromValue for $t
+        {
+            fn from_value(value: Value) -> Result<Self>
+            {
+                if matches!(value, Value::$variant)
+                {
                     Ok($value)
-                } else {
+                }
+                else
+                {
                     Err(concat!("expected ", stringify!($t)).into())
                 }
             }
@@ -935,18 +1131,24 @@ absence!((), Unit, ());
 absence!(Null, Null, Null);
 absence!(Undefined, Undefined, Undefined);
 macro_rules! presence {
-    ($t:ident,$absent:ident) => {
-        impl<T: IntoValue> IntoValue for $t<T> {
-            fn into_value(self) -> Value {
-                Value::$t(match self {
+    ($t:ident, $absent:ident) => {
+        impl<T: IntoValue> IntoValue for $t<T>
+        {
+            fn into_value(self) -> Value
+            {
+                Value::$t(match self
+                {
                     Self::$absent => None,
                     Self::Present(x) => Some(Box::new(x.into_value())),
                 })
             }
         }
-        impl<T: FromValue> FromValue for $t<T> {
-            fn from_value(value: Value) -> Result<Self> {
-                match value {
+        impl<T: FromValue> FromValue for $t<T>
+        {
+            fn from_value(value: Value) -> Result<Self>
+            {
+                match value
+                {
                     Value::$t(None) => Ok(Self::$absent),
                     Value::$t(Some(x)) => Ok(Self::Present(T::from_value(*x)?)),
                     _ => Err("presence type mismatch".into()),
@@ -960,28 +1162,38 @@ presence!(Optional, Undefined);
 
 /// Algebraic Either is independent of interoperability absence wrappers.
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum Either<L, R> {
+pub enum Either<L, R>
+{
     Left(L),
     Right(R),
 }
-impl<T: IntoValue> IntoValue for Box<T> {
-    fn into_value(self) -> Value {
+impl<T: IntoValue> IntoValue for Box<T>
+{
+    fn into_value(self) -> Value
+    {
         (*self).into_value()
     }
 }
-impl<T: FromValue> FromValue for Box<T> {
-    fn from_value(value: Value) -> Result<Self> {
+impl<T: FromValue> FromValue for Box<T>
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
         T::from_value(value).map(Box::new)
     }
 }
-impl<T: IntoValue> IntoValue for Vec<T> {
-    fn into_value(self) -> Value {
+impl<T: IntoValue> IntoValue for Vec<T>
+{
+    fn into_value(self) -> Value
+    {
         Value::List(self.into_iter().map(IntoValue::into_value).collect())
     }
 }
-impl<T: FromValue> FromValue for Vec<T> {
-    fn from_value(value: Value) -> Result<Self> {
-        let values = match value {
+impl<T: FromValue> FromValue for Vec<T>
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
+        let values = match value
+        {
             Value::List(values) => values,
             // A Stack, whose top is last natively.
             value @ Value::Data(..) => collection_items(value)?,
@@ -994,30 +1206,41 @@ impl<T: FromValue> FromValue for Vec<T> {
         values.into_iter().map(T::from_value).collect()
     }
 }
-impl<T: IntoValue> IntoValue for Option<T> {
-    fn into_value(self) -> Value {
+impl<T: IntoValue> IntoValue for Option<T>
+{
+    fn into_value(self) -> Value
+    {
         Value::Maybe(self.map(|x| Box::new(x.into_value())))
     }
 }
-impl<T: FromValue> FromValue for Option<T> {
-    fn from_value(value: Value) -> Result<Self> {
-        match value {
+impl<T: FromValue> FromValue for Option<T>
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
+        match value
+        {
             Value::Maybe(value) => value.map(|x| T::from_value(*x)).transpose(),
             _ => Err("expected Maybe".into()),
         }
     }
 }
-impl<L: IntoValue, R: IntoValue> IntoValue for Either<L, R> {
-    fn into_value(self) -> Value {
-        match self {
+impl<L: IntoValue, R: IntoValue> IntoValue for Either<L, R>
+{
+    fn into_value(self) -> Value
+    {
+        match self
+        {
             Self::Left(x) => Value::Left(Box::new(x.into_value())),
             Self::Right(x) => Value::Right(Box::new(x.into_value())),
         }
     }
 }
-impl<L: FromValue, R: FromValue> FromValue for Either<L, R> {
-    fn from_value(value: Value) -> Result<Self> {
-        match value {
+impl<L: FromValue, R: FromValue> FromValue for Either<L, R>
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
+        match value
+        {
             Value::Left(x) => Ok(Self::Left(L::from_value(*x)?)),
             Value::Right(x) => Ok(Self::Right(R::from_value(*x)?)),
             _ => Err("expected Either".into()),
@@ -1026,36 +1249,47 @@ impl<L: FromValue, R: FromValue> FromValue for Either<L, R> {
 }
 
 // A GADT case's existential fields hold checked dynamic values.
-impl IntoValue for Value {
-    fn into_value(self) -> Value {
+impl IntoValue for Value
+{
+    fn into_value(self) -> Value
+    {
         self
     }
 }
-impl FromValue for Value {
-    fn from_value(value: Value) -> Result<Self> {
+impl FromValue for Value
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
         Ok(value)
     }
 }
 
 /// A fully applied type, or a parameter in a constructor's field schema.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum TypeRef {
+pub enum TypeRef
+{
     Named(&'static str, Vec<TypeRef>),
     Parameter(usize),
 }
 
-impl TypeRef {
-    pub fn named(name: &'static str, arguments: Vec<TypeRef>) -> Self {
+impl TypeRef
+{
+    pub fn named(name: &'static str, arguments: Vec<TypeRef>) -> Self
+    {
         Self::Named(name, arguments)
     }
 
     /// Expression runtime spelling, after schema type arguments are substituted.
-    pub fn expression_key(&self) -> Result<String> {
-        match self {
+    pub fn expression_key(&self) -> Result<String>
+    {
+        match self
+        {
             Self::Parameter(index) => Err(format!("unbound expression type parameter {index}")),
-            Self::Named(name, arguments) => {
+            Self::Named(name, arguments) =>
+            {
                 let mut parts = vec![(*name).to_owned()];
-                for argument in arguments {
+                for argument in arguments
+                {
                     parts.push(argument.expression_key()?);
                 }
                 Ok(parts.join(" "))
@@ -1063,8 +1297,10 @@ impl TypeRef {
         }
     }
 
-    pub fn instantiate(&self, arguments: &[TypeRef]) -> Result<Self> {
-        match self {
+    pub fn instantiate(&self, arguments: &[TypeRef]) -> Result<Self>
+    {
+        match self
+        {
             Self::Parameter(index) => arguments
                 .get(*index)
                 .cloned()
@@ -1081,8 +1317,10 @@ impl TypeRef {
 }
 
 /// Substitute known types, leaving open parameters in place.
-fn substitute_open(ty: &TypeRef, known: &[TypeRef]) -> Result<TypeRef> {
-    Ok(match ty {
+fn substitute_open(ty: &TypeRef, known: &[TypeRef]) -> Result<TypeRef>
+{
+    Ok(match ty
+    {
         TypeRef::Parameter(index) => known
             .get(*index)
             .cloned()
@@ -1098,13 +1336,15 @@ fn substitute_open(ty: &TypeRef, known: &[TypeRef]) -> Result<TypeRef> {
 }
 
 #[derive(Clone, Debug)]
-pub struct ConstructorSchema {
+pub struct ConstructorSchema
+{
     pub tag: &'static str,
     pub fields: Vec<TypeRef>,
 }
 
 #[derive(Clone, Debug)]
-pub struct DataSchema {
+pub struct DataSchema
+{
     pub name: &'static str,
     pub parameters: usize,
     pub constructors: Vec<ConstructorSchema>,
@@ -1115,40 +1355,50 @@ pub struct DataSchema {
 pub type FieldPredicate = fn(&Schema, &[TypeRef], &[Value], u32, &mut Context) -> Result<bool>;
 
 #[derive(Clone, Debug)]
-pub struct ConstructorContract {
+pub struct ConstructorContract
+{
     pub tag: &'static str,
     pub predicates: Vec<FieldPredicate>,
 }
 
 #[derive(Clone, Debug, PartialEq)]
-pub enum ValueCheck {
+pub enum ValueCheck
+{
     Accepted(Value),
     Rejected(String),
 }
 
 #[derive(Debug)]
-enum ValidationFailure {
+enum ValidationFailure
+{
     Rejected(String),
     Error(String),
 }
 
-impl ValidationFailure {
-    fn context(self, prefix: String) -> Self {
-        match self {
+impl ValidationFailure
+{
+    fn context(self, prefix: String) -> Self
+    {
+        match self
+        {
             Self::Rejected(message) => Self::Rejected(format!("{prefix}: {message}")),
             Self::Error(message) => Self::Error(format!("{prefix}: {message}")),
         }
     }
 
-    fn message(self) -> String {
-        match self {
+    fn message(self) -> String
+    {
+        match self
+        {
             Self::Rejected(message) | Self::Error(message) => message,
         }
     }
 }
 
-impl From<String> for ValidationFailure {
-    fn from(message: String) -> Self {
+impl From<String> for ValidationFailure
+{
+    fn from(message: String) -> Self
+    {
         Self::Error(message)
     }
 }
@@ -1156,7 +1406,8 @@ impl From<String> for ValidationFailure {
 /// Compiler-provided data definitions. Validation is framework-independent and
 /// follows instantiated field types, rather than guessing from Rust payloads.
 #[derive(Clone, Debug)]
-pub struct Schema {
+pub struct Schema
+{
     definitions: HashMap<&'static str, DataSchema>,
     contracts: HashMap<&'static str, Vec<FieldPredicate>>,
     // Indexed families: per constructor, index terms then guards, in prefix
@@ -1173,7 +1424,8 @@ pub struct Schema {
 }
 
 /// Types a generator may choose for an existential that only a value fixes.
-pub fn witness_pool() -> Vec<TypeRef> {
+pub fn witness_pool() -> Vec<TypeRef>
+{
     vec![
         TypeRef::Named("Bool", vec![]),
         TypeRef::Named("Int32", vec![]),
@@ -1181,10 +1433,13 @@ pub fn witness_pool() -> Vec<TypeRef> {
 }
 
 /// A witness spells a type as its name, or a parenthesized application.
-pub fn witness_key(ty: &TypeRef) -> String {
-    match ty {
+pub fn witness_key(ty: &TypeRef) -> String
+{
+    match ty
+    {
         TypeRef::Named(name, arguments) if arguments.is_empty() => (*name).to_owned(),
-        TypeRef::Named(name, arguments) => {
+        TypeRef::Named(name, arguments) =>
+        {
             let mut parts = vec![(*name).to_owned()];
             parts.extend(arguments.iter().map(witness_key));
             format!("({})", parts.join(" "))
@@ -1195,19 +1450,23 @@ pub fn witness_key(ty: &TypeRef) -> String {
 
 /// Reads a witness key back into a type reference. Type names are interned:
 /// a name the schema does not know is rejected by the caller's type check.
-pub fn parse_witness(text: &str) -> Result<TypeRef> {
+pub fn parse_witness(text: &str) -> Result<TypeRef>
+{
     let spaced = text.replace('(', " ( ").replace(')', " ) ");
     let tokens: Vec<&str> = spaced.split_whitespace().collect();
-    fn read(tokens: &[&str], at: &mut usize) -> Result<TypeRef> {
+    fn read(tokens: &[&str], at: &mut usize) -> Result<TypeRef>
+    {
         let token = *tokens.get(*at).ok_or("malformed type witness")?;
         *at += 1;
-        if token != "(" {
+        if token != "("
+        {
             return Ok(TypeRef::Named(intern(token), vec![]));
         }
         let name = *tokens.get(*at).ok_or("malformed type witness")?;
         *at += 1;
         let mut arguments = Vec::new();
-        while *tokens.get(*at).ok_or("malformed type witness")? != ")" {
+        while *tokens.get(*at).ok_or("malformed type witness")? != ")"
+        {
             arguments.push(read(tokens, at)?);
         }
         *at += 1;
@@ -1215,21 +1474,24 @@ pub fn parse_witness(text: &str) -> Result<TypeRef> {
     }
     let mut at = 0;
     let result = read(&tokens, &mut at)?;
-    if at != tokens.len() {
+    if at != tokens.len()
+    {
         return Err("malformed type witness".into());
     }
     Ok(result)
 }
 
 /// Witness type names are few; leaking each distinct name once is bounded.
-fn intern(name: &str) -> &'static str {
+fn intern(name: &str) -> &'static str
+{
     use std::sync::{Mutex, OnceLock};
     static NAMES: OnceLock<Mutex<std::collections::HashSet<&'static str>>> = OnceLock::new();
     let mut names = NAMES
         .get_or_init(|| Mutex::new(std::collections::HashSet::new()))
         .lock()
-        .unwrap();
-    if let Some(found) = names.get(name) {
+        .expect("type-name intern table lock must not be poisoned");
+    if let Some(found) = names.get(name)
+    {
         return found;
     }
     let leaked: &'static str = Box::leak(name.to_owned().into_boxed_str());
@@ -1241,23 +1503,27 @@ fn intern(name: &str) -> &'static str {
 pub type Refinements = Vec<(&'static str, Vec<(usize, TypeRef)>, usize)>;
 
 /// A prefix index term: `c<n>`, `f<field>[.<index>]` or an operator.
-enum SchemaIndexTerm {
+enum SchemaIndexTerm
+{
     Constant(BigInt),
     Field(Vec<usize>, usize),
     Apply(&'static str, Box<SchemaIndexTerm>, Box<SchemaIndexTerm>),
 }
 
-fn parse_schema_index(tokens: &[&'static str], at: &mut usize) -> Result<SchemaIndexTerm> {
+fn parse_schema_index(tokens: &[&'static str], at: &mut usize) -> Result<SchemaIndexTerm>
+{
     let token = *tokens.get(*at).ok_or("malformed index term")?;
     *at += 1;
-    if let Some(digits) = token.strip_prefix('c') {
+    if let Some(digits) = token.strip_prefix('c')
+    {
         return Ok(SchemaIndexTerm::Constant(
             digits
                 .parse()
                 .map_err(|_| "malformed index term".to_string())?,
         ));
     }
-    if token.starts_with('f') || token.starts_with('p') {
+    if token.starts_with('f') || token.starts_with('p')
+    {
         let reference = &token[1..];
         let mut parts = reference.splitn(2, '.');
         let path = parts
@@ -1267,10 +1533,12 @@ fn parse_schema_index(tokens: &[&'static str], at: &mut usize) -> Result<SchemaI
             .map(|p| p.parse::<usize>())
             .collect::<std::result::Result<Vec<_>, _>>()
             .map_err(|_| "malformed index field path".to_string())?;
-        if token.starts_with('f') && path.len() != 1 {
+        if token.starts_with('f') && path.len() != 1
+        {
             return Err("malformed index field path".into());
         }
-        let index = match parts.next() {
+        let index = match parts.next()
+        {
             Some(index) => index
                 .parse()
                 .map_err(|_| "malformed index term".to_string())?,
@@ -1291,18 +1559,24 @@ fn parse_schema_index(tokens: &[&'static str], at: &mut usize) -> Result<SchemaI
 fn eval_schema_index(
     term: &SchemaIndexTerm,
     field: &mut dyn FnMut(&[usize], usize) -> Result<BigInt>,
-) -> Result<Option<BigInt>> {
-    Ok(match term {
+) -> Result<Option<BigInt>>
+{
+    Ok(match term
+    {
         SchemaIndexTerm::Constant(value) => Some(value.clone()),
         SchemaIndexTerm::Field(path, index) => Some(field(path, *index)?),
-        SchemaIndexTerm::Apply(op, left, right) => {
+        SchemaIndexTerm::Apply(op, left, right) =>
+        {
             let (Some(x), Some(y)) = (
                 eval_schema_index(left, field)?,
                 eval_schema_index(right, field)?,
-            ) else {
+            )
+            else
+            {
                 return Ok(None);
             };
-            match *op {
+            match *op
+            {
                 "+" => Some(x + y),
                 "-" => (x >= y).then(|| x - y),
                 "*" => Some(x * y),
@@ -1318,12 +1592,15 @@ fn eval_schema_index(
     })
 }
 
-fn is_index_guard(text: &str) -> bool {
+fn is_index_guard(text: &str) -> bool
+{
     text.starts_with("== ") || text.starts_with(">= ")
 }
 
-fn builtin_arity(name: &str) -> Option<usize> {
-    match name {
+fn builtin_arity(name: &str) -> Option<usize>
+{
+    match name
+    {
         "List" | "Maybe" | "Nullable" | "Optional" => Some(1),
         "Either" => Some(2),
         "Bool" | "Int8" | "Int16" | "Int32" | "Int64" | "UInt8" | "UInt16" | "UInt32"
@@ -1337,28 +1614,36 @@ fn builtin_arity(name: &str) -> Option<usize> {
 
 // Recipes describe parameter positions rather than instantiated field types.
 #[derive(Clone, Debug)]
-enum PayloadPlan {
+enum PayloadPlan
+{
     Ignore,
     Parameter(usize),
     Applied(&'static str, Vec<PayloadPlan>),
 }
 
-impl PayloadPlan {
-    fn field(ty: &TypeRef, arguments: &[Self]) -> Result<Self> {
-        match ty {
+impl PayloadPlan
+{
+    fn field(ty: &TypeRef, arguments: &[Self]) -> Result<Self>
+    {
+        match ty
+        {
             TypeRef::Parameter(index) => arguments
                 .get(*index)
                 .cloned()
                 .ok_or_else(|| "unbound payload parameter".into()),
-            TypeRef::Named(name, fields) => {
+            TypeRef::Named(name, fields) =>
+            {
                 let children = fields
                     .iter()
                     .map(|field| Self::field(field, arguments))
                     .collect::<Result<Vec<_>>>()?;
                 Ok(
-                    if children.iter().all(|child| matches!(child, Self::Ignore)) {
+                    if children.iter().all(|child| matches!(child, Self::Ignore))
+                    {
                         Self::Ignore
-                    } else {
+                    }
+                    else
+                    {
                         Self::Applied(name, children)
                     },
                 )
@@ -1367,26 +1652,32 @@ impl PayloadPlan {
     }
 }
 
-impl Schema {
-    pub fn has_contracts(&self) -> bool {
+impl Schema
+{
+    pub fn has_contracts(&self) -> bool
+    {
         self.contracts
             .values()
             .any(|predicates| !predicates.is_empty())
     }
 
-    pub fn new(definitions: Vec<DataSchema>) -> Result<Self> {
+    pub fn new(definitions: Vec<DataSchema>) -> Result<Self>
+    {
         Self::with_contracts(definitions, vec![])
     }
 
     /// Attach indexed families' index terms and guards, keyed by constructor.
-    pub fn with_indices(mut self, indices: &[(&'static str, &'static [&'static str])]) -> Self {
+    pub fn with_indices(mut self, indices: &[(&'static str, &'static [&'static str])]) -> Self
+    {
         self.indices.extend(indices.iter().copied());
         self
     }
 
     /// Mark handle types, whose values are handles rather than data.
-    pub fn with_handles(mut self, handles: &[&'static str]) -> Self {
-        for name in handles {
+    pub fn with_handles(mut self, handles: &[&'static str]) -> Self
+    {
+        for name in handles
+        {
             if self
                 .definitions
                 .get(name)
@@ -1399,7 +1690,8 @@ impl Schema {
     }
 
     /// Attach constructors' witnessed existentials (parameter numbers).
-    pub fn with_witnesses(mut self, witnesses: &[(&'static str, &'static [usize])]) -> Self {
+    pub fn with_witnesses(mut self, witnesses: &[(&'static str, &'static [usize])]) -> Self
+    {
         self.witnesses.extend(witnesses.iter().copied());
         self
     }
@@ -1411,16 +1703,23 @@ impl Schema {
         tag: &str,
         fields: &[TypeRef],
         values: &[Value],
-    ) -> Result<Vec<TypeRef>> {
-        let Some(witnesses) = self.witnesses.get(tag) else {
+    ) -> Result<Vec<TypeRef>>
+    {
+        let Some(witnesses) = self.witnesses.get(tag)
+        else
+        {
             return Ok(fields.to_vec());
         };
-        if values.len() < witnesses.len() {
+        if values.len() < witnesses.len()
+        {
             return Err("missing type witness".into());
         }
         let mut keys = Vec::new();
-        for value in &values[values.len() - witnesses.len()..] {
-            let Value::Text(text) = value else {
+        for value in &values[values.len() - witnesses.len()..]
+        {
+            let Value::Text(text) = value
+            else
+            {
                 return Err("type witness must be text".into());
             };
             keys.push(text.clone());
@@ -1434,11 +1733,13 @@ impl Schema {
         tag: &str,
         fields: &[TypeRef],
         keys: &[String],
-    ) -> Result<Vec<TypeRef>> {
+    ) -> Result<Vec<TypeRef>>
+    {
         let witnesses = self.witnesses.get(tag).copied().unwrap_or(&[]);
         let size = witnesses.iter().copied().max().map_or(0, |m| m + 1);
         let mut known: Vec<TypeRef> = (0..size).map(TypeRef::Parameter).collect();
-        for (index, key) in witnesses.iter().zip(keys) {
+        for (index, key) in witnesses.iter().zip(keys)
+        {
             let ty = parse_witness(key)?;
             self.check_type(&ty, 0)?;
             known[*index] = ty;
@@ -1454,13 +1755,17 @@ impl Schema {
     pub fn witness_choices(
         &self,
         constructor: &ConstructorSchema,
-    ) -> Result<Vec<(Vec<TypeRef>, Vec<Value>)>> {
-        let Some(witnesses) = self.witnesses.get(constructor.tag) else {
+    ) -> Result<Vec<(Vec<TypeRef>, Vec<Value>)>>
+    {
+        let Some(witnesses) = self.witnesses.get(constructor.tag)
+        else
+        {
             return Ok(vec![(constructor.fields.clone(), vec![])]);
         };
         let declared = &constructor.fields[..constructor.fields.len() - witnesses.len()];
         let mut choices: Vec<Vec<String>> = vec![vec![]];
-        for _ in 0..witnesses.len() {
+        for _ in 0..witnesses.len()
+        {
             choices = choices
                 .into_iter()
                 .flat_map(|choice| {
@@ -1482,8 +1787,11 @@ impl Schema {
     }
 
     /// The index of a checked value, computed from its constructor's term.
-    fn index_of(&self, ty: &TypeRef, value: &Value, index: usize) -> Result<BigInt> {
-        let (TypeRef::Named(name, arguments), Value::Data(tag, fields)) = (ty, value) else {
+    fn index_of(&self, ty: &TypeRef, value: &Value, index: usize) -> Result<BigInt>
+    {
+        let (TypeRef::Named(name, arguments), Value::Data(tag, fields)) = (ty, value)
+        else
+        {
             return Err("no index for this value".into());
         };
         let definition = self.definitions.get(name).ok_or("no index for this type")?;
@@ -1518,24 +1826,30 @@ impl Schema {
         values: &[Value],
         path: &[usize],
         index: usize,
-    ) -> Result<BigInt> {
+    ) -> Result<BigInt>
+    {
         let (position, rest) = path.split_first().ok_or("empty index field path")?;
         let ty = types.get(*position).ok_or("invalid index field path")?;
         let value = values.get(*position).ok_or("invalid index field path")?;
-        if rest.is_empty() {
+        if rest.is_empty()
+        {
             return self.index_of(ty, value, index);
         }
-        let (TypeRef::Named(name, arguments), Value::Data(tag, fields)) = (ty, value) else {
+        let (TypeRef::Named(name, arguments), Value::Data(tag, fields)) = (ty, value)
+        else
+        {
             return Err("index field path must traverse a structural record".into());
         };
-        if !name.starts_with("lawspec::structural::record::") {
+        if !name.starts_with("lawspec::structural::record::")
+        {
             return Err("index field path must traverse a structural record".into());
         }
         let definition = self
             .definitions
             .get(name)
             .ok_or("unknown structural record")?;
-        if definition.constructors.len() != 1 || definition.constructors[0].tag != *tag {
+        if definition.constructors.len() != 1 || definition.constructors[0].tag != *tag
+        {
             return Err("invalid structural record in index field path".into());
         }
         let types = definition.constructors[0]
@@ -1549,7 +1863,8 @@ impl Schema {
     pub fn with_contracts(
         definitions: Vec<DataSchema>,
         contracts: Vec<ConstructorContract>,
-    ) -> Result<Self> {
+    ) -> Result<Self>
+    {
         Self::with_refinements(definitions, contracts, vec![])
     }
 
@@ -1557,24 +1872,31 @@ impl Schema {
         definitions: Vec<DataSchema>,
         contracts: Vec<ConstructorContract>,
         refinements: Refinements,
-    ) -> Result<Self> {
+    ) -> Result<Self>
+    {
         let mut types = HashMap::new();
         let mut tags = std::collections::HashSet::new();
-        for definition in definitions {
+        for definition in definitions
+        {
             let name = definition.name;
-            if builtin_arity(name).is_some() || types.contains_key(name) {
+            if builtin_arity(name).is_some() || types.contains_key(name)
+            {
                 return Err(format!("duplicate or reserved data type: {name}"));
             }
-            for constructor in &definition.constructors {
-                if !tags.insert(constructor.tag) {
+            for constructor in &definition.constructors
+            {
+                if !tags.insert(constructor.tag)
+                {
                     return Err(format!("duplicate constructor: {}", constructor.tag));
                 }
             }
             types.insert(name, definition);
         }
         let mut predicates = HashMap::new();
-        for contract in contracts {
-            if !tags.contains(contract.tag) {
+        for contract in contracts
+        {
+            if !tags.contains(contract.tag)
+            {
                 return Err(format!("unknown constructor contract: {}", contract.tag));
             }
             if predicates
@@ -1595,13 +1917,16 @@ impl Schema {
                 .map(|(tag, patterns, existentials)| (tag, (patterns, existentials)))
                 .collect(),
         };
-        for definition in schema.definitions.values() {
-            for constructor in &definition.constructors {
+        for definition in schema.definitions.values()
+        {
+            for constructor in &definition.constructors
+            {
                 let existentials = schema
                     .refinements
                     .get(constructor.tag)
                     .map_or(0, |(_, count)| *count);
-                for field in &constructor.fields {
+                for field in &constructor.fields
+                {
                     schema.check_type(field, definition.parameters + existentials)?;
                 }
             }
@@ -1609,18 +1934,23 @@ impl Schema {
         Ok(schema)
     }
 
-    fn check_type(&self, ty: &TypeRef, parameters: usize) -> Result<()> {
-        match ty {
+    fn check_type(&self, ty: &TypeRef, parameters: usize) -> Result<()>
+    {
+        match ty
+        {
             TypeRef::Parameter(index) if *index < parameters => Ok(()),
             TypeRef::Parameter(index) => Err(format!("unbound data type parameter {index}")),
-            TypeRef::Named(name, arguments) => {
+            TypeRef::Named(name, arguments) =>
+            {
                 let arity = builtin_arity(name)
                     .or_else(|| self.definitions.get(name).map(|d| d.parameters))
                     .ok_or_else(|| format!("unknown data type: {name}"))?;
-                if arity != arguments.len() {
+                if arity != arguments.len()
+                {
                     return Err(format!("expected {arity} type arguments for {name}"));
                 }
-                for argument in arguments {
+                for argument in arguments
+                {
                     self.check_type(argument, parameters)?;
                 }
                 Ok(())
@@ -1630,9 +1960,12 @@ impl Schema {
 
     /// Instantiated fields for composing native generators. None denotes a
     /// built-in type; an empty list denotes a user type with no constructors.
-    pub fn constructor_fields(&self, ty: &TypeRef) -> Result<Option<Vec<ConstructorSchema>>> {
+    pub fn constructor_fields(&self, ty: &TypeRef) -> Result<Option<Vec<ConstructorSchema>>>
+    {
         self.check_type(ty, 0)?;
-        let TypeRef::Named(name, arguments) = ty else {
+        let TypeRef::Named(name, arguments) = ty
+        else
+        {
             return Err("uninstantiated generator type".into());
         };
         self.definitions
@@ -1669,8 +2002,11 @@ impl Schema {
         constructor: &ConstructorSchema,
         arguments: &[TypeRef],
         parameters: usize,
-    ) -> Option<Vec<TypeRef>> {
-        let Some((patterns, existentials)) = self.refinements.get(constructor.tag) else {
+    ) -> Option<Vec<TypeRef>>
+    {
+        let Some((patterns, existentials)) = self.refinements.get(constructor.tag)
+        else
+        {
             return Some(arguments.to_vec());
         };
         fn matches(
@@ -1679,15 +2015,20 @@ impl Schema {
             arguments: &[TypeRef],
             parameters: usize,
             bound: &mut HashMap<usize, TypeRef>,
-        ) -> bool {
-            match (pattern, actual) {
-                (TypeRef::Parameter(index), _) if *index < parameters => {
+        ) -> bool
+        {
+            match (pattern, actual)
+            {
+                (TypeRef::Parameter(index), _) if *index < parameters =>
+                {
                     arguments.get(*index) == Some(actual)
                 }
-                (TypeRef::Parameter(index), _) => {
+                (TypeRef::Parameter(index), _) =>
+                {
                     bound.entry(*index).or_insert_with(|| actual.clone()) == actual
                 }
-                (TypeRef::Named(name, children), TypeRef::Named(other, values)) => {
+                (TypeRef::Named(name, children), TypeRef::Named(other, values)) =>
+                {
                     name == other
                         && children.len() == values.len()
                         && children.iter().zip(values).all(|(child, value)| {
@@ -1698,19 +2039,22 @@ impl Schema {
             }
         }
         let mut bound = HashMap::new();
-        for (index, pattern) in patterns {
+        for (index, pattern) in patterns
+        {
             if !matches(
                 pattern,
                 arguments.get(*index)?,
                 arguments,
                 parameters,
                 &mut bound,
-            ) {
+            )
+            {
                 return None;
             }
         }
         let mut extended = arguments.to_vec();
-        for k in 0..*existentials {
+        for k in 0..*existentials
+        {
             // A witnessed existential stays open until a value supplies it.
             extended.push(
                 bound
@@ -1732,9 +2076,12 @@ impl Schema {
         bits: u32,
         context: &mut Context,
         mut predicate: impl FnMut(usize, Value, &mut Context) -> Result<Value>,
-    ) -> Result<Value> {
+    ) -> Result<Value>
+    {
         self.check_type(ty, 0)?;
-        let TypeRef::Named(name, arguments) = ty else {
+        let TypeRef::Named(name, arguments) = ty
+        else
+        {
             return Err("payload predicates require an instantiated data type".into());
         };
         if !self.definitions.contains_key(name)
@@ -1742,7 +2089,8 @@ impl Schema {
         {
             return Err("payload predicates require a data type".into());
         }
-        if arguments.len() != predicate_count {
+        if arguments.len() != predicate_count
+        {
             return Err("payload predicate arity mismatch".into());
         }
         let checked = self.validate_with_context(value, ty, bits, context)?;
@@ -1760,15 +2108,20 @@ impl Schema {
         value: Value,
         context: &mut Context,
         predicate: &mut impl FnMut(usize, Value, &mut Context) -> Result<Value>,
-    ) -> Result<bool> {
-        let (name, arguments) = match plan {
+    ) -> Result<bool>
+    {
+        let (name, arguments) = match plan
+        {
             PayloadPlan::Ignore => return Ok(true),
             PayloadPlan::Parameter(index) => return predicate(*index, value, context)?.boolean(),
             PayloadPlan::Applied(name, arguments) => (*name, arguments),
         };
-        match (name, value) {
-            ("List", Value::List(values)) => {
-                for (index, value) in values.into_iter().enumerate() {
+        match (name, value)
+        {
+            ("List", Value::List(values)) =>
+            {
+                for (index, value) in values.into_iter().enumerate()
+                {
                     if !self
                         .walk_payload(&arguments[0], value, context, predicate)
                         .map_err(|error| format!("List element {index}: {error}"))?
@@ -1780,7 +2133,8 @@ impl Schema {
             }
             ("Maybe", Value::Maybe(value))
             | ("Nullable", Value::Nullable(value))
-            | ("Optional", Value::Optional(value)) => match value {
+            | ("Optional", Value::Optional(value)) => match value
+            {
                 None => Ok(true),
                 Some(value) => self
                     .walk_payload(&arguments[0], *value, context, predicate)
@@ -1792,7 +2146,8 @@ impl Schema {
             ("Either", Value::Right(value)) => self
                 .walk_payload(&arguments[1], *value, context, predicate)
                 .map_err(|error| format!("Either Right payload: {error}")),
-            (_, Value::Data(tag, values)) => {
+            (_, Value::Data(tag, values)) =>
+            {
                 let definition = self
                     .definitions
                     .get(name)
@@ -1802,7 +2157,8 @@ impl Schema {
                     .iter()
                     .find(|item| item.tag == tag)
                     .ok_or_else(|| format!("unknown payload constructor: {tag}"))?;
-                for (index, (field, value)) in constructor.fields.iter().zip(values).enumerate() {
+                for (index, (field, value)) in constructor.fields.iter().zip(values).enumerate()
+                {
                     let plan = PayloadPlan::field(field, arguments)?;
                     if !self
                         .walk_payload(&plan, value, context, predicate)
@@ -1817,7 +2173,8 @@ impl Schema {
         }
     }
 
-    pub fn validate(&self, value: Value, ty: &TypeRef, bits: u32) -> Result<Value> {
+    pub fn validate(&self, value: Value, ty: &TypeRef, bits: u32) -> Result<Value>
+    {
         self.validate_with_context(value, ty, bits, &mut Context::default())
     }
 
@@ -1827,12 +2184,15 @@ impl Schema {
         ty: &TypeRef,
         bits: u32,
         context: &mut Context,
-    ) -> Result<ValueCheck> {
+    ) -> Result<ValueCheck>
+    {
         self.check_type(ty, 0)?;
-        if !matches!(bits, 32 | 64) {
+        if !matches!(bits, 32 | 64)
+        {
             return Err("machineBits must be 32 or 64".into());
         }
-        match self.walk(value, ty, bits, false, context) {
+        match self.walk(value, ty, bits, false, context)
+        {
             Ok(value) => Ok(ValueCheck::Accepted(value)),
             Err(ValidationFailure::Rejected(message)) => Ok(ValueCheck::Rejected(message)),
             Err(ValidationFailure::Error(message)) => Err(message),
@@ -1845,15 +2205,18 @@ impl Schema {
         ty: &TypeRef,
         bits: u32,
         context: &mut Context,
-    ) -> Result<Value> {
-        match self.check_with_context(value, ty, bits, context)? {
+    ) -> Result<Value>
+    {
+        match self.check_with_context(value, ty, bits, context)?
+        {
             ValueCheck::Accepted(value) => Ok(value),
             ValueCheck::Rejected(message) => Err(message),
         }
     }
 
     /// Check logical fields before adapting raw code units to native integers.
-    pub fn native_value(&self, value: Value, ty: &TypeRef, bits: u32) -> Result<Value> {
+    pub fn native_value(&self, value: Value, ty: &TypeRef, bits: u32) -> Result<Value>
+    {
         self.native_value_with_context(value, ty, bits, &mut Context::default())
     }
 
@@ -1863,7 +2226,8 @@ impl Schema {
         ty: &TypeRef,
         bits: u32,
         context: &mut Context,
-    ) -> Result<Value> {
+    ) -> Result<Value>
+    {
         let checked = self.validate_with_context(value, ty, bits, context)?;
         self.walk(checked, ty, bits, true, context)
             .map_err(ValidationFailure::message)
@@ -1876,32 +2240,46 @@ impl Schema {
         bits: u32,
         native: bool,
         context: &mut Context,
-    ) -> std::result::Result<Value, ValidationFailure> {
-        let TypeRef::Named(name, arguments) = ty else {
+    ) -> std::result::Result<Value, ValidationFailure>
+    {
+        let TypeRef::Named(name, arguments) = ty
+        else
+        {
             return Err("uninstantiated data type parameter".to_string().into());
         };
         // A native collection arrives as a plain list: retag it, put a Set
         // or KeyVal in canonical order, and a Stack's top first.
-        let value = match (collection_tag(name), value) {
-            (Some(tag), Value::List(mut items)) => {
-                if name.ends_with("::Set") || name.ends_with("::KeyVal") {
+        let value = match (collection_tag(name), value)
+        {
+            (Some(tag), Value::List(mut items)) =>
+            {
+                if name.ends_with("::Set") || name.ends_with("::KeyVal")
+                {
                     items = canonical_items(items, name.ends_with("::KeyVal"))?;
-                } else if name.ends_with("::Stack") {
+                }
+                else if name.ends_with("::Stack")
+                {
                     items.reverse();
                 }
                 Value::Data(tag.into(), vec![Value::List(items)])
             }
             (_, value) => value,
         };
-        if self.handles.contains(name) {
-            let Value::Handle(handle) = value else {
+        if self.handles.contains(name)
+        {
+            let Value::Handle(handle) = value
+            else
+            {
                 return Err(format!("expected a handle of type {name}").into());
             };
             handle.named(name);
             return Ok(Value::Handle(handle));
         }
-        if let Some(definition) = self.definitions.get(name) {
-            let Value::Data(tag, fields) = value else {
+        if let Some(definition) = self.definitions.get(name)
+        {
+            let Value::Data(tag, fields) = value
+            else
+            {
                 return Err(format!("expected data value of type {name}").into());
             };
             let constructor = definition
@@ -1909,7 +2287,8 @@ impl Schema {
                 .iter()
                 .find(|constructor| constructor.tag == tag)
                 .ok_or_else(|| format!("constructor {tag} does not belong to {name}"))?;
-            if fields.len() != constructor.fields.len() {
+            if fields.len() != constructor.fields.len()
+            {
                 return Err(format!("wrong field count for {tag}").into());
             }
             let arguments = &self
@@ -1930,30 +2309,39 @@ impl Schema {
                         .map_err(|error| error.context(format!("{tag} field {index}")))
                 })
                 .collect::<std::result::Result<_, ValidationFailure>>()?;
-            if !native {
-                if *name == "lawspec.collections::type::EqSet" {
-                    if let [Value::List(items)] = checked.as_slice() {
-                        if !distinct_members(items)? {
+            if !native
+            {
+                if *name == "lawspec.collections::type::EqSet"
+                {
+                    if let [Value::List(items)] = checked.as_slice()
+                    {
+                        if !distinct_members(items)?
+                        {
                             return Err(ValidationFailure::Rejected(
                                 "Eq-only set: duplicate equal elements".into(),
                             ));
                         }
                     }
                 }
-                if let Some(predicates) = self.contracts.get(constructor.tag) {
-                    for (index, predicate) in predicates.iter().enumerate() {
+                if let Some(predicates) = self.contracts.get(constructor.tag)
+                {
+                    for (index, predicate) in predicates.iter().enumerate()
+                    {
                         let label = format!("{tag}: field refinement {}", index + 1);
                         let accepted = predicate(self, arguments, &checked, bits, context)
                             .map_err(|message| {
                                 ValidationFailure::Error(format!("{label}: {message}"))
                             })?;
-                        if !accepted {
+                        if !accepted
+                        {
                             return Err(ValidationFailure::Rejected(format!("{label} failed")));
                         }
                     }
                 }
-                for text in self.indices.get(constructor.tag).copied().unwrap_or(&[]) {
-                    if !is_index_guard(text) {
+                for text in self.indices.get(constructor.tag).copied().unwrap_or(&[])
+                {
+                    if !is_index_guard(text)
+                    {
                         continue;
                     }
                     let tokens: Vec<&'static str> = text.split(' ').collect();
@@ -1970,17 +2358,23 @@ impl Schema {
                     };
                     let x = eval_schema_index(&left, &mut field)?;
                     let y = eval_schema_index(&right, &mut field)?;
-                    let holds = match (x, y) {
-                        (Some(x), Some(y)) => {
-                            if tokens[0] == "==" {
+                    let holds = match (x, y)
+                    {
+                        (Some(x), Some(y)) =>
+                        {
+                            if tokens[0] == "=="
+                            {
                                 x == y
-                            } else {
+                            }
+                            else
+                            {
                                 x >= y
                             }
                         }
                         _ => false,
                     };
-                    if !holds {
+                    if !holds
+                    {
                         return Err(ValidationFailure::Rejected(format!(
                             "{tag}: index guard {text} failed"
                         )));
@@ -1989,15 +2383,20 @@ impl Schema {
             }
             return Ok(Value::Data(tag, checked));
         }
-        if arguments.is_empty() {
+        if arguments.is_empty()
+        {
             let checked = validate(value, name, bits)?;
-            return if native {
+            return if native
+            {
                 native_value(checked, name).map_err(ValidationFailure::Error)
-            } else {
+            }
+            else
+            {
                 Ok(checked)
             };
         }
-        match (*name, arguments.as_slice(), value) {
+        match (*name, arguments.as_slice(), value)
+        {
             ("List", [element], Value::List(values)) => Ok(Value::List(
                 values
                     .into_iter()
@@ -2045,14 +2444,17 @@ impl Schema {
 
 /// Build a user constructor selected and typed by the compiler. This does not
 /// validate its payload; generated bridges check each field at native boundaries.
-pub fn construct_data(tag: &str, fields: Vec<Value>) -> Value {
+pub fn construct_data(tag: &str, fields: Vec<Value>) -> Value
+{
     Value::Data(tag.into(), fields)
 }
 
 /// Extract exactly one constructor's fields before typed field conversion.
 /// Tag and arity checks prevent cross-constructor coercion and dropped fields.
-pub fn data_fields(value: Value, tag: &str, arity: usize) -> Result<Vec<Value>> {
-    match value {
+pub fn data_fields(value: Value, tag: &str, arity: usize) -> Result<Vec<Value>>
+{
+    match value
+    {
         Value::Data(actual, fields) if actual == tag && fields.len() == arity => Ok(fields),
         Value::Data(actual, fields) => Err(format!(
             "expected {tag} with {arity} fields, found {actual} with {} fields",
@@ -2065,15 +2467,20 @@ pub fn data_fields(value: Value, tag: &str, arity: usize) -> Result<Vec<Value>> 
 pub fn all_elements(
     value: Value,
     mut predicate: impl FnMut(Value) -> Result<Value>,
-) -> Result<Value> {
-    let Value::List(values) = value else {
+) -> Result<Value>
+{
+    let Value::List(values) = value
+    else
+    {
         return Err("expected List in element predicate".into());
     };
-    for (index, item) in values.into_iter().enumerate() {
+    for (index, item) in values.into_iter().enumerate()
+    {
         let accepted = predicate(item)
             .and_then(|result| result.boolean())
             .map_err(|error| format!("List element {index}: {error}"))?;
-        if !accepted {
+        if !accepted
+        {
             return Ok(Value::Bool(false));
         }
     }
@@ -2084,74 +2491,110 @@ pub fn search_elements(
     universal: bool,
     value: Value,
     mut predicate: impl FnMut(Value) -> Result<Value>,
-) -> Result<Value> {
-    let Value::List(values) = value else {
+) -> Result<Value>
+{
+    let Value::List(values) = value
+    else
+    {
         return Err("finite search requires a List".into());
     };
     let decisive = if universal { -1 } else { 1 };
     let mut result = -decisive;
-    for item in values {
+    for item in values
+    {
         let outcome = predicate(item)?.integer()?;
-        if outcome == BigInt::from(decisive) {
+        if outcome == BigInt::from(decisive)
+        {
             return Ok(Value::Integer(outcome));
         }
-        if outcome == BigInt::from(0) {
+        if outcome == BigInt::from(0)
+        {
             result = 0;
-        } else if outcome != BigInt::from(-decisive) {
+        }
+        else if outcome != BigInt::from(-decisive)
+        {
             return Err("invalid finite search outcome".into());
         }
     }
     Ok(Value::Integer(BigInt::from(result)))
 }
 
-pub fn construct(tag: &str, mut fields: Vec<Value>) -> Result<Value> {
-    Ok(match (tag, fields.len()) {
-        ("List::Nil", 0) => Value::List(vec![]),
-        ("List::Cons", 2) => {
-            let Value::List(mut tail) = fields.pop().unwrap() else {
-                return Err("expected List tail".into());
+pub fn construct(tag: &str, fields: Vec<Value>) -> Result<Value>
+{
+    let invalid = || Err(format!("invalid constructor or arity: {tag}"));
+    let mut fields = fields.into_iter();
+    Ok(match tag
+    {
+        "List::Nil" if fields.len() == 0 => Value::List(vec![]),
+        "List::Cons" => match (fields.next(), fields.next(), fields.next())
+        {
+            (Some(head), Some(Value::List(mut tail)), None) =>
+            {
+                tail.insert(0, head);
+                Value::List(tail)
+            }
+            (Some(_), Some(_), None) => return Err("expected List tail".into()),
+            _ => return invalid(),
+        },
+        "Maybe::Absent" if fields.len() == 0 => Value::Maybe(None),
+        "Maybe::Present" | "Either::Left" | "Either::Right" =>
+        {
+            let (Some(value), None) = (fields.next(), fields.next())
+            else
+            {
+                return invalid();
             };
-            tail.insert(0, fields.pop().unwrap());
-            Value::List(tail)
+            match tag
+            {
+                "Maybe::Present" => Value::Maybe(Some(Box::new(value))),
+                "Either::Left" => Value::Left(Box::new(value)),
+                _ => Value::Right(Box::new(value)),
+            }
         }
-        ("Maybe::Absent", 0) => Value::Maybe(None),
-        ("Maybe::Present", 1) => Value::Maybe(Some(Box::new(fields.pop().unwrap()))),
-        ("Either::Left", 1) => Value::Left(Box::new(fields.pop().unwrap())),
-        ("Either::Right", 1) => Value::Right(Box::new(fields.pop().unwrap())),
-        _ => return Err(format!("invalid constructor or arity: {tag}")),
+        _ => return invalid(),
     })
 }
 
 // Read one saturated type from the compiler's prefix encoding. Both arguments
 // of Either may themselves contain binary and unary type constructors.
-fn split_type(input: &str) -> Result<(&str, &str)> {
+fn split_type(input: &str) -> Result<(&str, &str)>
+{
     let (head, mut remaining) = input.split_once(' ').unwrap_or((input, ""));
-    if head.is_empty() {
+    if head.is_empty()
+    {
         return Err("missing type argument".into());
     }
-    let arity = match head {
+    let arity = match head
+    {
         "Either" => 2,
         "List" | "Maybe" | "Nullable" | "Optional" => 1,
         _ => 0,
     };
-    for _ in 0..arity {
+    for _ in 0..arity
+    {
         remaining = split_type(remaining)?.1;
     }
     Ok((input[..input.len() - remaining.len()].trim_end(), remaining))
 }
-pub fn either_types(arguments: &str) -> Result<(&str, &str)> {
+pub fn either_types(arguments: &str) -> Result<(&str, &str)>
+{
     let (left, rest) = split_type(arguments)?;
     let (right, extra) = split_type(rest)?;
-    if !extra.is_empty() {
+    if !extra.is_empty()
+    {
         return Err("extra Either type arguments".into());
     }
     Ok((left, right))
 }
 
-pub fn require_architecture(machine_bits: u32) -> Result<()> {
-    if usize::BITS == machine_bits {
+pub fn require_architecture(machine_bits: u32) -> Result<()>
+{
+    if usize::BITS == machine_bits
+    {
         Ok(())
-    } else {
+    }
+    else
+    {
         Err(format!(
             "machineBits does not match native architecture: profile {machine_bits}, native {}",
             usize::BITS
@@ -2161,18 +2604,23 @@ pub fn require_architecture(machine_bits: u32) -> Result<()> {
 
 /// Run an async adapter's future to completion on this thread. A waker that
 /// unparks the thread is enough: adapters own whatever executor they need.
-pub fn block_on<F: std::future::Future>(future: F) -> F::Output {
+pub fn block_on<F: std::future::Future>(future: F) -> F::Output
+{
     struct Unpark(std::thread::Thread);
-    impl std::task::Wake for Unpark {
-        fn wake(self: Arc<Self>) {
+    impl std::task::Wake for Unpark
+    {
+        fn wake(self: Arc<Self>)
+        {
             self.0.unpark();
         }
     }
     let waker = std::task::Waker::from(Arc::new(Unpark(std::thread::current())));
     let mut context = std::task::Context::from_waker(&waker);
     let mut future = std::pin::pin!(future);
-    loop {
-        match future.as_mut().poll(&mut context) {
+    loop
+    {
+        match future.as_mut().poll(&mut context)
+        {
             std::task::Poll::Ready(value) => return value,
             std::task::Poll::Pending => std::thread::park(),
         }
@@ -2183,29 +2631,37 @@ pub fn block_on<F: std::future::Future>(future: F) -> F::Output {
 /// sequences by unit, false before true, absence before presence, lists
 /// element by element, Absent before Present, Left before Right, and other data
 /// by constructor identity, then fields left to right.
-pub fn compare_values(a: &Value, b: &Value) -> Result<std::cmp::Ordering> {
+pub fn compare_values(a: &Value, b: &Value) -> Result<std::cmp::Ordering>
+{
     use Value::*;
     use std::cmp::Ordering::*;
-    fn items(a: &[Value], b: &[Value]) -> Result<std::cmp::Ordering> {
-        for (x, y) in a.iter().zip(b) {
+    fn items(a: &[Value], b: &[Value]) -> Result<std::cmp::Ordering>
+    {
+        for (x, y) in a.iter().zip(b)
+        {
             let order = compare_values(x, y)?;
-            if order != Equal {
+            if order != Equal
+            {
                 return Ok(order);
             }
         }
         Ok(a.len().cmp(&b.len()))
     }
-    fn optional(a: &Option<Box<Value>>, b: &Option<Box<Value>>) -> Result<std::cmp::Ordering> {
-        match (a, b) {
+    fn optional(a: &Option<Box<Value>>, b: &Option<Box<Value>>) -> Result<std::cmp::Ordering>
+    {
+        match (a, b)
+        {
             (None, None) => Ok(Equal),
             (None, Some(_)) => Ok(Less),
             (Some(_), None) => Ok(Greater),
             (Some(x), Some(y)) => compare_values(x, y),
         }
     }
-    Ok(match (a, b) {
+    Ok(match (a, b)
+    {
         (Bool(x), Bool(y)) => x.cmp(y),
-        (Integer(_) | Decimal(_) | Rational(_), Integer(_) | Decimal(_) | Rational(_)) => {
+        (Integer(_) | Decimal(_) | Rational(_), Integer(_) | Decimal(_) | Rational(_)) =>
+        {
             a.exact()?.cmp(&b.exact()?)
         }
         (Text(x), Text(y)) => x.chars().cmp(y.chars()),
@@ -2216,7 +2672,8 @@ pub fn compare_values(a: &Value, b: &Value) -> Result<std::cmp::Ordering> {
         (Utf16Text(x), Utf16Text(y)) => x.cmp(y),
         (Bytes(x), Bytes(y)) => x.cmp(y),
         (Unit, Unit) | (Null, Null) | (Undefined, Undefined) => Equal,
-        (Nullable(x), Nullable(y)) | (Optional(x), Optional(y)) | (Maybe(x), Maybe(y)) => {
+        (Nullable(x), Nullable(y)) | (Optional(x), Optional(y)) | (Maybe(x), Maybe(y)) =>
+        {
             optional(x, y)?
         }
         (Left(_), Right(_)) => Less,
@@ -2233,30 +2690,38 @@ pub fn compare_values(a: &Value, b: &Value) -> Result<std::cmp::Ordering> {
 
 /// A Set's items or a KeyVal's entries sorted by key, keeping the last of
 /// equal keys.
-pub fn canonical_items(items: Vec<Value>, keyed: bool) -> Result<Vec<Value>> {
+pub fn canonical_items(items: Vec<Value>, keyed: bool) -> Result<Vec<Value>>
+{
     let key = |item: &Value| -> Value {
-        match (keyed, item) {
+        match (keyed, item)
+        {
             (true, Value::Data(_, fields)) if !fields.is_empty() => fields[0].clone(),
             _ => item.clone(),
         }
     };
     let mut ordered = items;
     let mut failure = None;
-    ordered.sort_by(|a, b| match compare_values(&key(a), &key(b)) {
+    ordered.sort_by(|a, b| match compare_values(&key(a), &key(b))
+    {
         Ok(order) => order,
-        Err(error) => {
+        Err(error) =>
+        {
             failure = Some(error);
             std::cmp::Ordering::Equal
         }
     });
-    if let Some(error) = failure {
+    if let Some(error) = failure
+    {
         return Err(error);
     }
     let mut result: Vec<Value> = Vec::new();
-    for item in ordered {
-        if let Some(last) = result.last() {
-            if compare_values(&key(last), &key(&item))? == std::cmp::Ordering::Equal {
-                *result.last_mut().unwrap() = item;
+    for item in ordered
+    {
+        if let Some(last) = result.last_mut()
+        {
+            if compare_values(&key(last), &key(&item))? == std::cmp::Ordering::Equal
+            {
+                *last = item;
                 continue;
             }
         }
@@ -2272,45 +2737,57 @@ pub fn canonical_items(items: Vec<Value>, keyed: bool) -> Result<Vec<Value>> {
 // microseconds.
 
 /// Tells the time and waits, in microseconds.
-pub trait Clock: Send {
+pub trait Clock: Send
+{
     fn now(&self) -> i64;
     fn sleep(&mut self, micros: i64);
     /// A virtual clock's waits pass at once, and timeouts and hedges count
     /// only the time it reports (see scoped). Real time unless it says so.
-    fn is_virtual(&self) -> bool {
+    fn is_virtual(&self) -> bool
+    {
         false
     }
 }
 
 /// Monotonic wall time.
 pub struct RealClock(std::time::Instant);
-impl Default for RealClock {
-    fn default() -> Self {
+impl Default for RealClock
+{
+    fn default() -> Self
+    {
         RealClock(std::time::Instant::now())
     }
 }
-impl Clock for RealClock {
-    fn now(&self) -> i64 {
+impl Clock for RealClock
+{
+    fn now(&self) -> i64
+    {
         self.0.elapsed().as_micros() as i64
     }
-    fn sleep(&mut self, micros: i64) {
+    fn sleep(&mut self, micros: i64)
+    {
         std::thread::sleep(std::time::Duration::from_micros(micros.max(0) as u64));
     }
 }
 
 /// Advances when slept on and returns at once.
 #[derive(Default)]
-pub struct VirtualClock {
+pub struct VirtualClock
+{
     pub time: i64,
 }
-impl Clock for VirtualClock {
-    fn now(&self) -> i64 {
+impl Clock for VirtualClock
+{
+    fn now(&self) -> i64
+    {
         self.time
     }
-    fn sleep(&mut self, micros: i64) {
+    fn sleep(&mut self, micros: i64)
+    {
         self.time += micros;
     }
-    fn is_virtual(&self) -> bool {
+    fn is_virtual(&self) -> bool
+    {
         true
     }
 }
@@ -2319,7 +2796,8 @@ impl Clock for VirtualClock {
 /// handler a law installs, in microseconds. real_time is true only for the
 /// default handler (the system clock, installed with installed_native); any
 /// other handler is virtual.
-pub trait ClockAbility: Send + Sync {
+pub trait ClockAbility: Send + Sync
+{
     fn now_micros(&self) -> i64;
     fn sleep_micros(&self, micros: i64);
     fn real_time(&self) -> bool;
@@ -2339,12 +2817,14 @@ pub type ClockAbilityReader = fn(&Installed) -> Option<Arc<dyn ClockAbility>>;
 static CLOCK_READER: std::sync::OnceLock<ClockAbilityReader> = std::sync::OnceLock::new();
 
 /// Registers how to read the Clock ability's handler; the first one stays.
-pub fn register_clock_ability(reader: ClockAbilityReader) {
+pub fn register_clock_ability(reader: ClockAbilityReader)
+{
     let _ = CLOCK_READER.set(reader);
 }
 
 /// The Clock handler installed in ctx, as the runtime reads it, if any.
-pub fn clock_ability(ctx: &Context) -> Option<Arc<dyn ClockAbility>> {
+pub fn clock_ability(ctx: &Context) -> Option<Arc<dyn ClockAbility>>
+{
     let reader = CLOCK_READER.get()?;
     reader(&ctx.installed_for(CLOCK_KEY)?)
 }
@@ -2354,14 +2834,18 @@ pub fn clock_ability(ctx: &Context) -> Option<Arc<dyn ClockAbility>> {
 /// is not real time is virtual: waits pass at once, and timeouts and hedges
 /// count only the time it reports.
 pub struct AbilityClock(pub Arc<dyn ClockAbility>);
-impl Clock for AbilityClock {
-    fn now(&self) -> i64 {
+impl Clock for AbilityClock
+{
+    fn now(&self) -> i64
+    {
         self.0.now_micros()
     }
-    fn sleep(&mut self, micros: i64) {
+    fn sleep(&mut self, micros: i64)
+    {
         self.0.sleep_micros(micros)
     }
-    fn is_virtual(&self) -> bool {
+    fn is_virtual(&self) -> bool
+    {
         !self.0.real_time()
     }
 }
@@ -2371,36 +2855,43 @@ impl Clock for AbilityClock {
 /// SplitMix64 is small, fast and specified exactly, so every runtime implements
 /// the same generator and a seed names the same case everywhere. ref:splitmix
 /// ref:DEC-portable-seeded-generation
-pub struct SplitMix64 {
+pub struct SplitMix64
+{
     state: u64,
 }
-impl SplitMix64 {
-    pub fn new(seed: u64) -> Self {
+impl SplitMix64
+{
+    pub fn new(seed: u64) -> Self
+    {
         SplitMix64 { state: seed }
     }
-    pub fn next(&mut self) -> u64 {
-        self.state = self.state.wrapping_add(0x9E3779B97F4A7C15);
+    pub fn next(&mut self) -> u64
+    {
+        self.state = self.state.wrapping_add(0x9e3779b97f4a7c15);
         let mut z = self.state;
-        z = (z ^ (z >> 30)).wrapping_mul(0xBF58476D1CE4E5B9);
-        z = (z ^ (z >> 27)).wrapping_mul(0x94D049BB133111EB);
+        z = (z ^ (z >> 30)).wrapping_mul(0xbf58476d1ce4e5b9);
+        z = (z ^ (z >> 27)).wrapping_mul(0x94d049bb133111eb);
         z ^ (z >> 31)
     }
     /// Uniform in [0, bound); 0 when bound is 0.
-    pub fn below(&mut self, bound: u64) -> u64 {
+    pub fn below(&mut self, bound: u64) -> u64
+    {
         if bound == 0 { 0 } else { self.next() % bound }
     }
 }
 
 /// A stage starting or finishing an attempt, or a wait.
 #[derive(Clone, Debug, PartialEq)]
-pub struct TraceEvent {
+pub struct TraceEvent
+{
     pub kind: &'static str,
     pub stage: String,
     pub number: i64,
     pub succeeded: bool,
 }
 
-pub struct WorkflowRuntime {
+pub struct WorkflowRuntime
+{
     pub clock: Box<dyn Clock>,
     pub random: SplitMix64,
     pub trace: Vec<TraceEvent>,
@@ -2423,13 +2914,17 @@ pub struct WorkflowRuntime {
     // The same, on a virtual clock: attempts run one after another.
     virtual_hedge: Option<(&'static str, (i64, i64))>,
 }
-impl std::fmt::Debug for WorkflowRuntime {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl std::fmt::Debug for WorkflowRuntime
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+    {
         write!(f, "WorkflowRuntime {{ trace: {:?} }}", self.trace)
     }
 }
-impl WorkflowRuntime {
-    pub fn new(clock: Box<dyn Clock>, seed: u64) -> Self {
+impl WorkflowRuntime
+{
+    pub fn new(clock: Box<dyn Clock>, seed: u64) -> Self
+    {
         WorkflowRuntime {
             clock,
             random: SplitMix64::new(seed),
@@ -2453,8 +2948,10 @@ static DEFAULT_RUNTIME: std::sync::OnceLock<Arc<std::sync::Mutex<WorkflowRuntime
 // workflows wait and time out on it, under a view of the default runtime
 // (its gates; its own trace and state) kept per context and handler, so
 // run_stage and await_step share it.
-fn workflow_runtime(ctx: &Context) -> Arc<std::sync::Mutex<WorkflowRuntime>> {
-    if let Some(runtime) = &ctx.workflow {
+fn workflow_runtime(ctx: &Context) -> Arc<std::sync::Mutex<WorkflowRuntime>>
+{
+    if let Some(runtime) = &ctx.workflow
+    {
         return runtime.clone();
     }
     let runtime = DEFAULT_RUNTIME
@@ -2465,23 +2962,38 @@ fn workflow_runtime(ctx: &Context) -> Arc<std::sync::Mutex<WorkflowRuntime>> {
             )))
         })
         .clone();
-    let Some(installed) = ctx.installed_for(CLOCK_KEY) else {
+    let Some(installed) = ctx.installed_for(CLOCK_KEY)
+    else
+    {
         return runtime;
     };
-    let Some(reader) = CLOCK_READER.get() else {
+    let Some(reader) = CLOCK_READER.get()
+    else
+    {
         return runtime;
     };
-    let mut view = ctx.clock_view.0.lock().unwrap();
-    if let Some((handler, under)) = view.as_ref() {
-        if Arc::ptr_eq(handler, &installed.handler) {
+    let mut view = ctx
+        .clock_view
+        .0
+        .lock()
+        .expect("workflow runtime lock must not be poisoned");
+    if let Some((handler, under)) = view.as_ref()
+    {
+        if Arc::ptr_eq(handler, &installed.handler)
+        {
             return under.clone();
         }
     }
-    let Some(clock) = reader(&installed) else {
+    let Some(clock) = reader(&installed)
+    else
+    {
         return runtime;
     };
     let mut under = WorkflowRuntime::new(Box::new(AbilityClock(clock)), 0);
-    under.gates = runtime.lock().unwrap().gates;
+    under.gates = runtime
+        .lock()
+        .expect("workflow runtime lock must not be poisoned")
+        .gates;
     let under = Arc::new(std::sync::Mutex::new(under));
     *view = Some((installed.handler.clone(), under.clone()));
     under
@@ -2499,15 +3011,18 @@ struct ClockView(
         >,
     >,
 );
-impl std::fmt::Debug for ClockView {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl std::fmt::Debug for ClockView
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+    {
         f.write_str("ClockView")
     }
 }
 
 /// strategy is immediate, fixed, linear, exponential, fibonacci or custom;
 /// delay, step, factor and cap (negative for none) are its parameters.
-pub struct Retry {
+pub struct Retry
+{
     pub strategy: &'static str,
     pub delay: i64,
     pub step: i64,
@@ -2523,7 +3038,8 @@ pub struct Retry {
 /// and a Gate (Admit, WaitFor or Reject), and finish (when set) the state
 /// after the call. wait is -2 to fail at once when not admitted, -1 to wait
 /// without bound, or the most it waits.
-pub struct Gate {
+pub struct Gate
+{
     pub kind: &'static str,
     pub start: fn(&mut Context, i64) -> Result<Value>,
     pub admit: fn(&mut Context, Value, i64) -> Result<Value>,
@@ -2533,7 +3049,8 @@ pub struct Gate {
 
 /// key names the stage's state; cache is how long a success is reused (0
 /// or less for none); wraps says failures are StageFailures.
-pub struct StagePolicy {
+pub struct StagePolicy
+{
     pub stage: &'static str,
     pub retry: Option<Retry>,
     pub timeout: i64,
@@ -2553,20 +3070,36 @@ pub struct StagePolicy {
 pub fn run_workflow(
     ctx: &mut Context,
     mut attempt: impl FnMut(&mut Context) -> Result<Value>,
-) -> Result<Value> {
+) -> Result<Value>
+{
     let runtime = workflow_runtime(ctx);
-    runtime.lock().unwrap().frames.push(Vec::new());
+    runtime
+        .lock()
+        .expect("workflow runtime lock must not be poisoned")
+        .frames
+        .push(Vec::new());
     let result = attempt(ctx);
-    let frame = runtime.lock().unwrap().frames.pop().unwrap_or_default();
+    let frame = runtime
+        .lock()
+        .expect("workflow runtime lock must not be poisoned")
+        .frames
+        .pop()
+        .unwrap_or_default();
     let result = result?;
-    if matches!(result, Value::Left(_)) {
-        for (stage, value, undo) in frame.into_iter().rev() {
-            runtime.lock().unwrap().trace.push(TraceEvent {
-                kind: "compensate",
-                stage: stage.into(),
-                number: 0,
-                succeeded: true,
-            });
+    if matches!(result, Value::Left(_))
+    {
+        for (stage, value, undo) in frame.into_iter().rev()
+        {
+            runtime
+                .lock()
+                .expect("workflow runtime lock must not be poisoned")
+                .trace
+                .push(TraceEvent {
+                    kind: "compensate",
+                    stage: stage.into(),
+                    number: 0,
+                    succeeded: true,
+                });
             undo(ctx, value)?;
         }
     }
@@ -2576,19 +3109,24 @@ pub fn run_workflow(
 const STAGE_FAILURE: &str = "lawspec.resilience::type::StageFailure::";
 const GATE: &str = "lawspec.resilience::type::Gate::";
 
-fn stage_failure(kind: &str) -> Value {
+fn stage_failure(kind: &str) -> Value
+{
     Value::Left(Box::new(Value::Data(
         format!("{STAGE_FAILURE}{kind}"),
         vec![],
     )))
 }
 
-fn gate_key(policy: &StagePolicy, gate: &Gate) -> String {
+fn gate_key(policy: &StagePolicy, gate: &Gate) -> String
+{
     format!(
         "{}/{}",
-        if policy.key.is_empty() {
+        if policy.key.is_empty()
+        {
             policy.stage
-        } else {
+        }
+        else
+        {
             policy.key
         },
         gate.kind
@@ -2601,49 +3139,71 @@ fn pass_gate(
     runtime: &Arc<std::sync::Mutex<WorkflowRuntime>>,
     policy: &StagePolicy,
     gate: &Gate,
-) -> Result<Option<&'static str>> {
+) -> Result<Option<&'static str>>
+{
     let key = gate_key(policy, gate);
-    let failure = match gate.kind {
+    let failure = match gate.kind
+    {
         "breaker" => "CircuitOpen",
         "limit" => "RateLimited",
         _ => "Saturated",
     };
     let mut waited = 0i64;
-    loop {
+    loop
+    {
         let (now, state) = {
-            let guard = runtime.lock().unwrap();
+            let guard = runtime
+                .lock()
+                .expect("validated workflow gate must carry its state and decision");
             (guard.clock.now(), guard.state.get(&key).cloned())
         };
-        let state = match state {
+        let state = match state
+        {
             Some(state) => state,
             None => (gate.start)(ctx, now)?,
         };
-        let Value::Data(_, mut step) = (gate.admit)(ctx, state, now)? else {
+        let Value::Data(_, mut step) = (gate.admit)(ctx, state, now)?
+        else
+        {
             return Err("expected a Step".into());
         };
-        let decision = step.pop().unwrap();
+        let decision = step
+            .pop()
+            .expect("validated workflow gate must carry its state and decision");
         runtime
             .lock()
-            .unwrap()
+            .expect("validated workflow gate must carry its state and decision")
             .state
-            .insert(key.clone(), step.pop().unwrap());
-        let Value::Data(tag, fields) = decision else {
+            .insert(
+                key.clone(),
+                step.pop()
+                    .expect("validated workflow gate must carry its state and decision"),
+            );
+        let Value::Data(tag, fields) = decision
+        else
+        {
             return Err("expected a Gate".into());
         };
-        if tag == format!("{GATE}Admit") {
+        if tag == format!("{GATE}Admit")
+        {
             return Ok(None);
         }
-        if tag == format!("{GATE}Reject") || gate.wait == -2 {
+        if tag == format!("{GATE}Reject") || gate.wait == -2
+        {
             return Ok(Some(failure));
         }
-        let delay = match fields.first() {
+        let delay = match fields.first()
+        {
             Some(Value::Integer(n)) => n.to_i64().ok_or("wait outside i64")?,
             _ => return Err("expected a wait".into()),
         };
-        if gate.wait >= 0 && waited + delay > gate.wait {
+        if gate.wait >= 0 && waited + delay > gate.wait
+        {
             return Ok(Some(failure));
         }
-        let mut guard = runtime.lock().unwrap();
+        let mut guard = runtime
+            .lock()
+            .expect("validated workflow gate must carry its state and decision");
         guard.trace.push(TraceEvent {
             kind: "wait",
             stage: policy.stage.into(),
@@ -2661,25 +3221,35 @@ fn finish_gate(
     policy: &StagePolicy,
     gate: &Gate,
     succeeded: bool,
-) -> Result<()> {
-    if let Some(finish) = gate.finish {
+) -> Result<()>
+{
+    if let Some(finish) = gate.finish
+    {
         let key = gate_key(policy, gate);
         let (now, state) = {
-            let guard = runtime.lock().unwrap();
+            let guard = runtime
+                .lock()
+                .expect("workflow runtime lock must not be poisoned");
             (
                 guard.clock.now(),
                 guard.state.get(&key).cloned().ok_or("missing gate state")?,
             )
         };
         let next = finish(ctx, state, now, succeeded)?;
-        runtime.lock().unwrap().state.insert(key, next);
+        runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned")
+            .state
+            .insert(key, next);
     }
     Ok(())
 }
 
-fn fibonacci(n: i64) -> i64 {
+fn fibonacci(n: i64) -> i64
+{
     let (mut a, mut b) = (1i64, 1i64);
-    for _ in 1..n {
+    for _ in 1..n
+    {
         let next = a + b;
         a = b;
         b = next;
@@ -2688,23 +3258,31 @@ fn fibonacci(n: i64) -> i64 {
 }
 
 /// The delay before attempt (2 or more), before jitter.
-pub fn retry_delay(retry: &Retry, attempt: i64) -> i64 {
+pub fn retry_delay(retry: &Retry, attempt: i64) -> i64
+{
     let n = attempt - 1;
-    match retry.strategy {
+    match retry.strategy
+    {
         "immediate" => 0,
         "fixed" => retry.delay,
         "linear" => retry.delay + retry.step * (n - 1),
-        "exponential" => {
+        "exponential" =>
+        {
             let mut delay = retry.delay;
-            for _ in 1..n {
+            for _ in 1..n
+            {
                 delay *= retry.factor;
-                if retry.cap >= 0 && delay >= retry.cap {
+                if retry.cap >= 0 && delay >= retry.cap
+                {
                     return retry.cap;
                 }
             }
-            if retry.cap >= 0 && delay > retry.cap {
+            if retry.cap >= 0 && delay > retry.cap
+            {
                 retry.cap
-            } else {
+            }
+            else
+            {
                 delay
             }
         }
@@ -2715,20 +3293,19 @@ pub fn retry_delay(retry: &Retry, attempt: i64) -> i64 {
 
 /// Full: [0, delay]; equal: delay/2 + [0, delay/2]; decorrelated:
 /// [base, previous * 3], capped at delay.
-pub fn jittered(
-    jitter: &str,
-    delay: i64,
-    previous: i64,
-    base: i64,
-    random: &mut SplitMix64,
-) -> i64 {
-    match jitter {
+pub fn jittered(jitter: &str, delay: i64, previous: i64, base: i64, random: &mut SplitMix64)
+-> i64
+{
+    match jitter
+    {
         "full" => random.below((delay + 1) as u64) as i64,
-        "equal" => {
+        "equal" =>
+        {
             let half = delay / 2;
             half + random.below((delay - half + 1) as u64) as i64
         }
-        "decorrelated" => {
+        "decorrelated" =>
+        {
             let high = base.max(previous * 3);
             delay.min(base + random.below((high - base + 1) as u64) as i64)
         }
@@ -2743,20 +3320,30 @@ pub fn run_stage(
     policy: &StagePolicy,
     attempt: impl FnMut(&mut Context) -> Result<Value>,
     key: Value,
-) -> Result<Value> {
+) -> Result<Value>
+{
     let runtime = workflow_runtime(ctx);
-    let gating = runtime.lock().unwrap().gates;
+    let gating = runtime
+        .lock()
+        .expect("workflow runtime lock must not be poisoned")
+        .gates;
     let cache_key = format!(
         "{}/cache",
-        if policy.key.is_empty() {
+        if policy.key.is_empty()
+        {
             policy.stage
-        } else {
+        }
+        else
+        {
             policy.key
         }
     );
     let caching = policy.cache > 0 && gating;
-    if caching {
-        let mut guard = runtime.lock().unwrap();
+    if caching
+    {
+        let mut guard = runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned");
         let now = guard.clock.now();
         let hit = guard.cache.get(&cache_key).and_then(|entries| {
             entries
@@ -2764,7 +3351,8 @@ pub fn run_stage(
                 .find(|(entry, _, expires)| now < *expires && equal(entry, &key).unwrap_or(false))
                 .map(|(_, value, _)| value.clone())
         });
-        if let Some(value) = hit {
+        if let Some(value) = hit
+        {
             guard.trace.push(TraceEvent {
                 kind: "cached",
                 stage: policy.stage.into(),
@@ -2775,9 +3363,12 @@ pub fn run_stage(
         }
     }
     let gates: &[Gate] = if gating { &policy.gates } else { &[] };
-    for (i, gate) in gates.iter().enumerate() {
-        if let Some(failure) = pass_gate(ctx, &runtime, policy, gate)? {
-            for passed in &gates[..i] {
+    for (i, gate) in gates.iter().enumerate()
+    {
+        if let Some(failure) = pass_gate(ctx, &runtime, policy, gate)?
+        {
+            for passed in &gates[..i]
+            {
                 finish_gate(ctx, &runtime, policy, passed, false)?;
             }
             return Ok(stage_failure(failure));
@@ -2785,16 +3376,26 @@ pub fn run_stage(
     }
     let result = attempts(ctx, &runtime, policy, attempt)?;
     let succeeded = !matches!(result, Value::Left(_));
-    for gate in gates {
+    for gate in gates
+    {
         finish_gate(ctx, &runtime, policy, gate, succeeded)?;
     }
-    if let (Value::Right(value), Some(undo)) = (&result, policy.compensate) {
-        if let Some(frame) = runtime.lock().unwrap().frames.last_mut() {
+    if let (Value::Right(value), Some(undo)) = (&result, policy.compensate)
+    {
+        if let Some(frame) = runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned")
+            .frames
+            .last_mut()
+        {
             frame.push((policy.stage, (**value).clone(), undo));
         }
     }
-    if caching && succeeded {
-        let mut guard = runtime.lock().unwrap();
+    if caching && succeeded
+    {
+        let mut guard = runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned");
         let expires = guard.clock.now() + policy.cache;
         let entries = guard.cache.entry(cache_key).or_default();
         entries.retain(|(entry, _, _)| !equal(entry, &key).unwrap_or(false));
@@ -2820,9 +3421,11 @@ pub struct NativeAsync;
 /// The runtime's NativeAsync.
 pub static ASYNC: NativeAsync = NativeAsync;
 
-impl NativeAsync {
+impl NativeAsync
+{
     /// Lets other threads run.
-    pub fn pause(&self) {
+    pub fn pause(&self)
+    {
         std::thread::yield_now();
     }
 
@@ -2830,25 +3433,29 @@ impl NativeAsync {
     pub fn spawn<T: Send + 'static>(
         &self,
         body: impl FnOnce() -> T + Send + 'static,
-    ) -> std::thread::JoinHandle<T> {
+    ) -> std::thread::JoinHandle<T>
+    {
         std::thread::spawn(body)
     }
 
     /// The task's result; a panic in it is resumed here.
-    pub fn wait<T>(&self, task: std::thread::JoinHandle<T>) -> T {
+    pub fn wait<T>(&self, task: std::thread::JoinHandle<T>) -> T
+    {
         task.join()
             .unwrap_or_else(|panic| std::panic::resume_unwind(panic))
     }
 
     /// A future's output, polled on this thread (see block_on).
-    pub fn wait_future<F: std::future::Future>(&self, future: F) -> F::Output {
+    pub fn wait_future<F: std::future::Future>(&self, future: F) -> F::Output
+    {
         block_on(future)
     }
 
     /// Every function's result, in order: they run side by side, each on a
     /// scoped thread, and all finish before the first panic (in order) is
     /// resumed.
-    pub fn all<'a, T: Send + 'a>(&self, bodies: Vec<Box<dyn FnOnce() -> T + Send + 'a>>) -> Vec<T> {
+    pub fn all<'a, T: Send + 'a>(&self, bodies: Vec<Box<dyn FnOnce() -> T + Send + 'a>>) -> Vec<T>
+    {
         let results: Vec<std::thread::Result<T>> = std::thread::scope(|scope| {
             let tasks: Vec<_> = bodies.into_iter().map(|body| scope.spawn(body)).collect();
             tasks.into_iter().map(|task| task.join()).collect()
@@ -2865,17 +3472,21 @@ impl NativeAsync {
 /// panic), in declaration order, is the group's.
 pub fn concurrently<'a>(
     steps: Vec<Box<dyn FnOnce() -> Result<Value> + Send + 'a>>,
-) -> Result<Vec<Value>> {
+) -> Result<Vec<Value>>
+{
     ASYNC.all(steps).into_iter().collect()
 }
 
 /// An all group's step results, joined from their scoped threads, in
 /// declaration order. Every step has finished; the first failure (or panic),
 /// in declaration order, is the group's.
-pub fn joined(results: Vec<std::thread::Result<Result<Value>>>) -> Result<Vec<Value>> {
+pub fn joined(results: Vec<std::thread::Result<Result<Value>>>) -> Result<Vec<Value>>
+{
     let mut values = Vec::with_capacity(results.len());
-    for result in results {
-        match result {
+    for result in results
+    {
+        match result
+        {
             Ok(value) => values.push(value?),
             Err(panic) => std::panic::resume_unwind(panic),
         }
@@ -2890,27 +3501,36 @@ pub fn await_step<F: std::future::Future>(
     ctx: &Context,
     mut start: impl FnMut() -> F,
     convert: impl Fn(F::Output) -> Value,
-) -> Result<Value> {
+) -> Result<Value>
+{
     let runtime = workflow_runtime(ctx);
     let (deadline, hedge, virtual_hedge) = {
-        let guard = runtime.lock().unwrap();
+        let guard = runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned");
         (guard.deadline, guard.hedge, guard.virtual_hedge)
     };
-    if let Some((stage, (_, most))) = virtual_hedge {
+    if let Some((stage, (_, most))) = virtual_hedge
+    {
         return Ok(virtually_hedged(&runtime, stage, most, start, convert));
     }
-    if deadline.is_none() && hedge.is_none() {
+    if deadline.is_none() && hedge.is_none()
+    {
         return Ok(convert(ASYNC.wait_future(start())));
     }
-    let (stage, delay, most) = match hedge {
-        Some((stage, (delay, most))) => {
+    let (stage, delay, most) = match hedge
+    {
+        Some((stage, (delay, most))) =>
+        {
             (stage, std::time::Duration::from_micros(delay as u64), most)
         }
         None => ("", std::time::Duration::ZERO, 1),
     };
     struct Unpark(std::thread::Thread);
-    impl std::task::Wake for Unpark {
-        fn wake(self: Arc<Self>) {
+    impl std::task::Wake for Unpark
+    {
+        fn wake(self: Arc<Self>)
+        {
             self.0.unpark();
         }
     }
@@ -2918,33 +3538,47 @@ pub fn await_step<F: std::future::Future>(
     let mut context = std::task::Context::from_waker(&waker);
     let mut pending: Vec<std::pin::Pin<Box<F>>> = Vec::new();
     let (mut started, mut next, mut launch) = (0i64, None, true);
-    loop {
-        if launch {
+    loop
+    {
+        if launch
+        {
             started += 1;
-            if started > 1 {
-                runtime.lock().unwrap().trace.push(TraceEvent {
-                    kind: "hedge",
-                    stage: stage.into(),
-                    number: started,
-                    succeeded: true,
-                });
+            if started > 1
+            {
+                runtime
+                    .lock()
+                    .expect("workflow runtime lock must not be poisoned")
+                    .trace
+                    .push(TraceEvent {
+                        kind: "hedge",
+                        stage: stage.into(),
+                        number: started,
+                        succeeded: true,
+                    });
             }
             pending.push(Box::pin(start()));
-            next = if started < most {
+            next = if started < most
+            {
                 Some(std::time::Instant::now() + delay)
-            } else {
+            }
+            else
+            {
                 None
             };
             launch = false;
         }
         let mut last = None;
         let mut i = 0;
-        while i < pending.len() {
-            match pending[i].as_mut().poll(&mut context) {
-                std::task::Poll::Ready(output) => {
+        while i < pending.len()
+        {
+            match pending[i].as_mut().poll(&mut context)
+            {
+                std::task::Poll::Ready(output) =>
+                {
                     pending.remove(i);
                     let value = convert(output);
-                    if !matches!(value, Value::Left(_)) {
+                    if !matches!(value, Value::Left(_))
+                    {
                         return Ok(value);
                     }
                     last = Some(value);
@@ -2953,18 +3587,26 @@ pub fn await_step<F: std::future::Future>(
             }
         }
         let now = std::time::Instant::now();
-        if deadline.is_some_and(|deadline| now >= deadline) {
+        if deadline.is_some_and(|deadline| now >= deadline)
+        {
             return Err(TIMED_OUT.into());
         }
-        if pending.is_empty() {
-            if started >= most {
+        if pending.is_empty()
+        {
+            if started >= most
+            {
                 return Ok(last.expect("the last attempt failed"));
             }
             launch = true;
-        } else if next.is_some_and(|next| now >= next) {
+        }
+        else if next.is_some_and(|next| now >= next)
+        {
             launch = true;
-        } else {
-            match [deadline, next].into_iter().flatten().min() {
+        }
+        else
+        {
+            match [deadline, next].into_iter().flatten().min()
+            {
                 Some(until) => std::thread::park_timeout(until - now),
                 None => std::thread::park(),
             }
@@ -2981,17 +3623,23 @@ fn virtually_hedged<F: std::future::Future>(
     most: i64,
     mut start: impl FnMut() -> F,
     convert: impl Fn(F::Output) -> Value,
-) -> Value {
+) -> Value
+{
     let mut started = 1i64;
     let mut value = convert(ASYNC.wait_future(start()));
-    while matches!(value, Value::Left(_)) && started < most {
+    while matches!(value, Value::Left(_)) && started < most
+    {
         started += 1;
-        runtime.lock().unwrap().trace.push(TraceEvent {
-            kind: "hedge",
-            stage: stage.into(),
-            number: started,
-            succeeded: true,
-        });
+        runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned")
+            .trace
+            .push(TraceEvent {
+                kind: "hedge",
+                stage: stage.into(),
+                number: started,
+                succeeded: true,
+            });
         value = convert(ASYNC.wait_future(start()));
     }
     value
@@ -3008,24 +3656,33 @@ fn scoped(
     runtime: &Arc<std::sync::Mutex<WorkflowRuntime>>,
     policy: &StagePolicy,
     attempt: &mut impl FnMut(&mut Context) -> Result<Value>,
-) -> Result<Value> {
-    if policy.timeout <= 0 && policy.hedge.is_none() {
+) -> Result<Value>
+{
+    if policy.timeout <= 0 && policy.hedge.is_none()
+    {
         return attempt(ctx);
     }
     let (is_virtual, gates) = {
-        let guard = runtime.lock().unwrap();
+        let guard = runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned");
         (guard.clock.is_virtual(), guard.gates)
     };
-    if is_virtual {
+    if is_virtual
+    {
         return virtually_scoped(ctx, runtime, policy, attempt);
     }
-    if !gates {
+    if !gates
+    {
         return attempt(ctx);
     }
     let outer = {
-        let mut guard = runtime.lock().unwrap();
+        let mut guard = runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned");
         let outer = (guard.deadline, guard.hedge, guard.virtual_hedge);
-        if policy.timeout > 0 {
+        if policy.timeout > 0
+        {
             guard.deadline = Some(
                 std::time::Instant::now() + std::time::Duration::from_micros(policy.timeout as u64),
             );
@@ -3036,10 +3693,13 @@ fn scoped(
     };
     let result = attempt(ctx);
     {
-        let mut guard = runtime.lock().unwrap();
+        let mut guard = runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned");
         (guard.deadline, guard.hedge, guard.virtual_hedge) = outer;
     }
-    match result {
+    match result
+    {
         // Callers may have added context to the marker.
         Err(error) if error.contains(TIMED_OUT) => Ok(stage_failure("TimedOut")),
         other => other,
@@ -3051,9 +3711,12 @@ fn virtually_scoped(
     runtime: &Arc<std::sync::Mutex<WorkflowRuntime>>,
     policy: &StagePolicy,
     attempt: &mut impl FnMut(&mut Context) -> Result<Value>,
-) -> Result<Value> {
+) -> Result<Value>
+{
     let (outer, began) = {
-        let mut guard = runtime.lock().unwrap();
+        let mut guard = runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned");
         let outer = (guard.deadline, guard.hedge, guard.virtual_hedge);
         let began = guard.clock.now();
         guard.deadline = None;
@@ -3063,13 +3726,17 @@ fn virtually_scoped(
     };
     let result = attempt(ctx);
     let ended = {
-        let mut guard = runtime.lock().unwrap();
+        let mut guard = runtime
+            .lock()
+            .expect("workflow runtime lock must not be poisoned");
         (guard.deadline, guard.hedge, guard.virtual_hedge) = outer;
         guard.clock.now()
     };
-    match result {
+    match result
+    {
         Err(error) if error.contains(TIMED_OUT) => Ok(stage_failure("TimedOut")),
-        Ok(_) if policy.timeout > 0 && ended - began > policy.timeout => {
+        Ok(_) if policy.timeout > 0 && ended - began > policy.timeout =>
+        {
             Ok(stage_failure("TimedOut"))
         }
         other => other,
@@ -3081,7 +3748,8 @@ fn attempts(
     runtime: &Arc<std::sync::Mutex<WorkflowRuntime>>,
     policy: &StagePolicy,
     mut attempt: impl FnMut(&mut Context) -> Result<Value>,
-) -> Result<Value> {
+) -> Result<Value>
+{
     let event = |kind: &'static str, number: i64, succeeded: bool| TraceEvent {
         kind,
         stage: policy.stage.into(),
@@ -3089,60 +3757,81 @@ fn attempts(
         succeeded,
     };
     let (mut number, mut previous) = (1i64, 0i64);
-    loop {
+    loop
+    {
         runtime
             .lock()
-            .unwrap()
+            .expect("validated attempt result must carry its failure value")
             .trace
             .push(event("start", number, false));
         let result = scoped(ctx, runtime, policy, &mut attempt)?;
-        let failure = match &result {
+        let failure = match &result
+        {
             Value::Left(error) => Some((**error).clone()),
             _ => None,
         };
         runtime
             .lock()
-            .unwrap()
+            .expect("validated attempt result must carry its failure value")
             .trace
             .push(event("finish", number, failure.is_none()));
-        let (Some(mut failure), Some(retry)) = (failure, &policy.retry) else {
+        let (Some(mut failure), Some(retry)) = (failure, &policy.retry)
+        else
+        {
             return Ok(result);
         };
-        if retry.attempts > 0 && number >= retry.attempts {
+        if retry.attempts > 0 && number >= retry.attempts
+        {
             return Ok(result);
         }
-        if policy.wraps {
+        if policy.wraps
+        {
             // Only the step's own failures and timeouts are retried.
-            match failure {
+            match failure
+            {
                 Value::Data(ref tag, ref mut fields)
                     if *tag == format!("{STAGE_FAILURE}StepFailed") && fields.len() == 1 =>
                 {
-                    failure = fields.pop().unwrap();
+                    failure = fields
+                        .pop()
+                        .expect("validated attempt result must carry its failure value");
                 }
-                Value::Data(ref tag, _) if *tag == format!("{STAGE_FAILURE}TimedOut") => {}
+                Value::Data(ref tag, _) if *tag == format!("{STAGE_FAILURE}TimedOut") =>
+                {}
                 _ => return Ok(result),
             }
         }
-        if let Some(when) = retry.when {
-            if !when(ctx, failure.clone())? {
+        if let Some(when) = retry.when
+        {
+            if !when(ctx, failure.clone())?
+            {
                 return Ok(result);
             }
         }
         number += 1;
-        let delay = if retry.strategy == "custom" {
+        let delay = if retry.strategy == "custom"
+        {
             match (retry.decide.expect("a custom strategy decides"))(
                 ctx, number, failure, previous,
-            )? {
+            )?
+            {
                 Some(delay) => delay,
                 None => return Ok(result),
             }
-        } else {
-            let base = if retry.strategy == "immediate" {
+        }
+        else
+        {
+            let base = if retry.strategy == "immediate"
+            {
                 0
-            } else {
+            }
+            else
+            {
                 retry_delay(retry, 2)
             };
-            let mut guard = runtime.lock().unwrap();
+            let mut guard = runtime
+                .lock()
+                .expect("validated attempt result must carry its failure value");
             jittered(
                 retry.jitter,
                 retry_delay(retry, number),
@@ -3151,7 +3840,9 @@ fn attempts(
                 &mut guard.random,
             )
         };
-        let mut guard = runtime.lock().unwrap();
+        let mut guard = runtime
+            .lock()
+            .expect("validated attempt result must carry its failure value");
         guard.trace.push(event("sleep", delay, true));
         guard.clock.sleep(delay);
         previous = delay;
@@ -3159,7 +3850,8 @@ fn attempts(
 }
 
 /// A logical Duration of whole microseconds.
-pub fn duration(micros: i64) -> Value {
+pub fn duration(micros: i64) -> Value
+{
     Value::Data(
         DURATION_TAG.into(),
         vec![Value::Integer(BigInt::from(micros))],
@@ -3167,13 +3859,21 @@ pub fn duration(micros: i64) -> Value {
 }
 
 /// A RetryDecision's delay, or None to stop.
-pub fn retry_decision(decision: Value) -> Result<Option<i64>> {
-    match decision {
+pub fn retry_decision(decision: Value) -> Result<Option<i64>>
+{
+    match decision
+    {
         Value::Data(tag, mut fields)
             if tag == "lawspec.time::type::RetryDecision::RetryAfter" && fields.len() == 1 =>
         {
-            match fields.pop().unwrap() {
-                Value::Data(_, mut micros) if micros.len() == 1 => match micros.pop().unwrap() {
+            match fields
+                .pop()
+                .expect("validated retry decision must carry its delay")
+            {
+                Value::Data(_, mut micros) if micros.len() == 1 => match micros
+                    .pop()
+                    .expect("validated retry decision must carry its delay")
+                {
                     Value::Integer(n) => n
                         .to_i64()
                         .map(Some)
@@ -3193,8 +3893,10 @@ pub fn retry_decision(decision: Value) -> Result<Option<i64>> {
 /// Duration; IntoValue cannot fail, so converting one panics.
 pub const DURATION_TAG: &str = "lawspec.time::type::Duration::Duration";
 
-impl IntoValue for std::time::Duration {
-    fn into_value(self) -> Value {
+impl IntoValue for std::time::Duration
+{
+    fn into_value(self) -> Value
+    {
         assert!(
             self.subsec_nanos() % 1000 == 0,
             "a Duration is a non-negative whole number of microseconds"
@@ -3205,11 +3907,16 @@ impl IntoValue for std::time::Duration {
         )
     }
 }
-impl FromValue for std::time::Duration {
-    fn from_value(value: Value) -> Result<Self> {
-        match value {
-            Value::Data(tag, fields) if tag == DURATION_TAG && fields.len() == 1 => {
-                match &fields[0] {
+impl FromValue for std::time::Duration
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
+        match value
+        {
+            Value::Data(tag, fields) if tag == DURATION_TAG && fields.len() == 1 =>
+            {
+                match &fields[0]
+                {
                     Value::Integer(micros) => u64::try_from(micros)
                         .map(std::time::Duration::from_micros)
                         .map_err(|_| "Duration outside the native range".into()),
@@ -3226,8 +3933,10 @@ impl FromValue for std::time::Duration {
 /// lists; the schema retags them by the expected type.
 pub const COLLECTIONS: &str = "lawspec.collections::type::";
 
-pub fn collection_tag(name: &str) -> Option<&'static str> {
-    Some(match name.strip_prefix(COLLECTIONS)? {
+pub fn collection_tag(name: &str) -> Option<&'static str>
+{
+    Some(match name.strip_prefix(COLLECTIONS)?
+    {
         "Set" => "lawspec.collections::type::Set::SetItems",
         "KeyVal" => "lawspec.collections::type::KeyVal::KeyValEntries",
         "Queue" => "lawspec.collections::type::Queue::QueueItems",
@@ -3237,14 +3946,22 @@ pub fn collection_tag(name: &str) -> Option<&'static str> {
     })
 }
 
-fn collection_items(value: Value) -> Result<Vec<Value>> {
-    match value {
+fn collection_items(value: Value) -> Result<Vec<Value>>
+{
+    match value
+    {
         Value::List(items) => Ok(items),
-        Value::Data(tag, mut fields) if tag.starts_with(COLLECTIONS) && fields.len() == 1 => {
+        Value::Data(tag, mut fields) if tag.starts_with(COLLECTIONS) && fields.len() == 1 =>
+        {
             let reverse = tag.ends_with("::StackItems");
-            match fields.pop().unwrap() {
-                Value::List(mut items) => {
-                    if reverse {
+            match fields
+                .pop()
+                .expect("validated collection constructor must carry its payload")
+            {
+                Value::List(mut items) =>
+                {
+                    if reverse
+                    {
                         items.reverse();
                     }
                     Ok(items)
@@ -3256,21 +3973,27 @@ fn collection_items(value: Value) -> Result<Vec<Value>> {
     }
 }
 
-impl<T: IntoValue> IntoValue for std::collections::BTreeSet<T> {
-    fn into_value(self) -> Value {
+impl<T: IntoValue> IntoValue for std::collections::BTreeSet<T>
+{
+    fn into_value(self) -> Value
+    {
         Value::List(self.into_iter().map(IntoValue::into_value).collect())
     }
 }
-impl<T: FromValue + Ord> FromValue for std::collections::BTreeSet<T> {
-    fn from_value(value: Value) -> Result<Self> {
+impl<T: FromValue + Ord> FromValue for std::collections::BTreeSet<T>
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
         collection_items(value)?
             .into_iter()
             .map(T::from_value)
             .collect()
     }
 }
-impl<K: IntoValue, V: IntoValue> IntoValue for std::collections::BTreeMap<K, V> {
-    fn into_value(self) -> Value {
+impl<K: IntoValue, V: IntoValue> IntoValue for std::collections::BTreeMap<K, V>
+{
+    fn into_value(self) -> Value
+    {
         Value::List(
             self.into_iter()
                 .map(|(k, v)| {
@@ -3283,16 +4006,28 @@ impl<K: IntoValue, V: IntoValue> IntoValue for std::collections::BTreeMap<K, V> 
         )
     }
 }
-impl<K: FromValue + Ord, V: FromValue> FromValue for std::collections::BTreeMap<K, V> {
-    fn from_value(value: Value) -> Result<Self> {
+impl<K: FromValue + Ord, V: FromValue> FromValue for std::collections::BTreeMap<K, V>
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
         collection_items(value)?
             .into_iter()
-            .map(|entry| match entry {
-                Value::Data(_, fields) if fields.len() == 2 => {
+            .map(|entry| match entry
+            {
+                Value::Data(_, fields) if fields.len() == 2 =>
+                {
                     let mut fields = fields.into_iter();
                     Ok((
-                        K::from_value(fields.next().unwrap())?,
-                        V::from_value(fields.next().unwrap())?,
+                        K::from_value(
+                            fields
+                                .next()
+                                .expect("validated map entry must carry both key and value"),
+                        )?,
+                        V::from_value(
+                            fields
+                                .next()
+                                .expect("validated map entry must carry both key and value"),
+                        )?,
                     ))
                 }
                 _ => Err("expected a KeyVal entry".into()),
@@ -3300,13 +4035,17 @@ impl<K: FromValue + Ord, V: FromValue> FromValue for std::collections::BTreeMap<
             .collect()
     }
 }
-impl<T: IntoValue> IntoValue for std::collections::VecDeque<T> {
-    fn into_value(self) -> Value {
+impl<T: IntoValue> IntoValue for std::collections::VecDeque<T>
+{
+    fn into_value(self) -> Value
+    {
         Value::List(self.into_iter().map(IntoValue::into_value).collect())
     }
 }
-impl<T: FromValue> FromValue for std::collections::VecDeque<T> {
-    fn from_value(value: Value) -> Result<Self> {
+impl<T: FromValue> FromValue for std::collections::VecDeque<T>
+{
+    fn from_value(value: Value) -> Result<Self>
+    {
         collection_items(value)?
             .into_iter()
             .map(T::from_value)
@@ -3314,25 +4053,40 @@ impl<T: FromValue> FromValue for std::collections::VecDeque<T> {
     }
 }
 
-pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value> {
+pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value>
+{
     use Value::*;
-    if let Some(value) = matcher_helper(name, &args)? {
+    if let Some(value) = matcher_helper(name, &args)?
+    {
         return Ok(value);
     }
-    if let Some(value) = sequence_helper(name, &args)? {
+    if let Some(value) = sequence_helper(name, &args)?
+    {
         return Ok(value);
     }
-    if name == "select" && args.len() == 3 {
-        let other = args.pop().unwrap();
-        let chosen = args.pop().unwrap();
-        return Ok(if matches!(args[0], Bool(true)) {
-            chosen
-        } else {
-            other
-        });
+    if name == "select" && args.len() == 3
+    {
+        let other = args
+            .pop()
+            .expect("validated helper arity must provide each argument");
+        let chosen = args
+            .pop()
+            .expect("validated helper arity must provide each argument");
+        return Ok(
+            if matches!(args[0], Bool(true))
+            {
+                chosen
+            }
+            else
+            {
+                other
+            },
+        );
     }
-    if name == "compare" && args.len() == 2 {
-        let tag = match compare_values(&args[0], &args[1])? {
+    if name == "compare" && args.len() == 2
+    {
+        let tag = match compare_values(&args[0], &args[1])?
+        {
             std::cmp::Ordering::Less => "Less",
             std::cmp::Ordering::Equal => "Equal",
             std::cmp::Ordering::Greater => "Greater",
@@ -3342,17 +4096,26 @@ pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value> {
             vec![],
         ));
     }
-    if name == "round" && args.len() == 2 {
-        let scale = i32::from_value(args.pop().unwrap())?;
+    if name == "round" && args.len() == 2
+    {
+        let scale = i32::from_value(
+            args.pop()
+                .expect("validated helper arity must provide each argument"),
+        )?;
         return Ok(Decimal(self::Decimal::round(args[0].exact()?, scale)?));
     }
-    if args.len() != 1 {
+    if args.len() != 1
+    {
         return Err(format!("invalid {name} arguments"));
     }
-    let value = args.pop().unwrap();
-    Ok(match name {
+    let value = args
+        .pop()
+        .expect("validated helper arity must provide each argument");
+    Ok(match name
+    {
         "checked" => Bool(true),
-        "length" => Integer(BigInt::from(match value {
+        "length" => Integer(BigInt::from(match value
+        {
             Text(s) => s.chars().count(),
             CodePointText(s) => s.len(),
             Utf16Text(s) => s.len(),
@@ -3360,20 +4123,24 @@ pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value> {
             List(s) => s.len(),
             _ => return Err("length requires sequence".into()),
         })),
-        "isPresent" => Bool(match value {
+        "isPresent" => Bool(match value
+        {
             Nullable(v) | Optional(v) => v.is_some(),
             _ => return Err("expected presence".into()),
         }),
-        "presentValue" => match value {
+        "presentValue" => match value
+        {
             Nullable(Some(v)) | Optional(Some(v)) => *v,
             _ => return Err("absent value has no payload".into()),
         },
-        "real" => match value {
+        "real" => match value
+        {
             Complex32(c) => Float32(c.re),
             Complex64(c) => Float64(c.re),
             _ => return Err("expected complex value".into()),
         },
-        "imag" => match value {
+        "imag" => match value
+        {
             Complex32(c) => Float32(c.im),
             Complex64(c) => Float64(c.im),
             _ => return Err("expected complex value".into()),
@@ -3381,7 +4148,8 @@ pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value> {
         "isNaN" => Bool(value.real64()?.is_nan()),
         "isInfinite" => Bool(value.real64()?.is_infinite()),
         "isFinite" => Bool(value.real64()?.is_finite()),
-        "isNegativeZero" => {
+        "isNegativeZero" =>
+        {
             let x = value.real64()?;
             Bool(x == 0.0 && x.is_sign_negative())
         }
@@ -3391,7 +4159,8 @@ pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value> {
 
 /// A mutex's value, even when a panicking holder poisoned it: handlers keep
 /// their state and context behind one.
-pub fn locked<T>(mutex: &std::sync::Mutex<T>) -> std::sync::MutexGuard<'_, T> {
+pub fn locked<T>(mutex: &std::sync::Mutex<T>) -> std::sync::MutexGuard<'_, T>
+{
     mutex
         .lock()
         .unwrap_or_else(|poisoned| poisoned.into_inner())
@@ -3399,16 +4168,21 @@ pub fn locked<T>(mutex: &std::sync::Mutex<T>) -> std::sync::MutexGuard<'_, T> {
 
 /// A handler operation's result: its error ends the operation, which the
 /// ability's trait cannot return.
-pub fn answered<T>(result: Result<T>) -> T {
+pub fn answered<T>(result: Result<T>) -> T
+{
     result.unwrap_or_else(|error| panic!("{error}"))
 }
 
 /// A law's expectation: the values are equal, or the failure says where the
 /// expectation is written, both values and where they first differ.
-pub fn expect_equal(actual: &Value, expected: &Value, context: &str) -> Result<()> {
-    if equal(actual, expected)? {
+pub fn expect_equal(actual: &Value, expected: &Value, context: &str) -> Result<()>
+{
+    if equal(actual, expected)?
+    {
         Ok(())
-    } else {
+    }
+    else
+    {
         Err(format!(
             "{context}: {actual:?} != {expected:?}{}",
             difference(actual, expected)
@@ -3417,15 +4191,19 @@ pub fn expect_equal(actual: &Value, expected: &Value, context: &str) -> Result<(
 }
 
 /// A call's result; its error names what was called.
-pub fn called(name: &str, result: Result<Value>) -> Result<Value> {
+pub fn called(name: &str, result: Result<Value>) -> Result<Value>
+{
     result.map_err(|error| format!("{name}: {error}"))
 }
 
 /// Where a structured actual value first differs from the expected one, by
 /// the portable rendering: "" when they agree or neither has parts.
-pub fn difference(actual: &Value, expected: &Value) -> String {
-    fn parts(v: &Value) -> Option<(Option<String>, Vec<&Value>)> {
-        match v {
+pub fn difference(actual: &Value, expected: &Value) -> String
+{
+    fn parts(v: &Value) -> Option<(Option<String>, Vec<&Value>)>
+    {
+        match v
+        {
             Value::List(xs) => Some((None, xs.iter().collect())),
             Value::Data(tag, fields) => Some((Some(tag.clone()), fields.iter().collect())),
             Value::Maybe(Some(x)) => Some((Some("Present".into()), vec![x.as_ref()])),
@@ -3437,8 +4215,10 @@ pub fn difference(actual: &Value, expected: &Value) -> String {
     let mut path = vec![];
     let (mut a, mut b) = (actual, expected);
     let mut lengths = None;
-    while let (Some((ta, xs)), Some((tb, ys))) = (parts(a), parts(b)) {
-        if ta != tb || (ta.is_some() && xs.len() != ys.len()) {
+    while let (Some((ta, xs)), Some((tb, ys))) = (parts(a), parts(b))
+    {
+        if ta != tb || (ta.is_some() && xs.len() != ys.len())
+        {
             break;
         }
         match xs
@@ -3446,8 +4226,10 @@ pub fn difference(actual: &Value, expected: &Value) -> String {
             .zip(ys.iter())
             .position(|(x, y)| render(x) != render(y))
         {
-            Some(i) => {
-                path.push(match &ta {
+            Some(i) =>
+            {
+                path.push(match &ta
+                {
                     None => format!("item {}", i + 1),
                     Some(tag) => format!(
                         "field {} of {}",
@@ -3458,17 +4240,20 @@ pub fn difference(actual: &Value, expected: &Value) -> String {
                 (a, b) = (xs[i], ys[i]);
             }
             None if xs.len() == ys.len() => return String::new(),
-            None => {
+            None =>
+            {
                 path.push("length".to_string());
                 lengths = Some((xs.len(), ys.len()));
                 break;
             }
         }
     }
-    if path.is_empty() {
+    if path.is_empty()
+    {
         return String::new();
     }
-    let (shown_a, shown_b) = match lengths {
+    let (shown_a, shown_b) = match lengths
+    {
         Some((x, y)) => (x.to_string(), y.to_string()),
         None => (render(a), render(b)),
     };
@@ -3481,21 +4266,26 @@ pub fn difference(actual: &Value, expected: &Value) -> String {
 /// The matcher, recording and resource helpers, or None for another helper.
 /// Sequences: Text (indexed by code point), Bytes and List. A slice is
 /// clamped to the sequence.
-fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
+fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>>
+{
     use Value::*;
-    fn index(v: &Value, count: usize) -> usize {
-        match v {
+    fn index(v: &Value, count: usize) -> usize
+    {
+        match v
+        {
             Integer(k) if k.is_negative() => 0,
             Integer(k) => k.to_usize().map(|n| n.min(count)).unwrap_or(count),
             _ => count,
         }
     }
-    fn slice<T: Clone>(items: &[T], from: &Value, to: &Value) -> Vec<T> {
+    fn slice<T: Clone>(items: &[T], from: &Value, to: &Value) -> Vec<T>
+    {
         let i = index(from, items.len());
         let j = index(to, items.len()).max(i);
         items[i..j].to_vec()
     }
-    Ok(Some(match (name, args) {
+    Ok(Some(match (name, args)
+    {
         ("append", [Text(a), Text(b)]) => Text(format!("{a}{b}")),
         ("append", [Bytes(a), Bytes(b)]) => Bytes([a.clone(), b.clone()].concat()),
         ("append", [List(a), List(b)]) => List([a.clone(), b.clone()].concat()),
@@ -3516,10 +4306,12 @@ fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
                 .and_then(|i| b.get(i))
                 .map(|o| Box::new(Integer(BigInt::from(*o)))),
         ),
-        ("range", [Integer(lo), Integer(hi)]) => {
+        ("range", [Integer(lo), Integer(hi)]) =>
+        {
             let mut values = vec![];
             let mut k = lo.clone();
-            while &k < hi {
+            while &k < hi
+            {
                 values.push(Integer(k.clone()));
                 k += 1;
             }
@@ -3528,7 +4320,8 @@ fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
         ("octets", [Bytes(b)]) => List(b.iter().map(|o| Integer(BigInt::from(*o))).collect()),
         ("bytesOf", [List(xs)]) => Bytes(
             xs.iter()
-                .map(|v| match v {
+                .map(|v| match v
+                {
                     Integer(k) => k
                         .to_u8()
                         .ok_or_else(|| "an octet is from 0 to 255".to_string()),
@@ -3541,7 +4334,8 @@ fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
         ("join", [Text(separator), List(parts)]) => Text(
             parts
                 .iter()
-                .map(|v| match v {
+                .map(|v| match v
+                {
                     Text(t) => Ok(t.clone()),
                     _ => Err("expected a text".to_string()),
                 })
@@ -3552,14 +4346,17 @@ fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
     }))
 }
 
-fn matcher_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
+fn matcher_helper(name: &str, args: &[Value]) -> Result<Option<Value>>
+{
     let text = |i: usize| -> Result<&str> {
-        match args.get(i) {
+        match args.get(i)
+        {
             Some(Value::Text(s)) => Ok(s.as_str()),
             _ => Err(format!("{name} expects text")),
         }
     };
-    Ok(Some(match name {
+    Ok(Some(match name
+    {
         "startsWith" => Value::Bool(text(0)?.starts_with(text(1)?)),
         "endsWith" => Value::Bool(text(0)?.ends_with(text(1)?)),
         "textContains" => Value::Bool(text(0)?.contains(text(1)?)),
@@ -3570,7 +4367,8 @@ fn matcher_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
             args.get(1).ok_or("recorded expects a value")?,
         )?),
         "acquireResource" => Value::Text(acquire_resource(text(0)?)?),
-        "releaseResource" => {
+        "releaseResource" =>
+        {
             release_resource(text(0)?, text(1)?)?;
             Value::Bool(true)
         }
@@ -3584,13 +4382,15 @@ fn matcher_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
 // point by code point. The compiler has checked every pattern; a pattern
 // that is not portable is an error here too.
 #[derive(Clone, Debug)]
-struct RegexItem {
+struct RegexItem
+{
     negated: bool,
     ranges: Vec<(u32, u32)>,
 }
 
 #[derive(Clone, Debug)]
-enum RegexNode {
+enum RegexNode
+{
     Set(bool, Vec<RegexItem>),
     Sequence(Vec<RegexNode>),
     Alternatives(Vec<RegexNode>),
@@ -3601,27 +4401,34 @@ const REGEX_DIGITS: &[(u32, u32)] = &[(48, 57)];
 const REGEX_WORD: &[(u32, u32)] = &[(48, 57), (65, 90), (95, 95), (97, 122)];
 const REGEX_SPACE: &[(u32, u32)] = &[(9, 13), (32, 32)];
 
-struct RegexParser<'a> {
+struct RegexParser<'a>
+{
     pattern: &'a str,
     cs: Vec<u32>,
     pos: usize,
 }
 
-impl RegexParser<'_> {
-    fn peek(&self) -> Option<u32> {
+impl RegexParser<'_>
+{
+    fn peek(&self) -> Option<u32>
+    {
         self.cs.get(self.pos).copied()
     }
 
-    fn fail<T>(&self, message: &str) -> Result<T> {
+    fn fail<T>(&self, message: &str) -> Result<T>
+    {
         Err(format!(
             "regex {:?} is not portable: {message}",
             self.pattern
         ))
     }
 
-    fn escape(&mut self) -> Result<RegexItem> {
+    fn escape(&mut self) -> Result<RegexItem>
+    {
         self.pos += 1;
-        let Some(c) = self.peek() else {
+        let Some(c) = self.peek()
+        else
+        {
             return self.fail("the regex ends with a lone \\");
         };
         self.pos += 1;
@@ -3629,7 +4436,8 @@ impl RegexParser<'_> {
             negated,
             ranges: ranges.to_vec(),
         };
-        Ok(match char::from_u32(c).unwrap_or('\0') {
+        Ok(match char::from_u32(c).unwrap_or('\0')
+        {
             'd' => item(false, REGEX_DIGITS),
             'D' => item(true, REGEX_DIGITS),
             'w' => item(false, REGEX_WORD),
@@ -3646,9 +4454,11 @@ impl RegexParser<'_> {
         })
     }
 
-    fn literal(&mut self) -> Result<RegexItem> {
+    fn literal(&mut self) -> Result<RegexItem>
+    {
         let c = self.peek().unwrap_or(0);
-        if c == '[' as u32 {
+        if c == '[' as u32
+        {
             return self.fail("write \\[ for the character inside a class");
         }
         self.pos += 1;
@@ -3658,33 +4468,44 @@ impl RegexParser<'_> {
         })
     }
 
-    fn single(item: &RegexItem) -> bool {
+    fn single(item: &RegexItem) -> bool
+    {
         !item.negated && item.ranges.len() == 1 && item.ranges[0].0 == item.ranges[0].1
     }
 
-    fn class(&mut self) -> Result<RegexNode> {
+    fn class(&mut self) -> Result<RegexNode>
+    {
         self.pos += 1;
         let negated = self.peek() == Some('^' as u32);
-        if negated {
+        if negated
+        {
             self.pos += 1;
         }
         let mut items = vec![];
         let mut first = true;
-        loop {
-            let Some(c) = self.peek() else {
+        loop
+        {
+            let Some(c) = self.peek()
+            else
+            {
                 return self.fail("a [ is never closed");
             };
-            if c == ']' as u32 {
-                if first {
+            if c == ']' as u32
+            {
+                if first
+                {
                     return self.fail("an empty class is not portable");
                 }
                 self.pos += 1;
                 return Ok(RegexNode::Set(negated, items));
             }
             first = false;
-            let item = if c == '\\' as u32 {
+            let item = if c == '\\' as u32
+            {
                 self.escape()?
-            } else {
+            }
+            else
+            {
                 self.literal()?
             };
             if Self::single(&item)
@@ -3695,28 +4516,36 @@ impl RegexParser<'_> {
                     .is_some_and(|&next| next != ']' as u32)
             {
                 self.pos += 1;
-                let high = if self.peek() == Some('\\' as u32) {
+                let high = if self.peek() == Some('\\' as u32)
+                {
                     self.escape()?
-                } else {
+                }
+                else
+                {
                     self.literal()?
                 };
-                if !Self::single(&high) {
+                if !Self::single(&high)
+                {
                     return self.fail("a range ends with one character");
                 }
-                if high.ranges[0].0 < item.ranges[0].0 {
+                if high.ranges[0].0 < item.ranges[0].0
+                {
                     return self.fail("a range must run from low to high");
                 }
                 items.push(RegexItem {
                     negated: false,
                     ranges: vec![(item.ranges[0].0, high.ranges[0].0)],
                 });
-            } else {
+            }
+            else
+            {
                 items.push(item);
             }
         }
     }
 
-    fn digits(&mut self) -> String {
+    fn digits(&mut self) -> String
+    {
         let start = self.pos;
         while self
             .peek()
@@ -3730,28 +4559,37 @@ impl RegexParser<'_> {
             .collect()
     }
 
-    fn atom(&mut self) -> Result<RegexNode> {
+    fn atom(&mut self) -> Result<RegexNode>
+    {
         let c = self.peek().unwrap_or(0);
         let ch = char::from_u32(c).unwrap_or('\0');
-        match ch {
-            '(' => {
+        match ch
+        {
+            '(' =>
+            {
                 self.pos += 1;
-                if self.peek() == Some('?' as u32) {
-                    if self.cs.get(self.pos + 1) == Some(&(':' as u32)) {
+                if self.peek() == Some('?' as u32)
+                {
+                    if self.cs.get(self.pos + 1) == Some(&(':' as u32))
+                    {
                         self.pos += 2;
-                    } else {
+                    }
+                    else
+                    {
                         return self.fail("only (?: ...) groups are portable");
                     }
                 }
                 let node = self.alternatives()?;
-                if self.peek() != Some(')' as u32) {
+                if self.peek() != Some(')' as u32)
+                {
                     return self.fail("a ( is never closed");
                 }
                 self.pos += 1;
                 Ok(node)
             }
             '[' => self.class(),
-            '.' => {
+            '.' =>
+            {
                 self.pos += 1;
                 Ok(RegexNode::Set(
                     true,
@@ -3763,7 +4601,8 @@ impl RegexParser<'_> {
             }
             '\\' => Ok(RegexNode::Set(false, vec![self.escape()?])),
             _ if "*+?{^$]}".contains(ch) => self.fail(&format!("unexpected {ch}")),
-            _ => {
+            _ =>
+            {
                 self.pos += 1;
                 Ok(RegexNode::Set(
                     false,
@@ -3776,60 +4615,77 @@ impl RegexParser<'_> {
         }
     }
 
-    fn quantifier(c: Option<u32>) -> bool {
+    fn quantifier(c: Option<u32>) -> bool
+    {
         c.and_then(char::from_u32)
             .is_some_and(|ch| "*+?{".contains(ch))
     }
 
-    fn quantified(&mut self, node: RegexNode) -> Result<RegexNode> {
+    fn quantified(&mut self, node: RegexNode) -> Result<RegexNode>
+    {
         let c = self.peek();
-        if !Self::quantifier(c) {
+        if !Self::quantifier(c)
+        {
             return Ok(node);
         }
         self.pos += 1;
         let repeat = |low, high| RegexNode::Repeat(Box::new(node.clone()), low, high);
-        let result = match char::from_u32(c.unwrap_or(0)).unwrap_or('\0') {
+        let result = match char::from_u32(c.unwrap_or(0)).unwrap_or('\0')
+        {
             '*' => repeat(0, None),
             '+' => repeat(1, None),
             '?' => repeat(0, Some(1)),
-            _ => {
+            _ =>
+            {
                 let low_text = self.digits();
                 let high_text;
-                if self.peek() == Some('}' as u32) {
+                if self.peek() == Some('}' as u32)
+                {
                     high_text = Some(low_text.clone());
-                } else if self.peek() == Some(',' as u32) {
+                }
+                else if self.peek() == Some(',' as u32)
+                {
                     self.pos += 1;
                     let text = self.digits();
                     high_text = if text.is_empty() { None } else { Some(text) };
-                    if self.peek() != Some('}' as u32) {
+                    if self.peek() != Some('}' as u32)
+                    {
                         return self.fail("a repetition is {n}, {n,} or {n,m}");
                     }
-                } else {
+                }
+                else
+                {
                     return self.fail("a repetition is {n}, {n,} or {n,m}");
                 }
                 self.pos += 1;
-                if low_text.is_empty() {
+                if low_text.is_empty()
+                {
                     return self.fail("a repetition is {n}, {n,} or {n,m}");
                 }
                 let low: usize = low_text.parse().unwrap_or(usize::MAX);
                 let high: Option<usize> = high_text.map(|t| t.parse().unwrap_or(usize::MAX));
-                if low > 1000 || high.is_some_and(|h| h > 1000 || h < low) {
+                if low > 1000 || high.is_some_and(|h| h > 1000 || h < low)
+                {
                     return self
                         .fail("a repetition count is at most 1000, and n must not exceed m");
                 }
                 repeat(low, high)
             }
         };
-        if Self::quantifier(self.peek()) {
+        if Self::quantifier(self.peek())
+        {
             return self.fail("a repetition cannot itself be repeated");
         }
         Ok(result)
     }
 
-    fn sequence(&mut self) -> Result<RegexNode> {
+    fn sequence(&mut self) -> Result<RegexNode>
+    {
         let mut items = vec![];
-        while let Some(c) = self.peek() {
-            if c == '|' as u32 || c == ')' as u32 {
+        while let Some(c) = self.peek()
+        {
+            if c == '|' as u32 || c == ')' as u32
+            {
                 break;
             }
             let atom = self.atom()?;
@@ -3838,46 +4694,63 @@ impl RegexParser<'_> {
         Ok(RegexNode::Sequence(items))
     }
 
-    fn alternatives(&mut self) -> Result<RegexNode> {
+    fn alternatives(&mut self) -> Result<RegexNode>
+    {
         let mut branches = vec![self.sequence()?];
-        while self.peek() == Some('|' as u32) {
+        while self.peek() == Some('|' as u32)
+        {
             self.pos += 1;
             branches.push(self.sequence()?);
         }
-        Ok(if branches.len() == 1 {
-            branches.pop().unwrap()
-        } else {
-            RegexNode::Alternatives(branches)
-        })
+        Ok(
+            if branches.len() == 1
+            {
+                branches
+                    .pop()
+                    .expect("nonempty alternatives must contain the sole remaining branch")
+            }
+            else
+            {
+                RegexNode::Alternatives(branches)
+            },
+        )
     }
 }
 
-fn regex_parse(pattern: &str) -> Result<RegexNode> {
+fn regex_parse(pattern: &str) -> Result<RegexNode>
+{
     let mut parser = RegexParser {
         pattern,
         cs: pattern.chars().map(|c| c as u32).collect(),
         pos: 0,
     };
     let node = parser.alternatives()?;
-    if parser.pos != parser.cs.len() {
+    if parser.pos != parser.cs.len()
+    {
         return parser.fail("a ) has no ( before it");
     }
     Ok(node)
 }
 
-fn regex_reach(node: &RegexNode, text: &[u32], positions: Vec<bool>) -> Vec<bool> {
+fn regex_reach(node: &RegexNode, text: &[u32], positions: Vec<bool>) -> Vec<bool>
+{
     let mut next = vec![false; text.len() + 1];
-    match node {
-        RegexNode::Set(negated, items) => {
-            for (p, &at) in positions.iter().enumerate() {
-                if !at || p >= text.len() {
+    match node
+    {
+        RegexNode::Set(negated, items) =>
+        {
+            for (p, &at) in positions.iter().enumerate()
+            {
+                if !at || p >= text.len()
+                {
                     continue;
                 }
                 let c = text[p];
                 let inside = items.iter().any(|item| {
                     item.negated != item.ranges.iter().any(|&(lo, hi)| lo <= c && c <= hi)
                 });
-                if inside != *negated {
+                if inside != *negated
+                {
                     next[p + 1] = true;
                 }
             }
@@ -3886,8 +4759,10 @@ fn regex_reach(node: &RegexNode, text: &[u32], positions: Vec<bool>) -> Vec<bool
         RegexNode::Sequence(items) => items
             .iter()
             .fold(positions, |at, item| regex_reach(item, text, at)),
-        RegexNode::Alternatives(branches) => {
-            for branch in branches {
+        RegexNode::Alternatives(branches) =>
+        {
+            for branch in branches
+            {
                 for (p, at) in regex_reach(branch, text, positions.clone())
                     .into_iter()
                     .enumerate()
@@ -3897,26 +4772,32 @@ fn regex_reach(node: &RegexNode, text: &[u32], positions: Vec<bool>) -> Vec<bool
             }
             next
         }
-        RegexNode::Repeat(body, low, high) => {
+        RegexNode::Repeat(body, low, high) =>
+        {
             let mut positions = positions;
-            for _ in 0..*low {
+            for _ in 0..*low
+            {
                 positions = regex_reach(body, text, positions);
             }
             let mut seen = positions.clone();
             let mut frontier = positions;
             let mut limit = high.map(|h| h - low);
-            while limit != Some(0) {
+            while limit != Some(0)
+            {
                 let reached = regex_reach(body, text, frontier);
                 frontier = vec![false; text.len() + 1];
                 let mut any = false;
-                for (p, at) in reached.into_iter().enumerate() {
-                    if at && !seen[p] {
+                for (p, at) in reached.into_iter().enumerate()
+                {
+                    if at && !seen[p]
+                    {
                         frontier[p] = true;
                         seen[p] = true;
                         any = true;
                     }
                 }
-                if !any {
+                if !any
+                {
                     break;
                 }
                 limit = limit.map(|l| l - 1);
@@ -3930,15 +4811,22 @@ static REGEX_CACHE: std::sync::LazyLock<std::sync::Mutex<HashMap<String, RegexNo
     std::sync::LazyLock::new(|| std::sync::Mutex::new(HashMap::new()));
 
 /// Whether the portable regex matches the whole text.
-pub fn regex_matches(pattern: &str, text: &str) -> Result<bool> {
-    let cached = REGEX_CACHE.lock().unwrap().get(pattern).cloned();
-    let node = match cached {
+pub fn regex_matches(pattern: &str, text: &str) -> Result<bool>
+{
+    let cached = REGEX_CACHE
+        .lock()
+        .expect("compiled-pattern cache lock must not be poisoned")
+        .get(pattern)
+        .cloned();
+    let node = match cached
+    {
         Some(node) => node,
-        None => {
+        None =>
+        {
             let node = regex_parse(pattern)?;
             REGEX_CACHE
                 .lock()
-                .unwrap()
+                .expect("compiled-pattern cache lock must not be poisoned")
                 .insert(pattern.to_string(), node.clone());
             node
         }
@@ -3955,45 +4843,58 @@ pub fn regex_matches(pattern: &str, text: &str) -> Result<bool> {
 // the working one up, that holds lawspec.edn or recorded/. With
 // LAWSPEC_UPDATE_RECORDED=1 (lawspec test --update-recorded) a law records
 // the value instead.
-pub fn recorded_root() -> std::path::PathBuf {
-    if let Ok(given) = std::env::var("LAWSPEC_RECORDED") {
-        if !given.is_empty() {
+pub fn recorded_root() -> std::path::PathBuf
+{
+    if let Ok(given) = std::env::var("LAWSPEC_RECORDED")
+    {
+        if !given.is_empty()
+        {
             return given.into();
         }
     }
     let start = std::env::current_dir().unwrap_or_default();
     let mut folder = start.as_path();
-    loop {
-        if folder.join("lawspec.edn").exists() || folder.join("recorded").is_dir() {
+    loop
+    {
+        if folder.join("lawspec.edn").exists() || folder.join("recorded").is_dir()
+        {
             return folder.join("recorded");
         }
-        match folder.parent() {
+        match folder.parent()
+        {
             Some(parent) => folder = parent,
             None => return start.join("recorded"),
         }
     }
 }
 
-pub fn recorded(key: &str, value: &Value) -> Result<bool> {
+pub fn recorded(key: &str, value: &Value) -> Result<bool>
+{
     let text = recorded_text(value);
     let mut path = recorded_root();
-    for part in key.split('/') {
+    for part in key.split('/')
+    {
         path.push(part);
     }
-    if std::env::var("LAWSPEC_UPDATE_RECORDED").as_deref() == Ok("1") {
-        if let Some(parent) = path.parent() {
+    if std::env::var("LAWSPEC_UPDATE_RECORDED").as_deref() == Ok("1")
+    {
+        if let Some(parent) = path.parent()
+        {
             std::fs::create_dir_all(parent).map_err(|e| e.to_string())?;
         }
         std::fs::write(&path, format!("{text}\n")).map_err(|e| e.to_string())?;
         return Ok(true);
     }
-    let Ok(stored) = std::fs::read_to_string(&path) else {
+    let Ok(stored) = std::fs::read_to_string(&path)
+    else
+    {
         return Err(format!(
             "no recording recorded/{key}; run lawspec test --update-recorded to record {text}"
         ));
     };
     let stored = stored.strip_suffix('\n').unwrap_or(&stored);
-    if stored != text {
+    if stored != text
+    {
         return Err(format!(
             "recorded/{key} differs: expected {stored}, actual {text} (lawspec test --update-recorded records the new value)"
         ));
@@ -4006,7 +4907,8 @@ pub fn recorded(key: &str, value: &Value) -> Result<bool> {
 // so no case sees what another left. One case holds it at a time (until its
 // SharedGuard drops, even on a panic), and it is released when the test
 // process exits.
-struct SharedEntry {
+struct SharedEntry
+{
     busy: bool,
     users: usize,
     concurrent: bool,
@@ -4021,28 +4923,38 @@ unsafe extern "C" {
     fn atexit(callback: extern "C" fn()) -> std::os::raw::c_int;
 }
 
-extern "C" fn release_shared() {
-    let releases: Vec<SharedRelease> = match SHARED_RELEASES.lock() {
+extern "C" fn release_shared()
+{
+    let releases: Vec<SharedRelease> = match SHARED_RELEASES.lock()
+    {
         Ok(mut list) => list.drain(..).rev().collect(),
         Err(_) => return,
     };
-    for release in releases {
+    for release in releases
+    {
         let _ = std::panic::catch_unwind(std::panic::AssertUnwindSafe(release));
     }
 }
 
 pub struct SharedGuard(String);
 
-impl Drop for SharedGuard {
-    fn drop(&mut self) {
+impl Drop for SharedGuard
+{
+    fn drop(&mut self)
+    {
         let mut shared = SHARED.lock().unwrap_or_else(|e| e.into_inner());
-        if let Some(entry) = shared.get_or_insert_with(HashMap::new).get_mut(&self.0) {
-            if entry.concurrent {
+        if let Some(entry) = shared.get_or_insert_with(HashMap::new).get_mut(&self.0)
+        {
+            if entry.concurrent
+            {
                 entry.users = entry.users.saturating_sub(1);
-                if entry.users == 0 {
+                if entry.users == 0
+                {
                     entry.busy = false;
                 }
-            } else {
+            }
+            else
+            {
                 entry.busy = false;
             }
         }
@@ -4057,11 +4969,14 @@ pub fn bracket(
     ctx: &mut Context,
     body: impl FnOnce(&mut Context) -> Result<()>,
     release: impl FnOnce(&mut Context) -> Result<Value>,
-) -> Result<()> {
+) -> Result<()>
+{
     let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| body(ctx)));
     let released = release(ctx);
-    match outcome {
-        Ok(result) => {
+    match outcome
+    {
+        Ok(result) =>
+        {
             result?;
             released?;
             Ok(())
@@ -4085,7 +5000,8 @@ where
     R: FnOnce(&mut Context, Value) -> Result<Value>,
     F: FnOnce(&mut Context, Value) -> Result<Value> + Send + 'static,
 {
-    if concurrent {
+    if concurrent
+    {
         let mut shared = SHARED.lock().unwrap_or_else(|e| e.into_inner());
         let entry = shared
             .get_or_insert_with(HashMap::new)
@@ -4096,19 +5012,24 @@ where
                 concurrent: true,
                 value: None,
             });
-        let value = match entry.value.clone() {
-            Some(value) => {
-                if entry.users == 0 {
+        let value = match entry.value.clone()
+        {
+            Some(value) =>
+            {
+                if entry.users == 0
+                {
                     reset(ctx, value.clone())?;
                 }
                 value
             }
-            None => {
+            None =>
+            {
                 let value = acquire(ctx)?;
                 entry.value = Some(value.clone());
                 let kept = value.clone();
                 let mut releases = SHARED_RELEASES.lock().unwrap_or_else(|e| e.into_inner());
-                if releases.is_empty() {
+                if releases.is_empty()
+                {
                     unsafe {
                         atexit(release_shared);
                     }
@@ -4126,7 +5047,8 @@ where
     }
     let held = {
         let mut shared = SHARED.lock().unwrap_or_else(|e| e.into_inner());
-        loop {
+        loop
+        {
             let entry = shared
                 .get_or_insert_with(HashMap::new)
                 .entry(key.to_string())
@@ -4136,7 +5058,8 @@ where
                     concurrent: false,
                     value: None,
                 });
-            if !entry.busy {
+            if !entry.busy
+            {
                 entry.busy = true;
                 break entry.value.clone();
             }
@@ -4144,22 +5067,27 @@ where
         }
     };
     let guard = SharedGuard(key.to_string());
-    match held {
-        Some(value) => {
+    match held
+    {
+        Some(value) =>
+        {
             reset(ctx, value.clone())?;
             Ok((value, guard))
         }
-        None => {
+        None =>
+        {
             let value = acquire(ctx)?;
             {
                 let mut shared = SHARED.lock().unwrap_or_else(|e| e.into_inner());
-                if let Some(entry) = shared.get_or_insert_with(HashMap::new).get_mut(key) {
+                if let Some(entry) = shared.get_or_insert_with(HashMap::new).get_mut(key)
+                {
                     entry.value = Some(value.clone());
                 }
             }
             let kept = value.clone();
             let mut releases = SHARED_RELEASES.lock().unwrap_or_else(|e| e.into_inner());
-            if releases.is_empty() {
+            if releases.is_empty()
+            {
                 unsafe {
                     atexit(release_shared);
                 }
@@ -4180,9 +5108,12 @@ static ENVIRONMENT_HELD: std::sync::Mutex<bool> = std::sync::Mutex::new(false);
 static ENVIRONMENT_FREE: std::sync::Condvar = std::sync::Condvar::new();
 static TEMPORARY_COUNT: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
 
-pub fn acquire_resource(kind: &str) -> Result<String> {
-    match kind {
-        "temporaryDirectory" | "temporaryFile" => {
+pub fn acquire_resource(kind: &str) -> Result<String>
+{
+    match kind
+    {
+        "temporaryDirectory" | "temporaryFile" =>
+        {
             let unique = TEMPORARY_COUNT.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
             let nanos = std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
@@ -4190,17 +5121,26 @@ pub fn acquire_resource(kind: &str) -> Result<String> {
                 .unwrap_or(0);
             let path = std::env::temp_dir()
                 .join(format!("lawspec-{}-{nanos}-{unique}", std::process::id()));
-            if kind == "temporaryDirectory" {
+            if kind == "temporaryDirectory"
+            {
                 std::fs::create_dir(&path).map_err(|e| e.to_string())?;
-            } else {
+            }
+            else
+            {
                 std::fs::write(&path, "").map_err(|e| e.to_string())?;
             }
             Ok(path.to_string_lossy().into_owned())
         }
-        "environment" => {
-            let mut held = ENVIRONMENT_HELD.lock().unwrap();
-            while *held {
-                held = ENVIRONMENT_FREE.wait(held).unwrap();
+        "environment" =>
+        {
+            let mut held = ENVIRONMENT_HELD
+                .lock()
+                .expect("environment resource lock must not be poisoned");
+            while *held
+            {
+                held = ENVIRONMENT_FREE
+                    .wait(held)
+                    .expect("environment resource lock must not be poisoned");
             }
             *held = true;
             let mut saved: Vec<(String, String)> = std::env::vars().collect();
@@ -4214,35 +5154,46 @@ pub fn acquire_resource(kind: &str) -> Result<String> {
     }
 }
 
-pub fn release_resource(kind: &str, value: &str) -> Result<()> {
-    match kind {
-        "temporaryDirectory" => {
+pub fn release_resource(kind: &str, value: &str) -> Result<()>
+{
+    match kind
+    {
+        "temporaryDirectory" =>
+        {
             let _ = std::fs::remove_dir_all(value);
         }
-        "temporaryFile" => {
+        "temporaryFile" =>
+        {
             let _ = std::fs::remove_file(value);
         }
-        "environment" => {
+        "environment" =>
+        {
             let parts: Vec<&str> = value.split('\0').collect();
             let saved: HashMap<&str, &str> = parts
                 .chunks(2)
                 .filter(|c| c.len() == 2)
                 .map(|c| (c[0], c[1]))
                 .collect();
-            for (name, _) in std::env::vars() {
-                if !saved.contains_key(name.as_str()) {
+            for (name, _) in std::env::vars()
+            {
+                if !saved.contains_key(name.as_str())
+                {
                     // SAFETY: the saved environment holds the environment for
                     // this case alone (ENVIRONMENT_HELD).
                     unsafe { std::env::remove_var(&name) };
                 }
             }
-            for (name, text) in &saved {
-                if std::env::var(name).as_deref() != Ok(*text) {
+            for (name, text) in &saved
+            {
+                if std::env::var(name).as_deref() != Ok(*text)
+                {
                     // SAFETY: as above.
                     unsafe { std::env::set_var(name, text) };
                 }
             }
-            *ENVIRONMENT_HELD.lock().unwrap() = false;
+            *ENVIRONMENT_HELD
+                .lock()
+                .expect("environment resource lock must not be poisoned") = false;
             ENVIRONMENT_FREE.notify_one();
         }
         _ => return Err(format!("unknown resource kind {kind}")),
@@ -4251,7 +5202,8 @@ pub fn release_resource(kind: &str, value: &str) -> Result<()> {
 }
 
 /// A TCP port on the local host that is free now.
-pub fn free_port() -> Result<u16> {
+pub fn free_port() -> Result<u16>
+{
     let listener = std::net::TcpListener::bind("127.0.0.1:0").map_err(|e| e.to_string())?;
     listener
         .local_addr()
@@ -4269,30 +5221,38 @@ pub fn free_port() -> Result<u16> {
 /// A descriptor form. Quoted strings and symbols are one atom: the reference
 /// compares them as equal strings.
 #[derive(Clone, Debug, PartialEq)]
-pub enum Sexp {
+pub enum Sexp
+{
     List(Vec<Sexp>),
     Int(BigInt),
     Atom(String),
     Blank,
 }
 
-impl Sexp {
-    fn items(&self) -> &[Sexp] {
-        match self {
+impl Sexp
+{
+    fn items(&self) -> &[Sexp]
+    {
+        match self
+        {
             Sexp::List(items) => items,
             other => panic!("expected a descriptor form, got {other:?}"),
         }
     }
 
-    fn kind(&self) -> &str {
-        match self.items().first() {
+    fn kind(&self) -> &str
+    {
+        match self.items().first()
+        {
             Some(Sexp::Atom(kind)) => kind,
             _ => "",
         }
     }
 
-    fn name(&self) -> String {
-        match self {
+    fn name(&self) -> String
+    {
+        match self
+        {
             Sexp::Atom(s) => s.clone(),
             Sexp::Int(n) => n.to_string(),
             Sexp::Blank => "None".into(),
@@ -4300,8 +5260,10 @@ impl Sexp {
         }
     }
 
-    fn bound(&self) -> Option<BigInt> {
-        match self {
+    fn bound(&self) -> Option<BigInt>
+    {
+        match self
+        {
             Sexp::Int(n) => Some(n.clone()),
             Sexp::Blank => None,
             other => panic!("expected an integer bound, got {other:?}"),
@@ -4310,33 +5272,43 @@ impl Sexp {
 }
 
 /// Parses s-expressions: lists, integers, strings, symbols and _ (Blank).
-pub fn read_descriptor(text: &str) -> Vec<Sexp> {
+pub fn read_descriptor(text: &str) -> Vec<Sexp>
+{
     let chars: Vec<char> = text.chars().collect();
     let space = |c: char| matches!(c, ' ' | '\t' | '\r' | '\n');
-    fn skip(chars: &[char], at: &mut usize, space: &dyn Fn(char) -> bool) {
-        while *at < chars.len() && space(chars[*at]) {
+    fn skip(chars: &[char], at: &mut usize, space: &dyn Fn(char) -> bool)
+    {
+        while *at < chars.len() && space(chars[*at])
+        {
             *at += 1;
         }
     }
-    fn item(chars: &[char], at: &mut usize, space: &dyn Fn(char) -> bool) -> Sexp {
+    fn item(chars: &[char], at: &mut usize, space: &dyn Fn(char) -> bool) -> Sexp
+    {
         skip(chars, at, space);
-        match chars[*at] {
-            '(' => {
+        match chars[*at]
+        {
+            '(' =>
+            {
                 *at += 1;
                 let mut items = Vec::new();
                 skip(chars, at, space);
-                while chars[*at] != ')' {
+                while chars[*at] != ')'
+                {
                     items.push(item(chars, at, space));
                     skip(chars, at, space);
                 }
                 *at += 1;
                 Sexp::List(items)
             }
-            '"' => {
+            '"' =>
+            {
                 *at += 1;
                 let mut out = String::new();
-                while chars[*at] != '"' {
-                    if chars[*at] == '\\' {
+                while chars[*at] != '"'
+                {
+                    if chars[*at] == '\\'
+                    {
                         *at += 1;
                     }
                     out.push(chars[*at]);
@@ -4345,7 +5317,8 @@ pub fn read_descriptor(text: &str) -> Vec<Sexp> {
                 *at += 1;
                 Sexp::Atom(out)
             }
-            _ => {
+            _ =>
+            {
                 let start = *at;
                 while *at < chars.len()
                     && !space(chars[*at])
@@ -4356,13 +5329,18 @@ pub fn read_descriptor(text: &str) -> Vec<Sexp> {
                 }
                 let atom: String = chars[start..*at].iter().collect();
                 let digits = atom.trim_start_matches('-');
-                if atom == "_" {
+                if atom == "_"
+                {
                     Sexp::Blank
-                } else if !digits.is_empty() && digits.chars().all(|c| c.is_ascii_digit()) {
+                }
+                else if !digits.is_empty() && digits.chars().all(|c| c.is_ascii_digit())
+                {
                     atom.parse::<BigInt>()
                         .map(Sexp::Int)
                         .unwrap_or(Sexp::Atom(atom))
-                } else {
+                }
+                else
+                {
                     Sexp::Atom(atom)
                 }
             }
@@ -4371,7 +5349,8 @@ pub fn read_descriptor(text: &str) -> Vec<Sexp> {
     let mut at = 0;
     let mut forms = Vec::new();
     skip(&chars, &mut at, &space);
-    while at < chars.len() {
+    while at < chars.len()
+    {
         forms.push(item(&chars, &mut at, &space));
         skip(&chars, &mut at, &space);
     }
@@ -4382,50 +5361,67 @@ const UNBOUNDED: i64 = 1_000_000;
 
 // Uniform in [0, bound) like SplitMix64::below, but for any bound: a range
 // such as UInt64's is 2^64 wide.
-fn below_big(random: &mut SplitMix64, bound: &BigInt) -> BigInt {
-    if bound.is_positive() {
+fn below_big(random: &mut SplitMix64, bound: &BigInt) -> BigInt
+{
+    if bound.is_positive()
+    {
         BigInt::from(random.next()) % bound
-    } else {
+    }
+    else
+    {
         BigInt::zero()
     }
 }
 
-fn below_len(random: &mut SplitMix64, bound: i64) -> usize {
-    if bound > 0 {
+fn below_len(random: &mut SplitMix64, bound: i64) -> usize
+{
+    if bound > 0
+    {
         random.below(bound as u64) as usize
-    } else {
+    }
+    else
+    {
         0
     }
 }
 
 /// Generation, shrinking and rendering over a table of data types.
 #[derive(Clone, Debug)]
-pub struct Values {
+pub struct Values
+{
     pub table: HashMap<String, Sexp>,
 }
 
-impl Values {
-    pub fn new(table: HashMap<String, Sexp>) -> Self {
+impl Values
+{
+    pub fn new(table: HashMap<String, Sexp>) -> Self
+    {
         Values { table }
     }
 
-    pub fn resolve<'a>(&'a self, d: &'a Sexp) -> &'a Sexp {
-        if d.kind() == "ref" {
+    pub fn resolve<'a>(&'a self, d: &'a Sexp) -> &'a Sexp
+    {
+        if d.kind() == "ref"
+        {
             let name = d.items()[1].name();
             self.table
                 .get(&name)
                 .unwrap_or_else(|| panic!("unknown data type {name}"))
-        } else {
+        }
+        else
+        {
             d
         }
     }
 
     /// An integer's range: a missing bound is 1,000,000 from zero, or
     /// 2,000,000 from the other bound when that is beyond it.
-    pub fn bounds(&self, d: &Sexp) -> (BigInt, BigInt) {
+    pub fn bounds(&self, d: &Sexp) -> (BigInt, BigInt)
+    {
         let items = d.items();
         let far = BigInt::from(UNBOUNDED);
-        match (items[2].bound(), items[3].bound()) {
+        match (items[2].bound(), items[3].bound())
+        {
             (None, None) => (-far.clone(), far),
             (None, Some(hi)) => ((-far.clone()).min(&hi - 2 * &far), hi),
             (Some(lo), None) => (lo.clone(), far.clone().max(&lo + 2 * &far)),
@@ -4434,26 +5430,34 @@ impl Values {
     }
 
     /// The constructors whose fields mention no data type.
-    pub fn base<'a>(&self, d: &'a Sexp) -> Vec<&'a Sexp> {
+    pub fn base<'a>(&self, d: &'a Sexp) -> Vec<&'a Sexp>
+    {
         let ctors = &d.items()[2..];
         let found: Vec<&Sexp> = ctors
             .iter()
             .filter(|c| !c.items()[2..].iter().any(mentions_data))
             .collect();
-        if found.is_empty() {
+        if found.is_empty()
+        {
             ctors.iter().collect()
-        } else {
+        }
+        else
+        {
             found
         }
     }
 
-    pub fn generate(&self, d: &Sexp, random: &mut SplitMix64, size: i64) -> Value {
+    pub fn generate(&self, d: &Sexp, random: &mut SplitMix64, size: i64) -> Value
+    {
         let d = self.resolve(d);
         let items = d.items();
-        match d.kind() {
-            "int" => {
+        match d.kind()
+        {
+            "int" =>
+            {
                 let (lo, hi) = self.bounds(d);
-                if random.below(10) < 2 {
+                if random.below(10) < 2
+                {
                     let specials = [
                         lo.clone(),
                         hi.clone(),
@@ -4466,7 +5470,8 @@ impl Values {
                 Value::Integer(lo + offset)
             }
             "bool" => Value::Bool(random.below(2) == 1),
-            "text" => {
+            "text" =>
+            {
                 let n = below_len(random, size + 1);
                 Value::Text(
                     (0..n)
@@ -4475,7 +5480,8 @@ impl Values {
                 )
             }
             "unit" => Value::Unit,
-            "list" => {
+            "list" =>
+            {
                 let n = below_len(random, size + 1);
                 Value::List(
                     (0..n)
@@ -4483,22 +5489,30 @@ impl Values {
                         .collect(),
                 )
             }
-            "maybe" => {
-                if random.below(4) == 0 {
+            "maybe" =>
+            {
+                if random.below(4) == 0
+                {
                     return Value::Maybe(None);
                 }
                 Value::Maybe(Some(Box::new(self.generate(&items[1], random, size))))
             }
-            "either" => {
-                if random.below(2) == 0 {
+            "either" =>
+            {
+                if random.below(2) == 0
+                {
                     return Value::Left(Box::new(self.generate(&items[1], random, size)));
                 }
                 Value::Right(Box::new(self.generate(&items[2], random, size)))
             }
-            "data" => {
-                let choices: Vec<&Sexp> = if size <= 0 {
+            "data" =>
+            {
+                let choices: Vec<&Sexp> = if size <= 0
+                {
                     self.base(d)
-                } else {
+                }
+                else
+                {
                     items[2..].iter().collect()
                 };
                 let ctor = choices[random.below(choices.len() as u64) as usize].items();
@@ -4512,11 +5526,14 @@ impl Values {
         }
     }
 
-    pub fn minimal(&self, d: &Sexp) -> Value {
+    pub fn minimal(&self, d: &Sexp) -> Value
+    {
         let d = self.resolve(d);
         let items = d.items();
-        match d.kind() {
-            "int" => {
+        match d.kind()
+        {
+            "int" =>
+            {
                 let (lo, hi) = self.bounds(d);
                 Value::Integer(clamp(0, &lo, &hi))
             }
@@ -4526,7 +5543,8 @@ impl Values {
             "list" => Value::List(Vec::new()),
             "maybe" => Value::Maybe(None),
             "either" => Value::Left(Box::new(self.minimal(&items[1]))),
-            _ => {
+            _ =>
+            {
                 let ctor = self.base(d)[0].items();
                 Value::Data(
                     ctor[1].name(),
@@ -4537,20 +5555,28 @@ impl Values {
     }
 
     /// Smaller candidates for v, most aggressive first.
-    pub fn shrink(&self, d: &Sexp, v: &Value) -> Vec<Value> {
+    pub fn shrink(&self, d: &Sexp, v: &Value) -> Vec<Value>
+    {
         let d = self.resolve(d);
         let items = d.items();
         let mut out: Vec<Value> = Vec::new();
-        match (d.kind(), v) {
-            ("int", Value::Integer(n)) => {
-                let target = match self.minimal(d) {
+        match (d.kind(), v)
+        {
+            ("int", Value::Integer(n)) =>
+            {
+                let target = match self.minimal(d)
+                {
                     Value::Integer(t) => t,
                     _ => unreachable!(),
                 };
-                if *n != target {
-                    let step = if *n > target {
+                if *n != target
+                {
+                    let step = if *n > target
+                    {
                         BigInt::one()
-                    } else {
+                    }
+                    else
+                    {
                         -BigInt::one()
                     };
                     out = vec![
@@ -4560,32 +5586,42 @@ impl Values {
                     ];
                 }
             }
-            ("bool", Value::Bool(b)) => {
-                if *b {
+            ("bool", Value::Bool(b)) =>
+            {
+                if *b
+                {
                     out = vec![Value::Bool(false)];
                 }
             }
-            ("text", Value::Text(s)) => {
+            ("text", Value::Text(s)) =>
+            {
                 let cs: Vec<char> = s.chars().collect();
-                if !cs.is_empty() {
+                if !cs.is_empty()
+                {
                     out.push(Value::Text(String::new()));
                     out.push(Value::Text(cs[..cs.len() / 2].iter().collect()));
-                    for i in 0..cs.len() {
+                    for i in 0..cs.len()
+                    {
                         out.push(Value::Text(cs[..i].iter().chain(&cs[i + 1..]).collect()));
                     }
                 }
             }
-            ("list", Value::List(xs)) => {
-                if !xs.is_empty() {
+            ("list", Value::List(xs)) =>
+            {
+                if !xs.is_empty()
+                {
                     out.push(Value::List(Vec::new()));
                     out.push(Value::List(xs[..xs.len() / 2].to_vec()));
-                    for i in 0..xs.len() {
+                    for i in 0..xs.len()
+                    {
                         out.push(Value::List(
                             xs[..i].iter().chain(&xs[i + 1..]).cloned().collect(),
                         ));
                     }
-                    for (i, x) in xs.iter().enumerate() {
-                        for c in self.shrink(&items[1], x) {
+                    for (i, x) in xs.iter().enumerate()
+                    {
+                        for c in self.shrink(&items[1], x)
+                        {
                             let mut ys = xs.clone();
                             ys[i] = c;
                             out.push(Value::List(ys));
@@ -4593,7 +5629,8 @@ impl Values {
                     }
                 }
             }
-            ("maybe", Value::Maybe(Some(x))) => {
+            ("maybe", Value::Maybe(Some(x))) =>
+            {
                 out.push(Value::Maybe(None));
                 out.extend(
                     self.shrink(&items[1], x)
@@ -4601,21 +5638,24 @@ impl Values {
                         .map(|c| Value::Maybe(Some(Box::new(c)))),
                 );
             }
-            ("either", Value::Left(x)) => {
+            ("either", Value::Left(x)) =>
+            {
                 out = self
                     .shrink(&items[1], x)
                     .into_iter()
                     .map(|c| Value::Left(Box::new(c)))
                     .collect();
             }
-            ("either", Value::Right(x)) => {
+            ("either", Value::Right(x)) =>
+            {
                 out = self
                     .shrink(&items[2], x)
                     .into_iter()
                     .map(|c| Value::Right(Box::new(c)))
                     .collect();
             }
-            ("data", Value::Data(tag, fields)) => {
+            ("data", Value::Data(tag, fields)) =>
+            {
                 let ctor = items[2..]
                     .iter()
                     .find(|c| c.items()[1].name() == *tag)
@@ -4631,22 +5671,27 @@ impl Values {
                         .filter(|(_, fd)| **fd == own)
                         .map(|(f, _)| f.clone()),
                 );
-                for (i, (field, fd)) in fields.iter().zip(&ctor[2..]).enumerate() {
-                    for c in self.shrink(fd, field) {
+                for (i, (field, fd)) in fields.iter().zip(&ctor[2..]).enumerate()
+                {
+                    for c in self.shrink(fd, field)
+                    {
                         let mut fs = fields.clone();
                         fs[i] = c;
                         out.push(Value::Data(tag.clone(), fs));
                     }
                 }
             }
-            _ => {}
+            _ =>
+            {}
         }
         let own = render(v);
         let mut seen: Vec<String> = Vec::new();
         let mut unique = Vec::new();
-        for c in out {
+        for c in out
+        {
             let text = render(&c);
-            if text != own && !seen.contains(&text) {
+            if text != own && !seen.contains(&text)
+            {
                 seen.push(text);
                 unique.push(c);
             }
@@ -4655,18 +5700,23 @@ impl Values {
     }
 }
 
-fn clamp(n: i64, lo: &BigInt, hi: &BigInt) -> BigInt {
+fn clamp(n: i64, lo: &BigInt, hi: &BigInt) -> BigInt
+{
     BigInt::from(n).max(lo.clone()).min(hi.clone())
 }
 
-fn toward_zero(n: &BigInt, d: i64) -> BigInt {
+fn toward_zero(n: &BigInt, d: i64) -> BigInt
+{
     let q = n.abs() / d;
     if n.is_negative() { -q } else { q }
 }
 
-fn mentions_data(d: &Sexp) -> bool {
-    match d {
-        Sexp::List(items) => {
+fn mentions_data(d: &Sexp) -> bool
+{
+    match d
+    {
+        Sexp::List(items) =>
+        {
             matches!(items.first(), Some(Sexp::Atom(k)) if k == "ref" || k == "data")
                 || items.iter().skip(1).any(mentions_data)
         }
@@ -4675,9 +5725,11 @@ fn mentions_data(d: &Sexp) -> bool {
 }
 
 /// A value's canonical text, the same on every target.
-pub fn render(v: &Value) -> String {
+pub fn render(v: &Value) -> String
+{
     let all = |xs: &[Value]| xs.iter().map(render).collect::<Vec<_>>().join(", ");
-    match v {
+    match v
+    {
         Value::Bool(b) => (if *b { "true" } else { "false" }).into(),
         Value::Integer(n) => n.to_string(),
         Value::Text(s) => format!("\"{}\"", s.replace('\\', "\\\\").replace('"', "\\\"")),
@@ -4687,11 +5739,15 @@ pub fn render(v: &Value) -> String {
         Value::Maybe(Some(x)) => format!("Present({})", render(x)),
         Value::Left(x) => format!("Left({})", render(x)),
         Value::Right(x) => format!("Right({})", render(x)),
-        Value::Data(tag, fields) => {
+        Value::Data(tag, fields) =>
+        {
             let name = tag.rsplit("::").next().unwrap_or(tag);
-            if fields.is_empty() {
+            if fields.is_empty()
+            {
                 name.into()
-            } else {
+            }
+            else
+            {
                 format!("{name}({})", all(fields))
             }
         }
@@ -4702,30 +5758,42 @@ pub fn render(v: &Value) -> String {
 
 /// Typed snapshot text with identities numbered inside one recording.
 /// ref:REQ-law-primitives ref:DEC-portable-exact-arithmetic
-pub fn recorded_text(value: &Value) -> String {
+pub fn recorded_text(value: &Value) -> String
+{
     #[derive(Default)]
-    struct Recording {
+    struct Recording
+    {
         symbols: Vec<Symbol>,
         handles: HashMap<&'static str, Vec<Handle>>,
     }
-    fn quote(text: &str) -> String {
+    fn quote(text: &str) -> String
+    {
         format!("\"{}\"", text.replace('\\', "\\\\").replace('"', "\\\""))
     }
-    fn float32(value: f32) -> String {
-        if value.is_nan() {
+    fn float32(value: f32) -> String
+    {
+        if value.is_nan()
+        {
             "float32NaN".into()
-        } else {
+        }
+        else
+        {
             format!("float32Bits(\"{:08x}\")", value.to_bits())
         }
     }
-    fn float64(value: f64) -> String {
-        if value.is_nan() {
+    fn float64(value: f64) -> String
+    {
+        if value.is_nan()
+        {
             "float64NaN".into()
-        } else {
+        }
+        else
+        {
             format!("float64Bits(\"{:016x}\")", value.to_bits())
         }
     }
-    fn units<T: std::fmt::Display>(name: &str, values: &[T]) -> String {
+    fn units<T: std::fmt::Display>(name: &str, values: &[T]) -> String
+    {
         format!(
             "{name}([{}])",
             values
@@ -4735,24 +5803,31 @@ pub fn recorded_text(value: &Value) -> String {
                 .join(", ")
         )
     }
-    impl Recording {
-        fn values(&mut self, values: &[Value]) -> String {
+    impl Recording
+    {
+        fn values(&mut self, values: &[Value]) -> String
+        {
             values
                 .iter()
                 .map(|value| self.render(value))
                 .collect::<Vec<_>>()
                 .join(", ")
         }
-        fn render(&mut self, value: &Value) -> String {
-            match value {
+        fn render(&mut self, value: &Value) -> String
+        {
+            match value
+            {
                 Value::Bool(v) => v.to_string(),
                 Value::Integer(v) => v.to_string(),
-                Value::Decimal(v) => {
+                Value::Decimal(v) =>
+                {
                     let (mut c, mut e) = (v.coefficient.clone(), v.exponent.clone());
-                    if c.is_zero() {
+                    if c.is_zero()
+                    {
                         return "0e0".into();
                     }
-                    while (&c % 10u8).is_zero() {
+                    while (&c % 10u8).is_zero()
+                    {
                         c /= 10u8;
                         e += 1u8;
                     }
@@ -4770,10 +5845,13 @@ pub fn recorded_text(value: &Value) -> String {
                 Value::CodePointText(v) => units("codePoints", v),
                 Value::Utf16Text(v) => units("utf16", v),
                 Value::Bytes(v) => units("bytes", v),
-                Value::Symbol(v) => {
-                    let number = match self.symbols.iter().position(|other| other == v) {
+                Value::Symbol(v) =>
+                {
+                    let number = match self.symbols.iter().position(|other| other == v)
+                    {
                         Some(i) => i + 1,
-                        None => {
+                        None =>
+                        {
                             self.symbols.push(v.clone());
                             self.symbols.len()
                         }
@@ -4790,20 +5868,27 @@ pub fn recorded_text(value: &Value) -> String {
                 Value::Maybe(Some(v)) => format!("Present({})", self.render(v)),
                 Value::Left(v) => format!("Left({})", self.render(v)),
                 Value::Right(v) => format!("Right({})", self.render(v)),
-                Value::Data(tag, vs) => {
+                Value::Data(tag, vs) =>
+                {
                     let name = tag.rsplit("::").next().unwrap_or(tag);
-                    if vs.is_empty() {
+                    if vs.is_empty()
+                    {
                         name.into()
-                    } else {
+                    }
+                    else
+                    {
                         format!("{name}({})", self.values(vs))
                     }
                 }
-                Value::Handle(v) => {
+                Value::Handle(v) =>
+                {
                     let name = v.0.name.get().copied().unwrap_or("Handle");
                     let known = self.handles.entry(name).or_default();
-                    let number = match known.iter().position(|other| other.same(v)) {
+                    let number = match known.iter().position(|other| other.same(v))
+                    {
                         Some(i) => i + 1,
-                        None => {
+                        None =>
+                        {
                             known.push(v.clone());
                             known.len()
                         }
@@ -4817,7 +5902,8 @@ pub fn recorded_text(value: &Value) -> String {
 }
 
 /// A descriptor text's data types and its last form, the one generated.
-pub fn values_from(text: &str) -> (Values, Sexp) {
+pub fn values_from(text: &str) -> (Values, Sexp)
+{
     let mut forms = read_descriptor(text);
     let table = forms
         .iter()
@@ -4837,16 +5923,20 @@ pub fn values_from(text: &str) -> (Values, Sexp) {
 // rises and drawing afresh when it does not, checking the law on every case
 // it tries (at most 400). A case gives its score, or None when its inputs
 // fall outside the law's refinements.
-fn search_file(law: &str) -> Option<std::path::PathBuf> {
+fn search_file(law: &str) -> Option<std::path::PathBuf>
+{
     let directory = std::env::var("LAWSPEC_FAILURES")
         .ok()
         .filter(|d| !d.is_empty())?;
     let safe: String = law
         .chars()
         .map(|c| {
-            if c.is_ascii_alphanumeric() || c == '-' || c == '_' {
+            if c.is_ascii_alphanumeric() || c == '-' || c == '_'
+            {
                 c
-            } else {
+            }
+            else
+            {
                 '_'
             }
         })
@@ -4858,12 +5948,19 @@ fn search_file(law: &str) -> Option<std::path::PathBuf> {
     )
 }
 
-pub fn search_remember(law: &str, descriptors: &[&str], values: &[Value]) {
-    let Some(file) = search_file(law) else { return };
+pub fn search_remember(law: &str, descriptors: &[&str], values: &[Value])
+{
+    let Some(file) = search_file(law)
+    else
+    {
+        return;
+    };
     let mut inputs = Vec::new();
-    for (text, value) in descriptors.iter().zip(values) {
+    for (text, value) in descriptors.iter().zip(values)
+    {
         let (table, d) = values_from(text);
-        match net::wire_encode(&table, &d, value) {
+        match net::wire_encode(&table, &d, value)
+        {
             Ok(bytes) => inputs.push(format!(
                 "\"{}\"",
                 bytes.iter().map(|b| format!("{b:02x}")).collect::<String>()
@@ -4872,7 +5969,8 @@ pub fn search_remember(law: &str, descriptors: &[&str], values: &[Value]) {
         }
     }
     let quoted = law.replace('\\', "\\\\").replace('"', "\\\"");
-    if let Some(parent) = file.parent() {
+    if let Some(parent) = file.parent()
+    {
         let _ = std::fs::create_dir_all(parent);
     }
     let _ = std::fs::write(
@@ -4888,11 +5986,16 @@ pub fn search_replay(
     law: &str,
     descriptors: &[&str],
     mut check: impl FnMut(&[Value]) -> Result<Option<f64>>,
-) -> Result<()> {
-    let Some(file) = search_file(law) else {
+) -> Result<()>
+{
+    let Some(file) = search_file(law)
+    else
+    {
         return Ok(());
     };
-    let Ok(text) = std::fs::read_to_string(&file) else {
+    let Ok(text) = std::fs::read_to_string(&file)
+    else
+    {
         return Ok(());
     };
     let after = text
@@ -4901,18 +6004,25 @@ pub fn search_replay(
         .unwrap_or("");
     let encoded: Vec<&str> = after.split('"').skip(1).step_by(2).collect();
     let mut values = Vec::new();
-    for (i, d) in descriptors.iter().enumerate() {
-        let Some(hex) = encoded.get(i) else { break };
+    for (i, d) in descriptors.iter().enumerate()
+    {
+        let Some(hex) = encoded.get(i)
+        else
+        {
+            break;
+        };
         let bytes: Option<Vec<u8>> = (0..hex.len() / 2)
             .map(|k| u8::from_str_radix(&hex[2 * k..2 * k + 2], 16).ok())
             .collect();
         let (table, descriptor) = values_from(d);
-        match bytes.map(|b| net::wire_decode(&table, &descriptor, &b)) {
+        match bytes.map(|b| net::wire_decode(&table, &descriptor, &b))
+        {
             Some(Ok(value)) => values.push(value),
             _ => break,
         }
     }
-    if values.len() == descriptors.len() {
+    if values.len() == descriptors.len()
+    {
         println!("{law}: replaying the failing inputs kept in .lawspec/failures");
         check(&values)?;
     }
@@ -4921,11 +6031,14 @@ pub fn search_replay(
 }
 
 // Each value with one integer moved, wherever it sits in the value.
-fn search_moves(table: &Values, d: &Sexp, v: &Value) -> Vec<Value> {
+fn search_moves(table: &Values, d: &Sexp, v: &Value) -> Vec<Value>
+{
     let d = table.resolve(d);
     let items = d.items();
-    match (d.kind(), v) {
-        ("int", Value::Integer(x)) => {
+    match (d.kind(), v)
+    {
+        ("int", Value::Integer(x)) =>
+        {
             let (lo, hi) = table.bounds(d);
             let two = BigInt::from(2);
             let candidates = [
@@ -4937,8 +6050,10 @@ fn search_moves(table: &Values, d: &Sexp, v: &Value) -> Vec<Value> {
                 x - (x - &lo) / &two,
             ];
             let mut out: Vec<Value> = Vec::new();
-            for c in candidates {
-                if c >= lo && c <= hi && &c != x && !out.contains(&Value::Integer(c.clone())) {
+            for c in candidates
+            {
+                if c >= lo && c <= hi && &c != x && !out.contains(&Value::Integer(c.clone()))
+                {
                     out.push(Value::Integer(c));
                 }
             }
@@ -4968,8 +6083,11 @@ fn search_moves(table: &Values, d: &Sexp, v: &Value) -> Vec<Value> {
             .into_iter()
             .map(|m| Value::Right(Box::new(m)))
             .collect(),
-        ("data", Value::Data(tag, fields)) => {
-            let Some(ctor) = items[2..].iter().find(|c| &c.items()[1].name() == tag) else {
+        ("data", Value::Data(tag, fields)) =>
+        {
+            let Some(ctor) = items[2..].iter().find(|c| &c.items()[1].name() == tag)
+            else
+            {
                 return Vec::new();
             };
             let field_forms = &ctor.items()[2..];
@@ -4994,7 +6112,8 @@ pub fn search_climb(
     law: &str,
     descriptors: &[&str],
     mut check: impl FnMut(&[Value]) -> Result<Option<f64>>,
-) -> Result<()> {
+) -> Result<()>
+{
     let tables: Vec<(Values, Sexp)> = descriptors.iter().map(|d| values_from(d)).collect();
     let base: u64 = std::env::var("LAWSPEC_SEED")
         .ok()
@@ -5013,56 +6132,71 @@ pub fn search_climb(
                        best: &mut Option<(f64, Vec<Value>)>,
                        tried: &mut usize|
      -> Result<bool> {
-        if *tried >= 400 {
+        if *tried >= 400
+        {
             return Ok(false);
         }
         *tried += 1;
         let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| check(&values)));
-        let score = match outcome {
+        let score = match outcome
+        {
             Ok(Ok(score)) => score,
-            Ok(Err(error)) => {
+            Ok(Err(error)) =>
+            {
                 search_remember(law, descriptors, &values);
                 return Err(error);
             }
-            Err(panic) => {
+            Err(panic) =>
+            {
                 search_remember(law, descriptors, &values);
                 std::panic::resume_unwind(panic)
             }
         };
-        match (score, best.as_ref()) {
+        match (score, best.as_ref())
+        {
             (Some(s), Some((b, _))) if !(s > *b) => Ok(false),
-            (Some(s), _) => {
+            (Some(s), _) =>
+            {
                 *best = Some((s, values));
                 Ok(true)
             }
             (None, _) => Ok(false),
         }
     };
-    for k in 0..10u64 {
+    for k in 0..10u64
+    {
         attempt(generate(base.wrapping_add(k)), &mut best, &mut tried)?;
     }
-    for step in 0..60u64 {
-        if tried >= 400 {
+    for step in 0..60u64
+    {
+        if tried >= 400
+        {
             break;
         }
         let mut rose = false;
-        if let Some((_, current)) = best.clone() {
+        if let Some((_, current)) = best.clone()
+        {
             let mut moves = Vec::new();
-            for (i, v) in current.iter().enumerate() {
-                for m in search_moves(&tables[i].0, &tables[i].1, v) {
+            for (i, v) in current.iter().enumerate()
+            {
+                for m in search_moves(&tables[i].0, &tables[i].1, v)
+                {
                     let mut changed = current.clone();
                     changed[i] = m;
                     moves.push(changed);
                 }
             }
             moves.truncate(24);
-            for candidate in moves {
-                if attempt(candidate, &mut best, &mut tried)? {
+            for candidate in moves
+            {
+                if attempt(candidate, &mut best, &mut tried)?
+                {
                     rose = true;
                 }
             }
         }
-        if !rose {
+        if !rose
+        {
             attempt(
                 generate(base.wrapping_add(1000 + step)),
                 &mut best,
@@ -5070,8 +6204,10 @@ pub fn search_climb(
             )?;
         }
     }
-    match &best {
-        Some((score, _)) => {
+    match &best
+    {
+        Some((score, _)) =>
+        {
             println!("{law}: targeted search tried {tried} case(s); best score {score}")
         }
         None => println!("{law}: targeted search tried {tried} case(s)"),
@@ -5080,8 +6216,10 @@ pub fn search_climb(
 }
 
 /// A score as a float: the targeted search maximizes it.
-pub fn search_number(v: &Value) -> f64 {
-    match v {
+pub fn search_number(v: &Value) -> f64
+{
+    match v
+    {
         Value::Integer(n) => n.to_f64().unwrap_or(f64::NAN),
         Value::Float32(x) => *x as f64,
         Value::Float64(x) => *x,
@@ -5092,7 +6230,8 @@ pub fn search_number(v: &Value) -> f64 {
 }
 
 /// count values generated from one SplitMix64 seed, rendered.
-pub fn generated(text: &str, seed: u64, size: i64, count: i64) -> Vec<String> {
+pub fn generated(text: &str, seed: u64, size: i64, count: i64) -> Vec<String>
+{
     let (values, d) = values_from(text);
     let mut random = SplitMix64::new(seed);
     (0..count)
@@ -5101,7 +6240,8 @@ pub fn generated(text: &str, seed: u64, size: i64, count: i64) -> Vec<String> {
 }
 
 /// The shrink candidates of the first value generated, rendered.
-pub fn shrunk(text: &str, seed: u64, size: i64) -> Vec<String> {
+pub fn shrunk(text: &str, seed: u64, size: i64) -> Vec<String>
+{
     let (values, d) = values_from(text);
     let first = values.generate(&d, &mut SplitMix64::new(seed), size);
     values.shrink(&d, &first).iter().map(render).collect()
@@ -5118,12 +6258,110 @@ pub fn shrunk(text: &str, seed: u64, size: i64) -> Vec<String> {
 // replaying the model to keep each candidate valid. The draws, candidate
 // order and messages follow the Python reference.
 
+fn model_bound(e: &Sexp, indices: &[i64]) -> BigInt
+{
+    if let Sexp::Int(n) = e
+    {
+        return n.clone();
+    }
+    let f = e.items();
+    if e.kind() == "index"
+    {
+        return BigInt::from(
+            indices[f[1]
+                .bound()
+                .expect("checked model index expression must carry an addressable bound")
+                .to_usize()
+                .expect("checked model index expression must carry an addressable bound")],
+        );
+    }
+    let a = model_bound(&f[1], indices);
+    let b = model_bound(&f[2], indices);
+    match e.kind()
+    {
+        "+" => a + b,
+        "-" => a - b,
+        "*" => a * b,
+        _ => panic!("unsupported model argument bound"),
+    }
+}
+fn model_base(d: &Sexp) -> &Sexp
+{
+    if d.kind() == "dependent"
+    {
+        &d.items()[1]
+    }
+    else
+    {
+        d
+    }
+}
+fn model_argument(d: &Sexp, indices: &[i64]) -> Sexp
+{
+    if d.kind() != "dependent"
+    {
+        return d.clone();
+    }
+    let fields = d.items();
+    let mut base = fields[1].items().to_vec();
+    assert_eq!(
+        fields[1].kind(),
+        "int",
+        "unsupported dependent model argument type"
+    );
+    let mut lo = base[2].bound();
+    let mut hi = base[3].bound();
+    for condition in &fields[2..]
+    {
+        let pair = condition.items();
+        let op = condition.kind();
+        let n = model_bound(&pair[1], indices);
+        if [">", ">=", "=="].contains(&op)
+        {
+            let low = &n + BigInt::from(if op == ">" { 1 } else { 0 });
+            lo = Some(lo.map_or(low.clone(), |l| l.max(low)));
+        }
+        if ["<", "<=", "=="].contains(&op)
+        {
+            let high = &n - BigInt::from(if op == "<" { 1 } else { 0 });
+            hi = Some(hi.map_or(high.clone(), |h| h.min(high)));
+        }
+    }
+    base[2] = lo.map_or(Sexp::Blank, Sexp::Int);
+    base[3] = hi.map_or(Sexp::Blank, Sexp::Int);
+    Sexp::List(base)
+}
+fn empty_model_arguments(ds: &[Sexp]) -> bool
+{
+    ds.iter().any(|d| {
+        d.kind() == "int"
+            && matches!((d.items()[2].bound(),d.items()[3].bound()), (Some(lo),Some(hi)) if lo>hi)
+    })
+}
+fn valid_model_arguments(ds: &[Sexp], args: &[Value]) -> bool
+{
+    ds.iter().zip(args).all(|(d, v)| {
+        if d.kind() != "int"
+        {
+            return true;
+        }
+        let Value::Integer(n) = v
+        else
+        {
+            return false;
+        };
+        d.items()[2].bound().is_none_or(|lo| *n >= lo)
+            && d.items()[3].bound().is_none_or(|hi| *n <= hi)
+    })
+}
+
 /// A generated definition: the context, then its arguments.
 pub type ModelCallback = fn(&mut Context, Vec<Value>) -> Result<Value>;
 
 /// A stateful model: its spec and the callbacks in the order the spec lists
 /// them. start is [run, model]; each command is (run, reference, when).
-pub struct Model {
+pub struct Model
+{
     pub spec: &'static str,
     pub start: [ModelCallback; 2],
     pub commands: Vec<(ModelCallback, ModelCallback, Option<ModelCallback>)>,
@@ -5131,17 +6369,20 @@ pub struct Model {
     pub invariants: Vec<ModelCallback>,
 }
 
-enum ModelNeed {
+enum ModelNeed
+{
     AtLeast(i64),
     Exactly(i64),
 }
 
-enum ModelShift {
+enum ModelShift
+{
     By(i64),
     To(i64),
 }
 
-struct ModelCommand {
+struct ModelCommand
+{
     name: String,
     arguments: Vec<Sexp>,
     state: usize,
@@ -5158,8 +6399,10 @@ struct ModelCommand {
     when: Option<ModelCallback>,
 }
 
-fn sexp_i64(s: &Sexp) -> i64 {
-    match s {
+fn sexp_i64(s: &Sexp) -> i64
+{
+    match s
+    {
         Sexp::Int(n) => n
             .to_i64()
             .unwrap_or_else(|| panic!("index {n} out of range")),
@@ -5168,15 +6411,18 @@ fn sexp_i64(s: &Sexp) -> i64 {
 }
 
 // The fields of a form, by their first atom.
-fn form_fields(items: &[Sexp]) -> HashMap<String, Vec<Sexp>> {
+fn form_fields(items: &[Sexp]) -> HashMap<String, Vec<Sexp>>
+{
     items
         .iter()
         .map(|f| (f.kind().to_string(), f.items()[1..].to_vec()))
         .collect()
 }
 
-impl ModelCommand {
-    fn new(form: &Sexp, callbacks: &(ModelCallback, ModelCallback, Option<ModelCallback>)) -> Self {
+impl ModelCommand
+{
+    fn new(form: &Sexp, callbacks: &(ModelCallback, ModelCallback, Option<ModelCallback>)) -> Self
+    {
         let items = form.items();
         let fields = form_fields(&items[2..]);
         let field = |name: &str| {
@@ -5193,19 +6439,22 @@ impl ModelCommand {
             unit: field("unit")[0].name() == "true",
             needs: field("needs")
                 .iter()
-                .map(|n| match pair(n) {
+                .map(|n| match pair(n)
+                {
                     (k, i) if k == "atleast" => ModelNeed::AtLeast(i),
                     (_, i) => ModelNeed::Exactly(i),
                 })
                 .collect(),
             shifts: field("shifts")
                 .iter()
-                .map(|s| match pair(s) {
+                .map(|s| match pair(s)
+                {
                     (k, d) if k == "by" => ModelShift::By(d),
                     (_, k) => ModelShift::To(k),
                 })
                 .collect(),
-            key: match fields.get("key").and_then(|k| k.first()) {
+            key: match fields.get("key").and_then(|k| k.first())
+            {
                 Some(Sexp::Int(n)) => Some(
                     n.to_usize()
                         .unwrap_or_else(|| panic!("key {n} out of range")),
@@ -5224,18 +6473,22 @@ impl ModelCommand {
         }
     }
 
-    fn admits(&self, indices: &[i64]) -> bool {
-        self.needs.iter().zip(indices).all(|(n, i)| match n {
+    fn admits(&self, indices: &[i64]) -> bool
+    {
+        self.needs.iter().zip(indices).all(|(n, i)| match n
+        {
             ModelNeed::AtLeast(k) => i >= k,
             ModelNeed::Exactly(k) => i == k,
         })
     }
 
-    fn shifted(&self, indices: &[i64]) -> Vec<i64> {
+    fn shifted(&self, indices: &[i64]) -> Vec<i64>
+    {
         self.shifts
             .iter()
             .zip(indices)
-            .map(|(s, i)| match s {
+            .map(|(s, i)| match s
+            {
                 ModelShift::By(d) => i + d,
                 ModelShift::To(k) => *k,
             })
@@ -5245,7 +6498,8 @@ impl ModelCommand {
 
 // Why a model step did not go through: the model does not allow it, or a
 // callback failed.
-enum ModelFault {
+enum ModelFault
+{
     Invalid,
     Error(String),
 }
@@ -5253,7 +6507,8 @@ enum ModelFault {
 // A run: the start's arguments, then each command's index and arguments.
 type ModelRun = (Vec<Value>, Vec<(usize, Vec<Value>)>);
 
-struct Machine<'a> {
+struct Machine<'a>
+{
     model: &'a Model,
     name: String,
     shared: bool,
@@ -5275,8 +6530,10 @@ struct Machine<'a> {
 }
 
 /// How a history that is not consistent is described.
-fn consistent_words(consistency: &str) -> &'static str {
-    match consistency {
+fn consistent_words(consistency: &str) -> &'static str
+{
+    match consistency
+    {
         "sequential" => "sequentially consistent",
         "causal" => "causally consistent",
         "eventual" => "eventually consistent",
@@ -5293,24 +6550,38 @@ fn call_command(
     unit: bool,
     ctx: &mut Context,
     mut full: Vec<Value>,
-) -> Result<Value> {
-    if !actor {
+) -> Result<Value>
+{
+    if !actor
+    {
         return run(ctx, full);
     }
-    let Some(Value::Handle(handle)) = full.first().cloned() else {
+    let Some(Value::Handle(handle)) = full.first().cloned()
+    else
+    {
         return Err("an actor's command was not given its actor".into());
     };
     handle.native::<actors::Actor<Value>>()?.call(|state| {
         full[0] = state;
         let out = run(ctx, full)?;
-        if unit {
+        if unit
+        {
             return Ok((Value::Unit, out));
         }
-        match out {
-            Value::Data(_, fields) if fields.len() == 2 => {
+        match out
+        {
+            Value::Data(_, fields) if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let reply = fields.next().unwrap();
-                Ok((reply, fields.next().unwrap()))
+                let reply = fields
+                    .next()
+                    .expect("validated model result must contain reply and next state");
+                Ok((
+                    reply,
+                    fields
+                        .next()
+                        .expect("validated model result must contain reply and next state"),
+                ))
             }
             other => Err(format!(
                 "a handler returned {}, not a reply and a state",
@@ -5320,8 +6591,10 @@ fn call_command(
     })
 }
 
-impl<'a> Machine<'a> {
-    fn new(model: &'a Model) -> Self {
+impl<'a> Machine<'a>
+{
+    fn new(model: &'a Model) -> Self
+    {
         let forms = read_descriptor(model.spec);
         let head = forms[0].items();
         let table = forms
@@ -5378,13 +6651,19 @@ impl<'a> Machine<'a> {
     }
 
     /// Starts the system: an actor model's start state runs in a new actor.
-    fn start_system(&self, ctx: &mut Context, args: Vec<Value>) -> Result<Value> {
+    fn start_system(&self, ctx: &mut Context, args: Vec<Value>) -> Result<Value>
+    {
         let state = (self.model.start[0])(ctx, args)?;
-        Ok(if self.actor {
-            Value::Handle(Handle::new(actors::Actor::new(state)))
-        } else {
-            state
-        })
+        Ok(
+            if self.actor
+            {
+                Value::Handle(Handle::new(actors::Actor::new(state)))
+            }
+            else
+            {
+                state
+            },
+        )
     }
 
     fn run_command(
@@ -5392,39 +6671,58 @@ impl<'a> Machine<'a> {
         command: &ModelCommand,
         ctx: &mut Context,
         full: Vec<Value>,
-    ) -> Result<Value> {
+    ) -> Result<Value>
+    {
         call_command(self.actor, command.run, command.unit, ctx, full)
     }
 
     /// The system state the abstraction and invariants see: an actor's own
     /// state, read between messages.
-    fn system_state(&self, state: &Value) -> Result<Value> {
-        match (self.actor, state) {
+    fn system_state(&self, state: &Value) -> Result<Value>
+    {
+        match (self.actor, state)
+        {
             (true, Value::Handle(handle)) => handle.native::<actors::Actor<Value>>()?.state(),
             _ => Ok(state.clone()),
         }
     }
 
     /// Whether the model allows every step of a run.
-    fn simulate(&self, run: &ModelRun) -> bool {
+    fn simulate(&self, run: &ModelRun) -> bool
+    {
         let mut ctx = Context::testing();
-        let Ok(mut state) = (self.model.start[1])(&mut ctx, run.0.clone()) else {
+        let Ok(mut state) = (self.model.start[1])(&mut ctx, run.0.clone())
+        else
+        {
             return false;
         };
         let mut indices = self.start_indices.clone();
-        for (index, args) in &run.1 {
-            if *index == self.commands.len() {
-                match self.crash_model(&mut ctx, &run.0, state) {
+        for (index, args) in &run.1
+        {
+            if *index == self.commands.len()
+            {
+                match self.crash_model(&mut ctx, &run.0, state)
+                {
                     Ok(next) => state = next,
                     Err(_) => return false,
                 }
                 continue;
             }
             let command = &self.commands[*index];
-            if !command.admits(&indices) {
+            if !command.admits(&indices)
+                || !valid_model_arguments(
+                    &command
+                        .arguments
+                        .iter()
+                        .map(|d| model_argument(d, &indices))
+                        .collect::<Vec<_>>(),
+                    args,
+                )
+            {
                 return false;
             }
-            match step_model(command, &mut ctx, args, state) {
+            match step_model(command, &mut ctx, args, state)
+            {
                 Ok((next, _)) => state = next,
                 Err(ModelFault::Invalid) => return false,
                 Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
@@ -5436,8 +6734,10 @@ impl<'a> Machine<'a> {
 
     /// An injected crash, on the model: the restart's reference, or the
     /// start's model state.
-    fn crash_model(&self, ctx: &mut Context, start_args: &[Value], state: Value) -> Result<Value> {
-        match self.restart {
+    fn crash_model(&self, ctx: &mut Context, start_args: &[Value], state: Value) -> Result<Value>
+    {
+        match self.restart
+        {
             Some((_, reference)) => reference(ctx, vec![state]),
             None => (self.model.start[1])(ctx, start_args.to_vec()),
         }
@@ -5445,14 +6745,19 @@ impl<'a> Machine<'a> {
 
     /// An injected crash, on the system: the actor's state is replaced
     /// between messages by the restart's run, or the start's run.
-    fn crash_system(&self, ctx: &mut Context, start_args: &[Value], state: &Value) -> Result<()> {
-        let Value::Handle(handle) = state else {
+    fn crash_system(&self, ctx: &mut Context, start_args: &[Value], state: &Value) -> Result<()>
+    {
+        let Value::Handle(handle) = state
+        else
+        {
             return Err("a crash was injected into a model that is not an actor".into());
         };
         let actor = handle.native::<actors::Actor<Value>>()?;
-        match self.restart {
+        match self.restart
+        {
             Some((run, _)) => actor.restart(|s| run(ctx, vec![s])),
-            None => {
+            None =>
+            {
                 let begin = self.model.start[0];
                 actor.restart(|_| begin(ctx, start_args.to_vec()))
             }
@@ -5465,29 +6770,45 @@ impl<'a> Machine<'a> {
         length: u64,
         size: i64,
         crashes: bool,
-    ) -> ModelRun {
+    ) -> ModelRun
+    {
         let mut ctx = Context::testing();
         let start_args: Vec<Value> = self
             .start_arguments
             .iter()
             .map(|d| self.values.generate(d, random, size))
             .collect();
-        let Ok(mut state) = (self.model.start[1])(&mut ctx, start_args.clone()) else {
+        let Ok(mut state) = (self.model.start[1])(&mut ctx, start_args.clone())
+        else
+        {
             return (start_args, Vec::new());
         };
         let mut indices = self.start_indices.clone();
         let mut steps = Vec::new();
-        for _ in 0..length {
+        for _ in 0..length
+        {
             let allowed: Vec<usize> = (0..self.commands.len())
-                .filter(|&i| self.commands[i].admits(&indices))
+                .filter(|&i| {
+                    self.commands[i].admits(&indices)
+                        && !empty_model_arguments(
+                            &self.commands[i]
+                                .arguments
+                                .iter()
+                                .map(|d| model_argument(d, &indices))
+                                .collect::<Vec<_>>(),
+                        )
+                })
                 .collect();
-            if allowed.is_empty() {
+            if allowed.is_empty()
+            {
                 break;
             }
             let index = allowed[random.below(allowed.len() as u64) as usize];
             // One step in eight of an actor's run is a crash.
-            if crashes && self.actor && random.below(8) == 0 {
-                match self.crash_model(&mut ctx, &start_args, state.clone()) {
+            if crashes && self.actor && random.below(8) == 0
+            {
+                match self.crash_model(&mut ctx, &start_args, state.clone())
+                {
                     Ok(next) => state = next,
                     Err(_) => continue,
                 }
@@ -5498,11 +6819,29 @@ impl<'a> Machine<'a> {
             let args: Vec<Value> = command
                 .arguments
                 .iter()
-                .map(|d| self.values.generate(d, random, size))
+                .map(|d| {
+                    self.values
+                        .generate(&model_argument(d, &indices), random, size)
+                })
                 .collect();
-            match step_model(command, &mut ctx, &args, state.clone()) {
+            match step_model(command, &mut ctx, &args, state.clone())
+            {
                 Ok((next, _)) => state = next,
-                Err(ModelFault::Invalid) => continue,
+                Err(ModelFault::Invalid) =>
+                {
+                    if command.arguments.iter().any(|d| d.kind() == "dependent")
+                        && command.when.is_none_or(|guard| {
+                            guard(&mut ctx, vec![state.clone()])
+                                .and_then(|v| v.boolean())
+                                .unwrap_or(false)
+                        })
+                    {
+                        panic!(
+                            "incomplete model generation: dependent arguments rejected by the reference (1 attempt)"
+                        );
+                    }
+                    continue;
+                }
                 Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
             }
             steps.push((index, args));
@@ -5513,9 +6852,11 @@ impl<'a> Machine<'a> {
 
     /// None when the system agrees with the model along the run; otherwise
     /// the failing step's number and what went wrong.
-    fn execute(&self, run: &ModelRun) -> Option<(usize, String)> {
+    fn execute(&self, run: &ModelRun) -> Option<(usize, String)>
+    {
         let mut step = 0;
-        match self.execute_steps(run, &mut step) {
+        match self.execute_steps(run, &mut step)
+        {
             Ok(None) => None,
             Ok(Some(message)) => Some((step, message)),
             Err(ModelFault::Invalid) => Some((step, "the model does not allow this step".into())),
@@ -5527,25 +6868,30 @@ impl<'a> Machine<'a> {
         &self,
         run: &ModelRun,
         step: &mut usize,
-    ) -> std::result::Result<Option<String>, ModelFault> {
+    ) -> std::result::Result<Option<String>, ModelFault>
+    {
         let mut ctx = Context::testing();
         let mut state = self
             .start_system(&mut ctx, run.0.clone())
             .map_err(ModelFault::Error)?;
         let mut expected =
             (self.model.start[1])(&mut ctx, run.0.clone()).map_err(ModelFault::Error)?;
-        if let Some(failure) = self.check_state(&mut ctx, &state, &expected)? {
+        if let Some(failure) = self.check_state(&mut ctx, &state, &expected)?
+        {
             return Ok(Some(failure));
         }
-        for (index, args) in &run.1 {
+        for (index, args) in &run.1
+        {
             *step += 1;
-            if *index == self.commands.len() {
+            if *index == self.commands.len()
+            {
                 self.crash_system(&mut ctx, &run.0, &state)
                     .map_err(ModelFault::Error)?;
                 expected = self
                     .crash_model(&mut ctx, &run.0, expected)
                     .map_err(|_| ModelFault::Invalid)?;
-                if let Some(failure) = self.check_state(&mut ctx, &state, &expected)? {
+                if let Some(failure) = self.check_state(&mut ctx, &state, &expected)?
+                {
                     return Ok(Some(failure));
                 }
                 continue;
@@ -5556,24 +6902,34 @@ impl<'a> Machine<'a> {
             let out = self
                 .run_command(command, &mut ctx, full)
                 .map_err(ModelFault::Error)?;
-            let result = if self.shared {
+            let result = if self.shared
+            {
                 out
-            } else {
-                let Value::Data(_, mut fields) = out else {
+            }
+            else
+            {
+                let Value::Data(_, mut fields) = out
+                else
+                {
                     return Err(ModelFault::Error(format!(
                         "command {} did not return its state",
                         command.name
                     )));
                 };
-                let Some(last) = fields.pop() else {
+                let Some(last) = fields.pop()
+                else
+                {
                     return Err(ModelFault::Error(format!(
                         "command {} did not return its state",
                         command.name
                     )));
                 };
-                let result = if command.unit {
+                let result = if command.unit
+                {
                     Value::Unit
-                } else {
+                }
+                else
+                {
                     fields.into_iter().next().unwrap_or(last.clone())
                 };
                 state = last;
@@ -5591,7 +6947,8 @@ impl<'a> Machine<'a> {
                     render(&wanted)
                 )));
             }
-            if let Some(failure) = self.check_state(&mut ctx, &state, &expected)? {
+            if let Some(failure) = self.check_state(&mut ctx, &state, &expected)?
+            {
                 return Ok(Some(failure));
             }
         }
@@ -5603,9 +6960,11 @@ impl<'a> Machine<'a> {
         ctx: &mut Context,
         state: &Value,
         expected: &Value,
-    ) -> std::result::Result<Option<String>, ModelFault> {
+    ) -> std::result::Result<Option<String>, ModelFault>
+    {
         let state = &self.system_state(state).map_err(ModelFault::Error)?;
-        if let Some(abstraction) = self.model.abstract_state {
+        if let Some(abstraction) = self.model.abstract_state
+        {
             let actual = abstraction(ctx, vec![state.clone()]).map_err(ModelFault::Error)?;
             if compare_values(&actual, expected).map_err(ModelFault::Error)?
                 != std::cmp::Ordering::Equal
@@ -5617,25 +6976,30 @@ impl<'a> Machine<'a> {
                 )));
             }
         }
-        for (kind, invariant) in &self.invariants {
+        for (kind, invariant) in &self.invariants
+        {
             let subject = if kind == "model" { expected } else { state };
             let holds = invariant(ctx, vec![subject.clone()])
                 .and_then(|v| v.boolean())
                 .map_err(ModelFault::Error)?;
-            if !holds {
+            if !holds
+            {
                 return Ok(Some(format!("an invariant on the {kind} fails")));
             }
         }
         Ok(None)
     }
 
-    fn shrink_candidates(&self, run: &ModelRun) -> Vec<ModelRun> {
+    fn shrink_candidates(&self, run: &ModelRun) -> Vec<ModelRun>
+    {
         let (start_args, steps) = run;
         let mut out = Vec::new();
         let n = steps.len();
         let mut size = n / 2;
-        while size >= 1 {
-            for begin in (0..n).step_by(size) {
+        while size >= 1
+        {
+            for begin in (0..n).step_by(size)
+            {
                 let kept = steps[..begin]
                     .iter()
                     .chain(steps.get(begin + size..).unwrap_or(&[]))
@@ -5645,20 +7009,27 @@ impl<'a> Machine<'a> {
             }
             size /= 2;
         }
-        for (k, (index, args)) in steps.iter().enumerate() {
-            let Some(command) = self.commands.get(*index) else {
+        for (k, (index, args)) in steps.iter().enumerate()
+        {
+            let Some(command) = self.commands.get(*index)
+            else
+            {
                 continue;
             };
-            for (j, (d, arg)) in command.arguments.iter().zip(args).enumerate() {
-                for c in self.values.shrink(d, arg) {
+            for (j, (d, arg)) in command.arguments.iter().zip(args).enumerate()
+            {
+                for c in self.values.shrink(model_base(d), arg)
+                {
                     let mut changed = steps.clone();
                     changed[k].1[j] = c;
                     out.push((start_args.clone(), changed));
                 }
             }
         }
-        for (j, (d, arg)) in self.start_arguments.iter().zip(start_args).enumerate() {
-            for c in self.values.shrink(d, arg) {
+        for (j, (d, arg)) in self.start_arguments.iter().zip(start_args).enumerate()
+        {
+            for c in self.values.shrink(d, arg)
+            {
                 let mut changed = start_args.clone();
                 changed[j] = c;
                 out.push((changed, steps.clone()));
@@ -5672,33 +7043,41 @@ impl<'a> Machine<'a> {
         mut run: ModelRun,
         mut failure: (usize, String),
         max_shrinks: i64,
-    ) -> (ModelRun, (usize, String)) {
+    ) -> (ModelRun, (usize, String))
+    {
         let mut budget = max_shrinks;
-        'shrinking: while budget > 0 {
+        'shrinking: while budget > 0
+        {
             let mut improved = false;
-            for candidate in self.shrink_candidates(&run) {
+            for candidate in self.shrink_candidates(&run)
+            {
                 budget -= 1;
-                if budget <= 0 {
+                if budget <= 0
+                {
                     break 'shrinking;
                 }
-                if !self.simulate(&candidate) {
+                if !self.simulate(&candidate)
+                {
                     continue;
                 }
-                if let Some(found) = self.execute(&candidate) {
+                if let Some(found) = self.execute(&candidate)
+                {
                     run = candidate;
                     failure = found;
                     improved = true;
                     break;
                 }
             }
-            if !improved {
+            if !improved
+            {
                 break;
             }
         }
         (run, failure)
     }
 
-    fn describe_run(&self, run: &ModelRun) -> String {
+    fn describe_run(&self, run: &ModelRun) -> String
+    {
         let all = |xs: &[Value]| xs.iter().map(render).collect::<Vec<_>>().join(", ");
         let mut parts = vec![format!("start({})", all(&run.0))];
         parts.extend(run.1.iter().map(|(i, args)| {
@@ -5718,24 +7097,38 @@ fn step_model(
     ctx: &mut Context,
     args: &[Value],
     state: Value,
-) -> std::result::Result<(Value, Value), ModelFault> {
-    if let Some(when) = command.when {
-        match when(ctx, vec![state.clone()]).and_then(|v| v.boolean()) {
-            Ok(true) => {}
+) -> std::result::Result<(Value, Value), ModelFault>
+{
+    if let Some(when) = command.when
+    {
+        match when(ctx, vec![state.clone()]).and_then(|v| v.boolean())
+        {
+            Ok(true) =>
+            {}
             _ => return Err(ModelFault::Invalid),
         }
     }
     let mut full = args.to_vec();
     full.push(state);
     let out = (command.reference)(ctx, full).map_err(|_| ModelFault::Invalid)?;
-    if command.unit {
+    if command.unit
+    {
         return Ok((out, Value::Unit));
     }
-    match out {
-        Value::Data(_, fields) if fields.len() >= 2 => {
+    match out
+    {
+        Value::Data(_, fields) if fields.len() >= 2 =>
+        {
             let mut fields = fields.into_iter();
-            let result = fields.next().unwrap();
-            Ok((fields.next().unwrap(), result))
+            let result = fields
+                .next()
+                .expect("validated model transition must contain its result and next state");
+            Ok((
+                fields
+                    .next()
+                    .expect("validated model transition must contain its result and next state"),
+                result,
+            ))
         }
         other => Err(ModelFault::Error(format!(
             "the reference for {} returned {}, not a pair",
@@ -5752,7 +7145,8 @@ fn step_model(
 /// A stateful model is checked by running generated command sequences against
 /// the system and the model side by side, then shrinking a failing run.
 /// ref:DEC-stateful-models-linearizability
-pub fn check_model(model: &Model) -> std::result::Result<(), String> {
+pub fn check_model(model: &Model) -> std::result::Result<(), String>
+{
     let (cases, max_length, max_shrinks) = (100u64, 20u64, 2000i64);
     let seed = std::env::var("LAWSPEC_SEED")
         .ok()
@@ -5760,10 +7154,12 @@ pub fn check_model(model: &Model) -> std::result::Result<(), String> {
         .unwrap_or(0);
     let machine = Machine::new(model);
     let mut random = SplitMix64::new(seed);
-    for case in 0..cases {
+    for case in 0..cases
+    {
         let length = random.below(max_length + 1);
         let run = machine.generate_run(&mut random, length, 1 + (case % 8) as i64, true);
-        if let Some(failure) = machine.execute(&run) {
+        if let Some(failure) = machine.execute(&run)
+        {
             let (run, (step, message)) = machine.shrink_run(run, failure, max_shrinks);
             return Err(format!(
                 "model {} fails at step {} of {}: {}",
@@ -5798,38 +7194,48 @@ type ParallelCase = (ModelRun, Vec<ModelBranch>);
 // One call of a branch: when it started, when it returned, and its result.
 type ParallelCall = (u64, u64, Value);
 
-fn branch_name(i: usize) -> char {
+fn branch_name(i: usize) -> char
+{
     (b'A' + i as u8) as char
 }
 
 // Positions with thread i's moved one step on.
-fn advanced(positions: &[usize], i: usize) -> Vec<usize> {
+fn advanced(positions: &[usize], i: usize) -> Vec<usize>
+{
     let mut next = positions.to_vec();
     next[i] += 1;
     next
 }
 
 /// Nothing, a yield, or a sleep of 10 or 100 microseconds.
-fn perturb(random: &mut SplitMix64) {
-    match random.below(4) {
-        0 => {}
+fn perturb(random: &mut SplitMix64)
+{
+    match random.below(4)
+    {
+        0 =>
+        {}
         1 => std::thread::yield_now(),
         2 => std::thread::sleep(std::time::Duration::from_micros(10)),
         _ => std::thread::sleep(std::time::Duration::from_micros(100)),
     }
 }
 
-impl<'a> Machine<'a> {
+impl<'a> Machine<'a>
+{
     /// The model state after a run, or None when the model does not allow it.
-    fn simulate_state(&self, ctx: &mut Context, run: &ModelRun) -> Option<Value> {
+    fn simulate_state(&self, ctx: &mut Context, run: &ModelRun) -> Option<Value>
+    {
         let mut state = (self.model.start[1])(ctx, run.0.clone()).ok()?;
         let mut indices = self.start_indices.clone();
-        for (index, args) in &run.1 {
+        for (index, args) in &run.1
+        {
             let command = &self.commands[*index];
-            if !command.admits(&indices) {
+            if !command.admits(&indices)
+            {
                 return None;
             }
-            match step_model(command, ctx, args, state) {
+            match step_model(command, ctx, args, state)
+            {
                 Ok((next, _)) => state = next,
                 Err(ModelFault::Invalid) => return None,
                 Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
@@ -5840,9 +7246,12 @@ impl<'a> Machine<'a> {
     }
 
     /// Whether the model allows the prefix then every interleaving.
-    fn parallel_allowed(&self, prefix: &ModelRun, branches: &[ModelBranch]) -> bool {
+    fn parallel_allowed(&self, prefix: &ModelRun, branches: &[ModelBranch]) -> bool
+    {
         let mut ctx = Context::testing();
-        let Some(start) = self.simulate_state(&mut ctx, prefix) else {
+        let Some(start) = self.simulate_state(&mut ctx, prefix)
+        else
+        {
             return false;
         };
         let mut seen = std::collections::HashSet::new();
@@ -5862,20 +7271,26 @@ impl<'a> Machine<'a> {
         seen: &mut std::collections::HashSet<(Vec<usize>, String)>,
         positions: Vec<usize>,
         state: Value,
-    ) -> bool {
-        if !seen.insert((positions.clone(), render(&state))) {
+    ) -> bool
+    {
+        if !seen.insert((positions.clone(), render(&state)))
+        {
             return true;
         }
-        for (i, branch) in branches.iter().enumerate() {
+        for (i, branch) in branches.iter().enumerate()
+        {
             let k = positions[i];
-            if k < branch.len() {
+            if k < branch.len()
+            {
                 let (index, args) = &branch[k];
-                let after = match step_model(&self.commands[*index], ctx, args, state.clone()) {
+                let after = match step_model(&self.commands[*index], ctx, args, state.clone())
+                {
                     Ok((next, _)) => next,
                     Err(ModelFault::Invalid) => return false,
                     Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
                 };
-                if !self.allowed_from(ctx, branches, seen, advanced(&positions, i), after) {
+                if !self.allowed_from(ctx, branches, seen, advanced(&positions, i), after)
+                {
                     return false;
                 }
             }
@@ -5889,10 +7304,12 @@ impl<'a> Machine<'a> {
         mut state: Value,
         length: u64,
         size: i64,
-    ) -> ModelBranch {
+    ) -> ModelBranch
+    {
         let mut ctx = Context::testing();
         let mut steps = Vec::new();
-        for _ in 0..length {
+        for _ in 0..length
+        {
             let index = random.below(self.commands.len() as u64) as usize;
             let command = &self.commands[index];
             let args: Vec<Value> = command
@@ -5900,7 +7317,8 @@ impl<'a> Machine<'a> {
                 .iter()
                 .map(|d| self.values.generate(d, random, size))
                 .collect();
-            match step_model(command, &mut ctx, &args, state.clone()) {
+            match step_model(command, &mut ctx, &args, state.clone())
+            {
                 Ok((next, _)) => state = next,
                 Err(ModelFault::Invalid) => continue,
                 Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
@@ -5916,23 +7334,30 @@ impl<'a> Machine<'a> {
         size: i64,
         threads: usize,
         branch_length: u64,
-    ) -> ParallelCase {
+    ) -> ParallelCase
+    {
         let length = random.below(4);
         let prefix = self.generate_run(random, length, size, false);
-        let Some(state) = self.simulate_state(&mut Context::testing(), &prefix) else {
+        let Some(state) = self.simulate_state(&mut Context::testing(), &prefix)
+        else
+        {
             return (prefix, vec![Vec::new(); threads]);
         };
         let mut branches = Vec::new();
-        for _ in 0..threads {
+        for _ in 0..threads
+        {
             let length = 1 + random.below(branch_length);
             branches.push(self.generate_branch(random, state.clone(), length, size));
         }
         // Drop the last step of the longest branch (the first, among equals)
         // until every interleaving is allowed.
-        while !self.parallel_allowed(&prefix, &branches) {
+        while !self.parallel_allowed(&prefix, &branches)
+        {
             let mut longest = 0;
-            for i in 1..threads {
-                if branches[i].len() > branches[longest].len() {
+            for i in 1..threads
+            {
+                if branches[i].len() > branches[longest].len()
+                {
                     longest = i;
                 }
             }
@@ -5942,10 +7367,12 @@ impl<'a> Machine<'a> {
     }
 
     /// None when the history is linearizable; otherwise what went wrong.
-    fn execute_parallel(&self, case: &ParallelCase, shake: u64) -> Option<String> {
+    fn execute_parallel(&self, case: &ParallelCase, shake: u64) -> Option<String>
+    {
         let (prefix, branches) = case;
         let mut ctx = Context::testing();
-        let state = match self.run_prefix(&mut ctx, prefix) {
+        let state = match self.run_prefix(&mut ctx, prefix)
+        {
             Ok(state) => state,
             Err(e) => return Some(format!("the prefix raised error: {e}")),
         };
@@ -5978,15 +7405,18 @@ impl<'a> Machine<'a> {
                     scope.spawn(move || {
                         let mut own = Context::testing();
                         let mut random = SplitMix64::new(
-                            shake ^ ((i as u64 + 1).wrapping_mul(0x9E3779B97F4A7C15)),
+                            shake ^ ((i as u64 + 1).wrapping_mul(0x9e3779b97f4a7c15)),
                         );
                         let mut out = Vec::new();
-                        for (run, unit, name, full) in branch {
+                        for (run, unit, name, full) in branch
+                        {
                             perturb(&mut random);
                             let called = tick();
-                            let result = match call_command(actor, run, unit, &mut own, full) {
+                            let result = match call_command(actor, run, unit, &mut own, full)
+                            {
                                 Ok(result) => result,
-                                Err(e) => {
+                                Err(e) =>
+                                {
                                     errors
                                         .lock()
                                         .unwrap_or_else(|p| p.into_inner())
@@ -6017,23 +7447,29 @@ impl<'a> Machine<'a> {
         let expected = self
             .simulate_state(&mut ctx, prefix)
             .expect("the model allows the prefix");
-        let state = match self.system_state(&state) {
+        let state = match self.system_state(&state)
+        {
             Ok(state) => state,
             Err(e) => return Some(format!("raised error: {e}")),
         };
-        let fin = match self.model.abstract_state {
-            Some(abstraction) => match abstraction(&mut ctx, vec![state.clone()]) {
+        let fin = match self.model.abstract_state
+        {
+            Some(abstraction) => match abstraction(&mut ctx, vec![state.clone()])
+            {
                 Ok(v) => Some(v),
                 Err(e) => return Some(format!("raised error: {e}")),
             },
             None => None,
         };
-        if self.linearizable(&mut ctx, branches, &history, expected, fin.as_ref(), &state) {
+        if self.linearizable(&mut ctx, branches, &history, expected, fin.as_ref(), &state)
+        {
             return None;
         }
         let mut observed = Vec::new();
-        for (i, branch) in branches.iter().enumerate() {
-            for (k, (index, _)) in branch.iter().enumerate() {
+        for (i, branch) in branches.iter().enumerate()
+        {
+            for (k, (index, _)) in branch.iter().enumerate()
+            {
                 observed.push(format!(
                     "{}: {}() returned {}",
                     branch_name(i),
@@ -6049,9 +7485,11 @@ impl<'a> Machine<'a> {
     }
 
     // Starts the system and runs the prefix's commands, giving the state.
-    fn run_prefix(&self, ctx: &mut Context, prefix: &ModelRun) -> Result<Value> {
+    fn run_prefix(&self, ctx: &mut Context, prefix: &ModelRun) -> Result<Value>
+    {
         let state = self.start_system(ctx, prefix.0.clone())?;
-        for (index, args) in &prefix.1 {
+        for (index, args) in &prefix.1
+        {
             let command = &self.commands[*index];
             let mut full = args.clone();
             full.insert(command.state, state.clone());
@@ -6072,35 +7510,43 @@ impl<'a> Machine<'a> {
         expected: Value,
         fin: Option<&Value>,
         state: &Value,
-    ) -> bool {
+    ) -> bool
+    {
         let finish = |ctx: &mut Context, model_state: &Value| -> bool {
-            if let Some(fin) = fin {
+            if let Some(fin) = fin
+            {
                 if !matches!(
                     compare_values(fin, model_state),
                     Ok(std::cmp::Ordering::Equal)
-                ) {
+                )
+                {
                     return false;
                 }
             }
-            for (kind, invariant) in &self.invariants {
+            for (kind, invariant) in &self.invariants
+            {
                 let subject = if kind == "model" { model_state } else { state };
                 if !matches!(
                     invariant(ctx, vec![subject.clone()]).and_then(|v| v.boolean()),
                     Ok(true)
-                ) {
+                )
+                {
                     return false;
                 }
             }
             true
         };
-        if !self.per_key {
+        if !self.per_key
+        {
             return self.linearize(ctx, branches, history, expected, &mut |c, s| finish(c, s));
         }
         // Each key's calls, thread by thread, ordered by the rendered key.
         let mut groups: std::collections::BTreeMap<String, Vec<(ModelBranch, Vec<ParallelCall>)>> =
             std::collections::BTreeMap::new();
-        for (i, branch) in branches.iter().enumerate() {
-            for (k, (index, args)) in branch.iter().enumerate() {
+        for (i, branch) in branches.iter().enumerate()
+        {
+            for (k, (index, args)) in branch.iter().enumerate()
+            {
                 let position = self.commands[*index]
                     .key
                     .expect("a per-key command names its key");
@@ -6112,14 +7558,16 @@ impl<'a> Machine<'a> {
             }
         }
         let mut model_state = expected;
-        for parts in groups.values() {
+        for parts in groups.values()
+        {
             let (steps, calls): (Vec<ModelBranch>, Vec<Vec<ParallelCall>>) =
                 parts.iter().cloned().unzip();
             let mut ends = Vec::new();
             if !self.linearize(ctx, &steps, &calls, model_state, &mut |_, end| {
                 ends.push(end.clone());
                 true
-            }) {
+            })
+            {
                 return false;
             }
             model_state = ends.swap_remove(0);
@@ -6139,15 +7587,20 @@ impl<'a> Machine<'a> {
         history: &[Vec<ParallelCall>],
         expected: Value,
         finish: &mut dyn FnMut(&mut Context, &Value) -> bool,
-    ) -> bool {
+    ) -> bool
+    {
         // Causal: threads that never message each other see only their own
         // calls, so each thread's results replay alone.
-        if self.consistency == "causal" {
-            for (i, branch) in branches.iter().enumerate() {
+        if self.consistency == "causal"
+        {
+            for (i, branch) in branches.iter().enumerate()
+            {
                 let mut state = expected.clone();
-                for (k, (index, args)) in branch.iter().enumerate() {
+                for (k, (index, args)) in branch.iter().enumerate()
+                {
                     let command = &self.commands[*index];
-                    let (after, wanted) = match step_model(command, ctx, args, state) {
+                    let (after, wanted) = match step_model(command, ctx, args, state)
+                    {
                         Ok(stepped) => stepped,
                         Err(ModelFault::Invalid) => return false,
                         Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
@@ -6187,16 +7640,21 @@ impl<'a> Machine<'a> {
         positions: Vec<usize>,
         model_state: Value,
         finish: &mut dyn FnMut(&mut Context, &Value) -> bool,
-    ) -> bool {
-        if !seen.insert((positions.clone(), render(&model_state))) {
+    ) -> bool
+    {
+        if !seen.insert((positions.clone(), render(&model_state)))
+        {
             return false;
         }
-        if positions.iter().zip(branches).all(|(k, b)| *k == b.len()) {
+        if positions.iter().zip(branches).all(|(k, b)| *k == b.len())
+        {
             return finish(ctx, &model_state);
         }
-        for (i, branch) in branches.iter().enumerate() {
+        for (i, branch) in branches.iter().enumerate()
+        {
             let k = positions[i];
-            if k == branch.len() {
+            if k == branch.len()
+            {
                 continue;
             }
             let called = history[i][k].0;
@@ -6213,7 +7671,8 @@ impl<'a> Machine<'a> {
             }
             let (index, args) = &branch[k];
             let command = &self.commands[*index];
-            let (after, wanted) = match step_model(command, ctx, args, model_state.clone()) {
+            let (after, wanted) = match step_model(command, ctx, args, model_state.clone())
+            {
                 Ok(stepped) => stepped,
                 Err(ModelFault::Invalid) => continue,
                 Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
@@ -6235,14 +7694,16 @@ impl<'a> Machine<'a> {
                 advanced(&positions, i),
                 after,
                 finish,
-            ) {
+            )
+            {
                 return true;
             }
         }
         false
     }
 
-    fn parallel_fails(&self, case: &ParallelCase, repeats: u64, shake: u64) -> Option<String> {
+    fn parallel_fails(&self, case: &ParallelCase, repeats: u64, shake: u64) -> Option<String>
+    {
         (0..repeats).find_map(|attempt| self.execute_parallel(case, shake.wrapping_add(attempt)))
     }
 
@@ -6253,28 +7714,37 @@ impl<'a> Machine<'a> {
         repeats: u64,
         mut budget: i64,
         shake: u64,
-    ) -> (ParallelCase, String) {
-        'shrinking: while budget > 0 {
+    ) -> (ParallelCase, String)
+    {
+        'shrinking: while budget > 0
+        {
             let (prefix, branches) = &case;
             let mut candidates: Vec<ParallelCase> = Vec::new();
-            for k in 0..prefix.1.len() {
+            for k in 0..prefix.1.len()
+            {
                 let mut steps = prefix.1.clone();
                 steps.remove(k);
                 candidates.push(((prefix.0.clone(), steps), branches.clone()));
             }
-            for i in 0..branches.len() {
-                for k in 0..branches[i].len() {
+            for i in 0..branches.len()
+            {
+                for k in 0..branches[i].len()
+                {
                     let mut shorter = branches.clone();
                     shorter[i].remove(k);
                     candidates.push((prefix.clone(), shorter));
                 }
             }
             // Then smaller arguments, branch by branch, step by step.
-            for i in 0..branches.len() {
-                for (k, (index, args)) in branches[i].iter().enumerate() {
+            for i in 0..branches.len()
+            {
+                for (k, (index, args)) in branches[i].iter().enumerate()
+                {
                     let command = &self.commands[*index];
-                    for (a, (d, arg)) in command.arguments.iter().zip(args).enumerate() {
-                        for c in self.values.shrink(d, arg) {
+                    for (a, (d, arg)) in command.arguments.iter().zip(args).enumerate()
+                    {
+                        for c in self.values.shrink(d, arg)
+                        {
                             let mut changed = branches.clone();
                             changed[i][k].1[a] = c;
                             candidates.push((prefix.clone(), changed));
@@ -6283,29 +7753,35 @@ impl<'a> Machine<'a> {
                 }
             }
             let mut improved = false;
-            for candidate in candidates {
+            for candidate in candidates
+            {
                 budget -= 1;
-                if budget <= 0 {
+                if budget <= 0
+                {
                     break 'shrinking;
                 }
-                if !self.parallel_allowed(&candidate.0, &candidate.1) {
+                if !self.parallel_allowed(&candidate.0, &candidate.1)
+                {
                     continue;
                 }
-                if let Some(found) = self.parallel_fails(&candidate, repeats, shake) {
+                if let Some(found) = self.parallel_fails(&candidate, repeats, shake)
+                {
                     case = candidate;
                     failure = found;
                     improved = true;
                     break;
                 }
             }
-            if !improved {
+            if !improved
+            {
                 break;
             }
         }
         (case, failure)
     }
 
-    fn describe_parallel(&self, case: &ParallelCase) -> String {
+    fn describe_parallel(&self, case: &ParallelCase) -> String
+    {
         let describe = |steps: &ModelBranch| {
             let text = steps
                 .iter()
@@ -6318,9 +7794,12 @@ impl<'a> Machine<'a> {
                 })
                 .collect::<Vec<_>>()
                 .join("; ");
-            if text.is_empty() {
+            if text.is_empty()
+            {
                 "nothing".to_string()
-            } else {
+            }
+            else
+            {
                 text
             }
         };
@@ -6351,7 +7830,8 @@ impl<'a> Machine<'a> {
 /// consistency, so concurrent histories are judged against some sequential
 /// order of the calls. ref:herlihy-wing-linearizability
 /// ref:DEC-stateful-models-linearizability
-pub fn check_model_parallel(model: &Model) -> std::result::Result<(), String> {
+pub fn check_model_parallel(model: &Model) -> std::result::Result<(), String>
+{
     let seed = std::env::var("LAWSPEC_SEED")
         .ok()
         .and_then(|s| s.trim().parse::<u64>().ok())
@@ -6368,10 +7848,12 @@ pub fn check_model_parallel_with(
     seed: u64,
     threads: usize,
     branch_length: u64,
-) -> std::result::Result<(), String> {
+) -> std::result::Result<(), String>
+{
     let machine = Machine::new(model);
-    let mut random = SplitMix64::new(seed ^ 0x5BD1E995);
-    for case_number in 0..cases {
+    let mut random = SplitMix64::new(seed ^ 0x5bd1e995);
+    for case_number in 0..cases
+    {
         let case = machine.generate_parallel(
             &mut random,
             1 + (case_number % 8) as i64,
@@ -6379,7 +7861,8 @@ pub fn check_model_parallel_with(
             branch_length,
         );
         let shake = random.next();
-        if let Some(failure) = machine.parallel_fails(&case, repeats, shake) {
+        if let Some(failure) = machine.parallel_fails(&case, repeats, shake)
+        {
             let (case, failure) =
                 machine.shrink_parallel(case, failure, (repeats / 2).max(2), max_shrinks, shake);
             return Err(format!(
@@ -6404,7 +7887,8 @@ pub fn check_model_parallel_with(
 // The draws, search order and messages follow the Python reference.
 
 // What travels over a channel: a value, or a channel end (channel, side).
-enum Carried {
+enum Carried
+{
     Value(Value),
     End(usize, usize),
     // The sending side's process has ended.
@@ -6413,12 +7897,14 @@ enum Carried {
 
 // A queue per direction: side s sends on queues[s] and receives on
 // queues[1 - s]. ended[s] once side s's process has ended.
-struct ScenarioQueues {
+struct ScenarioQueues
+{
     queues: [std::collections::VecDeque<Carried>; 2],
     ended: [bool; 2],
 }
 
-struct ScenarioChannel {
+struct ScenarioChannel
+{
     state: std::sync::Mutex<ScenarioQueues>,
     ready: std::sync::Condvar,
     // In a network run: the channel's two sides as ends on two nodes of a
@@ -6426,7 +7912,8 @@ struct ScenarioChannel {
     net: Option<NetChannel>,
 }
 
-struct NetChannel {
+struct NetChannel
+{
     nodes: [net::Node; 2],
     ends: [net::NetEndpoint; 2],
     done: [std::sync::atomic::AtomicBool; 2],
@@ -6441,7 +7928,8 @@ type VectorClock = HashMap<usize, u64>;
 // of waiting. Over a network, messages go from a sender node to the
 // receiver's node, each send waiting until it is delivered; the senders'
 // clocks travel beside the network, in send order.
-struct ScenarioMailbox {
+struct ScenarioMailbox
+{
     expected: usize,
     state: std::sync::Mutex<MailboxState>,
     ready: std::sync::Condvar,
@@ -6449,33 +7937,41 @@ struct ScenarioMailbox {
 }
 
 #[derive(Default)]
-struct MailboxState {
+struct MailboxState
+{
     items: std::collections::VecDeque<(Carried, VectorClock)>,
     clocks: std::collections::VecDeque<VectorClock>,
     received: usize,
     abandoned: usize,
 }
 
-struct NetMailbox {
+struct NetMailbox
+{
     nodes: [net::Node; 2],
     inbox: actors::Mailbox<Value>,
     remote: net::RemoteMailbox,
 }
 
 /// How many times these acts (not nested pars) send to name.
-fn scenario_sends(acts: &[Sexp], name: &str) -> usize {
+fn scenario_sends(acts: &[Sexp], name: &str) -> usize
+{
     acts.iter()
         .filter(|a| a.kind() == "send" && a.items()[1].name() == name)
         .count()
 }
 
 /// How many sends to name the whole program makes.
-fn all_sends(acts: &[Sexp], name: &str) -> usize {
+fn all_sends(acts: &[Sexp], name: &str) -> usize
+{
     let mut total = 0;
-    for act in acts {
-        if act.kind() == "send" && act.items()[1].name() == name {
+    for act in acts
+    {
+        if act.kind() == "send" && act.items()[1].name() == name
+        {
             total += 1;
-        } else if act.kind() == "par" {
+        }
+        else if act.kind() == "par"
+        {
             total += act.items()[1..]
                 .iter()
                 .map(|b| all_sends(&b.items()[1..], name))
@@ -6501,7 +7997,8 @@ type ScenarioCall = (
     VectorClock,
 );
 
-struct ScenarioRun<'m> {
+struct ScenarioRun<'m>
+{
     machine: &'m Machine<'m>,
     commands: HashMap<String, usize>,
     channels: Vec<ScenarioChannel>,
@@ -6521,10 +8018,14 @@ struct ScenarioRun<'m> {
 }
 
 /// Every process of a par, outermost and first first (not or else).
-fn scenario_processes<'s>(acts: &'s [Sexp], found: &mut Vec<&'s Sexp>) {
-    for act in acts {
-        if act.kind() == "par" {
-            for branch in &act.items()[1..] {
+fn scenario_processes<'s>(acts: &'s [Sexp], found: &mut Vec<&'s Sexp>)
+{
+    for act in acts
+    {
+        if act.kind() == "par"
+        {
+            for branch in &act.items()[1..]
+            {
                 found.push(branch);
                 scenario_processes(&branch.items()[1..], found);
             }
@@ -6533,37 +8034,49 @@ fn scenario_processes<'s>(acts: &'s [Sexp], found: &mut Vec<&'s Sexp>) {
 }
 
 /// The names an act list sends, receives or sends away, with nested pars.
-fn scenario_channels(acts: &[Sexp]) -> Vec<String> {
+fn scenario_channels(acts: &[Sexp]) -> Vec<String>
+{
     let mut names = Vec::new();
-    for act in acts {
+    for act in acts
+    {
         let items = act.items();
-        match act.kind() {
-            "send" => {
+        match act.kind()
+        {
+            "send" =>
+            {
                 names.push(items[1].name());
-                if items[2].kind() == "var" {
+                if items[2].kind() == "var"
+                {
                     names.push(items[2].items()[1].name());
                 }
             }
             "receive" => names.push(items[1].name()),
-            "receiveor" => {
+            "receiveor" =>
+            {
                 names.push(items[1].name());
                 names.extend(scenario_channels(&items[3].items()[1..]));
             }
-            "par" => {
-                for branch in &items[1..] {
+            "par" =>
+            {
+                for branch in &items[1..]
+                {
                     names.extend(scenario_channels(&branch.items()[1..]));
                 }
             }
-            _ => {}
+            _ =>
+            {}
         }
     }
     names
 }
 
-fn scenario_constant(form: &Sexp) -> Value {
+fn scenario_constant(form: &Sexp) -> Value
+{
     let items = form.items();
-    match form.kind() {
-        "int" => match &items[1] {
+    match form.kind()
+    {
+        "int" => match &items[1]
+        {
             Sexp::Int(n) => Value::Integer(n.clone()),
             other => Value::Integer(
                 other
@@ -6578,15 +8091,18 @@ fn scenario_constant(form: &Sexp) -> Value {
     }
 }
 
-impl<'m> ScenarioRun<'m> {
-    fn fail(&self, message: String) {
+impl<'m> ScenarioRun<'m>
+{
+    fn fail(&self, message: String)
+    {
         self.failures
             .lock()
             .unwrap_or_else(|p| p.into_inner())
             .push(message);
     }
 
-    fn failed(&self) -> bool {
+    fn failed(&self) -> bool
+    {
         !self
             .failures
             .lock()
@@ -6594,27 +8110,35 @@ impl<'m> ScenarioRun<'m> {
             .is_empty()
     }
 
-    fn tick(&self) -> u64 {
+    fn tick(&self) -> u64
+    {
         self.clock.fetch_add(1, std::sync::atomic::Ordering::SeqCst) + 1
     }
 
-    fn operand(&self, operand: &Sexp, env: &HashMap<String, Value>) -> Option<Value> {
-        if operand.kind() == "var" {
+    fn operand(&self, operand: &Sexp, env: &HashMap<String, Value>) -> Option<Value>
+    {
+        if operand.kind() == "var"
+        {
             env.get(&operand.items()[1].name()).cloned()
-        } else {
+        }
+        else
+        {
             Some(scenario_constant(operand))
         }
     }
 
-    fn end(&self, name: &str, ends: &ScenarioEnds) -> Option<(usize, usize)> {
+    fn end(&self, name: &str, ends: &ScenarioEnds) -> Option<(usize, usize)>
+    {
         let found = ends.get(name).copied();
-        if found.is_none() {
+        if found.is_none()
+        {
             self.fail(format!("{name} is not a channel end this process holds"));
         }
         found
     }
 
-    fn queues(&self, channel: usize) -> std::sync::MutexGuard<'_, ScenarioQueues> {
+    fn queues(&self, channel: usize) -> std::sync::MutexGuard<'_, ScenarioQueues>
+    {
         self.channels[channel]
             .state
             .lock()
@@ -6623,22 +8147,28 @@ impl<'m> ScenarioRun<'m> {
 
     /// Sends from side; a channel end sent to a process that has ended is
     /// given up.
-    fn send_on(&self, channel: usize, side: usize, value: Carried) {
-        if let Some(net) = &self.channels[channel].net {
-            let value = match value {
+    fn send_on(&self, channel: usize, side: usize, value: Carried)
+    {
+        if let Some(net) = &self.channels[channel].net
+        {
+            let value = match value
+            {
                 Carried::End(c, s) => Value::Text(format!("{}#{s}", self.channel_names[c])),
                 Carried::Value(v) => v,
                 Carried::Gone => return,
             };
-            if let Err(e) = net.ends[side].send(&value) {
-                if !net::is_peer_failed(&e) {
+            if let Err(e) = net.ends[side].send(&value)
+            {
+                if !net::is_peer_failed(&e)
+                {
                     self.fail(format!("a send failed: {e}"));
                 }
             }
             return;
         }
         let mut queues = self.queues(channel);
-        if let (true, Carried::End(c, s)) = (queues.ended[1 - side], &value) {
+        if let (true, Carried::End(c, s)) = (queues.ended[1 - side], &value)
+        {
             let (c, s) = (*c, *s);
             drop(queues);
             return self.gone(c, s);
@@ -6650,9 +8180,12 @@ impl<'m> ScenarioRun<'m> {
     /// side's process has ended: the other side's receives that find
     /// nothing more fail instead of waiting, and channel ends on their way
     /// to side are given up too.
-    fn gone(&self, channel: usize, side: usize) {
-        if let Some(net) = &self.channels[channel].net {
-            if !net.done[side].swap(true, std::sync::atomic::Ordering::SeqCst) {
+    fn gone(&self, channel: usize, side: usize)
+    {
+        if let Some(net) = &self.channels[channel].net
+        {
+            if !net.done[side].swap(true, std::sync::atomic::Ordering::SeqCst)
+            {
                 net.ends[side].abandon();
             }
             return;
@@ -6660,36 +8193,46 @@ impl<'m> ScenarioRun<'m> {
         let mut stranded = Vec::new();
         {
             let mut queues = self.queues(channel);
-            if queues.ended[side] {
+            if queues.ended[side]
+            {
                 return;
             }
             queues.ended[side] = true;
             queues.queues[side].push_back(Carried::Gone);
-            while let Some(value) = queues.queues[1 - side].pop_front() {
-                match value {
+            while let Some(value) = queues.queues[1 - side].pop_front()
+            {
+                match value
+                {
                     Carried::End(c, s) => stranded.push((c, s)),
-                    Carried::Gone => {
+                    Carried::Gone =>
+                    {
                         queues.queues[1 - side].push_back(Carried::Gone);
                         break;
                     }
-                    Carried::Value(_) => {}
+                    Carried::Value(_) =>
+                    {}
                 }
             }
             self.channels[channel].ready.notify_all();
         }
-        for (c, s) in stranded {
+        for (c, s) in stranded
+        {
             self.gone(c, s);
         }
     }
 
     /// The next thing side receives on channel: None when nothing came in
     /// time.
-    fn receive_on(&self, channel: usize, side: usize) -> Option<Carried> {
-        if let Some(net) = &self.channels[channel].net {
-            return match net.ends[side].receive(Some(std::time::Duration::from_secs(5))) {
+    fn receive_on(&self, channel: usize, side: usize) -> Option<Carried>
+    {
+        if let Some(net) = &self.channels[channel].net
+        {
+            return match net.ends[side].receive(Some(std::time::Duration::from_secs(5)))
+            {
                 Ok(Value::Text(t)) => match t.rsplit_once('#').and_then(|(c, s)| {
                     Some((self.channel_numbers.get(c)?, s.parse::<usize>().ok()?))
-                }) {
+                })
+                {
                     Some((c, s)) => Some(Carried::End(*c, s)),
                     None => Some(Carried::Value(Value::Text(t))),
                 },
@@ -6700,15 +8243,19 @@ impl<'m> ScenarioRun<'m> {
         }
         let deadline = std::time::Instant::now() + std::time::Duration::from_secs(5);
         let mut waiting = self.queues(channel);
-        loop {
-            if let Some(v) = waiting.queues[1 - side].pop_front() {
-                if let Carried::Gone = v {
+        loop
+        {
+            if let Some(v) = waiting.queues[1 - side].pop_front()
+            {
+                if let Carried::Gone = v
+                {
                     waiting.queues[1 - side].push_back(Carried::Gone);
                 }
                 return Some(v);
             }
             let now = std::time::Instant::now();
-            if now >= deadline {
+            if now >= deadline
+            {
                 return None;
             }
             waiting = self.channels[channel]
@@ -6719,10 +8266,13 @@ impl<'m> ScenarioRun<'m> {
         }
     }
 
-    fn mailbox_send(&self, name: &str, value: Carried, clock: VectorClock) -> bool {
+    fn mailbox_send(&self, name: &str, value: Carried, clock: VectorClock) -> bool
+    {
         let mailbox = &self.mailboxes[name];
-        match &mailbox.net {
-            None => {
+        match &mailbox.net
+        {
+            None =>
+            {
                 mailbox
                     .state
                     .lock()
@@ -6732,8 +8282,10 @@ impl<'m> ScenarioRun<'m> {
                 mailbox.ready.notify_all();
                 true
             }
-            Some(net) => {
-                let value = match value {
+            Some(net) =>
+            {
+                let value = match value
+                {
                     Carried::End(c, s) => Value::Text(format!("{}#{s}", self.channel_names[c])),
                     Carried::Value(v) => v,
                     Carried::Gone => return true,
@@ -6744,7 +8296,8 @@ impl<'m> ScenarioRun<'m> {
                     .unwrap_or_else(|p| p.into_inner())
                     .clocks
                     .push_back(clock);
-                if let Err(e) = net.remote.send(&value) {
+                if let Err(e) = net.remote.send(&value)
+                {
                     self.fail(format!("a send to mailbox {name} failed: {e}"));
                     return false;
                 }
@@ -6754,7 +8307,8 @@ impl<'m> ScenarioRun<'m> {
         }
     }
 
-    fn mailbox_give_up(&self, name: &str, count: usize) {
+    fn mailbox_give_up(&self, name: &str, count: usize)
+    {
         let mailbox = &self.mailboxes[name];
         mailbox
             .state
@@ -6766,24 +8320,31 @@ impl<'m> ScenarioRun<'m> {
 
     /// The next message and its sender's clock, Gone when no message is
     /// left to come, or None when nothing came in time.
-    fn mailbox_receive(&self, name: &str) -> Option<(Carried, VectorClock)> {
+    fn mailbox_receive(&self, name: &str) -> Option<(Carried, VectorClock)>
+    {
         let mailbox = &self.mailboxes[name];
         let deadline = std::time::Instant::now() + std::time::Duration::from_secs(5);
-        loop {
+        loop
+        {
             {
                 let mut state = mailbox.state.lock().unwrap_or_else(|p| p.into_inner());
-                if mailbox.net.is_none() {
-                    if let Some(item) = state.items.pop_front() {
+                if mailbox.net.is_none()
+                {
+                    if let Some(item) = state.items.pop_front()
+                    {
                         state.received += 1;
                         return Some(item);
                     }
                 }
-                if state.received + state.abandoned >= mailbox.expected {
+                if state.received + state.abandoned >= mailbox.expected
+                {
                     return Some((Carried::Gone, VectorClock::new()));
                 }
-                if mailbox.net.is_none() {
+                if mailbox.net.is_none()
+                {
                     let now = std::time::Instant::now();
-                    if now >= deadline {
+                    if now >= deadline
+                    {
                         return None;
                     }
                     drop(mailbox.ready.wait_timeout(
@@ -6798,16 +8359,19 @@ impl<'m> ScenarioRun<'m> {
                 .inbox
                 .receive(Some(std::time::Duration::from_millis(20)))
             {
-                Ok(value) => {
+                Ok(value) =>
+                {
                     let clock = {
                         let mut state = mailbox.state.lock().unwrap_or_else(|p| p.into_inner());
                         state.received += 1;
                         state.clocks.pop_front().unwrap_or_default()
                     };
-                    let carried = match value {
+                    let carried = match value
+                    {
                         Value::Text(t) => match t.rsplit_once('#').and_then(|(c, s)| {
                             Some((self.channel_numbers.get(c)?, s.parse::<usize>().ok()?))
-                        }) {
+                        })
+                        {
                             Some((c, s)) => Carried::End(*c, s),
                             None => Carried::Value(Value::Text(t)),
                         },
@@ -6816,12 +8380,14 @@ impl<'m> ScenarioRun<'m> {
                     return Some((carried, clock));
                 }
                 Err(_) if std::time::Instant::now() >= deadline => return None,
-                Err(_) => {}
+                Err(_) =>
+                {}
             }
         }
     }
 
-    fn stamp(&self, channel: usize, side: usize, clock: &VectorClock) {
+    fn stamp(&self, channel: usize, side: usize, clock: &VectorClock)
+    {
         self.stamps
             .lock()
             .unwrap_or_else(|p| p.into_inner())
@@ -6830,7 +8396,8 @@ impl<'m> ScenarioRun<'m> {
             .push_back(clock.clone());
     }
 
-    fn unstamp(&self, channel: usize, side: usize, clock: &mut VectorClock, me: usize) {
+    fn unstamp(&self, channel: usize, side: usize, clock: &mut VectorClock, me: usize)
+    {
         let sent = self
             .stamps
             .lock()
@@ -6838,7 +8405,8 @@ impl<'m> ScenarioRun<'m> {
             .get_mut(&(channel, 1 - side))
             .and_then(|q| q.pop_front())
             .unwrap_or_default();
-        for (p, n) in sent {
+        for (p, n) in sent
+        {
             let mine = clock.entry(p).or_insert(0);
             *mine = (*mine).max(n);
         }
@@ -6855,19 +8423,23 @@ impl<'m> ScenarioRun<'m> {
         random: &mut SplitMix64,
         identity: usize,
         clock: &mut VectorClock,
-    ) -> bool {
+    ) -> bool
+    {
         let mut sent: HashMap<String, usize> =
             self.mailboxes.keys().map(|m| (m.clone(), 0)).collect();
         let done = self.steps(
             acts, env, ends, random, identity, clock, identity, &mut sent,
         );
-        for (channel, side) in ends.drain().map(|(_, end)| end).collect::<Vec<_>>() {
+        for (channel, side) in ends.drain().map(|(_, end)| end).collect::<Vec<_>>()
+        {
             self.gone(channel, side);
         }
         // Sends this process will never make.
-        for (name, count) in &sent {
+        for (name, count) in &sent
+        {
             let missing = scenario_sends(acts, name).saturating_sub(*count);
-            if missing > 0 {
+            if missing > 0
+            {
                 self.mailbox_give_up(name, missing);
             }
         }
@@ -6884,18 +8456,24 @@ impl<'m> ScenarioRun<'m> {
         clock: &mut VectorClock,
         me: usize,
         sent: &mut HashMap<String, usize>,
-    ) -> bool {
+    ) -> bool
+    {
         let mut own = Context::testing();
-        for (index, act) in acts.iter().enumerate() {
-            if self.failed() {
+        for (index, act) in acts.iter().enumerate()
+        {
+            if self.failed()
+            {
                 return false;
             }
-            if self.victim == Some((identity, index)) {
+            if self.victim == Some((identity, index))
+            {
                 return false;
             }
             let items = act.items();
-            match act.kind() {
-                "call" => {
+            match act.kind()
+            {
+                "call" =>
+                {
                     let name = items[1].name();
                     let command_index = *self
                         .commands
@@ -6903,10 +8481,13 @@ impl<'m> ScenarioRun<'m> {
                         .unwrap_or_else(|| panic!("no command {name}"));
                     let command = &self.machine.commands[command_index];
                     let mut args = Vec::new();
-                    for o in &items[3..] {
-                        match self.operand(o, env) {
+                    for o in &items[3..]
+                    {
+                        match self.operand(o, env)
+                        {
                             Some(v) => args.push(v),
-                            None => {
+                            None =>
+                            {
                                 self.fail(format!("{} is not bound", o.items()[1].name()));
                                 return false;
                             }
@@ -6918,9 +8499,11 @@ impl<'m> ScenarioRun<'m> {
                     *clock.entry(me).or_insert(0) += 1;
                     let at_call = clock.clone();
                     let called = self.tick();
-                    let result = match self.machine.run_command(command, &mut own, full) {
+                    let result = match self.machine.run_command(command, &mut own, full)
+                    {
                         Ok(result) => result,
-                        Err(e) => {
+                        Err(e) =>
+                        {
                             self.fail(format!("{} raised error: {e}", command.name));
                             return false;
                         }
@@ -6940,23 +8523,31 @@ impl<'m> ScenarioRun<'m> {
                             at_call,
                             clock.clone(),
                         ));
-                    if items[2] != Sexp::Blank {
+                    if items[2] != Sexp::Blank
+                    {
                         env.insert(items[2].name(), result);
                     }
                 }
-                "send" if self.mailboxes.contains_key(&items[1].name()) => {
+                "send" if self.mailboxes.contains_key(&items[1].name()) =>
+                {
                     let name = items[1].name();
                     let operand = &items[2];
-                    let held = if operand.kind() == "var" {
+                    let held = if operand.kind() == "var"
+                    {
                         ends.remove(&operand.items()[1].name())
-                    } else {
+                    }
+                    else
+                    {
                         None
                     };
-                    let value = match held {
+                    let value = match held
+                    {
                         Some((c, s)) => Carried::End(c, s),
-                        None => match self.operand(operand, env) {
+                        None => match self.operand(operand, env)
+                        {
                             Some(v) => Carried::Value(v),
-                            None => {
+                            None =>
+                            {
                                 self.fail(format!("{} is not bound", operand.items()[1].name()));
                                 return false;
                             }
@@ -6964,20 +8555,26 @@ impl<'m> ScenarioRun<'m> {
                     };
                     perturb(random);
                     *clock.entry(me).or_insert(0) += 1;
-                    if !self.mailbox_send(&name, value, clock.clone()) {
+                    if !self.mailbox_send(&name, value, clock.clone())
+                    {
                         return false;
                     }
                     *sent.entry(name).or_insert(0) += 1;
                 }
-                "receive" | "receiveor" if self.mailboxes.contains_key(&items[1].name()) => {
+                "receive" | "receiveor" if self.mailboxes.contains_key(&items[1].name()) =>
+                {
                     let name = items[1].name();
-                    match self.mailbox_receive(&name) {
-                        None => {
+                    match self.mailbox_receive(&name)
+                    {
+                        None =>
+                        {
                             self.fail(format!("a receive on mailbox {name} waited too long: the processes are blocked"));
                             return false;
                         }
-                        Some((Carried::Gone, _)) => {
-                            if act.kind() == "receive" {
+                        Some((Carried::Gone, _)) =>
+                        {
+                            if act.kind() == "receive"
+                            {
                                 return false;
                             }
                             return self.steps(
@@ -6991,39 +8588,54 @@ impl<'m> ScenarioRun<'m> {
                                 sent,
                             );
                         }
-                        Some((value, carried)) => {
-                            for (p, n) in carried {
+                        Some((value, carried)) =>
+                        {
+                            for (p, n) in carried
+                            {
                                 let mine = clock.entry(p).or_insert(0);
                                 *mine = (*mine).max(n);
                             }
                             *clock.entry(me).or_insert(0) += 1;
-                            match value {
-                                Carried::End(c, s) => {
+                            match value
+                            {
+                                Carried::End(c, s) =>
+                                {
                                     ends.insert(items[2].name(), (c, s));
                                 }
-                                Carried::Value(v) => {
+                                Carried::Value(v) =>
+                                {
                                     env.insert(items[2].name(), v);
                                 }
-                                Carried::Gone => {}
+                                Carried::Gone =>
+                                {}
                             }
                         }
                     }
                 }
-                "send" => {
-                    let Some((channel, side)) = self.end(&items[1].name(), ends) else {
+                "send" =>
+                {
+                    let Some((channel, side)) = self.end(&items[1].name(), ends)
+                    else
+                    {
                         return false;
                     };
                     let operand = &items[2];
-                    let held = if operand.kind() == "var" {
+                    let held = if operand.kind() == "var"
+                    {
                         ends.remove(&operand.items()[1].name())
-                    } else {
+                    }
+                    else
+                    {
                         None
                     };
-                    let value = match held {
+                    let value = match held
+                    {
                         Some((c, s)) => Carried::End(c, s),
-                        None => match self.operand(operand, env) {
+                        None => match self.operand(operand, env)
+                        {
                             Some(v) => Carried::Value(v),
-                            None => {
+                            None =>
+                            {
                                 self.fail(format!("{} is not bound", operand.items()[1].name()));
                                 return false;
                             }
@@ -7034,17 +8646,23 @@ impl<'m> ScenarioRun<'m> {
                     self.stamp(channel, side, clock);
                     self.send_on(channel, side, value);
                 }
-                "receive" | "receiveor" => {
+                "receive" | "receiveor" =>
+                {
                     let name = items[1].name();
-                    let Some((channel, side)) = self.end(&name, ends) else {
+                    let Some((channel, side)) = self.end(&name, ends)
+                    else
+                    {
                         return false;
                     };
                     let value = self.receive_on(channel, side);
-                    if !matches!(value, None | Some(Carried::Gone)) {
+                    if !matches!(value, None | Some(Carried::Gone))
+                    {
                         self.unstamp(channel, side, clock, me);
                     }
-                    match value {
-                        None => {
+                    match value
+                    {
+                        None =>
+                        {
                             self.fail(format!(
                                 "a receive on {name} waited too long: the processes are blocked"
                             ));
@@ -7052,8 +8670,10 @@ impl<'m> ScenarioRun<'m> {
                         }
                         // The other process ended: or else runs instead of
                         // the rest; without it, this process fails too.
-                        Some(Carried::Gone) => {
-                            if act.kind() == "receive" {
+                        Some(Carried::Gone) =>
+                        {
+                            if act.kind() == "receive"
+                            {
                                 return false;
                             }
                             ends.remove(&name);
@@ -7068,41 +8688,55 @@ impl<'m> ScenarioRun<'m> {
                                 sent,
                             );
                         }
-                        Some(Carried::End(c, s)) => {
+                        Some(Carried::End(c, s)) =>
+                        {
                             ends.insert(items[2].name(), (c, s));
                         }
-                        Some(Carried::Value(v)) => {
+                        Some(Carried::Value(v)) =>
+                        {
                             env.insert(items[2].name(), v);
                         }
                     }
                 }
-                "par" => {
+                "par" =>
+                {
                     let branches: Vec<&[Sexp]> =
                         items[1..].iter().map(|b| &b.items()[1..]).collect();
                     // Each name's users, in branch order.
                     let mut owned: Vec<(String, Vec<usize>)> = Vec::new();
-                    for (i, branch) in branches.iter().enumerate() {
-                        for name in scenario_channels(branch) {
-                            let at = match owned.iter().position(|(n, _)| *n == name) {
+                    for (i, branch) in branches.iter().enumerate()
+                    {
+                        for name in scenario_channels(branch)
+                        {
+                            let at = match owned.iter().position(|(n, _)| *n == name)
+                            {
                                 Some(at) => at,
-                                None => {
+                                None =>
+                                {
                                     owned.push((name, Vec::new()));
                                     owned.len() - 1
                                 }
                             };
-                            if !owned[at].1.contains(&i) {
+                            if !owned[at].1.contains(&i)
+                            {
                                 owned[at].1.push(i);
                             }
                         }
                     }
                     let mut handed = Vec::new();
-                    for i in 0..branches.len() {
+                    for i in 0..branches.len()
+                    {
                         let mut mine = ScenarioEnds::new();
-                        for (name, users) in &owned {
-                            if let Some(side) = users.iter().position(|u| *u == i) {
-                                if let Some(end) = ends.remove(name) {
+                        for (name, users) in &owned
+                        {
+                            if let Some(side) = users.iter().position(|u| *u == i)
+                            {
+                                if let Some(end) = ends.remove(name)
+                                {
                                     mine.insert(name.clone(), end);
-                                } else if let Some(channel) = self.channel_numbers.get(name) {
+                                }
+                                else if let Some(channel) = self.channel_numbers.get(name)
+                                {
                                     mine.insert(name.clone(), (*channel, side));
                                 }
                             }
@@ -7119,7 +8753,7 @@ impl<'m> ScenarioRun<'m> {
                                 let mut env = env.clone();
                                 let mut child = parent.clone();
                                 let mut random = SplitMix64::new(
-                                    self.shake ^ ((i as u64 + 1).wrapping_mul(0x9E3779B97F4A7C15)),
+                                    self.shake ^ ((i as u64 + 1).wrapping_mul(0x9e3779b97f4a7c15)),
                                 );
                                 let identity = branch as *const Sexp as usize;
                                 scope.spawn(move || {
@@ -7141,20 +8775,24 @@ impl<'m> ScenarioRun<'m> {
                             .collect()
                     });
                     let mut finished = Vec::new();
-                    for (done, child) in outcomes {
+                    for (done, child) in outcomes
+                    {
                         finished.push(done);
-                        for (p, n) in child {
+                        for (p, n) in child
+                        {
                             let mine = clock.entry(p).or_insert(0);
                             *mine = (*mine).max(n);
                         }
                     }
                     *clock.entry(me).or_insert(0) += 1;
                     // A failed branch fails the process that ran the par.
-                    if finished.contains(&false) {
+                    if finished.contains(&false)
+                    {
                         return false;
                     }
                 }
-                "expect" => {
+                "expect" =>
+                {
                     let name = items[1].name();
                     let wanted = scenario_constant(&items[2]);
                     let actual = env.get(&name);
@@ -7163,7 +8801,8 @@ impl<'m> ScenarioRun<'m> {
                             matches!(compare_values(a, &wanted), Ok(std::cmp::Ordering::Equal))
                         })
                         .unwrap_or(false);
-                    if !agrees {
+                    if !agrees
+                    {
                         let shown = actual.map(render).unwrap_or_else(|| "None".into());
                         self.fail(format!(
                             "expect {name} = {} failed: {name} is {shown}",
@@ -7186,7 +8825,8 @@ fn run_scenario(
     shake: u64,
     crash: bool,
     network: bool,
-) -> (String, Option<String>) {
+) -> (String, Option<String>)
+{
     let forms = read_descriptor(spec);
     let title = forms[0].items()[1].name();
     let names: Vec<String> = forms
@@ -7205,26 +8845,31 @@ fn run_scenario(
         .iter()
         .map(|d| machine.values.minimal(d))
         .collect();
-    let state = match machine.start_system(&mut symbols, start_args.clone()) {
+    let state = match machine.start_system(&mut symbols, start_args.clone())
+    {
         Ok(state) => state,
         Err(e) => return (title, Some(format!("the start raised error: {e}"))),
     };
-    let expected = match (machine.model.start[1])(&mut symbols, start_args) {
+    let expected = match (machine.model.start[1])(&mut symbols, start_args)
+    {
         Ok(expected) => expected,
         Err(e) => return (title, Some(format!("the start raised error: {e}"))),
     };
     // Some runs crash one process of a par before a random act.
     let mut processes = Vec::new();
     scenario_processes(body, &mut processes);
-    let victim = if crash && !processes.is_empty() {
-        let mut chooser = SplitMix64::new(shake ^ 0xC3A5C85C97CB3127);
+    let victim = if crash && !processes.is_empty()
+    {
+        let mut chooser = SplitMix64::new(shake ^ 0xc3a5c85c97cb3127);
         let branch = processes[chooser.below(processes.len() as u64) as usize];
         let acts = branch.items().len() as u64 - 1;
         Some((
             branch as *const Sexp as usize,
             chooser.below(acts + 1) as usize,
         ))
-    } else {
+    }
+    else
+    {
         None
     };
     // Network runs: loss, duplication and delay (which reorders); the
@@ -7235,7 +8880,7 @@ fn run_scenario(
         .filter(|_| network);
     let faulty = wire.map(|_| {
         net::MemoryNetwork::new(
-            shake ^ 0x7F4A7C159E3779B9,
+            shake ^ 0x7f4a7c159e3779b9,
             0.1,
             0.1,
             std::time::Duration::from_millis(2),
@@ -7252,7 +8897,8 @@ fn run_scenario(
         .unwrap_or_default(),
     );
     let new_channel = |name: &String| {
-        let net = match (&faulty, wire) {
+        let net = match (&faulty, wire)
+        {
             (Some(network), Some(w)) => w.items()[1..]
                 .iter()
                 .find(|f| f.kind() == "channel" && f.items()[1].name() == *name)
@@ -7306,15 +8952,19 @@ fn run_scenario(
         .flat_map(|f| f.items()[1..].iter().map(Sexp::name).collect::<Vec<_>>())
         .collect();
     let new_mailbox = |name: &String| {
-        let net = match (&faulty, wire) {
+        let net = match (&faulty, wire)
+        {
             (Some(network), Some(w)) => w.items()[1..]
                 .iter()
                 .find(|f| f.kind() == "mailbox" && f.items()[1].name() == *name)
                 .map(|f| {
                     let d = f.items()[2].clone();
-                    let d = if d.kind() == "end" {
+                    let d = if d.kind() == "end"
+                    {
                         descriptor("(text)")
-                    } else {
+                    }
+                    else
+                    {
                         d
                     };
                     let nodes = [
@@ -7381,16 +9031,22 @@ fn run_scenario(
         0,
         &mut VectorClock::new(),
     );
-    for channel in &run.channels {
-        if let Some(net) = &channel.net {
-            for node in &net.nodes {
+    for channel in &run.channels
+    {
+        if let Some(net) = &channel.net
+        {
+            for node in &net.nodes
+            {
                 node.close();
             }
         }
     }
-    for mailbox in run.mailboxes.values() {
-        if let Some(net) = &mailbox.net {
-            for node in &net.nodes {
+    for mailbox in run.mailboxes.values()
+    {
+        if let Some(net) = &mailbox.net
+        {
+            for node in &net.nodes
+            {
                 node.close();
             }
         }
@@ -7402,29 +9058,37 @@ fn run_scenario(
         .into_iter()
         .next()
     {
-        let crashed = if victim.is_some() {
+        let crashed = if victim.is_some()
+        {
             " (with a process crashed)"
-        } else {
+        }
+        else
+        {
             ""
         };
         return (title, Some(format!("{failure}{crashed}")));
     }
-    if !finished && victim.is_none() {
+    if !finished && victim.is_none()
+    {
         return (title, Some("a process failed".into()));
     }
     let history = run.history.into_inner().unwrap_or_else(|p| p.into_inner());
-    let state = match machine.system_state(&state) {
+    let state = match machine.system_state(&state)
+    {
         Ok(state) => state,
         Err(e) => return (title, Some(format!("raised error: {e}"))),
     };
-    let fin = match machine.model.abstract_state {
-        Some(abstraction) => match abstraction(&mut symbols, vec![state.clone()]) {
+    let fin = match machine.model.abstract_state
+    {
+        Some(abstraction) => match abstraction(&mut symbols, vec![state.clone()])
+        {
             Ok(v) => Some(v),
             Err(e) => return (title, Some(format!("raised error: {e}"))),
         },
         None => None,
     };
-    if !machine.scenario_linearizes(&mut symbols, &history, expected, fin.as_ref(), &state) {
+    if !machine.scenario_linearizes(&mut symbols, &history, expected, fin.as_ref(), &state)
+    {
         let mut ordered: Vec<&ScenarioCall> = history.iter().collect();
         ordered.sort_by_key(|h| h.3);
         let observed: Vec<String> = ordered
@@ -7452,12 +9116,14 @@ fn run_scenario(
 
 // Whether call a returned before call b began, as far as messages tell:
 // a's return clock is at or below b's call clock everywhere.
-fn happened_before(a: &ScenarioCall, b: &ScenarioCall) -> bool {
+fn happened_before(a: &ScenarioCall, b: &ScenarioCall) -> bool
+{
     a.7.iter()
         .all(|(p, n)| b.6.get(p).copied().unwrap_or(0) >= *n)
 }
 
-impl<'a> Machine<'a> {
+impl<'a> Machine<'a>
+{
     /// A Wing-Gong search over the scenario's calls, memoized on the calls
     /// done and the state. Linearizable: next, a call no pending call
     /// returned before (real time). Sequential: next, a call every call that
@@ -7471,13 +9137,16 @@ impl<'a> Machine<'a> {
         expected: Value,
         fin: Option<&Value>,
         state: &Value,
-    ) -> bool {
+    ) -> bool
+    {
         let everything: Vec<usize> = (0..history.len()).collect();
-        if self.consistency == "causal" {
+        if self.consistency == "causal"
+        {
             let mut processes: Vec<usize> = history.iter().map(|h| h.5).collect();
             processes.sort_unstable();
             processes.dedup();
-            for process in processes {
+            for process in processes
+            {
                 let own: Vec<usize> = everything
                     .iter()
                     .copied()
@@ -7506,15 +9175,19 @@ impl<'a> Machine<'a> {
                     expected.clone(),
                     fin,
                     state,
-                ) {
+                )
+                {
                     return false;
                 }
             }
             return true;
         }
-        let checked: std::collections::HashSet<usize> = if self.consistency == "eventual" {
+        let checked: std::collections::HashSet<usize> = if self.consistency == "eventual"
+        {
             Default::default()
-        } else {
+        }
+        else
+        {
             everything.iter().copied().collect()
         };
         let mut seen = std::collections::HashSet::new();
@@ -7532,10 +9205,14 @@ impl<'a> Machine<'a> {
         )
     }
 
-    fn before(&self, history: &[ScenarioCall], j: usize, i: usize) -> bool {
-        if self.consistency == "linearizable" {
+    fn before(&self, history: &[ScenarioCall], j: usize, i: usize) -> bool
+    {
+        if self.consistency == "linearizable"
+        {
             history[j].4 < history[i].3
-        } else {
+        }
+        else
+        {
             happened_before(&history[j], &history[i])
         }
     }
@@ -7553,21 +9230,27 @@ impl<'a> Machine<'a> {
         model_state: Value,
         fin: Option<&Value>,
         state: &Value,
-    ) -> bool {
+    ) -> bool
+    {
         let mut key = done.clone();
         key.sort_unstable();
-        if !seen.insert((key, render(&model_state))) {
+        if !seen.insert((key, render(&model_state)))
+        {
             return false;
         }
-        if done.len() == members.len() {
-            if !judge_final {
+        if done.len() == members.len()
+        {
+            if !judge_final
+            {
                 return true;
             }
-            if let Some(fin) = fin {
+            if let Some(fin) = fin
+            {
                 if !matches!(
                     compare_values(fin, &model_state),
                     Ok(std::cmp::Ordering::Equal)
-                ) {
+                )
+                {
                     return false;
                 }
             }
@@ -7579,8 +9262,10 @@ impl<'a> Machine<'a> {
                 )
             });
         }
-        for &i in members {
-            if done.contains(&i) {
+        for &i in members
+        {
+            if done.contains(&i)
+            {
                 continue;
             }
             if members
@@ -7591,7 +9276,8 @@ impl<'a> Machine<'a> {
             }
             let (index, args, result) = (&history[i].0, &history[i].1, &history[i].2);
             let command = &self.commands[*index];
-            let (after, wanted) = match step_model(command, ctx, args, model_state.clone()) {
+            let (after, wanted) = match step_model(command, ctx, args, model_state.clone())
+            {
                 Ok(stepped) => stepped,
                 Err(ModelFault::Invalid) => continue,
                 Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
@@ -7618,7 +9304,8 @@ impl<'a> Machine<'a> {
                 after,
                 fin,
                 state,
-            ) {
+            )
+            {
                 return true;
             }
         }
@@ -7628,19 +9315,22 @@ impl<'a> Machine<'a> {
 
 /// Runs a scenario on many schedules (30 runs, seeded by LAWSPEC_SEED);
 /// a failure names the scenario and what went wrong.
-pub fn check_scenario(model: &Model, spec: &str) -> std::result::Result<(), String> {
+pub fn check_scenario(model: &Model, spec: &str) -> std::result::Result<(), String>
+{
     let seed = std::env::var("LAWSPEC_SEED")
         .ok()
         .and_then(|s| s.trim().parse::<u64>().ok())
         .unwrap_or(0);
     let machine = Machine::new(model);
-    let mut random = SplitMix64::new(seed ^ 0x2545F4914F6CDD1D);
-    for run in 0..30 {
+    let mut random = SplitMix64::new(seed ^ 0x2545f4914f6cdd1d);
+    for run in 0..30
+    {
         // Every third run crashes one process of a par at a random point, and
         // every third other one sends each channel over a faulty network.
         let (title, failure) =
             run_scenario(&machine, spec, random.next(), run % 3 == 2, run % 3 == 1);
-        if let Some(failure) = failure {
+        if let Some(failure) = failure
+        {
             return Err(format!("scenario {title} fails: {failure}"));
         }
     }
@@ -7648,9 +9338,11 @@ pub fn check_scenario(model: &Model, spec: &str) -> std::result::Result<(), Stri
 }
 
 #[cfg(test)]
-mod tests {
+mod tests
+{
     #[test]
-    fn finite_case_covers_preserve_order_correlations_and_laziness() {
+    fn finite_case_covers_preserve_order_correlations_and_laziness()
+    {
         let collect = |cover: &FiniteCover| {
             let mut rows = Vec::new();
             finite_cases(cover, |index, factories| {
@@ -7664,7 +9356,7 @@ mod tests {
                 ));
                 Ok(())
             })
-            .unwrap();
+            .expect("valid fixture for finite case covers preserve order correlations and laziness must succeed");
             rows
         };
         let domain = FiniteDomain::Integers(0.into(), 2.into());
@@ -7715,9 +9407,12 @@ mod tests {
         let result = finite_cases(&huge, |index, _| {
             assert_eq!(index, visited);
             visited += 1;
-            if visited == 3 {
+            if visited == 3
+            {
                 Err("stop".to_owned())
-            } else {
+            }
+            else
+            {
                 Ok(())
             }
         });
@@ -7726,7 +9421,8 @@ mod tests {
     }
 
     #[test]
-    fn finite_case_factories_materialize_fresh_contexts_and_values() {
+    fn finite_case_factories_materialize_fresh_contexts_and_values()
+    {
         let factory = FiniteValue::Literal(|context| {
             Ok(Value::List(vec![Value::Symbol(
                 context.symbol("id", "same"),
@@ -7734,17 +9430,19 @@ mod tests {
         });
         let first = &mut Context::testing();
         let second = &mut Context::testing();
-        let mut value = factory.materialize(first).unwrap();
-        assert_eq!(value, factory.materialize(first).unwrap());
-        assert_ne!(value, factory.materialize(second).unwrap());
-        if let Value::List(items) = &mut value {
+        let mut value = factory.materialize(first).expect("valid fixture for finite case factories materialize fresh contexts and values must succeed");
+        assert_eq!(value, factory.materialize(first).expect("valid fixture for finite case factories materialize fresh contexts and values must succeed"));
+        assert_ne!(value, factory.materialize(second).expect("valid fixture for finite case factories materialize fresh contexts and values must succeed"));
+        if let Value::List(items) = &mut value
+        {
             items.clear();
         }
-        assert_ne!(value, factory.materialize(first).unwrap());
+        assert_ne!(value, factory.materialize(first).expect("valid fixture for finite case factories materialize fresh contexts and values must succeed"));
     }
     use super::*;
     #[test]
-    fn nested_structural_index_guards_remain_checked() {
+    fn nested_structural_index_guards_remain_checked()
+    {
         let chain = TypeRef::named("PathChain", vec![]);
         let inner = TypeRef::named("lawspec::structural::record::inner", vec![]);
         let outer = TypeRef::named("lawspec::structural::record::outer", vec![]);
@@ -7789,7 +9487,7 @@ mod tests {
                 }],
             },
         ])
-        .unwrap()
+        .expect("valid fixture for nested structural index guards remain checked must succeed")
         .with_indices(&[
             ("Stop", &["c0", "c10"]),
             ("Next", &["+ f0 c1", "+ f0.1 c1"]),
@@ -7817,7 +9515,8 @@ mod tests {
                 )],
             )
         };
-        for bits in [32, 64] {
+        for bits in [32, 64]
+        {
             let product = |left, right| {
                 construct_data("Outer", vec![construct_data("Inner", vec![left]), right])
             };
@@ -7834,11 +9533,15 @@ mod tests {
             let good = wrap(two.clone(), two.clone());
             assert!(schema.validate(good.clone(), &wrapper, bits).is_ok());
             assert_eq!(
-                schema.index_of(&wrapper, &good, 0).unwrap(),
+                schema.index_of(&wrapper, &good, 0).expect(
+                    "valid fixture for nested structural index guards remain checked must succeed"
+                ),
                 BigInt::from(2)
             );
             assert_eq!(
-                schema.index_of(&wrapper, &good, 1).unwrap(),
+                schema.index_of(&wrapper, &good, 1).expect(
+                    "valid fixture for nested structural index guards remain checked must succeed"
+                ),
                 BigInt::from(12)
             );
             assert!(
@@ -7863,46 +9566,53 @@ mod tests {
             );
         }
     }
-    fn int(n: i64) -> Value {
+    fn int(n: i64) -> Value
+    {
         Value::Integer(n.into())
     }
-    fn decimal(c: i64, e: i64) -> Value {
+    fn decimal(c: i64, e: i64) -> Value
+    {
         Value::Decimal(Decimal::new(c.into(), e.into()))
     }
     #[test]
-    fn data_bridges_check_constructor_identity_arity_and_typed_fields() {
+    fn data_bridges_check_constructor_identity_arity_and_typed_fields()
+    {
         let tag = "example::type::Pair::Pair";
         let value = construct_data(tag, vec![int(127), Value::Bool(true)]);
-        let fields = data_fields(value.clone(), tag, 2).unwrap();
-        assert_eq!(i8::from_value(fields[0].clone()).unwrap(), 127);
+        let fields = data_fields(value.clone(), tag, 2).expect("valid fixture for data bridges check constructor identity arity and typed fields must succeed");
+        assert_eq!(i8::from_value(fields[0].clone()).expect("valid fixture for data bridges check constructor identity arity and typed fields must succeed"), 127);
         assert!(data_fields(value.clone(), "other::type::Pair::Pair", 2).is_err());
         assert!(data_fields(value.clone(), tag, 1).is_err());
         assert!(data_fields(value, tag, 3).is_err());
         assert!(data_fields(Value::List(vec![]), tag, 0).is_err());
-        let overflow = data_fields(construct_data(tag, vec![int(128)]), tag, 1).unwrap();
+        let overflow = data_fields(construct_data(tag, vec![int(128)]), tag, 1).expect("valid fixture for data bridges check constructor identity arity and typed fields must succeed");
         assert!(i8::from_value(overflow[0].clone()).is_err());
     }
 
     #[test]
-    fn data_equality_preserves_ieee_and_constructor_semantics() {
+    fn data_equality_preserves_ieee_and_constructor_semantics()
+    {
         let tag = "example::type::Box::Box";
         let boxed = |value| construct_data(tag, vec![value]);
         let nan = boxed(Value::List(vec![Value::Float32(f32::NAN)]));
-        assert!(!equal(&nan, &nan).unwrap());
-        assert!(equal(&boxed(Value::Float64(-0.0)), &boxed(Value::Float64(0.0))).unwrap());
-        assert!(!equal(&boxed(int(1)), &construct_data(tag, vec![int(1), int(2)])).unwrap());
+        assert!(!equal(&nan, &nan).expect(
+            "valid fixture for data equality preserves ieee and constructor semantics must succeed"
+        ));
+        assert!(equal(&boxed(Value::Float64(-0.0)), &boxed(Value::Float64(0.0))).expect("valid fixture for data equality preserves ieee and constructor semantics must succeed"));
+        assert!(!equal(&boxed(int(1)), &construct_data(tag, vec![int(1), int(2)])).expect("valid fixture for data equality preserves ieee and constructor semantics must succeed"));
         assert!(
             !equal(
                 &boxed(int(1)),
                 &construct_data("example::type::Other::Box", vec![int(1)])
             )
-            .unwrap()
+            .expect("valid fixture for data equality preserves ieee and constructor semantics must succeed")
         );
         assert!(equal(&boxed(int(1)), &boxed(Value::Float64(1.0))).is_err());
     }
 
     #[test]
-    fn nested_data_keeps_absence_raw_units_and_symbol_identity() {
+    fn nested_data_keeps_absence_raw_units_and_symbol_identity()
+    {
         let tag = "example::type::Record::Record";
         let symbol = Symbol::new("same description".into());
         let record = |symbol| {
@@ -7917,20 +9627,27 @@ mod tests {
             )
         };
         let original = record(symbol.clone());
-        assert!(equal(&original, &record(symbol)).unwrap());
-        assert!(!equal(&original, &record(Symbol::new("same description".into()))).unwrap());
-        let mut fields = data_fields(original.clone(), tag, 4).unwrap();
+        assert!(equal(&original, &record(symbol)).expect(
+            "valid fixture for nested data keeps absence raw units and symbol identity must succeed"
+        ));
+        assert!(!equal(&original, &record(Symbol::new("same description".into()))).expect("valid fixture for nested data keeps absence raw units and symbol identity must succeed"));
+        let mut fields = data_fields(original.clone(), tag, 4).expect("valid fixture for nested data keeps absence raw units and symbol identity must succeed");
         fields[0] = Value::Maybe(None);
-        assert!(!equal(&original, &construct_data(tag, fields)).unwrap());
+        assert!(!equal(&original, &construct_data(tag, fields)).expect(
+            "valid fixture for nested data keeps absence raw units and symbol identity must succeed"
+        ));
     }
 
     #[test]
-    fn integer_promotion_and_checked_bridges() {
-        let result = binary("+", "Integer", 127i8.into_value(), int(1)).unwrap();
+    fn integer_promotion_and_checked_bridges()
+    {
+        let result = binary("+", "Integer", 127i8.into_value(), int(1))
+            .expect("valid fixture for integer promotion and checked bridges must succeed");
         assert_eq!(result, int(128));
         assert!(i8::from_value(result).is_err());
         assert_eq!(
-            u64::from_value(Value::Integer(u64::MAX.into())).unwrap(),
+            u64::from_value(Value::Integer(u64::MAX.into()))
+                .expect("valid fixture for integer promotion and checked bridges must succeed"),
             u64::MAX
         );
         assert_eq!(Integer::from(u128::MAX).0, BigInt::from(u128::MAX));
@@ -7938,15 +9655,18 @@ mod tests {
         assert!(i32::from_value(Value::Rational(BigRational::new(1.into(), 2.into()))).is_err());
     }
     #[test]
-    fn exact_decimal_and_rational_arithmetic() {
+    fn exact_decimal_and_rational_arithmetic()
+    {
         assert!(
             equal(
-                &binary("+", "Decimal", decimal(1, -1), decimal(2, -1)).unwrap(),
+                &binary("+", "Decimal", decimal(1, -1), decimal(2, -1))
+                    .expect("valid fixture for exact decimal and rational arithmetic must succeed"),
                 &decimal(3, -1)
             )
-            .unwrap()
+            .expect("valid fixture for exact decimal and rational arithmetic must succeed")
         );
-        let half = binary("/", "Rational", int(1), int(2)).unwrap();
+        let half = binary("/", "Rational", int(1), int(2))
+            .expect("valid fixture for exact decimal and rational arithmetic must succeed");
         assert_eq!(half, Value::Rational(BigRational::new(1.into(), 2.into())));
         assert!(binary("/", "Rational", int(1), int(0)).is_err());
         assert!(
@@ -7954,26 +9674,56 @@ mod tests {
                 .convert("Decimal", 64)
                 .is_err()
         );
-        assert_eq!(binary("quot", "Integer", int(-7), int(3)).unwrap(), int(-2));
-        assert_eq!(binary("rem", "Integer", int(-7), int(3)).unwrap(), int(-1));
+        assert_eq!(
+            binary("quot", "Integer", int(-7), int(3))
+                .expect("valid fixture for exact decimal and rational arithmetic must succeed"),
+            int(-2)
+        );
+        assert_eq!(
+            binary("rem", "Integer", int(-7), int(3))
+                .expect("valid fixture for exact decimal and rational arithmetic must succeed"),
+            int(-1)
+        );
     }
     #[test]
-    fn decimal_rounds_half_even_at_requested_scale() {
-        for (numerator, expected) in [(125, 12), (135, 14), (-125, -12), (-135, -14)] {
-            let d = Decimal::round(BigRational::new(numerator.into(), 100.into()), 1).unwrap();
-            assert!(equal(&Value::Decimal(d), &decimal(expected, -1)).unwrap());
+    fn decimal_rounds_half_even_at_requested_scale()
+    {
+        for (numerator, expected) in [(125, 12), (135, 14), (-125, -12), (-135, -14)]
+        {
+            let d = Decimal::round(BigRational::new(numerator.into(), 100.into()), 1).expect(
+                "valid fixture for decimal rounds half even at requested scale must succeed",
+            );
+            assert!(equal(&Value::Decimal(d), &decimal(expected, -1)).expect(
+                "valid fixture for decimal rounds half even at requested scale must succeed"
+            ));
         }
-        let hundred = Decimal::round(BigRational::from_integer(250.into()), -2).unwrap();
-        assert!(equal(&Value::Decimal(hundred), &int(200)).unwrap());
+        let hundred = Decimal::round(BigRational::from_integer(250.into()), -2)
+            .expect("valid fixture for decimal rounds half even at requested scale must succeed");
+        assert!(
+            equal(&Value::Decimal(hundred), &int(200)).expect(
+                "valid fixture for decimal rounds half even at requested scale must succeed"
+            )
+        );
     }
     #[test]
-    fn ieee_equality_classification_and_precision() {
+    fn ieee_equality_classification_and_precision()
+    {
         assert!(binary("+", "Float32", int(1), Value::Float32(1.0)).is_err());
         assert!(equal(&int(1), &Value::Float32(1.0)).is_err());
-        assert!(!equal(&Value::Float32(f32::NAN), &Value::Float32(f32::NAN)).unwrap());
-        assert!(equal(&Value::Float64(0.0), &Value::Float64(-0.0)).unwrap());
+        assert!(
+            !equal(&Value::Float32(f32::NAN), &Value::Float32(f32::NAN)).expect(
+                "valid fixture for ieee equality classification and precision must succeed"
+            )
+        );
+        assert!(
+            equal(&Value::Float64(0.0), &Value::Float64(-0.0)).expect(
+                "valid fixture for ieee equality classification and precision must succeed"
+            )
+        );
         assert_eq!(
-            helper("isNegativeZero", vec![Value::Float32(-0.0)]).unwrap(),
+            helper("isNegativeZero", vec![Value::Float32(-0.0)]).expect(
+                "valid fixture for ieee equality classification and precision must succeed"
+            ),
             Value::Bool(true)
         );
         assert_eq!(
@@ -7983,11 +9733,13 @@ mod tests {
                 Value::Float32(16777216.0),
                 Value::Float32(1.0)
             )
-            .unwrap(),
+            .expect("valid fixture for ieee equality classification and precision must succeed"),
             Value::Float32(16777216.0)
         );
         assert_eq!(
-            binary("/", "Float64", Value::Float64(1.0), Value::Float64(0.0)).unwrap(),
+            binary("/", "Float64", Value::Float64(1.0), Value::Float64(0.0)).expect(
+                "valid fixture for ieee equality classification and precision must succeed"
+            ),
             Value::Float64(f64::INFINITY)
         );
         assert!(
@@ -7996,19 +9748,22 @@ mod tests {
                 .is_err()
         );
         assert_eq!(
-            Value::Float64(0.5).convert("Rational", 64).unwrap(),
+            Value::Float64(0.5).convert("Rational", 64).expect(
+                "valid fixture for ieee equality classification and precision must succeed"
+            ),
             Value::Rational(BigRational::new(1.into(), 2.into()))
         );
     }
     #[test]
-    fn nested_code_units_cross_native_bridges_without_losing_the_domain() {
+    fn nested_code_units_cross_native_bridges_without_losing_the_domain()
+    {
         let native: Optional<Nullable<u16>> = Optional::Present(Nullable::Present(0xd800));
         let value = validate(
             native.clone().into_value(),
             "Optional Nullable CodeUnit16",
             64,
         )
-        .unwrap();
+        .expect("valid fixture for nested code units cross native bridges without losing the domain must succeed");
         assert_eq!(
             value,
             Value::Optional(Some(Box::new(Value::Nullable(Some(Box::new(
@@ -8016,26 +9771,35 @@ mod tests {
             ))))))
         );
         let round_trip = Optional::<Nullable<u16>>::from_value(
-            native_value(value, "Optional Nullable CodeUnit16").unwrap(),
+            native_value(value, "Optional Nullable CodeUnit16").expect("valid fixture for nested code units cross native bridges without losing the domain must succeed"),
         )
-        .unwrap();
+        .expect("valid fixture for nested code units cross native bridges without losing the domain must succeed");
         assert_eq!(round_trip, native);
         assert!(validate(Value::CodePoint(0x110000), "CodePoint", 64).is_err());
     }
     #[test]
-    fn exact_float_conversion_avoids_double_rounding() {
-        let n = BigInt::parse_bytes(b"1208925891672223212634113", 10).unwrap();
-        let d = BigInt::parse_bytes(b"1208925819614629174706176", 10).unwrap();
+    fn exact_float_conversion_avoids_double_rounding()
+    {
+        let n = BigInt::parse_bytes(b"1208925891672223212634113", 10)
+            .expect("valid fixture for exact float conversion avoids double rounding must succeed");
+        let d = BigInt::parse_bytes(b"1208925819614629174706176", 10)
+            .expect("valid fixture for exact float conversion avoids double rounding must succeed");
         assert_eq!(
-            exact_float_bits(&BigRational::new(n, d), true).unwrap(),
+            exact_float_bits(&BigRational::new(n, d), true).expect(
+                "valid fixture for exact float conversion avoids double rounding must succeed"
+            ),
             0x3f800001
         );
         assert_eq!(
-            exact_float_bits(&BigRational::new(16777217.into(), 16777216.into()), true).unwrap(),
+            exact_float_bits(&BigRational::new(16777217.into(), 16777216.into()), true).expect(
+                "valid fixture for exact float conversion avoids double rounding must succeed"
+            ),
             0x3f800000
         );
         assert_eq!(
-            exact_float_bits(&BigRational::new(1.into(), BigInt::one() << 150usize), true).unwrap(),
+            exact_float_bits(&BigRational::new(1.into(), BigInt::one() << 150usize), true).expect(
+                "valid fixture for exact float conversion avoids double rounding must succeed"
+            ),
             0
         );
         assert_eq!(
@@ -8043,7 +9807,7 @@ mod tests {
                 &BigRational::new((-1).into(), BigInt::one() << 150usize),
                 true
             )
-            .unwrap(),
+            .expect("valid fixture for exact float conversion avoids double rounding must succeed"),
             0x80000000
         );
         assert_eq!(
@@ -8051,15 +9815,16 @@ mod tests {
                 &BigRational::from_integer(BigInt::one() << 1024usize),
                 false
             )
-            .unwrap(),
+            .expect("valid fixture for exact float conversion avoids double rounding must succeed"),
             f64::INFINITY.to_bits()
         );
     }
     #[test]
-    fn raw_text_symbols_and_nested_presence_remain_distinct() {
+    fn raw_text_symbols_and_nested_presence_remain_distinct()
+    {
         let raw = Utf16Text(vec![0xd800, 0, 0xdc00]);
         assert_eq!(
-            Utf16Text::from_value(raw.clone().into_value()).unwrap(),
+            Utf16Text::from_value(raw.clone().into_value()).expect("valid fixture for raw text symbols and nested presence remain distinct must succeed"),
             raw
         );
         assert!(CodePoint::from_value(Value::CodePoint(0xd800)).is_ok());
@@ -8072,9 +9837,10 @@ mod tests {
         let some: Optional<Nullable<i8>> = Optional::Present(Nullable::Present(0));
         assert_ne!(absent.clone().into_value(), null.clone().into_value());
         assert_ne!(null.clone().into_value(), some.clone().into_value());
-        for x in [absent, null, some] {
+        for x in [absent, null, some]
+        {
             assert_eq!(
-                Optional::<Nullable<i8>>::from_value(x.clone().into_value()).unwrap(),
+                Optional::<Nullable<i8>>::from_value(x.clone().into_value()).expect("valid fixture for raw text symbols and nested presence remain distinct must succeed"),
                 x
             );
         }
@@ -8084,9 +9850,12 @@ mod tests {
 /// Checks a value an adapter produced against its declared domain: native code
 /// may return anything its own type allows, and a law quantifies only over the
 /// declared domain. ref:DEC-portable-exact-arithmetic
-pub fn validate(value: Value, name: &str, bits: u32) -> Result<Value> {
-    if let Some(inner) = name.strip_prefix("List ") {
-        return match value {
+pub fn validate(value: Value, name: &str, bits: u32) -> Result<Value>
+{
+    if let Some(inner) = name.strip_prefix("List ")
+    {
+        return match value
+        {
             Value::List(values) => Ok(Value::List(
                 values
                     .into_iter()
@@ -8096,8 +9865,10 @@ pub fn validate(value: Value, name: &str, bits: u32) -> Result<Value> {
             _ => Err("expected List".into()),
         };
     }
-    if let Some(inner) = name.strip_prefix("Maybe ") {
-        return match value {
+    if let Some(inner) = name.strip_prefix("Maybe ")
+    {
+        return match value
+        {
             Value::Maybe(value) => Ok(Value::Maybe(
                 value
                     .map(|x| validate(*x, inner, bits).map(Box::new))
@@ -8106,34 +9877,44 @@ pub fn validate(value: Value, name: &str, bits: u32) -> Result<Value> {
             _ => Err("expected Maybe".into()),
         };
     }
-    if let Some(arguments) = name.strip_prefix("Either ") {
+    if let Some(arguments) = name.strip_prefix("Either ")
+    {
         let (left, right) = either_types(arguments)?;
-        return match value {
+        return match value
+        {
             Value::Left(x) => Ok(Value::Left(Box::new(validate(*x, left, bits)?))),
             Value::Right(x) => Ok(Value::Right(Box::new(validate(*x, right, bits)?))),
             _ => Err("expected Either".into()),
         };
     }
-    if let Some(inner) = name.strip_prefix("Nullable ") {
-        return match value {
+    if let Some(inner) = name.strip_prefix("Nullable ")
+    {
+        return match value
+        {
             Value::Nullable(None) => Ok(Value::Nullable(None)),
-            Value::Nullable(Some(x)) => {
+            Value::Nullable(Some(x)) =>
+            {
                 Ok(Value::Nullable(Some(Box::new(validate(*x, inner, bits)?))))
             }
             _ => Err("expected Nullable".into()),
         };
     }
-    if let Some(inner) = name.strip_prefix("Optional ") {
-        return match value {
+    if let Some(inner) = name.strip_prefix("Optional ")
+    {
+        return match value
+        {
             Value::Optional(None) => Ok(Value::Optional(None)),
-            Value::Optional(Some(x)) => {
+            Value::Optional(Some(x)) =>
+            {
                 Ok(Value::Optional(Some(Box::new(validate(*x, inner, bits)?))))
             }
             _ => Err("expected Optional".into()),
         };
     }
-    if name == "Bytes" {
-        if let Value::List(values) = value {
+    if name == "Bytes"
+    {
+        if let Value::List(values) = value
+        {
             return Ok(Value::Bytes(
                 values
                     .into_iter()
@@ -8142,15 +9923,19 @@ pub fn validate(value: Value, name: &str, bits: u32) -> Result<Value> {
             ));
         }
     }
-    if name == "CodeUnit16" {
-        return match value {
+    if name == "CodeUnit16"
+    {
+        return match value
+        {
             Value::CodeUnit16(x) => Ok(Value::CodeUnit16(x)),
             x => Ok(Value::CodeUnit16(u16::from_value(x)?)),
         };
     }
-    let valid = match (&value, name) {
+    let valid = match (&value, name)
+    {
         (Value::Integer(_), _) => return value.convert(name, bits),
-        (Value::Decimal(d), "Decimal") => {
+        (Value::Decimal(d), "Decimal") =>
+        {
             d.ratio()?;
             true
         }
@@ -8173,17 +9958,23 @@ pub fn validate(value: Value, name: &str, bits: u32) -> Result<Value> {
         (Value::CodePointText(cs), "CodePointText") => cs.iter().all(|c| *c <= 0x10ffff),
         _ => false,
     };
-    if valid {
+    if valid
+    {
         Ok(value)
-    } else {
+    }
+    else
+    {
         Err(format!("invalid {name} representation returned by adapter"))
     }
 }
 
 /// Type-directed native bridge for nested domains that share a Rust primitive.
-pub fn native_value(value: Value, name: &str) -> Result<Value> {
-    if let Some(inner) = name.strip_prefix("List ") {
-        return match value {
+pub fn native_value(value: Value, name: &str) -> Result<Value>
+{
+    if let Some(inner) = name.strip_prefix("List ")
+    {
+        return match value
+        {
             Value::List(values) => Ok(Value::List(
                 values
                     .into_iter()
@@ -8193,8 +9984,10 @@ pub fn native_value(value: Value, name: &str) -> Result<Value> {
             _ => Err("expected List".into()),
         };
     }
-    if let Some(inner) = name.strip_prefix("Maybe ") {
-        return match value {
+    if let Some(inner) = name.strip_prefix("Maybe ")
+    {
+        return match value
+        {
             Value::Maybe(value) => Ok(Value::Maybe(
                 value
                     .map(|x| native_value(*x, inner).map(Box::new))
@@ -8203,50 +9996,67 @@ pub fn native_value(value: Value, name: &str) -> Result<Value> {
             _ => Err("expected Maybe".into()),
         };
     }
-    if let Some(arguments) = name.strip_prefix("Either ") {
+    if let Some(arguments) = name.strip_prefix("Either ")
+    {
         let (left, right) = either_types(arguments)?;
-        return match value {
+        return match value
+        {
             Value::Left(x) => Ok(Value::Left(Box::new(native_value(*x, left)?))),
             Value::Right(x) => Ok(Value::Right(Box::new(native_value(*x, right)?))),
             _ => Err("expected Either".into()),
         };
     }
-    if let Some(inner) = name.strip_prefix("Nullable ") {
-        return match value {
-            Value::Nullable(Some(x)) => {
+    if let Some(inner) = name.strip_prefix("Nullable ")
+    {
+        return match value
+        {
+            Value::Nullable(Some(x)) =>
+            {
                 Ok(Value::Nullable(Some(Box::new(native_value(*x, inner)?))))
             }
             Value::Nullable(None) => Ok(Value::Nullable(None)),
             _ => Err("expected Nullable".into()),
         };
     }
-    if let Some(inner) = name.strip_prefix("Optional ") {
-        return match value {
-            Value::Optional(Some(x)) => {
+    if let Some(inner) = name.strip_prefix("Optional ")
+    {
+        return match value
+        {
+            Value::Optional(Some(x)) =>
+            {
                 Ok(Value::Optional(Some(Box::new(native_value(*x, inner)?))))
             }
             Value::Optional(None) => Ok(Value::Optional(None)),
             _ => Err("expected Optional".into()),
         };
     }
-    match (value, name) {
+    match (value, name)
+    {
         (Value::CodeUnit16(x), "CodeUnit16") => Ok(Value::Integer(x.into())),
         (v, _) => Ok(v),
     }
 }
 
 #[cfg(test)]
-mod handle_tests {
+mod handle_tests
+{
     use super::*;
 
     #[test]
-    fn handles_are_equal_by_identity_and_have_no_order() {
+    fn handles_are_equal_by_identity_and_have_no_order()
+    {
         let a = Value::Handle(Handle::new(std::sync::Mutex::new(vec![1i32])));
         let b = Value::Handle(Handle::new(std::sync::Mutex::new(vec![1i32])));
-        assert!(equal(&a, &a.clone()).unwrap());
-        assert!(!equal(&a, &b).unwrap());
+        assert!(equal(&a, &a.clone()).expect(
+            "valid fixture for handles are equal by identity and have no order must succeed"
+        ));
+        assert!(!equal(&a, &b).expect(
+            "valid fixture for handles are equal by identity and have no order must succeed"
+        ));
         assert_eq!(
-            compare_values(&a, &a.clone()).unwrap(),
+            compare_values(&a, &a.clone()).expect(
+                "valid fixture for handles are equal by identity and have no order must succeed"
+            ),
             std::cmp::Ordering::Equal
         );
         assert!(
@@ -8259,42 +10069,92 @@ mod handle_tests {
     }
 
     #[test]
-    fn a_schema_names_and_passes_handles() {
+    fn a_schema_names_and_passes_handles()
+    {
         let schema = Schema::new(vec![DataSchema {
             name: "unit::type::Jobs",
             parameters: 0,
             constructors: vec![],
         }])
-        .unwrap()
+        .expect("valid fixture for a schema names and passes handles must succeed")
         .with_handles(&["unit::type::Jobs"]);
         let ty = TypeRef::named("unit::type::Jobs", vec![]);
         let handle = Handle::new(7i32);
         let checked = schema
             .validate(Value::Handle(handle.clone()), &ty, 64)
-            .unwrap();
+            .expect("valid fixture for a schema names and passes handles must succeed");
         assert_eq!(checked, Value::Handle(handle.clone()));
         assert!(render(&checked).starts_with("Jobs#"));
         assert_eq!(render(&checked), render(&Value::Handle(handle.clone())));
-        assert_eq!(*handle.native::<i32>().unwrap(), 7);
+        assert_eq!(
+            *handle
+                .native::<i32>()
+                .expect("valid fixture for a schema names and passes handles must succeed"),
+            7
+        );
         assert!(handle.native::<String>().is_err());
         assert!(schema.validate(Value::Unit, &ty, 64).is_err());
     }
 }
 
 #[cfg(test)]
-mod collection_tests {
+mod collection_tests
+{
     use super::*;
 
     #[test]
-    fn nested_collections_preserve_code_units_and_bytes() {
+    fn constructors_reject_extra_or_missing_fields_and_preserve_list_order()
+    {
+        for (tag, arity) in [
+            ("List::Nil", 0),
+            ("List::Cons", 2),
+            ("Maybe::Absent", 0),
+            ("Maybe::Present", 1),
+            ("Either::Left", 1),
+            ("Either::Right", 1),
+        ]
+        {
+            for count in 0..=3
+            {
+                if count != arity
+                {
+                    assert_eq!(
+                        construct(tag, vec![Value::Bool(true); count]),
+                        Err(format!("invalid constructor or arity: {tag}"))
+                    );
+                }
+            }
+        }
+        assert_eq!(
+            construct(
+                "List::Cons",
+                vec![
+                    Value::Integer(1.into()),
+                    Value::List(vec![Value::Integer(2.into())])
+                ]
+            ),
+            Ok(Value::List(vec![
+                Value::Integer(1.into()),
+                Value::Integer(2.into())
+            ]))
+        );
+    }
+
+    #[test]
+    fn nested_collections_preserve_code_units_and_bytes()
+    {
         let native: Vec<Option<Either<u16, Vec<u8>>>> = vec![
             None,
             Some(Either::Left(0xd800)),
             Some(Either::Right(vec![0, 255])),
         ];
         let domain = "List Maybe Either CodeUnit16 Bytes";
-        let value = validate(native.clone().into_value(), domain, 64).unwrap();
-        let Value::List(ref items) = value else {
+        let value = validate(native.clone().into_value(), domain, 64).expect(
+            "valid fixture for nested collections preserve code units and bytes must succeed",
+        );
+        let Value::List(ref items) = value
+        else
+        {
             panic!("expected List");
         };
         assert_eq!(items[0], Value::Maybe(None));
@@ -8310,42 +10170,47 @@ mod collection_tests {
                 0, 255
             ]))))))
         );
-        let actual =
-            Vec::<Option<Either<u16, Vec<u8>>>>::from_value(native_value(value, domain).unwrap())
-                .unwrap();
+        let actual = Vec::<Option<Either<u16, Vec<u8>>>>::from_value(
+            native_value(value, domain).expect(
+                "valid fixture for nested collections preserve code units and bytes must succeed",
+            ),
+        )
+        .expect("valid fixture for nested collections preserve code units and bytes must succeed");
         assert_eq!(actual, native);
     }
 
     #[test]
-    fn structural_equality_preserves_tags_ieee_rules_and_length() {
+    fn structural_equality_preserves_tags_ieee_rules_and_length()
+    {
         let nan = Value::List(vec![Value::Float32(f32::NAN)]);
-        assert!(!equal(&nan, &nan).unwrap());
+        assert!(!equal(&nan, &nan).expect("valid fixture for structural equality preserves tags ieee rules and length must succeed"));
         assert!(
             equal(
                 &Value::List(vec![Value::Float64(-0.0)]),
                 &Value::List(vec![Value::Float64(0.0)])
             )
-            .unwrap()
+            .expect("valid fixture for structural equality preserves tags ieee rules and length must succeed")
         );
         assert!(
             !equal(
                 &Value::Left(Box::new(Value::Bool(true))),
                 &Value::Right(Box::new(Value::Bool(true)))
             )
-            .unwrap()
+            .expect("valid fixture for structural equality preserves tags ieee rules and length must succeed")
         );
-        assert!(!equal(&Value::List(vec![]), &Value::List(vec![Value::Unit])).unwrap());
+        assert!(!equal(&Value::List(vec![]), &Value::List(vec![Value::Unit])).expect("valid fixture for structural equality preserves tags ieee rules and length must succeed"));
         assert!(
             !equal(
                 &Value::Maybe(None),
                 &Value::Maybe(Some(Box::new(Value::Maybe(None))))
             )
-            .unwrap()
+            .expect("valid fixture for structural equality preserves tags ieee rules and length must succeed")
         );
     }
 
     #[test]
-    fn collection_domains_reject_bad_payloads_and_do_not_collapse_presence() {
+    fn collection_domains_reject_bad_payloads_and_do_not_collapse_presence()
+    {
         assert!(
             validate(
                 Value::List(vec![Value::Integer(128.into())]),
@@ -8366,33 +10231,37 @@ mod collection_tests {
         );
         assert!(construct("List::Cons", vec![Value::Bool(true), Value::Bool(false)]).is_err());
         assert_eq!(
-            validate(vec![0u8, 255].into_value(), "Bytes", 64).unwrap(),
+            validate(vec![0u8, 255].into_value(), "Bytes", 64).expect("valid fixture for collection domains reject bad payloads and do not collapse presence must succeed"),
             Value::Bytes(vec![0, 255])
         );
         assert!(matches!(
-            validate(vec![0u8, 255].into_value(), "List UInt8", 64).unwrap(),
+            validate(vec![0u8, 255].into_value(), "List UInt8", 64).expect("valid fixture for collection domains reject bad payloads and do not collapse presence must succeed"),
             Value::List(_)
         ));
         assert_eq!(
-            either_types("Either Bool Unit List Maybe Int8").unwrap(),
+            either_types("Either Bool Unit List Maybe Int8").expect("valid fixture for collection domains reject bad payloads and do not collapse presence must succeed"),
             ("Either Bool Unit", "List Maybe Int8")
         );
     }
 }
 
 #[cfg(test)]
-mod schema_tests {
+mod schema_tests
+{
     use super::*;
 
-    fn ty(name: &'static str) -> TypeRef {
+    fn ty(name: &'static str) -> TypeRef
+    {
         TypeRef::named(name, vec![])
     }
 
-    fn box_type(element: TypeRef) -> TypeRef {
+    fn box_type(element: TypeRef) -> TypeRef
+    {
         TypeRef::named("example::Box", vec![element])
     }
 
-    fn schema() -> Schema {
+    fn schema() -> Schema
+    {
         Schema::new(vec![
             DataSchema {
                 name: "example::Box",
@@ -8420,11 +10289,12 @@ mod schema_tests {
                 ],
             },
         ])
-        .unwrap()
+        .expect("valid fixture for schema must succeed")
     }
 
     #[test]
-    fn validates_recursive_instantiated_fields_and_reports_the_payload_path() {
+    fn validates_recursive_instantiated_fields_and_reports_the_payload_path()
+    {
         let schema = schema();
         let tree = TypeRef::named("example::Tree", vec![ty("Int8")]);
         let value = |integer: i64| {
@@ -8436,7 +10306,7 @@ mod schema_tests {
                 )])],
             )
         };
-        assert_eq!(schema.validate(value(127), &tree, 64).unwrap(), value(127));
+        assert_eq!(schema.validate(value(127), &tree, 64).expect("valid fixture for validates recursive instantiated fields and reports the payload path must succeed"), value(127));
         let error = schema.validate(value(128), &tree, 64).unwrap_err();
         assert!(error.contains("example::Tree::Branch field 0"));
         assert!(error.contains("List element 0"));
@@ -8458,7 +10328,8 @@ mod schema_tests {
     }
 
     #[test]
-    fn preserves_nested_raw_domains_across_native_bridges() {
+    fn preserves_nested_raw_domains_across_native_bridges()
+    {
         let schema = schema();
         let element = box_type(ty("CodeUnit16"));
         let logical = TypeRef::named("Maybe", vec![TypeRef::named("List", vec![element])]);
@@ -8466,20 +10337,30 @@ mod schema_tests {
             "example::Box::Box",
             vec![Value::CodeUnit16(0xd800)],
         )]))));
-        let native = schema.native_value(value.clone(), &logical, 64).unwrap();
+        let native = schema.native_value(value.clone(), &logical, 64).expect(
+            "valid fixture for preserves nested raw domains across native bridges must succeed",
+        );
         assert_ne!(value, native);
-        assert_eq!(schema.validate(native, &logical, 64).unwrap(), value);
+        assert_eq!(
+            schema.validate(native, &logical, 64).expect(
+                "valid fixture for preserves nested raw domains across native bridges must succeed"
+            ),
+            value
+        );
         let bytes = box_type(ty("Bytes"));
         let native_bytes = construct_data("example::Box::Box", vec![vec![0u8, 255u8].into_value()]);
         assert_eq!(
-            schema.validate(native_bytes, &bytes, 64).unwrap(),
+            schema.validate(native_bytes, &bytes, 64).expect(
+                "valid fixture for preserves nested raw domains across native bridges must succeed"
+            ),
             construct_data("example::Box::Box", vec![Value::Bytes(vec![0, 255])])
         );
         assert!(schema.validate(Value::Maybe(None), &logical, 64).is_ok());
     }
 
     #[test]
-    fn checks_machine_width_and_scalar_domains_inside_user_values() {
+    fn checks_machine_width_and_scalar_domains_inside_user_values()
+    {
         let schema = schema();
         let value = construct_data(
             "example::Box::Box",
@@ -8502,7 +10383,8 @@ mod schema_tests {
     }
 
     #[test]
-    fn rejects_corrupt_schemas_and_unapplied_types() {
+    fn rejects_corrupt_schemas_and_unapplied_types()
+    {
         let definition = |name, field| DataSchema {
             name,
             parameters: 1,
@@ -8534,14 +10416,17 @@ mod schema_tests {
 }
 
 #[cfg(test)]
-mod constructor_contract_tests {
+mod constructor_contract_tests
+{
     use super::*;
 
-    fn ty(name: &'static str) -> TypeRef {
+    fn ty(name: &'static str) -> TypeRef
+    {
         TypeRef::named(name, vec![])
     }
 
-    fn schema(predicates: Vec<FieldPredicate>, element: &'static str) -> Schema {
+    fn schema(predicates: Vec<FieldPredicate>, element: &'static str) -> Schema
+    {
         Schema::with_contracts(
             vec![DataSchema {
                 name: "Box",
@@ -8560,10 +10445,11 @@ mod constructor_contract_tests {
             schema.check_type(&TypeRef::named("Box", vec![ty(element)]), 0)?;
             Ok(schema)
         })
-        .unwrap()
+        .expect("valid fixture for schema must succeed")
     }
 
-    fn value(field: Value) -> Value {
+    fn value(field: Value) -> Value
+    {
         construct_data("Box::Box", vec![field])
     }
 
@@ -8573,30 +10459,35 @@ mod constructor_contract_tests {
         fields: &[Value],
         bits: u32,
         _: &mut Context,
-    ) -> Result<bool> {
+    ) -> Result<bool>
+    {
         assert_eq!(arguments, &[ty("IntSize")]);
         assert!(matches!(bits, 32 | 64));
-        let [Value::Integer(n)] = fields else {
+        let [Value::Integer(n)] = fields
+        else
+        {
             return Err("expected logical integer".into());
         };
         Ok(n > &BigInt::zero())
     }
 
     #[test]
-    fn contracts_check_native_and_logical_boundaries_at_both_widths() {
+    fn contracts_check_native_and_logical_boundaries_at_both_widths()
+    {
         let schema = schema(vec![positive], "IntSize");
         let ty = TypeRef::named("Box", vec![ty("IntSize")]);
-        for bits in [32, 64] {
+        for bits in [32, 64]
+        {
             let good = value(Value::Integer(1.into()));
             let bad = value(Value::Integer(0.into()));
-            assert_eq!(schema.validate(good.clone(), &ty, bits).unwrap(), good);
-            assert_eq!(schema.native_value(good.clone(), &ty, bits).unwrap(), good);
+            assert_eq!(schema.validate(good.clone(), &ty, bits).expect("valid fixture for contracts check native and logical boundaries at both widths must succeed"), good);
+            assert_eq!(schema.native_value(good.clone(), &ty, bits).expect("valid fixture for contracts check native and logical boundaries at both widths must succeed"), good);
             assert!(schema.validate(bad.clone(), &ty, bits).is_err());
             assert!(schema.native_value(bad.clone(), &ty, bits).is_err());
             assert!(matches!(
                 schema
                     .check_with_context(bad, &ty, bits, &mut Context::default())
-                    .unwrap(),
+                    .expect("valid fixture for contracts check native and logical boundaries at both widths must succeed"),
                 ValueCheck::Rejected(_)
             ));
         }
@@ -8606,11 +10497,14 @@ mod constructor_contract_tests {
     }
 
     #[test]
-    fn predicates_short_circuit_and_do_not_hide_evaluator_errors() {
-        fn reject(_: &Schema, _: &[TypeRef], _: &[Value], _: u32, _: &mut Context) -> Result<bool> {
+    fn predicates_short_circuit_and_do_not_hide_evaluator_errors()
+    {
+        fn reject(_: &Schema, _: &[TypeRef], _: &[Value], _: u32, _: &mut Context) -> Result<bool>
+        {
             Ok(false)
         }
-        fn broken(_: &Schema, _: &[TypeRef], _: &[Value], _: u32, _: &mut Context) -> Result<bool> {
+        fn broken(_: &Schema, _: &[TypeRef], _: &[Value], _: u32, _: &mut Context) -> Result<bool>
+        {
             Err("broken predicate".into())
         }
         let ty = TypeRef::named("Box", vec![ty("Bool")]);
@@ -8618,7 +10512,7 @@ mod constructor_contract_tests {
         assert!(matches!(
             schema(vec![reject, broken], "Bool")
                 .check_with_context(good.clone(), &ty, 64, &mut Context::default())
-                .unwrap(),
+                .expect("valid fixture for broken must succeed"),
             ValueCheck::Rejected(_)
         ));
         let error = schema(vec![broken], "Bool")
@@ -8638,15 +10532,18 @@ mod constructor_contract_tests {
     }
 
     #[test]
-    fn native_code_unit_conversion_follows_contract_validation() {
+    fn native_code_unit_conversion_follows_contract_validation()
+    {
         fn surrogate(
             _: &Schema,
             _: &[TypeRef],
             fields: &[Value],
             _: u32,
             _: &mut Context,
-        ) -> Result<bool> {
-            match fields {
+        ) -> Result<bool>
+        {
+            match fields
+            {
                 [Value::CodeUnit16(value)] => Ok(*value == 0xd800),
                 _ => Err("predicate must receive a logical code unit".into()),
             }
@@ -8654,9 +10551,16 @@ mod constructor_contract_tests {
         let schema = schema(vec![surrogate], "CodeUnit16");
         let ty = TypeRef::named("Box", vec![ty("CodeUnit16")]);
         let logical = value(Value::CodeUnit16(0xd800));
-        let native = schema.native_value(logical.clone(), &ty, 64).unwrap();
+        let native = schema
+            .native_value(logical.clone(), &ty, 64)
+            .expect("valid fixture for surrogate must succeed");
         assert_eq!(native, value(Value::Integer(0xd800.into())));
-        assert_eq!(schema.validate(native, &ty, 64).unwrap(), logical);
+        assert_eq!(
+            schema
+                .validate(native, &ty, 64)
+                .expect("valid fixture for surrogate must succeed"),
+            logical
+        );
         assert!(
             schema
                 .native_value(value(Value::CodeUnit16(0)), &ty, 64)
@@ -8665,14 +10569,16 @@ mod constructor_contract_tests {
     }
 
     #[test]
-    fn nested_symbols_share_context_and_keep_rejection_paths() {
+    fn nested_symbols_share_context_and_keep_rejection_paths()
+    {
         fn fixture(
             _: &Schema,
             _: &[TypeRef],
             fields: &[Value],
             _: u32,
             context: &mut Context,
-        ) -> Result<bool> {
+        ) -> Result<bool>
+        {
             equal(
                 &fields[0],
                 &Value::Symbol(context.symbol("fixture", "same")),
@@ -8704,18 +10610,19 @@ mod constructor_contract_tests {
                 Value::Right(Box::new(expected.clone())),
             ),
         ];
-        for (ty, logical) in cases {
+        for (ty, logical) in cases
+        {
             let native = schema
                 .native_value_with_context(logical.clone(), &ty, 64, &mut context)
-                .unwrap();
+                .expect("valid fixture for fixture must succeed");
             let restored = schema
                 .validate_with_context(native, &ty, 64, &mut context)
-                .unwrap();
-            assert!(equal(&logical, &restored).unwrap());
+                .expect("valid fixture for fixture must succeed");
+            assert!(equal(&logical, &restored).expect("valid fixture for fixture must succeed"));
             assert!(matches!(
                 schema
                     .check_with_context(logical, &ty, 64, &mut Context::default())
-                    .unwrap(),
+                    .expect("valid fixture for fixture must succeed"),
                 ValueCheck::Rejected(_)
             ));
         }
@@ -8727,8 +10634,10 @@ mod constructor_contract_tests {
                 64,
                 &mut Context::default(),
             )
-            .unwrap();
-        let ValueCheck::Rejected(message) = outcome else {
+            .expect("valid fixture for fixture must succeed");
+        let ValueCheck::Rejected(message) = outcome
+        else
+        {
             panic!("expected rejection")
         };
         assert!(message.contains("List element 0"));
@@ -8740,13 +10649,14 @@ mod constructor_contract_tests {
                     64,
                     &mut context
                 )
-                .unwrap(),
+                .expect("valid fixture for fixture must succeed"),
             ValueCheck::Rejected(_)
         ));
     }
 
     #[test]
-    fn contract_metadata_rejects_unknown_and_duplicate_constructor_tags() {
+    fn contract_metadata_rejects_unknown_and_duplicate_constructor_tags()
+    {
         assert!(
             Schema::with_contracts(
                 vec![],
@@ -8787,7 +10697,8 @@ mod constructor_contract_tests {
 /// Channels and processes for the typed channel ends LawSpec generates from
 /// protocols (lawspec_sessions). Generated ends move one Endpoint from step
 /// to step; implementation code only opens, spawns and joins.
-pub mod sessions {
+pub mod sessions
+{
     use std::any::Any;
     use std::collections::VecDeque;
     use std::sync::{Arc, Condvar, Mutex};
@@ -8798,21 +10709,27 @@ pub mod sessions {
 
     /// One end of a two-ended channel.
     #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-    pub enum Side {
+    pub enum Side
+    {
         First,
         Second,
     }
 
-    impl Side {
-        fn index(self) -> usize {
-            match self {
+    impl Side
+    {
+        fn index(self) -> usize
+        {
+            match self
+            {
                 Side::First => 0,
                 Side::Second => 1,
             }
         }
 
-        fn other(self) -> Side {
-            match self {
+        fn other(self) -> Side
+        {
+            match self
+            {
                 Side::First => Side::Second,
                 Side::Second => Side::First,
             }
@@ -8825,8 +10742,10 @@ pub mod sessions {
     #[derive(Clone, Copy, Debug, PartialEq, Eq)]
     pub struct PeerFailed;
 
-    impl std::fmt::Display for PeerFailed {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    impl std::fmt::Display for PeerFailed
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+        {
             f.write_str(
                 "the other end gave up the conversation (its process failed or abandoned it)",
             )
@@ -8837,7 +10756,8 @@ pub mod sessions {
 
     /// What carries messages between a channel's two ends. The local channel
     /// is in memory; a networked transport can implement the same interface.
-    pub trait Transport: Send + Sync {
+    pub trait Transport: Send + Sync
+    {
         /// Sends a message from `side` to the other end.
         fn send(&self, side: Side, message: Message);
         /// Takes the next message sent to `side`, waiting for one; PeerFailed
@@ -8848,46 +10768,56 @@ pub mod sessions {
         /// For an unused network channel end, the address another node
         /// takes it over from (closing it afterwards does not give it up);
         /// None for a local channel.
-        fn hand_over(&self) -> Option<String> {
+        fn hand_over(&self) -> Option<String>
+        {
             None
         }
     }
 
     /// An in-memory channel: one queue per direction.
     #[derive(Default)]
-    pub struct LocalChannel {
+    pub struct LocalChannel
+    {
         state: Mutex<LocalState>,
         changed: Condvar,
     }
 
     #[derive(Default)]
-    struct LocalState {
+    struct LocalState
+    {
         // queues[i] holds messages sent to side i.
         queues: [VecDeque<Message>; 2],
         closed: [bool; 2],
     }
 
-    impl Transport for LocalChannel {
-        fn send(&self, side: Side, message: Message) {
+    impl Transport for LocalChannel
+    {
+        fn send(&self, side: Side, message: Message)
+        {
             let mut state = self.state.lock().unwrap_or_else(|e| e.into_inner());
             state.queues[side.other().index()].push_back(message);
             self.changed.notify_all();
         }
 
-        fn receive(&self, side: Side) -> Result<Message, PeerFailed> {
+        fn receive(&self, side: Side) -> Result<Message, PeerFailed>
+        {
             let mut state = self.state.lock().unwrap_or_else(|e| e.into_inner());
-            loop {
-                if let Some(message) = state.queues[side.index()].pop_front() {
+            loop
+            {
+                if let Some(message) = state.queues[side.index()].pop_front()
+                {
                     return Ok(message);
                 }
-                if state.closed[side.other().index()] {
+                if state.closed[side.other().index()]
+                {
                     return Err(PeerFailed);
                 }
                 state = self.changed.wait(state).unwrap_or_else(|e| e.into_inner());
             }
         }
 
-        fn close(&self, side: Side) {
+        fn close(&self, side: Side)
+        {
             let mut state = self.state.lock().unwrap_or_else(|e| e.into_inner());
             state.closed[side.index()] = true;
             self.changed.notify_all();
@@ -8896,14 +10826,17 @@ pub mod sessions {
 
     /// One side of a channel, untyped: generated ends wrap it, and closing
     /// it (by dropping) wakes a peer waiting on it.
-    pub struct Endpoint {
+    pub struct Endpoint
+    {
         transport: Arc<dyn Transport>,
         side: Side,
     }
 
-    impl Endpoint {
+    impl Endpoint
+    {
         /// The ends of a channel over the given transport.
-        pub fn pair(transport: Arc<dyn Transport>) -> (Endpoint, Endpoint) {
+        pub fn pair(transport: Arc<dyn Transport>) -> (Endpoint, Endpoint)
+        {
             (
                 Endpoint {
                     transport: transport.clone(),
@@ -8918,24 +10851,29 @@ pub mod sessions {
 
         /// One end of a channel over the given transport, such as a
         /// network channel end's (see net::NetSession).
-        pub fn on(transport: Arc<dyn Transport>, side: Side) -> Endpoint {
+        pub fn on(transport: Arc<dyn Transport>, side: Side) -> Endpoint
+        {
             Endpoint { transport, side }
         }
 
-        pub fn send<T: Any + Send>(&self, value: T) {
+        pub fn send<T: Any + Send>(&self, value: T)
+        {
             self.transport.send(self.side, Box::new(value));
         }
 
         /// The next value; panics with PeerFailed when the other end gave up.
-        pub fn receive<T: Any + Send>(&self) -> T {
+        pub fn receive<T: Any + Send>(&self) -> T
+        {
             self.try_receive()
                 .unwrap_or_else(|failed| panic!("{failed}"))
         }
 
         /// The next value, or PeerFailed once the other end gave up and
         /// nothing it sent is left.
-        pub fn try_receive<T: Any + Send>(&self) -> Result<T, PeerFailed> {
-            match self.transport.receive(self.side)?.downcast::<T>() {
+        pub fn try_receive<T: Any + Send>(&self) -> Result<T, PeerFailed>
+        {
+            match self.transport.receive(self.side)?.downcast::<T>()
+            {
                 Ok(value) => Ok(*value),
                 Err(_) => panic!("a session received a value of an unexpected type"),
             }
@@ -8947,39 +10885,47 @@ pub mod sessions {
         pub fn abandon(self) {}
 
         /// Sends a value already boxed (a relay passing one step on).
-        pub fn send_message(&self, message: Message) {
+        pub fn send_message(&self, message: Message)
+        {
             self.transport.send(self.side, message);
         }
 
         /// The next value, still boxed (a relay passing one step on).
-        pub fn receive_message(&self) -> Result<Message, PeerFailed> {
+        pub fn receive_message(&self) -> Result<Message, PeerFailed>
+        {
             self.transport.receive(self.side)
         }
 
         /// For an unused end between nodes, the address another node takes
         /// it over from; None for a local end.
-        pub fn hand_over(&self) -> Option<String> {
+        pub fn hand_over(&self) -> Option<String>
+        {
             self.transport.hand_over()
         }
     }
 
-    impl Drop for Endpoint {
-        fn drop(&mut self) {
+    impl Drop for Endpoint
+    {
+        fn drop(&mut self)
+        {
             self.transport.close(self.side);
         }
     }
 
     /// The ends of a fresh in-memory channel.
-    pub fn channel() -> (Endpoint, Endpoint) {
+    pub fn channel() -> (Endpoint, Endpoint)
+    {
         Endpoint::pair(Arc::new(LocalChannel::default()))
     }
 
     /// A running process: a thread whose result join returns.
     pub struct Process<T>(std::thread::JoinHandle<T>);
 
-    impl<T> Process<T> {
+    impl<T> Process<T>
+    {
         /// Waits for the process; its panic, if any, continues here.
-        pub fn join(self) -> T {
+        pub fn join(self) -> T
+        {
             self.0
                 .join()
                 .unwrap_or_else(|panic| std::panic::resume_unwind(panic))
@@ -8987,7 +10933,8 @@ pub mod sessions {
     }
 
     /// Runs `body` as a new process.
-    pub fn spawn<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) -> Process<T> {
+    pub fn spawn<T: Send + 'static>(body: impl FnOnce() -> T + Send + 'static) -> Process<T>
+    {
         Process(std::thread::spawn(body))
     }
 
@@ -8996,7 +10943,8 @@ pub mod sessions {
     pub fn par<A: Send, B: Send>(
         left: impl FnOnce() -> A + Send,
         right: impl FnOnce() -> B + Send,
-    ) -> (A, B) {
+    ) -> (A, B)
+    {
         std::thread::scope(|scope| {
             let right = scope.spawn(right);
             let left = left();
@@ -9022,7 +10970,8 @@ pub mod sessions {
 // waiting for it; any other actor stops, and later messages fail with "the
 // actor has stopped". Monitors hear of each crash and of the stop; links
 // carry a crash to the linked actor, crossing each link once.
-pub mod actors {
+pub mod actors
+{
     use std::collections::{HashSet, VecDeque};
     use std::sync::atomic::{AtomicU64, Ordering};
     use std::sync::{Arc, Condvar, Mutex, MutexGuard, Weak};
@@ -9034,18 +10983,21 @@ pub mod actors {
     pub const STOPPED: &str = "the actor has stopped";
 
     /// Whether an error says the handler crashed the actor.
-    pub fn is_crashed(error: &str) -> bool {
+    pub fn is_crashed(error: &str) -> bool
+    {
         error.starts_with(CRASHED)
     }
 
     /// Whether an error says the actor had stopped.
-    pub fn is_stopped(error: &str) -> bool {
+    pub fn is_stopped(error: &str) -> bool
+    {
         error == STOPPED
     }
 
     /// What a monitor hears: a crash and its cause, or the stop.
     #[derive(Clone, Debug, PartialEq, Eq)]
-    pub enum Exit {
+    pub enum Exit
+    {
         Crashed(String),
         Stopped,
     }
@@ -9053,20 +11005,28 @@ pub mod actors {
     static CRASHES: AtomicU64 = AtomicU64::new(1);
 
     // Each first crash is numbered, so a crash crosses each link once.
-    fn next_crash() -> u64 {
+    fn next_crash() -> u64
+    {
         CRASHES.fetch_add(1, Ordering::Relaxed)
     }
 
-    fn lock<T>(m: &Mutex<T>) -> MutexGuard<'_, T> {
+    fn lock<T>(m: &Mutex<T>) -> MutexGuard<'_, T>
+    {
         m.lock().unwrap_or_else(|e| e.into_inner())
     }
 
-    fn panic_text(panic: Box<dyn std::any::Any + Send>) -> String {
-        if let Some(s) = panic.downcast_ref::<&str>() {
+    fn panic_text(panic: Box<dyn std::any::Any + Send>) -> String
+    {
+        if let Some(s) = panic.downcast_ref::<&str>()
+        {
             format!("a handler panicked: {s}")
-        } else if let Some(s) = panic.downcast_ref::<String>() {
+        }
+        else if let Some(s) = panic.downcast_ref::<String>()
+        {
             format!("a handler panicked: {s}")
-        } else {
+        }
+        else
+        {
             "a handler panicked".into()
         }
     }
@@ -9077,7 +11037,8 @@ pub mod actors {
     type Notify = Arc<dyn Fn(Exit) + Send + Sync>;
     type LinkCrash = Arc<dyn Fn(&str, u64) + Send + Sync>;
 
-    enum Message<S> {
+    enum Message<S>
+    {
         Run(Tell<S>),
         // A crash on purpose (crash, a link), with its first crash's number.
         Crash(String, u64),
@@ -9086,19 +11047,23 @@ pub mod actors {
     }
 
     /// An actor over a state S. Clones share the actor.
-    pub struct Actor<S> {
+    pub struct Actor<S>
+    {
         inner: Arc<Inner<S>>,
     }
 
-    impl<S> Clone for Actor<S> {
-        fn clone(&self) -> Self {
+    impl<S> Clone for Actor<S>
+    {
+        fn clone(&self) -> Self
+        {
             Actor {
                 inner: self.inner.clone(),
             }
         }
     }
 
-    struct Inner<S> {
+    struct Inner<S>
+    {
         lock: Mutex<Turns<S>>,
         changed: Condvar,
         restart: Option<Restart<S>>,
@@ -9111,7 +11076,8 @@ pub mod actors {
         seen: Mutex<HashSet<u64>>,
     }
 
-    struct Turns<S> {
+    struct Turns<S>
+    {
         // The state between messages; None while a handler holds it, or
         // once the actor has halted.
         state: Option<S>,
@@ -9123,14 +11089,17 @@ pub mod actors {
         halted: bool,
     }
 
-    impl<S: Send + 'static> Actor<S> {
+    impl<S: Send + 'static> Actor<S>
+    {
         /// Starts an actor owning `state`. It cannot restart: a crash stops
         /// it, even under a supervisor.
-        pub fn new(state: S) -> Self {
+        pub fn new(state: S) -> Self
+        {
             Self::make(state, None, None)
         }
 
-        fn make(state: S, restart: Option<Restart<S>>, keep: Option<Keep<S>>) -> Self {
+        fn make(state: S, restart: Option<Restart<S>>, keep: Option<Keep<S>>) -> Self
+        {
             Actor {
                 inner: Arc::new(Inner {
                     lock: Mutex::new(Turns {
@@ -9153,17 +11122,21 @@ pub mod actors {
             }
         }
 
-        fn id(&self) -> usize {
+        fn id(&self) -> usize
+        {
             Arc::as_ptr(&self.inner) as *const () as usize
         }
 
-        fn turns(&self) -> MutexGuard<'_, Turns<S>> {
+        fn turns(&self) -> MutexGuard<'_, Turns<S>>
+        {
             lock(&self.inner.lock)
         }
 
-        fn ticket(&self) -> super::Result<u64> {
+        fn ticket(&self) -> super::Result<u64>
+        {
             let mut turns = self.turns();
-            if turns.stopped {
+            if turns.stopped
+            {
                 return Err(STOPPED.into());
             }
             let ticket = turns.next_ticket;
@@ -9172,26 +11145,32 @@ pub mod actors {
         }
 
         /// Waits for `ticket`'s turn and takes the state.
-        fn take(&self, ticket: u64) -> std::result::Result<S, String> {
+        fn take(&self, ticket: u64) -> std::result::Result<S, String>
+        {
             let mut turns = self.turns();
-            while turns.serving != ticket {
+            while turns.serving != ticket
+            {
                 turns = self
                     .inner
                     .changed
                     .wait(turns)
                     .unwrap_or_else(|e| e.into_inner());
             }
-            if turns.halted {
+            if turns.halted
+            {
                 return Err(STOPPED.into());
             }
             turns.state.take().ok_or_else(|| STOPPED.to_string())
         }
 
         /// Ends the current turn, leaving `state` unless the actor halted.
-        fn finish(&self, state: Option<S>) {
+        fn finish(&self, state: Option<S>)
+        {
             let mut turns = self.turns();
-            if !turns.halted {
-                if let Some(state) = state {
+            if !turns.halted
+            {
+                if let Some(state) = state
+                {
                     turns.state = Some(state);
                 }
             }
@@ -9199,10 +11178,12 @@ pub mod actors {
             self.inner.changed.notify_all();
         }
 
-        fn queue(&self, message: Message<S>) -> super::Result<()> {
+        fn queue(&self, message: Message<S>) -> super::Result<()>
+        {
             let start = {
                 let mut turns = self.turns();
-                if turns.stopped {
+                if turns.stopped
+                {
                     return Err(STOPPED.into());
                 }
                 let ticket = turns.next_ticket;
@@ -9210,7 +11191,8 @@ pub mod actors {
                 turns.tells.push_back((ticket, message));
                 !std::mem::replace(&mut turns.draining, true)
             };
-            if start {
+            if start
+            {
                 let actor = self.clone();
                 std::thread::spawn(move || actor.drain());
             }
@@ -9219,7 +11201,8 @@ pub mod actors {
 
         /// Stops at once: the state is dropped, and messages still waiting
         /// fail with "the actor has stopped".
-        fn halt_now(&self) {
+        fn halt_now(&self)
+        {
             let mut turns = self.turns();
             turns.halted = true;
             turns.stopped = true;
@@ -9229,7 +11212,8 @@ pub mod actors {
 
         /// On the actor's turn, with the last state if it is known: restart
         /// or halt, end the turn, then tell monitors and links.
-        fn crashed(&self, cause: String, origin: u64, last: Option<S>) {
+        fn crashed(&self, cause: String, origin: u64, last: Option<S>)
+        {
             lock(&self.inner.seen).insert(origin);
             let supervisor = lock(&self.inner.supervisor)
                 .clone()
@@ -9238,20 +11222,24 @@ pub mod actors {
             if let (Some(supervisor), Some(restart), Some(last)) =
                 (supervisor, self.inner.restart.clone(), last)
             {
-                if supervisor.child_crashed(self.id(), &cause) {
+                if supervisor.child_crashed(self.id(), &cause)
+                {
                     next = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| restart(last)))
                         .ok()
                         .and_then(|r| r.ok());
                 }
             }
-            if next.is_none() {
+            if next.is_none()
+            {
                 self.halt_now();
             }
             self.finish(next);
-            for monitor in lock(&self.inner.monitors).clone() {
+            for monitor in lock(&self.inner.monitors).clone()
+            {
                 monitor(Exit::Crashed(cause.clone()));
             }
-            for link in lock(&self.inner.links).clone() {
+            for link in lock(&self.inner.links).clone()
+            {
                 link(&cause, origin);
             }
         }
@@ -9261,16 +11249,20 @@ pub mod actors {
             &self,
             state: S,
             body: impl FnOnce(S) -> super::Result<(R, S)>,
-        ) -> super::Result<R> {
+        ) -> super::Result<R>
+        {
             let snapshot = self.inner.keep.as_ref().map(|keep| keep(&state));
             let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| body(state)))
                 .unwrap_or_else(|panic| Err(panic_text(panic)));
-            match outcome {
-                Ok((reply, next)) => {
+            match outcome
+            {
+                Ok((reply, next)) =>
+                {
                     self.finish(Some(next));
                     Ok(reply)
                 }
-                Err(cause) => {
+                Err(cause) =>
+                {
                     self.crashed(cause.clone(), next_crash(), snapshot);
                     Err(format!("{CRASHED}{cause}"))
                 }
@@ -9280,14 +11272,15 @@ pub mod actors {
         /// Runs handler(state) -> (reply, next state) in turn and returns the
         /// reply. A handler that fails or panics crashes the actor, and call
         /// returns an error starting "the actor crashed: ".
-        pub fn call<R>(
-            &self,
-            handler: impl FnOnce(S) -> super::Result<(R, S)>,
-        ) -> super::Result<R> {
+        pub fn call<R>(&self, handler: impl FnOnce(S) -> super::Result<(R, S)>)
+        -> super::Result<R>
+        {
             let ticket = self.ticket()?;
-            match self.take(ticket) {
+            match self.take(ticket)
+            {
                 Ok(state) => self.turn(state, handler),
-                Err(e) => {
+                Err(e) =>
+                {
                     self.finish(None);
                     Err(e)
                 }
@@ -9299,43 +11292,55 @@ pub mod actors {
         pub fn tell<R>(
             &self,
             handler: impl FnOnce(S) -> super::Result<(R, S)> + Send + 'static,
-        ) -> super::Result<()> {
+        ) -> super::Result<()>
+        {
             self.queue(Message::Run(Box::new(move |s| {
                 handler(s).map(|(_, next)| next)
             })))
         }
 
-        fn drain(&self) {
-            loop {
+        fn drain(&self)
+        {
+            loop
+            {
                 let (ticket, message) = {
                     let mut turns = self.turns();
-                    match turns.tells.pop_front() {
+                    match turns.tells.pop_front()
+                    {
                         Some(next) => next,
-                        None => {
+                        None =>
+                        {
                             turns.draining = false;
                             return;
                         }
                     }
                 };
-                let state = match self.take(ticket) {
+                let state = match self.take(ticket)
+                {
                     Ok(state) => state,
-                    Err(_) => {
+                    Err(_) =>
+                    {
                         self.finish(None);
                         continue;
                     }
                 };
-                match message {
-                    Message::Run(handler) => {
+                match message
+                {
+                    Message::Run(handler) =>
+                    {
                         let _ = self.turn(state, |s| handler(s).map(|next| ((), next)));
                     }
                     // A crash that already reached this actor by another
                     // link is not repeated.
-                    Message::Crash(_, origin) if lock(&self.inner.seen).contains(&origin) => {
+                    Message::Crash(_, origin) if lock(&self.inner.seen).contains(&origin) =>
+                    {
                         self.finish(Some(state))
                     }
                     Message::Crash(cause, origin) => self.crashed(cause, origin, Some(state)),
-                    Message::Restart => match &self.inner.restart {
-                        Some(restart) => {
+                    Message::Restart => match &self.inner.restart
+                    {
+                        Some(restart) =>
+                        {
                             let restart = restart.clone();
                             let _ = self.turn(state, |s| restart(s).map(|next| ((), next)));
                         }
@@ -9347,14 +11352,18 @@ pub mod actors {
 
         /// Crashes the actor once the messages sent before are handled, as a
         /// failing handler would: for testing supervision.
-        pub fn crash(&self, cause: &str) -> super::Result<()> {
+        pub fn crash(&self, cause: &str) -> super::Result<()>
+        {
             let ticket = self.ticket()?;
-            match self.take(ticket) {
-                Ok(state) => {
+            match self.take(ticket)
+            {
+                Ok(state) =>
+                {
                     self.crashed(cause.to_string(), next_crash(), Some(state));
                     Ok(())
                 }
-                Err(e) => {
+                Err(e) =>
+                {
                     self.finish(None);
                     Err(e)
                 }
@@ -9363,28 +11372,34 @@ pub mod actors {
 
         /// Replaces the state by restart(last state) between messages, as a
         /// supervised restart does (crash injection in model runs).
-        pub fn restart(&self, restart: impl FnOnce(S) -> super::Result<S>) -> super::Result<()> {
+        pub fn restart(&self, restart: impl FnOnce(S) -> super::Result<S>) -> super::Result<()>
+        {
             self.call(|s| restart(s).map(|next| ((), next)))
         }
 
         /// notify(Exit::Crashed(cause)) after each crash, and
         /// notify(Exit::Stopped) once it stops.
-        pub fn monitor(&self, notify: impl Fn(Exit) + Send + Sync + 'static) {
+        pub fn monitor(&self, notify: impl Fn(Exit) + Send + Sync + 'static)
+        {
             lock(&self.inner.monitors).push(Arc::new(notify));
         }
 
         /// Links two actors: when either crashes, the other crashes too.
-        pub fn link<T: Send + 'static>(&self, other: &Actor<T>) {
+        pub fn link<T: Send + 'static>(&self, other: &Actor<T>)
+        {
             lock(&self.inner.links).push(other.link_target());
             lock(&other.inner.links).push(self.link_target());
         }
 
-        fn link_target(&self) -> LinkCrash {
+        fn link_target(&self) -> LinkCrash
+        {
             let weak = Arc::downgrade(&self.inner);
             Arc::new(move |cause: &str, origin: u64| {
-                if let Some(inner) = weak.upgrade() {
+                if let Some(inner) = weak.upgrade()
+                {
                     let actor = Actor { inner };
-                    if !lock(&actor.inner.seen).contains(&origin) {
+                    if !lock(&actor.inner.seen).contains(&origin)
+                    {
                         let _ = actor.queue(Message::Crash(cause.to_string(), origin));
                     }
                 }
@@ -9393,42 +11408,51 @@ pub mod actors {
 
         /// Refuses further messages; those already sent are still handled. A
         /// permanent child of a supervisor restarts instead.
-        pub fn stop(&self) {
+        pub fn stop(&self)
+        {
             let supervisor = lock(&self.inner.supervisor)
                 .clone()
                 .and_then(|w| w.upgrade());
-            if let Some(supervisor) = supervisor {
-                if supervisor.child_stopped(self.id()) {
+            if let Some(supervisor) = supervisor
+            {
+                if supervisor.child_stopped(self.id())
+                {
                     return;
                 }
             }
             let already = std::mem::replace(&mut self.turns().stopped, true);
-            if !already {
-                for monitor in lock(&self.inner.monitors).clone() {
+            if !already
+            {
+                for monitor in lock(&self.inner.monitors).clone()
+                {
                     monitor(Exit::Stopped);
                 }
             }
         }
     }
 
-    impl<S: Clone + Send + 'static> Actor<S> {
+    impl<S: Clone + Send + 'static> Actor<S>
+    {
         /// Starts an actor owning `state` that restarts after a crash, under
         /// a supervisor, with restart(last state).
         pub fn with_restart(
             state: S,
             restart: impl Fn(S) -> super::Result<S> + Send + Sync + 'static,
-        ) -> Self {
+        ) -> Self
+        {
             Self::make(state, Some(Arc::new(restart)), Some(Arc::new(S::clone)))
         }
 
         /// The state after every message sent before this call.
-        pub fn state(&self) -> super::Result<S> {
+        pub fn state(&self) -> super::Result<S>
+        {
             self.call(|s: S| Ok((s.clone(), s)))
         }
     }
 
     /// A child a supervisor can hold: an actor or another supervisor.
-    pub trait Supervised: Send + Sync {
+    pub trait Supervised: Send + Sync
+    {
         /// Identifies the child: clones share it.
         fn child_id(&self) -> usize;
         /// Restarts in mailbox order (an actor) or restarts every child (a
@@ -9442,31 +11466,38 @@ pub mod actors {
         fn attach(&self, supervisor: Option<&Supervisor>);
     }
 
-    impl<S: Send + 'static> Supervised for Actor<S> {
-        fn child_id(&self) -> usize {
+    impl<S: Send + 'static> Supervised for Actor<S>
+    {
+        fn child_id(&self) -> usize
+        {
             self.id()
         }
 
-        fn restart_later(&self) {
+        fn restart_later(&self)
+        {
             let _ = self.queue(Message::Restart);
         }
 
-        fn halt(&self) {
+        fn halt(&self)
+        {
             self.halt_now();
         }
 
-        fn stop_child(&self) {
+        fn stop_child(&self)
+        {
             self.stop();
         }
 
-        fn attach(&self, supervisor: Option<&Supervisor>) {
+        fn attach(&self, supervisor: Option<&Supervisor>)
+        {
             *lock(&self.inner.supervisor) = supervisor.map(|s| Arc::downgrade(&s.inner));
         }
     }
 
     /// Which children restart after one crashes.
     #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-    pub enum Strategy {
+    pub enum Strategy
+    {
         /// Only the child that crashed.
         OneForOne,
         /// Every child.
@@ -9477,7 +11508,8 @@ pub mod actors {
 
     /// Whether a child restarts.
     #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-    pub enum Lifetime {
+    pub enum Lifetime
+    {
         /// After a crash or a stop.
         Permanent,
         /// Only after a crash.
@@ -9486,18 +11518,21 @@ pub mod actors {
         Temporary,
     }
 
-    struct Child {
+    struct Child
+    {
         child: Arc<dyn Supervised>,
         lifetime: Lifetime,
     }
 
-    struct SupervisorState {
+    struct SupervisorState
+    {
         children: Vec<Child>,
         restarts: VecDeque<Instant>,
         stopped: bool,
     }
 
-    struct SupervisorInner {
+    struct SupervisorInner
+    {
         strategy: Strategy,
         max_restarts: usize,
         period: Duration,
@@ -9512,12 +11547,15 @@ pub mod actors {
     /// supervisor's own crash: its supervisor restarts all of its children,
     /// or, at the top, every child stops. Clones share the supervisor.
     #[derive(Clone)]
-    pub struct Supervisor {
+    pub struct Supervisor
+    {
         inner: Arc<SupervisorInner>,
     }
 
-    impl Supervisor {
-        pub fn new(strategy: Strategy, max_restarts: usize, period: Duration) -> Self {
+    impl Supervisor
+    {
+        pub fn new(strategy: Strategy, max_restarts: usize, period: Duration) -> Self
+        {
             Supervisor {
                 inner: Arc::new(SupervisorInner {
                     strategy,
@@ -9535,7 +11573,8 @@ pub mod actors {
         }
 
         /// Adds a started child (a clone of an actor or a supervisor).
-        pub fn supervise(&self, child: impl Supervised + 'static, lifetime: Lifetime) {
+        pub fn supervise(&self, child: impl Supervised + 'static, lifetime: Lifetime)
+        {
             child.attach(Some(self));
             lock(&self.inner.state).children.push(Child {
                 child: Arc::new(child),
@@ -9545,22 +11584,27 @@ pub mod actors {
 
         /// notify(Exit::Crashed(cause)) when it passes its restart limit, and
         /// notify(Exit::Stopped) once stopped.
-        pub fn monitor(&self, notify: impl Fn(Exit) + Send + Sync + 'static) {
+        pub fn monitor(&self, notify: impl Fn(Exit) + Send + Sync + 'static)
+        {
             lock(&self.inner.monitors).push(Arc::new(notify));
         }
 
         /// Stops every child, last added first, without restarting them.
-        pub fn stop(&self) {
+        pub fn stop(&self)
+        {
             self.inner.stop();
         }
     }
 
-    impl SupervisorInner {
-        fn id(self: &Arc<Self>) -> usize {
+    impl SupervisorInner
+    {
+        fn id(self: &Arc<Self>) -> usize
+        {
             Arc::as_ptr(self) as *const () as usize
         }
 
-        fn allow_restart(&self, state: &mut SupervisorState) -> bool {
+        fn allow_restart(&self, state: &mut SupervisorState) -> bool
+        {
             let now = Instant::now();
             while state
                 .restarts
@@ -9569,7 +11613,8 @@ pub mod actors {
             {
                 state.restarts.pop_front();
             }
-            if state.restarts.len() >= self.max_restarts {
+            if state.restarts.len() >= self.max_restarts
+            {
                 return false;
             }
             state.restarts.push_back(now);
@@ -9584,9 +11629,12 @@ pub mod actors {
             index: usize,
             cause: &str,
             crashed: usize,
-        ) -> Option<Vec<Arc<dyn Supervised>>> {
-            if self.allow_restart(state) {
-                let group: Vec<&Child> = match self.strategy {
+        ) -> Option<Vec<Arc<dyn Supervised>>>
+        {
+            if self.allow_restart(state)
+            {
+                let group: Vec<&Child> = match self.strategy
+                {
                     Strategy::OneForOne => vec![&state.children[index]],
                     Strategy::OneForAll => state.children.iter().collect(),
                     Strategy::RestForOne => state.children[index..].iter().collect(),
@@ -9594,8 +11642,10 @@ pub mod actors {
                 return Some(group.into_iter().map(|c| c.child.clone()).collect());
             }
             let parent = lock(&self.parent).clone().and_then(|w| w.upgrade());
-            if let Some(parent) = parent {
-                if parent.child_failed(self.id(), cause) {
+            if let Some(parent) = parent
+            {
+                if parent.child_failed(self.id(), cause)
+                {
                     state.restarts.clear();
                     return Some(state.children.iter().map(|c| c.child.clone()).collect());
                 }
@@ -9604,31 +11654,40 @@ pub mod actors {
             None
         }
 
-        fn entry(state: &SupervisorState, id: usize) -> Option<usize> {
+        fn entry(state: &SupervisorState, id: usize) -> Option<usize>
+        {
             state.children.iter().position(|c| c.child.child_id() == id)
         }
 
         /// On the child's turn: whether it restarts now.
-        fn child_crashed(self: &Arc<Self>, id: usize, cause: &str) -> bool {
+        fn child_crashed(self: &Arc<Self>, id: usize, cause: &str) -> bool
+        {
             let group = {
                 let mut state = lock(&self.state);
-                let Some(index) = Self::entry(&state, id) else {
+                let Some(index) = Self::entry(&state, id)
+                else
+                {
                     return false;
                 };
-                if state.stopped {
+                if state.stopped
+                {
                     return false;
                 }
-                if state.children[index].lifetime == Lifetime::Temporary {
+                if state.children[index].lifetime == Lifetime::Temporary
+                {
                     state.children.remove(index);
                     return false;
                 }
-                match self.restarting(&mut state, index, cause, id) {
+                match self.restarting(&mut state, index, cause, id)
+                {
                     Some(group) => group,
                     None => return false,
                 }
             };
-            for other in group {
-                if other.child_id() != id {
+            for other in group
+            {
+                if other.child_id() != id
+                {
                     other.restart_later();
                 }
             }
@@ -9636,26 +11695,34 @@ pub mod actors {
         }
 
         /// A child supervisor gave up: whether it may restart its children.
-        fn child_failed(self: &Arc<Self>, id: usize, cause: &str) -> bool {
+        fn child_failed(self: &Arc<Self>, id: usize, cause: &str) -> bool
+        {
             let group = {
                 let mut state = lock(&self.state);
-                let Some(index) = Self::entry(&state, id) else {
+                let Some(index) = Self::entry(&state, id)
+                else
+                {
                     return false;
                 };
-                if state.stopped {
+                if state.stopped
+                {
                     return false;
                 }
-                if state.children[index].lifetime == Lifetime::Temporary {
+                if state.children[index].lifetime == Lifetime::Temporary
+                {
                     state.children.remove(index);
                     return false;
                 }
-                match self.restarting(&mut state, index, cause, id) {
+                match self.restarting(&mut state, index, cause, id)
+                {
                     Some(group) => group,
                     None => return false,
                 }
             };
-            for other in group {
-                if other.child_id() != id {
+            for other in group
+            {
+                if other.child_id() != id
+                {
                     other.restart_later();
                 }
             }
@@ -9663,25 +11730,32 @@ pub mod actors {
         }
 
         /// Whether a stopped child is permanent and restarts instead.
-        fn child_stopped(self: &Arc<Self>, id: usize) -> bool {
+        fn child_stopped(self: &Arc<Self>, id: usize) -> bool
+        {
             let group = {
                 let mut state = lock(&self.state);
-                let Some(index) = Self::entry(&state, id) else {
+                let Some(index) = Self::entry(&state, id)
+                else
+                {
                     return false;
                 };
-                if state.stopped {
+                if state.stopped
+                {
                     return false;
                 }
-                if state.children[index].lifetime != Lifetime::Permanent {
+                if state.children[index].lifetime != Lifetime::Permanent
+                {
                     state.children.remove(index);
                     return false;
                 }
-                match self.restarting(&mut state, index, "stopped", id) {
+                match self.restarting(&mut state, index, "stopped", id)
+                {
                     Some(group) => group,
                     None => return false,
                 }
             };
-            for other in group {
+            for other in group
+            {
                 other.restart_later();
             }
             true
@@ -9689,65 +11763,80 @@ pub mod actors {
 
         /// Under the lock: every child but the one crashing (which halts
         /// itself) stops, and so does the supervisor.
-        fn fail(&self, state: &mut SupervisorState, crashed: usize, cause: &str) {
+        fn fail(&self, state: &mut SupervisorState, crashed: usize, cause: &str)
+        {
             let children = std::mem::take(&mut state.children);
             state.stopped = true;
-            for c in children.iter().rev() {
+            for c in children.iter().rev()
+            {
                 c.child.attach(None);
-                if c.child.child_id() != crashed {
+                if c.child.child_id() != crashed
+                {
                     c.child.halt();
                 }
             }
-            for monitor in lock(&self.monitors).clone() {
+            for monitor in lock(&self.monitors).clone()
+            {
                 monitor(Exit::Crashed(cause.to_string()));
             }
         }
 
-        fn stop(&self) {
+        fn stop(&self)
+        {
             let children = {
                 let mut state = lock(&self.state);
-                if state.stopped {
+                if state.stopped
+                {
                     return;
                 }
                 state.stopped = true;
                 std::mem::take(&mut state.children)
             };
-            for c in children.iter().rev() {
+            for c in children.iter().rev()
+            {
                 c.child.attach(None);
                 c.child.stop_child();
             }
-            for monitor in lock(&self.monitors).clone() {
+            for monitor in lock(&self.monitors).clone()
+            {
                 monitor(Exit::Stopped);
             }
         }
     }
 
-    impl Supervised for Supervisor {
-        fn child_id(&self) -> usize {
+    impl Supervised for Supervisor
+    {
+        fn child_id(&self) -> usize
+        {
             self.inner.id()
         }
 
         /// Restarted by its own supervisor: every child restarts.
-        fn restart_later(&self) {
+        fn restart_later(&self)
+        {
             let children: Vec<Arc<dyn Supervised>> = {
                 let mut state = lock(&self.inner.state);
                 state.restarts.clear();
                 state.children.iter().map(|c| c.child.clone()).collect()
             };
-            for child in children {
+            for child in children
+            {
                 child.restart_later();
             }
         }
 
-        fn halt(&self) {
+        fn halt(&self)
+        {
             self.inner.stop();
         }
 
-        fn stop_child(&self) {
+        fn stop_child(&self)
+        {
             self.inner.stop();
         }
 
-        fn attach(&self, supervisor: Option<&Supervisor>) {
+        fn attach(&self, supervisor: Option<&Supervisor>)
+        {
             *lock(&self.inner.parent) = supervisor.map(|s| Arc::downgrade(&s.inner));
         }
     }
@@ -9755,21 +11844,28 @@ pub mod actors {
     /// The runtime's own check of crashes, links, monitors and supervision:
     /// every strategy, lifetime, the restart limit and escalation. Fails
     /// naming the first behaviour that differs.
-    pub fn check_supervision() -> super::Result<()> {
-        fn counter() -> Actor<i64> {
+    pub fn check_supervision() -> super::Result<()>
+    {
+        fn counter() -> Actor<i64>
+        {
             Actor::with_restart(0, |_| Ok(0))
         }
-        fn bump(a: &Actor<i64>) -> super::Result<i64> {
+        fn bump(a: &Actor<i64>) -> super::Result<i64>
+        {
             a.call(|s| Ok((s + 1, s + 1)))
         }
-        fn fail(a: &Actor<i64>) -> super::Result<()> {
-            match a.call(|_| -> super::Result<((), i64)> { Err("division by zero".into()) }) {
+        fn fail(a: &Actor<i64>) -> super::Result<()>
+        {
+            match a.call(|_| -> super::Result<((), i64)> { Err("division by zero".into()) })
+            {
                 Err(e) if is_crashed(&e) => Ok(()),
                 _ => Err("a failing handler did not crash the actor".into()),
             }
         }
-        fn stopped(a: &Actor<i64>, what: &str) -> super::Result<()> {
-            match a.state() {
+        fn stopped(a: &Actor<i64>, what: &str) -> super::Result<()>
+        {
+            match a.state()
+            {
                 Err(e) if is_stopped(&e) => Ok(()),
                 _ => Err(format!("{what} should have stopped")),
             }
@@ -9778,15 +11874,20 @@ pub mod actors {
             actual: T,
             wanted: T,
             what: &str,
-        ) -> super::Result<()> {
-            if actual != wanted {
+        ) -> super::Result<()>
+        {
+            if actual != wanted
+            {
                 return Err(format!("{what}: got {actual:?}, expected {wanted:?}"));
             }
             Ok(())
         }
-        fn wait_until(mut done: impl FnMut() -> bool) {
-            for _ in 0..100 {
-                if done() {
+        fn wait_until(mut done: impl FnMut() -> bool)
+        {
+            for _ in 0..100
+            {
+                if done()
+                {
                     return;
                 }
                 std::thread::sleep(Duration::from_millis(10));
@@ -9824,7 +11925,8 @@ pub mod actors {
         )?;
         let sup = Supervisor::new(Strategy::RestForOne, 3, Duration::from_secs(5));
         let (x, y, z) = (counter(), counter(), counter());
-        for c in [&x, &y, &z] {
+        for c in [&x, &y, &z]
+        {
             sup.supervise(c.clone(), Lifetime::Permanent);
             bump(c)?;
         }
@@ -9899,7 +12001,8 @@ pub mod actors {
         )?;
         let sup = Supervisor::new(Strategy::OneForOne, 10, Duration::from_secs(5));
         let (a, b, c) = (counter(), counter(), counter());
-        for x in [&a, &b, &c] {
+        for x in [&a, &b, &c]
+        {
             sup.supervise(x.clone(), Lifetime::Permanent);
         }
         a.link(&b);
@@ -9927,35 +12030,44 @@ pub mod actors {
     /// A queue with many senders and one receiver: the channel form of an
     /// actor. A process that loops over receive and answers each message is
     /// an actor written by hand; send never waits. Clones share the mailbox.
-    pub struct Mailbox<T> {
+    pub struct Mailbox<T>
+    {
         inner: Arc<(Mutex<(VecDeque<T>, bool)>, Condvar)>,
     }
 
-    impl<T> Clone for Mailbox<T> {
-        fn clone(&self) -> Self {
+    impl<T> Clone for Mailbox<T>
+    {
+        fn clone(&self) -> Self
+        {
             Mailbox {
                 inner: self.inner.clone(),
             }
         }
     }
 
-    impl<T> Default for Mailbox<T> {
-        fn default() -> Self {
+    impl<T> Default for Mailbox<T>
+    {
+        fn default() -> Self
+        {
             Mailbox {
                 inner: Arc::new((Mutex::new((VecDeque::new(), false)), Condvar::new())),
             }
         }
     }
 
-    impl<T> Mailbox<T> {
-        pub fn new() -> Self {
+    impl<T> Mailbox<T>
+    {
+        pub fn new() -> Self
+        {
             Self::default()
         }
 
         /// Sends a message; fails once the mailbox is closed.
-        pub fn send(&self, value: T) -> super::Result<()> {
+        pub fn send(&self, value: T) -> super::Result<()>
+        {
             let mut items = self.inner.0.lock().unwrap_or_else(|e| e.into_inner());
-            if items.1 {
+            if items.1
+            {
                 return Err("the mailbox is closed".into());
             }
             items.0.push_back(value);
@@ -9965,21 +12077,28 @@ pub mod actors {
 
         /// The next message, waiting up to `timeout` (forever when None);
         /// fails on timing out, or once closed and empty.
-        pub fn receive(&self, timeout: Option<std::time::Duration>) -> super::Result<T> {
+        pub fn receive(&self, timeout: Option<std::time::Duration>) -> super::Result<T>
+        {
             let deadline = timeout.map(|t| std::time::Instant::now() + t);
             let mut items = self.inner.0.lock().unwrap_or_else(|e| e.into_inner());
-            loop {
-                if let Some(value) = items.0.pop_front() {
+            loop
+            {
+                if let Some(value) = items.0.pop_front()
+                {
                     return Ok(value);
                 }
-                if items.1 {
+                if items.1
+                {
                     return Err("the mailbox is closed".into());
                 }
-                items = match deadline {
+                items = match deadline
+                {
                     None => self.inner.1.wait(items).unwrap_or_else(|e| e.into_inner()),
-                    Some(at) => {
+                    Some(at) =>
+                    {
                         let now = std::time::Instant::now();
-                        if now >= at {
+                        if now >= at
+                        {
                             return Err("no message arrived in time".into());
                         }
                         self.inner
@@ -10002,14 +12121,18 @@ pub mod actors {
             &self,
             within: std::time::Duration,
             clock: Option<&dyn super::ClockAbility>,
-        ) -> super::Result<Option<T>> {
-            if let Some(clock) = clock.filter(|clock| !clock.real_time()) {
+        ) -> super::Result<Option<T>>
+        {
+            if let Some(clock) = clock.filter(|clock| !clock.real_time())
+            {
                 {
                     let mut items = self.inner.0.lock().unwrap_or_else(|e| e.into_inner());
-                    if let Some(value) = items.0.pop_front() {
+                    if let Some(value) = items.0.pop_front()
+                    {
                         return Ok(Some(value));
                     }
-                    if items.1 {
+                    if items.1
+                    {
                         return Err("the mailbox is closed".into());
                     }
                 }
@@ -10018,18 +12141,24 @@ pub mod actors {
             }
             let deadline = std::time::Instant::now().checked_add(within);
             let mut items = self.inner.0.lock().unwrap_or_else(|e| e.into_inner());
-            loop {
-                if let Some(value) = items.0.pop_front() {
+            loop
+            {
+                if let Some(value) = items.0.pop_front()
+                {
                     return Ok(Some(value));
                 }
-                if items.1 {
+                if items.1
+                {
                     return Err("the mailbox is closed".into());
                 }
-                items = match deadline {
+                items = match deadline
+                {
                     None => self.inner.1.wait(items).unwrap_or_else(|e| e.into_inner()),
-                    Some(at) => {
+                    Some(at) =>
+                    {
                         let now = std::time::Instant::now();
-                        if now >= at {
+                        if now >= at
+                        {
                             return Ok(None);
                         }
                         self.inner
@@ -10043,7 +12172,8 @@ pub mod actors {
         }
 
         /// Refuses further messages; those already sent can still be received.
-        pub fn close(&self) {
+        pub fn close(&self)
+        {
             self.inner.0.lock().unwrap_or_else(|e| e.into_inner()).1 = true;
             self.inner.1.notify_all();
         }
@@ -10051,40 +12181,55 @@ pub mod actors {
 }
 
 #[cfg(test)]
-mod actor_tests {
+mod actor_tests
+{
     use super::ClockAbility as _;
     use super::actors::{Actor, Mailbox};
 
     struct Virtual(std::sync::atomic::AtomicI64);
-    impl super::ClockAbility for Virtual {
-        fn now_micros(&self) -> i64 {
+    impl super::ClockAbility for Virtual
+    {
+        fn now_micros(&self) -> i64
+        {
             self.0.load(std::sync::atomic::Ordering::SeqCst)
         }
-        fn sleep_micros(&self, micros: i64) {
+        fn sleep_micros(&self, micros: i64)
+        {
             self.0
                 .fetch_add(micros, std::sync::atomic::Ordering::SeqCst);
         }
-        fn real_time(&self) -> bool {
+        fn real_time(&self) -> bool
+        {
             false
         }
     }
 
     #[test]
-    fn receive_within_waits_on_the_clock() {
+    fn receive_within_waits_on_the_clock()
+    {
         let mailbox = Mailbox::new();
         let clock = Virtual(std::sync::atomic::AtomicI64::new(0));
-        mailbox.send(7).unwrap();
+        mailbox
+            .send(7)
+            .expect("valid fixture for receive within waits on the clock must succeed");
         let within = std::time::Duration::from_secs(60);
         assert_eq!(
-            mailbox.receive_within(within, Some(&clock)).unwrap(),
+            mailbox
+                .receive_within(within, Some(&clock))
+                .expect("valid fixture for receive within waits on the clock must succeed"),
             Some(7)
         );
-        assert_eq!(mailbox.receive_within(within, Some(&clock)).unwrap(), None);
+        assert_eq!(
+            mailbox
+                .receive_within(within, Some(&clock))
+                .expect("valid fixture for receive within waits on the clock must succeed"),
+            None
+        );
         assert_eq!(clock.now_micros(), 60_000_000);
         assert_eq!(
             mailbox
                 .receive_within(std::time::Duration::from_millis(10), None)
-                .unwrap(),
+                .expect("valid fixture for receive within waits on the clock must succeed"),
             None
         );
         mailbox.close();
@@ -10092,51 +12237,79 @@ mod actor_tests {
     }
 
     #[test]
-    fn calls_run_one_at_a_time_in_order() {
+    fn calls_run_one_at_a_time_in_order()
+    {
         let actor = Actor::new(0i64);
         let threads: Vec<_> = (0..4)
             .map(|_| {
                 let a = actor.clone();
                 std::thread::spawn(move || {
-                    for _ in 0..100 {
-                        a.call(|s| Ok(((), s + 1))).unwrap();
+                    for _ in 0..100
+                    {
+                        a.call(|s| Ok(((), s + 1))).expect(
+                            "valid fixture for calls run one at a time in order must succeed",
+                        );
                     }
                 })
             })
             .collect();
-        for t in threads {
-            t.join().unwrap();
+        for t in threads
+        {
+            t.join()
+                .expect("valid fixture for calls run one at a time in order must succeed");
         }
-        actor.tell(|s| Ok(((), s * 2))).unwrap();
-        assert_eq!(actor.state().unwrap(), 800);
+        actor
+            .tell(|s| Ok(((), s * 2)))
+            .expect("valid fixture for calls run one at a time in order must succeed");
+        assert_eq!(
+            actor
+                .state()
+                .expect("valid fixture for calls run one at a time in order must succeed"),
+            800
+        );
         actor.stop();
         assert!(actor.call(|s| Ok(((), s))).is_err());
     }
 
     #[test]
-    fn supervision_behaves_as_documented() {
-        super::actors::check_supervision().unwrap();
+    fn supervision_behaves_as_documented()
+    {
+        super::actors::check_supervision()
+            .expect("valid fixture for supervision behaves as documented must succeed");
     }
 
     #[test]
-    fn mailboxes_deliver_in_order_and_close() {
+    fn mailboxes_deliver_in_order_and_close()
+    {
         let m = Mailbox::new();
-        m.send(1).unwrap();
-        m.send(2).unwrap();
+        m.send(1)
+            .expect("valid fixture for mailboxes deliver in order and close must succeed");
+        m.send(2)
+            .expect("valid fixture for mailboxes deliver in order and close must succeed");
         m.close();
-        assert_eq!(m.receive(None).unwrap(), 1);
-        assert_eq!(m.receive(None).unwrap(), 2);
+        assert_eq!(
+            m.receive(None)
+                .expect("valid fixture for mailboxes deliver in order and close must succeed"),
+            1
+        );
+        assert_eq!(
+            m.receive(None)
+                .expect("valid fixture for mailboxes deliver in order and close must succeed"),
+            2
+        );
         assert!(m.receive(None).is_err());
         assert!(m.send(3).is_err());
     }
 }
 
 #[cfg(test)]
-mod session_tests {
+mod session_tests
+{
     use super::sessions::{channel, par, spawn};
 
     #[test]
-    fn messages_cross_in_order_both_ways() {
+    fn messages_cross_in_order_both_ways()
+    {
         let (first, second) = channel();
         let process = spawn(move || {
             let a: i32 = first.receive();
@@ -10150,7 +12323,8 @@ mod session_tests {
     }
 
     #[test]
-    fn a_failed_process_gives_up_its_ends() {
+    fn a_failed_process_gives_up_its_ends()
+    {
         let (first, second) = channel();
         let worker = spawn(move || {
             first.send(1i32);
@@ -10165,7 +12339,8 @@ mod session_tests {
     }
 
     #[test]
-    fn a_closed_peer_fails_a_waiting_receive() {
+    fn a_closed_peer_fails_a_waiting_receive()
+    {
         let (first, second) = channel();
         let ((), outcome) = par(
             move || drop(first),
@@ -10179,7 +12354,8 @@ mod session_tests {
 
 /// A descriptor text's data types, for decoding and encoding values whose
 /// descriptors name them.
-pub fn values_table(text: &str) -> Values {
+pub fn values_table(text: &str) -> Values
+{
     Values::new(
         read_descriptor(text)
             .into_iter()
@@ -10190,7 +12366,8 @@ pub fn values_table(text: &str) -> Values {
 }
 
 /// The first form of a descriptor text.
-pub fn descriptor(text: &str) -> Sexp {
+pub fn descriptor(text: &str) -> Sexp
+{
     read_descriptor(text)
         .into_iter()
         .next()
@@ -10212,7 +12389,8 @@ pub fn serve_remote(
     node: &net::Node,
     definitions: &'static RemoteDefinitions,
     values: Values,
-) -> Result<String> {
+) -> Result<String>
+{
     let table: Vec<net::RemoteDefinition> = definitions
         .iter()
         .map(|(_, digest, function, arguments, result)| {
@@ -10227,7 +12405,8 @@ pub fn serve_remote(
 }
 
 /// The content hash of the definition with this qualified name.
-pub fn remote_digest(definitions: &'static RemoteDefinitions, name: &str) -> Option<&'static str> {
+pub fn remote_digest(definitions: &'static RemoteDefinitions, name: &str) -> Option<&'static str>
+{
     definitions.iter().find(|d| d.0 == name).map(|d| d.1)
 }
 
@@ -10240,7 +12419,8 @@ pub fn evaluate_remote(
     values: &Values,
     name: &str,
     args: &[Value],
-) -> Result<Value> {
+) -> Result<Value>
+{
     let (_, digest, _, arguments, result) = definitions
         .iter()
         .find(|d| d.0 == name)
@@ -10271,7 +12451,8 @@ pub fn evaluate_remote(
 // entity name, the sender's address, an id and a payload. The protocol and
 // the bytes follow the Python reference, so nodes on different targets
 // interoperate.
-pub mod net {
+pub mod net
+{
     use super::{
         BigInt, Result, Sexp, SplitMix64, Value, Values, actors, read_descriptor, render,
         values_from,
@@ -10291,29 +12472,36 @@ pub mod net {
     /// The start of the error of bytes that are not a value of the type.
     pub const WIRE: &str = "wire: ";
 
-    pub fn is_unreachable(error: &str) -> bool {
+    pub fn is_unreachable(error: &str) -> bool
+    {
         error.starts_with(UNREACHABLE)
     }
 
-    pub fn is_peer_failed(error: &str) -> bool {
+    pub fn is_peer_failed(error: &str) -> bool
+    {
         error.starts_with(PEER_FAILED)
     }
 
-    fn lock<T>(m: &Mutex<T>) -> MutexGuard<'_, T> {
+    fn lock<T>(m: &Mutex<T>) -> MutexGuard<'_, T>
+    {
         m.lock().unwrap_or_else(|e| e.into_inner())
     }
 
-    fn wire_error<T>(message: impl std::fmt::Display) -> Result<T> {
+    fn wire_error<T>(message: impl std::fmt::Display) -> Result<T>
+    {
         Err(format!("{WIRE}{message}"))
     }
 
-    fn put_varint(out: &mut Vec<u8>, n: &BigInt) {
+    fn put_varint(out: &mut Vec<u8>, n: &BigInt)
+    {
         let mut n = n.clone();
-        let mask = BigInt::from(0x7F);
-        loop {
+        let mask = BigInt::from(0x7f);
+        loop
+        {
             let byte = (&n & &mask).to_u8().unwrap_or(0);
             n >>= 7;
-            if n.is_zero() {
+            if n.is_zero()
+            {
                 out.push(byte);
                 return;
             }
@@ -10321,90 +12509,114 @@ pub mod net {
         }
     }
 
-    fn get_varint(buf: &[u8], pos: &mut usize) -> Result<BigInt> {
+    fn get_varint(buf: &[u8], pos: &mut usize) -> Result<BigInt>
+    {
         let mut result = BigInt::zero();
         let mut shift = 0usize;
-        loop {
-            let Some(&byte) = buf.get(*pos) else {
+        loop
+        {
+            let Some(&byte) = buf.get(*pos)
+            else
+            {
                 return wire_error("the bytes end in the middle of a value");
             };
             *pos += 1;
-            result |= BigInt::from(byte & 0x7F) << shift;
-            if byte < 0x80 {
+            result |= BigInt::from(byte & 0x7f) << shift;
+            if byte < 0x80
+            {
                 return Ok(result);
             }
             shift += 7;
         }
     }
 
-    fn put_len(out: &mut Vec<u8>, n: usize) {
+    fn put_len(out: &mut Vec<u8>, n: usize)
+    {
         put_varint(out, &BigInt::from(n));
     }
 
-    fn get_len(buf: &[u8], pos: &mut usize) -> Result<usize> {
-        match get_varint(buf, pos)?.to_usize() {
+    fn get_len(buf: &[u8], pos: &mut usize) -> Result<usize>
+    {
+        match get_varint(buf, pos)?.to_usize()
+        {
             Some(n) => Ok(n),
             None => wire_error("a length too large"),
         }
     }
 
-    fn kind(d: &Sexp) -> &str {
+    fn kind(d: &Sexp) -> &str
+    {
         d.kind()
     }
 
     /// Appends the encoding of v, a value of descriptor d.
-    pub fn wire_put(values: &Values, d: &Sexp, v: &Value, out: &mut Vec<u8>) -> Result<()> {
+    pub fn wire_put(values: &Values, d: &Sexp, v: &Value, out: &mut Vec<u8>) -> Result<()>
+    {
         let d = values.resolve(d);
         let items = d.items();
-        match (kind(d), v) {
-            ("int", Value::Integer(n)) => {
+        match (kind(d), v)
+        {
+            ("int", Value::Integer(n)) =>
+            {
                 let below = items[2].bound().is_some_and(|lo| *n < lo);
                 let above = items[3].bound().is_some_and(|hi| *n > hi);
-                if below || above {
+                if below || above
+                {
                     return wire_error(format!("{n} is not a {}", items[1].name()));
                 }
                 let z = if n.is_negative() { -n * 2 - 1 } else { n * 2 };
                 put_varint(out, &z);
             }
             ("bool", Value::Bool(b)) => out.push(u8::from(*b)),
-            ("text" | "end", Value::Text(s)) => {
+            ("text" | "end", Value::Text(s)) =>
+            {
                 put_len(out, s.len());
                 out.extend_from_slice(s.as_bytes());
             }
-            ("bytes", Value::Bytes(b)) => {
+            ("bytes", Value::Bytes(b)) =>
+            {
                 put_len(out, b.len());
                 out.extend_from_slice(b);
             }
-            ("unit", _) => {}
-            ("list", Value::List(xs)) => {
+            ("unit", _) =>
+            {}
+            ("list", Value::List(xs)) =>
+            {
                 put_len(out, xs.len());
-                for x in xs {
+                for x in xs
+                {
                     wire_put(values, &items[1], x, out)?;
                 }
             }
             ("maybe", Value::Maybe(None)) => out.push(0),
-            ("maybe", Value::Maybe(Some(x))) => {
+            ("maybe", Value::Maybe(Some(x))) =>
+            {
                 out.push(1);
                 wire_put(values, &items[1], x, out)?;
             }
-            ("either", Value::Left(x)) => {
+            ("either", Value::Left(x)) =>
+            {
                 out.push(0);
                 wire_put(values, &items[1], x, out)?;
             }
-            ("either", Value::Right(x)) => {
+            ("either", Value::Right(x)) =>
+            {
                 out.push(1);
                 wire_put(values, &items[2], x, out)?;
             }
-            ("data", Value::Data(tag, fields)) => {
+            ("data", Value::Data(tag, fields)) =>
+            {
                 let Some(index) = items[2..].iter().position(|c| c.items()[1].name() == *tag)
-                else {
+                else
+                {
                     return wire_error(format!(
                         "{tag} is not a constructor of {}",
                         items[1].name()
                     ));
                 };
                 put_len(out, index);
-                for (field, fd) in fields.iter().zip(&items[2 + index].items()[2..]) {
+                for (field, fd) in fields.iter().zip(&items[2 + index].items()[2..])
+                {
                     wire_put(values, fd, field, out)?;
                 }
             }
@@ -10414,82 +12626,111 @@ pub mod net {
     }
 
     /// The value of descriptor d encoded at pos, moving pos past it.
-    pub fn wire_get(values: &Values, d: &Sexp, buf: &[u8], pos: &mut usize) -> Result<Value> {
+    pub fn wire_get(values: &Values, d: &Sexp, buf: &[u8], pos: &mut usize) -> Result<Value>
+    {
         let d = values.resolve(d);
         let items = d.items();
         let flag = |pos: &mut usize, what: &str| -> Result<bool> {
-            match buf.get(*pos) {
-                Some(b) if *b <= 1 => {
+            match buf.get(*pos)
+            {
+                Some(b) if *b <= 1 =>
+                {
                     *pos += 1;
                     Ok(*b == 1)
                 }
                 _ => wire_error(format!("not a {what}")),
             }
         };
-        Ok(match kind(d) {
-            "int" => {
+        Ok(match kind(d)
+        {
+            "int" =>
+            {
                 let z = get_varint(buf, pos)?;
                 let two = BigInt::from(2);
-                let v = if (&z % &two).is_zero() {
+                let v = if (&z % &two).is_zero()
+                {
                     &z / &two
-                } else {
+                }
+                else
+                {
                     -((&z + BigInt::one()) / &two)
                 };
                 let below = items[2].bound().is_some_and(|lo| v < lo);
                 let above = items[3].bound().is_some_and(|hi| v > hi);
-                if below || above {
+                if below || above
+                {
                     return wire_error(format!("{v} is out of range for {}", items[1].name()));
                 }
                 Value::Integer(v)
             }
             "bool" => Value::Bool(flag(pos, "Bool")?),
-            k @ ("text" | "bytes" | "end") => {
+            k @ ("text" | "bytes" | "end") =>
+            {
                 let n = get_len(buf, pos)?;
-                if *pos + n > buf.len() {
+                if *pos + n > buf.len()
+                {
                     return wire_error("the bytes end in the middle of a value");
                 }
                 let raw = buf[*pos..*pos + n].to_vec();
                 *pos += n;
-                if k == "bytes" {
+                if k == "bytes"
+                {
                     Value::Bytes(raw)
-                } else {
-                    match String::from_utf8(raw) {
+                }
+                else
+                {
+                    match String::from_utf8(raw)
+                    {
                         Ok(s) => Value::Text(s),
                         Err(_) => return wire_error("text that is not UTF-8"),
                     }
                 }
             }
             "unit" => Value::Unit,
-            "list" => {
+            "list" =>
+            {
                 let n = get_len(buf, pos)?;
                 let mut xs = Vec::new();
-                for _ in 0..n {
+                for _ in 0..n
+                {
                     xs.push(wire_get(values, &items[1], buf, pos)?);
                 }
                 Value::List(xs)
             }
-            "maybe" => {
-                if flag(pos, "Maybe")? {
+            "maybe" =>
+            {
+                if flag(pos, "Maybe")?
+                {
                     Value::Maybe(Some(Box::new(wire_get(values, &items[1], buf, pos)?)))
-                } else {
+                }
+                else
+                {
                     Value::Maybe(None)
                 }
             }
-            "either" => {
-                if flag(pos, "Either")? {
+            "either" =>
+            {
+                if flag(pos, "Either")?
+                {
                     Value::Right(Box::new(wire_get(values, &items[2], buf, pos)?))
-                } else {
+                }
+                else
+                {
                     Value::Left(Box::new(wire_get(values, &items[1], buf, pos)?))
                 }
             }
-            "data" => {
+            "data" =>
+            {
                 let index = get_len(buf, pos)?;
                 let ctors = &items[2..];
-                let Some(ctor) = ctors.get(index) else {
+                let Some(ctor) = ctors.get(index)
+                else
+                {
                     return wire_error(format!("no constructor {index} in {}", items[1].name()));
                 };
                 let mut fields = Vec::new();
-                for fd in &ctor.items()[2..] {
+                for fd in &ctor.items()[2..]
+                {
                     fields.push(wire_get(values, fd, buf, pos)?);
                 }
                 Value::Data(ctor.items()[1].name(), fields)
@@ -10499,28 +12740,33 @@ pub mod net {
     }
 
     /// The value's canonical bytes.
-    pub fn wire_encode(values: &Values, d: &Sexp, v: &Value) -> Result<Vec<u8>> {
+    pub fn wire_encode(values: &Values, d: &Sexp, v: &Value) -> Result<Vec<u8>>
+    {
         let mut out = Vec::new();
         wire_put(values, d, v, &mut out)?;
         Ok(out)
     }
 
     /// The value encoded by exactly these bytes.
-    pub fn wire_decode(values: &Values, d: &Sexp, data: &[u8]) -> Result<Value> {
+    pub fn wire_decode(values: &Values, d: &Sexp, data: &[u8]) -> Result<Value>
+    {
         let mut pos = 0;
         let v = wire_get(values, d, data, &mut pos)?;
-        if pos != data.len() {
+        if pos != data.len()
+        {
             return wire_error("extra bytes after the value");
         }
         Ok(v)
     }
 
-    fn hex(bytes: &[u8]) -> String {
+    fn hex(bytes: &[u8]) -> String
+    {
         bytes.iter().map(|b| format!("{b:02x}")).collect()
     }
 
     /// count values generated from one seed, encoded, in hexadecimal.
-    pub fn wire_encoded(text: &str, seed: u64, size: i64, count: i64) -> Vec<String> {
+    pub fn wire_encoded(text: &str, seed: u64, size: i64, count: i64) -> Vec<String>
+    {
         let (values, d) = values_from(text);
         let mut random = SplitMix64::new(seed);
         (0..count)
@@ -10532,23 +12778,27 @@ pub mod net {
     }
 
     /// Whether count generated values decode to themselves.
-    pub fn wire_round_trips(text: &str, seed: u64, size: i64, count: i64) -> bool {
+    pub fn wire_round_trips(text: &str, seed: u64, size: i64, count: i64) -> bool
+    {
         let (values, d) = values_from(text);
         let mut random = SplitMix64::new(seed);
         (0..count).all(|_| {
             let v = values.generate(&d, &mut random, size);
-            match wire_encode(&values, &d, &v).and_then(|bytes| wire_decode(&values, &d, &bytes)) {
+            match wire_encode(&values, &d, &v).and_then(|bytes| wire_decode(&values, &d, &bytes))
+            {
                 Ok(back) => render(&back) == render(&v),
                 Err(_) => false,
             }
         })
     }
 
-    fn text_d() -> Sexp {
+    fn text_d() -> Sexp
+    {
         Sexp::List(vec![Sexp::Atom("text".into())])
     }
 
-    fn seq_d() -> Sexp {
+    fn seq_d() -> Sexp
+    {
         Sexp::List(vec![
             Sexp::Atom("int".into()),
             Sexp::Atom("Int64".into()),
@@ -10557,7 +12807,8 @@ pub mod net {
         ])
     }
 
-    fn id_d() -> Sexp {
+    fn id_d() -> Sexp
+    {
         Sexp::List(vec![
             Sexp::Atom("int".into()),
             Sexp::Atom("UInt64".into()),
@@ -10566,32 +12817,40 @@ pub mod net {
         ])
     }
 
-    fn bytes_d() -> Sexp {
+    fn bytes_d() -> Sexp
+    {
         Sexp::List(vec![Sexp::Atom("bytes".into())])
     }
 
-    fn no_types() -> Values {
+    fn no_types() -> Values
+    {
         Values::new(HashMap::new())
     }
 
-    fn put_text(out: &mut Vec<u8>, s: &str) {
+    fn put_text(out: &mut Vec<u8>, s: &str)
+    {
         put_len(out, s.len());
         out.extend_from_slice(s.as_bytes());
     }
 
-    fn get_text(buf: &[u8], pos: &mut usize) -> Result<String> {
-        match wire_get(&no_types(), &text_d(), buf, pos)? {
+    fn get_text(buf: &[u8], pos: &mut usize) -> Result<String>
+    {
+        match wire_get(&no_types(), &text_d(), buf, pos)?
+        {
             Value::Text(s) => Ok(s),
             _ => wire_error("not text"),
         }
     }
 
-    fn put_seq(out: &mut Vec<u8>, seq: i64) {
+    fn put_seq(out: &mut Vec<u8>, seq: i64)
+    {
         let _ = wire_put(&no_types(), &seq_d(), &Value::Integer(seq.into()), out);
     }
 
-    fn get_seq(buf: &[u8], pos: &mut usize) -> Result<i64> {
-        match wire_get(&no_types(), &seq_d(), buf, pos)? {
+    fn get_seq(buf: &[u8], pos: &mut usize) -> Result<i64>
+    {
+        match wire_get(&no_types(), &seq_d(), buf, pos)?
+        {
             Value::Integer(n) => n
                 .to_i64()
                 .map_or_else(|| wire_error("a sequence number too large"), Ok),
@@ -10599,7 +12858,8 @@ pub mod net {
         }
     }
 
-    fn frame_encode(kind: &str, to: &str, source: &str, id: u64, payload: &[u8]) -> Vec<u8> {
+    fn frame_encode(kind: &str, to: &str, source: &str, id: u64, payload: &[u8]) -> Vec<u8>
+    {
         let mut out = Vec::new();
         put_text(&mut out, kind);
         put_text(&mut out, to);
@@ -10610,7 +12870,8 @@ pub mod net {
         out
     }
 
-    struct Frame {
+    struct Frame
+    {
         kind: String,
         to: String,
         source: String,
@@ -10618,20 +12879,24 @@ pub mod net {
         payload: Vec<u8>,
     }
 
-    fn frame_decode(data: &[u8]) -> Result<Frame> {
+    fn frame_decode(data: &[u8]) -> Result<Frame>
+    {
         let mut pos = 0;
         let kind = get_text(data, &mut pos)?;
         let to = get_text(data, &mut pos)?;
         let source = get_text(data, &mut pos)?;
-        let id = match wire_get(&no_types(), &id_d(), data, &mut pos)? {
+        let id = match wire_get(&no_types(), &id_d(), data, &mut pos)?
+        {
             Value::Integer(n) => n.to_u64().unwrap_or(0),
             _ => 0,
         };
-        let payload = match wire_get(&no_types(), &bytes_d(), data, &mut pos)? {
+        let payload = match wire_get(&no_types(), &bytes_d(), data, &mut pos)?
+        {
             Value::Bytes(b) => b,
             _ => Vec::new(),
         };
-        if pos != data.len() {
+        if pos != data.len()
+        {
             return wire_error("extra bytes after a frame");
         }
         Ok(Frame {
@@ -10644,8 +12909,10 @@ pub mod net {
     }
 
     /// "tcp://host:port/name" as ("tcp://host:port", "name").
-    fn split_address(address: &str) -> Result<(String, String)> {
-        match address.rsplit_once('/') {
+    fn split_address(address: &str) -> Result<(String, String)>
+    {
+        match address.rsplit_once('/')
+        {
             Some((node, name))
                 if node.contains("://") && !node.ends_with(':') && !node.ends_with('/') =>
             {
@@ -10663,7 +12930,8 @@ pub mod net {
     /// Moves frames between nodes: start begins calling deliver for every
     /// frame that arrives; send sends one to the node at that address, best
     /// effort (an error starting UNREACHABLE when it cannot); close stops.
-    pub trait Transport: Send + Sync {
+    pub trait Transport: Send + Sync
+    {
         fn address(&self) -> String;
         fn start(&self, deliver: Deliver);
         fn send(&self, node: &str, frame: Vec<u8>) -> Result<()>;
@@ -10673,12 +12941,14 @@ pub mod net {
         /// MemoryNetwork::insecure_transport_for_tests makes says so: no
         /// other transport can name the marker.
         #[doc(hidden)]
-        fn insecure_for_tests(&self) -> Option<sealed::InsecureForTests> {
+        fn insecure_for_tests(&self) -> Option<sealed::InsecureForTests>
+        {
             None
         }
     }
 
-    mod sealed {
+    mod sealed
+    {
         /// The marker of the in-memory transport made for tests only.
         pub struct InsecureForTests;
     }
@@ -10687,11 +12957,13 @@ pub mod net {
     /// or duplicated, and is delayed by up to delay (so frames can overtake
     /// each other); partition cuts nodes off until heal. Clones share it.
     #[derive(Clone)]
-    pub struct MemoryNetwork {
+    pub struct MemoryNetwork
+    {
         inner: Arc<NetworkInner>,
     }
 
-    struct NetworkInner {
+    struct NetworkInner
+    {
         state: Mutex<NetworkState>,
         loss: f64,
         duplicate: f64,
@@ -10700,14 +12972,17 @@ pub mod net {
         recorded: Mutex<Option<Vec<Vec<u8>>>>,
     }
 
-    struct NetworkState {
+    struct NetworkState
+    {
         random: SplitMix64,
         nodes: HashMap<String, Deliver>,
         groups: Option<Vec<HashSet<String>>>,
     }
 
-    impl MemoryNetwork {
-        pub fn new(seed: u64, loss: f64, duplicate: f64, delay: Duration) -> Self {
+    impl MemoryNetwork
+    {
+        pub fn new(seed: u64, loss: f64, duplicate: f64, delay: Duration) -> Self
+        {
             MemoryNetwork {
                 inner: Arc::new(NetworkInner {
                     state: Mutex::new(NetworkState {
@@ -10726,20 +13001,23 @@ pub mod net {
         /// The network, recording every record sent on it from now on, as
         /// the network saw it (see recorded): MemoryNetwork::new(...)
         /// .with_recording().
-        pub fn with_recording(self) -> Self {
+        pub fn with_recording(self) -> Self
+        {
             lock(&self.inner.recorded).get_or_insert_with(Vec::new);
             self
         }
 
         /// Every record sent since with_recording, in order.
-        pub fn recorded(&self) -> Vec<Vec<u8>> {
+        pub fn recorded(&self) -> Vec<Vec<u8>>
+        {
             lock(&self.inner.recorded).clone().unwrap_or_default()
         }
 
         /// A transport whose node skips the handshake and sends frames in
         /// the clear: for tests of the frame layer only. Only an in-memory
         /// network makes one, and no configuration selects it.
-        pub fn insecure_transport_for_tests(&self, name: &str) -> Arc<dyn Transport> {
+        pub fn insecure_transport_for_tests(&self, name: &str) -> Arc<dyn Transport>
+        {
             Arc::new(InsecureMemoryTransport(MemoryTransport {
                 network: self.clone(),
                 address: format!("mem://{name}"),
@@ -10747,12 +13025,14 @@ pub mod net {
         }
 
         /// A network without faults.
-        pub fn reliable() -> Self {
+        pub fn reliable() -> Self
+        {
             Self::new(0, 0.0, 0.0, Duration::ZERO)
         }
 
         /// A transport for a node named name, at mem://name.
-        pub fn transport(&self, name: &str) -> Arc<dyn Transport> {
+        pub fn transport(&self, name: &str) -> Arc<dyn Transport>
+        {
             Arc::new(MemoryTransport {
                 network: self.clone(),
                 address: format!("mem://{name}"),
@@ -10760,7 +13040,8 @@ pub mod net {
         }
 
         /// Only nodes named in the same group reach each other.
-        pub fn partition(&self, groups: &[&[&str]]) {
+        pub fn partition(&self, groups: &[&[&str]])
+        {
             lock(&self.inner.state).groups = Some(
                 groups
                     .iter()
@@ -10769,20 +13050,26 @@ pub mod net {
             );
         }
 
-        pub fn heal(&self) {
+        pub fn heal(&self)
+        {
             lock(&self.inner.state).groups = None;
         }
 
-        fn send(&self, source: &str, node: &str, frame: Vec<u8>) -> Result<()> {
-            if let Some(recorded) = lock(&self.inner.recorded).as_mut() {
+        fn send(&self, source: &str, node: &str, frame: Vec<u8>) -> Result<()>
+        {
+            if let Some(recorded) = lock(&self.inner.recorded).as_mut()
+            {
                 recorded.push(frame.clone());
             }
             let (deliver, delays) = {
                 let mut state = lock(&self.inner.state);
-                let Some(deliver) = state.nodes.get(node).cloned() else {
+                let Some(deliver) = state.nodes.get(node).cloned()
+                else
+                {
                     return Err(format!("{UNREACHABLE}no node at {node}"));
                 };
-                if let Some(groups) = &state.groups {
+                if let Some(groups) = &state.groups
+                {
                     if !groups
                         .iter()
                         .any(|g| g.contains(source) && g.contains(node))
@@ -10793,12 +13080,16 @@ pub mod net {
                 let chance = |random: &mut SplitMix64, p: f64| {
                     p > 0.0 && (random.below(1 << 30) as f64) < p * (1u64 << 30) as f64
                 };
-                if chance(&mut state.random, self.inner.loss) {
+                if chance(&mut state.random, self.inner.loss)
+                {
                     return Ok(());
                 }
-                let copies = if chance(&mut state.random, self.inner.duplicate) {
+                let copies = if chance(&mut state.random, self.inner.duplicate)
+                {
                     2
-                } else {
+                }
+                else
+                {
                     1
                 };
                 let delays: Vec<Duration> = (0..copies)
@@ -10810,10 +13101,12 @@ pub mod net {
                     .collect();
                 (deliver, delays)
             };
-            for wait in delays {
+            for wait in delays
+            {
                 let (deliver, frame) = (deliver.clone(), frame.clone());
                 std::thread::spawn(move || {
-                    if !wait.is_zero() {
+                    if !wait.is_zero()
+                    {
                         std::thread::sleep(wait);
                     }
                     deliver(frame);
@@ -10823,27 +13116,33 @@ pub mod net {
         }
     }
 
-    struct MemoryTransport {
+    struct MemoryTransport
+    {
         network: MemoryNetwork,
         address: String,
     }
 
-    impl Transport for MemoryTransport {
-        fn address(&self) -> String {
+    impl Transport for MemoryTransport
+    {
+        fn address(&self) -> String
+        {
             self.address.clone()
         }
 
-        fn start(&self, deliver: Deliver) {
+        fn start(&self, deliver: Deliver)
+        {
             lock(&self.network.inner.state)
                 .nodes
                 .insert(self.address.clone(), deliver);
         }
 
-        fn send(&self, node: &str, frame: Vec<u8>) -> Result<()> {
+        fn send(&self, node: &str, frame: Vec<u8>) -> Result<()>
+        {
             self.network.send(&self.address, node, frame)
         }
 
-        fn close(&self) {
+        fn close(&self)
+        {
             lock(&self.network.inner.state).nodes.remove(&self.address);
         }
     }
@@ -10852,37 +13151,46 @@ pub mod net {
     /// MemoryNetwork::insecure_transport_for_tests).
     pub struct InsecureMemoryTransport(MemoryTransport);
 
-    impl Transport for InsecureMemoryTransport {
-        fn address(&self) -> String {
+    impl Transport for InsecureMemoryTransport
+    {
+        fn address(&self) -> String
+        {
             self.0.address()
         }
 
-        fn start(&self, deliver: Deliver) {
+        fn start(&self, deliver: Deliver)
+        {
             self.0.start(deliver)
         }
 
-        fn send(&self, node: &str, frame: Vec<u8>) -> Result<()> {
+        fn send(&self, node: &str, frame: Vec<u8>) -> Result<()>
+        {
             self.0.send(node, frame)
         }
 
-        fn close(&self) {
+        fn close(&self)
+        {
             self.0.close()
         }
 
-        fn insecure_for_tests(&self) -> Option<sealed::InsecureForTests> {
+        fn insecure_for_tests(&self) -> Option<sealed::InsecureForTests>
+        {
             Some(sealed::InsecureForTests)
         }
     }
 
     // A listening socket polled until closed, so close needs no wake-up.
-    struct Listener {
+    struct Listener
+    {
         socket: std::net::TcpListener,
         closed: Arc<AtomicBool>,
         accepted: Arc<Mutex<Vec<std::net::TcpStream>>>,
     }
 
-    impl Listener {
-        fn bind(host: &str, port: u16) -> Result<(Listener, u16)> {
+    impl Listener
+    {
+        fn bind(host: &str, port: u16) -> Result<(Listener, u16)>
+        {
             let socket = std::net::TcpListener::bind((host, port))
                 .map_err(|e| format!("cannot listen on {host}:{port}: {e}"))?;
             let port = socket.local_addr().map_err(|e| e.to_string())?.port();
@@ -10898,18 +13206,24 @@ pub mod net {
         }
 
         // Accepts connections until closed, handing each to serve on its own thread.
-        fn run(&self, serve: Arc<dyn Fn(std::net::TcpStream) + Send + Sync>) {
-            let socket = match self.socket.try_clone() {
+        fn run(&self, serve: Arc<dyn Fn(std::net::TcpStream) + Send + Sync>)
+        {
+            let socket = match self.socket.try_clone()
+            {
                 Ok(socket) => socket,
                 Err(_) => return,
             };
             let (closed, accepted) = (self.closed.clone(), self.accepted.clone());
             std::thread::spawn(move || {
-                while !closed.load(Ordering::SeqCst) {
-                    match socket.accept() {
-                        Ok((stream, _)) => {
+                while !closed.load(Ordering::SeqCst)
+                {
+                    match socket.accept()
+                    {
+                        Ok((stream, _)) =>
+                        {
                             let _ = stream.set_nonblocking(false);
-                            if let Ok(copy) = stream.try_clone() {
+                            if let Ok(copy) = stream.try_clone()
+                            {
                                 lock(&accepted).push(copy);
                             }
                             let serve = serve.clone();
@@ -10921,23 +13235,28 @@ pub mod net {
             });
         }
 
-        fn close(&self) {
+        fn close(&self)
+        {
             self.closed.store(true, Ordering::SeqCst);
-            for stream in lock(&self.accepted).drain(..) {
+            for stream in lock(&self.accepted).drain(..)
+            {
                 let _ = stream.shutdown(std::net::Shutdown::Both);
             }
         }
     }
 
-    fn read_exactly(stream: &mut std::net::TcpStream, n: usize) -> Option<Vec<u8>> {
+    fn read_exactly(stream: &mut std::net::TcpStream, n: usize) -> Option<Vec<u8>>
+    {
         let mut data = vec![0u8; n];
         stream.read_exact(&mut data).ok()?;
         Some(data)
     }
 
-    fn host_port(rest: &str) -> Result<(String, u16)> {
+    fn host_port(rest: &str) -> Result<(String, u16)>
+    {
         let rest = rest.split('/').next().unwrap_or(rest);
-        match rest.rsplit_once(':') {
+        match rest.rsplit_once(':')
+        {
             Some((host, port)) => Ok((
                 host.to_string(),
                 port.parse()
@@ -10947,12 +13266,16 @@ pub mod net {
         }
     }
 
-    fn connect(host: &str, port: u16) -> std::io::Result<std::net::TcpStream> {
+    fn connect(host: &str, port: u16) -> std::io::Result<std::net::TcpStream>
+    {
         use std::net::ToSocketAddrs;
         let mut last = std::io::Error::other("no address");
-        for address in (host, port).to_socket_addrs()? {
-            match std::net::TcpStream::connect_timeout(&address, Duration::from_secs(5)) {
-                Ok(stream) => {
+        for address in (host, port).to_socket_addrs()?
+        {
+            match std::net::TcpStream::connect_timeout(&address, Duration::from_secs(5))
+            {
+                Ok(stream) =>
+                {
                     let _ = stream.set_nodelay(true);
                     return Ok(stream);
                 }
@@ -10964,14 +13287,17 @@ pub mod net {
 
     /// Frames over TCP, each a 4-byte big-endian length then the frame.
     /// Port 0 picks a free port; the address is tcp://host:port.
-    pub struct TcpTransport {
+    pub struct TcpTransport
+    {
         listener: Listener,
         address: String,
         connections: Mutex<HashMap<String, std::net::TcpStream>>,
     }
 
-    impl TcpTransport {
-        pub fn new(host: &str, port: u16) -> Result<Arc<dyn Transport>> {
+    impl TcpTransport
+    {
+        pub fn new(host: &str, port: u16) -> Result<Arc<dyn Transport>>
+        {
             let (listener, port) = Listener::bind(host, port)?;
             Ok(Arc::new(TcpTransport {
                 listener,
@@ -10981,23 +13307,30 @@ pub mod net {
         }
 
         /// On 127.0.0.1, at a free port.
-        pub fn local() -> Result<Arc<dyn Transport>> {
+        pub fn local() -> Result<Arc<dyn Transport>>
+        {
             Self::new("127.0.0.1", 0)
         }
     }
 
-    impl Transport for TcpTransport {
-        fn address(&self) -> String {
+    impl Transport for TcpTransport
+    {
+        fn address(&self) -> String
+        {
             self.address.clone()
         }
 
-        fn start(&self, deliver: Deliver) {
+        fn start(&self, deliver: Deliver)
+        {
             self.listener
                 .run(Arc::new(move |mut stream: std::net::TcpStream| {
-                    while let Some(header) = read_exactly(&mut stream, 4) {
+                    while let Some(header) = read_exactly(&mut stream, 4)
+                    {
                         let n = u32::from_be_bytes([header[0], header[1], header[2], header[3]])
                             as usize;
-                        let Some(frame) = read_exactly(&mut stream, n) else {
+                        let Some(frame) = read_exactly(&mut stream, n)
+                        else
+                        {
                             return;
                         };
                         deliver(frame);
@@ -11005,27 +13338,35 @@ pub mod net {
                 }));
         }
 
-        fn send(&self, node: &str, frame: Vec<u8>) -> Result<()> {
+        fn send(&self, node: &str, frame: Vec<u8>) -> Result<()>
+        {
             let (host, port) = host_port(node.trim_start_matches("tcp://"))?;
             let mut data = (frame.len() as u32).to_be_bytes().to_vec();
             data.extend_from_slice(&frame);
             let mut connections = lock(&self.connections);
-            for attempt in 0..2 {
-                let stream = match connections.get_mut(node) {
+            for attempt in 0..2
+            {
+                let stream = match connections.get_mut(node)
+                {
                     Some(stream) => stream,
-                    None => match connect(&host, port) {
+                    None => match connect(&host, port)
+                    {
                         Ok(stream) => connections.entry(node.to_string()).or_insert(stream),
-                        Err(e) if attempt == 1 => {
+                        Err(e) if attempt == 1 =>
+                        {
                             return Err(format!("{UNREACHABLE}cannot reach {node}: {e}"));
                         }
                         Err(_) => continue,
                     },
                 };
-                match stream.write_all(&data) {
+                match stream.write_all(&data)
+                {
                     Ok(()) => return Ok(()),
-                    Err(e) => {
+                    Err(e) =>
+                    {
                         connections.remove(node);
-                        if attempt == 1 {
+                        if attempt == 1
+                        {
                             return Err(format!("{UNREACHABLE}cannot reach {node}: {e}"));
                         }
                     }
@@ -11034,22 +13375,27 @@ pub mod net {
             Ok(())
         }
 
-        fn close(&self) {
+        fn close(&self)
+        {
             self.listener.close();
-            for (_, stream) in lock(&self.connections).drain() {
+            for (_, stream) in lock(&self.connections).drain()
+            {
                 let _ = stream.shutdown(std::net::Shutdown::Both);
             }
         }
     }
 
     /// Frames as HTTP POST bodies to /lawspec; the address is http://host:port.
-    pub struct HttpTransport {
+    pub struct HttpTransport
+    {
         listener: Listener,
         address: String,
     }
 
-    impl HttpTransport {
-        pub fn new(host: &str, port: u16) -> Result<Arc<dyn Transport>> {
+    impl HttpTransport
+    {
+        pub fn new(host: &str, port: u16) -> Result<Arc<dyn Transport>>
+        {
             let (listener, port) = Listener::bind(host, port)?;
             Ok(Arc::new(HttpTransport {
                 listener,
@@ -11058,21 +13404,26 @@ pub mod net {
         }
 
         /// On 127.0.0.1, at a free port.
-        pub fn local() -> Result<Arc<dyn Transport>> {
+        pub fn local() -> Result<Arc<dyn Transport>>
+        {
             Self::new("127.0.0.1", 0)
         }
     }
 
     // An HTTP/1.1 message's head (start line and headers) and its body.
-    fn read_http(stream: &mut std::net::TcpStream) -> Option<(String, Vec<u8>)> {
+    fn read_http(stream: &mut std::net::TcpStream) -> Option<(String, Vec<u8>)>
+    {
         let mut head = Vec::new();
         let mut byte = [0u8; 1];
-        while !head.ends_with(b"\r\n\r\n") {
-            if stream.read(&mut byte).ok()? == 0 {
+        while !head.ends_with(b"\r\n\r\n")
+        {
+            if stream.read(&mut byte).ok()? == 0
+            {
                 return None;
             }
             head.push(byte[0]);
-            if head.len() > 65536 {
+            if head.len() > 65536
+            {
                 return None;
             }
         }
@@ -11087,20 +13438,27 @@ pub mod net {
         Some((head, body))
     }
 
-    impl Transport for HttpTransport {
-        fn address(&self) -> String {
+    impl Transport for HttpTransport
+    {
+        fn address(&self) -> String
+        {
             self.address.clone()
         }
 
-        fn start(&self, deliver: Deliver) {
+        fn start(&self, deliver: Deliver)
+        {
             self.listener
                 .run(Arc::new(move |mut stream: std::net::TcpStream| {
-                    while let Some((head, body)) = read_http(&mut stream) {
+                    while let Some((head, body)) = read_http(&mut stream)
+                    {
                         let first = head.lines().next().unwrap_or("").to_string();
                         let ours = first.starts_with("POST /lawspec ");
-                        let status = if ours {
+                        let status = if ours
+                        {
                             "204 No Content"
-                        } else {
+                        }
+                        else
+                        {
                             "404 Not Found"
                         };
                         if stream
@@ -11112,17 +13470,20 @@ pub mod net {
                         {
                             return;
                         }
-                        if ours {
+                        if ours
+                        {
                             deliver(body);
                         }
-                        if head.to_ascii_lowercase().contains("connection: close") {
+                        if head.to_ascii_lowercase().contains("connection: close")
+                        {
                             return;
                         }
                     }
                 }));
         }
 
-        fn send(&self, node: &str, frame: Vec<u8>) -> Result<()> {
+        fn send(&self, node: &str, frame: Vec<u8>) -> Result<()>
+        {
             let (host, port) = host_port(node.trim_start_matches("http://"))?;
             let unreachable =
                 |e: &dyn std::fmt::Display| format!("{UNREACHABLE}cannot reach {node}: {e}");
@@ -11138,14 +13499,18 @@ pub mod net {
             stream.write_all(&frame).map_err(|e| unreachable(&e))?;
             let (head, _) = read_http(&mut stream).ok_or_else(|| unreachable(&"no answer"))?;
             let status = head.split_whitespace().nth(1).unwrap_or("");
-            if status.starts_with('2') {
+            if status.starts_with('2')
+            {
                 Ok(())
-            } else {
+            }
+            else
+            {
                 Err(unreachable(&format!("HTTP {status}")))
             }
         }
 
-        fn close(&self) {
+        fn close(&self)
+        {
             self.listener.close();
         }
     }
@@ -11159,7 +13524,8 @@ pub mod net {
     /// A node's secure layer (lawspec_network's): send seals a frame for a
     /// peer (or queues it while a handshake runs); receive gives the frame a
     /// record carries, or None for a handshake record or one that fails.
-    pub trait SecureLayer: Send + Sync {
+    pub trait SecureLayer: Send + Sync
+    {
         fn send(&self, peer: &str, frame: Vec<u8>) -> Result<()>;
         fn receive(&self, record: &[u8]) -> Option<Vec<u8>>;
         fn as_any(&self) -> &dyn std::any::Any;
@@ -11168,7 +13534,8 @@ pub mod net {
     /// The secure network handler: layer makes a node's secure layer (by
     /// default identity and trust), token a one-time take token from its
     /// secure generator.
-    pub trait SecureNetwork: Send + Sync {
+    pub trait SecureNetwork: Send + Sync
+    {
         fn layer(&self, node: NodeLink) -> Result<Box<dyn SecureLayer>>;
         fn token(&self) -> String;
     }
@@ -11176,7 +13543,8 @@ pub mod net {
     static SECURE_NETWORK: std::sync::OnceLock<Arc<dyn SecureNetwork>> = std::sync::OnceLock::new();
 
     /// Registers the secure network handler; the first one stays.
-    pub fn register_secure_network(provider: Arc<dyn SecureNetwork>) {
+    pub fn register_secure_network(provider: Arc<dyn SecureNetwork>)
+    {
         let _ = SECURE_NETWORK.set(provider);
     }
 
@@ -11184,7 +13552,8 @@ pub mod net {
     pub const NO_SECURE_NETWORK: &str = "a node needs the secure network handler: add `import lawspec.network` \
         to a unit of the program, and call lawspec_network::install()";
 
-    fn secure_network() -> Result<Arc<dyn SecureNetwork>> {
+    fn secure_network() -> Result<Arc<dyn SecureNetwork>>
+    {
         SECURE_NETWORK
             .get()
             .cloned()
@@ -11195,26 +13564,32 @@ pub mod net {
     /// to a peer node, and whether the node has closed. It does not keep the
     /// node alive.
     #[derive(Clone)]
-    pub struct NodeLink {
+    pub struct NodeLink
+    {
         node: Weak<NodeInner>,
         address: String,
     }
 
-    impl NodeLink {
-        pub fn address(&self) -> &str {
+    impl NodeLink
+    {
+        pub fn address(&self) -> &str
+        {
             &self.address
         }
 
         /// Sends a record as it is (an error starting UNREACHABLE when it
         /// cannot, or once the node is gone).
-        pub fn send(&self, peer: &str, record: Vec<u8>) -> Result<()> {
-            match self.node.upgrade() {
+        pub fn send(&self, peer: &str, record: Vec<u8>) -> Result<()>
+        {
+            match self.node.upgrade()
+            {
                 Some(node) => node.transport.send(peer, record),
                 None => Err(format!("{UNREACHABLE}{} has closed", self.address)),
             }
         }
 
-        pub fn closed(&self) -> bool {
+        pub fn closed(&self) -> bool
+        {
             self.node
                 .upgrade()
                 .is_none_or(|node| node.closed.load(Ordering::SeqCst))
@@ -11225,12 +13600,15 @@ pub mod net {
     /// hexadecimal digits, as SecureRandom's secureToken gives. The secure
     /// network handler's generator when it is installed, else the operating
     /// system's (/dev/urandom).
-    pub fn secure_token() -> String {
-        if let Some(provider) = SECURE_NETWORK.get() {
+    pub fn secure_token() -> String
+    {
+        if let Some(provider) = SECURE_NETWORK.get()
+        {
             return provider.token();
         }
         let mut bytes = [0u8; 32];
-        match std::fs::File::open("/dev/urandom").and_then(|mut f| f.read_exact(&mut bytes)) {
+        match std::fs::File::open("/dev/urandom").and_then(|mut f| f.read_exact(&mut bytes))
+        {
             Ok(()) => hex(&bytes),
             Err(error) => panic!(
                 "a take token needs a secure generator: /dev/urandom ({error}); add `import lawspec.network` and call lawspec_network::install()"
@@ -11239,11 +13617,13 @@ pub mod net {
     }
 
     // Something a node names: it handles the frames sent to it.
-    trait Entity: Send + Sync {
+    trait Entity: Send + Sync
+    {
         fn receive(&self, node: &Node, kind: &str, source: &str, id: u64, payload: Vec<u8>);
     }
 
-    struct Slot {
+    struct Slot
+    {
         reply: Mutex<Option<Vec<u8>>>,
         ready: Condvar,
     }
@@ -11255,11 +13635,13 @@ pub mod net {
     /// until answered (the receiver runs it once), failing with UNREACHABLE
     /// after its timeout. Clones share the node.
     #[derive(Clone)]
-    pub struct Node {
+    pub struct Node
+    {
         inner: Arc<NodeInner>,
     }
 
-    struct NodeInner {
+    struct NodeInner
+    {
         transport: Arc<dyn Transport>,
         address: String,
         // None only on the transport made for tests that skips the handshake.
@@ -11275,14 +13657,16 @@ pub mod net {
         closed: AtomicBool,
     }
 
-    impl Node {
+    impl Node
+    {
         /// A node on transport. Unless it is the transport made for tests
         /// only (MemoryNetwork::insecure_transport_for_tests), the node is
         /// secure: the secure network handler (lawspec_network, installed)
         /// gives it the identity lawspec.edn binds, or a fresh one. Panics
         /// without that handler, or when lawspec-network.conf is unreadable;
         /// lawspec_network::node takes an identity and trusted peers.
-        pub fn new(transport: Arc<dyn Transport>) -> Node {
+        pub fn new(transport: Arc<dyn Transport>) -> Node
+        {
             Node::with_secure_layer(transport, |link| {
                 secure_network()
                     .and_then(|provider| provider.layer(link))
@@ -11296,13 +13680,17 @@ pub mod net {
         pub fn with_secure_layer(
             transport: Arc<dyn Transport>,
             make: impl FnOnce(NodeLink) -> Box<dyn SecureLayer>,
-        ) -> Node {
+        ) -> Node
+        {
             let insecure = transport.insecure_for_tests().is_some();
             let address = transport.address();
             let inner = Arc::new_cyclic(|weak: &Weak<NodeInner>| NodeInner {
-                secure: if insecure {
+                secure: if insecure
+                {
                     None
-                } else {
+                }
+                else
+                {
                     Some(make(NodeLink {
                         node: weak.clone(),
                         address: address.clone(),
@@ -11318,56 +13706,69 @@ pub mod net {
             });
             let weak: Weak<NodeInner> = Arc::downgrade(&inner);
             transport.start(Arc::new(move |record| {
-                if let Some(inner) = weak.upgrade() {
+                if let Some(inner) = weak.upgrade()
+                {
                     Node { inner }.arrive(record);
                 }
             }));
             Node { inner }
         }
 
-        pub fn address(&self) -> String {
+        pub fn address(&self) -> String
+        {
             self.inner.address.clone()
         }
 
         /// The node's secure layer; None on the transport made for tests only.
-        pub fn secure_layer(&self) -> Option<&dyn SecureLayer> {
+        pub fn secure_layer(&self) -> Option<&dyn SecureLayer>
+        {
             self.inner.secure.as_deref()
         }
 
         // A record from the transport: a frame in the clear on the transport
         // made for tests, else a handshake or sealed record.
-        fn arrive(&self, record: Vec<u8>) {
-            match &self.inner.secure {
+        fn arrive(&self, record: Vec<u8>)
+        {
+            match &self.inner.secure
+            {
                 None => self.deliver(record),
-                Some(secure) => {
-                    if let Some(frame) = secure.receive(&record) {
+                Some(secure) =>
+                {
+                    if let Some(frame) = secure.receive(&record)
+                    {
                         self.deliver(frame);
                     }
                 }
             }
         }
 
-        fn transmit(&self, node: &str, frame: Vec<u8>) -> Result<()> {
-            match &self.inner.secure {
+        fn transmit(&self, node: &str, frame: Vec<u8>) -> Result<()>
+        {
+            match &self.inner.secure
+            {
                 None => self.inner.transport.send(node, frame),
                 Some(secure) => secure.send(node, frame),
             }
         }
 
-        pub fn close(&self) {
+        pub fn close(&self)
+        {
             self.inner.closed.store(true, Ordering::SeqCst);
             self.inner.transport.close();
         }
 
-        fn closed(&self) -> bool {
+        fn closed(&self) -> bool
+        {
             self.inner.closed.load(Ordering::SeqCst)
         }
 
-        fn next_id(&self) -> u64 {
+        fn next_id(&self) -> u64
+        {
             self.inner.ids.fetch_add(1, Ordering::SeqCst)
         }
 
-        fn send_frame(&self, address: &str, kind: &str, payload: &[u8], id: u64) -> Result<()> {
+        fn send_frame(&self, address: &str, kind: &str, payload: &[u8], id: u64) -> Result<()>
+        {
             let (node, name) = split_address(address)?;
             self.transmit(
                 &node,
@@ -11375,14 +13776,17 @@ pub mod net {
             )
         }
 
-        fn register(&self, name: &str, entity: Arc<dyn Entity>) -> Result<String> {
-            if name.is_empty() || name.contains('/') {
+        fn register(&self, name: &str, entity: Arc<dyn Entity>) -> Result<String>
+        {
+            if name.is_empty() || name.contains('/')
+            {
                 return Err(format!(
                     "{name:?} is not a name: use letters, digits and dashes"
                 ));
             }
             let mut entities = lock(&self.inner.entities);
-            if entities.contains_key(name) {
+            if entities.contains_key(name)
+            {
                 return Err(format!(
                     "{name} is already registered on {}",
                     self.inner.address
@@ -11392,7 +13796,8 @@ pub mod net {
             Ok(format!("{}/{name}", self.inner.address))
         }
 
-        fn deliver(&self, frame: Vec<u8>) {
+        fn deliver(&self, frame: Vec<u8>)
+        {
             let Ok(Frame {
                 kind,
                 to,
@@ -11400,19 +13805,25 @@ pub mod net {
                 id,
                 payload,
             }) = frame_decode(&frame)
-            else {
+            else
+            {
                 return;
             };
-            if kind == "reply" {
-                if let Some(slot) = lock(&self.inner.pending).remove(&id) {
+            if kind == "reply"
+            {
+                if let Some(slot) = lock(&self.inner.pending).remove(&id)
+                {
                     *lock(&slot.reply) = Some(payload);
                     slot.ready.notify_all();
                 }
                 return;
             }
             let entity = lock(&self.inner.entities).get(&to).cloned();
-            let Some(entity) = entity else {
-                if id != 0 {
+            let Some(entity) = entity
+            else
+            {
+                if id != 0
+                {
                     self.reply(
                         &source,
                         id,
@@ -11423,11 +13834,14 @@ pub mod net {
                 }
                 return;
             };
-            if id != 0 {
+            if id != 0
+            {
                 let key = (source.clone(), id);
                 let mut seen = lock(&self.inner.seen);
-                if let Some(answer) = seen.0.get(&key) {
-                    if let Some(answer) = answer.clone() {
+                if let Some(answer) = seen.0.get(&key)
+                {
+                    if let Some(answer) = answer.clone()
+                    {
                         let node = self.clone();
                         std::thread::spawn(move || {
                             let _ = node.send_frame(&format!("{source}/"), "reply", &answer, id);
@@ -11437,8 +13851,10 @@ pub mod net {
                 }
                 seen.0.insert(key.clone(), None);
                 seen.1.push_back(key);
-                while seen.1.len() > 10000 {
-                    if let Some(old) = seen.1.pop_front() {
+                while seen.1.len() > 10000
+                {
+                    if let Some(old) = seen.1.pop_front()
+                    {
                         seen.0.remove(&old);
                     }
                 }
@@ -11449,12 +13865,14 @@ pub mod net {
             std::thread::spawn(move || entity.receive(&node, &kind, &source, id, payload));
         }
 
-        fn reply(&self, source: &str, id: u64, status: u8, body: &[u8]) {
+        fn reply(&self, source: &str, id: u64, status: u8, body: &[u8])
+        {
             let mut payload = vec![status];
             payload.extend_from_slice(body);
             {
                 let mut seen = lock(&self.inner.seen);
-                if let Some(answer) = seen.0.get_mut(&(source.to_string(), id)) {
+                if let Some(answer) = seen.0.get_mut(&(source.to_string(), id))
+                {
                     *answer = Some(payload.clone());
                 }
             }
@@ -11468,7 +13886,8 @@ pub mod net {
             kind: &str,
             payload: &[u8],
             timeout: Duration,
-        ) -> Result<(u8, Vec<u8>)> {
+        ) -> Result<(u8, Vec<u8>)>
+        {
             let id = self.next_id();
             let slot = Arc::new(Slot {
                 reply: Mutex::new(None),
@@ -11476,9 +13895,12 @@ pub mod net {
             });
             lock(&self.inner.pending).insert(id, slot.clone());
             let give_up = Instant::now() + timeout;
-            loop {
-                if let Err(e) = self.send_frame(address, kind, payload, id) {
-                    if !is_unreachable(&e) {
+            loop
+            {
+                if let Err(e) = self.send_frame(address, kind, payload, id)
+                {
+                    if !is_unreachable(&e)
+                    {
                         lock(&self.inner.pending).remove(&id);
                         return Err(e);
                     }
@@ -11486,21 +13908,25 @@ pub mod net {
                 let now = Instant::now();
                 let wait = Duration::from_millis(100).min(give_up.saturating_duration_since(now));
                 let mut reply = lock(&slot.reply);
-                if reply.is_none() {
+                if reply.is_none()
+                {
                     reply = slot
                         .ready
                         .wait_timeout(reply, wait)
                         .unwrap_or_else(|e| e.into_inner())
                         .0;
                 }
-                if let Some(answer) = reply.take() {
-                    if answer.is_empty() {
+                if let Some(answer) = reply.take()
+                {
+                    if answer.is_empty()
+                    {
                         return Err(format!("{UNREACHABLE}an empty reply from {address}"));
                     }
                     return Ok((answer[0], answer[1..].to_vec()));
                 }
                 drop(reply);
-                if Instant::now() >= give_up {
+                if Instant::now() >= give_up
+                {
                     lock(&self.inner.pending).remove(&id);
                     return Err(format!(
                         "{UNREACHABLE}{address} did not answer within {:?}",
@@ -11518,7 +13944,8 @@ pub mod net {
             name: &str,
             descriptor: Sexp,
             values: Values,
-        ) -> Result<actors::Mailbox<Value>> {
+        ) -> Result<actors::Mailbox<Value>>
+        {
             let mailbox = actors::Mailbox::new();
             self.register(
                 name,
@@ -11536,7 +13963,8 @@ pub mod net {
             address: &str,
             descriptor: Sexp,
             values: Values,
-        ) -> RemoteMailbox {
+        ) -> RemoteMailbox
+        {
             self.remote_mailbox_within(address, descriptor, values, Duration::from_secs(5))
         }
 
@@ -11547,7 +13975,8 @@ pub mod net {
             descriptor: Sexp,
             values: Values,
             timeout: Duration,
-        ) -> RemoteMailbox {
+        ) -> RemoteMailbox
+        {
             RemoteMailbox {
                 node: self.clone(),
                 address: address.to_string(),
@@ -11567,7 +13996,8 @@ pub mod net {
             name: &str,
             handlers: Vec<RemoteHandler>,
             values: Values,
-        ) -> Result<String> {
+        ) -> Result<String>
+        {
             self.register(name, Arc::new(ActorEntity { handlers, values }))
         }
 
@@ -11578,7 +14008,8 @@ pub mod net {
             signatures: Vec<Signature>,
             values: Values,
             timeout: Duration,
-        ) -> RemoteActor {
+        ) -> RemoteActor
+        {
             RemoteActor {
                 node: self.clone(),
                 address: address.to_string(),
@@ -11596,7 +14027,8 @@ pub mod net {
             table: Vec<RemoteDefinition>,
             values: Values,
             name: &str,
-        ) -> Result<String> {
+        ) -> Result<String>
+        {
             self.register(name, Arc::new(DefinitionEntity { table, values }))
         }
 
@@ -11612,10 +14044,12 @@ pub mod net {
             values: &Values,
             timeout: Duration,
             name: &str,
-        ) -> Result<Value> {
+        ) -> Result<Value>
+        {
             let mut payload = Vec::new();
             put_text(&mut payload, digest);
-            for (d, v) in arguments.iter().zip(args) {
+            for (d, v) in arguments.iter().zip(args)
+            {
                 wire_put(values, d, v, &mut payload)?;
             }
             let (status, body) =
@@ -11634,7 +14068,8 @@ pub mod net {
             steps: Vec<(bool, Sexp)>,
             values: Values,
             deadline: Duration,
-        ) -> Result<NetEndpoint> {
+        ) -> Result<NetEndpoint>
+        {
             let endpoint = NetEndpoint::new(self, steps, values, deadline);
             let address = self.register(name, endpoint.inner.clone())?;
             *lock(&endpoint.inner.address) = address;
@@ -11649,7 +14084,8 @@ pub mod net {
             steps: Vec<(bool, Sexp)>,
             values: Values,
             deadline: Duration,
-        ) -> Result<NetEndpoint> {
+        ) -> Result<NetEndpoint>
+        {
             let endpoint = NetEndpoint::new(self, steps, values, deadline);
             let own = self.register(&format!("end-{}", self.next_id()), endpoint.inner.clone())?;
             *lock(&endpoint.inner.address) = own;
@@ -11667,7 +14103,8 @@ pub mod net {
             steps: Vec<(bool, Sexp)>,
             values: Values,
             deadline: Duration,
-        ) -> Result<NetEndpoint> {
+        ) -> Result<NetEndpoint>
+        {
             let endpoint = NetEndpoint::new(self, steps, values, deadline);
             let own = self.register(&format!("end-{}", self.next_id()), endpoint.inner.clone())?;
             *lock(&endpoint.inner.address) = own;
@@ -11676,16 +14113,20 @@ pub mod net {
         }
 
         /// Passes a frame on to address unchanged, keeping its source.
-        fn forward(&self, address: &str, kind: &str, source: &str, id: u64, payload: &[u8]) {
-            if let Ok((node, name)) = split_address(address) {
+        fn forward(&self, address: &str, kind: &str, source: &str, id: u64, payload: &[u8])
+        {
+            if let Ok((node, name)) = split_address(address)
+            {
                 let _ = self.transmit(&node, frame_encode(kind, &name, source, id, payload));
             }
         }
     }
 
-    fn reply_value(status: u8, body: &[u8], values: &Values, d: &Sexp) -> Result<Value> {
+    fn reply_value(status: u8, body: &[u8], values: &Values, d: &Sexp) -> Result<Value>
+    {
         let message = String::from_utf8_lossy(body).to_string();
-        match status {
+        match status
+        {
             0 => wire_decode(values, d, body),
             1 if message.starts_with(actors::CRASHED) => Err(message),
             1 => Err(format!("{}{message}", actors::CRASHED)),
@@ -11695,19 +14136,25 @@ pub mod net {
         }
     }
 
-    struct MailEntity {
+    struct MailEntity
+    {
         mailbox: actors::Mailbox<Value>,
         descriptor: Sexp,
         values: Values,
     }
 
-    impl Entity for MailEntity {
-        fn receive(&self, node: &Node, kind: &str, source: &str, id: u64, payload: Vec<u8>) {
-            if kind != "mail" {
+    impl Entity for MailEntity
+    {
+        fn receive(&self, node: &Node, kind: &str, source: &str, id: u64, payload: Vec<u8>)
+        {
+            if kind != "mail"
+            {
                 return;
             }
-            let (status, body) = match wire_decode(&self.values, &self.descriptor, &payload) {
-                Ok(value) => match self.mailbox.send(value) {
+            let (status, body) = match wire_decode(&self.values, &self.descriptor, &payload)
+            {
+                Ok(value) => match self.mailbox.send(value)
+                {
                     Ok(()) => (0u8, Vec::new()),
                     Err(e) => (2, e.into_bytes()),
                 },
@@ -11716,7 +14163,8 @@ pub mod net {
                     format!("not a message of this mailbox: {e}").into_bytes(),
                 ),
             };
-            if id != 0 {
+            if id != 0
+            {
                 node.reply(source, id, status, &body);
             }
         }
@@ -11726,7 +14174,8 @@ pub mod net {
     /// has the message (resending a lost one; the mailbox takes it once),
     /// and fails with UNREACHABLE after the timeout, or as stopped if the
     /// mailbox is closed.
-    pub struct RemoteMailbox {
+    pub struct RemoteMailbox
+    {
         node: Node,
         pub address: String,
         descriptor: Sexp,
@@ -11734,15 +14183,20 @@ pub mod net {
         pub timeout: Duration,
     }
 
-    impl RemoteMailbox {
-        pub fn send(&self, value: &Value) -> Result<()> {
+    impl RemoteMailbox
+    {
+        pub fn send(&self, value: &Value) -> Result<()>
+        {
             let bytes = wire_encode(&self.values, &self.descriptor, value)?;
             let (status, body) = self
                 .node
                 .request(&self.address, "mail", &bytes, self.timeout)?;
-            if status == 0 {
+            if status == 0
+            {
                 Ok(())
-            } else {
+            }
+            else
+            {
                 reply_value(
                     status,
                     &body,
@@ -11768,9 +14222,11 @@ pub mod net {
     /// The arguments a served message brings, taken in order.
     pub struct Arguments(std::vec::IntoIter<Value>);
 
-    impl Arguments {
+    impl Arguments
+    {
         /// The next argument, as its native type.
-        pub fn next<T: super::FromValue>(&mut self) -> Result<T> {
+        pub fn next<T: super::FromValue>(&mut self) -> Result<T>
+        {
             let value = self.0.next().ok_or("a missing argument")?;
             T::from_value(value)
         }
@@ -11801,7 +14257,8 @@ pub mod net {
 
     /// A message's signature from its name and its arguments' and reply's
     /// descriptors.
-    pub fn signature(name: &str, arguments: &[&str], reply: &str) -> Signature {
+    pub fn signature(name: &str, arguments: &[&str], reply: &str) -> Signature
+    {
         let arguments = arguments.iter().map(|a| super::descriptor(a)).collect();
         (name.to_string(), arguments, super::descriptor(reply))
     }
@@ -11814,14 +14271,18 @@ pub mod net {
         Sexp,
     );
 
-    struct ActorEntity {
+    struct ActorEntity
+    {
         handlers: Vec<RemoteHandler>,
         values: Values,
     }
 
-    impl Entity for ActorEntity {
-        fn receive(&self, node: &Node, kind: &str, source: &str, id: u64, payload: Vec<u8>) {
-            if kind != "call" {
+    impl Entity for ActorEntity
+    {
+        fn receive(&self, node: &Node, kind: &str, source: &str, id: u64, payload: Vec<u8>)
+        {
+            if kind != "call"
+            {
                 return;
             }
             let mut pos = 0;
@@ -11832,17 +14293,21 @@ pub mod net {
                     .find(|h| h.0 == message)
                     .ok_or_else(|| format!("no message {message}"))?;
                 let mut args = Vec::new();
-                for d in &handler.1 {
+                for d in &handler.1
+                {
                     args.push(wire_get(&self.values, d, &payload, &mut pos)?);
                 }
-                if pos != payload.len() {
+                if pos != payload.len()
+                {
                     return wire_error("extra bytes after the arguments");
                 }
                 Ok((handler, args))
             });
-            let (handler, args) = match decoded {
+            let (handler, args) = match decoded
+            {
                 Ok(found) => found,
-                Err(e) => {
+                Err(e) =>
+                {
                     return node.reply(
                         source,
                         id,
@@ -11864,7 +14329,8 @@ pub mod net {
     /// Calls an actor on another node: call sends the message and waits for
     /// the reply, failing with UNREACHABLE after the timeout, or as the
     /// actor's call failed (crashed, stopped).
-    pub struct RemoteActor {
+    pub struct RemoteActor
+    {
         node: Node,
         pub address: String,
         signatures: Vec<Signature>,
@@ -11872,8 +14338,10 @@ pub mod net {
         pub timeout: Duration,
     }
 
-    impl RemoteActor {
-        pub fn call(&self, message: &str, args: &[Value]) -> Result<Value> {
+    impl RemoteActor
+    {
+        pub fn call(&self, message: &str, args: &[Value]) -> Result<Value>
+        {
             let (_, arguments, reply) = self
                 .signatures
                 .iter()
@@ -11881,7 +14349,8 @@ pub mod net {
                 .ok_or_else(|| format!("no message {message}"))?;
             let mut payload = Vec::new();
             put_text(&mut payload, message);
-            for (d, v) in arguments.iter().zip(args) {
+            for (d, v) in arguments.iter().zip(args)
+            {
                 wire_put(&self.values, d, v, &mut payload)?;
             }
             let (status, body) =
@@ -11891,14 +14360,18 @@ pub mod net {
         }
     }
 
-    struct DefinitionEntity {
+    struct DefinitionEntity
+    {
         table: Vec<RemoteDefinition>,
         values: Values,
     }
 
-    impl Entity for DefinitionEntity {
-        fn receive(&self, node: &Node, kind: &str, source: &str, id: u64, payload: Vec<u8>) {
-            if kind != "eval" {
+    impl Entity for DefinitionEntity
+    {
+        fn receive(&self, node: &Node, kind: &str, source: &str, id: u64, payload: Vec<u8>)
+        {
+            if kind != "eval"
+            {
                 return;
             }
             let mut pos = 0;
@@ -11909,14 +14382,17 @@ pub mod net {
                     .find(|e| e.0 == digest)
                     .ok_or_else(|| "no such definition".to_string())?;
                 let mut args = Vec::new();
-                for d in &entry.2 {
+                for d in &entry.2
+                {
                     args.push(wire_get(&self.values, d, &payload, &mut pos)?);
                 }
                 Ok((entry, args))
             });
-            let (entry, args) = match decoded {
+            let (entry, args) = match decoded
+            {
                 Ok(found) => found,
-                Err(_) => {
+                Err(_) =>
+                {
                     return node.reply(
                         source,
                         id,
@@ -11925,26 +14401,30 @@ pub mod net {
                     );
                 }
             };
-            match (entry.1)(args).and_then(|result| wire_encode(&self.values, &entry.3, &result)) {
+            match (entry.1)(args).and_then(|result| wire_encode(&self.values, &entry.3, &result))
+            {
                 Ok(bytes) => node.reply(source, id, 0, &bytes),
                 Err(e) => node.reply(source, id, 1, e.as_bytes()),
             }
         }
     }
 
-    enum Inbox {
+    enum Inbox
+    {
         Value(Vec<u8>),
         Failed(String),
     }
 
-    struct Unacked {
+    struct Unacked
+    {
         payload: Vec<u8>,
         first: Instant,
         last: Instant,
         body: Vec<u8>,
     }
 
-    struct EndpointState {
+    struct EndpointState
+    {
         peer: Option<String>,
         out: i64,
         unacked: HashMap<i64, Unacked>,
@@ -11967,7 +14447,8 @@ pub mod net {
         confirmed: bool,
     }
 
-    struct EndpointInner {
+    struct EndpointInner
+    {
         node: Node,
         steps: Vec<(bool, Sexp)>,
         values: Values,
@@ -11991,17 +14472,20 @@ pub mod net {
     /// from then on forwards every frame it gets to the new end; the new end
     /// tells the peer (a moved frame) so the peer sends to it directly.
     #[derive(Clone)]
-    pub struct NetEndpoint {
+    pub struct NetEndpoint
+    {
         inner: Arc<EndpointInner>,
     }
 
-    impl NetEndpoint {
+    impl NetEndpoint
+    {
         fn new(
             node: &Node,
             steps: Vec<(bool, Sexp)>,
             values: Values,
             deadline: Duration,
-        ) -> NetEndpoint {
+        ) -> NetEndpoint
+        {
             let inner = Arc::new(EndpointInner {
                 node: node.clone(),
                 steps,
@@ -12037,21 +14521,27 @@ pub mod net {
         }
 
         /// This end's address.
-        pub fn address(&self) -> String {
+        pub fn address(&self) -> String
+        {
             lock(&self.inner.address).clone()
         }
 
-        fn connect(&self, address: &str) {
+        fn connect(&self, address: &str)
+        {
             lock(&self.inner.state).peer = Some(address.to_string());
             self.inner.transmit(-1, b"hello".to_vec());
         }
 
-        fn step_descriptor(&self, sends: bool) -> Result<Sexp> {
+        fn step_descriptor(&self, sends: bool) -> Result<Sexp>
+        {
             let mut state = lock(&self.inner.state);
-            let Some((step_sends, d)) = self.inner.steps.get(state.step) else {
+            let Some((step_sends, d)) = self.inner.steps.get(state.step)
+            else
+            {
                 return Err("this channel's protocol has ended".into());
             };
-            if *step_sends != sends {
+            if *step_sends != sends
+            {
                 return Err(format!(
                     "this step {}",
                     if *step_sends { "sends" } else { "receives" }
@@ -12062,8 +14552,10 @@ pub mod net {
         }
 
         /// Sends the next step's value.
-        pub fn send(&self, value: &Value) -> Result<()> {
-            if lock(&self.inner.state).gone {
+        pub fn send(&self, value: &Value) -> Result<()>
+        {
+            if lock(&self.inner.state).gone
+            {
                 return Err(format!("{PEER_FAILED}the other end has failed"));
             }
             let d = self.step_descriptor(true)?;
@@ -12080,23 +14572,29 @@ pub mod net {
 
         /// The next step's value, waiting up to timeout (forever when None);
         /// fails with PEER_FAILED once the other end gave up or failed.
-        pub fn receive(&self, timeout: Option<Duration>) -> Result<Value> {
+        pub fn receive(&self, timeout: Option<Duration>) -> Result<Value>
+        {
             let d = self.step_descriptor(false)?;
             let until = timeout.map(|t| Instant::now() + t);
             let mut inbox = lock(&self.inner.inbox);
-            let item = loop {
-                if let Some(item) = inbox.pop_front() {
+            let item = loop
+            {
+                if let Some(item) = inbox.pop_front()
+                {
                     break item;
                 }
-                inbox = match until {
+                inbox = match until
+                {
                     None => self
                         .inner
                         .arrived
                         .wait(inbox)
                         .unwrap_or_else(|e| e.into_inner()),
-                    Some(at) => {
+                    Some(at) =>
+                    {
                         let now = Instant::now();
-                        if now >= at {
+                        if now >= at
+                        {
                             return Err("no message arrived in time".into());
                         }
                         self.inner
@@ -12107,14 +14605,18 @@ pub mod net {
                     }
                 };
             };
-            match item {
-                Inbox::Failed(reason) => {
+            match item
+            {
+                Inbox::Failed(reason) =>
+                {
                     inbox.push_front(Inbox::Failed(reason.clone()));
                     Err(format!("{PEER_FAILED}{reason}"))
                 }
-                Inbox::Value(body) => {
+                Inbox::Value(body) =>
+                {
                     drop(inbox);
-                    if body.first() == Some(&1) {
+                    if body.first() == Some(&1)
+                    {
                         self.inner.fail("the other end gave up the conversation");
                         return Err(format!(
                             "{PEER_FAILED}the other end gave up the conversation (its process failed or abandoned it)"
@@ -12126,7 +14628,8 @@ pub mod net {
         }
 
         /// Gives up: the other end's receives fail after what was sent.
-        pub fn abandon(&self) {
+        pub fn abandon(&self)
+        {
             let seq = {
                 let mut state = lock(&self.inner.state);
                 state.out += 1;
@@ -12136,7 +14639,8 @@ pub mod net {
         }
 
         /// The address another node takes this unused end over from.
-        fn offer(&self) -> String {
+        fn offer(&self) -> String
+        {
             let mut state = lock(&self.inner.state);
             let token = state.token.get_or_insert_with(secure_token);
             format!("{}?take={token}", lock(&self.inner.address))
@@ -12146,7 +14650,8 @@ pub mod net {
         /// asks for its state until it comes, then tells the peer where the
         /// end is now. Returns once the peer knows, or after the deadline (the
         /// old node then keeps forwarding to this end, as a relay would).
-        fn take_over(&self, address: &str) {
+        fn take_over(&self, address: &str)
+        {
             let (old, query) = address.split_once('?').unwrap_or((address, ""));
             let token = query.strip_prefix("take=").unwrap_or(query).to_string();
             lock(&self.inner.state).taking = Some(token.clone());
@@ -12154,7 +14659,8 @@ pub mod net {
             put_text(&mut request, &token);
             put_text(&mut request, &self.address());
             let give_up = Instant::now() + self.inner.deadline;
-            loop {
+            loop
+            {
                 let _ = self.inner.node.send_frame(old, "take", &request, 0);
                 let state = lock(&self.inner.state);
                 let (state, _) = self
@@ -12162,11 +14668,13 @@ pub mod net {
                     .changed
                     .wait_timeout_while(state, Duration::from_millis(50), |s| !s.taken)
                     .unwrap_or_else(|e| e.into_inner());
-                if state.taken {
+                if state.taken
+                {
                     break;
                 }
                 drop(state);
-                if Instant::now() >= give_up {
+                if Instant::now() >= give_up
+                {
                     lock(&self.inner.state).taking = None;
                     self.inner.fail(
                         "the node the end came from did not hand it over in time (unreachable)",
@@ -12187,48 +14695,59 @@ pub mod net {
         }
     }
 
-    fn put_texts(out: &mut Vec<u8>, texts: &[String]) {
+    fn put_texts(out: &mut Vec<u8>, texts: &[String])
+    {
         put_len(out, texts.len());
-        for t in texts {
+        for t in texts
+        {
             put_text(out, t);
         }
     }
 
-    fn get_texts(buf: &[u8], pos: &mut usize) -> Result<Vec<String>> {
+    fn get_texts(buf: &[u8], pos: &mut usize) -> Result<Vec<String>>
+    {
         let count = get_len(buf, pos)?;
         (0..count).map(|_| get_text(buf, pos)).collect()
     }
 
-    fn put_bytes(out: &mut Vec<u8>, bytes: &[u8]) {
+    fn put_bytes(out: &mut Vec<u8>, bytes: &[u8])
+    {
         put_len(out, bytes.len());
         out.extend_from_slice(bytes);
     }
 
-    fn get_bytes(buf: &[u8], pos: &mut usize) -> Result<Vec<u8>> {
-        match wire_get(&no_types(), &bytes_d(), buf, pos)? {
+    fn get_bytes(buf: &[u8], pos: &mut usize) -> Result<Vec<u8>>
+    {
+        match wire_get(&no_types(), &bytes_d(), buf, pos)?
+        {
             Value::Bytes(b) => Ok(b),
             _ => wire_error("not bytes"),
         }
     }
 
-    fn put_numbered(out: &mut Vec<u8>, mut items: Vec<(i64, Vec<u8>)>) {
+    fn put_numbered(out: &mut Vec<u8>, mut items: Vec<(i64, Vec<u8>)>)
+    {
         items.sort_by_key(|(seq, _)| *seq);
         put_len(out, items.len());
-        for (seq, body) in items {
+        for (seq, body) in items
+        {
             put_seq(out, seq);
             put_bytes(out, &body);
         }
     }
 
-    fn get_numbered(buf: &[u8], pos: &mut usize) -> Result<Vec<(i64, Vec<u8>)>> {
+    fn get_numbered(buf: &[u8], pos: &mut usize) -> Result<Vec<(i64, Vec<u8>)>>
+    {
         let count = get_len(buf, pos)?;
         (0..count)
             .map(|_| Ok((get_seq(buf, pos)?, get_bytes(buf, pos)?)))
             .collect()
     }
 
-    impl EndpointInner {
-        fn frame(&self, seq: i64, body: &[u8]) -> Vec<u8> {
+    impl EndpointInner
+    {
+        fn frame(&self, seq: i64, body: &[u8]) -> Vec<u8>
+        {
             let mut payload = Vec::new();
             put_seq(&mut payload, seq);
             put_text(&mut payload, &lock(&self.address));
@@ -12236,7 +14755,8 @@ pub mod net {
             payload
         }
 
-        fn transmit(&self, seq: i64, body: Vec<u8>) {
+        fn transmit(&self, seq: i64, body: Vec<u8>)
+        {
             let payload = self.frame(seq, &body);
             let peer = {
                 let mut state = lock(&self.state);
@@ -12252,15 +14772,18 @@ pub mod net {
                 );
                 state.peer.clone()
             };
-            if let Some(peer) = peer {
+            if let Some(peer) = peer
+            {
                 let _ = self.node.send_frame(&peer, "chan", &payload, 0);
             }
         }
 
-        fn fail(&self, reason: &str) {
+        fn fail(&self, reason: &str)
+        {
             {
                 let mut state = lock(&self.state);
-                if state.gone {
+                if state.gone
+                {
                     return;
                 }
                 state.gone = true;
@@ -12273,27 +14796,37 @@ pub mod net {
 
         /// A take frame: hands the state over once, to the first taker with
         /// the token, and answers that taker's repeats with the same state.
-        fn give(&self, payload: &[u8]) {
+        fn give(&self, payload: &[u8])
+        {
             let mut pos = 0;
-            let Ok(token) = get_text(payload, &mut pos) else {
+            let Ok(token) = get_text(payload, &mut pos)
+            else
+            {
                 return;
             };
-            let Ok(taker) = get_text(payload, &mut pos) else {
+            let Ok(taker) = get_text(payload, &mut pos)
+            else
+            {
                 return;
             };
             let handed = {
                 let mut state = lock(&self.state);
-                if state.token.as_deref() != Some(token.as_str()) {
+                if state.token.as_deref() != Some(token.as_str())
+                {
                     return;
                 }
-                match state.moved_to.clone() {
+                match state.moved_to.clone()
+                {
                     Some(to) if to != taker => return,
-                    Some(_) => {}
-                    None => {
+                    Some(_) =>
+                    {}
+                    None =>
+                    {
                         let address = lock(&self.address).clone();
                         let received: Vec<Vec<u8>> = lock(&self.inbox)
                             .iter()
-                            .filter_map(|item| match item {
+                            .filter_map(|item| match item
+                            {
                                 Inbox::Value(body) => Some(body.clone()),
                                 Inbox::Failed(_) => None,
                             })
@@ -12324,7 +14857,8 @@ pub mod net {
                                 .collect(),
                         );
                         put_len(&mut out, received.len());
-                        for body in &received {
+                        for body in &received
+                        {
                             put_bytes(&mut out, body);
                         }
                         state.moved_to = Some(taker.clone());
@@ -12338,7 +14872,8 @@ pub mod net {
             let _ = self.node.send_frame(&taker, "state", &handed, 0);
         }
 
-        fn install(&self, payload: &[u8]) {
+        fn install(&self, payload: &[u8])
+        {
             let parsed = (|| -> Result<_> {
                 let mut pos = 0;
                 let token = get_text(payload, &mut pos)?;
@@ -12359,12 +14894,14 @@ pub mod net {
             })();
             let Ok((token, failure, peer, history, out, expected, unacked, early, received)) =
                 parsed
-            else {
+            else
+            {
                 return;
             };
             {
                 let mut state = lock(&self.state);
-                if state.taking.as_deref() != Some(token.as_str()) || state.taken {
+                if state.taking.as_deref() != Some(token.as_str()) || state.taken
+                {
                     return;
                 }
                 let now = Instant::now();
@@ -12374,7 +14911,8 @@ pub mod net {
                 state.out = out;
                 state.expected = expected;
                 // Sent again from here at once, under this end's address.
-                for (seq, body) in unacked {
+                for (seq, body) in unacked
+                {
                     let payload = self.frame(seq, &body);
                     state.unacked.insert(
                         seq,
@@ -12393,28 +14931,36 @@ pub mod net {
             }
             self.arrived.notify_all();
             self.changed.notify_all();
-            if !failure.is_empty() {
+            if !failure.is_empty()
+            {
                 self.fail(&failure);
             }
         }
 
         /// The peer moved: from now on send to its new address.
-        fn peer_moved(&self, payload: &[u8]) {
+        fn peer_moved(&self, payload: &[u8])
+        {
             let mut pos = 0;
-            let Ok(history) = get_texts(payload, &mut pos) else {
+            let Ok(history) = get_texts(payload, &mut pos)
+            else
+            {
                 return;
             };
-            let Ok(to) = get_text(payload, &mut pos) else {
+            let Ok(to) = get_text(payload, &mut pos)
+            else
+            {
                 return;
             };
             let known = {
                 let mut state = lock(&self.state);
-                if state.peer.as_ref().is_none_or(|p| history.contains(p)) {
+                if state.peer.as_ref().is_none_or(|p| history.contains(p))
+                {
                     state.peer = Some(to.clone());
                 }
                 state.peer.as_deref() == Some(to.as_str())
             };
-            if known {
+            if known
+            {
                 let mut answer = Vec::new();
                 put_text(&mut answer, &to);
                 let _ = self.node.send_frame(&to, "moved-ack", &answer, 0);
@@ -12423,21 +14969,30 @@ pub mod net {
     }
 
     // Sends unacknowledged frames again until the end fails or goes away.
-    fn resend(weak: Weak<EndpointInner>) {
-        loop {
+    fn resend(weak: Weak<EndpointInner>)
+    {
+        loop
+        {
             std::thread::sleep(Duration::from_millis(20));
-            let Some(inner) = weak.upgrade() else { return };
-            if inner.node.closed() {
+            let Some(inner) = weak.upgrade()
+            else
+            {
+                return;
+            };
+            if inner.node.closed()
+            {
                 return;
             }
             let now = Instant::now();
             let address = lock(&inner.address).clone();
             let (peer, due, stale, moved) = {
                 let mut state = lock(&inner.state);
-                if state.gone || state.moved_to.is_some() {
+                if state.gone || state.moved_to.is_some()
+                {
                     return;
                 }
-                if state.taking.is_some() && !state.taken {
+                if state.taking.is_some() && !state.taken
+                {
                     continue;
                 }
                 let stale = state.unacked.values().any(|u| {
@@ -12445,8 +15000,10 @@ pub mod net {
                         && now.duration_since(u.first) > inner.deadline
                 });
                 let mut due = Vec::new();
-                for u in state.unacked.values_mut() {
-                    if now.duration_since(u.last) > Duration::from_millis(50) {
+                for u in state.unacked.values_mut()
+                {
+                    if now.duration_since(u.last) > Duration::from_millis(50)
+                    {
                         u.last = now;
                         due.push(u.payload.clone());
                     }
@@ -12467,24 +15024,31 @@ pub mod net {
                 }
                 (state.peer.clone(), due, stale, moved)
             };
-            if stale {
+            if stale
+            {
                 inner.fail("the other end did not answer in time (unreachable)");
                 return;
             }
-            if let Some(peer) = peer {
-                if let Some(moved) = moved {
+            if let Some(peer) = peer
+            {
+                if let Some(moved) = moved
+                {
                     let _ = inner.node.send_frame(&peer, "moved", &moved, 0);
                 }
-                for payload in due {
+                for payload in due
+                {
                     let _ = inner.node.send_frame(&peer, "chan", &payload, 0);
                 }
             }
         }
     }
 
-    impl Entity for EndpointInner {
-        fn receive(&self, node: &Node, kind: &str, source: &str, id: u64, payload: Vec<u8>) {
-            if kind == "take" {
+    impl Entity for EndpointInner
+    {
+        fn receive(&self, node: &Node, kind: &str, source: &str, id: u64, payload: Vec<u8>)
+        {
+            if kind == "take"
+            {
                 self.give(&payload);
                 return;
             }
@@ -12495,61 +15059,83 @@ pub mod net {
                     state.taking.is_some() && !state.taken,
                 )
             };
-            if let Some(to) = forward {
+            if let Some(to) = forward
+            {
                 node.forward(&to, kind, source, id, &payload);
                 return;
             }
-            if waiting {
+            if waiting
+            {
                 // Until the state arrives, frames are dropped: their senders
                 // send them again.
-                if kind == "state" {
+                if kind == "state"
+                {
                     self.install(&payload);
                 }
                 return;
             }
             let mut pos = 0;
-            match kind {
-                "ack" => {
-                    if let Ok(seq) = get_seq(&payload, &mut pos) {
+            match kind
+            {
+                "ack" =>
+                {
+                    if let Ok(seq) = get_seq(&payload, &mut pos)
+                    {
                         lock(&self.state).unacked.remove(&seq);
                     }
                     return;
                 }
-                "moved" => {
+                "moved" =>
+                {
                     self.peer_moved(&payload);
                     return;
                 }
-                "moved-ack" => {
-                    if get_text(&payload, &mut pos).is_ok_and(|to| to == *lock(&self.address)) {
+                "moved-ack" =>
+                {
+                    if get_text(&payload, &mut pos).is_ok_and(|to| to == *lock(&self.address))
+                    {
                         lock(&self.state).confirmed = true;
                         self.changed.notify_all();
                     }
                     return;
                 }
-                "chan" => {}
+                "chan" =>
+                {}
                 _ => return,
             }
-            let Ok(seq) = get_seq(&payload, &mut pos) else {
+            let Ok(seq) = get_seq(&payload, &mut pos)
+            else
+            {
                 return;
             };
-            let Ok(sender) = get_text(&payload, &mut pos) else {
+            let Ok(sender) = get_text(&payload, &mut pos)
+            else
+            {
                 return;
             };
             let body = payload[pos..].to_vec();
             let forward = {
                 let mut state = lock(&self.state);
-                if state.moved_to.is_none() {
-                    if seq == -1 {
-                        if state.peer.is_none() {
+                if state.moved_to.is_none()
+                {
+                    if seq == -1
+                    {
+                        if state.peer.is_none()
+                        {
                             state.peer = Some(sender.clone());
                         }
-                    } else if seq >= state.expected && !state.early.contains_key(&seq) {
+                    }
+                    else if seq >= state.expected && !state.early.contains_key(&seq)
+                    {
                         state.early.insert(seq, body);
                         let mut inbox = lock(&self.inbox);
-                        loop {
+                        loop
+                        {
                             let next = state.expected;
-                            match state.early.remove(&next) {
-                                Some(body) => {
+                            match state.early.remove(&next)
+                            {
+                                Some(body) =>
+                                {
                                     inbox.push_back(Inbox::Value(body));
                                     state.expected += 1;
                                 }
@@ -12560,7 +15146,8 @@ pub mod net {
                 }
                 state.moved_to.clone()
             };
-            if let Some(to) = forward {
+            if let Some(to) = forward
+            {
                 // Moved meanwhile: the new end acknowledges it.
                 node.forward(&to, kind, source, id, &payload);
                 return;
@@ -12576,7 +15163,8 @@ pub mod net {
     /// form, for typed ends over a network. A step that sends another
     /// protocol's first end (end_codec) carries the address the receiver
     /// takes the end over from, or a relay's for a local end, instead.
-    pub struct StepCodec {
+    pub struct StepCodec
+    {
         kind: CodecKind,
     }
 
@@ -12584,12 +15172,15 @@ pub mod net {
     /// descriptor, and its codec.
     pub type Wire = fn() -> (Vec<(bool, Sexp)>, Vec<StepCodec>);
 
-    enum CodecKind {
-        Value {
+    enum CodecKind
+    {
+        Value
+        {
             to_logical: Box<dyn Fn(super::sessions::Message) -> Value + Send + Sync>,
             from_logical: Box<dyn Fn(Value) -> Result<super::sessions::Message> + Send + Sync>,
         },
-        End {
+        End
+        {
             wire: Wire,
             into_endpoint:
                 Box<dyn Fn(super::sessions::Message) -> super::sessions::Endpoint + Send + Sync>,
@@ -12599,10 +15190,12 @@ pub mod net {
     }
 
     /// The codec of a step whose native type is T.
-    pub fn step_codec<T: super::IntoValue + super::FromValue + Send + 'static>() -> StepCodec {
+    pub fn step_codec<T: super::IntoValue + super::FromValue + Send + 'static>() -> StepCodec
+    {
         StepCodec {
             kind: CodecKind::Value {
-                to_logical: Box::new(|message| match message.downcast::<T>() {
+                to_logical: Box::new(|message| match message.downcast::<T>()
+                {
                     Ok(value) => super::IntoValue::into_value(*value),
                     Err(_) => panic!("a session sent a value of an unexpected type"),
                 }),
@@ -12621,11 +15214,13 @@ pub mod net {
         wire: Wire,
         into: fn(E) -> super::sessions::Endpoint,
         from: fn(super::sessions::Endpoint) -> E,
-    ) -> StepCodec {
+    ) -> StepCodec
+    {
         StepCodec {
             kind: CodecKind::End {
                 wire,
-                into_endpoint: Box::new(move |message| match message.downcast::<E>() {
+                into_endpoint: Box::new(move |message| match message.downcast::<E>()
+                {
                     Ok(end) => into(*end),
                     Err(_) => panic!("a session sent a channel end of an unexpected protocol"),
                 }),
@@ -12647,7 +15242,8 @@ pub mod net {
         name: &str,
         wire: SessionWire,
         values: Values,
-    ) -> Result<super::sessions::Endpoint> {
+    ) -> Result<super::sessions::Endpoint>
+    {
         let (steps, codecs) = wire;
         let end = node.listen(name, steps, values, Duration::from_secs(5))?;
         let transport = NetSession::new(end, codecs);
@@ -12664,7 +15260,8 @@ pub mod net {
         address: &str,
         wire: SessionWire,
         values: Values,
-    ) -> Result<super::sessions::Endpoint> {
+    ) -> Result<super::sessions::Endpoint>
+    {
         let (steps, codecs) = wire;
         let steps = steps.into_iter().map(|(s, d)| (!s, d)).collect();
         let end = node.dial(address, steps, values, Duration::from_secs(5))?;
@@ -12677,15 +15274,18 @@ pub mod net {
 
     /// A typed session end's transport over a network channel end: values
     /// are converted step by step, natively on this side.
-    pub struct NetSession {
+    pub struct NetSession
+    {
         endpoint: NetEndpoint,
         codecs: Vec<StepCodec>,
         step: AtomicU64,
         moved: AtomicBool,
     }
 
-    impl NetSession {
-        pub fn new(endpoint: NetEndpoint, codecs: Vec<StepCodec>) -> Arc<NetSession> {
+    impl NetSession
+    {
+        pub fn new(endpoint: NetEndpoint, codecs: Vec<StepCodec>) -> Arc<NetSession>
+        {
             Arc::new(NetSession {
                 endpoint,
                 codecs,
@@ -12694,7 +15294,8 @@ pub mod net {
             })
         }
 
-        fn codec(&self) -> &StepCodec {
+        fn codec(&self) -> &StepCodec
+        {
             let step = self.step.fetch_add(1, Ordering::SeqCst) as usize;
             self.codecs
                 .get(step)
@@ -12710,8 +15311,10 @@ pub mod net {
         values: &Values,
         end: super::sessions::Endpoint,
         wire: Wire,
-    ) -> Result<String> {
-        match end.hand_over() {
+    ) -> Result<String>
+    {
+        match end.hand_over()
+        {
             Some(address) => Ok(address),
             None => relay_end(node, values, end, wire),
         }
@@ -12726,7 +15329,8 @@ pub mod net {
         values: &Values,
         end: super::sessions::Endpoint,
         wire: Wire,
-    ) -> Result<String> {
+    ) -> Result<String>
+    {
         let (steps, codecs) = wire();
         let relay = node.listen(
             &format!("relay-{}", node.next_id()),
@@ -12739,13 +15343,18 @@ pub mod net {
         let directions: Vec<bool> = steps.iter().map(|(s, _)| *s).collect();
         std::thread::spawn(move || {
             use super::sessions::{Side, Transport};
-            for sends in directions {
-                let passed = if sends {
+            for sends in directions
+            {
+                let passed = if sends
+                {
                     relayed.receive(Side::First).map(|m| end.send_message(m))
-                } else {
+                }
+                else
+                {
                     end.receive_message().map(|m| relayed.send(Side::First, m))
                 };
-                if passed.is_err() {
+                if passed.is_err()
+                {
                     relayed.close(Side::First);
                     return;
                 }
@@ -12754,24 +15363,31 @@ pub mod net {
         Ok(address)
     }
 
-    impl super::sessions::Transport for NetSession {
-        fn send(&self, _: super::sessions::Side, message: super::sessions::Message) {
-            let value = match &self.codec().kind {
+    impl super::sessions::Transport for NetSession
+    {
+        fn send(&self, _: super::sessions::Side, message: super::sessions::Message)
+        {
+            let value = match &self.codec().kind
+            {
                 CodecKind::Value { to_logical, .. } => to_logical(message),
                 CodecKind::End {
                     wire,
                     into_endpoint,
                     ..
-                } => {
+                } =>
+                {
                     let inner = &self.endpoint.inner;
-                    match offer_end(&inner.node, &inner.values, into_endpoint(message), *wire) {
+                    match offer_end(&inner.node, &inner.values, into_endpoint(message), *wire)
+                    {
                         Ok(address) => Value::Text(address),
                         Err(e) => panic!("{e}"),
                     }
                 }
             };
-            if let Err(e) = self.endpoint.send(&value) {
-                if !is_peer_failed(&e) {
+            if let Err(e) = self.endpoint.send(&value)
+            {
+                if !is_peer_failed(&e)
+                {
                     panic!("{e}");
                 }
             }
@@ -12780,35 +15396,45 @@ pub mod net {
         fn receive(
             &self,
             _: super::sessions::Side,
-        ) -> std::result::Result<super::sessions::Message, super::sessions::PeerFailed> {
+        ) -> std::result::Result<super::sessions::Message, super::sessions::PeerFailed>
+        {
             let codec = self.codec();
-            let value = match self.endpoint.receive(None) {
+            let value = match self.endpoint.receive(None)
+            {
                 Ok(value) => value,
                 Err(e) if is_peer_failed(&e) => return Err(super::sessions::PeerFailed),
                 Err(e) => panic!("{e}"),
             };
-            match &codec.kind {
-                CodecKind::Value { from_logical, .. } => {
+            match &codec.kind
+            {
+                CodecKind::Value { from_logical, .. } =>
+                {
                     Ok(from_logical(value).unwrap_or_else(|e| panic!("{e}")))
                 }
                 CodecKind::End {
                     wire,
                     from_endpoint,
                     ..
-                } => {
-                    let Value::Text(address) = value else {
+                } =>
+                {
+                    let Value::Text(address) = value
+                    else
+                    {
                         panic!("a channel end arrived without its address")
                     };
                     let (steps, codecs) = wire();
                     let inner = &self.endpoint.inner;
-                    let dialed = if address.contains("?take=") {
+                    let dialed = if address.contains("?take=")
+                    {
                         inner.node.take(
                             &address,
                             steps,
                             inner.values.clone(),
                             Duration::from_secs(5),
                         )
-                    } else {
+                    }
+                    else
+                    {
                         inner.node.dial(
                             &address,
                             steps,
@@ -12826,14 +15452,18 @@ pub mod net {
             }
         }
 
-        fn close(&self, _: super::sessions::Side) {
-            if !self.moved.load(Ordering::SeqCst) {
+        fn close(&self, _: super::sessions::Side)
+        {
+            if !self.moved.load(Ordering::SeqCst)
+            {
                 self.endpoint.abandon();
             }
         }
 
-        fn hand_over(&self) -> Option<String> {
-            if self.step.load(Ordering::SeqCst) != 0 {
+        fn hand_over(&self) -> Option<String>
+        {
+            if self.step.load(Ordering::SeqCst) != 0
+            {
                 return None;
             }
             self.moved.store(true, Ordering::SeqCst);
@@ -12842,7 +15472,8 @@ pub mod net {
     }
 
     // Keeps descriptor helpers reachable for generated code.
-    pub fn parse(text: &str) -> Sexp {
+    pub fn parse(text: &str) -> Sexp
+    {
         read_descriptor(text)
             .into_iter()
             .next()
@@ -12851,18 +15482,21 @@ pub mod net {
 }
 
 #[cfg(test)]
-mod net_tests {
+mod net_tests
+{
     use super::net::*;
     use super::*;
     use std::sync::Arc;
     use std::time::Duration;
 
-    fn int64() -> Sexp {
+    fn int64() -> Sexp
+    {
         descriptor("(int Int64 _ _)")
     }
 
     #[test]
-    fn wire_vectors_match_python() {
+    fn wire_vectors_match_python()
+    {
         assert_eq!(
             wire_encoded("(int Integer _ _)", 7, 4, 4),
             vec!["9ddc4f", "eefb17", "8fc703", "8ee709"]
@@ -12888,12 +15522,14 @@ mod net_tests {
             wire_encoded(shape, 11, 3, 3),
             vec!["0030", "020201b80100015ac801", "014808"]
         );
-        for seed in 0..20 {
+        for seed in 0..20
+        {
             assert!(wire_round_trips(shape, seed, 5, 10));
         }
     }
 
-    fn exercise(a: Arc<dyn Transport>, b: Arc<dyn Transport>, lossy: bool) {
+    fn exercise(a: Arc<dyn Transport>, b: Arc<dyn Transport>, lossy: bool)
+    {
         let (here, there) = (Node::new(a), Node::new(b));
         let counter = actors::Actor::new(BigInt::from(0));
         let served = counter.clone();
@@ -12911,7 +15547,7 @@ mod net_tests {
                 vec![("add".into(), vec![int64()], int64(), handler)],
                 values_table(""),
             )
-            .unwrap();
+            .expect("valid fixture for exercise must succeed");
         let remote = here.remote_actor(
             &address,
             vec![("add".into(), vec![int64()], int64())],
@@ -12919,7 +15555,13 @@ mod net_tests {
             Duration::from_secs(3),
         );
         let replies: Vec<String> = (1..=3)
-            .map(|n| render(&remote.call("add", &[Value::Integer(n.into())]).unwrap()))
+            .map(|n| {
+                render(
+                    &remote
+                        .call("add", &[Value::Integer(n.into())])
+                        .expect("valid fixture for exercise must succeed"),
+                )
+            })
             .collect();
         assert_eq!(replies, vec!["1", "3", "6"]);
         let double: Arc<dyn Fn(Vec<Value>) -> Result<Value> + Send + Sync> =
@@ -12930,7 +15572,7 @@ mod net_tests {
                 values_table(""),
                 "definitions",
             )
-            .unwrap();
+            .expect("valid fixture for exercise must succeed");
         let got = here
             .evaluate(
                 &there.address(),
@@ -12942,19 +15584,26 @@ mod net_tests {
                 Duration::from_secs(3),
                 "definitions",
             )
-            .unwrap();
+            .expect("valid fixture for exercise must succeed");
         assert_eq!(render(&got), "42");
-        if !lossy {
-            let box_ = there.mailbox("jobs", int64(), values_table("")).unwrap();
+        if !lossy
+        {
+            let box_ = there
+                .mailbox("jobs", int64(), values_table(""))
+                .expect("valid fixture for exercise must succeed");
             here.remote_mailbox(
                 &format!("{}/jobs", there.address()),
                 int64(),
                 values_table(""),
             )
             .send(&Value::Integer(41.into()))
-            .unwrap();
+            .expect("valid fixture for exercise must succeed");
             assert_eq!(
-                render(&box_.receive(Some(Duration::from_secs(3))).unwrap()),
+                render(
+                    &box_
+                        .receive(Some(Duration::from_secs(3)))
+                        .expect("valid fixture for exercise must succeed")
+                ),
                 "41"
             );
         }
@@ -12970,7 +15619,7 @@ mod net_tests {
                 values_table(""),
                 Duration::from_secs(5),
             )
-            .unwrap();
+            .expect("valid fixture for exercise must succeed");
         let dialer = here
             .dial(
                 &format!("{}/chat", there.address()),
@@ -12978,29 +15627,53 @@ mod net_tests {
                 values_table(""),
                 Duration::from_secs(5),
             )
-            .unwrap();
+            .expect("valid fixture for exercise must succeed");
         let worker = std::thread::spawn(move || {
-            listener.send(&Value::Integer(10.into())).unwrap();
-            let said = listener.receive(Some(Duration::from_secs(5))).unwrap();
-            listener.send(&Value::Integer(20.into())).unwrap();
+            listener
+                .send(&Value::Integer(10.into()))
+                .expect("valid fixture for exercise must succeed");
+            let said = listener
+                .receive(Some(Duration::from_secs(5)))
+                .expect("valid fixture for exercise must succeed");
+            listener
+                .send(&Value::Integer(20.into()))
+                .expect("valid fixture for exercise must succeed");
             said
         });
         assert_eq!(
-            render(&dialer.receive(Some(Duration::from_secs(5))).unwrap()),
+            render(
+                &dialer
+                    .receive(Some(Duration::from_secs(5)))
+                    .expect("valid fixture for exercise must succeed")
+            ),
             "10"
         );
-        dialer.send(&Value::Text("hi".into())).unwrap();
+        dialer
+            .send(&Value::Text("hi".into()))
+            .expect("valid fixture for exercise must succeed");
         assert_eq!(
-            render(&dialer.receive(Some(Duration::from_secs(5))).unwrap()),
+            render(
+                &dialer
+                    .receive(Some(Duration::from_secs(5)))
+                    .expect("valid fixture for exercise must succeed")
+            ),
             "20"
         );
-        assert_eq!(render(&worker.join().unwrap()), "\"hi\"");
+        assert_eq!(
+            render(
+                &worker
+                    .join()
+                    .expect("valid fixture for exercise must succeed")
+            ),
+            "\"hi\""
+        );
         here.close();
         there.close();
     }
 
     #[test]
-    fn nodes_over_the_insecure_memory_transport() {
+    fn nodes_over_the_insecure_memory_transport()
+    {
         // The frame layer alone; lawspec_network's tests cover secure nodes
         // over memory, TCP and HTTP.
         let net = MemoryNetwork::new(3, 0.2, 0.2, Duration::from_millis(10)).with_recording();
@@ -13013,7 +15686,8 @@ mod net_tests {
     }
 
     #[test]
-    fn take_tokens_are_secure() {
+    fn take_tokens_are_secure()
+    {
         let token = secure_token();
         assert_eq!(token.len(), 64);
         assert!(
@@ -13035,36 +15709,47 @@ mod net_tests {
 /// A handler installed for an ability: an `Arc<dyn Trait>`, and its calls
 /// when it records them.
 #[derive(Clone)]
-pub struct Installed {
+pub struct Installed
+{
     pub handler: Arc<dyn std::any::Any + Send + Sync>,
     pub calls: Option<Calls>,
     /// The handler's own type, when it is an ability's default (production)
     /// handler: how a reader such as lawspec.time's tells the real clock.
     pub native: Option<std::any::TypeId>,
 }
-impl std::fmt::Debug for Installed {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.write_str(if self.calls.is_some() {
-            "<recording handler>"
-        } else {
-            "<handler>"
-        })
+impl std::fmt::Debug for Installed
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+    {
+        f.write_str(
+            if self.calls.is_some()
+            {
+                "<recording handler>"
+            }
+            else
+            {
+                "<handler>"
+            },
+        )
     }
 }
 
 /// The calls a recording handler has seen.
 #[derive(Clone, Default, Debug)]
 pub struct Calls(Arc<std::sync::Mutex<Vec<(String, Vec<Value>)>>>);
-impl Calls {
-    pub fn record(&self, operation: &str, arguments: Vec<Value>) {
+impl Calls
+{
+    pub fn record(&self, operation: &str, arguments: Vec<Value>)
+    {
         self.0
             .lock()
-            .unwrap()
+            .expect("handler call log lock must not be poisoned")
             .push((operation.to_string(), arguments));
     }
 }
 
-pub fn installed<H: Send + Sync + 'static>(handler: H) -> Installed {
+pub fn installed<H: Send + Sync + 'static>(handler: H) -> Installed
+{
     Installed {
         handler: Arc::new(handler),
         calls: None,
@@ -13072,14 +15757,16 @@ pub fn installed<H: Send + Sync + 'static>(handler: H) -> Installed {
     }
 }
 /// A default handler of type N, installed as H (its `Arc<dyn Trait>`).
-pub fn installed_native<N: 'static, H: Send + Sync + 'static>(handler: H) -> Installed {
+pub fn installed_native<N: 'static, H: Send + Sync + 'static>(handler: H) -> Installed
+{
     Installed {
         handler: Arc::new(handler),
         calls: None,
         native: Some(std::any::TypeId::of::<N>()),
     }
 }
-pub fn installed_recording<H: Send + Sync + 'static>(handler: H, calls: Calls) -> Installed {
+pub fn installed_recording<H: Send + Sync + 'static>(handler: H, calls: Calls) -> Installed
+{
     Installed {
         handler: Arc::new(handler),
         calls: Some(calls),
@@ -13087,16 +15774,26 @@ pub fn installed_recording<H: Send + Sync + 'static>(handler: H, calls: Calls) -
     }
 }
 
-impl Context {
-    pub fn install_handlers(&mut self, handlers: Vec<(String, Installed)>) {
-        let mut table = self.handlers.write().unwrap();
-        for (key, handler) in handlers {
+impl Context
+{
+    pub fn install_handlers(&mut self, handlers: Vec<(String, Installed)>)
+    {
+        let mut table = self
+            .handlers
+            .write()
+            .expect("handler registry write lock must not be poisoned");
+        for (key, handler) in handlers
+        {
             table.insert(key, handler);
         }
     }
     /// The handler installed for an ability, as the type its bridge needs.
-    pub fn handler<H: Clone + 'static>(&self, ability: &str) -> Result<H> {
-        let table = self.handlers.read().unwrap();
+    pub fn handler<H: Clone + 'static>(&self, ability: &str) -> Result<H>
+    {
+        let table = self
+            .handlers
+            .read()
+            .expect("handler registry read lock must not be poisoned");
         let installed = table.get(ability).ok_or_else(|| {
             format!("no handler for the ability {ability}: a law names one with `using`, or runs under each lawful handler")
         })?;
@@ -13106,8 +15803,13 @@ impl Context {
             .cloned()
             .ok_or_else(|| format!("the handler for {ability} has another type"))
     }
-    fn installed_for(&self, ability: &str) -> Option<Installed> {
-        self.handlers.read().unwrap().get(ability).cloned()
+    fn installed_for(&self, ability: &str) -> Option<Installed>
+    {
+        self.handlers
+            .read()
+            .expect("handler registry read lock must not be poisoned")
+            .get(ability)
+            .cloned()
     }
 }
 
@@ -13117,20 +15819,28 @@ pub fn with_handlers(
     ctx: &mut Context,
     handlers: Vec<(String, Installed)>,
     body: impl FnOnce(&mut Context) -> Result<Value>,
-) -> Result<Value> {
+) -> Result<Value>
+{
     let previous: Vec<(String, Option<Installed>)> = handlers
         .iter()
         .map(|(key, _)| (key.clone(), ctx.installed_for(key)))
         .collect();
     ctx.install_handlers(handlers);
     let restore = |ctx: &mut Context| {
-        let mut table = ctx.handlers.write().unwrap();
-        for (key, before) in &previous {
-            match before {
-                Some(handler) => {
+        let mut table = ctx
+            .handlers
+            .write()
+            .expect("handler registry write lock must not be poisoned");
+        for (key, before) in &previous
+        {
+            match before
+            {
+                Some(handler) =>
+                {
                     table.insert(key.clone(), handler.clone());
                 }
-                None => {
+                None =>
+                {
                     table.remove(key);
                 }
             }
@@ -13138,7 +15848,8 @@ pub fn with_handlers(
     };
     let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| body(ctx)));
     restore(ctx);
-    match outcome {
+    match outcome
+    {
         Ok(result) => result,
         Err(payload) => std::panic::resume_unwind(payload),
     }
@@ -13149,7 +15860,8 @@ pub fn with_handlers(
 /// `ls::fail(value)` for `fails with E`, the value a native E.
 pub struct Fail(pub Box<dyn std::any::Any + Send>);
 
-pub fn fail<E: Send + 'static>(value: E) -> ! {
+pub fn fail<E: Send + 'static>(value: E) -> !
+{
     quiet_failures();
     std::panic::panic_any(Fail(Box::new(value)))
 }
@@ -13164,13 +15876,18 @@ pub fn native_failures<E: 'static, T>(
     convert: impl FnOnce(E) -> Value,
     body: impl FnOnce() -> T,
     mapped: Vec<MappedFailure>,
-) -> T {
+) -> T
+{
     quiet_failures();
-    match std::panic::catch_unwind(std::panic::AssertUnwindSafe(body)) {
+    match std::panic::catch_unwind(std::panic::AssertUnwindSafe(body))
+    {
         Ok(value) => value,
-        Err(payload) => {
-            let payload = match payload.downcast::<Fail>() {
-                Ok(fail) => match fail.0.downcast::<E>() {
+        Err(payload) =>
+        {
+            let payload = match payload.downcast::<Fail>()
+            {
+                Ok(fail) => match fail.0.downcast::<E>()
+                {
                     Ok(native) => std::panic::panic_any(Failure {
                         ability: ability.to_string(),
                         value: convert(*native),
@@ -13179,8 +15896,10 @@ pub fn native_failures<E: 'static, T>(
                 },
                 Err(other) => other,
             };
-            for make in &mapped {
-                if let Some(value) = make(payload.as_ref()) {
+            for make in &mapped
+            {
+                if let Some(value) = make(payload.as_ref())
+                {
                     std::panic::panic_any(Failure {
                         ability: ability.to_string(),
                         value,
@@ -13194,12 +15913,14 @@ pub fn native_failures<E: 'static, T>(
 
 /// A failure raised with the Fail ability.
 #[derive(Debug)]
-pub struct Failure {
+pub struct Failure
+{
     pub ability: String,
     pub value: Value,
 }
 
-fn quiet_failures() {
+fn quiet_failures()
+{
     static HOOK: std::sync::Once = std::sync::Once::new();
     HOOK.call_once(|| {
         let previous = std::panic::take_hook();
@@ -13213,7 +15934,8 @@ fn quiet_failures() {
     });
 }
 
-pub fn raise_failure(ability: &str, value: Value) -> Value {
+pub fn raise_failure(ability: &str, value: Value) -> Value
+{
     quiet_failures();
     std::panic::panic_any(Failure {
         ability: ability.to_string(),
@@ -13228,11 +15950,14 @@ pub fn attempt(
     body: impl FnOnce(&mut Context) -> Result<Value>,
     right: impl FnOnce(Value) -> Result<Value>,
     left: impl FnOnce(Value) -> Result<Value>,
-) -> Result<Value> {
+) -> Result<Value>
+{
     quiet_failures();
-    match std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| body(ctx))) {
+    match std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| body(ctx)))
+    {
         Ok(result) => right(result?),
-        Err(payload) => match payload.downcast::<Failure>() {
+        Err(payload) => match payload.downcast::<Failure>()
+        {
             Ok(failure) if failure.ability == ability => left(failure.value),
             Ok(failure) => std::panic::panic_any(*failure),
             Err(other) => std::panic::resume_unwind(other),
@@ -13246,7 +15971,8 @@ pub fn count_calls(
     ability: &str,
     operation: &str,
     matches: Option<&dyn Fn(&[Value]) -> Result<bool>>,
-) -> Result<Value> {
+) -> Result<Value>
+{
     let installed = ctx
         .installed_for(ability)
         .ok_or_else(|| format!("no handler for the ability {ability}"))?;
@@ -13254,11 +15980,17 @@ pub fn count_calls(
         .calls
         .as_ref()
         .ok_or("calls of needs a recording handler: `using recording`")?;
-    let recorded = calls.0.lock().unwrap().clone();
+    let recorded = calls
+        .0
+        .lock()
+        .expect("handler call log lock must not be poisoned")
+        .clone();
     let mut count = 0i64;
-    for (name, arguments) in recorded {
+    for (name, arguments) in recorded
+    {
         if name == operation
-            && match matches {
+            && match matches
+            {
                 None => true,
                 Some(test) => test(&arguments)?,
             }
@@ -13270,11 +16002,21 @@ pub fn count_calls(
 }
 
 /// A Pair's two fields: a stateful handler clause's result and next state.
-pub fn pair_fields(pair: Value) -> Result<(Value, Value)> {
-    match pair {
-        Value::Data(_, fields) if fields.len() == 2 => {
+pub fn pair_fields(pair: Value) -> Result<(Value, Value)>
+{
+    match pair
+    {
+        Value::Data(_, fields) if fields.len() == 2 =>
+        {
             let mut fields = fields.into_iter();
-            Ok((fields.next().unwrap(), fields.next().unwrap()))
+            Ok((
+                fields
+                    .next()
+                    .expect("validated pair must contain two fields"),
+                fields
+                    .next()
+                    .expect("validated pair must contain two fields"),
+            ))
         }
         _ => Err("a handler clause must give Pair result state".into()),
     }
@@ -13288,7 +16030,8 @@ pub fn pair_fields(pair: Value) -> Result<(Value, Value)> {
 /// handler's state is shared, never copied, from one operation to the next.
 /// Each value converts to and from the dynamic Value (Dyn), at the
 /// boundaries with dynamic code.
-pub mod fast {
+pub mod fast
+{
     use super::{BigInt, Either, Result, Value};
     use num_traits::{Signed, ToPrimitive, Zero};
     use std::cmp::Ordering;
@@ -13299,18 +16042,21 @@ pub mod fast {
     /// So are Bytes.
     pub type Bytes = Arc<[u8]>;
 
-    pub fn text(s: &str) -> Text {
+    pub fn text(s: &str) -> Text
+    {
         Arc::from(s)
     }
 
-    pub fn bytes(b: &[u8]) -> Bytes {
+    pub fn bytes(b: &[u8]) -> Bytes
+    {
         Arc::from(b)
     }
 
     /// The portable total order (see compare_values): numbers by value, text
     /// by code point, false before true, Absent before Present, Left before
     /// Right, lists item by item, data by constructor identity then fields.
-    pub trait POrd {
+    pub trait POrd
+    {
         fn pcmp(&self, other: &Self) -> Ordering;
     }
 
@@ -13319,15 +16065,20 @@ pub mod fast {
     }
     ordinary!(i8, i16, i32, i64, u8, u16, u32, u64, bool, (), str, [u8]);
 
-    impl<T: POrd + ?Sized> POrd for Arc<T> {
-        fn pcmp(&self, other: &Self) -> Ordering {
+    impl<T: POrd + ?Sized> POrd for Arc<T>
+    {
+        fn pcmp(&self, other: &Self) -> Ordering
+        {
             (**self).pcmp(&**other)
         }
     }
 
-    impl<T: POrd> POrd for Option<T> {
-        fn pcmp(&self, other: &Self) -> Ordering {
-            match (self, other) {
+    impl<T: POrd> POrd for Option<T>
+    {
+        fn pcmp(&self, other: &Self) -> Ordering
+        {
+            match (self, other)
+            {
                 (None, None) => Ordering::Equal,
                 (None, Some(_)) => Ordering::Less,
                 (Some(_), None) => Ordering::Greater,
@@ -13336,9 +16087,12 @@ pub mod fast {
         }
     }
 
-    impl<A: POrd, B: POrd> POrd for Either<A, B> {
-        fn pcmp(&self, other: &Self) -> Ordering {
-            match (self, other) {
+    impl<A: POrd, B: POrd> POrd for Either<A, B>
+    {
+        fn pcmp(&self, other: &Self) -> Ordering
+        {
+            match (self, other)
+            {
                 (Either::Left(a), Either::Left(b)) => a.pcmp(b),
                 (Either::Right(a), Either::Right(b)) => a.pcmp(b),
                 (Either::Left(_), Either::Right(_)) => Ordering::Less,
@@ -13349,89 +16103,119 @@ pub mod fast {
 
     /// An Integer: a machine word while it fits, a BigInt beyond.
     #[derive(Clone, Debug)]
-    pub enum Int {
+    pub enum Int
+    {
         Small(i64),
         Big(Arc<BigInt>),
     }
 
-    impl Int {
-        pub fn from_big(b: BigInt) -> Int {
-            match b.to_i64() {
+    impl Int
+    {
+        pub fn from_big(b: BigInt) -> Int
+        {
+            match b.to_i64()
+            {
                 Some(v) => Int::Small(v),
                 None => Int::Big(Arc::new(b)),
             }
         }
-        pub fn from_i128(v: i128) -> Int {
-            match i64::try_from(v) {
+        pub fn from_i128(v: i128) -> Int
+        {
+            match i64::try_from(v)
+            {
                 Ok(v) => Int::Small(v),
                 Err(_) => Int::Big(Arc::new(BigInt::from(v))),
             }
         }
-        pub fn big(&self) -> BigInt {
-            match self {
+        pub fn big(&self) -> BigInt
+        {
+            match self
+            {
                 Int::Small(v) => BigInt::from(*v),
                 Int::Big(b) => (**b).clone(),
             }
         }
-        pub fn add(&self, other: &Int) -> Int {
-            if let (Int::Small(a), Int::Small(b)) = (self, other) {
-                if let Some(c) = a.checked_add(*b) {
+        pub fn add(&self, other: &Int) -> Int
+        {
+            if let (Int::Small(a), Int::Small(b)) = (self, other)
+            {
+                if let Some(c) = a.checked_add(*b)
+                {
                     return Int::Small(c);
                 }
             }
             Int::from_big(self.big() + other.big())
         }
-        pub fn sub(&self, other: &Int) -> Int {
-            if let (Int::Small(a), Int::Small(b)) = (self, other) {
-                if let Some(c) = a.checked_sub(*b) {
+        pub fn sub(&self, other: &Int) -> Int
+        {
+            if let (Int::Small(a), Int::Small(b)) = (self, other)
+            {
+                if let Some(c) = a.checked_sub(*b)
+                {
                     return Int::Small(c);
                 }
             }
             Int::from_big(self.big() - other.big())
         }
-        pub fn mul(&self, other: &Int) -> Int {
-            if let (Int::Small(a), Int::Small(b)) = (self, other) {
-                if let Some(c) = a.checked_mul(*b) {
+        pub fn mul(&self, other: &Int) -> Int
+        {
+            if let (Int::Small(a), Int::Small(b)) = (self, other)
+            {
+                if let Some(c) = a.checked_mul(*b)
+                {
                     return Int::Small(c);
                 }
             }
             Int::from_big(self.big() * other.big())
         }
-        pub fn neg(&self) -> Int {
-            if let Int::Small(a) = self {
-                if let Some(c) = a.checked_neg() {
+        pub fn neg(&self) -> Int
+        {
+            if let Int::Small(a) = self
+            {
+                if let Some(c) = a.checked_neg()
+                {
                     return Int::Small(c);
                 }
             }
             Int::from_big(-self.big())
         }
         /// Truncating division, as BigInt's.
-        pub fn quot(&self, other: &Int) -> Result<Int> {
-            if other.is_zero() {
+        pub fn quot(&self, other: &Int) -> Result<Int>
+        {
+            if other.is_zero()
+            {
                 return Err("exact division by zero".into());
             }
-            if let (Int::Small(a), Int::Small(b)) = (self, other) {
-                if let Some(c) = a.checked_div(*b) {
+            if let (Int::Small(a), Int::Small(b)) = (self, other)
+            {
+                if let Some(c) = a.checked_div(*b)
+                {
                     return Ok(Int::Small(c));
                 }
             }
             Ok(Int::from_big(self.big() / other.big()))
         }
         /// The remainder, with the dividend's sign.
-        pub fn rem(&self, other: &Int) -> Result<Int> {
-            if other.is_zero() {
+        pub fn rem(&self, other: &Int) -> Result<Int>
+        {
+            if other.is_zero()
+            {
                 return Err("exact division by zero".into());
             }
-            if let (Int::Small(a), Int::Small(b)) = (self, other) {
-                if let Some(c) = a.checked_rem(*b) {
+            if let (Int::Small(a), Int::Small(b)) = (self, other)
+            {
+                if let Some(c) = a.checked_rem(*b)
+                {
                     return Ok(Int::Small(c));
                 }
             }
             Ok(Int::from_big(self.big() % other.big()))
         }
-        pub fn pow(&self, other: &Int) -> Result<Int> {
+        pub fn pow(&self, other: &Int) -> Result<Int>
+        {
             let exponent = other.big();
-            if exponent.is_negative() {
+            if exponent.is_negative()
+            {
                 return Err("negative exponent".into());
             }
             let exponent = exponent
@@ -13439,12 +16223,15 @@ pub mod fast {
                 .ok_or_else(|| "exponent too large".to_string())?;
             Ok(Int::from_big(num_traits::Pow::pow(self.big(), exponent)))
         }
-        pub fn is_zero(&self) -> bool {
+        pub fn is_zero(&self) -> bool
+        {
             matches!(self, Int::Small(0))
         }
         /// The value as a bounded integer, or the conversion's failure.
-        pub fn narrow<T: TryFrom<i64> + TryFrom<i128>>(&self, target: &str) -> Result<T> {
-            let fits = match self {
+        pub fn narrow<T: TryFrom<i64> + TryFrom<i128>>(&self, target: &str) -> Result<T>
+        {
+            let fits = match self
+            {
                 Int::Small(v) => T::try_from(*v).ok(),
                 Int::Big(b) => b.to_i128().and_then(|v| T::try_from(v).ok()),
             };
@@ -13453,7 +16240,8 @@ pub mod fast {
     }
 
     /// A bounded integer computed exactly in i128, narrowed to its type.
-    pub fn narrow<T: TryFrom<i128>>(value: i128, target: &str) -> Result<T> {
+    pub fn narrow<T: TryFrom<i128>>(value: i128, target: &str) -> Result<T>
+    {
         T::try_from(value).map_err(|_| format!("integer outside {target} range"))
     }
 
@@ -13462,15 +16250,20 @@ pub mod fast {
     }
     int_from!(i8, i16, i32, i64, u8, u16, u32, u64, usize);
 
-    impl PartialEq for Int {
-        fn eq(&self, other: &Int) -> bool {
+    impl PartialEq for Int
+    {
+        fn eq(&self, other: &Int) -> bool
+        {
             self.pcmp(other) == Ordering::Equal
         }
     }
     impl Eq for Int {}
-    impl POrd for Int {
-        fn pcmp(&self, other: &Int) -> Ordering {
-            match (self, other) {
+    impl POrd for Int
+    {
+        fn pcmp(&self, other: &Int) -> Ordering
+        {
+            match (self, other)
+            {
                 (Int::Small(a), Int::Small(b)) => a.cmp(b),
                 _ => self.big().cmp(&other.big()),
             }
@@ -13481,30 +16274,39 @@ pub mod fast {
     /// list is never copied. It knows its length.
     pub struct List<T>(Option<Arc<Cons<T>>>);
 
-    struct Cons<T> {
+    struct Cons<T>
+    {
         head: T,
         tail: List<T>,
         len: usize,
     }
 
-    impl<T> Clone for List<T> {
-        fn clone(&self) -> Self {
+    impl<T> Clone for List<T>
+    {
+        fn clone(&self) -> Self
+        {
             List(self.0.clone())
         }
     }
 
-    impl<T> Default for List<T> {
-        fn default() -> Self {
+    impl<T> Default for List<T>
+    {
+        fn default() -> Self
+        {
             List(None)
         }
     }
 
     // Dropping a long list must not recurse once per cell.
-    impl<T> Drop for List<T> {
-        fn drop(&mut self) {
+    impl<T> Drop for List<T>
+    {
+        fn drop(&mut self)
+        {
             let mut next = self.0.take();
-            while let Some(cell) = next {
-                match Arc::try_unwrap(cell) {
+            while let Some(cell) = next
+            {
+                match Arc::try_unwrap(cell)
+                {
                     Ok(mut cons) => next = cons.tail.0.take(),
                     Err(_) => break,
                 }
@@ -13512,67 +16314,88 @@ pub mod fast {
         }
     }
 
-    impl<T> List<T> {
-        pub fn nil() -> Self {
+    impl<T> List<T>
+    {
+        pub fn nil() -> Self
+        {
             List(None)
         }
-        pub fn cons(head: T, tail: List<T>) -> Self {
+        pub fn cons(head: T, tail: List<T>) -> Self
+        {
             let len = tail.len() + 1;
             List(Some(Arc::new(Cons { head, tail, len })))
         }
-        pub fn len(&self) -> usize {
+        pub fn len(&self) -> usize
+        {
             self.0.as_ref().map_or(0, |c| c.len)
         }
-        pub fn is_empty(&self) -> bool {
+        pub fn is_empty(&self) -> bool
+        {
             self.0.is_none()
         }
-        pub fn uncons(&self) -> Option<(&T, &List<T>)> {
+        pub fn uncons(&self) -> Option<(&T, &List<T>)>
+        {
             self.0.as_ref().map(|c| (&c.head, &c.tail))
         }
-        pub fn iter(&self) -> Iter<'_, T> {
+        pub fn iter(&self) -> Iter<'_, T>
+        {
             Iter(self)
         }
-        pub fn from_vec(items: Vec<T>) -> Self {
+        pub fn from_vec(items: Vec<T>) -> Self
+        {
             let mut list = List::nil();
-            for item in items.into_iter().rev() {
+            for item in items.into_iter().rev()
+            {
                 list = List::cons(item, list);
             }
             list
         }
     }
 
-    impl<T: Clone> List<T> {
+    impl<T: Clone> List<T>
+    {
         /// The head and tail, by value.
-        pub fn split(&self) -> Option<(T, List<T>)> {
+        pub fn split(&self) -> Option<(T, List<T>)>
+        {
             self.0.as_ref().map(|c| (c.head.clone(), c.tail.clone()))
         }
-        pub fn to_vec(&self) -> Vec<T> {
+        pub fn to_vec(&self) -> Vec<T>
+        {
             self.iter().cloned().collect()
         }
     }
 
     pub struct Iter<'a, T>(&'a List<T>);
 
-    impl<'a, T> Iterator for Iter<'a, T> {
+    impl<'a, T> Iterator for Iter<'a, T>
+    {
         type Item = &'a T;
-        fn next(&mut self) -> Option<&'a T> {
+        fn next(&mut self) -> Option<&'a T>
+        {
             let cell = self.0.0.as_ref()?;
             self.0 = &cell.tail;
             Some(&cell.head)
         }
     }
 
-    impl<T: PartialEq> PartialEq for List<T> {
-        fn eq(&self, other: &Self) -> bool {
+    impl<T: PartialEq> PartialEq for List<T>
+    {
+        fn eq(&self, other: &Self) -> bool
+        {
             let (mut a, mut b) = (self, other);
-            loop {
-                match (&a.0, &b.0) {
+            loop
+            {
+                match (&a.0, &b.0)
+                {
                     (None, None) => return true,
-                    (Some(x), Some(y)) => {
-                        if Arc::ptr_eq(x, y) {
+                    (Some(x), Some(y)) =>
+                    {
+                        if Arc::ptr_eq(x, y)
+                        {
                             return true;
                         }
-                        if x.len != y.len || x.head != y.head {
+                        if x.len != y.len || x.head != y.head
+                        {
                             return false;
                         }
                         a = &x.tail;
@@ -13585,28 +16408,39 @@ pub mod fast {
     }
     impl<T: Eq> Eq for List<T> {}
 
-    impl<T: POrd> POrd for List<T> {
-        fn pcmp(&self, other: &Self) -> Ordering {
+    impl<T: POrd> POrd for List<T>
+    {
+        fn pcmp(&self, other: &Self) -> Ordering
+        {
             let mut ys = other.iter();
-            for x in self.iter() {
-                match ys.next() {
+            for x in self.iter()
+            {
+                match ys.next()
+                {
                     None => return Ordering::Greater,
-                    Some(y) => match x.pcmp(y) {
-                        Ordering::Equal => {}
+                    Some(y) => match x.pcmp(y)
+                    {
+                        Ordering::Equal =>
+                        {}
                         order => return order,
                     },
                 }
             }
-            if ys.next().is_some() {
+            if ys.next().is_some()
+            {
                 Ordering::Less
-            } else {
+            }
+            else
+            {
                 Ordering::Equal
             }
         }
     }
 
-    impl<T: std::fmt::Debug> std::fmt::Debug for List<T> {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    impl<T: std::fmt::Debug> std::fmt::Debug for List<T>
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+        {
             f.debug_list().entries(self.iter()).finish()
         }
     }
@@ -13615,7 +16449,8 @@ pub mod fast {
     /// updates copy only the path to the key, sharing the rest.
     pub struct Map<K, V>(Option<Arc<Node<K, V>>>);
 
-    struct Node<K, V> {
+    struct Node<K, V>
+    {
         key: K,
         value: V,
         left: Map<K, V>,
@@ -13624,50 +16459,65 @@ pub mod fast {
         size: usize,
     }
 
-    impl<K, V> Clone for Map<K, V> {
-        fn clone(&self) -> Self {
+    impl<K, V> Clone for Map<K, V>
+    {
+        fn clone(&self) -> Self
+        {
             Map(self.0.clone())
         }
     }
 
-    impl<K, V> Default for Map<K, V> {
-        fn default() -> Self {
+    impl<K, V> Default for Map<K, V>
+    {
+        fn default() -> Self
+        {
             Map(None)
         }
     }
 
-    impl<K, V> Map<K, V> {
-        pub fn new() -> Self {
+    impl<K, V> Map<K, V>
+    {
+        pub fn new() -> Self
+        {
             Map(None)
         }
-        pub fn len(&self) -> usize {
+        pub fn len(&self) -> usize
+        {
             self.0.as_ref().map_or(0, |n| n.size)
         }
-        pub fn is_empty(&self) -> bool {
+        pub fn is_empty(&self) -> bool
+        {
             self.0.is_none()
         }
-        fn height(&self) -> u8 {
+        fn height(&self) -> u8
+        {
             self.0.as_ref().map_or(0, |n| n.height)
         }
         /// Entries in key order.
-        pub fn iter(&self) -> MapIter<'_, K, V> {
+        pub fn iter(&self) -> MapIter<'_, K, V>
+        {
             let mut iter = MapIter(Vec::new());
             iter.descend(self);
             iter
         }
         /// The entries, keys or values as a list, built from the right.
-        pub fn to_list<E>(&self, f: impl Fn(&K, &V) -> E) -> List<E> {
+        pub fn to_list<E>(&self, f: impl Fn(&K, &V) -> E) -> List<E>
+        {
             let mut out = List::nil();
             let mut stack: Vec<&Node<K, V>> = Vec::new();
             let mut current = self;
-            loop {
-                while let Some(node) = &current.0 {
+            loop
+            {
+                while let Some(node) = &current.0
+                {
                     stack.push(node);
                     current = &node.right;
                 }
-                match stack.pop() {
+                match stack.pop()
+                {
                     None => return out,
-                    Some(node) => {
+                    Some(node) =>
+                    {
                         out = List::cons(f(&node.key, &node.value), out);
                         current = &node.left;
                     }
@@ -13678,29 +16528,38 @@ pub mod fast {
 
     pub struct MapIter<'a, K, V>(Vec<&'a Node<K, V>>);
 
-    impl<'a, K, V> MapIter<'a, K, V> {
-        fn descend(&mut self, mut map: &'a Map<K, V>) {
-            while let Some(node) = &map.0 {
+    impl<'a, K, V> MapIter<'a, K, V>
+    {
+        fn descend(&mut self, mut map: &'a Map<K, V>)
+        {
+            while let Some(node) = &map.0
+            {
                 self.0.push(node);
                 map = &node.left;
             }
         }
     }
 
-    impl<'a, K, V> Iterator for MapIter<'a, K, V> {
+    impl<'a, K, V> Iterator for MapIter<'a, K, V>
+    {
         type Item = (&'a K, &'a V);
-        fn next(&mut self) -> Option<Self::Item> {
+        fn next(&mut self) -> Option<Self::Item>
+        {
             let node = self.0.pop()?;
             self.descend(&node.right);
             Some((&node.key, &node.value))
         }
     }
 
-    impl<K: POrd + Clone, V: Clone> Map<K, V> {
-        pub fn get(&self, key: &K) -> Option<&V> {
+    impl<K: POrd + Clone, V: Clone> Map<K, V>
+    {
+        pub fn get(&self, key: &K) -> Option<&V>
+        {
             let mut current = self;
-            while let Some(node) = &current.0 {
-                match key.pcmp(&node.key) {
+            while let Some(node) = &current.0
+            {
+                match key.pcmp(&node.key)
+                {
                     Ordering::Less => current = &node.left,
                     Ordering::Greater => current = &node.right,
                     Ordering::Equal => return Some(&node.value),
@@ -13708,10 +16567,12 @@ pub mod fast {
             }
             None
         }
-        pub fn contains(&self, key: &K) -> bool {
+        pub fn contains(&self, key: &K) -> bool
+        {
             self.get(key).is_some()
         }
-        fn node(key: K, value: V, left: Map<K, V>, right: Map<K, V>) -> Map<K, V> {
+        fn node(key: K, value: V, left: Map<K, V>, right: Map<K, V>) -> Map<K, V>
+        {
             let height = left.height().max(right.height()) + 1;
             let size = left.len() + right.len() + 1;
             Map(Some(Arc::new(Node {
@@ -13723,19 +16584,29 @@ pub mod fast {
                 size,
             })))
         }
-        fn balance(key: K, value: V, left: Map<K, V>, right: Map<K, V>) -> Map<K, V> {
+        fn balance(key: K, value: V, left: Map<K, V>, right: Map<K, V>) -> Map<K, V>
+        {
             let (hl, hr) = (left.height(), right.height());
-            if hl > hr + 1 {
-                let l = left.0.as_ref().unwrap();
-                if l.left.height() >= l.right.height() {
+            if hl > hr + 1
+            {
+                let l = left
+                    .0
+                    .as_ref()
+                    .expect("red-black rotation requires the child proved present by its color");
+                if l.left.height() >= l.right.height()
+                {
                     Self::node(
                         l.key.clone(),
                         l.value.clone(),
                         l.left.clone(),
                         Self::node(key, value, l.right.clone(), right),
                     )
-                } else {
-                    let lr = l.right.0.as_ref().unwrap();
+                }
+                else
+                {
+                    let lr = l.right.0.as_ref().expect(
+                        "red-black rotation requires the child proved present by its color",
+                    );
                     Self::node(
                         lr.key.clone(),
                         lr.value.clone(),
@@ -13748,17 +16619,27 @@ pub mod fast {
                         Self::node(key, value, lr.right.clone(), right),
                     )
                 }
-            } else if hr > hl + 1 {
-                let r = right.0.as_ref().unwrap();
-                if r.right.height() >= r.left.height() {
+            }
+            else if hr > hl + 1
+            {
+                let r = right
+                    .0
+                    .as_ref()
+                    .expect("red-black rotation requires the child proved present by its color");
+                if r.right.height() >= r.left.height()
+                {
                     Self::node(
                         r.key.clone(),
                         r.value.clone(),
                         Self::node(key, value, left, r.left.clone()),
                         r.right.clone(),
                     )
-                } else {
-                    let rl = r.left.0.as_ref().unwrap();
+                }
+                else
+                {
+                    let rl = r.left.0.as_ref().expect(
+                        "red-black rotation requires the child proved present by its color",
+                    );
                     Self::node(
                         rl.key.clone(),
                         rl.value.clone(),
@@ -13771,15 +16652,20 @@ pub mod fast {
                         ),
                     )
                 }
-            } else {
+            }
+            else
+            {
                 Self::node(key, value, left, right)
             }
         }
         /// The map with key bound to value, replacing any binding.
-        pub fn insert(&self, key: K, value: V) -> Map<K, V> {
-            match &self.0 {
+        pub fn insert(&self, key: K, value: V) -> Map<K, V>
+        {
+            match &self.0
+            {
                 None => Self::node(key, value, Map::new(), Map::new()),
-                Some(n) => match key.pcmp(&n.key) {
+                Some(n) => match key.pcmp(&n.key)
+                {
                     Ordering::Less => Self::balance(
                         n.key.clone(),
                         n.value.clone(),
@@ -13796,11 +16682,18 @@ pub mod fast {
                 },
             }
         }
-        fn remove_min(&self) -> (K, V, Map<K, V>) {
-            let n = self.0.as_ref().unwrap();
-            if n.left.is_empty() {
+        fn remove_min(&self) -> (K, V, Map<K, V>)
+        {
+            let n = self
+                .0
+                .as_ref()
+                .expect("removing the minimum requires a nonempty persistent tree");
+            if n.left.is_empty()
+            {
                 (n.key.clone(), n.value.clone(), n.right.clone())
-            } else {
+            }
+            else
+            {
                 let (k, v, left) = n.left.remove_min();
                 (
                     k,
@@ -13810,12 +16703,17 @@ pub mod fast {
             }
         }
         /// The map without key.
-        pub fn remove(&self, key: &K) -> Map<K, V> {
-            match &self.0 {
+        pub fn remove(&self, key: &K) -> Map<K, V>
+        {
+            match &self.0
+            {
                 None => Map::new(),
-                Some(n) => match key.pcmp(&n.key) {
-                    Ordering::Less => {
-                        if n.left.is_empty() {
+                Some(n) => match key.pcmp(&n.key)
+                {
+                    Ordering::Less =>
+                    {
+                        if n.left.is_empty()
+                        {
                             return self.clone();
                         }
                         Self::balance(
@@ -13825,8 +16723,10 @@ pub mod fast {
                             n.right.clone(),
                         )
                     }
-                    Ordering::Greater => {
-                        if n.right.is_empty() {
+                    Ordering::Greater =>
+                    {
+                        if n.right.is_empty()
+                        {
                             return self.clone();
                         }
                         Self::balance(
@@ -13836,12 +16736,18 @@ pub mod fast {
                             n.right.remove(key),
                         )
                     }
-                    Ordering::Equal => {
-                        if n.left.is_empty() {
+                    Ordering::Equal =>
+                    {
+                        if n.left.is_empty()
+                        {
                             n.right.clone()
-                        } else if n.right.is_empty() {
+                        }
+                        else if n.right.is_empty()
+                        {
                             n.left.clone()
-                        } else {
+                        }
+                        else
+                        {
                             let (k, v, right) = n.right.remove_min();
                             Self::balance(k, v, n.left.clone(), right)
                         }
@@ -13850,19 +16756,25 @@ pub mod fast {
             }
         }
         /// From entries, later bindings replacing earlier ones, as keyValOf.
-        pub fn from_entries<'a>(entries: impl Iterator<Item = (K, V)>) -> Map<K, V> {
+        pub fn from_entries<'a>(entries: impl Iterator<Item = (K, V)>) -> Map<K, V>
+        {
             let mut map = Map::new();
-            for (k, v) in entries {
+            for (k, v) in entries
+            {
                 map = map.insert(k, v);
             }
             map
         }
     }
 
-    impl<K: PartialEq, V: PartialEq> PartialEq for Map<K, V> {
-        fn eq(&self, other: &Self) -> bool {
-            if let (Some(a), Some(b)) = (&self.0, &other.0) {
-                if Arc::ptr_eq(a, b) {
+    impl<K: PartialEq, V: PartialEq> PartialEq for Map<K, V>
+    {
+        fn eq(&self, other: &Self) -> bool
+        {
+            if let (Some(a), Some(b)) = (&self.0, &other.0)
+            {
+                if Arc::ptr_eq(a, b)
+                {
                     return true;
                 }
             }
@@ -13876,28 +16788,39 @@ pub mod fast {
     impl<K: Eq, V: Eq> Eq for Map<K, V> {}
 
     // As the list of its entries, each compared by key, then value.
-    impl<K: POrd, V: POrd> POrd for Map<K, V> {
-        fn pcmp(&self, other: &Self) -> Ordering {
+    impl<K: POrd, V: POrd> POrd for Map<K, V>
+    {
+        fn pcmp(&self, other: &Self) -> Ordering
+        {
             let mut ys = other.iter();
-            for (k, v) in self.iter() {
-                match ys.next() {
+            for (k, v) in self.iter()
+            {
+                match ys.next()
+                {
                     None => return Ordering::Greater,
-                    Some((k2, v2)) => match k.pcmp(k2).then_with(|| v.pcmp(v2)) {
-                        Ordering::Equal => {}
+                    Some((k2, v2)) => match k.pcmp(k2).then_with(|| v.pcmp(v2))
+                    {
+                        Ordering::Equal =>
+                        {}
                         order => return order,
                     },
                 }
             }
-            if ys.next().is_some() {
+            if ys.next().is_some()
+            {
                 Ordering::Less
-            } else {
+            }
+            else
+            {
                 Ordering::Equal
             }
         }
     }
 
-    impl<K: std::fmt::Debug, V: std::fmt::Debug> std::fmt::Debug for Map<K, V> {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    impl<K: std::fmt::Debug, V: std::fmt::Debug> std::fmt::Debug for Map<K, V>
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+        {
             f.debug_map().entries(self.iter()).finish()
         }
     }
@@ -13905,23 +16828,30 @@ pub mod fast {
     /// A persistent set in the portable order.
     pub struct Set<T>(pub Map<T, ()>);
 
-    impl<T> Clone for Set<T> {
-        fn clone(&self) -> Self {
+    impl<T> Clone for Set<T>
+    {
+        fn clone(&self) -> Self
+        {
             Set(self.0.clone())
         }
     }
 
-    impl<T> Set<T> {
-        pub fn new() -> Self {
+    impl<T> Set<T>
+    {
+        pub fn new() -> Self
+        {
             Set(Map::new())
         }
-        pub fn len(&self) -> usize {
+        pub fn len(&self) -> usize
+        {
             self.0.len()
         }
-        pub fn is_empty(&self) -> bool {
+        pub fn is_empty(&self) -> bool
+        {
             self.0.is_empty()
         }
-        pub fn iter(&self) -> impl Iterator<Item = &T> {
+        pub fn iter(&self) -> impl Iterator<Item = &T>
+        {
             self.0.iter().map(|(k, _)| k)
         }
         pub fn to_list(&self) -> List<T>
@@ -13932,74 +16862,103 @@ pub mod fast {
         }
     }
 
-    impl<T: POrd + Clone> Set<T> {
-        pub fn contains(&self, item: &T) -> bool {
+    impl<T: POrd + Clone> Set<T>
+    {
+        pub fn contains(&self, item: &T) -> bool
+        {
             self.0.contains(item)
         }
-        pub fn insert(&self, item: T) -> Set<T> {
-            if self.0.contains(&item) {
+        pub fn insert(&self, item: T) -> Set<T>
+        {
+            if self.0.contains(&item)
+            {
                 self.clone()
-            } else {
+            }
+            else
+            {
                 Set(self.0.insert(item, ()))
             }
         }
-        pub fn remove(&self, item: &T) -> Set<T> {
+        pub fn remove(&self, item: &T) -> Set<T>
+        {
             Set(self.0.remove(item))
         }
-        pub fn from_iter(items: impl Iterator<Item = T>) -> Set<T> {
+        pub fn from_iter(items: impl Iterator<Item = T>) -> Set<T>
+        {
             let mut set = Set::new();
-            for item in items {
+            for item in items
+            {
                 set = set.insert(item);
             }
             set
         }
-        pub fn union(&self, other: &Set<T>) -> Set<T> {
-            let (small, large) = if self.len() <= other.len() {
+        pub fn union(&self, other: &Set<T>) -> Set<T>
+        {
+            let (small, large) = if self.len() <= other.len()
+            {
                 (self, other)
-            } else {
+            }
+            else
+            {
                 (other, self)
             };
             let mut set = large.clone();
-            for item in small.iter() {
+            for item in small.iter()
+            {
                 set = set.insert(item.clone());
             }
             set
         }
-        pub fn intersection(&self, other: &Set<T>) -> Set<T> {
+        pub fn intersection(&self, other: &Set<T>) -> Set<T>
+        {
             Set::from_iter(self.iter().filter(|item| other.contains(item)).cloned())
         }
-        pub fn difference(&self, other: &Set<T>) -> Set<T> {
+        pub fn difference(&self, other: &Set<T>) -> Set<T>
+        {
             Set::from_iter(self.iter().filter(|item| !other.contains(item)).cloned())
         }
     }
 
-    impl<T: PartialEq> PartialEq for Set<T> {
-        fn eq(&self, other: &Self) -> bool {
+    impl<T: PartialEq> PartialEq for Set<T>
+    {
+        fn eq(&self, other: &Self) -> bool
+        {
             self.0 == other.0
         }
     }
     impl<T: Eq> Eq for Set<T> {}
-    impl<T: POrd> POrd for Set<T> {
-        fn pcmp(&self, other: &Self) -> Ordering {
+    impl<T: POrd> POrd for Set<T>
+    {
+        fn pcmp(&self, other: &Self) -> Ordering
+        {
             let mut ys = other.iter();
-            for x in self.iter() {
-                match ys.next() {
+            for x in self.iter()
+            {
+                match ys.next()
+                {
                     None => return Ordering::Greater,
-                    Some(y) => match x.pcmp(y) {
-                        Ordering::Equal => {}
+                    Some(y) => match x.pcmp(y)
+                    {
+                        Ordering::Equal =>
+                        {}
                         order => return order,
                     },
                 }
             }
-            if ys.next().is_some() {
+            if ys.next().is_some()
+            {
                 Ordering::Less
-            } else {
+            }
+            else
+            {
                 Ordering::Equal
             }
         }
     }
-    impl<T: std::fmt::Debug> std::fmt::Debug for Set<T> {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    impl<T: std::fmt::Debug> std::fmt::Debug for Set<T>
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+        {
             f.debug_set().entries(self.iter()).finish()
         }
     }
@@ -14007,7 +16966,8 @@ pub mod fast {
     /// Conversion to and from the dynamic Value, where typed and dynamic code
     /// meet. from_dyn accepts what dynamic code builds and what native
     /// values convert to (a collection as a plain list).
-    pub trait Dyn: Sized {
+    pub trait Dyn: Sized
+    {
         fn to_dyn(&self) -> Value;
         fn from_dyn(value: Value) -> Result<Self>;
     }
@@ -14027,59 +16987,79 @@ pub mod fast {
     }
     dyn_integer!(i8, i16, i32, i64, u8, u16, u32, u64);
 
-    impl Dyn for Int {
-        fn to_dyn(&self) -> Value {
+    impl Dyn for Int
+    {
+        fn to_dyn(&self) -> Value
+        {
             Value::Integer(self.big())
         }
-        fn from_dyn(value: Value) -> Result<Self> {
-            match value {
+        fn from_dyn(value: Value) -> Result<Self>
+        {
+            match value
+            {
                 Value::Integer(n) => Ok(Int::from_big(n)),
                 _ => Err("expected an Integer".into()),
             }
         }
     }
 
-    impl Dyn for bool {
-        fn to_dyn(&self) -> Value {
+    impl Dyn for bool
+    {
+        fn to_dyn(&self) -> Value
+        {
             Value::Bool(*self)
         }
-        fn from_dyn(value: Value) -> Result<Self> {
+        fn from_dyn(value: Value) -> Result<Self>
+        {
             value.boolean()
         }
     }
 
-    impl Dyn for () {
-        fn to_dyn(&self) -> Value {
+    impl Dyn for ()
+    {
+        fn to_dyn(&self) -> Value
+        {
             Value::Unit
         }
-        fn from_dyn(_: Value) -> Result<Self> {
+        fn from_dyn(_: Value) -> Result<Self>
+        {
             Ok(())
         }
     }
 
-    impl Dyn for Text {
-        fn to_dyn(&self) -> Value {
+    impl Dyn for Text
+    {
+        fn to_dyn(&self) -> Value
+        {
             Value::Text(self.to_string())
         }
-        fn from_dyn(value: Value) -> Result<Self> {
-            match value {
+        fn from_dyn(value: Value) -> Result<Self>
+        {
+            match value
+            {
                 Value::Text(s) => Ok(Arc::from(s)),
                 _ => Err("expected Text".into()),
             }
         }
     }
 
-    impl Dyn for Bytes {
-        fn to_dyn(&self) -> Value {
+    impl Dyn for Bytes
+    {
+        fn to_dyn(&self) -> Value
+        {
             Value::Bytes(self.to_vec())
         }
-        fn from_dyn(value: Value) -> Result<Self> {
-            match value {
+        fn from_dyn(value: Value) -> Result<Self>
+        {
+            match value
+            {
                 Value::Bytes(b) => Ok(Arc::from(b)),
                 Value::List(items) => items
                     .into_iter()
-                    .map(|item| match item {
-                        Value::Integer(n) => {
+                    .map(|item| match item
+                    {
+                        Value::Integer(n) =>
+                        {
                             u8::try_from(&n).map_err(|_| "expected a byte".to_string())
                         }
                         _ => Err("expected a byte".to_string()),
@@ -14091,12 +17071,16 @@ pub mod fast {
         }
     }
 
-    impl<T: Dyn> Dyn for Option<T> {
-        fn to_dyn(&self) -> Value {
+    impl<T: Dyn> Dyn for Option<T>
+    {
+        fn to_dyn(&self) -> Value
+        {
             Value::Maybe(self.as_ref().map(|v| Box::new(v.to_dyn())))
         }
-        fn from_dyn(value: Value) -> Result<Self> {
-            match value {
+        fn from_dyn(value: Value) -> Result<Self>
+        {
+            match value
+            {
                 Value::Maybe(None) => Ok(None),
                 Value::Maybe(Some(v)) => Ok(Some(T::from_dyn(*v)?)),
                 _ => Err("expected Maybe".into()),
@@ -14104,15 +17088,20 @@ pub mod fast {
         }
     }
 
-    impl<A: Dyn, B: Dyn> Dyn for Either<A, B> {
-        fn to_dyn(&self) -> Value {
-            match self {
+    impl<A: Dyn, B: Dyn> Dyn for Either<A, B>
+    {
+        fn to_dyn(&self) -> Value
+        {
+            match self
+            {
                 Either::Left(a) => Value::Left(Box::new(a.to_dyn())),
                 Either::Right(b) => Value::Right(Box::new(b.to_dyn())),
             }
         }
-        fn from_dyn(value: Value) -> Result<Self> {
-            match value {
+        fn from_dyn(value: Value) -> Result<Self>
+        {
+            match value
+            {
                 Value::Left(a) => Ok(Either::Left(A::from_dyn(*a)?)),
                 Value::Right(b) => Ok(Either::Right(B::from_dyn(*b)?)),
                 _ => Err("expected Either".into()),
@@ -14120,12 +17109,16 @@ pub mod fast {
         }
     }
 
-    impl<T: Dyn> Dyn for List<T> {
-        fn to_dyn(&self) -> Value {
+    impl<T: Dyn> Dyn for List<T>
+    {
+        fn to_dyn(&self) -> Value
+        {
             Value::List(self.iter().map(Dyn::to_dyn).collect())
         }
-        fn from_dyn(value: Value) -> Result<Self> {
-            match value {
+        fn from_dyn(value: Value) -> Result<Self>
+        {
+            match value
+            {
                 Value::List(items) => Ok(List::from_vec(
                     items
                         .into_iter()
@@ -14141,23 +17134,33 @@ pub mod fast {
     pub const KEYVAL: &str = "lawspec.collections::type::KeyVal::KeyValEntries";
     pub const SET: &str = "lawspec.collections::type::Set::SetItems";
 
-    impl<K: Dyn + POrd + Clone, V: Dyn + Clone> Dyn for Map<K, V> {
-        fn to_dyn(&self) -> Value {
+    impl<K: Dyn + POrd + Clone, V: Dyn + Clone> Dyn for Map<K, V>
+    {
+        fn to_dyn(&self) -> Value
+        {
             let entries = self
                 .iter()
                 .map(|(k, v)| Value::Data(ENTRY.into(), vec![k.to_dyn(), v.to_dyn()]))
                 .collect();
             Value::Data(KEYVAL.into(), vec![Value::List(entries)])
         }
-        fn from_dyn(value: Value) -> Result<Self> {
+        fn from_dyn(value: Value) -> Result<Self>
+        {
             let mut map = Map::new();
-            for entry in super::collection_items(value)? {
-                match entry {
-                    Value::Data(_, fields) if fields.len() == 2 => {
+            for entry in super::collection_items(value)?
+            {
+                match entry
+                {
+                    Value::Data(_, fields) if fields.len() == 2 =>
+                    {
                         let mut fields = fields.into_iter();
                         map = map.insert(
-                            K::from_dyn(fields.next().unwrap())?,
-                            V::from_dyn(fields.next().unwrap())?,
+                            K::from_dyn(fields.next().expect(
+                                "validated native map entry must contain a key and value",
+                            ))?,
+                            V::from_dyn(fields.next().expect(
+                                "validated native map entry must contain a key and value",
+                            ))?,
                         );
                     }
                     _ => return Err("expected a KeyVal entry".into()),
@@ -14167,14 +17170,17 @@ pub mod fast {
         }
     }
 
-    impl<T: Dyn + POrd + Clone> Dyn for Set<T> {
-        fn to_dyn(&self) -> Value {
+    impl<T: Dyn + POrd + Clone> Dyn for Set<T>
+    {
+        fn to_dyn(&self) -> Value
+        {
             Value::Data(
                 SET.into(),
                 vec![Value::List(self.iter().map(Dyn::to_dyn).collect())],
             )
         }
-        fn from_dyn(value: Value) -> Result<Self> {
+        fn from_dyn(value: Value) -> Result<Self>
+        {
             let items = super::collection_items(value)?
                 .into_iter()
                 .map(T::from_dyn)
@@ -14184,9 +17190,12 @@ pub mod fast {
     }
 
     /// A data value's constructor fields, checked against its tag.
-    pub fn fields(value: Value, tag: &str, arity: usize) -> Result<std::vec::IntoIter<Value>> {
-        match value {
-            Value::Data(found, fields) if found == tag && fields.len() == arity => {
+    pub fn fields(value: Value, tag: &str, arity: usize) -> Result<std::vec::IntoIter<Value>>
+    {
+        match value
+        {
+            Value::Data(found, fields) if found == tag && fields.len() == arity =>
+            {
                 Ok(fields.into_iter())
             }
             Value::Data(found, _) => Err(format!("expected {tag}, found {found}")),
@@ -14195,14 +17204,17 @@ pub mod fast {
     }
 
     /// A data value's tag, for a sum's from_dyn.
-    pub fn tag(value: &Value) -> Result<&str> {
-        match value {
+    pub fn tag(value: &Value) -> Result<&str>
+    {
+        match value
+        {
             Value::Data(tag, _) => Ok(tag),
             _ => Err("expected a data value".into()),
         }
     }
 
-    pub fn text_length(s: &str) -> usize {
+    pub fn text_length(s: &str) -> usize
+    {
         s.chars().count()
     }
 
@@ -14211,11 +17223,14 @@ pub mod fast {
     pub fn attempt<A>(
         ability: &str,
         body: impl FnOnce() -> Result<A>,
-    ) -> Result<std::result::Result<A, Value>> {
+    ) -> Result<std::result::Result<A, Value>>
+    {
         super::quiet_failures();
-        match std::panic::catch_unwind(std::panic::AssertUnwindSafe(body)) {
+        match std::panic::catch_unwind(std::panic::AssertUnwindSafe(body))
+        {
             Ok(result) => result.map(Ok),
-            Err(payload) => match payload.downcast::<super::Failure>() {
+            Err(payload) => match payload.downcast::<super::Failure>()
+            {
                 Ok(failure) if failure.ability == ability => Ok(Err(failure.value)),
                 Ok(failure) => std::panic::resume_unwind(failure),
                 Err(other) => std::panic::resume_unwind(other),
@@ -14227,8 +17242,10 @@ pub mod fast {
     // to the sequence; an index outside it is Absent.
 
     /// An index into a sequence of count items, clamped to it.
-    pub fn clamp_index(index: &Int, count: usize) -> usize {
-        match index {
+    pub fn clamp_index(index: &Int, count: usize) -> usize
+    {
+        match index
+        {
             Int::Small(k) if *k < 0 => 0,
             Int::Small(k) => (*k as u64).min(count as u64) as usize,
             Int::Big(b) if b.is_negative() => 0,
@@ -14236,21 +17253,25 @@ pub mod fast {
         }
     }
 
-    fn position(index: &Int, count: usize) -> Option<usize> {
-        match index {
+    fn position(index: &Int, count: usize) -> Option<usize>
+    {
+        match index
+        {
             Int::Small(k) if *k >= 0 && (*k as u64) < count as u64 => Some(*k as usize),
             _ => None,
         }
     }
 
-    pub fn append_text(a: &str, b: &str) -> Text {
+    pub fn append_text(a: &str, b: &str) -> Text
+    {
         let mut s = String::with_capacity(a.len() + b.len());
         s.push_str(a);
         s.push_str(b);
         Arc::from(s)
     }
 
-    pub fn append_bytes(a: &[u8], b: &[u8]) -> Bytes {
+    pub fn append_bytes(a: &[u8], b: &[u8]) -> Bytes
+    {
         let mut v = Vec::with_capacity(a.len() + b.len());
         v.extend_from_slice(a);
         v.extend_from_slice(b);
@@ -14258,16 +17279,20 @@ pub mod fast {
     }
 
     /// a ++ b shares b.
-    pub fn append_list<T: Clone>(a: &List<T>, b: &List<T>) -> List<T> {
+    pub fn append_list<T: Clone>(a: &List<T>, b: &List<T>) -> List<T>
+    {
         let mut out = b.clone();
-        for item in a.to_vec().into_iter().rev() {
+        for item in a.to_vec().into_iter().rev()
+        {
             out = List::cons(item, out);
         }
         out
     }
 
-    pub fn slice_text(t: &str, from: &Int, to: &Int) -> Text {
-        if t.is_ascii() {
+    pub fn slice_text(t: &str, from: &Int, to: &Int) -> Text
+    {
+        if t.is_ascii()
+        {
             let i = clamp_index(from, t.len());
             let j = clamp_index(to, t.len()).max(i);
             return Arc::from(&t[i..j]);
@@ -14278,65 +17303,82 @@ pub mod fast {
         Arc::from(t.chars().skip(i).take(j - i).collect::<String>())
     }
 
-    pub fn slice_bytes(b: &[u8], from: &Int, to: &Int) -> Bytes {
+    pub fn slice_bytes(b: &[u8], from: &Int, to: &Int) -> Bytes
+    {
         let i = clamp_index(from, b.len());
         let j = clamp_index(to, b.len()).max(i);
         Arc::from(&b[i..j])
     }
 
     /// A slice to the end shares the list's tail.
-    pub fn slice_list<T: Clone>(xs: &List<T>, from: &Int, to: &Int) -> List<T> {
+    pub fn slice_list<T: Clone>(xs: &List<T>, from: &Int, to: &Int) -> List<T>
+    {
         let count = xs.len();
         let i = clamp_index(from, count);
         let j = clamp_index(to, count).max(i);
         let mut rest = xs;
-        for _ in 0..i {
-            rest = rest.uncons().map(|(_, t)| t).unwrap();
+        for _ in 0..i
+        {
+            rest = rest
+                .uncons()
+                .map(|(_, t)| t)
+                .expect("validated slice bounds guarantee the next list node");
         }
-        if j == count {
+        if j == count
+        {
             return rest.clone();
         }
         List::from_vec(rest.iter().take(j - i).cloned().collect())
     }
 
-    pub fn at_list<T: Clone>(xs: &List<T>, index: &Int) -> Option<T> {
+    pub fn at_list<T: Clone>(xs: &List<T>, index: &Int) -> Option<T>
+    {
         position(index, xs.len()).and_then(|i| xs.iter().nth(i).cloned())
     }
 
-    pub fn at_bytes(b: &[u8], index: &Int) -> Option<u8> {
+    pub fn at_bytes(b: &[u8], index: &Int) -> Option<u8>
+    {
         position(index, b.len()).map(|i| b[i])
     }
 
-    pub fn range_int(lo: &Int, hi: &Int) -> List<Int> {
+    pub fn range_int(lo: &Int, hi: &Int) -> List<Int>
+    {
         let mut out = List::nil();
         let mut k = hi.sub(&Int::Small(1));
-        while k.pcmp(lo) != Ordering::Less {
+        while k.pcmp(lo) != Ordering::Less
+        {
             out = List::cons(k.clone(), out);
             k = k.sub(&Int::Small(1));
         }
         out
     }
 
-    pub fn octets(b: &[u8]) -> List<u8> {
+    pub fn octets(b: &[u8]) -> List<u8>
+    {
         List::from_vec(b.to_vec())
     }
 
-    pub fn bytes_of(xs: &List<u8>) -> Bytes {
+    pub fn bytes_of(xs: &List<u8>) -> Bytes
+    {
         Arc::from(xs.to_vec())
     }
 
-    pub fn utf8(t: &str) -> Bytes {
+    pub fn utf8(t: &str) -> Bytes
+    {
         Arc::from(t.as_bytes())
     }
 
-    pub fn text_of(n: &Int) -> Text {
-        match n {
+    pub fn text_of(n: &Int) -> Text
+    {
+        match n
+        {
             Int::Small(k) => Arc::from(k.to_string()),
             Int::Big(b) => Arc::from(b.to_string()),
         }
     }
 
-    pub fn join(separator: &str, parts: &List<Text>) -> Text {
+    pub fn join(separator: &str, parts: &List<Text>) -> Text
+    {
         let items: Vec<&str> = parts.iter().map(|t| &**t).collect();
         Arc::from(items.join(separator))
     }
@@ -14356,7 +17398,8 @@ pub mod fast {
             }
         };
     }
-    pub fn call0<R: Dyn>(arguments: Vec<Value>, f: fn() -> Result<R>) -> Result<Value> {
+    pub fn call0<R: Dyn>(arguments: Vec<Value>, f: fn() -> Result<R>) -> Result<Value>
+    {
         let _ = arguments;
         Ok(f()?.to_dyn())
     }
@@ -14375,7 +17418,8 @@ pub mod fast {
 
     /// A typed value's native (public) form, converted directly, without the
     /// dynamic Value: what an embedding program passes and receives.
-    pub trait Public: Sized {
+    pub trait Public: Sized
+    {
         type Native;
         fn to_native(&self) -> Self::Native;
         fn from_native(native: Self::Native) -> Self;
@@ -14390,66 +17434,86 @@ pub mod fast {
     }
     public_copy!(i8, i16, i32, i64, u8, u16, u32, u64, bool, ());
 
-    impl Public for Int {
+    impl Public for Int
+    {
         type Native = super::Integer;
-        fn to_native(&self) -> super::Integer {
+        fn to_native(&self) -> super::Integer
+        {
             super::Integer(self.big())
         }
-        fn from_native(native: super::Integer) -> Int {
+        fn from_native(native: super::Integer) -> Int
+        {
             Int::from_big(native.0)
         }
     }
 
-    impl Public for Text {
+    impl Public for Text
+    {
         type Native = String;
-        fn to_native(&self) -> String {
+        fn to_native(&self) -> String
+        {
             self.to_string()
         }
-        fn from_native(native: String) -> Text {
+        fn from_native(native: String) -> Text
+        {
             Arc::from(native)
         }
     }
 
-    impl Public for Bytes {
+    impl Public for Bytes
+    {
         type Native = Vec<u8>;
-        fn to_native(&self) -> Vec<u8> {
+        fn to_native(&self) -> Vec<u8>
+        {
             self.to_vec()
         }
-        fn from_native(native: Vec<u8>) -> Bytes {
+        fn from_native(native: Vec<u8>) -> Bytes
+        {
             Arc::from(native)
         }
     }
 
-    impl<T: Public> Public for List<T> {
+    impl<T: Public> Public for List<T>
+    {
         type Native = Vec<T::Native>;
-        fn to_native(&self) -> Vec<T::Native> {
+        fn to_native(&self) -> Vec<T::Native>
+        {
             self.iter().map(Public::to_native).collect()
         }
-        fn from_native(native: Vec<T::Native>) -> List<T> {
+        fn from_native(native: Vec<T::Native>) -> List<T>
+        {
             List::from_vec(native.into_iter().map(T::from_native).collect())
         }
     }
 
-    impl<T: Public> Public for Option<T> {
+    impl<T: Public> Public for Option<T>
+    {
         type Native = Option<T::Native>;
-        fn to_native(&self) -> Option<T::Native> {
+        fn to_native(&self) -> Option<T::Native>
+        {
             self.as_ref().map(Public::to_native)
         }
-        fn from_native(native: Option<T::Native>) -> Option<T> {
+        fn from_native(native: Option<T::Native>) -> Option<T>
+        {
             native.map(T::from_native)
         }
     }
 
-    impl<A: Public, B: Public> Public for Either<A, B> {
+    impl<A: Public, B: Public> Public for Either<A, B>
+    {
         type Native = Either<A::Native, B::Native>;
-        fn to_native(&self) -> Either<A::Native, B::Native> {
-            match self {
+        fn to_native(&self) -> Either<A::Native, B::Native>
+        {
+            match self
+            {
                 Either::Left(a) => Either::Left(a.to_native()),
                 Either::Right(b) => Either::Right(b.to_native()),
             }
         }
-        fn from_native(native: Either<A::Native, B::Native>) -> Either<A, B> {
-            match native {
+        fn from_native(native: Either<A::Native, B::Native>) -> Either<A, B>
+        {
+            match native
+            {
                 Either::Left(a) => Either::Left(A::from_native(a)),
                 Either::Right(b) => Either::Right(B::from_native(b)),
             }
@@ -14461,12 +17525,14 @@ pub mod fast {
         K::Native: Ord,
     {
         type Native = std::collections::BTreeMap<K::Native, V::Native>;
-        fn to_native(&self) -> Self::Native {
+        fn to_native(&self) -> Self::Native
+        {
             self.iter()
                 .map(|(k, v)| (k.to_native(), v.to_native()))
                 .collect()
         }
-        fn from_native(native: Self::Native) -> Self {
+        fn from_native(native: Self::Native) -> Self
+        {
             Map::from_entries(
                 native
                     .into_iter()
@@ -14480,10 +17546,12 @@ pub mod fast {
         T::Native: Ord,
     {
         type Native = std::collections::BTreeSet<T::Native>;
-        fn to_native(&self) -> Self::Native {
+        fn to_native(&self) -> Self::Native
+        {
             self.iter().map(Public::to_native).collect()
         }
-        fn from_native(native: Self::Native) -> Self {
+        fn from_native(native: Self::Native) -> Self
+        {
             Set::from_iter(native.into_iter().map(T::from_native))
         }
     }
@@ -14497,7 +17565,8 @@ pub mod fast {
             }
         };
     }
-    pub fn direct0<R: Public>(f: fn() -> Result<R>) -> Result<R::Native> {
+    pub fn direct0<R: Public>(f: fn() -> Result<R>) -> Result<R::Native>
+    {
         Ok(f()?.to_native())
     }
     direct_call!(direct1, (A, TA));
@@ -14600,7 +17669,8 @@ pub mod fast {
             }
         };
     }
-    pub fn native0<T: Dyn, R: super::FromValue>(f: fn() -> Result<T>) -> Result<R> {
+    pub fn native0<T: Dyn, R: super::FromValue>(f: fn() -> Result<T>) -> Result<R>
+    {
         R::from_value(f()?.to_dyn())
     }
     native_call!(native1, (A, TA));
@@ -14694,18 +17764,22 @@ pub mod fast {
     );
 
     #[allow(dead_code)]
-    fn _unused(n: &BigInt) -> bool {
+    fn _unused(n: &BigInt) -> bool
+    {
         n.is_zero()
     }
 
     #[cfg(test)]
-    mod tests {
+    mod tests
+    {
         use super::*;
 
         #[test]
-        fn maps_keep_their_keys_in_the_portable_order_and_share_unchanged_paths() {
+        fn maps_keep_their_keys_in_the_portable_order_and_share_unchanged_paths()
+        {
             let mut map: Map<i64, i64> = Map::new();
-            for k in (0..1000).rev() {
+            for k in (0..1000).rev()
+            {
                 map = map.insert(k, k * 2);
             }
             let before = map.clone();
@@ -14723,12 +17797,20 @@ pub mod fast {
         }
 
         #[test]
-        fn lists_share_tails_and_drop_without_recursing() {
+        fn lists_share_tails_and_drop_without_recursing()
+        {
             let mut list = List::nil();
-            for i in 0..2_000_000u32 {
+            for i in 0..2_000_000u32
+            {
                 list = List::cons(i, list);
             }
-            let tail = list.uncons().unwrap().1.clone();
+            let tail = list
+                .uncons()
+                .expect(
+                    "valid fixture for lists share tails and drop without recursing must succeed",
+                )
+                .1
+                .clone();
             assert_eq!(list.len(), 2_000_000);
             assert_eq!(tail.len(), 1_999_999);
             drop(list);
@@ -14736,13 +17818,14 @@ pub mod fast {
         }
 
         #[test]
-        fn integers_leave_a_machine_word_only_when_they_must() {
+        fn integers_leave_a_machine_word_only_when_they_must()
+        {
             let big = Int::Small(i64::MAX).add(&Int::Small(1));
             assert!(matches!(big, Int::Big(_)));
             assert_eq!(big.sub(&Int::Small(1)), Int::Small(i64::MAX));
             assert!(matches!(big.sub(&Int::Small(1)), Int::Small(_)));
-            assert_eq!(Int::Small(-7).quot(&Int::Small(2)).unwrap(), Int::Small(-3));
-            assert_eq!(Int::Small(-7).rem(&Int::Small(2)).unwrap(), Int::Small(-1));
+            assert_eq!(Int::Small(-7).quot(&Int::Small(2)).expect("valid fixture for integers leave a machine word only when they must must succeed"), Int::Small(-3));
+            assert_eq!(Int::Small(-7).rem(&Int::Small(2)).expect("valid fixture for integers leave a machine word only when they must must succeed"), Int::Small(-1));
             assert!(Int::Small(1).quot(&Int::Small(0)).is_err());
             assert_eq!(
                 narrow::<i32>(i32::MAX as i128 + 1, "Int32"),
@@ -14751,13 +17834,18 @@ pub mod fast {
         }
 
         #[test]
-        fn sets_and_maps_round_trip_through_dynamic_values() {
+        fn sets_and_maps_round_trip_through_dynamic_values()
+        {
             let set = Set::from_iter([3i64, 1, 2, 3].into_iter());
             let value = set.to_dyn();
-            let back = Set::<i64>::from_dyn(value).unwrap();
+            let back = Set::<i64>::from_dyn(value).expect(
+                "valid fixture for sets and maps round trip through dynamic values must succeed",
+            );
             assert_eq!(back.iter().copied().collect::<Vec<_>>(), vec![1, 2, 3]);
             let map = Map::<Text, i64>::from_entries([(text("b"), 2), (text("a"), 1)].into_iter());
-            let back = Map::<Text, i64>::from_dyn(map.to_dyn()).unwrap();
+            let back = Map::<Text, i64>::from_dyn(map.to_dyn()).expect(
+                "valid fixture for sets and maps round trip through dynamic values must succeed",
+            );
             assert_eq!(back, map);
             assert_eq!(text("\u{e9}").pcmp(&text("z")), Ordering::Greater);
         }

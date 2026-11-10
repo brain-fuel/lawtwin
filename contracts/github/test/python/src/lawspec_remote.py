@@ -33,7 +33,10 @@ DEFINITIONS = {
     ),
     "lawtwin.github::lawtwinGithubModelContainsLabel": (
         "blake3-semantic-1:6cc9ef39e855be966a2566a9b7e8bdeaca8a703f277d75a3dae0b04bda0b16c3",
-        lambda *args: _definitions.lawtwin_github_model_contains_label({}, *args),
+        lambda *args: _definitions.lawtwin_github_model_contains_label(
+            {},
+            *args,
+        ),
         [
             _d("(ref lawtwin.github.model::type::Label)"),
             _d("(list (ref lawtwin.github.model::type::Label))"),
@@ -42,7 +45,10 @@ DEFINITIONS = {
     ),
     "lawtwin.github::lawtwinGithubModelContainsMilestone": (
         "blake3-semantic-1:415c06c01357bd85a3b468671ab3ede3eda713e2e553c014e60a04c8f6d7bb10",
-        lambda *args: _definitions.lawtwin_github_model_contains_milestone({}, *args),
+        lambda *args: _definitions.lawtwin_github_model_contains_milestone(
+            {},
+            *args,
+        ),
         [
             _d("(ref lawtwin.github.model::type::Milestone)"),
             _d("(list (ref lawtwin.github.model::type::Milestone))"),
@@ -85,7 +91,10 @@ DEFINITIONS = {
     ),
     "lawtwin.github.laws::lawtwinGithubModelContainsLabel": (
         "blake3-semantic-1:6cc9ef39e855be966a2566a9b7e8bdeaca8a703f277d75a3dae0b04bda0b16c3",
-        lambda *args: _definitions.lawtwin_github_model_contains_label_2({}, *args),
+        lambda *args: _definitions.lawtwin_github_model_contains_label_2(
+            {},
+            *args,
+        ),
         [
             _d("(ref lawtwin.github.model::type::Label)"),
             _d("(list (ref lawtwin.github.model::type::Label))"),
@@ -94,7 +103,10 @@ DEFINITIONS = {
     ),
     "lawtwin.github.laws::lawtwinGithubModelContainsMilestone": (
         "blake3-semantic-1:415c06c01357bd85a3b468671ab3ede3eda713e2e553c014e60a04c8f6d7bb10",
-        lambda *args: _definitions.lawtwin_github_model_contains_milestone_2({}, *args),
+        lambda *args: _definitions.lawtwin_github_model_contains_milestone_2(
+            {},
+            *args,
+        ),
         [
             _d("(ref lawtwin.github.model::type::Milestone)"),
             _d("(list (ref lawtwin.github.model::type::Milestone))"),
@@ -155,13 +167,19 @@ DEFINITIONS = {
     ),
     "lawtwin.github.model::validIssuesCreateMilestoneBody": (
         "blake3-semantic-1:60b48f9cdbedfe031b89467160da254b95224bea7979b7e1e595bd109671789f",
-        lambda *args: _definitions.valid_issues_create_milestone_body({}, *args),
+        lambda *args: _definitions.valid_issues_create_milestone_body(
+            {},
+            *args,
+        ),
         [_d("(ref lawtwin.github.model::type::IssuesCreateMilestoneBody)")],
         _d("(bool)"),
     ),
     "lawtwin.github.model::validIssuesUpdateMilestoneBody": (
         "blake3-semantic-1:0ea58072e0f6f9b50c775ff801fb67e2f5f964084e5bdae01f634febae2c3b69",
-        lambda *args: _definitions.valid_issues_update_milestone_body({}, *args),
+        lambda *args: _definitions.valid_issues_update_milestone_body(
+            {},
+            *args,
+        ),
         [_d("(ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)")],
         _d("(bool)"),
     ),
@@ -173,7 +191,10 @@ DEFINITIONS = {
     ),
     "contracttest.github::lawtwinGithubModelContainsLabel": (
         "blake3-semantic-1:6cc9ef39e855be966a2566a9b7e8bdeaca8a703f277d75a3dae0b04bda0b16c3",
-        lambda *args: _definitions.lawtwin_github_model_contains_label_3({}, *args),
+        lambda *args: _definitions.lawtwin_github_model_contains_label_3(
+            {},
+            *args,
+        ),
         [
             _d("(ref lawtwin.github.model::type::Label)"),
             _d("(list (ref lawtwin.github.model::type::Label))"),
@@ -182,7 +203,10 @@ DEFINITIONS = {
     ),
     "contracttest.github::lawtwinGithubModelContainsMilestone": (
         "blake3-semantic-1:415c06c01357bd85a3b468671ab3ede3eda713e2e553c014e60a04c8f6d7bb10",
-        lambda *args: _definitions.lawtwin_github_model_contains_milestone_3({}, *args),
+        lambda *args: _definitions.lawtwin_github_model_contains_milestone_3(
+            {},
+            *args,
+        ),
         [
             _d("(ref lawtwin.github.model::type::Milestone)"),
             _d("(list (ref lawtwin.github.model::type::Milestone))"),

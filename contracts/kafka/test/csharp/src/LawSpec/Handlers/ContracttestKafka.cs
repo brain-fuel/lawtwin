@@ -16,772 +16,772 @@ using Value = LawSpec.Runtime.Value;
 /// <summary>The spec handler cluster for Broker, Admin, GroupCoordinator. It runs typed: its state is native, and shared, not copied, by a snapshot.</summary>
 public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Abilities.LawtwinKafka.IAdmin, LawSpec.Abilities.LawtwinKafka.IGroupCoordinator
 {
-    private readonly object gate = new();
-    private readonly Schema.Schema schema;
-    private readonly Scalar.SymbolContext symbols;
+  private readonly object gate = new();
+  private readonly Schema.Schema schema;
+  private readonly Scalar.SymbolContext symbols;
 
-    private LawSpec.Data.BrokerState state;
+  private LawSpec.Data.BrokerState state;
 
-    /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
-    public Cluster() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
+  /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
+  public Cluster() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
 
-    public Cluster(Schema.Schema schema, Scalar.SymbolContext symbols)
+  public Cluster(Schema.Schema schema, Scalar.SymbolContext symbols)
+  {
+    this.schema = schema;
+    this.symbols = symbols;
+    state = LawSpec.TypedProgram.StartCluster_2(schema, symbols);
+  }
+
+  /// <summary>The handler's state: a snapshot to show or keep, or one to force, reset or restore.</summary>
+  public LawSpec.Data.BrokerState State
+  {
+    get { lock (gate) return state; }
+    set { lock (gate) state = value; }
+  }
+
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreateTopicsRequest(string value0, int value1)
+  {
+    lock (gate)
     {
-        this.schema = schema;
-        this.symbols = symbols;
-        state = LawSpec.TypedProgram.StartCluster_2(schema, symbols);
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterCreateTopic(state, value0, value1);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    /// <summary>The handler's state: a snapshot to show or keep, or one to force, reset or restore.</summary>
-    public LawSpec.Data.BrokerState State
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreatePartitionsRequest(string value0, int value1)
+  {
+    lock (gate)
     {
-        get { lock (gate) return state; }
-        set { lock (gate) state = value; }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterCreatePartitions(state, value0, value1);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> CreateTopicsRequest(string value0, int value1)
+  public FSharpOption<int> MetadataRequest(string value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterCreateTopic(state, value0, value1);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      var pair = LawSpec.TypedProgram.ClusterMetadataRequest(state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> CreatePartitionsRequest(string value0, int value1)
+  public FSharpResult<long, LawSpec.Data.KafkaError> ProduceRequest(LawSpec.Data.TopicPartition value0, FSharpOption<LawSpec.Data.ProducerTag> value1, FSharpList<LawSpec.Data.Record> value2)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterCreatePartitions(state, value0, value1);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterProduceRequest(state, value0, value1, value2);
+        state = pair.Second;
+        return FSharpResult<long, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<long, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpOption<int> MetadataRequest(string value0)
+  public FSharpResult<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError> FetchRequest(LawSpec.Data.TopicPartition value0, long value1, int value2, LawSpec.Data.IsolationLevel value3)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.ClusterMetadataRequest(state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterFetchRequest(state, value0, value1, value2, value3);
+        state = pair.Second;
+        return FSharpResult<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<long, LawSpec.Data.KafkaError> ProduceRequest(LawSpec.Data.TopicPartition value0, FSharpOption<LawSpec.Data.ProducerTag> value1, FSharpList<LawSpec.Data.Record> value2)
+  public FSharpResult<long, LawSpec.Data.KafkaError> ListOffsetsRequest(LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterProduceRequest(state, value0, value1, value2);
-                state = pair.Second;
-                return FSharpResult<long, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<long, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterListOffsets(state, value0, value1, value2);
+        state = pair.Second;
+        return FSharpResult<long, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<long, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError> FetchRequest(LawSpec.Data.TopicPartition value0, long value1, int value2, LawSpec.Data.IsolationLevel value3)
+  public FSharpResult<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError> InitProducerIdRequest(FSharpOption<string> value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterFetchRequest(state, value0, value1, value2, value3);
-                state = pair.Second;
-                return FSharpResult<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterInitProducerIdRequest(state, value0);
+        state = pair.Second;
+        return FSharpResult<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<long, LawSpec.Data.KafkaError> ListOffsetsRequest(LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> AddPartitionsToTxnRequest(string value0, long value1, short value2, FSharpList<LawSpec.Data.TopicPartition> value3)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterListOffsets(state, value0, value1, value2);
-                state = pair.Second;
-                return FSharpResult<long, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<long, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterAddPartitionsToTxnRequest(state, value0, value1, value2, value3);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError> InitProducerIdRequest(FSharpOption<string> value0)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> TxnOffsetCommitRequest(string value0, long value1, short value2, string value3, FSharpList<LawSpec.Data.OffsetEntry> value4)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterInitProducerIdRequest(state, value0);
-                state = pair.Second;
-                return FSharpResult<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterTxnOffsetCommitRequest(state, value0, value1, value2, value3, value4);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> AddPartitionsToTxnRequest(string value0, long value1, short value2, FSharpList<LawSpec.Data.TopicPartition> value3)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> EndTxnRequest(string value0, long value1, short value2, bool value3)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterAddPartitionsToTxnRequest(state, value0, value1, value2, value3);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterEndTxnRequest(state, value0, value1, value2, value3);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> TxnOffsetCommitRequest(string value0, long value1, short value2, string value3, FSharpList<LawSpec.Data.OffsetEntry> value4)
+  public FSharpResult<int, LawSpec.Data.KafkaError> JoinGroupRequest(string value0, string value1, FSharpList<string> value2)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterTxnOffsetCommitRequest(state, value0, value1, value2, value3, value4);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterJoinGroup(state, value0, value1, value2);
+        state = pair.Second;
+        return FSharpResult<int, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<int, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> EndTxnRequest(string value0, long value1, short value2, bool value3)
+  public FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError> SyncGroupRequest(string value0, string value1, int value2)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterEndTxnRequest(state, value0, value1, value2, value3);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterSyncGroup(state, value0, value1, value2);
+        state = pair.Second;
+        return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<int, LawSpec.Data.KafkaError> JoinGroupRequest(string value0, string value1, FSharpList<string> value2)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> HeartbeatRequest(string value0, string value1, int value2)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterJoinGroup(state, value0, value1, value2);
-                state = pair.Second;
-                return FSharpResult<int, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<int, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterHeartbeat(state, value0, value1, value2);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError> SyncGroupRequest(string value0, string value1, int value2)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> LeaveGroupRequest(string value0, string value1)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterSyncGroup(state, value0, value1, value2);
-                state = pair.Second;
-                return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterLeaveGroup(state, value0, value1);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> HeartbeatRequest(string value0, string value1, int value2)
+  public LawSpec.Data.GroupView DescribeGroupRequest(string value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterHeartbeat(state, value0, value1, value2);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      var pair = LawSpec.TypedProgram.ClusterDescribeGroup(state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> LeaveGroupRequest(string value0, string value1)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> OffsetCommitRequest(string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterLeaveGroup(state, value0, value1);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterCommitOffsets(state, value0, value1, value2, value3);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public LawSpec.Data.GroupView DescribeGroupRequest(string value0)
+  public FSharpOption<long> OffsetFetchRequest(string value0, LawSpec.Data.TopicPartition value1)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.ClusterDescribeGroup(state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.ClusterFetchOffset(state, value0, value1);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> OffsetCommitRequest(string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreateTopic(string value0, int value1)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterCommitOffsets(state, value0, value1, value2, value3);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterCreateTopic(state, value0, value1);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpOption<long> OffsetFetchRequest(string value0, LawSpec.Data.TopicPartition value1)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreatePartitions(string value0, int value1)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.ClusterFetchOffset(state, value0, value1);
-            state = pair.Second;
-            return pair.First;
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterCreatePartitions(state, value0, value1);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> CreateTopic(string value0, int value1)
+  public FSharpOption<int> PartitionsFor(string value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterCreateTopic(state, value0, value1);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      var pair = LawSpec.TypedProgram.ClusterMetadataRequest(state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> CreatePartitions(string value0, int value1)
+  public FSharpResult<long, LawSpec.Data.KafkaError> ListOffsets(LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterCreatePartitions(state, value0, value1);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterListOffsets(state, value0, value1, value2);
+        state = pair.Second;
+        return FSharpResult<long, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<long, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpOption<int> PartitionsFor(string value0)
+  public FSharpResult<int, LawSpec.Data.KafkaError> JoinGroup(string value0, string value1, FSharpList<string> value2)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.ClusterMetadataRequest(state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterJoinGroup(state, value0, value1, value2);
+        state = pair.Second;
+        return FSharpResult<int, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<int, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<long, LawSpec.Data.KafkaError> ListOffsets(LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
+  public FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError> SyncGroup(string value0, string value1, int value2)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterListOffsets(state, value0, value1, value2);
-                state = pair.Second;
-                return FSharpResult<long, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<long, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterSyncGroup(state, value0, value1, value2);
+        state = pair.Second;
+        return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<int, LawSpec.Data.KafkaError> JoinGroup(string value0, string value1, FSharpList<string> value2)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> Heartbeat(string value0, string value1, int value2)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterJoinGroup(state, value0, value1, value2);
-                state = pair.Second;
-                return FSharpResult<int, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<int, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterHeartbeat(state, value0, value1, value2);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError> SyncGroup(string value0, string value1, int value2)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> LeaveGroup(string value0, string value1)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterSyncGroup(state, value0, value1, value2);
-                state = pair.Second;
-                return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterLeaveGroup(state, value0, value1);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> Heartbeat(string value0, string value1, int value2)
+  public LawSpec.Data.GroupView DescribeGroup(string value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterHeartbeat(state, value0, value1, value2);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      var pair = LawSpec.TypedProgram.ClusterDescribeGroup(state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> LeaveGroup(string value0, string value1)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CommitOffsets(string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterLeaveGroup(state, value0, value1);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
+      try
+      {
+        var pair = LawSpec.TypedProgram.ClusterCommitOffsets(state, value0, value1, value2, value3);
+        state = pair.Second;
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
+      }
+      catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
+      {
+        return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
+      }
     }
+  }
 
-    public LawSpec.Data.GroupView DescribeGroup(string value0)
+  public FSharpOption<long> FetchOffset(string value0, LawSpec.Data.TopicPartition value1)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.ClusterDescribeGroup(state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.ClusterFetchOffset(state, value0, value1);
+      state = pair.Second;
+      return pair.First;
     }
-
-    public FSharpResult<Unit, LawSpec.Data.KafkaError> CommitOffsets(string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
-    {
-        lock (gate)
-        {
-            try
-            {
-                var pair = LawSpec.TypedProgram.ClusterCommitOffsets(state, value0, value1, value2, value3);
-                state = pair.Second;
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
-            }
-            catch (RaisedFailure failure) when (failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
-            {
-                return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewError(LawSpec.Data.Codecs.KafkaError().ToNative.Invoke(failure.Failure));
-            }
-        }
-    }
-
-    public FSharpOption<long> FetchOffset(string value0, LawSpec.Data.TopicPartition value1)
-    {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.ClusterFetchOffset(state, value0, value1);
-            state = pair.Second;
-            return pair.First;
-        }
-    }
+  }
 }
 
 /// <summary>The spec handler murmurPartitioner for Partitioner. It runs typed: its state is native, and shared, not copied, by a snapshot.</summary>
 public sealed class MurmurPartitioner : LawSpec.Abilities.LawtwinKafka.IPartitioner
 {
-    private readonly object gate = new();
-    private readonly Schema.Schema schema;
-    private readonly Scalar.SymbolContext symbols;
+  private readonly object gate = new();
+  private readonly Schema.Schema schema;
+  private readonly Scalar.SymbolContext symbols;
 
-    /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
-    public MurmurPartitioner() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
+  /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
+  public MurmurPartitioner() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
 
-    public MurmurPartitioner(Schema.Schema schema, Scalar.SymbolContext symbols)
+  public MurmurPartitioner(Schema.Schema schema, Scalar.SymbolContext symbols)
+  {
+    this.schema = schema;
+    this.symbols = symbols;
+  }
+
+  public int ChoosePartition(FSharpOption<byte[]> value0, int value1)
+  {
+    lock (gate)
     {
-        this.schema = schema;
-        this.symbols = symbols;
+      return LawSpec.TypedProgram.MurmurPartitionerChoosePartition(value0, value1);
     }
-
-    public int ChoosePartition(FSharpOption<byte[]> value0, int value1)
-    {
-        lock (gate)
-        {
-            return LawSpec.TypedProgram.MurmurPartitionerChoosePartition(value0, value1);
-        }
-    }
+  }
 }
 
 /// <summary>The spec handler kafkaProducer for Producer. It runs typed: its state is native, and shared, not copied, by a snapshot.</summary>
 public sealed class KafkaProducer : LawSpec.Abilities.LawtwinKafka.IProducer
 {
-    private readonly object gate = new();
-    private readonly Schema.Schema schema;
-    private readonly Scalar.SymbolContext symbols;
+  private readonly object gate = new();
+  private readonly Schema.Schema schema;
+  private readonly Scalar.SymbolContext symbols;
 
-    private LawSpec.Data.ProducerState state;
+  private LawSpec.Data.ProducerState state;
 
-    /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
-    public KafkaProducer() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
+  /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
+  public KafkaProducer() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
 
-    public KafkaProducer(Schema.Schema schema, Scalar.SymbolContext symbols)
+  public KafkaProducer(Schema.Schema schema, Scalar.SymbolContext symbols)
+  {
+    this.schema = schema;
+    this.symbols = symbols;
+    state = LawSpec.TypedProgram.StartKafkaProducer_2(schema, symbols);
+  }
+
+  /// <summary>The handler's state: a snapshot to show or keep, or one to force, reset or restore.</summary>
+  public LawSpec.Data.ProducerState State
+  {
+    get { lock (gate) return state; }
+    set { lock (gate) state = value; }
+  }
+
+  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> Send(LawSpec.Data.ProducerRecord value0)
+  {
+    lock (gate)
     {
-        this.schema = schema;
-        this.symbols = symbols;
-        state = LawSpec.TypedProgram.StartKafkaProducer_2(schema, symbols);
+      var pair = LawSpec.TypedProgram.KafkaProducerSend(schema, symbols, state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    /// <summary>The handler's state: a snapshot to show or keep, or one to force, reset or restore.</summary>
-    public LawSpec.Data.ProducerState State
+  public void Flush()
+  {
+    lock (gate)
     {
-        get { lock (gate) return state; }
-        set { lock (gate) state = value; }
+      var pair = LawSpec.TypedProgram.KafkaProducerFlush(state);
+      state = pair.Second;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> Send(LawSpec.Data.ProducerRecord value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch> EnableIdempotence()
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaProducerSend(schema, symbols, state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaProducerEnableIdempotence(schema, symbols, state);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public void Flush()
+  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> RetryLastSend()
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaProducerFlush(state);
-            state = pair.Second;
-        }
+      var pair = LawSpec.TypedProgram.KafkaProducerRetryLastSend(schema, symbols, state);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch> EnableIdempotence()
+  public FSharpOption<LawSpec.Data.ProducerIdAndEpoch> ProducerIdentity()
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaProducerEnableIdempotence(schema, symbols, state);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaProducerProducerIdentity(state);
+      state = pair.Second;
+      return pair.First;
     }
-
-    public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> RetryLastSend()
-    {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaProducerRetryLastSend(schema, symbols, state);
-            state = pair.Second;
-            return pair.First;
-        }
-    }
-
-    public FSharpOption<LawSpec.Data.ProducerIdAndEpoch> ProducerIdentity()
-    {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaProducerProducerIdentity(state);
-            state = pair.Second;
-            return pair.First;
-        }
-    }
+  }
 }
 
 /// <summary>The spec handler kafkaConsumer for Consumer. It runs typed: its state is native, and shared, not copied, by a snapshot.</summary>
 public sealed class KafkaConsumer : LawSpec.Abilities.LawtwinKafka.IConsumer
 {
-    private readonly object gate = new();
-    private readonly Schema.Schema schema;
-    private readonly Scalar.SymbolContext symbols;
+  private readonly object gate = new();
+  private readonly Schema.Schema schema;
+  private readonly Scalar.SymbolContext symbols;
 
-    private LawSpec.Data.ConsumerState state;
+  private LawSpec.Data.ConsumerState state;
 
-    /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
-    public KafkaConsumer() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
+  /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
+  public KafkaConsumer() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
 
-    public KafkaConsumer(Schema.Schema schema, Scalar.SymbolContext symbols)
+  public KafkaConsumer(Schema.Schema schema, Scalar.SymbolContext symbols)
+  {
+    this.schema = schema;
+    this.symbols = symbols;
+    state = LawSpec.TypedProgram.StartKafkaConsumer_2(schema, symbols);
+  }
+
+  /// <summary>The handler's state: a snapshot to show or keep, or one to force, reset or restore.</summary>
+  public LawSpec.Data.ConsumerState State
+  {
+    get { lock (gate) return state; }
+    set { lock (gate) state = value; }
+  }
+
+  public void Assign(FSharpList<LawSpec.Data.TopicPartition> value0)
+  {
+    lock (gate)
     {
-        this.schema = schema;
-        this.symbols = symbols;
-        state = LawSpec.TypedProgram.StartKafkaConsumer_2(schema, symbols);
+      var pair = LawSpec.TypedProgram.KafkaConsumerAssign(state, value0);
+      state = pair.Second;
     }
+  }
 
-    /// <summary>The handler's state: a snapshot to show or keep, or one to force, reset or restore.</summary>
-    public LawSpec.Data.ConsumerState State
+  public LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.TopicPartition>> Subscribe(string value0, string value1, FSharpList<string> value2)
+  {
+    lock (gate)
     {
-        get { lock (gate) return state; }
-        set { lock (gate) state = value; }
+      var pair = LawSpec.TypedProgram.KafkaConsumerSubscribe(schema, symbols, state, value0, value1, value2);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public void Assign(FSharpList<LawSpec.Data.TopicPartition> value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>> Poll(int value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaConsumerAssign(state, value0);
-            state = pair.Second;
-        }
+      var pair = LawSpec.TypedProgram.KafkaConsumerPoll(schema, symbols, state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.TopicPartition>> Subscribe(string value0, string value1, FSharpList<string> value2)
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> CommitSync()
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaConsumerSubscribe(schema, symbols, state, value0, value1, value2);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaConsumerCommitSync(schema, symbols, state);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>> Poll(int value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> Seek(LawSpec.Data.TopicPartition value0, long value1)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaConsumerPoll(schema, symbols, state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaConsumerSeek(state, value0, value1);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, Unit> CommitSync()
+  public LawSpec.Either<LawSpec.Data.KafkaError, long> Position(LawSpec.Data.TopicPartition value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaConsumerCommitSync(schema, symbols, state);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaConsumerPosition(schema, symbols, state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, Unit> Seek(LawSpec.Data.TopicPartition value0, long value1)
+  public FSharpOption<long> CommittedOffset(LawSpec.Data.TopicPartition value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaConsumerSeek(state, value0, value1);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaConsumerCommittedOffset(schema, symbols, state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, long> Position(LawSpec.Data.TopicPartition value0)
+  public void SetIsolationLevel(LawSpec.Data.IsolationLevel value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaConsumerPosition(schema, symbols, state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaConsumerSetIsolationLevel(state, value0);
+      state = pair.Second;
     }
+  }
 
-    public FSharpOption<long> CommittedOffset(LawSpec.Data.TopicPartition value0)
+  public void Close()
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaConsumerCommittedOffset(schema, symbols, state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaConsumerClose(schema, symbols, state);
+      state = pair.Second;
     }
-
-    public void SetIsolationLevel(LawSpec.Data.IsolationLevel value0)
-    {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaConsumerSetIsolationLevel(state, value0);
-            state = pair.Second;
-        }
-    }
-
-    public void Close()
-    {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaConsumerClose(schema, symbols, state);
-            state = pair.Second;
-        }
-    }
+  }
 }
 
 /// <summary>The spec handler kafkaTransactions for Transactions. It runs typed: its state is native, and shared, not copied, by a snapshot.</summary>
 public sealed class KafkaTransactions : LawSpec.Abilities.LawtwinKafka.ITransactions
 {
-    private readonly object gate = new();
-    private readonly Schema.Schema schema;
-    private readonly Scalar.SymbolContext symbols;
+  private readonly object gate = new();
+  private readonly Schema.Schema schema;
+  private readonly Scalar.SymbolContext symbols;
 
-    private LawSpec.Data.TransactionState state;
+  private LawSpec.Data.TransactionState state;
 
-    /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
-    public KafkaTransactions() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
+  /// <summary>Outside any law: the program's schema and fresh symbols.</summary>
+  public KafkaTransactions() : this(LawSpec.Generated.Program.Schema, new Scalar.SymbolContext()) { }
 
-    public KafkaTransactions(Schema.Schema schema, Scalar.SymbolContext symbols)
+  public KafkaTransactions(Schema.Schema schema, Scalar.SymbolContext symbols)
+  {
+    this.schema = schema;
+    this.symbols = symbols;
+    state = LawSpec.TypedProgram.StartKafkaTransactions_2(schema, symbols);
+  }
+
+  /// <summary>The handler's state: a snapshot to show or keep, or one to force, reset or restore.</summary>
+  public LawSpec.Data.TransactionState State
+  {
+    get { lock (gate) return state; }
+    set { lock (gate) state = value; }
+  }
+
+  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch> InitTransactions(string value0)
+  {
+    lock (gate)
     {
-        this.schema = schema;
-        this.symbols = symbols;
-        state = LawSpec.TypedProgram.StartKafkaTransactions_2(schema, symbols);
+      var pair = LawSpec.TypedProgram.KafkaTransactionsInitTransactions(schema, symbols, state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    /// <summary>The handler's state: a snapshot to show or keep, or one to force, reset or restore.</summary>
-    public LawSpec.Data.TransactionState State
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> BeginTransaction()
+  {
+    lock (gate)
     {
-        get { lock (gate) return state; }
-        set { lock (gate) state = value; }
+      var pair = LawSpec.TypedProgram.KafkaTransactionsBeginTransaction(state);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch> InitTransactions(string value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> AddPartitionsToTransaction(FSharpList<LawSpec.Data.TopicPartition> value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaTransactionsInitTransactions(schema, symbols, state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaTransactionsAddPartitionsToTransaction(schema, symbols, state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, Unit> BeginTransaction()
+  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> SendInTransaction(LawSpec.Data.ProducerRecord value0)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaTransactionsBeginTransaction(state);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaTransactionsSendInTransaction(schema, symbols, state, value0);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, Unit> AddPartitionsToTransaction(FSharpList<LawSpec.Data.TopicPartition> value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> SendOffsetsToTransaction(string value0, FSharpList<LawSpec.Data.OffsetEntry> value1)
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaTransactionsAddPartitionsToTransaction(schema, symbols, state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaTransactionsSendOffsetsToTransaction(schema, symbols, state, value0, value1);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> SendInTransaction(LawSpec.Data.ProducerRecord value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> CommitTransaction()
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaTransactionsSendInTransaction(schema, symbols, state, value0);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaTransactionsCommitTransaction(schema, symbols, state);
+      state = pair.Second;
+      return pair.First;
     }
+  }
 
-    public LawSpec.Either<LawSpec.Data.KafkaError, Unit> SendOffsetsToTransaction(string value0, FSharpList<LawSpec.Data.OffsetEntry> value1)
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> AbortTransaction()
+  {
+    lock (gate)
     {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaTransactionsSendOffsetsToTransaction(schema, symbols, state, value0, value1);
-            state = pair.Second;
-            return pair.First;
-        }
+      var pair = LawSpec.TypedProgram.KafkaTransactionsAbortTransaction(schema, symbols, state);
+      state = pair.Second;
+      return pair.First;
     }
-
-    public LawSpec.Either<LawSpec.Data.KafkaError, Unit> CommitTransaction()
-    {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaTransactionsCommitTransaction(schema, symbols, state);
-            state = pair.Second;
-            return pair.First;
-        }
-    }
-
-    public LawSpec.Either<LawSpec.Data.KafkaError, Unit> AbortTransaction()
-    {
-        lock (gate)
-        {
-            var pair = LawSpec.TypedProgram.KafkaTransactionsAbortTransaction(schema, symbols, state);
-            state = pair.Second;
-            return pair.First;
-        }
-    }
+  }
 }

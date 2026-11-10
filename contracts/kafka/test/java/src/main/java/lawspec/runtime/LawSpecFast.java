@@ -22,7 +22,8 @@ import lawspec.runtime.LawSpecRuntime.Value;
 public final class LawSpecFast
 {
   private LawSpecFast()
-  {}
+  {
+  }
 
   /**
    * An embedded handler's operation that fails with E, as a value: what it gave, or the failure it
@@ -374,9 +375,8 @@ public final class LawSpecFast
   public static List<BigInteger> range(BigInteger lo, BigInteger hi)
   {
     List<BigInteger> out = List.nil();
-    for (BigInteger k = hi.subtract(BigInteger.ONE);
-        k.compareTo(lo) >= 0;
-        k = k.subtract(BigInteger.ONE))
+    for (BigInteger k = hi.subtract(BigInteger.ONE); k.compareTo(lo) >= 0; k =
+        k.subtract(BigInteger.ONE))
     {
       out = List.cons(k, out);
     }
@@ -808,12 +808,7 @@ public final class LawSpecFast
 
     private static <K, V> Map<K, V> node(K key, V value, Map<K, V> left, Map<K, V> right)
     {
-      return new Map<>(
-          key,
-          value,
-          left,
-          right,
-          Math.max(left.height, right.height) + 1,
+      return new Map<>(key, value, left, right, Math.max(left.height, right.height) + 1,
           left.size + right.size + 1);
     }
 
@@ -826,10 +821,7 @@ public final class LawSpecFast
           return node(left.key, left.value, left.left, node(key, value, left.right, right));
         }
         Map<K, V> lr = left.right;
-        return node(
-            lr.key,
-            lr.value,
-            node(left.key, left.value, left.left, lr.left),
+        return node(lr.key, lr.value, node(left.key, left.value, left.left, lr.left),
             node(key, value, lr.right, right));
       }
       if (right.height > left.height + 1)
@@ -839,10 +831,7 @@ public final class LawSpecFast
           return node(right.key, right.value, node(key, value, left, right.left), right.right);
         }
         Map<K, V> rl = right.left;
-        return node(
-            rl.key,
-            rl.value,
-            node(key, value, left, rl.left),
+        return node(rl.key, rl.value, node(key, value, left, rl.left),
             node(right.key, right.value, rl.right, right.right));
       }
       return node(key, value, left, right);
@@ -1232,71 +1221,68 @@ public final class LawSpecFast
     };
   }
 
-  public static final Codec<BigInteger> INTEGER =
-      new Codec<>()
+  public static final Codec<BigInteger> INTEGER = new Codec<>()
+  {
+    public String key()
+    {
+      return "Integer";
+    }
+
+    public Value encode(BigInteger value)
+    {
+      return new Value("Integer", value);
+    }
+
+    public BigInteger decode(Value value)
+    {
+      Object data = value.data();
+      if (data instanceof BigInteger b)
       {
-        public String key()
-        {
-          return "Integer";
-        }
-
-        public Value encode(BigInteger value)
-        {
-          return new Value("Integer", value);
-        }
-
-        public BigInteger decode(Value value)
-        {
-          Object data = value.data();
-          if (data instanceof BigInteger b)
-          {
-            return b;
-          }
-          if (data instanceof Number n)
-          {
-            return BigInteger.valueOf(n.longValue());
-          }
-          throw new IllegalArgumentException("expected an Integer");
-        }
-      };
-
-  public static final Codec<Boolean> BOOL =
-      new Codec<>()
+        return b;
+      }
+      if (data instanceof Number n)
       {
-        public String key()
-        {
-          return "Bool";
-        }
+        return BigInteger.valueOf(n.longValue());
+      }
+      throw new IllegalArgumentException("expected an Integer");
+    }
+  };
 
-        public Value encode(Boolean value)
-        {
-          return new Value("Bool", value);
-        }
+  public static final Codec<Boolean> BOOL = new Codec<>()
+  {
+    public String key()
+    {
+      return "Bool";
+    }
 
-        public Boolean decode(Value value)
-        {
-          return (Boolean) value.data();
-        }
-      };
+    public Value encode(Boolean value)
+    {
+      return new Value("Bool", value);
+    }
 
-  public static final Codec<Unit> UNIT =
-      new Codec<>()
-      {
-        public String key()
-        {
-          return "Unit";
-        }
+    public Boolean decode(Value value)
+    {
+      return (Boolean) value.data();
+    }
+  };
 
-        public Value encode(Unit value)
-        {
-          return new Value("Unit", null);
-        }
+  public static final Codec<Unit> UNIT = new Codec<>()
+  {
+    public String key()
+    {
+      return "Unit";
+    }
 
-        public Unit decode(Value value)
-        {
-          return Unit.UNIT;
-        }
-      };
+    public Value encode(Unit value)
+    {
+      return new Value("Unit", null);
+    }
+
+    public Unit decode(Value value)
+    {
+      return Unit.UNIT;
+    }
+  };
 
   private static int[] units(Object data)
   {
@@ -1330,55 +1316,53 @@ public final class LawSpecFast
     throw new IllegalArgumentException("expected a sequence");
   }
 
-  public static final Codec<String> TEXT =
-      new Codec<>()
+  public static final Codec<String> TEXT = new Codec<>()
+  {
+    public String key()
+    {
+      return "Text";
+    }
+
+    public Value encode(String value)
+    {
+      return new Value("Text", value.codePoints().boxed().toList());
+    }
+
+    public String decode(Value value)
+    {
+      int[] u = units(value.data());
+      return new String(u, 0, u.length);
+    }
+  };
+
+  public static final Codec<Bytes> BYTES = new Codec<>()
+  {
+    public String key()
+    {
+      return "Bytes";
+    }
+
+    public Value encode(Bytes value)
+    {
+      var out = new ArrayList<Integer>(value.octets.length);
+      for (byte b : value.octets)
       {
-        public String key()
-        {
-          return "Text";
-        }
+        out.add(b & 0xff);
+      }
+      return new Value("Bytes", java.util.List.copyOf(out));
+    }
 
-        public Value encode(String value)
-        {
-          return new Value("Text", value.codePoints().boxed().toList());
-        }
-
-        public String decode(Value value)
-        {
-          int[] u = units(value.data());
-          return new String(u, 0, u.length);
-        }
-      };
-
-  public static final Codec<Bytes> BYTES =
-      new Codec<>()
+    public Bytes decode(Value value)
+    {
+      int[] u = units(value.data());
+      byte[] b = new byte[u.length];
+      for (int i = 0; i < u.length; i++)
       {
-        public String key()
-        {
-          return "Bytes";
-        }
-
-        public Value encode(Bytes value)
-        {
-          var out = new ArrayList<Integer>(value.octets.length);
-          for (byte b : value.octets)
-          {
-            out.add(b & 0xff);
-          }
-          return new Value("Bytes", java.util.List.copyOf(out));
-        }
-
-        public Bytes decode(Value value)
-        {
-          int[] u = units(value.data());
-          byte[] b = new byte[u.length];
-          for (int i = 0; i < u.length; i++)
-          {
-            b[i] = (byte) u[i];
-          }
-          return new Bytes(b);
-        }
-      };
+        b[i] = (byte) u[i];
+      }
+      return new Bytes(b);
+    }
+  };
 
   private static Data data(Value value)
   {
@@ -1433,8 +1417,7 @@ public final class LawSpecFast
 
       public Value encode(Maybe<T> value)
       {
-        return new Value(
-            key,
+        return new Value(key,
             value.isPresent()
                 ? new Data("Maybe::Present", java.util.List.of(item.encode(value.get())))
                 : new Data("Maybe::Absent", java.util.List.of()));
@@ -1443,8 +1426,7 @@ public final class LawSpecFast
       public Maybe<T> decode(Value value)
       {
         Data d = data(value);
-        return d.tag().equals("Maybe::Present")
-            ? Maybe.present(item.decode(d.fields().get(0)))
+        return d.tag().equals("Maybe::Present") ? Maybe.present(item.decode(d.fields().get(0)))
             : Maybe.absent();
       }
     };
@@ -1462,18 +1444,15 @@ public final class LawSpecFast
 
       public Value encode(Either<L, R> value)
       {
-        return new Value(
-            key,
-            value.isLeft()
-                ? new Data("Either::Left", java.util.List.of(left.encode(value.left())))
+        return new Value(key,
+            value.isLeft() ? new Data("Either::Left", java.util.List.of(left.encode(value.left())))
                 : new Data("Either::Right", java.util.List.of(right.encode(value.right()))));
       }
 
       public Either<L, R> decode(Value value)
       {
         Data d = data(value);
-        return d.tag().equals("Either::Left")
-            ? Either.left(left.decode(d.fields().get(0)))
+        return d.tag().equals("Either::Left") ? Either.left(left.decode(d.fields().get(0)))
             : Either.right(right.decode(d.fields().get(0)));
       }
     };
@@ -1509,19 +1488,10 @@ public final class LawSpecFast
       public Value encode(Map<K, V> value)
       {
         var out = new ArrayList<Value>(value.size());
-        value.forEach(
-            (a, b) ->
-                out.add(
-                    new Value(
-                        entry,
-                        new Data(
-                            COLLECTIONS + "Entry::Entry",
-                            java.util.List.of(k.encode(a), v.encode(b))))));
-        return new Value(
-            key,
-            new Data(
-                COLLECTIONS + "KeyVal::KeyValEntries",
-                java.util.List.of(new Value(listKey, java.util.List.copyOf(out)))));
+        value.forEach((a, b) -> out.add(new Value(entry,
+            new Data(COLLECTIONS + "Entry::Entry", java.util.List.of(k.encode(a), v.encode(b))))));
+        return new Value(key, new Data(COLLECTIONS + "KeyVal::KeyValEntries",
+            java.util.List.of(new Value(listKey, java.util.List.copyOf(out)))));
       }
 
       public Map<K, V> decode(Value value)
@@ -1555,11 +1525,8 @@ public final class LawSpecFast
         {
           out.add(item.encode(x));
         }
-        return new Value(
-            key,
-            new Data(
-                COLLECTIONS + "Set::SetItems",
-                java.util.List.of(new Value(listKey, java.util.List.copyOf(out)))));
+        return new Value(key, new Data(COLLECTIONS + "Set::SetItems",
+            java.util.List.of(new Value(listKey, java.util.List.copyOf(out)))));
       }
 
       public Set<T> decode(Value value)

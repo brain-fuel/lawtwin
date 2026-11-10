@@ -29,12 +29,20 @@ class Cluster:
         self._lock = _threading.Lock()
         self._state = _typed.start_cluster_2(self._symbols)
 
-    def createTopicsRequest(self, value0: _builtins.str, value1: _builtins.int) -> None:
+    def createTopicsRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.int,
+    ) -> None:
         symbols = self._symbols
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_int32(value1, symbols)
         with self._lock:
-            pair = _typed.cluster_create_topic(self._state, argument0, argument1)
+            pair = _typed.cluster_create_topic(
+                self._state,
+                argument0,
+                argument1,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
@@ -47,11 +55,18 @@ class Cluster:
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_int32(value1, symbols)
         with self._lock:
-            pair = _typed.cluster_create_partitions(self._state, argument0, argument1)
+            pair = _typed.cluster_create_partitions(
+                self._state,
+                argument0,
+                argument1,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def metadataRequest(self, value0: _builtins.str) -> _schema.Maybe[_builtins.int]:
+    def metadataRequest(
+        self,
+        value0: _builtins.str,
+    ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
         argument0 = _typed.nin_text(value0, symbols)
         with self._lock:
@@ -129,7 +144,10 @@ class Cluster:
         symbols = self._symbols
         argument0 = _typed.nin_maybe_text(value0, symbols)
         with self._lock:
-            pair = _typed.cluster_init_producer_id_request(self._state, argument0)
+            pair = _typed.cluster_init_producer_id_request(
+                self._state,
+                argument0,
+            )
             self._state = pair[1]
         return _typed.nout_producer_id_and_epoch(pair[0], symbols)
 
@@ -265,7 +283,11 @@ class Cluster:
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def leaveGroupRequest(self, value0: _builtins.str, value1: _builtins.str) -> None:
+    def leaveGroupRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+    ) -> None:
         symbols = self._symbols
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_text(value1, symbols)
@@ -314,7 +336,11 @@ class Cluster:
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_topic_partition(value1, symbols)
         with self._lock:
-            pair = _typed.cluster_fetch_offset(self._state, argument0, argument1)
+            pair = _typed.cluster_fetch_offset(
+                self._state,
+                argument0,
+                argument1,
+            )
             self._state = pair[1]
         return _typed.nout_maybe_int64(pair[0], symbols)
 
@@ -323,20 +349,35 @@ class Cluster:
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_int32(value1, symbols)
         with self._lock:
-            pair = _typed.cluster_create_topic(self._state, argument0, argument1)
+            pair = _typed.cluster_create_topic(
+                self._state,
+                argument0,
+                argument1,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def createPartitions(self, value0: _builtins.str, value1: _builtins.int) -> None:
+    def createPartitions(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.int,
+    ) -> None:
         symbols = self._symbols
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_int32(value1, symbols)
         with self._lock:
-            pair = _typed.cluster_create_partitions(self._state, argument0, argument1)
+            pair = _typed.cluster_create_partitions(
+                self._state,
+                argument0,
+                argument1,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def partitionsFor(self, value0: _builtins.str) -> _schema.Maybe[_builtins.int]:
+    def partitionsFor(
+        self,
+        value0: _builtins.str,
+    ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
         argument0 = _typed.nin_text(value0, symbols)
         with self._lock:
@@ -473,7 +514,11 @@ class Cluster:
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_topic_partition(value1, symbols)
         with self._lock:
-            pair = _typed.cluster_fetch_offset(self._state, argument0, argument1)
+            pair = _typed.cluster_fetch_offset(
+                self._state,
+                argument0,
+                argument1,
+            )
             self._state = pair[1]
         return _typed.nout_maybe_int64(pair[0], symbols)
 
@@ -576,7 +621,12 @@ class Cluster:
     ) -> _schema.Either[data.KafkaError, data.FetchResult]:
         """fetchRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.fetchRequest(value0, value1, value2, value3))
+            return _schema.Right(self.fetchRequest(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -600,7 +650,11 @@ class Cluster:
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """listOffsetsRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.listOffsetsRequest(value0, value1, value2))
+            return _schema.Right(self.listOffsetsRequest(
+                value0,
+                value1,
+                value2,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -709,7 +763,12 @@ class Cluster:
     ) -> _schema.Either[data.KafkaError, None]:
         """endTxnRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.endTxnRequest(value0, value1, value2, value3))
+            return _schema.Right(self.endTxnRequest(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1024,7 +1083,12 @@ class Cluster:
     ) -> _schema.Either[data.KafkaError, None]:
         """commitOffsets, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.commitOffsets(value0, value1, value2, value3))
+            return _schema.Right(self.commitOffsets(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1096,11 +1160,19 @@ class KafkaProducer:
     ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]:
         symbols = self._symbols
         with self._lock:
-            pair = _typed.kafka_producer_enable_idempotence(symbols, self._state)
+            pair = _typed.kafka_producer_enable_idempotence(
+                symbols,
+                self._state,
+            )
             self._state = pair[1]
-        return _typed.nout_either_kafka_error_producer_id_and_epoch(pair[0], symbols)
+        return _typed.nout_either_kafka_error_producer_id_and_epoch(
+            pair[0],
+            symbols,
+        )
 
-    def retryLastSend(self) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
+    def retryLastSend(
+        self,
+    ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
         with self._lock:
             pair = _typed.kafka_producer_retry_last_send(symbols, self._state)
@@ -1172,7 +1244,10 @@ class KafkaConsumer:
                 argument2,
             )
             self._state = pair[1]
-        return _typed.nout_either_kafka_error_list_topic_partition(pair[0], symbols)
+        return _typed.nout_either_kafka_error_list_topic_partition(
+            pair[0],
+            symbols,
+        )
 
     def poll(
         self,
@@ -1183,7 +1258,10 @@ class KafkaConsumer:
         with self._lock:
             pair = _typed.kafka_consumer_poll(symbols, self._state, argument0)
             self._state = pair[1]
-        return _typed.nout_either_kafka_error_list_consumer_record(pair[0], symbols)
+        return _typed.nout_either_kafka_error_list_consumer_record(
+            pair[0],
+            symbols,
+        )
 
     def commitSync(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
@@ -1212,7 +1290,11 @@ class KafkaConsumer:
         symbols = self._symbols
         argument0 = _typed.nin_topic_partition(value0, symbols)
         with self._lock:
-            pair = _typed.kafka_consumer_position(symbols, self._state, argument0)
+            pair = _typed.kafka_consumer_position(
+                symbols,
+                self._state,
+                argument0,
+            )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_int64(pair[0], symbols)
 
@@ -1235,7 +1317,10 @@ class KafkaConsumer:
         symbols = self._symbols
         argument0 = _typed.nin_isolation_level(value0, symbols)
         with self._lock:
-            pair = _typed.kafka_consumer_set_isolation_level(self._state, argument0)
+            pair = _typed.kafka_consumer_set_isolation_level(
+                self._state,
+                argument0,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
@@ -1290,7 +1375,10 @@ class KafkaTransactions:
                 argument0,
             )
             self._state = pair[1]
-        return _typed.nout_either_kafka_error_producer_id_and_epoch(pair[0], symbols)
+        return _typed.nout_either_kafka_error_producer_id_and_epoch(
+            pair[0],
+            symbols,
+        )
 
     def beginTransaction(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
@@ -1350,14 +1438,20 @@ class KafkaTransactions:
     def commitTransaction(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
         with self._lock:
-            pair = _typed.kafka_transactions_commit_transaction(symbols, self._state)
+            pair = _typed.kafka_transactions_commit_transaction(
+                symbols,
+                self._state,
+            )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_unit(pair[0], symbols)
 
     def abortTransaction(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
         with self._lock:
-            pair = _typed.kafka_transactions_abort_transaction(symbols, self._state)
+            pair = _typed.kafka_transactions_abort_transaction(
+                symbols,
+                self._state,
+            )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_unit(pair[0], symbols)
 

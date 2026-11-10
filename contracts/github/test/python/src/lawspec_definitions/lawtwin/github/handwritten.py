@@ -19,7 +19,12 @@ def nothingHandWritten(
     u: ls.Absence,
 ) -> ls.Absence:
     try:
-        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        u = _lawspec_schema.from_native(
+            _schema.Named("Unit"),
+            u,
+            MACHINE_BITS,
+            symbols,
+        )
         result = _definitions.nothing_hand_written(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("Unit"),
@@ -33,5 +38,6 @@ def nothingHandWritten(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.handwritten::nothingHandWritten: " + _builtins.str(error),
+            "lawtwin.github.handwritten::nothingHandWritten: "
+            + _builtins.str(error),
         ) from error

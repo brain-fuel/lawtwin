@@ -148,9 +148,18 @@ class Reference:
         symbols = self._symbols
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_maybe_issues_list_milestones_state(value2, symbols)
-        argument3 = _typed.nin_maybe_issues_list_milestones_sort(value3, symbols)
-        argument4 = _typed.nin_maybe_issues_list_milestones_direction(value4, symbols)
+        argument2 = _typed.nin_maybe_issues_list_milestones_state(
+            value2,
+            symbols,
+        )
+        argument3 = _typed.nin_maybe_issues_list_milestones_sort(
+            value3,
+            symbols,
+        )
+        argument4 = _typed.nin_maybe_issues_list_milestones_direction(
+            value4,
+            symbols,
+        )
         argument5 = _typed.nin_maybe_int64(value5, symbols)
         argument6 = _typed.nin_maybe_int64(value6, symbols)
         with self._lock:
@@ -238,7 +247,10 @@ class Reference:
         argument0 = _typed.nin_text(value0, symbols)
         argument1 = _typed.nin_text(value1, symbols)
         argument2 = _typed.nin_int64(value2, symbols)
-        argument3 = _typed.nin_maybe_issues_update_milestone_body(value3, symbols)
+        argument3 = _typed.nin_maybe_issues_update_milestone_body(
+            value3,
+            symbols,
+        )
         with self._lock:
             pair = _typed.reference_issues_update_milestone(
                 self._state,
@@ -381,7 +393,12 @@ class Reference:
     ) -> _schema.Either[data.ApiError, data.Label]:
         """issuesUpdateLabel, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.issuesUpdateLabel(value0, value1, value2, value3))
+            return _schema.Right(self.issuesUpdateLabel(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -441,7 +458,11 @@ class Reference:
     ) -> _schema.Either[data.ApiError, data.Milestone]:
         """issuesCreateMilestone, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.issuesCreateMilestone(value0, value1, value2))
+            return _schema.Right(self.issuesCreateMilestone(
+                value0,
+                value1,
+                value2,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -465,7 +486,11 @@ class Reference:
     ) -> _schema.Either[data.ApiError, data.Milestone]:
         """issuesGetMilestone, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.issuesGetMilestone(value0, value1, value2))
+            return _schema.Right(self.issuesGetMilestone(
+                value0,
+                value1,
+                value2,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -489,7 +514,11 @@ class Reference:
     ) -> _schema.Either[data.ApiError, None]:
         """issuesDeleteMilestone, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.issuesDeleteMilestone(value0, value1, value2))
+            return _schema.Right(self.issuesDeleteMilestone(
+                value0,
+                value1,
+                value2,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability

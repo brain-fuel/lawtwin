@@ -20,7 +20,12 @@ def matchersMatchesRegex(
     r: data.Regex,
 ) -> _builtins.bool:
     try:
-        t = _lawspec_schema.from_native(_schema.Named("Text"), t, MACHINE_BITS, symbols)
+        t = _lawspec_schema.from_native(
+            _schema.Named("Text"),
+            t,
+            MACHINE_BITS,
+            symbols,
+        )
         r = _lawspec_schema.from_native(
             _schema.Named("lawspec.matchers::type::Regex"),
             r,

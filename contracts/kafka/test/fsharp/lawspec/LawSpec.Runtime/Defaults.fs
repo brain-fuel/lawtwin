@@ -225,6 +225,10 @@ let handler (key: string) : Effects.Handler =
                         File.WriteAllBytes(p, b)
                         Unit
                     | _ -> fail "InvalidArguments" "writeBytes")
+                "createDirectories",
+                (fun _ args ->
+                    Directory.CreateDirectory(text (List.head args)) |> ignore
+                    Unit)
                 "pathExists", (fun _ args -> let p = text (List.head args) in Bool(File.Exists p || Directory.Exists p))
                 "removePath",
                 (fun _ args ->

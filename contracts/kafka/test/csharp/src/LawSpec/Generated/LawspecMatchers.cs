@@ -16,15 +16,19 @@ using Value = LawSpec.Runtime.Value;
 /// <summary>The entries of lawspec.matchers, on portable values.</summary>
 public static class LawspecMatchers
 {
-    /// <summary>matchersMatchesRegex — &lt;lawspec.matchers&gt;:47</summary>
-    public static Value MatchersMatchesRegex(Schema.Schema schema, Scalar.SymbolContext symbols, Value t, Value r)
+  /// <summary>matchersMatchesRegex — &lt;lawspec.matchers&gt;:47</summary>
+  public static Value MatchersMatchesRegex(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value t,
+      Value r)
+  {
+    return Runtime.Contextual("lawspec.matchers::matchersMatchesRegex", Fn.F0(() =>
     {
-        return Runtime.Contextual("lawspec.matchers::matchersMatchesRegex", Fn.F0(() =>
-        {
-            return Codecs.Bool.FromNative.Invoke(
-                LawSpec.TypedProgram.MatchersMatchesRegex(
-                    Codecs.Text.ToNative.Invoke(t),
-                    LawSpec.Data.Codecs.Regex().ToNative.Invoke(r)));
-        }));
-    }
+      return Codecs.Bool.FromNative.Invoke(
+          LawSpec.TypedProgram.MatchersMatchesRegex(
+              Codecs.Text.ToNative.Invoke(t),
+              LawSpec.Data.Codecs.Regex().ToNative.Invoke(r)));
+    }));
+  }
 }

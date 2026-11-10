@@ -188,12 +188,18 @@ def saturating_int64(value):
     else:
         if value < (-9223372036854775808):
             narrowed_2 = -9223372036854775808
-            if narrowed_2 < (-9223372036854775808) or narrowed_2 > 9223372036854775807:
+            if (
+                narrowed_2 < (-9223372036854775808)
+                or narrowed_2 > 9223372036854775807
+            ):
                 lsf_outside("Int64")
             return narrowed_2
         else:
             narrowed_3 = value
-            if narrowed_3 < (-9223372036854775808) or narrowed_3 > 9223372036854775807:
+            if (
+                narrowed_3 < (-9223372036854775808)
+                or narrowed_3 > 9223372036854775807
+            ):
                 lsf_outside("Int64")
             return narrowed_3
 
@@ -335,15 +341,18 @@ def wrapping_int64(value):
         (9223372036854775807 - (-9223372036854775808)) + 1,
     )
     if r < 0:
-        narrowed = (r + ((9223372036854775807 - (-9223372036854775808)) + 1)) + (
-            -9223372036854775808
-        )
+        narrowed = (
+            r + ((9223372036854775807 - (-9223372036854775808)) + 1)
+        ) + (-9223372036854775808)
         if narrowed < (-9223372036854775808) or narrowed > 9223372036854775807:
             lsf_outside("Int64")
         return narrowed
     else:
         narrowed_2 = r + (-9223372036854775808)
-        if narrowed_2 < (-9223372036854775808) or narrowed_2 > 9223372036854775807:
+        if (
+            narrowed_2 < (-9223372036854775808)
+            or narrowed_2 > 9223372036854775807
+        ):
             lsf_outside("Int64")
         return narrowed_2
 
@@ -462,7 +471,13 @@ def assignment_in(m, ms):
 
 
 # clusterAddPartitionsToTxnRequest — ../src/contract.lawspec:283
-def cluster_add_partitions_to_txn_request(state, value0, value1, value2, value3):
+def cluster_add_partitions_to_txn_request(
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     return lawtwin_kafka_model_add_partitions_to_txn(
         value0,
         value1,
@@ -474,7 +489,13 @@ def cluster_add_partitions_to_txn_request(state, value0, value1, value2, value3)
 
 # clusterCommitOffsets — ../src/contract.lawspec:302
 def cluster_commit_offsets(state, value0, value1, value2, value3):
-    return lawtwin_kafka_model_offset_commit(value0, value1, value2, value3, state)
+    return lawtwin_kafka_model_offset_commit(
+        value0,
+        value1,
+        value2,
+        value3,
+        state,
+    )
 
 
 # clusterCreatePartitions — ../src/contract.lawspec:294
@@ -553,7 +574,14 @@ def cluster_sync_group(state, value0, value1, value2):
 
 
 # clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284
-def cluster_txn_offset_commit_request(state, value0, value1, value2, value3, value4):
+def cluster_txn_offset_commit_request(
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+    value4,
+):
     return lawtwin_kafka_model_txn_offset_commit(
         value0,
         value1,
@@ -710,7 +738,15 @@ def consumer_isolation(level, c):
     subscription = c[3]
     assigned = c[4]
     positions = c[5]
-    value = (group, member, generation, subscription, assigned, positions, replacement)
+    value = (
+        group,
+        member,
+        generation,
+        subscription,
+        assigned,
+        positions,
+        replacement,
+    )
     return (None, value)
 
 
@@ -1357,7 +1393,11 @@ def kafka_transactions_abort_transaction(symbols, txn_state):
 
 
 # kafkaTransactionsAddPartitionsToTransaction — ../src/contract.lawspec:1734
-def kafka_transactions_add_partitions_to_transaction(symbols, txn_state, value0):
+def kafka_transactions_add_partitions_to_transaction(
+    symbols,
+    txn_state,
+    value0,
+):
     return transactions_add(symbols, value0, txn_state)
 
 
@@ -1382,7 +1422,12 @@ def kafka_transactions_send_in_transaction(symbols, txn_state, value0):
 
 
 # kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736
-def kafka_transactions_send_offsets_to_transaction(symbols, txn_state, value0, value1):
+def kafka_transactions_send_offsets_to_transaction(
+    symbols,
+    txn_state,
+    value0,
+    value1,
+):
     return transactions_offsets(symbols, value0, value1, txn_state)
 
 
@@ -1415,7 +1460,10 @@ def keep_positions(tps, positions, acc):
 
 
 # keyValDeleteItems — <lawspec.collections>:258
-def lawspec_collections_key_val_delete_items_int64_list_entry_int64_int64(k, es):
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_int64(
+    k,
+    es,
+):
     it = es
     if it is None:
         return es
@@ -1440,7 +1488,10 @@ def lawspec_collections_key_val_delete_items_int64_list_entry_int64_int64(k, es)
 
 
 # keyValDeleteItems — <lawspec.collections>:258
-def lawspec_collections_key_val_delete_items_text_list_entry_text_list_text(k, es):
+def lawspec_collections_key_val_delete_items_text_list_entry_text_list_text(
+    k,
+    es,
+):
     it = es
     if it is None:
         return es
@@ -1505,12 +1556,10 @@ def lawspec_collections_key_val_from_items_list_entry_text_int64_list_entry_text
             match_selection = it_2[0]
             match_selection_2 = it_2[1]
             next_value = selection_2
-            next_value_2 = (
-                lawspec_collections_key_val_put_items_text_int64_list_entry_text_int64(
-                    match_selection,
-                    match_selection_2,
-                    acc,
-                )
+            next_value_2 = lawspec_collections_key_val_put_items_text_int64_list_entry_text_int64(
+                match_selection,
+                match_selection_2,
+                acc,
             )
             es = next_value
             acc = next_value_2
@@ -1663,12 +1712,10 @@ def lawspec_collections_key_val_from_items_list_entry_text_int32_list_entry_text
             match_selection = it_2[0]
             match_selection_2 = it_2[1]
             next_value = selection_2
-            next_value_2 = (
-                lawspec_collections_key_val_put_items_text_int32_list_entry_text_int32(
-                    match_selection,
-                    match_selection_2,
-                    acc,
-                )
+            next_value_2 = lawspec_collections_key_val_put_items_text_int32_list_entry_text_int32(
+                match_selection,
+                match_selection_2,
+                acc,
             )
             es = next_value
             acc = next_value_2
@@ -1769,12 +1816,10 @@ def lawspec_collections_key_val_from_items_list_entry_text_group_list_entry_text
             match_selection = it_2[0]
             match_selection_2 = it_2[1]
             next_value = selection_2
-            next_value_2 = (
-                lawspec_collections_key_val_put_items_text_group_list_entry_text_group(
-                    match_selection,
-                    match_selection_2,
-                    acc,
-                )
+            next_value_2 = lawspec_collections_key_val_put_items_text_group_list_entry_text_group(
+                match_selection,
+                match_selection_2,
+                acc,
             )
             es = next_value
             acc = next_value_2
@@ -2010,7 +2055,10 @@ def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_producer_ent
 
 
 # keyValLookupItems — <lawspec.collections>:271
-def lawspec_collections_key_val_lookup_items_text_list_entry_text_list_text(k, es):
+def lawspec_collections_key_val_lookup_items_text_list_entry_text_list_text(
+    k,
+    es,
+):
     while True:
         it = es
         if it is None:
@@ -2082,7 +2130,10 @@ def lawspec_collections_key_val_lookup_items_text_list_entry_text_group(k, es):
 
 
 # keyValLookupItems — <lawspec.collections>:271
-def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_int64(k, es):
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_int64(
+    k,
+    es,
+):
     while True:
         it = es
         if it is None:
@@ -2136,12 +2187,18 @@ def lawspec_collections_key_val_lookup_topic_partition_key_val_topic_partition_i
 
 
 # keyValLookup — <lawspec.collections>:311
-def lawspec_collections_key_val_lookup_int64_key_val_int64_list_batch_meta(k, m):
+def lawspec_collections_key_val_lookup_int64_key_val_int64_list_batch_meta(
+    k,
+    m,
+):
     return lsf_lookup(m, k)
 
 
 # keyValLookup — <lawspec.collections>:311
-def lawspec_collections_key_val_lookup_text_key_val_text_list_topic_partition(k, m):
+def lawspec_collections_key_val_lookup_text_key_val_text_list_topic_partition(
+    k,
+    m,
+):
     return lsf_lookup(m, k)
 
 
@@ -2338,7 +2395,11 @@ def lawspec_collections_key_val_put_items_group_partition_int64_list_entry_group
 
 
 # keyValPutItems — <lawspec.collections>:245
-def lawspec_collections_key_val_put_items_text_group_list_entry_text_group(k, v, es):
+def lawspec_collections_key_val_put_items_text_group_list_entry_text_group(
+    k,
+    v,
+    es,
+):
     it = es
     if it is None:
         record_field = k
@@ -2412,7 +2473,11 @@ def lawspec_collections_key_val_put_items_int64_producer_entry_list_entry_int64_
 
 
 # keyValPutItems — <lawspec.collections>:245
-def lawspec_collections_key_val_put_items_text_int32_list_entry_text_int32(k, v, es):
+def lawspec_collections_key_val_put_items_text_int32_list_entry_text_int32(
+    k,
+    v,
+    es,
+):
     it = es
     if it is None:
         record_field = k
@@ -2447,7 +2512,11 @@ def lawspec_collections_key_val_put_items_text_int32_list_entry_text_int32(k, v,
 
 
 # keyValPutItems — <lawspec.collections>:245
-def lawspec_collections_key_val_put_items_text_int64_list_entry_text_int64(k, v, es):
+def lawspec_collections_key_val_put_items_text_int64_list_entry_text_int64(
+    k,
+    v,
+    es,
+):
     it = es
     if it is None:
         record_field = k
@@ -2677,7 +2746,11 @@ def lawspec_collections_key_val_put_items_topic_partition_int32_list_entry_topic
 
 
 # keyValPutItems — <lawspec.collections>:245
-def lawspec_collections_key_val_put_items_int64_int64_list_entry_int64_int64(k, v, es):
+def lawspec_collections_key_val_put_items_int64_int64_list_entry_int64_int64(
+    k,
+    v,
+    es,
+):
     it = es
     if it is None:
         record_field = k
@@ -2772,7 +2845,11 @@ def lawspec_collections_key_val_put_int64_int64_key_val_int64_int64(k, v, m):
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_list_text_key_val_text_list_text(k, v, m):
+def lawspec_collections_key_val_put_text_list_text_key_val_text_list_text(
+    k,
+    v,
+    m,
+):
     return lsf_put(m, k, v)
 
 
@@ -2832,9 +2909,11 @@ def lawspec_collections_set_from_items_list_int32_list_int32(xs, acc):
             selection = it[0]
             selection_2 = it[1]
             next_value = selection_2
-            next_value_2 = lawspec_collections_set_insert_items_int32_list_int32(
-                selection,
-                acc,
+            next_value_2 = (
+                lawspec_collections_set_insert_items_int32_list_int32(
+                    selection,
+                    acc,
+                )
             )
             xs = next_value
             acc = next_value_2
@@ -2851,9 +2930,11 @@ def lawspec_collections_set_from_items_list_int64_list_int64(xs, acc):
             selection = it[0]
             selection_2 = it[1]
             next_value = selection_2
-            next_value_2 = lawspec_collections_set_insert_items_int64_list_int64(
-                selection,
-                acc,
+            next_value_2 = (
+                lawspec_collections_set_insert_items_int64_list_int64(
+                    selection,
+                    acc,
+                )
             )
             xs = next_value
             acc = next_value_2
@@ -2893,7 +2974,10 @@ def lawspec_collections_set_insert_items_int32_list_int32(x, xs):
         elif it_2 == 1:
             return lsf_cons(
                 selection,
-                lawspec_collections_set_insert_items_int32_list_int32(x, selection_2),
+                lawspec_collections_set_insert_items_int32_list_int32(
+                    x,
+                    selection_2,
+                ),
             )
         else:
             return lsf_cons(x, xs)
@@ -2913,7 +2997,10 @@ def lawspec_collections_set_insert_items_int64_list_int64(x, xs):
         elif it_2 == 1:
             return lsf_cons(
                 selection,
-                lawspec_collections_set_insert_items_int64_list_int64(x, selection_2),
+                lawspec_collections_set_insert_items_int64_list_int64(
+                    x,
+                    selection_2,
+                ),
             )
         else:
             return lsf_cons(x, xs)
@@ -2933,7 +3020,10 @@ def lawspec_collections_set_insert_items_text_list_text(x, xs):
         elif it_2 == 1:
             return lsf_cons(
                 selection,
-                lawspec_collections_set_insert_items_text_list_text(x, selection_2),
+                lawspec_collections_set_insert_items_text_list_text(
+                    x,
+                    selection_2,
+                ),
             )
         else:
             return lsf_cons(x, xs)
@@ -2993,7 +3083,10 @@ def lawspec_collections_set_remove_items_text_list_text(x, xs):
         elif it_2 == 1:
             return lsf_cons(
                 selection,
-                lawspec_collections_set_remove_items_text_list_text(x, selection_2),
+                lawspec_collections_set_remove_items_text_list_text(
+                    x,
+                    selection_2,
+                ),
             )
         else:
             return xs
@@ -3035,7 +3128,10 @@ def lawtwin_kafka_model_add_partitions_to_txn(txid, pid, epoch, tps, b):
             txn_offsets_2 = selection[0]
             value_5 = txn_offsets_2
             selection_3 = value_5
-            txn_partitions_3 = lawtwin_kafka_model_union_partitions(tps, selection_2)
+            txn_partitions_3 = lawtwin_kafka_model_union_partitions(
+                tps,
+                selection_2,
+            )
             txn_offsets_3 = selection_3
             value_6 = (txn_offsets_3, txn_partitions_3)
             value = (1, value_6)
@@ -3102,7 +3198,13 @@ def lawtwin_kafka_model_append_batch(rs, writer, transactional, l):
     open_txns_5 = l[2]
     aborted_txns = l[3]
     batches = l[4]
-    value_9 = (replacement_3, log_end_offset_3, open_txns_5, aborted_txns, batches)
+    value_9 = (
+        replacement_3,
+        log_end_offset_3,
+        open_txns_5,
+        aborted_txns,
+        batches,
+    )
     matched = value_9
     entries_2 = matched[0]
     open_txns_6 = matched[2]
@@ -3419,7 +3521,9 @@ def lawtwin_kafka_model_create_partitions(name, total, b):
     it = lawtwin_kafka_model_partition_count_of(name, b)
     if it:
         selection = it[0]
-        if (total <= selection) or (total > lawtwin_kafka_model_max_partitions(None)):
+        if (total <= selection) or (
+            total > lawtwin_kafka_model_max_partitions(None)
+        ):
             raise ls.Failure(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 to_kafka_error(3),
@@ -3669,7 +3773,12 @@ def lawtwin_kafka_model_fetch(tp, from_, max_records, isolation, b):
             )
             record_field_3 = hw
             record_field_4 = lso
-            value_5 = (record_field, record_field_2, record_field_3, record_field_4)
+            value_5 = (
+                record_field,
+                record_field_2,
+                record_field_3,
+                record_field_4,
+            )
             return (value_5, b)
 
 
@@ -3837,7 +3946,11 @@ def lawtwin_kafka_model_is_aborted(writer, offset, aborted):
             last_offset = selection[2]
             value_3 = last_offset
             logic_2 = offset <= value_3
-        return logic_2 or lawtwin_kafka_model_is_aborted(writer, offset, selection_2)
+        return logic_2 or lawtwin_kafka_model_is_aborted(
+            writer,
+            offset,
+            selection_2,
+        )
 
 
 # lawtwinKafkaModelJoinGroup — ../src/model.lawspec:861
@@ -4186,7 +4299,12 @@ def lawtwin_kafka_model_offset_commit(g, member, generation, offsets, b):
                         to_kafka_error(0),
                     )
             else:
-                checked = lawtwin_kafka_model_check_member(g, member, generation, b)
+                checked = lawtwin_kafka_model_check_member(
+                    g,
+                    member,
+                    generation,
+                    b,
+                )
                 return (None, lawtwin_kafka_model_commit_all(g, offsets, b))
 
 
@@ -4210,7 +4328,10 @@ def lawtwin_kafka_model_offset_partitions(offsets):
         selection_2 = it[1]
         topic_partition = selection[0]
         value = topic_partition
-        return lsf_cons(value, lawtwin_kafka_model_offset_partitions(selection_2))
+        return lsf_cons(
+            value,
+            lawtwin_kafka_model_offset_partitions(selection_2),
+        )
 
 
 # lawtwinKafkaModelPartitionCountOf — ../src/model.lawspec:257
@@ -4266,7 +4387,13 @@ def lawtwin_kafka_model_produce(tp, tag, rs, b):
             it = tag
             if it:
                 selection = it[0]
-                return lawtwin_kafka_model_produce_tagged(tp, selection, rs, l, b)
+                return lawtwin_kafka_model_produce_tagged(
+                    tp,
+                    selection,
+                    rs,
+                    l,
+                    b,
+                )
             else:
                 return (
                     lawtwin_kafka_model_high_watermark(l),
@@ -4461,7 +4588,14 @@ def lawtwin_kafka_model_put_producer(pid, entry, b):
 
 
 # lawtwinKafkaModelReadable — ../src/model.lawspec:450
-def lawtwin_kafka_model_readable(es, from_, limit, committed_only, aborted, acc):
+def lawtwin_kafka_model_readable(
+    es,
+    from_,
+    limit,
+    committed_only,
+    aborted,
+    acc,
+):
     while True:
         it = es
         if it is None:
@@ -4699,7 +4833,10 @@ def lawtwin_kafka_model_subscribers_of(topic, subs):
 def lawtwin_kafka_model_subscribes_to(topic, group):
     subscriptions = group[1]
     value_2 = subscriptions
-    matched = lawtwin_kafka_model_subscribers_of(topic, lsf_entries_list(value_2))
+    matched = lawtwin_kafka_model_subscribers_of(
+        topic,
+        lsf_entries_list(value_2),
+    )
     if matched is None:
         value = True
     else:
@@ -4772,7 +4909,11 @@ def lawtwin_kafka_model_txn_offset_commit(txid, pid, epoch, group, offsets, b):
             value_5 = txn_offsets_2
             selection_3 = value_5
             txn_partitions_3 = selection_2
-            txn_offsets_3 = lawtwin_kafka_model_pending_for(group, offsets, selection_3)
+            txn_offsets_3 = lawtwin_kafka_model_pending_for(
+                group,
+                offsets,
+                selection_3,
+            )
             value_6 = (txn_offsets_3, txn_partitions_3)
             value = (1, value_6)
         next_ = value
@@ -4864,7 +5005,13 @@ def lawtwin_kafka_model_write_marker(pid, commit, l):
     open_txns_3 = l[2]
     aborted_txns_4 = l[3]
     batches = l[4]
-    value_10 = (replacement_4, log_end_offset_4, open_txns_3, aborted_txns_4, batches)
+    value_10 = (
+        replacement_4,
+        log_end_offset_4,
+        open_txns_3,
+        aborted_txns_4,
+        batches,
+    )
     matched = value_10
     entries_2 = matched[0]
     open_txns_4 = matched[2]
@@ -4876,7 +5023,13 @@ def lawtwin_kafka_model_write_marker(pid, commit, l):
     log_end_offset_5 = matched_2[1]
     aborted_txns_6 = matched_2[3]
     batches_3 = matched_2[4]
-    value_6 = (entries_3, log_end_offset_5, replacement_2, aborted_txns_6, batches_3)
+    value_6 = (
+        entries_3,
+        log_end_offset_5,
+        replacement_2,
+        aborted_txns_6,
+        batches_3,
+    )
     matched_3 = value_6
     entries_4 = matched_3[0]
     log_end_offset_6 = matched_3[1]
@@ -4948,7 +5101,10 @@ def mul32(a, b):
 
 # murmur2 — ../src/contract.lawspec:1061
 def murmur2(key):
-    h = murmur_chunks(lsf_octets(key), xor32(2538058380, wrapping_u_int32(len(key))))
+    h = murmur_chunks(
+        lsf_octets(key),
+        xor32(2538058380, wrapping_u_int32(len(key))),
+    )
     h1 = mul32(xor32(h, wrapping_u_int32(lsf_quot(h, 8192))), murmur_m(None))
     return xor32(h1, wrapping_u_int32(lsf_quot(h1, 32768)))
 
@@ -4987,7 +5143,9 @@ def murmur_chunks(octets, h):
                                 xor32(
                                     xor32(
                                         h,
-                                        wrapping_u_int32(match_match_selection * 65536),
+                                        wrapping_u_int32(
+                                            match_match_selection * 65536,
+                                        ),
                                     ),
                                     wrapping_u_int32(match_selection * 256),
                                 ),
@@ -5050,14 +5208,18 @@ def owned_of(t, ms):
         selection_2 = it[1]
         assigned = selection[1]
         value = assigned
-        return lsf_append(partitions_of_topic(t, value), owned_of(t, selection_2))
+        return lsf_append(
+            partitions_of_topic(t, value),
+            owned_of(t, selection_2),
+        )
 
 
 # partitionOf — ../src/contract.lawspec:597
 def partition_of(symbols, topic, choice, r):
-    performed = ls.handler(symbols, "lawtwin.kafka::ability::Broker").metadataRequest(
-        nout_text(topic, symbols),
-    )
+    performed = ls.handler(
+        symbols,
+        "lawtwin.kafka::ability::Broker",
+    ).metadataRequest(nout_text(topic, symbols))
     it = nin_maybe_int32(performed, symbols)
     if it:
         selection = it[0]
@@ -5140,7 +5302,9 @@ def poll_partitions(symbols, tps, n, c, acc):
                     raise ls.Failure(
                         "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                         ls.handler_schema(_lawspec_schema).from_native(
-                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
                             error.value,
                             MACHINE_BITS,
                             symbols,
@@ -5172,7 +5336,10 @@ def poll_partitions(symbols, tps, n, c, acc):
                 next_value_2 = with_position(selection, value_5, value_6)
                 records = match_selection[0]
                 value_7 = records
-                next_value_3 = lsf_append(acc, consumer_records(selection, value_7))
+                next_value_3 = lsf_append(
+                    acc,
+                    consumer_records(selection, value_7),
+                )
                 tps = next_value
                 c = next_value_2
                 acc = next_value_3
@@ -5199,7 +5366,10 @@ def positions_to_commit(tps, positions):
                 record_field = selection
                 record_field_2 = match_selection
                 value = (record_field, record_field_2)
-                return lsf_cons(value, positions_to_commit(selection_2, positions))
+                return lsf_cons(
+                    value,
+                    positions_to_commit(selection_2, positions),
+                )
             else:
                 next_value = selection_2
                 tps = next_value
@@ -5390,7 +5560,11 @@ def producer_send(symbols, pr, st):
             replacement = (value_11,)
             sequences_2 = st[1]
             value_14 = sequences_2
-            replacement_2 = lsf_put(value_14, selection, saturating_int32(sequence + 1))
+            replacement_2 = lsf_put(
+                value_14,
+                selection,
+                saturating_int32(sequence + 1),
+            )
             identity_2 = st[0]
             last_send = st[2]
             value_13 = (identity_2, replacement_2, last_send)
@@ -5487,7 +5661,10 @@ def read_in_order(symbols, a, b, first, second):
                 performed_2 = ls.handler(
                     symbols,
                     "lawtwin.kafka::ability::Consumer",
-                ).seek(nout_topic_partition(tp, symbols), nout_int64(value_7, symbols))
+                ).seek(
+                    nout_topic_partition(tp, symbols),
+                    nout_int64(value_7, symbols),
+                )
                 matched = nin_either_kafka_error_unit(performed_2, symbols)
                 if matched[0]:
                     value_6 = True
@@ -5576,7 +5753,10 @@ def resumes_at_committed(symbols, t, g, m, n):
     record_field_2 = 0
     value = (record_field, record_field_2)
     tp = value
-    performed = ls.handler(symbols, "lawtwin.kafka::ability::Consumer").subscribe(
+    performed = ls.handler(
+        symbols,
+        "lawtwin.kafka::ability::Consumer",
+    ).subscribe(
         nout_text(g, symbols),
         nout_text(m, symbols),
         nout_list_text(lsf_cons(t, None), symbols),
@@ -5586,19 +5766,29 @@ def resumes_at_committed(symbols, t, g, m, n):
         nout_int32(n, symbols),
     )
     polled = nin_either_kafka_error_list_consumer_record(performed_2, symbols)
-    performed_3 = ls.handler(symbols, "lawtwin.kafka::ability::Consumer").commitSync()
+    performed_3 = ls.handler(
+        symbols,
+        "lawtwin.kafka::ability::Consumer",
+    ).commitSync()
     committed = nin_either_kafka_error_unit(performed_3, symbols)
-    performed_4 = ls.handler(symbols, "lawtwin.kafka::ability::Consumer").close()
+    performed_4 = ls.handler(
+        symbols,
+        "lawtwin.kafka::ability::Consumer",
+    ).close()
     ignored = nin_unit(performed_4, symbols)
-    performed_5 = ls.handler(symbols, "lawtwin.kafka::ability::Consumer").subscribe(
+    performed_5 = ls.handler(
+        symbols,
+        "lawtwin.kafka::ability::Consumer",
+    ).subscribe(
         nout_text(g, symbols),
         nout_text(m, symbols),
         nout_list_text(lsf_cons(t, None), symbols),
     )
     rejoined = nin_either_kafka_error_list_topic_partition(performed_5, symbols)
-    performed_6 = ls.handler(symbols, "lawtwin.kafka::ability::Consumer").position(
-        nout_topic_partition(tp, symbols),
-    )
+    performed_6 = ls.handler(
+        symbols,
+        "lawtwin.kafka::ability::Consumer",
+    ).position(nout_topic_partition(tp, symbols))
     resumed = nin_either_kafka_error_int64(performed_6, symbols)
     performed_7 = ls.handler(
         symbols,
@@ -5644,7 +5834,10 @@ def resumes_at_committed(symbols, t, g, m, n):
                 it_2 = again
                 if it_2[0]:
                     match_selection = it_2[1]
-                    value_7 = all_at_least(selection, received_offsets(match_selection))
+                    value_7 = all_at_least(
+                        selection,
+                        received_offsets(match_selection),
+                    )
                 else:
                     value_7 = False
                 logic_4 = value_7
@@ -5997,14 +6190,19 @@ def transaction_then_read(symbols, t, txid, batch, commit):
                         "lawtwin.kafka::ability::Broker",
                     ).produceRequest(
                         nout_topic_partition(tp, symbols),
-                        nout_maybe_producer_tag((tag_of(selection, 0),), symbols),
+                        nout_maybe_producer_tag(
+                            (tag_of(selection, 0),),
+                            symbols,
+                        ),
                         nout_list_record(batch, symbols),
                     )
                 except ls.Fail as error:
                     raise ls.Failure(
                         "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                         ls.handler_schema(_lawspec_schema).from_native(
-                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
                             error.value,
                             MACHINE_BITS,
                             symbols,
@@ -6055,7 +6253,9 @@ def transaction_then_read(symbols, t, txid, batch, commit):
                         raise ls.Failure(
                             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                             ls.handler_schema(_lawspec_schema).from_native(
-                                _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                                _schema.Named(
+                                    "lawtwin.kafka.model::type::KafkaError",
+                                ),
                                 error.value,
                                 MACHINE_BITS,
                                 symbols,
@@ -6078,19 +6278,29 @@ def transaction_then_read(symbols, t, txid, batch, commit):
                     value_10 = (0, failure_4)
                 it_4 = value_10
                 if it_4[0]:
-                    logic = (hidden_while_open and seen_uncommitted) and eq_list_record(
+                    logic = (
+                        hidden_while_open and seen_uncommitted
+                    ) and eq_list_record(
                         uncommitted_from(symbols, tp, match_match_selection),
                         batch,
                     )
                     if logic:
                         if commit:
                             value_14 = eq_list_record(
-                                committed_from(symbols, tp, match_match_selection),
+                                committed_from(
+                                    symbols,
+                                    tp,
+                                    match_match_selection,
+                                ),
                                 batch,
                             )
                         else:
                             value_14 = eq_list_record(
-                                committed_from(symbols, tp, match_match_selection),
+                                committed_from(
+                                    symbols,
+                                    tp,
+                                    match_match_selection,
+                                ),
                                 None,
                             )
                         logic = value_14
@@ -6114,7 +6324,10 @@ def transactional_offsets(symbols, t, txid, g, offset):
     performed = ls.handler(
         symbols,
         "lawtwin.kafka::ability::Broker",
-    ).offsetFetchRequest(nout_text(g, symbols), nout_topic_partition(tp, symbols))
+    ).offsetFetchRequest(
+        nout_text(g, symbols),
+        nout_topic_partition(tp, symbols),
+    )
     before = nin_maybe_int64(performed, symbols)
     try:
         try:
@@ -6239,7 +6452,10 @@ def transactional_offsets(symbols, t, txid, g, offset):
         performed_5 = ls.handler(
             symbols,
             "lawtwin.kafka::ability::Broker",
-        ).offsetFetchRequest(nout_text(g, symbols), nout_topic_partition(tp, symbols))
+        ).offsetFetchRequest(
+            nout_text(g, symbols),
+            nout_topic_partition(tp, symbols),
+        )
         after_abort = nin_maybe_int64(performed_5, symbols)
         try:
             producer_id_3 = selection[0]
@@ -6415,7 +6631,9 @@ def transactions_add(symbols, tps, st):
                         raise ls.Failure(
                             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                             ls.handler_schema(_lawspec_schema).from_native(
-                                _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                                _schema.Named(
+                                    "lawtwin.kafka.model::type::KafkaError",
+                                ),
                                 error.value,
                                 MACHINE_BITS,
                                 symbols,
@@ -6619,7 +6837,9 @@ def transactions_end(symbols, commit, st):
                         raise ls.Failure(
                             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                             ls.handler_schema(_lawspec_schema).from_native(
-                                _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                                _schema.Named(
+                                    "lawtwin.kafka.model::type::KafkaError",
+                                ),
                                 error.value,
                                 MACHINE_BITS,
                                 symbols,
@@ -6784,7 +7004,9 @@ def transactions_offsets(symbols, g, offsets, st):
                     raise ls.Failure(
                         "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                         ls.handler_schema(_lawspec_schema).from_native(
-                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
                             error.value,
                             MACHINE_BITS,
                             symbols,
@@ -6865,14 +7087,19 @@ def transactions_send(symbols, pr, st):
                         "lawtwin.kafka::ability::Broker",
                     ).produceRequest(
                         nout_topic_partition(selection, symbols),
-                        nout_maybe_producer_tag(tag_for(value_8, sequence), symbols),
+                        nout_maybe_producer_tag(
+                            tag_for(value_8, sequence),
+                            symbols,
+                        ),
                         nout_list_record(lsf_cons(value_10, None), symbols),
                     )
                 except ls.Fail as error:
                     raise ls.Failure(
                         "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                         ls.handler_schema(_lawspec_schema).from_native(
-                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
                             error.value,
                             MACHINE_BITS,
                             symbols,
@@ -7071,7 +7298,15 @@ def with_position(tp, offset, c):
     subscription = c[3]
     assigned = c[4]
     isolation = c[6]
-    return (group, member, generation, subscription, assigned, replacement, isolation)
+    return (
+        group,
+        member,
+        generation,
+        subscription,
+        assigned,
+        replacement,
+        isolation,
+    )
 
 
 # writeAborted — ../src/contract.lawspec:1452
@@ -7208,7 +7443,9 @@ def write_aborted(symbols, tp, txid, r):
                     raise ls.Failure(
                         "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                         ls.handler_schema(_lawspec_schema).from_native(
-                            _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
                             error.value,
                             MACHINE_BITS,
                             symbols,
@@ -7254,7 +7491,11 @@ def xor_bits(a, b, bit):
             value = bit
         else:
             value = 0
-        return value + xor_bits(lsf_rem(a, bit), lsf_rem(b, bit), lsf_quot(bit, 2))
+        return value + xor_bits(
+            lsf_rem(a, bit),
+            lsf_rem(b, bit),
+            lsf_quot(bit, 2),
+        )
 
 
 # topicPartitions — ../src/model.lawspec:236
@@ -7552,13 +7793,19 @@ def from_maybe_list_text(v):
 
 # From the dynamic value of a Maybe (List BatchMeta).
 def from_maybe_list_batch_meta(v):
-    return (from_list_batch_meta(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    return (
+        (from_list_batch_meta(v.fields[0]),)
+        if v.tag == "Maybe::Present"
+        else ()
+    )
 
 
 # From the dynamic value of a Maybe (List TopicPartition).
 def from_maybe_list_topic_partition(v):
     return (
-        (from_list_topic_partition(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+        (from_list_topic_partition(v.fields[0]),)
+        if v.tag == "Maybe::Present"
+        else ()
     )
 
 
@@ -7594,24 +7841,32 @@ def from_maybe_group(v):
 
 # From the dynamic value of a Maybe PartitionLog.
 def from_maybe_partition_log(v):
-    return (from_partition_log(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    return (
+        (from_partition_log(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    )
 
 
 # From the dynamic value of a Maybe ProducerEntry.
 def from_maybe_producer_entry(v):
-    return (from_producer_entry(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    return (
+        (from_producer_entry(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    )
 
 
 # From the dynamic value of a Maybe ProducerIdAndEpoch.
 def from_maybe_producer_id_and_epoch(v):
     return (
-        (from_producer_id_and_epoch(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+        (from_producer_id_and_epoch(v.fields[0]),)
+        if v.tag == "Maybe::Present"
+        else ()
     )
 
 
 # From the dynamic value of a Maybe ProducerTag.
 def from_maybe_producer_tag(v):
-    return (from_producer_tag(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    return (
+        (from_producer_tag(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    )
 
 
 # From the dynamic value of a Text.
@@ -7696,7 +7951,11 @@ def from_key_val_text_list_text(v):
 def from_key_val_text_list_topic_partition(v):
     out = None
     for item in v.fields[0]:
-        out = lsf_put(out, item.fields[0], from_list_topic_partition(item.fields[1]))
+        out = lsf_put(
+            out,
+            item.fields[0],
+            from_list_topic_partition(item.fields[1]),
+        )
     return out
 
 
@@ -7865,7 +8124,10 @@ def from_pair_int64_consumer_state(v):
 # From the dynamic value of a Pair (List TopicPartition) BrokerState.
 def from_pair_list_topic_partition_broker_state(v):
     if v.tag == "lawspec.collections::type::Pair::Pair":
-        return (from_list_topic_partition(v.fields[0]), from_broker_state(v.fields[1]))
+        return (
+            from_list_topic_partition(v.fields[0]),
+            from_broker_state(v.fields[1]),
+        )
     raise ValueError("expected Pair, found " + v.tag)
 
 
@@ -7938,7 +8200,10 @@ def from_pair_group_view_broker_state(v):
 # From the dynamic value of a Pair ProducerIdAndEpoch BrokerState.
 def from_pair_producer_id_and_epoch_broker_state(v):
     if v.tag == "lawspec.collections::type::Pair::Pair":
-        return (from_producer_id_and_epoch(v.fields[0]), from_broker_state(v.fields[1]))
+        return (
+            from_producer_id_and_epoch(v.fields[0]),
+            from_broker_state(v.fields[1]),
+        )
     raise ValueError("expected Pair, found " + v.tag)
 
 
@@ -8031,7 +8296,10 @@ def from_isolation_level(v):
 
 # From the dynamic value of a KafkaError.
 def from_kafka_error(v):
-    if v.tag == "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition":
+    if (
+        v.tag
+        == "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition"
+    ):
         return 16
     if v.tag == "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists":
         return 13
@@ -8045,7 +8313,10 @@ def from_kafka_error(v):
         return 7
     if v.tag == "lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange":
         return 10
-    if v.tag == "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber":
+    if (
+        v.tag
+        == "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber"
+    ):
         return 11
     if v.tag == "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch":
         return 4
@@ -8053,7 +8324,10 @@ def from_kafka_error(v):
         return 12
     if v.tag == "lawtwin.kafka.model::type::KafkaError::UnknownProducerId":
         return 15
-    if v.tag == "lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping":
+    if (
+        v.tag
+        == "lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping"
+    ):
         return 5
     if v.tag == "lawtwin.kafka.model::type::KafkaError::InvalidTxnState":
         return 9
@@ -8093,13 +8367,20 @@ def from_partition_log(v):
 # From the dynamic value of a ProducerEntry.
 def from_producer_entry(v):
     if v.tag == "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry":
-        return (v.fields[0], from_maybe_text(v.fields[1]), from_txn_state(v.fields[2]))
+        return (
+            v.fields[0],
+            from_maybe_text(v.fields[1]),
+            from_txn_state(v.fields[2]),
+        )
     raise ValueError("expected ProducerEntry, found " + v.tag)
 
 
 # From the dynamic value of a ProducerIdAndEpoch.
 def from_producer_id_and_epoch(v):
-    if v.tag == "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
+    if (
+        v.tag
+        == "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch"
+    ):
         return (v.fields[0], v.fields[1])
     raise ValueError("expected ProducerIdAndEpoch, found " + v.tag)
 
@@ -8244,7 +8525,11 @@ def nin_either_kafka_error_list_topic_partition(n, symbols):
                     _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                     _schema.Named(
                         "List",
-                        [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::TopicPartition",
+                            ),
+                        ],
                     ),
                 ],
             ),
@@ -8306,7 +8591,9 @@ def nin_either_kafka_error_producer_id_and_epoch(n, symbols):
                 "Either",
                 [
                     _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch"),
+                    _schema.Named(
+                        "lawtwin.kafka.model::type::ProducerIdAndEpoch",
+                    ),
                 ],
             ),
             n,
@@ -8415,7 +8702,10 @@ def nin_list_record(n, symbols):
         return fromnative_list_record(n)
     return from_list_record(
         ls.handler_schema(_lawspec_schema).from_native(
-            _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+            _schema.Named(
+                "List",
+                [_schema.Named("lawtwin.kafka.model::type::Record")],
+            ),
             n,
             MACHINE_BITS,
             symbols,
@@ -8504,7 +8794,11 @@ def nin_maybe_producer_id_and_epoch(n, symbols):
         ls.handler_schema(_lawspec_schema).from_native(
             _schema.Named(
                 "Maybe",
-                [_schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch")],
+                [
+                    _schema.Named(
+                        "lawtwin.kafka.model::type::ProducerIdAndEpoch",
+                    ),
+                ],
             ),
             n,
             MACHINE_BITS,
@@ -8758,7 +9052,11 @@ def nout_either_kafka_error_list_topic_partition(x, symbols):
                 _schema.Named("lawtwin.kafka.model::type::KafkaError"),
                 _schema.Named(
                     "List",
-                    [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
+                    [
+                        _schema.Named(
+                            "lawtwin.kafka.model::type::TopicPartition",
+                        ),
+                    ],
                 ),
             ],
         ),
@@ -8909,7 +9207,10 @@ def nout_list_record(x, symbols):
     if ls._HANDLER_SCHEMA is None:
         return tonative_list_record(x)
     return ls.handler_schema(_lawspec_schema).to_native(
-        _schema.Named("List", [_schema.Named("lawtwin.kafka.model::type::Record")]),
+        _schema.Named(
+            "List",
+            [_schema.Named("lawtwin.kafka.model::type::Record")],
+        ),
         to_list_record(x),
         MACHINE_BITS,
         symbols,
@@ -9749,7 +10050,10 @@ def to_pair_either_kafka_error_int64_consumer_state(x):
 def to_pair_either_kafka_error_list_topic_partition_consumer_state(x):
     return ls.DataValue(
         "lawspec.collections::type::Pair::Pair",
-        (to_either_kafka_error_list_topic_partition(x[0]), to_consumer_state(x[1])),
+        (
+            to_either_kafka_error_list_topic_partition(x[0]),
+            to_consumer_state(x[1]),
+        ),
     )
 
 
@@ -9757,7 +10061,10 @@ def to_pair_either_kafka_error_list_topic_partition_consumer_state(x):
 def to_pair_either_kafka_error_list_consumer_record_consumer_state(x):
     return ls.DataValue(
         "lawspec.collections::type::Pair::Pair",
-        (to_either_kafka_error_list_consumer_record(x[0]), to_consumer_state(x[1])),
+        (
+            to_either_kafka_error_list_consumer_record(x[0]),
+            to_consumer_state(x[1]),
+        ),
     )
 
 
@@ -9781,7 +10088,10 @@ def to_pair_either_kafka_error_unit_transaction_state(x):
 def to_pair_either_kafka_error_producer_id_and_epoch_producer_state(x):
     return ls.DataValue(
         "lawspec.collections::type::Pair::Pair",
-        (to_either_kafka_error_producer_id_and_epoch(x[0]), to_producer_state(x[1])),
+        (
+            to_either_kafka_error_producer_id_and_epoch(x[0]),
+            to_producer_state(x[1]),
+        ),
     )
 
 
@@ -9789,7 +10099,10 @@ def to_pair_either_kafka_error_producer_id_and_epoch_producer_state(x):
 def to_pair_either_kafka_error_producer_id_and_epoch_transaction_state(x):
     return ls.DataValue(
         "lawspec.collections::type::Pair::Pair",
-        (to_either_kafka_error_producer_id_and_epoch(x[0]), to_transaction_state(x[1])),
+        (
+            to_either_kafka_error_producer_id_and_epoch(x[0]),
+            to_transaction_state(x[1]),
+        ),
     )
 
 
@@ -9805,7 +10118,10 @@ def to_pair_either_kafka_error_record_metadata_producer_state(x):
 def to_pair_either_kafka_error_record_metadata_transaction_state(x):
     return ls.DataValue(
         "lawspec.collections::type::Pair::Pair",
-        (to_either_kafka_error_record_metadata(x[0]), to_transaction_state(x[1])),
+        (
+            to_either_kafka_error_record_metadata(x[0]),
+            to_transaction_state(x[1]),
+        ),
     )
 
 
@@ -10320,7 +10636,10 @@ def from_entry_topic_partition_int64(v):
 # From the dynamic value of a Entry TopicPartition PartitionLog.
 def from_entry_topic_partition_partition_log(v):
     if v.tag == "lawspec.collections::type::Entry::Entry":
-        return (from_topic_partition(v.fields[0]), from_partition_log(v.fields[1]))
+        return (
+            from_topic_partition(v.fields[0]),
+            from_partition_log(v.fields[1]),
+        )
     raise ValueError("expected Entry, found " + v.tag)
 
 
@@ -10527,7 +10846,11 @@ def fromnative_maybe_producer_id_and_epoch(n):
 
 # From the native value of a Maybe ProducerTag.
 def fromnative_maybe_producer_tag(n):
-    return (fromnative_producer_tag(n.value),) if isinstance(n, _schema.Present) else ()
+    return (
+        (fromnative_producer_tag(n.value),)
+        if isinstance(n, _schema.Present)
+        else ()
+    )
 
 
 # From the native value of a Text.
@@ -10907,7 +11230,11 @@ def tonative_bool(x):
 
 # To the native value of a Either KafkaError Int64.
 def tonative_either_kafka_error_int64(x):
-    return _schema.Right(x[1]) if x[0] else _schema.Left(tonative_kafka_error(x[1]))
+    return (
+        _schema.Right(x[1])
+        if x[0]
+        else _schema.Left(tonative_kafka_error(x[1]))
+    )
 
 
 # To the native value of a Either KafkaError (List TopicPartition).
@@ -11004,13 +11331,17 @@ def tonative_maybe_text(x):
 # To the native value of a Maybe ProducerIdAndEpoch.
 def tonative_maybe_producer_id_and_epoch(x):
     return (
-        _schema.Present(tonative_producer_id_and_epoch(x[0])) if x else _schema.Absent()
+        _schema.Present(tonative_producer_id_and_epoch(x[0]))
+        if x
+        else _schema.Absent()
     )
 
 
 # To the native value of a Maybe ProducerTag.
 def tonative_maybe_producer_tag(x):
-    return _schema.Present(tonative_producer_tag(x[0])) if x else _schema.Absent()
+    return (
+        _schema.Present(tonative_producer_tag(x[0])) if x else _schema.Absent()
+    )
 
 
 # To the native value of a Text.
@@ -11033,7 +11364,12 @@ def tonative_broker_state(x):
 
 # To the native value of a FetchResult.
 def tonative_fetch_result(x):
-    return data.FetchResult(tonative_list_fetched_record(x[0]), x[1], x[2], x[3])
+    return data.FetchResult(
+        tonative_list_fetched_record(x[0]),
+        x[1],
+        x[2],
+        x[3],
+    )
 
 
 # To the native value of a GroupView.
@@ -11043,7 +11379,10 @@ def tonative_group_view(x):
 
 # To the native value of a IsolationLevel.
 def tonative_isolation_level(x):
-    return (data.IsolationLevelReadCommitted, data.IsolationLevelReadUncommitted)[x]()
+    return (
+        data.IsolationLevelReadCommitted,
+        data.IsolationLevelReadUncommitted,
+    )[x]()
 
 
 # To the native value of a KafkaError.
@@ -11187,7 +11526,11 @@ def fromnative_list_consumer_record(n):
 
 # From the native value of a Maybe LastSend.
 def fromnative_maybe_last_send(n):
-    return (fromnative_last_send(n.value),) if isinstance(n, _schema.Present) else ()
+    return (
+        (fromnative_last_send(n.value),)
+        if isinstance(n, _schema.Present)
+        else ()
+    )
 
 
 # From the native value of a KeyVal Int64 ProducerEntry.
@@ -11250,7 +11593,11 @@ def fromnative_key_val_topic_partition_int64(n):
 def fromnative_key_val_topic_partition_partition_log(n):
     out = None
     for k, v in n:
-        out = lsf_put(out, fromnative_topic_partition(k), fromnative_partition_log(v))
+        out = lsf_put(
+            out,
+            fromnative_topic_partition(k),
+            fromnative_partition_log(v),
+        )
     return out
 
 
@@ -11316,7 +11663,11 @@ def to_header(x):
 def to_last_send(x):
     return ls.DataValue(
         "lawtwin.kafka::type::LastSend::LastSend",
-        (to_topic_partition(x[0]), to_maybe_producer_tag(x[1]), to_list_record(x[2])),
+        (
+            to_topic_partition(x[0]),
+            to_maybe_producer_tag(x[1]),
+            to_list_record(x[2]),
+        ),
     )
 
 
@@ -11525,7 +11876,11 @@ def tonative_partition_log(x):
 
 # To the native value of a ProducerEntry.
 def tonative_producer_entry(x):
-    return data.ProducerEntry(x[0], tonative_maybe_text(x[1]), tonative_txn_state(x[2]))
+    return data.ProducerEntry(
+        x[0],
+        tonative_maybe_text(x[1]),
+        tonative_txn_state(x[2]),
+    )
 
 
 # To the native value of a ConsumerRecord.
@@ -11714,7 +12069,12 @@ def fromnative_control_entry_details(n):
 
 # From the native value of a 71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be.
 def fromnative_data_entry_details(n):
-    return (n.entryOffset, fromnative_record(n.entryRecord), n.transactional, n.writer)
+    return (
+        n.entryOffset,
+        fromnative_record(n.entryRecord),
+        n.transactional,
+        n.writer,
+    )
 
 
 # From the native value of a BatchMeta.

@@ -16,774 +16,921 @@ using Value = LawSpec.Runtime.Value;
 /// <summary>The entries of lawspec.collections, on portable values.</summary>
 public static class LawspecCollections
 {
-    /// <summary>boundedInt16 — &lt;lawspec.collections&gt;:358</summary>
-    public static Value BoundedInt16(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
+  /// <summary>boundedInt16 — &lt;lawspec.collections&gt;:358</summary>
+  public static Value BoundedInt16(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedInt16", Fn.F0(() =>
     {
-        return Runtime.Contextual("lawspec.collections::boundedInt16", Fn.F0(() =>
-        {
-            return Codecs.Maybe(Codecs.Int16).FromNative.Invoke(
-                LawSpec.TypedProgram.BoundedInt16(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
+      return Codecs.Maybe(Codecs.Int16).FromNative.Invoke(
+          LawSpec.TypedProgram.BoundedInt16(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
 
-    /// <summary>boundedInt32 — &lt;lawspec.collections&gt;:371</summary>
-    public static Value BoundedInt32(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
+  /// <summary>boundedInt32 — &lt;lawspec.collections&gt;:371</summary>
+  public static Value BoundedInt32(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedInt32", Fn.F0(() =>
     {
-        return Runtime.Contextual("lawspec.collections::boundedInt32", Fn.F0(() =>
-        {
-            return Codecs.Maybe(Codecs.Int32).FromNative.Invoke(
-                LawSpec.TypedProgram.BoundedInt32(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
+      return Codecs.Maybe(Codecs.Int32).FromNative.Invoke(
+          LawSpec.TypedProgram.BoundedInt32(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
 
-    /// <summary>boundedInt64 — &lt;lawspec.collections&gt;:384</summary>
-    public static Value BoundedInt64(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
+  /// <summary>boundedInt64 — &lt;lawspec.collections&gt;:384</summary>
+  public static Value BoundedInt64(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedInt64", Fn.F0(() =>
     {
-        return Runtime.Contextual("lawspec.collections::boundedInt64", Fn.F0(() =>
-        {
-            return Codecs.Maybe(Codecs.Int64).FromNative.Invoke(
-                LawSpec.TypedProgram.BoundedInt64(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
+      return Codecs.Maybe(Codecs.Int64).FromNative.Invoke(
+          LawSpec.TypedProgram.BoundedInt64(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
 
-    /// <summary>boundedInt8 — &lt;lawspec.collections&gt;:345</summary>
-    public static Value BoundedInt8(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
+  /// <summary>boundedInt8 — &lt;lawspec.collections&gt;:345</summary>
+  public static Value BoundedInt8(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedInt8", Fn.F0(() =>
     {
-        return Runtime.Contextual("lawspec.collections::boundedInt8", Fn.F0(() =>
-        {
-            return Codecs.Maybe(Codecs.Int8).FromNative.Invoke(
-                LawSpec.TypedProgram.BoundedInt8(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
+      return Codecs.Maybe(Codecs.Int8).FromNative.Invoke(
+          LawSpec.TypedProgram.BoundedInt8(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
 
-    /// <summary>boundedIntSize — &lt;lawspec.collections&gt;:449</summary>
-    public static Value BoundedIntSize(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
+  /// <summary>boundedIntSize — &lt;lawspec.collections&gt;:449</summary>
+  public static Value BoundedIntSize(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedIntSize", Fn.F0(() =>
     {
-        return Runtime.Contextual("lawspec.collections::boundedIntSize", Fn.F0(() =>
+      Value ls0;
+      if (Runtime.Truth(
+          Scalar.Binary(
+              ">=",
+              value,
+              Schema.Validate(
+                  V.Int(BigInteger.Parse("-9223372036854775808")),
+                  Scalar.TypeOf("Integer"),
+                  schema),
+              "Integer",
+              "Integer")))
+      {
+        ls0 = Scalar.Binary(
+            "<=",
+            value,
+            Schema.Validate(
+                V.Int(BigInteger.Parse("9223372036854775807")),
+                Scalar.TypeOf("Integer"),
+                schema),
+            "Integer",
+            "Integer");
+      }
+      else
+      {
+        ls0 = V.Bool(false);
+      }
+
+      if (Runtime.Truth(ls0))
+      {
+        return Schema.Construct(
+            "Maybe::Present",
+            Fn.List<Value>(Scalar.Convert(value, Scalar.TypeOf("IntSize"), 64)),
+            Scalar.TypeOf("Maybe (IntSize)"),
+            schema);
+      }
+      else
+      {
+        return Schema.Construct(
+            "Maybe::Absent",
+            Fn.List<Value>(),
+            Scalar.TypeOf("Maybe (IntSize)"),
+            schema);
+      }
+    }));
+  }
+
+  /// <summary>boundedUInt16 — &lt;lawspec.collections&gt;:410</summary>
+  public static Value BoundedUInt16(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedUInt16", Fn.F0(() =>
+    {
+      return Codecs.Maybe(Codecs.UInt16).FromNative.Invoke(
+          LawSpec.TypedProgram.BoundedUInt16(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>boundedUInt32 — &lt;lawspec.collections&gt;:423</summary>
+  public static Value BoundedUInt32(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedUInt32", Fn.F0(() =>
+    {
+      return Codecs.Maybe(Codecs.UInt32).FromNative.Invoke(
+          LawSpec.TypedProgram.BoundedUInt32(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>boundedUInt64 — &lt;lawspec.collections&gt;:436</summary>
+  public static Value BoundedUInt64(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedUInt64", Fn.F0(() =>
+    {
+      return Codecs.Maybe(Codecs.UInt64).FromNative.Invoke(
+          LawSpec.TypedProgram.BoundedUInt64(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>boundedUInt8 — &lt;lawspec.collections&gt;:397</summary>
+  public static Value BoundedUInt8(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedUInt8", Fn.F0(() =>
+    {
+      return Codecs.Maybe(Codecs.UInt8).FromNative.Invoke(
+          LawSpec.TypedProgram.BoundedUInt8(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>boundedUIntPtr — &lt;lawspec.collections&gt;:475</summary>
+  public static Value BoundedUIntPtr(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedUIntPtr", Fn.F0(() =>
+    {
+      Value ls0;
+      if (Runtime.Truth(
+          Scalar.Binary(
+              ">=",
+              value,
+              Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer")))
+      {
+        ls0 = Scalar.Binary(
+            "<=",
+            value,
+            Schema.Validate(
+                V.Int(BigInteger.Parse("18446744073709551615")),
+                Scalar.TypeOf("Integer"),
+                schema),
+            "Integer",
+            "Integer");
+      }
+      else
+      {
+        ls0 = V.Bool(false);
+      }
+
+      if (Runtime.Truth(ls0))
+      {
+        return Schema.Construct(
+            "Maybe::Present",
+            Fn.List<Value>(Scalar.Convert(value, Scalar.TypeOf("UIntPtr"), 64)),
+            Scalar.TypeOf("Maybe (UIntPtr)"),
+            schema);
+      }
+      else
+      {
+        return Schema.Construct(
+            "Maybe::Absent",
+            Fn.List<Value>(),
+            Scalar.TypeOf("Maybe (UIntPtr)"),
+            schema);
+      }
+    }));
+  }
+
+  /// <summary>boundedUIntSize — &lt;lawspec.collections&gt;:462</summary>
+  public static Value BoundedUIntSize(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::boundedUIntSize", Fn.F0(() =>
+    {
+      Value ls0;
+      if (Runtime.Truth(
+          Scalar.Binary(
+              ">=",
+              value,
+              Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer")))
+      {
+        ls0 = Scalar.Binary(
+            "<=",
+            value,
+            Schema.Validate(
+                V.Int(BigInteger.Parse("18446744073709551615")),
+                Scalar.TypeOf("Integer"),
+                schema),
+            "Integer",
+            "Integer");
+      }
+      else
+      {
+        ls0 = V.Bool(false);
+      }
+
+      if (Runtime.Truth(ls0))
+      {
+        return Schema.Construct(
+            "Maybe::Present",
+            Fn.List<Value>(Scalar.Convert(value, Scalar.TypeOf("UIntSize"), 64)),
+            Scalar.TypeOf("Maybe (UIntSize)"),
+            schema);
+      }
+      else
+      {
+        return Schema.Construct(
+            "Maybe::Absent",
+            Fn.List<Value>(),
+            Scalar.TypeOf("Maybe (UIntSize)"),
+            schema);
+      }
+    }));
+  }
+
+  /// <summary>saturatingInt16 — &lt;lawspec.collections&gt;:354</summary>
+  public static Value SaturatingInt16(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingInt16", Fn.F0(() =>
+    {
+      return Codecs.Int16.FromNative.Invoke(
+          LawSpec.TypedProgram.SaturatingInt16(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>saturatingInt32 — &lt;lawspec.collections&gt;:367</summary>
+  public static Value SaturatingInt32(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingInt32", Fn.F0(() =>
+    {
+      return Codecs.Int32.FromNative.Invoke(
+          LawSpec.TypedProgram.SaturatingInt32(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>saturatingInt64 — &lt;lawspec.collections&gt;:380</summary>
+  public static Value SaturatingInt64(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingInt64", Fn.F0(() =>
+    {
+      return Codecs.Int64.FromNative.Invoke(
+          LawSpec.TypedProgram.SaturatingInt64(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>saturatingInt8 — &lt;lawspec.collections&gt;:341</summary>
+  public static Value SaturatingInt8(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingInt8", Fn.F0(() =>
+    {
+      return Codecs.Int8.FromNative.Invoke(
+          LawSpec.TypedProgram.SaturatingInt8(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>saturatingIntSize — &lt;lawspec.collections&gt;:445</summary>
+  public static Value SaturatingIntSize(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingIntSize", Fn.F0(() =>
+    {
+      if (Runtime.Truth(
+          Scalar.Binary(
+              ">",
+              value,
+              Schema.Validate(
+                  V.Int(BigInteger.Parse("9223372036854775807")),
+                  Scalar.TypeOf("Integer"),
+                  schema),
+              "Integer",
+              "Integer")))
+      {
+        return Schema.Validate(
+            Scalar.Convert(
+                Schema.Validate(
+                    V.Int(BigInteger.Parse("9223372036854775807")),
+                    Scalar.TypeOf("Integer"),
+                    schema),
+                Scalar.TypeOf("IntSize"),
+                64),
+            Scalar.TypeOf("IntSize"),
+            schema);
+      }
+      else
+      {
+        if (Runtime.Truth(
+            Scalar.Binary(
+                "<",
+                value,
+                Schema.Validate(
+                    V.Int(BigInteger.Parse("-9223372036854775808")),
+                    Scalar.TypeOf("Integer"),
+                    schema),
+                "Integer",
+                "Integer")))
         {
-            Value ls0;
-            if (Runtime.Truth(
+          return Schema.Validate(
+              Scalar.Convert(
+                  Schema.Validate(
+                      V.Int(BigInteger.Parse("-9223372036854775808")),
+                      Scalar.TypeOf("Integer"),
+                      schema),
+                  Scalar.TypeOf("IntSize"),
+                  64),
+              Scalar.TypeOf("IntSize"),
+              schema);
+        }
+        else
+        {
+          return Scalar.Convert(value, Scalar.TypeOf("IntSize"), 64);
+        }
+      }
+    }));
+  }
+
+  /// <summary>saturatingUInt16 — &lt;lawspec.collections&gt;:406</summary>
+  public static Value SaturatingUInt16(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingUInt16", Fn.F0(() =>
+    {
+      return Codecs.UInt16.FromNative.Invoke(
+          LawSpec.TypedProgram.SaturatingUInt16(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>saturatingUInt32 — &lt;lawspec.collections&gt;:419</summary>
+  public static Value SaturatingUInt32(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingUInt32", Fn.F0(() =>
+    {
+      return Codecs.UInt32.FromNative.Invoke(
+          LawSpec.TypedProgram.SaturatingUInt32(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>saturatingUInt64 — &lt;lawspec.collections&gt;:432</summary>
+  public static Value SaturatingUInt64(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingUInt64", Fn.F0(() =>
+    {
+      return Codecs.UInt64.FromNative.Invoke(
+          LawSpec.TypedProgram.SaturatingUInt64(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>saturatingUInt8 — &lt;lawspec.collections&gt;:393</summary>
+  public static Value SaturatingUInt8(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingUInt8", Fn.F0(() =>
+    {
+      return Codecs.UInt8.FromNative.Invoke(
+          LawSpec.TypedProgram.SaturatingUInt8(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>saturatingUIntPtr — &lt;lawspec.collections&gt;:471</summary>
+  public static Value SaturatingUIntPtr(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingUIntPtr", Fn.F0(() =>
+    {
+      if (Runtime.Truth(
+          Scalar.Binary(
+              ">",
+              value,
+              Schema.Validate(
+                  V.Int(BigInteger.Parse("18446744073709551615")),
+                  Scalar.TypeOf("Integer"),
+                  schema),
+              "Integer",
+              "Integer")))
+      {
+        return Schema.Validate(
+            Scalar.Convert(
+                Schema.Validate(
+                    V.Int(BigInteger.Parse("18446744073709551615")),
+                    Scalar.TypeOf("Integer"),
+                    schema),
+                Scalar.TypeOf("UIntPtr"),
+                64),
+            Scalar.TypeOf("UIntPtr"),
+            schema);
+      }
+      else
+      {
+        if (Runtime.Truth(
+            Scalar.Binary(
+                "<",
+                value,
+                Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                "Integer",
+                "Integer")))
+        {
+          return Schema.Validate(
+              Scalar.Convert(
+                  Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                  Scalar.TypeOf("UIntPtr"),
+                  64),
+              Scalar.TypeOf("UIntPtr"),
+              schema);
+        }
+        else
+        {
+          return Scalar.Convert(value, Scalar.TypeOf("UIntPtr"), 64);
+        }
+      }
+    }));
+  }
+
+  /// <summary>saturatingUIntSize — &lt;lawspec.collections&gt;:458</summary>
+  public static Value SaturatingUIntSize(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::saturatingUIntSize", Fn.F0(() =>
+    {
+      if (Runtime.Truth(
+          Scalar.Binary(
+              ">",
+              value,
+              Schema.Validate(
+                  V.Int(BigInteger.Parse("18446744073709551615")),
+                  Scalar.TypeOf("Integer"),
+                  schema),
+              "Integer",
+              "Integer")))
+      {
+        return Schema.Validate(
+            Scalar.Convert(
+                Schema.Validate(
+                    V.Int(BigInteger.Parse("18446744073709551615")),
+                    Scalar.TypeOf("Integer"),
+                    schema),
+                Scalar.TypeOf("UIntSize"),
+                64),
+            Scalar.TypeOf("UIntSize"),
+            schema);
+      }
+      else
+      {
+        if (Runtime.Truth(
+            Scalar.Binary(
+                "<",
+                value,
+                Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                "Integer",
+                "Integer")))
+        {
+          return Schema.Validate(
+              Scalar.Convert(
+                  Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                  Scalar.TypeOf("UIntSize"),
+                  64),
+              Scalar.TypeOf("UIntSize"),
+              schema);
+        }
+        else
+        {
+          return Scalar.Convert(value, Scalar.TypeOf("UIntSize"), 64);
+        }
+      }
+    }));
+  }
+
+  /// <summary>wrappingInt16 — &lt;lawspec.collections&gt;:349</summary>
+  public static Value WrappingInt16(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingInt16", Fn.F0(() =>
+    {
+      return Codecs.Int16.FromNative.Invoke(
+          LawSpec.TypedProgram.WrappingInt16(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>wrappingInt32 — &lt;lawspec.collections&gt;:362</summary>
+  public static Value WrappingInt32(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingInt32", Fn.F0(() =>
+    {
+      return Codecs.Int32.FromNative.Invoke(
+          LawSpec.TypedProgram.WrappingInt32(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>wrappingInt64 — &lt;lawspec.collections&gt;:375</summary>
+  public static Value WrappingInt64(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingInt64", Fn.F0(() =>
+    {
+      return Codecs.Int64.FromNative.Invoke(
+          LawSpec.TypedProgram.WrappingInt64(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>wrappingInt8 — &lt;lawspec.collections&gt;:336</summary>
+  public static Value WrappingInt8(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingInt8", Fn.F0(() =>
+    {
+      return Codecs.Int8.FromNative.Invoke(
+          LawSpec.TypedProgram.WrappingInt8(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>wrappingIntSize — &lt;lawspec.collections&gt;:440</summary>
+  public static Value WrappingIntSize(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingIntSize", Fn.F0(() =>
+    {
+      var r = Scalar.Binary(
+          "rem",
+          Scalar.Binary(
+              "-",
+              value,
+              Schema.Validate(
+                  V.Int(BigInteger.Parse("-9223372036854775808")),
+                  Scalar.TypeOf("Integer"),
+                  schema),
+              "Integer",
+              "Integer"),
+          Scalar.Binary(
+              "+",
+              Scalar.Binary(
+                  "-",
+                  Schema.Validate(
+                      V.Int(BigInteger.Parse("9223372036854775807")),
+                      Scalar.TypeOf("Integer"),
+                      schema),
+                  Schema.Validate(
+                      V.Int(BigInteger.Parse("-9223372036854775808")),
+                      Scalar.TypeOf("Integer"),
+                      schema),
+                  "Integer",
+                  "Integer"),
+              Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer"),
+          "Integer",
+          "Integer");
+      if (Runtime.Truth(
+          Scalar.Binary(
+              "<",
+              r,
+              Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer")))
+      {
+        return Scalar.Convert(
+            Scalar.Binary(
+                "+",
                 Scalar.Binary(
-                    ">=",
-                    value,
-                    Schema.Validate(V.Int(BigInteger.Parse("-9223372036854775808")), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer")))
-            {
-                ls0 = Scalar.Binary(
-                    "<=",
-                    value,
-                    Schema.Validate(V.Int(BigInteger.Parse("9223372036854775807")), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer");
-            }
-            else
-            {
-                ls0 = V.Bool(false);
-            }
-
-            if (Runtime.Truth(ls0))
-            {
-                return Schema.Construct(
-                    "Maybe::Present",
-                    Fn.List<Value>(Scalar.Convert(value, Scalar.TypeOf("IntSize"), 64)),
-                    Scalar.TypeOf("Maybe (IntSize)"),
-                    schema);
-            }
-            else
-            {
-                return Schema.Construct("Maybe::Absent", Fn.List<Value>(), Scalar.TypeOf("Maybe (IntSize)"), schema);
-            }
-        }));
-    }
-
-    /// <summary>boundedUInt16 — &lt;lawspec.collections&gt;:410</summary>
-    public static Value BoundedUInt16(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::boundedUInt16", Fn.F0(() =>
-        {
-            return Codecs.Maybe(Codecs.UInt16).FromNative.Invoke(
-                LawSpec.TypedProgram.BoundedUInt16(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>boundedUInt32 — &lt;lawspec.collections&gt;:423</summary>
-    public static Value BoundedUInt32(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::boundedUInt32", Fn.F0(() =>
-        {
-            return Codecs.Maybe(Codecs.UInt32).FromNative.Invoke(
-                LawSpec.TypedProgram.BoundedUInt32(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>boundedUInt64 — &lt;lawspec.collections&gt;:436</summary>
-    public static Value BoundedUInt64(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::boundedUInt64", Fn.F0(() =>
-        {
-            return Codecs.Maybe(Codecs.UInt64).FromNative.Invoke(
-                LawSpec.TypedProgram.BoundedUInt64(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>boundedUInt8 — &lt;lawspec.collections&gt;:397</summary>
-    public static Value BoundedUInt8(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::boundedUInt8", Fn.F0(() =>
-        {
-            return Codecs.Maybe(Codecs.UInt8).FromNative.Invoke(
-                LawSpec.TypedProgram.BoundedUInt8(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>boundedUIntPtr — &lt;lawspec.collections&gt;:475</summary>
-    public static Value BoundedUIntPtr(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::boundedUIntPtr", Fn.F0(() =>
-        {
-            Value ls0;
-            if (Runtime.Truth(
-                Scalar.Binary(
-                    ">=",
-                    value,
-                    Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer")))
-            {
-                ls0 = Scalar.Binary(
-                    "<=",
-                    value,
-                    Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer");
-            }
-            else
-            {
-                ls0 = V.Bool(false);
-            }
-
-            if (Runtime.Truth(ls0))
-            {
-                return Schema.Construct(
-                    "Maybe::Present",
-                    Fn.List<Value>(Scalar.Convert(value, Scalar.TypeOf("UIntPtr"), 64)),
-                    Scalar.TypeOf("Maybe (UIntPtr)"),
-                    schema);
-            }
-            else
-            {
-                return Schema.Construct("Maybe::Absent", Fn.List<Value>(), Scalar.TypeOf("Maybe (UIntPtr)"), schema);
-            }
-        }));
-    }
-
-    /// <summary>boundedUIntSize — &lt;lawspec.collections&gt;:462</summary>
-    public static Value BoundedUIntSize(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::boundedUIntSize", Fn.F0(() =>
-        {
-            Value ls0;
-            if (Runtime.Truth(
-                Scalar.Binary(
-                    ">=",
-                    value,
-                    Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer")))
-            {
-                ls0 = Scalar.Binary(
-                    "<=",
-                    value,
-                    Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer");
-            }
-            else
-            {
-                ls0 = V.Bool(false);
-            }
-
-            if (Runtime.Truth(ls0))
-            {
-                return Schema.Construct(
-                    "Maybe::Present",
-                    Fn.List<Value>(Scalar.Convert(value, Scalar.TypeOf("UIntSize"), 64)),
-                    Scalar.TypeOf("Maybe (UIntSize)"),
-                    schema);
-            }
-            else
-            {
-                return Schema.Construct("Maybe::Absent", Fn.List<Value>(), Scalar.TypeOf("Maybe (UIntSize)"), schema);
-            }
-        }));
-    }
-
-    /// <summary>saturatingInt16 — &lt;lawspec.collections&gt;:354</summary>
-    public static Value SaturatingInt16(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingInt16", Fn.F0(() =>
-        {
-            return Codecs.Int16.FromNative.Invoke(
-                LawSpec.TypedProgram.SaturatingInt16(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>saturatingInt32 — &lt;lawspec.collections&gt;:367</summary>
-    public static Value SaturatingInt32(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingInt32", Fn.F0(() =>
-        {
-            return Codecs.Int32.FromNative.Invoke(
-                LawSpec.TypedProgram.SaturatingInt32(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>saturatingInt64 — &lt;lawspec.collections&gt;:380</summary>
-    public static Value SaturatingInt64(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingInt64", Fn.F0(() =>
-        {
-            return Codecs.Int64.FromNative.Invoke(
-                LawSpec.TypedProgram.SaturatingInt64(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>saturatingInt8 — &lt;lawspec.collections&gt;:341</summary>
-    public static Value SaturatingInt8(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingInt8", Fn.F0(() =>
-        {
-            return Codecs.Int8.FromNative.Invoke(
-                LawSpec.TypedProgram.SaturatingInt8(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>saturatingIntSize — &lt;lawspec.collections&gt;:445</summary>
-    public static Value SaturatingIntSize(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingIntSize", Fn.F0(() =>
-        {
-            if (Runtime.Truth(
-                Scalar.Binary(
-                    ">",
-                    value,
-                    Schema.Validate(V.Int(BigInteger.Parse("9223372036854775807")), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer")))
-            {
-                return Schema.Validate(
-                    Scalar.Convert(
-                        Schema.Validate(
-                            V.Int(BigInteger.Parse("9223372036854775807")),
-                            Scalar.TypeOf("Integer"),
-                            schema),
-                        Scalar.TypeOf("IntSize"),
-                        64),
-                    Scalar.TypeOf("IntSize"),
-                    schema);
-            }
-            else
-            {
-                if (Runtime.Truth(
+                    "+",
+                    r,
                     Scalar.Binary(
-                        "<",
-                        value,
-                        Schema.Validate(
-                            V.Int(BigInteger.Parse("-9223372036854775808")),
-                            Scalar.TypeOf("Integer"),
-                            schema),
-                        "Integer",
-                        "Integer")))
-                {
-                    return Schema.Validate(
-                        Scalar.Convert(
+                        "+",
+                        Scalar.Binary(
+                            "-",
+                            Schema.Validate(
+                                V.Int(BigInteger.Parse("9223372036854775807")),
+                                Scalar.TypeOf("Integer"),
+                                schema),
                             Schema.Validate(
                                 V.Int(BigInteger.Parse("-9223372036854775808")),
                                 Scalar.TypeOf("Integer"),
                                 schema),
-                            Scalar.TypeOf("IntSize"),
-                            64),
-                        Scalar.TypeOf("IntSize"),
-                        schema);
-                }
-                else
-                {
-                    return Scalar.Convert(value, Scalar.TypeOf("IntSize"), 64);
-                }
-            }
-        }));
-    }
-
-    /// <summary>saturatingUInt16 — &lt;lawspec.collections&gt;:406</summary>
-    public static Value SaturatingUInt16(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingUInt16", Fn.F0(() =>
-        {
-            return Codecs.UInt16.FromNative.Invoke(
-                LawSpec.TypedProgram.SaturatingUInt16(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>saturatingUInt32 — &lt;lawspec.collections&gt;:419</summary>
-    public static Value SaturatingUInt32(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingUInt32", Fn.F0(() =>
-        {
-            return Codecs.UInt32.FromNative.Invoke(
-                LawSpec.TypedProgram.SaturatingUInt32(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>saturatingUInt64 — &lt;lawspec.collections&gt;:432</summary>
-    public static Value SaturatingUInt64(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingUInt64", Fn.F0(() =>
-        {
-            return Codecs.UInt64.FromNative.Invoke(
-                LawSpec.TypedProgram.SaturatingUInt64(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>saturatingUInt8 — &lt;lawspec.collections&gt;:393</summary>
-    public static Value SaturatingUInt8(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingUInt8", Fn.F0(() =>
-        {
-            return Codecs.UInt8.FromNative.Invoke(
-                LawSpec.TypedProgram.SaturatingUInt8(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>saturatingUIntPtr — &lt;lawspec.collections&gt;:471</summary>
-    public static Value SaturatingUIntPtr(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingUIntPtr", Fn.F0(() =>
-        {
-            if (Runtime.Truth(
-                Scalar.Binary(
-                    ">",
-                    value,
-                    Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer")))
-            {
-                return Schema.Validate(
-                    Scalar.Convert(
-                        Schema.Validate(
-                            V.Int(BigInteger.Parse("18446744073709551615")),
-                            Scalar.TypeOf("Integer"),
-                            schema),
-                        Scalar.TypeOf("UIntPtr"),
-                        64),
-                    Scalar.TypeOf("UIntPtr"),
-                    schema);
-            }
-            else
-            {
-                if (Runtime.Truth(
-                    Scalar.Binary(
-                        "<",
-                        value,
-                        Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                        "Integer",
-                        "Integer")))
-                {
-                    return Schema.Validate(
-                        Scalar.Convert(
-                            Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                            Scalar.TypeOf("UIntPtr"),
-                            64),
-                        Scalar.TypeOf("UIntPtr"),
-                        schema);
-                }
-                else
-                {
-                    return Scalar.Convert(value, Scalar.TypeOf("UIntPtr"), 64);
-                }
-            }
-        }));
-    }
-
-    /// <summary>saturatingUIntSize — &lt;lawspec.collections&gt;:458</summary>
-    public static Value SaturatingUIntSize(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::saturatingUIntSize", Fn.F0(() =>
-        {
-            if (Runtime.Truth(
-                Scalar.Binary(
-                    ">",
-                    value,
-                    Schema.Validate(V.Int(BigInteger.Parse("18446744073709551615")), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer")))
-            {
-                return Schema.Validate(
-                    Scalar.Convert(
-                        Schema.Validate(
-                            V.Int(BigInteger.Parse("18446744073709551615")),
-                            Scalar.TypeOf("Integer"),
-                            schema),
-                        Scalar.TypeOf("UIntSize"),
-                        64),
-                    Scalar.TypeOf("UIntSize"),
-                    schema);
-            }
-            else
-            {
-                if (Runtime.Truth(
-                    Scalar.Binary(
-                        "<",
-                        value,
-                        Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                        "Integer",
-                        "Integer")))
-                {
-                    return Schema.Validate(
-                        Scalar.Convert(
-                            Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                            Scalar.TypeOf("UIntSize"),
-                            64),
-                        Scalar.TypeOf("UIntSize"),
-                        schema);
-                }
-                else
-                {
-                    return Scalar.Convert(value, Scalar.TypeOf("UIntSize"), 64);
-                }
-            }
-        }));
-    }
-
-    /// <summary>wrappingInt16 — &lt;lawspec.collections&gt;:349</summary>
-    public static Value WrappingInt16(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingInt16", Fn.F0(() =>
-        {
-            return Codecs.Int16.FromNative.Invoke(
-                LawSpec.TypedProgram.WrappingInt16(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>wrappingInt32 — &lt;lawspec.collections&gt;:362</summary>
-    public static Value WrappingInt32(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingInt32", Fn.F0(() =>
-        {
-            return Codecs.Int32.FromNative.Invoke(
-                LawSpec.TypedProgram.WrappingInt32(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>wrappingInt64 — &lt;lawspec.collections&gt;:375</summary>
-    public static Value WrappingInt64(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingInt64", Fn.F0(() =>
-        {
-            return Codecs.Int64.FromNative.Invoke(
-                LawSpec.TypedProgram.WrappingInt64(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>wrappingInt8 — &lt;lawspec.collections&gt;:336</summary>
-    public static Value WrappingInt8(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingInt8", Fn.F0(() =>
-        {
-            return Codecs.Int8.FromNative.Invoke(
-                LawSpec.TypedProgram.WrappingInt8(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>wrappingIntSize — &lt;lawspec.collections&gt;:440</summary>
-    public static Value WrappingIntSize(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingIntSize", Fn.F0(() =>
-        {
-            var r = Scalar.Binary(
-                "rem",
-                Scalar.Binary(
-                    "-",
-                    value,
-                    Schema.Validate(V.Int(BigInteger.Parse("-9223372036854775808")), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer"),
-                Scalar.Binary(
-                    "+",
-                    Scalar.Binary(
-                        "-",
-                        Schema.Validate(
-                            V.Int(BigInteger.Parse("9223372036854775807")),
-                            Scalar.TypeOf("Integer"),
-                            schema),
-                        Schema.Validate(
-                            V.Int(BigInteger.Parse("-9223372036854775808")),
-                            Scalar.TypeOf("Integer"),
-                            schema),
-                        "Integer",
-                        "Integer"),
-                    Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer"),
-                "Integer",
-                "Integer");
-            if (Runtime.Truth(
-                Scalar.Binary(
-                    "<",
-                    r,
-                    Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer")))
-            {
-                return Scalar.Convert(
-                    Scalar.Binary(
-                        "+",
-                        Scalar.Binary(
-                            "+",
-                            r,
-                            Scalar.Binary(
-                                "+",
-                                Scalar.Binary(
-                                    "-",
-                                    Schema.Validate(
-                                        V.Int(BigInteger.Parse("9223372036854775807")),
-                                        Scalar.TypeOf("Integer"),
-                                        schema),
-                                    Schema.Validate(
-                                        V.Int(BigInteger.Parse("-9223372036854775808")),
-                                        Scalar.TypeOf("Integer"),
-                                        schema),
-                                    "Integer",
-                                    "Integer"),
-                                Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema),
-                                "Integer",
-                                "Integer"),
                             "Integer",
                             "Integer"),
                         Schema.Validate(
-                            V.Int(BigInteger.Parse("-9223372036854775808")),
+                            V.Int(new BigInteger(1L)),
                             Scalar.TypeOf("Integer"),
                             schema),
                         "Integer",
                         "Integer"),
-                    Scalar.TypeOf("IntSize"),
-                    64);
-            }
-            else
-            {
-                return Scalar.Convert(
-                    Scalar.Binary(
-                        "+",
-                        r,
-                        Schema.Validate(
-                            V.Int(BigInteger.Parse("-9223372036854775808")),
-                            Scalar.TypeOf("Integer"),
-                            schema),
-                        "Integer",
-                        "Integer"),
-                    Scalar.TypeOf("IntSize"),
-                    64);
-            }
-        }));
-    }
-
-    /// <summary>wrappingUInt16 — &lt;lawspec.collections&gt;:401</summary>
-    public static Value WrappingUInt16(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingUInt16", Fn.F0(() =>
-        {
-            return Codecs.UInt16.FromNative.Invoke(
-                LawSpec.TypedProgram.WrappingUInt16(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>wrappingUInt32 — &lt;lawspec.collections&gt;:414</summary>
-    public static Value WrappingUInt32(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingUInt32", Fn.F0(() =>
-        {
-            return Codecs.UInt32.FromNative.Invoke(
-                LawSpec.TypedProgram.WrappingUInt32(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>wrappingUInt64 — &lt;lawspec.collections&gt;:427</summary>
-    public static Value WrappingUInt64(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingUInt64", Fn.F0(() =>
-        {
-            return Codecs.UInt64.FromNative.Invoke(
-                LawSpec.TypedProgram.WrappingUInt64(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>wrappingUInt8 — &lt;lawspec.collections&gt;:388</summary>
-    public static Value WrappingUInt8(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingUInt8", Fn.F0(() =>
-        {
-            return Codecs.UInt8.FromNative.Invoke(
-                LawSpec.TypedProgram.WrappingUInt8(Codecs.BigInteger.ToNative.Invoke(value)));
-        }));
-    }
-
-    /// <summary>wrappingUIntPtr — &lt;lawspec.collections&gt;:466</summary>
-    public static Value WrappingUIntPtr(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingUIntPtr", Fn.F0(() =>
-        {
-            var r = Scalar.Binary(
-                "rem",
-                Scalar.Binary(
-                    "-",
-                    value,
-                    Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
                     "Integer",
                     "Integer"),
+                Schema.Validate(
+                    V.Int(BigInteger.Parse("-9223372036854775808")),
+                    Scalar.TypeOf("Integer"),
+                    schema),
+                "Integer",
+                "Integer"),
+            Scalar.TypeOf("IntSize"),
+            64);
+      }
+      else
+      {
+        return Scalar.Convert(
+            Scalar.Binary(
+                "+",
+                r,
+                Schema.Validate(
+                    V.Int(BigInteger.Parse("-9223372036854775808")),
+                    Scalar.TypeOf("Integer"),
+                    schema),
+                "Integer",
+                "Integer"),
+            Scalar.TypeOf("IntSize"),
+            64);
+      }
+    }));
+  }
+
+  /// <summary>wrappingUInt16 — &lt;lawspec.collections&gt;:401</summary>
+  public static Value WrappingUInt16(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingUInt16", Fn.F0(() =>
+    {
+      return Codecs.UInt16.FromNative.Invoke(
+          LawSpec.TypedProgram.WrappingUInt16(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>wrappingUInt32 — &lt;lawspec.collections&gt;:414</summary>
+  public static Value WrappingUInt32(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingUInt32", Fn.F0(() =>
+    {
+      return Codecs.UInt32.FromNative.Invoke(
+          LawSpec.TypedProgram.WrappingUInt32(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>wrappingUInt64 — &lt;lawspec.collections&gt;:427</summary>
+  public static Value WrappingUInt64(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingUInt64", Fn.F0(() =>
+    {
+      return Codecs.UInt64.FromNative.Invoke(
+          LawSpec.TypedProgram.WrappingUInt64(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>wrappingUInt8 — &lt;lawspec.collections&gt;:388</summary>
+  public static Value WrappingUInt8(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingUInt8", Fn.F0(() =>
+    {
+      return Codecs.UInt8.FromNative.Invoke(
+          LawSpec.TypedProgram.WrappingUInt8(Codecs.BigInteger.ToNative.Invoke(value)));
+    }));
+  }
+
+  /// <summary>wrappingUIntPtr — &lt;lawspec.collections&gt;:466</summary>
+  public static Value WrappingUIntPtr(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingUIntPtr", Fn.F0(() =>
+    {
+      var r = Scalar.Binary(
+          "rem",
+          Scalar.Binary(
+              "-",
+              value,
+              Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer"),
+          Scalar.Binary(
+              "+",
+              Scalar.Binary(
+                  "-",
+                  Schema.Validate(
+                      V.Int(BigInteger.Parse("18446744073709551615")),
+                      Scalar.TypeOf("Integer"),
+                      schema),
+                  Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                  "Integer",
+                  "Integer"),
+              Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer"),
+          "Integer",
+          "Integer");
+      if (Runtime.Truth(
+          Scalar.Binary(
+              "<",
+              r,
+              Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer")))
+      {
+        return Scalar.Convert(
+            Scalar.Binary(
+                "+",
                 Scalar.Binary(
                     "+",
-                    Scalar.Binary(
-                        "-",
-                        Schema.Validate(
-                            V.Int(BigInteger.Parse("18446744073709551615")),
-                            Scalar.TypeOf("Integer"),
-                            schema),
-                        Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                        "Integer",
-                        "Integer"),
-                    Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer"),
-                "Integer",
-                "Integer");
-            if (Runtime.Truth(
-                Scalar.Binary(
-                    "<",
                     r,
-                    Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer")))
-            {
-                return Scalar.Convert(
                     Scalar.Binary(
                         "+",
                         Scalar.Binary(
-                            "+",
-                            r,
-                            Scalar.Binary(
-                                "+",
-                                Scalar.Binary(
-                                    "-",
-                                    Schema.Validate(
-                                        V.Int(BigInteger.Parse("18446744073709551615")),
-                                        Scalar.TypeOf("Integer"),
-                                        schema),
-                                    Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                                    "Integer",
-                                    "Integer"),
-                                Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema),
-                                "Integer",
-                                "Integer"),
+                            "-",
+                            Schema.Validate(
+                                V.Int(BigInteger.Parse("18446744073709551615")),
+                                Scalar.TypeOf("Integer"),
+                                schema),
+                            Schema.Validate(
+                                V.Int(new BigInteger(0L)),
+                                Scalar.TypeOf("Integer"),
+                                schema),
                             "Integer",
                             "Integer"),
-                        Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                        "Integer",
-                        "Integer"),
-                    Scalar.TypeOf("UIntPtr"),
-                    64);
-            }
-            else
-            {
-                return Scalar.Convert(
-                    Scalar.Binary(
-                        "+",
-                        r,
-                        Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                        "Integer",
-                        "Integer"),
-                    Scalar.TypeOf("UIntPtr"),
-                    64);
-            }
-        }));
-    }
-
-    /// <summary>wrappingUIntSize — &lt;lawspec.collections&gt;:453</summary>
-    public static Value WrappingUIntSize(Schema.Schema schema, Scalar.SymbolContext symbols, Value value)
-    {
-        return Runtime.Contextual("lawspec.collections::wrappingUIntSize", Fn.F0(() =>
-        {
-            var r = Scalar.Binary(
-                "rem",
-                Scalar.Binary(
-                    "-",
-                    value,
-                    Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer"),
-                Scalar.Binary(
-                    "+",
-                    Scalar.Binary(
-                        "-",
                         Schema.Validate(
-                            V.Int(BigInteger.Parse("18446744073709551615")),
+                            V.Int(new BigInteger(1L)),
                             Scalar.TypeOf("Integer"),
                             schema),
-                        Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
                         "Integer",
                         "Integer"),
-                    Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema),
                     "Integer",
                     "Integer"),
+                Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
                 "Integer",
-                "Integer");
-            if (Runtime.Truth(
+                "Integer"),
+            Scalar.TypeOf("UIntPtr"),
+            64);
+      }
+      else
+      {
+        return Scalar.Convert(
+            Scalar.Binary(
+                "+",
+                r,
+                Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                "Integer",
+                "Integer"),
+            Scalar.TypeOf("UIntPtr"),
+            64);
+      }
+    }));
+  }
+
+  /// <summary>wrappingUIntSize — &lt;lawspec.collections&gt;:453</summary>
+  public static Value WrappingUIntSize(
+      Schema.Schema schema,
+      Scalar.SymbolContext symbols,
+      Value value)
+  {
+    return Runtime.Contextual("lawspec.collections::wrappingUIntSize", Fn.F0(() =>
+    {
+      var r = Scalar.Binary(
+          "rem",
+          Scalar.Binary(
+              "-",
+              value,
+              Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer"),
+          Scalar.Binary(
+              "+",
+              Scalar.Binary(
+                  "-",
+                  Schema.Validate(
+                      V.Int(BigInteger.Parse("18446744073709551615")),
+                      Scalar.TypeOf("Integer"),
+                      schema),
+                  Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                  "Integer",
+                  "Integer"),
+              Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer"),
+          "Integer",
+          "Integer");
+      if (Runtime.Truth(
+          Scalar.Binary(
+              "<",
+              r,
+              Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+              "Integer",
+              "Integer")))
+      {
+        return Scalar.Convert(
+            Scalar.Binary(
+                "+",
                 Scalar.Binary(
-                    "<",
+                    "+",
                     r,
-                    Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                    "Integer",
-                    "Integer")))
-            {
-                return Scalar.Convert(
                     Scalar.Binary(
                         "+",
                         Scalar.Binary(
-                            "+",
-                            r,
-                            Scalar.Binary(
-                                "+",
-                                Scalar.Binary(
-                                    "-",
-                                    Schema.Validate(
-                                        V.Int(BigInteger.Parse("18446744073709551615")),
-                                        Scalar.TypeOf("Integer"),
-                                        schema),
-                                    Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                                    "Integer",
-                                    "Integer"),
-                                Schema.Validate(V.Int(new BigInteger(1L)), Scalar.TypeOf("Integer"), schema),
-                                "Integer",
-                                "Integer"),
+                            "-",
+                            Schema.Validate(
+                                V.Int(BigInteger.Parse("18446744073709551615")),
+                                Scalar.TypeOf("Integer"),
+                                schema),
+                            Schema.Validate(
+                                V.Int(new BigInteger(0L)),
+                                Scalar.TypeOf("Integer"),
+                                schema),
                             "Integer",
                             "Integer"),
-                        Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                        Schema.Validate(
+                            V.Int(new BigInteger(1L)),
+                            Scalar.TypeOf("Integer"),
+                            schema),
                         "Integer",
                         "Integer"),
-                    Scalar.TypeOf("UIntSize"),
-                    64);
-            }
-            else
-            {
-                return Scalar.Convert(
-                    Scalar.Binary(
-                        "+",
-                        r,
-                        Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
-                        "Integer",
-                        "Integer"),
-                    Scalar.TypeOf("UIntSize"),
-                    64);
-            }
-        }));
-    }
+                    "Integer",
+                    "Integer"),
+                Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                "Integer",
+                "Integer"),
+            Scalar.TypeOf("UIntSize"),
+            64);
+      }
+      else
+      {
+        return Scalar.Convert(
+            Scalar.Binary(
+                "+",
+                r,
+                Schema.Validate(V.Int(new BigInteger(0L)), Scalar.TypeOf("Integer"), schema),
+                "Integer",
+                "Integer"),
+            Scalar.TypeOf("UIntSize"),
+            64);
+      }
+    }));
+  }
 }

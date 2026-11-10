@@ -26,7 +26,8 @@ use proptest::strategy::Strategy;
 type ValueStrategy = proptest::strategy::BoxedStrategy<ls::Value>;
 
 // connectService — ../src/api.lawspec:16
-fn connect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value> {
+fn connect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value>
+{
     let value0 = args[0].clone();
     let native_value0 = {
         let value = ls::native_value(value0.clone(), "Unit")?;
@@ -43,7 +44,8 @@ fn connect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls
 }
 
 // disconnectService — ../src/api.lawspec:17
-fn disconnect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value> {
+fn disconnect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value>
+{
     let value0 = args[0].clone();
     let native_value0 = {
         let value = lawspec_schema::schema()?.native_value_with_context(
@@ -67,29 +69,35 @@ fn disconnect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result
 // lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody lawspecFieldname
 // lawspecFieldcolor lawspecFielddescription_ -> lawspecFieldname } in (attempt (issuesGetLabel
 // owner repo key) == Either::Right(_lawspecSelection0x0)) } = true end for all
-mod law_issuesapi_a_created_label_reads_back_native {
+mod law_issuesapi_a_created_label_reads_back_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -97,11 +105,13 @@ mod law_issuesapi_a_created_label_reads_back_native {
         ])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text(" ".to_owned()),
             literal_3(ctx)?,
@@ -109,11 +119,13 @@ mod law_issuesapi_a_created_label_reads_back_native {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_5(ctx)?,
@@ -121,13 +133,15 @@ mod law_issuesapi_a_created_label_reads_back_native {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_7(ctx)?,
@@ -135,13 +149,15 @@ mod law_issuesapi_a_created_label_reads_back_native {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_9(ctx)?,
@@ -149,13 +165,15 @@ mod law_issuesapi_a_created_label_reads_back_native {
         ])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("é".to_owned()),
             literal_11(ctx)?,
@@ -163,11 +181,13 @@ mod law_issuesapi_a_created_label_reads_back_native {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_13(ctx)?,
@@ -175,7 +195,8 @@ mod law_issuesapi_a_created_label_reads_back_native {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
             literal_3(ctx)?,
@@ -183,13 +204,15 @@ mod law_issuesapi_a_created_label_reads_back_native {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_16(ctx)?,
@@ -203,7 +226,8 @@ mod law_issuesapi_a_created_label_reads_back_native {
         repo: ls::Value,
         body: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -222,23 +246,27 @@ mod law_issuesapi_a_created_label_reads_back_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let key = match sent.clone() {
+                    let key = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag
                                 == "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody"
                                 && fields.len() == 3 =>
                         {
                             let mut fields = fields.into_iter();
-                            let name = fields.next().unwrap();
-                            let _color = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
+                            let name = fields.next().expect("checked expression arity");
+                            let _color = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
                             name.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -282,7 +310,8 @@ mod law_issuesapi_a_created_label_reads_back_native {
         owner: ls::Value,
         repo: ls::Value,
         body: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let owner = lawspec_schema::schema()?.validate_with_context(
             owner,
             &ls::TypeRef::named("Text", vec![]),
@@ -348,14 +377,16 @@ mod law_issuesapi_a_created_label_reads_back_native {
         "(data lawtwin.github.model::type::IssuesCreateLabelBody (ctor lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody (text) (maybe (text)) (maybe (text)))) (ref lawtwin.github.model::type::IssuesCreateLabelBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone(), values[2].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -492,7 +523,8 @@ mod law_issuesapi_a_created_label_reads_back_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |a created label reads back| [native]",
@@ -502,7 +534,8 @@ mod law_issuesapi_a_created_label_reads_back_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -521,14 +554,16 @@ mod law_issuesapi_a_created_label_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -537,7 +572,8 @@ mod law_issuesapi_a_created_label_reads_back_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -556,14 +592,16 @@ mod law_issuesapi_a_created_label_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -572,7 +610,8 @@ mod law_issuesapi_a_created_label_reads_back_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -600,14 +639,16 @@ mod law_issuesapi_a_created_label_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -634,7 +675,8 @@ mod law_issuesapi_a_created_label_reads_back_native {
                     case.values[1].clone(),
                     case.values[2].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |a created label reads back| [native]",
                         SEARCH_INPUTS,
@@ -659,29 +701,35 @@ mod law_issuesapi_a_created_label_reads_back_native {
 // lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody lawspecFieldname
 // lawspecFieldcolor lawspecFielddescription_ -> lawspecFieldname } in (attempt (issuesGetLabel
 // owner repo key) == Either::Right(_lawspecSelection0x0)) } = true end for all
-mod law_issuesapi_a_created_label_reads_back_reference {
+mod law_issuesapi_a_created_label_reads_back_reference
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -689,11 +737,13 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         ])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text(" ".to_owned()),
             literal_3(ctx)?,
@@ -701,11 +751,13 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_5(ctx)?,
@@ -713,13 +765,15 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_7(ctx)?,
@@ -727,13 +781,15 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_9(ctx)?,
@@ -741,13 +797,15 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         ])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("é".to_owned()),
             literal_11(ctx)?,
@@ -755,11 +813,13 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_13(ctx)?,
@@ -767,7 +827,8 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
             literal_3(ctx)?,
@@ -775,13 +836,15 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_16(ctx)?,
@@ -794,7 +857,8 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         owner: ls::Value,
         repo: ls::Value,
         body: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -813,23 +877,27 @@ mod law_issuesapi_a_created_label_reads_back_reference {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let key = match sent.clone() {
+                    let key = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag
                                 == "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody"
                                 && fields.len() == 3 =>
                         {
                             let mut fields = fields.into_iter();
-                            let name = fields.next().unwrap();
-                            let _color = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
+                            let name = fields.next().expect("checked expression arity");
+                            let _color = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
                             name.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -873,7 +941,8 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         owner: ls::Value,
         repo: ls::Value,
         body: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.github::ability::IssuesApi".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_github::IssuesApi> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_github::Reference::new(ctx));
@@ -908,14 +977,16 @@ mod law_issuesapi_a_created_label_reads_back_reference {
         "(data lawtwin.github.model::type::IssuesCreateLabelBody (ctor lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody (text) (maybe (text)) (maybe (text)))) (ref lawtwin.github.model::type::IssuesCreateLabelBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone(), values[2].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -1052,7 +1123,8 @@ mod law_issuesapi_a_created_label_reads_back_reference {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |a created label reads back| [reference]",
@@ -1062,7 +1134,8 @@ mod law_issuesapi_a_created_label_reads_back_reference {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1081,14 +1154,16 @@ mod law_issuesapi_a_created_label_reads_back_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1097,7 +1172,8 @@ mod law_issuesapi_a_created_label_reads_back_reference {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1116,14 +1192,16 @@ mod law_issuesapi_a_created_label_reads_back_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1132,7 +1210,8 @@ mod law_issuesapi_a_created_label_reads_back_reference {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1160,14 +1239,16 @@ mod law_issuesapi_a_created_label_reads_back_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1194,7 +1275,8 @@ mod law_issuesapi_a_created_label_reads_back_reference {
                     case.values[1].clone(),
                     case.values[2].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |a created label reads back| [reference]",
                         SEARCH_INPUTS,
@@ -1220,29 +1302,35 @@ mod law_issuesapi_a_created_label_reads_back_reference {
 // lawspecFieldcolor lawspecFielddescription_ -> lawspecFieldname } in let gone = attempt
 // (issuesDeleteLabel owner repo key) in (attempt (issuesGetLabel owner repo key) ==
 // Either::Left(lawtwin.github.model::type::ApiError::NotFound())) } = true end for all
-mod law_issuesapi_a_deleted_label_is_not_found_native {
+mod law_issuesapi_a_deleted_label_is_not_found_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -1250,11 +1338,13 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         ])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text(" ".to_owned()),
             literal_3(ctx)?,
@@ -1262,11 +1352,13 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_5(ctx)?,
@@ -1274,13 +1366,15 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_7(ctx)?,
@@ -1288,13 +1382,15 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_9(ctx)?,
@@ -1302,13 +1398,15 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         ])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("é".to_owned()),
             literal_11(ctx)?,
@@ -1316,11 +1414,13 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_13(ctx)?,
@@ -1328,7 +1428,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
             literal_3(ctx)?,
@@ -1336,13 +1437,15 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_16(ctx)?,
@@ -1356,7 +1459,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         repo: ls::Value,
         body: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -1375,23 +1479,27 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _selection = *payload;
-                    let key = match sent.clone() {
+                    let key = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag
                                 == "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody"
                                 && fields.len() == 3 =>
                         {
                             let mut fields = fields.into_iter();
-                            let name = fields.next().unwrap();
-                            let _color = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
+                            let name = fields.next().expect("checked expression arity");
+                            let _color = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
                             name.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -1457,7 +1565,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         owner: ls::Value,
         repo: ls::Value,
         body: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let owner = lawspec_schema::schema()?.validate_with_context(
             owner,
             &ls::TypeRef::named("Text", vec![]),
@@ -1523,14 +1632,16 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
         "(data lawtwin.github.model::type::IssuesCreateLabelBody (ctor lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody (text) (maybe (text)) (maybe (text)))) (ref lawtwin.github.model::type::IssuesCreateLabelBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone(), values[2].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -1667,7 +1778,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |a deleted label is not found| [native]",
@@ -1677,7 +1789,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1696,14 +1809,16 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1712,7 +1827,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1731,14 +1847,16 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1747,7 +1865,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1775,14 +1894,16 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1809,7 +1930,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
                     case.values[1].clone(),
                     case.values[2].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |a deleted label is not found| [native]",
                         SEARCH_INPUTS,
@@ -1835,29 +1957,35 @@ mod law_issuesapi_a_deleted_label_is_not_found_native {
 // lawspecFieldcolor lawspecFielddescription_ -> lawspecFieldname } in let gone = attempt
 // (issuesDeleteLabel owner repo key) in (attempt (issuesGetLabel owner repo key) ==
 // Either::Left(lawtwin.github.model::type::ApiError::NotFound())) } = true end for all
-mod law_issuesapi_a_deleted_label_is_not_found_reference {
+mod law_issuesapi_a_deleted_label_is_not_found_reference
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -1865,11 +1993,13 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         ])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text(" ".to_owned()),
             literal_3(ctx)?,
@@ -1877,11 +2007,13 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_5(ctx)?,
@@ -1889,13 +2021,15 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_7(ctx)?,
@@ -1903,13 +2037,15 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_9(ctx)?,
@@ -1917,13 +2053,15 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         ])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("é".to_owned()),
             literal_11(ctx)?,
@@ -1931,11 +2069,13 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_13(ctx)?,
@@ -1943,7 +2083,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
             literal_3(ctx)?,
@@ -1951,13 +2092,15 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_16(ctx)?,
@@ -1970,7 +2113,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         owner: ls::Value,
         repo: ls::Value,
         body: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -1989,23 +2133,27 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _selection = *payload;
-                    let key = match sent.clone() {
+                    let key = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag
                                 == "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody"
                                 && fields.len() == 3 =>
                         {
                             let mut fields = fields.into_iter();
-                            let name = fields.next().unwrap();
-                            let _color = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
+                            let name = fields.next().expect("checked expression arity");
+                            let _color = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
                             name.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -2071,7 +2219,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         owner: ls::Value,
         repo: ls::Value,
         body: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.github::ability::IssuesApi".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_github::IssuesApi> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_github::Reference::new(ctx));
@@ -2106,14 +2255,16 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
         "(data lawtwin.github.model::type::IssuesCreateLabelBody (ctor lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody (text) (maybe (text)) (maybe (text)))) (ref lawtwin.github.model::type::IssuesCreateLabelBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone(), values[2].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -2250,7 +2401,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |a deleted label is not found| [reference]",
@@ -2260,7 +2412,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2279,14 +2432,16 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2295,7 +2450,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2314,14 +2470,16 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2330,7 +2488,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2358,14 +2517,16 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2392,7 +2553,8 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
                     case.values[1].clone(),
                     case.values[2].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |a deleted label is not found| [reference]",
                         SEARCH_INPUTS,
@@ -2417,29 +2579,35 @@ mod law_issuesapi_a_deleted_label_is_not_found_reference {
 // (Maybe::Absent()) (Maybe::Absent())) in match (it) { Either::Left _match__lawspecSelection0x0_0
 // -> false; Either::Right _match__lawspecSelection0x0_0 -> lawtwinGithubModelContainsLabel
 // _lawspecSelection0x0 _match__lawspecSelection0x0_0 } } = true end for all
-mod law_issuesapi_the_list_holds_a_created_label_native {
+mod law_issuesapi_the_list_holds_a_created_label_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -2447,11 +2615,13 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         ])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text(" ".to_owned()),
             literal_3(ctx)?,
@@ -2459,11 +2629,13 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_5(ctx)?,
@@ -2471,13 +2643,15 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_7(ctx)?,
@@ -2485,13 +2659,15 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_9(ctx)?,
@@ -2499,13 +2675,15 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         ])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("é".to_owned()),
             literal_11(ctx)?,
@@ -2513,11 +2691,13 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_13(ctx)?,
@@ -2525,7 +2705,8 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
             literal_3(ctx)?,
@@ -2533,13 +2714,15 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_16(ctx)?,
@@ -2553,7 +2736,8 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         repo: ls::Value,
         body: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -2572,12 +2756,15 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
                     let it_2 = ls::attempt(
                         ctx,
@@ -2600,12 +2787,15 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
                         |value| ls::construct("Either::Right", vec![value]),
                         |value| ls::construct("Either::Left", vec![value]),
                     )?;
-                    match it_2.clone() {
-                        ls::Value::Left(payload) => {
+                    match it_2.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _match_selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let match_selection = *payload;
                             ls::called(
                                 "lawtwin.github::lawtwinGithubModelContainsLabel",
@@ -2635,7 +2825,8 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         owner: ls::Value,
         repo: ls::Value,
         body: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let owner = lawspec_schema::schema()?.validate_with_context(
             owner,
             &ls::TypeRef::named("Text", vec![]),
@@ -2701,14 +2892,16 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
         "(data lawtwin.github.model::type::IssuesCreateLabelBody (ctor lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody (text) (maybe (text)) (maybe (text)))) (ref lawtwin.github.model::type::IssuesCreateLabelBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone(), values[2].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -2845,7 +3038,8 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |the list holds a created label| [native]",
@@ -2855,7 +3049,8 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2874,14 +3069,16 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2890,7 +3087,8 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2909,14 +3107,16 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2925,7 +3125,8 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2953,14 +3154,16 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2987,7 +3190,8 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
                     case.values[1].clone(),
                     case.values[2].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |the list holds a created label| [native]",
                         SEARCH_INPUTS,
@@ -3012,29 +3216,35 @@ mod law_issuesapi_the_list_holds_a_created_label_native {
 // (Maybe::Absent()) (Maybe::Absent())) in match (it) { Either::Left _match__lawspecSelection0x0_0
 // -> false; Either::Right _match__lawspecSelection0x0_0 -> lawtwinGithubModelContainsLabel
 // _lawspecSelection0x0 _match__lawspecSelection0x0_0 } } = true end for all
-mod law_issuesapi_the_list_holds_a_created_label {
+mod law_issuesapi_the_list_holds_a_created_label
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -3042,11 +3252,13 @@ mod law_issuesapi_the_list_holds_a_created_label {
         ])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text(" ".to_owned()),
             literal_3(ctx)?,
@@ -3054,11 +3266,13 @@ mod law_issuesapi_the_list_holds_a_created_label {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_5(ctx)?,
@@ -3066,13 +3280,15 @@ mod law_issuesapi_the_list_holds_a_created_label {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_7(ctx)?,
@@ -3080,13 +3296,15 @@ mod law_issuesapi_the_list_holds_a_created_label {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_9(ctx)?,
@@ -3094,13 +3312,15 @@ mod law_issuesapi_the_list_holds_a_created_label {
         ])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("é".to_owned()),
             literal_11(ctx)?,
@@ -3108,11 +3328,13 @@ mod law_issuesapi_the_list_holds_a_created_label {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_13(ctx)?,
@@ -3120,7 +3342,8 @@ mod law_issuesapi_the_list_holds_a_created_label {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
             literal_3(ctx)?,
@@ -3128,13 +3351,15 @@ mod law_issuesapi_the_list_holds_a_created_label {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_16(ctx)?,
@@ -3147,7 +3372,8 @@ mod law_issuesapi_the_list_holds_a_created_label {
         owner: ls::Value,
         repo: ls::Value,
         body: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -3166,12 +3392,15 @@ mod law_issuesapi_the_list_holds_a_created_label {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
                     let it_2 = ls::attempt(
                         ctx,
@@ -3194,12 +3423,15 @@ mod law_issuesapi_the_list_holds_a_created_label {
                         |value| ls::construct("Either::Right", vec![value]),
                         |value| ls::construct("Either::Left", vec![value]),
                     )?;
-                    match it_2.clone() {
-                        ls::Value::Left(payload) => {
+                    match it_2.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _match_selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let match_selection = *payload;
                             ls::called(
                                 "lawtwin.github::lawtwinGithubModelContainsLabel",
@@ -3229,7 +3461,8 @@ mod law_issuesapi_the_list_holds_a_created_label {
         owner: ls::Value,
         repo: ls::Value,
         body: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.github::ability::IssuesApi".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_github::IssuesApi> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_github::Reference::new(ctx));
@@ -3264,14 +3497,16 @@ mod law_issuesapi_the_list_holds_a_created_label {
         "(data lawtwin.github.model::type::IssuesCreateLabelBody (ctor lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody (text) (maybe (text)) (maybe (text)))) (ref lawtwin.github.model::type::IssuesCreateLabelBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone(), values[2].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -3408,7 +3643,8 @@ mod law_issuesapi_the_list_holds_a_created_label {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |the list holds a created label| [reference]",
@@ -3418,7 +3654,8 @@ mod law_issuesapi_the_list_holds_a_created_label {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -3437,14 +3674,16 @@ mod law_issuesapi_the_list_holds_a_created_label {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -3453,7 +3692,8 @@ mod law_issuesapi_the_list_holds_a_created_label {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -3472,14 +3712,16 @@ mod law_issuesapi_the_list_holds_a_created_label {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -3488,7 +3730,8 @@ mod law_issuesapi_the_list_holds_a_created_label {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -3516,14 +3759,16 @@ mod law_issuesapi_the_list_holds_a_created_label {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -3550,7 +3795,8 @@ mod law_issuesapi_the_list_holds_a_created_label {
                     case.values[1].clone(),
                     case.values[2].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |the list holds a created label| [reference]",
                         SEARCH_INPUTS,
@@ -3650,44 +3896,53 @@ mod law_issuesapi_the_list_holds_a_created_label {
 // lawspecFieldname lawspecFielddescription_ lawspecFieldcolor lawspecFielddefault_
 // lawspecFieldarchivedAt lawspecFieldarchivedBy -> lawspecFieldarchivedBy })) } } } } = true end
 // for all
-mod law_issuesapi_an_update_changes_only_the_fields_it {
+mod law_issuesapi_an_update_changes_only_the_fields_it
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -3695,11 +3950,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -3708,11 +3965,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text(" ".to_owned()),
             literal_5(ctx)?,
@@ -3720,11 +3979,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Bool(false)])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_5(ctx)?,
@@ -3733,11 +3994,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_9(ctx)?,
@@ -3745,11 +4008,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Bool(true)])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -3758,13 +4023,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_13(ctx)?,
@@ -3772,7 +4039,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_13(ctx)?,
@@ -3781,13 +4049,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_16(ctx)?,
@@ -3795,7 +4065,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_16(ctx)?,
             literal_16(ctx)?,
@@ -3804,13 +4075,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("é".to_owned()),
             literal_19(ctx)?,
@@ -3818,7 +4091,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_19(ctx)?,
             literal_19(ctx)?,
@@ -3827,11 +4101,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_22(ctx)?,
@@ -3839,7 +4115,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_22(ctx)?,
             literal_22(ctx)?,
@@ -3848,7 +4125,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
             literal_5(ctx)?,
@@ -3856,13 +4134,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_26(ctx)?,
@@ -3870,7 +4150,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         ])?)
     }
 
-    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_26(ctx)?,
             literal_26(ctx)?,
@@ -3886,7 +4167,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         body: ls::Value,
         change: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -3905,23 +4187,27 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _selection = *payload;
-                    let key = match sent.clone() {
+                    let key = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag
                                 == "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody"
                                 && fields.len() == 3 =>
                         {
                             let mut fields = fields.into_iter();
-                            let name = fields.next().unwrap();
-                            let _color = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
+                            let name = fields.next().expect("checked expression arity");
+                            let _color = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
                             name.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -3942,12 +4228,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                         |value| ls::construct("Either::Right", vec![value]),
                         |value| ls::construct("Either::Left", vec![value]),
                     )?;
-                    match it_2.clone() {
-                        ls::Value::Left(payload) => {
+                    match it_2.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _match_selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let match_selection = *payload;
                             let it_3 = ls::attempt(
                                 ctx,
@@ -3973,12 +4262,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
                             )?;
-                            match it_3.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_3.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     ls::Value::Bool(true)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     let it_4 = ls::attempt(
                                         ctx,
@@ -3996,52 +4288,93 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
                                     )?;
-                                    match it_4.clone() {
-                                        ls::Value::Left(payload) => {
+                                    match it_4.clone()
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let _match_match_match_selection = *payload;
                                             ls::Value::Bool(false)
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let match_match_match_selection = *payload;
                                             if if if if if if if ls::binary(
                                                 "==",
                                                 "Integer",
-                                                match match_match_match_selection.clone() {
+                                                match match_match_match_selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.github.model::type::Label::Label"
                                                             && fields.len() == 9 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _url = fields.next().unwrap();
-                                                        let _name = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _color = fields.next().unwrap();
-                                                        let _default = fields.next().unwrap();
-                                                        let _archived_at = fields.next().unwrap();
-                                                        let _archived_by = fields.next().unwrap();
+                                                        let id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _color = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _default = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_by = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         id.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 },
-                                                match match_selection.clone() {
+                                                match match_selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.github.model::type::Label::Label"
                                                             && fields.len() == 9 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _url = fields.next().unwrap();
-                                                        let _name = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _color = fields.next().unwrap();
-                                                        let _default = fields.next().unwrap();
-                                                        let _archived_at = fields.next().unwrap();
-                                                        let _archived_by = fields.next().unwrap();
+                                                        let id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _color = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _default = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_by = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         id.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -4052,58 +4385,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             node_id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             node_id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -4111,58 +4480,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -4175,70 +4580,117 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                                             && fields.len() == 9 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _url = fields.next().unwrap();
-                                                        let _name = fields.next().unwrap();
-                                                        let description = fields.next().unwrap();
-                                                        let _color = fields.next().unwrap();
-                                                        let _default = fields.next().unwrap();
-                                                        let _archived_at = fields.next().unwrap();
-                                                        let _archived_by = fields.next().unwrap();
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _color = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _default = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_by = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         description.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _new_name = fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let description =
-                                                                fields.next().unwrap();
-                                                            let _archived = fields.next().unwrap();
+                                                            let _new_name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             description.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Label::Label"
                                                                     && fields.len() == 9 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _url = fields.next().unwrap();
-                                                                let _name = fields.next().unwrap();
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _name = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let description =
-                                                                    fields.next().unwrap();
-                                                                let _color = fields.next().unwrap();
-                                                                let _default =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _color = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _default = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _archived_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _archived_by =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 description.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             ls::construct(
@@ -4249,13 +4701,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                                                 ],
                                                             )?
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Maybe Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -4268,82 +4723,132 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                                             && fields.len() == 9 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _url = fields.next().unwrap();
-                                                        let _name = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let color = fields.next().unwrap();
-                                                        let _default = fields.next().unwrap();
-                                                        let _archived_at = fields.next().unwrap();
-                                                        let _archived_by = fields.next().unwrap();
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let color = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _default = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_by = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         color.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _new_name = fields.next().unwrap();
-                                                            let color = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _archived = fields.next().unwrap();
+                                                            let _new_name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             color.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Label::Label"
                                                                     && fields.len() == 9 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _url = fields.next().unwrap();
-                                                                let _name = fields.next().unwrap();
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _name = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _description =
-                                                                    fields.next().unwrap();
-                                                                let color = fields.next().unwrap();
-                                                                let _default =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let color = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _default = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _archived_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _archived_by =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 color.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             match_match_match_match_selection
                                                                 .clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -4351,58 +4856,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                                 ls::binary(
                                                     "==",
                                                     "Bool",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             default.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             default.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -4410,58 +4951,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                                 ls::binary(
                                                     "==",
                                                     "Maybe Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             archived_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             archived_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -4469,58 +5046,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                                                 ls::binary(
                                                     "==",
                                                     "Maybe lawtwin.github.model::type::SimpleUser",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             archived_by.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             archived_by.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                         }
@@ -4551,7 +5164,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         repo: ls::Value,
         body: ls::Value,
         change: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let owner = lawspec_schema::schema()?.validate_with_context(
             owner,
             &ls::TypeRef::named("Text", vec![]),
@@ -4625,7 +5239,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
         "(data lawtwin.github.model::type::IssuesUpdateLabelBody (ctor lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody (maybe (text)) (maybe (text)) (maybe (text)) (maybe (bool)))) (ref lawtwin.github.model::type::IssuesUpdateLabelBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(
             ctx,
@@ -4638,7 +5253,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -4809,7 +5425,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |an update changes only the fields it gives to a label| [native]",
@@ -4819,7 +5436,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -4838,14 +5456,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -4854,7 +5474,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -4873,14 +5494,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -4889,7 +5512,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -4917,14 +5541,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -4933,7 +5559,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -4961,14 +5588,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -4996,7 +5625,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |an update changes only the fields it gives to a label| [native]",
                         SEARCH_INPUTS,
@@ -5096,44 +5726,53 @@ mod law_issuesapi_an_update_changes_only_the_fields_it {
 // lawspecFieldname lawspecFielddescription_ lawspecFieldcolor lawspecFielddefault_
 // lawspecFieldarchivedAt lawspecFieldarchivedBy -> lawspecFieldarchivedBy })) } } } } = true end
 // for all
-mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
+mod law_issuesapi_an_update_changes_only_the_fields_it_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -5141,11 +5780,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -5154,11 +5795,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text(" ".to_owned()),
             literal_5(ctx)?,
@@ -5166,11 +5809,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Bool(false)])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_5(ctx)?,
@@ -5179,11 +5824,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_9(ctx)?,
@@ -5191,11 +5838,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Bool(true)])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -5204,13 +5853,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_13(ctx)?,
@@ -5218,7 +5869,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_13(ctx)?,
@@ -5227,13 +5879,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_16(ctx)?,
@@ -5241,7 +5895,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_16(ctx)?,
             literal_16(ctx)?,
@@ -5250,13 +5905,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("é".to_owned()),
             literal_19(ctx)?,
@@ -5264,7 +5921,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_19(ctx)?,
             literal_19(ctx)?,
@@ -5273,11 +5931,13 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_22(ctx)?,
@@ -5285,7 +5945,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_22(ctx)?,
             literal_22(ctx)?,
@@ -5294,7 +5955,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
             literal_5(ctx)?,
@@ -5302,13 +5964,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![
             ls::Value::Text("".to_owned()),
             literal_26(ctx)?,
@@ -5316,7 +5980,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         ])?)
     }
 
-    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_26(ctx)?,
             literal_26(ctx)?,
@@ -5331,7 +5996,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         repo: ls::Value,
         body: ls::Value,
         change: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -5350,23 +6016,27 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _selection = *payload;
-                    let key = match sent.clone() {
+                    let key = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag
                                 == "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody"
                                 && fields.len() == 3 =>
                         {
                             let mut fields = fields.into_iter();
-                            let name = fields.next().unwrap();
-                            let _color = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
+                            let name = fields.next().expect("checked expression arity");
+                            let _color = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
                             name.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -5387,12 +6057,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                         |value| ls::construct("Either::Right", vec![value]),
                         |value| ls::construct("Either::Left", vec![value]),
                     )?;
-                    match it_2.clone() {
-                        ls::Value::Left(payload) => {
+                    match it_2.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _match_selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let match_selection = *payload;
                             let it_3 = ls::attempt(
                                 ctx,
@@ -5418,12 +6091,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
                             )?;
-                            match it_3.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_3.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     ls::Value::Bool(true)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     let it_4 = ls::attempt(
                                         ctx,
@@ -5441,52 +6117,93 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
                                     )?;
-                                    match it_4.clone() {
-                                        ls::Value::Left(payload) => {
+                                    match it_4.clone()
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let _match_match_match_selection = *payload;
                                             ls::Value::Bool(false)
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let match_match_match_selection = *payload;
                                             if if if if if if if ls::binary(
                                                 "==",
                                                 "Integer",
-                                                match match_match_match_selection.clone() {
+                                                match match_match_match_selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.github.model::type::Label::Label"
                                                             && fields.len() == 9 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _url = fields.next().unwrap();
-                                                        let _name = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _color = fields.next().unwrap();
-                                                        let _default = fields.next().unwrap();
-                                                        let _archived_at = fields.next().unwrap();
-                                                        let _archived_by = fields.next().unwrap();
+                                                        let id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _color = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _default = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_by = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         id.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 },
-                                                match match_selection.clone() {
+                                                match match_selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.github.model::type::Label::Label"
                                                             && fields.len() == 9 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _url = fields.next().unwrap();
-                                                        let _name = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _color = fields.next().unwrap();
-                                                        let _default = fields.next().unwrap();
-                                                        let _archived_at = fields.next().unwrap();
-                                                        let _archived_by = fields.next().unwrap();
+                                                        let id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _color = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _default = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_by = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         id.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -5497,58 +6214,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             node_id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             node_id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -5556,58 +6309,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -5620,70 +6409,117 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                                             && fields.len() == 9 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _url = fields.next().unwrap();
-                                                        let _name = fields.next().unwrap();
-                                                        let description = fields.next().unwrap();
-                                                        let _color = fields.next().unwrap();
-                                                        let _default = fields.next().unwrap();
-                                                        let _archived_at = fields.next().unwrap();
-                                                        let _archived_by = fields.next().unwrap();
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _color = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _default = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_by = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         description.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _new_name = fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let description =
-                                                                fields.next().unwrap();
-                                                            let _archived = fields.next().unwrap();
+                                                            let _new_name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             description.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Label::Label"
                                                                     && fields.len() == 9 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _url = fields.next().unwrap();
-                                                                let _name = fields.next().unwrap();
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _name = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let description =
-                                                                    fields.next().unwrap();
-                                                                let _color = fields.next().unwrap();
-                                                                let _default =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _color = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _default = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _archived_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _archived_by =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 description.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             ls::construct(
@@ -5694,13 +6530,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                                                 ],
                                                             )?
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Maybe Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -5713,82 +6552,132 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                                             && fields.len() == 9 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _url = fields.next().unwrap();
-                                                        let _name = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let color = fields.next().unwrap();
-                                                        let _default = fields.next().unwrap();
-                                                        let _archived_at = fields.next().unwrap();
-                                                        let _archived_by = fields.next().unwrap();
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let color = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _default = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _archived_by = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         color.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _new_name = fields.next().unwrap();
-                                                            let color = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _archived = fields.next().unwrap();
+                                                            let _new_name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             color.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Label::Label"
                                                                     && fields.len() == 9 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _url = fields.next().unwrap();
-                                                                let _name = fields.next().unwrap();
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _name = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _description =
-                                                                    fields.next().unwrap();
-                                                                let color = fields.next().unwrap();
-                                                                let _default =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let color = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _default = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _archived_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _archived_by =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 color.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             match_match_match_match_selection
                                                                 .clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -5796,58 +6685,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                                 ls::binary(
                                                     "==",
                                                     "Bool",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             default.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             default.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -5855,58 +6780,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                                 ls::binary(
                                                     "==",
                                                     "Maybe Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             archived_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let archived_at =
-                                                                fields.next().unwrap();
-                                                            let _archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             archived_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -5914,58 +6875,94 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                                                 ls::binary(
                                                     "==",
                                                     "Maybe lawtwin.github.model::type::SimpleUser",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             archived_by.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Label::Label"
                                                                 && fields.len() == 9 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _url = fields.next().unwrap();
-                                                            let _name = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _color = fields.next().unwrap();
-                                                            let _default = fields.next().unwrap();
-                                                            let _archived_at =
-                                                                fields.next().unwrap();
-                                                            let archived_by =
-                                                                fields.next().unwrap();
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _name = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _color = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _default = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _archived_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let archived_by = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             archived_by.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                         }
@@ -5996,7 +6993,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         repo: ls::Value,
         body: ls::Value,
         change: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.github::ability::IssuesApi".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_github::IssuesApi> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_github::Reference::new(ctx));
@@ -6044,7 +7042,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
         "(data lawtwin.github.model::type::IssuesUpdateLabelBody (ctor lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody (maybe (text)) (maybe (text)) (maybe (text)) (maybe (bool)))) (ref lawtwin.github.model::type::IssuesUpdateLabelBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(
             ctx,
@@ -6057,7 +7056,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -6228,7 +7228,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |an update changes only the fields it gives to a label| [reference]",
@@ -6238,7 +7239,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6257,14 +7259,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6273,7 +7277,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6292,14 +7297,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6308,7 +7315,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6336,14 +7344,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6352,7 +7362,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6380,14 +7391,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6415,7 +7428,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |an update changes only the fields it gives to a label| [reference]",
                         SEARCH_INPUTS,
@@ -6448,55 +7462,66 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_2 {
 // lawspecFieldclosedIssues lawspecFieldcreatedAt lawspecFieldupdatedAt lawspecFieldclosedAt
 // lawspecFielddueOn -> lawspecFieldnumber } in (attempt (issuesGetMilestone owner repo key) ==
 // Either::Right(_lawspecSelection0x0)) } = true end for all
-mod law_issuesapi_a_created_milestone_reads_back_native {
+mod law_issuesapi_a_created_milestone_reads_back_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -6505,19 +7530,23 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_5(ctx)?,
@@ -6526,19 +7555,23 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
         ])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_8(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_9(ctx)?,
@@ -6547,13 +7580,15 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
@@ -6562,13 +7597,15 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_5(ctx)?,
@@ -6577,17 +7614,20 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
@@ -6600,21 +7640,23 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
         body: ls::Value,
         due_on_value: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![due_on_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag
                             == "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody"
                             && fields.len() == 4 =>
                     {
                         let mut fields = fields.into_iter();
-                        let title = fields.next().unwrap();
-                        let state = fields.next().unwrap();
-                        let description = fields.next().unwrap();
-                        let _due_on = fields.next().unwrap();
+                        let title = fields.next().expect("checked expression arity");
+                        let state = fields.next().expect("checked expression arity");
+                        let description = fields.next().expect("checked expression arity");
+                        let _due_on = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
                             vec![
@@ -6644,35 +7686,39 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let key = match selection.clone() {
+                    let key = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.github.model::type::Milestone::Milestone"
                                 && fields.len() == 16 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _url = fields.next().unwrap();
-                            let _html_url = fields.next().unwrap();
-                            let _labels_url = fields.next().unwrap();
-                            let _id = fields.next().unwrap();
-                            let _node_id = fields.next().unwrap();
-                            let number = fields.next().unwrap();
-                            let _state = fields.next().unwrap();
-                            let _title = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
-                            let _creator = fields.next().unwrap();
-                            let _open_issues = fields.next().unwrap();
-                            let _closed_issues = fields.next().unwrap();
-                            let _created_at = fields.next().unwrap();
-                            let _updated_at = fields.next().unwrap();
-                            let _closed_at = fields.next().unwrap();
-                            let _due_on = fields.next().unwrap();
+                            let _url = fields.next().expect("checked expression arity");
+                            let _html_url = fields.next().expect("checked expression arity");
+                            let _labels_url = fields.next().expect("checked expression arity");
+                            let _id = fields.next().expect("checked expression arity");
+                            let _node_id = fields.next().expect("checked expression arity");
+                            let number = fields.next().expect("checked expression arity");
+                            let _state = fields.next().expect("checked expression arity");
+                            let _title = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
+                            let _creator = fields.next().expect("checked expression arity");
+                            let _open_issues = fields.next().expect("checked expression arity");
+                            let _closed_issues = fields.next().expect("checked expression arity");
+                            let _created_at = fields.next().expect("checked expression arity");
+                            let _updated_at = fields.next().expect("checked expression arity");
+                            let _closed_at = fields.next().expect("checked expression arity");
+                            let _due_on = fields.next().expect("checked expression arity");
                             number.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -6717,7 +7763,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
         repo: ls::Value,
         body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let owner = lawspec_schema::schema()?.validate_with_context(
             owner,
             &ls::TypeRef::named("Text", vec![]),
@@ -6793,7 +7840,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
         _repo: ls::Value,
         _body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -6804,7 +7852,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                 due_on_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -6817,7 +7866,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -6825,7 +7875,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -6839,7 +7890,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -6964,7 +8016,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |a created milestone reads back| [native]",
@@ -6974,7 +8027,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6993,14 +8047,16 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7009,7 +8065,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7028,14 +8085,16 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7044,7 +8103,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7092,14 +8152,16 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7108,7 +8170,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7157,14 +8220,16 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7172,7 +8237,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -7204,7 +8270,8 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |a created milestone reads back| [native]",
                         SEARCH_INPUTS,
@@ -7237,55 +8304,66 @@ mod law_issuesapi_a_created_milestone_reads_back_native {
 // lawspecFieldclosedIssues lawspecFieldcreatedAt lawspecFieldupdatedAt lawspecFieldclosedAt
 // lawspecFielddueOn -> lawspecFieldnumber } in (attempt (issuesGetMilestone owner repo key) ==
 // Either::Right(_lawspecSelection0x0)) } = true end for all
-mod law_issuesapi_a_created_milestone_reads_back {
+mod law_issuesapi_a_created_milestone_reads_back
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -7294,19 +8372,23 @@ mod law_issuesapi_a_created_milestone_reads_back {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_5(ctx)?,
@@ -7315,19 +8397,23 @@ mod law_issuesapi_a_created_milestone_reads_back {
         ])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_8(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_9(ctx)?,
@@ -7336,13 +8422,15 @@ mod law_issuesapi_a_created_milestone_reads_back {
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
@@ -7351,13 +8439,15 @@ mod law_issuesapi_a_created_milestone_reads_back {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_5(ctx)?,
@@ -7366,17 +8456,20 @@ mod law_issuesapi_a_created_milestone_reads_back {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
@@ -7388,21 +8481,23 @@ mod law_issuesapi_a_created_milestone_reads_back {
         repo: ls::Value,
         body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![due_on_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag
                             == "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody"
                             && fields.len() == 4 =>
                     {
                         let mut fields = fields.into_iter();
-                        let title = fields.next().unwrap();
-                        let state = fields.next().unwrap();
-                        let description = fields.next().unwrap();
-                        let _due_on = fields.next().unwrap();
+                        let title = fields.next().expect("checked expression arity");
+                        let state = fields.next().expect("checked expression arity");
+                        let description = fields.next().expect("checked expression arity");
+                        let _due_on = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
                             vec![
@@ -7432,35 +8527,39 @@ mod law_issuesapi_a_created_milestone_reads_back {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let key = match selection.clone() {
+                    let key = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.github.model::type::Milestone::Milestone"
                                 && fields.len() == 16 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _url = fields.next().unwrap();
-                            let _html_url = fields.next().unwrap();
-                            let _labels_url = fields.next().unwrap();
-                            let _id = fields.next().unwrap();
-                            let _node_id = fields.next().unwrap();
-                            let number = fields.next().unwrap();
-                            let _state = fields.next().unwrap();
-                            let _title = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
-                            let _creator = fields.next().unwrap();
-                            let _open_issues = fields.next().unwrap();
-                            let _closed_issues = fields.next().unwrap();
-                            let _created_at = fields.next().unwrap();
-                            let _updated_at = fields.next().unwrap();
-                            let _closed_at = fields.next().unwrap();
-                            let _due_on = fields.next().unwrap();
+                            let _url = fields.next().expect("checked expression arity");
+                            let _html_url = fields.next().expect("checked expression arity");
+                            let _labels_url = fields.next().expect("checked expression arity");
+                            let _id = fields.next().expect("checked expression arity");
+                            let _node_id = fields.next().expect("checked expression arity");
+                            let number = fields.next().expect("checked expression arity");
+                            let _state = fields.next().expect("checked expression arity");
+                            let _title = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
+                            let _creator = fields.next().expect("checked expression arity");
+                            let _open_issues = fields.next().expect("checked expression arity");
+                            let _closed_issues = fields.next().expect("checked expression arity");
+                            let _created_at = fields.next().expect("checked expression arity");
+                            let _updated_at = fields.next().expect("checked expression arity");
+                            let _closed_at = fields.next().expect("checked expression arity");
+                            let _due_on = fields.next().expect("checked expression arity");
                             number.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -7505,7 +8604,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
         repo: ls::Value,
         body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.github::ability::IssuesApi".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_github::IssuesApi> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_github::Reference::new(ctx));
@@ -7555,7 +8655,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
         _repo: ls::Value,
         _body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -7566,7 +8667,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
                 due_on_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -7579,7 +8681,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -7587,7 +8690,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -7601,7 +8705,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -7726,7 +8831,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |a created milestone reads back| [reference]",
@@ -7736,7 +8842,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7755,14 +8862,16 @@ mod law_issuesapi_a_created_milestone_reads_back {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7771,7 +8880,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7790,14 +8900,16 @@ mod law_issuesapi_a_created_milestone_reads_back {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7806,7 +8918,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7854,14 +8967,16 @@ mod law_issuesapi_a_created_milestone_reads_back {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7870,7 +8985,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7919,14 +9035,16 @@ mod law_issuesapi_a_created_milestone_reads_back {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7934,7 +9052,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -7966,7 +9085,8 @@ mod law_issuesapi_a_created_milestone_reads_back {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |a created milestone reads back| [reference]",
                         SEARCH_INPUTS,
@@ -8000,55 +9120,66 @@ mod law_issuesapi_a_created_milestone_reads_back {
 // lawspecFielddueOn -> lawspecFieldnumber } in let gone = attempt (issuesDeleteMilestone owner repo
 // key) in (attempt (issuesGetMilestone owner repo key) ==
 // Either::Left(lawtwin.github.model::type::ApiError::NotFound())) } = true end for all
-mod law_issuesapi_a_deleted_milestone_is_not_found {
+mod law_issuesapi_a_deleted_milestone_is_not_found
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -8057,19 +9188,23 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_5(ctx)?,
@@ -8078,19 +9213,23 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
         ])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_8(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_9(ctx)?,
@@ -8099,13 +9238,15 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
@@ -8114,13 +9255,15 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_5(ctx)?,
@@ -8129,17 +9272,20 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
@@ -8152,21 +9298,23 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
         body: ls::Value,
         due_on_value: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![due_on_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag
                             == "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody"
                             && fields.len() == 4 =>
                     {
                         let mut fields = fields.into_iter();
-                        let title = fields.next().unwrap();
-                        let state = fields.next().unwrap();
-                        let description = fields.next().unwrap();
-                        let _due_on = fields.next().unwrap();
+                        let title = fields.next().expect("checked expression arity");
+                        let state = fields.next().expect("checked expression arity");
+                        let description = fields.next().expect("checked expression arity");
+                        let _due_on = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
                             vec![
@@ -8196,35 +9344,39 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let key = match selection.clone() {
+                    let key = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.github.model::type::Milestone::Milestone"
                                 && fields.len() == 16 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _url = fields.next().unwrap();
-                            let _html_url = fields.next().unwrap();
-                            let _labels_url = fields.next().unwrap();
-                            let _id = fields.next().unwrap();
-                            let _node_id = fields.next().unwrap();
-                            let number = fields.next().unwrap();
-                            let _state = fields.next().unwrap();
-                            let _title = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
-                            let _creator = fields.next().unwrap();
-                            let _open_issues = fields.next().unwrap();
-                            let _closed_issues = fields.next().unwrap();
-                            let _created_at = fields.next().unwrap();
-                            let _updated_at = fields.next().unwrap();
-                            let _closed_at = fields.next().unwrap();
-                            let _due_on = fields.next().unwrap();
+                            let _url = fields.next().expect("checked expression arity");
+                            let _html_url = fields.next().expect("checked expression arity");
+                            let _labels_url = fields.next().expect("checked expression arity");
+                            let _id = fields.next().expect("checked expression arity");
+                            let _node_id = fields.next().expect("checked expression arity");
+                            let number = fields.next().expect("checked expression arity");
+                            let _state = fields.next().expect("checked expression arity");
+                            let _title = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
+                            let _creator = fields.next().expect("checked expression arity");
+                            let _open_issues = fields.next().expect("checked expression arity");
+                            let _closed_issues = fields.next().expect("checked expression arity");
+                            let _created_at = fields.next().expect("checked expression arity");
+                            let _updated_at = fields.next().expect("checked expression arity");
+                            let _closed_at = fields.next().expect("checked expression arity");
+                            let _due_on = fields.next().expect("checked expression arity");
                             number.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -8291,7 +9443,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
         repo: ls::Value,
         body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let owner = lawspec_schema::schema()?.validate_with_context(
             owner,
             &ls::TypeRef::named("Text", vec![]),
@@ -8367,7 +9520,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
         _repo: ls::Value,
         _body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -8378,7 +9532,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                 due_on_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -8391,7 +9546,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -8399,7 +9555,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -8413,7 +9570,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -8538,7 +9696,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |a deleted milestone is not found| [native]",
@@ -8548,7 +9707,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8567,14 +9727,16 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8583,7 +9745,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8602,14 +9765,16 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8618,7 +9783,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8666,14 +9832,16 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8682,7 +9850,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8731,14 +9900,16 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8746,7 +9917,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -8778,7 +9950,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |a deleted milestone is not found| [native]",
                         SEARCH_INPUTS,
@@ -8812,55 +9985,66 @@ mod law_issuesapi_a_deleted_milestone_is_not_found {
 // lawspecFielddueOn -> lawspecFieldnumber } in let gone = attempt (issuesDeleteMilestone owner repo
 // key) in (attempt (issuesGetMilestone owner repo key) ==
 // Either::Left(lawtwin.github.model::type::ApiError::NotFound())) } = true end for all
-mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
+mod law_issuesapi_a_deleted_milestone_is_not_found_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -8869,19 +10053,23 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_5(ctx)?,
@@ -8890,19 +10078,23 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
         ])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_8(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_9(ctx)?,
@@ -8911,13 +10103,15 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
@@ -8926,13 +10120,15 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_5(ctx)?,
@@ -8941,17 +10137,20 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
@@ -8963,21 +10162,23 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
         repo: ls::Value,
         body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![due_on_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag
                             == "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody"
                             && fields.len() == 4 =>
                     {
                         let mut fields = fields.into_iter();
-                        let title = fields.next().unwrap();
-                        let state = fields.next().unwrap();
-                        let description = fields.next().unwrap();
-                        let _due_on = fields.next().unwrap();
+                        let title = fields.next().expect("checked expression arity");
+                        let state = fields.next().expect("checked expression arity");
+                        let description = fields.next().expect("checked expression arity");
+                        let _due_on = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
                             vec![
@@ -9007,35 +10208,39 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let key = match selection.clone() {
+                    let key = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.github.model::type::Milestone::Milestone"
                                 && fields.len() == 16 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _url = fields.next().unwrap();
-                            let _html_url = fields.next().unwrap();
-                            let _labels_url = fields.next().unwrap();
-                            let _id = fields.next().unwrap();
-                            let _node_id = fields.next().unwrap();
-                            let number = fields.next().unwrap();
-                            let _state = fields.next().unwrap();
-                            let _title = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
-                            let _creator = fields.next().unwrap();
-                            let _open_issues = fields.next().unwrap();
-                            let _closed_issues = fields.next().unwrap();
-                            let _created_at = fields.next().unwrap();
-                            let _updated_at = fields.next().unwrap();
-                            let _closed_at = fields.next().unwrap();
-                            let _due_on = fields.next().unwrap();
+                            let _url = fields.next().expect("checked expression arity");
+                            let _html_url = fields.next().expect("checked expression arity");
+                            let _labels_url = fields.next().expect("checked expression arity");
+                            let _id = fields.next().expect("checked expression arity");
+                            let _node_id = fields.next().expect("checked expression arity");
+                            let number = fields.next().expect("checked expression arity");
+                            let _state = fields.next().expect("checked expression arity");
+                            let _title = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
+                            let _creator = fields.next().expect("checked expression arity");
+                            let _open_issues = fields.next().expect("checked expression arity");
+                            let _closed_issues = fields.next().expect("checked expression arity");
+                            let _created_at = fields.next().expect("checked expression arity");
+                            let _updated_at = fields.next().expect("checked expression arity");
+                            let _closed_at = fields.next().expect("checked expression arity");
+                            let _due_on = fields.next().expect("checked expression arity");
                             number.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -9102,7 +10307,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
         repo: ls::Value,
         body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.github::ability::IssuesApi".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_github::IssuesApi> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_github::Reference::new(ctx));
@@ -9152,7 +10358,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
         _repo: ls::Value,
         _body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -9163,7 +10370,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                 due_on_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -9176,7 +10384,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -9184,7 +10393,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -9198,7 +10408,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -9323,7 +10534,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |a deleted milestone is not found| [reference]",
@@ -9333,7 +10545,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9352,14 +10565,16 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9368,7 +10583,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9387,14 +10603,16 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9403,7 +10621,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9451,14 +10670,16 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9467,7 +10688,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9516,14 +10738,16 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9531,7 +10755,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -9563,7 +10788,8 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |a deleted milestone is not found| [reference]",
                         SEARCH_INPUTS,
@@ -9594,55 +10820,66 @@ mod law_issuesapi_a_deleted_milestone_is_not_found_2 {
 // match (it) { Either::Left _match__lawspecSelection0x0_0 -> false; Either::Right
 // _match__lawspecSelection0x0_0 -> lawtwinGithubModelContainsMilestone _lawspecSelection0x0
 // _match__lawspecSelection0x0_0 } } = true end for all
-mod law_issuesapi_the_list_holds_a_created_milestone {
+mod law_issuesapi_the_list_holds_a_created_milestone
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -9651,19 +10888,23 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_5(ctx)?,
@@ -9672,19 +10913,23 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
         ])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_8(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_9(ctx)?,
@@ -9693,13 +10938,15 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
@@ -9708,13 +10955,15 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_5(ctx)?,
@@ -9723,17 +10972,20 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
@@ -9746,21 +10998,23 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
         body: ls::Value,
         due_on_value: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![due_on_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag
                             == "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody"
                             && fields.len() == 4 =>
                     {
                         let mut fields = fields.into_iter();
-                        let title = fields.next().unwrap();
-                        let state = fields.next().unwrap();
-                        let description = fields.next().unwrap();
-                        let _due_on = fields.next().unwrap();
+                        let title = fields.next().expect("checked expression arity");
+                        let state = fields.next().expect("checked expression arity");
+                        let description = fields.next().expect("checked expression arity");
+                        let _due_on = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
                             vec![
@@ -9790,12 +11044,15 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
                     let it_2 = ls::attempt(
                         ctx,
@@ -9821,12 +11078,15 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                         |value| ls::construct("Either::Right", vec![value]),
                         |value| ls::construct("Either::Left", vec![value]),
                     )?;
-                    match it_2.clone() {
-                        ls::Value::Left(payload) => {
+                    match it_2.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _match_selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let match_selection = *payload;
                             ls::called(
                                 "lawtwin.github::lawtwinGithubModelContainsMilestone",
@@ -9857,7 +11117,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
         repo: ls::Value,
         body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let owner = lawspec_schema::schema()?.validate_with_context(
             owner,
             &ls::TypeRef::named("Text", vec![]),
@@ -9933,7 +11194,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
         _repo: ls::Value,
         _body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -9944,7 +11206,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                 due_on_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -9957,7 +11220,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -9965,7 +11229,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -9979,7 +11244,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -10104,7 +11370,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |the list holds a created milestone| [native]",
@@ -10114,7 +11381,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10133,14 +11401,16 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10149,7 +11419,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10168,14 +11439,16 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10184,7 +11457,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10232,14 +11506,16 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10248,7 +11524,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10297,14 +11574,16 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10312,7 +11591,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -10344,7 +11624,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |the list holds a created milestone| [native]",
                         SEARCH_INPUTS,
@@ -10375,55 +11656,66 @@ mod law_issuesapi_the_list_holds_a_created_milestone {
 // match (it) { Either::Left _match__lawspecSelection0x0_0 -> false; Either::Right
 // _match__lawspecSelection0x0_0 -> lawtwinGithubModelContainsMilestone _lawspecSelection0x0
 // _match__lawspecSelection0x0_0 } } = true end for all
-mod law_issuesapi_the_list_holds_a_created_milestone_2 {
+mod law_issuesapi_the_list_holds_a_created_milestone_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -10432,19 +11724,23 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_5(ctx)?,
@@ -10453,19 +11749,23 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
         ])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_8(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_9(ctx)?,
@@ -10474,13 +11774,15 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
@@ -10489,13 +11791,15 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_5(ctx)?,
@@ -10504,17 +11808,20 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
         ])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
@@ -10526,21 +11833,23 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
         repo: ls::Value,
         body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![due_on_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag
                             == "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody"
                             && fields.len() == 4 =>
                     {
                         let mut fields = fields.into_iter();
-                        let title = fields.next().unwrap();
-                        let state = fields.next().unwrap();
-                        let description = fields.next().unwrap();
-                        let _due_on = fields.next().unwrap();
+                        let title = fields.next().expect("checked expression arity");
+                        let state = fields.next().expect("checked expression arity");
+                        let description = fields.next().expect("checked expression arity");
+                        let _due_on = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
                             vec![
@@ -10570,12 +11879,15 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
                     let it_2 = ls::attempt(
                         ctx,
@@ -10601,12 +11913,15 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                         |value| ls::construct("Either::Right", vec![value]),
                         |value| ls::construct("Either::Left", vec![value]),
                     )?;
-                    match it_2.clone() {
-                        ls::Value::Left(payload) => {
+                    match it_2.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _match_selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let match_selection = *payload;
                             ls::called(
                                 "lawtwin.github::lawtwinGithubModelContainsMilestone",
@@ -10637,7 +11952,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
         repo: ls::Value,
         body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.github::ability::IssuesApi".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_github::IssuesApi> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_github::Reference::new(ctx));
@@ -10687,7 +12003,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
         _repo: ls::Value,
         _body: ls::Value,
         due_on_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -10698,7 +12015,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                 due_on_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -10711,7 +12029,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -10719,7 +12038,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -10733,7 +12053,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -10858,7 +12179,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |the list holds a created milestone| [reference]",
@@ -10868,7 +12190,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10887,14 +12210,16 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10903,7 +12228,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10922,14 +12248,16 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10938,7 +12266,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10986,14 +12315,16 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -11002,7 +12333,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -11051,14 +12383,16 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -11066,7 +12400,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -11098,7 +12433,8 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |the list holds a created milestone| [reference]",
                         SEARCH_INPUTS,
@@ -11325,62 +12661,74 @@ mod law_issuesapi_the_list_holds_a_created_milestone_2 {
 // _match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
 // Maybe::Present(_match__match__match__match__lawspecSelection0x0_0_0_0_0) })) } } } } = true end
 // for all
-mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
+mod law_issuesapi_an_update_changes_only_the_fields_it_3
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
             fields,
         ))
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -11389,7 +12737,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_2(ctx)?,
             literal_1(ctx)?,
@@ -11398,19 +12747,23 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_6(ctx)?,
@@ -11419,7 +12772,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_7(ctx)?,
             literal_6(ctx)?,
@@ -11428,19 +12782,23 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![literal_10(ctx)?])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_11(ctx)?,
@@ -11449,7 +12807,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_12(ctx)?,
             literal_11(ctx)?,
@@ -11458,13 +12817,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
@@ -11473,7 +12834,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_15(ctx)?,
             literal_1(ctx)?,
@@ -11482,13 +12844,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_6(ctx)?,
@@ -11497,7 +12861,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_18(ctx)?,
             literal_6(ctx)?,
@@ -11506,17 +12871,20 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
@@ -11530,21 +12898,23 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         due_on_value: ls::Value,
         change: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![due_on_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag
                             == "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody"
                             && fields.len() == 4 =>
                     {
                         let mut fields = fields.into_iter();
-                        let title = fields.next().unwrap();
-                        let state = fields.next().unwrap();
-                        let description = fields.next().unwrap();
-                        let _due_on = fields.next().unwrap();
+                        let title = fields.next().expect("checked expression arity");
+                        let state = fields.next().expect("checked expression arity");
+                        let description = fields.next().expect("checked expression arity");
+                        let _due_on = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
                             vec![
@@ -11574,35 +12944,39 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let key = match selection.clone() {
+                    let key = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.github.model::type::Milestone::Milestone"
                                 && fields.len() == 16 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _url = fields.next().unwrap();
-                            let _html_url = fields.next().unwrap();
-                            let _labels_url = fields.next().unwrap();
-                            let _id = fields.next().unwrap();
-                            let _node_id = fields.next().unwrap();
-                            let number = fields.next().unwrap();
-                            let _state = fields.next().unwrap();
-                            let _title = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
-                            let _creator = fields.next().unwrap();
-                            let _open_issues = fields.next().unwrap();
-                            let _closed_issues = fields.next().unwrap();
-                            let _created_at = fields.next().unwrap();
-                            let _updated_at = fields.next().unwrap();
-                            let _closed_at = fields.next().unwrap();
-                            let _due_on = fields.next().unwrap();
+                            let _url = fields.next().expect("checked expression arity");
+                            let _html_url = fields.next().expect("checked expression arity");
+                            let _labels_url = fields.next().expect("checked expression arity");
+                            let _id = fields.next().expect("checked expression arity");
+                            let _node_id = fields.next().expect("checked expression arity");
+                            let number = fields.next().expect("checked expression arity");
+                            let _state = fields.next().expect("checked expression arity");
+                            let _title = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
+                            let _creator = fields.next().expect("checked expression arity");
+                            let _open_issues = fields.next().expect("checked expression arity");
+                            let _closed_issues = fields.next().expect("checked expression arity");
+                            let _created_at = fields.next().expect("checked expression arity");
+                            let _updated_at = fields.next().expect("checked expression arity");
+                            let _closed_at = fields.next().expect("checked expression arity");
+                            let _due_on = fields.next().expect("checked expression arity");
                             number.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -11623,12 +12997,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                         |value| ls::construct("Either::Right", vec![value]),
                         |value| ls::construct("Either::Left", vec![value]),
                     )?;
-                    match it_2.clone() {
-                        ls::Value::Left(payload) => {
+                    match it_2.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _match_selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let match_selection = *payload;
                             let it_3 = ls::attempt(
                                 ctx,
@@ -11654,12 +13031,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
                             )?;
-                            match it_3.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_3.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     ls::Value::Bool(true)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     let it_4 = ls::attempt(
                                         ctx,
@@ -11677,66 +13057,135 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
                                     )?;
-                                    match it_4.clone() {
-                                        ls::Value::Left(payload) => {
+                                    match it_4.clone()
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let _match_match_match_selection = *payload;
                                             ls::Value::Bool(false)
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let match_match_match_selection = *payload;
                                             if if if if if if if if if if if if if if ls::binary(
                                                 "==",
                                                 "Text",
-                                                match match_match_match_selection.clone() {
+                                                match match_match_match_selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.github.model::type::Milestone::Milestone"
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         url.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 },
-                                                match match_selection.clone() {
+                                                match match_selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.github.model::type::Milestone::Milestone"
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         url.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -11747,78 +13196,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             html_url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             html_url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -11826,76 +13333,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let labels_url = fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             labels_url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let labels_url = fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             labels_url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -11903,78 +13470,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Integer",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -11982,78 +13607,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             node_id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             node_id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12066,97 +13749,171 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         state.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _title = fields.next().unwrap();
-                                                            let state = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             state.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Milestone::Milestone"
                                                                     && fields.len() == 16 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _url = fields.next().unwrap();
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _html_url =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _labels_url =
-                                                                    fields.next().unwrap();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _number =
-                                                                    fields.next().unwrap();
-                                                                let state = fields.next().unwrap();
-                                                                let _title = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _number = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let state = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _title = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _description =
-                                                                    fields.next().unwrap();
-                                                                let _creator =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _creator = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _open_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _created_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _updated_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_at =
-                                                                    fields.next().unwrap();
-                                                                let _due_on =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _due_on = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 state.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             match_match_match_match_selection
                                                                 .clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
@@ -12167,7 +13924,9 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                     left,
                                                     right,
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12180,103 +13939,179 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         title.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let title = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             title.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Milestone::Milestone"
                                                                     && fields.len() == 16 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _url = fields.next().unwrap();
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _html_url =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _labels_url =
-                                                                    fields.next().unwrap();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _number =
-                                                                    fields.next().unwrap();
-                                                                let _state = fields.next().unwrap();
-                                                                let title = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _number = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _state = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let title = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _description =
-                                                                    fields.next().unwrap();
-                                                                let _creator =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _creator = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _open_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _created_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _updated_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_at =
-                                                                    fields.next().unwrap();
-                                                                let _due_on =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _due_on = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 title.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             match_match_match_match_selection
                                                                 .clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12289,91 +14124,164 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         description.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _title = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let description =
-                                                                fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             description.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Milestone::Milestone"
                                                                     && fields.len() == 16 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _url = fields.next().unwrap();
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _html_url =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _labels_url =
-                                                                    fields.next().unwrap();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _number =
-                                                                    fields.next().unwrap();
-                                                                let _state = fields.next().unwrap();
-                                                                let _title = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _number = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _state = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _title = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let description =
-                                                                    fields.next().unwrap();
-                                                                let _creator =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _creator = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _open_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _created_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _updated_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_at =
-                                                                    fields.next().unwrap();
-                                                                let _due_on =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _due_on = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 description.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             ls::construct(
@@ -12384,13 +14292,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                                 ],
                                                             )?
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Maybe Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12398,78 +14309,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Maybe lawtwin.github.model::type::NullableSimpleUser",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             creator.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             creator.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12477,78 +14446,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Integer",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             open_issues.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             open_issues.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12556,78 +14583,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Integer",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             closed_issues.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             closed_issues.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12635,76 +14720,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let created_at = fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             created_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let created_at = fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             created_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12712,76 +14857,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let updated_at = fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             updated_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let updated_at = fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             updated_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12789,78 +14994,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                 ls::binary(
                                                     "==",
                                                     "Maybe Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             closed_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             closed_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -12873,90 +15136,164 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let due_on = fields.next().unwrap();
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         due_on.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _title = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let due_on = fields.next().unwrap();
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             due_on.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Milestone::Milestone"
                                                                     && fields.len() == 16 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _url = fields.next().unwrap();
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _html_url =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _labels_url =
-                                                                    fields.next().unwrap();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _number =
-                                                                    fields.next().unwrap();
-                                                                let _state = fields.next().unwrap();
-                                                                let _title = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _number = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _state = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _title = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _description =
-                                                                    fields.next().unwrap();
-                                                                let _creator =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _creator = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _open_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _created_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _updated_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_at =
-                                                                    fields.next().unwrap();
-                                                                let due_on = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let due_on = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 due_on.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             ls::construct(
@@ -12967,13 +15304,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                                                                 ],
                                                             )?
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Maybe Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                         }
@@ -13005,7 +15345,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         body: ls::Value,
         due_on_value: ls::Value,
         change: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let owner = lawspec_schema::schema()?.validate_with_context(
             owner,
             &ls::TypeRef::named("Text", vec![]),
@@ -13092,7 +15433,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         _body: ls::Value,
         due_on_value: ls::Value,
         _change: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -13103,7 +15445,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                 due_on_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -13117,7 +15460,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
         "(data lawtwin.github.model::type::IssuesUpdateMilestoneBody (ctor lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody (maybe (text)) (maybe (ref lawtwin.github.model::type::MilestoneState)) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::MilestoneState (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateOpen) (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateClosed)) (ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -13126,7 +15470,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
             values[2].clone(),
             values[3].clone(),
             values[4].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -13141,7 +15486,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -13282,7 +15628,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |an update changes only the fields it gives to a milestone| [native]",
@@ -13292,7 +15639,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13311,14 +15659,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13327,7 +15677,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13346,14 +15697,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13362,7 +15715,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13410,14 +15764,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13426,7 +15782,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13475,14 +15832,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13491,7 +15850,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 4 {
+                    if case.values.len() != 4
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13534,14 +15894,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13549,7 +15911,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 5 {
+                if case.values.len() != 5
+                {
                     return false;
                 }
                 let result = valid(
@@ -13583,7 +15946,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
                     case.values[3].clone(),
                     case.values[4].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |an update changes only the fields it gives to a milestone| [native]",
                         SEARCH_INPUTS,
@@ -13810,62 +16174,74 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_3 {
 // _match__match__match__match__lawspecSelection0x0_0_0_0_0 ->
 // Maybe::Present(_match__match__match__match__lawspecSelection0x0_0_0_0_0) })) } } } } = true end
 // for all
-mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
+mod law_issuesapi_an_update_changes_only_the_fields_it_4
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen",
             fields,
         ))
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
@@ -13874,7 +16250,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_2(ctx)?,
             literal_1(ctx)?,
@@ -13883,19 +16260,23 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_6(ctx)?,
@@ -13904,7 +16285,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_7(ctx)?,
             literal_6(ctx)?,
@@ -13913,19 +16295,23 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![literal_10(ctx)?])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_11(ctx)?,
@@ -13934,7 +16320,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_12(ctx)?,
             literal_11(ctx)?,
@@ -13943,13 +16330,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
@@ -13958,7 +16347,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_15(ctx)?,
             literal_1(ctx)?,
@@ -13967,13 +16357,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_6(ctx)?,
@@ -13982,7 +16374,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_18(ctx)?,
             literal_6(ctx)?,
@@ -13991,17 +16384,20 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
@@ -14014,21 +16410,23 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         body: ls::Value,
         due_on_value: ls::Value,
         change: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![due_on_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag
                             == "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody"
                             && fields.len() == 4 =>
                     {
                         let mut fields = fields.into_iter();
-                        let title = fields.next().unwrap();
-                        let state = fields.next().unwrap();
-                        let description = fields.next().unwrap();
-                        let _due_on = fields.next().unwrap();
+                        let title = fields.next().expect("checked expression arity");
+                        let state = fields.next().expect("checked expression arity");
+                        let description = fields.next().expect("checked expression arity");
+                        let _due_on = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody",
                             vec![
@@ -14058,35 +16456,39 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let key = match selection.clone() {
+                    let key = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.github.model::type::Milestone::Milestone"
                                 && fields.len() == 16 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _url = fields.next().unwrap();
-                            let _html_url = fields.next().unwrap();
-                            let _labels_url = fields.next().unwrap();
-                            let _id = fields.next().unwrap();
-                            let _node_id = fields.next().unwrap();
-                            let number = fields.next().unwrap();
-                            let _state = fields.next().unwrap();
-                            let _title = fields.next().unwrap();
-                            let _description = fields.next().unwrap();
-                            let _creator = fields.next().unwrap();
-                            let _open_issues = fields.next().unwrap();
-                            let _closed_issues = fields.next().unwrap();
-                            let _created_at = fields.next().unwrap();
-                            let _updated_at = fields.next().unwrap();
-                            let _closed_at = fields.next().unwrap();
-                            let _due_on = fields.next().unwrap();
+                            let _url = fields.next().expect("checked expression arity");
+                            let _html_url = fields.next().expect("checked expression arity");
+                            let _labels_url = fields.next().expect("checked expression arity");
+                            let _id = fields.next().expect("checked expression arity");
+                            let _node_id = fields.next().expect("checked expression arity");
+                            let number = fields.next().expect("checked expression arity");
+                            let _state = fields.next().expect("checked expression arity");
+                            let _title = fields.next().expect("checked expression arity");
+                            let _description = fields.next().expect("checked expression arity");
+                            let _creator = fields.next().expect("checked expression arity");
+                            let _open_issues = fields.next().expect("checked expression arity");
+                            let _closed_issues = fields.next().expect("checked expression arity");
+                            let _created_at = fields.next().expect("checked expression arity");
+                            let _updated_at = fields.next().expect("checked expression arity");
+                            let _closed_at = fields.next().expect("checked expression arity");
+                            let _due_on = fields.next().expect("checked expression arity");
                             number.clone()
                         }
                         _ => return Err("invalid match value".into()),
@@ -14107,12 +16509,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                         |value| ls::construct("Either::Right", vec![value]),
                         |value| ls::construct("Either::Left", vec![value]),
                     )?;
-                    match it_2.clone() {
-                        ls::Value::Left(payload) => {
+                    match it_2.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _match_selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let match_selection = *payload;
                             let it_3 = ls::attempt(
                                 ctx,
@@ -14138,12 +16543,15 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
                             )?;
-                            match it_3.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_3.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     ls::Value::Bool(true)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     let it_4 = ls::attempt(
                                         ctx,
@@ -14161,66 +16569,135 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
                                     )?;
-                                    match it_4.clone() {
-                                        ls::Value::Left(payload) => {
+                                    match it_4.clone()
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let _match_match_match_selection = *payload;
                                             ls::Value::Bool(false)
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let match_match_match_selection = *payload;
                                             if if if if if if if if if if if if if if ls::binary(
                                                 "==",
                                                 "Text",
-                                                match match_match_match_selection.clone() {
+                                                match match_match_match_selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.github.model::type::Milestone::Milestone"
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         url.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 },
-                                                match match_selection.clone() {
+                                                match match_selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.github.model::type::Milestone::Milestone"
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         url.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -14231,78 +16708,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             html_url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             html_url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -14310,76 +16845,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let labels_url = fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             labels_url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let labels_url = fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             labels_url.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -14387,78 +16982,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Integer",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -14466,78 +17119,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             node_id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             node_id.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -14550,97 +17261,171 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         state.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _title = fields.next().unwrap();
-                                                            let state = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             state.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Milestone::Milestone"
                                                                     && fields.len() == 16 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _url = fields.next().unwrap();
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _html_url =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _labels_url =
-                                                                    fields.next().unwrap();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _number =
-                                                                    fields.next().unwrap();
-                                                                let state = fields.next().unwrap();
-                                                                let _title = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _number = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let state = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _title = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _description =
-                                                                    fields.next().unwrap();
-                                                                let _creator =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _creator = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _open_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _created_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _updated_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_at =
-                                                                    fields.next().unwrap();
-                                                                let _due_on =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _due_on = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 state.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             match_match_match_match_selection
                                                                 .clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
@@ -14651,7 +17436,9 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                     left,
                                                     right,
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -14664,103 +17451,179 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         title.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let title = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             title.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Milestone::Milestone"
                                                                     && fields.len() == 16 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _url = fields.next().unwrap();
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _html_url =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _labels_url =
-                                                                    fields.next().unwrap();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _number =
-                                                                    fields.next().unwrap();
-                                                                let _state = fields.next().unwrap();
-                                                                let title = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _number = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _state = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let title = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _description =
-                                                                    fields.next().unwrap();
-                                                                let _creator =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _creator = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _open_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _created_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _updated_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_at =
-                                                                    fields.next().unwrap();
-                                                                let _due_on =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _due_on = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 title.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             match_match_match_match_selection
                                                                 .clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -14773,91 +17636,164 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let _due_on = fields.next().unwrap();
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         description.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _title = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let description =
-                                                                fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             description.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Milestone::Milestone"
                                                                     && fields.len() == 16 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _url = fields.next().unwrap();
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _html_url =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _labels_url =
-                                                                    fields.next().unwrap();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _number =
-                                                                    fields.next().unwrap();
-                                                                let _state = fields.next().unwrap();
-                                                                let _title = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _number = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _state = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _title = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let description =
-                                                                    fields.next().unwrap();
-                                                                let _creator =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _creator = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _open_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _created_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _updated_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_at =
-                                                                    fields.next().unwrap();
-                                                                let _due_on =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _due_on = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 description.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             ls::construct(
@@ -14868,13 +17804,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                                 ],
                                                             )?
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Maybe Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -14882,78 +17821,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Maybe lawtwin.github.model::type::NullableSimpleUser",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             creator.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             creator.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -14961,78 +17958,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Integer",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             open_issues.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             open_issues.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -15040,78 +18095,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Integer",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             closed_issues.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             closed_issues.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -15119,76 +18232,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let created_at = fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             created_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let created_at = fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             created_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -15196,76 +18369,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let updated_at = fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             updated_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let updated_at = fields.next().unwrap();
-                                                            let _closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             updated_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -15273,78 +18506,136 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                 ls::binary(
                                                     "==",
                                                     "Maybe Text",
-                                                    match match_match_match_selection.clone() {
+                                                    match match_match_match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             closed_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
-                                                    match match_selection.clone() {
+                                                    match match_selection.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::Milestone::Milestone"
                                                                 && fields.len() == 16 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _url = fields.next().unwrap();
-                                                            let _html_url = fields.next().unwrap();
-                                                            let _labels_url =
-                                                                fields.next().unwrap();
-                                                            let _id = fields.next().unwrap();
-                                                            let _node_id = fields.next().unwrap();
-                                                            let _number = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _title = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let _creator = fields.next().unwrap();
-                                                            let _open_issues =
-                                                                fields.next().unwrap();
-                                                            let _closed_issues =
-                                                                fields.next().unwrap();
-                                                            let _created_at =
-                                                                fields.next().unwrap();
-                                                            let _updated_at =
-                                                                fields.next().unwrap();
-                                                            let closed_at = fields.next().unwrap();
-                                                            let _due_on = fields.next().unwrap();
+                                                            let _url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _html_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _labels_url = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _node_id = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _number = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _creator = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _open_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _closed_issues = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _created_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _updated_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let closed_at = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             closed_at.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     },
                                                 )?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                             .boolean()?
@@ -15357,90 +18648,164 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                             && fields.len() == 16 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _url = fields.next().unwrap();
-                                                        let _html_url = fields.next().unwrap();
-                                                        let _labels_url = fields.next().unwrap();
-                                                        let _id = fields.next().unwrap();
-                                                        let _node_id = fields.next().unwrap();
-                                                        let _number = fields.next().unwrap();
-                                                        let _state = fields.next().unwrap();
-                                                        let _title = fields.next().unwrap();
-                                                        let _description = fields.next().unwrap();
-                                                        let _creator = fields.next().unwrap();
-                                                        let _open_issues = fields.next().unwrap();
-                                                        let _closed_issues = fields.next().unwrap();
-                                                        let _created_at = fields.next().unwrap();
-                                                        let _updated_at = fields.next().unwrap();
-                                                        let _closed_at = fields.next().unwrap();
-                                                        let due_on = fields.next().unwrap();
+                                                        let _url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _html_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _labels_url = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _node_id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _number = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _state = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _title = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _description = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _creator = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _open_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_issues = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _created_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _updated_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let _closed_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let due_on = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         due_on.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
                                                 };
                                                 let right = {
-                                                    let it_5 = match change.clone() {
+                                                    let it_5 = match change.clone()
+                                                    {
                                                         ls::Value::Data(tag, fields)
                                                             if tag
                                                                 == "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody"
                                                                 && fields.len() == 4 =>
                                                         {
                                                             let mut fields = fields.into_iter();
-                                                            let _title = fields.next().unwrap();
-                                                            let _state = fields.next().unwrap();
-                                                            let _description =
-                                                                fields.next().unwrap();
-                                                            let due_on = fields.next().unwrap();
+                                                            let _title = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _state = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let _description = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
+                                                            let due_on = fields
+                                                                .next()
+                                                                .expect("checked expression arity");
                                                             due_on.clone()
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     };
-                                                    match it_5.clone() {
+                                                    match it_5.clone()
+                                                    {
                                                         ls::Value::Maybe(None) => match match_selection
-                                                            .clone() {
+                                                            .clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.github.model::type::Milestone::Milestone"
                                                                     && fields.len() == 16 =>
                                                             {
                                                                 let mut fields = fields.into_iter();
-                                                                let _url = fields.next().unwrap();
+                                                                let _url = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _html_url =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _labels_url =
-                                                                    fields.next().unwrap();
-                                                                let _id = fields.next().unwrap();
-                                                                let _node_id =
-                                                                    fields.next().unwrap();
-                                                                let _number =
-                                                                    fields.next().unwrap();
-                                                                let _state = fields.next().unwrap();
-                                                                let _title = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _node_id = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _number = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _state = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
+                                                                let _title = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _description =
-                                                                    fields.next().unwrap();
-                                                                let _creator =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let _creator = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 let _open_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_issues =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _created_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _updated_at =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _closed_at =
-                                                                    fields.next().unwrap();
-                                                                let due_on = fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
+                                                                let due_on = fields.next().expect(
+                                                                    "checked expression arity",
+                                                                );
                                                                 due_on.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        ls::Value::Maybe(Some(payload)) => {
+                                                        ls::Value::Maybe(Some(payload)) =>
+                                                        {
                                                             let match_match_match_match_selection =
                                                                 *payload;
                                                             ls::construct(
@@ -15451,13 +18816,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                                                                 ],
                                                             )?
                                                         }
-                                                        _ => {
+                                                        _ =>
+                                                        {
                                                             return Err("invalid match value".into())
                                                         }
                                                     }
                                                 };
                                                 ls::binary("==", "Maybe Text", left, right)?
-                                            } else {
+                                            }
+                                            else
+                                            {
                                                 ls::Value::Bool(false)
                                             }
                                         }
@@ -15489,7 +18857,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         body: ls::Value,
         due_on_value: ls::Value,
         change: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.github::ability::IssuesApi".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_github::IssuesApi> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_github::Reference::new(ctx));
@@ -15550,7 +18919,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         _body: ls::Value,
         due_on_value: ls::Value,
         _change: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -15561,7 +18931,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                 due_on_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -15575,7 +18946,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
         "(data lawtwin.github.model::type::IssuesUpdateMilestoneBody (ctor lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody (maybe (text)) (maybe (ref lawtwin.github.model::type::MilestoneState)) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::MilestoneState (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateOpen) (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateClosed)) (ref lawtwin.github.model::type::IssuesUpdateMilestoneBody)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -15584,7 +18956,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
             values[2].clone(),
             values[3].clone(),
             values[4].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -15599,7 +18972,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -15740,7 +19114,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.github::IssuesApi: |an update changes only the fields it gives to a milestone| [reference]",
@@ -15750,7 +19125,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -15769,14 +19145,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -15785,7 +19163,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -15804,14 +19183,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -15820,7 +19201,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -15868,14 +19250,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -15884,7 +19268,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -15933,14 +19318,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -15949,7 +19336,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 4 {
+                    if case.values.len() != 4
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -15992,14 +19380,16 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -16007,7 +19397,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 5 {
+                if case.values.len() != 5
+                {
                     return false;
                 }
                 let result = valid(
@@ -16041,7 +19432,8 @@ mod law_issuesapi_an_update_changes_only_the_fields_it_4 {
                     case.values[3].clone(),
                     case.values[4].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.github::IssuesApi: |an update changes only the fields it gives to a milestone| [reference]",
                         SEARCH_INPUTS,

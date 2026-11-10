@@ -13,8 +13,10 @@ use proptest::prelude::*;
 /// Proptest's seed: LAWSPEC_SEED fixes it, so a run can be repeated exactly
 /// (lawspec test records the seed of every passing run). Without it,
 /// proptest's own default applies, PROPTEST_RNG_SEED included.
-pub fn rng_seed() -> proptest::test_runner::RngSeed {
-    match std::env::var("LAWSPEC_SEED") {
+pub fn rng_seed() -> proptest::test_runner::RngSeed
+{
+    match std::env::var("LAWSPEC_SEED")
+    {
         Ok(seed) => proptest::test_runner::RngSeed::Fixed(
             seed.parse().expect("LAWSPEC_SEED must be a whole number"),
         ),
@@ -24,8 +26,10 @@ pub fn rng_seed() -> proptest::test_runner::RngSeed {
 
 /// Under lawspec test, proptest keeps failing cases in its failure database
 /// (LAWSPEC_FAILURES) and replays them first.
-pub fn failure_persistence() -> Option<Box<dyn proptest::test_runner::FailurePersistence>> {
-    match std::env::var("LAWSPEC_FAILURES") {
+pub fn failure_persistence() -> Option<Box<dyn proptest::test_runner::FailurePersistence>>
+{
+    match std::env::var("LAWSPEC_FAILURES")
+    {
         Ok(directory) => Some(Box::new(
             proptest::test_runner::FileFailurePersistence::Direct(Box::leak(
                 format!("{directory}/proptest-regressions.txt").into_boxed_str(),
@@ -46,23 +50,30 @@ pub type NativeFactory = fn(
 ) -> ls::Result<BoxedStrategy<Value>>;
 
 #[derive(Default)]
-pub struct NativeGenerators {
+pub struct NativeGenerators
+{
     factories: std::collections::HashMap<&'static str, NativeFactory>,
 }
 
-impl NativeGenerators {
-    pub fn new(entries: Vec<(&'static str, NativeFactory)>) -> ls::Result<Self> {
+impl NativeGenerators
+{
+    pub fn new(entries: Vec<(&'static str, NativeFactory)>) -> ls::Result<Self>
+    {
         let mut factories = std::collections::HashMap::new();
-        for (name, factory) in entries {
-            if name.is_empty() || factories.insert(name, factory).is_some() {
+        for (name, factory) in entries
+        {
+            if name.is_empty() || factories.insert(name, factory).is_some()
+            {
                 return Err(format!("duplicate or empty native generator: {name}"));
             }
         }
         Ok(Self { factories })
     }
 
-    fn factory(&self, ty: &ls::TypeRef) -> Option<NativeFactory> {
-        match ty {
+    fn factory(&self, ty: &ls::TypeRef) -> Option<NativeFactory>
+    {
+        match ty
+        {
             ls::TypeRef::Named(name, _) => self.factories.get(name).copied(),
             _ => None,
         }
@@ -76,8 +87,10 @@ pub fn schema_strategy_with_generators(
     budget: usize,
     context: &ls::Context,
     native: &NativeGenerators,
-) -> ls::Result<BoxedStrategy<Value>> {
-    if schema.has_contracts() {
+) -> ls::Result<BoxedStrategy<Value>>
+{
+    if schema.has_contracts()
+    {
         return Err("constructor contracts require checked_schema_strategy_with_generators".into());
     }
     shape_strategy_with_generators(
@@ -91,17 +104,21 @@ pub fn schema_strategy_with_generators(
     )
 }
 
-pub fn strategy(name: &str) -> ls::Result<BoxedStrategy<Value>> {
+pub fn strategy(name: &str) -> ls::Result<BoxedStrategy<Value>>
+{
     strategy_with_profile(name, usize::BITS)
 }
 
-fn scalar_strategy(name: &str) -> ls::Result<BoxedStrategy<Value>> {
-    if let Some(inner) = name.strip_prefix("Nullable ") {
+fn scalar_strategy(name: &str) -> ls::Result<BoxedStrategy<Value>>
+{
+    if let Some(inner) = name.strip_prefix("Nullable ")
+    {
         return Ok(proptest::option::of(strategy(inner)?)
             .prop_map(|x| Value::Nullable(x.map(Box::new)))
             .boxed());
     }
-    if let Some(inner) = name.strip_prefix("Optional ") {
+    if let Some(inner) = name.strip_prefix("Optional ")
+    {
         return Ok(proptest::option::of(strategy(inner)?)
             .prop_map(|x| Value::Optional(x.map(Box::new)))
             .boxed());
@@ -111,7 +128,8 @@ fn scalar_strategy(name: &str) -> ls::Result<BoxedStrategy<Value>> {
             any::<$t>().prop_map(IntoValue::into_value).boxed()
         };
     }
-    Ok(match name {
+    Ok(match name
+    {
         "Bool" => any::<bool>().prop_map(Value::Bool).boxed(),
         "Int8" => integer!(i8),
         "Int16" => integer!(i16),
@@ -175,13 +193,17 @@ fn scalar_strategy(name: &str) -> ls::Result<BoxedStrategy<Value>> {
         _ => return Err(format!("no Rust generator for {name}")),
     })
 }
-fn bigint() -> BoxedStrategy<ls::BigInt> {
+fn bigint() -> BoxedStrategy<ls::BigInt>
+{
     (any::<bool>(), proptest::collection::vec(any::<u8>(), 0..65))
         .prop_map(|(negative, bytes)| {
             ls::BigInt::from_bytes_le(
-                if negative {
+                if negative
+                {
                     num_bigint::Sign::Minus
-                } else {
+                }
+                else
+                {
                     num_bigint::Sign::Plus
                 },
                 &bytes,
@@ -189,9 +211,11 @@ fn bigint() -> BoxedStrategy<ls::BigInt> {
         })
         .boxed()
 }
-pub fn tuple(types: &[&str]) -> ls::Result<BoxedStrategy<Vec<Value>>> {
+pub fn tuple(types: &[&str]) -> ls::Result<BoxedStrategy<Vec<Value>>>
+{
     let mut result = Just(Vec::new()).boxed();
-    for name in types {
+    for name in types
+    {
         result = (result, strategy(name)?)
             .prop_map(|(mut xs, x)| {
                 xs.push(x);
@@ -209,9 +233,11 @@ pub fn bounded_integer(
     name: &str,
     bounds: Vec<(&str, Value)>,
     machine_bits: u32,
-) -> ls::Result<Option<BoxedStrategy<Value>>> {
+) -> ls::Result<Option<BoxedStrategy<Value>>>
+{
     use num_traits::{One, Signed, Zero};
-    let width = match name {
+    let width = match name
+    {
         "Int8" | "UInt8" => Some(8),
         "Int16" | "UInt16" => Some(16),
         "Int32" | "UInt32" => Some(32),
@@ -220,23 +246,30 @@ pub fn bounded_integer(
         _ => None,
     };
     let unsigned = name.starts_with("UInt") || name == "BigUInt";
-    let mut lo = if unsigned {
+    let mut lo = if unsigned
+    {
         Some(ls::BigInt::zero())
-    } else {
+    }
+    else
+    {
         width.map(|w| -(ls::BigInt::one() << (w - 1)))
     };
     let mut hi = width.map(|w| (ls::BigInt::one() << (if unsigned { w } else { w - 1 })) - 1u8);
-    for (op, value) in bounds {
+    for (op, value) in bounds
+    {
         let r = value.exact()?;
         let floor = r.floor().to_integer();
         let ceil = r.ceil().to_integer();
-        let (lower, upper) = match op {
+        let (lower, upper) = match op
+        {
             ">" => (Some(floor + 1u8), None),
             ">=" => (Some(ceil), None),
             "<" => (None, Some(ceil - 1u8)),
             "<=" => (None, Some(floor)),
-            "==" => {
-                if !r.is_integer() {
+            "==" =>
+            {
+                if !r.is_integer()
+                {
                     return Ok(None);
                 }
                 let n = r.to_integer();
@@ -244,17 +277,20 @@ pub fn bounded_integer(
             }
             _ => return Err("invalid planned integer bound".into()),
         };
-        if let Some(n) = lower {
+        if let Some(n) = lower
+        {
             lo = Some(lo.map_or(n.clone(), |old| old.max(n)));
         }
-        if let Some(n) = upper {
+        if let Some(n) = upper
+        {
             hi = Some(hi.map_or(n.clone(), |old| old.min(n)));
         }
     }
     let span = ls::BigInt::one() << 512usize;
     let lower = lo.unwrap_or_else(|| hi.as_ref().map_or(-&span, |upper| upper - &span));
     let upper = hi.unwrap_or_else(|| &lower + &span);
-    if lower > upper {
+    if lower > upper
+    {
         return Ok(None);
     }
     let count = &upper - &lower + 1u8;
@@ -269,20 +305,24 @@ pub fn bounded_integer(
     ))
 }
 
-pub fn strategy_with_profile(name: &str, bits: u32) -> ls::Result<BoxedStrategy<Value>> {
-    if let Some(inner) = name.strip_prefix("List ") {
+pub fn strategy_with_profile(name: &str, bits: u32) -> ls::Result<BoxedStrategy<Value>>
+{
+    if let Some(inner) = name.strip_prefix("List ")
+    {
         return Ok(
             proptest::collection::vec(strategy_with_profile(inner, bits)?, 0..65)
                 .prop_map(Value::List)
                 .boxed(),
         );
     }
-    if let Some(inner) = name.strip_prefix("Maybe ") {
+    if let Some(inner) = name.strip_prefix("Maybe ")
+    {
         return Ok(proptest::option::of(strategy_with_profile(inner, bits)?)
             .prop_map(|x| Value::Maybe(x.map(Box::new)))
             .boxed());
     }
-    if let Some(arguments) = name.strip_prefix("Either ") {
+    if let Some(arguments) = name.strip_prefix("Either ")
+    {
         let (left, right) = ls::either_types(arguments)?;
         return Ok(prop_oneof![
             strategy_with_profile(left, bits)?.prop_map(|x| Value::Left(Box::new(x))),
@@ -290,17 +330,20 @@ pub fn strategy_with_profile(name: &str, bits: u32) -> ls::Result<BoxedStrategy<
         ]
         .boxed());
     }
-    if let Some(inner) = name.strip_prefix("Nullable ") {
+    if let Some(inner) = name.strip_prefix("Nullable ")
+    {
         return Ok(proptest::option::of(strategy_with_profile(inner, bits)?)
             .prop_map(|x| Value::Nullable(x.map(Box::new)))
             .boxed());
     }
-    if let Some(inner) = name.strip_prefix("Optional ") {
+    if let Some(inner) = name.strip_prefix("Optional ")
+    {
         return Ok(proptest::option::of(strategy_with_profile(inner, bits)?)
             .prop_map(|x| Value::Optional(x.map(Box::new)))
             .boxed());
     }
-    scalar_strategy(match (name, bits) {
+    scalar_strategy(match (name, bits)
+    {
         ("IntSize", 32) => "Int32",
         ("IntSize", 64) => "Int64",
         ("UIntSize" | "UIntPtr", 32) => "UInt32",
@@ -310,14 +353,17 @@ pub fn strategy_with_profile(name: &str, bits: u32) -> ls::Result<BoxedStrategy<
 }
 
 #[derive(Clone, Debug)]
-pub struct Case {
+pub struct Case
+{
     pub context: ls::Context,
     pub values: Vec<Value>,
     pub error: Option<String>,
 }
 // A case's workflows wait on a virtual clock, as every generated test's do.
-impl Default for Case {
-    fn default() -> Self {
+impl Default for Case
+{
+    fn default() -> Self
+    {
         Case {
             context: ls::Context::testing(),
             values: Vec::new(),
@@ -325,10 +371,14 @@ impl Default for Case {
         }
     }
 }
-pub fn seeded(strategy: BoxedStrategy<Value>, seeds: Vec<Value>) -> BoxedStrategy<Value> {
-    if seeds.is_empty() {
+pub fn seeded(strategy: BoxedStrategy<Value>, seeds: Vec<Value>) -> BoxedStrategy<Value>
+{
+    if seeds.is_empty()
+    {
         strategy
-    } else {
+    }
+    else
+    {
         prop_oneof![strategy, proptest::sample::select(seeds)].boxed()
     }
 }
@@ -341,8 +391,10 @@ pub fn schema_strategy(
     ty: &ls::TypeRef,
     bits: u32,
     budget: usize,
-) -> ls::Result<BoxedStrategy<Value>> {
-    if schema.has_contracts() {
+) -> ls::Result<BoxedStrategy<Value>>
+{
+    if schema.has_contracts()
+    {
         return Err(
             "constructor contracts require checked_schema_strategy and a Symbol context".into(),
         );
@@ -352,9 +404,12 @@ pub fn schema_strategy(
 
 type Witnesses = std::collections::HashMap<ls::TypeRef, Vec<Value>>;
 
-fn value_cost(value: &Value) -> usize {
-    match value {
-        Value::Data(_, fields) | Value::List(fields) => {
+fn value_cost(value: &Value) -> usize
+{
+    match value
+    {
+        Value::Data(_, fields) | Value::List(fields) =>
+        {
             1 + fields.iter().map(value_cost).sum::<usize>()
         }
         Value::Maybe(Some(value))
@@ -373,7 +428,8 @@ fn collect_witnesses(
     ty: &ls::TypeRef,
     value: &Value,
     seeds: &mut Witnesses,
-) -> ls::Result<()> {
+) -> ls::Result<()>
+{
     // Builtin containers must use their native structural generators so a
     // witness list can still shrink its length. Seed payloads recursively;
     // retain named values as fallbacks for uneven recursive node allocations.
@@ -385,11 +441,15 @@ fn collect_witnesses(
             | Value::Optional(_)
             | Value::Left(_)
             | Value::Right(_)
-    ) {
+    )
+    {
         seeds.entry(ty.clone()).or_default().push(value.clone());
     }
-    if let Some(constructors) = schema.constructor_fields(ty)? {
-        let Value::Data(tag, fields) = value else {
+    if let Some(constructors) = schema.constructor_fields(ty)?
+    {
+        let Value::Data(tag, fields) = value
+        else
+        {
             return Err("invalid data witness".into());
         };
         let constructor = constructors
@@ -397,24 +457,32 @@ fn collect_witnesses(
             .find(|c| c.tag == tag)
             .ok_or("unknown witness constructor")?;
         let field_types = schema.witnessed_fields(constructor.tag, &constructor.fields, fields)?;
-        for (field_type, field) in field_types.iter().zip(fields) {
+        for (field_type, field) in field_types.iter().zip(fields)
+        {
             collect_witnesses(schema, field_type, field, seeds)?;
         }
-    } else if let ls::TypeRef::Named(_, arguments) = ty {
-        match value {
-            Value::List(values) => {
-                for value in values {
+    }
+    else if let ls::TypeRef::Named(_, arguments) = ty
+    {
+        match value
+        {
+            Value::List(values) =>
+            {
+                for value in values
+                {
                     collect_witnesses(schema, &arguments[0], value, seeds)?;
                 }
             }
             Value::Maybe(Some(value))
             | Value::Nullable(Some(value))
             | Value::Optional(Some(value))
-            | Value::Left(value) => {
+            | Value::Left(value) =>
+            {
                 collect_witnesses(schema, &arguments[0], value, seeds)?;
             }
             Value::Right(value) => collect_witnesses(schema, &arguments[1], value, seeds)?,
-            _ => {}
+            _ =>
+            {}
         }
     }
     Ok(())
@@ -431,7 +499,8 @@ pub fn checked_schema_strategy(
     budget: usize,
     context: &ls::Context,
     witnesses: Vec<Value>,
-) -> ls::Result<BoxedStrategy<ls::Result<Value>>> {
+) -> ls::Result<BoxedStrategy<ls::Result<Value>>>
+{
     checked_schema_strategy_with_generators(
         schema,
         ty,
@@ -451,11 +520,14 @@ pub fn checked_schema_strategy_with_generators(
     context: &ls::Context,
     witnesses: Vec<Value>,
     native: &NativeGenerators,
-) -> ls::Result<BoxedStrategy<ls::Result<Value>>> {
+) -> ls::Result<BoxedStrategy<ls::Result<Value>>>
+{
     let mut seeds = Witnesses::new();
-    for witness in witnesses {
+    for witness in witnesses
+    {
         let value = schema.validate_with_context(witness, ty, bits, &mut context.clone())?;
-        if value_cost(&value) > budget {
+        if value_cost(&value) > budget
+        {
             return Err("constructor witness exceeds structural node budget".into());
         }
         collect_witnesses(schema, ty, &value, &mut seeds)?;
@@ -471,13 +543,15 @@ fn check_strategy(
     bits: u32,
     context: &ls::Context,
     strategy: BoxedStrategy<Value>,
-) -> BoxedStrategy<ls::Result<Value>> {
+) -> BoxedStrategy<ls::Result<Value>>
+{
     let schema = schema.clone();
     let ty = ty.clone();
     let context = context.clone();
     strategy
         .prop_filter_map("constructor field refinement", move |value| {
-            match schema.check_with_context(value, &ty, bits, &mut context.clone()) {
+            match schema.check_with_context(value, &ty, bits, &mut context.clone())
+            {
                 Ok(ls::ValueCheck::Accepted(value)) => Some(Ok(value)),
                 Ok(ls::ValueCheck::Rejected(_)) => None,
                 Err(error) => Some(Err(error)),
@@ -492,7 +566,8 @@ fn shape_strategy(
     bits: u32,
     budget: usize,
     witnesses: Witnesses,
-) -> ls::Result<BoxedStrategy<Value>> {
+) -> ls::Result<BoxedStrategy<Value>>
+{
     shape_strategy_with_generators(
         schema,
         ty,
@@ -512,9 +587,11 @@ fn shape_strategy_with_generators(
     witnesses: Witnesses,
     context: &ls::Context,
     native: &NativeGenerators,
-) -> ls::Result<BoxedStrategy<Value>> {
+) -> ls::Result<BoxedStrategy<Value>>
+{
     type Request = (ls::TypeRef, usize);
-    struct Builder<'a> {
+    struct Builder<'a>
+    {
         schema: &'a ls::Schema,
         context: &'a ls::Context,
         native: &'a NativeGenerators,
@@ -524,34 +601,50 @@ fn shape_strategy_with_generators(
         generators: std::collections::HashMap<Request, BoxedStrategy<Value>>,
     }
 
-    impl Builder<'_> {
-        fn can_generate(&mut self, ty: &ls::TypeRef, budget: usize) -> ls::Result<bool> {
-            if budget == 0 {
+    impl Builder<'_>
+    {
+        fn can_generate(&mut self, ty: &ls::TypeRef, budget: usize) -> ls::Result<bool>
+        {
+            if budget == 0
+            {
                 return Ok(false);
             }
             let key = (ty.clone(), budget);
-            if let Some(result) = self.inhabited.get(&key) {
+            if let Some(result) = self.inhabited.get(&key)
+            {
                 return Ok(*result);
             }
-            let result = if self.native.factory(ty).is_some() {
+            let result = if self.native.factory(ty).is_some()
+            {
                 true
-            } else if let Some(constructors) = self.schema.constructor_fields(ty)? {
+            }
+            else if let Some(constructors) = self.schema.constructor_fields(ty)?
+            {
                 let mut found = false;
-                for constructor in constructors {
-                    for (fields, _) in self.schema.witness_choices(&constructor)? {
-                        if self.allocate(&fields, budget - 1)?.is_some() {
+                for constructor in constructors
+                {
+                    for (fields, _) in self.schema.witness_choices(&constructor)?
+                    {
+                        if self.allocate(&fields, budget - 1)?.is_some()
+                        {
                             found = true;
                         }
                     }
                 }
                 found
-            } else {
-                let ls::TypeRef::Named(name, arguments) = ty else {
+            }
+            else
+            {
+                let ls::TypeRef::Named(name, arguments) = ty
+                else
+                {
                     return Err("uninstantiated generator type".into());
                 };
-                match (*name, arguments.as_slice()) {
+                match (*name, arguments.as_slice())
+                {
                     ("List" | "Maybe" | "Nullable" | "Optional", [_]) => true,
-                    ("Either", [left, right]) => {
+                    ("Either", [left, right]) =>
+                    {
                         self.can_generate(left, budget - 1)?
                             || self.can_generate(right, budget - 1)?
                     }
@@ -563,9 +656,12 @@ fn shape_strategy_with_generators(
             Ok(result)
         }
 
-        fn minimum(&mut self, ty: &ls::TypeRef, limit: usize) -> ls::Result<Option<usize>> {
-            for cost in 1..=limit {
-                if self.can_generate(ty, cost)? {
+        fn minimum(&mut self, ty: &ls::TypeRef, limit: usize) -> ls::Result<Option<usize>>
+        {
+            for cost in 1..=limit
+            {
+                if self.can_generate(ty, cost)?
+                {
                     return Ok(Some(cost));
                 }
             }
@@ -578,47 +674,59 @@ fn shape_strategy_with_generators(
             &mut self,
             fields: &[ls::TypeRef],
             budget: usize,
-        ) -> ls::Result<Option<Vec<usize>>> {
+        ) -> ls::Result<Option<Vec<usize>>>
+        {
             let mut remaining = budget;
             let mut costs = Vec::new();
-            for field in fields {
-                let Some(cost) = self.minimum(field, remaining)? else {
+            for field in fields
+            {
+                let Some(cost) = self.minimum(field, remaining)?
+                else
+                {
                     return Ok(None);
                 };
                 costs.push(cost);
                 remaining -= cost;
             }
             let count = costs.len();
-            for (index, cost) in costs.iter_mut().enumerate() {
+            for (index, cost) in costs.iter_mut().enumerate()
+            {
                 *cost += remaining / count + usize::from(index < remaining % count);
             }
             Ok(Some(costs))
         }
 
-        fn generate(
-            &mut self,
-            ty: &ls::TypeRef,
-            budget: usize,
-        ) -> ls::Result<BoxedStrategy<Value>> {
-            if !self.can_generate(ty, budget)? {
+        fn generate(&mut self, ty: &ls::TypeRef, budget: usize)
+        -> ls::Result<BoxedStrategy<Value>>
+        {
+            if !self.can_generate(ty, budget)?
+            {
                 return Err(format!(
                     "no value within structural node budget {budget}: {ty:?}"
                 ));
             }
             let key = (ty.clone(), budget);
-            if let Some(cached) = self.generators.get(&key) {
+            if let Some(cached) = self.generators.get(&key)
+            {
                 return Ok(cached.clone());
             }
-            let result = if let Some(factory) = self.native.factory(ty) {
-                let ls::TypeRef::Named(_, arguments) = ty else {
+            let result = if let Some(factory) = self.native.factory(ty)
+            {
+                let ls::TypeRef::Named(_, arguments) = ty
+                else
+                {
                     return Err("uninstantiated native generator type".into());
                 };
                 let mut children = Vec::new();
-                for argument in arguments {
+                for argument in arguments
+                {
                     let remaining = budget.saturating_sub(1).max(1);
-                    let child = if self.can_generate(argument, remaining)? {
+                    let child = if self.can_generate(argument, remaining)?
+                    {
                         self.generate(argument, remaining)?
-                    } else {
+                    }
+                    else
+                    {
                         // Phantom parameters may be uninhabited. Keep a native
                         // strategy argument that rejects if actually sampled.
                         Just(Value::Unit)
@@ -642,16 +750,23 @@ fn shape_strategy_with_generators(
                             .unwrap_or_else(|error| panic!("native generator {ty:?}: {error}"))
                     })
                     .boxed()
-            } else if let Some(constructors) = self.schema.constructor_fields(ty)? {
+            }
+            else if let Some(constructors) = self.schema.constructor_fields(ty)?
+            {
                 let mut alternatives = Vec::new();
-                for constructor in constructors {
+                for constructor in constructors
+                {
                     // A field-only existential takes each type of the witness pool.
-                    for (declared, witnesses) in self.schema.witness_choices(&constructor)? {
-                        let Some(costs) = self.allocate(&declared, budget - 1)? else {
+                    for (declared, witnesses) in self.schema.witness_choices(&constructor)?
+                    {
+                        let Some(costs) = self.allocate(&declared, budget - 1)?
+                        else
+                        {
                             continue;
                         };
                         let mut fields = Just(Vec::<Value>::new()).boxed();
-                        for (field, cost) in declared.iter().zip(costs) {
+                        for (field, cost) in declared.iter().zip(costs)
+                        {
                             let next = self.generate(field, cost)?;
                             fields = (fields, next)
                                 .prop_map(|(mut values, value)| {
@@ -676,7 +791,7 @@ fn shape_strategy_with_generators(
                 match ty {
                     ls::TypeRef::Named(name, _) if *name == "lawspec.collections::type::EqSet" =>
                         union.prop_map(|value| match value {
-                            Value::Data(tag, mut fields) if fields.len() == 1 => match fields.pop().unwrap() {
+                            Value::Data(tag, mut fields) if fields.len() == 1 => match fields.pop().expect("validated generator constructor carries one field") {
                                 Value::List(items) => {
                                     let mut distinct = Vec::new();
                                     for item in items {
@@ -696,7 +811,7 @@ fn shape_strategy_with_generators(
                         let keyed = name.ends_with("::KeyVal");
                         union
                             .prop_map(move |value| match value {
-                                Value::Data(tag, mut fields) if fields.len() == 1 => match fields.pop().unwrap() {
+                                Value::Data(tag, mut fields) if fields.len() == 1 => match fields.pop().expect("validated generator constructor carries one field") {
                                     Value::List(items) => Value::Data(
                                         tag,
                                         vec![Value::List(ls::canonical_items(items, keyed).expect("keyed values have an order"))],
@@ -709,18 +824,25 @@ fn shape_strategy_with_generators(
                     }
                     _ => union,
                 }
-            } else {
-                let ls::TypeRef::Named(name, arguments) = ty else {
+            }
+            else
+            {
+                let ls::TypeRef::Named(name, arguments) = ty
+                else
+                {
                     return Err("uninstantiated generator type".into());
                 };
-                match (*name, arguments.as_slice()) {
-                    ("List", [element]) => {
+                match (*name, arguments.as_slice())
+                {
+                    ("List", [element]) =>
+                    {
                         let remaining = budget - 1;
                         let maximum = self
                             .minimum(element, remaining)?
                             .map_or(0, |cost| remaining / cost);
                         let mut lengths = vec![Just(Value::List(vec![])).boxed()];
-                        for length in 1..=maximum {
+                        for length in 1..=maximum
+                        {
                             let elements = self.generate(element, remaining / length)?;
                             lengths.push(
                                 proptest::collection::vec(elements, length..=length)
@@ -734,31 +856,39 @@ fn shape_strategy_with_generators(
                             .prop_flat_map(move |length| lengths[length].clone())
                             .boxed()
                     }
-                    ("Maybe" | "Nullable" | "Optional", [element]) => {
-                        let values = if self.can_generate(element, budget - 1)? {
+                    ("Maybe" | "Nullable" | "Optional", [element]) =>
+                    {
+                        let values = if self.can_generate(element, budget - 1)?
+                        {
                             proptest::option::of(self.generate(element, budget - 1)?).boxed()
-                        } else {
+                        }
+                        else
+                        {
                             Just(None).boxed()
                         };
                         let name = *name;
                         values
-                            .prop_map(move |value| match name {
+                            .prop_map(move |value| match name
+                            {
                                 "Maybe" => Value::Maybe(value.map(Box::new)),
                                 "Nullable" => Value::Nullable(value.map(Box::new)),
                                 _ => Value::Optional(value.map(Box::new)),
                             })
                             .boxed()
                     }
-                    ("Either", [left, right]) => {
+                    ("Either", [left, right]) =>
+                    {
                         let mut alternatives = Vec::new();
-                        if self.can_generate(left, budget - 1)? {
+                        if self.can_generate(left, budget - 1)?
+                        {
                             alternatives.push(
                                 self.generate(left, budget - 1)?
                                     .prop_map(|value| Value::Left(Box::new(value)))
                                     .boxed(),
                             );
                         }
-                        if self.can_generate(right, budget - 1)? {
+                        if self.can_generate(right, budget - 1)?
+                        {
                             alternatives.push(
                                 self.generate(right, budget - 1)?
                                     .prop_map(|value| Value::Right(Box::new(value)))
@@ -779,9 +909,12 @@ fn shape_strategy_with_generators(
                 .filter(|value| value_cost(value) <= budget)
                 .cloned()
                 .collect();
-            let result = if self.native.factory(ty).is_some() {
+            let result = if self.native.factory(ty).is_some()
+            {
                 result
-            } else {
+            }
+            else
+            {
                 seeded(result, seeds)
             };
             self.generators.insert(key, result.clone());
@@ -789,7 +922,8 @@ fn shape_strategy_with_generators(
         }
     }
 
-    if !matches!(bits, 32 | 64) {
+    if !matches!(bits, 32 | 64)
+    {
         return Err("machineBits must be 32 or 64".into());
     }
     Builder {
@@ -810,26 +944,31 @@ const INDEX_CHOICES: usize = 6;
 /// A prefix index term over field indices (`f<i>`), literals (`c<n>`) and the
 /// natural operators `+ - * div mod ^`.
 #[derive(Clone, Debug)]
-enum IndexTerm {
+enum IndexTerm
+{
     Constant(u64),
     Field(usize),
     Apply(String, Box<IndexTerm>, Box<IndexTerm>),
 }
 
-fn parse_index_term(tokens: &[&str], at: &mut usize) -> ls::Result<IndexTerm> {
+fn parse_index_term(tokens: &[&str], at: &mut usize) -> ls::Result<IndexTerm>
+{
     let token = *tokens.get(*at).ok_or("malformed index term")?;
     *at += 1;
-    if let Some(digits) = token.strip_prefix('c') {
+    if let Some(digits) = token.strip_prefix('c')
+    {
         return Ok(IndexTerm::Constant(
             digits.parse().map_err(|_| "malformed index term")?,
         ));
     }
-    if let Some(digits) = token.strip_prefix('f') {
+    if let Some(digits) = token.strip_prefix('f')
+    {
         return Ok(IndexTerm::Field(
             digits.parse().map_err(|_| "malformed index term")?,
         ));
     }
-    if !["+", "-", "*", "div", "mod", "^"].contains(&token) {
+    if !["+", "-", "*", "div", "mod", "^"].contains(&token)
+    {
         return Err("malformed index term".into());
     }
     let left = parse_index_term(tokens, at)?;
@@ -842,14 +981,18 @@ fn parse_index_term(tokens: &[&str], at: &mut usize) -> ls::Result<IndexTerm> {
 }
 
 /// Natural index arithmetic; `None` when an operation has no natural value.
-fn eval_index_term(term: &IndexTerm, fields: &[(usize, u64)]) -> Option<u64> {
-    match term {
+fn eval_index_term(term: &IndexTerm, fields: &[(usize, u64)]) -> Option<u64>
+{
+    match term
+    {
         IndexTerm::Constant(value) => Some(*value),
         IndexTerm::Field(position) => fields.iter().find(|(p, _)| p == position).map(|(_, v)| *v),
-        IndexTerm::Apply(op, left, right) => {
+        IndexTerm::Apply(op, left, right) =>
+        {
             let x = eval_index_term(left, fields)?;
             let y = eval_index_term(right, fields)?;
-            match op.as_str() {
+            match op.as_str()
+            {
                 "+" => x.checked_add(y),
                 "-" => x.checked_sub(y),
                 "*" => x.checked_mul(y),
@@ -864,15 +1007,21 @@ fn eval_index_term(term: &IndexTerm, fields: &[(usize, u64)]) -> Option<u64> {
     }
 }
 
-fn index_term_fields(term: &IndexTerm, into: &mut Vec<usize>) {
-    match term {
-        IndexTerm::Constant(_) => {}
-        IndexTerm::Field(position) => {
-            if !into.contains(position) {
+fn index_term_fields(term: &IndexTerm, into: &mut Vec<usize>)
+{
+    match term
+    {
+        IndexTerm::Constant(_) =>
+        {}
+        IndexTerm::Field(position) =>
+        {
+            if !into.contains(position)
+            {
                 into.push(*position);
             }
         }
-        IndexTerm::Apply(_, left, right) => {
+        IndexTerm::Apply(_, left, right) =>
+        {
             index_term_fields(left, into);
             index_term_fields(right, into);
         }
@@ -881,7 +1030,8 @@ fn index_term_fields(term: &IndexTerm, into: &mut Vec<usize>) {
 
 type IndexAssignment = Vec<(usize, u64)>;
 
-struct IndexVariant {
+struct IndexVariant
+{
     tag: &'static str,
     fields: Vec<ls::TypeRef>,
     plain: Vec<Option<BoxedStrategy<Value>>>,
@@ -890,8 +1040,10 @@ struct IndexVariant {
     positions: Vec<usize>,
 }
 
-impl IndexVariant {
-    fn ready(&self) -> bool {
+impl IndexVariant
+{
+    fn ready(&self) -> bool
+    {
         self.plain
             .iter()
             .enumerate()
@@ -904,7 +1056,8 @@ impl IndexVariant {
         &self,
         reach: &std::collections::HashSet<(ls::TypeRef, u64)>,
         limit: u64,
-    ) -> Vec<(u64, IndexAssignment)> {
+    ) -> Vec<(u64, IndexAssignment)>
+    {
         let mut found = Vec::new();
         let mut current = Vec::new();
         self.extend(reach, limit, 0, &mut current, &mut found);
@@ -918,33 +1071,44 @@ impl IndexVariant {
         at: usize,
         current: &mut IndexAssignment,
         found: &mut Vec<(u64, IndexAssignment)>,
-    ) {
-        if at == self.positions.len() {
+    )
+    {
+        if at == self.positions.len()
+        {
             let holds = self.guards.iter().all(|(equal, left, right)| {
                 match (
                     eval_index_term(left, current),
                     eval_index_term(right, current),
-                ) {
-                    (Some(x), Some(y)) => {
-                        if *equal {
+                )
+                {
+                    (Some(x), Some(y)) =>
+                    {
+                        if *equal
+                        {
                             x == y
-                        } else {
+                        }
+                        else
+                        {
                             x >= y
                         }
                     }
                     _ => false,
                 }
             });
-            if holds {
-                if let Some(value) = eval_index_term(&self.term, current).filter(|v| *v <= limit) {
+            if holds
+            {
+                if let Some(value) = eval_index_term(&self.term, current).filter(|v| *v <= limit)
+                {
                     found.push((value, current.clone()));
                 }
             }
             return;
         }
         let position = self.positions[at];
-        for value in 0..=limit {
-            if reach.contains(&(self.fields[position].clone(), value)) {
+        for value in 0..=limit
+        {
+            if reach.contains(&(self.fields[position].clone(), value))
+            {
                 current.push((position, value));
                 self.extend(reach, limit, at + 1, current, found);
                 current.pop();
@@ -955,7 +1119,8 @@ impl IndexVariant {
 
 /// Solved index levels: per family and level, each feasible variant with the
 /// field-index assignments that produce that level.
-struct IndexTable {
+struct IndexTable
+{
     variants: std::collections::HashMap<ls::TypeRef, Vec<IndexVariant>>,
     solutions: std::collections::HashMap<(ls::TypeRef, u64), Vec<(usize, Vec<IndexAssignment>)>>,
 }
@@ -963,26 +1128,31 @@ struct IndexTable {
 /// A lazily built strategy for one family at one level, so children may sit
 /// at higher levels than their parents.
 #[derive(Clone)]
-struct IndexedValue {
+struct IndexedValue
+{
     table: std::sync::Arc<IndexTable>,
     family: ls::TypeRef,
     level: u64,
 }
 
-impl std::fmt::Debug for IndexedValue {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl std::fmt::Debug for IndexedValue
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+    {
         write!(f, "IndexedValue({:?}, {})", self.family, self.level)
     }
 }
 
-impl Strategy for IndexedValue {
+impl Strategy for IndexedValue
+{
     type Tree = Box<dyn proptest::strategy::ValueTree<Value = Value>>;
     type Value = Value;
 
     fn new_tree(
         &self,
         runner: &mut proptest::test_runner::TestRunner,
-    ) -> proptest::strategy::NewTree<Self> {
+    ) -> proptest::strategy::NewTree<Self>
+    {
         let variants = &self.table.variants[&self.family];
         let alternatives: Vec<BoxedStrategy<Value>> = self.table.solutions
             [&(self.family.clone(), self.level)]
@@ -999,14 +1169,17 @@ impl Strategy for IndexedValue {
                             .iter()
                             .enumerate()
                             .map(|(index, field)| {
-                                match assignment.iter().find(|(p, _)| *p == index) {
+                                match assignment.iter().find(|(p, _)| *p == index)
+                                {
                                     Some((_, level)) => IndexedValue {
                                         table: table.clone(),
                                         family: field.clone(),
                                         level: *level,
                                     }
                                     .boxed(),
-                                    None => plain[index].clone().unwrap(),
+                                    None => plain[index].clone().expect(
+                                        "selected index entry must contain an available value tree",
+                                    ),
                                 }
                             })
                             .collect();
@@ -1030,7 +1203,8 @@ pub fn checked_indexed_strategy(
     context: &ls::Context,
     target: &Value,
     equations: &[(&str, &[&str])],
-) -> ls::Result<BoxedStrategy<ls::Result<Value>>> {
+) -> ls::Result<BoxedStrategy<ls::Result<Value>>>
+{
     let strategy = indexed_strategy(schema, ty, bits, budget, target, equations)?;
     Ok(check_strategy(schema, ty, bits, context, strategy))
 }
@@ -1048,8 +1222,11 @@ pub fn indexed_strategy(
     budget: usize,
     target: &Value,
     equations: &[(&str, &[&str])],
-) -> ls::Result<BoxedStrategy<Value>> {
-    let Value::Integer(target) = target else {
+) -> ls::Result<BoxedStrategy<Value>>
+{
+    let Value::Integer(target) = target
+    else
+    {
         return Err("index target must be a natural number".into());
     };
     let requested: Option<u64> = target.to_string().parse().ok();
@@ -1066,15 +1243,18 @@ pub fn indexed_strategy(
             let tokens: Vec<&str> = first.split(' ').collect();
             let mut at = 0;
             let term = parse_index_term(&tokens, &mut at)?;
-            if at != tokens.len() {
+            if at != tokens.len()
+            {
                 return Err("malformed index term".into());
             }
             let mut positions = Vec::new();
             index_term_fields(&term, &mut positions);
             let mut guards = Vec::new();
-            for text in &texts[1..] {
+            for text in &texts[1..]
+            {
                 let parts: Vec<&str> = text.split(' ').collect();
-                let equal = match parts.first() {
+                let equal = match parts.first()
+                {
                     Some(&"==") => true,
                     Some(&">=") => false,
                     _ => return Err("malformed index guard".into()),
@@ -1093,24 +1273,30 @@ pub fn indexed_strategy(
     let mut plain: std::collections::HashMap<ls::TypeRef, Option<BoxedStrategy<Value>>> =
         std::collections::HashMap::new();
     let mut pending = vec![ty.clone()];
-    while let Some(next) = pending.pop() {
-        if variants.contains_key(&next) {
+    while let Some(next) = pending.pop()
+    {
+        if variants.contains_key(&next)
+        {
             continue;
         }
         let constructors = schema
             .constructor_fields(&next)?
             .ok_or("indexed generation requires a data type")?;
         let mut family = Vec::new();
-        for constructor in constructors {
+        for constructor in constructors
+        {
             let (term, guards, positions) = parse(constructor.tag)?;
             pending.extend(positions.iter().map(|p| constructor.fields[*p].clone()));
             let mut strategies = Vec::new();
-            for (index, field) in constructor.fields.iter().enumerate() {
-                if positions.contains(&index) {
+            for (index, field) in constructor.fields.iter().enumerate()
+            {
+                if positions.contains(&index)
+                {
                     strategies.push(None);
                     continue;
                 }
-                if !plain.contains_key(field) {
+                if !plain.contains_key(field)
+                {
                     let strategy =
                         shape_strategy(schema, field, bits, budget, Witnesses::new()).ok();
                     plain.insert(field.clone(), strategy);
@@ -1129,37 +1315,45 @@ pub fn indexed_strategy(
         variants.insert(next, family);
     }
     let mut reach = std::collections::HashSet::new();
-    loop {
+    loop
+    {
         let mut next = reach.clone();
-        for (family, list) in &variants {
-            for variant in list.iter().filter(|variant| variant.ready()) {
-                for (value, _) in variant.assignments(&reach, limit) {
+        for (family, list) in &variants
+        {
+            for variant in list.iter().filter(|variant| variant.ready())
+            {
+                for (value, _) in variant.assignments(&reach, limit)
+                {
                     next.insert((family.clone(), value));
                 }
             }
         }
-        if next.len() == reach.len() {
+        if next.len() == reach.len()
+        {
             break;
         }
         reach = next;
     }
     // An open target (negative), or one that names no value, generates from the
     // smallest reachable indices; an index claim rejects a mismatch.
-    let levels: Vec<u64> = match requested.filter(|k| reach.contains(&(ty.clone(), *k))) {
+    let levels: Vec<u64> = match requested.filter(|k| reach.contains(&(ty.clone(), *k)))
+    {
         Some(k) => vec![k],
         None => (0..=limit)
             .filter(|level| reach.contains(&(ty.clone(), *level)))
             .take(INDEX_CHOICES)
             .collect(),
     };
-    if levels.is_empty() {
+    if levels.is_empty()
+    {
         return Err(format!("no value of {ty:?} has an index"));
     }
     let mut solutions: std::collections::HashMap<
         (ls::TypeRef, u64),
         Vec<(usize, Vec<IndexAssignment>)>,
     > = std::collections::HashMap::new();
-    for (family, list) in &variants {
+    for (family, list) in &variants
+    {
         for (index, variant) in list
             .iter()
             .enumerate()
@@ -1167,10 +1361,12 @@ pub fn indexed_strategy(
         {
             let mut by_level: std::collections::BTreeMap<u64, Vec<IndexAssignment>> =
                 std::collections::BTreeMap::new();
-            for (value, assignment) in variant.assignments(&reach, limit) {
+            for (value, assignment) in variant.assignments(&reach, limit)
+            {
                 by_level.entry(value).or_default().push(assignment);
             }
-            for (level, choices) in by_level {
+            for (level, choices) in by_level
+            {
                 solutions
                     .entry((family.clone(), level))
                     .or_default()

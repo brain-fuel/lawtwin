@@ -88,7 +88,10 @@ def lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet(k, es):
 
 
 # keyValDeleteItems — <lawspec.collections>:32
-def lawspec_collections_key_val_delete_items_int64_list_entry_int64_order(k, es):
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_order(
+    k,
+    es,
+):
     it = es
     if it is None:
         return es
@@ -169,12 +172,10 @@ def lawspec_collections_key_val_from_items_list_entry_int64_pet_list_entry_int64
             match_selection = it_2[0]
             match_selection_2 = it_2[1]
             next_value = selection_2
-            next_value_2 = (
-                lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(
-                    match_selection,
-                    match_selection_2,
-                    acc,
-                )
+            next_value_2 = lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(
+                match_selection,
+                match_selection_2,
+                acc,
             )
             es = next_value
             acc = next_value_2
@@ -197,12 +198,10 @@ def lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_
             match_selection = it_2[0]
             match_selection_2 = it_2[1]
             next_value = selection_2
-            next_value_2 = (
-                lawspec_collections_key_val_put_items_text_user_list_entry_text_user(
-                    match_selection,
-                    match_selection_2,
-                    acc,
-                )
+            next_value_2 = lawspec_collections_key_val_put_items_text_user_list_entry_text_user(
+                match_selection,
+                match_selection_2,
+                acc,
             )
             es = next_value
             acc = next_value_2
@@ -233,7 +232,10 @@ def lawspec_collections_key_val_lookup_items_text_list_entry_text_user(k, es):
 
 
 # keyValLookupItems — <lawspec.collections>:45
-def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order(k, es):
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order(
+    k,
+    es,
+):
     while True:
         it = es
         if it is None:
@@ -309,7 +311,11 @@ def lawspec_collections_key_val_of_list_entry_int64_pet(es):
 
 
 # keyValPutItems — <lawspec.collections>:19
-def lawspec_collections_key_val_put_items_text_user_list_entry_text_user(k, v, es):
+def lawspec_collections_key_val_put_items_text_user_list_entry_text_user(
+    k,
+    v,
+    es,
+):
     it = es
     if it is None:
         record_field = k
@@ -344,7 +350,11 @@ def lawspec_collections_key_val_put_items_text_user_list_entry_text_user(k, v, e
 
 
 # keyValPutItems — <lawspec.collections>:19
-def lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(k, v, es):
+def lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(
+    k,
+    v,
+    es,
+):
     it = es
     if it is None:
         record_field = k
@@ -379,7 +389,11 @@ def lawspec_collections_key_val_put_items_int64_pet_list_entry_int64_pet(k, v, e
 
 
 # keyValPutItems — <lawspec.collections>:19
-def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order(k, v, es):
+def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order(
+    k,
+    v,
+    es,
+):
     it = es
     if it is None:
         record_field = k
@@ -428,7 +442,8 @@ def lawspec_collections_key_val_put_int64_order_key_val_int64_order(k, v, m):
     return lsf_put(m, k, v)
 
 
-# lawtwinPetstoreHandwrittenCreateUsersWithListInput — ../src/handwritten.lawspec:39
+# lawtwinPetstoreHandwrittenCreateUsersWithListInput —
+# ../src/handwritten.lawspec:39
 def lawtwin_petstore_handwritten_create_users_with_list_input(body, current):
     raise ls.Failure(
         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
@@ -477,7 +492,12 @@ def lawtwin_petstore_handwritten_logout_user(current):
 
 
 # lawtwinPetstoreHandwrittenUpdatePetWithForm — ../src/handwritten.lawspec:24
-def lawtwin_petstore_handwritten_update_pet_with_form(pet_id, name, status, current):
+def lawtwin_petstore_handwritten_update_pet_with_form(
+    pet_id,
+    name,
+    status,
+    current,
+):
     raise ls.Failure(
         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
         to_api_error(2),
@@ -615,7 +635,13 @@ def lawtwin_petstore_model_model_create_user(body, current):
             next_pet_key = current[1]
             orders = current[2]
             next_order_key = current[3]
-            value_3 = (pets, next_pet_key, orders, next_order_key, replacement_2)
+            value_3 = (
+                pets,
+                next_pet_key,
+                orders,
+                next_order_key,
+                replacement_2,
+            )
             return (stored, value_3)
         else:
             raise ls.Failure(
@@ -773,7 +799,14 @@ def lawtwin_petstore_model_model_place_order(body, current):
             ship_date = selection_2[3]
             status = selection_2[4]
             complete = selection_2[5]
-            value_4 = (replacement, pet_id, quantity, ship_date, status, complete)
+            value_4 = (
+                replacement,
+                pet_id,
+                quantity,
+                ship_date,
+                status,
+                complete,
+            )
             stored = value_4
             orders = current[2]
             value_5 = orders
@@ -799,13 +832,25 @@ def lawtwin_petstore_model_model_place_order(body, current):
                 next_pet_key = current[1]
                 next_order_key_4 = current[3]
                 users = current[4]
-                value_9 = (pets, next_pet_key, replacement_3, next_order_key_4, users)
+                value_9 = (
+                    pets,
+                    next_pet_key,
+                    replacement_3,
+                    next_order_key_4,
+                    users,
+                )
                 matched = value_9
                 pets_2 = matched[0]
                 next_pet_key_2 = matched[1]
                 orders_3 = matched[2]
                 users_2 = matched[4]
-                value_6 = (pets_2, next_pet_key_2, orders_3, replacement_2, users_2)
+                value_6 = (
+                    pets_2,
+                    next_pet_key_2,
+                    orders_3,
+                    replacement_2,
+                    users_2,
+                )
                 return (stored, value_6)
         else:
             raise ls.Failure(
@@ -840,7 +885,13 @@ def lawtwin_petstore_model_model_update_pet(body, current):
             orders = current[2]
             next_order_key = current[3]
             users = current[4]
-            value_4 = (replacement_2, next_pet_key, orders, next_order_key, users)
+            value_4 = (
+                replacement_2,
+                next_pet_key,
+                orders,
+                next_order_key,
+                users,
+            )
             return (stored, value_4)
         else:
             raise ls.Failure(
@@ -890,7 +941,13 @@ def lawtwin_petstore_model_model_update_user(username, body, current):
             next_pet_key = current[1]
             orders = current[2]
             next_order_key = current[3]
-            value_3 = (pets, next_pet_key, orders, next_order_key, replacement_2)
+            value_3 = (
+                pets,
+                next_pet_key,
+                orders,
+                next_order_key,
+                replacement_2,
+            )
             return (None, value_3)
         else:
             raise ls.Failure(
@@ -931,7 +988,10 @@ def reference_create_user(state, value0):
 
 # referenceCreateUsersWithListInput — ../src/api.lawspec:197
 def reference_create_users_with_list_input(state, value0):
-    return lawtwin_petstore_handwritten_create_users_with_list_input(value0, state)
+    return lawtwin_petstore_handwritten_create_users_with_list_input(
+        value0,
+        state,
+    )
 
 
 # referenceDeleteOrder — ../src/api.lawspec:195
@@ -1021,7 +1081,12 @@ def reference_update_user(state, value0, value1):
 
 # referenceUploadFile — ../src/api.lawspec:191
 def reference_upload_file(state, value0, value1, value2):
-    return lawtwin_petstore_handwritten_upload_file(value0, value1, value2, state)
+    return lawtwin_petstore_handwritten_upload_file(
+        value0,
+        value1,
+        value2,
+        state,
+    )
 
 
 # noHandWrittenLawsYet — ../src/laws.lawspec:20
@@ -1300,7 +1365,10 @@ def nin_list_pet(n, symbols):
         return fromnative_list_pet(n)
     return from_list_pet(
         ls.handler_schema(_lawspec_schema).from_native(
-            _schema.Named("List", [_schema.Named("lawtwin.petstore.model::type::Pet")]),
+            _schema.Named(
+                "List",
+                [_schema.Named("lawtwin.petstore.model::type::Pet")],
+            ),
             n,
             MACHINE_BITS,
             symbols,
@@ -1555,7 +1623,10 @@ def nout_list_pet(x, symbols):
     if ls._HANDLER_SCHEMA is None:
         return tonative_list_pet(x)
     return ls.handler_schema(_lawspec_schema).to_native(
-        _schema.Named("List", [_schema.Named("lawtwin.petstore.model::type::Pet")]),
+        _schema.Named(
+            "List",
+            [_schema.Named("lawtwin.petstore.model::type::Pet")],
+        ),
         to_list_pet(x),
         MACHINE_BITS,
         symbols,
@@ -1611,7 +1682,10 @@ def nout_maybe_order(x, symbols):
     if ls._HANDLER_SCHEMA is None:
         return tonative_maybe_order(x)
     return ls.handler_schema(_lawspec_schema).to_native(
-        _schema.Named("Maybe", [_schema.Named("lawtwin.petstore.model::type::Order")]),
+        _schema.Named(
+            "Maybe",
+            [_schema.Named("lawtwin.petstore.model::type::Order")],
+        ),
         to_maybe_order(x),
         MACHINE_BITS,
         symbols,
@@ -1623,7 +1697,10 @@ def nout_maybe_user(x, symbols):
     if ls._HANDLER_SCHEMA is None:
         return tonative_maybe_user(x)
     return ls.handler_schema(_lawspec_schema).to_native(
-        _schema.Named("Maybe", [_schema.Named("lawtwin.petstore.model::type::User")]),
+        _schema.Named(
+            "Maybe",
+            [_schema.Named("lawtwin.petstore.model::type::User")],
+        ),
         to_maybe_user(x),
         MACHINE_BITS,
         symbols,
@@ -1862,7 +1939,10 @@ def to_key_val_int64_pet(x):
         "lawspec.collections::type::KeyVal::KeyValEntries",
         (
             [
-                ls.DataValue("lawspec.collections::type::Entry::Entry", (k, to_pet(v)))
+                ls.DataValue(
+                    "lawspec.collections::type::Entry::Entry",
+                    (k, to_pet(v)),
+                )
                 for k, v in lsf_entries(x)
             ],
         ),
@@ -1875,7 +1955,10 @@ def to_key_val_text_user(x):
         "lawspec.collections::type::KeyVal::KeyValEntries",
         (
             [
-                ls.DataValue("lawspec.collections::type::Entry::Entry", (k, to_user(v)))
+                ls.DataValue(
+                    "lawspec.collections::type::Entry::Entry",
+                    (k, to_user(v)),
+                )
                 for k, v in lsf_entries(x)
             ],
         ),
@@ -1892,7 +1975,10 @@ def to_pair_list_pet_state(x):
 
 # To the dynamic value of a Pair Text State.
 def to_pair_text_state(x):
-    return ls.DataValue("lawspec.collections::type::Pair::Pair", (x[0], to_state(x[1])))
+    return ls.DataValue(
+        "lawspec.collections::type::Pair::Pair",
+        (x[0], to_state(x[1])),
+    )
 
 
 # To the dynamic value of a Pair Unit State.
@@ -2071,7 +2157,9 @@ def from_maybe_category(v):
 
 # From the dynamic value of a Maybe OrderStatus.
 def from_maybe_order_status(v):
-    return (from_order_status(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    return (
+        (from_order_status(v.fields[0]),) if v.tag == "Maybe::Present" else ()
+    )
 
 
 # From the dynamic value of a Maybe PetStatus.
@@ -2154,7 +2242,11 @@ def fromnative_maybe_bytes(n):
 
 # From the native value of a Maybe (List User).
 def fromnative_maybe_list_user(n):
-    return (fromnative_list_user(n.value),) if isinstance(n, _schema.Present) else ()
+    return (
+        (fromnative_list_user(n.value),)
+        if isinstance(n, _schema.Present)
+        else ()
+    )
 
 
 # From the native value of a Maybe Text.
@@ -2164,7 +2256,9 @@ def fromnative_maybe_text(n):
 
 # From the native value of a Maybe Order.
 def fromnative_maybe_order(n):
-    return (fromnative_order(n.value),) if isinstance(n, _schema.Present) else ()
+    return (
+        (fromnative_order(n.value),) if isinstance(n, _schema.Present) else ()
+    )
 
 
 # From the native value of a Maybe User.
@@ -2352,7 +2446,10 @@ def to_entry_int64_order(x):
 
 # To the dynamic value of a Entry Int64 Pet.
 def to_entry_int64_pet(x):
-    return ls.DataValue("lawspec.collections::type::Entry::Entry", (x[0], to_pet(x[1])))
+    return ls.DataValue(
+        "lawspec.collections::type::Entry::Entry",
+        (x[0], to_pet(x[1])),
+    )
 
 
 # To the dynamic value of a Entry Text User.
@@ -2479,7 +2576,11 @@ def tonative_pet(x):
 
 # To the native value of a PetStatus.
 def tonative_pet_status(x):
-    return (data.PetStatusAvailable, data.PetStatusPending, data.PetStatusSold)[x]()
+    return (
+        data.PetStatusAvailable,
+        data.PetStatusPending,
+        data.PetStatusSold,
+    )[x]()
 
 
 # To the native value of a State.
@@ -2552,22 +2653,38 @@ def fromnative_maybe_int64(n):
 
 # From the native value of a Maybe (List Tag).
 def fromnative_maybe_list_tag(n):
-    return (fromnative_list_tag(n.value),) if isinstance(n, _schema.Present) else ()
+    return (
+        (fromnative_list_tag(n.value),)
+        if isinstance(n, _schema.Present)
+        else ()
+    )
 
 
 # From the native value of a Maybe Category.
 def fromnative_maybe_category(n):
-    return (fromnative_category(n.value),) if isinstance(n, _schema.Present) else ()
+    return (
+        (fromnative_category(n.value),)
+        if isinstance(n, _schema.Present)
+        else ()
+    )
 
 
 # From the native value of a Maybe OrderStatus.
 def fromnative_maybe_order_status(n):
-    return (fromnative_order_status(n.value),) if isinstance(n, _schema.Present) else ()
+    return (
+        (fromnative_order_status(n.value),)
+        if isinstance(n, _schema.Present)
+        else ()
+    )
 
 
 # From the native value of a Maybe PetStatus.
 def fromnative_maybe_pet_status(n):
-    return (fromnative_pet_status(n.value),) if isinstance(n, _schema.Present) else ()
+    return (
+        (fromnative_pet_status(n.value),)
+        if isinstance(n, _schema.Present)
+        else ()
+    )
 
 
 # From the native value of a KeyVal Int64 Order.
@@ -2651,7 +2768,9 @@ def tonative_maybe_category(x):
 
 # To the native value of a Maybe OrderStatus.
 def tonative_maybe_order_status(x):
-    return _schema.Present(tonative_order_status(x[0])) if x else _schema.Absent()
+    return (
+        _schema.Present(tonative_order_status(x[0])) if x else _schema.Absent()
+    )
 
 
 # To the native value of a Maybe PetStatus.

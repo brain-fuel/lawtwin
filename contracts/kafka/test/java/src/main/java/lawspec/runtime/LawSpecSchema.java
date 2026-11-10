@@ -15,14 +15,16 @@ import lawspec.runtime.LawSpecRuntime.Value;
 /**
  * Runtime metadata derived from checked Core, independent of testing frameworks.
  *
- * <p>Generated data types are described once, as Core schemas, and every value crossing between a
- * law and native code is validated against them, so an adapter cannot hand a law a value outside
- * its declared type. ref:DEC-typed-core-boundary ref:DEC-native-bindings-typed-identity
+ * <p>
+ * Generated data types are described once, as Core schemas, and every value crossing between a law
+ * and native code is validated against them, so an adapter cannot hand a law a value outside its
+ * declared type. ref:DEC-typed-core-boundary ref:DEC-native-bindings-typed-identity
  */
 public final class LawSpecSchema
 {
   public sealed interface TypeRef permits Parameter, Named
-  {}
+  {
+  }
 
   public record Parameter(int index) implements TypeRef
   {
@@ -49,16 +51,13 @@ public final class LawSpecSchema
   }
 
   public record Field(String name, TypeRef type)
-  {}
+  {
+  }
 
   @FunctionalInterface
   public interface FieldPredicate
   {
-    boolean test(
-        LawSpecSchema schema,
-        List<TypeRef> arguments,
-        List<Value> fields,
-        int bits,
+    boolean test(LawSpecSchema schema, List<TypeRef> arguments, List<Value> fields, int bits,
         Map<String, Object> symbols);
   }
 
@@ -76,26 +75,23 @@ public final class LawSpecSchema
   }
 
   public sealed interface ValueCheck permits Accepted, Rejected
-  {}
+  {
+  }
 
   public record Accepted(Value value) implements ValueCheck
-  {}
+  {
+  }
 
   public record Rejected(String reason) implements ValueCheck
-  {}
+  {
+  }
 
   /**
    * A constructor; an indexed family's constructor also lists its index terms then its guards, in
    * prefix notation over field indices, and validation checks the guards.
    */
-  public record Constructor(
-      String tag,
-      List<Field> fields,
-      List<FieldPredicate> predicates,
-      List<String> indices,
-      List<Refinement> refinements,
-      int existentials,
-      List<Integer> witnesses)
+  public record Constructor(String tag, List<Field> fields, List<FieldPredicate> predicates,
+      List<String> indices, List<Refinement> refinements, int existentials, List<Integer> witnesses)
   {
     // witnesses: existentials only a value determines (parameter numbers); their types travel
     // as the trailing Text witness fields.
@@ -108,19 +104,14 @@ public final class LawSpecSchema
       witnesses = List.copyOf(witnesses);
     }
 
-    public Constructor(
-        String tag,
-        List<Field> fields,
-        List<FieldPredicate> predicates,
-        List<String> indices,
-        List<Refinement> refinements,
-        int existentials)
+    public Constructor(String tag, List<Field> fields, List<FieldPredicate> predicates,
+        List<String> indices, List<Refinement> refinements, int existentials)
     {
       this(tag, fields, predicates, indices, refinements, existentials, List.of());
     }
 
-    public Constructor(
-        String tag, List<Field> fields, List<FieldPredicate> predicates, List<String> indices)
+    public Constructor(String tag, List<Field> fields, List<FieldPredicate> predicates,
+        List<String> indices)
     {
       this(tag, fields, predicates, indices, List.of(), 0);
     }
@@ -141,16 +132,12 @@ public final class LawSpecSchema
    * after the definition's own.
    */
   public record Refinement(int parameter, TypeRef pattern)
-  {}
+  {
+  }
 
   /** A prefix index term: kind is "c", "f" or an operator. */
-  private record IndexTerm(
-      String kind,
-      BigInteger value,
-      List<Integer> path,
-      int index,
-      IndexTerm left,
-      IndexTerm right)
+  private record IndexTerm(String kind, BigInteger value, List<Integer> path, int index,
+      IndexTerm left, IndexTerm right)
   {
     static IndexTerm parse(String[] tokens, int[] at)
     {
@@ -171,13 +158,9 @@ public final class LawSpecSchema
           throw new IllegalArgumentException("malformed index field path");
         }
         var parts = token.substring(1).split("\\.");
-        return new IndexTerm(
-            "f",
-            null,
+        return new IndexTerm("f", null,
             java.util.Arrays.stream(parts[0].split("/")).map(Integer::parseInt).toList(),
-            parts.length > 1 ? Integer.parseInt(parts[1]) : 0,
-            null,
-            null);
+            parts.length > 1 ? Integer.parseInt(parts[1]) : 0, null, null);
       }
       var left = parse(tokens, at);
       var right = parse(tokens, at);
@@ -248,11 +231,8 @@ public final class LawSpecSchema
   private BigInteger indexOf(Named type, Value value, int index)
   {
     var data = (Data) value.data();
-    var constructor =
-        definitions.get(type.name()).constructors().stream()
-            .filter(candidate -> candidate.tag().equals(data.tag()))
-            .findFirst()
-            .orElseThrow();
+    var constructor = definitions.get(type.name()).constructors().stream()
+        .filter(candidate -> candidate.tag().equals(data.tag())).findFirst().orElseThrow();
     var terms = constructor.indices().stream().filter(text -> !isIndexGuard(text)).toList();
     if (index >= terms.size())
     {
@@ -263,12 +243,10 @@ public final class LawSpecSchema
         .evaluate((path, child) -> indexAtPath(types, data.fields(), path, child));
   }
 
-  private BigInteger indexAtPath(
-      List<Field> types, List<Value> values, List<Integer> path, int index)
+  private BigInteger indexAtPath(List<Field> types, List<Value> values, List<Integer> path,
+      int index)
   {
-    if (path.isEmpty()
-        || path.get(0) < 0
-        || path.get(0) >= types.size()
+    if (path.isEmpty() || path.get(0) < 0 || path.get(0) >= types.size()
         || path.get(0) >= values.size())
     {
       throw new IllegalArgumentException("invalid index field path");
@@ -291,13 +269,13 @@ public final class LawSpecSchema
     {
       throw new IllegalArgumentException("invalid structural record in index field path");
     }
-    return indexAtPath(
-        fields(type, data.tag()), data.fields(), path.subList(1, path.size()), index);
+    return indexAtPath(fields(type, data.tag()), data.fields(), path.subList(1, path.size()),
+        index);
   }
 
   /** A handle (handle == true) has no constructors: its values carry adapters' native objects. */
-  public record Definition(
-      String name, int parameters, List<Constructor> constructors, boolean handle)
+  public record Definition(String name, int parameters, List<Constructor> constructors,
+      boolean handle)
   {
     public Definition
     {
@@ -319,39 +297,10 @@ public final class LawSpecSchema
   }
 
   private static final Set<String> SCALARS =
-      Set.of(
-          "Bool",
-          "Int8",
-          "Int16",
-          "Int32",
-          "Int64",
-          "UInt8",
-          "UInt16",
-          "UInt32",
-          "UInt64",
-          "IntSize",
-          "UIntSize",
-          "UIntPtr",
-          "Integer",
-          "BigInt",
-          "BigUInt",
-          "Decimal",
-          "Rational",
-          "Float32",
-          "Float64",
-          "Complex64",
-          "Complex128",
-          "Char",
-          "CodePoint",
-          "CodeUnit16",
-          "Text",
-          "CodePointText",
-          "Utf16Text",
-          "Bytes",
-          "Symbol",
-          "Unit",
-          "Null",
-          "Undefined");
+      Set.of("Bool", "Int8", "Int16", "Int32", "Int64", "UInt8", "UInt16", "UInt32", "UInt64",
+          "IntSize", "UIntSize", "UIntPtr", "Integer", "BigInt", "BigUInt", "Decimal", "Rational",
+          "Float32", "Float64", "Complex64", "Complex128", "Char", "CodePoint", "CodeUnit16",
+          "Text", "CodePointText", "Utf16Text", "Bytes", "Symbol", "Unit", "Null", "Undefined");
   private static final Map<String, Integer> CONTAINERS =
       Map.of("List", 1, "Maybe", 1, "Either", 2, "Nullable", 1, "Optional", 1);
   private final Map<String, Definition> definitions;
@@ -362,8 +311,7 @@ public final class LawSpecSchema
     var tags = new HashSet<String>();
     for (var definition : declarations)
     {
-      if (SCALARS.contains(definition.name())
-          || CONTAINERS.containsKey(definition.name())
+      if (SCALARS.contains(definition.name()) || CONTAINERS.containsKey(definition.name())
           || table.putIfAbsent(definition.name(), definition) != null)
       {
         throw new IllegalArgumentException("duplicate schema type: " + definition.name());
@@ -396,12 +344,9 @@ public final class LawSpecSchema
 
   public boolean hasContracts()
   {
-    return definitions.values().stream()
-        .flatMap(definition -> definition.constructors().stream())
-        .anyMatch(
-            constructor ->
-                !constructor.predicates().isEmpty()
-                    || constructor.indices().stream().anyMatch(LawSpecSchema::isIndexGuard));
+    return definitions.values().stream().flatMap(definition -> definition.constructors().stream())
+        .anyMatch(constructor -> !constructor.predicates().isEmpty()
+            || constructor.indices().stream().anyMatch(LawSpecSchema::isIndexGuard));
   }
 
   private void checkType(TypeRef type, int parameters)
@@ -419,10 +364,8 @@ public final class LawSpecSchema
       throw new IllegalArgumentException("missing schema type");
     }
     var definition = definitions.get(named.name());
-    int arity =
-        definition != null
-            ? definition.parameters()
-            : CONTAINERS.getOrDefault(named.name(), SCALARS.contains(named.name()) ? 0 : -1);
+    int arity = definition != null ? definition.parameters()
+        : CONTAINERS.getOrDefault(named.name(), SCALARS.contains(named.name()) ? 0 : -1);
     if (arity < 0 || named.arguments().size() != arity)
     {
       throw new IllegalArgumentException("invalid schema type application: " + named.name());
@@ -450,18 +393,14 @@ public final class LawSpecSchema
    * Arguments extended with the existentials a constructor's refinements bind; null when the
    * refinements do not match.
    */
-  private static List<TypeRef> refine(
-      Constructor constructor, List<TypeRef> arguments, int parameters)
+  private static List<TypeRef> refine(Constructor constructor, List<TypeRef> arguments,
+      int parameters)
   {
     var bound = new HashMap<Integer, TypeRef>();
     for (var refinement : constructor.refinements())
     {
-      if (!matches(
-          refinement.pattern(),
-          arguments.get(refinement.parameter()),
-          arguments,
-          parameters,
-          bound))
+      if (!matches(refinement.pattern(), arguments.get(refinement.parameter()), arguments,
+          parameters, bound))
       {
         return null;
       }
@@ -501,8 +440,7 @@ public final class LawSpecSchema
   {
     var tokens =
         java.util.Arrays.stream(text.replace("(", " ( ").replace(")", " ) ").trim().split("\\s+"))
-            .filter(token -> !token.isEmpty())
-            .toList();
+            .filter(token -> !token.isEmpty()).toList();
     int[] at = {0};
     var result = readWitness(tokens, at);
     if (at[0] != tokens.size())
@@ -548,10 +486,8 @@ public final class LawSpecSchema
     {
       return null;
     }
-    return definition.constructors().stream()
-        .filter(candidate -> candidate.tag().equals(tag))
-        .findFirst()
-        .orElse(null);
+    return definition.constructors().stream().filter(candidate -> candidate.tag().equals(tag))
+        .findFirst().orElse(null);
   }
 
   /** Field types with witnessed existentials read from the given witness keys. */
@@ -573,8 +509,7 @@ public final class LawSpecSchema
       }
       known.set(index, parseWitness(keys.get(k)));
     }
-    return fields.stream()
-        .map(field -> new Field(field.name(), substitute(field.type(), known)))
+    return fields.stream().map(field -> new Field(field.name(), substitute(field.type(), known)))
         .toList();
   }
 
@@ -619,7 +554,8 @@ public final class LawSpecSchema
 
   /** One choice of witnesses: the declared fields at it, and the witness keys. */
   public record WitnessInstance(List<Field> fields, List<String> keys)
-  {}
+  {
+  }
 
   /** Each choice of witnesses from the pool. */
   public List<WitnessInstance> instances(Named type, String tag)
@@ -672,12 +608,8 @@ public final class LawSpecSchema
     return LawSpecRuntime.sequence("Text", key.codePoints().toArray());
   }
 
-  private static boolean matches(
-      TypeRef pattern,
-      TypeRef actual,
-      List<TypeRef> arguments,
-      int parameters,
-      Map<Integer, TypeRef> bound)
+  private static boolean matches(TypeRef pattern, TypeRef actual, List<TypeRef> arguments,
+      int parameters, Map<Integer, TypeRef> bound)
   {
     if (pattern instanceof Parameter parameter)
     {
@@ -689,16 +621,15 @@ public final class LawSpecSchema
       return previous == null || previous.equals(actual);
     }
     var named = (Named) pattern;
-    if (!(actual instanceof Named other)
-        || !named.name().equals(other.name())
+    if (!(actual instanceof Named other) || !named.name().equals(other.name())
         || named.arguments().size() != other.arguments().size())
     {
       return false;
     }
     for (int i = 0; i < named.arguments().size(); i++)
     {
-      if (!matches(
-          named.arguments().get(i), other.arguments().get(i), arguments, parameters, bound))
+      if (!matches(named.arguments().get(i), other.arguments().get(i), arguments, parameters,
+          bound))
       {
         return false;
       }
@@ -718,8 +649,7 @@ public final class LawSpecSchema
       return arguments.get(variable.index());
     }
     var named = (Named) type;
-    return new Named(
-        named.name(),
+    return new Named(named.name(),
         named.arguments().stream().map(argument -> substitute(argument, arguments)).toList());
   }
 
@@ -738,8 +668,7 @@ public final class LawSpecSchema
       return definition.constructors().stream()
           .filter(
               constructor -> refine(constructor, type.arguments(), definition.parameters()) != null)
-          .map(Constructor::tag)
-          .toList();
+          .map(Constructor::tag).toList();
     }
     return switch (type.name())
     {
@@ -766,8 +695,7 @@ public final class LawSpecSchema
                 "constructor " + tag + " is not a value of " + key(type));
           }
           return constructor.fields().stream()
-              .map(field -> new Field(field.name(), substitute(field.type(), arguments)))
-              .toList();
+              .map(field -> new Field(field.name(), substitute(field.type(), arguments))).toList();
         }
       }
     }
@@ -819,7 +747,8 @@ public final class LawSpecSchema
   }
 
   private sealed interface PayloadPlan permits IgnorePayload, PayloadSlot, PayloadApplication
-  {}
+  {
+  }
 
   private enum IgnorePayload implements PayloadPlan
   {
@@ -827,11 +756,12 @@ public final class LawSpecSchema
   }
 
   private record PayloadSlot(int index) implements PayloadPlan
-  {}
+  {
+  }
 
-  private record PayloadApplication(String name, List<PayloadPlan> arguments)
-      implements PayloadPlan
-  {}
+  private record PayloadApplication(String name, List<PayloadPlan> arguments) implements PayloadPlan
+  {
+  }
 
   private static PayloadPlan payloadRecipe(TypeRef type, List<PayloadPlan> arguments)
   {
@@ -848,12 +778,8 @@ public final class LawSpecSchema
   }
 
   /** Check stored type arguments after full value and constructor-contract validation. */
-  public Value allPayloads(
-      Named type,
-      Value value,
-      List<Function<Value, Value>> predicates,
-      int bits,
-      Map<String, Object> symbols)
+  public Value allPayloads(Named type, Value value, List<Function<Value, Value>> predicates,
+      int bits, Map<String, Object> symbols)
   {
     checkType(type, 0);
     if (!definitions.containsKey(type.name()) && !CONTAINERS.containsKey(type.name()))
@@ -871,12 +797,12 @@ public final class LawSpecSchema
     {
       arguments.add(new PayloadSlot(index));
     }
-    return LawSpecRuntime.bool(
-        walkPayload(new PayloadApplication(type.name(), arguments), checked, predicates));
+    return LawSpecRuntime
+        .bool(walkPayload(new PayloadApplication(type.name(), arguments), checked, predicates));
   }
 
-  private boolean contextualPayload(
-      PayloadPlan plan, Value value, List<Function<Value, Value>> predicates, String context)
+  private boolean contextualPayload(PayloadPlan plan, Value value,
+      List<Function<Value, Value>> predicates, String context)
   {
     try
     {
@@ -888,8 +814,8 @@ public final class LawSpecSchema
     }
   }
 
-  private boolean walkPayload(
-      PayloadPlan plan, Value value, List<Function<Value, Value>> predicates)
+  private boolean walkPayload(PayloadPlan plan, Value value,
+      List<Function<Value, Value>> predicates)
   {
     if (plan == IgnorePayload.INSTANCE)
     {
@@ -907,8 +833,8 @@ public final class LawSpecSchema
       var values = (List<?>) value.data();
       for (int index = 0; index < values.size(); index++)
       {
-        if (!contextualPayload(
-            arguments.get(0), (Value) values.get(index), predicates, "List[" + index + "]"))
+        if (!contextualPayload(arguments.get(0), (Value) values.get(index), predicates,
+            "List[" + index + "]"))
         {
           return false;
         }
@@ -924,29 +850,22 @@ public final class LawSpecSchema
     var data = (Data) value.data();
     if (name.equals("Maybe"))
     {
-      return data.tag().equals("Maybe::Absent")
-          || contextualPayload(
-              arguments.get(0), data.fields().get(0), predicates, "Maybe::Present.value");
+      return data.tag().equals("Maybe::Absent") || contextualPayload(arguments.get(0),
+          data.fields().get(0), predicates, "Maybe::Present.value");
     }
     if (name.equals("Either"))
     {
       int index = data.tag().equals("Either::Left") ? 0 : 1;
-      return contextualPayload(
-          arguments.get(index), data.fields().get(0), predicates, data.tag() + ".value");
+      return contextualPayload(arguments.get(index), data.fields().get(0), predicates,
+          data.tag() + ".value");
     }
-    var constructor =
-        definitions.get(name).constructors().stream()
-            .filter(candidate -> candidate.tag().equals(data.tag()))
-            .findFirst()
-            .orElseThrow();
+    var constructor = definitions.get(name).constructors().stream()
+        .filter(candidate -> candidate.tag().equals(data.tag())).findFirst().orElseThrow();
     for (int index = 0; index < constructor.fields().size(); index++)
     {
       var field = constructor.fields().get(index);
-      if (!contextualPayload(
-          payloadRecipe(field.type(), arguments),
-          data.fields().get(index),
-          predicates,
-          data.tag() + "." + field.name()))
+      if (!contextualPayload(payloadRecipe(field.type(), arguments), data.fields().get(index),
+          predicates, data.tag() + "." + field.name()))
       {
         return false;
       }
@@ -977,8 +896,8 @@ public final class LawSpecSchema
   }
 
   // A shallow check (deep == false) trusts fields, which were checked when built.
-  private Value validate(
-      Named type, Value value, int bits, Map<String, Object> symbols, boolean deep)
+  private Value validate(Named type, Value value, int bits, Map<String, Object> symbols,
+      boolean deep)
   {
     checkType(type, 0);
     if (bits != 32 && bits != 64)
@@ -998,8 +917,7 @@ public final class LawSpecSchema
       }
       return value;
     }
-    if (definitions.containsKey(type.name())
-        || type.name().equals("Maybe")
+    if (definitions.containsKey(type.name()) || type.name().equals("Maybe")
         || type.name().equals("Either"))
     {
       if (!(value.data() instanceof Data data))
@@ -1020,22 +938,14 @@ public final class LawSpecSchema
           checked.add(data.fields().get(index));
           continue;
         }
-        checked.add(
-            validateField(
-                (Named) field.type(),
-                data.fields().get(index),
-                bits,
-                data.tag() + "." + field.name(),
-                symbols));
+        checked.add(validateField((Named) field.type(), data.fields().get(index), bits,
+            data.tag() + "." + field.name(), symbols));
       }
       var definition = definitions.get(type.name());
       if (definition != null)
       {
-        var constructor =
-            definition.constructors().stream()
-                .filter(candidate -> candidate.tag().equals(data.tag()))
-                .findFirst()
-                .orElseThrow();
+        var constructor = definition.constructors().stream()
+            .filter(candidate -> candidate.tag().equals(data.tag())).findFirst().orElseThrow();
         var logical = List.copyOf(checked);
         for (int index = 0; index < constructor.predicates().size(); index++)
         {
@@ -1043,11 +953,8 @@ public final class LawSpecSchema
           String context = data.tag() + ": field refinement " + (index + 1);
           try
           {
-            accepted =
-                constructor
-                    .predicates()
-                    .get(index)
-                    .test(this, type.arguments(), logical, bits, symbols);
+            accepted = constructor.predicates().get(index).test(this, type.arguments(), logical,
+                bits, symbols);
           }
           catch (RuntimeException error)
           {
@@ -1060,9 +967,8 @@ public final class LawSpecSchema
         }
         checkIndices(type, constructor, logical);
       }
-      if (type.name().equals("lawspec.collections::type::EqSet")
-          && !LawSpecRuntime.distinctMembers(
-              LawSpecRuntime.eqSetItems(new Data(data.tag(), checked)), this::equalValidated))
+      if (type.name().equals("lawspec.collections::type::EqSet") && !LawSpecRuntime.distinctMembers(
+          LawSpecRuntime.eqSetItems(new Data(data.tag(), checked)), this::equalValidated))
       {
         throw new RefinementViolation("Eq-only set: duplicate equal elements");
       }
@@ -1081,9 +987,8 @@ public final class LawSpecSchema
         {
           throw new IllegalArgumentException("invalid list element");
         }
-        checked.add(
-            validateField(
-                (Named) type.arguments().get(0), element, bits, "[" + index + "]", symbols));
+        checked.add(validateField((Named) type.arguments().get(0), element, bits, "[" + index + "]",
+            symbols));
       }
       return new Value(key(type), List.copyOf(checked));
     }
@@ -1097,20 +1002,16 @@ public final class LawSpecSchema
       {
         throw new IllegalArgumentException("absent payload must be empty");
       }
-      return new Value(
-          key(type),
-          new Presence(
-              p.present(),
-              p.present()
-                  ? validateField(
-                      (Named) type.arguments().get(0), p.value(), bits, "present", symbols)
-                  : null));
+      return new Value(key(type), new Presence(p.present(),
+          p.present()
+              ? validateField((Named) type.arguments().get(0), p.value(), bits, "present", symbols)
+              : null));
     }
     return LawSpecRuntime.validate(type.name(), value, bits);
   }
 
-  private Value validateField(
-      Named type, Value value, int bits, String context, Map<String, Object> symbols)
+  private Value validateField(Named type, Value value, int bits, String context,
+      Map<String, Object> symbols)
   {
     try
     {
@@ -1127,8 +1028,8 @@ public final class LawSpecSchema
   }
 
   /** A constructor's value from its fields, listed last, as generated code builds one. */
-  public Value construct(
-      Named type, String tag, int bits, Map<String, Object> symbols, Value... fields)
+  public Value construct(Named type, String tag, int bits, Map<String, Object> symbols,
+      Value... fields)
   {
     return construct(type, tag, List.of(fields), bits, symbols);
   }
@@ -1138,8 +1039,8 @@ public final class LawSpecSchema
     return construct(type, tag, fields, bits, new HashMap<>());
   }
 
-  public Value construct(
-      Named type, String tag, List<Value> fields, int bits, Map<String, Object> symbols)
+  public Value construct(Named type, String tag, List<Value> fields, int bits,
+      Map<String, Object> symbols)
   {
     // Values in generated code are checked where they are built, decoded or
     // drawn, so constructing checks only the new node and matching only
@@ -1148,21 +1049,16 @@ public final class LawSpecSchema
   }
 
   /** A field of a value whose type has one constructor: a match that only selects. */
-  public Value field(
-      Named type, Value value, String tag, int index, int bits, Map<String, Object> symbols)
+  public Value field(Named type, Value value, String tag, int index, int bits,
+      Map<String, Object> symbols)
   {
-    return match(
-        type,
-        value,
-        bits,
-        symbols,
-        data -> {
-          if (!data.tag().equals(tag))
-          {
-            throw new IllegalArgumentException("invalid constructor");
-          }
-          return data.fields().get(index);
-        });
+    return match(type, value, bits, symbols, data -> {
+      if (!data.tag().equals(tag))
+      {
+        throw new IllegalArgumentException("invalid constructor");
+      }
+      return data.fields().get(index);
+    });
   }
 
   public Value match(Named type, Value value, int bits, Function<Data, Value> branch)
@@ -1170,11 +1066,7 @@ public final class LawSpecSchema
     return match(type, value, bits, new HashMap<>(), branch);
   }
 
-  public Value match(
-      Named type,
-      Value value,
-      int bits,
-      Map<String, Object> symbols,
+  public Value match(Named type, Value value, int bits, Map<String, Object> symbols,
       Function<Data, Value> branch)
   {
     var checked = value;
@@ -1189,13 +1081,8 @@ public final class LawSpecSchema
    * A law's expectation on data in a generated test: both sides are equal as values of the type, or
    * the failure names the law, its case and both values.
    */
-  public void check(
-      String context,
-      Named type,
-      int bits,
-      Map<String, Object> symbols,
-      java.util.function.Supplier<Value> actual,
-      java.util.function.Supplier<Value> expected)
+  public void check(String context, Named type, int bits, Map<String, Object> symbols,
+      java.util.function.Supplier<Value> actual, java.util.function.Supplier<Value> expected)
   {
     try
     {
@@ -1220,8 +1107,8 @@ public final class LawSpecSchema
 
   public boolean equal(Named type, Value left, Value right, int bits, Map<String, Object> symbols)
   {
-    return equalValidated(
-        validate(type, left, bits, symbols), validate(type, right, bits, symbols));
+    return equalValidated(validate(type, left, bits, symbols),
+        validate(type, right, bits, symbols));
   }
 
   /** A native bridge always validates before decoding and after encoding. */
@@ -1234,18 +1121,14 @@ public final class LawSpecSchema
     T decode(Value value);
   }
 
-  public <T> Codec<T> codec(
-      Named type, int bits, Function<T, Value> encode, Function<Value, T> decode)
+  public <T> Codec<T> codec(Named type, int bits, Function<T, Value> encode,
+      Function<Value, T> decode)
   {
     return codec(type, bits, new HashMap<>(), encode, decode);
   }
 
-  public <T> Codec<T> codec(
-      Named type,
-      int bits,
-      Map<String, Object> symbols,
-      Function<T, Value> encode,
-      Function<Value, T> decode)
+  public <T> Codec<T> codec(Named type, int bits, Map<String, Object> symbols,
+      Function<T, Value> encode, Function<Value, T> decode)
   {
     checkType(type, 0);
     if (bits != 32 && bits != 64)
@@ -1293,9 +1176,7 @@ public final class LawSpecSchema
     {
       throw new IllegalArgumentException("scalar type required");
     }
-    return codec(
-        new Named(name),
-        bits,
+    return codec(new Named(name), bits,
         value -> LawSpecRuntime.fromNative(name, nativeClass.cast(value), bits),
         value -> nativeClass.cast(LawSpecRuntime.toNative(name, value, bits)));
   }
@@ -1321,29 +1202,22 @@ public final class LawSpecSchema
   public Codec<java.time.Duration> duration(int bits, Map<String, Object> symbols)
   {
     var type = new Named(DURATION);
-    return codec(
-        type,
-        bits,
-        symbols,
-        duration -> {
-          if (duration.isNegative() || duration.getNano() % 1000 != 0)
-          {
-            throw new IllegalArgumentException(
-                "a Duration is a non-negative whole number of microseconds");
-          }
-          var micros =
-              java.math.BigInteger.valueOf(duration.getSeconds())
-                  .multiply(MICROS_PER_SECOND)
-                  .add(java.math.BigInteger.valueOf(duration.getNano() / 1000));
-          return new Value(
-              key(type), new Data(DURATION + "::Duration", List.of(new Value("Integer", micros))));
-        },
-        value -> {
-          var micros = (java.math.BigInteger) ((Data) value.data()).fields().get(0).data();
-          var parts = micros.divideAndRemainder(MICROS_PER_SECOND);
-          return java.time.Duration.ofSeconds(
-              parts[0].longValueExact(), parts[1].longValueExact() * 1000);
-        });
+    return codec(type, bits, symbols, duration -> {
+      if (duration.isNegative() || duration.getNano() % 1000 != 0)
+      {
+        throw new IllegalArgumentException(
+            "a Duration is a non-negative whole number of microseconds");
+      }
+      var micros = java.math.BigInteger.valueOf(duration.getSeconds()).multiply(MICROS_PER_SECOND)
+          .add(java.math.BigInteger.valueOf(duration.getNano() / 1000));
+      return new Value(key(type),
+          new Data(DURATION + "::Duration", List.of(new Value("Integer", micros))));
+    }, value -> {
+      var micros = (java.math.BigInteger) ((Data) value.data()).fields().get(0).data();
+      var parts = micros.divideAndRemainder(MICROS_PER_SECOND);
+      return java.time.Duration.ofSeconds(parts[0].longValueExact(),
+          parts[1].longValueExact() * 1000);
+    });
   }
 
   private static final String COLLECTIONS = "lawspec.collections::type::";
@@ -1351,8 +1225,7 @@ public final class LawSpecSchema
   /** Whether a collection's generated storage requires duplicate detection or ordering. */
   public static boolean canonicalCollection(String name)
   {
-    return name.equals(COLLECTIONS + "Set")
-        || name.equals(COLLECTIONS + "EqSet")
+    return name.equals(COLLECTIONS + "Set") || name.equals(COLLECTIONS + "EqSet")
         || name.equals(COLLECTIONS + "KeyVal");
   }
 
@@ -1372,8 +1245,7 @@ public final class LawSpecSchema
           distinct.add(member);
         }
       }
-      return new Value(
-          collection.type(),
+      return new Value(collection.type(),
           new Data(data.tag(), List.of(new Value(list.type(), List.copyOf(distinct)))));
     }
     boolean keyed = collection.type().startsWith(COLLECTIONS + "KeyVal");
@@ -1387,10 +1259,8 @@ public final class LawSpecSchema
     var distinct = new ArrayList<Value>();
     for (var item : items)
     {
-      if (!distinct.isEmpty()
-          && LawSpecRuntime.compareValues(
-                  key.apply(distinct.get(distinct.size() - 1)), key.apply(item))
-              == 0)
+      if (!distinct.isEmpty() && LawSpecRuntime
+          .compareValues(key.apply(distinct.get(distinct.size() - 1)), key.apply(item)) == 0)
       {
         distinct.set(distinct.size() - 1, item);
       }
@@ -1399,8 +1269,7 @@ public final class LawSpecSchema
         distinct.add(item);
       }
     }
-    return new Value(
-        collection.type(),
+    return new Value(collection.type(),
         new Data(data.tag(), List.of(new Value(list.type(), List.copyOf(distinct)))));
   }
 
@@ -1409,18 +1278,10 @@ public final class LawSpecSchema
   {
     var type = new Named(COLLECTIONS + "Set", element.type());
     var listKey = key(new Named("List", element.type()));
-    return codec(
-        type,
-        bits,
-        symbols,
-        values ->
-            canonical(
-                new Value(
-                    key(type),
-                    new Data(
-                        COLLECTIONS + "Set::SetItems",
-                        List.of(
-                            new Value(listKey, values.stream().map(element::encode).toList()))))),
+    return codec(type, bits, symbols,
+        values -> canonical(new Value(key(type),
+            new Data(COLLECTIONS + "Set::SetItems",
+                List.of(new Value(listKey, values.stream().map(element::encode).toList()))))),
         value -> {
           var result = new java.util.LinkedHashSet<T>();
           for (var item : items(value))
@@ -1432,36 +1293,20 @@ public final class LawSpecSchema
   }
 
   /** A KeyVal natively, in canonical key order when LawSpec builds it. */
-  public <K, V> Codec<java.util.Map<K, V>> keyVal(
-      Codec<K> keys, Codec<V> values, int bits, Map<String, Object> symbols)
+  public <K, V> Codec<java.util.Map<K, V>> keyVal(Codec<K> keys, Codec<V> values, int bits,
+      Map<String, Object> symbols)
   {
     var type = new Named(COLLECTIONS + "KeyVal", keys.type(), values.type());
     var entryType = new Named(COLLECTIONS + "Entry", keys.type(), values.type());
     var listKey = key(new Named("List", entryType));
-    return codec(
-        type,
-        bits,
-        symbols,
-        map ->
-            canonical(
-                new Value(
-                    key(type),
-                    new Data(
-                        COLLECTIONS + "KeyVal::KeyValEntries",
-                        List.of(
-                            new Value(
-                                listKey,
-                                map.entrySet().stream()
-                                    .map(
-                                        entry ->
-                                            new Value(
-                                                key(entryType),
-                                                new Data(
-                                                    COLLECTIONS + "Entry::Entry",
-                                                    List.of(
-                                                        keys.encode(entry.getKey()),
-                                                        values.encode(entry.getValue())))))
-                                    .toList()))))),
+    return codec(type, bits, symbols,
+        map -> canonical(new Value(key(type),
+            new Data(COLLECTIONS + "KeyVal::KeyValEntries",
+                List.of(new Value(listKey, map.entrySet().stream()
+                    .map(entry -> new Value(key(entryType),
+                        new Data(COLLECTIONS + "Entry::Entry",
+                            List.of(keys.encode(entry.getKey()), values.encode(entry.getValue())))))
+                    .toList()))))),
         value -> {
           var result = new java.util.LinkedHashMap<K, V>();
           for (var entry : items(value))
@@ -1474,21 +1319,15 @@ public final class LawSpecSchema
   }
 
   /** A Queue, Stack or Deque natively: an ArrayDeque from its head (a Stack's top). */
-  public <T> Codec<java.util.ArrayDeque<T>> sequence(
-      String name, Codec<T> element, int bits, Map<String, Object> symbols)
+  public <T> Codec<java.util.ArrayDeque<T>> sequence(String name, Codec<T> element, int bits,
+      Map<String, Object> symbols)
   {
     var type = new Named(COLLECTIONS + name, element.type());
     var listKey = key(new Named("List", element.type()));
-    return codec(
-        type,
-        bits,
-        symbols,
-        deque ->
-            new Value(
-                key(type),
-                new Data(
-                    COLLECTIONS + name + "::" + name + "Items",
-                    List.of(new Value(listKey, deque.stream().map(element::encode).toList())))),
+    return codec(type, bits, symbols,
+        deque -> new Value(key(type),
+            new Data(COLLECTIONS + name + "::" + name + "Items",
+                List.of(new Value(listKey, deque.stream().map(element::encode).toList())))),
         value -> {
           var result = new java.util.ArrayDeque<T>();
           for (var item : items(value))
@@ -1517,12 +1356,8 @@ public final class LawSpecSchema
   public <T> Codec<List<T>> list(Codec<T> element, int bits, Map<String, Object> symbols)
   {
     var type = new Named("List", element.type());
-    return codec(
-        type,
-        bits,
-        symbols,
-        values -> new Value(key(type), values.stream().map(element::encode).toList()),
-        value -> {
+    return codec(type, bits, symbols,
+        values -> new Value(key(type), values.stream().map(element::encode).toList()), value -> {
           var values = new ArrayList<T>();
           for (var item : (List<?>) value.data())
           {
@@ -1537,29 +1372,26 @@ public final class LawSpecSchema
     return maybe(element, bits, new HashMap<>());
   }
 
-  public <T> Codec<LawSpecRuntime.Maybe<T>> maybe(
-      Codec<T> element, int bits, Map<String, Object> symbols)
+  public <T> Codec<LawSpecRuntime.Maybe<T>> maybe(Codec<T> element, int bits,
+      Map<String, Object> symbols)
   {
     var type = new Named("Maybe", element.type());
-    return codec(
-        type,
-        bits,
-        symbols,
-        value ->
-            switch (value)
-            {
-              case LawSpecRuntime.Absent<T> ignored ->
-                  construct(type, "Maybe::Absent", List.of(), bits, symbols);
-              case LawSpecRuntime.Present<T> just ->
-                  construct(
-                      type, "Maybe::Present", List.of(element.encode(just.value())), bits, symbols);
-            },
-        value -> {
-          var data = (Data) value.data();
-          return data.tag().equals("Maybe::Absent")
-              ? new LawSpecRuntime.Absent<>()
-              : new LawSpecRuntime.Present<>(element.decode(data.fields().get(0)));
-        });
+    return codec(type, bits, symbols, value -> {
+      return switch (value)
+      {
+        case LawSpecRuntime.Absent<T> ignored -> {
+          yield construct(type, "Maybe::Absent", List.of(), bits, symbols);
+        }
+        case LawSpecRuntime.Present<T> just -> {
+          yield construct(type, "Maybe::Present", List.of(element.encode(just.value())), bits,
+              symbols);
+        }
+      };
+    }, value -> {
+      var data = (Data) value.data();
+      return data.tag().equals("Maybe::Absent") ? new LawSpecRuntime.Absent<>()
+          : new LawSpecRuntime.Present<>(element.decode(data.fields().get(0)));
+    });
   }
 
   public <L, R> Codec<LawSpecRuntime.Either<L, R>> either(Codec<L> left, Codec<R> right, int bits)
@@ -1567,30 +1399,27 @@ public final class LawSpecSchema
     return either(left, right, bits, new HashMap<>());
   }
 
-  public <L, R> Codec<LawSpecRuntime.Either<L, R>> either(
-      Codec<L> left, Codec<R> right, int bits, Map<String, Object> symbols)
+  public <L, R> Codec<LawSpecRuntime.Either<L, R>> either(Codec<L> left, Codec<R> right, int bits,
+      Map<String, Object> symbols)
   {
     var type = new Named("Either", left.type(), right.type());
-    return codec(
-        type,
-        bits,
-        symbols,
-        value ->
-            switch (value)
-            {
-              case LawSpecRuntime.Left<L, R> item ->
-                  construct(
-                      type, "Either::Left", List.of(left.encode(item.value())), bits, symbols);
-              case LawSpecRuntime.Right<L, R> item ->
-                  construct(
-                      type, "Either::Right", List.of(right.encode(item.value())), bits, symbols);
-            },
-        value -> {
-          var data = (Data) value.data();
-          return data.tag().equals("Either::Left")
-              ? new LawSpecRuntime.Left<>(left.decode(data.fields().get(0)))
-              : new LawSpecRuntime.Right<>(right.decode(data.fields().get(0)));
-        });
+    return codec(type, bits, symbols, value -> {
+      return switch (value)
+      {
+        case LawSpecRuntime.Left<L, R> item -> {
+          yield construct(type, "Either::Left", List.of(left.encode(item.value())), bits, symbols);
+        }
+        case LawSpecRuntime.Right<L, R> item -> {
+          yield construct(type, "Either::Right", List.of(right.encode(item.value())), bits,
+              symbols);
+        }
+      };
+    }, value -> {
+      var data = (Data) value.data();
+      return data.tag().equals("Either::Left")
+          ? new LawSpecRuntime.Left<>(left.decode(data.fields().get(0)))
+          : new LawSpecRuntime.Right<>(right.decode(data.fields().get(0)));
+    });
   }
 
   private boolean equalValidated(Value left, Value right)
@@ -1603,8 +1432,8 @@ public final class LawSpecSchema
       }
       if (a.tag().equals(LawSpecRuntime.EQ_SET_TAG))
       {
-        return LawSpecRuntime.sameMembers(
-            LawSpecRuntime.eqSetItems(a), LawSpecRuntime.eqSetItems(b), this::equalValidated);
+        return LawSpecRuntime.sameMembers(LawSpecRuntime.eqSetItems(a),
+            LawSpecRuntime.eqSetItems(b), this::equalValidated);
       }
       for (int index = 0; index < a.fields().size(); index++)
       {

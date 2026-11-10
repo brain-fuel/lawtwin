@@ -26,7 +26,10 @@ _lawspec_primitive_generators = {
     "Int8": st.integers(min_value=-128, max_value=127),
     "Int16": st.integers(min_value=-32768, max_value=32767),
     "Int32": st.integers(min_value=-2147483648, max_value=2147483647),
-    "Int64": st.integers(min_value=-9223372036854775808, max_value=9223372036854775807),
+    "Int64": st.integers(
+        min_value=-9223372036854775808,
+        max_value=9223372036854775807,
+    ),
     "UInt8": st.integers(min_value=0, max_value=255),
     "UInt16": st.integers(min_value=0, max_value=65535),
     "UInt32": st.integers(min_value=0, max_value=4294967295),
@@ -37,12 +40,19 @@ _lawspec_primitive_generators = {
     ),
     "UIntSize": st.integers(min_value=0, max_value=18446744073709551615),
     "UIntPtr": st.integers(min_value=0, max_value=18446744073709551615),
-    "Integer": st.integers(min_value=-INTEGER_DRAW_LIMIT, max_value=INTEGER_DRAW_LIMIT),
-    "BigInt": st.integers(min_value=-INTEGER_DRAW_LIMIT, max_value=INTEGER_DRAW_LIMIT),
-    "BigUInt": st.integers(min_value=0, max_value=INTEGER_DRAW_LIMIT),
-    "Decimal": st.tuples(st.integers(), st.integers(min_value=-20, max_value=20)).map(
-        lambda v: ls.make_decimal(v[0], v[1]),
+    "Integer": st.integers(
+        min_value=-INTEGER_DRAW_LIMIT,
+        max_value=INTEGER_DRAW_LIMIT,
     ),
+    "BigInt": st.integers(
+        min_value=-INTEGER_DRAW_LIMIT,
+        max_value=INTEGER_DRAW_LIMIT,
+    ),
+    "BigUInt": st.integers(min_value=0, max_value=INTEGER_DRAW_LIMIT),
+    "Decimal": st.tuples(
+        st.integers(),
+        st.integers(min_value=-20, max_value=20),
+    ).map(lambda v: ls.make_decimal(v[0], v[1])),
     "Rational": st.tuples(st.integers(), st.integers(min_value=1)).map(
         lambda v: ls.Fraction(v[0], v[1]),
     ),
@@ -62,14 +72,17 @@ _lawspec_primitive_generators = {
         st.integers(min_value=0, max_value=1114111),
         max_size=100,
     ).map(lambda v: ls.Raw("CodePointText", tuple(v))),
-    "Utf16Text": st.lists(st.integers(min_value=0, max_value=65535), max_size=100).map(
-        lambda v: ls.Raw("Utf16Text", tuple(v)),
-    ),
+    "Utf16Text": st.lists(
+        st.integers(min_value=0, max_value=65535),
+        max_size=100,
+    ).map(lambda v: ls.Raw("Utf16Text", tuple(v))),
     "Bytes": st.binary(max_size=100),
     "Symbol": st.text().map(ls.Symbol),
     "Unit": st.sampled_from([ls.literal(json.loads('{"type":"Unit"}'))]),
     "Null": st.sampled_from([ls.literal(json.loads('{"type":"Null"}'))]),
-    "Undefined": st.sampled_from([ls.literal(json.loads('{"type":"Undefined"}'))]),
+    "Undefined": st.sampled_from(
+        [ls.literal(json.loads('{"type":"Undefined"}'))],
+    ),
 }
 
 
@@ -1165,7 +1178,9 @@ def _assert_petapi_a_created_pet_reads_back_native(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::Pet"),
                         ],
                     ),
@@ -1176,7 +1191,10 @@ def _assert_petapi_a_created_pet_reads_back_native(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
@@ -1197,38 +1215,42 @@ def _assert_petapi_a_created_pet_reads_back_native(
                                                     ),
                                                     ls.attempt(
                                                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::Pet",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::PetApi",
-                                                                ).getPetById(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Int64",
+                                                        lambda: (
+                                                            ls.native_failures(
+                                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                lambda _failure: (
+                                                                    _lawspec_schema.from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::ApiError",
+                                                                        ),
+                                                                        _failure,
                                                                         MACHINE_BITS,
-                                                                    ),
+                                                                        symbols,
+                                                                    )
                                                                 ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
+                                                                lambda: (
+                                                                    ls.handler_schema(
+                                                                        _lawspec_schema,
+                                                                    ).from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::Pet",
+                                                                        ),
+                                                                        ls.handler(
+                                                                            symbols,
+                                                                            "lawtwin.petstore::ability::PetApi",
+                                                                        ).getPetById(
+                                                                            ls.convert(
+                                                                                match_selection,
+                                                                                "Int64",
+                                                                                MACHINE_BITS,
+                                                                            ),
+                                                                        ),
+                                                                        MACHINE_BITS,
+                                                                        symbols,
+                                                                    )
+                                                                ),
+                                                                (),
+                                                            )
                                                         ),
                                                         lambda _value: (
                                                             _lawspec_schema.construct(
@@ -1315,7 +1337,9 @@ def _assert_petapi_a_created_pet_reads_back_native(
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     selection_2,
                                     [
                                         [
@@ -1340,7 +1364,9 @@ def _assert_petapi_a_created_pet_reads_back_native(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -1352,7 +1378,9 @@ def _assert_petapi_a_created_pet_reads_back_native(
                                 "lawtwin.petstore::ability::PetApi",
                             ).addPet(
                                 ls.handler_schema(_lawspec_schema).to_native(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     _lawspec_schema.validate(
                                         _schema.Named(
                                             "lawtwin.petstore.model::type::Pet",
@@ -1374,14 +1402,20 @@ def _assert_petapi_a_created_pet_reads_back_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -1394,14 +1428,20 @@ def _assert_petapi_a_created_pet_reads_back_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -1420,14 +1460,15 @@ def _assert_petapi_a_created_pet_reads_back_native(
 
 
 # PetApi: |a created pet reads back| [native] — ../src/api.lawspec:46
-# for all (body :: lawtwin.petstore.model::type::Pet) => let sent = body in let it =
-# attempt (addPet sent) in match (it) { Either::Left _lawspecSelection0x0 -> true;
-# Either::Right _lawspecSelection0x0 -> let it = match (_lawspecSelection0x0) {
-# lawtwin.petstore.model::type::Pet::Pet lawspecFieldid lawspecFieldname
-# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus ->
-# lawspecFieldid } in match (it) { Maybe::Absent -> false; Maybe::Present
-# _match__lawspecSelection0x0_0 -> (attempt (getPetById _match__lawspecSelection0x0_0)
-# == Either::Right(_lawspecSelection0x0)) } } = true end for all
+# for all (body :: lawtwin.petstore.model::type::Pet) => let sent = body in let
+# it = attempt (addPet sent) in match (it) { Either::Left _lawspecSelection0x0
+# -> true; Either::Right _lawspecSelection0x0 -> let it = match
+# (_lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet lawspecFieldid
+# lawspecFieldname lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags
+# lawspecFieldstatus -> lawspecFieldid } in match (it) { Maybe::Absent -> false;
+# Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getPetById
+# _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } =
+# true end for all
 _lawspec_inputs_petapi_a_created_pet_reads_back_native = [
     "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
 ]
@@ -1445,7 +1486,11 @@ def _lawspec_case_petapi_a_created_pet_reads_back_native(_values):
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -1504,7 +1549,8 @@ def test_petapi_a_created_pet_reads_back_native__replay():
     )
 
 
-# PetApi: |a created pet reads back| [native], finite cases — ../src/api.lawspec:46
+# PetApi: |a created pet reads back| [native], finite cases —
+# ../src/api.lawspec:46
 def _check_petapi_a_created_pet_reads_back_native(_case_values, _case_context):
     symbols = {}
     body = _case_values[0](symbols)
@@ -1512,7 +1558,11 @@ def _check_petapi_a_created_pet_reads_back_native(_case_values, _case_context):
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -1598,7 +1648,9 @@ _cases_petapi_a_created_pet_reads_back_native = ls.register_finite_cases(
 
 # PetApi: |a created pet reads back| [native], property — ../src/api.lawspec:46
 @_lawspec_seeded
-@given(_lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")))
+@given(
+    _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")),
+)
 def test_petapi_a_created_pet_reads_back_native__property(body):
     symbols = {}
     try:
@@ -1645,7 +1697,9 @@ def test_petapi_a_created_pet_reads_back_native__property(body):
                         _lawspec_schema.to_native(
                             _schema.Named("lawtwin.petstore::type::Service"),
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore::type::Service"),
+                                _schema.Named(
+                                    "lawtwin.petstore::type::Service",
+                                ),
                                 with_service,
                                 MACHINE_BITS,
                                 symbols,
@@ -1667,7 +1721,11 @@ def test_petapi_a_created_pet_reads_back_native__property(body):
         raise
 
 
-def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, body):
+def _assert_petapi_a_created_pet_reads_back_reference(
+    _case_context,
+    symbols,
+    body,
+):
     _lawspec_assert(
         _case_context + " — ../src/api.lawspec:49",
         lambda: (
@@ -1676,7 +1734,9 @@ def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, bo
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::Pet"),
                         ],
                     ),
@@ -1687,7 +1747,10 @@ def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, bo
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
@@ -1708,38 +1771,42 @@ def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, bo
                                                     ),
                                                     ls.attempt(
                                                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::Pet",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::PetApi",
-                                                                ).getPetById(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Int64",
+                                                        lambda: (
+                                                            ls.native_failures(
+                                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                lambda _failure: (
+                                                                    _lawspec_schema.from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::ApiError",
+                                                                        ),
+                                                                        _failure,
                                                                         MACHINE_BITS,
-                                                                    ),
+                                                                        symbols,
+                                                                    )
                                                                 ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
+                                                                lambda: (
+                                                                    ls.handler_schema(
+                                                                        _lawspec_schema,
+                                                                    ).from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::Pet",
+                                                                        ),
+                                                                        ls.handler(
+                                                                            symbols,
+                                                                            "lawtwin.petstore::ability::PetApi",
+                                                                        ).getPetById(
+                                                                            ls.convert(
+                                                                                match_selection,
+                                                                                "Int64",
+                                                                                MACHINE_BITS,
+                                                                            ),
+                                                                        ),
+                                                                        MACHINE_BITS,
+                                                                        symbols,
+                                                                    )
+                                                                ),
+                                                                (),
+                                                            )
                                                         ),
                                                         lambda _value: (
                                                             _lawspec_schema.construct(
@@ -1826,7 +1893,9 @@ def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, bo
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     selection_2,
                                     [
                                         [
@@ -1851,7 +1920,9 @@ def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, bo
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -1863,7 +1934,9 @@ def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, bo
                                 "lawtwin.petstore::ability::PetApi",
                             ).addPet(
                                 ls.handler_schema(_lawspec_schema).to_native(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     _lawspec_schema.validate(
                                         _schema.Named(
                                             "lawtwin.petstore.model::type::Pet",
@@ -1885,14 +1958,20 @@ def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, bo
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -1905,14 +1984,20 @@ def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, bo
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -1931,14 +2016,15 @@ def _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, bo
 
 
 # PetApi: |a created pet reads back| [reference] — ../src/api.lawspec:46
-# for all (body :: lawtwin.petstore.model::type::Pet) => let sent = body in let it =
-# attempt (addPet sent) in match (it) { Either::Left _lawspecSelection0x0 -> true;
-# Either::Right _lawspecSelection0x0 -> let it = match (_lawspecSelection0x0) {
-# lawtwin.petstore.model::type::Pet::Pet lawspecFieldid lawspecFieldname
-# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus ->
-# lawspecFieldid } in match (it) { Maybe::Absent -> false; Maybe::Present
-# _match__lawspecSelection0x0_0 -> (attempt (getPetById _match__lawspecSelection0x0_0)
-# == Either::Right(_lawspecSelection0x0)) } } = true end for all
+# for all (body :: lawtwin.petstore.model::type::Pet) => let sent = body in let
+# it = attempt (addPet sent) in match (it) { Either::Left _lawspecSelection0x0
+# -> true; Either::Right _lawspecSelection0x0 -> let it = match
+# (_lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet lawspecFieldid
+# lawspecFieldname lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags
+# lawspecFieldstatus -> lawspecFieldid } in match (it) { Maybe::Absent -> false;
+# Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getPetById
+# _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } =
+# true end for all
 _lawspec_inputs_petapi_a_created_pet_reads_back_reference = [
     "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
 ]
@@ -1973,8 +2059,12 @@ def test_petapi_a_created_pet_reads_back_reference__replay():
     )
 
 
-# PetApi: |a created pet reads back| [reference], finite cases — ../src/api.lawspec:46
-def _check_petapi_a_created_pet_reads_back_reference(_case_values, _case_context):
+# PetApi: |a created pet reads back| [reference], finite cases —
+# ../src/api.lawspec:46
+def _check_petapi_a_created_pet_reads_back_reference(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
     ls.install_handlers(
@@ -1982,7 +2072,11 @@ def _check_petapi_a_created_pet_reads_back_reference(_case_values, _case_context
         {"lawtwin.petstore::ability::PetApi": _lawspec_shared_reference},
     )
     body = _case_values[0](symbols)
-    _assert_petapi_a_created_pet_reads_back_reference(_case_context, symbols, body)
+    _assert_petapi_a_created_pet_reads_back_reference(
+        _case_context,
+        symbols,
+        body,
+    )
 
 
 _cases_petapi_a_created_pet_reads_back_reference = ls.register_finite_cases(
@@ -2019,9 +2113,12 @@ _cases_petapi_a_created_pet_reads_back_reference = ls.register_finite_cases(
 )
 
 
-# PetApi: |a created pet reads back| [reference], property — ../src/api.lawspec:46
+# PetApi: |a created pet reads back| [reference], property —
+# ../src/api.lawspec:46
 @_lawspec_seeded
-@given(_lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")))
+@given(
+    _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")),
+)
 def test_petapi_a_created_pet_reads_back_reference__property(body):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
@@ -2058,7 +2155,9 @@ def _assert_petapi_a_deleted_pet_is_not_found_native(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::Pet"),
                         ],
                     ),
@@ -2069,118 +2168,18 @@ def _assert_petapi_a_deleted_pet_is_not_found_native(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
                                         [
                                             "Maybe::Present",
                                             lambda match_selection: (
-                                                lambda gone: _lawspec_schema.equal(
-                                                    _schema.Named(
-                                                        "Either",
-                                                        [
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::ApiError",
-                                                            ),
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::Pet",
-                                                            ),
-                                                        ],
-                                                    ),
-                                                    ls.attempt(
-                                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::Pet",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::PetApi",
-                                                                ).getPetById(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Int64",
-                                                                        MACHINE_BITS,
-                                                                    ),
-                                                                ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Right",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Left",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                    ),
-                                                    _lawspec_schema.construct(
+                                                lambda gone: (
+                                                    _lawspec_schema.equal(
                                                         _schema.Named(
                                                             "Either",
                                                             [
@@ -2192,23 +2191,132 @@ def _assert_petapi_a_deleted_pet_is_not_found_native(
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Either::Left",
-                                                        [
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::ApiError",
-                                                                ),
-                                                                "lawtwin.petstore.model::type::ApiError::NotFound",
-                                                                [],
-                                                                MACHINE_BITS,
-                                                                symbols,
+                                                        ls.attempt(
+                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                            lambda: (
+                                                                ls.native_failures(
+                                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                    lambda _failure: (
+                                                                        _lawspec_schema.from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _failure,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    lambda: (
+                                                                        ls.handler_schema(
+                                                                            _lawspec_schema,
+                                                                        ).from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                            ls.handler(
+                                                                                symbols,
+                                                                                "lawtwin.petstore::ability::PetApi",
+                                                                            ).getPetById(
+                                                                                ls.convert(
+                                                                                    match_selection,
+                                                                                    "Int64",
+                                                                                    MACHINE_BITS,
+                                                                                ),
+                                                                            ),
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    (),
+                                                                )
                                                             ),
-                                                        ],
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Right",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Left",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                        ),
+                                                        _lawspec_schema.construct(
+                                                            _schema.Named(
+                                                                "Either",
+                                                                [
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::Pet",
+                                                                    ),
+                                                                ],
+                                                            ),
+                                                            "Either::Left",
+                                                            [
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                                    [],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                ),
+                                                            ],
+                                                            MACHINE_BITS,
+                                                            symbols,
+                                                        ),
                                                         MACHINE_BITS,
                                                         symbols,
-                                                    ),
-                                                    MACHINE_BITS,
-                                                    symbols,
+                                                    )
                                                 )
                                             )(
                                                 ls.attempt(
@@ -2345,7 +2453,9 @@ def _assert_petapi_a_deleted_pet_is_not_found_native(
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     selection_2,
                                     [
                                         [
@@ -2370,7 +2480,9 @@ def _assert_petapi_a_deleted_pet_is_not_found_native(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -2382,7 +2494,9 @@ def _assert_petapi_a_deleted_pet_is_not_found_native(
                                 "lawtwin.petstore::ability::PetApi",
                             ).addPet(
                                 ls.handler_schema(_lawspec_schema).to_native(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     _lawspec_schema.validate(
                                         _schema.Named(
                                             "lawtwin.petstore.model::type::Pet",
@@ -2404,14 +2518,20 @@ def _assert_petapi_a_deleted_pet_is_not_found_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -2424,14 +2544,20 @@ def _assert_petapi_a_deleted_pet_is_not_found_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -2450,17 +2576,17 @@ def _assert_petapi_a_deleted_pet_is_not_found_native(
 
 
 # PetApi: |a deleted pet is not found| [native] — ../src/api.lawspec:58
-# for all (body :: lawtwin.petstore.model::type::Pet) => let sent = body in let it =
-# attempt (addPet sent) in match (it) { Either::Left _lawspecSelection0x0 -> true;
-# Either::Right _lawspecSelection0x0 -> let it = match (_lawspecSelection0x0) {
-# lawtwin.petstore.model::type::Pet::Pet lawspecFieldid lawspecFieldname
-# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus ->
-# lawspecFieldid } in match (it) { Maybe::Absent -> false; Maybe::Present
-# _match__lawspecSelection0x0_0 -> let gone = attempt (deletePet
+# for all (body :: lawtwin.petstore.model::type::Pet) => let sent = body in let
+# it = attempt (addPet sent) in match (it) { Either::Left _lawspecSelection0x0
+# -> true; Either::Right _lawspecSelection0x0 -> let it = match
+# (_lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet lawspecFieldid
+# lawspecFieldname lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags
+# lawspecFieldstatus -> lawspecFieldid } in match (it) { Maybe::Absent -> false;
+# Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt (deletePet
 # _match__lawspecSelection0x0_0 (Maybe::Absent())) in (attempt (getPetById
 # _match__lawspecSelection0x0_0) ==
-# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for
-# all
+# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+# end for all
 _lawspec_inputs_petapi_a_deleted_pet_is_not_found_native = [
     "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
 ]
@@ -2478,7 +2604,11 @@ def _lawspec_case_petapi_a_deleted_pet_is_not_found_native(_values):
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -2537,15 +2667,23 @@ def test_petapi_a_deleted_pet_is_not_found_native__replay():
     )
 
 
-# PetApi: |a deleted pet is not found| [native], finite cases — ../src/api.lawspec:58
-def _check_petapi_a_deleted_pet_is_not_found_native(_case_values, _case_context):
+# PetApi: |a deleted pet is not found| [native], finite cases —
+# ../src/api.lawspec:58
+def _check_petapi_a_deleted_pet_is_not_found_native(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     body = _case_values[0](symbols)
     with_service = _lawspec_schema.from_native(
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -2629,9 +2767,12 @@ _cases_petapi_a_deleted_pet_is_not_found_native = ls.register_finite_cases(
 )
 
 
-# PetApi: |a deleted pet is not found| [native], property — ../src/api.lawspec:58
+# PetApi: |a deleted pet is not found| [native], property —
+# ../src/api.lawspec:58
 @_lawspec_seeded
-@given(_lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")))
+@given(
+    _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")),
+)
 def test_petapi_a_deleted_pet_is_not_found_native__property(body):
     symbols = {}
     try:
@@ -2678,7 +2819,9 @@ def test_petapi_a_deleted_pet_is_not_found_native__property(body):
                         _lawspec_schema.to_native(
                             _schema.Named("lawtwin.petstore::type::Service"),
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore::type::Service"),
+                                _schema.Named(
+                                    "lawtwin.petstore::type::Service",
+                                ),
                                 with_service,
                                 MACHINE_BITS,
                                 symbols,
@@ -2700,7 +2843,11 @@ def test_petapi_a_deleted_pet_is_not_found_native__property(body):
         raise
 
 
-def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, body):
+def _assert_petapi_a_deleted_pet_is_not_found_reference(
+    _case_context,
+    symbols,
+    body,
+):
     _lawspec_assert(
         _case_context + " — ../src/api.lawspec:61",
         lambda: (
@@ -2709,7 +2856,9 @@ def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, 
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::Pet"),
                         ],
                     ),
@@ -2720,118 +2869,18 @@ def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, 
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
                                         [
                                             "Maybe::Present",
                                             lambda match_selection: (
-                                                lambda gone: _lawspec_schema.equal(
-                                                    _schema.Named(
-                                                        "Either",
-                                                        [
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::ApiError",
-                                                            ),
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::Pet",
-                                                            ),
-                                                        ],
-                                                    ),
-                                                    ls.attempt(
-                                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::Pet",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::PetApi",
-                                                                ).getPetById(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Int64",
-                                                                        MACHINE_BITS,
-                                                                    ),
-                                                                ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Right",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Left",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                    ),
-                                                    _lawspec_schema.construct(
+                                                lambda gone: (
+                                                    _lawspec_schema.equal(
                                                         _schema.Named(
                                                             "Either",
                                                             [
@@ -2843,23 +2892,132 @@ def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, 
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Either::Left",
-                                                        [
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::ApiError",
-                                                                ),
-                                                                "lawtwin.petstore.model::type::ApiError::NotFound",
-                                                                [],
-                                                                MACHINE_BITS,
-                                                                symbols,
+                                                        ls.attempt(
+                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                            lambda: (
+                                                                ls.native_failures(
+                                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                    lambda _failure: (
+                                                                        _lawspec_schema.from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _failure,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    lambda: (
+                                                                        ls.handler_schema(
+                                                                            _lawspec_schema,
+                                                                        ).from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                            ls.handler(
+                                                                                symbols,
+                                                                                "lawtwin.petstore::ability::PetApi",
+                                                                            ).getPetById(
+                                                                                ls.convert(
+                                                                                    match_selection,
+                                                                                    "Int64",
+                                                                                    MACHINE_BITS,
+                                                                                ),
+                                                                            ),
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    (),
+                                                                )
                                                             ),
-                                                        ],
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Right",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Left",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                        ),
+                                                        _lawspec_schema.construct(
+                                                            _schema.Named(
+                                                                "Either",
+                                                                [
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::Pet",
+                                                                    ),
+                                                                ],
+                                                            ),
+                                                            "Either::Left",
+                                                            [
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                                    [],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                ),
+                                                            ],
+                                                            MACHINE_BITS,
+                                                            symbols,
+                                                        ),
                                                         MACHINE_BITS,
                                                         symbols,
-                                                    ),
-                                                    MACHINE_BITS,
-                                                    symbols,
+                                                    )
                                                 )
                                             )(
                                                 ls.attempt(
@@ -2996,7 +3154,9 @@ def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, 
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     selection_2,
                                     [
                                         [
@@ -3021,7 +3181,9 @@ def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, 
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -3033,7 +3195,9 @@ def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, 
                                 "lawtwin.petstore::ability::PetApi",
                             ).addPet(
                                 ls.handler_schema(_lawspec_schema).to_native(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     _lawspec_schema.validate(
                                         _schema.Named(
                                             "lawtwin.petstore.model::type::Pet",
@@ -3055,14 +3219,20 @@ def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, 
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -3075,14 +3245,20 @@ def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, 
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -3101,17 +3277,17 @@ def _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, 
 
 
 # PetApi: |a deleted pet is not found| [reference] — ../src/api.lawspec:58
-# for all (body :: lawtwin.petstore.model::type::Pet) => let sent = body in let it =
-# attempt (addPet sent) in match (it) { Either::Left _lawspecSelection0x0 -> true;
-# Either::Right _lawspecSelection0x0 -> let it = match (_lawspecSelection0x0) {
-# lawtwin.petstore.model::type::Pet::Pet lawspecFieldid lawspecFieldname
-# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus ->
-# lawspecFieldid } in match (it) { Maybe::Absent -> false; Maybe::Present
-# _match__lawspecSelection0x0_0 -> let gone = attempt (deletePet
+# for all (body :: lawtwin.petstore.model::type::Pet) => let sent = body in let
+# it = attempt (addPet sent) in match (it) { Either::Left _lawspecSelection0x0
+# -> true; Either::Right _lawspecSelection0x0 -> let it = match
+# (_lawspecSelection0x0) { lawtwin.petstore.model::type::Pet::Pet lawspecFieldid
+# lawspecFieldname lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags
+# lawspecFieldstatus -> lawspecFieldid } in match (it) { Maybe::Absent -> false;
+# Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt (deletePet
 # _match__lawspecSelection0x0_0 (Maybe::Absent())) in (attempt (getPetById
 # _match__lawspecSelection0x0_0) ==
-# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for
-# all
+# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+# end for all
 _lawspec_inputs_petapi_a_deleted_pet_is_not_found_reference = [
     "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
 ]
@@ -3146,8 +3322,12 @@ def test_petapi_a_deleted_pet_is_not_found_reference__replay():
     )
 
 
-# PetApi: |a deleted pet is not found| [reference], finite cases — ../src/api.lawspec:58
-def _check_petapi_a_deleted_pet_is_not_found_reference(_case_values, _case_context):
+# PetApi: |a deleted pet is not found| [reference], finite cases —
+# ../src/api.lawspec:58
+def _check_petapi_a_deleted_pet_is_not_found_reference(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
     ls.install_handlers(
@@ -3155,7 +3335,11 @@ def _check_petapi_a_deleted_pet_is_not_found_reference(_case_values, _case_conte
         {"lawtwin.petstore::ability::PetApi": _lawspec_shared_reference},
     )
     body = _case_values[0](symbols)
-    _assert_petapi_a_deleted_pet_is_not_found_reference(_case_context, symbols, body)
+    _assert_petapi_a_deleted_pet_is_not_found_reference(
+        _case_context,
+        symbols,
+        body,
+    )
 
 
 _cases_petapi_a_deleted_pet_is_not_found_reference = ls.register_finite_cases(
@@ -3192,9 +3376,12 @@ _cases_petapi_a_deleted_pet_is_not_found_reference = ls.register_finite_cases(
 )
 
 
-# PetApi: |a deleted pet is not found| [reference], property — ../src/api.lawspec:58
+# PetApi: |a deleted pet is not found| [reference], property —
+# ../src/api.lawspec:58
 @_lawspec_seeded
-@given(_lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")))
+@given(
+    _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")),
+)
 def test_petapi_a_deleted_pet_is_not_found_reference__property(body):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
@@ -3232,7 +3419,9 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::Pet"),
                         ],
                     ),
@@ -3243,145 +3432,41 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
                                         [
                                             "Maybe::Present",
                                             lambda match_selection: (
-                                                lambda it_3: _lawspec_schema.match(
-                                                    _schema.Named(
-                                                        "Either",
+                                                lambda it_3: (
+                                                    _lawspec_schema.match(
+                                                        _schema.Named(
+                                                            "Either",
+                                                            [
+                                                                _schema.Named(
+                                                                    "lawtwin.petstore.model::type::ApiError",
+                                                                ),
+                                                                _schema.Named(
+                                                                    "lawtwin.petstore.model::type::Pet",
+                                                                ),
+                                                            ],
+                                                        ),
+                                                        it_3,
                                                         [
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::ApiError",
-                                                            ),
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::Pet",
-                                                            ),
-                                                        ],
-                                                    ),
-                                                    it_3,
-                                                    [
-                                                        [
-                                                            "Either::Left",
-                                                            lambda match_match_selection: (
-                                                                True
-                                                            ),
-                                                        ],
-                                                        [
-                                                            "Either::Right",
-                                                            lambda match_match_selection_2: (
-                                                                _lawspec_schema.equal(
-                                                                    _schema.Named(
-                                                                        "Either",
-                                                                        [
-                                                                            _schema.Named(
-                                                                                "lawtwin.petstore.model::type::ApiError",
-                                                                            ),
-                                                                            _schema.Named(
-                                                                                "lawtwin.petstore.model::type::Pet",
-                                                                            ),
-                                                                        ],
-                                                                    ),
-                                                                    ls.attempt(
-                                                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                                        lambda: (
-                                                                            ls.native_failures(
-                                                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                                                lambda _failure: (
-                                                                                    _lawspec_schema.from_native(
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                                        ),
-                                                                                        _failure,
-                                                                                        MACHINE_BITS,
-                                                                                        symbols,
-                                                                                    )
-                                                                                ),
-                                                                                lambda: (
-                                                                                    ls.handler_schema(
-                                                                                        _lawspec_schema,
-                                                                                    ).from_native(
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                                        ),
-                                                                                        ls.handler(
-                                                                                            symbols,
-                                                                                            "lawtwin.petstore::ability::PetApi",
-                                                                                        ).getPetById(
-                                                                                            ls.convert(
-                                                                                                match_selection,
-                                                                                                "Int64",
-                                                                                                MACHINE_BITS,
-                                                                                            ),
-                                                                                        ),
-                                                                                        MACHINE_BITS,
-                                                                                        symbols,
-                                                                                    )
-                                                                                ),
-                                                                                (),
-                                                                            )
-                                                                        ),
-                                                                        lambda _value: (
-                                                                            _lawspec_schema.construct(
-                                                                                _schema.Named(
-                                                                                    "Either",
-                                                                                    [
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                                        ),
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                                        ),
-                                                                                    ],
-                                                                                ),
-                                                                                "Either::Right",
-                                                                                [
-                                                                                    _lawspec_schema.validate(
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                                        ),
-                                                                                        _value,
-                                                                                        MACHINE_BITS,
-                                                                                        symbols,
-                                                                                    ),
-                                                                                ],
-                                                                                MACHINE_BITS,
-                                                                                symbols,
-                                                                            )
-                                                                        ),
-                                                                        lambda _value: (
-                                                                            _lawspec_schema.construct(
-                                                                                _schema.Named(
-                                                                                    "Either",
-                                                                                    [
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                                        ),
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                                        ),
-                                                                                    ],
-                                                                                ),
-                                                                                "Either::Left",
-                                                                                [
-                                                                                    _lawspec_schema.validate(
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                                        ),
-                                                                                        _value,
-                                                                                        MACHINE_BITS,
-                                                                                        symbols,
-                                                                                    ),
-                                                                                ],
-                                                                                MACHINE_BITS,
-                                                                                symbols,
-                                                                            )
-                                                                        ),
-                                                                    ),
-                                                                    _lawspec_schema.construct(
+                                                            [
+                                                                "Either::Left",
+                                                                lambda match_match_selection: (
+                                                                    True
+                                                                ),
+                                                            ],
+                                                            [
+                                                                "Either::Right",
+                                                                lambda match_match_selection_2: (
+                                                                    _lawspec_schema.equal(
                                                                         _schema.Named(
                                                                             "Either",
                                                                             [
@@ -3393,21 +3478,130 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
                                                                                 ),
                                                                             ],
                                                                         ),
-                                                                        "Either::Right",
-                                                                        [
-                                                                            match_match_selection_2,
-                                                                        ],
+                                                                        ls.attempt(
+                                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                            lambda: (
+                                                                                ls.native_failures(
+                                                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                                    lambda _failure: (
+                                                                                        _lawspec_schema.from_native(
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                                            ),
+                                                                                            _failure,
+                                                                                            MACHINE_BITS,
+                                                                                            symbols,
+                                                                                        )
+                                                                                    ),
+                                                                                    lambda: (
+                                                                                        ls.handler_schema(
+                                                                                            _lawspec_schema,
+                                                                                        ).from_native(
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                                            ),
+                                                                                            ls.handler(
+                                                                                                symbols,
+                                                                                                "lawtwin.petstore::ability::PetApi",
+                                                                                            ).getPetById(
+                                                                                                ls.convert(
+                                                                                                    match_selection,
+                                                                                                    "Int64",
+                                                                                                    MACHINE_BITS,
+                                                                                                ),
+                                                                                            ),
+                                                                                            MACHINE_BITS,
+                                                                                            symbols,
+                                                                                        )
+                                                                                    ),
+                                                                                    (),
+                                                                                )
+                                                                            ),
+                                                                            lambda _value: (
+                                                                                _lawspec_schema.construct(
+                                                                                    _schema.Named(
+                                                                                        "Either",
+                                                                                        [
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                                            ),
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                                            ),
+                                                                                        ],
+                                                                                    ),
+                                                                                    "Either::Right",
+                                                                                    [
+                                                                                        _lawspec_schema.validate(
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                                            ),
+                                                                                            _value,
+                                                                                            MACHINE_BITS,
+                                                                                            symbols,
+                                                                                        ),
+                                                                                    ],
+                                                                                    MACHINE_BITS,
+                                                                                    symbols,
+                                                                                )
+                                                                            ),
+                                                                            lambda _value: (
+                                                                                _lawspec_schema.construct(
+                                                                                    _schema.Named(
+                                                                                        "Either",
+                                                                                        [
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                                            ),
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                                            ),
+                                                                                        ],
+                                                                                    ),
+                                                                                    "Either::Left",
+                                                                                    [
+                                                                                        _lawspec_schema.validate(
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                                            ),
+                                                                                            _value,
+                                                                                            MACHINE_BITS,
+                                                                                            symbols,
+                                                                                        ),
+                                                                                    ],
+                                                                                    MACHINE_BITS,
+                                                                                    symbols,
+                                                                                )
+                                                                            ),
+                                                                        ),
+                                                                        _lawspec_schema.construct(
+                                                                            _schema.Named(
+                                                                                "Either",
+                                                                                [
+                                                                                    _schema.Named(
+                                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                                    ),
+                                                                                    _schema.Named(
+                                                                                        "lawtwin.petstore.model::type::Pet",
+                                                                                    ),
+                                                                                ],
+                                                                            ),
+                                                                            "Either::Right",
+                                                                            [
+                                                                                match_match_selection_2,
+                                                                            ],
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
                                                                         MACHINE_BITS,
                                                                         symbols,
-                                                                    ),
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
+                                                                    )
+                                                                ),
+                                                            ],
                                                         ],
-                                                    ],
-                                                    MACHINE_BITS,
-                                                    symbols,
+                                                        MACHINE_BITS,
+                                                        symbols,
+                                                    )
                                                 )
                                             )(
                                                 ls.attempt(
@@ -3424,87 +3618,89 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
                                                                 symbols,
                                                             )
                                                         ),
-                                                        lambda: ls.handler_schema(
-                                                            _lawspec_schema,
-                                                        ).from_native(
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::Pet",
-                                                            ),
-                                                            ls.handler(
-                                                                symbols,
-                                                                "lawtwin.petstore::ability::PetApi",
-                                                            ).updatePet(
-                                                                ls.handler_schema(
-                                                                    _lawspec_schema,
-                                                                ).to_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::Pet",
-                                                                    ),
-                                                                    _lawspec_schema.validate(
+                                                        lambda: (
+                                                            ls.handler_schema(
+                                                                _lawspec_schema,
+                                                            ).from_native(
+                                                                _schema.Named(
+                                                                    "lawtwin.petstore.model::type::Pet",
+                                                                ),
+                                                                ls.handler(
+                                                                    symbols,
+                                                                    "lawtwin.petstore::ability::PetApi",
+                                                                ).updatePet(
+                                                                    ls.handler_schema(
+                                                                        _lawspec_schema,
+                                                                    ).to_native(
                                                                         _schema.Named(
                                                                             "lawtwin.petstore.model::type::Pet",
                                                                         ),
-                                                                        (
-                                                                            lambda replacement_2: (
-                                                                                _lawspec_schema.match(
-                                                                                    _schema.Named(
-                                                                                        "lawtwin.petstore.model::type::Pet",
-                                                                                    ),
-                                                                                    replacement,
-                                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                            (
+                                                                                lambda replacement_2: (
+                                                                                    _lawspec_schema.match(
+                                                                                        _schema.Named(
+                                                                                            "lawtwin.petstore.model::type::Pet",
+                                                                                        ),
+                                                                                        replacement,
                                                                                         [
-                                                                                            "lawtwin.petstore.model::type::Pet::Pet",
-                                                                                            lambda id__2, name_2, category_2, photo_urls_2, tags_2, status_2: (
-                                                                                                _lawspec_schema.construct(
-                                                                                                    _schema.Named(
-                                                                                                        "lawtwin.petstore.model::type::Pet",
-                                                                                                    ),
-                                                                                                    "lawtwin.petstore.model::type::Pet::Pet",
-                                                                                                    [
-                                                                                                        replacement_2,
-                                                                                                        name_2,
-                                                                                                        category_2,
-                                                                                                        photo_urls_2,
-                                                                                                        tags_2,
-                                                                                                        status_2,
-                                                                                                    ],
-                                                                                                    MACHINE_BITS,
-                                                                                                    symbols,
-                                                                                                )
+                                                                                            [
+                                                                                                "lawtwin.petstore.model::type::Pet::Pet",
+                                                                                                lambda id__2, name_2, category_2, photo_urls_2, tags_2, status_2: (
+                                                                                                    _lawspec_schema.construct(
+                                                                                                        _schema.Named(
+                                                                                                            "lawtwin.petstore.model::type::Pet",
+                                                                                                        ),
+                                                                                                        "lawtwin.petstore.model::type::Pet::Pet",
+                                                                                                        [
+                                                                                                            replacement_2,
+                                                                                                            name_2,
+                                                                                                            category_2,
+                                                                                                            photo_urls_2,
+                                                                                                            tags_2,
+                                                                                                            status_2,
+                                                                                                        ],
+                                                                                                        MACHINE_BITS,
+                                                                                                        symbols,
+                                                                                                    )
+                                                                                                ),
+                                                                                            ],
+                                                                                        ],
+                                                                                        MACHINE_BITS,
+                                                                                        symbols,
+                                                                                    )
+                                                                                )
+                                                                            )(
+                                                                                _lawspec_schema.construct(
+                                                                                    _schema.Named(
+                                                                                        "Maybe",
+                                                                                        [
+                                                                                            _schema.Named(
+                                                                                                "Int64",
                                                                                             ),
                                                                                         ],
+                                                                                    ),
+                                                                                    "Maybe::Present",
+                                                                                    [
+                                                                                        match_selection,
                                                                                     ],
                                                                                     MACHINE_BITS,
                                                                                     symbols,
-                                                                                )
-                                                                            )
-                                                                        )(
-                                                                            _lawspec_schema.construct(
-                                                                                _schema.Named(
-                                                                                    "Maybe",
-                                                                                    [
-                                                                                        _schema.Named(
-                                                                                            "Int64",
-                                                                                        ),
-                                                                                    ],
                                                                                 ),
-                                                                                "Maybe::Present",
-                                                                                [
-                                                                                    match_selection,
-                                                                                ],
-                                                                                MACHINE_BITS,
-                                                                                symbols,
                                                                             ),
+                                                                            MACHINE_BITS,
+                                                                            symbols,
                                                                         ),
                                                                         MACHINE_BITS,
                                                                         symbols,
                                                                     ),
-                                                                    MACHINE_BITS,
-                                                                    symbols,
                                                                 ),
-                                                            ),
-                                                            MACHINE_BITS,
-                                                            symbols,
+                                                                MACHINE_BITS,
+                                                                symbols,
+                                                            )
                                                         ),
                                                         (),
                                                     ),
@@ -3573,7 +3769,9 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     selection_2,
                                     [
                                         [
@@ -3598,7 +3796,9 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -3610,7 +3810,9 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
                                 "lawtwin.petstore::ability::PetApi",
                             ).addPet(
                                 ls.handler_schema(_lawspec_schema).to_native(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     _lawspec_schema.validate(
                                         _schema.Named(
                                             "lawtwin.petstore.model::type::Pet",
@@ -3632,14 +3834,20 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -3652,14 +3860,20 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -3677,24 +3891,27 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced(
     )
 
 
-# PetApi: |a replaced pet reads back as replaced| [native] — ../src/api.lawspec:70
+# PetApi: |a replaced pet reads back as replaced| [native] —
+# ../src/api.lawspec:70
 # for all (body :: lawtwin.petstore.model::type::Pet) (replacement ::
-# lawtwin.petstore.model::type::Pet) => let sent = body in let it = attempt (addPet
-# sent) in match (it) { Either::Left _lawspecSelection0x0 -> true; Either::Right
-# _lawspecSelection0x0 -> let it = match (_lawspecSelection0x0) {
+# lawtwin.petstore.model::type::Pet) => let sent = body in let it = attempt
+# (addPet sent) in match (it) { Either::Left _lawspecSelection0x0 -> true;
+# Either::Right _lawspecSelection0x0 -> let it = match (_lawspecSelection0x0) {
 # lawtwin.petstore.model::type::Pet::Pet lawspecFieldid lawspecFieldname
-# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus ->
-# lawspecFieldid } in match (it) { Maybe::Absent -> false; Maybe::Present
-# _match__lawspecSelection0x0_0 -> let it = attempt (updatePet (let replacement =
-# Maybe::Present(_match__lawspecSelection0x0_0) in match (replacement) {
+# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus
+# -> lawspecFieldid } in match (it) { Maybe::Absent -> false; Maybe::Present
+# _match__lawspecSelection0x0_0 -> let it = attempt (updatePet (let replacement
+# = Maybe::Present(_match__lawspecSelection0x0_0) in match (replacement) {
 # lawtwin.petstore.model::type::Pet::Pet lawspecFieldid lawspecFieldname
-# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus ->
-# lawtwin.petstore.model::type::Pet::Pet(replacement, lawspecFieldname,
-# lawspecFieldcategory, lawspecFieldphotoUrls, lawspecFieldtags, lawspecFieldstatus) }))
-# in match (it) { Either::Left _match__match__lawspecSelection0x0_0_0 -> true;
-# Either::Right _match__match__lawspecSelection0x0_0_0 -> (attempt (getPetById
+# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus
+# -> lawtwin.petstore.model::type::Pet::Pet(replacement, lawspecFieldname,
+# lawspecFieldcategory, lawspecFieldphotoUrls, lawspecFieldtags,
+# lawspecFieldstatus) })) in match (it) { Either::Left
+# _match__match__lawspecSelection0x0_0_0 -> true; Either::Right
+# _match__match__lawspecSelection0x0_0_0 -> (attempt (getPetById
 # _match__lawspecSelection0x0_0) ==
-# Either::Right(_match__match__lawspecSelection0x0_0_0)) } } } = true end for all
+# Either::Right(_match__match__lawspecSelection0x0_0_0)) } } } = true end for
+# all
 _lawspec_inputs_petapi_a_replaced_pet_reads_back_as_replaced = [
     "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
     "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
@@ -3719,7 +3936,11 @@ def _lawspec_case_petapi_a_replaced_pet_reads_back_as_replaced(_values):
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -3781,7 +4002,10 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__replay():
 
 # PetApi: |a replaced pet reads back as replaced| [native], finite cases —
 # ../src/api.lawspec:70
-def _check_petapi_a_replaced_pet_reads_back_as_replaced(_case_values, _case_context):
+def _check_petapi_a_replaced_pet_reads_back_as_replaced(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     body = _case_values[0](symbols)
     replacement = _case_values[1](symbols)
@@ -3789,7 +4013,11 @@ def _check_petapi_a_replaced_pet_reads_back_as_replaced(_case_values, _case_cont
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -3921,7 +4149,10 @@ _cases_petapi_a_replaced_pet_reads_back_as_replaced = ls.register_finite_cases(
     _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")),
     _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")),
 )
-def test_petapi_a_replaced_pet_reads_back_as_replaced__property(body, replacement):
+def test_petapi_a_replaced_pet_reads_back_as_replaced__property(
+    body,
+    replacement,
+):
     symbols = {}
     try:
         with_service = _lawspec_schema.from_native(
@@ -3968,7 +4199,9 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced__property(body, replacemen
                         _lawspec_schema.to_native(
                             _schema.Named("lawtwin.petstore::type::Service"),
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore::type::Service"),
+                                _schema.Named(
+                                    "lawtwin.petstore::type::Service",
+                                ),
                                 with_service,
                                 MACHINE_BITS,
                                 symbols,
@@ -4004,7 +4237,9 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::Pet"),
                         ],
                     ),
@@ -4015,145 +4250,41 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
                                         [
                                             "Maybe::Present",
                                             lambda match_selection: (
-                                                lambda it_3: _lawspec_schema.match(
-                                                    _schema.Named(
-                                                        "Either",
+                                                lambda it_3: (
+                                                    _lawspec_schema.match(
+                                                        _schema.Named(
+                                                            "Either",
+                                                            [
+                                                                _schema.Named(
+                                                                    "lawtwin.petstore.model::type::ApiError",
+                                                                ),
+                                                                _schema.Named(
+                                                                    "lawtwin.petstore.model::type::Pet",
+                                                                ),
+                                                            ],
+                                                        ),
+                                                        it_3,
                                                         [
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::ApiError",
-                                                            ),
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::Pet",
-                                                            ),
-                                                        ],
-                                                    ),
-                                                    it_3,
-                                                    [
-                                                        [
-                                                            "Either::Left",
-                                                            lambda match_match_selection: (
-                                                                True
-                                                            ),
-                                                        ],
-                                                        [
-                                                            "Either::Right",
-                                                            lambda match_match_selection_2: (
-                                                                _lawspec_schema.equal(
-                                                                    _schema.Named(
-                                                                        "Either",
-                                                                        [
-                                                                            _schema.Named(
-                                                                                "lawtwin.petstore.model::type::ApiError",
-                                                                            ),
-                                                                            _schema.Named(
-                                                                                "lawtwin.petstore.model::type::Pet",
-                                                                            ),
-                                                                        ],
-                                                                    ),
-                                                                    ls.attempt(
-                                                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                                        lambda: (
-                                                                            ls.native_failures(
-                                                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                                                lambda _failure: (
-                                                                                    _lawspec_schema.from_native(
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                                        ),
-                                                                                        _failure,
-                                                                                        MACHINE_BITS,
-                                                                                        symbols,
-                                                                                    )
-                                                                                ),
-                                                                                lambda: (
-                                                                                    ls.handler_schema(
-                                                                                        _lawspec_schema,
-                                                                                    ).from_native(
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                                        ),
-                                                                                        ls.handler(
-                                                                                            symbols,
-                                                                                            "lawtwin.petstore::ability::PetApi",
-                                                                                        ).getPetById(
-                                                                                            ls.convert(
-                                                                                                match_selection,
-                                                                                                "Int64",
-                                                                                                MACHINE_BITS,
-                                                                                            ),
-                                                                                        ),
-                                                                                        MACHINE_BITS,
-                                                                                        symbols,
-                                                                                    )
-                                                                                ),
-                                                                                (),
-                                                                            )
-                                                                        ),
-                                                                        lambda _value: (
-                                                                            _lawspec_schema.construct(
-                                                                                _schema.Named(
-                                                                                    "Either",
-                                                                                    [
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                                        ),
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                                        ),
-                                                                                    ],
-                                                                                ),
-                                                                                "Either::Right",
-                                                                                [
-                                                                                    _lawspec_schema.validate(
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                                        ),
-                                                                                        _value,
-                                                                                        MACHINE_BITS,
-                                                                                        symbols,
-                                                                                    ),
-                                                                                ],
-                                                                                MACHINE_BITS,
-                                                                                symbols,
-                                                                            )
-                                                                        ),
-                                                                        lambda _value: (
-                                                                            _lawspec_schema.construct(
-                                                                                _schema.Named(
-                                                                                    "Either",
-                                                                                    [
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                                        ),
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::Pet",
-                                                                                        ),
-                                                                                    ],
-                                                                                ),
-                                                                                "Either::Left",
-                                                                                [
-                                                                                    _lawspec_schema.validate(
-                                                                                        _schema.Named(
-                                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                                        ),
-                                                                                        _value,
-                                                                                        MACHINE_BITS,
-                                                                                        symbols,
-                                                                                    ),
-                                                                                ],
-                                                                                MACHINE_BITS,
-                                                                                symbols,
-                                                                            )
-                                                                        ),
-                                                                    ),
-                                                                    _lawspec_schema.construct(
+                                                            [
+                                                                "Either::Left",
+                                                                lambda match_match_selection: (
+                                                                    True
+                                                                ),
+                                                            ],
+                                                            [
+                                                                "Either::Right",
+                                                                lambda match_match_selection_2: (
+                                                                    _lawspec_schema.equal(
                                                                         _schema.Named(
                                                                             "Either",
                                                                             [
@@ -4165,21 +4296,130 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
                                                                                 ),
                                                                             ],
                                                                         ),
-                                                                        "Either::Right",
-                                                                        [
-                                                                            match_match_selection_2,
-                                                                        ],
+                                                                        ls.attempt(
+                                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                            lambda: (
+                                                                                ls.native_failures(
+                                                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                                    lambda _failure: (
+                                                                                        _lawspec_schema.from_native(
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                                            ),
+                                                                                            _failure,
+                                                                                            MACHINE_BITS,
+                                                                                            symbols,
+                                                                                        )
+                                                                                    ),
+                                                                                    lambda: (
+                                                                                        ls.handler_schema(
+                                                                                            _lawspec_schema,
+                                                                                        ).from_native(
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                                            ),
+                                                                                            ls.handler(
+                                                                                                symbols,
+                                                                                                "lawtwin.petstore::ability::PetApi",
+                                                                                            ).getPetById(
+                                                                                                ls.convert(
+                                                                                                    match_selection,
+                                                                                                    "Int64",
+                                                                                                    MACHINE_BITS,
+                                                                                                ),
+                                                                                            ),
+                                                                                            MACHINE_BITS,
+                                                                                            symbols,
+                                                                                        )
+                                                                                    ),
+                                                                                    (),
+                                                                                )
+                                                                            ),
+                                                                            lambda _value: (
+                                                                                _lawspec_schema.construct(
+                                                                                    _schema.Named(
+                                                                                        "Either",
+                                                                                        [
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                                            ),
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                                            ),
+                                                                                        ],
+                                                                                    ),
+                                                                                    "Either::Right",
+                                                                                    [
+                                                                                        _lawspec_schema.validate(
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                                            ),
+                                                                                            _value,
+                                                                                            MACHINE_BITS,
+                                                                                            symbols,
+                                                                                        ),
+                                                                                    ],
+                                                                                    MACHINE_BITS,
+                                                                                    symbols,
+                                                                                )
+                                                                            ),
+                                                                            lambda _value: (
+                                                                                _lawspec_schema.construct(
+                                                                                    _schema.Named(
+                                                                                        "Either",
+                                                                                        [
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                                            ),
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                                            ),
+                                                                                        ],
+                                                                                    ),
+                                                                                    "Either::Left",
+                                                                                    [
+                                                                                        _lawspec_schema.validate(
+                                                                                            _schema.Named(
+                                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                                            ),
+                                                                                            _value,
+                                                                                            MACHINE_BITS,
+                                                                                            symbols,
+                                                                                        ),
+                                                                                    ],
+                                                                                    MACHINE_BITS,
+                                                                                    symbols,
+                                                                                )
+                                                                            ),
+                                                                        ),
+                                                                        _lawspec_schema.construct(
+                                                                            _schema.Named(
+                                                                                "Either",
+                                                                                [
+                                                                                    _schema.Named(
+                                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                                    ),
+                                                                                    _schema.Named(
+                                                                                        "lawtwin.petstore.model::type::Pet",
+                                                                                    ),
+                                                                                ],
+                                                                            ),
+                                                                            "Either::Right",
+                                                                            [
+                                                                                match_match_selection_2,
+                                                                            ],
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
                                                                         MACHINE_BITS,
                                                                         symbols,
-                                                                    ),
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
+                                                                    )
+                                                                ),
+                                                            ],
                                                         ],
-                                                    ],
-                                                    MACHINE_BITS,
-                                                    symbols,
+                                                        MACHINE_BITS,
+                                                        symbols,
+                                                    )
                                                 )
                                             )(
                                                 ls.attempt(
@@ -4196,87 +4436,89 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
                                                                 symbols,
                                                             )
                                                         ),
-                                                        lambda: ls.handler_schema(
-                                                            _lawspec_schema,
-                                                        ).from_native(
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::Pet",
-                                                            ),
-                                                            ls.handler(
-                                                                symbols,
-                                                                "lawtwin.petstore::ability::PetApi",
-                                                            ).updatePet(
-                                                                ls.handler_schema(
-                                                                    _lawspec_schema,
-                                                                ).to_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::Pet",
-                                                                    ),
-                                                                    _lawspec_schema.validate(
+                                                        lambda: (
+                                                            ls.handler_schema(
+                                                                _lawspec_schema,
+                                                            ).from_native(
+                                                                _schema.Named(
+                                                                    "lawtwin.petstore.model::type::Pet",
+                                                                ),
+                                                                ls.handler(
+                                                                    symbols,
+                                                                    "lawtwin.petstore::ability::PetApi",
+                                                                ).updatePet(
+                                                                    ls.handler_schema(
+                                                                        _lawspec_schema,
+                                                                    ).to_native(
                                                                         _schema.Named(
                                                                             "lawtwin.petstore.model::type::Pet",
                                                                         ),
-                                                                        (
-                                                                            lambda replacement_2: (
-                                                                                _lawspec_schema.match(
-                                                                                    _schema.Named(
-                                                                                        "lawtwin.petstore.model::type::Pet",
-                                                                                    ),
-                                                                                    replacement,
-                                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Pet",
+                                                                            ),
+                                                                            (
+                                                                                lambda replacement_2: (
+                                                                                    _lawspec_schema.match(
+                                                                                        _schema.Named(
+                                                                                            "lawtwin.petstore.model::type::Pet",
+                                                                                        ),
+                                                                                        replacement,
                                                                                         [
-                                                                                            "lawtwin.petstore.model::type::Pet::Pet",
-                                                                                            lambda id__2, name_2, category_2, photo_urls_2, tags_2, status_2: (
-                                                                                                _lawspec_schema.construct(
-                                                                                                    _schema.Named(
-                                                                                                        "lawtwin.petstore.model::type::Pet",
-                                                                                                    ),
-                                                                                                    "lawtwin.petstore.model::type::Pet::Pet",
-                                                                                                    [
-                                                                                                        replacement_2,
-                                                                                                        name_2,
-                                                                                                        category_2,
-                                                                                                        photo_urls_2,
-                                                                                                        tags_2,
-                                                                                                        status_2,
-                                                                                                    ],
-                                                                                                    MACHINE_BITS,
-                                                                                                    symbols,
-                                                                                                )
+                                                                                            [
+                                                                                                "lawtwin.petstore.model::type::Pet::Pet",
+                                                                                                lambda id__2, name_2, category_2, photo_urls_2, tags_2, status_2: (
+                                                                                                    _lawspec_schema.construct(
+                                                                                                        _schema.Named(
+                                                                                                            "lawtwin.petstore.model::type::Pet",
+                                                                                                        ),
+                                                                                                        "lawtwin.petstore.model::type::Pet::Pet",
+                                                                                                        [
+                                                                                                            replacement_2,
+                                                                                                            name_2,
+                                                                                                            category_2,
+                                                                                                            photo_urls_2,
+                                                                                                            tags_2,
+                                                                                                            status_2,
+                                                                                                        ],
+                                                                                                        MACHINE_BITS,
+                                                                                                        symbols,
+                                                                                                    )
+                                                                                                ),
+                                                                                            ],
+                                                                                        ],
+                                                                                        MACHINE_BITS,
+                                                                                        symbols,
+                                                                                    )
+                                                                                )
+                                                                            )(
+                                                                                _lawspec_schema.construct(
+                                                                                    _schema.Named(
+                                                                                        "Maybe",
+                                                                                        [
+                                                                                            _schema.Named(
+                                                                                                "Int64",
                                                                                             ),
                                                                                         ],
+                                                                                    ),
+                                                                                    "Maybe::Present",
+                                                                                    [
+                                                                                        match_selection,
                                                                                     ],
                                                                                     MACHINE_BITS,
                                                                                     symbols,
-                                                                                )
-                                                                            )
-                                                                        )(
-                                                                            _lawspec_schema.construct(
-                                                                                _schema.Named(
-                                                                                    "Maybe",
-                                                                                    [
-                                                                                        _schema.Named(
-                                                                                            "Int64",
-                                                                                        ),
-                                                                                    ],
                                                                                 ),
-                                                                                "Maybe::Present",
-                                                                                [
-                                                                                    match_selection,
-                                                                                ],
-                                                                                MACHINE_BITS,
-                                                                                symbols,
                                                                             ),
+                                                                            MACHINE_BITS,
+                                                                            symbols,
                                                                         ),
                                                                         MACHINE_BITS,
                                                                         symbols,
                                                                     ),
-                                                                    MACHINE_BITS,
-                                                                    symbols,
                                                                 ),
-                                                            ),
-                                                            MACHINE_BITS,
-                                                            symbols,
+                                                                MACHINE_BITS,
+                                                                symbols,
+                                                            )
                                                         ),
                                                         (),
                                                     ),
@@ -4345,7 +4587,9 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     selection_2,
                                     [
                                         [
@@ -4370,7 +4614,9 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -4382,7 +4628,9 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
                                 "lawtwin.petstore::ability::PetApi",
                             ).addPet(
                                 ls.handler_schema(_lawspec_schema).to_native(
-                                    _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::Pet",
+                                    ),
                                     _lawspec_schema.validate(
                                         _schema.Named(
                                             "lawtwin.petstore.model::type::Pet",
@@ -4404,14 +4652,20 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -4424,14 +4678,20 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Pet"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Pet",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -4449,24 +4709,27 @@ def _assert_petapi_a_replaced_pet_reads_back_as_replaced_2(
     )
 
 
-# PetApi: |a replaced pet reads back as replaced| [reference] — ../src/api.lawspec:70
+# PetApi: |a replaced pet reads back as replaced| [reference] —
+# ../src/api.lawspec:70
 # for all (body :: lawtwin.petstore.model::type::Pet) (replacement ::
-# lawtwin.petstore.model::type::Pet) => let sent = body in let it = attempt (addPet
-# sent) in match (it) { Either::Left _lawspecSelection0x0 -> true; Either::Right
-# _lawspecSelection0x0 -> let it = match (_lawspecSelection0x0) {
+# lawtwin.petstore.model::type::Pet) => let sent = body in let it = attempt
+# (addPet sent) in match (it) { Either::Left _lawspecSelection0x0 -> true;
+# Either::Right _lawspecSelection0x0 -> let it = match (_lawspecSelection0x0) {
 # lawtwin.petstore.model::type::Pet::Pet lawspecFieldid lawspecFieldname
-# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus ->
-# lawspecFieldid } in match (it) { Maybe::Absent -> false; Maybe::Present
-# _match__lawspecSelection0x0_0 -> let it = attempt (updatePet (let replacement =
-# Maybe::Present(_match__lawspecSelection0x0_0) in match (replacement) {
+# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus
+# -> lawspecFieldid } in match (it) { Maybe::Absent -> false; Maybe::Present
+# _match__lawspecSelection0x0_0 -> let it = attempt (updatePet (let replacement
+# = Maybe::Present(_match__lawspecSelection0x0_0) in match (replacement) {
 # lawtwin.petstore.model::type::Pet::Pet lawspecFieldid lawspecFieldname
-# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus ->
-# lawtwin.petstore.model::type::Pet::Pet(replacement, lawspecFieldname,
-# lawspecFieldcategory, lawspecFieldphotoUrls, lawspecFieldtags, lawspecFieldstatus) }))
-# in match (it) { Either::Left _match__match__lawspecSelection0x0_0_0 -> true;
-# Either::Right _match__match__lawspecSelection0x0_0_0 -> (attempt (getPetById
+# lawspecFieldcategory lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus
+# -> lawtwin.petstore.model::type::Pet::Pet(replacement, lawspecFieldname,
+# lawspecFieldcategory, lawspecFieldphotoUrls, lawspecFieldtags,
+# lawspecFieldstatus) })) in match (it) { Either::Left
+# _match__match__lawspecSelection0x0_0_0 -> true; Either::Right
+# _match__match__lawspecSelection0x0_0_0 -> (attempt (getPetById
 # _match__lawspecSelection0x0_0) ==
-# Either::Right(_match__match__lawspecSelection0x0_0_0)) } } } = true end for all
+# Either::Right(_match__match__lawspecSelection0x0_0_0)) } } } = true end for
+# all
 _lawspec_inputs_petapi_a_replaced_pet_reads_back_as_replaced_2 = [
     "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
     "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
@@ -4511,7 +4774,10 @@ def test_petapi_a_replaced_pet_reads_back_as_replaced_2__replay():
 
 # PetApi: |a replaced pet reads back as replaced| [reference], finite cases —
 # ../src/api.lawspec:70
-def _check_petapi_a_replaced_pet_reads_back_as_replaced_2(_case_values, _case_context):
+def _check_petapi_a_replaced_pet_reads_back_as_replaced_2(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
     ls.install_handlers(
@@ -4609,7 +4875,10 @@ _cases_petapi_a_replaced_pet_reads_back_as_replaced_2 = ls.register_finite_cases
     _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")),
     _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Pet")),
 )
-def test_petapi_a_replaced_pet_reads_back_as_replaced_2__property(body, replacement):
+def test_petapi_a_replaced_pet_reads_back_as_replaced_2__property(
+    body,
+    replacement,
+):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
     ls.install_handlers(
@@ -4647,8 +4916,12 @@ def _assert_storeapi_a_created_order_reads_back_native(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                     it,
@@ -4658,7 +4931,10 @@ def _assert_storeapi_a_created_order_reads_back_native(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
@@ -4679,38 +4955,42 @@ def _assert_storeapi_a_created_order_reads_back_native(
                                                     ),
                                                     ls.attempt(
                                                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::Order",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::StoreApi",
-                                                                ).getOrderById(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Int64",
+                                                        lambda: (
+                                                            ls.native_failures(
+                                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                lambda _failure: (
+                                                                    _lawspec_schema.from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::ApiError",
+                                                                        ),
+                                                                        _failure,
                                                                         MACHINE_BITS,
-                                                                    ),
+                                                                        symbols,
+                                                                    )
                                                                 ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
+                                                                lambda: (
+                                                                    ls.handler_schema(
+                                                                        _lawspec_schema,
+                                                                    ).from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::Order",
+                                                                        ),
+                                                                        ls.handler(
+                                                                            symbols,
+                                                                            "lawtwin.petstore::ability::StoreApi",
+                                                                        ).getOrderById(
+                                                                            ls.convert(
+                                                                                match_selection,
+                                                                                "Int64",
+                                                                                MACHINE_BITS,
+                                                                            ),
+                                                                        ),
+                                                                        MACHINE_BITS,
+                                                                        symbols,
+                                                                    )
+                                                                ),
+                                                                (),
+                                                            )
                                                         ),
                                                         lambda _value: (
                                                             _lawspec_schema.construct(
@@ -4824,13 +5104,17 @@ def _assert_storeapi_a_created_order_reads_back_native(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
                         ),
                         lambda: ls.handler_schema(_lawspec_schema).from_native(
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                             ls.handler(
                                 symbols,
                                 "lawtwin.petstore::ability::StoreApi",
@@ -4883,14 +5167,20 @@ def _assert_storeapi_a_created_order_reads_back_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -4903,14 +5193,20 @@ def _assert_storeapi_a_created_order_reads_back_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -4969,20 +5265,22 @@ def _assert_storeapi_a_created_order_reads_back_native(
 
 
 # StoreApi: |a created order reads back| [native] — ../src/api.lawspec:102
-# for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let
-# sent = let replacement = Maybe::Present(shipDateValue) in match (body) {
-# lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
-# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus lawspecFieldcomplete ->
+# for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text)
+# => let sent = let replacement = Maybe::Present(shipDateValue) in match (body)
+# { lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
+# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
+# lawspecFieldcomplete ->
 # lawtwin.petstore.model::type::Order::Order(lawspecFieldid, lawspecFieldpetId,
-# lawspecFieldquantity, replacement, lawspecFieldstatus, lawspecFieldcomplete) } in let
-# it = attempt (placeOrder (Maybe::Present(sent))) in match (it) { Either::Left
-# _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0 -> let it = match
-# (_lawspecSelection0x0) { lawtwin.petstore.model::type::Order::Order lawspecFieldid
-# lawspecFieldpetId lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
-# lawspecFieldcomplete -> lawspecFieldid } in match (it) { Maybe::Absent -> false;
-# Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getOrderById
-# _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } = true end
-# for all
+# lawspecFieldquantity, replacement, lawspecFieldstatus, lawspecFieldcomplete) }
+# in let it = attempt (placeOrder (Maybe::Present(sent))) in match (it) {
+# Either::Left _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0
+# -> let it = match (_lawspecSelection0x0) {
+# lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
+# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
+# lawspecFieldcomplete -> lawspecFieldid } in match (it) { Maybe::Absent ->
+# false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getOrderById
+# _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } =
+# true end for all
 _lawspec_inputs_storeapi_a_created_order_reads_back_native = [
     "(data lawtwin.petstore.model::type::Order (ctor lawtwin.petstore.model::type::Order::Order (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int32 -2147483648 2147483647)) (maybe (text)) (maybe (ref lawtwin.petstore.model::type::OrderStatus)) (maybe (bool)))) (data lawtwin.petstore.model::type::OrderStatus (ctor lawtwin.petstore.model::type::OrderStatus::Placed) (ctor lawtwin.petstore.model::type::OrderStatus::Approved) (ctor lawtwin.petstore.model::type::OrderStatus::Delivered)) (ref lawtwin.petstore.model::type::Order)",
     "(text)",
@@ -5012,7 +5310,11 @@ def _lawspec_case_storeapi_a_created_order_reads_back_native(_values):
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -5072,8 +5374,12 @@ def test_storeapi_a_created_order_reads_back_native__replay():
     )
 
 
-# StoreApi: |a created order reads back| [native], finite cases — ../src/api.lawspec:102
-def _check_storeapi_a_created_order_reads_back_native(_case_values, _case_context):
+# StoreApi: |a created order reads back| [native], finite cases —
+# ../src/api.lawspec:102
+def _check_storeapi_a_created_order_reads_back_native(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     body = _case_values[0](symbols)
     ship_date_value = _case_values[1](symbols)
@@ -5081,7 +5387,11 @@ def _check_storeapi_a_created_order_reads_back_native(_case_values, _case_contex
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -5162,12 +5472,15 @@ _cases_storeapi_a_created_order_reads_back_native = ls.register_finite_cases(
 )
 
 
-# StoreApi: |a created order reads back| [native], property — ../src/api.lawspec:102
+# StoreApi: |a created order reads back| [native], property —
+# ../src/api.lawspec:102
 @_lawspec_seeded
 @settings(max_examples=100, deadline=None)
 @given(
     st.tuples(
-        _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Order")),
+        _lawspec_data_generator(
+            _schema.Named("lawtwin.petstore.model::type::Order"),
+        ),
         st.one_of(
             st.sampled_from(
                 (
@@ -5267,7 +5580,9 @@ def test_storeapi_a_created_order_reads_back_native__property(_case):
                         _lawspec_schema.to_native(
                             _schema.Named("lawtwin.petstore::type::Service"),
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore::type::Service"),
+                                _schema.Named(
+                                    "lawtwin.petstore::type::Service",
+                                ),
                                 with_service,
                                 MACHINE_BITS,
                                 symbols,
@@ -5303,8 +5618,12 @@ def _assert_storeapi_a_created_order_reads_back_reference(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                     it,
@@ -5314,7 +5633,10 @@ def _assert_storeapi_a_created_order_reads_back_reference(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
@@ -5335,38 +5657,42 @@ def _assert_storeapi_a_created_order_reads_back_reference(
                                                     ),
                                                     ls.attempt(
                                                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::Order",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::StoreApi",
-                                                                ).getOrderById(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Int64",
+                                                        lambda: (
+                                                            ls.native_failures(
+                                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                lambda _failure: (
+                                                                    _lawspec_schema.from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::ApiError",
+                                                                        ),
+                                                                        _failure,
                                                                         MACHINE_BITS,
-                                                                    ),
+                                                                        symbols,
+                                                                    )
                                                                 ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
+                                                                lambda: (
+                                                                    ls.handler_schema(
+                                                                        _lawspec_schema,
+                                                                    ).from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::Order",
+                                                                        ),
+                                                                        ls.handler(
+                                                                            symbols,
+                                                                            "lawtwin.petstore::ability::StoreApi",
+                                                                        ).getOrderById(
+                                                                            ls.convert(
+                                                                                match_selection,
+                                                                                "Int64",
+                                                                                MACHINE_BITS,
+                                                                            ),
+                                                                        ),
+                                                                        MACHINE_BITS,
+                                                                        symbols,
+                                                                    )
+                                                                ),
+                                                                (),
+                                                            )
                                                         ),
                                                         lambda _value: (
                                                             _lawspec_schema.construct(
@@ -5480,13 +5806,17 @@ def _assert_storeapi_a_created_order_reads_back_reference(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
                         ),
                         lambda: ls.handler_schema(_lawspec_schema).from_native(
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                             ls.handler(
                                 symbols,
                                 "lawtwin.petstore::ability::StoreApi",
@@ -5539,14 +5869,20 @@ def _assert_storeapi_a_created_order_reads_back_reference(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -5559,14 +5895,20 @@ def _assert_storeapi_a_created_order_reads_back_reference(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -5625,20 +5967,22 @@ def _assert_storeapi_a_created_order_reads_back_reference(
 
 
 # StoreApi: |a created order reads back| [reference] — ../src/api.lawspec:102
-# for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let
-# sent = let replacement = Maybe::Present(shipDateValue) in match (body) {
-# lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
-# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus lawspecFieldcomplete ->
+# for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text)
+# => let sent = let replacement = Maybe::Present(shipDateValue) in match (body)
+# { lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
+# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
+# lawspecFieldcomplete ->
 # lawtwin.petstore.model::type::Order::Order(lawspecFieldid, lawspecFieldpetId,
-# lawspecFieldquantity, replacement, lawspecFieldstatus, lawspecFieldcomplete) } in let
-# it = attempt (placeOrder (Maybe::Present(sent))) in match (it) { Either::Left
-# _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0 -> let it = match
-# (_lawspecSelection0x0) { lawtwin.petstore.model::type::Order::Order lawspecFieldid
-# lawspecFieldpetId lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
-# lawspecFieldcomplete -> lawspecFieldid } in match (it) { Maybe::Absent -> false;
-# Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getOrderById
-# _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } = true end
-# for all
+# lawspecFieldquantity, replacement, lawspecFieldstatus, lawspecFieldcomplete) }
+# in let it = attempt (placeOrder (Maybe::Present(sent))) in match (it) {
+# Either::Left _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0
+# -> let it = match (_lawspecSelection0x0) {
+# lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
+# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
+# lawspecFieldcomplete -> lawspecFieldid } in match (it) { Maybe::Absent ->
+# false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getOrderById
+# _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } =
+# true end for all
 _lawspec_inputs_storeapi_a_created_order_reads_back_reference = [
     "(data lawtwin.petstore.model::type::Order (ctor lawtwin.petstore.model::type::Order::Order (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int32 -2147483648 2147483647)) (maybe (text)) (maybe (ref lawtwin.petstore.model::type::OrderStatus)) (maybe (bool)))) (data lawtwin.petstore.model::type::OrderStatus (ctor lawtwin.petstore.model::type::OrderStatus::Placed) (ctor lawtwin.petstore.model::type::OrderStatus::Approved) (ctor lawtwin.petstore.model::type::OrderStatus::Delivered)) (ref lawtwin.petstore.model::type::Order)",
     "(text)",
@@ -5688,7 +6032,10 @@ def test_storeapi_a_created_order_reads_back_reference__replay():
 
 # StoreApi: |a created order reads back| [reference], finite cases —
 # ../src/api.lawspec:102
-def _check_storeapi_a_created_order_reads_back_reference(_case_values, _case_context):
+def _check_storeapi_a_created_order_reads_back_reference(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
     ls.install_handlers(
@@ -5735,12 +6082,15 @@ _cases_storeapi_a_created_order_reads_back_reference = ls.register_finite_cases(
 )
 
 
-# StoreApi: |a created order reads back| [reference], property — ../src/api.lawspec:102
+# StoreApi: |a created order reads back| [reference], property —
+# ../src/api.lawspec:102
 @_lawspec_seeded
 @settings(max_examples=100, deadline=None)
 @given(
     st.tuples(
-        _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Order")),
+        _lawspec_data_generator(
+            _schema.Named("lawtwin.petstore.model::type::Order"),
+        ),
         st.one_of(
             st.sampled_from(
                 (
@@ -5831,8 +6181,12 @@ def _assert_storeapi_a_deleted_order_is_not_found_native(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                     it,
@@ -5842,118 +6196,18 @@ def _assert_storeapi_a_deleted_order_is_not_found_native(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
                                         [
                                             "Maybe::Present",
                                             lambda match_selection: (
-                                                lambda gone: _lawspec_schema.equal(
-                                                    _schema.Named(
-                                                        "Either",
-                                                        [
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::ApiError",
-                                                            ),
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::Order",
-                                                            ),
-                                                        ],
-                                                    ),
-                                                    ls.attempt(
-                                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::Order",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::StoreApi",
-                                                                ).getOrderById(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Int64",
-                                                                        MACHINE_BITS,
-                                                                    ),
-                                                                ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Order",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Right",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Order",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Order",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Left",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                    ),
-                                                    _lawspec_schema.construct(
+                                                lambda gone: (
+                                                    _lawspec_schema.equal(
                                                         _schema.Named(
                                                             "Either",
                                                             [
@@ -5965,23 +6219,132 @@ def _assert_storeapi_a_deleted_order_is_not_found_native(
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Either::Left",
-                                                        [
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::ApiError",
-                                                                ),
-                                                                "lawtwin.petstore.model::type::ApiError::NotFound",
-                                                                [],
-                                                                MACHINE_BITS,
-                                                                symbols,
+                                                        ls.attempt(
+                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                            lambda: (
+                                                                ls.native_failures(
+                                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                    lambda _failure: (
+                                                                        _lawspec_schema.from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _failure,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    lambda: (
+                                                                        ls.handler_schema(
+                                                                            _lawspec_schema,
+                                                                        ).from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Order",
+                                                                            ),
+                                                                            ls.handler(
+                                                                                symbols,
+                                                                                "lawtwin.petstore::ability::StoreApi",
+                                                                            ).getOrderById(
+                                                                                ls.convert(
+                                                                                    match_selection,
+                                                                                    "Int64",
+                                                                                    MACHINE_BITS,
+                                                                                ),
+                                                                            ),
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    (),
+                                                                )
                                                             ),
-                                                        ],
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Order",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Right",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Order",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Order",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Left",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                        ),
+                                                        _lawspec_schema.construct(
+                                                            _schema.Named(
+                                                                "Either",
+                                                                [
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::Order",
+                                                                    ),
+                                                                ],
+                                                            ),
+                                                            "Either::Left",
+                                                            [
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                                    [],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                ),
+                                                            ],
+                                                            MACHINE_BITS,
+                                                            symbols,
+                                                        ),
                                                         MACHINE_BITS,
                                                         symbols,
-                                                    ),
-                                                    MACHINE_BITS,
-                                                    symbols,
+                                                    )
                                                 )
                                             )(
                                                 ls.attempt(
@@ -6105,13 +6468,17 @@ def _assert_storeapi_a_deleted_order_is_not_found_native(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
                         ),
                         lambda: ls.handler_schema(_lawspec_schema).from_native(
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                             ls.handler(
                                 symbols,
                                 "lawtwin.petstore::ability::StoreApi",
@@ -6164,14 +6531,20 @@ def _assert_storeapi_a_deleted_order_is_not_found_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -6184,14 +6557,20 @@ def _assert_storeapi_a_deleted_order_is_not_found_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -6250,22 +6629,24 @@ def _assert_storeapi_a_deleted_order_is_not_found_native(
 
 
 # StoreApi: |a deleted order is not found| [native] — ../src/api.lawspec:114
-# for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let
-# sent = let replacement = Maybe::Present(shipDateValue) in match (body) {
-# lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
-# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus lawspecFieldcomplete ->
+# for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text)
+# => let sent = let replacement = Maybe::Present(shipDateValue) in match (body)
+# { lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
+# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
+# lawspecFieldcomplete ->
 # lawtwin.petstore.model::type::Order::Order(lawspecFieldid, lawspecFieldpetId,
-# lawspecFieldquantity, replacement, lawspecFieldstatus, lawspecFieldcomplete) } in let
-# it = attempt (placeOrder (Maybe::Present(sent))) in match (it) { Either::Left
-# _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0 -> let it = match
-# (_lawspecSelection0x0) { lawtwin.petstore.model::type::Order::Order lawspecFieldid
-# lawspecFieldpetId lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
-# lawspecFieldcomplete -> lawspecFieldid } in match (it) { Maybe::Absent -> false;
-# Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt (deleteOrder
-# _match__lawspecSelection0x0_0) in (attempt (getOrderById
+# lawspecFieldquantity, replacement, lawspecFieldstatus, lawspecFieldcomplete) }
+# in let it = attempt (placeOrder (Maybe::Present(sent))) in match (it) {
+# Either::Left _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0
+# -> let it = match (_lawspecSelection0x0) {
+# lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
+# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
+# lawspecFieldcomplete -> lawspecFieldid } in match (it) { Maybe::Absent ->
+# false; Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt
+# (deleteOrder _match__lawspecSelection0x0_0) in (attempt (getOrderById
 # _match__lawspecSelection0x0_0) ==
-# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for
-# all
+# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+# end for all
 _lawspec_inputs_storeapi_a_deleted_order_is_not_found_native = [
     "(data lawtwin.petstore.model::type::Order (ctor lawtwin.petstore.model::type::Order::Order (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int32 -2147483648 2147483647)) (maybe (text)) (maybe (ref lawtwin.petstore.model::type::OrderStatus)) (maybe (bool)))) (data lawtwin.petstore.model::type::OrderStatus (ctor lawtwin.petstore.model::type::OrderStatus::Placed) (ctor lawtwin.petstore.model::type::OrderStatus::Approved) (ctor lawtwin.petstore.model::type::OrderStatus::Delivered)) (ref lawtwin.petstore.model::type::Order)",
     "(text)",
@@ -6295,7 +6676,11 @@ def _lawspec_case_storeapi_a_deleted_order_is_not_found_native(_values):
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -6357,7 +6742,10 @@ def test_storeapi_a_deleted_order_is_not_found_native__replay():
 
 # StoreApi: |a deleted order is not found| [native], finite cases —
 # ../src/api.lawspec:114
-def _check_storeapi_a_deleted_order_is_not_found_native(_case_values, _case_context):
+def _check_storeapi_a_deleted_order_is_not_found_native(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     body = _case_values[0](symbols)
     ship_date_value = _case_values[1](symbols)
@@ -6365,7 +6753,11 @@ def _check_storeapi_a_deleted_order_is_not_found_native(_case_values, _case_cont
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -6446,12 +6838,15 @@ _cases_storeapi_a_deleted_order_is_not_found_native = ls.register_finite_cases(
 )
 
 
-# StoreApi: |a deleted order is not found| [native], property — ../src/api.lawspec:114
+# StoreApi: |a deleted order is not found| [native], property —
+# ../src/api.lawspec:114
 @_lawspec_seeded
 @settings(max_examples=100, deadline=None)
 @given(
     st.tuples(
-        _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Order")),
+        _lawspec_data_generator(
+            _schema.Named("lawtwin.petstore.model::type::Order"),
+        ),
         st.one_of(
             st.sampled_from(
                 (
@@ -6551,7 +6946,9 @@ def test_storeapi_a_deleted_order_is_not_found_native__property(_case):
                         _lawspec_schema.to_native(
                             _schema.Named("lawtwin.petstore::type::Service"),
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore::type::Service"),
+                                _schema.Named(
+                                    "lawtwin.petstore::type::Service",
+                                ),
                                 with_service,
                                 MACHINE_BITS,
                                 symbols,
@@ -6587,8 +6984,12 @@ def _assert_storeapi_a_deleted_order_is_not_found_reference(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                     it,
@@ -6598,118 +6999,18 @@ def _assert_storeapi_a_deleted_order_is_not_found_reference(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Int64")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
                                         [
                                             "Maybe::Present",
                                             lambda match_selection: (
-                                                lambda gone: _lawspec_schema.equal(
-                                                    _schema.Named(
-                                                        "Either",
-                                                        [
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::ApiError",
-                                                            ),
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::Order",
-                                                            ),
-                                                        ],
-                                                    ),
-                                                    ls.attempt(
-                                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::Order",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::StoreApi",
-                                                                ).getOrderById(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Int64",
-                                                                        MACHINE_BITS,
-                                                                    ),
-                                                                ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Order",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Right",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Order",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::Order",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Left",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                    ),
-                                                    _lawspec_schema.construct(
+                                                lambda gone: (
+                                                    _lawspec_schema.equal(
                                                         _schema.Named(
                                                             "Either",
                                                             [
@@ -6721,23 +7022,132 @@ def _assert_storeapi_a_deleted_order_is_not_found_reference(
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Either::Left",
-                                                        [
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::ApiError",
-                                                                ),
-                                                                "lawtwin.petstore.model::type::ApiError::NotFound",
-                                                                [],
-                                                                MACHINE_BITS,
-                                                                symbols,
+                                                        ls.attempt(
+                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                            lambda: (
+                                                                ls.native_failures(
+                                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                    lambda _failure: (
+                                                                        _lawspec_schema.from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _failure,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    lambda: (
+                                                                        ls.handler_schema(
+                                                                            _lawspec_schema,
+                                                                        ).from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Order",
+                                                                            ),
+                                                                            ls.handler(
+                                                                                symbols,
+                                                                                "lawtwin.petstore::ability::StoreApi",
+                                                                            ).getOrderById(
+                                                                                ls.convert(
+                                                                                    match_selection,
+                                                                                    "Int64",
+                                                                                    MACHINE_BITS,
+                                                                                ),
+                                                                            ),
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    (),
+                                                                )
                                                             ),
-                                                        ],
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Order",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Right",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Order",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::Order",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Left",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                        ),
+                                                        _lawspec_schema.construct(
+                                                            _schema.Named(
+                                                                "Either",
+                                                                [
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::Order",
+                                                                    ),
+                                                                ],
+                                                            ),
+                                                            "Either::Left",
+                                                            [
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                                    [],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                ),
+                                                            ],
+                                                            MACHINE_BITS,
+                                                            symbols,
+                                                        ),
                                                         MACHINE_BITS,
                                                         symbols,
-                                                    ),
-                                                    MACHINE_BITS,
-                                                    symbols,
+                                                    )
                                                 )
                                             )(
                                                 ls.attempt(
@@ -6861,13 +7271,17 @@ def _assert_storeapi_a_deleted_order_is_not_found_reference(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
                         ),
                         lambda: ls.handler_schema(_lawspec_schema).from_native(
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                             ls.handler(
                                 symbols,
                                 "lawtwin.petstore::ability::StoreApi",
@@ -6920,14 +7334,20 @@ def _assert_storeapi_a_deleted_order_is_not_found_reference(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -6940,14 +7360,20 @@ def _assert_storeapi_a_deleted_order_is_not_found_reference(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::Order"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::Order",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -7006,22 +7432,24 @@ def _assert_storeapi_a_deleted_order_is_not_found_reference(
 
 
 # StoreApi: |a deleted order is not found| [reference] — ../src/api.lawspec:114
-# for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) => let
-# sent = let replacement = Maybe::Present(shipDateValue) in match (body) {
-# lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
-# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus lawspecFieldcomplete ->
+# for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text)
+# => let sent = let replacement = Maybe::Present(shipDateValue) in match (body)
+# { lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
+# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
+# lawspecFieldcomplete ->
 # lawtwin.petstore.model::type::Order::Order(lawspecFieldid, lawspecFieldpetId,
-# lawspecFieldquantity, replacement, lawspecFieldstatus, lawspecFieldcomplete) } in let
-# it = attempt (placeOrder (Maybe::Present(sent))) in match (it) { Either::Left
-# _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0 -> let it = match
-# (_lawspecSelection0x0) { lawtwin.petstore.model::type::Order::Order lawspecFieldid
-# lawspecFieldpetId lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
-# lawspecFieldcomplete -> lawspecFieldid } in match (it) { Maybe::Absent -> false;
-# Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt (deleteOrder
-# _match__lawspecSelection0x0_0) in (attempt (getOrderById
+# lawspecFieldquantity, replacement, lawspecFieldstatus, lawspecFieldcomplete) }
+# in let it = attempt (placeOrder (Maybe::Present(sent))) in match (it) {
+# Either::Left _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0
+# -> let it = match (_lawspecSelection0x0) {
+# lawtwin.petstore.model::type::Order::Order lawspecFieldid lawspecFieldpetId
+# lawspecFieldquantity lawspecFieldshipDate lawspecFieldstatus
+# lawspecFieldcomplete -> lawspecFieldid } in match (it) { Maybe::Absent ->
+# false; Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt
+# (deleteOrder _match__lawspecSelection0x0_0) in (attempt (getOrderById
 # _match__lawspecSelection0x0_0) ==
-# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for
-# all
+# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+# end for all
 _lawspec_inputs_storeapi_a_deleted_order_is_not_found_reference = [
     "(data lawtwin.petstore.model::type::Order (ctor lawtwin.petstore.model::type::Order::Order (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int32 -2147483648 2147483647)) (maybe (text)) (maybe (ref lawtwin.petstore.model::type::OrderStatus)) (maybe (bool)))) (data lawtwin.petstore.model::type::OrderStatus (ctor lawtwin.petstore.model::type::OrderStatus::Placed) (ctor lawtwin.petstore.model::type::OrderStatus::Approved) (ctor lawtwin.petstore.model::type::OrderStatus::Delivered)) (ref lawtwin.petstore.model::type::Order)",
     "(text)",
@@ -7071,7 +7499,10 @@ def test_storeapi_a_deleted_order_is_not_found_reference__replay():
 
 # StoreApi: |a deleted order is not found| [reference], finite cases —
 # ../src/api.lawspec:114
-def _check_storeapi_a_deleted_order_is_not_found_reference(_case_values, _case_context):
+def _check_storeapi_a_deleted_order_is_not_found_reference(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
     ls.install_handlers(
@@ -7124,7 +7555,9 @@ _cases_storeapi_a_deleted_order_is_not_found_reference = ls.register_finite_case
 @settings(max_examples=100, deadline=None)
 @given(
     st.tuples(
-        _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::Order")),
+        _lawspec_data_generator(
+            _schema.Named("lawtwin.petstore.model::type::Order"),
+        ),
         st.one_of(
             st.sampled_from(
                 (
@@ -7215,7 +7648,9 @@ def _assert_userapi_a_created_user_reads_back_native(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::User"),
                         ],
                     ),
@@ -7226,7 +7661,10 @@ def _assert_userapi_a_created_user_reads_back_native(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Text")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Text")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
@@ -7247,38 +7685,42 @@ def _assert_userapi_a_created_user_reads_back_native(
                                                     ),
                                                     ls.attempt(
                                                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::User",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::UserApi",
-                                                                ).getUserByName(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Text",
+                                                        lambda: (
+                                                            ls.native_failures(
+                                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                lambda _failure: (
+                                                                    _lawspec_schema.from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::ApiError",
+                                                                        ),
+                                                                        _failure,
                                                                         MACHINE_BITS,
-                                                                    ),
+                                                                        symbols,
+                                                                    )
                                                                 ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
+                                                                lambda: (
+                                                                    ls.handler_schema(
+                                                                        _lawspec_schema,
+                                                                    ).from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::User",
+                                                                        ),
+                                                                        ls.handler(
+                                                                            symbols,
+                                                                            "lawtwin.petstore::ability::UserApi",
+                                                                        ).getUserByName(
+                                                                            ls.convert(
+                                                                                match_selection,
+                                                                                "Text",
+                                                                                MACHINE_BITS,
+                                                                            ),
+                                                                        ),
+                                                                        MACHINE_BITS,
+                                                                        symbols,
+                                                                    )
+                                                                ),
+                                                                (),
+                                                            )
                                                         ),
                                                         lambda _value: (
                                                             _lawspec_schema.construct(
@@ -7365,7 +7807,9 @@ def _assert_userapi_a_created_user_reads_back_native(
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::User"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::User",
+                                    ),
                                     sent,
                                     [
                                         [
@@ -7390,7 +7834,9 @@ def _assert_userapi_a_created_user_reads_back_native(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -7449,14 +7895,20 @@ def _assert_userapi_a_created_user_reads_back_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -7469,14 +7921,20 @@ def _assert_userapi_a_created_user_reads_back_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -7497,7 +7955,9 @@ def _assert_userapi_a_created_user_reads_back_native(
                             "lawtwin.petstore.model::type::User::User",
                             lambda id_, username, first_name, last_name, email, password, phone, user_status: (
                                 _lawspec_schema.construct(
-                                    _schema.Named("lawtwin.petstore.model::type::User"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::User",
+                                    ),
                                     "lawtwin.petstore.model::type::User::User",
                                     [
                                         id_,
@@ -7535,22 +7995,23 @@ def _assert_userapi_a_created_user_reads_back_native(
 
 
 # UserApi: |a created user reads back| [native] — ../src/api.lawspec:149
-# for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let sent =
-# let replacement = Maybe::Present(keyGiven) in match (body) {
+# for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let
+# sent = let replacement = Maybe::Present(keyGiven) in match (body) {
 # lawtwin.petstore.model::type::User::User lawspecFieldid lawspecFieldusername
-# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail lawspecFieldpassword
-# lawspecFieldphone lawspecFielduserStatus ->
+# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail
+# lawspecFieldpassword lawspecFieldphone lawspecFielduserStatus ->
 # lawtwin.petstore.model::type::User::User(lawspecFieldid, replacement,
-# lawspecFieldfirstName, lawspecFieldlastName, lawspecFieldemail, lawspecFieldpassword,
-# lawspecFieldphone, lawspecFielduserStatus) } in let it = attempt (createUser
-# (Maybe::Present(sent))) in match (it) { Either::Left _lawspecSelection0x0 -> true;
-# Either::Right _lawspecSelection0x0 -> let it = match (sent) {
-# lawtwin.petstore.model::type::User::User lawspecFieldid lawspecFieldusername
-# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail lawspecFieldpassword
-# lawspecFieldphone lawspecFielduserStatus -> lawspecFieldusername } in match (it) {
-# Maybe::Absent -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt
-# (getUserByName _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0))
-# } } = true end for all
+# lawspecFieldfirstName, lawspecFieldlastName, lawspecFieldemail,
+# lawspecFieldpassword, lawspecFieldphone, lawspecFielduserStatus) } in let it =
+# attempt (createUser (Maybe::Present(sent))) in match (it) { Either::Left
+# _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0 -> let it =
+# match (sent) { lawtwin.petstore.model::type::User::User lawspecFieldid
+# lawspecFieldusername lawspecFieldfirstName lawspecFieldlastName
+# lawspecFieldemail lawspecFieldpassword lawspecFieldphone
+# lawspecFielduserStatus -> lawspecFieldusername } in match (it) { Maybe::Absent
+# -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt
+# (getUserByName _match__lawspecSelection0x0_0) ==
+# Either::Right(_lawspecSelection0x0)) } } = true end for all
 _lawspec_inputs_userapi_a_created_user_reads_back_native = [
     "(data lawtwin.petstore.model::type::User (ctor lawtwin.petstore.model::type::User::User (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (int Int32 -2147483648 2147483647)))) (ref lawtwin.petstore.model::type::User)",
     "(text)",
@@ -7570,7 +8031,11 @@ def _lawspec_case_userapi_a_created_user_reads_back_native(_values):
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -7630,8 +8095,12 @@ def test_userapi_a_created_user_reads_back_native__replay():
     )
 
 
-# UserApi: |a created user reads back| [native], finite cases — ../src/api.lawspec:149
-def _check_userapi_a_created_user_reads_back_native(_case_values, _case_context):
+# UserApi: |a created user reads back| [native], finite cases —
+# ../src/api.lawspec:149
+def _check_userapi_a_created_user_reads_back_native(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     body = _case_values[0](symbols)
     key_given = _case_values[1](symbols)
@@ -7639,7 +8108,11 @@ def _check_userapi_a_created_user_reads_back_native(_case_values, _case_context)
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -7736,10 +8209,13 @@ _cases_userapi_a_created_user_reads_back_native = ls.register_finite_cases(
 )
 
 
-# UserApi: |a created user reads back| [native], property — ../src/api.lawspec:149
+# UserApi: |a created user reads back| [native], property —
+# ../src/api.lawspec:149
 @_lawspec_seeded
 @given(
-    _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::User")),
+    _lawspec_data_generator(
+        _schema.Named("lawtwin.petstore.model::type::User"),
+    ),
     st.text(),
 )
 def test_userapi_a_created_user_reads_back_native__property(body, key_given):
@@ -7789,7 +8265,9 @@ def test_userapi_a_created_user_reads_back_native__property(body, key_given):
                         _lawspec_schema.to_native(
                             _schema.Named("lawtwin.petstore::type::Service"),
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore::type::Service"),
+                                _schema.Named(
+                                    "lawtwin.petstore::type::Service",
+                                ),
                                 with_service,
                                 MACHINE_BITS,
                                 symbols,
@@ -7825,7 +8303,9 @@ def _assert_userapi_a_created_user_reads_back_reference(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::User"),
                         ],
                     ),
@@ -7836,7 +8316,10 @@ def _assert_userapi_a_created_user_reads_back_reference(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Text")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Text")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
@@ -7857,38 +8340,42 @@ def _assert_userapi_a_created_user_reads_back_reference(
                                                     ),
                                                     ls.attempt(
                                                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::User",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::UserApi",
-                                                                ).getUserByName(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Text",
+                                                        lambda: (
+                                                            ls.native_failures(
+                                                                "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                lambda _failure: (
+                                                                    _lawspec_schema.from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::ApiError",
+                                                                        ),
+                                                                        _failure,
                                                                         MACHINE_BITS,
-                                                                    ),
+                                                                        symbols,
+                                                                    )
                                                                 ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
+                                                                lambda: (
+                                                                    ls.handler_schema(
+                                                                        _lawspec_schema,
+                                                                    ).from_native(
+                                                                        _schema.Named(
+                                                                            "lawtwin.petstore.model::type::User",
+                                                                        ),
+                                                                        ls.handler(
+                                                                            symbols,
+                                                                            "lawtwin.petstore::ability::UserApi",
+                                                                        ).getUserByName(
+                                                                            ls.convert(
+                                                                                match_selection,
+                                                                                "Text",
+                                                                                MACHINE_BITS,
+                                                                            ),
+                                                                        ),
+                                                                        MACHINE_BITS,
+                                                                        symbols,
+                                                                    )
+                                                                ),
+                                                                (),
+                                                            )
                                                         ),
                                                         lambda _value: (
                                                             _lawspec_schema.construct(
@@ -7975,7 +8462,9 @@ def _assert_userapi_a_created_user_reads_back_reference(
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::User"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::User",
+                                    ),
                                     sent,
                                     [
                                         [
@@ -8000,7 +8489,9 @@ def _assert_userapi_a_created_user_reads_back_reference(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -8059,14 +8550,20 @@ def _assert_userapi_a_created_user_reads_back_reference(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -8079,14 +8576,20 @@ def _assert_userapi_a_created_user_reads_back_reference(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -8107,7 +8610,9 @@ def _assert_userapi_a_created_user_reads_back_reference(
                             "lawtwin.petstore.model::type::User::User",
                             lambda id_, username, first_name, last_name, email, password, phone, user_status: (
                                 _lawspec_schema.construct(
-                                    _schema.Named("lawtwin.petstore.model::type::User"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::User",
+                                    ),
                                     "lawtwin.petstore.model::type::User::User",
                                     [
                                         id_,
@@ -8145,22 +8650,23 @@ def _assert_userapi_a_created_user_reads_back_reference(
 
 
 # UserApi: |a created user reads back| [reference] — ../src/api.lawspec:149
-# for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let sent =
-# let replacement = Maybe::Present(keyGiven) in match (body) {
+# for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let
+# sent = let replacement = Maybe::Present(keyGiven) in match (body) {
 # lawtwin.petstore.model::type::User::User lawspecFieldid lawspecFieldusername
-# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail lawspecFieldpassword
-# lawspecFieldphone lawspecFielduserStatus ->
+# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail
+# lawspecFieldpassword lawspecFieldphone lawspecFielduserStatus ->
 # lawtwin.petstore.model::type::User::User(lawspecFieldid, replacement,
-# lawspecFieldfirstName, lawspecFieldlastName, lawspecFieldemail, lawspecFieldpassword,
-# lawspecFieldphone, lawspecFielduserStatus) } in let it = attempt (createUser
-# (Maybe::Present(sent))) in match (it) { Either::Left _lawspecSelection0x0 -> true;
-# Either::Right _lawspecSelection0x0 -> let it = match (sent) {
-# lawtwin.petstore.model::type::User::User lawspecFieldid lawspecFieldusername
-# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail lawspecFieldpassword
-# lawspecFieldphone lawspecFielduserStatus -> lawspecFieldusername } in match (it) {
-# Maybe::Absent -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt
-# (getUserByName _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0))
-# } } = true end for all
+# lawspecFieldfirstName, lawspecFieldlastName, lawspecFieldemail,
+# lawspecFieldpassword, lawspecFieldphone, lawspecFielduserStatus) } in let it =
+# attempt (createUser (Maybe::Present(sent))) in match (it) { Either::Left
+# _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0 -> let it =
+# match (sent) { lawtwin.petstore.model::type::User::User lawspecFieldid
+# lawspecFieldusername lawspecFieldfirstName lawspecFieldlastName
+# lawspecFieldemail lawspecFieldpassword lawspecFieldphone
+# lawspecFielduserStatus -> lawspecFieldusername } in match (it) { Maybe::Absent
+# -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt
+# (getUserByName _match__lawspecSelection0x0_0) ==
+# Either::Right(_lawspecSelection0x0)) } } = true end for all
 _lawspec_inputs_userapi_a_created_user_reads_back_reference = [
     "(data lawtwin.petstore.model::type::User (ctor lawtwin.petstore.model::type::User::User (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (int Int32 -2147483648 2147483647)))) (ref lawtwin.petstore.model::type::User)",
     "(text)",
@@ -8200,7 +8706,10 @@ def test_userapi_a_created_user_reads_back_reference__replay():
 
 # UserApi: |a created user reads back| [reference], finite cases —
 # ../src/api.lawspec:149
-def _check_userapi_a_created_user_reads_back_reference(_case_values, _case_context):
+def _check_userapi_a_created_user_reads_back_reference(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
     ls.install_handlers(
@@ -8263,10 +8772,13 @@ _cases_userapi_a_created_user_reads_back_reference = ls.register_finite_cases(
 )
 
 
-# UserApi: |a created user reads back| [reference], property — ../src/api.lawspec:149
+# UserApi: |a created user reads back| [reference], property —
+# ../src/api.lawspec:149
 @_lawspec_seeded
 @given(
-    _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::User")),
+    _lawspec_data_generator(
+        _schema.Named("lawtwin.petstore.model::type::User"),
+    ),
     st.text(),
 )
 def test_userapi_a_created_user_reads_back_reference__property(body, key_given):
@@ -8307,7 +8819,9 @@ def _assert_userapi_a_deleted_user_is_not_found_native(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::User"),
                         ],
                     ),
@@ -8318,118 +8832,18 @@ def _assert_userapi_a_deleted_user_is_not_found_native(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Text")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Text")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
                                         [
                                             "Maybe::Present",
                                             lambda match_selection: (
-                                                lambda gone: _lawspec_schema.equal(
-                                                    _schema.Named(
-                                                        "Either",
-                                                        [
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::ApiError",
-                                                            ),
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::User",
-                                                            ),
-                                                        ],
-                                                    ),
-                                                    ls.attempt(
-                                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::User",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::UserApi",
-                                                                ).getUserByName(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Text",
-                                                                        MACHINE_BITS,
-                                                                    ),
-                                                                ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::User",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Right",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::User",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::User",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Left",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                    ),
-                                                    _lawspec_schema.construct(
+                                                lambda gone: (
+                                                    _lawspec_schema.equal(
                                                         _schema.Named(
                                                             "Either",
                                                             [
@@ -8441,23 +8855,132 @@ def _assert_userapi_a_deleted_user_is_not_found_native(
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Either::Left",
-                                                        [
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::ApiError",
-                                                                ),
-                                                                "lawtwin.petstore.model::type::ApiError::NotFound",
-                                                                [],
-                                                                MACHINE_BITS,
-                                                                symbols,
+                                                        ls.attempt(
+                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                            lambda: (
+                                                                ls.native_failures(
+                                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                    lambda _failure: (
+                                                                        _lawspec_schema.from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _failure,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    lambda: (
+                                                                        ls.handler_schema(
+                                                                            _lawspec_schema,
+                                                                        ).from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::User",
+                                                                            ),
+                                                                            ls.handler(
+                                                                                symbols,
+                                                                                "lawtwin.petstore::ability::UserApi",
+                                                                            ).getUserByName(
+                                                                                ls.convert(
+                                                                                    match_selection,
+                                                                                    "Text",
+                                                                                    MACHINE_BITS,
+                                                                                ),
+                                                                            ),
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    (),
+                                                                )
                                                             ),
-                                                        ],
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::User",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Right",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::User",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::User",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Left",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                        ),
+                                                        _lawspec_schema.construct(
+                                                            _schema.Named(
+                                                                "Either",
+                                                                [
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::User",
+                                                                    ),
+                                                                ],
+                                                            ),
+                                                            "Either::Left",
+                                                            [
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                                    [],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                ),
+                                                            ],
+                                                            MACHINE_BITS,
+                                                            symbols,
+                                                        ),
                                                         MACHINE_BITS,
                                                         symbols,
-                                                    ),
-                                                    MACHINE_BITS,
-                                                    symbols,
+                                                    )
                                                 )
                                             )(
                                                 ls.attempt(
@@ -8554,7 +9077,9 @@ def _assert_userapi_a_deleted_user_is_not_found_native(
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::User"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::User",
+                                    ),
                                     sent,
                                     [
                                         [
@@ -8579,7 +9104,9 @@ def _assert_userapi_a_deleted_user_is_not_found_native(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -8638,14 +9165,20 @@ def _assert_userapi_a_deleted_user_is_not_found_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -8658,14 +9191,20 @@ def _assert_userapi_a_deleted_user_is_not_found_native(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -8686,7 +9225,9 @@ def _assert_userapi_a_deleted_user_is_not_found_native(
                             "lawtwin.petstore.model::type::User::User",
                             lambda id_, username, first_name, last_name, email, password, phone, user_status: (
                                 _lawspec_schema.construct(
-                                    _schema.Named("lawtwin.petstore.model::type::User"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::User",
+                                    ),
                                     "lawtwin.petstore.model::type::User::User",
                                     [
                                         id_,
@@ -8724,24 +9265,25 @@ def _assert_userapi_a_deleted_user_is_not_found_native(
 
 
 # UserApi: |a deleted user is not found| [native] — ../src/api.lawspec:161
-# for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let sent =
-# let replacement = Maybe::Present(keyGiven) in match (body) {
+# for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let
+# sent = let replacement = Maybe::Present(keyGiven) in match (body) {
 # lawtwin.petstore.model::type::User::User lawspecFieldid lawspecFieldusername
-# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail lawspecFieldpassword
-# lawspecFieldphone lawspecFielduserStatus ->
+# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail
+# lawspecFieldpassword lawspecFieldphone lawspecFielduserStatus ->
 # lawtwin.petstore.model::type::User::User(lawspecFieldid, replacement,
-# lawspecFieldfirstName, lawspecFieldlastName, lawspecFieldemail, lawspecFieldpassword,
-# lawspecFieldphone, lawspecFielduserStatus) } in let it = attempt (createUser
-# (Maybe::Present(sent))) in match (it) { Either::Left _lawspecSelection0x0 -> true;
-# Either::Right _lawspecSelection0x0 -> let it = match (sent) {
-# lawtwin.petstore.model::type::User::User lawspecFieldid lawspecFieldusername
-# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail lawspecFieldpassword
-# lawspecFieldphone lawspecFielduserStatus -> lawspecFieldusername } in match (it) {
-# Maybe::Absent -> false; Maybe::Present _match__lawspecSelection0x0_0 -> let gone =
-# attempt (deleteUser _match__lawspecSelection0x0_0) in (attempt (getUserByName
+# lawspecFieldfirstName, lawspecFieldlastName, lawspecFieldemail,
+# lawspecFieldpassword, lawspecFieldphone, lawspecFielduserStatus) } in let it =
+# attempt (createUser (Maybe::Present(sent))) in match (it) { Either::Left
+# _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0 -> let it =
+# match (sent) { lawtwin.petstore.model::type::User::User lawspecFieldid
+# lawspecFieldusername lawspecFieldfirstName lawspecFieldlastName
+# lawspecFieldemail lawspecFieldpassword lawspecFieldphone
+# lawspecFielduserStatus -> lawspecFieldusername } in match (it) { Maybe::Absent
+# -> false; Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt
+# (deleteUser _match__lawspecSelection0x0_0) in (attempt (getUserByName
 # _match__lawspecSelection0x0_0) ==
-# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for
-# all
+# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+# end for all
 _lawspec_inputs_userapi_a_deleted_user_is_not_found_native = [
     "(data lawtwin.petstore.model::type::User (ctor lawtwin.petstore.model::type::User::User (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (int Int32 -2147483648 2147483647)))) (ref lawtwin.petstore.model::type::User)",
     "(text)",
@@ -8761,7 +9303,11 @@ def _lawspec_case_userapi_a_deleted_user_is_not_found_native(_values):
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -8821,8 +9367,12 @@ def test_userapi_a_deleted_user_is_not_found_native__replay():
     )
 
 
-# UserApi: |a deleted user is not found| [native], finite cases — ../src/api.lawspec:161
-def _check_userapi_a_deleted_user_is_not_found_native(_case_values, _case_context):
+# UserApi: |a deleted user is not found| [native], finite cases —
+# ../src/api.lawspec:161
+def _check_userapi_a_deleted_user_is_not_found_native(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     body = _case_values[0](symbols)
     key_given = _case_values[1](symbols)
@@ -8830,7 +9380,11 @@ def _check_userapi_a_deleted_user_is_not_found_native(_case_values, _case_contex
         _schema.Named("lawtwin.petstore::type::Service"),
         impl.connectService(
             ls.convert(
-                ls.convert(ls.literal({"type": "Unit"}, symbols), "Unit", MACHINE_BITS),
+                ls.convert(
+                    ls.literal({"type": "Unit"}, symbols),
+                    "Unit",
+                    MACHINE_BITS,
+                ),
                 "Unit",
                 MACHINE_BITS,
             ),
@@ -8927,10 +9481,13 @@ _cases_userapi_a_deleted_user_is_not_found_native = ls.register_finite_cases(
 )
 
 
-# UserApi: |a deleted user is not found| [native], property — ../src/api.lawspec:161
+# UserApi: |a deleted user is not found| [native], property —
+# ../src/api.lawspec:161
 @_lawspec_seeded
 @given(
-    _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::User")),
+    _lawspec_data_generator(
+        _schema.Named("lawtwin.petstore.model::type::User"),
+    ),
     st.text(),
 )
 def test_userapi_a_deleted_user_is_not_found_native__property(body, key_given):
@@ -8980,7 +9537,9 @@ def test_userapi_a_deleted_user_is_not_found_native__property(body, key_given):
                         _lawspec_schema.to_native(
                             _schema.Named("lawtwin.petstore::type::Service"),
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore::type::Service"),
+                                _schema.Named(
+                                    "lawtwin.petstore::type::Service",
+                                ),
                                 with_service,
                                 MACHINE_BITS,
                                 symbols,
@@ -9016,7 +9575,9 @@ def _assert_userapi_a_deleted_user_is_not_found_reference(
                     _schema.Named(
                         "Either",
                         [
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _schema.Named("lawtwin.petstore.model::type::User"),
                         ],
                     ),
@@ -9027,118 +9588,18 @@ def _assert_userapi_a_deleted_user_is_not_found_reference(
                             "Either::Right",
                             lambda selection_2: (
                                 lambda it_2: _lawspec_schema.match(
-                                    _schema.Named("Maybe", [_schema.Named("Text")]),
+                                    _schema.Named(
+                                        "Maybe",
+                                        [_schema.Named("Text")],
+                                    ),
                                     it_2,
                                     [
                                         ["Maybe::Absent", lambda: False],
                                         [
                                             "Maybe::Present",
                                             lambda match_selection: (
-                                                lambda gone: _lawspec_schema.equal(
-                                                    _schema.Named(
-                                                        "Either",
-                                                        [
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::ApiError",
-                                                            ),
-                                                            _schema.Named(
-                                                                "lawtwin.petstore.model::type::User",
-                                                            ),
-                                                        ],
-                                                    ),
-                                                    ls.attempt(
-                                                        "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                        lambda: ls.native_failures(
-                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
-                                                            lambda _failure: (
-                                                                _lawspec_schema.from_native(
-                                                                    _schema.Named(
-                                                                        "lawtwin.petstore.model::type::ApiError",
-                                                                    ),
-                                                                    _failure,
-                                                                    MACHINE_BITS,
-                                                                    symbols,
-                                                                )
-                                                            ),
-                                                            lambda: ls.handler_schema(
-                                                                _lawspec_schema,
-                                                            ).from_native(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::User",
-                                                                ),
-                                                                ls.handler(
-                                                                    symbols,
-                                                                    "lawtwin.petstore::ability::UserApi",
-                                                                ).getUserByName(
-                                                                    ls.convert(
-                                                                        match_selection,
-                                                                        "Text",
-                                                                        MACHINE_BITS,
-                                                                    ),
-                                                                ),
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            ),
-                                                            (),
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::User",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Right",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::User",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                        lambda _value: (
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "Either",
-                                                                    [
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::User",
-                                                                        ),
-                                                                    ],
-                                                                ),
-                                                                "Either::Left",
-                                                                [
-                                                                    _lawspec_schema.validate(
-                                                                        _schema.Named(
-                                                                            "lawtwin.petstore.model::type::ApiError",
-                                                                        ),
-                                                                        _value,
-                                                                        MACHINE_BITS,
-                                                                        symbols,
-                                                                    ),
-                                                                ],
-                                                                MACHINE_BITS,
-                                                                symbols,
-                                                            )
-                                                        ),
-                                                    ),
-                                                    _lawspec_schema.construct(
+                                                lambda gone: (
+                                                    _lawspec_schema.equal(
                                                         _schema.Named(
                                                             "Either",
                                                             [
@@ -9150,23 +9611,132 @@ def _assert_userapi_a_deleted_user_is_not_found_reference(
                                                                 ),
                                                             ],
                                                         ),
-                                                        "Either::Left",
-                                                        [
-                                                            _lawspec_schema.construct(
-                                                                _schema.Named(
-                                                                    "lawtwin.petstore.model::type::ApiError",
-                                                                ),
-                                                                "lawtwin.petstore.model::type::ApiError::NotFound",
-                                                                [],
-                                                                MACHINE_BITS,
-                                                                symbols,
+                                                        ls.attempt(
+                                                            "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                            lambda: (
+                                                                ls.native_failures(
+                                                                    "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
+                                                                    lambda _failure: (
+                                                                        _lawspec_schema.from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _failure,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    lambda: (
+                                                                        ls.handler_schema(
+                                                                            _lawspec_schema,
+                                                                        ).from_native(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::User",
+                                                                            ),
+                                                                            ls.handler(
+                                                                                symbols,
+                                                                                "lawtwin.petstore::ability::UserApi",
+                                                                            ).getUserByName(
+                                                                                ls.convert(
+                                                                                    match_selection,
+                                                                                    "Text",
+                                                                                    MACHINE_BITS,
+                                                                                ),
+                                                                            ),
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        )
+                                                                    ),
+                                                                    (),
+                                                                )
                                                             ),
-                                                        ],
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::User",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Right",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::User",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                            lambda _value: (
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "Either",
+                                                                        [
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::User",
+                                                                            ),
+                                                                        ],
+                                                                    ),
+                                                                    "Either::Left",
+                                                                    [
+                                                                        _lawspec_schema.validate(
+                                                                            _schema.Named(
+                                                                                "lawtwin.petstore.model::type::ApiError",
+                                                                            ),
+                                                                            _value,
+                                                                            MACHINE_BITS,
+                                                                            symbols,
+                                                                        ),
+                                                                    ],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                )
+                                                            ),
+                                                        ),
+                                                        _lawspec_schema.construct(
+                                                            _schema.Named(
+                                                                "Either",
+                                                                [
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::User",
+                                                                    ),
+                                                                ],
+                                                            ),
+                                                            "Either::Left",
+                                                            [
+                                                                _lawspec_schema.construct(
+                                                                    _schema.Named(
+                                                                        "lawtwin.petstore.model::type::ApiError",
+                                                                    ),
+                                                                    "lawtwin.petstore.model::type::ApiError::NotFound",
+                                                                    [],
+                                                                    MACHINE_BITS,
+                                                                    symbols,
+                                                                ),
+                                                            ],
+                                                            MACHINE_BITS,
+                                                            symbols,
+                                                        ),
                                                         MACHINE_BITS,
                                                         symbols,
-                                                    ),
-                                                    MACHINE_BITS,
-                                                    symbols,
+                                                    )
                                                 )
                                             )(
                                                 ls.attempt(
@@ -9263,7 +9833,9 @@ def _assert_userapi_a_deleted_user_is_not_found_reference(
                                 )
                             )(
                                 _lawspec_schema.match(
-                                    _schema.Named("lawtwin.petstore.model::type::User"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::User",
+                                    ),
                                     sent,
                                     [
                                         [
@@ -9288,7 +9860,9 @@ def _assert_userapi_a_deleted_user_is_not_found_reference(
                     lambda: ls.native_failures(
                         "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                         lambda _failure: _lawspec_schema.from_native(
-                            _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::ApiError",
+                            ),
                             _failure,
                             MACHINE_BITS,
                             symbols,
@@ -9347,14 +9921,20 @@ def _assert_userapi_a_deleted_user_is_not_found_reference(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                             ],
                         ),
                         "Either::Right",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -9367,14 +9947,20 @@ def _assert_userapi_a_deleted_user_is_not_found_reference(
                         _schema.Named(
                             "Either",
                             [
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
-                                _schema.Named("lawtwin.petstore.model::type::User"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::User",
+                                ),
                             ],
                         ),
                         "Either::Left",
                         [
                             _lawspec_schema.validate(
-                                _schema.Named("lawtwin.petstore.model::type::ApiError"),
+                                _schema.Named(
+                                    "lawtwin.petstore.model::type::ApiError",
+                                ),
                                 _value,
                                 MACHINE_BITS,
                                 symbols,
@@ -9395,7 +9981,9 @@ def _assert_userapi_a_deleted_user_is_not_found_reference(
                             "lawtwin.petstore.model::type::User::User",
                             lambda id_, username, first_name, last_name, email, password, phone, user_status: (
                                 _lawspec_schema.construct(
-                                    _schema.Named("lawtwin.petstore.model::type::User"),
+                                    _schema.Named(
+                                        "lawtwin.petstore.model::type::User",
+                                    ),
                                     "lawtwin.petstore.model::type::User::User",
                                     [
                                         id_,
@@ -9433,24 +10021,25 @@ def _assert_userapi_a_deleted_user_is_not_found_reference(
 
 
 # UserApi: |a deleted user is not found| [reference] — ../src/api.lawspec:161
-# for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let sent =
-# let replacement = Maybe::Present(keyGiven) in match (body) {
+# for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) => let
+# sent = let replacement = Maybe::Present(keyGiven) in match (body) {
 # lawtwin.petstore.model::type::User::User lawspecFieldid lawspecFieldusername
-# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail lawspecFieldpassword
-# lawspecFieldphone lawspecFielduserStatus ->
+# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail
+# lawspecFieldpassword lawspecFieldphone lawspecFielduserStatus ->
 # lawtwin.petstore.model::type::User::User(lawspecFieldid, replacement,
-# lawspecFieldfirstName, lawspecFieldlastName, lawspecFieldemail, lawspecFieldpassword,
-# lawspecFieldphone, lawspecFielduserStatus) } in let it = attempt (createUser
-# (Maybe::Present(sent))) in match (it) { Either::Left _lawspecSelection0x0 -> true;
-# Either::Right _lawspecSelection0x0 -> let it = match (sent) {
-# lawtwin.petstore.model::type::User::User lawspecFieldid lawspecFieldusername
-# lawspecFieldfirstName lawspecFieldlastName lawspecFieldemail lawspecFieldpassword
-# lawspecFieldphone lawspecFielduserStatus -> lawspecFieldusername } in match (it) {
-# Maybe::Absent -> false; Maybe::Present _match__lawspecSelection0x0_0 -> let gone =
-# attempt (deleteUser _match__lawspecSelection0x0_0) in (attempt (getUserByName
+# lawspecFieldfirstName, lawspecFieldlastName, lawspecFieldemail,
+# lawspecFieldpassword, lawspecFieldphone, lawspecFielduserStatus) } in let it =
+# attempt (createUser (Maybe::Present(sent))) in match (it) { Either::Left
+# _lawspecSelection0x0 -> true; Either::Right _lawspecSelection0x0 -> let it =
+# match (sent) { lawtwin.petstore.model::type::User::User lawspecFieldid
+# lawspecFieldusername lawspecFieldfirstName lawspecFieldlastName
+# lawspecFieldemail lawspecFieldpassword lawspecFieldphone
+# lawspecFielduserStatus -> lawspecFieldusername } in match (it) { Maybe::Absent
+# -> false; Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt
+# (deleteUser _match__lawspecSelection0x0_0) in (attempt (getUserByName
 # _match__lawspecSelection0x0_0) ==
-# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for
-# all
+# Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
+# end for all
 _lawspec_inputs_userapi_a_deleted_user_is_not_found_reference = [
     "(data lawtwin.petstore.model::type::User (ctor lawtwin.petstore.model::type::User::User (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (text)) (maybe (int Int32 -2147483648 2147483647)))) (ref lawtwin.petstore.model::type::User)",
     "(text)",
@@ -9490,7 +10079,10 @@ def test_userapi_a_deleted_user_is_not_found_reference__replay():
 
 # UserApi: |a deleted user is not found| [reference], finite cases —
 # ../src/api.lawspec:161
-def _check_userapi_a_deleted_user_is_not_found_reference(_case_values, _case_context):
+def _check_userapi_a_deleted_user_is_not_found_reference(
+    _case_values,
+    _case_context,
+):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
     ls.install_handlers(
@@ -9553,13 +10145,19 @@ _cases_userapi_a_deleted_user_is_not_found_reference = ls.register_finite_cases(
 )
 
 
-# UserApi: |a deleted user is not found| [reference], property — ../src/api.lawspec:161
+# UserApi: |a deleted user is not found| [reference], property —
+# ../src/api.lawspec:161
 @_lawspec_seeded
 @given(
-    _lawspec_data_generator(_schema.Named("lawtwin.petstore.model::type::User")),
+    _lawspec_data_generator(
+        _schema.Named("lawtwin.petstore.model::type::User"),
+    ),
     st.text(),
 )
-def test_userapi_a_deleted_user_is_not_found_reference__property(body, key_given):
+def test_userapi_a_deleted_user_is_not_found_reference__property(
+    body,
+    key_given,
+):
     symbols = {}
     _lawspec_shared_reference = _abilities.Reference(symbols)
     ls.install_handlers(

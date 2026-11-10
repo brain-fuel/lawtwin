@@ -276,7 +276,12 @@ def make_schema():
                     ),
                 ],
             ),
-            _schema.Definition("lawtwin.petstore::type::Service", 0, [], handle=True),
+            _schema.Definition(
+                "lawtwin.petstore::type::Service",
+                0,
+                [],
+                handle=True,
+            ),
             _schema.Definition(
                 "lawtwin.petstore.model::type::ApiError",
                 0,
@@ -312,7 +317,10 @@ def make_schema():
                         [
                             _schema.Field(
                                 "id",
-                                _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                _schema.Named(
+                                    "Maybe",
+                                    [_schema.Named("Int64")],
+                                ),
                             ),
                             _schema.Field("name", _schema.Named("Text")),
                             _schema.Field(
@@ -371,7 +379,10 @@ def make_schema():
                         [
                             _schema.Field(
                                 "id",
-                                _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                _schema.Named(
+                                    "Maybe",
+                                    [_schema.Named("Int64")],
+                                ),
                             ),
                             _schema.Field(
                                 "name",
@@ -391,7 +402,10 @@ def make_schema():
                         [
                             _schema.Field(
                                 "id",
-                                _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                _schema.Named(
+                                    "Maybe",
+                                    [_schema.Named("Int64")],
+                                ),
                             ),
                             _schema.Field(
                                 "name",
@@ -432,7 +446,10 @@ def make_schema():
                         [
                             _schema.Field(
                                 "code",
-                                _schema.Named("Maybe", [_schema.Named("Int32")]),
+                                _schema.Named(
+                                    "Maybe",
+                                    [_schema.Named("Int32")],
+                                ),
                             ),
                             _schema.Field(
                                 "type_",
@@ -456,15 +473,24 @@ def make_schema():
                         [
                             _schema.Field(
                                 "id",
-                                _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                _schema.Named(
+                                    "Maybe",
+                                    [_schema.Named("Int64")],
+                                ),
                             ),
                             _schema.Field(
                                 "petId",
-                                _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                _schema.Named(
+                                    "Maybe",
+                                    [_schema.Named("Int64")],
+                                ),
                             ),
                             _schema.Field(
                                 "quantity",
-                                _schema.Named("Maybe", [_schema.Named("Int32")]),
+                                _schema.Named(
+                                    "Maybe",
+                                    [_schema.Named("Int32")],
+                                ),
                             ),
                             _schema.Field(
                                 "shipDate",
@@ -520,7 +546,10 @@ def make_schema():
                         [
                             _schema.Field(
                                 "id",
-                                _schema.Named("Maybe", [_schema.Named("Int64")]),
+                                _schema.Named(
+                                    "Maybe",
+                                    [_schema.Named("Int64")],
+                                ),
                             ),
                             _schema.Field(
                                 "username",
@@ -548,7 +577,10 @@ def make_schema():
                             ),
                             _schema.Field(
                                 "userStatus",
-                                _schema.Named("Maybe", [_schema.Named("Int32")]),
+                                _schema.Named(
+                                    "Maybe",
+                                    [_schema.Named("Int32")],
+                                ),
                             ),
                         ],
                         User,
@@ -587,7 +619,10 @@ def make_schema():
                                     ],
                                 ),
                             ),
-                            _schema.Field("nextOrderKey", _schema.Named("Int64")),
+                            _schema.Field(
+                                "nextOrderKey",
+                                _schema.Named("Int64"),
+                            ),
                             _schema.Field(
                                 "users",
                                 _schema.Named(

@@ -20,7 +20,8 @@ import java.util.function.Supplier;
 /**
  * Portable scalar and collection values, independent of test frameworks.
  *
- * <p>A law must mean the same thing on every target, so this class implements LawSpec's own
+ * <p>
+ * A law must mean the same thing on every target, so this class implements LawSpec's own
  * arithmetic, equality and conversions instead of Java's: integers are exact and reach a bounded
  * type only through a checked conversion, never wrapping as int and long do, exact division gives a
  * rational, decimals ignore any MathContext, and floats follow IEEE 754 at their declared
@@ -31,7 +32,8 @@ import java.util.function.Supplier;
 public final class LawSpecRuntime
 {
   private LawSpecRuntime()
-  {}
+  {
+  }
 
   /** A value is materialized in each test invocation's fresh symbol context. */
   @FunctionalInterface
@@ -42,13 +44,16 @@ public final class LawSpecRuntime
 
   /** Ordered finite-cover data. The planner establishes admission and completeness. */
   public sealed interface FiniteCover permits FiniteEnd, FiniteChoices
-  {}
+  {
+  }
 
   private record FiniteEnd(long repetitions) implements FiniteCover
-  {}
+  {
+  }
 
   private record FiniteChoices(List<FiniteBranch> alternatives) implements FiniteCover
-  {}
+  {
+  }
 
   @FunctionalInterface
   public interface FiniteDomain
@@ -57,7 +62,8 @@ public final class LawSpecRuntime
   }
 
   public record FiniteBranch(FiniteDomain domain, FiniteCover suffix)
-  {}
+  {
+  }
 
   /** A stable, one-based case index and deferred values; no mutable values are shared. */
   public record FiniteCase(long index, List<FiniteValue> factories)
@@ -219,8 +225,8 @@ public final class LawSpecRuntime
   }
 
   /**
-   * The native JUnit source may select one one-based case with -Dlawspec.case=N.
-   * An invalid or absent selected row fails discovery instead of yielding an empty passing source.
+   * The native JUnit source may select one one-based case with -Dlawspec.case=N. An invalid or
+   * absent selected row fails discovery instead of yielding an empty passing source.
    */
   public static Iterable<FiniteCase> selectedFiniteCases(FiniteCover cover, String count)
   {
@@ -300,7 +306,8 @@ public final class LawSpecRuntime
   }
 
   public record Complex(double real, double imaginary)
-  {}
+  {
+  }
 
   /**
    * A handle's logical data: the native object an adapter made, passed along unopened. Two handles
@@ -376,28 +383,36 @@ public final class LawSpecRuntime
   }
 
   public record SymbolValue(String description)
-  {}
+  {
+  }
 
   public record Presence(boolean present, Value value)
-  {}
+  {
+  }
 
   public sealed interface Maybe<T> permits Absent, Present
-  {}
+  {
+  }
 
   public record Absent<T>() implements Maybe<T>
-  {}
+  {
+  }
 
   public record Present<T>(T value) implements Maybe<T>
-  {}
+  {
+  }
 
   public sealed interface Either<L, R> permits Left, Right
-  {}
+  {
+  }
 
   public record Left<L, R>(L value) implements Either<L, R>
-  {}
+  {
+  }
 
   public record Right<L, R>(R value) implements Either<L, R>
-  {}
+  {
+  }
 
   public record Data(String tag, List<Value> fields)
   {
@@ -446,8 +461,8 @@ public final class LawSpecRuntime
 
   public static Value decimal(String c, String e)
   {
-    return new Value(
-        "Decimal", new BigDecimal(new BigInteger(c), Math.negateExact(Integer.parseInt(e))));
+    return new Value("Decimal",
+        new BigDecimal(new BigInteger(c), Math.negateExact(Integer.parseInt(e))));
   }
 
   public static Value rational(String n, String d)
@@ -462,10 +477,8 @@ public final class LawSpecRuntime
 
   public static Value floating(String t, String bits)
   {
-    return new Value(
-        t,
-        t.equals("Float32")
-            ? (double) Float.intBitsToFloat(Integer.parseUnsignedInt(bits, 16))
+    return new Value(t,
+        t.equals("Float32") ? (double) Float.intBitsToFloat(Integer.parseUnsignedInt(bits, 16))
             : Double.longBitsToDouble(Long.parseUnsignedLong(bits, 16)));
   }
 
@@ -482,20 +495,18 @@ public final class LawSpecRuntime
   /** Text written as the string it is: Utf16Text by its UTF-16 units, other text by code points. */
   public static Value text(String t, String value)
   {
-    return sequence(
-        t, t.equals("Utf16Text") ? value.chars().toArray() : value.codePoints().toArray());
+    return sequence(t,
+        t.equals("Utf16Text") ? value.chars().toArray() : value.codePoints().toArray());
   }
 
   /**
-   * A native binding's error, as its bridge throws it: a value that fails to convert or validate
-   * is reported in the binding's context; any other error is unchanged.
+   * A native binding's error, as its bridge throws it: a value that fails to convert or validate is
+   * reported in the binding's context; any other error is unchanged.
    */
   public static RuntimeException nativeBindingFailure(String context, RuntimeException error)
   {
-    if (error instanceof IllegalArgumentException
-        || error instanceof IllegalStateException
-        || error instanceof ClassCastException
-        || error instanceof ArithmeticException)
+    if (error instanceof IllegalArgumentException || error instanceof IllegalStateException
+        || error instanceof ClassCastException || error instanceof ArithmeticException)
     {
       return new IllegalArgumentException(context + ": " + error.getMessage(), error);
     }
@@ -524,7 +535,9 @@ public final class LawSpecRuntime
   }
 
   /** A property's drawn inputs and the symbols they were drawn with. */
-  public record Inputs(List<Value> values, Map<String, Object> symbols) {}
+  public record Inputs(List<Value> values, Map<String, Object> symbols)
+  {
+  }
 
   public static Value character(String t, int c)
   {
@@ -557,9 +570,7 @@ public final class LawSpecRuntime
 
   private static List<Value> listElements(Value value)
   {
-    if (value == null
-        || !value.type.startsWith("List ")
-        || !(value.data instanceof List<?> values))
+    if (value == null || !value.type.startsWith("List ") || !(value.data instanceof List<?> values))
     {
       throw new IllegalArgumentException("List value required");
     }
@@ -679,8 +690,7 @@ public final class LawSpecRuntime
 
   private static Data dataValue(Value value)
   {
-    if (value == null
-        || !(value.data instanceof Data data)
+    if (value == null || !(value.data instanceof Data data)
         || sumFields(value.type, data.tag).size() != data.fields.size())
     {
       throw new IllegalArgumentException("invalid sum value representation");
@@ -688,34 +698,31 @@ public final class LawSpecRuntime
     return data;
   }
 
-  public static <T> Maybe<T> maybeToNative(
-      String type, Value value, int bits, Function<Value, T> element)
+  public static <T> Maybe<T> maybeToNative(String type, Value value, int bits,
+      Function<Value, T> element)
   {
     if (!type.startsWith("Maybe "))
     {
       throw new IllegalArgumentException("Maybe type required");
     }
     var data = dataValue(convert(type, value, bits));
-    return data.tag.equals("Maybe::Absent")
-        ? new Absent<>()
+    return data.tag.equals("Maybe::Absent") ? new Absent<>()
         : new Present<>(element.apply(data.fields.getFirst()));
   }
 
-  public static <L, R> Either<L, R> eitherToNative(
-      String type, Value value, int bits, Function<Value, L> left, Function<Value, R> right)
+  public static <L, R> Either<L, R> eitherToNative(String type, Value value, int bits,
+      Function<Value, L> left, Function<Value, R> right)
   {
     if (!type.startsWith("Either "))
     {
       throw new IllegalArgumentException("Either type required");
     }
     var data = dataValue(convert(type, value, bits));
-    return data.tag.equals("Either::Left")
-        ? new Left<>(left.apply(data.fields.getFirst()))
+    return data.tag.equals("Either::Left") ? new Left<>(left.apply(data.fields.getFirst()))
         : new Right<>(right.apply(data.fields.getFirst()));
   }
 
-  public static Value matchMaybe(
-      Value value, Supplier<Value> nothing, Function<Value, Value> just)
+  public static Value matchMaybe(Value value, Supplier<Value> nothing, Function<Value, Value> just)
   {
     var data = dataValue(value);
     return switch (data.tag)
@@ -726,8 +733,8 @@ public final class LawSpecRuntime
     };
   }
 
-  public static Value matchEither(
-      Value value, Function<Value, Value> left, Function<Value, Value> right)
+  public static Value matchEither(Value value, Function<Value, Value> left,
+      Function<Value, Value> right)
   {
     var data = dataValue(value);
     return switch (data.tag)
@@ -738,8 +745,8 @@ public final class LawSpecRuntime
     };
   }
 
-  public static <T> List<T> listToNative(
-      String type, Value value, int bits, Function<Value, T> element)
+  public static <T> List<T> listToNative(String type, Value value, int bits,
+      Function<Value, T> element)
   {
     var values = listElements(convert(type, value, bits));
     var result = new ArrayList<T>(values.size());
@@ -750,8 +757,8 @@ public final class LawSpecRuntime
     return result;
   }
 
-  public static Value refineElements(
-      Value value, Function<Value, Value> prepare, Function<Value, Value> predicate)
+  public static Value refineElements(Value value, Function<Value, Value> prepare,
+      Function<Value, Value> predicate)
   {
     var accepted = new ArrayList<Value>();
     for (Value item : listElements(value))
@@ -779,15 +786,15 @@ public final class LawSpecRuntime
       }
       catch (RuntimeException error)
       {
-        throw new IllegalArgumentException(
-            "List element " + index + ": " + error.getMessage(), error);
+        throw new IllegalArgumentException("List element " + index + ": " + error.getMessage(),
+            error);
       }
     }
     return bool(true);
   }
 
-  public static Value searchElements(
-      boolean universal, Value value, Function<Value, Value> predicate)
+  public static Value searchElements(boolean universal, Value value,
+      Function<Value, Value> predicate)
   {
     int decisive = universal ? -1 : 1;
     int result = -decisive;
@@ -810,8 +817,8 @@ public final class LawSpecRuntime
     return integer("Int8", Integer.toString(result));
   }
 
-  public static Value matchList(
-      Value value, Supplier<Value> nil, BiFunction<Value, Value, Value> cons)
+  public static Value matchList(Value value, Supplier<Value> nil,
+      BiFunction<Value, Value, Value> cons)
   {
     var values = listElements(value);
     if (values.isEmpty())
@@ -895,8 +902,7 @@ public final class LawSpecRuntime
       }
       if (v.data instanceof Presence p)
       {
-        return new Value(
-            t,
+        return new Value(t,
             new Presence(p.present, p.present ? convert(t.substring(i + 1), p.value, bits) : null));
       }
       throw new IllegalArgumentException("tagged presence required");
@@ -920,10 +926,8 @@ public final class LawSpecRuntime
         }
         if (!t.equals("BigUInt"))
         {
-          int w =
-              t.endsWith("Size") || t.equals("UIntPtr")
-                  ? bits
-                  : Integer.parseInt(t.replaceAll("\\D", ""));
+          int w = t.endsWith("Size") || t.equals("UIntPtr") ? bits
+              : Integer.parseInt(t.replaceAll("\\D", ""));
           boolean signed = t.startsWith("Int");
           BigInteger hi = BigInteger.ONE.shiftLeft(signed ? w - 1 : w).subtract(BigInteger.ONE);
           BigInteger lo = signed ? BigInteger.ONE.shiftLeft(w - 1).negate() : BigInteger.ZERO;
@@ -939,21 +943,19 @@ public final class LawSpecRuntime
     {
       Ratio r =
           v.data instanceof Double d ? ratio(new Value("Decimal", new BigDecimal(d))) : ratio(v);
-      return new Value(
-          t, t.equals("Rational") ? r : new BigDecimal(r.n).divide(new BigDecimal(r.d)));
+      return new Value(t,
+          t.equals("Rational") ? r : new BigDecimal(r.n).divide(new BigDecimal(r.d)));
     }
     if (t.startsWith("Float"))
     {
-      return new Value(
-          t, exactType(v.type) ? exactFloat(ratio(v), t.equals("Float32")) : precision(t, real(v)));
+      return new Value(t,
+          exactType(v.type) ? exactFloat(ratio(v), t.equals("Float32")) : precision(t, real(v)));
     }
     if (t.startsWith("Complex"))
     {
-      Complex c =
-          v.data instanceof Complex z
-              ? z
-              : new Complex(
-                  (double) convert(t.equals("Complex64") ? "Float32" : "Float64", v, bits).data, 0);
+      Complex c = v.data instanceof Complex z ? z
+          : new Complex(
+              (double) convert(t.equals("Complex64") ? "Float32" : "Float64", v, bits).data, 0);
       return new Value(t, new Complex(precision(t, c.real), precision(t, c.imaginary)));
     }
     if (!t.equals(v.type))
@@ -966,10 +968,8 @@ public final class LawSpecRuntime
   private static boolean validUnit(String t, int c)
   {
     return c >= 0
-        && c
-            <= (t.equals("Bytes")
-                ? 255
-                : t.equals("Utf16Text") || t.equals("CodeUnit16") ? 65535 : 1114111)
+        && c <= (t.equals("Bytes") ? 255
+            : t.equals("Utf16Text") || t.equals("CodeUnit16") ? 65535 : 1114111)
         && (!(t.equals("Char") || t.equals("Text")) || c < 55296 || c > 57343);
   }
 
@@ -1058,9 +1058,8 @@ public final class LawSpecRuntime
     }
     else if (t.startsWith("Float"))
     {
-      valid =
-          data instanceof Double d
-              && (t.equals("Float64") || Double.isNaN(d) || (double) (float) d.doubleValue() == d);
+      valid = data instanceof Double d
+          && (t.equals("Float64") || Double.isNaN(d) || (double) (float) d.doubleValue() == d);
     }
     else if (t.startsWith("Complex"))
     {
@@ -1091,8 +1090,8 @@ public final class LawSpecRuntime
     }
     if (data instanceof Presence p && p.present)
     {
-      return new Value(
-          t, new Presence(true, validate(t.substring(t.indexOf(' ') + 1), p.value, bits)));
+      return new Value(t,
+          new Presence(true, validate(t.substring(t.indexOf(' ') + 1), p.value, bits)));
     }
     return v;
   }
@@ -1105,18 +1104,13 @@ public final class LawSpecRuntime
     }
     if (exactType(a))
     {
-      return op.equals("/") || a.equals("Rational") || b.equals("Rational")
-          ? "Rational"
+      return op.equals("/") || a.equals("Rational") || b.equals("Rational") ? "Rational"
           : a.equals("Decimal") || b.equals("Decimal") ? "Decimal" : "Integer";
     }
     if (a.startsWith("Complex") || b.startsWith("Complex"))
     {
-      return a.equals("Float64")
-              || b.equals("Float64")
-              || a.equals("Complex128")
-              || b.equals("Complex128")
-          ? "Complex128"
-          : "Complex64";
+      return a.equals("Float64") || b.equals("Float64") || a.equals("Complex128")
+          || b.equals("Complex128") ? "Complex128" : "Complex64";
     }
     return a.equals("Float64") || b.equals("Float64") ? "Float64" : "Float32";
   }
@@ -1141,9 +1135,7 @@ public final class LawSpecRuntime
    */
   public static Value binary(String op, Value a, Value b)
   {
-    if ((op.equals("==") || op.equals("!="))
-        && !exactType(a.type)
-        && !a.type.startsWith("Float")
+    if ((op.equals("==") || op.equals("!=")) && !exactType(a.type) && !a.type.startsWith("Float")
         && !a.type.startsWith("Complex"))
     {
       return bool(op.equals("==") == equal(a, b));
@@ -1180,15 +1172,14 @@ public final class LawSpecRuntime
         }
         return new Value("Integer", op.equals("quot") ? x.n.divide(y.n) : x.n.remainder(y.n));
       }
-      Ratio r =
-          switch (op)
-          {
-            case "+" -> new Ratio(p.add(q), d);
-            case "-" -> new Ratio(p.subtract(q), d);
-            case "*" -> new Ratio(x.n.multiply(y.n), d);
-            case "/" -> new Ratio(x.n.multiply(y.d), x.d.multiply(y.n));
-            default -> throw new IllegalArgumentException(op);
-          };
+      Ratio r = switch (op)
+      {
+        case "+" -> new Ratio(p.add(q), d);
+        case "-" -> new Ratio(p.subtract(q), d);
+        case "*" -> new Ratio(x.n.multiply(y.n), d);
+        case "/" -> new Ratio(x.n.multiply(y.d), x.d.multiply(y.n));
+        default -> throw new IllegalArgumentException(op);
+      };
       return convert(t, new Value("Rational", r), 64);
     }
     if (t.startsWith("Complex"))
@@ -1220,12 +1211,10 @@ public final class LawSpecRuntime
       {
         double d =
             precision(t, precision(t, y.real * y.real) + precision(t, y.imaginary * y.imaginary));
-        re =
-            precision(t, precision(t, x.real * y.real) + precision(t, x.imaginary * y.imaginary))
-                / d;
-        im =
-            precision(t, precision(t, x.imaginary * y.real) - precision(t, x.real * y.imaginary))
-                / d;
+        re = precision(t, precision(t, x.real * y.real) + precision(t, x.imaginary * y.imaginary))
+            / d;
+        im = precision(t, precision(t, x.imaginary * y.real) - precision(t, x.real * y.imaginary))
+            / d;
       }
       return new Value(t, new Complex(precision(t, re), precision(t, im)));
     }
@@ -1233,29 +1222,24 @@ public final class LawSpecRuntime
     double y = real(b);
     if (List.of("==", "!=", "<", "<=", ">", ">=").contains(op))
     {
-      return bool(
-          switch (op)
-          {
-            case "==" -> x == y;
-            case "!=" -> x != y;
-            case "<" -> x < y;
-            case "<=" -> x <= y;
-            case ">" -> x > y;
-            default -> x >= y;
-          });
+      return bool(switch (op)
+      {
+        case "==" -> x == y;
+        case "!=" -> x != y;
+        case "<" -> x < y;
+        case "<=" -> x <= y;
+        case ">" -> x > y;
+        default -> x >= y;
+      });
     }
-    return new Value(
-        t,
-        precision(
-            t,
-            switch (op)
-            {
-              case "+" -> x + y;
-              case "-" -> x - y;
-              case "*" -> x * y;
-              case "/" -> x / y;
-              default -> throw new IllegalArgumentException(op);
-            }));
+    return new Value(t, precision(t, switch (op)
+    {
+      case "+" -> x + y;
+      case "-" -> x - y;
+      case "*" -> x * y;
+      case "/" -> x / y;
+      default -> throw new IllegalArgumentException(op);
+    }));
   }
 
   /**
@@ -1345,8 +1329,7 @@ public final class LawSpecRuntime
     }
     if (a.data instanceof Presence x && b.data instanceof Presence y)
     {
-      return a.type.equals(b.type)
-          && x.present == y.present
+      return a.type.equals(b.type) && x.present == y.present
           && (!x.present || equal(x.value, y.value));
     }
     if (a.type.equals("Symbol"))
@@ -1372,11 +1355,11 @@ public final class LawSpecRuntime
     return listElements(data.fields().get(0));
   }
 
-  public static boolean sameMembers(
-      List<Value> left, List<Value> right, BiPredicate<Value, Value> equal)
+  public static boolean sameMembers(List<Value> left, List<Value> right,
+      BiPredicate<Value, Value> equal)
   {
     return left.stream()
-            .allMatch(value -> right.stream().anyMatch(candidate -> equal.test(value, candidate)))
+        .allMatch(value -> right.stream().anyMatch(candidate -> equal.test(value, candidate)))
         && right.stream()
             .allMatch(value -> left.stream().anyMatch(candidate -> equal.test(value, candidate)));
   }
@@ -1466,10 +1449,8 @@ public final class LawSpecRuntime
   {
     for (int i = 0; i < Math.min(x.size(), y.size()); i++)
     {
-      int order =
-          x.get(i) instanceof Value u
-              ? compareValues(u, (Value) y.get(i))
-              : Integer.signum(Integer.compare((Integer) x.get(i), (Integer) y.get(i)));
+      int order = x.get(i) instanceof Value u ? compareValues(u, (Value) y.get(i))
+          : Integer.signum(Integer.compare((Integer) x.get(i), (Integer) y.get(i)));
       if (order != 0)
       {
         return order;
@@ -1546,8 +1527,7 @@ public final class LawSpecRuntime
     if (n.equals("real") || n.equals("imag"))
     {
       Complex c = (Complex) x.data;
-      return new Value(
-          x.type.equals("Complex64") ? "Float32" : "Float64",
+      return new Value(x.type.equals("Complex64") ? "Float32" : "Float64",
           n.equals("real") ? c.real : c.imaginary);
     }
     if (n.equals("quot") || n.equals("rem") || n.equals("pow"))
@@ -1586,8 +1566,7 @@ public final class LawSpecRuntime
     {
       Ratio r = ratio(x);
       int scale = ((BigInteger) convert("Int32", args[1], bits).data).intValueExact();
-      return new Value(
-          "Decimal",
+      return new Value("Decimal",
           new BigDecimal(r.n).divide(new BigDecimal(r.d), scale, RoundingMode.HALF_EVEN));
     }
     return convert(n, x, bits);
@@ -1633,9 +1612,8 @@ public final class LawSpecRuntime
       {
         var values = new ArrayList<Value>();
         String t = args[0].type;
-        for (BigInteger k = (BigInteger) args[0].data;
-            k.compareTo((BigInteger) args[1].data) < 0;
-            k = k.add(BigInteger.ONE))
+        for (BigInteger k = (BigInteger) args[0].data; k
+            .compareTo((BigInteger) args[1].data) < 0; k = k.add(BigInteger.ONE))
         {
           values.add(new Value(t, k));
         }
@@ -1661,8 +1639,7 @@ public final class LawSpecRuntime
       }
       case "utf8":
       {
-        byte[] encoded =
-            codePointsText(args[0]).getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        byte[] encoded = codePointsText(args[0]).getBytes(java.nio.charset.StandardCharsets.UTF_8);
         var units = new ArrayList<Integer>();
         for (byte b : encoded)
         {
@@ -1705,8 +1682,7 @@ public final class LawSpecRuntime
     if (t.startsWith("Nullable ") || t.startsWith("Optional "))
     {
       int i = t.indexOf(' ');
-      return new Value(
-          t,
+      return new Value(t,
           new Presence(random.nextBoolean(), sample(t.substring(i + 1), random.nextInt(), bits)));
     }
     if (integerType(t))
@@ -1714,14 +1690,11 @@ public final class LawSpecRuntime
       if (t.equals("Integer") || t.equals("BigInt") || t.equals("BigUInt"))
       {
         BigInteger n = new BigInteger(256, random);
-        return new Value(
-            t,
+        return new Value(t,
             (t.equals("BigInt") || t.equals("Integer")) && random.nextBoolean() ? n.negate() : n);
       }
-      int w =
-          t.endsWith("Size") || t.equals("UIntPtr")
-              ? bits
-              : Integer.parseInt(t.replaceAll("\\D", ""));
+      int w = t.endsWith("Size") || t.equals("UIntPtr") ? bits
+          : Integer.parseInt(t.replaceAll("\\D", ""));
       BigInteger n = new BigInteger(w, random);
       if (t.startsWith("Int") && n.testBit(w - 1))
       {
@@ -1739,25 +1712,20 @@ public final class LawSpecRuntime
     }
     if (t.equals("Rational"))
     {
-      return new Value(
-          t,
-          new Ratio(
-              new BigInteger(128, random).subtract(BigInteger.ONE.shiftLeft(127)),
+      return new Value(t,
+          new Ratio(new BigInteger(128, random).subtract(BigInteger.ONE.shiftLeft(127)),
               new BigInteger(128, random).add(BigInteger.ONE)));
     }
     if (t.startsWith("Float"))
     {
-      return new Value(
-          t,
-          t.equals("Float32")
-              ? (double) Float.intBitsToFloat(random.nextInt())
-              : Double.longBitsToDouble(random.nextLong()));
+      return new Value(t, t.equals("Float32") ? (double) Float.intBitsToFloat(random.nextInt())
+          : Double.longBitsToDouble(random.nextLong()));
     }
     if (t.startsWith("Complex"))
     {
       String component = t.equals("Complex64") ? "Float32" : "Float64";
-      return complex(
-          t, sample(component, random.nextInt(), bits), sample(component, random.nextInt(), bits));
+      return complex(t, sample(component, random.nextInt(), bits),
+          sample(component, random.nextInt(), bits));
     }
     if (t.equals("Symbol"))
     {
@@ -1864,12 +1832,8 @@ public final class LawSpecRuntime
   {
     Value v;
     if (integerType(t)
-        && !(value instanceof BigInteger
-            || value instanceof Byte
-            || value instanceof Short
-            || value instanceof Integer
-            || value instanceof Long
-            || value instanceof Value))
+        && !(value instanceof BigInteger || value instanceof Byte || value instanceof Short
+            || value instanceof Integer || value instanceof Long || value instanceof Value))
     {
       throw new IllegalArgumentException("invalid " + t + " representation");
     }
@@ -1885,9 +1849,8 @@ public final class LawSpecRuntime
       }
       else if (value instanceof Present<?> just)
       {
-        v =
-            construct(
-                t, "Maybe::Present", new Value[] {fromNative(t.substring(6), just.value, bits)});
+        v = construct(t, "Maybe::Present",
+            new Value[] {fromNative(t.substring(6), just.value, bits)});
       }
       else
       {
@@ -1899,15 +1862,13 @@ public final class LawSpecRuntime
       var arguments = eitherArguments(t);
       if (value instanceof Left<?, ?> left)
       {
-        v =
-            construct(
-                t, "Either::Left", new Value[] {fromNative(arguments.get(0), left.value, bits)});
+        v = construct(t, "Either::Left",
+            new Value[] {fromNative(arguments.get(0), left.value, bits)});
       }
       else if (value instanceof Right<?, ?> right)
       {
-        v =
-            construct(
-                t, "Either::Right", new Value[] {fromNative(arguments.get(1), right.value, bits)});
+        v = construct(t, "Either::Right",
+            new Value[] {fromNative(arguments.get(1), right.value, bits)});
       }
       else
       {
@@ -1929,12 +1890,8 @@ public final class LawSpecRuntime
     }
     else if (integerType(t))
     {
-      v =
-          new Value(
-              t,
-              value instanceof BigInteger
-                  ? value
-                  : BigInteger.valueOf(((Number) value).longValue()));
+      v = new Value(t,
+          value instanceof BigInteger ? value : BigInteger.valueOf(((Number) value).longValue()));
     }
     else if (t.equals("Char"))
     {
@@ -2033,12 +1990,13 @@ public final class LawSpecRuntime
   }
 
   public record Bound(String op, Value value)
-  {}
+  {
+  }
 
-  public record Domain(
-      java.util.function.BiFunction<List<Value>, Integer, List<Value>> candidates,
+  public record Domain(java.util.function.BiFunction<List<Value>, Integer, List<Value>> candidates,
       java.util.function.Predicate<List<Value>> accept)
-  {}
+  {
+  }
 
   private static BigInteger floor(Ratio r)
   {
@@ -2051,8 +2009,8 @@ public final class LawSpecRuntime
     return floor(new Ratio(r.n.negate(), r.d)).negate();
   }
 
-  public static List<Value> domainCandidates(
-      String t, int seed, int bits, Bound[] restrictions, Value[] hints)
+  public static List<Value> domainCandidates(String t, int seed, int bits, Bound[] restrictions,
+      Value[] hints)
   {
     var values = new ArrayList<Value>();
     for (Value hint : hints)
@@ -2076,10 +2034,8 @@ public final class LawSpecRuntime
       }
       else if (!List.of("Integer", "BigInt").contains(t))
       {
-        int w =
-            t.endsWith("Size") || t.equals("UIntPtr")
-                ? bits
-                : Integer.parseInt(t.replaceAll("\\D", ""));
+        int w = t.endsWith("Size") || t.equals("UIntPtr") ? bits
+            : Integer.parseInt(t.replaceAll("\\D", ""));
         boolean signed = t.startsWith("Int");
         lo = signed ? BigInteger.ONE.shiftLeft(w - 1).negate() : BigInteger.ZERO;
         hi = BigInteger.ONE.shiftLeft(signed ? w - 1 : w).subtract(BigInteger.ONE);
@@ -2102,28 +2058,12 @@ public final class LawSpecRuntime
       {
         return List.of();
       }
-      BigInteger lower =
-          lo == null
-              ? (hi == null ? BigInteger.ZERO : hi)
-                  .min(BigInteger.ZERO)
-                  .subtract(BigInteger.ONE.shiftLeft(256))
-              : lo;
-      BigInteger upper =
-          hi == null
-              ? (lo == null ? BigInteger.ZERO : lo)
-                  .max(BigInteger.ZERO)
-                  .add(BigInteger.ONE.shiftLeft(256))
-              : hi;
-      var ns =
-          new ArrayList<BigInteger>(
-              List.of(
-                  lower,
-                  upper,
-                  BigInteger.ZERO,
-                  BigInteger.ONE,
-                  BigInteger.ONE.negate(),
-                  lower.add(BigInteger.ONE),
-                  upper.subtract(BigInteger.ONE)));
+      BigInteger lower = lo == null ? (hi == null ? BigInteger.ZERO : hi).min(BigInteger.ZERO)
+          .subtract(BigInteger.ONE.shiftLeft(256)) : lo;
+      BigInteger upper = hi == null ? (lo == null ? BigInteger.ZERO : lo).max(BigInteger.ZERO)
+          .add(BigInteger.ONE.shiftLeft(256)) : hi;
+      var ns = new ArrayList<BigInteger>(List.of(lower, upper, BigInteger.ZERO, BigInteger.ONE,
+          BigInteger.ONE.negate(), lower.add(BigInteger.ONE), upper.subtract(BigInteger.ONE)));
       Random random = new Random(seed);
       BigInteger width = upper.subtract(lower).add(BigInteger.ONE);
       for (int j = 0; j < 8; j++)
@@ -2134,11 +2074,8 @@ public final class LawSpecRuntime
       {
         values.add(new Value(t, n));
       }
-      values.removeIf(
-          v ->
-              !integerType(v.type)
-                  || ((BigInteger) v.data).compareTo(lower) < 0
-                  || ((BigInteger) v.data).compareTo(upper) > 0);
+      values.removeIf(v -> !integerType(v.type) || ((BigInteger) v.data).compareTo(lower) < 0
+          || ((BigInteger) v.data).compareTo(upper) > 0);
       values.replaceAll(v -> convert(t, v, bits));
     }
     else
@@ -2155,8 +2092,8 @@ public final class LawSpecRuntime
     return values;
   }
 
-  public static List<Value> generateTuple(
-      Domain[] domains, int seed, int attempts, List<Value> prefix)
+  public static List<Value> generateTuple(Domain[] domains, int seed, int attempts,
+      List<Value> prefix)
   {
     int[] used = {0};
     while (used[0] < attempts)
@@ -2167,17 +2104,12 @@ public final class LawSpecRuntime
         return result;
       }
     }
-    throw new IllegalArgumentException(
-        "refinement-generation-exhausted after "
-            + used[0]
-            + " attempts; prefix="
-            + prefix
-            + "; seed="
-            + seed);
+    throw new IllegalArgumentException("refinement-generation-exhausted after " + used[0]
+        + " attempts; prefix=" + prefix + "; seed=" + seed);
   }
 
-  private static List<Value> searchDomain(
-      Domain[] domains, int seed, int attempts, int[] used, List<Value> values)
+  private static List<Value> searchDomain(Domain[] domains, int seed, int attempts, int[] used,
+      List<Value> values)
   {
     if (values.size() == domains.length)
     {
@@ -2224,13 +2156,8 @@ public final class LawSpecRuntime
     return result;
   }
 
-  public static void refinedCase(
-      Domain[] domains,
-      int seed,
-      int attempts,
-      int shrinks,
-      java.util.function.Consumer<List<Value>> check,
-      String context)
+  public static void refinedCase(Domain[] domains, int seed, int attempts, int shrinks,
+      java.util.function.Consumer<List<Value>> check, String context)
   {
     List<Value> values;
     try
@@ -2258,9 +2185,8 @@ public final class LawSpecRuntime
           BigInteger initial = (BigInteger) value.data;
           candidates.add(0, new Value(value.type, BigInteger.ZERO));
           candidates.add(1, new Value(value.type, BigInteger.valueOf(initial.signum())));
-          for (BigInteger v = initial.divide(BigInteger.TWO);
-              v.abs().compareTo(BigInteger.ONE) > 0;
-              v = v.divide(BigInteger.TWO))
+          for (BigInteger v = initial.divide(BigInteger.TWO); v.abs()
+              .compareTo(BigInteger.ONE) > 0; v = v.divide(BigInteger.TWO))
           {
             candidates.add(2, new Value(value.type, v));
           }
@@ -2304,15 +2230,8 @@ public final class LawSpecRuntime
           }
         }
       }
-      throw new AssertionError(
-          context
-              + ": "
-              + original.getMessage()
-              + "; refined counterexample="
-              + best
-              + "; seed="
-              + seed,
-          original);
+      throw new AssertionError(context + ": " + original.getMessage() + "; refined counterexample="
+          + best + "; seed=" + seed, original);
     }
   }
 
@@ -2428,11 +2347,11 @@ public final class LawSpecRuntime
   public static final String CLOCK_ABILITY = "lawspec.time::ability::Clock";
 
   /** How the runtime reads a Clock handler (lawspec.time's registerClock gives it). */
-  private record ClockReader(
-      java.util.function.ToLongFunction<Object> now,
+  private record ClockReader(java.util.function.ToLongFunction<Object> now,
       java.util.function.ObjLongConsumer<Object> sleep,
       java.util.function.Predicate<Object> realTime)
-  {}
+  {
+  }
 
   private static volatile ClockReader clockReader;
 
@@ -2441,8 +2360,7 @@ public final class LawSpecRuntime
    * generated tests call it): now(handler) gives microseconds, sleep(handler, micros) waits, and
    * realTime(handler) says whether the handler is the default real clock.
    */
-  public static void registerClockAbility(
-      java.util.function.ToLongFunction<Object> now,
+  public static void registerClockAbility(java.util.function.ToLongFunction<Object> now,
       java.util.function.ObjLongConsumer<Object> sleep,
       java.util.function.Predicate<Object> realTime)
   {
@@ -2494,9 +2412,9 @@ public final class LawSpecRuntime
   /**
    * The same sequence on every target for the same seed.
    *
-   * <p>SplitMix64 is small, fast and specified exactly, so every runtime implements the same
-   * generator and a seed names the same case everywhere. ref:splitmix
-   * ref:DEC-portable-seeded-generation
+   * <p>
+   * SplitMix64 is small, fast and specified exactly, so every runtime implements the same generator
+   * and a seed names the same case everywhere. ref:splitmix ref:DEC-portable-seeded-generation
    */
   public static final class SplitMix64
   {
@@ -2535,7 +2453,8 @@ public final class LawSpecRuntime
 
   /** A stage starting or finishing an attempt, or a wait. */
   public record TraceEvent(String kind, String stage, long number, boolean succeeded)
-  {}
+  {
+  }
 
   /**
    * gates: whether rate limits, breakers, bulkheads and caches apply. The runtime generated tests
@@ -2597,7 +2516,8 @@ public final class LawSpecRuntime
 
   /** The default runtime read through a context's Clock handler. */
   private record ClockView(Object handler, WorkflowRuntime base, WorkflowRuntime view)
-  {}
+  {
+  }
 
   /**
    * Makes the default runtime virtual, as generated tests do. Timeouts and hedges stay on: they
@@ -2626,15 +2546,13 @@ public final class LawSpecRuntime
       defaultRuntime = new WorkflowRuntime(null, 0);
     }
     WorkflowRuntime runtime = defaultRuntime;
-    var clock =
-        abilityClock(
-            symbols.get(HANDLERS) instanceof Map<?, ?> table ? table.get(CLOCK_ABILITY) : null);
+    var clock = abilityClock(
+        symbols.get(HANDLERS) instanceof Map<?, ?> table ? table.get(CLOCK_ABILITY) : null);
     if (clock == null)
     {
       return runtime;
     }
-    if (symbols.get(CLOCK_VIEW) instanceof ClockView view
-        && view.handler() == clock.handler
+    if (symbols.get(CLOCK_VIEW) instanceof ClockView view && view.handler() == clock.handler
         && view.base() == runtime)
     {
       return view.view();
@@ -2654,30 +2572,20 @@ public final class LawSpecRuntime
    * strategy is immediate, fixed, linear, exponential, fibonacci or custom; delay, step, factor and
    * cap (negative for none) are its parameters.
    */
-  public record Retry(
-      String strategy,
-      long delay,
-      long step,
-      long factor,
-      long cap,
-      long attempts,
-      String jitter,
-      Function<Value, Boolean> when,
-      Decide decide)
-  {}
+  public record Retry(String strategy, long delay, long step, long factor, long cap, long attempts,
+      String jitter, Function<Value, Boolean> when, Decide decide)
+  {
+  }
 
   /**
    * A stateful policy: start gives its state, admit a Step of the next state and a Gate (Admit,
    * WaitFor or Reject), and finish (when set) the state after the call. waitMicros is -2 to fail at
    * once when not admitted, -1 to wait without bound, or the most it waits.
    */
-  public record Gate(
-      String kind,
-      java.util.function.LongFunction<Value> start,
-      java.util.function.BiFunction<Value, Long, Value> admit,
-      GateFinish finish,
-      long waitMicros)
-  {}
+  public record Gate(String kind, java.util.function.LongFunction<Value> start,
+      java.util.function.BiFunction<Value, Long, Value> admit, GateFinish finish, long waitMicros)
+  {
+  }
 
   public interface GateFinish
   {
@@ -2688,17 +2596,9 @@ public final class LawSpecRuntime
    * key names the stage's state; cache is how long a success is reused (0 or less for none); wraps
    * says failures are StageFailures; fail gives the stage's result for a policy failure.
    */
-  public record StagePolicy(
-      String stage,
-      Retry retry,
-      long timeout,
-      String key,
-      List<Gate> gates,
-      long cache,
-      boolean wraps,
-      Function<String, Value> fail,
-      java.util.function.Consumer<Value> compensate,
-      Hedge hedge)
+  public record StagePolicy(String stage, Retry retry, long timeout, String key, List<Gate> gates,
+      long cache, boolean wraps, Function<String, Value> fail,
+      java.util.function.Consumer<Value> compensate, Hedge hedge)
   {
     public StagePolicy(String stage, Retry retry, long timeout)
     {
@@ -2711,14 +2611,15 @@ public final class LawSpecRuntime
    * most in all; the first success wins.
    */
   public record Hedge(String stage, long delay, long most)
-  {}
+  {
+  }
 
   /**
    * Runs a workflow whose stages compensate: when it fails, its completed stages' undos run, last
    * first.
    */
-  public static Value runWorkflow(
-      Map<String, Object> symbols, java.util.function.Supplier<Value> attempt)
+  public static Value runWorkflow(Map<String, Object> symbols,
+      java.util.function.Supplier<Value> attempt)
   {
     WorkflowRuntime runtime = workflowRuntime(symbols);
     var frame = new ArrayList<Map.Entry<String, Runnable>>();
@@ -2744,7 +2645,8 @@ public final class LawSpecRuntime
   }
 
   private record CacheEntry(Value key, Value value, long expires)
-  {}
+  {
+  }
 
   private static final String STAGE_FAILURE = "lawspec.resilience::type::StageFailure::";
   private static final String GATE = "lawspec.resilience::type::Gate::";
@@ -2752,13 +2654,12 @@ public final class LawSpecRuntime
   private static String passGate(WorkflowRuntime runtime, StagePolicy policy, Gate gate)
   {
     String key = policy.key() + "/" + gate.kind();
-    String failure =
-        switch (gate.kind())
-        {
-          case "breaker" -> "CircuitOpen";
-          case "limit" -> "RateLimited";
-          default -> "Saturated";
-        };
+    String failure = switch (gate.kind())
+    {
+      case "breaker" -> "CircuitOpen";
+      case "limit" -> "RateLimited";
+      default -> "Saturated";
+    };
     long waited = 0;
     while (true)
     {
@@ -2787,16 +2688,16 @@ public final class LawSpecRuntime
     }
   }
 
-  private static void finishGate(
-      WorkflowRuntime runtime, StagePolicy policy, Gate gate, boolean succeeded)
+  private static void finishGate(WorkflowRuntime runtime, StagePolicy policy, Gate gate,
+      boolean succeeded)
   {
     if (gate.finish() == null)
     {
       return;
     }
     String key = policy.key() + "/" + gate.kind();
-    runtime.state.put(
-        key, gate.finish().finish((Value) runtime.state.get(key), runtime.clock.now(), succeeded));
+    runtime.state.put(key,
+        gate.finish().finish((Value) runtime.state.get(key), runtime.clock.now(), succeeded));
   }
 
   private static long fibonacci(long n)
@@ -2848,8 +2749,8 @@ public final class LawSpecRuntime
    * Full: [0, delay]; equal: delay/2 + [0, delay/2]; decorrelated: [base, previous * 3], capped at
    * delay.
    */
-  public static long jittered(
-      String jitter, long delay, long previous, long base, SplitMix64 random)
+  public static long jittered(String jitter, long delay, long previous, long base,
+      SplitMix64 random)
   {
     switch (jitter)
     {
@@ -2871,19 +2772,16 @@ public final class LawSpecRuntime
   }
 
   /** Runs a stage's attempts under its policy; a Left is a failure. */
-  public static Value runStage(
-      Map<String, Object> symbols, StagePolicy policy, java.util.function.Supplier<Value> attempt)
+  public static Value runStage(Map<String, Object> symbols, StagePolicy policy,
+      java.util.function.Supplier<Value> attempt)
   {
     return runStage(symbols, policy, attempt, null);
   }
 
   /** As runStage; key is the stage's input, for the cache. */
   @SuppressWarnings("unchecked")
-  public static Value runStage(
-      Map<String, Object> symbols,
-      StagePolicy policy,
-      java.util.function.Supplier<Value> attempt,
-      Value key)
+  public static Value runStage(Map<String, Object> symbols, StagePolicy policy,
+      java.util.function.Supplier<Value> attempt, Value key)
   {
     WorkflowRuntime runtime = workflowRuntime(symbols);
     List<Gate> gates = runtime.gates ? policy.gates() : List.of();
@@ -2922,9 +2820,7 @@ public final class LawSpecRuntime
     if (succeeded && policy.compensate() != null && !runtime.frames.isEmpty())
     {
       Value value = ((Data) result.data()).fields().get(0);
-      runtime
-          .frames
-          .get(runtime.frames.size() - 1)
+      runtime.frames.get(runtime.frames.size() - 1)
           .add(Map.entry(policy.stage(), () -> policy.compensate().accept(value)));
     }
     if (caching && succeeded)
@@ -2962,19 +2858,17 @@ public final class LawSpecRuntime
     public <T> java.util.concurrent.CompletableFuture<T> spawn(Supplier<? extends T> fn)
     {
       var task = new java.util.concurrent.CompletableFuture<T>();
-      Thread.ofVirtual()
-          .start(
-              () -> {
-                try
-                {
-                  task.complete(fn.get());
-                }
-                catch (Throwable error)
-                {
-                  // Given back by await.
-                  task.completeExceptionally(error);
-                }
-              });
+      Thread.ofVirtual().start(() -> {
+        try
+        {
+          task.complete(fn.get());
+        }
+        catch (Throwable error)
+        {
+          // Given back by await.
+          task.completeExceptionally(error);
+        }
+      });
       return task;
     }
 
@@ -3016,9 +2910,8 @@ public final class LawSpecRuntime
       }
       try
       {
-        java.util.concurrent.CompletableFuture.allOf(
-                tasks.toArray(new java.util.concurrent.CompletableFuture<?>[0]))
-            .join();
+        java.util.concurrent.CompletableFuture
+            .allOf(tasks.toArray(new java.util.concurrent.CompletableFuture<?>[0])).join();
       }
       catch (java.util.concurrent.CompletionException e)
       {
@@ -3075,8 +2968,7 @@ public final class LawSpecRuntime
    * An asynchronous step's logical result: start begins the step and convert turns its native
    * result into a logical value. The step runs within its stage's timeout and hedge, if any.
    */
-  public static <T> Value awaitStep(
-      Map<String, Object> symbols,
+  public static <T> Value awaitStep(Map<String, Object> symbols,
       java.util.function.Supplier<java.util.concurrent.CompletableFuture<T>> start,
       Function<T, Value> convert)
   {
@@ -3112,9 +3004,8 @@ public final class LawSpecRuntime
           launch = false;
         }
         long until = Math.min(next, deadline == null ? Long.MAX_VALUE : deadline);
-        var any =
-            java.util.concurrent.CompletableFuture.anyOf(
-                pending.toArray(new java.util.concurrent.CompletableFuture<?>[0]));
+        var any = java.util.concurrent.CompletableFuture
+            .anyOf(pending.toArray(new java.util.concurrent.CompletableFuture<?>[0]));
         try
         {
           if (until == Long.MAX_VALUE)
@@ -3123,12 +3014,11 @@ public final class LawSpecRuntime
           }
           else
           {
-            any.get(
-                Math.max(0, until - System.nanoTime()), java.util.concurrent.TimeUnit.NANOSECONDS);
+            any.get(Math.max(0, until - System.nanoTime()),
+                java.util.concurrent.TimeUnit.NANOSECONDS);
           }
         }
-        catch (java.util.concurrent.TimeoutException
-            | java.util.concurrent.ExecutionException e)
+        catch (java.util.concurrent.TimeoutException | java.util.concurrent.ExecutionException e)
         {
           // A failed step is raised below; a timer passing is handled below.
         }
@@ -3189,9 +3079,7 @@ public final class LawSpecRuntime
    * A hedge on a virtual clock: attempts run one after another, and the next starts when one fails,
    * so the first success wins as it would in real time when no attempt outlives the delay.
    */
-  private static <T> Value virtualHedge(
-      WorkflowRuntime runtime,
-      Hedge hedge,
+  private static <T> Value virtualHedge(WorkflowRuntime runtime, Hedge hedge,
       java.util.function.Supplier<java.util.concurrent.CompletableFuture<T>> start,
       Function<T, Value> convert)
   {
@@ -3208,14 +3096,9 @@ public final class LawSpecRuntime
 
   private static Value timedOut(StagePolicy policy)
   {
-    return policy.fail() != null
-        ? policy.fail().apply("TimedOut")
-        : new Value(
-            "Either",
-            new Data(
-                "Either::Left",
-                List.of(
-                    new Value(STAGE_FAILURE, new Data(STAGE_FAILURE + "TimedOut", List.of())))));
+    return policy.fail() != null ? policy.fail().apply("TimedOut")
+        : new Value("Either", new Data("Either::Left",
+            List.of(new Value(STAGE_FAILURE, new Data(STAGE_FAILURE + "TimedOut", List.of())))));
   }
 
   private static boolean timedOutCause(Throwable error)
@@ -3237,8 +3120,8 @@ public final class LawSpecRuntime
    * time that passes while it runs, so both are deterministic. On a real clock with gates off, both
    * are off.
    */
-  private static Value scoped(
-      WorkflowRuntime runtime, StagePolicy policy, java.util.function.Supplier<Value> attempt)
+  private static Value scoped(WorkflowRuntime runtime, StagePolicy policy,
+      java.util.function.Supplier<Value> attempt)
   {
     if (policy.timeout() <= 0 && policy.hedge() == null)
     {
@@ -3282,8 +3165,8 @@ public final class LawSpecRuntime
     }
   }
 
-  private static Value virtuallyScoped(
-      WorkflowRuntime runtime, StagePolicy policy, java.util.function.Supplier<Value> attempt)
+  private static Value virtuallyScoped(WorkflowRuntime runtime, StagePolicy policy,
+      java.util.function.Supplier<Value> attempt)
   {
     Long outer = runtime.deadline;
     Hedge outerHedge = runtime.hedge;
@@ -3291,10 +3174,8 @@ public final class LawSpecRuntime
     long began = runtime.clock.now();
     runtime.deadline = null;
     runtime.hedge = null;
-    runtime.virtualHedge =
-        policy.hedge() == null
-            ? null
-            : new Hedge(policy.stage(), policy.hedge().delay(), policy.hedge().most());
+    runtime.virtualHedge = policy.hedge() == null ? null
+        : new Hedge(policy.stage(), policy.hedge().delay(), policy.hedge().most());
     Value result;
     try
     {
@@ -3321,8 +3202,8 @@ public final class LawSpecRuntime
     return result;
   }
 
-  private static Value attempts(
-      WorkflowRuntime runtime, StagePolicy policy, java.util.function.Supplier<Value> attempt)
+  private static Value attempts(WorkflowRuntime runtime, StagePolicy policy,
+      java.util.function.Supplier<Value> attempt)
   {
     Retry retry = policy.retry();
     long number = 1;
@@ -3384,10 +3265,8 @@ public final class LawSpecRuntime
   /** A logical Duration of whole microseconds. */
   public static Value duration(long micros)
   {
-    return new Value(
-        "lawspec.time::type::Duration",
-        new Data(
-            "lawspec.time::type::Duration::Duration",
+    return new Value("lawspec.time::type::Duration",
+        new Data("lawspec.time::type::Duration::Duration",
             List.of(new Value("Integer", BigInteger.valueOf(micros)))));
   }
 
@@ -3417,7 +3296,8 @@ public final class LawSpecRuntime
 
   /** A string atom of a descriptor. */
   public record Quoted(String text)
-  {}
+  {
+  }
 
   /**
    * Parses s-expressions: lists (List), integers (BigInteger), strings (Quoted), symbols (String)
@@ -3523,8 +3403,9 @@ public final class LawSpecRuntime
   /**
    * Generation, shrinking and rendering over a table of data types.
    *
-   * <p>Shrinking stays inside the declared domain, so a reported counterexample is always a value
-   * the law quantifies over. ref:DEC-shrink-within-domain ref:DEC-structural-size-budget
+   * <p>
+   * Shrinking stays inside the declared domain, so a reported counterexample is always a value the
+   * law quantifies over. ref:DEC-shrink-within-domain ref:DEC-structural-size-budget
    */
   public static final class Values
   {
@@ -3739,11 +3620,8 @@ public final class LawSpecRuntime
           {
             out.add(new Value(type, target));
             out.add(new Value(type, n.subtract(n.subtract(target).divide(BigInteger.TWO))));
-            out.add(
-                new Value(
-                    type,
-                    n.subtract(
-                        n.compareTo(target) > 0 ? BigInteger.ONE : BigInteger.ONE.negate())));
+            out.add(new Value(type,
+                n.subtract(n.compareTo(target) > 0 ? BigInteger.ONE : BigInteger.ONE.negate())));
           }
         }
         case "bool" -> {
@@ -3829,10 +3707,8 @@ public final class LawSpecRuntime
           // A field of the same type is a smaller value of it.
           for (int i = 0; i < count; i++)
           {
-            if (fieldTypes.get(i) instanceof List<?> fd
-                && fd.size() == 2
-                && sameAtom(fd.get(0), "ref")
-                && sameAtom(fd.get(1), d.get(1)))
+            if (fieldTypes.get(i) instanceof List<?> fd && fd.size() == 2
+                && sameAtom(fd.get(0), "ref") && sameAtom(fd.get(1), d.get(1)))
             {
               out.add(value.fields().get(i));
             }
@@ -3847,7 +3723,8 @@ public final class LawSpecRuntime
             }
           }
         }
-        default -> {}
+        default -> {
+        }
       }
       var original = render(v);
       var seen = new java.util.HashSet<String>();
@@ -3896,15 +3773,12 @@ public final class LawSpecRuntime
     Value b = expected;
     String shownA = null;
     String shownB = null;
-    loop:
-    while (true)
+    loop: while (true)
     {
       // Lists of values; a text's code points, code units or bytes are not.
-      if (a.data() instanceof List<?> x
-          && b.data() instanceof List<?> y
+      if (a.data() instanceof List<?> x && b.data() instanceof List<?> y
           && x.stream().allMatch(Value.class::isInstance)
-          && y.stream().allMatch(Value.class::isInstance)
-          && !a.type().equals("Text")
+          && y.stream().allMatch(Value.class::isInstance) && !a.type().equals("Text")
           && !b.type().equals("Text"))
       {
         for (int i = 0; i < x.size() && i < y.size(); i++)
@@ -3926,9 +3800,7 @@ public final class LawSpecRuntime
         shownB = Integer.toString(y.size());
         break;
       }
-      if (a.data() instanceof Data x
-          && b.data() instanceof Data y
-          && x.tag().equals(y.tag())
+      if (a.data() instanceof Data x && b.data() instanceof Data y && x.tag().equals(y.tag())
           && x.fields().size() == y.fields().size())
       {
         String name = x.tag().substring(x.tag().lastIndexOf("::") + 2);
@@ -3955,12 +3827,8 @@ public final class LawSpecRuntime
       shownA = render(a);
       shownB = render(b);
     }
-    return " | first difference at "
-        + String.join(", ", path)
-        + ": expected "
-        + shownB
-        + ", actual "
-        + shownA;
+    return " | first difference at " + String.join(", ", path) + ": expected " + shownB
+        + ", actual " + shownA;
   }
 
   /** A Text value's code points. */
@@ -3987,7 +3855,8 @@ public final class LawSpecRuntime
   // code point by code point. The compiler has checked every pattern; a
   // pattern that is not portable throws here too.
   private record RegexItem(boolean negated, int[][] ranges)
-  {}
+  {
+  }
 
   private static final class RegexNode
   {
@@ -4088,8 +3957,7 @@ public final class LawSpecRuntime
 
     static boolean single(RegexItem item)
     {
-      return !item.negated()
-          && item.ranges().length == 1
+      return !item.negated() && item.ranges().length == 1
           && item.ranges()[0][0] == item.ranges()[0][1];
     }
 
@@ -4468,11 +4336,8 @@ public final class LawSpecRuntime
       }
       if (!java.nio.file.Files.exists(path))
       {
-        throw new AssertionError(
-            "no recording recorded/"
-                + key
-                + "; run lawspec test --update-recorded to record "
-                + text);
+        throw new AssertionError("no recording recorded/" + key
+            + "; run lawspec test --update-recorded to record " + text);
       }
       String stored = java.nio.file.Files.readString(path);
       if (stored.endsWith("\n"))
@@ -4481,14 +4346,8 @@ public final class LawSpecRuntime
       }
       if (!stored.equals(text))
       {
-        throw new AssertionError(
-            "recorded/"
-                + key
-                + " differs: expected "
-                + stored
-                + ", actual "
-                + text
-                + " (lawspec test --update-recorded records the new value)");
+        throw new AssertionError("recorded/" + key + " differs: expected " + stored + ", actual "
+            + text + " (lawspec test --update-recorded records the new value)");
       }
       return true;
     }
@@ -4525,8 +4384,8 @@ public final class LawSpecRuntime
   private static final java.util.Map<String, SharedEntry> shared =
       new java.util.concurrent.ConcurrentHashMap<>();
 
-  public static <T> T share(
-      String key, SharedAcquire<T> acquire, SharedUse<T> reset, SharedUse<T> release)
+  public static <T> T share(String key, SharedAcquire<T> acquire, SharedUse<T> reset,
+      SharedUse<T> release)
   {
     return share(key, acquire, reset, release, false);
   }
@@ -4536,12 +4395,8 @@ public final class LawSpecRuntime
    * it.
    */
   @SuppressWarnings("unchecked")
-  public static <T> T share(
-      String key,
-      SharedAcquire<T> acquire,
-      SharedUse<T> reset,
-      SharedUse<T> release,
-      boolean concurrent)
+  public static <T> T share(String key, SharedAcquire<T> acquire, SharedUse<T> reset,
+      SharedUse<T> release, boolean concurrent)
   {
     SharedEntry entry = shared.computeIfAbsent(key, k -> new SharedEntry());
     if (concurrent)
@@ -4560,19 +4415,16 @@ public final class LawSpecRuntime
             entry.value = acquire.get();
             entry.held = true;
             final T value = (T) entry.value;
-            Runtime.getRuntime()
-                .addShutdownHook(
-                    new Thread(
-                        () -> {
-                          try
-                          {
-                            release.accept(value);
-                          }
-                          catch (Exception e)
-                          {
-                            throw new RuntimeException(e);
-                          }
-                        }));
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+              try
+              {
+                release.accept(value);
+              }
+              catch (Exception e)
+              {
+                throw new RuntimeException(e);
+              }
+            }));
           }
         }
         catch (RuntimeException | Error e)
@@ -4599,19 +4451,16 @@ public final class LawSpecRuntime
         entry.value = acquire.get();
         entry.held = true;
         final T value = (T) entry.value;
-        Runtime.getRuntime()
-            .addShutdownHook(
-                new Thread(
-                    () -> {
-                      try
-                      {
-                        release.accept(value);
-                      }
-                      catch (Exception e)
-                      {
-                        throw new RuntimeException(e);
-                      }
-                    }));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+          try
+          {
+            release.accept(value);
+          }
+          catch (Exception e)
+          {
+            throw new RuntimeException(e);
+          }
+        }));
       }
       return (T) entry.value;
     }
@@ -4833,10 +4682,8 @@ public final class LawSpecRuntime
       {
         return name + "NaN";
       }
-      String hex =
-          width == 32
-              ? String.format("%08x", Float.floatToRawIntBits((float) value))
-              : String.format("%016x", Double.doubleToRawLongBits(value));
+      String hex = width == 32 ? String.format("%08x", Float.floatToRawIntBits((float) value))
+          : String.format("%016x", Double.doubleToRawLongBits(value));
       return name + "Bits(\"" + hex + "\")";
     }
 
@@ -4946,12 +4793,8 @@ public final class LawSpecRuntime
         {
           String name =
               type.equals("Bytes") ? "bytes" : type.equals("Utf16Text") ? "utf16" : "codePoints";
-          return name
-              + "(["
-              + items.stream()
-                  .map(Object::toString)
-                  .collect(java.util.stream.Collectors.joining(", "))
-              + "])";
+          return name + "([" + items.stream().map(Object::toString)
+              .collect(java.util.stream.Collectors.joining(", ")) + "])";
         }
         var values = new ArrayList<Value>();
         for (Object item : items)
@@ -4971,7 +4814,8 @@ public final class LawSpecRuntime
 
   /** A descriptor text's data types and its last form, the one generated. */
   public record Described(Values values, Object descriptor)
-  {}
+  {
+  }
 
   public static Described valuesFrom(String text)
   {
@@ -5156,12 +5000,8 @@ public final class LawSpecRuntime
      * start: run, model; each command: run, reference, when (null when absent); abstractState may
      * be null.
      */
-    public Model(
-        String spec,
-        ModelCallback[] start,
-        ModelCallback[][] commands,
-        ModelCallback abstractState,
-        ModelCallback[] invariants)
+    public Model(String spec, ModelCallback[] start, ModelCallback[][] commands,
+        ModelCallback abstractState, ModelCallback[] invariants)
     {
       var forms = readDescriptor(spec);
       var machine = form(forms.get(0));
@@ -5211,7 +5051,8 @@ public final class LawSpecRuntime
               declaredConsistency = atomText(item.get(1));
             }
           }
-          default -> {}
+          default -> {
+          }
         }
       }
       values = new Values(table);
@@ -5254,16 +5095,14 @@ public final class LawSpecRuntime
       {
         var run = start[0];
         var begin = start[1];
-        startRun =
-            (symbols, args) -> {
-              symbols.put(START_ARGUMENTS, args);
-              return handle(ACTOR_HANDLE, new Actor<Value>(run.apply(symbols, args)));
-            };
-        startModel =
-            (symbols, args) -> {
-              symbols.put(START_ARGUMENTS, args);
-              return begin.apply(symbols, args);
-            };
+        startRun = (symbols, args) -> {
+          symbols.put(START_ARGUMENTS, args);
+          return handle(ACTOR_HANDLE, new Actor<Value>(run.apply(symbols, args)));
+        };
+        startModel = (symbols, args) -> {
+          symbols.put(START_ARGUMENTS, args);
+          return begin.apply(symbols, args);
+        };
         for (var c : built)
         {
           c.run = actorCommand(c.run, c.unit);
@@ -5315,27 +5154,24 @@ public final class LawSpecRuntime
   }
 
   /** An injected crash of an actor model, as a step with no arguments. */
-  private static ModelCommand crashStep(
-      ModelCallback startRun, ModelCallback startModel, ModelCommand restart)
+  private static ModelCommand crashStep(ModelCallback startRun, ModelCallback startModel,
+      ModelCommand restart)
   {
-    ModelCallback run =
-        (symbols, args) -> {
-          var actor = actorOf(args.get(0));
-          if (restart != null)
-          {
-            actor.restart(s -> restart.run.apply(symbols, List.of(s)));
-          }
-          else
-          {
-            actor.restart(s -> startRun.apply(symbols, startArguments(symbols)));
-          }
-          return absent("Unit");
-        };
+    ModelCallback run = (symbols, args) -> {
+      var actor = actorOf(args.get(0));
+      if (restart != null)
+      {
+        actor.restart(s -> restart.run.apply(symbols, List.of(s)));
+      }
+      else
+      {
+        actor.restart(s -> startRun.apply(symbols, startArguments(symbols)));
+      }
+      return absent("Unit");
+    };
     ModelCallback reference =
-        (symbols, args) ->
-            restart != null
-                ? restart.reference.apply(symbols, args)
-                : startModel.apply(symbols, startArguments(symbols));
+        (symbols, args) -> restart != null ? restart.reference.apply(symbols, args)
+            : startModel.apply(symbols, startArguments(symbols));
     return new ModelCommand(run, reference);
   }
 
@@ -5345,20 +5181,17 @@ public final class LawSpecRuntime
    */
   private static ModelCallback actorCommand(ModelCallback run, boolean unit)
   {
-    return (symbols, args) ->
-        actorOf(args.get(0))
-            .call(
-                state -> {
-                  var full = new ArrayList<Value>(args);
-                  full.set(0, state);
-                  var out = run.apply(symbols, full);
-                  if (unit)
-                  {
-                    return new Next<>(absent("Unit"), out);
-                  }
-                  var pair = (Data) out.data();
-                  return new Next<>(pair.fields().get(0), pair.fields().get(1));
-                });
+    return (symbols, args) -> actorOf(args.get(0)).call(state -> {
+      var full = new ArrayList<Value>(args);
+      full.set(0, state);
+      var out = run.apply(symbols, full);
+      if (unit)
+      {
+        return new Next<>(absent("Unit"), out);
+      }
+      var pair = (Data) out.data();
+      return new Next<>(pair.fields().get(0), pair.fields().get(1));
+    });
   }
 
   /** A callback over the system state that reads an actor's state instead. */
@@ -5380,17 +5213,123 @@ public final class LawSpecRuntime
     }
   }
 
+  private static Object modelArgument(Object descriptor, List<BigInteger> indices)
+  {
+    var d = form(descriptor);
+    if (!atomText(d.get(0)).equals("dependent"))
+    {
+      return descriptor;
+    }
+    var base = new ArrayList<Object>(form(d.get(1)));
+    if (!atomText(base.get(0)).equals("int"))
+    {
+      throw new IllegalArgumentException("unsupported dependent model argument type");
+    }
+    BigInteger lo = (BigInteger) base.get(2);
+    BigInteger hi = (BigInteger) base.get(3);
+    for (var condition : d.subList(2, d.size()))
+    {
+      var pair = form(condition);
+      var op = atomText(pair.get(0));
+      var bound = modelBound(pair.get(1), indices);
+      if (List.of(">", ">=", "==").contains(op))
+      {
+        var n = op.equals(">") ? bound.add(BigInteger.ONE) : bound;
+        lo = lo == null ? n : lo.max(n);
+      }
+      if (List.of("<", "<=", "==").contains(op))
+      {
+        var n = op.equals("<") ? bound.subtract(BigInteger.ONE) : bound;
+        hi = hi == null ? n : hi.min(n);
+      }
+    }
+    base.set(2, lo);
+    base.set(3, hi);
+    return base;
+  }
+
+  private static BigInteger modelBound(Object expression, List<BigInteger> indices)
+  {
+    if (expression instanceof BigInteger n)
+    {
+      return n;
+    }
+    var e = form(expression);
+    if (atomText(e.get(0)).equals("index"))
+    {
+      return indices.get(((BigInteger) e.get(1)).intValueExact());
+    }
+    var a = modelBound(e.get(1), indices);
+    var b = modelBound(e.get(2), indices);
+    return switch (atomText(e.get(0)))
+    {
+      case "+" -> a.add(b);
+      case "-" -> a.subtract(b);
+      case "*" -> a.multiply(b);
+      default -> throw new IllegalArgumentException("unsupported model argument bound");
+    };
+  }
+
+  private static List<Object> modelArguments(ModelCommand command, List<BigInteger> indices)
+  {
+    return command.arguments.stream().map(d -> modelArgument(d, indices)).toList();
+  }
+
+  private static boolean emptyArguments(List<Object> descriptors)
+  {
+    for (var descriptor : descriptors)
+    {
+      var d = form(descriptor);
+      if (atomText(d.get(0)).equals("int") && d.get(2) != null && d.get(3) != null
+          && ((BigInteger) d.get(2)).compareTo((BigInteger) d.get(3)) > 0)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static boolean validArguments(ModelCommand command, List<BigInteger> indices,
+      List<Value> args)
+  {
+    var descriptors = modelArguments(command, indices);
+    for (int i = 0; i < descriptors.size(); i++)
+    {
+      var d = form(descriptors.get(i));
+      if (atomText(d.get(0)).equals("int"))
+      {
+        var n = (BigInteger) args.get(i).data();
+        if (d.get(2) != null && n.compareTo((BigInteger) d.get(2)) < 0
+            || d.get(3) != null && n.compareTo((BigInteger) d.get(3)) > 0)
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  private static Object modelBase(Object descriptor)
+  {
+    var d = form(descriptor);
+    return atomText(d.get(0)).equals("dependent") ? d.get(1) : descriptor;
+  }
+
   private record ModelStep(int index, List<Value> args)
-  {}
+  {
+  }
 
   private record ModelRun(List<Value> startArgs, List<ModelStep> steps)
-  {}
+  {
+  }
 
   private record ModelFailure(int step, String message)
-  {}
+  {
+  }
 
   private record Stepped(Value state, Value result)
-  {}
+  {
+  }
 
   private static List<Value> withLast(List<Value> args, Value last)
   {
@@ -5417,7 +5356,7 @@ public final class LawSpecRuntime
     for (var step : run.steps())
     {
       var command = model.steps.get(step.index());
-      if (!command.admits(indices))
+      if (!command.admits(indices) || !validArguments(command, indices, step.args()))
       {
         throw new InvalidStep();
       }
@@ -5428,8 +5367,8 @@ public final class LawSpecRuntime
     return states;
   }
 
-  private static Stepped stepModel(
-      ModelCommand command, Map<String, Object> symbols, List<Value> args, Value state)
+  private static Stepped stepModel(ModelCommand command, Map<String, Object> symbols,
+      List<Value> args, Value state)
   {
     Value out;
     try
@@ -5456,8 +5395,8 @@ public final class LawSpecRuntime
     return new Stepped(fields.get(1), fields.get(0));
   }
 
-  private static List<Value> generateAll(
-      Values values, List<Object> descriptors, SplitMix64 random, long size)
+  private static List<Value> generateAll(Values values, List<Object> descriptors, SplitMix64 random,
+      long size)
   {
     var out = new ArrayList<Value>();
     for (var d : descriptors)
@@ -5472,8 +5411,8 @@ public final class LawSpecRuntime
     return generateRun(model, random, length, size, false);
   }
 
-  private static ModelRun generateRun(
-      Model model, SplitMix64 random, long length, long size, boolean crashes)
+  private static ModelRun generateRun(Model model, SplitMix64 random, long length, long size,
+      boolean crashes)
   {
     Map<String, Object> symbols = new java.util.HashMap<String, Object>();
     var startArgs = generateAll(model.values, model.startArguments, random, size);
@@ -5493,7 +5432,8 @@ public final class LawSpecRuntime
       var allowed = new ArrayList<Integer>();
       for (int i = 0; i < model.commands.size(); i++)
       {
-        if (model.commands.get(i).admits(indices))
+        if (model.commands.get(i).admits(indices)
+            && !emptyArguments(modelArguments(model.commands.get(i), indices)))
         {
           allowed.add(i);
         }
@@ -5509,13 +5449,19 @@ public final class LawSpecRuntime
         index = model.commands.size();
       }
       var command = model.steps.get(index);
-      var args = generateAll(model.values, command.arguments, random, size);
+      var args = generateAll(model.values, modelArguments(command, indices), random, size);
       try
       {
         state = stepModel(command, symbols, args, state).state();
       }
       catch (InvalidStep e)
       {
+        if (command.arguments.stream().anyMatch(d -> atomText(form(d).get(0)).equals("dependent"))
+            && (command.when == null || truth(command.when.apply(symbols, List.of(state)))))
+        {
+          throw new IllegalStateException("incomplete model generation: dependent arguments "
+              + "rejected by the reference (1 attempt)");
+        }
         continue;
       }
       steps.add(new ModelStep(index, args));
@@ -5564,8 +5510,8 @@ public final class LawSpecRuntime
         var wanted = stepped.result();
         if (!command.unit && compareValues(result, wanted) != 0)
         {
-          return new ModelFailure(
-              step, "returned " + render(result) + "; the model returns " + render(wanted));
+          return new ModelFailure(step,
+              "returned " + render(result) + "; the model returns " + render(wanted));
         }
         failure = checkState(model, symbols, state, expected);
         if (failure != null)
@@ -5581,14 +5527,14 @@ public final class LawSpecRuntime
     catch (Exception e)
     {
       String message = e.getMessage();
-      return new ModelFailure(
-          step, "raised " + e.getClass().getSimpleName() + ": " + (message == null ? "" : message));
+      return new ModelFailure(step,
+          "raised " + e.getClass().getSimpleName() + ": " + (message == null ? "" : message));
     }
     return null;
   }
 
-  private static String checkState(
-      Model model, Map<String, Object> symbols, Value state, Value expected)
+  private static String checkState(Model model, Map<String, Object> symbols, Value state,
+      Value expected)
   {
     if (model.abstractState != null)
     {
@@ -5639,12 +5585,10 @@ public final class LawSpecRuntime
       int m = Math.min(command.arguments.size(), s.args().size());
       for (int j = 0; j < m; j++)
       {
-        for (var c : model.values.shrink(command.arguments.get(j), s.args().get(j)))
+        for (var c : model.values.shrink(modelBase(command.arguments.get(j)), s.args().get(j)))
         {
-          out.add(
-              new ModelRun(
-                  startArgs,
-                  replaced(steps, k, new ModelStep(s.index(), replaced(s.args(), j, c)))));
+          out.add(new ModelRun(startArgs,
+              replaced(steps, k, new ModelStep(s.index(), replaced(s.args(), j, c)))));
         }
       }
     }
@@ -5660,7 +5604,8 @@ public final class LawSpecRuntime
   }
 
   private record Shrunk(ModelRun run, ModelFailure failure)
-  {}
+  {
+  }
 
   private static Shrunk shrinkRun(Model model, ModelRun run, ModelFailure failure, int budget)
   {
@@ -5725,8 +5670,9 @@ public final class LawSpecRuntime
    * Checks the system against its model on generated runs; a failure throws AssertionError naming
    * the shortest failing run found.
    *
-   * <p>A stateful model is checked by running generated command sequences against the system and
-   * the model side by side, then shrinking a failing run. ref:DEC-stateful-models-linearizability
+   * <p>
+   * A stateful model is checked by running generated command sequences against the system and the
+   * model side by side, then shrinking a failing run. ref:DEC-stateful-models-linearizability
    */
   public static void checkModel(Model model)
   {
@@ -5745,15 +5691,8 @@ public final class LawSpecRuntime
       if (failure != null)
       {
         var shrunk = shrinkRun(model, run, failure, maxShrinks);
-        throw new AssertionError(
-            "model "
-                + model.name
-                + " fails at step "
-                + shrunk.failure().step()
-                + " of "
-                + describeRun(model, shrunk.run())
-                + ": "
-                + shrunk.failure().message());
+        throw new AssertionError("model " + model.name + " fails at step " + shrunk.failure().step()
+            + " of " + describeRun(model, shrunk.run()) + ": " + shrunk.failure().message());
       }
     }
   }
@@ -5773,11 +5712,13 @@ public final class LawSpecRuntime
   private static final int BRANCH = 5;
 
   private record ParallelCase(ModelRun prefix, List<List<ModelStep>> branches)
-  {}
+  {
+  }
 
   /** When a branch's call started and returned, and what it returned. */
   private record Call(long called, long returned, Value result)
-  {}
+  {
+  }
 
   private static String searchKey(int[] positions, Value state)
   {
@@ -5792,8 +5733,8 @@ public final class LawSpecRuntime
   }
 
   /** Whether the model allows the prefix then every interleaving. */
-  private static boolean parallelAllowed(
-      Model model, ModelRun prefix, List<List<ModelStep>> branches)
+  private static boolean parallelAllowed(Model model, ModelRun prefix,
+      List<List<ModelStep>> branches)
   {
     Map<String, Object> symbols = new java.util.HashMap<String, Object>();
     Value state;
@@ -5806,17 +5747,12 @@ public final class LawSpecRuntime
     {
       return false;
     }
-    return allowedFrom(
-        model, symbols, branches, new int[branches.size()], state, new java.util.HashSet<String>());
+    return allowedFrom(model, symbols, branches, new int[branches.size()], state,
+        new java.util.HashSet<String>());
   }
 
-  private static boolean allowedFrom(
-      Model model,
-      Map<String, Object> symbols,
-      List<List<ModelStep>> branches,
-      int[] positions,
-      Value state,
-      java.util.Set<String> seen)
+  private static boolean allowedFrom(Model model, Map<String, Object> symbols,
+      List<List<ModelStep>> branches, int[] positions, Value state, java.util.Set<String> seen)
   {
     if (!seen.add(searchKey(positions, state)))
     {
@@ -5847,8 +5783,8 @@ public final class LawSpecRuntime
     return true;
   }
 
-  private static List<ModelStep> generateBranch(
-      Model model, SplitMix64 random, Value state, long length, long size)
+  private static List<ModelStep> generateBranch(Model model, SplitMix64 random, Value state,
+      long length, long size)
   {
     Map<String, Object> symbols = new java.util.HashMap<String, Object>();
     var steps = new ArrayList<ModelStep>();
@@ -5870,8 +5806,8 @@ public final class LawSpecRuntime
     return steps;
   }
 
-  private static ParallelCase generateParallel(
-      Model model, SplitMix64 random, long size, int threads, int branchLength)
+  private static ParallelCase generateParallel(Model model, SplitMix64 random, long size,
+      int threads, int branchLength)
   {
     var prefix = generateRun(model, random, random.below(4), size);
     Value state;
@@ -5973,41 +5909,39 @@ public final class LawSpecRuntime
     {
       final int branch = i;
       final var random = new SplitMix64(shake ^ ((long) (i + 1) * 0x9E3779B97F4A7C15L));
-      threads.add(
-          new Thread(
-              () -> {
-                Map<String, Object> own = new java.util.HashMap<String, Object>();
-                try
-                {
-                  ready.await();
-                }
-                catch (InterruptedException e)
-                {
-                  Thread.currentThread().interrupt();
-                }
-                var steps = branches.get(branch);
-                for (int k = 0; k < steps.size(); k++)
-                {
-                  var s = steps.get(k);
-                  var command = model.commands.get(s.index());
-                  var full = new ArrayList<Value>(s.args());
-                  full.add(command.state, state);
-                  perturb(random);
-                  long called = clock.incrementAndGet();
-                  Value result;
-                  try
-                  {
-                    result = command.run.apply(own, full);
-                  }
-                  catch (Exception e)
-                  {
-                    errors.add(command.name + " " + raised(e));
-                    result = null;
-                  }
-                  history.get(branch)[k] = new Call(called, clock.incrementAndGet(), result);
-                  perturb(random);
-                }
-              }));
+      threads.add(new Thread(() -> {
+        Map<String, Object> own = new java.util.HashMap<String, Object>();
+        try
+        {
+          ready.await();
+        }
+        catch (InterruptedException e)
+        {
+          Thread.currentThread().interrupt();
+        }
+        var steps = branches.get(branch);
+        for (int k = 0; k < steps.size(); k++)
+        {
+          var s = steps.get(k);
+          var command = model.commands.get(s.index());
+          var full = new ArrayList<Value>(s.args());
+          full.add(command.state, state);
+          perturb(random);
+          long called = clock.incrementAndGet();
+          Value result;
+          try
+          {
+            result = command.run.apply(own, full);
+          }
+          catch (Exception e)
+          {
+            errors.add(command.name + " " + raised(e));
+            result = null;
+          }
+          history.get(branch)[k] = new Call(called, clock.incrementAndGet(), result);
+          perturb(random);
+        }
+      }));
     }
     for (var t : threads)
     {
@@ -6051,16 +5985,11 @@ public final class LawSpecRuntime
     {
       for (int k = 0; k < branches.get(i).size(); k++)
       {
-        observed.add(
-            branchName(i)
-                + ": "
-                + model.commands.get(branches.get(i).get(k).index()).name
-                + "() returned "
-                + render(history.get(i)[k].result()));
+        observed.add(branchName(i) + ": " + model.commands.get(branches.get(i).get(k).index()).name
+            + "() returned " + render(history.get(i)[k].result()));
       }
     }
-    return "no order of the parallel calls agrees with the model ("
-        + String.join("; ", observed)
+    return "no order of the parallel calls agrees with the model (" + String.join("; ", observed)
         + ")";
   }
 
@@ -6069,31 +5998,25 @@ public final class LawSpecRuntime
    * or map whose every call touches one key, each key's calls are linearized separately (the keys
    * are independent), one group after another; otherwise all calls at once.
    */
-  private static boolean linearizable(
-      Model model,
-      Map<String, Object> symbols,
-      List<List<ModelStep>> branches,
-      List<Call[]> history,
-      Value expected,
-      Value finalState,
+  private static boolean linearizable(Model model, Map<String, Object> symbols,
+      List<List<ModelStep>> branches, List<Call[]> history, Value expected, Value finalState,
       Value state)
   {
-    java.util.function.Predicate<Value> finish =
-        modelState -> {
-          if (finalState != null && compareValues(finalState, modelState) != 0)
-          {
-            return false;
-          }
-          for (int k = 0; k < model.invariants.size(); k++)
-          {
-            var subject = model.invariantKinds.get(k).equals("model") ? modelState : state;
-            if (!truth(model.invariants.get(k).apply(symbols, List.of(subject))))
-            {
-              return false;
-            }
-          }
-          return true;
-        };
+    java.util.function.Predicate<Value> finish = modelState -> {
+      if (finalState != null && compareValues(finalState, modelState) != 0)
+      {
+        return false;
+      }
+      for (int k = 0; k < model.invariants.size(); k++)
+      {
+        var subject = model.invariantKinds.get(k).equals("model") ? modelState : state;
+        if (!truth(model.invariants.get(k).apply(symbols, List.of(subject))))
+        {
+          return false;
+        }
+      }
+      return true;
+    };
     // Threads that never message each other see only their own calls, so
     // causal consistency checks each thread's results alone.
     if (model.consistency.equals("causal"))
@@ -6125,15 +6048,8 @@ public final class LawSpecRuntime
     }
     if (!model.perKey)
     {
-      return linearize(
-          model,
-          symbols,
-          branches,
-          history,
-          new int[branches.size()],
-          expected,
-          finish,
-          new java.util.HashSet<String>());
+      return linearize(model, symbols, branches, history, new int[branches.size()], expected,
+          finish, new java.util.HashSet<String>());
     }
     // Each key's calls, branch by branch, in order of the rendered key.
     var stepGroups = new java.util.TreeMap<String, List<List<ModelStep>>>();
@@ -6171,18 +6087,10 @@ public final class LawSpecRuntime
         calls.add(c.toArray(new Call[0]));
       }
       var ends = new ArrayList<Value>();
-      if (!linearize(
-          model,
-          symbols,
-          parts,
-          calls,
-          new int[parts.size()],
-          modelState,
-          end -> {
-            ends.add(end);
-            return true;
-          },
-          new java.util.HashSet<String>()))
+      if (!linearize(model, symbols, parts, calls, new int[parts.size()], modelState, end -> {
+        ends.add(end);
+        return true;
+      }, new java.util.HashSet<String>()))
       {
         return false;
       }
@@ -6196,15 +6104,9 @@ public final class LawSpecRuntime
    * memoized on positions and the model state. finish judges each complete order's final model
    * state.
    */
-  private static boolean linearize(
-      Model model,
-      Map<String, Object> symbols,
-      List<List<ModelStep>> branches,
-      List<Call[]> history,
-      int[] positions,
-      Value modelState,
-      java.util.function.Predicate<Value> finish,
-      java.util.Set<String> seen)
+  private static boolean linearize(Model model, Map<String, Object> symbols,
+      List<List<ModelStep>> branches, List<Call[]> history, int[] positions, Value modelState,
+      java.util.function.Predicate<Value> finish, java.util.Set<String> seen)
   {
     if (!seen.add(searchKey(positions, modelState)))
     {
@@ -6238,8 +6140,7 @@ public final class LawSpecRuntime
       {
         for (int j = 0; j < branches.size(); j++)
         {
-          if (j != i
-              && positions[j] < branches.get(j).size()
+          if (j != i && positions[j] < branches.get(j).size()
               && history.get(j)[positions[j]].returned() < called)
           {
             blocked = true;
@@ -6261,14 +6162,13 @@ public final class LawSpecRuntime
       {
         continue;
       }
-      if (!model.consistency.equals("eventual")
-          && !command.unit
+      if (!model.consistency.equals("eventual") && !command.unit
           && compareValues(history.get(i)[k].result(), stepped.result()) != 0)
       {
         continue;
       }
-      if (linearize(
-          model, symbols, branches, history, advanced(positions, i), stepped.state(), finish, seen))
+      if (linearize(model, symbols, branches, history, advanced(positions, i), stepped.state(),
+          finish, seen))
       {
         return true;
       }
@@ -6308,10 +6208,11 @@ public final class LawSpecRuntime
   }
 
   private record ShrunkParallel(ParallelCase c, String failure)
-  {}
+  {
+  }
 
-  private static ShrunkParallel shrinkParallel(
-      Model model, ParallelCase c, String failure, int repeats, int budget, long shake)
+  private static ShrunkParallel shrinkParallel(Model model, ParallelCase c, String failure,
+      int repeats, int budget, long shake)
   {
     while (budget > 0)
     {
@@ -6321,8 +6222,8 @@ public final class LawSpecRuntime
       var steps = prefix.steps();
       for (int k = 0; k < steps.size(); k++)
       {
-        candidates.add(
-            new ParallelCase(new ModelRun(prefix.startArgs(), without(steps, k)), branches));
+        candidates
+            .add(new ParallelCase(new ModelRun(prefix.startArgs(), without(steps, k)), branches));
       }
       for (int i = 0; i < branches.size(); i++)
       {
@@ -6401,19 +6302,17 @@ public final class LawSpecRuntime
     {
       parts.add(branchName(i) + ": " + describeBranch(model, branches.get(i)));
     }
-    return describeRun(model, c.prefix())
-        + ", then "
-        + String.join(", ", parts.subList(0, parts.size() - 1))
-        + " and "
-        + parts.get(parts.size() - 1)
-        + " at the same time";
+    return describeRun(model, c.prefix()) + ", then "
+        + String.join(", ", parts.subList(0, parts.size() - 1)) + " and "
+        + parts.get(parts.size() - 1) + " at the same time";
   }
 
   /**
    * Checks a shared model's histories under concurrency; a failure throws AssertionError naming the
    * smallest failing case found.
    *
-   * <p>A shared model promises linearizability unless it names a weaker consistency, so concurrent
+   * <p>
+   * A shared model promises linearizability unless it names a weaker consistency, so concurrent
    * histories are judged against some sequential order of the calls, found by a Wing-Gong search.
    * ref:herlihy-wing-linearizability ref:wing-gong-linearizability
    * ref:DEC-stateful-models-linearizability
@@ -6421,30 +6320,18 @@ public final class LawSpecRuntime
   public static void checkModelParallel(Model model)
   {
     String text = System.getenv("LAWSPEC_SEED");
-    checkModelParallel(
-        model,
-        50,
-        10,
-        300,
-        text == null ? 0 : Long.parseUnsignedLong(text.trim()),
-        THREADS,
-        BRANCH);
+    checkModelParallel(model, 50, 10, 300, text == null ? 0 : Long.parseUnsignedLong(text.trim()),
+        THREADS, BRANCH);
   }
 
-  public static void checkModelParallel(
-      Model model, int cases, int repeats, int maxShrinks, long seed)
+  public static void checkModelParallel(Model model, int cases, int repeats, int maxShrinks,
+      long seed)
   {
     checkModelParallel(model, cases, repeats, maxShrinks, seed, THREADS, BRANCH);
   }
 
-  public static void checkModelParallel(
-      Model model,
-      int cases,
-      int repeats,
-      int maxShrinks,
-      long seed,
-      int threads,
-      int branchLength)
+  public static void checkModelParallel(Model model, int cases, int repeats, int maxShrinks,
+      long seed, int threads, int branchLength)
   {
     var random = new SplitMix64(seed ^ 0x5BD1E995L);
     for (int n = 0; n < cases; n++)
@@ -6455,15 +6342,8 @@ public final class LawSpecRuntime
       if (failure != null)
       {
         var shrunk = shrinkParallel(model, c, failure, Math.max(2, repeats / 2), maxShrinks, shake);
-        throw new AssertionError(
-            "model "
-                + model.name
-                + " is not "
-                + consistent(model.consistency)
-                + ": "
-                + describeParallel(model, shrunk.c())
-                + ": "
-                + shrunk.failure());
+        throw new AssertionError("model " + model.name + " is not " + consistent(model.consistency)
+            + ": " + describeParallel(model, shrunk.c()) + ": " + shrunk.failure());
       }
     }
   }
@@ -6487,7 +6367,8 @@ public final class LawSpecRuntime
     void gone(int side);
 
     default void close()
-    {}
+    {
+    }
   }
 
   private static final class ScenarioChannel implements ScenarioLink
@@ -6513,9 +6394,8 @@ public final class LawSpecRuntime
     @SuppressWarnings("unchecked")
     final java.util.concurrent.LinkedBlockingQueue<Object>[] queues =
         new java.util.concurrent.LinkedBlockingQueue[] {
-          new java.util.concurrent.LinkedBlockingQueue<Object>(),
-          new java.util.concurrent.LinkedBlockingQueue<Object>()
-        };
+            new java.util.concurrent.LinkedBlockingQueue<Object>(),
+            new java.util.concurrent.LinkedBlockingQueue<Object>()};
 
     final boolean[] ended = new boolean[2];
 
@@ -6603,13 +6483,8 @@ public final class LawSpecRuntime
       this.remote = null;
     }
 
-    ScenarioMailbox(
-        String name,
-        int expected,
-        MemoryNetwork network,
-        Object descriptor,
-        Values values,
-        Map<String, NetScenarioChannel> registry)
+    ScenarioMailbox(String name, int expected, MemoryNetwork network, Object descriptor,
+        Values values, Map<String, NetScenarioChannel> registry)
     {
       this.name = name;
       this.expected = expected;
@@ -6705,10 +6580,8 @@ public final class LawSpecRuntime
             int cut = text.lastIndexOf('#');
             if (cut > 0 && registry.containsKey(text.substring(0, cut)))
             {
-              result =
-                  new ScenarioEnd(
-                      registry.get(text.substring(0, cut)),
-                      Integer.parseInt(text.substring(cut + 1)));
+              result = new ScenarioEnd(registry.get(text.substring(0, cut)),
+                  Integer.parseInt(text.substring(cut + 1)));
             }
           }
           return new Object[] {result, carried};
@@ -6802,7 +6675,8 @@ public final class LawSpecRuntime
 
   /** A channel end in transit or held by a process. */
   private record ScenarioEnd(ScenarioLink channel, int side)
-  {}
+  {
+  }
 
   /**
    * A scenario channel whose two sides are endpoints on two nodes of a faulty in-memory network. A
@@ -6816,11 +6690,7 @@ public final class LawSpecRuntime
     final NetEndpoint[] ends = new NetEndpoint[2];
     final boolean[] done = new boolean[2];
 
-    NetScenarioChannel(
-        MemoryNetwork network,
-        String name,
-        List<Step> steps,
-        Values values,
+    NetScenarioChannel(MemoryNetwork network, String name, List<Step> steps, Values values,
         Map<String, NetScenarioChannel> registry)
     {
       this.name = name;
@@ -6874,8 +6744,8 @@ public final class LawSpecRuntime
         int cut = text.lastIndexOf('#');
         if (cut > 0 && registry.containsKey(text.substring(0, cut)))
         {
-          return new ScenarioEnd(
-              registry.get(text.substring(0, cut)), Integer.parseInt(text.substring(cut + 1)));
+          return new ScenarioEnd(registry.get(text.substring(0, cut)),
+              Integer.parseInt(text.substring(cut + 1)));
         }
       }
       return value;
@@ -6900,19 +6770,14 @@ public final class LawSpecRuntime
     }
   }
 
-  private record ScenarioCall(
-      ModelCommand command,
-      List<Value> args,
-      Value result,
-      long called,
-      long returned,
-      String process,
-      Map<String, Long> atCall,
-      Map<String, Long> atReturn)
-  {}
+  private record ScenarioCall(ModelCommand command, List<Value> args, Value result, long called,
+      long returned, String process, Map<String, Long> atCall, Map<String, Long> atReturn)
+  {
+  }
 
   private record StampKey(ScenarioLink channel, int side)
-  {}
+  {
+  }
 
   private static final class ScenarioRun
   {
@@ -6980,7 +6845,8 @@ public final class LawSpecRuntime
             names.addAll(actsChannels(b.subList(1, b.size())));
           }
         }
-        default -> {}
+        default -> {
+        }
       }
     }
     return names;
@@ -7019,14 +6885,8 @@ public final class LawSpecRuntime
    * true when the process finished, false when it failed; either way, the ends it still holds are
    * given up.
    */
-  private static boolean scenarioProcess(
-      ScenarioRun run,
-      List<Object> acts,
-      Map<String, Value> env,
-      Map<String, ScenarioEnd> ends,
-      SplitMix64 random,
-      Object identity,
-      Map<String, Long> clock)
+  private static boolean scenarioProcess(ScenarioRun run, List<Object> acts, Map<String, Value> env,
+      Map<String, ScenarioEnd> ends, SplitMix64 random, Object identity, Map<String, Long> clock)
   {
     String me = identity == null ? "root" : run.processNames.get(identity);
     var sent = new java.util.HashMap<String, Integer>();
@@ -7052,16 +6912,9 @@ public final class LawSpecRuntime
     }
   }
 
-  private static boolean scenarioSteps(
-      ScenarioRun run,
-      List<Object> acts,
-      Map<String, Value> env,
-      Map<String, ScenarioEnd> ends,
-      SplitMix64 random,
-      Object identity,
-      Map<String, Long> clock,
-      String me,
-      Map<String, Integer> sent)
+  private static boolean scenarioSteps(ScenarioRun run, List<Object> acts, Map<String, Value> env,
+      Map<String, ScenarioEnd> ends, SplitMix64 random, Object identity, Map<String, Long> clock,
+      String me, Map<String, Integer> sent)
   {
     Map<String, Object> own = new java.util.HashMap<String, Object>();
     for (int index = 0; index < acts.size(); index++)
@@ -7114,16 +6967,8 @@ public final class LawSpecRuntime
           }
           long returned = run.clock.incrementAndGet();
           clock.merge(me, 1L, Long::sum);
-          run.history.add(
-              new ScenarioCall(
-                  command,
-                  args,
-                  result,
-                  called,
-                  returned,
-                  me,
-                  atCall,
-                  new java.util.HashMap<String, Long>(clock)));
+          run.history.add(new ScenarioCall(command, args, result, called, returned, me, atCall,
+              new java.util.HashMap<String, Long>(clock)));
           if (act.get(2) != null)
           {
             env.put(atomText(act.get(2)), result);
@@ -7174,8 +7019,8 @@ public final class LawSpecRuntime
           synchronized (run.stamps)
           {
             run.stamps
-                .computeIfAbsent(
-                    new StampKey(end.channel(), end.side()), k -> new java.util.ArrayDeque<>())
+                .computeIfAbsent(new StampKey(end.channel(), end.side()),
+                    k -> new java.util.ArrayDeque<>())
                 .add(new java.util.HashMap<String, Long>(clock));
           }
           end.channel().send(end.side(), value);
@@ -7198,16 +7043,8 @@ public final class LawSpecRuntime
                 return false;
               }
               var handler = form(act.get(3));
-              return scenarioSteps(
-                  run,
-                  handler.subList(1, handler.size()),
-                  env,
-                  ends,
-                  random,
-                  null,
-                  clock,
-                  me,
-                  sent);
+              return scenarioSteps(run, handler.subList(1, handler.size()), env, ends, random, null,
+                  clock, me, sent);
             }
             @SuppressWarnings("unchecked")
             var from = (Map<String, Long>) got[1];
@@ -7230,8 +7067,8 @@ public final class LawSpecRuntime
           Object value = end.channel().receive(end.side());
           if (value == null)
           {
-            run.failures.add(
-                "a receive on " + name + " waited too long: the processes are blocked");
+            run.failures
+                .add("a receive on " + name + " waited too long: the processes are blocked");
             return false;
           }
           if (value == SCENARIO_GONE)
@@ -7244,8 +7081,8 @@ public final class LawSpecRuntime
             }
             ends.remove(name);
             var handler = form(act.get(3));
-            return scenarioSteps(
-                run, handler.subList(1, handler.size()), env, ends, random, null, clock, me, sent);
+            return scenarioSteps(run, handler.subList(1, handler.size()), env, ends, random, null,
+                clock, me, sent);
           }
           Map<String, Long> carried;
           synchronized (run.stamps)
@@ -7320,18 +7157,8 @@ public final class LawSpecRuntime
             final var copy = new java.util.HashMap<String, Value>(env);
             final var branchRandom =
                 new SplitMix64(run.shake ^ ((long) (threads.size() + 1) * 0x9E3779B97F4A7C15L));
-            threads.add(
-                new Thread(
-                    () ->
-                        outcomes[slot] =
-                            scenarioProcess(
-                                run,
-                                branch,
-                                copy,
-                                mine,
-                                branchRandom,
-                                branchIdentity,
-                                clocks.get(slot))));
+            threads.add(new Thread(() -> outcomes[slot] = scenarioProcess(run, branch, copy, mine,
+                branchRandom, branchIdentity, clocks.get(slot))));
           }
           for (var t : threads)
           {
@@ -7380,19 +7207,13 @@ public final class LawSpecRuntime
           Value wanted = scenarioConstant(form(act.get(2)));
           if (actual == null || compareValues(actual, wanted) != 0)
           {
-            run.failures.add(
-                "expect "
-                    + name
-                    + " = "
-                    + render(wanted)
-                    + " failed: "
-                    + name
-                    + " is "
-                    + (actual == null ? "None" : render(actual)));
+            run.failures.add("expect " + name + " = " + render(wanted) + " failed: " + name + " is "
+                + (actual == null ? "None" : render(actual)));
             return false;
           }
         }
-        default -> {}
+        default -> {
+        }
       }
     }
     if (run.victim != null && run.victim == identity && run.victimAct == acts.size())
@@ -7403,10 +7224,11 @@ public final class LawSpecRuntime
   }
 
   private record ScenarioOutcome(String title, String failure)
-  {}
+  {
+  }
 
-  private static ScenarioOutcome runScenario(
-      Model model, String spec, long shake, boolean crash, boolean network)
+  private static ScenarioOutcome runScenario(Model model, String spec, long shake, boolean crash,
+      boolean network)
   {
     var forms = readDescriptor(spec);
     String title = atomText(form(forms.get(0)).get(1));
@@ -7477,14 +7299,12 @@ public final class LawSpecRuntime
       var registry = new java.util.HashMap<String, NetScenarioChannel>();
       for (var c : channelNames)
       {
-        run.channels.put(
-            atomText(c),
+        run.channels.put(atomText(c),
             new NetScenarioChannel(net, atomText(c), steps.get(atomText(c)), types, registry));
       }
       for (var m : boxes)
       {
-        run.mailboxes.put(
-            m,
+        run.mailboxes.put(m,
             kinds.containsKey(m)
                 ? new ScenarioMailbox(m, allSends(body, m), net, kinds.get(m), types, registry)
                 : new ScenarioMailbox(m, allSends(body, m)));
@@ -7524,15 +7344,9 @@ public final class LawSpecRuntime
       run.victim = processes.get((int) chooser.below(processes.size()));
       run.victimAct = chooser.below(form(run.victim).size() - 1 + 1);
     }
-    boolean finished =
-        scenarioProcess(
-            run,
-            body,
-            new java.util.HashMap<String, Value>(),
-            new java.util.HashMap<String, ScenarioEnd>(),
-            new SplitMix64(shake),
-            null,
-            new java.util.HashMap<String, Long>());
+    boolean finished = scenarioProcess(run, body, new java.util.HashMap<String, Value>(),
+        new java.util.HashMap<String, ScenarioEnd>(), new SplitMix64(shake), null,
+        new java.util.HashMap<String, Long>());
     for (var c : run.channels.values())
     {
       c.close();
@@ -7543,8 +7357,8 @@ public final class LawSpecRuntime
     }
     if (!run.failures.isEmpty())
     {
-      return new ScenarioOutcome(
-          title, run.failures.get(0) + (run.victim != null ? " (with a process crashed)" : ""));
+      return new ScenarioOutcome(title,
+          run.failures.get(0) + (run.victim != null ? " (with a process crashed)" : ""));
     }
     if (!finished && run.victim == null)
     {
@@ -7560,16 +7374,11 @@ public final class LawSpecRuntime
       var observed = new ArrayList<String>();
       for (var c : sorted)
       {
-        observed.add(
-            c.command().name + "(" + renderAll(c.args()) + ") returned " + render(c.result()));
+        observed
+            .add(c.command().name + "(" + renderAll(c.args()) + ") returned " + render(c.result()));
       }
-      return new ScenarioOutcome(
-          title,
-          "the calls are not "
-              + consistent(model.consistency)
-              + " with the model ("
-              + String.join("; ", observed)
-              + ")");
+      return new ScenarioOutcome(title, "the calls are not " + consistent(model.consistency)
+          + " with the model (" + String.join("; ", observed) + ")");
     }
     return new ScenarioOutcome(title, null);
   }
@@ -7594,13 +7403,8 @@ public final class LawSpecRuntime
    * each process's results from an order of what happened before them. Eventual: no results, only
    * the final state.
    */
-  private static boolean linearizesHistory(
-      Model model,
-      Map<String, Object> symbols,
-      List<ScenarioCall> history,
-      Value expected,
-      Value finalState,
-      Value state)
+  private static boolean linearizesHistory(Model model, Map<String, Object> symbols,
+      List<ScenarioCall> history, Value expected, Value finalState, Value state)
   {
     String mode = model.consistency;
     var everything = new ArrayList<Integer>();
@@ -7636,18 +7440,8 @@ public final class LawSpecRuntime
             }
           }
         }
-        if (!visitHistory(
-            model,
-            symbols,
-            history,
-            new ArrayList<Integer>(seenBy),
-            own,
-            false,
-            finalState,
-            state,
-            new java.util.BitSet(),
-            expected,
-            new java.util.HashSet<String>()))
+        if (!visitHistory(model, symbols, history, new ArrayList<Integer>(seenBy), own, false,
+            finalState, state, new java.util.BitSet(), expected, new java.util.HashSet<String>()))
         {
           return false;
         }
@@ -7655,31 +7449,13 @@ public final class LawSpecRuntime
       return true;
     }
     var checked = new java.util.HashSet<Integer>(mode.equals("eventual") ? List.of() : everything);
-    return visitHistory(
-        model,
-        symbols,
-        history,
-        everything,
-        checked,
-        true,
-        finalState,
-        state,
-        new java.util.BitSet(),
-        expected,
-        new java.util.HashSet<String>());
+    return visitHistory(model, symbols, history, everything, checked, true, finalState, state,
+        new java.util.BitSet(), expected, new java.util.HashSet<String>());
   }
 
-  private static boolean visitHistory(
-      Model model,
-      Map<String, Object> symbols,
-      List<ScenarioCall> history,
-      List<Integer> members,
-      java.util.Set<Integer> checked,
-      boolean judgeFinal,
-      Value finalState,
-      Value state,
-      java.util.BitSet done,
-      Value modelState,
+  private static boolean visitHistory(Model model, Map<String, Object> symbols,
+      List<ScenarioCall> history, List<Integer> members, java.util.Set<Integer> checked,
+      boolean judgeFinal, Value finalState, Value state, java.util.BitSet done, Value modelState,
       java.util.Set<String> seen)
   {
     if (!seen.add(done + "|" + render(modelState)))
@@ -7717,11 +7493,8 @@ public final class LawSpecRuntime
       boolean blocked = false;
       for (int j : members)
       {
-        if (j != i
-            && !done.get(j)
-            && (linear
-                ? history.get(j).returned() < call.called()
-                : happenedBefore(history.get(j), call)))
+        if (j != i && !done.get(j) && (linear ? history.get(j).returned() < call.called()
+            : happenedBefore(history.get(j), call)))
         {
           blocked = true;
         }
@@ -7739,26 +7512,15 @@ public final class LawSpecRuntime
       {
         continue;
       }
-      if (checked.contains(i)
-          && !call.command().unit
+      if (checked.contains(i) && !call.command().unit
           && compareValues(call.result(), stepped.result()) != 0)
       {
         continue;
       }
       var next = (java.util.BitSet) done.clone();
       next.set(i);
-      if (visitHistory(
-          model,
-          symbols,
-          history,
-          members,
-          checked,
-          judgeFinal,
-          finalState,
-          state,
-          next,
-          stepped.state(),
-          seen))
+      if (visitHistory(model, symbols, history, members, checked, judgeFinal, finalState, state,
+          next, stepped.state(), seen))
       {
         return true;
       }
@@ -7836,14 +7598,14 @@ public final class LawSpecRuntime
   {
     // A box, so that a null value can travel through the queue.
     private record Message(Object value)
-    {}
+    {
+    }
 
     @SuppressWarnings("unchecked")
     private final java.util.concurrent.LinkedBlockingQueue<Message>[] inboxes =
         new java.util.concurrent.LinkedBlockingQueue[] {
-          new java.util.concurrent.LinkedBlockingQueue<Message>(),
-          new java.util.concurrent.LinkedBlockingQueue<Message>()
-        };
+            new java.util.concurrent.LinkedBlockingQueue<Message>(),
+            new java.util.concurrent.LinkedBlockingQueue<Message>()};
 
     @Override
     public void send(int side, Object value)
@@ -7883,7 +7645,8 @@ public final class LawSpecRuntime
 
   /** What a receive returns: the value and the end's next step. */
   public record Received<T, NextT>(T value, NextT next)
-  {}
+  {
+  }
 
   /** Claims a single-use end: the first claim succeeds, any later one throws. */
   public static void claimEnd(java.util.concurrent.atomic.AtomicBoolean used)
@@ -7944,11 +7707,10 @@ public final class LawSpecRuntime
   /** Runs a process that returns nothing on its own (virtual) thread. */
   public static Spawned<Void> spawn(Runnable process)
   {
-    return spawn(
-        () -> {
-          process.run();
-          return null;
-        });
+    return spawn(() -> {
+      process.run();
+      return null;
+    });
   }
 
   /** Runs processes at the same time and waits for all; rethrows the first failure. */
@@ -8033,25 +7795,28 @@ public final class LawSpecRuntime
    * "stopped" (cause null).
    */
   public record Exit(String kind, Object cause)
-  {}
+  {
+  }
 
   /** What a handler returns: its reply and the actor's next state. */
   public record Next<R, S>(R reply, S state)
-  {}
+  {
+  }
 
   /**
    * An actor owning a state of type S, handling one message at a time.
    *
-   * <p>restart (the last state to the state after a crash) lets a supervisor restart it; without
-   * it, a crash stops the actor even under a supervisor. A supervised actor restarts in place: it
-   * keeps its address and the messages waiting for it.
+   * <p>
+   * restart (the last state to the state after a crash) lets a supervisor restart it; without it, a
+   * crash stops the actor even under a supervisor. A supervised actor restarts in place: it keeps
+   * its address and the messages waiting for it.
    */
   public static final class Actor<S>
   {
-    private record Message<S>(
-        Function<S, ? extends Next<?, S>> handler,
+    private record Message<S>(Function<S, ? extends Next<?, S>> handler,
         java.util.concurrent.CompletableFuture<Object> reply)
-    {}
+    {
+    }
 
     private S state;
     private final Function<S, S> restartState;
@@ -8197,12 +7962,9 @@ public final class LawSpecRuntime
       }
       try
       {
-        post(
-            new Message<S>(
-                s -> {
-                  throw new RestartSignal(cause, origin);
-                },
-                null));
+        post(new Message<S>(s -> {
+          throw new RestartSignal(cause, origin);
+        }, null));
       }
       catch (ActorStopped e)
       {
@@ -8280,10 +8042,9 @@ public final class LawSpecRuntime
     public void crash(Object cause)
     {
       long origin = nextCrash();
-      call(
-          s -> {
-            throw new RestartSignal(cause, origin);
-          });
+      call(s -> {
+        throw new RestartSignal(cause, origin);
+      });
     }
 
     /**
@@ -8349,7 +8110,8 @@ public final class LawSpecRuntime
    * supervisor's own crash: its supervisor restarts all of its children, or, at the top, every
    * child stops.
    *
-   * <p>Supervision follows OTP's strategies and restart types, so a supervision tree means what an
+   * <p>
+   * Supervision follows OTP's strategies and restart types, so a supervision tree means what an
    * Erlang programmer expects on every target. ref:DEC-actors-otp-supervision
    * ref:erlang-otp-supervisors
    */
@@ -8719,33 +8481,30 @@ public final class LawSpecRuntime
     java.util.function.Supplier<Actor<Long>> counter = () -> new Actor<Long>(0L, s -> 0L);
     java.util.function.Consumer<Actor<Long>> bump =
         a -> a.call(s -> new Next<Long, Long>(s + 1, s + 1));
-    java.util.function.Consumer<Actor<Long>> fail =
-        a -> {
-          try
-          {
-            a.call(
-                s -> {
-                  throw new ArithmeticException("/ by zero");
-                });
-          }
-          catch (ActorCrashed e)
-          {
-            return;
-          }
-          throw new AssertionError("a failing handler did not throw ActorCrashed");
-        };
-    java.util.function.BiConsumer<Actor<Long>, String> stopped =
-        (a, what) -> {
-          try
-          {
-            a.state();
-          }
-          catch (ActorStopped e)
-          {
-            return;
-          }
-          throw new AssertionError(what + " should have stopped");
-        };
+    java.util.function.Consumer<Actor<Long>> fail = a -> {
+      try
+      {
+        a.call(s -> {
+          throw new ArithmeticException("/ by zero");
+        });
+      }
+      catch (ActorCrashed e)
+      {
+        return;
+      }
+      throw new AssertionError("a failing handler did not throw ActorCrashed");
+    };
+    java.util.function.BiConsumer<Actor<Long>, String> stopped = (a, what) -> {
+      try
+      {
+        a.state();
+      }
+      catch (ActorStopped e)
+      {
+        return;
+      }
+      throw new AssertionError(what + " should have stopped");
+    };
     var a = counter.get();
     bump.accept(a);
     fail.accept(a);
@@ -8757,9 +8516,7 @@ public final class LawSpecRuntime
     bump.accept(y);
     bump.accept(y);
     fail.accept(x);
-    expectSupervision(
-        List.of(x.state(), y.state()),
-        List.of(0L, 2L),
+    expectSupervision(List.of(x.state(), y.state()), List.of(0L, 2L),
         "one for one restarts only the crashed child");
     sup = new Supervisor(Supervisor.ONE_FOR_ALL);
     x = sup.supervise(counter.get());
@@ -8767,8 +8524,8 @@ public final class LawSpecRuntime
     bump.accept(x);
     bump.accept(y);
     fail.accept(x);
-    expectSupervision(
-        List.of(x.state(), y.state()), List.of(0L, 0L), "one for all restarts every child");
+    expectSupervision(List.of(x.state(), y.state()), List.of(0L, 0L),
+        "one for all restarts every child");
     sup = new Supervisor(Supervisor.REST_FOR_ONE);
     x = sup.supervise(counter.get());
     y = sup.supervise(counter.get());
@@ -8777,9 +8534,7 @@ public final class LawSpecRuntime
     bump.accept(y);
     bump.accept(z);
     fail.accept(y);
-    expectSupervision(
-        List.of(x.state(), y.state(), z.state()),
-        List.of(1L, 0L, 0L),
+    expectSupervision(List.of(x.state(), y.state(), z.state()), List.of(1L, 0L, 0L),
         "rest for one restarts the child and later ones");
     sup = new Supervisor();
     var t = sup.supervise(counter.get(), Supervisor.TEMPORARY);
@@ -8802,8 +8557,8 @@ public final class LawSpecRuntime
     fail.accept(x);
     fail.accept(x);
     stopped.accept(y, "a child of a supervisor past its restart limit");
-    expectSupervision(
-        kinds(events), List.of("crashed"), "a supervisor past its limit tells its monitors");
+    expectSupervision(kinds(events), List.of("crashed"),
+        "a supervisor past its limit tells its monitors");
     var outer = new Supervisor(Supervisor.ONE_FOR_ONE, 5, 10);
     var inner = outer.supervise(new Supervisor(Supervisor.ONE_FOR_ONE, 1, 10));
     x = inner.supervise(counter.get());
@@ -8811,9 +8566,7 @@ public final class LawSpecRuntime
     bump.accept(y);
     fail.accept(x);
     fail.accept(x);
-    expectSupervision(
-        List.of(x.state(), y.state()),
-        List.of(0L, 0L),
+    expectSupervision(List.of(x.state(), y.state()), List.of(0L, 0L),
         "a supervisor past its limit is restarted by its own");
     var seen = new java.util.concurrent.CopyOnWriteArrayList<Exit>();
     a = counter.get();
@@ -8843,10 +8596,8 @@ public final class LawSpecRuntime
       sleepQuietly(10);
     }
     sleepQuietly(50);
-    expectSupervision(
-        List.of(a.state(), b.state(), c.state(), (long) sup.restartCount()),
-        List.of(0L, 0L, 0L, 3L),
-        "a crash crosses each link once");
+    expectSupervision(List.of(a.state(), b.state(), c.state(), (long) sup.restartCount()),
+        List.of(0L, 0L, 0L, 3L), "a crash crosses each link once");
   }
 
   private static List<String> kinds(List<Exit> exits)
@@ -8886,7 +8637,8 @@ public final class LawSpecRuntime
   public static final class Mailbox<T>
   {
     private record Box<T>(T value)
-    {}
+    {
+    }
 
     private final java.util.ArrayDeque<Box<T>> items = new java.util.ArrayDeque<>();
     private boolean closed;
@@ -9021,10 +8773,10 @@ public final class LawSpecRuntime
   // Distribution. Values cross the network in a canonical binary encoding
   // driven by their type descriptor (the same descriptors as generation), so
   // no tags are sent and every target writes the same bytes:
-  //   int: zigzag LEB128 of the integer (any size)      bool: 0 or 1
-  //   text: LEB128 length, then UTF-8                    unit: nothing
-  //   list: LEB128 count, then items                     maybe: 0, or 1 then the value
-  //   either: 0 then left, or 1 then right               data: LEB128 constructor index, then
+  // int: zigzag LEB128 of the integer (any size) bool: 0 or 1
+  // text: LEB128 length, then UTF-8 unit: nothing
+  // list: LEB128 count, then items maybe: 0, or 1 then the value
+  // either: 0 then left, or 1 then right data: LEB128 constructor index, then
   // fields
   // A node sends frames over a Transport (in memory, TCP or HTTP): kind,
   // entity name, the sender's address, an id and a payload.
@@ -9136,11 +8888,9 @@ public final class LawSpecRuntime
   {
     int n = in.varint().intValueExact();
     var raw = in.take(n);
-    var decoder =
-        java.nio.charset.StandardCharsets.UTF_8
-            .newDecoder()
-            .onMalformedInput(java.nio.charset.CodingErrorAction.REPORT)
-            .onUnmappableCharacter(java.nio.charset.CodingErrorAction.REPORT);
+    var decoder = java.nio.charset.StandardCharsets.UTF_8.newDecoder()
+        .onMalformedInput(java.nio.charset.CodingErrorAction.REPORT)
+        .onUnmappableCharacter(java.nio.charset.CodingErrorAction.REPORT);
     try
     {
       return decoder.decode(java.nio.ByteBuffer.wrap(raw)).toString();
@@ -9172,8 +8922,8 @@ public final class LawSpecRuntime
   }
 
   @SuppressWarnings("unchecked")
-  private static void wirePut(
-      Values values, Object descriptor, Value v, java.io.ByteArrayOutputStream out)
+  private static void wirePut(Values values, Object descriptor, Value v,
+      java.io.ByteArrayOutputStream out)
   {
     var d = values.resolve(endAsText(descriptor));
     switch (atomText(d.get(0)))
@@ -9193,7 +8943,8 @@ public final class LawSpecRuntime
       }
       case "bool" -> out.write(Boolean.TRUE.equals(v.data()) ? 1 : 0);
       case "text", "end" -> putText(out, textOf(v));
-      case "unit" -> {}
+      case "unit" -> {
+      }
       case "list" -> {
         var items = (List<Value>) v.data();
         putVarint(out, BigInteger.valueOf(items.size()));
@@ -9309,8 +9060,8 @@ public final class LawSpecRuntime
           throw new WireError("not an Either");
         }
         var inner = wireGet(values, which == 0 ? d.get(1) : d.get(2), in);
-        return new Value(
-            type, new Data(which == 0 ? "Either::Left" : "Either::Right", List.of(inner)));
+        return new Value(type,
+            new Data(which == 0 ? "Either::Left" : "Either::Right", List.of(inner)));
       }
       case "data" -> {
         var index = in.varint();
@@ -9351,8 +9102,8 @@ public final class LawSpecRuntime
     {
       return null;
     }
-    return java.nio.file.Path.of(
-        directory, "inputs", law.replaceAll("[^A-Za-z0-9_-]", "_") + ".json");
+    return java.nio.file.Path.of(directory, "inputs",
+        law.replaceAll("[^A-Za-z0-9_-]", "_") + ".json");
   }
 
   public static void searchRemember(String law, List<String> descriptors, List<Value> values)
@@ -9369,20 +9120,12 @@ public final class LawSpecRuntime
       {
         var described = valuesFrom(descriptors.get(i));
         var bytes = wireEncode(described.values(), described.descriptor(), values.get(i));
-        inputs
-            .append(i == 0 ? "" : ",")
-            .append('"')
-            .append(java.util.HexFormat.of().formatHex(bytes))
-            .append('"');
+        inputs.append(i == 0 ? "" : ",").append('"')
+            .append(java.util.HexFormat.of().formatHex(bytes)).append('"');
       }
       java.nio.file.Files.createDirectories(file.getParent());
-      java.nio.file.Files.writeString(
-          file,
-          "{\"law\": \""
-              + law.replace("\\", "\\\\").replace("\"", "\\\"")
-              + "\", \"inputs\": ["
-              + inputs
-              + "]}");
+      java.nio.file.Files.writeString(file, "{\"law\": \""
+          + law.replace("\\", "\\\\").replace("\"", "\\\"") + "\", \"inputs\": [" + inputs + "]}");
     }
     catch (RuntimeException | java.io.IOException e)
     {
@@ -9412,11 +9155,8 @@ public final class LawSpecRuntime
           break;
         }
         var described = valuesFrom(descriptor);
-        values.add(
-            wireDecode(
-                described.values(),
-                described.descriptor(),
-                java.util.HexFormat.of().parseHex(matcher.group(1))));
+        values.add(wireDecode(described.values(), described.descriptor(),
+            java.util.HexFormat.of().parseHex(matcher.group(1))));
       }
     }
     catch (RuntimeException e)
@@ -9446,14 +9186,9 @@ public final class LawSpecRuntime
         var two = BigInteger.TWO;
         var seen = new java.util.HashSet<BigInteger>();
         seen.add(x);
-        for (var c :
-            List.of(
-                x.add(BigInteger.ONE),
-                x.subtract(BigInteger.ONE),
-                x.multiply(two),
-                x.divide(two),
-                x.add(b[1].subtract(x).divide(two)),
-                x.subtract(x.subtract(b[0]).divide(two))))
+        for (var c : List.of(x.add(BigInteger.ONE), x.subtract(BigInteger.ONE), x.multiply(two),
+            x.divide(two), x.add(b[1].subtract(x).divide(two)),
+            x.subtract(x.subtract(b[0]).divide(two))))
         {
           if (c.compareTo(b[0]) >= 0 && c.compareTo(b[1]) <= 0 && seen.add(c))
           {
@@ -9507,7 +9242,8 @@ public final class LawSpecRuntime
           }
         }
       }
-      default -> {}
+      default -> {
+      }
     }
     return out;
   }
@@ -9530,48 +9266,45 @@ public final class LawSpecRuntime
       // A malformed seed is seed 0, as an unset one is.
     }
     final long seed0 = base;
-    java.util.function.LongFunction<List<Value>> generate =
-        seed -> {
-          var random = new SplitMix64(seed);
-          var out = new ArrayList<Value>();
-          for (var t : tables)
-          {
-            out.add(t.values().generate(t.descriptor(), random, 8));
-          }
-          return out;
-        };
-    var state =
-        new Object()
-        {
-          List<Value> best = null;
-          double bestScore = Double.NEGATIVE_INFINITY;
-          int tried = 0;
-        };
-    SearchCase attempt =
-        values -> {
-          if (state.tried >= 400)
-          {
-            return null;
-          }
-          state.tried++;
-          Double score;
-          try
-          {
-            score = check.check(values);
-          }
-          catch (Exception | Error e)
-          {
-            searchRemember(law, descriptors, values);
-            throw e;
-          }
-          if (score == null || (state.best != null && !(score > state.bestScore)))
-          {
-            return null;
-          }
-          state.best = values;
-          state.bestScore = score;
-          return score;
-        };
+    java.util.function.LongFunction<List<Value>> generate = seed -> {
+      var random = new SplitMix64(seed);
+      var out = new ArrayList<Value>();
+      for (var t : tables)
+      {
+        out.add(t.values().generate(t.descriptor(), random, 8));
+      }
+      return out;
+    };
+    var state = new Object()
+    {
+      List<Value> best = null;
+      double bestScore = Double.NEGATIVE_INFINITY;
+      int tried = 0;
+    };
+    SearchCase attempt = values -> {
+      if (state.tried >= 400)
+      {
+        return null;
+      }
+      state.tried++;
+      Double score;
+      try
+      {
+        score = check.check(values);
+      }
+      catch (Exception | Error e)
+      {
+        searchRemember(law, descriptors, values);
+        throw e;
+      }
+      if (score == null || (state.best != null && !(score > state.bestScore)))
+      {
+        return null;
+      }
+      state.best = values;
+      state.bestScore = score;
+      return score;
+    };
     for (long k = 0; k < 10; k++)
     {
       attempt.check(generate.apply(seed0 + k));
@@ -9585,8 +9318,8 @@ public final class LawSpecRuntime
         var moves = new ArrayList<List<Value>>();
         for (int i = 0; i < current.size(); i++)
         {
-          for (var m :
-              searchMoves(tables.get(i).values(), tables.get(i).descriptor(), current.get(i)))
+          for (var m : searchMoves(tables.get(i).values(), tables.get(i).descriptor(),
+              current.get(i)))
           {
             var changed = new ArrayList<Value>(current);
             changed.set(i, m);
@@ -9606,12 +9339,8 @@ public final class LawSpecRuntime
         attempt.check(generate.apply(seed0 + 1000 + step));
       }
     }
-    System.out.println(
-        law
-            + ": targeted search tried "
-            + state.tried
-            + " case(s)"
-            + (state.best == null ? "" : "; best score " + state.bestScore));
+    System.out.println(law + ": targeted search tried " + state.tried + " case(s)"
+        + (state.best == null ? "" : "; best score " + state.bestScore));
   }
 
   /** A score as a double: the targeted search maximizes it. */
@@ -9669,12 +9398,8 @@ public final class LawSpecRuntime
     var result = new ArrayList<String>();
     for (long i = 0; i < count; i++)
     {
-      result.add(
-          hex(
-              wireEncode(
-                  described.values(),
-                  described.descriptor(),
-                  described.values().generate(described.descriptor(), random, size))));
+      result.add(hex(wireEncode(described.values(), described.descriptor(),
+          described.values().generate(described.descriptor(), random, size))));
     }
     return result;
   }
@@ -9687,11 +9412,8 @@ public final class LawSpecRuntime
     for (long i = 0; i < count; i++)
     {
       var v = described.values().generate(described.descriptor(), random, size);
-      var back =
-          wireDecode(
-              described.values(),
-              described.descriptor(),
-              wireEncode(described.values(), described.descriptor(), v));
+      var back = wireDecode(described.values(), described.descriptor(),
+          wireEncode(described.values(), described.descriptor(), v));
       if (!render(back).equals(render(v)))
       {
         return false;
@@ -9703,10 +9425,10 @@ public final class LawSpecRuntime
   private static final Values NO_TYPES = new Values(Map.of());
 
   private record Frame(String kind, String to, String source, long id, byte[] payload)
-  {}
+  {
+  }
 
-  private static byte[] frameEncode(
-      String kind, String to, String source, long id, byte[] payload)
+  private static byte[] frameEncode(String kind, String to, String source, long id, byte[] payload)
   {
     var out = new java.io.ByteArrayOutputStream();
     putText(out, kind);
@@ -9768,7 +9490,8 @@ public final class LawSpecRuntime
     void send(String node, byte[] frame);
 
     default void close()
-    {}
+    {
+    }
   }
 
   /**
@@ -9904,21 +9627,20 @@ public final class LawSpecRuntime
       }
       for (long wait : waits)
       {
-        startDaemon(
-            () -> {
-              if (wait > 0)
-              {
-                try
-                {
-                  Thread.sleep(wait / 1_000_000, (int) (wait % 1_000_000));
-                }
-                catch (InterruptedException e)
-                {
-                  return;
-                }
-              }
-              deliver.accept(frame);
-            });
+        startDaemon(() -> {
+          if (wait > 0)
+          {
+            try
+            {
+              Thread.sleep(wait / 1_000_000, (int) (wait % 1_000_000));
+            }
+            catch (InterruptedException e)
+            {
+              return;
+            }
+          }
+          deliver.accept(frame);
+        });
       }
     }
   }
@@ -10004,31 +9726,29 @@ public final class LawSpecRuntime
 
     public void start(java.util.function.Consumer<byte[]> deliver)
     {
-      startDaemon(
-          () -> {
-            while (!closed)
-            {
-              java.net.Socket connection;
-              try
-              {
-                connection = server.accept();
-              }
-              catch (java.io.IOException e)
-              {
-                return;
-              }
-              startDaemon(() -> read(connection, deliver));
-            }
-          });
+      startDaemon(() -> {
+        while (!closed)
+        {
+          java.net.Socket connection;
+          try
+          {
+            connection = server.accept();
+          }
+          catch (java.io.IOException e)
+          {
+            return;
+          }
+          startDaemon(() -> read(connection, deliver));
+        }
+      });
     }
 
-    private static void read(
-        java.net.Socket connection, java.util.function.Consumer<byte[]> deliver)
+    private static void read(java.net.Socket connection,
+        java.util.function.Consumer<byte[]> deliver)
     {
       try (connection;
-          var in =
-              new java.io.DataInputStream(
-                  new java.io.BufferedInputStream(connection.getInputStream())))
+          var in = new java.io.DataInputStream(
+              new java.io.BufferedInputStream(connection.getInputStream())))
       {
         while (true)
         {
@@ -10056,10 +9776,8 @@ public final class LawSpecRuntime
           if (connection == null)
           {
             connection = new java.net.Socket();
-            connection.connect(
-                new java.net.InetSocketAddress(
-                    rest.substring(0, colon), Integer.parseInt(rest.substring(colon + 1))),
-                5000);
+            connection.connect(new java.net.InetSocketAddress(rest.substring(0, colon),
+                Integer.parseInt(rest.substring(colon + 1))), 5000);
             connections.put(node, connection);
           }
           var out = new java.io.DataOutputStream(connection.getOutputStream());
@@ -10110,10 +9828,8 @@ public final class LawSpecRuntime
   {
     private final com.sun.net.httpserver.HttpServer server;
     private final String address;
-    private final java.net.http.HttpClient client =
-        java.net.http.HttpClient.newBuilder()
-            .connectTimeout(java.time.Duration.ofSeconds(5))
-            .build();
+    private final java.net.http.HttpClient client = java.net.http.HttpClient.newBuilder()
+        .connectTimeout(java.time.Duration.ofSeconds(5)).build();
     private volatile java.util.function.Consumer<byte[]> deliver;
 
     public HttpTransport()
@@ -10133,21 +9849,18 @@ public final class LawSpecRuntime
         throw new Unreachable("cannot listen on " + host + ":" + port + ": " + e.getMessage());
       }
       address = "http://" + host + ":" + server.getAddress().getPort();
-      server.createContext(
-          "/",
-          exchange -> {
-            var body = exchange.getRequestBody().readAllBytes();
-            boolean ours =
-                exchange.getRequestMethod().equals("POST")
-                    && exchange.getRequestURI().getPath().equals("/lawspec");
-            exchange.sendResponseHeaders(ours ? 204 : 404, -1);
-            exchange.close();
-            var target = deliver;
-            if (ours && target != null)
-            {
-              target.accept(body);
-            }
-          });
+      server.createContext("/", exchange -> {
+        var body = exchange.getRequestBody().readAllBytes();
+        boolean ours = exchange.getRequestMethod().equals("POST")
+            && exchange.getRequestURI().getPath().equals("/lawspec");
+        exchange.sendResponseHeaders(ours ? 204 : 404, -1);
+        exchange.close();
+        var target = deliver;
+        if (ours && target != null)
+        {
+          target.accept(body);
+        }
+      });
       server.setExecutor(java.util.concurrent.Executors.newVirtualThreadPerTaskExecutor());
     }
 
@@ -10164,12 +9877,10 @@ public final class LawSpecRuntime
 
     public void send(String node, byte[] frame)
     {
-      var request =
-          java.net.http.HttpRequest.newBuilder(java.net.URI.create(node + "/lawspec"))
-              .timeout(java.time.Duration.ofSeconds(5))
-              .header("Content-Type", "application/octet-stream")
-              .POST(java.net.http.HttpRequest.BodyPublishers.ofByteArray(frame))
-              .build();
+      var request = java.net.http.HttpRequest.newBuilder(java.net.URI.create(node + "/lawspec"))
+          .timeout(java.time.Duration.ofSeconds(5))
+          .header("Content-Type", "application/octet-stream")
+          .POST(java.net.http.HttpRequest.BodyPublishers.ofByteArray(frame)).build();
       try
       {
         client.send(request, java.net.http.HttpResponse.BodyHandlers.discarding());
@@ -10198,20 +9909,21 @@ public final class LawSpecRuntime
   }
 
   /** A message an actor serves: its handler (on the actor's state) and its types. */
-  public record Served<S>(
-      java.util.function.BiFunction<S, List<Value>, Next<Value, S>> handler,
-      List<Object> arguments,
-      Object reply)
-  {}
+  public record Served<S>(java.util.function.BiFunction<S, List<Value>, Next<Value, S>> handler,
+      List<Object> arguments, Object reply)
+  {
+  }
 
   /** A message's types, for calling an actor on another node. */
   public record Signature(List<Object> arguments, Object reply)
-  {}
+  {
+  }
 
   /** A definition other nodes can evaluate: the function and its types. */
-  public record Definition(
-      Function<List<Value>, Value> function, List<Object> arguments, Object result)
-  {}
+  public record Definition(Function<List<Value>, Value> function, List<Object> arguments,
+      Object result)
+  {
+  }
 
   // The secure network handler lives in LawSpecNetwork, which the compiler
   // writes beside this runtime when a program imports lawspec.network: it
@@ -10260,8 +9972,8 @@ public final class LawSpecRuntime
       try
       {
         // Its static initializer registers it.
-        Class.forName(
-            "lawspec.runtime.LawSpecNetwork", true, LawSpecRuntime.class.getClassLoader());
+        Class.forName("lawspec.runtime.LawSpecNetwork", true,
+            LawSpecRuntime.class.getClassLoader());
       }
       catch (ClassNotFoundException missing)
       {
@@ -10300,7 +10012,8 @@ public final class LawSpecRuntime
    * Order is kept within one channel; a mailbox or an actor call is best effort: a lost call fails
    * with Unreachable after its timeout.
    *
-   * <p>Every target's node speaks the same frames, so nodes written in different languages talk to
+   * <p>
+   * Every target's node speaks the same frames, so nodes written in different languages talk to
    * each other. ref:DEC-distribution-canonical-wire
    */
   public static final class Node
@@ -10343,10 +10056,8 @@ public final class LawSpecRuntime
     {
       this.transport = transport;
       this.address = transport.address();
-      this.secure =
-          transport instanceof InsecureMemoryTransport
-              ? null
-              : secureNetwork().layer(this, identity, trusted);
+      this.secure = transport instanceof InsecureMemoryTransport ? null
+          : secureNetwork().layer(this, identity, trusted);
       this.identity = secure == null ? null : secure.identity();
       transport.start(this::arrive);
     }
@@ -10432,10 +10143,7 @@ public final class LawSpecRuntime
       {
         if (frame.id() != 0)
         {
-          reply(
-              frame.source(),
-              frame.id(),
-              3,
+          reply(frame.source(), frame.id(), 3,
               utf8("nothing is registered as " + frame.to() + " on " + address));
         }
         return;
@@ -10452,17 +10160,16 @@ public final class LawSpecRuntime
             if (answer != null)
             {
               var again = answer;
-              startDaemon(
-                  () -> {
-                    try
-                    {
-                      send(frame.source() + "/", "reply", again, frame.id());
-                    }
-                    catch (RuntimeException e)
-                    {
-                      // Unreachable: the sender asks again.
-                    }
-                  });
+              startDaemon(() -> {
+                try
+                {
+                  send(frame.source() + "/", "reply", again, frame.id());
+                }
+                catch (RuntimeException e)
+                {
+                  // Unreachable: the sender asks again.
+                }
+              });
             }
             return;
           }
@@ -10527,8 +10234,8 @@ public final class LawSpecRuntime
         long left = giveUp - System.nanoTime();
         try
         {
-          return slot.get(
-              Math.max(0, Math.min(100_000_000L, left)), java.util.concurrent.TimeUnit.NANOSECONDS);
+          return slot.get(Math.max(0, Math.min(100_000_000L, left)),
+              java.util.concurrent.TimeUnit.NANOSECONDS);
         }
         catch (java.util.concurrent.TimeoutException e)
         {
@@ -10557,34 +10264,32 @@ public final class LawSpecRuntime
     public Mailbox<Value> mailbox(String name, Object descriptor, Values values)
     {
       var box = new Mailbox<Value>();
-      register(
-          name,
-          (node, kind, source, id, payload) -> {
-            if (!kind.equals("mail"))
-            {
-              return;
-            }
-            int status = 0;
-            byte[] body = new byte[0];
-            try
-            {
-              box.send(wireDecode(values, descriptor, payload));
-            }
-            catch (ActorStopped e)
-            {
-              status = 2;
-              body = utf8(String.valueOf(e.getMessage()));
-            }
-            catch (RuntimeException e)
-            {
-              status = 3;
-              body = utf8("not a message of this mailbox: " + e.getMessage());
-            }
-            if (id != 0)
-            {
-              node.reply(source, id, status, body);
-            }
-          });
+      register(name, (node, kind, source, id, payload) -> {
+        if (!kind.equals("mail"))
+        {
+          return;
+        }
+        int status = 0;
+        byte[] body = new byte[0];
+        try
+        {
+          box.send(wireDecode(values, descriptor, payload));
+        }
+        catch (ActorStopped e)
+        {
+          status = 2;
+          body = utf8(String.valueOf(e.getMessage()));
+        }
+        catch (RuntimeException e)
+        {
+          status = 3;
+          body = utf8("not a message of this mailbox: " + e.getMessage());
+        }
+        if (id != 0)
+        {
+          node.reply(source, id, status, body);
+        }
+      });
       return box;
     }
 
@@ -10593,8 +10298,8 @@ public final class LawSpecRuntime
       return new RemoteMailbox(this, address, descriptor, values, 5.0);
     }
 
-    public RemoteMailbox remoteMailbox(
-        String address, Object descriptor, Values values, double timeout)
+    public RemoteMailbox remoteMailbox(String address, Object descriptor, Values values,
+        double timeout)
     {
       return new RemoteMailbox(this, address, descriptor, values, timeout);
     }
@@ -10605,61 +10310,58 @@ public final class LawSpecRuntime
      * Lets other nodes call actor at {address}/name: handlers maps a message name to its handler
      * and types.
      */
-    public <S> String serve(
-        String name, Actor<S> actor, Map<String, Served<S>> handlers, Values values)
+    public <S> String serve(String name, Actor<S> actor, Map<String, Served<S>> handlers,
+        Values values)
     {
-      return register(
-          name,
-          (node, kind, source, id, payload) -> {
-            if (!kind.equals("call"))
-            {
-              return;
-            }
-            Served<S> served;
-            List<Value> args = new ArrayList<>();
-            try
-            {
-              var in = new Reader(payload, 0);
-              String message = getText(in);
-              served = handlers.get(message);
-              if (served == null)
-              {
-                throw new WireError("no message " + message);
-              }
-              for (var d : served.arguments())
-              {
-                args.add(wireGet(values, d, in));
-              }
-              if (in.pos != payload.length)
-              {
-                throw new WireError("extra bytes after the arguments");
-              }
-            }
-            catch (RuntimeException e)
-            {
-              node.reply(
-                  source, id, 3, utf8("not a message this actor handles: " + e.getMessage()));
-              return;
-            }
-            try
-            {
-              var result = actor.call(s -> served.handler().apply(s, args));
-              node.reply(source, id, 0, wireEncode(values, served.reply(), result));
-            }
-            catch (ActorCrashed e)
-            {
-              node.reply(source, id, 1, utf8(e.getMessage()));
-            }
-            catch (ActorStopped e)
-            {
-              node.reply(source, id, 2, utf8(e.getMessage()));
-            }
-          });
+      return register(name, (node, kind, source, id, payload) -> {
+        if (!kind.equals("call"))
+        {
+          return;
+        }
+        Served<S> served;
+        List<Value> args = new ArrayList<>();
+        try
+        {
+          var in = new Reader(payload, 0);
+          String message = getText(in);
+          served = handlers.get(message);
+          if (served == null)
+          {
+            throw new WireError("no message " + message);
+          }
+          for (var d : served.arguments())
+          {
+            args.add(wireGet(values, d, in));
+          }
+          if (in.pos != payload.length)
+          {
+            throw new WireError("extra bytes after the arguments");
+          }
+        }
+        catch (RuntimeException e)
+        {
+          node.reply(source, id, 3, utf8("not a message this actor handles: " + e.getMessage()));
+          return;
+        }
+        try
+        {
+          var result = actor.call(s -> served.handler().apply(s, args));
+          node.reply(source, id, 0, wireEncode(values, served.reply(), result));
+        }
+        catch (ActorCrashed e)
+        {
+          node.reply(source, id, 1, utf8(e.getMessage()));
+        }
+        catch (ActorStopped e)
+        {
+          node.reply(source, id, 2, utf8(e.getMessage()));
+        }
+      });
     }
 
     /** A proxy calling the actor at address. */
-    public RemoteActor remoteActor(
-        String address, Map<String, Signature> signatures, Values values, double timeout)
+    public RemoteActor remoteActor(String address, Map<String, Signature> signatures, Values values,
+        double timeout)
     {
       return new RemoteActor(this, address, signatures, values, timeout);
     }
@@ -10674,57 +10376,46 @@ public final class LawSpecRuntime
 
     public String serveDefinitions(Map<String, Definition> table, Values values, String name)
     {
-      return register(
-          name,
-          (node, kind, source, id, payload) -> {
-            if (!kind.equals("eval"))
-            {
-              return;
-            }
-            Definition definition;
-            var args = new ArrayList<Value>();
-            try
-            {
-              var in = new Reader(payload, 0);
-              definition = table.get(getText(in));
-              if (definition == null)
-              {
-                throw new WireError("unknown hash");
-              }
-              for (var d : definition.arguments())
-              {
-                args.add(wireGet(values, d, in));
-              }
-            }
-            catch (RuntimeException e)
-            {
-              node.reply(source, id, 3, utf8("this node has no definition with that content hash"));
-              return;
-            }
-            try
-            {
-              node.reply(
-                  source,
-                  id,
-                  0,
-                  wireEncode(values, definition.result(), definition.function().apply(args)));
-            }
-            catch (RuntimeException e)
-            {
-              node.reply(source, id, 1, utf8(e.getClass().getSimpleName() + ": " + e.getMessage()));
-            }
-          });
+      return register(name, (node, kind, source, id, payload) -> {
+        if (!kind.equals("eval"))
+        {
+          return;
+        }
+        Definition definition;
+        var args = new ArrayList<Value>();
+        try
+        {
+          var in = new Reader(payload, 0);
+          definition = table.get(getText(in));
+          if (definition == null)
+          {
+            throw new WireError("unknown hash");
+          }
+          for (var d : definition.arguments())
+          {
+            args.add(wireGet(values, d, in));
+          }
+        }
+        catch (RuntimeException e)
+        {
+          node.reply(source, id, 3, utf8("this node has no definition with that content hash"));
+          return;
+        }
+        try
+        {
+          node.reply(source, id, 0,
+              wireEncode(values, definition.result(), definition.function().apply(args)));
+        }
+        catch (RuntimeException e)
+        {
+          node.reply(source, id, 1, utf8(e.getClass().getSimpleName() + ": " + e.getMessage()));
+        }
+      });
     }
 
     /** Evaluates the definition with this content hash on another node. */
-    public Value evaluate(
-        String node,
-        String digest,
-        List<Value> args,
-        List<Object> arguments,
-        Object result,
-        Values values,
-        double timeout)
+    public Value evaluate(String node, String digest, List<Value> args, List<Object> arguments,
+        Object result, Values values, double timeout)
     {
       var out = new java.io.ByteArrayOutputStream();
       putText(out, digest);
@@ -10732,8 +10423,8 @@ public final class LawSpecRuntime
       {
         wirePut(values, arguments.get(i), args.get(i), out);
       }
-      return replyValue(
-          request(node + "/definitions", "eval", out.toByteArray(), timeout), values, result);
+      return replyValue(request(node + "/definitions", "eval", out.toByteArray(), timeout), values,
+          result);
     }
 
     // Channels: one side here, the other on any node.
@@ -10788,7 +10479,8 @@ public final class LawSpecRuntime
 
   /** A protocol step: whether this end sends, and the value's descriptor. */
   public record Step(boolean sends, Object descriptor)
-  {}
+  {
+  }
 
   private static byte[] utf8(String text)
   {
@@ -10860,11 +10552,7 @@ public final class LawSpecRuntime
     private final Values values;
     private final double timeout;
 
-    RemoteActor(
-        Node node,
-        String address,
-        Map<String, Signature> signatures,
-        Values values,
+    RemoteActor(Node node, String address, Map<String, Signature> signatures, Values values,
         double timeout)
     {
       this.node = node;
@@ -10883,8 +10571,8 @@ public final class LawSpecRuntime
       {
         wirePut(values, signature.arguments().get(i), args.get(i), out);
       }
-      return replyValue(
-          node.request(address, "call", out.toByteArray(), timeout), values, signature.reply());
+      return replyValue(node.request(address, "call", out.toByteArray(), timeout), values,
+          signature.reply());
     }
   }
 
@@ -10895,7 +10583,8 @@ public final class LawSpecRuntime
    * is sent again until acknowledged, so loss, duplication and reordering are repaired; a peer
    * silent for the deadline is treated as failed (PeerFailed). Order is kept within the channel.
    *
-   * <p>An unused end can move to another node: offer() gives the address the new node takes it over
+   * <p>
+   * An unused end can move to another node: offer() gives the address the new node takes it over
    * from ({address}?take={token}). On a take frame with that token, this end hands its state over
    * (a state frame) and from then on forwards every frame it gets to the new end; the new end tells
    * the peer (a moved frame) so the peer sends to it directly.
@@ -10982,8 +10671,8 @@ public final class LawSpecRuntime
       return texts;
     }
 
-    private static void putNumbered(
-        java.io.ByteArrayOutputStream out, java.util.SortedMap<Long, byte[]> items)
+    private static void putNumbered(java.io.ByteArrayOutputStream out,
+        java.util.SortedMap<Long, byte[]> items)
     {
       putVarint(out, BigInteger.valueOf(items.size()));
       for (var item : items.entrySet())
@@ -11091,9 +10780,7 @@ public final class LawSpecRuntime
               }
             }
           }
-          if (announcing
-              && target != null
-              && confirmed.getCount() > 0
+          if (announcing && target != null && confirmed.getCount() > 0
               && now - announcedAt > 50_000_000L)
           {
             announcedAt = now;
@@ -11202,7 +10889,8 @@ public final class LawSpecRuntime
           }
           return;
         }
-        case "chan" -> {}
+        case "chan" -> {
+        }
         default -> {
           return;
         }
@@ -11348,8 +11036,8 @@ public final class LawSpecRuntime
           }
           quietly(old, "take", request.toByteArray());
         }
-        confirmed.await(
-            Math.max(0, giveUp - System.nanoTime()), java.util.concurrent.TimeUnit.NANOSECONDS);
+        confirmed.await(Math.max(0, giveUp - System.nanoTime()),
+            java.util.concurrent.TimeUnit.NANOSECONDS);
       }
       catch (InterruptedException e)
       {
@@ -11387,11 +11075,8 @@ public final class LawSpecRuntime
         // Sent again from here at once, under this end's address.
         for (var item : waiting.entrySet())
         {
-          unacked.put(
-              item.getKey(),
-              new Object[] {
-                frame(item.getKey(), item.getValue()), System.nanoTime(), 0L, item.getValue()
-              });
+          unacked.put(item.getKey(), new Object[] {frame(item.getKey(), item.getValue()),
+              System.nanoTime(), 0L, item.getValue()});
         }
         early.putAll(arrived);
         for (var body : received)
@@ -11479,10 +11164,8 @@ public final class LawSpecRuntime
       Object[] item;
       try
       {
-        item =
-            timeout <= 0
-                ? inbox.take()
-                : inbox.poll((long) (timeout * 1e9), java.util.concurrent.TimeUnit.NANOSECONDS);
+        item = timeout <= 0 ? inbox.take()
+            : inbox.poll((long) (timeout * 1e9), java.util.concurrent.TimeUnit.NANOSECONDS);
       }
       catch (InterruptedException e)
       {
@@ -11591,18 +11274,18 @@ public final class LawSpecRuntime
    * first end. values decodes the descriptors.
    */
   public record Wire(List<Step> steps, List<Object> parts, Values values)
-  {}
+  {
+  }
 
   /**
    * A step that sends another protocol's first end: start makes that end's start class on a
    * channel, channelOf takes the channel of an unused end being sent (claiming it), and wire is
    * that protocol's Wire.
    */
-  public record EndPart(
-      Function<Channel, Object> start,
-      Function<Object, Channel> channelOf,
+  public record EndPart(Function<Channel, Object> start, Function<Object, Channel> channelOf,
       java.util.function.Supplier<Wire> wire)
-  {}
+  {
+  }
 
   /**
    * A network channel end seen through native values: each step's part converts its value, or, for
@@ -11659,8 +11342,7 @@ public final class LawSpecRuntime
         var wire = end.wire().get();
         var address = textOf(value);
         var taken =
-            address.contains("?take=")
-                ? endpoint.node.take(address, wire.steps(), wire.values())
+            address.contains("?take=") ? endpoint.node.take(address, wire.steps(), wire.values())
                 : endpoint.node.dial(address, wire.steps(), wire.values());
         return end.start().apply(new NativeChannel(taken, wire.parts()));
       }
@@ -11703,42 +11385,41 @@ public final class LawSpecRuntime
     }
     var relay = node.listen("relay-" + node.nextId(), flipped, wire.values());
     var relayed = new NativeChannel(relay, wire.parts());
-    startDaemon(
-        () -> {
-          try
+    startDaemon(() -> {
+      try
+      {
+        for (var s : wire.steps())
+        {
+          if (s.sends())
           {
-            for (var s : wire.steps())
-            {
-              if (s.sends())
-              {
-                channel.send(0, relayed.receive(0));
-              }
-              else
-              {
-                relayed.send(0, channel.receive(0));
-              }
-            }
+            channel.send(0, relayed.receive(0));
           }
-          catch (RuntimeException e)
+          else
           {
-            try
-            {
-              channel.abandon(0);
-            }
-            catch (RuntimeException ignored)
-            {
-              // Already failed.
-            }
-            try
-            {
-              relay.abandon(0);
-            }
-            catch (RuntimeException ignored)
-            {
-              // Already failed.
-            }
+            relayed.send(0, channel.receive(0));
           }
-        });
+        }
+      }
+      catch (RuntimeException e)
+      {
+        try
+        {
+          channel.abandon(0);
+        }
+        catch (RuntimeException ignored)
+        {
+          // Already failed.
+        }
+        try
+        {
+          relay.abandon(0);
+        }
+        catch (RuntimeException ignored)
+        {
+          // Already failed.
+        }
+      }
+    });
     return relay.address;
   }
 
@@ -11765,7 +11446,8 @@ public final class LawSpecRuntime
 
   /** One call a recording handler saw. */
   public record RecordedCall(String operation, List<Value> arguments)
-  {}
+  {
+  }
 
   /** A recording handler: the calls it has seen. */
   public interface Recorded
@@ -11791,10 +11473,8 @@ public final class LawSpecRuntime
     {
       return table.get(ability);
     }
-    throw new IllegalStateException(
-        "no handler for the ability "
-            + ability
-            + ": a law names one with `using`, or runs under each lawful handler");
+    throw new IllegalStateException("no handler for the ability " + ability
+        + ": a law names one with `using`, or runs under each lawful handler");
   }
 
   /** The handler installed for the ability, as the ability's native interface. */
@@ -11808,11 +11488,8 @@ public final class LawSpecRuntime
     throw new Failure(ability, value);
   }
 
-  public static Value attempt(
-      String ability,
-      java.util.function.Supplier<Value> body,
-      java.util.function.UnaryOperator<Value> right,
-      java.util.function.UnaryOperator<Value> left)
+  public static Value attempt(String ability, java.util.function.Supplier<Value> body,
+      java.util.function.UnaryOperator<Value> right, java.util.function.UnaryOperator<Value> left)
   {
     Value value;
     try
@@ -11830,20 +11507,15 @@ public final class LawSpecRuntime
     return right.apply(value);
   }
 
-  public static Value countCalls(
-      Object recording, String operation, java.util.function.Predicate<List<Value>> matches)
+  public static Value countCalls(Object recording, String operation,
+      java.util.function.Predicate<List<Value>> matches)
   {
     if (!(recording instanceof Recorded recorded))
     {
       throw new IllegalStateException("calls of needs a recording handler: `using recording`");
     }
-    long count =
-        recorded.lawSpecCalls().stream()
-            .filter(
-                call ->
-                    call.operation().equals(operation)
-                        && (matches == null || matches.test(call.arguments())))
-            .count();
+    long count = recorded.lawSpecCalls().stream().filter(call -> call.operation().equals(operation)
+        && (matches == null || matches.test(call.arguments()))).count();
     return integer64(count);
   }
 
@@ -11864,9 +11536,7 @@ public final class LawSpecRuntime
    * replaced.
    */
   @SuppressWarnings("unchecked")
-  public static Value withHandlers(
-      Map<String, Object> symbols,
-      Map<String, Object> handlers,
+  public static Value withHandlers(Map<String, Object> symbols, Map<String, Object> handlers,
       java.util.function.Supplier<Value> body)
   {
     var previous = symbols.get(HANDLERS);
@@ -11905,18 +11575,17 @@ public final class LawSpecRuntime
   }
 
   /** A native exception lawspec.edn maps to a failure: its class, and the failure it becomes. */
-  public record MappedFailure(
-      Class<? extends Throwable> kind, java.util.function.Function<Throwable, Value> make)
-  {}
+  public record MappedFailure(Class<? extends Throwable> kind,
+      java.util.function.Function<Throwable, Value> make)
+  {
+  }
 
   /**
    * Calls native code that may fail: a Fail it throws, or an exception lawspec.edn maps to a
    * failure, becomes a failure of the ability.
    */
-  public static Value nativeFailures(
-      String ability,
-      java.util.function.Function<Object, Value> convert,
-      java.util.function.Supplier<Value> body,
+  public static Value nativeFailures(String ability,
+      java.util.function.Function<Object, Value> convert, java.util.function.Supplier<Value> body,
       MappedFailure... mapped)
   {
     try

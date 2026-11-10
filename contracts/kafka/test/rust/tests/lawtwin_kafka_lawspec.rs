@@ -4,19 +4,18 @@
 mod lawspec_definitions;
 #[path = "support/lawspec_strategies.rs"]
 mod ls_gen;
-use lawspec_example::lawspec_abilities;
-use lawspec_example::lawspec_data;
-use lawspec_example::lawspec_remote;
-use lawspec_example::lawspec_runtime;
-use lawspec_example::lawspec_schema;
-use lawspec_example::lawtwin_kafka as adapter;
+use lawspec_example::{
+    lawspec_abilities, lawspec_data, lawspec_remote, lawspec_runtime, lawspec_schema,
+    lawtwin_kafka as adapter,
+};
 use lawspec_runtime as ls;
 use proptest::strategy::Strategy;
 
 type ValueStrategy = proptest::strategy::BoxedStrategy<ls::Value>;
 
 // connectCluster — ../src/contract.lawspec:30
-fn connect_cluster(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value> {
+fn connect_cluster(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value>
+{
     let value0 = args[0].clone();
     let native_value0 = {
         let value = ls::native_value(value0.clone(), "Unit")?;
@@ -33,7 +32,8 @@ fn connect_cluster(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls
 }
 
 // disconnectCluster — ../src/contract.lawspec:31
-fn disconnect_cluster(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value> {
+fn disconnect_cluster(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value>
+{
     let value0 = args[0].clone();
     let native_value0 = {
         let value = lawspec_schema::schema()?.native_value_with_context(
@@ -55,10 +55,12 @@ fn disconnect_cluster(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result
 // (Utf8("a-little-bit-long-string")) = 3308985760 and murmur2 (Utf8("a-little-bit-longer-string"))
 // = 2808662467 and murmur2 (Utf8("lkjh234lh9fiuh90y23oiuhsafujhadof229phr9h19h89h8")) = 4236069325
 // and murmur2 (Utf8("abc")) = 479470107
-mod law_murmur2_agrees_with_kafka {
+mod law_murmur2_agrees_with_kafka
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context) -> ls::Result<()>
+    {
         let actual = ls::called(
             "lawtwin.kafka::murmur2",
             lawspec_definitions::murmur2(
@@ -154,13 +156,15 @@ mod law_murmur2_agrees_with_kafka {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context) -> ls::Result<()>
+    {
         check_body(ctx)?;
         Ok(())
     }
 
     #[test]
-    fn exhaustive() -> ls::Result<()> {
+    fn exhaustive() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(&ls::FiniteCover::Copies(1), |case_index, factories| {
                 let ctx = &mut ls::Context::testing();
@@ -186,41 +190,50 @@ mod law_murmur2_agrees_with_kafka {
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1) in let a = attempt (produceRequest tp (Maybe::Absent()) first) in let b =
 // attempt (produceRequest tp (Maybe::Absent()) second) in followsBatch a first b = true end for all
-mod law_broker_offsets_in_a_partition_are_dense_and {
+mod law_broker_offsets_in_a_partition_are_dense_and
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -228,11 +241,13 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -240,41 +255,50 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_13(ctx)?,
             literal_13(ctx)?,
@@ -282,11 +306,13 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_14(ctx)?, literal_14(ctx)?])?)
     }
 
@@ -296,12 +322,14 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
         first: ls::Value,
         second: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -374,7 +402,8 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
         t: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -451,33 +480,38 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
         t: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![first.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![second.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -542,12 +576,14 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -595,14 +631,16 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -611,7 +649,8 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -642,14 +681,16 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -658,7 +699,8 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -689,14 +731,16 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -704,7 +748,8 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -753,41 +798,50 @@ mod law_broker_offsets_in_a_partition_are_dense_and {
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1) in let a = attempt (produceRequest tp (Maybe::Absent()) first) in let b =
 // attempt (produceRequest tp (Maybe::Absent()) second) in followsBatch a first b = true end for all
-mod law_broker_offsets_in_a_partition_are_dense_and_2 {
+mod law_broker_offsets_in_a_partition_are_dense_and_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -795,11 +849,13 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -807,41 +863,50 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_13(ctx)?,
             literal_13(ctx)?,
@@ -849,11 +914,13 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_14(ctx)?, literal_14(ctx)?])?)
     }
 
@@ -862,12 +929,14 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
         t: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -940,7 +1009,8 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
         t: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -988,33 +1058,38 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
         t: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![first.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![second.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -1079,12 +1154,14 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1132,14 +1209,16 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1148,7 +1227,8 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1179,14 +1259,16 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1195,7 +1277,8 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1226,14 +1309,16 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1241,7 +1326,8 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -1288,41 +1374,50 @@ mod law_broker_offsets_in_a_partition_are_dense_and_2 {
 // _lawspecRecordField1) in let it = attempt (produceRequest tp (Maybe::Absent()) batch) in match
 // (it) { Either::Left _lawspecSelection0x0 -> false; Either::Right _lawspecSelection0x0 ->
 // (uncommittedFrom tp _lawspecSelection0x0 == batch) } = true end for all
-mod law_broker_a_batch_reads_back_whole_and_in_order {
+mod law_broker_a_batch_reads_back_whole_and_in_order
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -1330,11 +1425,13 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -1342,29 +1439,35 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -1377,12 +1480,14 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
         t: ls::Value,
         batch: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -1412,12 +1517,15 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         ls::binary(
                             "==",
@@ -1445,7 +1553,8 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -1499,26 +1608,30 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -1571,12 +1684,14 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1624,14 +1739,16 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1640,7 +1757,8 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1671,14 +1789,16 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1686,7 +1806,8 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -1731,41 +1852,50 @@ mod law_broker_a_batch_reads_back_whole_and_in_order {
 // _lawspecRecordField1) in let it = attempt (produceRequest tp (Maybe::Absent()) batch) in match
 // (it) { Either::Left _lawspecSelection0x0 -> false; Either::Right _lawspecSelection0x0 ->
 // (uncommittedFrom tp _lawspecSelection0x0 == batch) } = true end for all
-mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
+mod law_broker_a_batch_reads_back_whole_and_in_order_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -1773,11 +1903,13 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -1785,29 +1917,35 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -1815,12 +1953,14 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -1850,12 +1990,15 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         ls::binary(
                             "==",
@@ -1883,7 +2026,8 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -1914,26 +2058,30 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -1986,12 +2134,14 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2039,14 +2189,16 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2055,7 +2207,8 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2086,14 +2239,16 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2101,7 +2256,8 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -2153,41 +2309,50 @@ mod law_broker_a_batch_reads_back_whole_and_in_order_2 {
 // in let retry = attempt (produceRequest tp tag batch) in ((first == retry) And followsBatch first
 // batch (attempt (listOffsetsRequest tp (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) } = true end for all
-mod law_broker_an_idempotent_retry_is_written_once {
+mod law_broker_an_idempotent_retry_is_written_once
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -2195,11 +2360,13 @@ mod law_broker_an_idempotent_retry_is_written_once {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -2207,29 +2374,35 @@ mod law_broker_an_idempotent_retry_is_written_once {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -2242,12 +2415,14 @@ mod law_broker_an_idempotent_retry_is_written_once {
         t: ls::Value,
         batch: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -2273,12 +2448,15 @@ mod law_broker_an_idempotent_retry_is_written_once {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let tag_2 = {
                             let field_0 = ls::called(
@@ -2365,7 +2543,9 @@ mod law_broker_an_idempotent_retry_is_written_once {
                                     vec![argument_1, argument_2, argument_3],
                                 ),
                             )?
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -2382,7 +2562,8 @@ mod law_broker_an_idempotent_retry_is_written_once {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -2436,26 +2617,30 @@ mod law_broker_an_idempotent_retry_is_written_once {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -2508,12 +2693,14 @@ mod law_broker_an_idempotent_retry_is_written_once {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2561,14 +2748,16 @@ mod law_broker_an_idempotent_retry_is_written_once {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2577,7 +2766,8 @@ mod law_broker_an_idempotent_retry_is_written_once {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2608,14 +2798,16 @@ mod law_broker_an_idempotent_retry_is_written_once {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2623,7 +2815,8 @@ mod law_broker_an_idempotent_retry_is_written_once {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -2675,41 +2868,50 @@ mod law_broker_an_idempotent_retry_is_written_once {
 // in let retry = attempt (produceRequest tp tag batch) in ((first == retry) And followsBatch first
 // batch (attempt (listOffsetsRequest tp (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) } = true end for all
-mod law_broker_an_idempotent_retry_is_written_once_2 {
+mod law_broker_an_idempotent_retry_is_written_once_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -2717,11 +2919,13 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -2729,29 +2933,35 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -2759,12 +2969,14 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -2790,12 +3002,15 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let tag_2 = {
                             let field_0 = ls::called(
@@ -2882,7 +3097,9 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
                                     vec![argument_1, argument_2, argument_3],
                                 ),
                             )?
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -2899,7 +3116,8 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -2930,26 +3148,30 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -3002,12 +3224,14 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -3055,14 +3279,16 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -3071,7 +3297,8 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -3102,14 +3329,16 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -3117,7 +3346,8 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -3181,41 +3411,50 @@ mod law_broker_an_idempotent_retry_is_written_once_2 {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false } } = true end for all
-mod law_broker_a_gap_in_sequence_numbers_is_refused {
+mod law_broker_a_gap_in_sequence_numbers_is_refused
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -3223,11 +3462,13 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -3235,29 +3476,35 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -3270,12 +3517,14 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
         t: ls::Value,
         batch: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -3293,12 +3542,15 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         match ls::attempt(
                             ctx,
@@ -3338,11 +3590,14 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let failure = *payload;
                                 let it_2 = failure.clone();
-                                match it_2.clone() {
+                                match it_2.clone()
+                                {
                                     ls::Value::Data(tag, fields)
                                         if tag
                                             == "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber"
@@ -3465,7 +3720,8 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
                                     _ => return Err("invalid match value".into()),
                                 }
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _result_2 = *payload;
                                 ls::Value::Bool(false)
                             }
@@ -3485,7 +3741,8 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -3539,26 +3796,30 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -3611,12 +3872,14 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -3664,14 +3927,16 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -3680,7 +3945,8 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -3711,14 +3977,16 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -3726,7 +3994,8 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -3790,41 +4059,50 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false } } = true end for all
-mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
+mod law_broker_a_gap_in_sequence_numbers_is_refused_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -3832,11 +4110,13 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -3844,29 +4124,35 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -3874,12 +4160,14 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -3897,12 +4185,15 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         match ls::attempt(
                             ctx,
@@ -3942,11 +4233,14 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let failure = *payload;
                                 let it_2 = failure.clone();
-                                match it_2.clone() {
+                                match it_2.clone()
+                                {
                                     ls::Value::Data(tag, fields)
                                         if tag
                                             == "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber"
@@ -4069,7 +4363,8 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
                                     _ => return Err("invalid match value".into()),
                                 }
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _result_2 = *payload;
                                 ls::Value::Bool(false)
                             }
@@ -4089,7 +4384,8 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -4120,26 +4416,30 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -4192,12 +4492,14 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -4245,14 +4547,16 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -4261,7 +4565,8 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -4292,14 +4597,16 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -4307,7 +4614,8 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -4401,41 +4709,50 @@ mod law_broker_a_gap_in_sequence_numbers_is_refused_2 {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false }) } } = true end for all
-mod law_broker_a_new_epoch_fences_the_older_producer {
+mod law_broker_a_new_epoch_fences_the_older_producer
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -4443,11 +4760,13 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -4455,29 +4774,35 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -4491,12 +4816,14 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
         txid: ls::Value,
         batch: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -4522,12 +4849,15 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let it_2 = ls::attempt(
                             ctx,
@@ -4545,12 +4875,15 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
                         )?;
-                        match it_2.clone() {
-                            ls::Value::Left(payload) => {
+                        match it_2.clone()
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _match_selection = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let match_selection = *payload;
                                 if if ls::called(
                                     "lawtwin.kafka::fencedBy",
@@ -4571,7 +4904,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                                                     ctx,
                                                     vec![
                                                         txid.clone(),
-                                                        match selection.clone() {
+                                                        match selection.clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch"
@@ -4579,18 +4913,24 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                                                             {
                                                                 let mut fields = fields.into_iter();
                                                                 let producer_id =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _producer_epoch =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 producer_id.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        match selection.clone() {
+                                                        match selection.clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch"
@@ -4598,12 +4938,17 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                                                             {
                                                                 let mut fields = fields.into_iter();
                                                                 let _producer_id =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let producer_epoch =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 producer_epoch.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
@@ -4623,11 +4968,14 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let failure = *payload;
                                             let it_3 = failure.clone();
-                                            match it_3.clone() {
+                                            match it_3.clone()
+                                            {
                                                 ls::Value::Data(tag, fields)
                                                     if tag
                                                         == "lawtwin.kafka.model::type::KafkaError::ProducerFenced"
@@ -4750,13 +5098,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                                                 _ => return Err("invalid match value".into()),
                                             }
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _result_2 = *payload;
                                             ls::Value::Bool(false)
                                         }
                                         _ => return Err("invalid match value".into()),
                                     }
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                                 .boolean()?
@@ -4792,11 +5143,14 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let failure = *payload;
                                             let it_3 = failure.clone();
-                                            match it_3.clone() {
+                                            match it_3.clone()
+                                            {
                                                 ls::Value::Data(tag, fields)
                                                     if tag
                                                         == "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch"
@@ -4919,13 +5273,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                                                 _ => return Err("invalid match value".into()),
                                             }
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _result_2 = *payload;
                                             ls::Value::Bool(false)
                                         }
                                         _ => return Err("invalid match value".into()),
                                     }
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                             }
@@ -4950,7 +5307,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -5021,30 +5379,35 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -5117,12 +5480,14 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -5170,14 +5535,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -5186,7 +5553,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -5206,14 +5574,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -5222,7 +5592,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -5253,14 +5624,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -5268,7 +5641,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -5364,41 +5738,50 @@ mod law_broker_a_new_epoch_fences_the_older_producer {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false }) } } = true end for all
-mod law_broker_a_new_epoch_fences_the_older_producer_2 {
+mod law_broker_a_new_epoch_fences_the_older_producer_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -5406,11 +5789,13 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -5418,29 +5803,35 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -5453,12 +5844,14 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -5484,12 +5877,15 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let it_2 = ls::attempt(
                             ctx,
@@ -5507,12 +5903,15 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
                         )?;
-                        match it_2.clone() {
-                            ls::Value::Left(payload) => {
+                        match it_2.clone()
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _match_selection = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let match_selection = *payload;
                                 if if ls::called(
                                     "lawtwin.kafka::fencedBy",
@@ -5533,7 +5932,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                                                     ctx,
                                                     vec![
                                                         txid.clone(),
-                                                        match selection.clone() {
+                                                        match selection.clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch"
@@ -5541,18 +5941,24 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                                                             {
                                                                 let mut fields = fields.into_iter();
                                                                 let producer_id =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let _producer_epoch =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 producer_id.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
                                                             }
                                                         },
-                                                        match selection.clone() {
+                                                        match selection.clone()
+                                                        {
                                                             ls::Value::Data(tag, fields)
                                                                 if tag
                                                                     == "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch"
@@ -5560,12 +5966,17 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                                                             {
                                                                 let mut fields = fields.into_iter();
                                                                 let _producer_id =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 let producer_epoch =
-                                                                    fields.next().unwrap();
+                                                                    fields.next().expect(
+                                                                        "checked expression arity",
+                                                                    );
                                                                 producer_epoch.clone()
                                                             }
-                                                            _ => {
+                                                            _ =>
+                                                            {
                                                                 return Err(
                                                                     "invalid match value".into(),
                                                                 )
@@ -5585,11 +5996,14 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let failure = *payload;
                                             let it_3 = failure.clone();
-                                            match it_3.clone() {
+                                            match it_3.clone()
+                                            {
                                                 ls::Value::Data(tag, fields)
                                                     if tag
                                                         == "lawtwin.kafka.model::type::KafkaError::ProducerFenced"
@@ -5712,13 +6126,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                                                 _ => return Err("invalid match value".into()),
                                             }
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _result_2 = *payload;
                                             ls::Value::Bool(false)
                                         }
                                         _ => return Err("invalid match value".into()),
                                     }
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                                 .boolean()?
@@ -5754,11 +6171,14 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let failure = *payload;
                                             let it_3 = failure.clone();
-                                            match it_3.clone() {
+                                            match it_3.clone()
+                                            {
                                                 ls::Value::Data(tag, fields)
                                                     if tag
                                                         == "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch"
@@ -5881,13 +6301,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                                                 _ => return Err("invalid match value".into()),
                                             }
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _result_2 = *payload;
                                             ls::Value::Bool(false)
                                         }
                                         _ => return Err("invalid match value".into()),
                                     }
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                             }
@@ -5912,7 +6335,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -5954,30 +6378,35 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -6050,12 +6479,14 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6103,14 +6534,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6119,7 +6552,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6139,14 +6573,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6155,7 +6591,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6186,14 +6623,16 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6201,7 +6640,8 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -6250,41 +6690,50 @@ mod law_broker_a_new_epoch_fences_the_older_producer_2 {
 // References: KIP-98
 // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
 // t 1 implies transactionThenRead t txid batch false = true end for all
-mod law_broker_read_committed_fetches_never_see_open_or {
+mod law_broker_read_committed_fetches_never_see_open_or
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -6292,11 +6741,13 @@ mod law_broker_read_committed_fetches_never_see_open_or {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -6304,29 +6755,35 @@ mod law_broker_read_committed_fetches_never_see_open_or {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -6340,12 +6797,14 @@ mod law_broker_read_committed_fetches_never_see_open_or {
         txid: ls::Value,
         batch: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "lawtwin.kafka::transactionThenRead",
                 lawspec_definitions::transaction_then_read(
@@ -6373,7 +6832,8 @@ mod law_broker_read_committed_fetches_never_see_open_or {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -6444,30 +6904,35 @@ mod law_broker_read_committed_fetches_never_see_open_or {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -6540,12 +7005,14 @@ mod law_broker_read_committed_fetches_never_see_open_or {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6593,14 +7060,16 @@ mod law_broker_read_committed_fetches_never_see_open_or {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6609,7 +7078,8 @@ mod law_broker_read_committed_fetches_never_see_open_or {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6629,14 +7099,16 @@ mod law_broker_read_committed_fetches_never_see_open_or {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6645,7 +7117,8 @@ mod law_broker_read_committed_fetches_never_see_open_or {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6676,14 +7149,16 @@ mod law_broker_read_committed_fetches_never_see_open_or {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6691,7 +7166,8 @@ mod law_broker_read_committed_fetches_never_see_open_or {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -6740,41 +7216,50 @@ mod law_broker_read_committed_fetches_never_see_open_or {
 // References: KIP-98
 // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
 // t 1 implies transactionThenRead t txid batch false = true end for all
-mod law_broker_read_committed_fetches_never_see_open_or_2 {
+mod law_broker_read_committed_fetches_never_see_open_or_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -6782,11 +7267,13 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -6794,29 +7281,35 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -6829,12 +7322,14 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "lawtwin.kafka::transactionThenRead",
                 lawspec_definitions::transaction_then_read(
@@ -6862,7 +7357,8 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -6904,30 +7400,35 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -7000,12 +7501,14 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7053,14 +7556,16 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7069,7 +7574,8 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7089,14 +7595,16 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7105,7 +7613,8 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7136,14 +7645,16 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7151,7 +7662,8 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -7196,41 +7708,50 @@ mod law_broker_read_committed_fetches_never_see_open_or_2 {
 // References: KIP-98
 // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
 // t 1 implies transactionThenRead t txid batch true = true end for all
-mod law_broker_a_committed_transaction_is_read_whole_and {
+mod law_broker_a_committed_transaction_is_read_whole_and
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -7238,11 +7759,13 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -7250,29 +7773,35 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -7286,12 +7815,14 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
         txid: ls::Value,
         batch: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "lawtwin.kafka::transactionThenRead",
                 lawspec_definitions::transaction_then_read(
@@ -7319,7 +7850,8 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -7390,30 +7922,35 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -7486,12 +8023,14 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7539,14 +8078,16 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7555,7 +8096,8 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7575,14 +8117,16 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7591,7 +8135,8 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7622,14 +8167,16 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7637,7 +8184,8 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -7682,41 +8230,50 @@ mod law_broker_a_committed_transaction_is_read_whole_and {
 // References: KIP-98
 // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
 // t 1 implies transactionThenRead t txid batch true = true end for all
-mod law_broker_a_committed_transaction_is_read_whole_and_2 {
+mod law_broker_a_committed_transaction_is_read_whole_and_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -7724,11 +8281,13 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -7736,29 +8295,35 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -7771,12 +8336,14 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "lawtwin.kafka::transactionThenRead",
                 lawspec_definitions::transaction_then_read(
@@ -7804,7 +8371,8 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -7846,30 +8414,35 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -7942,12 +8515,14 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7995,14 +8570,16 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8011,7 +8588,8 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8031,14 +8609,16 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8047,7 +8627,8 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8078,14 +8659,16 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8093,7 +8676,8 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -8138,7 +8722,8 @@ mod law_broker_a_committed_transaction_is_read_whole_and_2 {
 // References: KIP-98
 // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) => created t 1 implies
 // transactionalOffsets t txid g offset = true end for all
-mod law_broker_offsets_sent_in_a_transaction_are {
+mod law_broker_offsets_sent_in_a_transaction_are
+{
     use super::*;
 
     fn check_body(
@@ -8148,12 +8733,14 @@ mod law_broker_offsets_sent_in_a_transaction_are {
         g: ls::Value,
         offset: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "lawtwin.kafka::transactionalOffsets",
                 lawspec_definitions::transactional_offsets(
@@ -8177,7 +8764,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -8250,20 +8838,24 @@ mod law_broker_offsets_sent_in_a_transaction_are {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary(
@@ -8272,7 +8864,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
             offset.clone(),
             ls::Value::Integer(0i128.into()),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -8285,7 +8878,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
         "(int Int64 0 9223372036854775807)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -8293,7 +8887,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -8307,7 +8902,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -8375,7 +8971,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Broker: |offsets sent in a transaction are committed only with it| [native]",
@@ -8385,7 +8982,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8433,14 +9031,16 @@ mod law_broker_offsets_sent_in_a_transaction_are {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8449,7 +9049,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8469,14 +9070,16 @@ mod law_broker_offsets_sent_in_a_transaction_are {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8485,7 +9088,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8505,14 +9109,16 @@ mod law_broker_offsets_sent_in_a_transaction_are {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8521,7 +9127,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8537,14 +9144,16 @@ mod law_broker_offsets_sent_in_a_transaction_are {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8552,7 +9161,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -8584,7 +9194,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Broker: |offsets sent in a transaction are committed only with it| [native]",
                         SEARCH_INPUTS,
@@ -8606,7 +9217,8 @@ mod law_broker_offsets_sent_in_a_transaction_are {
 // References: KIP-98
 // for all (t :: Text) (txid :: Text) (g :: Text) (offset :: Int64) => created t 1 implies
 // transactionalOffsets t txid g offset = true end for all
-mod law_broker_offsets_sent_in_a_transaction_are_2 {
+mod law_broker_offsets_sent_in_a_transaction_are_2
+{
     use super::*;
 
     fn check_body(
@@ -8615,12 +9227,14 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "lawtwin.kafka::transactionalOffsets",
                 lawspec_definitions::transactional_offsets(
@@ -8644,7 +9258,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -8687,20 +9302,24 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary(
@@ -8709,7 +9328,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
             offset.clone(),
             ls::Value::Integer(0i128.into()),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -8722,7 +9342,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
         "(int Int64 0 9223372036854775807)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -8730,7 +9351,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -8744,7 +9366,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -8812,7 +9435,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Broker: |offsets sent in a transaction are committed only with it| [cluster]",
@@ -8822,7 +9446,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8870,14 +9495,16 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8886,7 +9513,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8906,14 +9534,16 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8922,7 +9552,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8942,14 +9573,16 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8958,7 +9591,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8974,14 +9608,16 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8989,7 +9625,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -9021,7 +9658,8 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Broker: |offsets sent in a transaction are committed only with it| [cluster]",
                         SEARCH_INPUTS,
@@ -9047,18 +9685,22 @@ mod law_broker_offsets_sent_in_a_transaction_are_2 {
 // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) => created t n implies (joinAll
 // g (memberIds ids) (List::Cons(t, List::Nil())) And coversOnce t n (describeGroupRequest g)) =
 // true end for all
-mod law_broker_the_coordinator_assigns_every_partition {
+mod law_broker_the_coordinator_assigns_every_partition
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
@@ -9072,12 +9714,14 @@ mod law_broker_the_coordinator_assigns_every_partition {
         g: ls::Value,
         ids: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let left = {
                     let argument_1 = g.clone();
@@ -9100,7 +9744,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
                         ),
                     )?
                 };
-                if left.boolean()? {
+                if left.boolean()?
+                {
                     let argument_1 = t.clone();
                     let argument_2 = n.clone();
                     let argument_3 = ls::called(
@@ -9117,7 +9762,9 @@ mod law_broker_the_coordinator_assigns_every_partition {
                             vec![argument_1, argument_2, argument_3],
                         ),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -9137,7 +9784,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -9210,12 +9858,14 @@ mod law_broker_the_coordinator_assigns_every_partition {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -9227,25 +9877,31 @@ mod law_broker_the_coordinator_assigns_every_partition {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::Value::Bool(
             !match ls::called(
                 "lawtwin.kafka::memberIds",
                 lawspec_definitions::member_ids(ctx, vec![ids.clone()]),
-            )? {
+            )?
+            {
                 ls::Value::List(values) if values.is_empty() => ls::Value::Bool(true),
-                ls::Value::List(values) if !values.is_empty() => {
+                ls::Value::List(values) if !values.is_empty() =>
+                {
                     let mut fields = values.into_iter();
-                    let _head = fields.next().unwrap();
+                    let _head = fields.next().expect("checked expression arity");
                     let _tail = ls::Value::List(fields.collect());
                     ls::Value::Bool(false)
                 }
@@ -9253,7 +9909,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
             }
             .boolean()?,
         );
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -9261,7 +9918,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 16)", "(text)", "(list (text))"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -9269,7 +9927,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -9283,7 +9942,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Broker: |the coordinator assigns every partition exactly once| [native]",
@@ -9293,7 +9953,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9341,14 +10002,16 @@ mod law_broker_the_coordinator_assigns_every_partition {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9357,7 +10020,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9374,14 +10038,16 @@ mod law_broker_the_coordinator_assigns_every_partition {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9390,7 +10056,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9410,14 +10077,16 @@ mod law_broker_the_coordinator_assigns_every_partition {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9426,7 +10095,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9481,14 +10151,16 @@ mod law_broker_the_coordinator_assigns_every_partition {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9496,7 +10168,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -9528,7 +10201,8 @@ mod law_broker_the_coordinator_assigns_every_partition {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Broker: |the coordinator assigns every partition exactly once| [native]",
                         SEARCH_INPUTS,
@@ -9554,18 +10228,22 @@ mod law_broker_the_coordinator_assigns_every_partition {
 // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) => created t n implies (joinAll
 // g (memberIds ids) (List::Cons(t, List::Nil())) And coversOnce t n (describeGroupRequest g)) =
 // true end for all
-mod law_broker_the_coordinator_assigns_every_partition_2 {
+mod law_broker_the_coordinator_assigns_every_partition_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
@@ -9578,12 +10256,14 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let left = {
                     let argument_1 = g.clone();
@@ -9606,7 +10286,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                         ),
                     )?
                 };
-                if left.boolean()? {
+                if left.boolean()?
+                {
                     let argument_1 = t.clone();
                     let argument_2 = n.clone();
                     let argument_3 = ls::called(
@@ -9623,7 +10304,9 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                             vec![argument_1, argument_2, argument_3],
                         ),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -9643,7 +10326,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -9686,12 +10370,14 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -9703,25 +10389,31 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::Value::Bool(
             !match ls::called(
                 "lawtwin.kafka::memberIds",
                 lawspec_definitions::member_ids(ctx, vec![ids.clone()]),
-            )? {
+            )?
+            {
                 ls::Value::List(values) if values.is_empty() => ls::Value::Bool(true),
-                ls::Value::List(values) if !values.is_empty() => {
+                ls::Value::List(values) if !values.is_empty() =>
+                {
                     let mut fields = values.into_iter();
-                    let _head = fields.next().unwrap();
+                    let _head = fields.next().expect("checked expression arity");
                     let _tail = ls::Value::List(fields.collect());
                     ls::Value::Bool(false)
                 }
@@ -9729,7 +10421,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
             }
             .boolean()?,
         );
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -9737,7 +10430,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 16)", "(text)", "(list (text))"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -9745,7 +10439,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -9759,7 +10454,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Broker: |the coordinator assigns every partition exactly once| [cluster]",
@@ -9769,7 +10465,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9817,14 +10514,16 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9833,7 +10532,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9850,14 +10550,16 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9866,7 +10568,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9886,14 +10589,16 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9902,7 +10607,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9957,14 +10663,16 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9972,7 +10680,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -10004,7 +10713,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Broker: |the coordinator assigns every partition exactly once| [cluster]",
                         SEARCH_INPUTS,
@@ -10074,7 +10784,8 @@ mod law_broker_the_coordinator_assigns_every_partition_2 {
 // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false }) } } = true end for all
-mod law_broker_a_member_of_an_older_generation_cannot {
+mod law_broker_a_member_of_an_older_generation_cannot
+{
     use super::*;
 
     fn check_body(
@@ -10084,12 +10795,14 @@ mod law_broker_a_member_of_an_older_generation_cannot {
         one: ls::Value,
         other: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -10114,12 +10827,15 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let it_2 = ls::attempt(
                             ctx,
@@ -10147,12 +10863,15 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
                         )?;
-                        match it_2.clone() {
-                            ls::Value::Left(payload) => {
+                        match it_2.clone()
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _match_selection = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let match_selection = *payload;
                                 if if ls::binary(
                                     "<",
@@ -10216,11 +10935,14 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let failure = *payload;
                                             let it_3 = failure.clone();
-                                            match it_3.clone() {
+                                            match it_3.clone()
+                                            {
                                                 ls::Value::Data(tag, fields)
                                                     if tag
                                                         == "lawtwin.kafka.model::type::KafkaError::IllegalGeneration"
@@ -10343,13 +11065,16 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                                                 _ => return Err("invalid match value".into()),
                                             }
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _result_2 = *payload;
                                             ls::Value::Bool(false)
                                         }
                                         _ => return Err("invalid match value".into()),
                                     }
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                                 .boolean()?
@@ -10369,11 +11094,14 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let failure = *payload;
                                             let it_3 = failure.clone();
-                                            match it_3.clone() {
+                                            match it_3.clone()
+                                            {
                                                 ls::Value::Data(tag, fields)
                                                     if tag
                                                         == "lawtwin.kafka.model::type::KafkaError::IllegalGeneration"
@@ -10496,13 +11224,16 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                                                 _ => return Err("invalid match value".into()),
                                             }
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _result_2 = *payload;
                                             ls::Value::Bool(false)
                                         }
                                         _ => return Err("invalid match value".into()),
                                     }
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                             }
@@ -10528,7 +11259,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -10601,30 +11333,37 @@ mod law_broker_a_member_of_an_older_generation_cannot {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", one.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary("!=", "Text", other.clone(), ls::Value::Text("".to_owned()))?
             .boolean()?
         {
             ls::binary("!=", "Text", other.clone(), one.clone())?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -10632,7 +11371,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -10640,7 +11380,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -10654,7 +11395,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Broker: |a member of an older generation cannot commit| [native]",
@@ -10664,7 +11406,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10712,14 +11455,16 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10728,7 +11473,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10748,14 +11494,16 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10764,7 +11512,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10784,14 +11533,16 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10800,7 +11551,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10822,14 +11574,16 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10837,7 +11591,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -10869,7 +11624,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Broker: |a member of an older generation cannot commit| [native]",
                         SEARCH_INPUTS,
@@ -10939,7 +11695,8 @@ mod law_broker_a_member_of_an_older_generation_cannot {
 // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false }) } } = true end for all
-mod law_broker_a_member_of_an_older_generation_cannot_2 {
+mod law_broker_a_member_of_an_older_generation_cannot_2
+{
     use super::*;
 
     fn check_body(
@@ -10948,12 +11705,14 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -10978,12 +11737,15 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let it_2 = ls::attempt(
                             ctx,
@@ -11011,12 +11773,15 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
                         )?;
-                        match it_2.clone() {
-                            ls::Value::Left(payload) => {
+                        match it_2.clone()
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _match_selection = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let match_selection = *payload;
                                 if if ls::binary(
                                     "<",
@@ -11080,11 +11845,14 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let failure = *payload;
                                             let it_3 = failure.clone();
-                                            match it_3.clone() {
+                                            match it_3.clone()
+                                            {
                                                 ls::Value::Data(tag, fields)
                                                     if tag
                                                         == "lawtwin.kafka.model::type::KafkaError::IllegalGeneration"
@@ -11207,13 +11975,16 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                                                 _ => return Err("invalid match value".into()),
                                             }
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _result_2 = *payload;
                                             ls::Value::Bool(false)
                                         }
                                         _ => return Err("invalid match value".into()),
                                     }
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                                 .boolean()?
@@ -11233,11 +12004,14 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let failure = *payload;
                                             let it_3 = failure.clone();
-                                            match it_3.clone() {
+                                            match it_3.clone()
+                                            {
                                                 ls::Value::Data(tag, fields)
                                                     if tag
                                                         == "lawtwin.kafka.model::type::KafkaError::IllegalGeneration"
@@ -11360,13 +12134,16 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                                                 _ => return Err("invalid match value".into()),
                                             }
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _result_2 = *payload;
                                             ls::Value::Bool(false)
                                         }
                                         _ => return Err("invalid match value".into()),
                                     }
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                             }
@@ -11392,7 +12169,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -11435,30 +12213,37 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", one.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary("!=", "Text", other.clone(), ls::Value::Text("".to_owned()))?
             .boolean()?
         {
             ls::binary("!=", "Text", other.clone(), one.clone())?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -11466,7 +12251,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -11474,7 +12260,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -11488,7 +12275,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Broker: |a member of an older generation cannot commit| [cluster]",
@@ -11498,7 +12286,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -11546,14 +12335,16 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -11562,7 +12353,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -11582,14 +12374,16 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -11598,7 +12392,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -11618,14 +12413,16 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -11634,7 +12431,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -11656,14 +12454,16 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -11671,7 +12471,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -11703,7 +12504,8 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Broker: |a member of an older generation cannot commit| [cluster]",
                         SEARCH_INPUTS,
@@ -11724,41 +12526,50 @@ mod law_broker_a_member_of_an_older_generation_cannot_2 {
 // ../src/contract.lawspec:260
 // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
 // t 1 implies stableBelowHigh t txid batch = true end for all
-mod law_broker_the_stable_offset_never_passes_the_high {
+mod law_broker_the_stable_offset_never_passes_the_high
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -11766,11 +12577,13 @@ mod law_broker_the_stable_offset_never_passes_the_high {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -11778,29 +12591,35 @@ mod law_broker_the_stable_offset_never_passes_the_high {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -11814,12 +12633,14 @@ mod law_broker_the_stable_offset_never_passes_the_high {
         txid: ls::Value,
         batch: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "lawtwin.kafka::stableBelowHigh",
                 lawspec_definitions::stable_below_high(
@@ -11842,7 +12663,8 @@ mod law_broker_the_stable_offset_never_passes_the_high {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -11913,30 +12735,35 @@ mod law_broker_the_stable_offset_never_passes_the_high {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -12009,12 +12836,14 @@ mod law_broker_the_stable_offset_never_passes_the_high {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -12062,14 +12891,16 @@ mod law_broker_the_stable_offset_never_passes_the_high {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -12078,7 +12909,8 @@ mod law_broker_the_stable_offset_never_passes_the_high {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -12098,14 +12930,16 @@ mod law_broker_the_stable_offset_never_passes_the_high {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -12114,7 +12948,8 @@ mod law_broker_the_stable_offset_never_passes_the_high {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -12145,14 +12980,16 @@ mod law_broker_the_stable_offset_never_passes_the_high {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -12160,7 +12997,8 @@ mod law_broker_the_stable_offset_never_passes_the_high {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -12204,41 +13042,50 @@ mod law_broker_the_stable_offset_never_passes_the_high {
 // ../src/contract.lawspec:260
 // for all (t :: Text) (txid :: Text) (batch :: List (lawtwin.kafka.model::type::Record)) => created
 // t 1 implies stableBelowHigh t txid batch = true end for all
-mod law_broker_the_stable_offset_never_passes_the_high_2 {
+mod law_broker_the_stable_offset_never_passes_the_high_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -12246,11 +13093,13 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -12258,29 +13107,35 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -12293,12 +13148,14 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "lawtwin.kafka::stableBelowHigh",
                 lawspec_definitions::stable_below_high(
@@ -12321,7 +13178,8 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Broker".to_string(), {
@@ -12363,30 +13221,35 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
         t: ls::Value,
         txid: ls::Value,
         batch: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -12459,12 +13322,14 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -12512,14 +13377,16 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -12528,7 +13395,8 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -12548,14 +13416,16 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -12564,7 +13434,8 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -12595,14 +13466,16 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -12610,7 +13483,8 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -12654,7 +13528,8 @@ mod law_broker_the_stable_offset_never_passes_the_high_2 {
 // for all (t :: Text) (n :: Int32) => match (attempt (createTopic t n)) { Either::Left
 // railwayError0 -> false; Either::Right railwayValue1 -> true } implies partitionsFor t =
 // Maybe::Present(n) end for all
-mod law_admin_a_new_topic_has_the_partitions_asked_for {
+mod law_admin_a_new_topic_has_the_partitions_asked_for
+{
     use super::*;
 
     fn check_body(
@@ -12662,7 +13537,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
         t: ls::Value,
         n: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -12678,18 +13554,22 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let _railway_error0 = *payload;
                 ls::Value::Bool(false)
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _railway_value1 = *payload;
                 ls::Value::Bool(true)
             }
             _ => return Err("invalid match value".into()),
         };
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "partitionsFor",
                 lawspec_abilities::lawtwin_kafka::perform_partitions_for(ctx, vec![t.clone()]),
@@ -12704,7 +13584,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -12752,12 +13633,14 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -12769,10 +13652,13 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -12780,9 +13666,11 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 64)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -12790,7 +13678,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Admin: |a new topic has the partitions asked for| [native]",
@@ -12800,7 +13689,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -12848,14 +13738,16 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -12864,7 +13756,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -12881,14 +13774,16 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -12896,7 +13791,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -12924,7 +13820,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Admin: |a new topic has the partitions asked for| [native]",
                         SEARCH_INPUTS,
@@ -12945,10 +13842,12 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for {
 // for all (t :: Text) (n :: Int32) => match (attempt (createTopic t n)) { Either::Left
 // railwayError0 -> false; Either::Right railwayValue1 -> true } implies partitionsFor t =
 // Maybe::Present(n) end for all
-mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
+mod law_admin_a_new_topic_has_the_partitions_asked_for_2
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let condition = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -12964,18 +13863,22 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let _railway_error0 = *payload;
                 ls::Value::Bool(false)
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _railway_value1 = *payload;
                 ls::Value::Bool(true)
             }
             _ => return Err("invalid match value".into()),
         };
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "partitionsFor",
                 lawspec_abilities::lawtwin_kafka::perform_partitions_for(ctx, vec![t.clone()]),
@@ -12990,7 +13893,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Admin".to_string(), {
@@ -13015,12 +13919,14 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -13032,10 +13938,13 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -13043,9 +13952,11 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 64)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -13053,7 +13964,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Admin: |a new topic has the partitions asked for| [cluster]",
@@ -13063,7 +13975,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13111,14 +14024,16 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13127,7 +14042,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13144,14 +14060,16 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13159,7 +14077,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -13187,7 +14106,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Admin: |a new topic has the partitions asked for| [cluster]",
                         SEARCH_INPUTS,
@@ -13225,7 +14145,8 @@ mod law_admin_a_new_topic_has_the_partitions_asked_for_2 {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false } = true end for all
-mod law_admin_a_topic_is_created_once_native {
+mod law_admin_a_topic_is_created_once_native
+{
     use super::*;
 
     fn check_body(
@@ -13233,7 +14154,8 @@ mod law_admin_a_topic_is_created_once_native {
         t: ls::Value,
         n: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -13267,11 +14189,14 @@ mod law_admin_a_topic_is_created_once_native {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let failure = *payload;
                 let it = failure.clone();
-                match it.clone() {
+                match it.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists"
                             && fields.len() == 0 =>
@@ -13380,7 +14305,8 @@ mod law_admin_a_topic_is_created_once_native {
                     _ => return Err("invalid match value".into()),
                 }
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _result_2 = *payload;
                 ls::Value::Bool(false)
             }
@@ -13395,7 +14321,8 @@ mod law_admin_a_topic_is_created_once_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -13443,12 +14370,14 @@ mod law_admin_a_topic_is_created_once_native {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -13460,10 +14389,13 @@ mod law_admin_a_topic_is_created_once_native {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -13471,9 +14403,11 @@ mod law_admin_a_topic_is_created_once_native {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 64)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -13481,7 +14415,8 @@ mod law_admin_a_topic_is_created_once_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Admin: |a topic is created once| [native]",
@@ -13491,7 +14426,8 @@ mod law_admin_a_topic_is_created_once_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13539,14 +14475,16 @@ mod law_admin_a_topic_is_created_once_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13555,7 +14493,8 @@ mod law_admin_a_topic_is_created_once_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13572,14 +14511,16 @@ mod law_admin_a_topic_is_created_once_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13587,7 +14528,8 @@ mod law_admin_a_topic_is_created_once_native {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -13615,7 +14557,8 @@ mod law_admin_a_topic_is_created_once_native {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Admin: |a topic is created once| [native]",
                         SEARCH_INPUTS,
@@ -13653,10 +14596,12 @@ mod law_admin_a_topic_is_created_once_native {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false } = true end for all
-mod law_admin_a_topic_is_created_once_cluster {
+mod law_admin_a_topic_is_created_once_cluster
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let actual = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -13690,11 +14635,14 @@ mod law_admin_a_topic_is_created_once_cluster {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let failure = *payload;
                 let it = failure.clone();
-                match it.clone() {
+                match it.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists"
                             && fields.len() == 0 =>
@@ -13803,7 +14751,8 @@ mod law_admin_a_topic_is_created_once_cluster {
                     _ => return Err("invalid match value".into()),
                 }
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _result_2 = *payload;
                 ls::Value::Bool(false)
             }
@@ -13818,7 +14767,8 @@ mod law_admin_a_topic_is_created_once_cluster {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Admin".to_string(), {
@@ -13843,12 +14793,14 @@ mod law_admin_a_topic_is_created_once_cluster {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -13860,10 +14812,13 @@ mod law_admin_a_topic_is_created_once_cluster {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -13871,9 +14826,11 @@ mod law_admin_a_topic_is_created_once_cluster {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 64)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -13881,7 +14838,8 @@ mod law_admin_a_topic_is_created_once_cluster {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Admin: |a topic is created once| [cluster]",
@@ -13891,7 +14849,8 @@ mod law_admin_a_topic_is_created_once_cluster {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13939,14 +14898,16 @@ mod law_admin_a_topic_is_created_once_cluster {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13955,7 +14916,8 @@ mod law_admin_a_topic_is_created_once_cluster {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -13972,14 +14934,16 @@ mod law_admin_a_topic_is_created_once_cluster {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -13987,7 +14951,8 @@ mod law_admin_a_topic_is_created_once_cluster {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -14015,7 +14980,8 @@ mod law_admin_a_topic_is_created_once_cluster {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Admin: |a topic is created once| [cluster]",
                         SEARCH_INPUTS,
@@ -14056,7 +15022,8 @@ mod law_admin_a_topic_is_created_once_cluster {
 // false } And match (attempt (createPartitions t (saturatingInt32 ((n + 1))))) { Either::Left
 // railwayError0 -> false; Either::Right railwayValue1 -> true }) And (partitionsFor t ==
 // Maybe::Present(saturatingInt32 ((n + 1))))) = true end for all
-mod law_admin_a_topic_s_partitions_only_grow_native {
+mod law_admin_a_topic_s_partitions_only_grow_native
+{
     use super::*;
 
     fn check_body(
@@ -14064,7 +15031,8 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
         t: ls::Value,
         n: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -14080,18 +15048,22 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let _railway_error0 = *payload;
                 ls::Value::Bool(false)
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _railway_value1 = *payload;
                 ls::Value::Bool(true)
             }
             _ => return Err("invalid match value".into()),
         };
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = if if match ls::attempt(
                 ctx,
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -14107,11 +15079,14 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                 },
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
+            )?
+            {
+                ls::Value::Left(payload) =>
+                {
                     let failure = *payload;
                     let it = failure.clone();
-                    match it.clone() {
+                    match it.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag
                                 == "lawtwin.kafka.model::type::KafkaError::InvalidPartitions"
@@ -14225,7 +15200,8 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                         _ => return Err("invalid match value".into()),
                     }
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _result_2 = *payload;
                     ls::Value::Bool(false)
                 }
@@ -14263,18 +15239,23 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                     },
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
                     _ => return Err("invalid match value".into()),
                 }
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             }
             .boolean()?
@@ -14299,7 +15280,9 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                     ls::construct("Maybe::Present", vec![field_0])?
                 };
                 ls::binary("==", "Maybe Int32", left, right)?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             };
             let expected = ls::Value::Bool(true);
@@ -14312,7 +15295,8 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -14360,12 +15344,14 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -14377,10 +15363,13 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -14388,9 +15377,11 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 64)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -14398,7 +15389,8 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Admin: |a topic's partitions only grow| [native]",
@@ -14408,7 +15400,8 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -14456,14 +15449,16 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -14472,7 +15467,8 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -14489,14 +15485,16 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -14504,7 +15502,8 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -14532,7 +15531,8 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Admin: |a topic's partitions only grow| [native]",
                         SEARCH_INPUTS,
@@ -14573,10 +15573,12 @@ mod law_admin_a_topic_s_partitions_only_grow_native {
 // false } And match (attempt (createPartitions t (saturatingInt32 ((n + 1))))) { Either::Left
 // railwayError0 -> false; Either::Right railwayValue1 -> true }) And (partitionsFor t ==
 // Maybe::Present(saturatingInt32 ((n + 1))))) = true end for all
-mod law_admin_a_topic_s_partitions_only_grow_cluster {
+mod law_admin_a_topic_s_partitions_only_grow_cluster
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let condition = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -14592,18 +15594,22 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let _railway_error0 = *payload;
                 ls::Value::Bool(false)
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _railway_value1 = *payload;
                 ls::Value::Bool(true)
             }
             _ => return Err("invalid match value".into()),
         };
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = if if match ls::attempt(
                 ctx,
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -14619,11 +15625,14 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                 },
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
+            )?
+            {
+                ls::Value::Left(payload) =>
+                {
                     let failure = *payload;
                     let it = failure.clone();
-                    match it.clone() {
+                    match it.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag
                                 == "lawtwin.kafka.model::type::KafkaError::InvalidPartitions"
@@ -14737,7 +15746,8 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                         _ => return Err("invalid match value".into()),
                     }
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _result_2 = *payload;
                     ls::Value::Bool(false)
                 }
@@ -14775,18 +15785,23 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                     },
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
                     _ => return Err("invalid match value".into()),
                 }
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             }
             .boolean()?
@@ -14811,7 +15826,9 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                     ls::construct("Maybe::Present", vec![field_0])?
                 };
                 ls::binary("==", "Maybe Int32", left, right)?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             };
             let expected = ls::Value::Bool(true);
@@ -14824,7 +15841,8 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Admin".to_string(), {
@@ -14849,12 +15867,14 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -14866,10 +15886,13 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -14877,9 +15900,11 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 64)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -14887,7 +15912,8 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Admin: |a topic's partitions only grow| [cluster]",
@@ -14897,7 +15923,8 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -14945,14 +15972,16 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -14961,7 +15990,8 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -14978,14 +16008,16 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -14993,7 +16025,8 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -15021,7 +16054,8 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Admin: |a topic's partitions only grow| [cluster]",
                         SEARCH_INPUTS,
@@ -15050,7 +16084,8 @@ mod law_admin_a_topic_s_partitions_only_grow_cluster {
 // _lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted())) == Either::Right(0))) = true end
 // for all
-mod law_admin_a_new_topic_starts_at_offset_zero_native {
+mod law_admin_a_new_topic_starts_at_offset_zero_native
+{
     use super::*;
 
     fn check_body(
@@ -15058,7 +16093,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
         t: ls::Value,
         n: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -15074,18 +16110,22 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let _railway_error0 = *payload;
                 ls::Value::Bool(false)
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _railway_value1 = *payload;
                 ls::Value::Bool(true)
             }
             _ => return Err("invalid match value".into()),
         };
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = if ls::binary(
                 "==",
                 "Either lawtwin.kafka.model::type::KafkaError Int64",
@@ -15164,7 +16204,9 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
                     )?,
                     ls::construct("Either::Right", vec![ls::Value::Integer(0i128.into())])?,
                 )?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             };
             let expected = ls::Value::Bool(true);
@@ -15177,7 +16219,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -15225,12 +16268,14 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -15242,10 +16287,13 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -15253,9 +16301,11 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 64)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -15263,7 +16313,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Admin: |a new topic starts at offset zero| [native]",
@@ -15273,7 +16324,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -15321,14 +16373,16 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -15337,7 +16391,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -15354,14 +16409,16 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -15369,7 +16426,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -15397,7 +16455,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Admin: |a new topic starts at offset zero| [native]",
                         SEARCH_INPUTS,
@@ -15426,10 +16485,12 @@ mod law_admin_a_new_topic_starts_at_offset_zero_native {
 // _lawspecRecordField1)) (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadCommitted())) == Either::Right(0))) = true end
 // for all
-mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
+mod law_admin_a_new_topic_starts_at_offset_zero_cluster
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let condition = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -15445,18 +16506,22 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let _railway_error0 = *payload;
                 ls::Value::Bool(false)
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _railway_value1 = *payload;
                 ls::Value::Bool(true)
             }
             _ => return Err("invalid match value".into()),
         };
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = if ls::binary(
                 "==",
                 "Either lawtwin.kafka.model::type::KafkaError Int64",
@@ -15535,7 +16600,9 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
                     )?,
                     ls::construct("Either::Right", vec![ls::Value::Integer(0i128.into())])?,
                 )?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             };
             let expected = ls::Value::Bool(true);
@@ -15548,7 +16615,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Admin".to_string(), {
@@ -15573,12 +16641,14 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -15590,10 +16660,13 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -15601,9 +16674,11 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 64)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -15611,7 +16686,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Admin: |a new topic starts at offset zero| [cluster]",
@@ -15621,7 +16697,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -15669,14 +16746,16 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -15685,7 +16764,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -15702,14 +16782,16 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -15717,7 +16799,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -15745,7 +16828,8 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Admin: |a new topic starts at offset zero| [cluster]",
                         SEARCH_INPUTS,
@@ -15800,10 +16884,12 @@ mod law_admin_a_new_topic_starts_at_offset_zero_cluster {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false } = true end for all
-mod law_admin_an_invalid_topic_name_is_refused_native {
+mod law_admin_an_invalid_topic_name_is_refused_native
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, n: ls::Value, _with_cluster: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, n: ls::Value, _with_cluster: ls::Value) -> ls::Result<()>
+    {
         let actual = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -15819,11 +16905,14 @@ mod law_admin_an_invalid_topic_name_is_refused_native {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let failure = *payload;
                 let it = failure.clone();
-                match it.clone() {
+                match it.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.kafka.model::type::KafkaError::InvalidTopic"
                             && fields.len() == 0 =>
@@ -15932,7 +17021,8 @@ mod law_admin_an_invalid_topic_name_is_refused_native {
                     _ => return Err("invalid match value".into()),
                 }
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _result_2 = *payload;
                 ls::Value::Bool(false)
             }
@@ -15959,11 +17049,14 @@ mod law_admin_an_invalid_topic_name_is_refused_native {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let failure = *payload;
                 let it = failure.clone();
-                match it.clone() {
+                match it.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.kafka.model::type::KafkaError::InvalidTopic"
                             && fields.len() == 0 =>
@@ -16072,7 +17165,8 @@ mod law_admin_an_invalid_topic_name_is_refused_native {
                     _ => return Err("invalid match value".into()),
                 }
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _result_2 = *payload;
                 ls::Value::Bool(false)
             }
@@ -16087,7 +17181,8 @@ mod law_admin_an_invalid_topic_name_is_refused_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, n: ls::Value) -> ls::Result<()>
+    {
         let n = lawspec_schema::schema()?.validate_with_context(
             n,
             &ls::TypeRef::named("Int32", vec![]),
@@ -16129,7 +17224,8 @@ mod law_admin_an_invalid_topic_name_is_refused_native {
         Ok(())
     }
 
-    fn valid(_ctx: &mut ls::Context, n: ls::Value) -> ls::Result<bool> {
+    fn valid(_ctx: &mut ls::Context, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
             .boolean()?
         {
@@ -16139,23 +17235,27 @@ mod law_admin_an_invalid_topic_name_is_refused_native {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn exhaustive() -> ls::Result<()> {
+    fn exhaustive() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![(
                     ls::FiniteDomain::Integers(
-                        "1".parse::<ls::BigInt>().unwrap(),
-                        "64".parse::<ls::BigInt>().unwrap(),
+                        "1".parse::<ls::BigInt>().expect("checked endpoint"),
+                        "64".parse::<ls::BigInt>().expect("checked endpoint"),
                     ),
                     ls::FiniteCover::Copies(1),
                 )]),
@@ -16213,10 +17313,12 @@ mod law_admin_an_invalid_topic_name_is_refused_native {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false } = true end for all
-mod law_admin_an_invalid_topic_name_is_refused_cluster {
+mod law_admin_an_invalid_topic_name_is_refused_cluster
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, n: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, n: ls::Value) -> ls::Result<()>
+    {
         let actual = match ls::attempt(
             ctx,
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -16232,11 +17334,14 @@ mod law_admin_an_invalid_topic_name_is_refused_cluster {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let failure = *payload;
                 let it = failure.clone();
-                match it.clone() {
+                match it.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.kafka.model::type::KafkaError::InvalidTopic"
                             && fields.len() == 0 =>
@@ -16345,7 +17450,8 @@ mod law_admin_an_invalid_topic_name_is_refused_cluster {
                     _ => return Err("invalid match value".into()),
                 }
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _result_2 = *payload;
                 ls::Value::Bool(false)
             }
@@ -16372,11 +17478,14 @@ mod law_admin_an_invalid_topic_name_is_refused_cluster {
             },
             |value| ls::construct("Either::Right", vec![value]),
             |value| ls::construct("Either::Left", vec![value]),
-        )? {
-            ls::Value::Left(payload) => {
+        )?
+        {
+            ls::Value::Left(payload) =>
+            {
                 let failure = *payload;
                 let it = failure.clone();
-                match it.clone() {
+                match it.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.kafka.model::type::KafkaError::InvalidTopic"
                             && fields.len() == 0 =>
@@ -16485,7 +17594,8 @@ mod law_admin_an_invalid_topic_name_is_refused_cluster {
                     _ => return Err("invalid match value".into()),
                 }
             }
-            ls::Value::Right(payload) => {
+            ls::Value::Right(payload) =>
+            {
                 let _result_2 = *payload;
                 ls::Value::Bool(false)
             }
@@ -16500,7 +17610,8 @@ mod law_admin_an_invalid_topic_name_is_refused_cluster {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, n: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![("lawtwin.kafka::ability::Admin".to_string(), {
@@ -16519,7 +17630,8 @@ mod law_admin_an_invalid_topic_name_is_refused_cluster {
         Ok(())
     }
 
-    fn valid(_ctx: &mut ls::Context, n: ls::Value) -> ls::Result<bool> {
+    fn valid(_ctx: &mut ls::Context, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
             .boolean()?
         {
@@ -16529,23 +17641,27 @@ mod law_admin_an_invalid_topic_name_is_refused_cluster {
                 n.clone(),
                 ls::Value::Integer(64i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn exhaustive() -> ls::Result<()> {
+    fn exhaustive() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![(
                     ls::FiniteDomain::Integers(
-                        "1".parse::<ls::BigInt>().unwrap(),
-                        "64".parse::<ls::BigInt>().unwrap(),
+                        "1".parse::<ls::BigInt>().expect("checked endpoint"),
+                        "64".parse::<ls::BigInt>().expect("checked endpoint"),
                     ),
                     ls::FiniteCover::Copies(1),
                 )]),
@@ -16568,14 +17684,17 @@ mod law_admin_an_invalid_topic_name_is_refused_cluster {
 // Partitioner: |a chosen partition exists| [native] — ../src/contract.lawspec:1031
 // for all (key :: Maybe (Bytes)) (n :: Int32) => let p = choosePartition key n in ((p >= 0) And (p
 // < n)) = true end for all
-mod law_partitioner_a_chosen_partition_exists_native {
+mod law_partitioner_a_chosen_partition_exists_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
@@ -16584,7 +17703,8 @@ mod law_partitioner_a_chosen_partition_exists_native {
         key: ls::Value,
         n: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let p = ls::called(
                 "choosePartition",
@@ -16597,7 +17717,9 @@ mod law_partitioner_a_chosen_partition_exists_native {
                 .boolean()?
             {
                 ls::binary("<", "Integer", p.clone(), n.clone())?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             }
         };
@@ -16610,7 +17732,8 @@ mod law_partitioner_a_chosen_partition_exists_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let key = lawspec_schema::schema()?.validate_with_context(
             key,
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Bytes", vec![])]),
@@ -16658,7 +17781,8 @@ mod law_partitioner_a_chosen_partition_exists_native {
         Ok(())
     }
 
-    fn valid(_ctx: &mut ls::Context, _key: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(_ctx: &mut ls::Context, _key: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
             .boolean()?
         {
@@ -16668,22 +17792,27 @@ mod law_partitioner_a_chosen_partition_exists_native {
                 n.clone(),
                 ls::Value::Integer(1024i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -16699,14 +17828,16 @@ mod law_partitioner_a_chosen_partition_exists_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -16715,7 +17846,8 @@ mod law_partitioner_a_chosen_partition_exists_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -16732,14 +17864,16 @@ mod law_partitioner_a_chosen_partition_exists_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -16747,7 +17881,8 @@ mod law_partitioner_a_chosen_partition_exists_native {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -16788,18 +17923,22 @@ mod law_partitioner_a_chosen_partition_exists_native {
 // Partitioner: |a chosen partition exists| [murmurPartitioner] — ../src/contract.lawspec:1031
 // for all (key :: Maybe (Bytes)) (n :: Int32) => let p = choosePartition key n in ((p >= 0) And (p
 // < n)) = true end for all
-mod law_partitioner_a_chosen_partition_exists {
+mod law_partitioner_a_chosen_partition_exists
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn check_body(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let actual = {
             let p = ls::called(
                 "choosePartition",
@@ -16812,7 +17951,9 @@ mod law_partitioner_a_chosen_partition_exists {
                 .boolean()?
             {
                 ls::binary("<", "Integer", p.clone(), n.clone())?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             }
         };
@@ -16825,7 +17966,8 @@ mod law_partitioner_a_chosen_partition_exists {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.kafka::ability::Partitioner".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_kafka::Partitioner> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::MurmurPartitioner::new(
@@ -16850,7 +17992,8 @@ mod law_partitioner_a_chosen_partition_exists {
         Ok(())
     }
 
-    fn valid(_ctx: &mut ls::Context, _key: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(_ctx: &mut ls::Context, _key: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
             .boolean()?
         {
@@ -16860,22 +18003,27 @@ mod law_partitioner_a_chosen_partition_exists {
                 n.clone(),
                 ls::Value::Integer(1024i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -16891,14 +18039,16 @@ mod law_partitioner_a_chosen_partition_exists {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -16907,7 +18057,8 @@ mod law_partitioner_a_chosen_partition_exists {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -16924,14 +18075,16 @@ mod law_partitioner_a_chosen_partition_exists {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -16939,7 +18092,8 @@ mod law_partitioner_a_chosen_partition_exists {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -16980,7 +18134,8 @@ mod law_partitioner_a_chosen_partition_exists {
 // Partitioner: |a key always goes to the same partition| [native] — ../src/contract.lawspec:1039
 // for all (key :: Bytes) (n :: Int32) => choosePartition (Maybe::Present(key)) n = choosePartition
 // (Maybe::Present(key)) n end for all
-mod law_partitioner_a_key_always_goes_to_the_same {
+mod law_partitioner_a_key_always_goes_to_the_same
+{
     use super::*;
 
     fn check_body(
@@ -16988,7 +18143,8 @@ mod law_partitioner_a_key_always_goes_to_the_same {
         key: ls::Value,
         n: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = ls::called(
             "choosePartition",
             lawspec_abilities::lawtwin_kafka::perform_choose_partition(
@@ -17017,7 +18173,8 @@ mod law_partitioner_a_key_always_goes_to_the_same {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let key = lawspec_schema::schema()?.validate_with_context(
             key,
             &ls::TypeRef::named("Bytes", vec![]),
@@ -17065,7 +18222,8 @@ mod law_partitioner_a_key_always_goes_to_the_same {
         Ok(())
     }
 
-    fn valid(_ctx: &mut ls::Context, _key: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(_ctx: &mut ls::Context, _key: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
             .boolean()?
         {
@@ -17075,22 +18233,27 @@ mod law_partitioner_a_key_always_goes_to_the_same {
                 n.clone(),
                 ls::Value::Integer(1024i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -17103,14 +18266,16 @@ mod law_partitioner_a_key_always_goes_to_the_same {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -17119,7 +18284,8 @@ mod law_partitioner_a_key_always_goes_to_the_same {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -17136,14 +18302,16 @@ mod law_partitioner_a_key_always_goes_to_the_same {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -17151,7 +18319,8 @@ mod law_partitioner_a_key_always_goes_to_the_same {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -17193,10 +18362,12 @@ mod law_partitioner_a_key_always_goes_to_the_same {
 // ../src/contract.lawspec:1039
 // for all (key :: Bytes) (n :: Int32) => choosePartition (Maybe::Present(key)) n = choosePartition
 // (Maybe::Present(key)) n end for all
-mod law_partitioner_a_key_always_goes_to_the_same_2 {
+mod law_partitioner_a_key_always_goes_to_the_same_2
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let actual = ls::called(
             "choosePartition",
             lawspec_abilities::lawtwin_kafka::perform_choose_partition(
@@ -17225,7 +18396,8 @@ mod law_partitioner_a_key_always_goes_to_the_same_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, key: ls::Value, n: ls::Value) -> ls::Result<()>
+    {
         let installing = vec![("lawtwin.kafka::ability::Partitioner".to_string(), {
             let handler: std::sync::Arc<dyn lawspec_abilities::lawtwin_kafka::Partitioner> =
                 std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::MurmurPartitioner::new(
@@ -17250,7 +18422,8 @@ mod law_partitioner_a_key_always_goes_to_the_same_2 {
         Ok(())
     }
 
-    fn valid(_ctx: &mut ls::Context, _key: ls::Value, n: ls::Value) -> ls::Result<bool> {
+    fn valid(_ctx: &mut ls::Context, _key: ls::Value, n: ls::Value) -> ls::Result<bool>
+    {
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
             .boolean()?
         {
@@ -17260,22 +18433,27 @@ mod law_partitioner_a_key_always_goes_to_the_same_2 {
                 n.clone(),
                 ls::Value::Integer(1024i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -17288,14 +18466,16 @@ mod law_partitioner_a_key_always_goes_to_the_same_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -17304,7 +18484,8 @@ mod law_partitioner_a_key_always_goes_to_the_same_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -17321,14 +18502,16 @@ mod law_partitioner_a_key_always_goes_to_the_same_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -17336,7 +18519,8 @@ mod law_partitioner_a_key_always_goes_to_the_same_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -17388,44 +18572,53 @@ mod law_partitioner_a_key_always_goes_to_the_same_2 {
 // = lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _lawspecRecordField2 = second in
 // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_lawspecRecordField0, _lawspecRecordField1,
 // _lawspecRecordField2)) in readInOrder a b first second = true end for all
-mod law_producer_records_sent_to_one_partition_are_read {
+mod law_producer_records_sent_to_one_partition_are_read
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -17433,29 +18626,34 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text(" ".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_6(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -17463,17 +18661,20 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -17481,11 +18682,13 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -17493,11 +18696,13 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -17505,18 +18710,21 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("é".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -17524,11 +18732,13 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?, literal_16(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -17536,11 +18746,13 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -17548,11 +18760,13 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?, literal_6(ctx)?])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -17560,18 +18774,21 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_25(ctx)?])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -17579,11 +18796,13 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_25(ctx)?, literal_25(ctx)?])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -17591,18 +18810,21 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_30(ctx)?])?)
     }
 
-    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -17610,11 +18832,13 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_30(ctx)?, literal_30(ctx)?])?)
     }
 
-    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -17622,18 +18846,21 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_35(ctx)?])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -17641,11 +18868,13 @@ mod law_producer_records_sent_to_one_partition_are_read {
         ])?)
     }
 
-    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_35(ctx)?, literal_35(ctx)?])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -17659,12 +18888,14 @@ mod law_producer_records_sent_to_one_partition_are_read {
         first: ls::Value,
         second: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let a = ls::called(
                     "send",
@@ -17733,7 +18964,8 @@ mod law_producer_records_sent_to_one_partition_are_read {
         t: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -17830,19 +19062,22 @@ mod law_producer_records_sent_to_one_partition_are_read {
         t: ls::Value,
         _first: ls::Value,
         _second: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -17947,12 +19182,14 @@ mod law_producer_records_sent_to_one_partition_are_read {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -18000,14 +19237,16 @@ mod law_producer_records_sent_to_one_partition_are_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -18016,7 +19255,8 @@ mod law_producer_records_sent_to_one_partition_are_read {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -18048,14 +19288,16 @@ mod law_producer_records_sent_to_one_partition_are_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -18064,7 +19306,8 @@ mod law_producer_records_sent_to_one_partition_are_read {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -18096,14 +19339,16 @@ mod law_producer_records_sent_to_one_partition_are_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -18111,7 +19356,8 @@ mod law_producer_records_sent_to_one_partition_are_read {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -18166,44 +19412,53 @@ mod law_producer_records_sent_to_one_partition_are_read {
 // (_match__lawspecSelection0x0_0 > match (_lawspecSelection0x0) {
 // lawtwin.kafka::type::RecordMetadata::RecordMetadata lawspecFieldsentTo lawspecFieldsentAt ->
 // lawspecFieldsentAt }) } } = true end for all
-mod law_producer_a_flushed_record_is_in_the_log_native {
+mod law_producer_a_flushed_record_is_in_the_log_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -18211,29 +19466,34 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text(" ".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_6(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -18241,17 +19501,20 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -18259,11 +19522,13 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -18271,11 +19536,13 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -18283,18 +19550,21 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         ])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("é".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -18302,11 +19572,13 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?, literal_16(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -18314,21 +19586,24 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_1(ctx)?,
@@ -18340,12 +19615,14 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         t: ls::Value,
         r: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::called(
                     "send",
@@ -18369,12 +19646,15 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
                         }],
                     ),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let _ignored = ls::called(
                             "flush",
@@ -18417,26 +19697,32 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
                         )?;
-                        match it_2.clone() {
-                            ls::Value::Left(payload) => {
+                        match it_2.clone()
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _match_selection = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let match_selection = *payload;
                                 ls::binary(
                                     ">",
                                     "Integer",
                                     match_selection.clone(),
-                                    match selection.clone() {
+                                    match selection.clone()
+                                    {
                                         ls::Value::Data(tag, fields)
                                             if tag
                                                 == "lawtwin.kafka::type::RecordMetadata::RecordMetadata"
                                                 && fields.len() == 2 =>
                                         {
                                             let mut fields = fields.into_iter();
-                                            let _sent_to = fields.next().unwrap();
-                                            let sent_at = fields.next().unwrap();
+                                            let _sent_to =
+                                                fields.next().expect("checked expression arity");
+                                            let sent_at =
+                                                fields.next().expect("checked expression arity");
                                             sent_at.clone()
                                         }
                                         _ => return Err("invalid match value".into()),
@@ -18459,7 +19745,8 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -18524,19 +19811,22 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, _r: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, _r: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -18617,12 +19907,14 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -18670,14 +19962,16 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -18686,7 +19980,8 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -18750,14 +20045,16 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -18765,7 +20062,8 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -18819,44 +20117,53 @@ mod law_producer_a_flushed_record_is_in_the_log_native {
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And (producerIdentity == let it
 // = id in match (it) { Either::Right _lawspecSelection0x0 -> Maybe::Present(_lawspecSelection0x0);
 // Either::Left _lawspecSelection0x0 -> Maybe::Absent() })) = true end for all
-mod law_producer_an_idempotent_producer_s_retried_send {
+mod law_producer_an_idempotent_producer_s_retried_send
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -18864,29 +20171,34 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text(" ".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_6(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -18894,17 +20206,20 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -18912,11 +20227,13 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -18924,11 +20241,13 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -18936,18 +20255,21 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         ])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("é".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -18955,11 +20277,13 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?, literal_16(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -18967,21 +20291,24 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_1(ctx)?,
@@ -18993,12 +20320,14 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         t: ls::Value,
         r: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let id = ls::called(
                     "enableIdempotence",
@@ -19030,12 +20359,15 @@ mod law_producer_an_idempotent_producer_s_retried_send {
                     "retryLastSend",
                     lawspec_abilities::lawtwin_kafka::perform_retry_last_send(ctx, vec![]),
                 )?;
-                if if if match id.clone() {
-                    ls::Value::Left(payload) => {
+                if if if match id.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -19049,7 +20381,9 @@ mod law_producer_an_idempotent_producer_s_retried_send {
                         sent.clone(),
                         retried.clone(),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -19092,7 +20426,9 @@ mod law_producer_an_idempotent_producer_s_retried_send {
                         "lawtwin.kafka::followsOne",
                         lawspec_definitions::follows_one(ctx, vec![argument_1, argument_2]),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -19103,12 +20439,15 @@ mod law_producer_an_idempotent_producer_s_retried_send {
                     )?;
                     let right = {
                         let it = id.clone();
-                        match it.clone() {
-                            ls::Value::Right(payload) => {
+                        match it.clone()
+                        {
+                            ls::Value::Right(payload) =>
+                            {
                                 let selection = *payload;
                                 ls::construct("Maybe::Present", vec![selection.clone()])?
                             }
-                            ls::Value::Left(payload) => {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _selection = *payload;
                                 ls::construct("Maybe::Absent", vec![])?
                             }
@@ -19121,7 +20460,9 @@ mod law_producer_an_idempotent_producer_s_retried_send {
                         left,
                         right,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -19135,7 +20476,8 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -19200,19 +20542,22 @@ mod law_producer_an_idempotent_producer_s_retried_send {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, _r: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, _r: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -19293,12 +20638,14 @@ mod law_producer_an_idempotent_producer_s_retried_send {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -19346,14 +20693,16 @@ mod law_producer_an_idempotent_producer_s_retried_send {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -19362,7 +20711,8 @@ mod law_producer_an_idempotent_producer_s_retried_send {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -19426,14 +20776,16 @@ mod law_producer_an_idempotent_producer_s_retried_send {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -19441,7 +20793,8 @@ mod law_producer_an_idempotent_producer_s_retried_send {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -19496,26 +20849,32 @@ mod law_producer_an_idempotent_producer_s_retried_send {
 // _lawspecRecordField2) in
 // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_lawspecRecordField0, _lawspecRecordField1,
 // _lawspecRecordField2)) in samePartition a b = true end for all
-mod law_producer_records_with_one_key_go_to_one {
+mod law_producer_records_with_one_key_go_to_one
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
@@ -19529,12 +20888,14 @@ mod law_producer_records_with_one_key_go_to_one {
         first: ls::Value,
         second: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let a = ls::called(
                     "send",
@@ -19628,7 +20989,8 @@ mod law_producer_records_with_one_key_go_to_one {
         key: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -19726,12 +21088,14 @@ mod law_producer_records_with_one_key_go_to_one {
         _key: ls::Value,
         _first: ls::Value,
         _second: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -19743,22 +21107,27 @@ mod law_producer_records_with_one_key_go_to_one {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -19806,14 +21175,16 @@ mod law_producer_records_with_one_key_go_to_one {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -19822,7 +21193,8 @@ mod law_producer_records_with_one_key_go_to_one {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -19839,14 +21211,16 @@ mod law_producer_records_with_one_key_go_to_one {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -19855,7 +21229,8 @@ mod law_producer_records_with_one_key_go_to_one {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -19868,14 +21243,16 @@ mod law_producer_records_with_one_key_go_to_one {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -19884,7 +21261,8 @@ mod law_producer_records_with_one_key_go_to_one {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -19897,14 +21275,16 @@ mod law_producer_records_with_one_key_go_to_one {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -19913,7 +21293,8 @@ mod law_producer_records_with_one_key_go_to_one {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 4 {
+                    if case.values.len() != 4
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -19926,14 +21307,16 @@ mod law_producer_records_with_one_key_go_to_one {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -19941,7 +21324,8 @@ mod law_producer_records_with_one_key_go_to_one {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 5 {
+                if case.values.len() != 5
+                {
                     return false;
                 }
                 let result = valid(
@@ -19993,68 +21377,81 @@ mod law_producer_records_with_one_key_go_to_one {
 // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_lawspecRecordField0, _lawspecRecordField1,
 // _lawspecRecordField2)) =
 // Either::Left(lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition()) end for all
-mod law_producer_a_send_to_a_partition_the_topic_lacks {
+mod law_producer_a_send_to_a_partition_the_topic_lacks
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text(" ".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -20062,28 +21459,32 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
         ])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("é".to_owned()),
             literal_1(ctx)?,
@@ -20096,12 +21497,14 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
         n: ls::Value,
         r: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "send",
                 lawspec_abilities::lawtwin_kafka::perform_send(
@@ -20140,7 +21543,8 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -20211,12 +21615,14 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value, _r: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value, _r: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -20228,22 +21634,27 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -20291,14 +21702,16 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -20307,7 +21720,8 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -20324,14 +21738,16 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -20340,7 +21756,8 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -20428,14 +21845,16 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -20443,7 +21862,8 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -20494,41 +21914,50 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks {
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1)) (Maybe::Absent()) batch)) { Either::Left railwayError0 -> false;
 // Either::Right railwayValue1 -> true } And resumesAtCommitted t g m n) = true end for all
-mod law_consumer_a_restarted_consumer_resumes_at_its {
+mod law_consumer_a_restarted_consumer_resumes_at_its
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -20536,11 +21965,13 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -20548,13 +21979,15 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
         ])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_6(ctx)?,
             literal_6(ctx)?,
@@ -20570,12 +22003,14 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
         batch: ls::Value,
         n: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = if match ls::attempt(
                 ctx,
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -20602,12 +22037,15 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                 },
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
+            )?
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _railway_error0 = *payload;
                     ls::Value::Bool(false)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _railway_value1 = *payload;
                     ls::Value::Bool(true)
                 }
@@ -20622,7 +22060,9 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                         vec![t.clone(), g.clone(), m.clone(), n.clone()],
                     ),
                 )?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             };
             let expected = ls::Value::Bool(true);
@@ -20642,7 +22082,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
         m: ls::Value,
         batch: ls::Value,
         n: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -20746,27 +22187,32 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
         m: ls::Value,
         batch: ls::Value,
         n: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", m.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -20778,22 +22224,27 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -20841,14 +22292,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -20857,7 +22310,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -20877,14 +22331,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -20893,7 +22349,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -20913,14 +22370,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -20929,7 +22388,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -20960,14 +22420,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -20976,7 +22438,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 4 {
+                    if case.values.len() != 4
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -20993,14 +22456,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -21008,7 +22473,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 5 {
+                if case.values.len() != 5
+                {
                     return false;
                 }
                 let result = valid(
@@ -21061,41 +22527,50 @@ mod law_consumer_a_restarted_consumer_resumes_at_its {
 // = assign (List::Cons(tp, List::Nil())) in let it = poll 10 in match (it) { Either::Left
 // _lawspecSelection0x0 -> false; Either::Right _lawspecSelection0x0 -> increasing (receivedOffsets
 // _lawspecSelection0x0) }) = true end for all
-mod law_consumer_a_poll_reads_each_partition_in_offset {
+mod law_consumer_a_poll_reads_each_partition_in_offset
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -21103,11 +22578,13 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -21115,29 +22592,35 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -21150,12 +22633,14 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
         t: ls::Value,
         batch: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -21184,12 +22669,15 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
                     },
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -21214,12 +22702,15 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
                             vec![ls::Value::Integer(10i128.into())],
                         ),
                     )?;
-                    match it.clone() {
-                        ls::Value::Left(payload) => {
+                    match it.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let selection = *payload;
                             let argument_1 = ls::called(
                                 "lawtwin.kafka::receivedOffsets",
@@ -21232,7 +22723,9 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
                         }
                         _ => return Err("invalid match value".into()),
                     }
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -21246,7 +22739,8 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -21317,26 +22811,30 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -21389,12 +22887,14 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -21442,14 +22942,16 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -21458,7 +22960,8 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -21489,14 +22992,16 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -21504,7 +23009,8 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -21548,7 +23054,8 @@ mod law_consumer_a_poll_reads_each_partition_in_offset {
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1) in let lawspecIgnored = assign (List::Cons(tp, List::Nil())) in let
 // lawspecIgnored = seek tp offset in position tp = Either::Right(offset) end for all
-mod law_consumer_seek_sets_the_position_native {
+mod law_consumer_seek_sets_the_position_native
+{
     use super::*;
 
     fn check_body(
@@ -21556,12 +23063,14 @@ mod law_consumer_seek_sets_the_position_native {
         t: ls::Value,
         offset: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -21603,7 +23112,8 @@ mod law_consumer_seek_sets_the_position_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -21668,12 +23178,14 @@ mod law_consumer_seek_sets_the_position_native {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary(
@@ -21682,7 +23194,8 @@ mod law_consumer_seek_sets_the_position_native {
             offset.clone(),
             ls::Value::Integer(0i128.into()),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -21690,9 +23203,11 @@ mod law_consumer_seek_sets_the_position_native {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int64 0 9223372036854775807)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -21700,7 +23215,8 @@ mod law_consumer_seek_sets_the_position_native {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -21741,7 +23257,8 @@ mod law_consumer_seek_sets_the_position_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Consumer: |seek sets the position| [native]",
@@ -21751,7 +23268,8 @@ mod law_consumer_seek_sets_the_position_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -21799,14 +23317,16 @@ mod law_consumer_seek_sets_the_position_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -21815,7 +23335,8 @@ mod law_consumer_seek_sets_the_position_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -21831,14 +23352,16 @@ mod law_consumer_seek_sets_the_position_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -21846,7 +23369,8 @@ mod law_consumer_seek_sets_the_position_native {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -21874,7 +23398,8 @@ mod law_consumer_seek_sets_the_position_native {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Consumer: |seek sets the position| [native]",
                         SEARCH_INPUTS,
@@ -21900,7 +23425,8 @@ mod law_consumer_seek_sets_the_position_native {
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1)) = Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState()) end
 // for all
-mod law_consumer_only_an_assigned_partition_has_a {
+mod law_consumer_only_an_assigned_partition_has_a
+{
     use super::*;
 
     fn check_body(
@@ -21908,7 +23434,8 @@ mod law_consumer_only_an_assigned_partition_has_a {
         t: ls::Value,
         other: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let _ignored = ls::called(
                 "assign",
@@ -21958,7 +23485,8 @@ mod law_consumer_only_an_assigned_partition_has_a {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -22006,16 +23534,19 @@ mod law_consumer_only_an_assigned_partition_has_a {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", other.clone(), t.clone())?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -22023,9 +23554,11 @@ mod law_consumer_only_an_assigned_partition_has_a {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -22033,7 +23566,8 @@ mod law_consumer_only_an_assigned_partition_has_a {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -22103,7 +23637,8 @@ mod law_consumer_only_an_assigned_partition_has_a {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Consumer: |only an assigned partition has a position| [native]",
@@ -22113,7 +23648,8 @@ mod law_consumer_only_an_assigned_partition_has_a {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -22161,14 +23697,16 @@ mod law_consumer_only_an_assigned_partition_has_a {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -22177,7 +23715,8 @@ mod law_consumer_only_an_assigned_partition_has_a {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -22198,14 +23737,16 @@ mod law_consumer_only_an_assigned_partition_has_a {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -22213,7 +23754,8 @@ mod law_consumer_only_an_assigned_partition_has_a {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -22241,7 +23783,8 @@ mod law_consumer_only_an_assigned_partition_has_a {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Consumer: |only an assigned partition has a position| [native]",
                         SEARCH_INPUTS,
@@ -22275,62 +23818,74 @@ mod law_consumer_only_an_assigned_partition_has_a {
 // (it) { Either::Right _match__lawspecSelection0x0_0 -> setMember _match__lawspecSelection0x0_0
 // (setOf (receivedOffsets _lawspecSelection0x0)); Either::Left _match__lawspecSelection0x0_0 ->
 // false }) } = true end for all
-mod law_consumer_a_read_committed_consumer_never_sees {
+mod law_consumer_a_read_committed_consumer_never_sees
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -22338,17 +23893,20 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -22356,11 +23914,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -22368,11 +23928,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -22380,18 +23942,21 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -22399,11 +23964,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -22411,11 +23978,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -22423,11 +23992,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -22435,18 +24006,21 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_23(ctx)?])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -22454,11 +24028,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_23(ctx)?, literal_23(ctx)?])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -22466,18 +24042,21 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_28(ctx)?])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -22485,11 +24064,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_28(ctx)?, literal_28(ctx)?])?)
     }
 
-    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -22497,18 +24078,21 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_33(ctx)?])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -22516,11 +24100,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_33(ctx)?, literal_33(ctx)?])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -22528,11 +24114,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         ])?)
     }
 
-    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?, literal_14(ctx)?])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -22547,12 +24135,14 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         aborted: ls::Value,
         plain: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -22619,17 +24209,22 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                         vec![ls::Value::Integer(100i128.into())],
                     ),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let left = {
                             let it_2 = a.clone();
-                            match it_2.clone() {
-                                ls::Value::Maybe(Some(payload)) => {
+                            match it_2.clone()
+                            {
+                                ls::Value::Maybe(Some(payload)) =>
+                                {
                                     let match_selection = *payload;
                                     let value = {
                                         let argument_1 = match_selection.clone();
@@ -22663,10 +24258,13 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                                 _ => return Err("invalid match value".into()),
                             }
                         };
-                        if left.boolean()? {
+                        if left.boolean()?
+                        {
                             let it_2 = p.clone();
-                            match it_2.clone() {
-                                ls::Value::Right(payload) => {
+                            match it_2.clone()
+                            {
+                                ls::Value::Right(payload) =>
+                                {
                                     let match_selection = *payload;
                                     let argument_1 = match_selection.clone();
                                     let argument_2 = {
@@ -22693,13 +24291,16 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                                         ),
                                     )?
                                 }
-                                ls::Value::Left(payload) => {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_selection = *payload;
                                     ls::Value::Bool(false)
                                 }
                                 _ => return Err("invalid match value".into()),
                             }
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -22722,7 +24323,8 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         txid: ls::Value,
         aborted: ls::Value,
         plain: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -22812,23 +24414,27 @@ mod law_consumer_a_read_committed_consumer_never_sees {
         txid: ls::Value,
         _aborted: ls::Value,
         _plain: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -22950,12 +24556,14 @@ mod law_consumer_a_read_committed_consumer_never_sees {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -23003,14 +24611,16 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -23019,7 +24629,8 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -23039,14 +24650,16 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -23055,7 +24668,8 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -23087,14 +24701,16 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -23103,7 +24719,8 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -23135,14 +24752,16 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -23150,7 +24769,8 @@ mod law_consumer_a_read_committed_consumer_never_sees {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -23198,18 +24818,22 @@ mod law_consumer_a_read_committed_consumer_never_sees {
 // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) => created t n implies
 // (joinEach g (memberIds ids) (List::Cons(t, List::Nil())) And coversOnce t n (describeGroup g)) =
 // true end for all
-mod law_groupcoordinator_every_partition_has_exactly_one {
+mod law_groupcoordinator_every_partition_has_exactly_one
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
@@ -23223,12 +24847,14 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
         g: ls::Value,
         ids: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let left = {
                     let argument_1 = g.clone();
@@ -23251,7 +24877,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                         ),
                     )?
                 };
-                if left.boolean()? {
+                if left.boolean()?
+                {
                     let argument_1 = t.clone();
                     let argument_2 = n.clone();
                     let argument_3 = ls::called(
@@ -23268,7 +24895,9 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                             vec![argument_1, argument_2, argument_3],
                         ),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -23288,7 +24917,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -23378,12 +25008,14 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -23395,25 +25027,31 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::Value::Bool(
             !match ls::called(
                 "lawtwin.kafka::memberIds",
                 lawspec_definitions::member_ids(ctx, vec![ids.clone()]),
-            )? {
+            )?
+            {
                 ls::Value::List(values) if values.is_empty() => ls::Value::Bool(true),
-                ls::Value::List(values) if !values.is_empty() => {
+                ls::Value::List(values) if !values.is_empty() =>
+                {
                     let mut fields = values.into_iter();
-                    let _head = fields.next().unwrap();
+                    let _head = fields.next().expect("checked expression arity");
                     let _tail = ls::Value::List(fields.collect());
                     ls::Value::Bool(false)
                 }
@@ -23421,7 +25059,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
             }
             .boolean()?,
         );
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -23429,7 +25068,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 16)", "(text)", "(list (text))"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -23437,7 +25077,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -23451,7 +25092,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |every partition has exactly one owner in a generation| [native]",
@@ -23461,7 +25103,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -23509,14 +25152,16 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -23525,7 +25170,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -23542,14 +25188,16 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -23558,7 +25206,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -23578,14 +25227,16 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -23594,7 +25245,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -23649,14 +25301,16 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -23664,7 +25318,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -23696,7 +25351,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |every partition has exactly one owner in a generation| [native]",
                         SEARCH_INPUTS,
@@ -23719,18 +25375,22 @@ mod law_groupcoordinator_every_partition_has_exactly_one {
 // for all (t :: Text) (n :: Int32) (g :: Text) (ids :: List (Text)) => created t n implies
 // (joinEach g (memberIds ids) (List::Cons(t, List::Nil())) And coversOnce t n (describeGroup g)) =
 // true end for all
-mod law_groupcoordinator_every_partition_has_exactly_one_2 {
+mod law_groupcoordinator_every_partition_has_exactly_one_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
@@ -23743,12 +25403,14 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let left = {
                     let argument_1 = g.clone();
@@ -23771,7 +25433,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                         ),
                     )?
                 };
-                if left.boolean()? {
+                if left.boolean()?
+                {
                     let argument_1 = t.clone();
                     let argument_2 = n.clone();
                     let argument_3 = ls::called(
@@ -23788,7 +25451,9 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                             vec![argument_1, argument_2, argument_3],
                         ),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -23808,7 +25473,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -23859,12 +25525,14 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
         n: ls::Value,
         g: ls::Value,
         ids: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -23876,25 +25544,31 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::Value::Bool(
             !match ls::called(
                 "lawtwin.kafka::memberIds",
                 lawspec_definitions::member_ids(ctx, vec![ids.clone()]),
-            )? {
+            )?
+            {
                 ls::Value::List(values) if values.is_empty() => ls::Value::Bool(true),
-                ls::Value::List(values) if !values.is_empty() => {
+                ls::Value::List(values) if !values.is_empty() =>
+                {
                     let mut fields = values.into_iter();
-                    let _head = fields.next().unwrap();
+                    let _head = fields.next().expect("checked expression arity");
                     let _tail = ls::Value::List(fields.collect());
                     ls::Value::Bool(false)
                 }
@@ -23902,7 +25576,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
             }
             .boolean()?,
         );
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -23910,7 +25585,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 16)", "(text)", "(list (text))"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -23918,7 +25594,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -23932,7 +25609,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |every partition has exactly one owner in a generation| [cluster]",
@@ -23942,7 +25620,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -23990,14 +25669,16 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -24006,7 +25687,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -24023,14 +25705,16 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -24039,7 +25723,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -24059,14 +25744,16 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -24075,7 +25762,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -24130,14 +25818,16 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -24145,7 +25835,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -24177,7 +25868,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |every partition has exactly one owner in a generation| [cluster]",
                         SEARCH_INPUTS,
@@ -24204,7 +25896,8 @@ mod law_groupcoordinator_every_partition_has_exactly_one_2 {
 // _match__lawspecSelection0x0_0) And (match (describeGroup g) {
 // lawtwin.kafka.model::type::GroupView::GroupView lawspecFieldgeneration lawspecFieldmembers ->
 // lawspecFieldgeneration } == _lawspecSelection0x0)) } } = true end for all
-mod law_groupcoordinator_a_sync_gives_a_member_the {
+mod law_groupcoordinator_a_sync_gives_a_member_the
+{
     use super::*;
 
     fn check_body(
@@ -24214,12 +25907,14 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
         g: ls::Value,
         m: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -24244,12 +25939,15 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let it_2 = ls::attempt(
                             ctx,
@@ -24267,12 +25965,15 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
                         )?;
-                        match it_2.clone() {
-                            ls::Value::Left(payload) => {
+                        match it_2.clone()
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _match_selection = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let match_selection = *payload;
                                 let left = {
                                     let left = {
@@ -24299,7 +26000,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                                         match_selection.clone(),
                                     )?
                                 };
-                                if left.boolean()? {
+                                if left.boolean()?
+                                {
                                     ls::binary(
                                         "==",
                                         "Integer",
@@ -24309,22 +26011,29 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                                                 ctx,
                                                 vec![g.clone()],
                                             ),
-                                        )? {
+                                        )?
+                                        {
                                             ls::Value::Data(tag, fields)
                                                 if tag
                                                     == "lawtwin.kafka.model::type::GroupView::GroupView"
                                                     && fields.len() == 2 =>
                                             {
                                                 let mut fields = fields.into_iter();
-                                                let generation = fields.next().unwrap();
-                                                let _members = fields.next().unwrap();
+                                                let generation = fields
+                                                    .next()
+                                                    .expect("checked expression arity");
+                                                let _members = fields
+                                                    .next()
+                                                    .expect("checked expression arity");
                                                 generation.clone()
                                             }
                                             _ => return Err("invalid match value".into()),
                                         },
                                         selection.clone(),
                                     )?
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                             }
@@ -24350,7 +26059,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
         n: ls::Value,
         g: ls::Value,
         m: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -24440,12 +26150,14 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
         n: ls::Value,
         g: ls::Value,
         m: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -24457,18 +26169,23 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", m.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -24476,7 +26193,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 16)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -24484,7 +26202,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -24498,7 +26217,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |a sync gives a member the partitions the group view shows| [native]",
@@ -24508,7 +26228,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -24556,14 +26277,16 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -24572,7 +26295,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -24589,14 +26313,16 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -24605,7 +26331,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -24625,14 +26352,16 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -24641,7 +26370,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -24661,14 +26391,16 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -24676,7 +26408,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -24708,7 +26441,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |a sync gives a member the partitions the group view shows| [native]",
                         SEARCH_INPUTS,
@@ -24735,7 +26469,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the {
 // _match__lawspecSelection0x0_0) And (match (describeGroup g) {
 // lawtwin.kafka.model::type::GroupView::GroupView lawspecFieldgeneration lawspecFieldmembers ->
 // lawspecFieldgeneration } == _lawspecSelection0x0)) } } = true end for all
-mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
+mod law_groupcoordinator_a_sync_gives_a_member_the_2
+{
     use super::*;
 
     fn check_body(
@@ -24744,12 +26479,14 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
         n: ls::Value,
         g: ls::Value,
         m: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -24774,12 +26511,15 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let it_2 = ls::attempt(
                             ctx,
@@ -24797,12 +26537,15 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
                         )?;
-                        match it_2.clone() {
-                            ls::Value::Left(payload) => {
+                        match it_2.clone()
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _match_selection = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let match_selection = *payload;
                                 let left = {
                                     let left = {
@@ -24829,7 +26572,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                                         match_selection.clone(),
                                     )?
                                 };
-                                if left.boolean()? {
+                                if left.boolean()?
+                                {
                                     ls::binary(
                                         "==",
                                         "Integer",
@@ -24839,22 +26583,29 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                                                 ctx,
                                                 vec![g.clone()],
                                             ),
-                                        )? {
+                                        )?
+                                        {
                                             ls::Value::Data(tag, fields)
                                                 if tag
                                                     == "lawtwin.kafka.model::type::GroupView::GroupView"
                                                     && fields.len() == 2 =>
                                             {
                                                 let mut fields = fields.into_iter();
-                                                let generation = fields.next().unwrap();
-                                                let _members = fields.next().unwrap();
+                                                let generation = fields
+                                                    .next()
+                                                    .expect("checked expression arity");
+                                                let _members = fields
+                                                    .next()
+                                                    .expect("checked expression arity");
                                                 generation.clone()
                                             }
                                             _ => return Err("invalid match value".into()),
                                         },
                                         selection.clone(),
                                     )?
-                                } else {
+                                }
+                                else
+                                {
                                     ls::Value::Bool(false)
                                 }
                             }
@@ -24880,7 +26631,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
         n: ls::Value,
         g: ls::Value,
         m: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -24931,12 +26683,14 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
         n: ls::Value,
         g: ls::Value,
         m: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -24948,18 +26702,23 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", m.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -24967,7 +26726,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int32 1 16)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -24975,7 +26735,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -24989,7 +26750,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |a sync gives a member the partitions the group view shows| [cluster]",
@@ -24999,7 +26761,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -25047,14 +26810,16 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -25063,7 +26828,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -25080,14 +26846,16 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -25096,7 +26864,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -25116,14 +26885,16 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -25132,7 +26903,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -25152,14 +26924,16 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -25167,7 +26941,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -25199,7 +26974,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |a sync gives a member the partitions the group view shows| [cluster]",
                         SEARCH_INPUTS,
@@ -25254,7 +27030,8 @@ mod law_groupcoordinator_a_sync_gives_a_member_the_2 {
 // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_lawspecRecordField0, _lawspecRecordField1),
 // List::Nil())))) { Either::Left railwayError0 -> false; Either::Right railwayValue1 -> true } }) }
 // = true end for all
-mod law_groupcoordinator_a_commit_from_an_older {
+mod law_groupcoordinator_a_commit_from_an_older
+{
     use super::*;
 
     fn check_body(
@@ -25264,12 +27041,14 @@ mod law_groupcoordinator_a_commit_from_an_older {
         one: ls::Value,
         other: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -25294,12 +27073,15 @@ mod law_groupcoordinator_a_commit_from_an_older {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let new = ls::attempt(
                             ctx,
@@ -25368,11 +27150,14 @@ mod law_groupcoordinator_a_commit_from_an_older {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let failure = *payload;
                                 let it_2 = failure.clone();
-                                match it_2.clone() {
+                                match it_2.clone()
+                                {
                                     ls::Value::Data(tag, fields)
                                         if tag
                                             == "lawtwin.kafka.model::type::KafkaError::IllegalGeneration"
@@ -25495,7 +27280,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
                                     _ => return Err("invalid match value".into()),
                                 }
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _result_2 = *payload;
                                 ls::Value::Bool(false)
                             }
@@ -25504,12 +27290,15 @@ mod law_groupcoordinator_a_commit_from_an_older {
                         .boolean()?
                         {
                             let it_2 = new.clone();
-                            match it_2.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_2.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_selection = *payload;
                                     ls::Value::Bool(false)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let match_selection = *payload;
                                     match ls::attempt(
                                         ctx,
@@ -25565,12 +27354,15 @@ mod law_groupcoordinator_a_commit_from_an_older {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let _railway_error0 = *payload;
                                             ls::Value::Bool(false)
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _railway_value1 = *payload;
                                             ls::Value::Bool(true)
                                         }
@@ -25579,7 +27371,9 @@ mod law_groupcoordinator_a_commit_from_an_older {
                                 }
                                 _ => return Err("invalid match value".into()),
                             }
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -25602,7 +27396,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -25692,30 +27487,37 @@ mod law_groupcoordinator_a_commit_from_an_older {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", one.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary("!=", "Text", other.clone(), ls::Value::Text("".to_owned()))?
             .boolean()?
         {
             ls::binary("!=", "Text", other.clone(), one.clone())?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -25723,7 +27525,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -25731,7 +27534,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -25745,7 +27549,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |a commit from an older generation is refused| [native]",
@@ -25755,7 +27560,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -25803,14 +27609,16 @@ mod law_groupcoordinator_a_commit_from_an_older {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -25819,7 +27627,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -25839,14 +27648,16 @@ mod law_groupcoordinator_a_commit_from_an_older {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -25855,7 +27666,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -25875,14 +27687,16 @@ mod law_groupcoordinator_a_commit_from_an_older {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -25891,7 +27705,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -25913,14 +27728,16 @@ mod law_groupcoordinator_a_commit_from_an_older {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -25928,7 +27745,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -25960,7 +27778,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |a commit from an older generation is refused| [native]",
                         SEARCH_INPUTS,
@@ -26015,7 +27834,8 @@ mod law_groupcoordinator_a_commit_from_an_older {
 // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_lawspecRecordField0, _lawspecRecordField1),
 // List::Nil())))) { Either::Left railwayError0 -> false; Either::Right railwayValue1 -> true } }) }
 // = true end for all
-mod law_groupcoordinator_a_commit_from_an_older_2 {
+mod law_groupcoordinator_a_commit_from_an_older_2
+{
     use super::*;
 
     fn check_body(
@@ -26024,12 +27844,14 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -26054,12 +27876,15 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let new = ls::attempt(
                             ctx,
@@ -26128,11 +27953,14 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let failure = *payload;
                                 let it_2 = failure.clone();
-                                match it_2.clone() {
+                                match it_2.clone()
+                                {
                                     ls::Value::Data(tag, fields)
                                         if tag
                                             == "lawtwin.kafka.model::type::KafkaError::IllegalGeneration"
@@ -26255,7 +28083,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                                     _ => return Err("invalid match value".into()),
                                 }
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _result_2 = *payload;
                                 ls::Value::Bool(false)
                             }
@@ -26264,12 +28093,15 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                         .boolean()?
                         {
                             let it_2 = new.clone();
-                            match it_2.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_2.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_selection = *payload;
                                     ls::Value::Bool(false)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let match_selection = *payload;
                                     match ls::attempt(
                                         ctx,
@@ -26325,12 +28157,15 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                                         },
                                         |value| ls::construct("Either::Right", vec![value]),
                                         |value| ls::construct("Either::Left", vec![value]),
-                                    )? {
-                                        ls::Value::Left(payload) => {
+                                    )?
+                                    {
+                                        ls::Value::Left(payload) =>
+                                        {
                                             let _railway_error0 = *payload;
                                             ls::Value::Bool(false)
                                         }
-                                        ls::Value::Right(payload) => {
+                                        ls::Value::Right(payload) =>
+                                        {
                                             let _railway_value1 = *payload;
                                             ls::Value::Bool(true)
                                         }
@@ -26339,7 +28174,9 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                                 }
                                 _ => return Err("invalid match value".into()),
                             }
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -26362,7 +28199,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -26413,30 +28251,37 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", one.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary("!=", "Text", other.clone(), ls::Value::Text("".to_owned()))?
             .boolean()?
         {
             ls::binary("!=", "Text", other.clone(), one.clone())?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -26444,7 +28289,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -26452,7 +28298,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -26466,7 +28313,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |a commit from an older generation is refused| [cluster]",
@@ -26476,7 +28324,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -26524,14 +28373,16 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -26540,7 +28391,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -26560,14 +28412,16 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -26576,7 +28430,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -26596,14 +28451,16 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -26612,7 +28469,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -26634,14 +28492,16 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -26649,7 +28509,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -26681,7 +28542,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |a commit from an older generation is refused| [cluster]",
                         SEARCH_INPUTS,
@@ -26730,7 +28592,8 @@ mod law_groupcoordinator_a_commit_from_an_older_2 {
 // -> ((new == Either::Right(_match__lawspecSelection0x0_0)) And match (attempt (heartbeat g one
 // _match__lawspecSelection0x0_0)) { Either::Left railwayError0 -> false; Either::Right
 // railwayValue1 -> true }) }) } = true end for all
-mod law_groupcoordinator_a_heartbeat_from_an_older {
+mod law_groupcoordinator_a_heartbeat_from_an_older
+{
     use super::*;
 
     fn check_body(
@@ -26740,12 +28603,14 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
         one: ls::Value,
         other: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -26770,12 +28635,15 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let new = ls::attempt(
                             ctx,
@@ -26818,11 +28686,14 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let failure = *payload;
                                 let it_2 = failure.clone();
-                                match it_2.clone() {
+                                match it_2.clone()
+                                {
                                     ls::Value::Data(tag, fields)
                                         if tag
                                             == "lawtwin.kafka.model::type::KafkaError::IllegalGeneration"
@@ -26945,7 +28816,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                                     _ => return Err("invalid match value".into()),
                                 }
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _result_2 = *payload;
                                 ls::Value::Bool(false)
                             }
@@ -26979,12 +28851,15 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
                             )?;
-                            match it_2.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_2.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_selection = *payload;
                                     ls::Value::Bool(false)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let match_selection = *payload;
                                     if ls::binary(
                                         "==",
@@ -27016,24 +28891,31 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                                             },
                                             |value| ls::construct("Either::Right", vec![value]),
                                             |value| ls::construct("Either::Left", vec![value]),
-                                        )? {
-                                            ls::Value::Left(payload) => {
+                                        )?
+                                        {
+                                            ls::Value::Left(payload) =>
+                                            {
                                                 let _railway_error0 = *payload;
                                                 ls::Value::Bool(false)
                                             }
-                                            ls::Value::Right(payload) => {
+                                            ls::Value::Right(payload) =>
+                                            {
                                                 let _railway_value1 = *payload;
                                                 ls::Value::Bool(true)
                                             }
                                             _ => return Err("invalid match value".into()),
                                         }
-                                    } else {
+                                    }
+                                    else
+                                    {
                                         ls::Value::Bool(false)
                                     }
                                 }
                                 _ => return Err("invalid match value".into()),
                             }
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -27056,7 +28938,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -27146,30 +29029,37 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", one.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary("!=", "Text", other.clone(), ls::Value::Text("".to_owned()))?
             .boolean()?
         {
             ls::binary("!=", "Text", other.clone(), one.clone())?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -27177,7 +29067,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -27185,7 +29076,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -27199,7 +29091,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |a heartbeat from an older generation asks the member to rejoin| [native]",
@@ -27209,7 +29102,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -27257,14 +29151,16 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -27273,7 +29169,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -27293,14 +29190,16 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -27309,7 +29208,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -27329,14 +29229,16 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -27345,7 +29247,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -27367,14 +29270,16 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -27382,7 +29287,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -27414,7 +29320,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |a heartbeat from an older generation asks the member to rejoin| [native]",
                         SEARCH_INPUTS,
@@ -27463,7 +29370,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older {
 // -> ((new == Either::Right(_match__lawspecSelection0x0_0)) And match (attempt (heartbeat g one
 // _match__lawspecSelection0x0_0)) { Either::Left railwayError0 -> false; Either::Right
 // railwayValue1 -> true }) }) } = true end for all
-mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
+mod law_groupcoordinator_a_heartbeat_from_an_older_2
+{
     use super::*;
 
     fn check_body(
@@ -27472,12 +29380,14 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -27502,12 +29412,15 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let new = ls::attempt(
                             ctx,
@@ -27550,11 +29463,14 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let failure = *payload;
                                 let it_2 = failure.clone();
-                                match it_2.clone() {
+                                match it_2.clone()
+                                {
                                     ls::Value::Data(tag, fields)
                                         if tag
                                             == "lawtwin.kafka.model::type::KafkaError::IllegalGeneration"
@@ -27677,7 +29593,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                                     _ => return Err("invalid match value".into()),
                                 }
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _result_2 = *payload;
                                 ls::Value::Bool(false)
                             }
@@ -27711,12 +29628,15 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
                             )?;
-                            match it_2.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_2.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_selection = *payload;
                                     ls::Value::Bool(false)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let match_selection = *payload;
                                     if ls::binary(
                                         "==",
@@ -27748,24 +29668,31 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                                             },
                                             |value| ls::construct("Either::Right", vec![value]),
                                             |value| ls::construct("Either::Left", vec![value]),
-                                        )? {
-                                            ls::Value::Left(payload) => {
+                                        )?
+                                        {
+                                            ls::Value::Left(payload) =>
+                                            {
                                                 let _railway_error0 = *payload;
                                                 ls::Value::Bool(false)
                                             }
-                                            ls::Value::Right(payload) => {
+                                            ls::Value::Right(payload) =>
+                                            {
                                                 let _railway_value1 = *payload;
                                                 ls::Value::Bool(true)
                                             }
                                             _ => return Err("invalid match value".into()),
                                         }
-                                    } else {
+                                    }
+                                    else
+                                    {
                                         ls::Value::Bool(false)
                                     }
                                 }
                                 _ => return Err("invalid match value".into()),
                             }
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -27788,7 +29715,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -27839,30 +29767,37 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
         g: ls::Value,
         one: ls::Value,
         other: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", one.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary("!=", "Text", other.clone(), ls::Value::Text("".to_owned()))?
             .boolean()?
         {
             ls::binary("!=", "Text", other.clone(), one.clone())?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -27870,7 +29805,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -27878,7 +29814,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -27892,7 +29829,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |a heartbeat from an older generation asks the member to rejoin| [cluster]",
@@ -27902,7 +29840,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -27950,14 +29889,16 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -27966,7 +29907,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -27986,14 +29928,16 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -28002,7 +29946,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -28022,14 +29967,16 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -28038,7 +29985,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -28060,14 +30008,16 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -28075,7 +30025,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -28107,7 +30058,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |a heartbeat from an older generation asks the member to rejoin| [cluster]",
                         SEARCH_INPUTS,
@@ -28150,7 +30102,8 @@ mod law_groupcoordinator_a_heartbeat_from_an_older_2 {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false }) } = true end for all
-mod law_groupcoordinator_leaving_starts_a_new_generation {
+mod law_groupcoordinator_leaving_starts_a_new_generation
+{
     use super::*;
 
     fn check_body(
@@ -28159,12 +30112,14 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
         g: ls::Value,
         m: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -28189,12 +30144,15 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         if if match ls::attempt(
                             ctx,
@@ -28211,12 +30169,15 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _railway_error0 = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _railway_value1 = *payload;
                                 ls::Value::Bool(true)
                             }
@@ -28233,22 +30194,27 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                                         ctx,
                                         vec![g.clone()],
                                     ),
-                                )? {
+                                )?
+                                {
                                     ls::Value::Data(tag, fields)
                                         if tag
                                             == "lawtwin.kafka.model::type::GroupView::GroupView"
                                             && fields.len() == 2 =>
                                     {
                                         let mut fields = fields.into_iter();
-                                        let generation = fields.next().unwrap();
-                                        let _members = fields.next().unwrap();
+                                        let generation =
+                                            fields.next().expect("checked expression arity");
+                                        let _members =
+                                            fields.next().expect("checked expression arity");
                                         generation.clone()
                                     }
                                     _ => return Err("invalid match value".into()),
                                 },
                                 selection.clone(),
                             )?
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                         .boolean()?
@@ -28268,11 +30234,14 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                                 },
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
-                            )? {
-                                ls::Value::Left(payload) => {
+                            )?
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let failure = *payload;
                                     let it_2 = failure.clone();
-                                    match it_2.clone() {
+                                    match it_2.clone()
+                                    {
                                         ls::Value::Data(tag, fields)
                                             if tag
                                                 == "lawtwin.kafka.model::type::KafkaError::UnknownMemberId"
@@ -28395,13 +30364,16 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                                         _ => return Err("invalid match value".into()),
                                     }
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let _result_2 = *payload;
                                     ls::Value::Bool(false)
                                 }
                                 _ => return Err("invalid match value".into()),
                             }
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -28418,7 +30390,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, g: ls::Value, m: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, g: ls::Value, m: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -28489,20 +30462,24 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, g: ls::Value, m: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, g: ls::Value, m: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", m.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -28510,9 +30487,11 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone(), values[2].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone(), values[2].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone(), values[2].clone())?;
@@ -28520,7 +30499,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -28601,7 +30581,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |leaving starts a new generation| [native]",
@@ -28611,7 +30592,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -28659,14 +30641,16 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -28675,7 +30659,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -28695,14 +30680,16 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -28711,7 +30698,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -28731,14 +30719,16 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -28746,7 +30736,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -28776,7 +30767,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
                     case.values[1].clone(),
                     case.values[2].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |leaving starts a new generation| [native]",
                         SEARCH_INPUTS,
@@ -28819,20 +30811,19 @@ mod law_groupcoordinator_leaving_starts_a_new_generation {
 // lawtwin.kafka.model::type::KafkaError::IllegalGeneration -> false;
 // lawtwin.kafka.model::type::KafkaError::IllegalState -> false }; Either::Right lawspecResult ->
 // false }) } = true end for all
-mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
+mod law_groupcoordinator_leaving_starts_a_new_generation_2
+{
     use super::*;
 
-    fn check_body(
-        ctx: &mut ls::Context,
-        t: ls::Value,
-        g: ls::Value,
-        m: ls::Value,
-    ) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, g: ls::Value, m: ls::Value)
+    -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -28857,12 +30848,15 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         if if match ls::attempt(
                             ctx,
@@ -28879,12 +30873,15 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _railway_error0 = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _railway_value1 = *payload;
                                 ls::Value::Bool(true)
                             }
@@ -28901,22 +30898,27 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                                         ctx,
                                         vec![g.clone()],
                                     ),
-                                )? {
+                                )?
+                                {
                                     ls::Value::Data(tag, fields)
                                         if tag
                                             == "lawtwin.kafka.model::type::GroupView::GroupView"
                                             && fields.len() == 2 =>
                                     {
                                         let mut fields = fields.into_iter();
-                                        let generation = fields.next().unwrap();
-                                        let _members = fields.next().unwrap();
+                                        let generation =
+                                            fields.next().expect("checked expression arity");
+                                        let _members =
+                                            fields.next().expect("checked expression arity");
                                         generation.clone()
                                     }
                                     _ => return Err("invalid match value".into()),
                                 },
                                 selection.clone(),
                             )?
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                         .boolean()?
@@ -28936,11 +30938,14 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                                 },
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
-                            )? {
-                                ls::Value::Left(payload) => {
+                            )?
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let failure = *payload;
                                     let it_2 = failure.clone();
-                                    match it_2.clone() {
+                                    match it_2.clone()
+                                    {
                                         ls::Value::Data(tag, fields)
                                             if tag
                                                 == "lawtwin.kafka.model::type::KafkaError::UnknownMemberId"
@@ -29063,13 +31068,16 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                                         _ => return Err("invalid match value".into()),
                                     }
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let _result_2 = *payload;
                                     ls::Value::Bool(false)
                                 }
                                 _ => return Err("invalid match value".into()),
                             }
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -29086,7 +31094,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, g: ls::Value, m: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, g: ls::Value, m: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -29125,20 +31134,24 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, g: ls::Value, m: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, g: ls::Value, m: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", m.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -29146,9 +31159,11 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone(), values[2].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone(), values[2].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone(), values[2].clone())?;
@@ -29156,7 +31171,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -29237,7 +31253,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |leaving starts a new generation| [cluster]",
@@ -29247,7 +31264,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -29295,14 +31313,16 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -29311,7 +31331,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -29331,14 +31352,16 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -29347,7 +31370,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -29367,14 +31391,16 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -29382,7 +31408,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -29412,7 +31439,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
                     case.values[1].clone(),
                     case.values[2].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |leaving starts a new generation| [cluster]",
                         SEARCH_INPUTS,
@@ -29442,7 +31470,8 @@ mod law_groupcoordinator_leaving_starts_a_new_generation_2 {
 // (fetchOffset g (let _lawspecRecordField0 = t in let _lawspecRecordField1 = 0 in
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1)) == Maybe::Present(offset))) } = true end for all
-mod law_groupcoordinator_a_committed_offset_can_be {
+mod law_groupcoordinator_a_committed_offset_can_be
+{
     use super::*;
 
     fn check_body(
@@ -29452,12 +31481,14 @@ mod law_groupcoordinator_a_committed_offset_can_be {
         m: ls::Value,
         offset: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -29482,12 +31513,15 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         if match ls::attempt(
                             ctx,
@@ -29529,12 +31563,15 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _railway_error0 = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _railway_value1 = *payload;
                                 ls::Value::Bool(true)
                             }
@@ -29561,7 +31598,9 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                                 )?,
                                 ls::construct("Maybe::Present", vec![offset.clone()])?,
                             )?
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -29584,7 +31623,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
         g: ls::Value,
         m: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -29674,20 +31714,24 @@ mod law_groupcoordinator_a_committed_offset_can_be {
         g: ls::Value,
         m: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", m.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary(
@@ -29696,7 +31740,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
             offset.clone(),
             ls::Value::Integer(0i128.into()),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -29709,7 +31754,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
         "(int Int64 0 9223372036854775807)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -29717,7 +31763,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -29731,7 +31778,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -29799,7 +31847,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |a committed offset can be fetched| [native]",
@@ -29809,7 +31858,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -29857,14 +31907,16 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -29873,7 +31925,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -29893,14 +31946,16 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -29909,7 +31964,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -29929,14 +31985,16 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -29945,7 +32003,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -29961,14 +32020,16 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -29976,7 +32037,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -30008,7 +32070,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |a committed offset can be fetched| [native]",
                         SEARCH_INPUTS,
@@ -30038,7 +32101,8 @@ mod law_groupcoordinator_a_committed_offset_can_be {
 // (fetchOffset g (let _lawspecRecordField0 = t in let _lawspecRecordField1 = 0 in
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1)) == Maybe::Present(offset))) } = true end for all
-mod law_groupcoordinator_a_committed_offset_can_be_2 {
+mod law_groupcoordinator_a_committed_offset_can_be_2
+{
     use super::*;
 
     fn check_body(
@@ -30047,12 +32111,14 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
         g: ls::Value,
         m: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::attempt(
                     ctx,
@@ -30077,12 +32143,15 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         if match ls::attempt(
                             ctx,
@@ -30124,12 +32193,15 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                             },
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
-                        )? {
-                            ls::Value::Left(payload) => {
+                        )?
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _railway_error0 = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let _railway_value1 = *payload;
                                 ls::Value::Bool(true)
                             }
@@ -30156,7 +32228,9 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                                 )?,
                                 ls::construct("Maybe::Present", vec![offset.clone()])?,
                             )?
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -30179,7 +32253,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
         g: ls::Value,
         m: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -30230,20 +32305,24 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
         g: ls::Value,
         m: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", m.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary(
@@ -30252,7 +32331,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
             offset.clone(),
             ls::Value::Integer(0i128.into()),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -30265,7 +32345,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
         "(int Int64 0 9223372036854775807)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -30273,7 +32354,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -30287,7 +32369,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -30355,7 +32438,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::GroupCoordinator: |a committed offset can be fetched| [cluster]",
@@ -30365,7 +32449,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -30413,14 +32498,16 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -30429,7 +32516,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -30449,14 +32537,16 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -30465,7 +32555,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -30485,14 +32576,16 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -30501,7 +32594,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -30517,14 +32611,16 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -30532,7 +32628,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -30564,7 +32661,8 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::GroupCoordinator: |a committed offset can be fetched| [cluster]",
                         SEARCH_INPUTS,
@@ -30595,62 +32693,74 @@ mod law_groupcoordinator_a_committed_offset_can_be_2 {
 // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_lawspecRecordField0, _lawspecRecordField1,
 // _lawspecRecordField2)) == Either::Left(lawtwin.kafka.model::type::KafkaError::ProducerFenced())))
 // = true end for all
-mod law_transactions_a_newer_instance_fences_a_zombie {
+mod law_transactions_a_newer_instance_fences_a_zombie
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -30658,17 +32768,20 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -30676,11 +32789,13 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -30688,11 +32803,13 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -30700,18 +32817,21 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -30719,21 +32839,24 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_2(ctx)?,
@@ -30746,24 +32869,29 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
         txid: ls::Value,
         r: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = if if if match ls::called(
                 "initTransactions",
                 lawspec_abilities::lawtwin_kafka::perform_init_transactions(
                     ctx,
                     vec![txid.clone()],
                 ),
-            )? {
-                ls::Value::Left(payload) => {
+            )?
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _railway_error0 = *payload;
                     ls::Value::Bool(false)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _railway_value1 = *payload;
                     ls::Value::Bool(true)
                 }
@@ -30780,7 +32908,9 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
                     )?,
                     ls::construct("Either::Right", vec![ls::Value::Unit])?,
                 )?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             }
             .boolean()?
@@ -30800,18 +32930,23 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
                     },
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
                     _ => return Err("invalid match value".into()),
                 }
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             }
             .boolean()?
@@ -30849,7 +32984,9 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
                         )],
                     )?,
                 )?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             };
             let expected = ls::Value::Bool(true);
@@ -30862,7 +32999,8 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, txid: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, txid: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -30944,23 +33082,27 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
         t: ls::Value,
         txid: ls::Value,
         _r: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -31057,12 +33199,14 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -31110,14 +33254,16 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -31126,7 +33272,8 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -31146,14 +33293,16 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -31162,7 +33311,8 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -31234,14 +33384,16 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -31249,7 +33401,8 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -31304,62 +33457,74 @@ mod law_transactions_a_newer_instance_fences_a_zombie {
 // (match (_lawspecSelection0x0) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
 // lawspecFieldsentTo lawspecFieldsentAt -> lawspecFieldsentAt }) == List::Nil())) }) = true end for
 // all
-mod law_transactions_aborted_records_are_never_read {
+mod law_transactions_aborted_records_are_never_read
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -31367,17 +33532,20 @@ mod law_transactions_aborted_records_are_never_read {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -31385,11 +33553,13 @@ mod law_transactions_aborted_records_are_never_read {
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -31397,11 +33567,13 @@ mod law_transactions_aborted_records_are_never_read {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -31409,18 +33581,21 @@ mod law_transactions_aborted_records_are_never_read {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -31428,21 +33603,24 @@ mod law_transactions_aborted_records_are_never_read {
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_2(ctx)?,
@@ -31455,12 +33633,14 @@ mod law_transactions_aborted_records_are_never_read {
         txid: ls::Value,
         r: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -31476,12 +33656,15 @@ mod law_transactions_aborted_records_are_never_read {
                         ctx,
                         vec![txid.clone()],
                     ),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -31501,7 +33684,9 @@ mod law_transactions_aborted_records_are_never_read {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -31528,12 +33713,15 @@ mod law_transactions_aborted_records_are_never_read {
                             }],
                         ),
                     )?;
-                    match it.clone() {
-                        ls::Value::Left(payload) => {
+                    match it.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let selection = *payload;
                             if ls::binary(
                                 "==",
@@ -31558,15 +33746,20 @@ mod law_transactions_aborted_records_are_never_read {
                                             ctx,
                                             vec![
                                                 tp.clone(),
-                                                match selection.clone() {
+                                                match selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.kafka::type::RecordMetadata::RecordMetadata"
                                                             && fields.len() == 2 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _sent_to = fields.next().unwrap();
-                                                        let sent_at = fields.next().unwrap();
+                                                        let _sent_to = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let sent_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         sent_at.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -31576,13 +33769,17 @@ mod law_transactions_aborted_records_are_never_read {
                                     )?,
                                     ls::construct("List::Nil", vec![])?,
                                 )?
-                            } else {
+                            }
+                            else
+                            {
                                 ls::Value::Bool(false)
                             }
                         }
                         _ => return Err("invalid match value".into()),
                     }
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -31596,7 +33793,8 @@ mod law_transactions_aborted_records_are_never_read {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, txid: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, txid: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -31678,23 +33876,27 @@ mod law_transactions_aborted_records_are_never_read {
         t: ls::Value,
         txid: ls::Value,
         _r: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -31791,12 +33993,14 @@ mod law_transactions_aborted_records_are_never_read {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -31844,14 +34048,16 @@ mod law_transactions_aborted_records_are_never_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -31860,7 +34066,8 @@ mod law_transactions_aborted_records_are_never_read {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -31880,14 +34087,16 @@ mod law_transactions_aborted_records_are_never_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -31896,7 +34105,8 @@ mod law_transactions_aborted_records_are_never_read {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -31968,14 +34178,16 @@ mod law_transactions_aborted_records_are_never_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -31983,7 +34195,8 @@ mod law_transactions_aborted_records_are_never_read {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -32048,62 +34261,74 @@ mod law_transactions_aborted_records_are_never_read {
 // lawtwin.kafka::type::RecordMetadata::RecordMetadata lawspecFieldsentTo lawspecFieldsentAt ->
 // lawspecFieldsentAt }) == List::Cons(first, List::Cons(second, List::Nil())))) }) = true end for
 // all
-mod law_transactions_committed_records_are_read {
+mod law_transactions_committed_records_are_read
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -32111,17 +34336,20 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -32129,11 +34357,13 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -32141,11 +34371,13 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -32153,18 +34385,21 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -32172,11 +34407,13 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -32184,11 +34421,13 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -32196,11 +34435,13 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -32208,18 +34449,21 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_23(ctx)?])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -32227,11 +34471,13 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_23(ctx)?, literal_23(ctx)?])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -32239,18 +34485,21 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_28(ctx)?])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -32258,11 +34507,13 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_28(ctx)?, literal_28(ctx)?])?)
     }
 
-    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -32270,18 +34521,21 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_33(ctx)?])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -32289,11 +34543,13 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_33(ctx)?, literal_33(ctx)?])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -32301,11 +34557,13 @@ mod law_transactions_committed_records_are_read {
         ])?)
     }
 
-    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?, literal_14(ctx)?])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -32320,12 +34578,14 @@ mod law_transactions_committed_records_are_read {
         first: ls::Value,
         second: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -32341,12 +34601,15 @@ mod law_transactions_committed_records_are_read {
                         ctx,
                         vec![txid.clone()],
                     ),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -32366,7 +34629,9 @@ mod law_transactions_committed_records_are_read {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -32393,12 +34658,15 @@ mod law_transactions_committed_records_are_read {
                             }],
                         ),
                     )?;
-                    match it.clone() {
-                        ls::Value::Left(payload) => {
+                    match it.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let selection = *payload;
                             if if if match ls::called(
                                 "sendInTransaction",
@@ -32421,12 +34689,15 @@ mod law_transactions_committed_records_are_read {
                                         )
                                     }],
                                 ),
-                            )? {
-                                ls::Value::Left(payload) => {
+                            )?
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _railway_error0 = *payload;
                                     ls::Value::Bool(false)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let _railway_value1 = *payload;
                                     ls::Value::Bool(true)
                                 }
@@ -32443,15 +34714,20 @@ mod law_transactions_committed_records_are_read {
                                             ctx,
                                             vec![
                                                 tp.clone(),
-                                                match selection.clone() {
+                                                match selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.kafka::type::RecordMetadata::RecordMetadata"
                                                             && fields.len() == 2 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _sent_to = fields.next().unwrap();
-                                                        let sent_at = fields.next().unwrap();
+                                                        let _sent_to = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let sent_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         sent_at.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -32461,7 +34737,9 @@ mod law_transactions_committed_records_are_read {
                                     )?,
                                     ls::construct("List::Nil", vec![])?,
                                 )?
-                            } else {
+                            }
+                            else
+                            {
                                 ls::Value::Bool(false)
                             }
                             .boolean()?
@@ -32478,7 +34756,9 @@ mod law_transactions_committed_records_are_read {
                                     )?,
                                     ls::construct("Either::Right", vec![ls::Value::Unit])?,
                                 )?
-                            } else {
+                            }
+                            else
+                            {
                                 ls::Value::Bool(false)
                             }
                             .boolean()?
@@ -32492,15 +34772,20 @@ mod law_transactions_committed_records_are_read {
                                             ctx,
                                             vec![
                                                 tp.clone(),
-                                                match selection.clone() {
+                                                match selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.kafka::type::RecordMetadata::RecordMetadata"
                                                             && fields.len() == 2 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _sent_to = fields.next().unwrap();
-                                                        let sent_at = fields.next().unwrap();
+                                                        let _sent_to = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let sent_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         sent_at.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -32522,13 +34807,17 @@ mod law_transactions_committed_records_are_read {
                                         ],
                                     )?,
                                 )?
-                            } else {
+                            }
+                            else
+                            {
                                 ls::Value::Bool(false)
                             }
                         }
                         _ => return Err("invalid match value".into()),
                     }
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -32548,7 +34837,8 @@ mod law_transactions_committed_records_are_read {
         txid: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -32638,23 +34928,27 @@ mod law_transactions_committed_records_are_read {
         txid: ls::Value,
         _first: ls::Value,
         _second: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -32776,12 +35070,14 @@ mod law_transactions_committed_records_are_read {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -32829,14 +35125,16 @@ mod law_transactions_committed_records_are_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -32845,7 +35143,8 @@ mod law_transactions_committed_records_are_read {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -32865,14 +35164,16 @@ mod law_transactions_committed_records_are_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -32881,7 +35182,8 @@ mod law_transactions_committed_records_are_read {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -32913,14 +35215,16 @@ mod law_transactions_committed_records_are_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -32929,7 +35233,8 @@ mod law_transactions_committed_records_are_read {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -32961,14 +35266,16 @@ mod law_transactions_committed_records_are_read {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -32976,7 +35283,8 @@ mod law_transactions_committed_records_are_read {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -33031,7 +35339,8 @@ mod law_transactions_committed_records_are_read {
 // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_lawspecRecordField0, _lawspecRecordField1),
 // List::Nil())) == Either::Right(unitValue))) And (abortTransaction == Either::Right(unitValue)))
 // And (offsetFetchRequest g tp == before)) = true end for all
-mod law_transactions_offsets_sent_in_an_aborted {
+mod law_transactions_offsets_sent_in_an_aborted
+{
     use super::*;
 
     fn check_body(
@@ -33041,12 +35350,14 @@ mod law_transactions_offsets_sent_in_an_aborted {
         g: ls::Value,
         offset: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -33069,12 +35380,15 @@ mod law_transactions_offsets_sent_in_an_aborted {
                         ctx,
                         vec![txid.clone()],
                     ),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -33094,7 +35408,9 @@ mod law_transactions_offsets_sent_in_an_aborted {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -33122,7 +35438,9 @@ mod law_transactions_offsets_sent_in_an_aborted {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -33139,7 +35457,9 @@ mod law_transactions_offsets_sent_in_an_aborted {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -33156,7 +35476,9 @@ mod law_transactions_offsets_sent_in_an_aborted {
                         )?,
                         before.clone(),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -33176,7 +35498,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let t = lawspec_schema::schema()?.validate_with_context(
             t,
             &ls::TypeRef::named("Text", vec![]),
@@ -33266,20 +35589,24 @@ mod law_transactions_offsets_sent_in_an_aborted {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary(
@@ -33288,7 +35615,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
             offset.clone(),
             ls::Value::Integer(0i128.into()),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -33301,7 +35629,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
         "(int Int64 0 9223372036854775807)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -33309,7 +35638,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -33323,7 +35653,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -33391,7 +35722,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Transactions: |offsets sent in an aborted transaction are not committed| [native]",
@@ -33401,7 +35733,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -33449,14 +35782,16 @@ mod law_transactions_offsets_sent_in_an_aborted {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -33465,7 +35800,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -33485,14 +35821,16 @@ mod law_transactions_offsets_sent_in_an_aborted {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -33501,7 +35839,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -33521,14 +35860,16 @@ mod law_transactions_offsets_sent_in_an_aborted {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -33537,7 +35878,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -33553,14 +35895,16 @@ mod law_transactions_offsets_sent_in_an_aborted {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -33568,7 +35912,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -33600,7 +35945,8 @@ mod law_transactions_offsets_sent_in_an_aborted {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Transactions: |offsets sent in an aborted transaction are not committed| [native]",
                         SEARCH_INPUTS,
@@ -33620,14 +35966,16 @@ mod law_transactions_offsets_sent_in_an_aborted {
 // Transactions: |a transaction must begin before it ends| [native] — ../src/contract.lawspec:1720
 // for all (txid :: Text) => let id = initTransactions txid in commitTransaction =
 // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState()) end for all
-mod law_transactions_a_transaction_must_begin_before_it {
+mod law_transactions_a_transaction_must_begin_before_it
+{
     use super::*;
 
     fn check_body(
         ctx: &mut ls::Context,
         txid: ls::Value,
         _with_cluster: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let _id = ls::called(
                 "initTransactions",
@@ -33656,7 +36004,8 @@ mod law_transactions_a_transaction_must_begin_before_it {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<()>
+    {
         let txid = lawspec_schema::schema()?.validate_with_context(
             txid,
             &ls::TypeRef::named("Text", vec![]),
@@ -33699,9 +36048,11 @@ mod law_transactions_a_transaction_must_begin_before_it {
         Ok(())
     }
 
-    fn valid(_ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<bool> {
+    fn valid(_ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -33709,9 +36060,11 @@ mod law_transactions_a_transaction_must_begin_before_it {
 
     const SEARCH_INPUTS: &[&str] = &["(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone())? {
+        if !valid(ctx, values[0].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone())?;
@@ -33719,7 +36072,8 @@ mod law_transactions_a_transaction_must_begin_before_it {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![(
@@ -33749,7 +36103,8 @@ mod law_transactions_a_transaction_must_begin_before_it {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Transactions: |a transaction must begin before it ends| [native]",
@@ -33759,7 +36114,8 @@ mod law_transactions_a_transaction_must_begin_before_it {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -33779,14 +36135,16 @@ mod law_transactions_a_transaction_must_begin_before_it {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -33794,7 +36152,8 @@ mod law_transactions_a_transaction_must_begin_before_it {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 1 {
+                if case.values.len() != 1
+                {
                     return false;
                 }
                 let result = valid(&mut case.context.clone(), case.values[0].clone());
@@ -33814,7 +36173,8 @@ mod law_transactions_a_transaction_must_begin_before_it {
             };
             let check = |mut case: ls_gen::Case| {
                 let result = check(&mut case.context, case.values[0].clone());
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Transactions: |a transaction must begin before it ends| [native]",
                         SEARCH_INPUTS,
@@ -33845,44 +36205,53 @@ mod law_transactions_a_transaction_must_begin_before_it {
 // = lawtwin.kafka::type::PartitionChoice::ToPartition(0) in let _lawspecRecordField2 = second in
 // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_lawspecRecordField0, _lawspecRecordField1,
 // _lawspecRecordField2)) in readInOrder a b first second = true end for all
-mod law_producer_records_sent_to_one_partition_are_read_2 {
+mod law_producer_records_sent_to_one_partition_are_read_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -33890,29 +36259,34 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text(" ".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_6(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -33920,17 +36294,20 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -33938,11 +36315,13 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -33950,11 +36329,13 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -33962,18 +36343,21 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("é".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -33981,11 +36365,13 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?, literal_16(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -33993,11 +36379,13 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -34005,11 +36393,13 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?, literal_6(ctx)?])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -34017,18 +36407,21 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_25(ctx)?])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -34036,11 +36429,13 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_25(ctx)?, literal_25(ctx)?])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -34048,18 +36443,21 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_30(ctx)?])?)
     }
 
-    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -34067,11 +36465,13 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_30(ctx)?, literal_30(ctx)?])?)
     }
 
-    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -34079,18 +36479,21 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_35(ctx)?])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -34098,11 +36501,13 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         ])?)
     }
 
-    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_35(ctx)?, literal_35(ctx)?])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -34115,12 +36520,14 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         t: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let a = ls::called(
                     "send",
@@ -34189,7 +36596,8 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         t: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -34244,19 +36652,22 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
         t: ls::Value,
         _first: ls::Value,
         _second: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -34361,12 +36772,14 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -34414,14 +36827,16 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -34430,7 +36845,8 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -34462,14 +36878,16 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -34478,7 +36896,8 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -34510,14 +36929,16 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -34525,7 +36946,8 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -34580,44 +37002,53 @@ mod law_producer_records_sent_to_one_partition_are_read_2 {
 // (_match__lawspecSelection0x0_0 > match (_lawspecSelection0x0) {
 // lawtwin.kafka::type::RecordMetadata::RecordMetadata lawspecFieldsentTo lawspecFieldsentAt ->
 // lawspecFieldsentAt }) } } = true end for all
-mod law_producer_a_flushed_record_is_in_the_log {
+mod law_producer_a_flushed_record_is_in_the_log
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -34625,29 +37056,34 @@ mod law_producer_a_flushed_record_is_in_the_log {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text(" ".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_6(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -34655,17 +37091,20 @@ mod law_producer_a_flushed_record_is_in_the_log {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -34673,11 +37112,13 @@ mod law_producer_a_flushed_record_is_in_the_log {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -34685,11 +37126,13 @@ mod law_producer_a_flushed_record_is_in_the_log {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -34697,18 +37140,21 @@ mod law_producer_a_flushed_record_is_in_the_log {
         ])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("é".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -34716,11 +37162,13 @@ mod law_producer_a_flushed_record_is_in_the_log {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?, literal_16(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -34728,33 +37176,38 @@ mod law_producer_a_flushed_record_is_in_the_log {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let it = ls::called(
                     "send",
@@ -34778,12 +37231,15 @@ mod law_producer_a_flushed_record_is_in_the_log {
                         }],
                     ),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let _ignored = ls::called(
                             "flush",
@@ -34826,26 +37282,32 @@ mod law_producer_a_flushed_record_is_in_the_log {
                             |value| ls::construct("Either::Right", vec![value]),
                             |value| ls::construct("Either::Left", vec![value]),
                         )?;
-                        match it_2.clone() {
-                            ls::Value::Left(payload) => {
+                        match it_2.clone()
+                        {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _match_selection = *payload;
                                 ls::Value::Bool(false)
                             }
-                            ls::Value::Right(payload) => {
+                            ls::Value::Right(payload) =>
+                            {
                                 let match_selection = *payload;
                                 ls::binary(
                                     ">",
                                     "Integer",
                                     match_selection.clone(),
-                                    match selection.clone() {
+                                    match selection.clone()
+                                    {
                                         ls::Value::Data(tag, fields)
                                             if tag
                                                 == "lawtwin.kafka::type::RecordMetadata::RecordMetadata"
                                                 && fields.len() == 2 =>
                                         {
                                             let mut fields = fields.into_iter();
-                                            let _sent_to = fields.next().unwrap();
-                                            let sent_at = fields.next().unwrap();
+                                            let _sent_to =
+                                                fields.next().expect("checked expression arity");
+                                            let sent_at =
+                                                fields.next().expect("checked expression arity");
                                             sent_at.clone()
                                         }
                                         _ => return Err("invalid match value".into()),
@@ -34868,7 +37330,8 @@ mod law_producer_a_flushed_record_is_in_the_log {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -34907,19 +37370,22 @@ mod law_producer_a_flushed_record_is_in_the_log {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, _r: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, _r: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -35000,12 +37466,14 @@ mod law_producer_a_flushed_record_is_in_the_log {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -35053,14 +37521,16 @@ mod law_producer_a_flushed_record_is_in_the_log {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -35069,7 +37539,8 @@ mod law_producer_a_flushed_record_is_in_the_log {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -35133,14 +37604,16 @@ mod law_producer_a_flushed_record_is_in_the_log {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -35148,7 +37621,8 @@ mod law_producer_a_flushed_record_is_in_the_log {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -35202,44 +37676,53 @@ mod law_producer_a_flushed_record_is_in_the_log {
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted())))) And (producerIdentity == let it
 // = id in match (it) { Either::Right _lawspecSelection0x0 -> Maybe::Present(_lawspecSelection0x0);
 // Either::Left _lawspecSelection0x0 -> Maybe::Absent() })) = true end for all
-mod law_producer_an_idempotent_producer_s_retried_send_2 {
+mod law_producer_an_idempotent_producer_s_retried_send_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -35247,29 +37730,34 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text(" ".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_6(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -35277,17 +37765,20 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_6(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -35295,11 +37786,13 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -35307,11 +37800,13 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_5(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -35319,18 +37814,21 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
         ])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("é".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -35338,11 +37836,13 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_16(ctx)?, literal_16(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_9(ctx)?,
             literal_9(ctx)?,
@@ -35350,33 +37850,38 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let id = ls::called(
                     "enableIdempotence",
@@ -35408,12 +37913,15 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
                     "retryLastSend",
                     lawspec_abilities::lawtwin_kafka::perform_retry_last_send(ctx, vec![]),
                 )?;
-                if if if match id.clone() {
-                    ls::Value::Left(payload) => {
+                if if if match id.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -35427,7 +37935,9 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
                         sent.clone(),
                         retried.clone(),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -35470,7 +37980,9 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
                         "lawtwin.kafka::followsOne",
                         lawspec_definitions::follows_one(ctx, vec![argument_1, argument_2]),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -35481,12 +37993,15 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
                     )?;
                     let right = {
                         let it = id.clone();
-                        match it.clone() {
-                            ls::Value::Right(payload) => {
+                        match it.clone()
+                        {
+                            ls::Value::Right(payload) =>
+                            {
                                 let selection = *payload;
                                 ls::construct("Maybe::Present", vec![selection.clone()])?
                             }
-                            ls::Value::Left(payload) => {
+                            ls::Value::Left(payload) =>
+                            {
                                 let _selection = *payload;
                                 ls::construct("Maybe::Absent", vec![])?
                             }
@@ -35499,7 +38014,9 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
                         left,
                         right,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -35513,7 +38030,8 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -35552,19 +38070,22 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, _r: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, _r: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -35645,12 +38166,14 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -35698,14 +38221,16 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -35714,7 +38239,8 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -35778,14 +38304,16 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -35793,7 +38321,8 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -35848,26 +38377,32 @@ mod law_producer_an_idempotent_producer_s_retried_send_2 {
 // _lawspecRecordField2) in
 // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_lawspecRecordField0, _lawspecRecordField1,
 // _lawspecRecordField2)) in samePartition a b = true end for all
-mod law_producer_records_with_one_key_go_to_one_2 {
+mod law_producer_records_with_one_key_go_to_one_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
@@ -35880,12 +38415,14 @@ mod law_producer_records_with_one_key_go_to_one_2 {
         key: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let a = ls::called(
                     "send",
@@ -35979,7 +38516,8 @@ mod law_producer_records_with_one_key_go_to_one_2 {
         key: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -36050,12 +38588,14 @@ mod law_producer_records_with_one_key_go_to_one_2 {
         _key: ls::Value,
         _first: ls::Value,
         _second: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -36067,22 +38607,27 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -36130,14 +38675,16 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -36146,7 +38693,8 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -36163,14 +38711,16 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -36179,7 +38729,8 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -36192,14 +38743,16 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -36208,7 +38761,8 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -36221,14 +38775,16 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -36237,7 +38793,8 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 4 {
+                    if case.values.len() != 4
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -36250,14 +38807,16 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -36265,7 +38824,8 @@ mod law_producer_records_with_one_key_go_to_one_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 5 {
+                if case.values.len() != 5
+                {
                     return false;
                 }
                 let result = valid(
@@ -36317,68 +38877,81 @@ mod law_producer_records_with_one_key_go_to_one_2 {
 // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_lawspecRecordField0, _lawspecRecordField1,
 // _lawspecRecordField2)) =
 // Either::Left(lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition()) end for all
-mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
+mod law_producer_a_send_to_a_partition_the_topic_lacks_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text(" ".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -36386,45 +38959,47 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
         ])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             ls::Value::Text("é".to_owned()),
             literal_1(ctx)?,
         ])?)
     }
 
-    fn check_body(
-        ctx: &mut ls::Context,
-        t: ls::Value,
-        n: ls::Value,
-        r: ls::Value,
-    ) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, n: ls::Value, r: ls::Value)
+    -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), n.clone()]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = ls::called(
                 "send",
                 lawspec_abilities::lawtwin_kafka::perform_send(
@@ -36463,7 +39038,8 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, n: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -36508,12 +39084,14 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value, _r: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, n: ls::Value, _r: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -36525,22 +39103,27 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -36588,14 +39171,16 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -36604,7 +39189,8 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -36621,14 +39207,16 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -36637,7 +39225,8 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -36725,14 +39314,16 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -36740,7 +39331,8 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -36791,41 +39383,50 @@ mod law_producer_a_send_to_a_partition_the_topic_lacks_2 {
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1)) (Maybe::Absent()) batch)) { Either::Left railwayError0 -> false;
 // Either::Right railwayValue1 -> true } And resumesAtCommitted t g m n) = true end for all
-mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
+mod law_consumer_a_restarted_consumer_resumes_at_its_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -36833,11 +39434,13 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -36845,13 +39448,15 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
         ])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_6(ctx)?,
             literal_6(ctx)?,
@@ -36866,12 +39471,14 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
         m: ls::Value,
         batch: ls::Value,
         n: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = if match ls::attempt(
                 ctx,
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -36898,12 +39505,15 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                 },
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
-            )? {
-                ls::Value::Left(payload) => {
+            )?
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _railway_error0 = *payload;
                     ls::Value::Bool(false)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _railway_value1 = *payload;
                     ls::Value::Bool(true)
                 }
@@ -36918,7 +39528,9 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                         vec![t.clone(), g.clone(), m.clone(), n.clone()],
                     ),
                 )?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             };
             let expected = ls::Value::Bool(true);
@@ -36938,7 +39550,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
         m: ls::Value,
         batch: ls::Value,
         n: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -37008,27 +39621,32 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
         m: ls::Value,
         batch: ls::Value,
         n: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", m.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = if ls::binary(">=", "Integer", n.clone(), ls::Value::Integer(1i128.into()))?
@@ -37040,22 +39658,27 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                 n.clone(),
                 ls::Value::Integer(16i128.into()),
             )?
-        } else {
+        }
+        else
+        {
             ls::Value::Bool(false)
         };
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -37103,14 +39726,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -37119,7 +39744,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -37139,14 +39765,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -37155,7 +39783,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -37175,14 +39804,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -37191,7 +39822,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -37222,14 +39854,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -37238,7 +39872,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 4 {
+                    if case.values.len() != 4
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -37255,14 +39890,16 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -37270,7 +39907,8 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 5 {
+                if case.values.len() != 5
+                {
                     return false;
                 }
                 let result = valid(
@@ -37324,41 +39962,50 @@ mod law_consumer_a_restarted_consumer_resumes_at_its_2 {
 // = assign (List::Cons(tp, List::Nil())) in let it = poll 10 in match (it) { Either::Left
 // _lawspecSelection0x0 -> false; Either::Right _lawspecSelection0x0 -> increasing (receivedOffsets
 // _lawspecSelection0x0) }) = true end for all
-mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
+mod law_consumer_a_poll_reads_each_partition_in_offset_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -37366,11 +40013,13 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
         ])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_4(ctx)?,
             literal_4(ctx)?,
@@ -37378,29 +40027,35 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
         ])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_5(ctx)?])?)
     }
 
-    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_5(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             literal_10(ctx)?,
             literal_10(ctx)?,
@@ -37408,12 +40063,14 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -37442,12 +40099,15 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
                     },
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -37472,12 +40132,15 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
                             vec![ls::Value::Integer(10i128.into())],
                         ),
                     )?;
-                    match it.clone() {
-                        ls::Value::Left(payload) => {
+                    match it.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let selection = *payload;
                             let argument_1 = ls::called(
                                 "lawtwin.kafka::receivedOffsets",
@@ -37490,7 +40153,9 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
                         }
                         _ => return Err("invalid match value".into()),
                     }
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -37504,7 +40169,8 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -37542,26 +40208,30 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, batch: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::called(
             "lawtwin.kafka::smallBatch",
             lawspec_definitions::small_batch(ctx, vec![batch.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -37614,12 +40284,14 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -37667,14 +40339,16 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -37683,7 +40357,8 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -37714,14 +40389,16 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -37729,7 +40406,8 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -37773,15 +40451,18 @@ mod law_consumer_a_poll_reads_each_partition_in_offset_2 {
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1) in let lawspecIgnored = assign (List::Cons(tp, List::Nil())) in let
 // lawspecIgnored = seek tp offset in position tp = Either::Right(offset) end for all
-mod law_consumer_seek_sets_the_position_reference {
+mod law_consumer_seek_sets_the_position_reference
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -37823,7 +40504,8 @@ mod law_consumer_seek_sets_the_position_reference {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -37855,12 +40537,14 @@ mod law_consumer_seek_sets_the_position_reference {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, offset: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary(
@@ -37869,7 +40553,8 @@ mod law_consumer_seek_sets_the_position_reference {
             offset.clone(),
             ls::Value::Integer(0i128.into()),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -37877,9 +40562,11 @@ mod law_consumer_seek_sets_the_position_reference {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(int Int64 0 9223372036854775807)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -37887,7 +40574,8 @@ mod law_consumer_seek_sets_the_position_reference {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -37928,7 +40616,8 @@ mod law_consumer_seek_sets_the_position_reference {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Consumer: |seek sets the position| [reference]",
@@ -37938,7 +40627,8 @@ mod law_consumer_seek_sets_the_position_reference {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -37986,14 +40676,16 @@ mod law_consumer_seek_sets_the_position_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -38002,7 +40694,8 @@ mod law_consumer_seek_sets_the_position_reference {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -38018,14 +40711,16 @@ mod law_consumer_seek_sets_the_position_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -38033,7 +40728,8 @@ mod law_consumer_seek_sets_the_position_reference {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -38061,7 +40757,8 @@ mod law_consumer_seek_sets_the_position_reference {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Consumer: |seek sets the position| [reference]",
                         SEARCH_INPUTS,
@@ -38087,10 +40784,12 @@ mod law_consumer_seek_sets_the_position_reference {
 // lawtwin.kafka.model::type::TopicPartition::TopicPartition(_lawspecRecordField0,
 // _lawspecRecordField1)) = Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState()) end
 // for all
-mod law_consumer_only_an_assigned_partition_has_a_2 {
+mod law_consumer_only_an_assigned_partition_has_a_2
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<()>
+    {
         let actual = {
             let _ignored = ls::called(
                 "assign",
@@ -38140,7 +40839,8 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -38172,16 +40872,19 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
         Ok(())
     }
 
-    fn valid(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<bool> {
+    fn valid(ctx: &mut ls::Context, t: ls::Value, other: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", other.clone(), t.clone())?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -38189,9 +40892,11 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)", "(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -38199,7 +40904,8 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -38269,7 +40975,8 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Consumer: |only an assigned partition has a position| [reference]",
@@ -38279,7 +40986,8 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -38327,14 +41035,16 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -38343,7 +41053,8 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -38364,14 +41075,16 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -38379,7 +41092,8 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -38407,7 +41121,8 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Consumer: |only an assigned partition has a position| [reference]",
                         SEARCH_INPUTS,
@@ -38441,62 +41156,74 @@ mod law_consumer_only_an_assigned_partition_has_a_2 {
 // (it) { Either::Right _match__lawspecSelection0x0_0 -> setMember _match__lawspecSelection0x0_0
 // (setOf (receivedOffsets _lawspecSelection0x0)); Either::Left _match__lawspecSelection0x0_0 ->
 // false }) } = true end for all
-mod law_consumer_a_read_committed_consumer_never_sees_2 {
+mod law_consumer_a_read_committed_consumer_never_sees_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -38504,17 +41231,20 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -38522,11 +41252,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -38534,11 +41266,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -38546,18 +41280,21 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -38565,11 +41302,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -38577,11 +41316,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -38589,11 +41330,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -38601,18 +41344,21 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_23(ctx)?])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -38620,11 +41366,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_23(ctx)?, literal_23(ctx)?])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -38632,18 +41380,21 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_28(ctx)?])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -38651,11 +41402,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_28(ctx)?, literal_28(ctx)?])?)
     }
 
-    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -38663,18 +41416,21 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_33(ctx)?])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -38682,11 +41438,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_33(ctx)?, literal_33(ctx)?])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -38694,11 +41452,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         ])?)
     }
 
-    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?, literal_14(ctx)?])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -38712,12 +41472,14 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         txid: ls::Value,
         aborted: ls::Value,
         plain: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -38784,17 +41546,22 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                         vec![ls::Value::Integer(100i128.into())],
                     ),
                 )?;
-                match it.clone() {
-                    ls::Value::Left(payload) => {
+                match it.clone()
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _selection = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let selection = *payload;
                         let left = {
                             let it_2 = a.clone();
-                            match it_2.clone() {
-                                ls::Value::Maybe(Some(payload)) => {
+                            match it_2.clone()
+                            {
+                                ls::Value::Maybe(Some(payload)) =>
+                                {
                                     let match_selection = *payload;
                                     let value = {
                                         let argument_1 = match_selection.clone();
@@ -38828,10 +41595,13 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                                 _ => return Err("invalid match value".into()),
                             }
                         };
-                        if left.boolean()? {
+                        if left.boolean()?
+                        {
                             let it_2 = p.clone();
-                            match it_2.clone() {
-                                ls::Value::Right(payload) => {
+                            match it_2.clone()
+                            {
+                                ls::Value::Right(payload) =>
+                                {
                                     let match_selection = *payload;
                                     let argument_1 = match_selection.clone();
                                     let argument_2 = {
@@ -38858,13 +41628,16 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                                         ),
                                     )?
                                 }
-                                ls::Value::Left(payload) => {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_selection = *payload;
                                     ls::Value::Bool(false)
                                 }
                                 _ => return Err("invalid match value".into()),
                             }
-                        } else {
+                        }
+                        else
+                        {
                             ls::Value::Bool(false)
                         }
                     }
@@ -38887,7 +41660,8 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         txid: ls::Value,
         aborted: ls::Value,
         plain: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -38937,23 +41711,27 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
         txid: ls::Value,
         _aborted: ls::Value,
         _plain: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -39075,12 +41853,14 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -39128,14 +41908,16 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -39144,7 +41926,8 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -39164,14 +41947,16 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -39180,7 +41965,8 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -39212,14 +41998,16 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -39228,7 +42016,8 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -39260,14 +42049,16 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -39275,7 +42066,8 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -39331,62 +42123,74 @@ mod law_consumer_a_read_committed_consumer_never_sees_2 {
 // lawtwin.kafka::type::ProducerRecord::ProducerRecord(_lawspecRecordField0, _lawspecRecordField1,
 // _lawspecRecordField2)) == Either::Left(lawtwin.kafka.model::type::KafkaError::ProducerFenced())))
 // = true end for all
-mod law_transactions_a_newer_instance_fences_a_zombie_2 {
+mod law_transactions_a_newer_instance_fences_a_zombie_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -39394,17 +42198,20 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -39412,11 +42219,13 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -39424,11 +42233,13 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -39436,18 +42247,21 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -39455,21 +42269,24 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_2(ctx)?,
@@ -39481,24 +42298,29 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
         t: ls::Value,
         txid: ls::Value,
         r: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = if if if match ls::called(
                 "initTransactions",
                 lawspec_abilities::lawtwin_kafka::perform_init_transactions(
                     ctx,
                     vec![txid.clone()],
                 ),
-            )? {
-                ls::Value::Left(payload) => {
+            )?
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _railway_error0 = *payload;
                     ls::Value::Bool(false)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _railway_value1 = *payload;
                     ls::Value::Bool(true)
                 }
@@ -39515,7 +42337,9 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
                     )?,
                     ls::construct("Either::Right", vec![ls::Value::Unit])?,
                 )?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             }
             .boolean()?
@@ -39535,18 +42359,23 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
                     },
                     |value| ls::construct("Either::Right", vec![value]),
                     |value| ls::construct("Either::Left", vec![value]),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
                     _ => return Err("invalid match value".into()),
                 }
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             }
             .boolean()?
@@ -39584,7 +42413,9 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
                         )],
                     )?,
                 )?
-            } else {
+            }
+            else
+            {
                 ls::Value::Bool(false)
             };
             let expected = ls::Value::Bool(true);
@@ -39597,7 +42428,8 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, txid: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, txid: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -39649,23 +42481,27 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
         t: ls::Value,
         txid: ls::Value,
         _r: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -39762,12 +42598,14 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -39815,14 +42653,16 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -39831,7 +42671,8 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -39851,14 +42692,16 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -39867,7 +42710,8 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -39939,14 +42783,16 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -39954,7 +42800,8 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -40010,62 +42857,74 @@ mod law_transactions_a_newer_instance_fences_a_zombie_2 {
 // (match (_lawspecSelection0x0) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
 // lawspecFieldsentTo lawspecFieldsentAt -> lawspecFieldsentAt }) == List::Nil())) }) = true end for
 // all
-mod law_transactions_aborted_records_are_never_read_2 {
+mod law_transactions_aborted_records_are_never_read_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -40073,17 +42932,20 @@ mod law_transactions_aborted_records_are_never_read_2 {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -40091,11 +42953,13 @@ mod law_transactions_aborted_records_are_never_read_2 {
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -40103,11 +42967,13 @@ mod law_transactions_aborted_records_are_never_read_2 {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -40115,18 +42981,21 @@ mod law_transactions_aborted_records_are_never_read_2 {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -40134,21 +43003,24 @@ mod law_transactions_aborted_records_are_never_read_2 {
         ])?)
     }
 
-    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_2(ctx)?,
@@ -40160,12 +43032,14 @@ mod law_transactions_aborted_records_are_never_read_2 {
         t: ls::Value,
         txid: ls::Value,
         r: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -40181,12 +43055,15 @@ mod law_transactions_aborted_records_are_never_read_2 {
                         ctx,
                         vec![txid.clone()],
                     ),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -40206,7 +43083,9 @@ mod law_transactions_aborted_records_are_never_read_2 {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -40233,12 +43112,15 @@ mod law_transactions_aborted_records_are_never_read_2 {
                             }],
                         ),
                     )?;
-                    match it.clone() {
-                        ls::Value::Left(payload) => {
+                    match it.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let selection = *payload;
                             if ls::binary(
                                 "==",
@@ -40263,15 +43145,20 @@ mod law_transactions_aborted_records_are_never_read_2 {
                                             ctx,
                                             vec![
                                                 tp.clone(),
-                                                match selection.clone() {
+                                                match selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.kafka::type::RecordMetadata::RecordMetadata"
                                                             && fields.len() == 2 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _sent_to = fields.next().unwrap();
-                                                        let sent_at = fields.next().unwrap();
+                                                        let _sent_to = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let sent_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         sent_at.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -40281,13 +43168,17 @@ mod law_transactions_aborted_records_are_never_read_2 {
                                     )?,
                                     ls::construct("List::Nil", vec![])?,
                                 )?
-                            } else {
+                            }
+                            else
+                            {
                                 ls::Value::Bool(false)
                             }
                         }
                         _ => return Err("invalid match value".into()),
                     }
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -40301,7 +43192,8 @@ mod law_transactions_aborted_records_are_never_read_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, t: ls::Value, txid: ls::Value, r: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, t: ls::Value, txid: ls::Value, r: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -40353,23 +43245,27 @@ mod law_transactions_aborted_records_are_never_read_2 {
         t: ls::Value,
         txid: ls::Value,
         _r: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -40466,12 +43362,14 @@ mod law_transactions_aborted_records_are_never_read_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -40519,14 +43417,16 @@ mod law_transactions_aborted_records_are_never_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -40535,7 +43435,8 @@ mod law_transactions_aborted_records_are_never_read_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -40555,14 +43456,16 @@ mod law_transactions_aborted_records_are_never_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -40571,7 +43474,8 @@ mod law_transactions_aborted_records_are_never_read_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -40643,14 +43547,16 @@ mod law_transactions_aborted_records_are_never_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -40658,7 +43564,8 @@ mod law_transactions_aborted_records_are_never_read_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 3 {
+                if case.values.len() != 3
+                {
                     return false;
                 }
                 let result = valid(
@@ -40723,62 +43630,74 @@ mod law_transactions_aborted_records_are_never_read_2 {
 // lawtwin.kafka::type::RecordMetadata::RecordMetadata lawspecFieldsentTo lawspecFieldsentAt ->
 // lawspecFieldsentAt }) == List::Cons(first, List::Cons(second, List::Nil())))) }) = true end for
 // all
-mod law_transactions_committed_records_are_read_2 {
+mod law_transactions_committed_records_are_read_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Header::Header",
             fields,
         ))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.kafka.model::type::Record::Record",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![])])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -40786,17 +43705,20 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![ls::Value::Bytes(vec![
             0, 127, 128, 255,
         ])])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -40804,11 +43726,13 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -40816,11 +43740,13 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_3(ctx)?, literal_3(ctx)?])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -40828,18 +43754,21 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -40847,11 +43776,13 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -40859,11 +43790,13 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -40871,11 +43804,13 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_4(ctx)?, literal_4(ctx)?])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -40883,18 +43818,21 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_23(ctx)?])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -40902,11 +43840,13 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_23(ctx)?, literal_23(ctx)?])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -40914,18 +43854,21 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_28(ctx)?])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -40933,11 +43876,13 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_28(ctx)?, literal_28(ctx)?])?)
     }
 
-    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -40945,18 +43890,21 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             literal_2(ctx)?,
         ])?)
     }
 
-    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_33(ctx)?])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -40964,11 +43912,13 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_33(ctx)?, literal_33(ctx)?])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_2(ctx)?,
             literal_2(ctx)?,
@@ -40976,11 +43926,13 @@ mod law_transactions_committed_records_are_read_2 {
         ])?)
     }
 
-    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![literal_14(ctx)?, literal_14(ctx)?])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -40994,12 +43946,14 @@ mod law_transactions_committed_records_are_read_2 {
         txid: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -41015,12 +43969,15 @@ mod law_transactions_committed_records_are_read_2 {
                         ctx,
                         vec![txid.clone()],
                     ),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -41040,7 +43997,9 @@ mod law_transactions_committed_records_are_read_2 {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -41067,12 +44026,15 @@ mod law_transactions_committed_records_are_read_2 {
                             }],
                         ),
                     )?;
-                    match it.clone() {
-                        ls::Value::Left(payload) => {
+                    match it.clone()
+                    {
+                        ls::Value::Left(payload) =>
+                        {
                             let _selection = *payload;
                             ls::Value::Bool(false)
                         }
-                        ls::Value::Right(payload) => {
+                        ls::Value::Right(payload) =>
+                        {
                             let selection = *payload;
                             if if if match ls::called(
                                 "sendInTransaction",
@@ -41095,12 +44057,15 @@ mod law_transactions_committed_records_are_read_2 {
                                         )
                                     }],
                                 ),
-                            )? {
-                                ls::Value::Left(payload) => {
+                            )?
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _railway_error0 = *payload;
                                     ls::Value::Bool(false)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let _railway_value1 = *payload;
                                     ls::Value::Bool(true)
                                 }
@@ -41117,15 +44082,20 @@ mod law_transactions_committed_records_are_read_2 {
                                             ctx,
                                             vec![
                                                 tp.clone(),
-                                                match selection.clone() {
+                                                match selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.kafka::type::RecordMetadata::RecordMetadata"
                                                             && fields.len() == 2 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _sent_to = fields.next().unwrap();
-                                                        let sent_at = fields.next().unwrap();
+                                                        let _sent_to = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let sent_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         sent_at.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -41135,7 +44105,9 @@ mod law_transactions_committed_records_are_read_2 {
                                     )?,
                                     ls::construct("List::Nil", vec![])?,
                                 )?
-                            } else {
+                            }
+                            else
+                            {
                                 ls::Value::Bool(false)
                             }
                             .boolean()?
@@ -41152,7 +44124,9 @@ mod law_transactions_committed_records_are_read_2 {
                                     )?,
                                     ls::construct("Either::Right", vec![ls::Value::Unit])?,
                                 )?
-                            } else {
+                            }
+                            else
+                            {
                                 ls::Value::Bool(false)
                             }
                             .boolean()?
@@ -41166,15 +44140,20 @@ mod law_transactions_committed_records_are_read_2 {
                                             ctx,
                                             vec![
                                                 tp.clone(),
-                                                match selection.clone() {
+                                                match selection.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.kafka::type::RecordMetadata::RecordMetadata"
                                                             && fields.len() == 2 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _sent_to = fields.next().unwrap();
-                                                        let sent_at = fields.next().unwrap();
+                                                        let _sent_to = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let sent_at = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         sent_at.clone()
                                                     }
                                                     _ => return Err("invalid match value".into()),
@@ -41196,13 +44175,17 @@ mod law_transactions_committed_records_are_read_2 {
                                         ],
                                     )?,
                                 )?
-                            } else {
+                            }
+                            else
+                            {
                                 ls::Value::Bool(false)
                             }
                         }
                         _ => return Err("invalid match value".into()),
                     }
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -41222,7 +44205,8 @@ mod law_transactions_committed_records_are_read_2 {
         txid: ls::Value,
         first: ls::Value,
         second: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -41281,23 +44265,27 @@ mod law_transactions_committed_records_are_read_2 {
         txid: ls::Value,
         _first: ls::Value,
         _second: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -41419,12 +44407,14 @@ mod law_transactions_committed_records_are_read_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -41472,14 +44462,16 @@ mod law_transactions_committed_records_are_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -41488,7 +44480,8 @@ mod law_transactions_committed_records_are_read_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -41508,14 +44501,16 @@ mod law_transactions_committed_records_are_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -41524,7 +44519,8 @@ mod law_transactions_committed_records_are_read_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -41556,14 +44552,16 @@ mod law_transactions_committed_records_are_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -41572,7 +44570,8 @@ mod law_transactions_committed_records_are_read_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -41604,14 +44603,16 @@ mod law_transactions_committed_records_are_read_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -41619,7 +44620,8 @@ mod law_transactions_committed_records_are_read_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -41674,7 +44676,8 @@ mod law_transactions_committed_records_are_read_2 {
 // lawtwin.kafka.model::type::OffsetEntry::OffsetEntry(_lawspecRecordField0, _lawspecRecordField1),
 // List::Nil())) == Either::Right(unitValue))) And (abortTransaction == Either::Right(unitValue)))
 // And (offsetFetchRequest g tp == before)) = true end for all
-mod law_transactions_offsets_sent_in_an_aborted_2 {
+mod law_transactions_offsets_sent_in_an_aborted_2
+{
     use super::*;
 
     fn check_body(
@@ -41683,12 +44686,14 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let condition = ls::called(
             "lawtwin.kafka::created",
             lawspec_definitions::created(ctx, vec![t.clone(), ls::Value::Integer(1i128.into())]),
         )?;
-        if condition.boolean()? {
+        if condition.boolean()?
+        {
             let actual = {
                 let tp = {
                     let record_field = t.clone();
@@ -41711,12 +44716,15 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                         ctx,
                         vec![txid.clone()],
                     ),
-                )? {
-                    ls::Value::Left(payload) => {
+                )?
+                {
+                    ls::Value::Left(payload) =>
+                    {
                         let _railway_error0 = *payload;
                         ls::Value::Bool(false)
                     }
-                    ls::Value::Right(payload) => {
+                    ls::Value::Right(payload) =>
+                    {
                         let _railway_value1 = *payload;
                         ls::Value::Bool(true)
                     }
@@ -41736,7 +44744,9 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -41764,7 +44774,9 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -41781,7 +44793,9 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                         )?,
                         ls::construct("Either::Right", vec![ls::Value::Unit])?,
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
                 .boolean()?
@@ -41798,7 +44812,9 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                         )?,
                         before.clone(),
                     )?
-                } else {
+                }
+                else
+                {
                     ls::Value::Bool(false)
                 }
             };
@@ -41818,7 +44834,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -41877,20 +44894,24 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
         txid: ls::Value,
         g: ls::Value,
         offset: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::called(
             "lawtwin.kafka::lawtwinKafkaModelValidTopicName",
             lawspec_definitions::lawtwin_kafka_model_valid_topic_name(ctx, vec![t.clone()]),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary("!=", "Text", g.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         let condition = ls::binary(
@@ -41899,7 +44920,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
             offset.clone(),
             ls::Value::Integer(0i128.into()),
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -41912,7 +44934,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
         "(int Int64 0 9223372036854775807)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         if !valid(
             ctx,
@@ -41920,7 +44943,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
             values[1].clone(),
             values[2].clone(),
             values[3].clone(),
-        )? {
+        )?
+        {
             return Ok(None);
         }
         check(
@@ -41934,7 +44958,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -42002,7 +45027,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Transactions: |offsets sent in an aborted transaction are not committed| [reference]",
@@ -42012,7 +45038,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -42060,14 +45087,16 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -42076,7 +45105,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -42096,14 +45126,16 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -42112,7 +45144,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 2 {
+                    if case.values.len() != 2
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -42132,14 +45165,16 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -42148,7 +45183,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 3 {
+                    if case.values.len() != 3
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -42164,14 +45200,16 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -42179,7 +45217,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 4 {
+                if case.values.len() != 4
+                {
                     return false;
                 }
                 let result = valid(
@@ -42211,7 +45250,8 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
                     case.values[2].clone(),
                     case.values[3].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Transactions: |offsets sent in an aborted transaction are not committed| [reference]",
                         SEARCH_INPUTS,
@@ -42232,10 +45272,12 @@ mod law_transactions_offsets_sent_in_an_aborted_2 {
 // ../src/contract.lawspec:1720
 // for all (txid :: Text) => let id = initTransactions txid in commitTransaction =
 // Either::Left(lawtwin.kafka.model::type::KafkaError::IllegalState()) end for all
-mod law_transactions_a_transaction_must_begin_before_it_2 {
+mod law_transactions_a_transaction_must_begin_before_it_2
+{
     use super::*;
 
-    fn check_body(ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<()>
+    {
         let actual = {
             let _id = ls::called(
                 "initTransactions",
@@ -42264,7 +45306,8 @@ mod law_transactions_a_transaction_must_begin_before_it_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<()>
+    {
         let shared_cluster =
             std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
         let installing = vec![
@@ -42299,9 +45342,11 @@ mod law_transactions_a_transaction_must_begin_before_it_2 {
         Ok(())
     }
 
-    fn valid(_ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<bool> {
+    fn valid(_ctx: &mut ls::Context, txid: ls::Value) -> ls::Result<bool>
+    {
         let condition = ls::binary("!=", "Text", txid.clone(), ls::Value::Text("".to_owned()))?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -42309,9 +45354,11 @@ mod law_transactions_a_transaction_must_begin_before_it_2 {
 
     const SEARCH_INPUTS: &[&str] = &["(text)"];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone())? {
+        if !valid(ctx, values[0].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone())?;
@@ -42319,7 +45366,8 @@ mod law_transactions_a_transaction_must_begin_before_it_2 {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![(
@@ -42349,7 +45397,8 @@ mod law_transactions_a_transaction_must_begin_before_it_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.kafka::Transactions: |a transaction must begin before it ends| [reference]",
@@ -42359,7 +45408,8 @@ mod law_transactions_a_transaction_must_begin_before_it_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -42379,14 +45429,16 @@ mod law_transactions_a_transaction_must_begin_before_it_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -42394,7 +45446,8 @@ mod law_transactions_a_transaction_must_begin_before_it_2 {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 1 {
+                if case.values.len() != 1
+                {
                     return false;
                 }
                 let result = valid(&mut case.context.clone(), case.values[0].clone());
@@ -42414,7 +45467,8 @@ mod law_transactions_a_transaction_must_begin_before_it_2 {
             };
             let check = |mut case: ls_gen::Case| {
                 let result = check(&mut case.context, case.values[0].clone());
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.kafka::Transactions: |a transaction must begin before it ends| [reference]",
                         SEARCH_INPUTS,

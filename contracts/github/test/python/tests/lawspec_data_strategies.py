@@ -41,7 +41,9 @@ def strategy(
     schema._check(reference)
     schema._bits(bits)
     symbols = {} if symbols is None else symbols
-    native_generators = {} if native_generators is None else dict(native_generators)
+    native_generators = (
+        {} if native_generators is None else dict(native_generators)
+    )
     native_schema = schema if native_schema is None else native_schema
     for name, factory in native_generators.items():
         if name not in schema._arity or not callable(factory):
@@ -53,8 +55,12 @@ def strategy(
         constructors = schema.constructors(ty)
         children = []
         if constructors is not None:
-            constructor = next(item for item in constructors if item.tag == value.tag)
-            children = list(zip(witnessed(constructor, value.fields), value.fields))
+            constructor = next(
+                item for item in constructors if item.tag == value.tag
+            )
+            children = list(
+                zip(witnessed(constructor, value.fields), value.fields)
+            )
         elif ty.name == "List":
             children = [(ty.arguments[0], child) for child in value]
         elif ty.name in ("Nullable", "Optional") and value.present:
@@ -64,7 +70,9 @@ def strategy(
         elif ty.name == "Either":
             index = 0 if value.tag == "Either::Left" else 1
             children = [(ty.arguments[index], value.fields[0])]
-        cost = 1 + sum(remember(child_type, child) for child_type, child in children)
+        cost = 1 + sum(
+            remember(child_type, child) for child_type, child in children
+        )
         seeds.setdefault(ty, []).append((cost, value))
         return cost
 
@@ -80,7 +88,9 @@ def strategy(
 
     @cache
     def minimum(ty, limit):
-        return next((cost for cost in range(1, limit + 1) if inhabited(ty, cost)), None)
+        return next(
+            (cost for cost in range(1, limit + 1) if inhabited(ty, cost)), None
+        )
 
     def allocation(fields, available):
         costs = []
@@ -109,10 +119,17 @@ def strategy(
                 for item in constructors
                 for fields, _ in witness_instances(item)
             )
-        if not ty.arguments or ty.name in ("List", "Maybe", "Nullable", "Optional"):
+        if not ty.arguments or ty.name in (
+            "List",
+            "Maybe",
+            "Nullable",
+            "Optional",
+        ):
             return True
         if ty.name == "Either":
-            return any(inhabited(child, available - 1) for child in ty.arguments)
+            return any(
+                inhabited(child, available - 1) for child in ty.arguments
+            )
         raise ValueError("unsupported generator type: " + ty.name)
 
     @cache
@@ -126,7 +143,9 @@ def strategy(
                 if not inhabited(child, remaining):
                     return st.nothing()
                 return build(child, remaining).map(
-                    lambda value: native_schema.to_native(child, value, bits, symbols)
+                    lambda value: native_schema.to_native(
+                        child, value, bits, symbols
+                    )
                 )
 
             def checked(value):
@@ -138,17 +157,25 @@ def strategy(
                     ArithmeticError,
                     AttributeError,
                 ) as error:
-                    raise ValueError(f"native generator {ty.name}: {error}") from error
+                    raise ValueError(
+                        f"native generator {ty.name}: {error}"
+                    ) from error
 
             factory = native_generators[ty.name]
-            generated = factory(*(native_child(child) for child in ty.arguments))
+            generated = factory(
+                *(native_child(child) for child in ty.arguments)
+            )
             if not isinstance(generated, st.SearchStrategy):
-                raise TypeError(f"native generator {ty.name} must return a strategy")
+                raise TypeError(
+                    f"native generator {ty.name} must return a strategy"
+                )
             # Mapping retains Hypothesis's shrink choices. Invalid samples
             # and shrinks fail; they are never filtered into rejections.
             return generated.map(checked)
         native = build_native(ty, available)
-        candidates = [value for cost, value in seeds.get(ty, ()) if cost <= available]
+        candidates = [
+            value for cost, value in seeds.get(ty, ()) if cost <= available
+        ]
         if candidates:
             return st.one_of(native, st.sampled_from(candidates))
         return native
@@ -167,7 +194,8 @@ def strategy(
                     if costs is None:
                         continue
                     children = [
-                        build(field.type, cost) for field, cost in zip(fields, costs)
+                        build(field.type, cost)
+                        for field, cost in zip(fields, costs)
                     ]
                     # A field a regex refines also draws the regex's
                     # samples, so the refinement below rarely rejects.
@@ -177,8 +205,8 @@ def strategy(
                                 children[index], st.sampled_from(texts)
                             )
                     values = st.tuples(*children).map(
-                        lambda values, tag=constructor.tag, keys=keys: ls.DataValue(
-                            tag, tuple(values) + keys
+                        lambda values, tag=constructor.tag, keys=keys: (
+                            ls.DataValue(tag, tuple(values) + keys)
                         )
                     )
                     alternatives.append(values)
@@ -249,7 +277,9 @@ def strategy(
                     build(child, available - 1).map(
                         lambda value, tag=tag: ls.DataValue(tag, (value,))
                     )
-                    for tag, child in zip(("Either::Left", "Either::Right"), arguments)
+                    for tag, child in zip(
+                        ("Either::Left", "Either::Right"), arguments
+                    )
                     if inhabited(child, available - 1)
                 ]
             )
@@ -258,7 +288,14 @@ def strategy(
     if index is not None:
         target, equations = index
         generated = indexed_strategy(
-            schema, reference, int(target), equations, budget, build, inhabited, valid
+            schema,
+            reference,
+            int(target),
+            equations,
+            budget,
+            build,
+            inhabited,
+            valid,
         )
     else:
         generated = build(reference, budget)
@@ -278,7 +315,8 @@ def _canonical(key):
         distinct = [
             item
             for index, item in enumerate(items)
-            if index == 0 or ls.compare_values(key(items[index - 1]), key(item)) != 0
+            if index == 0
+            or ls.compare_values(key(items[index - 1]), key(item)) != 0
         ]
         return ls.DataValue(value.tag, (distinct,))
 
@@ -288,7 +326,9 @@ def _canonical(key):
 # Generated collections are canonicalised rather than filtered.
 CANONICAL = {
     "lawspec.collections::type::Set": _canonical(lambda item: item),
-    "lawspec.collections::type::KeyVal": _canonical(lambda entry: entry.fields[0]),
+    "lawspec.collections::type::KeyVal": _canonical(
+        lambda entry: entry.fields[0]
+    ),
 }
 
 
@@ -432,7 +472,9 @@ def indexed_strategy(
         # equality between siblings prunes every mismatched pair at once.
         assigned_by = {}
         for guard in guards:
-            needed = set(index_term_fields(guard[1]) + index_term_fields(guard[2]))
+            needed = set(
+                index_term_fields(guard[1]) + index_term_fields(guard[2])
+            )
             at = max((positions.index(p) for p in needed), default=-1)
             assigned_by.setdefault(at, []).append(guard)
 
@@ -445,7 +487,9 @@ def indexed_strategy(
             for choice in choices[at]:
                 following = current + [choice]
                 fields = dict(following)
-                if all(holds(guard, fields) for guard in assigned_by.get(at, ())):
+                if all(
+                    holds(guard, fields) for guard in assigned_by.get(at, ())
+                ):
                     extend(at + 1, following)
 
         if not all(holds(guard, {}) for guard in assigned_by.get(-1, ())):
@@ -509,7 +553,9 @@ def indexed_strategy(
                     for index, field in enumerate(constructor.fields)
                 ]
                 return st.tuples(*children).map(
-                    lambda fields, tag=constructor.tag: ls.DataValue(tag, fields)
+                    lambda fields, tag=constructor.tag: ls.DataValue(
+                        tag, fields
+                    )
                 )
 
             values = st.sampled_from(choices).flatmap(assemble)
@@ -524,8 +570,12 @@ def indexed_strategy(
         # An open target (negative), or one drawn from earlier inputs that
         # breaks their preconditions or names no value, generates from the
         # smallest reachable indices; an index claim rejects a mismatch.
-        levels = sorted(level for ty, level in reach if ty == reference)[:INDEX_CHOICES]
+        levels = sorted(level for ty, level in reach if ty == reference)[
+            :INDEX_CHOICES
+        ]
         if not levels:
             raise ValueError(f"no value of {reference} has an index")
-        return st.sampled_from(levels).flatmap(lambda level: indexed(reference, level))
+        return st.sampled_from(levels).flatmap(
+            lambda level: indexed(reference, level)
+        )
     return indexed(reference, target)

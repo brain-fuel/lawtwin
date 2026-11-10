@@ -33,7 +33,10 @@ DEFINITIONS = {
     ),
     "lawtwin.petstore::lawtwinPetstoreModelValidOrder": (
         "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
-        lambda *args: _definitions.lawtwin_petstore_model_valid_order({}, *args),
+        lambda *args: _definitions.lawtwin_petstore_model_valid_order(
+            {},
+            *args,
+        ),
         [_d("(ref lawtwin.petstore.model::type::Order)")],
         _d("(bool)"),
     ),
@@ -45,7 +48,10 @@ DEFINITIONS = {
     ),
     "lawtwin.petstore.laws::lawtwinPetstoreModelValidOrder": (
         "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
-        lambda *args: _definitions.lawtwin_petstore_model_valid_order_2({}, *args),
+        lambda *args: _definitions.lawtwin_petstore_model_valid_order_2(
+            {},
+            *args,
+        ),
         [_d("(ref lawtwin.petstore.model::type::Order)")],
         _d("(bool)"),
     ),
@@ -75,7 +81,10 @@ DEFINITIONS = {
     ),
     "contracttest.petstore::lawtwinPetstoreModelValidOrder": (
         "blake3-semantic-1:16ee2b52383ae3d844f7761681230749029d6c9d9325c6454c3927cf0a67b25c",
-        lambda *args: _definitions.lawtwin_petstore_model_valid_order_3({}, *args),
+        lambda *args: _definitions.lawtwin_petstore_model_valid_order_3(
+            {},
+            *args,
+        ),
         [_d("(ref lawtwin.petstore.model::type::Order)")],
         _d("(bool)"),
     ),

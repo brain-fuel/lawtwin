@@ -6,7 +6,8 @@
 //! logical values (ls::Value), as the runtime's checks use them.
 use crate::lawspec_runtime as ls;
 
-fn wire_types() -> ls::Values {
+fn wire_types() -> ls::Values
+{
     ls::values_table(
         "(data lawspec.matchers::type::Regex (ctor lawspec.matchers::type::Regex::Regex (text))) (data lawtwin.petstore.model::type::Order (ctor lawtwin.petstore.model::type::Order::Order (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (int Int32 -2147483648 2147483647)) (maybe (text)) (maybe (ref lawtwin.petstore.model::type::OrderStatus)) (maybe (bool)))) (data lawtwin.petstore.model::type::OrderStatus (ctor lawtwin.petstore.model::type::OrderStatus::Placed) (ctor lawtwin.petstore.model::type::OrderStatus::Approved) (ctor lawtwin.petstore.model::type::OrderStatus::Delivered))",
     )
@@ -94,12 +95,14 @@ pub const DEFINITIONS: &ls::RemoteDefinitions = &[
 ];
 
 /// Lets other nodes evaluate these definitions on node.
-pub fn serve(node: &ls::net::Node) -> ls::Result<String> {
+pub fn serve(node: &ls::net::Node) -> ls::Result<String>
+{
     ls::serve_remote(node, DEFINITIONS, wire_types())
 }
 
 /// The content hash of the definition with this qualified name.
-pub fn digest(name: &str) -> Option<&'static str> {
+pub fn digest(name: &str) -> Option<&'static str>
+{
     ls::remote_digest(DEFINITIONS, name)
 }
 
@@ -110,6 +113,7 @@ pub fn evaluate(
     address: &str,
     name: &str,
     args: &[ls::Value],
-) -> ls::Result<ls::Value> {
+) -> ls::Result<ls::Value>
+{
     ls::evaluate_remote(node, address, DEFINITIONS, &wire_types(), name, args)
 }

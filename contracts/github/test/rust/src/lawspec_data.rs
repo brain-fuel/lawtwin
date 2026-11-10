@@ -2,24 +2,31 @@
 use crate::lawspec_runtime as ls;
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum Ordering {
+pub enum Ordering
+{
     Less,
     Equal,
     Greater,
 }
 
-impl ls::IntoValue for Ordering {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::Less => {
+impl ls::IntoValue for Ordering
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::Less =>
+            {
                 let fields = vec![];
                 ls::Value::Data("lawspec.collections::type::Ordering::Less".into(), fields)
             }
-            Self::Equal => {
+            Self::Equal =>
+            {
                 let fields = vec![];
                 ls::Value::Data("lawspec.collections::type::Ordering::Equal".into(), fields)
             }
-            Self::Greater => {
+            Self::Greater =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawspec.collections::type::Ordering::Greater".into(),
@@ -30,18 +37,25 @@ impl ls::IntoValue for Ordering {
     }
 }
 
-impl ls::FromValue for Ordering {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Ordering
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::Ordering".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawspec.collections::type::Ordering::Less" if fields.len() == 0 => Ok(Self::Less),
             "lawspec.collections::type::Ordering::Equal" if fields.len() == 0 => Ok(Self::Equal),
-            "lawspec.collections::type::Ordering::Greater" if fields.len() == 0 => {
+            "lawspec.collections::type::Ordering::Greater" if fields.len() == 0 =>
+            {
                 Ok(Self::Greater)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawspec.collections::type::Ordering";
                 Err(message.into())
@@ -51,13 +65,16 @@ impl ls::FromValue for Ordering {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Entry<T0, T1> {
+pub struct Entry<T0, T1>
+{
     pub key: T0,
     pub value: T1,
 }
 
-impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Entry<T0, T1> {
-    fn into_value(self) -> ls::Value {
+impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Entry<T0, T1>
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { key, value } = self;
         let fields = vec![
             ls::IntoValue::into_value(key),
@@ -67,19 +84,34 @@ impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Entry<T0, T1> {
     }
 }
 
-impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Entry<T0, T1> {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Entry<T0, T1>
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::Entry".into());
         };
-        match tag.as_str() {
-            "lawspec.collections::type::Entry::Entry" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawspec.collections::type::Entry::Entry" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let key: T0 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let value: T1 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let key: T0 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let value: T1 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { key, value })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.collections::type::Entry";
                 Err(message.into())
             }
@@ -88,13 +120,16 @@ impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Entry<T0, T1> {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Pair<T0, T1> {
+pub struct Pair<T0, T1>
+{
     pub first: T0,
     pub second: T1,
 }
 
-impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Pair<T0, T1> {
-    fn into_value(self) -> ls::Value {
+impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Pair<T0, T1>
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { first, second } = self;
         let fields = vec![
             ls::IntoValue::into_value(first),
@@ -104,19 +139,34 @@ impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Pair<T0, T1> {
     }
 }
 
-impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1> {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1>
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::Pair".into());
         };
-        match tag.as_str() {
-            "lawspec.collections::type::Pair::Pair" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawspec.collections::type::Pair::Pair" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let first: T0 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let second: T1 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let first: T0 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let second: T1 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { first, second })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.collections::type::Pair";
                 Err(message.into())
             }
@@ -125,31 +175,44 @@ impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1> {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Regex {
+pub struct Regex
+{
     pub pattern: std::string::String,
 }
 
-impl ls::IntoValue for Regex {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Regex
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { pattern } = self;
         let fields = vec![ls::IntoValue::into_value(pattern)];
         ls::Value::Data("lawspec.matchers::type::Regex::Regex".into(), fields)
     }
 }
 
-impl ls::FromValue for Regex {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Regex
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.matchers::type::Regex".into());
         };
-        match tag.as_str() {
-            "lawspec.matchers::type::Regex::Regex" if fields.len() == 1 => {
+        match tag.as_str()
+        {
+            "lawspec.matchers::type::Regex::Regex" if fields.len() == 1 =>
+            {
                 let mut fields = fields.into_iter();
-                let pattern: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let pattern: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { pattern })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.matchers::type::Regex";
                 Err(message.into())
             }
@@ -161,38 +224,46 @@ impl ls::FromValue for Regex {
 pub type Service = ls::Handle;
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum ApiError {
+pub enum ApiError
+{
     BadRequest,
     NotFound,
     UnprocessableEntity,
     Unmodelled,
 }
 
-impl ls::IntoValue for ApiError {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::BadRequest => {
+impl ls::IntoValue for ApiError
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::BadRequest =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::ApiError::BadRequest".into(),
                     fields,
                 )
             }
-            Self::NotFound => {
+            Self::NotFound =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::ApiError::NotFound".into(),
                     fields,
                 )
             }
-            Self::UnprocessableEntity => {
+            Self::UnprocessableEntity =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::ApiError::UnprocessableEntity".into(),
                     fields,
                 )
             }
-            Self::Unmodelled => {
+            Self::Unmodelled =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::ApiError::Unmodelled".into(),
@@ -203,25 +274,35 @@ impl ls::IntoValue for ApiError {
     }
 }
 
-impl ls::FromValue for ApiError {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ApiError
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::ApiError".into());
         };
-        match tag.as_str() {
-            "lawtwin.github.model::type::ApiError::BadRequest" if fields.len() == 0 => {
+        match tag.as_str()
+        {
+            "lawtwin.github.model::type::ApiError::BadRequest" if fields.len() == 0 =>
+            {
                 Ok(Self::BadRequest)
             }
-            "lawtwin.github.model::type::ApiError::NotFound" if fields.len() == 0 => {
+            "lawtwin.github.model::type::ApiError::NotFound" if fields.len() == 0 =>
+            {
                 Ok(Self::NotFound)
             }
-            "lawtwin.github.model::type::ApiError::UnprocessableEntity" if fields.len() == 0 => {
+            "lawtwin.github.model::type::ApiError::UnprocessableEntity" if fields.len() == 0 =>
+            {
                 Ok(Self::UnprocessableEntity)
             }
-            "lawtwin.github.model::type::ApiError::Unmodelled" if fields.len() == 0 => {
+            "lawtwin.github.model::type::ApiError::Unmodelled" if fields.len() == 0 =>
+            {
                 Ok(Self::Unmodelled)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.github.model::type::ApiError";
                 Err(message.into())
@@ -232,7 +313,8 @@ impl ls::FromValue for ApiError {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Label {
+pub struct Label
+{
     pub id: i64,
     pub nodeId: std::string::String,
     pub url: std::string::String,
@@ -244,8 +326,10 @@ pub struct Label {
     pub archivedBy: std::option::Option<SimpleUser>,
 }
 
-impl ls::IntoValue for Label {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Label
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             id,
             nodeId: node_id,
@@ -272,27 +356,67 @@ impl ls::IntoValue for Label {
     }
 }
 
-impl ls::FromValue for Label {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Label
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::Label".into());
         };
-        match tag.as_str() {
-            "lawtwin.github.model::type::Label::Label" if fields.len() == 9 => {
+        match tag.as_str()
+        {
+            "lawtwin.github.model::type::Label::Label" if fields.len() == 9 =>
+            {
                 let mut fields = fields.into_iter();
-                let id: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let node_id: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let url: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let name: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
+                let id: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let node_id: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let name: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let description_: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let color: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let default_: bool = ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let color: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let default_: bool = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let archived_at: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let archived_by: std::option::Option<SimpleUser> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let archived_by: std::option::Option<SimpleUser> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     id,
                     nodeId: node_id,
@@ -305,7 +429,8 @@ impl ls::FromValue for Label {
                     archivedBy: archived_by,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::Label";
                 Err(message.into())
             }
@@ -315,7 +440,8 @@ impl ls::FromValue for Label {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct SimpleUser {
+pub struct SimpleUser
+{
     pub name: std::option::Option<std::string::String>,
     pub email: std::option::Option<std::string::String>,
     pub login: std::string::String,
@@ -340,8 +466,10 @@ pub struct SimpleUser {
     pub userViewType: std::option::Option<std::string::String>,
 }
 
-impl ls::IntoValue for SimpleUser {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for SimpleUser
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             name,
             email,
@@ -397,53 +525,133 @@ impl ls::IntoValue for SimpleUser {
     }
 }
 
-impl ls::FromValue for SimpleUser {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for SimpleUser
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::SimpleUser".into());
         };
-        match tag.as_str() {
-            "lawtwin.github.model::type::SimpleUser::SimpleUser" if fields.len() == 22 => {
+        match tag.as_str()
+        {
+            "lawtwin.github.model::type::SimpleUser::SimpleUser" if fields.len() == 22 =>
+            {
                 let mut fields = fields.into_iter();
-                let name: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let email: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let login: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let id: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let node_id: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let avatar_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let name: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let email: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let login: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let id: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let node_id: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let avatar_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let gravatar_id: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let url: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let html_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let followers_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let following_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let gists_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let starred_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let subscriptions_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let organizations_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let repos_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let events_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let received_events_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let type_: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let site_admin: bool = ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let html_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let followers_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let following_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let gists_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let starred_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let subscriptions_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let organizations_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let repos_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let events_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let received_events_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let type_: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let site_admin: bool = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let starred_at: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 let user_view_type: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 Ok(Self {
                     name,
                     email,
@@ -469,7 +677,8 @@ impl ls::FromValue for SimpleUser {
                     userViewType: user_view_type,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.github.model::type::SimpleUser";
                 Err(message.into())
@@ -479,14 +688,17 @@ impl ls::FromValue for SimpleUser {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct IssuesCreateLabelBody {
+pub struct IssuesCreateLabelBody
+{
     pub name: std::string::String,
     pub color: std::option::Option<std::string::String>,
     pub description_: std::option::Option<std::string::String>,
 }
 
-impl ls::IntoValue for IssuesCreateLabelBody {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for IssuesCreateLabelBody
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             name,
             color,
@@ -504,28 +716,45 @@ impl ls::IntoValue for IssuesCreateLabelBody {
     }
 }
 
-impl ls::FromValue for IssuesCreateLabelBody {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for IssuesCreateLabelBody
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::IssuesCreateLabelBody".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.github.model::type::IssuesCreateLabelBody::IssuesCreateLabelBody"
                 if fields.len() == 3 =>
             {
                 let mut fields = fields.into_iter();
-                let name: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let color: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let name: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let color: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let description_: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 Ok(Self {
                     name,
                     color,
                     description_,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::IssuesCreateLabelBody";
                 Err(message.into())
             }
@@ -535,15 +764,18 @@ impl ls::FromValue for IssuesCreateLabelBody {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct IssuesUpdateLabelBody {
+pub struct IssuesUpdateLabelBody
+{
     pub newName: std::option::Option<std::string::String>,
     pub color: std::option::Option<std::string::String>,
     pub description_: std::option::Option<std::string::String>,
     pub archived: std::option::Option<bool>,
 }
 
-impl ls::IntoValue for IssuesUpdateLabelBody {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for IssuesUpdateLabelBody
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             newName: new_name,
             color,
@@ -563,24 +795,42 @@ impl ls::IntoValue for IssuesUpdateLabelBody {
     }
 }
 
-impl ls::FromValue for IssuesUpdateLabelBody {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for IssuesUpdateLabelBody
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::IssuesUpdateLabelBody".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody"
                 if fields.len() == 4 =>
             {
                 let mut fields = fields.into_iter();
-                let new_name: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let color: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let new_name: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let color: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let description_: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let archived: std::option::Option<bool> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let archived: std::option::Option<bool> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     newName: new_name,
                     color,
@@ -588,7 +838,8 @@ impl ls::FromValue for IssuesUpdateLabelBody {
                     archived,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::IssuesUpdateLabelBody";
                 Err(message.into())
             }
@@ -597,30 +848,37 @@ impl ls::FromValue for IssuesUpdateLabelBody {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum IssuesListMilestonesState {
+pub enum IssuesListMilestonesState
+{
     Open,
     Closed,
     All,
 }
 
-impl ls::IntoValue for IssuesListMilestonesState {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::Open => {
+impl ls::IntoValue for IssuesListMilestonesState
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::Open =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::IssuesListMilestonesState::Open".into(),
                     fields,
                 )
             }
-            Self::Closed => {
+            Self::Closed =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::IssuesListMilestonesState::Closed".into(),
                     fields,
                 )
             }
-            Self::All => {
+            Self::All =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::IssuesListMilestonesState::All".into(),
@@ -631,13 +889,19 @@ impl ls::IntoValue for IssuesListMilestonesState {
     }
 }
 
-impl ls::FromValue for IssuesListMilestonesState {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for IssuesListMilestonesState
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::IssuesListMilestonesState".into());
         };
-        match tag.as_str() {
-            "lawtwin.github.model::type::IssuesListMilestonesState::Open" if fields.len() == 0 => {
+        match tag.as_str()
+        {
+            "lawtwin.github.model::type::IssuesListMilestonesState::Open" if fields.len() == 0 =>
+            {
                 Ok(Self::Open)
             }
             "lawtwin.github.model::type::IssuesListMilestonesState::Closed"
@@ -645,10 +909,12 @@ impl ls::FromValue for IssuesListMilestonesState {
             {
                 Ok(Self::Closed)
             }
-            "lawtwin.github.model::type::IssuesListMilestonesState::All" if fields.len() == 0 => {
+            "lawtwin.github.model::type::IssuesListMilestonesState::All" if fields.len() == 0 =>
+            {
                 Ok(Self::All)
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::IssuesListMilestonesState";
                 Err(message.into())
             }
@@ -657,22 +923,28 @@ impl ls::FromValue for IssuesListMilestonesState {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum IssuesListMilestonesSort {
+pub enum IssuesListMilestonesSort
+{
     DueOn,
     Completeness,
 }
 
-impl ls::IntoValue for IssuesListMilestonesSort {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::DueOn => {
+impl ls::IntoValue for IssuesListMilestonesSort
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::DueOn =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::IssuesListMilestonesSort::DueOn".into(),
                     fields,
                 )
             }
-            Self::Completeness => {
+            Self::Completeness =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::IssuesListMilestonesSort::Completeness".into(),
@@ -683,13 +955,19 @@ impl ls::IntoValue for IssuesListMilestonesSort {
     }
 }
 
-impl ls::FromValue for IssuesListMilestonesSort {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for IssuesListMilestonesSort
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::IssuesListMilestonesSort".into());
         };
-        match tag.as_str() {
-            "lawtwin.github.model::type::IssuesListMilestonesSort::DueOn" if fields.len() == 0 => {
+        match tag.as_str()
+        {
+            "lawtwin.github.model::type::IssuesListMilestonesSort::DueOn" if fields.len() == 0 =>
+            {
                 Ok(Self::DueOn)
             }
             "lawtwin.github.model::type::IssuesListMilestonesSort::Completeness"
@@ -697,7 +975,8 @@ impl ls::FromValue for IssuesListMilestonesSort {
             {
                 Ok(Self::Completeness)
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::IssuesListMilestonesSort";
                 Err(message.into())
             }
@@ -706,22 +985,28 @@ impl ls::FromValue for IssuesListMilestonesSort {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum IssuesListMilestonesDirection {
+pub enum IssuesListMilestonesDirection
+{
     Asc,
     Desc,
 }
 
-impl ls::IntoValue for IssuesListMilestonesDirection {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::Asc => {
+impl ls::IntoValue for IssuesListMilestonesDirection
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::Asc =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::IssuesListMilestonesDirection::Asc".into(),
                     fields,
                 )
             }
-            Self::Desc => {
+            Self::Desc =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::IssuesListMilestonesDirection::Desc".into(),
@@ -732,14 +1017,19 @@ impl ls::IntoValue for IssuesListMilestonesDirection {
     }
 }
 
-impl ls::FromValue for IssuesListMilestonesDirection {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for IssuesListMilestonesDirection
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err(
                 "expected lawtwin.github.model::type::IssuesListMilestonesDirection".into(),
             );
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.github.model::type::IssuesListMilestonesDirection::Asc"
                 if fields.len() == 0 =>
             {
@@ -750,7 +1040,8 @@ impl ls::FromValue for IssuesListMilestonesDirection {
             {
                 Ok(Self::Desc)
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::IssuesListMilestonesDirection";
                 Err(message.into())
             }
@@ -760,7 +1051,8 @@ impl ls::FromValue for IssuesListMilestonesDirection {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Milestone {
+pub struct Milestone
+{
     pub url: std::string::String,
     pub htmlUrl: std::string::String,
     pub labelsUrl: std::string::String,
@@ -779,8 +1071,10 @@ pub struct Milestone {
     pub dueOn: std::option::Option<std::string::String>,
 }
 
-impl ls::IntoValue for Milestone {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Milestone
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             url,
             htmlUrl: html_url,
@@ -824,39 +1118,101 @@ impl ls::IntoValue for Milestone {
     }
 }
 
-impl ls::FromValue for Milestone {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Milestone
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::Milestone".into());
         };
-        match tag.as_str() {
-            "lawtwin.github.model::type::Milestone::Milestone" if fields.len() == 16 => {
+        match tag.as_str()
+        {
+            "lawtwin.github.model::type::Milestone::Milestone" if fields.len() == 16 =>
+            {
                 let mut fields = fields.into_iter();
-                let url: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let html_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let labels_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let id: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let node_id: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let number: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let state_: MilestoneState = ls::FromValue::from_value(fields.next().unwrap())?;
-                let title: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
+                let url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let html_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let labels_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let id: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let node_id: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let number: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let state_: MilestoneState = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let title: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let description_: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let creator: std::option::Option<NullableSimpleUser> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let open_issues: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let closed_issues: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let created_at: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let updated_at: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let closed_at: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let due_on: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let creator: std::option::Option<NullableSimpleUser> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let open_issues: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let closed_issues: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let created_at: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let updated_at: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let closed_at: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let due_on: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     url,
                     htmlUrl: html_url,
@@ -876,7 +1232,8 @@ impl ls::FromValue for Milestone {
                     dueOn: due_on,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.github.model::type::Milestone";
                 Err(message.into())
@@ -886,22 +1243,28 @@ impl ls::FromValue for Milestone {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum MilestoneState {
+pub enum MilestoneState
+{
     MilestoneStateOpen,
     MilestoneStateClosed,
 }
 
-impl ls::IntoValue for MilestoneState {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::MilestoneStateOpen => {
+impl ls::IntoValue for MilestoneState
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::MilestoneStateOpen =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen".into(),
                     fields,
                 )
             }
-            Self::MilestoneStateClosed => {
+            Self::MilestoneStateClosed =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.github.model::type::MilestoneState::MilestoneStateClosed".into(),
@@ -912,12 +1275,17 @@ impl ls::IntoValue for MilestoneState {
     }
 }
 
-impl ls::FromValue for MilestoneState {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for MilestoneState
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::MilestoneState".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.github.model::type::MilestoneState::MilestoneStateOpen"
                 if fields.len() == 0 =>
             {
@@ -928,7 +1296,8 @@ impl ls::FromValue for MilestoneState {
             {
                 Ok(Self::MilestoneStateClosed)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.github.model::type::MilestoneState";
                 Err(message.into())
@@ -939,7 +1308,8 @@ impl ls::FromValue for MilestoneState {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct NullableSimpleUser {
+pub struct NullableSimpleUser
+{
     pub name: std::option::Option<std::string::String>,
     pub email: std::option::Option<std::string::String>,
     pub login: std::string::String,
@@ -964,8 +1334,10 @@ pub struct NullableSimpleUser {
     pub userViewType: std::option::Option<std::string::String>,
 }
 
-impl ls::IntoValue for NullableSimpleUser {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for NullableSimpleUser
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             name,
             email,
@@ -1021,55 +1393,134 @@ impl ls::IntoValue for NullableSimpleUser {
     }
 }
 
-impl ls::FromValue for NullableSimpleUser {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for NullableSimpleUser
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::NullableSimpleUser".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.github.model::type::NullableSimpleUser::NullableSimpleUser"
                 if fields.len() == 22 =>
             {
                 let mut fields = fields.into_iter();
-                let name: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let email: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let login: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let id: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let node_id: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let avatar_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let name: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let email: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let login: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let id: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let node_id: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let avatar_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let gravatar_id: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let url: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let html_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let followers_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let following_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let gists_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let starred_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let subscriptions_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let organizations_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let repos_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let events_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let received_events_url: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let type_: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let site_admin: bool = ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let html_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let followers_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let following_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let gists_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let starred_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let subscriptions_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let organizations_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let repos_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let events_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let received_events_url: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let type_: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let site_admin: bool = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let starred_at: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 let user_view_type: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 Ok(Self {
                     name,
                     email,
@@ -1095,7 +1546,8 @@ impl ls::FromValue for NullableSimpleUser {
                     userViewType: user_view_type,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::NullableSimpleUser";
                 Err(message.into())
             }
@@ -1105,15 +1557,18 @@ impl ls::FromValue for NullableSimpleUser {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct IssuesCreateMilestoneBody {
+pub struct IssuesCreateMilestoneBody
+{
     pub title: std::string::String,
     pub state_: std::option::Option<MilestoneState>,
     pub description_: std::option::Option<std::string::String>,
     pub dueOn: std::option::Option<std::string::String>,
 }
 
-impl ls::IntoValue for IssuesCreateMilestoneBody {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for IssuesCreateMilestoneBody
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             title,
             state_,
@@ -1134,23 +1589,42 @@ impl ls::IntoValue for IssuesCreateMilestoneBody {
     }
 }
 
-impl ls::FromValue for IssuesCreateMilestoneBody {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for IssuesCreateMilestoneBody
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::IssuesCreateMilestoneBody".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody"
                 if fields.len() == 4 =>
             {
                 let mut fields = fields.into_iter();
-                let title: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let state_: std::option::Option<MilestoneState> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let title: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let state_: std::option::Option<MilestoneState> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let description_: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let due_on: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let due_on: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     title,
                     state_,
@@ -1158,7 +1632,8 @@ impl ls::FromValue for IssuesCreateMilestoneBody {
                     dueOn: due_on,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::IssuesCreateMilestoneBody";
                 Err(message.into())
             }
@@ -1168,15 +1643,18 @@ impl ls::FromValue for IssuesCreateMilestoneBody {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct IssuesUpdateMilestoneBody {
+pub struct IssuesUpdateMilestoneBody
+{
     pub title: std::option::Option<std::string::String>,
     pub state_: std::option::Option<MilestoneState>,
     pub description_: std::option::Option<std::string::String>,
     pub dueOn: std::option::Option<std::string::String>,
 }
 
-impl ls::IntoValue for IssuesUpdateMilestoneBody {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for IssuesUpdateMilestoneBody
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             title,
             state_,
@@ -1197,24 +1675,42 @@ impl ls::IntoValue for IssuesUpdateMilestoneBody {
     }
 }
 
-impl ls::FromValue for IssuesUpdateMilestoneBody {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for IssuesUpdateMilestoneBody
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::IssuesUpdateMilestoneBody".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody"
                 if fields.len() == 4 =>
             {
                 let mut fields = fields.into_iter();
-                let title: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let state_: std::option::Option<MilestoneState> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let title: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let state_: std::option::Option<MilestoneState> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let description_: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let due_on: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let due_on: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     title,
                     state_,
@@ -1222,7 +1718,8 @@ impl ls::FromValue for IssuesUpdateMilestoneBody {
                     dueOn: due_on,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::IssuesUpdateMilestoneBody";
                 Err(message.into())
             }
@@ -1231,14 +1728,17 @@ impl ls::FromValue for IssuesUpdateMilestoneBody {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct LabelKey {
+pub struct LabelKey
+{
     pub owner: std::string::String,
     pub repo: std::string::String,
     pub name: std::string::String,
 }
 
-impl ls::IntoValue for LabelKey {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for LabelKey
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { owner, repo, name } = self;
         let fields = vec![
             ls::IntoValue::into_value(owner),
@@ -1252,20 +1752,39 @@ impl ls::IntoValue for LabelKey {
     }
 }
 
-impl ls::FromValue for LabelKey {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for LabelKey
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::LabelKey".into());
         };
-        match tag.as_str() {
-            "lawtwin.github.model::type::LabelKey::LabelKey" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.github.model::type::LabelKey::LabelKey" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let owner: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let repo: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let name: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
+                let owner: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let repo: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let name: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { owner, repo, name })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.github.model::type::LabelKey";
                 Err(message.into())
@@ -1276,14 +1795,17 @@ impl ls::FromValue for LabelKey {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct MilestoneKey {
+pub struct MilestoneKey
+{
     pub owner: std::string::String,
     pub repo: std::string::String,
     pub milestoneNumber: i64,
 }
 
-impl ls::IntoValue for MilestoneKey {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for MilestoneKey
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             owner,
             repo,
@@ -1301,24 +1823,43 @@ impl ls::IntoValue for MilestoneKey {
     }
 }
 
-impl ls::FromValue for MilestoneKey {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for MilestoneKey
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::MilestoneKey".into());
         };
-        match tag.as_str() {
-            "lawtwin.github.model::type::MilestoneKey::MilestoneKey" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.github.model::type::MilestoneKey::MilestoneKey" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let owner: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let repo: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let milestone_number: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let owner: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let repo: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let milestone_number: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     owner,
                     repo,
                     milestoneNumber: milestone_number,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.github.model::type::MilestoneKey";
                 Err(message.into())
@@ -1329,14 +1870,17 @@ impl ls::FromValue for MilestoneKey {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct State {
+pub struct State
+{
     pub labels: std::collections::BTreeMap<LabelKey, Label>,
     pub milestones: std::collections::BTreeMap<MilestoneKey, Milestone>,
     pub nextMilestoneKey: i64,
 }
 
-impl ls::IntoValue for State {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for State
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             labels,
             milestones,
@@ -1351,26 +1895,44 @@ impl ls::IntoValue for State {
     }
 }
 
-impl ls::FromValue for State {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for State
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.github.model::type::State".into());
         };
-        match tag.as_str() {
-            "lawtwin.github.model::type::State::State" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.github.model::type::State::State" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let labels: std::collections::BTreeMap<LabelKey, Label> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let labels: std::collections::BTreeMap<LabelKey, Label> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let milestones: std::collections::BTreeMap<MilestoneKey, Milestone> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let next_milestone_key: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let next_milestone_key: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     labels,
                     milestones,
                     nextMilestoneKey: next_milestone_key,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.github.model::type::State";
                 Err(message.into())
             }

@@ -73,7 +73,7 @@ type lawSpecGeneratorKey struct {
 
 func lsDataStrategy(schema *lawSpecSchema, reference lawSpecTypeRef, bits, budget int,
 	scalar func(string) *rapid.Generator[LawSpecValue]) *rapid.Generator[LawSpecValue] {
-	if schema.hasContracts() {
+	if schema.hasContractsFor(reference) {
 		panic("constructor contracts require checked strategies")
 	}
 	return lsBuildDataStrategy(schema, reference, bits, budget, scalar, nil)

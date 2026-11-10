@@ -382,6 +382,91 @@ let step (s: Step) (context: Context) (args: Value list) (state: Value) : (Value
     with _ ->
         None
 
+// Bounds are instantiated from the abstract run, before drawing any values.
+let rec private modelBound indices expression =
+    match expression with
+    | Number n -> n
+    | Forms [ Atom "index"; Number k ] -> List.item (int k) indices
+    | Forms [ Atom op; a; b ] ->
+        let x, y = modelBound indices a, modelBound indices b
+
+        match op with
+        | "+" -> x + y
+        | "-" -> x - y
+        | "*" -> x * y
+        | _ -> fail "UnsupportedModelArgumentBound" op
+    | _ -> fail "UnsupportedModelArgumentBound" ""
+
+let private modelBase descriptor =
+    match descriptor with
+    | Forms(Atom "dependent" :: baseType :: _) -> baseType
+    | d -> d
+
+let private modelArgument indices descriptor =
+    match descriptor with
+    | Forms(Atom "dependent" :: Forms [ Atom "int"; name; lo; hi ] :: conditions) ->
+        let bound =
+            function
+            | Number n -> Some n
+            | _ -> None
+
+        let tighten (low, high) condition =
+            match condition with
+            | Forms [ Atom op; expression ] ->
+                let n = modelBound indices expression
+                let l = n + (if op = ">" then BigInteger.One else BigInteger.Zero)
+                let h = n - (if op = "<" then BigInteger.One else BigInteger.Zero)
+
+                let low =
+                    if List.contains op [ ">"; ">="; "==" ] then
+                        Some(Option.fold max l low)
+                    else
+                        low
+
+                let high =
+                    if List.contains op [ "<"; "<="; "==" ] then
+                        Some(Option.fold min h high)
+                    else
+                        high
+
+                low, high
+            | _ -> fail "UnsupportedModelArgumentBound" ""
+
+        let low, high = List.fold tighten (bound lo, bound hi) conditions
+
+        Forms
+            [
+                Atom "int"
+                name
+                Option.fold (fun _ n -> Number n) Hole low
+                Option.fold (fun _ n -> Number n) Hole high
+            ]
+    | d -> d
+
+let private modelArguments indices (c: Step) =
+    List.map (modelArgument indices) c.Arguments
+
+let private emptyModelArguments ds =
+    ds
+    |> List.exists (function
+        | Forms [ Atom "int"; _; Number lo; Number hi ] -> lo > hi
+        | _ -> false)
+
+let private validModelArguments ds args =
+    List.forall2
+        (fun d value ->
+            match d, value with
+            | Forms [ Atom "int"; _; lo; hi ], Int n ->
+                (match lo with
+                 | Number l -> n >= l
+                 | _ -> true)
+                && (match hi with
+                    | Number h -> n <= h
+                    | _ -> true)
+            | _ -> true)
+        ds
+        args
+
 /// The model states a run passes through, or None when the reference
 /// rejects it.
 [<CompiledName("Simulate")>]
@@ -394,7 +479,10 @@ let simulate (model: Model) ((startArgs, steps): Run) : Value list option =
                 | (i, args) :: rest ->
                     let c = command model i
 
-                    if not (admits c indices) then
+                    if
+                        not (admits c indices)
+                        || not (validModelArguments (modelArguments indices c) args)
+                    then
                         None
                     else
                         match step c context args state with
@@ -440,7 +528,8 @@ let generateRun (model: Model) (random: Random.Seed) (length: int) (size: int) (
                     let allowed =
                         model.Commands
                         |> Array.indexed
-                        |> Array.filter (fun (_, c) -> admits c indices)
+                        |> Array.filter (fun (_, c) ->
+                            admits c indices && not (emptyModelArguments (modelArguments indices c)))
                         |> Array.map fst
 
                     if allowed.Length = 0 then
@@ -461,10 +550,27 @@ let generateRun (model: Model) (random: Random.Seed) (length: int) (size: int) (
                                 allowed.[int choice], r1
 
                         let c = command model index
-                        let args, r3 = arguments model c.Arguments r2 size
+                        let args, r3 = arguments model (modelArguments indices c) r2 size
 
                         match step c context args state with
-                        | None -> go r3 (remaining - 1) indices state steps
+                        | None ->
+                            let dependent =
+                                c.Arguments
+                                |> List.exists (function
+                                    | Forms(Atom "dependent" :: _) -> true
+                                    | _ -> false)
+
+                            let allowed =
+                                match c.When with
+                                | None -> true
+                                | Some guard -> callback guard context [ state ] = Bool true
+
+                            if dependent && allowed then
+                                fail
+                                    "IncompleteModelGeneration"
+                                    "dependent arguments rejected by the reference (1 attempt)"
+
+                            go r3 (remaining - 1) indices state steps
                         | Some(next, _) -> go r3 (remaining - 1) (shifted c indices) next ((index, args) :: steps)
 
             let steps, last = go r1 length model.StartIndices state []
@@ -639,7 +745,7 @@ let private removeRange (values: 'a list) start size =
 let private smallerArgs (model: Model) (ds: Descriptor list) (args: Value list) =
     [
         for i, (d, arg) in List.indexed (List.zip ds args) do
-            for v in shrink d arg model.Table -> List.updateAt i v args
+            for v in shrink (modelBase d) arg model.Table -> List.updateAt i v args
     ]
 
 /// Shrink candidates in the portable order: remove chunks of steps, then

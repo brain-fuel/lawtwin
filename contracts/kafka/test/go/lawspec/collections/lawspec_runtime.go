@@ -5218,6 +5218,110 @@ func (m *lawSpecMachine) startState(symbols map[string]*LawSpecSymbol, args []La
 	return m.startModel(symbols, args)
 }
 
+// Dependent bounds are evaluated from the abstract run's indices.
+func lsModelBound(e any, indices []int64) *big.Int {
+	if n, ok := e.(*big.Int); ok {
+		return new(big.Int).Set(n)
+	}
+	f := e.([]any)
+	if f[0] == "index" {
+		return big.NewInt(indices[f[1].(*big.Int).Int64()])
+	}
+	a, b := lsModelBound(f[1], indices), lsModelBound(f[2], indices)
+	switch f[0] {
+	case "+":
+		return a.Add(a, b)
+	case "-":
+		return a.Sub(a, b)
+	case "*":
+		return a.Mul(a, b)
+	}
+	panic("unsupported model argument bound")
+}
+func lsModelBase(d any) any {
+	f := d.([]any)
+	if f[0] == "dependent" {
+		return f[1]
+	}
+	return d
+}
+func lsModelArgument(d any, indices []int64) any {
+	f := d.([]any)
+	if f[0] != "dependent" {
+		return d
+	}
+	base := append([]any{}, f[1].([]any)...)
+	if base[0] != "int" {
+		panic("unsupported dependent model argument type")
+	}
+	lo, _ := base[2].(*big.Int)
+	hi, _ := base[3].(*big.Int)
+	for _, condition := range f[2:] {
+		pair := condition.([]any)
+		op := pair[0]
+		n := lsModelBound(pair[1], indices)
+		if op == ">" || op == ">=" || op == "==" {
+			low := new(big.Int).Set(n)
+			if op == ">" {
+				low.Add(low, big.NewInt(1))
+			}
+			if lo == nil || low.Cmp(lo) > 0 {
+				lo = low
+			}
+		}
+		if op == "<" || op == "<=" || op == "==" {
+			high := new(big.Int).Set(n)
+			if op == "<" {
+				high.Sub(high, big.NewInt(1))
+			}
+			if hi == nil || high.Cmp(hi) < 0 {
+				hi = high
+			}
+		}
+	}
+	if lo != nil {
+		base[2] = lo
+	}
+	if hi != nil {
+		base[3] = hi
+	}
+	return base
+}
+func lsModelArguments(c *lawSpecModelCommand, indices []int64) []any {
+	out := []any{}
+	for _, d := range c.arguments {
+		out = append(out, lsModelArgument(d, indices))
+	}
+	return out
+}
+func lsEmptyArguments(ds []any) bool {
+	for _, d := range ds {
+		f := d.([]any)
+		if f[0] == "int" {
+			lo, _ := f[2].(*big.Int)
+			hi, _ := f[3].(*big.Int)
+			if lo != nil && hi != nil && lo.Cmp(hi) > 0 {
+				return true
+			}
+		}
+	}
+	return false
+}
+func lsValidArguments(c *lawSpecModelCommand, indices []int64, args []LawSpecValue) bool {
+	for i, d := range lsModelArguments(c, indices) {
+		f := d.([]any)
+		if f[0] == "int" {
+			n := args[i].Data.(*big.Int)
+			lo, _ := f[2].(*big.Int)
+			hi, _ := f[3].(*big.Int)
+			if lo != nil && n.Cmp(lo) < 0 || hi != nil && n.Cmp(hi) > 0 {
+				return false
+			}
+		}
+	}
+	return true
+}
+
 // simulate is whether the model allows the run.
 func (m *lawSpecMachine) simulate(run lawSpecModelRun) bool {
 	symbols := map[string]*LawSpecSymbol{}
@@ -5226,7 +5330,7 @@ func (m *lawSpecMachine) simulate(run lawSpecModelRun) bool {
 		indices := append([]int64{}, m.startIndices...)
 		for _, step := range run.steps {
 			c := &m.steps[step.index]
-			if !c.admits(indices) {
+			if !c.admits(indices) || !lsValidArguments(c, indices, step.args) {
 				panic(lawSpecInvalid{})
 			}
 			state, _ = lsStepModel(c, symbols, step.args, state)
@@ -5250,7 +5354,7 @@ func (m *lawSpecMachine) generateRun(random *LawSpecSplitMix64, length, size int
 	for ; length > 0; length-- {
 		allowed := []int{}
 		for i := range m.commands {
-			if m.commands[i].admits(indices) {
+			if m.commands[i].admits(indices) && !lsEmptyArguments(lsModelArguments(&m.commands[i], indices)) {
 				allowed = append(allowed, i)
 			}
 		}
@@ -5264,10 +5368,15 @@ func (m *lawSpecMachine) generateRun(random *LawSpecSplitMix64, length, size int
 		}
 		c := &m.steps[index]
 		args := []LawSpecValue{}
-		for _, d := range c.arguments {
+		for _, d := range lsModelArguments(c, indices) {
 			args = append(args, m.values.generate(d, random, size))
 		}
 		if !lsAllowed(func() { state, _ = lsStepModel(c, symbols, args, state) }) {
+			for _, d := range c.arguments {
+				if d.([]any)[0] == "dependent" && (c.when == nil || lsTruth(c.when(symbols, []LawSpecValue{state}))) {
+					panic("incomplete model generation: dependent arguments rejected by the reference (1 attempt)")
+				}
+			}
 			continue
 		}
 		run.steps = append(run.steps, lawSpecModelStep{index, args})
@@ -5363,7 +5472,7 @@ func (m *lawSpecMachine) shrinkCandidates(run lawSpecModelRun, yield func(lawSpe
 	for k, s := range steps {
 		c := &m.steps[s.index]
 		for j := 0; j < len(c.arguments) && j < len(s.args); j++ {
-			for _, candidate := range m.values.shrink(c.arguments[j], s.args[j]) {
+			for _, candidate := range m.values.shrink(lsModelBase(c.arguments[j]), s.args[j]) {
 				args := append([]LawSpecValue{}, s.args...)
 				args[j] = candidate
 				changed := append([]lawSpecModelStep{}, steps...)

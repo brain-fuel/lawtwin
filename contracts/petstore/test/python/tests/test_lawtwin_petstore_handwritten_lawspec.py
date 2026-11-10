@@ -23,7 +23,10 @@ _lawspec_primitive_generators = {
     "Int8": st.integers(min_value=-128, max_value=127),
     "Int16": st.integers(min_value=-32768, max_value=32767),
     "Int32": st.integers(min_value=-2147483648, max_value=2147483647),
-    "Int64": st.integers(min_value=-9223372036854775808, max_value=9223372036854775807),
+    "Int64": st.integers(
+        min_value=-9223372036854775808,
+        max_value=9223372036854775807,
+    ),
     "UInt8": st.integers(min_value=0, max_value=255),
     "UInt16": st.integers(min_value=0, max_value=65535),
     "UInt32": st.integers(min_value=0, max_value=4294967295),
@@ -34,12 +37,19 @@ _lawspec_primitive_generators = {
     ),
     "UIntSize": st.integers(min_value=0, max_value=18446744073709551615),
     "UIntPtr": st.integers(min_value=0, max_value=18446744073709551615),
-    "Integer": st.integers(min_value=-INTEGER_DRAW_LIMIT, max_value=INTEGER_DRAW_LIMIT),
-    "BigInt": st.integers(min_value=-INTEGER_DRAW_LIMIT, max_value=INTEGER_DRAW_LIMIT),
-    "BigUInt": st.integers(min_value=0, max_value=INTEGER_DRAW_LIMIT),
-    "Decimal": st.tuples(st.integers(), st.integers(min_value=-20, max_value=20)).map(
-        lambda v: ls.make_decimal(v[0], v[1]),
+    "Integer": st.integers(
+        min_value=-INTEGER_DRAW_LIMIT,
+        max_value=INTEGER_DRAW_LIMIT,
     ),
+    "BigInt": st.integers(
+        min_value=-INTEGER_DRAW_LIMIT,
+        max_value=INTEGER_DRAW_LIMIT,
+    ),
+    "BigUInt": st.integers(min_value=0, max_value=INTEGER_DRAW_LIMIT),
+    "Decimal": st.tuples(
+        st.integers(),
+        st.integers(min_value=-20, max_value=20),
+    ).map(lambda v: ls.make_decimal(v[0], v[1])),
     "Rational": st.tuples(st.integers(), st.integers(min_value=1)).map(
         lambda v: ls.Fraction(v[0], v[1]),
     ),
@@ -59,14 +69,17 @@ _lawspec_primitive_generators = {
         st.integers(min_value=0, max_value=1114111),
         max_size=100,
     ).map(lambda v: ls.Raw("CodePointText", tuple(v))),
-    "Utf16Text": st.lists(st.integers(min_value=0, max_value=65535), max_size=100).map(
-        lambda v: ls.Raw("Utf16Text", tuple(v)),
-    ),
+    "Utf16Text": st.lists(
+        st.integers(min_value=0, max_value=65535),
+        max_size=100,
+    ).map(lambda v: ls.Raw("Utf16Text", tuple(v))),
     "Bytes": st.binary(max_size=100),
     "Symbol": st.text().map(ls.Symbol),
     "Unit": st.sampled_from([ls.literal(json.loads('{"type":"Unit"}'))]),
     "Null": st.sampled_from([ls.literal(json.loads('{"type":"Null"}'))]),
-    "Undefined": st.sampled_from([ls.literal(json.loads('{"type":"Undefined"}'))]),
+    "Undefined": st.sampled_from(
+        [ls.literal(json.loads('{"type":"Undefined"}'))],
+    ),
 }
 
 

@@ -2,24 +2,31 @@
 use crate::lawspec_runtime as ls;
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum Ordering {
+pub enum Ordering
+{
     Less,
     Equal,
     Greater,
 }
 
-impl ls::IntoValue for Ordering {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::Less => {
+impl ls::IntoValue for Ordering
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::Less =>
+            {
                 let fields = vec![];
                 ls::Value::Data("lawspec.collections::type::Ordering::Less".into(), fields)
             }
-            Self::Equal => {
+            Self::Equal =>
+            {
                 let fields = vec![];
                 ls::Value::Data("lawspec.collections::type::Ordering::Equal".into(), fields)
             }
-            Self::Greater => {
+            Self::Greater =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawspec.collections::type::Ordering::Greater".into(),
@@ -30,18 +37,25 @@ impl ls::IntoValue for Ordering {
     }
 }
 
-impl ls::FromValue for Ordering {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Ordering
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::Ordering".into());
         };
-        match tag.as_str() {
+        match tag.as_str()
+        {
             "lawspec.collections::type::Ordering::Less" if fields.len() == 0 => Ok(Self::Less),
             "lawspec.collections::type::Ordering::Equal" if fields.len() == 0 => Ok(Self::Equal),
-            "lawspec.collections::type::Ordering::Greater" if fields.len() == 0 => {
+            "lawspec.collections::type::Ordering::Greater" if fields.len() == 0 =>
+            {
                 Ok(Self::Greater)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawspec.collections::type::Ordering";
                 Err(message.into())
@@ -51,13 +65,16 @@ impl ls::FromValue for Ordering {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Entry<T0, T1> {
+pub struct Entry<T0, T1>
+{
     pub key: T0,
     pub value: T1,
 }
 
-impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Entry<T0, T1> {
-    fn into_value(self) -> ls::Value {
+impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Entry<T0, T1>
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { key, value } = self;
         let fields = vec![
             ls::IntoValue::into_value(key),
@@ -67,19 +84,34 @@ impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Entry<T0, T1> {
     }
 }
 
-impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Entry<T0, T1> {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Entry<T0, T1>
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::Entry".into());
         };
-        match tag.as_str() {
-            "lawspec.collections::type::Entry::Entry" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawspec.collections::type::Entry::Entry" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let key: T0 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let value: T1 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let key: T0 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let value: T1 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { key, value })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.collections::type::Entry";
                 Err(message.into())
             }
@@ -88,13 +120,16 @@ impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Entry<T0, T1> {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Pair<T0, T1> {
+pub struct Pair<T0, T1>
+{
     pub first: T0,
     pub second: T1,
 }
 
-impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Pair<T0, T1> {
-    fn into_value(self) -> ls::Value {
+impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Pair<T0, T1>
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { first, second } = self;
         let fields = vec![
             ls::IntoValue::into_value(first),
@@ -104,19 +139,34 @@ impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Pair<T0, T1> {
     }
 }
 
-impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1> {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1>
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.collections::type::Pair".into());
         };
-        match tag.as_str() {
-            "lawspec.collections::type::Pair::Pair" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawspec.collections::type::Pair::Pair" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let first: T0 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let second: T1 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let first: T0 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let second: T1 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { first, second })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.collections::type::Pair";
                 Err(message.into())
             }
@@ -125,31 +175,44 @@ impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Pair<T0, T1> {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Regex {
+pub struct Regex
+{
     pub pattern: std::string::String,
 }
 
-impl ls::IntoValue for Regex {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Regex
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { pattern } = self;
         let fields = vec![ls::IntoValue::into_value(pattern)];
         ls::Value::Data("lawspec.matchers::type::Regex::Regex".into(), fields)
     }
 }
 
-impl ls::FromValue for Regex {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Regex
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawspec.matchers::type::Regex".into());
         };
-        match tag.as_str() {
-            "lawspec.matchers::type::Regex::Regex" if fields.len() == 1 => {
+        match tag.as_str()
+        {
+            "lawspec.matchers::type::Regex::Regex" if fields.len() == 1 =>
+            {
                 let mut fields = fields.into_iter();
-                let pattern: std::string::String =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let pattern: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { pattern })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawspec.matchers::type::Regex";
                 Err(message.into())
             }
@@ -161,38 +224,46 @@ impl ls::FromValue for Regex {
 pub type Service = ls::Handle;
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum ApiError {
+pub enum ApiError
+{
     BadRequest,
     NotFound,
     UnprocessableEntity,
     Unmodelled,
 }
 
-impl ls::IntoValue for ApiError {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::BadRequest => {
+impl ls::IntoValue for ApiError
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::BadRequest =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::ApiError::BadRequest".into(),
                     fields,
                 )
             }
-            Self::NotFound => {
+            Self::NotFound =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::ApiError::NotFound".into(),
                     fields,
                 )
             }
-            Self::UnprocessableEntity => {
+            Self::UnprocessableEntity =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::ApiError::UnprocessableEntity".into(),
                     fields,
                 )
             }
-            Self::Unmodelled => {
+            Self::Unmodelled =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::ApiError::Unmodelled".into(),
@@ -203,25 +274,35 @@ impl ls::IntoValue for ApiError {
     }
 }
 
-impl ls::FromValue for ApiError {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ApiError
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::ApiError".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::ApiError::BadRequest" if fields.len() == 0 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::ApiError::BadRequest" if fields.len() == 0 =>
+            {
                 Ok(Self::BadRequest)
             }
-            "lawtwin.petstore.model::type::ApiError::NotFound" if fields.len() == 0 => {
+            "lawtwin.petstore.model::type::ApiError::NotFound" if fields.len() == 0 =>
+            {
                 Ok(Self::NotFound)
             }
-            "lawtwin.petstore.model::type::ApiError::UnprocessableEntity" if fields.len() == 0 => {
+            "lawtwin.petstore.model::type::ApiError::UnprocessableEntity" if fields.len() == 0 =>
+            {
                 Ok(Self::UnprocessableEntity)
             }
-            "lawtwin.petstore.model::type::ApiError::Unmodelled" if fields.len() == 0 => {
+            "lawtwin.petstore.model::type::ApiError::Unmodelled" if fields.len() == 0 =>
+            {
                 Ok(Self::Unmodelled)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.petstore.model::type::ApiError";
                 Err(message.into())
@@ -232,7 +313,8 @@ impl ls::FromValue for ApiError {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Pet {
+pub struct Pet
+{
     pub id: std::option::Option<i64>,
     pub name: std::string::String,
     pub category: std::option::Option<Category>,
@@ -241,8 +323,10 @@ pub struct Pet {
     pub status: std::option::Option<PetStatus>,
 }
 
-impl ls::IntoValue for Pet {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Pet
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             id,
             name,
@@ -263,25 +347,50 @@ impl ls::IntoValue for Pet {
     }
 }
 
-impl ls::FromValue for Pet {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Pet
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::Pet".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::Pet::Pet" if fields.len() == 6 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::Pet::Pet" if fields.len() == 6 =>
+            {
                 let mut fields = fields.into_iter();
-                let id: std::option::Option<i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let name: std::string::String = ls::FromValue::from_value(fields.next().unwrap())?;
-                let category: std::option::Option<Category> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let photo_urls: std::vec::Vec<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let tags: std::option::Option<std::vec::Vec<Tag>> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let status: std::option::Option<PetStatus> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let id: std::option::Option<i64> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let name: std::string::String = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let category: std::option::Option<Category> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let photo_urls: std::vec::Vec<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let tags: std::option::Option<std::vec::Vec<Tag>> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let status: std::option::Option<PetStatus> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     id,
                     name,
@@ -291,7 +400,8 @@ impl ls::FromValue for Pet {
                     status,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.petstore.model::type::Pet";
                 Err(message.into())
             }
@@ -300,13 +410,16 @@ impl ls::FromValue for Pet {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Category {
+pub struct Category
+{
     pub id: std::option::Option<i64>,
     pub name: std::option::Option<std::string::String>,
 }
 
-impl ls::IntoValue for Category {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Category
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { id, name } = self;
         let fields = vec![
             ls::IntoValue::into_value(id),
@@ -319,21 +432,34 @@ impl ls::IntoValue for Category {
     }
 }
 
-impl ls::FromValue for Category {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Category
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::Category".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::Category::Category" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::Category::Category" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let id: std::option::Option<i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let name: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let id: std::option::Option<i64> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let name: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { id, name })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.petstore.model::type::Category";
                 Err(message.into())
@@ -343,13 +469,16 @@ impl ls::FromValue for Category {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Tag {
+pub struct Tag
+{
     pub id: std::option::Option<i64>,
     pub name: std::option::Option<std::string::String>,
 }
 
-impl ls::IntoValue for Tag {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Tag
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self { id, name } = self;
         let fields = vec![
             ls::IntoValue::into_value(id),
@@ -359,21 +488,34 @@ impl ls::IntoValue for Tag {
     }
 }
 
-impl ls::FromValue for Tag {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Tag
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::Tag".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::Tag::Tag" if fields.len() == 2 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::Tag::Tag" if fields.len() == 2 =>
+            {
                 let mut fields = fields.into_iter();
-                let id: std::option::Option<i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let name: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let id: std::option::Option<i64> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let name: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self { id, name })
             }
-            _ => {
+            _ =>
+            {
                 let message = "invalid constructor or fields for lawtwin.petstore.model::type::Tag";
                 Err(message.into())
             }
@@ -382,30 +524,37 @@ impl ls::FromValue for Tag {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum PetStatus {
+pub enum PetStatus
+{
     Available,
     Pending,
     Sold,
 }
 
-impl ls::IntoValue for PetStatus {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::Available => {
+impl ls::IntoValue for PetStatus
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::Available =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::PetStatus::Available".into(),
                     fields,
                 )
             }
-            Self::Pending => {
+            Self::Pending =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::PetStatus::Pending".into(),
                     fields,
                 )
             }
-            Self::Sold => {
+            Self::Sold =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::PetStatus::Sold".into(),
@@ -416,20 +565,28 @@ impl ls::IntoValue for PetStatus {
     }
 }
 
-impl ls::FromValue for PetStatus {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for PetStatus
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::PetStatus".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::PetStatus::Available" if fields.len() == 0 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::PetStatus::Available" if fields.len() == 0 =>
+            {
                 Ok(Self::Available)
             }
-            "lawtwin.petstore.model::type::PetStatus::Pending" if fields.len() == 0 => {
+            "lawtwin.petstore.model::type::PetStatus::Pending" if fields.len() == 0 =>
+            {
                 Ok(Self::Pending)
             }
             "lawtwin.petstore.model::type::PetStatus::Sold" if fields.len() == 0 => Ok(Self::Sold),
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.petstore.model::type::PetStatus";
                 Err(message.into())
@@ -439,14 +596,17 @@ impl ls::FromValue for PetStatus {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct ApiResponse {
+pub struct ApiResponse
+{
     pub code: std::option::Option<i32>,
     pub type_: std::option::Option<std::string::String>,
     pub message: std::option::Option<std::string::String>,
 }
 
-impl ls::IntoValue for ApiResponse {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for ApiResponse
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             code,
             type_,
@@ -464,27 +624,43 @@ impl ls::IntoValue for ApiResponse {
     }
 }
 
-impl ls::FromValue for ApiResponse {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for ApiResponse
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::ApiResponse".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::ApiResponse::ApiResponse" if fields.len() == 3 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::ApiResponse::ApiResponse" if fields.len() == 3 =>
+            {
                 let mut fields = fields.into_iter();
-                let code: std::option::Option<i32> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let type_: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let message: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let code: std::option::Option<i32> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let type_: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let message: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     code,
                     type_,
                     message,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.petstore.model::type::ApiResponse";
                 Err(message.into())
@@ -495,7 +671,8 @@ impl ls::FromValue for ApiResponse {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Order {
+pub struct Order
+{
     pub id: std::option::Option<i64>,
     pub petId: std::option::Option<i64>,
     pub quantity: std::option::Option<i32>,
@@ -504,8 +681,10 @@ pub struct Order {
     pub complete: std::option::Option<bool>,
 }
 
-impl ls::IntoValue for Order {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for Order
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             id,
             petId: pet_id,
@@ -526,26 +705,50 @@ impl ls::IntoValue for Order {
     }
 }
 
-impl ls::FromValue for Order {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for Order
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::Order".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::Order::Order" if fields.len() == 6 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::Order::Order" if fields.len() == 6 =>
+            {
                 let mut fields = fields.into_iter();
-                let id: std::option::Option<i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let pet_id: std::option::Option<i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let quantity: std::option::Option<i32> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let ship_date: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let status: std::option::Option<OrderStatus> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let complete: std::option::Option<bool> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let id: std::option::Option<i64> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let pet_id: std::option::Option<i64> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let quantity: std::option::Option<i32> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let ship_date: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let status: std::option::Option<OrderStatus> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let complete: std::option::Option<bool> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     id,
                     petId: pet_id,
@@ -555,7 +758,8 @@ impl ls::FromValue for Order {
                     complete,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.petstore.model::type::Order";
                 Err(message.into())
@@ -565,30 +769,37 @@ impl ls::FromValue for Order {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub enum OrderStatus {
+pub enum OrderStatus
+{
     Placed,
     Approved,
     Delivered,
 }
 
-impl ls::IntoValue for OrderStatus {
-    fn into_value(self) -> ls::Value {
-        match self {
-            Self::Placed => {
+impl ls::IntoValue for OrderStatus
+{
+    fn into_value(self) -> ls::Value
+    {
+        match self
+        {
+            Self::Placed =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::OrderStatus::Placed".into(),
                     fields,
                 )
             }
-            Self::Approved => {
+            Self::Approved =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::OrderStatus::Approved".into(),
                     fields,
                 )
             }
-            Self::Delivered => {
+            Self::Delivered =>
+            {
                 let fields = vec![];
                 ls::Value::Data(
                     "lawtwin.petstore.model::type::OrderStatus::Delivered".into(),
@@ -599,22 +810,31 @@ impl ls::IntoValue for OrderStatus {
     }
 }
 
-impl ls::FromValue for OrderStatus {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for OrderStatus
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::OrderStatus".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::OrderStatus::Placed" if fields.len() == 0 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::OrderStatus::Placed" if fields.len() == 0 =>
+            {
                 Ok(Self::Placed)
             }
-            "lawtwin.petstore.model::type::OrderStatus::Approved" if fields.len() == 0 => {
+            "lawtwin.petstore.model::type::OrderStatus::Approved" if fields.len() == 0 =>
+            {
                 Ok(Self::Approved)
             }
-            "lawtwin.petstore.model::type::OrderStatus::Delivered" if fields.len() == 0 => {
+            "lawtwin.petstore.model::type::OrderStatus::Delivered" if fields.len() == 0 =>
+            {
                 Ok(Self::Delivered)
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.petstore.model::type::OrderStatus";
                 Err(message.into())
@@ -625,7 +845,8 @@ impl ls::FromValue for OrderStatus {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct User {
+pub struct User
+{
     pub id: std::option::Option<i64>,
     pub username: std::option::Option<std::string::String>,
     pub firstName: std::option::Option<std::string::String>,
@@ -636,8 +857,10 @@ pub struct User {
     pub userStatus: std::option::Option<i32>,
 }
 
-impl ls::IntoValue for User {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for User
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             id,
             username,
@@ -662,30 +885,61 @@ impl ls::IntoValue for User {
     }
 }
 
-impl ls::FromValue for User {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for User
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::User".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::User::User" if fields.len() == 8 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::User::User" if fields.len() == 8 =>
+            {
                 let mut fields = fields.into_iter();
-                let id: std::option::Option<i64> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let username: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                let id: std::option::Option<i64> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let username: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let first_name: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let last_name: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let email: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let password: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let phone: std::option::Option<std::string::String> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let user_status: std::option::Option<i32> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
+                let last_name: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let email: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let password: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let phone: std::option::Option<std::string::String> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let user_status: std::option::Option<i32> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 Ok(Self {
                     id,
                     username,
@@ -697,7 +951,8 @@ impl ls::FromValue for User {
                     userStatus: user_status,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.petstore.model::type::User";
                 Err(message.into())
@@ -708,7 +963,8 @@ impl ls::FromValue for User {
 
 #[allow(non_snake_case)]
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct State {
+pub struct State
+{
     pub pets: std::collections::BTreeMap<i64, Pet>,
     pub nextPetKey: i64,
     pub orders: std::collections::BTreeMap<i64, Order>,
@@ -716,8 +972,10 @@ pub struct State {
     pub users: std::collections::BTreeMap<std::string::String, User>,
 }
 
-impl ls::IntoValue for State {
-    fn into_value(self) -> ls::Value {
+impl ls::IntoValue for State
+{
+    fn into_value(self) -> ls::Value
+    {
         let Self {
             pets,
             nextPetKey: next_pet_key,
@@ -736,22 +994,46 @@ impl ls::IntoValue for State {
     }
 }
 
-impl ls::FromValue for State {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
+impl ls::FromValue for State
+{
+    fn from_value(value: ls::Value) -> ls::Result<Self>
+    {
+        let ls::Value::Data(tag, fields) = value
+        else
+        {
             return Err("expected lawtwin.petstore.model::type::State".into());
         };
-        match tag.as_str() {
-            "lawtwin.petstore.model::type::State::State" if fields.len() == 5 => {
+        match tag.as_str()
+        {
+            "lawtwin.petstore.model::type::State::State" if fields.len() == 5 =>
+            {
                 let mut fields = fields.into_iter();
-                let pets: std::collections::BTreeMap<i64, Pet> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let next_pet_key: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
-                let orders: std::collections::BTreeMap<i64, Order> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
-                let next_order_key: i64 = ls::FromValue::from_value(fields.next().unwrap())?;
+                let pets: std::collections::BTreeMap<i64, Pet> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let next_pet_key: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let orders: std::collections::BTreeMap<i64, Order> = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
+                let next_order_key: i64 = ls::FromValue::from_value(
+                    fields
+                        .next()
+                        .expect("constructor arity checked before consuming fields"),
+                )?;
                 let users: std::collections::BTreeMap<std::string::String, User> =
-                    ls::FromValue::from_value(fields.next().unwrap())?;
+                    ls::FromValue::from_value(
+                        fields
+                            .next()
+                            .expect("constructor arity checked before consuming fields"),
+                    )?;
                 Ok(Self {
                     pets,
                     nextPetKey: next_pet_key,
@@ -760,7 +1042,8 @@ impl ls::FromValue for State {
                     users,
                 })
             }
-            _ => {
+            _ =>
+            {
                 let message =
                     "invalid constructor or fields for lawtwin.petstore.model::type::State";
                 Err(message.into())

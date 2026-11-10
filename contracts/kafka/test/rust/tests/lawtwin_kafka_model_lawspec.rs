@@ -4,9 +4,7 @@
 mod lawspec_definitions;
 #[path = "support/lawspec_strategies.rs"]
 mod ls_gen;
-use lawspec_example::lawspec_abilities;
-use lawspec_example::lawspec_data;
-use lawspec_example::lawspec_remote;
-use lawspec_example::lawspec_runtime;
-use lawspec_example::lawspec_schema;
-use lawspec_example::lawtwin_kafka_model as adapter;
+use lawspec_example::{
+    lawspec_abilities, lawspec_data, lawspec_remote, lawspec_runtime, lawspec_schema,
+    lawtwin_kafka_model as adapter,
+};

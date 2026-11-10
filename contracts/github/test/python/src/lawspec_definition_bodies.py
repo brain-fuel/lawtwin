@@ -20,7 +20,10 @@ def _adapters(module: _builtins.str):
 def matchers_matches_regex(symbols, t, r):
     try:
         return _typed.to_bool(
-            _typed.matchers_matches_regex(_typed.from_text(t), _typed.from_regex(r)),
+            _typed.matchers_matches_regex(
+                _typed.from_text(t),
+                _typed.from_regex(r),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -81,7 +84,11 @@ def lawspec_collections_key_val_delete_items_milestone_key_list_entry_milestone_
 
 
 # keyValDelete — <lawspec.collections>:93
-def lawspec_collections_key_val_delete_label_key_key_val_label_key_label(symbols, k, m):
+def lawspec_collections_key_val_delete_label_key_key_val_label_key_label(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_key_val_label_key_label(
             _typed.lawspec_collections_key_val_delete_label_key_key_val_label_key_label(
@@ -144,7 +151,10 @@ def lawspec_collections_key_val_entries_key_val_label_key_label(symbols, m):
 
 
 # keyValEntries — <lawspec.collections>:105
-def lawspec_collections_key_val_entries_key_val_milestone_key_milestone(symbols, m):
+def lawspec_collections_key_val_entries_key_val_milestone_key_milestone(
+    symbols,
+    m,
+):
     try:
         return _typed.to_list_entry_milestone_key_milestone(
             _typed.lawspec_collections_key_val_entries_key_val_milestone_key_milestone(
@@ -283,7 +293,11 @@ def lawspec_collections_key_val_lookup_milestone_key_key_val_milestone_key_miles
 
 
 # keyValLookup — <lawspec.collections>:85
-def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label(symbols, k, m):
+def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_maybe_label(
             _typed.lawspec_collections_key_val_lookup_label_key_key_val_label_key_label(
@@ -303,7 +317,10 @@ def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label(symbols
 
 
 # keyValOf — <lawspec.collections>:81
-def lawspec_collections_key_val_of_list_entry_milestone_key_milestone(symbols, es):
+def lawspec_collections_key_val_of_list_entry_milestone_key_milestone(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_milestone_key_milestone(
             _typed.lawspec_collections_key_val_of_list_entry_milestone_key_milestone(
@@ -456,7 +473,8 @@ def lawtwin_github_model_after64(symbols, k):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::lawtwinGithubModelAfter64: " + _builtins.str(error),
+            "lawtwin.github::lawtwinGithubModelAfter64: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -475,7 +493,8 @@ def lawtwin_github_model_contains_label(symbols, wanted, items):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::lawtwinGithubModelContainsLabel: " + _builtins.str(error),
+            "lawtwin.github::lawtwinGithubModelContainsLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -511,12 +530,19 @@ def lawtwin_github_model_empty_state(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::lawtwinGithubModelEmptyState: " + _builtins.str(error),
+            "lawtwin.github::lawtwinGithubModelEmptyState: "
+            + _builtins.str(error),
         ) from error
 
 
 # lawtwinGithubModelModelIssuesCreateLabel — ../src/model.lawspec:273
-def lawtwin_github_model_model_issues_create_label(symbols, owner, repo, body, current):
+def lawtwin_github_model_model_issues_create_label(
+    symbols,
+    owner,
+    repo,
+    body,
+    current,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.lawtwin_github_model_model_issues_create_label(
@@ -566,7 +592,13 @@ def lawtwin_github_model_model_issues_create_milestone(
 
 
 # lawtwinGithubModelModelIssuesDeleteLabel — ../src/model.lawspec:293
-def lawtwin_github_model_model_issues_delete_label(symbols, owner, repo, name, current):
+def lawtwin_github_model_model_issues_delete_label(
+    symbols,
+    owner,
+    repo,
+    name,
+    current,
+):
     try:
         return _typed.to_pair_unit_state(
             _typed.lawtwin_github_model_model_issues_delete_label(
@@ -616,7 +648,13 @@ def lawtwin_github_model_model_issues_delete_milestone(
 
 
 # lawtwinGithubModelModelIssuesGetLabel — ../src/model.lawspec:285
-def lawtwin_github_model_model_issues_get_label(symbols, owner, repo, name, current):
+def lawtwin_github_model_model_issues_get_label(
+    symbols,
+    owner,
+    repo,
+    name,
+    current,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.lawtwin_github_model_model_issues_get_label(
@@ -888,7 +926,8 @@ def reference_issues_create_label(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesCreateLabel: " + _builtins.str(error),
+            "lawtwin.github::referenceIssuesCreateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -909,7 +948,8 @@ def reference_issues_create_milestone(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesCreateMilestone: " + _builtins.str(error),
+            "lawtwin.github::referenceIssuesCreateMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -930,7 +970,8 @@ def reference_issues_delete_label(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesDeleteLabel: " + _builtins.str(error),
+            "lawtwin.github::referenceIssuesDeleteLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -951,7 +992,8 @@ def reference_issues_delete_milestone(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesDeleteMilestone: " + _builtins.str(error),
+            "lawtwin.github::referenceIssuesDeleteMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -993,7 +1035,8 @@ def reference_issues_get_milestone(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesGetMilestone: " + _builtins.str(error),
+            "lawtwin.github::referenceIssuesGetMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1022,7 +1065,8 @@ def reference_issues_list_labels_for_repo(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesListLabelsForRepo: " + _builtins.str(error),
+            "lawtwin.github::referenceIssuesListLabelsForRepo: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1057,12 +1101,20 @@ def reference_issues_list_milestones(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesListMilestones: " + _builtins.str(error),
+            "lawtwin.github::referenceIssuesListMilestones: "
+            + _builtins.str(error),
         ) from error
 
 
 # referenceIssuesUpdateLabel — ../src/api.lawspec:210
-def reference_issues_update_label(symbols, state, value0, value1, value2, value3):
+def reference_issues_update_label(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_update_label(
@@ -1079,12 +1131,20 @@ def reference_issues_update_label(symbols, state, value0, value1, value2, value3
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesUpdateLabel: " + _builtins.str(error),
+            "lawtwin.github::referenceIssuesUpdateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
 # referenceIssuesUpdateMilestone — ../src/api.lawspec:215
-def reference_issues_update_milestone(symbols, state, value0, value1, value2, value3):
+def reference_issues_update_milestone(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_update_milestone(
@@ -1101,7 +1161,8 @@ def reference_issues_update_milestone(symbols, state, value0, value1, value2, va
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github::referenceIssuesUpdateMilestone: " + _builtins.str(error),
+            "lawtwin.github::referenceIssuesUpdateMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1129,7 +1190,8 @@ def nothing_hand_written(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.handwritten::nothingHandWritten: " + _builtins.str(error),
+            "lawtwin.github.handwritten::nothingHandWritten: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1249,7 +1311,10 @@ def lawspec_collections_key_val_entries_key_val_label_key_label_2(symbols, m):
 
 
 # keyValEntries — <lawspec.collections>:105
-def lawspec_collections_key_val_entries_key_val_milestone_key_milestone_2(symbols, m):
+def lawspec_collections_key_val_entries_key_val_milestone_key_milestone_2(
+    symbols,
+    m,
+):
     try:
         return _typed.to_list_entry_milestone_key_milestone(
             _typed.lawspec_collections_key_val_entries_key_val_milestone_key_milestone(
@@ -1412,7 +1477,10 @@ def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label_2(
 
 
 # keyValOf — <lawspec.collections>:81
-def lawspec_collections_key_val_of_list_entry_milestone_key_milestone_2(symbols, es):
+def lawspec_collections_key_val_of_list_entry_milestone_key_milestone_2(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_milestone_key_milestone(
             _typed.lawspec_collections_key_val_of_list_entry_milestone_key_milestone(
@@ -1565,7 +1633,8 @@ def lawtwin_github_model_after64_2(symbols, k):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::lawtwinGithubModelAfter64: " + _builtins.str(error),
+            "lawtwin.github.laws::lawtwinGithubModelAfter64: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1739,7 +1808,13 @@ def lawtwin_github_model_model_issues_delete_milestone_2(
 
 
 # lawtwinGithubModelModelIssuesGetLabel — ../src/model.lawspec:285
-def lawtwin_github_model_model_issues_get_label_2(symbols, owner, repo, name, current):
+def lawtwin_github_model_model_issues_get_label_2(
+    symbols,
+    owner,
+    repo,
+    name,
+    current,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.lawtwin_github_model_model_issues_get_label(
@@ -1936,7 +2011,12 @@ def lawtwin_github_model_model_labels_under_2(symbols, owner, repo, entries):
 
 
 # lawtwinGithubModelModelMilestonesUnder — ../src/model.lawspec:226
-def lawtwin_github_model_model_milestones_under_2(symbols, owner, repo, entries):
+def lawtwin_github_model_model_milestones_under_2(
+    symbols,
+    owner,
+    repo,
+    entries,
+):
     try:
         return _typed.to_list_milestone(
             _typed.lawtwin_github_model_model_milestones_under(
@@ -2004,7 +2084,8 @@ def no_hand_written_laws_yet(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::noHandWrittenLawsYet: " + _builtins.str(error),
+            "lawtwin.github.laws::noHandWrittenLawsYet: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2025,7 +2106,8 @@ def reference_issues_create_label_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesCreateLabel: " + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesCreateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2068,7 +2150,8 @@ def reference_issues_delete_label_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesDeleteLabel: " + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesDeleteLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2111,7 +2194,8 @@ def reference_issues_get_label_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesGetLabel: " + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesGetLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2132,7 +2216,8 @@ def reference_issues_get_milestone_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesGetMilestone: " + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesGetMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2203,7 +2288,14 @@ def reference_issues_list_milestones_2(
 
 
 # referenceIssuesUpdateLabel — ../src/api.lawspec:210
-def reference_issues_update_label_2(symbols, state, value0, value1, value2, value3):
+def reference_issues_update_label_2(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_update_label(
@@ -2220,12 +2312,20 @@ def reference_issues_update_label_2(symbols, state, value0, value1, value2, valu
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.laws::referenceIssuesUpdateLabel: " + _builtins.str(error),
+            "lawtwin.github.laws::referenceIssuesUpdateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
 # referenceIssuesUpdateMilestone — ../src/api.lawspec:215
-def reference_issues_update_milestone_2(symbols, state, value0, value1, value2, value3):
+def reference_issues_update_milestone_2(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_update_milestone(
@@ -2447,7 +2547,10 @@ def lawspec_collections_key_val_entries_key_val_label_key_label_3(symbols, m):
 
 
 # keyValEntries — <lawspec.collections>:105
-def lawspec_collections_key_val_entries_key_val_milestone_key_milestone_3(symbols, m):
+def lawspec_collections_key_val_entries_key_val_milestone_key_milestone_3(
+    symbols,
+    m,
+):
     try:
         return _typed.to_list_entry_milestone_key_milestone(
             _typed.lawspec_collections_key_val_entries_key_val_milestone_key_milestone(
@@ -2610,7 +2713,10 @@ def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label_3(
 
 
 # keyValOf — <lawspec.collections>:81
-def lawspec_collections_key_val_of_list_entry_milestone_key_milestone_3(symbols, es):
+def lawspec_collections_key_val_of_list_entry_milestone_key_milestone_3(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_milestone_key_milestone(
             _typed.lawspec_collections_key_val_of_list_entry_milestone_key_milestone(
@@ -2768,7 +2874,8 @@ def model_issues_create_label(symbols, owner, repo, body, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesCreateLabel: " + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesCreateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2789,7 +2896,8 @@ def model_issues_create_milestone(symbols, owner, repo, body, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesCreateMilestone: " + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesCreateMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2810,12 +2918,19 @@ def model_issues_delete_label(symbols, owner, repo, name, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesDeleteLabel: " + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesDeleteLabel: "
+            + _builtins.str(error),
         ) from error
 
 
 # modelIssuesDeleteMilestone — ../src/model.lawspec:339
-def model_issues_delete_milestone(symbols, owner, repo, milestone_number, current):
+def model_issues_delete_milestone(
+    symbols,
+    owner,
+    repo,
+    milestone_number,
+    current,
+):
     try:
         return _typed.to_pair_unit_state(
             _typed.lawtwin_github_model_model_issues_delete_milestone(
@@ -2831,7 +2946,8 @@ def model_issues_delete_milestone(symbols, owner, repo, milestone_number, curren
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesDeleteMilestone: " + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesDeleteMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2852,7 +2968,8 @@ def model_issues_get_label(symbols, owner, repo, name, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesGetLabel: " + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesGetLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2873,12 +2990,20 @@ def model_issues_get_milestone(symbols, owner, repo, milestone_number, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesGetMilestone: " + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesGetMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
 # modelIssuesListLabelsForRepo — ../src/model.lawspec:268
-def model_issues_list_labels_for_repo(symbols, owner, repo, per_page, page, current):
+def model_issues_list_labels_for_repo(
+    symbols,
+    owner,
+    repo,
+    per_page,
+    page,
+    current,
+):
     try:
         return _typed.to_pair_list_label_state(
             _typed.lawtwin_github_model_model_issues_list_labels_for_repo(
@@ -2931,7 +3056,8 @@ def model_issues_list_milestones(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesListMilestones: " + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesListMilestones: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2953,7 +3079,8 @@ def model_issues_update_label(symbols, owner, repo, name, body, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesUpdateLabel: " + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesUpdateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2982,7 +3109,8 @@ def model_issues_update_milestone(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelIssuesUpdateMilestone: " + _builtins.str(error),
+            "lawtwin.github.model::modelIssuesUpdateMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3022,7 +3150,8 @@ def model_milestones_under(symbols, owner, repo, entries):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.github.model::modelMilestonesUnder: " + _builtins.str(error),
+            "lawtwin.github.model::modelMilestonesUnder: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3180,7 +3309,10 @@ def lawspec_collections_key_val_entries_key_val_label_key_label_4(symbols, m):
 
 
 # keyValEntries — <lawspec.collections>:105
-def lawspec_collections_key_val_entries_key_val_milestone_key_milestone_4(symbols, m):
+def lawspec_collections_key_val_entries_key_val_milestone_key_milestone_4(
+    symbols,
+    m,
+):
     try:
         return _typed.to_list_entry_milestone_key_milestone(
             _typed.lawspec_collections_key_val_entries_key_val_milestone_key_milestone(
@@ -3343,7 +3475,10 @@ def lawspec_collections_key_val_lookup_label_key_key_val_label_key_label_4(
 
 
 # keyValOf — <lawspec.collections>:81
-def lawspec_collections_key_val_of_list_entry_milestone_key_milestone_4(symbols, es):
+def lawspec_collections_key_val_of_list_entry_milestone_key_milestone_4(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_milestone_key_milestone(
             _typed.lawspec_collections_key_val_of_list_entry_milestone_key_milestone(
@@ -3496,7 +3631,8 @@ def lawtwin_github_model_after64_3(symbols, k):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::lawtwinGithubModelAfter64: " + _builtins.str(error),
+            "contracttest.github::lawtwinGithubModelAfter64: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3670,7 +3806,13 @@ def lawtwin_github_model_model_issues_delete_milestone_3(
 
 
 # lawtwinGithubModelModelIssuesGetLabel — ../src/model.lawspec:285
-def lawtwin_github_model_model_issues_get_label_3(symbols, owner, repo, name, current):
+def lawtwin_github_model_model_issues_get_label_3(
+    symbols,
+    owner,
+    repo,
+    name,
+    current,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.lawtwin_github_model_model_issues_get_label(
@@ -3867,7 +4009,12 @@ def lawtwin_github_model_model_labels_under_3(symbols, owner, repo, entries):
 
 
 # lawtwinGithubModelModelMilestonesUnder — ../src/model.lawspec:226
-def lawtwin_github_model_model_milestones_under_3(symbols, owner, repo, entries):
+def lawtwin_github_model_model_milestones_under_3(
+    symbols,
+    owner,
+    repo,
+    entries,
+):
     try:
         return _typed.to_list_milestone(
             _typed.lawtwin_github_model_model_milestones_under(
@@ -3942,7 +4089,8 @@ def reference_issues_create_label_3(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesCreateLabel: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesCreateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3985,7 +4133,8 @@ def reference_issues_delete_label_3(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesDeleteLabel: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesDeleteLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4028,7 +4177,8 @@ def reference_issues_get_label_3(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesGetLabel: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesGetLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4049,7 +4199,8 @@ def reference_issues_get_milestone_3(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesGetMilestone: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesGetMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4120,7 +4271,14 @@ def reference_issues_list_milestones_3(
 
 
 # referenceIssuesUpdateLabel — ../src/api.lawspec:210
-def reference_issues_update_label_3(symbols, state, value0, value1, value2, value3):
+def reference_issues_update_label_3(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_update_label(
@@ -4137,12 +4295,20 @@ def reference_issues_update_label_3(symbols, state, value0, value1, value2, valu
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesUpdateLabel: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesUpdateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
 # referenceIssuesUpdateMilestone — ../src/api.lawspec:215
-def reference_issues_update_milestone_3(symbols, state, value0, value1, value2, value3):
+def reference_issues_update_milestone_3(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_update_milestone(
@@ -4188,5 +4354,6 @@ def suite_names_the_package(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::suiteNamesThePackage: " + _builtins.str(error),
+            "contracttest.github::suiteNamesThePackage: "
+            + _builtins.str(error),
         ) from error

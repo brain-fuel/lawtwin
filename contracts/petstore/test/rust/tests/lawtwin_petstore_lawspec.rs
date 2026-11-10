@@ -26,7 +26,8 @@ use proptest::strategy::Strategy;
 type ValueStrategy = proptest::strategy::BoxedStrategy<ls::Value>;
 
 // connectService — ../src/api.lawspec:16
-fn connect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value> {
+fn connect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value>
+{
     let value0 = args[0].clone();
     let native_value0 = {
         let value = ls::native_value(value0.clone(), "Unit")?;
@@ -43,7 +44,8 @@ fn connect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls
 }
 
 // disconnectService — ../src/api.lawspec:17
-fn disconnect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value> {
+fn disconnect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value>
+{
     let value0 = args[0].clone();
     let native_value0 = {
         let value = lawspec_schema::schema()?.native_value_with_context(
@@ -67,109 +69,132 @@ fn disconnect_service(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result
 // lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus -> lawspecFieldid } in match (it) {
 // Maybe::Absent -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getPetById
 // _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } = true end for all
-mod law_petapi_a_created_pet_reads_back_native {
+mod law_petapi_a_created_pet_reads_back_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Category::Category",
             fields,
         ))
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Available",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Pending",
             fields,
         ))
     }
 
-    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Sold",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -180,48 +205,58 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![literal_1(ctx)?, literal_8(ctx)?])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![literal_9(ctx)?])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![literal_12(ctx)?])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -232,26 +267,31 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_15(vec![])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_19(ctx)?])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -262,23 +302,28 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_16(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -289,20 +334,23 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -313,11 +361,13 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -328,14 +378,16 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -346,13 +398,15 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -363,14 +417,16 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             ls::Value::Text("Hello, World!".to_owned()),
         ])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -381,13 +437,15 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -398,14 +456,16 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             ls::Value::Text("λ日本語😀".to_owned()),
         ])?)
     }
 
-    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -416,13 +476,15 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -433,14 +495,16 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
         ])?)
     }
 
-    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -451,11 +515,13 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -466,14 +532,16 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             ls::Value::Text("é".to_owned()),
         ])?)
     }
 
-    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -484,7 +552,8 @@ mod law_petapi_a_created_pet_reads_back_native {
         ])?)
     }
 
-    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -499,7 +568,8 @@ mod law_petapi_a_created_pet_reads_back_native {
         ctx: &mut ls::Context,
         body: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -518,32 +588,38 @@ mod law_petapi_a_created_pet_reads_back_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Pet::Pet"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _name = fields.next().unwrap();
-                            let _category = fields.next().unwrap();
-                            let _photo_urls = fields.next().unwrap();
-                            let _tags = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _name = fields.next().expect("checked expression arity");
+                            let _category = fields.next().expect("checked expression arity");
+                            let _photo_urls = fields.next().expect("checked expression arity");
+                            let _tags = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             ls::binary(
                                 "==",
@@ -582,7 +658,8 @@ mod law_petapi_a_created_pet_reads_back_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()>
+    {
         let body = lawspec_schema::schema()?.validate_with_context(
             body,
             &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
@@ -628,14 +705,16 @@ mod law_petapi_a_created_pet_reads_back_native {
         "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![(
@@ -675,7 +754,8 @@ mod law_petapi_a_created_pet_reads_back_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::PetApi: |a created pet reads back| [native]",
@@ -685,7 +765,8 @@ mod law_petapi_a_created_pet_reads_back_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -717,14 +798,16 @@ mod law_petapi_a_created_pet_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -746,7 +829,8 @@ mod law_petapi_a_created_pet_reads_back_native {
             };
             let check = |mut case: ls_gen::Case| {
                 let result = check(&mut case.context, case.values[0].clone());
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::PetApi: |a created pet reads back| [native]",
                         SEARCH_INPUTS,
@@ -771,109 +855,132 @@ mod law_petapi_a_created_pet_reads_back_native {
 // lawspecFieldphotoUrls lawspecFieldtags lawspecFieldstatus -> lawspecFieldid } in match (it) {
 // Maybe::Absent -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getPetById
 // _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } = true end for all
-mod law_petapi_a_created_pet_reads_back_reference {
+mod law_petapi_a_created_pet_reads_back_reference
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Category::Category",
             fields,
         ))
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Available",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Pending",
             fields,
         ))
     }
 
-    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Sold",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -884,48 +991,58 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![literal_1(ctx)?, literal_8(ctx)?])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![literal_9(ctx)?])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![literal_12(ctx)?])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -936,26 +1053,31 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_15(vec![])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_19(ctx)?])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -966,23 +1088,28 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_16(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -993,20 +1120,23 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -1017,11 +1147,13 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -1032,14 +1164,16 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -1050,13 +1184,15 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -1067,14 +1203,16 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             ls::Value::Text("Hello, World!".to_owned()),
         ])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -1085,13 +1223,15 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -1102,14 +1242,16 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             ls::Value::Text("λ日本語😀".to_owned()),
         ])?)
     }
 
-    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -1120,13 +1262,15 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -1137,14 +1281,16 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
         ])?)
     }
 
-    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -1155,11 +1301,13 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -1170,14 +1318,16 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             ls::Value::Text("é".to_owned()),
         ])?)
     }
 
-    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -1188,7 +1338,8 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -1199,7 +1350,8 @@ mod law_petapi_a_created_pet_reads_back_reference {
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -1218,32 +1370,38 @@ mod law_petapi_a_created_pet_reads_back_reference {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Pet::Pet"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _name = fields.next().unwrap();
-                            let _category = fields.next().unwrap();
-                            let _photo_urls = fields.next().unwrap();
-                            let _tags = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _name = fields.next().expect("checked expression arity");
+                            let _category = fields.next().expect("checked expression arity");
+                            let _photo_urls = fields.next().expect("checked expression arity");
+                            let _tags = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             ls::binary(
                                 "==",
@@ -1282,7 +1440,8 @@ mod law_petapi_a_created_pet_reads_back_reference {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()>
+    {
         let shared_reference =
             std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
         let installing = vec![("lawtwin.petstore::ability::PetApi".to_string(), {
@@ -1305,14 +1464,16 @@ mod law_petapi_a_created_pet_reads_back_reference {
         "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![(
@@ -1352,7 +1513,8 @@ mod law_petapi_a_created_pet_reads_back_reference {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::PetApi: |a created pet reads back| [reference]",
@@ -1362,7 +1524,8 @@ mod law_petapi_a_created_pet_reads_back_reference {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -1394,14 +1557,16 @@ mod law_petapi_a_created_pet_reads_back_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -1423,7 +1588,8 @@ mod law_petapi_a_created_pet_reads_back_reference {
             };
             let check = |mut case: ls_gen::Case| {
                 let result = check(&mut case.context, case.values[0].clone());
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::PetApi: |a created pet reads back| [reference]",
                         SEARCH_INPUTS,
@@ -1450,109 +1616,132 @@ mod law_petapi_a_created_pet_reads_back_reference {
 // (deletePet _match__lawspecSelection0x0_0 (Maybe::Absent())) in (attempt (getPetById
 // _match__lawspecSelection0x0_0) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
-mod law_petapi_a_deleted_pet_is_not_found_native {
+mod law_petapi_a_deleted_pet_is_not_found_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Category::Category",
             fields,
         ))
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Available",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Pending",
             fields,
         ))
     }
 
-    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Sold",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -1563,48 +1752,58 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![literal_1(ctx)?, literal_8(ctx)?])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![literal_9(ctx)?])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![literal_12(ctx)?])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -1615,26 +1814,31 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_15(vec![])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_19(ctx)?])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -1645,23 +1849,28 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_16(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -1672,20 +1881,23 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -1696,11 +1908,13 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -1711,14 +1925,16 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -1729,13 +1945,15 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -1746,14 +1964,16 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             ls::Value::Text("Hello, World!".to_owned()),
         ])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -1764,13 +1984,15 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -1781,14 +2003,16 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             ls::Value::Text("λ日本語😀".to_owned()),
         ])?)
     }
 
-    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -1799,13 +2023,15 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -1816,14 +2042,16 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
         ])?)
     }
 
-    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -1834,11 +2062,13 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -1849,14 +2079,16 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             ls::Value::Text("é".to_owned()),
         ])?)
     }
 
-    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -1867,7 +2099,8 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ])?)
     }
 
-    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -1882,7 +2115,8 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         ctx: &mut ls::Context,
         body: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -1901,32 +2135,38 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Pet::Pet"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _name = fields.next().unwrap();
-                            let _category = fields.next().unwrap();
-                            let _photo_urls = fields.next().unwrap();
-                            let _tags = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _name = fields.next().expect("checked expression arity");
+                            let _category = fields.next().expect("checked expression arity");
+                            let _photo_urls = fields.next().expect("checked expression arity");
+                            let _tags = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             let _gone = ls::attempt(
                                 ctx,
@@ -1990,7 +2230,8 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()>
+    {
         let body = lawspec_schema::schema()?.validate_with_context(
             body,
             &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
@@ -2036,14 +2277,16 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
         "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![(
@@ -2083,7 +2326,8 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::PetApi: |a deleted pet is not found| [native]",
@@ -2093,7 +2337,8 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2125,14 +2370,16 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2154,7 +2401,8 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
             };
             let check = |mut case: ls_gen::Case| {
                 let result = check(&mut case.context, case.values[0].clone());
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::PetApi: |a deleted pet is not found| [native]",
                         SEARCH_INPUTS,
@@ -2181,109 +2429,132 @@ mod law_petapi_a_deleted_pet_is_not_found_native {
 // (deletePet _match__lawspecSelection0x0_0 (Maybe::Absent())) in (attempt (getPetById
 // _match__lawspecSelection0x0_0) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
-mod law_petapi_a_deleted_pet_is_not_found_reference {
+mod law_petapi_a_deleted_pet_is_not_found_reference
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Category::Category",
             fields,
         ))
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Available",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Pending",
             fields,
         ))
     }
 
-    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Sold",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -2294,48 +2565,58 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![literal_1(ctx)?, literal_8(ctx)?])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![literal_9(ctx)?])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![literal_12(ctx)?])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -2346,26 +2627,31 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_15(vec![])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_19(ctx)?])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -2376,23 +2662,28 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_16(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -2403,20 +2694,23 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -2427,11 +2721,13 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -2442,14 +2738,16 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -2460,13 +2758,15 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -2477,14 +2777,16 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             ls::Value::Text("Hello, World!".to_owned()),
         ])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -2495,13 +2797,15 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -2512,14 +2816,16 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             ls::Value::Text("λ日本語😀".to_owned()),
         ])?)
     }
 
-    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -2530,13 +2836,15 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -2547,14 +2855,16 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
         ])?)
     }
 
-    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -2565,11 +2875,13 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -2580,14 +2892,16 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             ls::Value::Text("é".to_owned()),
         ])?)
     }
 
-    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -2598,7 +2912,8 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -2609,7 +2924,8 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -2628,32 +2944,38 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Pet::Pet"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _name = fields.next().unwrap();
-                            let _category = fields.next().unwrap();
-                            let _photo_urls = fields.next().unwrap();
-                            let _tags = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _name = fields.next().expect("checked expression arity");
+                            let _category = fields.next().expect("checked expression arity");
+                            let _photo_urls = fields.next().expect("checked expression arity");
+                            let _tags = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             let _gone = ls::attempt(
                                 ctx,
@@ -2717,7 +3039,8 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value) -> ls::Result<()>
+    {
         let shared_reference =
             std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
         let installing = vec![("lawtwin.petstore::ability::PetApi".to_string(), {
@@ -2740,14 +3063,16 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
         "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![(
@@ -2787,7 +3112,8 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::PetApi: |a deleted pet is not found| [reference]",
@@ -2797,7 +3123,8 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -2829,14 +3156,16 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -2858,7 +3187,8 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
             };
             let check = |mut case: ls_gen::Case| {
                 let result = check(&mut case.context, case.values[0].clone());
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::PetApi: |a deleted pet is not found| [reference]",
                         SEARCH_INPUTS,
@@ -2891,109 +3221,132 @@ mod law_petapi_a_deleted_pet_is_not_found_reference {
 // _match__match__lawspecSelection0x0_0_0 -> true; Either::Right
 // _match__match__lawspecSelection0x0_0_0 -> (attempt (getPetById _match__lawspecSelection0x0_0) ==
 // Either::Right(_match__match__lawspecSelection0x0_0_0)) } } } = true end for all
-mod law_petapi_a_replaced_pet_reads_back_as_replaced {
+mod law_petapi_a_replaced_pet_reads_back_as_replaced
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Category::Category",
             fields,
         ))
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Available",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Pending",
             fields,
         ))
     }
 
-    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Sold",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -3004,48 +3357,58 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![literal_1(ctx)?, literal_8(ctx)?])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![literal_9(ctx)?])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![literal_12(ctx)?])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -3056,26 +3419,31 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_15(vec![])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_19(ctx)?])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -3086,23 +3454,28 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_16(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -3113,20 +3486,23 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -3137,11 +3513,13 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -3152,14 +3530,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -3170,13 +3550,15 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -3187,14 +3569,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             ls::Value::Text("Hello, World!".to_owned()),
         ])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -3205,13 +3589,15 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -3222,14 +3608,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             ls::Value::Text("λ日本語😀".to_owned()),
         ])?)
     }
 
-    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -3240,13 +3628,15 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -3257,14 +3647,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
         ])?)
     }
 
-    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -3275,11 +3667,13 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -3290,14 +3684,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             ls::Value::Text("é".to_owned()),
         ])?)
     }
 
-    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -3308,7 +3704,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         ])?)
     }
 
-    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -3324,7 +3721,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         body: ls::Value,
         replacement: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -3343,32 +3741,38 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Pet::Pet"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _name = fields.next().unwrap();
-                            let _category = fields.next().unwrap();
-                            let _photo_urls = fields.next().unwrap();
-                            let _tags = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _name = fields.next().expect("checked expression arity");
+                            let _category = fields.next().expect("checked expression arity");
+                            let _photo_urls = fields.next().expect("checked expression arity");
+                            let _tags = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             let it_3 = ls::attempt(
                                 ctx,
@@ -3383,19 +3787,32 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
                                                     "Maybe::Present",
                                                     vec![match_selection.clone()],
                                                 )?;
-                                                match replacement.clone() {
+                                                match replacement.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.petstore.model::type::Pet::Pet"
                                                             && fields.len() == 6 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _id = fields.next().unwrap();
-                                                        let name = fields.next().unwrap();
-                                                        let category = fields.next().unwrap();
-                                                        let photo_urls = fields.next().unwrap();
-                                                        let tags = fields.next().unwrap();
-                                                        let status = fields.next().unwrap();
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let category = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let photo_urls = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let tags = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let status = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         ls::construct_data(
                                                             "lawtwin.petstore.model::type::Pet::Pet",
                                                             vec![
@@ -3418,12 +3835,15 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
                             )?;
-                            match it_3.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_3.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     ls::Value::Bool(true)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let match_match_selection = *payload;
                                     ls::binary(
                                         "==",
@@ -3468,7 +3888,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, replacement: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, replacement: ls::Value) -> ls::Result<()>
+    {
         let body = lawspec_schema::schema()?.validate_with_context(
             body,
             &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
@@ -3521,14 +3942,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
         "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -3661,7 +4084,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::PetApi: |a replaced pet reads back as replaced| [native]",
@@ -3671,7 +4095,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -3703,14 +4128,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -3719,7 +4146,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -3751,14 +4179,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -3784,7 +4214,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::PetApi: |a replaced pet reads back as replaced| [native]",
                         SEARCH_INPUTS,
@@ -3817,109 +4248,132 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced {
 // _match__match__lawspecSelection0x0_0_0 -> true; Either::Right
 // _match__match__lawspecSelection0x0_0_0 -> (attempt (getPetById _match__lawspecSelection0x0_0) ==
 // Either::Right(_match__match__lawspecSelection0x0_0_0)) } } } = true end for all
-mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
+mod law_petapi_a_replaced_pet_reads_back_as_replaced_2
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Pet::Pet",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Category::Category",
             fields,
         ))
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::Value::List(fields))
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Available",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_15(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Pending",
             fields,
         ))
     }
 
-    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_16(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::PetStatus::Sold",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -3930,48 +4384,58 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![])?)
     }
 
-    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![literal_1(ctx)?, literal_8(ctx)?])?)
     }
 
-    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![literal_9(ctx)?])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![literal_12(ctx)?])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_14(ctx)?])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -3982,26 +4446,31 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_15(vec![])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_19(ctx)?])?)
     }
 
-    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -4012,23 +4481,28 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_16(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -4039,20 +4513,23 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("".to_owned()),
             ls::Value::Text("".to_owned()),
         ])?)
     }
 
-    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -4063,11 +4540,13 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_31(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -4078,14 +4557,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_32(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text(" ".to_owned()),
             ls::Value::Text(" ".to_owned()),
         ])?)
     }
 
-    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_33(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -4096,13 +4577,15 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_34(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_35(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -4113,14 +4596,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_36(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("Hello, World!".to_owned()),
             ls::Value::Text("Hello, World!".to_owned()),
         ])?)
     }
 
-    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_37(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -4131,13 +4616,15 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_38(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_39(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text(" ".to_owned()),
@@ -4148,14 +4635,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_40(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("λ日本語😀".to_owned()),
             ls::Value::Text("λ日本語😀".to_owned()),
         ])?)
     }
 
-    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_41(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("Hello, World!".to_owned()),
@@ -4166,13 +4655,15 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_42(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_43(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             ls::Value::Text("λ日本語😀".to_owned()),
@@ -4183,14 +4674,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_44(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
         ])?)
     }
 
-    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_45(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_17(ctx)?,
             ls::Value::Text("a\n\t\"\\$\0z".to_owned()),
@@ -4201,11 +4694,13 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_46(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_47(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_22(ctx)?,
             ls::Value::Text("é".to_owned()),
@@ -4216,14 +4711,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_48(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![
             ls::Value::Text("é".to_owned()),
             ls::Value::Text("é".to_owned()),
         ])?)
     }
 
-    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_49(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             ls::Value::Text("".to_owned()),
@@ -4234,7 +4731,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_50(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             ls::Value::Text("\0aλ😀\u{10ffff}".to_owned()),
@@ -4245,11 +4743,9 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         ])?)
     }
 
-    fn check_body(
-        ctx: &mut ls::Context,
-        body: ls::Value,
-        replacement: ls::Value,
-    ) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, body: ls::Value, replacement: ls::Value)
+    -> ls::Result<()>
+    {
         let actual = {
             let sent = body.clone();
             let it = ls::attempt(
@@ -4268,32 +4764,38 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Pet::Pet"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _name = fields.next().unwrap();
-                            let _category = fields.next().unwrap();
-                            let _photo_urls = fields.next().unwrap();
-                            let _tags = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _name = fields.next().expect("checked expression arity");
+                            let _category = fields.next().expect("checked expression arity");
+                            let _photo_urls = fields.next().expect("checked expression arity");
+                            let _tags = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             let it_3 = ls::attempt(
                                 ctx,
@@ -4308,19 +4810,32 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
                                                     "Maybe::Present",
                                                     vec![match_selection.clone()],
                                                 )?;
-                                                match replacement.clone() {
+                                                match replacement.clone()
+                                                {
                                                     ls::Value::Data(tag, fields)
                                                         if tag
                                                             == "lawtwin.petstore.model::type::Pet::Pet"
                                                             && fields.len() == 6 =>
                                                     {
                                                         let mut fields = fields.into_iter();
-                                                        let _id = fields.next().unwrap();
-                                                        let name = fields.next().unwrap();
-                                                        let category = fields.next().unwrap();
-                                                        let photo_urls = fields.next().unwrap();
-                                                        let tags = fields.next().unwrap();
-                                                        let status = fields.next().unwrap();
+                                                        let _id = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let name = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let category = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let photo_urls = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let tags = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
+                                                        let status = fields
+                                                            .next()
+                                                            .expect("checked expression arity");
                                                         ls::construct_data(
                                                             "lawtwin.petstore.model::type::Pet::Pet",
                                                             vec![
@@ -4343,12 +4858,15 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
                                 |value| ls::construct("Either::Right", vec![value]),
                                 |value| ls::construct("Either::Left", vec![value]),
                             )?;
-                            match it_3.clone() {
-                                ls::Value::Left(payload) => {
+                            match it_3.clone()
+                            {
+                                ls::Value::Left(payload) =>
+                                {
                                     let _match_match_selection = *payload;
                                     ls::Value::Bool(true)
                                 }
-                                ls::Value::Right(payload) => {
+                                ls::Value::Right(payload) =>
+                                {
                                     let match_match_selection = *payload;
                                     ls::binary(
                                         "==",
@@ -4393,7 +4911,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, replacement: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, replacement: ls::Value) -> ls::Result<()>
+    {
         let shared_reference =
             std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
         let installing = vec![("lawtwin.petstore::ability::PetApi".to_string(), {
@@ -4423,14 +4942,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
         "(data lawtwin.petstore.model::type::Pet (ctor lawtwin.petstore.model::type::Pet::Pet (maybe (int Int64 -9223372036854775808 9223372036854775807)) (text) (maybe (ref lawtwin.petstore.model::type::Category)) (list (text)) (maybe (list (ref lawtwin.petstore.model::type::Tag))) (maybe (ref lawtwin.petstore.model::type::PetStatus)))) (data lawtwin.petstore.model::type::Category (ctor lawtwin.petstore.model::type::Category::Category (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::Tag (ctor lawtwin.petstore.model::type::Tag::Tag (maybe (int Int64 -9223372036854775808 9223372036854775807)) (maybe (text)))) (data lawtwin.petstore.model::type::PetStatus (ctor lawtwin.petstore.model::type::PetStatus::Available) (ctor lawtwin.petstore.model::type::PetStatus::Pending) (ctor lawtwin.petstore.model::type::PetStatus::Sold)) (ref lawtwin.petstore.model::type::Pet)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -4563,7 +5084,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::PetApi: |a replaced pet reads back as replaced| [reference]",
@@ -4573,7 +5095,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -4605,14 +5128,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -4621,7 +5146,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -4653,14 +5179,16 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -4686,7 +5214,8 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::PetApi: |a replaced pet reads back as replaced| [reference]",
                         SEARCH_INPUTS,
@@ -4716,98 +5245,119 @@ mod law_petapi_a_replaced_pet_reads_back_as_replaced_2 {
 // lawspecFieldshipDate lawspecFieldstatus lawspecFieldcomplete -> lawspecFieldid } in match (it) {
 // Maybe::Absent -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getOrderById
 // _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } = true end for all
-mod law_storeapi_a_created_order_reads_back_native {
+mod law_storeapi_a_created_order_reads_back_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Order::Order",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Placed",
             fields,
         ))
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Approved",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Delivered",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -4818,35 +5368,42 @@ mod law_storeapi_a_created_order_reads_back_native {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(
             (-2147483648i128).into(),
         )])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_10(ctx)?])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![ls::Value::Bool(false)])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -4857,31 +5414,38 @@ mod law_storeapi_a_created_order_reads_back_native {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_17(ctx)?])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![ls::Value::Bool(true)])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_14(ctx)?,
             literal_14(ctx)?,
@@ -4892,29 +5456,35 @@ mod law_storeapi_a_created_order_reads_back_native {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_21(ctx)?,
             literal_21(ctx)?,
@@ -4925,25 +5495,29 @@ mod law_storeapi_a_created_order_reads_back_native {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(
             2147483647i128.into(),
         )])?)
     }
 
-    fn literal_29(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             literal_27(ctx)?,
@@ -4959,22 +5533,24 @@ mod law_storeapi_a_created_order_reads_back_native {
         body: ls::Value,
         ship_date_value: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![ship_date_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.petstore.model::type::Order::Order"
                             && fields.len() == 6 =>
                     {
                         let mut fields = fields.into_iter();
-                        let id = fields.next().unwrap();
-                        let pet_id = fields.next().unwrap();
-                        let quantity = fields.next().unwrap();
-                        let _ship_date = fields.next().unwrap();
-                        let status = fields.next().unwrap();
-                        let complete = fields.next().unwrap();
+                        let id = fields.next().expect("checked expression arity");
+                        let pet_id = fields.next().expect("checked expression arity");
+                        let quantity = fields.next().expect("checked expression arity");
+                        let _ship_date = fields.next().expect("checked expression arity");
+                        let status = fields.next().expect("checked expression arity");
+                        let complete = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.petstore.model::type::Order::Order",
                             vec![
@@ -5006,32 +5582,38 @@ mod law_storeapi_a_created_order_reads_back_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Order::Order"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _pet_id = fields.next().unwrap();
-                            let _quantity = fields.next().unwrap();
-                            let _ship_date = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
-                            let _complete = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _pet_id = fields.next().expect("checked expression arity");
+                            let _quantity = fields.next().expect("checked expression arity");
+                            let _ship_date = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
+                            let _complete = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             ls::binary(
                                 "==",
@@ -5070,7 +5652,8 @@ mod law_storeapi_a_created_order_reads_back_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, ship_date_value: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, ship_date_value: ls::Value) -> ls::Result<()>
+    {
         let body = lawspec_schema::schema()?.validate_with_context(
             body,
             &ls::TypeRef::named("lawtwin.petstore.model::type::Order", vec![]),
@@ -5127,7 +5710,8 @@ mod law_storeapi_a_created_order_reads_back_native {
         _ctx: &mut ls::Context,
         _body: ls::Value,
         ship_date_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -5138,7 +5722,8 @@ mod law_storeapi_a_created_order_reads_back_native {
                 ship_date_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -5149,9 +5734,11 @@ mod law_storeapi_a_created_order_reads_back_native {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -5159,7 +5746,8 @@ mod law_storeapi_a_created_order_reads_back_native {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -5225,7 +5813,8 @@ mod law_storeapi_a_created_order_reads_back_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::StoreApi: |a created order reads back| [native]",
@@ -5235,7 +5824,8 @@ mod law_storeapi_a_created_order_reads_back_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -5290,14 +5880,16 @@ mod law_storeapi_a_created_order_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -5306,7 +5898,8 @@ mod law_storeapi_a_created_order_reads_back_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -5355,14 +5948,16 @@ mod law_storeapi_a_created_order_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -5370,7 +5965,8 @@ mod law_storeapi_a_created_order_reads_back_native {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -5398,7 +5994,8 @@ mod law_storeapi_a_created_order_reads_back_native {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::StoreApi: |a created order reads back| [native]",
                         SEARCH_INPUTS,
@@ -5428,98 +6025,119 @@ mod law_storeapi_a_created_order_reads_back_native {
 // lawspecFieldshipDate lawspecFieldstatus lawspecFieldcomplete -> lawspecFieldid } in match (it) {
 // Maybe::Absent -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getOrderById
 // _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } = true end for all
-mod law_storeapi_a_created_order_reads_back_reference {
+mod law_storeapi_a_created_order_reads_back_reference
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Order::Order",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Placed",
             fields,
         ))
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Approved",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Delivered",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -5530,35 +6148,42 @@ mod law_storeapi_a_created_order_reads_back_reference {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(
             (-2147483648i128).into(),
         )])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_10(ctx)?])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![ls::Value::Bool(false)])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -5569,31 +6194,38 @@ mod law_storeapi_a_created_order_reads_back_reference {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_17(ctx)?])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![ls::Value::Bool(true)])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_14(ctx)?,
             literal_14(ctx)?,
@@ -5604,29 +6236,35 @@ mod law_storeapi_a_created_order_reads_back_reference {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_21(ctx)?,
             literal_21(ctx)?,
@@ -5637,25 +6275,29 @@ mod law_storeapi_a_created_order_reads_back_reference {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(
             2147483647i128.into(),
         )])?)
     }
 
-    fn literal_29(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             literal_27(ctx)?,
@@ -5670,22 +6312,24 @@ mod law_storeapi_a_created_order_reads_back_reference {
         ctx: &mut ls::Context,
         body: ls::Value,
         ship_date_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![ship_date_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.petstore.model::type::Order::Order"
                             && fields.len() == 6 =>
                     {
                         let mut fields = fields.into_iter();
-                        let id = fields.next().unwrap();
-                        let pet_id = fields.next().unwrap();
-                        let quantity = fields.next().unwrap();
-                        let _ship_date = fields.next().unwrap();
-                        let status = fields.next().unwrap();
-                        let complete = fields.next().unwrap();
+                        let id = fields.next().expect("checked expression arity");
+                        let pet_id = fields.next().expect("checked expression arity");
+                        let quantity = fields.next().expect("checked expression arity");
+                        let _ship_date = fields.next().expect("checked expression arity");
+                        let status = fields.next().expect("checked expression arity");
+                        let complete = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.petstore.model::type::Order::Order",
                             vec![
@@ -5717,32 +6361,38 @@ mod law_storeapi_a_created_order_reads_back_reference {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Order::Order"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _pet_id = fields.next().unwrap();
-                            let _quantity = fields.next().unwrap();
-                            let _ship_date = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
-                            let _complete = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _pet_id = fields.next().expect("checked expression arity");
+                            let _quantity = fields.next().expect("checked expression arity");
+                            let _ship_date = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
+                            let _complete = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             ls::binary(
                                 "==",
@@ -5781,7 +6431,8 @@ mod law_storeapi_a_created_order_reads_back_reference {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, ship_date_value: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, ship_date_value: ls::Value) -> ls::Result<()>
+    {
         let shared_reference =
             std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
         let installing = vec![("lawtwin.petstore::ability::StoreApi".to_string(), {
@@ -5810,7 +6461,8 @@ mod law_storeapi_a_created_order_reads_back_reference {
         _ctx: &mut ls::Context,
         _body: ls::Value,
         ship_date_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -5821,7 +6473,8 @@ mod law_storeapi_a_created_order_reads_back_reference {
                 ship_date_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -5832,9 +6485,11 @@ mod law_storeapi_a_created_order_reads_back_reference {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -5842,7 +6497,8 @@ mod law_storeapi_a_created_order_reads_back_reference {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -5908,7 +6564,8 @@ mod law_storeapi_a_created_order_reads_back_reference {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::StoreApi: |a created order reads back| [reference]",
@@ -5918,7 +6575,8 @@ mod law_storeapi_a_created_order_reads_back_reference {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -5973,14 +6631,16 @@ mod law_storeapi_a_created_order_reads_back_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -5989,7 +6649,8 @@ mod law_storeapi_a_created_order_reads_back_reference {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6038,14 +6699,16 @@ mod law_storeapi_a_created_order_reads_back_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6053,7 +6716,8 @@ mod law_storeapi_a_created_order_reads_back_reference {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -6081,7 +6745,8 @@ mod law_storeapi_a_created_order_reads_back_reference {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::StoreApi: |a created order reads back| [reference]",
                         SEARCH_INPUTS,
@@ -6113,98 +6778,119 @@ mod law_storeapi_a_created_order_reads_back_reference {
 // (deleteOrder _match__lawspecSelection0x0_0) in (attempt (getOrderById
 // _match__lawspecSelection0x0_0) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
-mod law_storeapi_a_deleted_order_is_not_found_native {
+mod law_storeapi_a_deleted_order_is_not_found_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Order::Order",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Placed",
             fields,
         ))
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Approved",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Delivered",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -6215,35 +6901,42 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(
             (-2147483648i128).into(),
         )])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_10(ctx)?])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![ls::Value::Bool(false)])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -6254,31 +6947,38 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_17(ctx)?])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![ls::Value::Bool(true)])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_14(ctx)?,
             literal_14(ctx)?,
@@ -6289,29 +6989,35 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_21(ctx)?,
             literal_21(ctx)?,
@@ -6322,25 +7028,29 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(
             2147483647i128.into(),
         )])?)
     }
 
-    fn literal_29(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             literal_27(ctx)?,
@@ -6356,22 +7066,24 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
         body: ls::Value,
         ship_date_value: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![ship_date_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.petstore.model::type::Order::Order"
                             && fields.len() == 6 =>
                     {
                         let mut fields = fields.into_iter();
-                        let id = fields.next().unwrap();
-                        let pet_id = fields.next().unwrap();
-                        let quantity = fields.next().unwrap();
-                        let _ship_date = fields.next().unwrap();
-                        let status = fields.next().unwrap();
-                        let complete = fields.next().unwrap();
+                        let id = fields.next().expect("checked expression arity");
+                        let pet_id = fields.next().expect("checked expression arity");
+                        let quantity = fields.next().expect("checked expression arity");
+                        let _ship_date = fields.next().expect("checked expression arity");
+                        let status = fields.next().expect("checked expression arity");
+                        let complete = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.petstore.model::type::Order::Order",
                             vec![
@@ -6403,32 +7115,38 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Order::Order"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _pet_id = fields.next().unwrap();
-                            let _quantity = fields.next().unwrap();
-                            let _ship_date = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
-                            let _complete = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _pet_id = fields.next().expect("checked expression arity");
+                            let _quantity = fields.next().expect("checked expression arity");
+                            let _ship_date = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
+                            let _complete = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             let _gone = ls::attempt(
                                 ctx,
@@ -6489,7 +7207,8 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, ship_date_value: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, ship_date_value: ls::Value) -> ls::Result<()>
+    {
         let body = lawspec_schema::schema()?.validate_with_context(
             body,
             &ls::TypeRef::named("lawtwin.petstore.model::type::Order", vec![]),
@@ -6546,7 +7265,8 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
         _ctx: &mut ls::Context,
         _body: ls::Value,
         ship_date_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -6557,7 +7277,8 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
                 ship_date_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -6568,9 +7289,11 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -6578,7 +7301,8 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -6644,7 +7368,8 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::StoreApi: |a deleted order is not found| [native]",
@@ -6654,7 +7379,8 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6709,14 +7435,16 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6725,7 +7453,8 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -6774,14 +7503,16 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -6789,7 +7520,8 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -6817,7 +7549,8 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::StoreApi: |a deleted order is not found| [native]",
                         SEARCH_INPUTS,
@@ -6849,98 +7582,119 @@ mod law_storeapi_a_deleted_order_is_not_found_native {
 // (deleteOrder _match__lawspecSelection0x0_0) in (attempt (getOrderById
 // _match__lawspecSelection0x0_0) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
-mod law_storeapi_a_deleted_order_is_not_found_reference {
+mod law_storeapi_a_deleted_order_is_not_found_reference
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::Order::Order",
             fields,
         ))
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_8(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_9(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_10(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Placed",
             fields,
         ))
     }
 
-    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_11(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_12(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_13(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Approved",
             fields,
         ))
     }
 
-    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_14(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::OrderStatus::Delivered",
             fields,
         ))
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![])?)
     }
 
-    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_1(ctx)?,
             literal_1(ctx)?,
@@ -6951,35 +7705,42 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
         ])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(
             (-2147483648i128).into(),
         )])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_10(vec![])?)
     }
 
-    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_10(ctx)?])?)
     }
 
-    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![ls::Value::Bool(false)])?)
     }
 
-    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_7(ctx)?,
             literal_7(ctx)?,
@@ -6990,31 +7751,38 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
         ])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_13(vec![])?)
     }
 
-    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_17(ctx)?])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_12(vec![ls::Value::Bool(true)])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_14(ctx)?,
             literal_14(ctx)?,
@@ -7025,29 +7793,35 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_14(vec![])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_11(vec![literal_24(ctx)?])?)
     }
 
-    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_21(ctx)?,
             literal_21(ctx)?,
@@ -7058,25 +7832,29 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
         ])?)
     }
 
-    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_28(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_8(vec![ls::Value::Integer(
             2147483647i128.into(),
         )])?)
     }
 
-    fn literal_29(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_29(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_9(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_30(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![
             literal_27(ctx)?,
             literal_27(ctx)?,
@@ -7091,22 +7869,24 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
         ctx: &mut ls::Context,
         body: ls::Value,
         ship_date_value: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![ship_date_value.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.petstore.model::type::Order::Order"
                             && fields.len() == 6 =>
                     {
                         let mut fields = fields.into_iter();
-                        let id = fields.next().unwrap();
-                        let pet_id = fields.next().unwrap();
-                        let quantity = fields.next().unwrap();
-                        let _ship_date = fields.next().unwrap();
-                        let status = fields.next().unwrap();
-                        let complete = fields.next().unwrap();
+                        let id = fields.next().expect("checked expression arity");
+                        let pet_id = fields.next().expect("checked expression arity");
+                        let quantity = fields.next().expect("checked expression arity");
+                        let _ship_date = fields.next().expect("checked expression arity");
+                        let status = fields.next().expect("checked expression arity");
+                        let complete = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.petstore.model::type::Order::Order",
                             vec![
@@ -7138,32 +7918,38 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match selection.clone() {
+                    let it_2 = match selection.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::Order::Order"
                                 && fields.len() == 6 =>
                         {
                             let mut fields = fields.into_iter();
-                            let id = fields.next().unwrap();
-                            let _pet_id = fields.next().unwrap();
-                            let _quantity = fields.next().unwrap();
-                            let _ship_date = fields.next().unwrap();
-                            let _status = fields.next().unwrap();
-                            let _complete = fields.next().unwrap();
+                            let id = fields.next().expect("checked expression arity");
+                            let _pet_id = fields.next().expect("checked expression arity");
+                            let _quantity = fields.next().expect("checked expression arity");
+                            let _ship_date = fields.next().expect("checked expression arity");
+                            let _status = fields.next().expect("checked expression arity");
+                            let _complete = fields.next().expect("checked expression arity");
                             id.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             let _gone = ls::attempt(
                                 ctx,
@@ -7224,7 +8010,8 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, ship_date_value: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, ship_date_value: ls::Value) -> ls::Result<()>
+    {
         let shared_reference =
             std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
         let installing = vec![("lawtwin.petstore::ability::StoreApi".to_string(), {
@@ -7253,7 +8040,8 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
         _ctx: &mut ls::Context,
         _body: ls::Value,
         ship_date_value: ls::Value,
-    ) -> ls::Result<bool> {
+    ) -> ls::Result<bool>
+    {
         let condition = ls::helper(
             "regexMatches",
             vec![
@@ -7264,7 +8052,8 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
                 ship_date_value.clone(),
             ],
         )?;
-        if !condition.boolean()? {
+        if !condition.boolean()?
+        {
             return Ok(false);
         }
         Ok(true)
@@ -7275,9 +8064,11 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
-        if !valid(ctx, values[0].clone(), values[1].clone())? {
+        if !valid(ctx, values[0].clone(), values[1].clone())?
+        {
             return Ok(None);
         }
         check(ctx, values[0].clone(), values[1].clone())?;
@@ -7285,7 +8076,8 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -7351,7 +8143,8 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::StoreApi: |a deleted order is not found| [reference]",
@@ -7361,7 +8154,8 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7416,14 +8210,16 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7432,7 +8228,8 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -7481,14 +8278,16 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -7496,7 +8295,8 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
                 })
                 .boxed();
             let refinement = |case: &ls_gen::Case| {
-                if case.values.len() != 2 {
+                if case.values.len() != 2
+                {
                     return false;
                 }
                 let result = valid(
@@ -7524,7 +8324,8 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::StoreApi: |a deleted order is not found| [reference]",
                         SEARCH_INPUTS,
@@ -7555,53 +8356,65 @@ mod law_storeapi_a_deleted_order_is_not_found_reference {
 // lawspecFieldphone lawspecFielduserStatus -> lawspecFieldusername } in match (it) { Maybe::Absent
 // -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getUserByName
 // _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } = true end for all
-mod law_userapi_a_created_user_reads_back_native {
+mod law_userapi_a_created_user_reads_back_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::User::User",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_2(ctx)?,
@@ -7614,23 +8427,27 @@ mod law_userapi_a_created_user_reads_back_native {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-2147483648i128).into(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_6(ctx)?,
@@ -7643,19 +8460,23 @@ mod law_userapi_a_created_user_reads_back_native {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_10(ctx)?,
@@ -7668,21 +8489,25 @@ mod law_userapi_a_created_user_reads_back_native {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_14(ctx)?,
@@ -7695,25 +8520,29 @@ mod law_userapi_a_created_user_reads_back_native {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             2147483647i128.into(),
         )])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_17(ctx)?,
             literal_18(ctx)?,
@@ -7726,13 +8555,15 @@ mod law_userapi_a_created_user_reads_back_native {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_21(ctx)?,
@@ -7745,11 +8576,13 @@ mod law_userapi_a_created_user_reads_back_native {
         ])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_23(ctx)?,
@@ -7762,7 +8595,8 @@ mod law_userapi_a_created_user_reads_back_native {
         ])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_6(ctx)?,
@@ -7775,13 +8609,15 @@ mod law_userapi_a_created_user_reads_back_native {
         ])?)
     }
 
-    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_26(ctx)?,
@@ -7799,24 +8635,26 @@ mod law_userapi_a_created_user_reads_back_native {
         body: ls::Value,
         key_given: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![key_given.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.petstore.model::type::User::User"
                             && fields.len() == 8 =>
                     {
                         let mut fields = fields.into_iter();
-                        let id = fields.next().unwrap();
-                        let _username = fields.next().unwrap();
-                        let first_name = fields.next().unwrap();
-                        let last_name = fields.next().unwrap();
-                        let email = fields.next().unwrap();
-                        let password = fields.next().unwrap();
-                        let phone = fields.next().unwrap();
-                        let user_status = fields.next().unwrap();
+                        let id = fields.next().expect("checked expression arity");
+                        let _username = fields.next().expect("checked expression arity");
+                        let first_name = fields.next().expect("checked expression arity");
+                        let last_name = fields.next().expect("checked expression arity");
+                        let email = fields.next().expect("checked expression arity");
+                        let password = fields.next().expect("checked expression arity");
+                        let phone = fields.next().expect("checked expression arity");
+                        let user_status = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.petstore.model::type::User::User",
                             vec![
@@ -7850,34 +8688,40 @@ mod law_userapi_a_created_user_reads_back_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match sent.clone() {
+                    let it_2 = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::User::User"
                                 && fields.len() == 8 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _id = fields.next().unwrap();
-                            let username = fields.next().unwrap();
-                            let _first_name = fields.next().unwrap();
-                            let _last_name = fields.next().unwrap();
-                            let _email = fields.next().unwrap();
-                            let _password = fields.next().unwrap();
-                            let _phone = fields.next().unwrap();
-                            let _user_status = fields.next().unwrap();
+                            let _id = fields.next().expect("checked expression arity");
+                            let username = fields.next().expect("checked expression arity");
+                            let _first_name = fields.next().expect("checked expression arity");
+                            let _last_name = fields.next().expect("checked expression arity");
+                            let _email = fields.next().expect("checked expression arity");
+                            let _password = fields.next().expect("checked expression arity");
+                            let _phone = fields.next().expect("checked expression arity");
+                            let _user_status = fields.next().expect("checked expression arity");
                             username.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             ls::binary(
                                 "==",
@@ -7916,7 +8760,8 @@ mod law_userapi_a_created_user_reads_back_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()>
+    {
         let body = lawspec_schema::schema()?.validate_with_context(
             body,
             &ls::TypeRef::named("lawtwin.petstore.model::type::User", vec![]),
@@ -7969,14 +8814,16 @@ mod law_userapi_a_created_user_reads_back_native {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -8078,7 +8925,8 @@ mod law_userapi_a_created_user_reads_back_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::UserApi: |a created user reads back| [native]",
@@ -8088,7 +8936,8 @@ mod law_userapi_a_created_user_reads_back_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8113,14 +8962,16 @@ mod law_userapi_a_created_user_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8129,7 +8980,8 @@ mod law_userapi_a_created_user_reads_back_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8148,14 +9000,16 @@ mod law_userapi_a_created_user_reads_back_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8181,7 +9035,8 @@ mod law_userapi_a_created_user_reads_back_native {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::UserApi: |a created user reads back| [native]",
                         SEARCH_INPUTS,
@@ -8212,53 +9067,65 @@ mod law_userapi_a_created_user_reads_back_native {
 // lawspecFieldphone lawspecFielduserStatus -> lawspecFieldusername } in match (it) { Maybe::Absent
 // -> false; Maybe::Present _match__lawspecSelection0x0_0 -> (attempt (getUserByName
 // _match__lawspecSelection0x0_0) == Either::Right(_lawspecSelection0x0)) } } = true end for all
-mod law_userapi_a_created_user_reads_back_reference {
+mod law_userapi_a_created_user_reads_back_reference
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::User::User",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_2(ctx)?,
@@ -8271,23 +9138,27 @@ mod law_userapi_a_created_user_reads_back_reference {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-2147483648i128).into(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_6(ctx)?,
@@ -8300,19 +9171,23 @@ mod law_userapi_a_created_user_reads_back_reference {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_10(ctx)?,
@@ -8325,21 +9200,25 @@ mod law_userapi_a_created_user_reads_back_reference {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_14(ctx)?,
@@ -8352,25 +9231,29 @@ mod law_userapi_a_created_user_reads_back_reference {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             2147483647i128.into(),
         )])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_17(ctx)?,
             literal_18(ctx)?,
@@ -8383,13 +9266,15 @@ mod law_userapi_a_created_user_reads_back_reference {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_21(ctx)?,
@@ -8402,11 +9287,13 @@ mod law_userapi_a_created_user_reads_back_reference {
         ])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_23(ctx)?,
@@ -8419,7 +9306,8 @@ mod law_userapi_a_created_user_reads_back_reference {
         ])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_6(ctx)?,
@@ -8432,13 +9320,15 @@ mod law_userapi_a_created_user_reads_back_reference {
         ])?)
     }
 
-    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_26(ctx)?,
@@ -8451,24 +9341,26 @@ mod law_userapi_a_created_user_reads_back_reference {
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![key_given.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.petstore.model::type::User::User"
                             && fields.len() == 8 =>
                     {
                         let mut fields = fields.into_iter();
-                        let id = fields.next().unwrap();
-                        let _username = fields.next().unwrap();
-                        let first_name = fields.next().unwrap();
-                        let last_name = fields.next().unwrap();
-                        let email = fields.next().unwrap();
-                        let password = fields.next().unwrap();
-                        let phone = fields.next().unwrap();
-                        let user_status = fields.next().unwrap();
+                        let id = fields.next().expect("checked expression arity");
+                        let _username = fields.next().expect("checked expression arity");
+                        let first_name = fields.next().expect("checked expression arity");
+                        let last_name = fields.next().expect("checked expression arity");
+                        let email = fields.next().expect("checked expression arity");
+                        let password = fields.next().expect("checked expression arity");
+                        let phone = fields.next().expect("checked expression arity");
+                        let user_status = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.petstore.model::type::User::User",
                             vec![
@@ -8502,34 +9394,40 @@ mod law_userapi_a_created_user_reads_back_reference {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let selection = *payload;
-                    let it_2 = match sent.clone() {
+                    let it_2 = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::User::User"
                                 && fields.len() == 8 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _id = fields.next().unwrap();
-                            let username = fields.next().unwrap();
-                            let _first_name = fields.next().unwrap();
-                            let _last_name = fields.next().unwrap();
-                            let _email = fields.next().unwrap();
-                            let _password = fields.next().unwrap();
-                            let _phone = fields.next().unwrap();
-                            let _user_status = fields.next().unwrap();
+                            let _id = fields.next().expect("checked expression arity");
+                            let username = fields.next().expect("checked expression arity");
+                            let _first_name = fields.next().expect("checked expression arity");
+                            let _last_name = fields.next().expect("checked expression arity");
+                            let _email = fields.next().expect("checked expression arity");
+                            let _password = fields.next().expect("checked expression arity");
+                            let _phone = fields.next().expect("checked expression arity");
+                            let _user_status = fields.next().expect("checked expression arity");
                             username.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             ls::binary(
                                 "==",
@@ -8568,7 +9466,8 @@ mod law_userapi_a_created_user_reads_back_reference {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()>
+    {
         let shared_reference =
             std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
         let installing = vec![("lawtwin.petstore::ability::UserApi".to_string(), {
@@ -8598,14 +9497,16 @@ mod law_userapi_a_created_user_reads_back_reference {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -8707,7 +9608,8 @@ mod law_userapi_a_created_user_reads_back_reference {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::UserApi: |a created user reads back| [reference]",
@@ -8717,7 +9619,8 @@ mod law_userapi_a_created_user_reads_back_reference {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8742,14 +9645,16 @@ mod law_userapi_a_created_user_reads_back_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8758,7 +9663,8 @@ mod law_userapi_a_created_user_reads_back_reference {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -8777,14 +9683,16 @@ mod law_userapi_a_created_user_reads_back_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -8810,7 +9718,8 @@ mod law_userapi_a_created_user_reads_back_reference {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::UserApi: |a created user reads back| [reference]",
                         SEARCH_INPUTS,
@@ -8842,53 +9751,65 @@ mod law_userapi_a_created_user_reads_back_reference {
 // -> false; Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt (deleteUser
 // _match__lawspecSelection0x0_0) in (attempt (getUserByName _match__lawspecSelection0x0_0) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
-mod law_userapi_a_deleted_user_is_not_found_native {
+mod law_userapi_a_deleted_user_is_not_found_native
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::User::User",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_2(ctx)?,
@@ -8901,23 +9822,27 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-2147483648i128).into(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_6(ctx)?,
@@ -8930,19 +9855,23 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_10(ctx)?,
@@ -8955,21 +9884,25 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_14(ctx)?,
@@ -8982,25 +9915,29 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             2147483647i128.into(),
         )])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_17(ctx)?,
             literal_18(ctx)?,
@@ -9013,13 +9950,15 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_21(ctx)?,
@@ -9032,11 +9971,13 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         ])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_23(ctx)?,
@@ -9049,7 +9990,8 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         ])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_6(ctx)?,
@@ -9062,13 +10004,15 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         ])?)
     }
 
-    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_26(ctx)?,
@@ -9086,24 +10030,26 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         body: ls::Value,
         key_given: ls::Value,
         _with_service: ls::Value,
-    ) -> ls::Result<()> {
+    ) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![key_given.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.petstore.model::type::User::User"
                             && fields.len() == 8 =>
                     {
                         let mut fields = fields.into_iter();
-                        let id = fields.next().unwrap();
-                        let _username = fields.next().unwrap();
-                        let first_name = fields.next().unwrap();
-                        let last_name = fields.next().unwrap();
-                        let email = fields.next().unwrap();
-                        let password = fields.next().unwrap();
-                        let phone = fields.next().unwrap();
-                        let user_status = fields.next().unwrap();
+                        let id = fields.next().expect("checked expression arity");
+                        let _username = fields.next().expect("checked expression arity");
+                        let first_name = fields.next().expect("checked expression arity");
+                        let last_name = fields.next().expect("checked expression arity");
+                        let email = fields.next().expect("checked expression arity");
+                        let password = fields.next().expect("checked expression arity");
+                        let phone = fields.next().expect("checked expression arity");
+                        let user_status = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.petstore.model::type::User::User",
                             vec![
@@ -9137,34 +10083,40 @@ mod law_userapi_a_deleted_user_is_not_found_native {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _selection = *payload;
-                    let it_2 = match sent.clone() {
+                    let it_2 = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::User::User"
                                 && fields.len() == 8 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _id = fields.next().unwrap();
-                            let username = fields.next().unwrap();
-                            let _first_name = fields.next().unwrap();
-                            let _last_name = fields.next().unwrap();
-                            let _email = fields.next().unwrap();
-                            let _password = fields.next().unwrap();
-                            let _phone = fields.next().unwrap();
-                            let _user_status = fields.next().unwrap();
+                            let _id = fields.next().expect("checked expression arity");
+                            let username = fields.next().expect("checked expression arity");
+                            let _first_name = fields.next().expect("checked expression arity");
+                            let _last_name = fields.next().expect("checked expression arity");
+                            let _email = fields.next().expect("checked expression arity");
+                            let _password = fields.next().expect("checked expression arity");
+                            let _phone = fields.next().expect("checked expression arity");
+                            let _user_status = fields.next().expect("checked expression arity");
                             username.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             let _gone = ls::attempt(
                                 ctx,
@@ -9225,7 +10177,8 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()>
+    {
         let body = lawspec_schema::schema()?.validate_with_context(
             body,
             &ls::TypeRef::named("lawtwin.petstore.model::type::User", vec![]),
@@ -9278,14 +10231,16 @@ mod law_userapi_a_deleted_user_is_not_found_native {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -9387,7 +10342,8 @@ mod law_userapi_a_deleted_user_is_not_found_native {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::UserApi: |a deleted user is not found| [native]",
@@ -9397,7 +10353,8 @@ mod law_userapi_a_deleted_user_is_not_found_native {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9422,14 +10379,16 @@ mod law_userapi_a_deleted_user_is_not_found_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9438,7 +10397,8 @@ mod law_userapi_a_deleted_user_is_not_found_native {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -9457,14 +10417,16 @@ mod law_userapi_a_deleted_user_is_not_found_native {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -9490,7 +10452,8 @@ mod law_userapi_a_deleted_user_is_not_found_native {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::UserApi: |a deleted user is not found| [native]",
                         SEARCH_INPUTS,
@@ -9522,53 +10485,65 @@ mod law_userapi_a_deleted_user_is_not_found_native {
 // -> false; Maybe::Present _match__lawspecSelection0x0_0 -> let gone = attempt (deleteUser
 // _match__lawspecSelection0x0_0) in (attempt (getUserByName _match__lawspecSelection0x0_0) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true end for all
-mod law_userapi_a_deleted_user_is_not_found_reference {
+mod law_userapi_a_deleted_user_is_not_found_reference
+{
     use super::*;
 
-    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_1(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_2(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_3(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Absent", fields)
     }
 
-    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_4(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         Ok(ls::construct_data(
             "lawtwin.petstore.model::type::User::User",
             fields,
         ))
     }
 
-    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_5(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_6(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value> {
+    fn literal_shape_7(fields: Vec<ls::Value>) -> ls::Result<ls::Value>
+    {
         ls::construct("Maybe::Present", fields)
     }
 
-    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_1(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_1(vec![])?)
     }
 
-    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_2(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_2(vec![])?)
     }
 
-    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_3(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_3(vec![])?)
     }
 
-    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_4(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_2(ctx)?,
@@ -9581,23 +10556,27 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         ])?)
     }
 
-    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_5(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(
             (-9223372036854775808i128).into(),
         )])?)
     }
 
-    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_6(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("".to_owned())])?)
     }
 
-    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_7(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             (-2147483648i128).into(),
         )])?)
     }
 
-    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_8(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_6(ctx)?,
@@ -9610,19 +10589,23 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         ])?)
     }
 
-    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_9(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_10(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(" ".to_owned())])?)
     }
 
-    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_11(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer((-1i128).into())])?)
     }
 
-    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_12(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_10(ctx)?,
@@ -9635,21 +10618,25 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         ])?)
     }
 
-    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_13(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_14(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "Hello, World!".to_owned(),
         )])?)
     }
 
-    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_15(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(0i128.into())])?)
     }
 
-    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_16(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_14(ctx)?,
@@ -9662,25 +10649,29 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         ])?)
     }
 
-    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_17(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_5(vec![ls::Value::Integer(
             9223372036854775807i128.into(),
         )])?)
     }
 
-    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_18(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "λ日本語😀".to_owned(),
         )])?)
     }
 
-    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_19(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_7(vec![ls::Value::Integer(
             2147483647i128.into(),
         )])?)
     }
 
-    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_20(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_17(ctx)?,
             literal_18(ctx)?,
@@ -9693,13 +10684,15 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         ])?)
     }
 
-    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_21(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "a\n\t\"\\$\0z".to_owned(),
         )])?)
     }
 
-    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_22(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_1(ctx)?,
             literal_21(ctx)?,
@@ -9712,11 +10705,13 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         ])?)
     }
 
-    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_23(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text("é".to_owned())])?)
     }
 
-    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_24(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_5(ctx)?,
             literal_23(ctx)?,
@@ -9729,7 +10724,8 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         ])?)
     }
 
-    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_25(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_9(ctx)?,
             literal_6(ctx)?,
@@ -9742,13 +10738,15 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         ])?)
     }
 
-    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_26(_ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_6(vec![ls::Value::Text(
             "\0aλ😀\u{10ffff}".to_owned(),
         )])?)
     }
 
-    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value> {
+    fn literal_27(ctx: &mut ls::Context) -> ls::Result<ls::Value>
+    {
         Ok(literal_shape_4(vec![
             literal_13(ctx)?,
             literal_26(ctx)?,
@@ -9761,24 +10759,26 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         ])?)
     }
 
-    fn check_body(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()> {
+    fn check_body(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()>
+    {
         let actual = {
             let sent = {
                 let replacement = ls::construct("Maybe::Present", vec![key_given.clone()])?;
-                match body.clone() {
+                match body.clone()
+                {
                     ls::Value::Data(tag, fields)
                         if tag == "lawtwin.petstore.model::type::User::User"
                             && fields.len() == 8 =>
                     {
                         let mut fields = fields.into_iter();
-                        let id = fields.next().unwrap();
-                        let _username = fields.next().unwrap();
-                        let first_name = fields.next().unwrap();
-                        let last_name = fields.next().unwrap();
-                        let email = fields.next().unwrap();
-                        let password = fields.next().unwrap();
-                        let phone = fields.next().unwrap();
-                        let user_status = fields.next().unwrap();
+                        let id = fields.next().expect("checked expression arity");
+                        let _username = fields.next().expect("checked expression arity");
+                        let first_name = fields.next().expect("checked expression arity");
+                        let last_name = fields.next().expect("checked expression arity");
+                        let email = fields.next().expect("checked expression arity");
+                        let password = fields.next().expect("checked expression arity");
+                        let phone = fields.next().expect("checked expression arity");
+                        let user_status = fields.next().expect("checked expression arity");
                         ls::construct_data(
                             "lawtwin.petstore.model::type::User::User",
                             vec![
@@ -9812,34 +10812,40 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
                 |value| ls::construct("Either::Right", vec![value]),
                 |value| ls::construct("Either::Left", vec![value]),
             )?;
-            match it.clone() {
-                ls::Value::Left(payload) => {
+            match it.clone()
+            {
+                ls::Value::Left(payload) =>
+                {
                     let _selection = *payload;
                     ls::Value::Bool(true)
                 }
-                ls::Value::Right(payload) => {
+                ls::Value::Right(payload) =>
+                {
                     let _selection = *payload;
-                    let it_2 = match sent.clone() {
+                    let it_2 = match sent.clone()
+                    {
                         ls::Value::Data(tag, fields)
                             if tag == "lawtwin.petstore.model::type::User::User"
                                 && fields.len() == 8 =>
                         {
                             let mut fields = fields.into_iter();
-                            let _id = fields.next().unwrap();
-                            let username = fields.next().unwrap();
-                            let _first_name = fields.next().unwrap();
-                            let _last_name = fields.next().unwrap();
-                            let _email = fields.next().unwrap();
-                            let _password = fields.next().unwrap();
-                            let _phone = fields.next().unwrap();
-                            let _user_status = fields.next().unwrap();
+                            let _id = fields.next().expect("checked expression arity");
+                            let username = fields.next().expect("checked expression arity");
+                            let _first_name = fields.next().expect("checked expression arity");
+                            let _last_name = fields.next().expect("checked expression arity");
+                            let _email = fields.next().expect("checked expression arity");
+                            let _password = fields.next().expect("checked expression arity");
+                            let _phone = fields.next().expect("checked expression arity");
+                            let _user_status = fields.next().expect("checked expression arity");
                             username.clone()
                         }
                         _ => return Err("invalid match value".into()),
                     };
-                    match it_2.clone() {
+                    match it_2.clone()
+                    {
                         ls::Value::Maybe(None) => ls::Value::Bool(false),
-                        ls::Value::Maybe(Some(payload)) => {
+                        ls::Value::Maybe(Some(payload)) =>
+                        {
                             let match_selection = *payload;
                             let _gone = ls::attempt(
                                 ctx,
@@ -9900,7 +10906,8 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         Ok(())
     }
 
-    fn check(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()> {
+    fn check(ctx: &mut ls::Context, body: ls::Value, key_given: ls::Value) -> ls::Result<()>
+    {
         let shared_reference =
             std::sync::Arc::new(lawspec_abilities::lawtwin_petstore::Reference::new(ctx));
         let installing = vec![("lawtwin.petstore::ability::UserApi".to_string(), {
@@ -9930,14 +10937,16 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
         "(text)",
     ];
 
-    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>> {
+    fn search_case(values: &[ls::Value]) -> ls::Result<Option<f64>>
+    {
         let ctx = &mut ls::Context::testing();
         check(ctx, values[0].clone(), values[1].clone())?;
         Ok(Some(0.0))
     }
 
     #[test]
-    fn boundaries() -> ls::Result<()> {
+    fn boundaries() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::finite_cases(
                 &ls::FiniteCover::Branches(vec![
@@ -10039,7 +11048,8 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
     }
 
     #[test]
-    fn property() -> ls::Result<()> {
+    fn property() -> ls::Result<()>
+    {
         ls::with_stack(|| {
             ls::search_replay(
                 "lawtwin.petstore::UserApi: |a deleted user is not found| [reference]",
@@ -10049,7 +11059,8 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
             let strategy = proptest::strategy::Just(ls_gen::Case::default()).boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 0 {
+                    if case.values.len() != 0
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10074,14 +11085,16 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10090,7 +11103,8 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
                 .boxed();
             let strategy = strategy
                 .prop_flat_map(|mut case| {
-                    if case.values.len() != 1 {
+                    if case.values.len() != 1
+                    {
                         return proptest::strategy::Just(case).boxed();
                     }
                     let candidate = (|| -> ls::Result<Option<ValueStrategy>> {
@@ -10109,14 +11123,16 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
                         Ok(base.map(|base| ls_gen::seeded(base, seeds)))
                     })()
                     .unwrap_or_else(|e| panic!("{e}"));
-                    match candidate {
+                    match candidate
+                    {
                         Some(s) => (proptest::strategy::Just(case), s)
                             .prop_map(|(mut case, x)| {
                                 case.values.push(x);
                                 case
                             })
                             .boxed(),
-                        None => {
+                        None =>
+                        {
                             case.values.clear();
                             proptest::strategy::Just(case).boxed()
                         }
@@ -10142,7 +11158,8 @@ mod law_userapi_a_deleted_user_is_not_found_reference {
                     case.values[0].clone(),
                     case.values[1].clone(),
                 );
-                if result.is_err() {
+                if result.is_err()
+                {
                     ls::search_remember(
                         "lawtwin.petstore::UserApi: |a deleted user is not found| [reference]",
                         SEARCH_INPUTS,

@@ -20,7 +20,10 @@ def _adapters(module: _builtins.str):
 def matchers_matches_regex(symbols, t, r):
     try:
         return _typed.to_bool(
-            _typed.matchers_matches_regex(_typed.from_text(t), _typed.from_regex(r)),
+            _typed.matchers_matches_regex(
+                _typed.from_text(t),
+                _typed.from_regex(r),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -33,7 +36,11 @@ def matchers_matches_regex(symbols, t, r):
 
 
 # keyValDeleteItems — <lawspec.collections>:32
-def lawspec_collections_key_val_delete_items_text_list_entry_text_user(symbols, k, es):
+def lawspec_collections_key_val_delete_items_text_list_entry_text_user(
+    symbols,
+    k,
+    es,
+):
     try:
         return _typed.to_list_entry_text_user(
             _typed.lawspec_collections_key_val_delete_items_text_list_entry_text_user(
@@ -53,7 +60,11 @@ def lawspec_collections_key_val_delete_items_text_list_entry_text_user(symbols, 
 
 
 # keyValDeleteItems — <lawspec.collections>:32
-def lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet(symbols, k, es):
+def lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet(
+    symbols,
+    k,
+    es,
+):
     try:
         return _typed.to_list_entry_int64_pet(
             _typed.lawspec_collections_key_val_delete_items_int64_list_entry_int64_pet(
@@ -229,7 +240,11 @@ def lawspec_collections_key_val_from_items_list_entry_text_user_list_entry_text_
 
 
 # keyValLookupItems — <lawspec.collections>:45
-def lawspec_collections_key_val_lookup_items_text_list_entry_text_user(symbols, k, es):
+def lawspec_collections_key_val_lookup_items_text_list_entry_text_user(
+    symbols,
+    k,
+    es,
+):
     try:
         return _typed.to_maybe_user(
             _typed.lawspec_collections_key_val_lookup_items_text_list_entry_text_user(
@@ -273,7 +288,11 @@ def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_order(
 
 
 # keyValLookupItems — <lawspec.collections>:45
-def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet(symbols, k, es):
+def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet(
+    symbols,
+    k,
+    es,
+):
     try:
         return _typed.to_maybe_pet(
             _typed.lawspec_collections_key_val_lookup_items_int64_list_entry_int64_pet(
@@ -488,7 +507,12 @@ def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order(
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_text_user_key_val_text_user(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_user_key_val_text_user(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_user(
             _typed.lawspec_collections_key_val_put_text_user_key_val_text_user(
@@ -509,7 +533,12 @@ def lawspec_collections_key_val_put_text_user_key_val_text_user(symbols, k, v, m
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_pet(
             _typed.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(
@@ -530,7 +559,12 @@ def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(symbols, k, v, m
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_int64_order_key_val_int64_order(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_order_key_val_int64_order(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_order(
             _typed.lawspec_collections_key_val_put_int64_order_key_val_int64_order(
@@ -551,7 +585,11 @@ def lawspec_collections_key_val_put_int64_order_key_val_int64_order(symbols, k, 
 
 
 # lawtwinPetstoreHandwrittenCreateUsersWithListInput — ../src/handwritten.lawspec:39
-def lawtwin_petstore_handwritten_create_users_with_list_input(symbols, body, current):
+def lawtwin_petstore_handwritten_create_users_with_list_input(
+    symbols,
+    body,
+    current,
+):
     try:
         return _typed.to_pair_user_state(
             _typed.lawtwin_petstore_handwritten_create_users_with_list_input(
@@ -630,7 +668,12 @@ def lawtwin_petstore_handwritten_get_inventory(symbols, current):
 
 
 # lawtwinPetstoreHandwrittenLoginUser — ../src/handwritten.lawspec:44
-def lawtwin_petstore_handwritten_login_user(symbols, username, password, current):
+def lawtwin_petstore_handwritten_login_user(
+    symbols,
+    username,
+    password,
+    current,
+):
     try:
         return _typed.to_pair_text_state(
             _typed.lawtwin_petstore_handwritten_login_user(
@@ -654,7 +697,9 @@ def lawtwin_petstore_handwritten_login_user(symbols, username, password, current
 def lawtwin_petstore_handwritten_logout_user(symbols, current):
     try:
         return _typed.to_pair_unit_state(
-            _typed.lawtwin_petstore_handwritten_logout_user(_typed.from_state(current)),
+            _typed.lawtwin_petstore_handwritten_logout_user(
+                _typed.from_state(current),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -735,7 +780,8 @@ def lawtwin_petstore_model_after64(symbols, k):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::lawtwinPetstoreModelAfter64: " + _builtins.str(error),
+            "lawtwin.petstore::lawtwinPetstoreModelAfter64: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -751,7 +797,8 @@ def lawtwin_petstore_model_empty_state(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::lawtwinPetstoreModelEmptyState: " + _builtins.str(error),
+            "lawtwin.petstore::lawtwinPetstoreModelEmptyState: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -989,7 +1036,8 @@ def lawtwin_petstore_model_valid_order(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::lawtwinPetstoreModelValidOrder: " + _builtins.str(error),
+            "lawtwin.petstore::lawtwinPetstoreModelValidOrder: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -997,7 +1045,10 @@ def lawtwin_petstore_model_valid_order(symbols, value):
 def reference_add_pet(symbols, state, value0):
     try:
         return _typed.to_pair_pet_state(
-            _typed.reference_add_pet(_typed.from_state(state), _typed.from_pet(value0)),
+            _typed.reference_add_pet(
+                _typed.from_state(state),
+                _typed.from_pet(value0),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -1121,7 +1172,8 @@ def reference_find_pets_by_status(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::referenceFindPetsByStatus: " + _builtins.str(error),
+            "lawtwin.petstore::referenceFindPetsByStatus: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1140,7 +1192,8 @@ def reference_find_pets_by_tags(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::referenceFindPetsByTags: " + _builtins.str(error),
+            "lawtwin.petstore::referenceFindPetsByTags: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1322,7 +1375,8 @@ def reference_update_pet_with_form(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore::referenceUpdatePetWithForm: " + _builtins.str(error),
+            "lawtwin.petstore::referenceUpdatePetWithForm: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1382,7 +1436,8 @@ def find_pets_by_status(symbols, status, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::findPetsByStatus: " + _builtins.str(error),
+            "lawtwin.petstore.handwritten::findPetsByStatus: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1401,7 +1456,8 @@ def find_pets_by_tags(symbols, tags, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::findPetsByTags: " + _builtins.str(error),
+            "lawtwin.petstore.handwritten::findPetsByTags: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1422,7 +1478,8 @@ def update_pet_with_form(symbols, pet_id, name, status, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::updatePetWithForm: " + _builtins.str(error),
+            "lawtwin.petstore.handwritten::updatePetWithForm: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1461,7 +1518,8 @@ def get_inventory(symbols, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.handwritten::getInventory: " + _builtins.str(error),
+            "lawtwin.petstore.handwritten::getInventory: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1509,7 +1567,9 @@ def login_user(symbols, username, password, current):
 def logout_user(symbols, current):
     try:
         return _typed.to_pair_unit_state(
-            _typed.lawtwin_petstore_handwritten_logout_user(_typed.from_state(current)),
+            _typed.lawtwin_petstore_handwritten_logout_user(
+                _typed.from_state(current),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -1614,7 +1674,11 @@ def lawspec_collections_key_val_delete_text_key_val_text_user_2(symbols, k, m):
 
 
 # keyValDelete — <lawspec.collections>:93
-def lawspec_collections_key_val_delete_int64_key_val_int64_order_2(symbols, k, m):
+def lawspec_collections_key_val_delete_int64_key_val_int64_order_2(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_key_val_int64_order(
             _typed.lawspec_collections_key_val_delete_int64_key_val_int64_order(
@@ -1838,7 +1902,11 @@ def lawspec_collections_key_val_lookup_int64_key_val_int64_pet_2(symbols, k, m):
 
 
 # keyValLookup — <lawspec.collections>:85
-def lawspec_collections_key_val_lookup_int64_key_val_int64_order_2(symbols, k, m):
+def lawspec_collections_key_val_lookup_int64_key_val_int64_order_2(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_maybe_order(
             _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_order(
@@ -1993,7 +2061,12 @@ def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order_2(
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_text_user_key_val_text_user_2(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_user_key_val_text_user_2(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_user(
             _typed.lawspec_collections_key_val_put_text_user_key_val_text_user(
@@ -2014,7 +2087,12 @@ def lawspec_collections_key_val_put_text_user_key_val_text_user_2(symbols, k, v,
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_2(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_2(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_pet(
             _typed.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(
@@ -2035,7 +2113,12 @@ def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_2(symbols, k, v,
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_int64_order_key_val_int64_order_2(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_order_key_val_int64_order_2(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_order(
             _typed.lawspec_collections_key_val_put_int64_order_key_val_int64_order(
@@ -2056,7 +2139,11 @@ def lawspec_collections_key_val_put_int64_order_key_val_int64_order_2(symbols, k
 
 
 # lawtwinPetstoreHandwrittenCreateUsersWithListInput — ../src/handwritten.lawspec:39
-def lawtwin_petstore_handwritten_create_users_with_list_input_2(symbols, body, current):
+def lawtwin_petstore_handwritten_create_users_with_list_input_2(
+    symbols,
+    body,
+    current,
+):
     try:
         return _typed.to_pair_user_state(
             _typed.lawtwin_petstore_handwritten_create_users_with_list_input(
@@ -2076,7 +2163,11 @@ def lawtwin_petstore_handwritten_create_users_with_list_input_2(symbols, body, c
 
 
 # lawtwinPetstoreHandwrittenFindPetsByStatus — ../src/handwritten.lawspec:14
-def lawtwin_petstore_handwritten_find_pets_by_status_2(symbols, status, current):
+def lawtwin_petstore_handwritten_find_pets_by_status_2(
+    symbols,
+    status,
+    current,
+):
     try:
         return _typed.to_pair_list_pet_state(
             _typed.lawtwin_petstore_handwritten_find_pets_by_status(
@@ -2135,7 +2226,12 @@ def lawtwin_petstore_handwritten_get_inventory_2(symbols, current):
 
 
 # lawtwinPetstoreHandwrittenLoginUser — ../src/handwritten.lawspec:44
-def lawtwin_petstore_handwritten_login_user_2(symbols, username, password, current):
+def lawtwin_petstore_handwritten_login_user_2(
+    symbols,
+    username,
+    password,
+    current,
+):
     try:
         return _typed.to_pair_text_state(
             _typed.lawtwin_petstore_handwritten_login_user(
@@ -2159,7 +2255,9 @@ def lawtwin_petstore_handwritten_login_user_2(symbols, username, password, curre
 def lawtwin_petstore_handwritten_logout_user_2(symbols, current):
     try:
         return _typed.to_pair_unit_state(
-            _typed.lawtwin_petstore_handwritten_logout_user(_typed.from_state(current)),
+            _typed.lawtwin_petstore_handwritten_logout_user(
+                _typed.from_state(current),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -2323,7 +2421,12 @@ def lawtwin_petstore_model_model_delete_order_2(symbols, order_id, current):
 
 
 # lawtwinPetstoreModelModelDeletePet — ../src/model.lawspec:171
-def lawtwin_petstore_model_model_delete_pet_2(symbols, pet_id, api_key, current):
+def lawtwin_petstore_model_model_delete_pet_2(
+    symbols,
+    pet_id,
+    api_key,
+    current,
+):
     try:
         return _typed.to_pair_unit_state(
             _typed.lawtwin_petstore_model_model_delete_pet(
@@ -2464,7 +2567,12 @@ def lawtwin_petstore_model_model_update_pet_2(symbols, body, current):
 
 
 # lawtwinPetstoreModelModelUpdateUser — ../src/model.lawspec:238
-def lawtwin_petstore_model_model_update_user_2(symbols, username, body, current):
+def lawtwin_petstore_model_model_update_user_2(
+    symbols,
+    username,
+    body,
+    current,
+):
     try:
         return _typed.to_pair_unit_state(
             _typed.lawtwin_petstore_model_model_update_user(
@@ -2504,14 +2612,17 @@ def lawtwin_petstore_model_valid_order_2(symbols, value):
 # noHandWrittenLawsYet — ../src/laws.lawspec:20
 def no_hand_written_laws_yet(symbols, u):
     try:
-        return _typed.to_unit(_typed.no_hand_written_laws_yet(_typed.from_unit(u)))
+        return _typed.to_unit(
+            _typed.no_hand_written_laws_yet(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::noHandWrittenLawsYet: " + _builtins.str(error),
+            "lawtwin.petstore.laws::noHandWrittenLawsYet: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2519,7 +2630,10 @@ def no_hand_written_laws_yet(symbols, u):
 def reference_add_pet_2(symbols, state, value0):
     try:
         return _typed.to_pair_pet_state(
-            _typed.reference_add_pet(_typed.from_state(state), _typed.from_pet(value0)),
+            _typed.reference_add_pet(
+                _typed.from_state(state),
+                _typed.from_pet(value0),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -2546,7 +2660,8 @@ def reference_create_user_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceCreateUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceCreateUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2585,7 +2700,8 @@ def reference_delete_order_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceDeleteOrder: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceDeleteOrder: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2605,7 +2721,8 @@ def reference_delete_pet_2(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceDeletePet: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceDeletePet: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2624,7 +2741,8 @@ def reference_delete_user_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceDeleteUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceDeleteUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2643,7 +2761,8 @@ def reference_find_pets_by_status_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceFindPetsByStatus: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceFindPetsByStatus: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2662,7 +2781,8 @@ def reference_find_pets_by_tags_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceFindPetsByTags: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceFindPetsByTags: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2678,7 +2798,8 @@ def reference_get_inventory_2(symbols, state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetInventory: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetInventory: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2697,7 +2818,8 @@ def reference_get_order_by_id_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetOrderById: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetOrderById: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2716,7 +2838,8 @@ def reference_get_pet_by_id_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetPetById: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetPetById: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2735,7 +2858,8 @@ def reference_get_user_by_name_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetUserByName: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetUserByName: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2755,7 +2879,8 @@ def reference_login_user_2(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceLoginUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceLoginUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2771,7 +2896,8 @@ def reference_logout_user_2(symbols, state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceLogoutUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceLogoutUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2790,7 +2916,8 @@ def reference_place_order_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referencePlaceOrder: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referencePlaceOrder: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2823,7 +2950,8 @@ def reference_update_pet_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceUpdatePet: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceUpdatePet: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2865,7 +2993,8 @@ def reference_update_user_2(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceUpdateUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceUpdateUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2886,7 +3015,8 @@ def reference_upload_file_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceUploadFile: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceUploadFile: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3015,7 +3145,11 @@ def lawspec_collections_key_val_delete_text_key_val_text_user_3(symbols, k, m):
 
 
 # keyValDelete — <lawspec.collections>:93
-def lawspec_collections_key_val_delete_int64_key_val_int64_order_3(symbols, k, m):
+def lawspec_collections_key_val_delete_int64_key_val_int64_order_3(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_key_val_int64_order(
             _typed.lawspec_collections_key_val_delete_int64_key_val_int64_order(
@@ -3239,7 +3373,11 @@ def lawspec_collections_key_val_lookup_int64_key_val_int64_pet_3(symbols, k, m):
 
 
 # keyValLookup — <lawspec.collections>:85
-def lawspec_collections_key_val_lookup_int64_key_val_int64_order_3(symbols, k, m):
+def lawspec_collections_key_val_lookup_int64_key_val_int64_order_3(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_maybe_order(
             _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_order(
@@ -3394,7 +3532,12 @@ def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order_3(
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_text_user_key_val_text_user_3(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_user_key_val_text_user_3(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_user(
             _typed.lawspec_collections_key_val_put_text_user_key_val_text_user(
@@ -3415,7 +3558,12 @@ def lawspec_collections_key_val_put_text_user_key_val_text_user_3(symbols, k, v,
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_3(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_3(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_pet(
             _typed.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(
@@ -3436,7 +3584,12 @@ def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_3(symbols, k, v,
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_int64_order_key_val_int64_order_3(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_order_key_val_int64_order_3(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_order(
             _typed.lawspec_collections_key_val_put_int64_order_key_val_int64_order(
@@ -3567,7 +3720,8 @@ def model_get_order_by_id(symbols, order_id, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.model::modelGetOrderById: " + _builtins.str(error),
+            "lawtwin.petstore.model::modelGetOrderById: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3605,7 +3759,8 @@ def model_get_user_by_name(symbols, username, current):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.model::modelGetUserByName: " + _builtins.str(error),
+            "lawtwin.petstore.model::modelGetUserByName: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3776,7 +3931,11 @@ def lawspec_collections_key_val_delete_text_key_val_text_user_4(symbols, k, m):
 
 
 # keyValDelete — <lawspec.collections>:93
-def lawspec_collections_key_val_delete_int64_key_val_int64_order_4(symbols, k, m):
+def lawspec_collections_key_val_delete_int64_key_val_int64_order_4(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_key_val_int64_order(
             _typed.lawspec_collections_key_val_delete_int64_key_val_int64_order(
@@ -4000,7 +4159,11 @@ def lawspec_collections_key_val_lookup_int64_key_val_int64_pet_4(symbols, k, m):
 
 
 # keyValLookup — <lawspec.collections>:85
-def lawspec_collections_key_val_lookup_int64_key_val_int64_order_4(symbols, k, m):
+def lawspec_collections_key_val_lookup_int64_key_val_int64_order_4(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_maybe_order(
             _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_order(
@@ -4155,7 +4318,12 @@ def lawspec_collections_key_val_put_items_int64_order_list_entry_int64_order_4(
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_text_user_key_val_text_user_4(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_user_key_val_text_user_4(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_user(
             _typed.lawspec_collections_key_val_put_text_user_key_val_text_user(
@@ -4176,7 +4344,12 @@ def lawspec_collections_key_val_put_text_user_key_val_text_user_4(symbols, k, v,
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_4(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_4(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_pet(
             _typed.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet(
@@ -4197,7 +4370,12 @@ def lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_4(symbols, k, v,
 
 
 # keyValPut — <lawspec.collections>:89
-def lawspec_collections_key_val_put_int64_order_key_val_int64_order_4(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_order_key_val_int64_order_4(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_order(
             _typed.lawspec_collections_key_val_put_int64_order_key_val_int64_order(
@@ -4218,7 +4396,11 @@ def lawspec_collections_key_val_put_int64_order_key_val_int64_order_4(symbols, k
 
 
 # lawtwinPetstoreHandwrittenCreateUsersWithListInput — ../src/handwritten.lawspec:39
-def lawtwin_petstore_handwritten_create_users_with_list_input_3(symbols, body, current):
+def lawtwin_petstore_handwritten_create_users_with_list_input_3(
+    symbols,
+    body,
+    current,
+):
     try:
         return _typed.to_pair_user_state(
             _typed.lawtwin_petstore_handwritten_create_users_with_list_input(
@@ -4238,7 +4420,11 @@ def lawtwin_petstore_handwritten_create_users_with_list_input_3(symbols, body, c
 
 
 # lawtwinPetstoreHandwrittenFindPetsByStatus — ../src/handwritten.lawspec:14
-def lawtwin_petstore_handwritten_find_pets_by_status_3(symbols, status, current):
+def lawtwin_petstore_handwritten_find_pets_by_status_3(
+    symbols,
+    status,
+    current,
+):
     try:
         return _typed.to_pair_list_pet_state(
             _typed.lawtwin_petstore_handwritten_find_pets_by_status(
@@ -4297,7 +4483,12 @@ def lawtwin_petstore_handwritten_get_inventory_3(symbols, current):
 
 
 # lawtwinPetstoreHandwrittenLoginUser — ../src/handwritten.lawspec:44
-def lawtwin_petstore_handwritten_login_user_3(symbols, username, password, current):
+def lawtwin_petstore_handwritten_login_user_3(
+    symbols,
+    username,
+    password,
+    current,
+):
     try:
         return _typed.to_pair_text_state(
             _typed.lawtwin_petstore_handwritten_login_user(
@@ -4321,7 +4512,9 @@ def lawtwin_petstore_handwritten_login_user_3(symbols, username, password, curre
 def lawtwin_petstore_handwritten_logout_user_3(symbols, current):
     try:
         return _typed.to_pair_unit_state(
-            _typed.lawtwin_petstore_handwritten_logout_user(_typed.from_state(current)),
+            _typed.lawtwin_petstore_handwritten_logout_user(
+                _typed.from_state(current),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -4485,7 +4678,12 @@ def lawtwin_petstore_model_model_delete_order_3(symbols, order_id, current):
 
 
 # lawtwinPetstoreModelModelDeletePet — ../src/model.lawspec:171
-def lawtwin_petstore_model_model_delete_pet_3(symbols, pet_id, api_key, current):
+def lawtwin_petstore_model_model_delete_pet_3(
+    symbols,
+    pet_id,
+    api_key,
+    current,
+):
     try:
         return _typed.to_pair_unit_state(
             _typed.lawtwin_petstore_model_model_delete_pet(
@@ -4626,7 +4824,12 @@ def lawtwin_petstore_model_model_update_pet_3(symbols, body, current):
 
 
 # lawtwinPetstoreModelModelUpdateUser — ../src/model.lawspec:238
-def lawtwin_petstore_model_model_update_user_3(symbols, username, body, current):
+def lawtwin_petstore_model_model_update_user_3(
+    symbols,
+    username,
+    body,
+    current,
+):
     try:
         return _typed.to_pair_unit_state(
             _typed.lawtwin_petstore_model_model_update_user(
@@ -4667,7 +4870,10 @@ def lawtwin_petstore_model_valid_order_3(symbols, value):
 def reference_add_pet_3(symbols, state, value0):
     try:
         return _typed.to_pair_pet_state(
-            _typed.reference_add_pet(_typed.from_state(state), _typed.from_pet(value0)),
+            _typed.reference_add_pet(
+                _typed.from_state(state),
+                _typed.from_pet(value0),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -4694,7 +4900,8 @@ def reference_create_user_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceCreateUser: " + _builtins.str(error),
+            "contracttest.petstore::referenceCreateUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4733,7 +4940,8 @@ def reference_delete_order_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceDeleteOrder: " + _builtins.str(error),
+            "contracttest.petstore::referenceDeleteOrder: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4753,7 +4961,8 @@ def reference_delete_pet_3(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceDeletePet: " + _builtins.str(error),
+            "contracttest.petstore::referenceDeletePet: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4772,7 +4981,8 @@ def reference_delete_user_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceDeleteUser: " + _builtins.str(error),
+            "contracttest.petstore::referenceDeleteUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4791,7 +5001,8 @@ def reference_find_pets_by_status_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceFindPetsByStatus: " + _builtins.str(error),
+            "contracttest.petstore::referenceFindPetsByStatus: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4810,7 +5021,8 @@ def reference_find_pets_by_tags_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceFindPetsByTags: " + _builtins.str(error),
+            "contracttest.petstore::referenceFindPetsByTags: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4826,7 +5038,8 @@ def reference_get_inventory_3(symbols, state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceGetInventory: " + _builtins.str(error),
+            "contracttest.petstore::referenceGetInventory: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4845,7 +5058,8 @@ def reference_get_order_by_id_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceGetOrderById: " + _builtins.str(error),
+            "contracttest.petstore::referenceGetOrderById: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4864,7 +5078,8 @@ def reference_get_pet_by_id_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceGetPetById: " + _builtins.str(error),
+            "contracttest.petstore::referenceGetPetById: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4883,7 +5098,8 @@ def reference_get_user_by_name_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceGetUserByName: " + _builtins.str(error),
+            "contracttest.petstore::referenceGetUserByName: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4903,7 +5119,8 @@ def reference_login_user_3(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceLoginUser: " + _builtins.str(error),
+            "contracttest.petstore::referenceLoginUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4919,7 +5136,8 @@ def reference_logout_user_3(symbols, state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceLogoutUser: " + _builtins.str(error),
+            "contracttest.petstore::referenceLogoutUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4938,7 +5156,8 @@ def reference_place_order_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referencePlaceOrder: " + _builtins.str(error),
+            "contracttest.petstore::referencePlaceOrder: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -4971,7 +5190,8 @@ def reference_update_pet_3(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceUpdatePet: " + _builtins.str(error),
+            "contracttest.petstore::referenceUpdatePet: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5013,7 +5233,8 @@ def reference_update_user_3(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceUpdateUser: " + _builtins.str(error),
+            "contracttest.petstore::referenceUpdateUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5034,19 +5255,23 @@ def reference_upload_file_3(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::referenceUploadFile: " + _builtins.str(error),
+            "contracttest.petstore::referenceUploadFile: "
+            + _builtins.str(error),
         ) from error
 
 
 # suiteNamesThePackage — laws/suite.lawspec:8
 def suite_names_the_package(symbols, u):
     try:
-        return _typed.to_unit(_typed.no_hand_written_laws_yet(_typed.from_unit(u)))
+        return _typed.to_unit(
+            _typed.no_hand_written_laws_yet(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.petstore::suiteNamesThePackage: " + _builtins.str(error),
+            "contracttest.petstore::suiteNamesThePackage: "
+            + _builtins.str(error),
         ) from error

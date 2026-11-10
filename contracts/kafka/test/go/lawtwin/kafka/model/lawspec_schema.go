@@ -219,6 +219,74 @@ func (s *lawSpecSchema) hasContracts() bool {
 	return false
 }
 
+// Compute a finite fixed point over stored parameters. Following instantiated
+// recursive types directly would not terminate for growing type applications.
+// A phantom argument carries no values and therefore adds no contract.
+func (s *lawSpecSchema) hasContractsFor(reference lawSpecTypeRef) bool {
+	type requirement struct {
+		direct bool
+		stored map[int]bool
+	}
+	table := map[string]requirement{}
+	for name, definition := range s.definitions {
+		own := false
+		for _, constructor := range definition.constructors {
+			own = own || len(s.contracts[constructor.tag]) != 0
+			for _, index := range constructor.indices {
+				own = own || strings.HasPrefix(index, "== ") || strings.HasPrefix(index, ">= ")
+			}
+		}
+		table[name] = requirement{own, map[int]bool{}}
+	}
+	merge := func(into *requirement, from requirement) {
+		into.direct = into.direct || from.direct
+		for parameter := range from.stored {
+			into.stored[parameter] = true
+		}
+	}
+	var needs func(lawSpecTypeRef) requirement
+	needs = func(ref lawSpecTypeRef) requirement {
+		result := requirement{false, map[int]bool{}}
+		if ref.name == "" {
+			result.stored[ref.parameter] = true
+			return result
+		}
+		if ref.name == "Nullable" || ref.name == "Optional" || ref.name == "List" || ref.name == "Maybe" || ref.name == "Either" {
+			for _, argument := range ref.arguments {
+				merge(&result, needs(argument))
+			}
+		} else if rule, exists := table[ref.name]; exists {
+			result.direct = rule.direct
+			for parameter := range rule.stored {
+				if parameter < len(ref.arguments) {
+					merge(&result, needs(ref.arguments[parameter]))
+				}
+			}
+		}
+		return result
+	}
+	for {
+		changed := false
+		for name, definition := range s.definitions {
+			before := table[name]
+			next := requirement{before.direct, map[int]bool{}}
+			merge(&next, before)
+			for _, constructor := range definition.constructors {
+				for _, field := range constructor.fields {
+					merge(&next, needs(field.typeRef))
+				}
+			}
+			if next.direct != before.direct || len(next.stored) != len(before.stored) {
+				changed = true
+			}
+			table[name] = next
+		}
+		if !changed {
+			return needs(reference).direct
+		}
+	}
+}
+
 func lsSchemaSymbols(contexts []map[string]*lawSpecSymbol) map[string]*lawSpecSymbol {
 	if len(contexts) > 1 {
 		panic("expected at most one Symbol context")

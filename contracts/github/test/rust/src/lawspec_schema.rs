@@ -2,7 +2,8 @@
 use crate::lawspec_runtime as ls;
 
 /// The program's data schema, built once.
-pub fn schema() -> ls::Result<&'static ls::Schema> {
+pub fn schema() -> ls::Result<&'static ls::Schema>
+{
     static SCHEMA: std::sync::OnceLock<ls::Result<ls::Schema>> = std::sync::OnceLock::new();
     SCHEMA
         .get_or_init(build)
@@ -10,7 +11,8 @@ pub fn schema() -> ls::Result<&'static ls::Schema> {
         .map_err(|error| error.clone())
 }
 
-fn build() -> ls::Result<ls::Schema> {
+fn build() -> ls::Result<ls::Schema>
+{
     ls::Schema::new(vec![
         ls::DataSchema {
             name: "lawspec.collections::type::Ordering",

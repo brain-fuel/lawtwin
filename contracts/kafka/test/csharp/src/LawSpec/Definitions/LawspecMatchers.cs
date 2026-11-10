@@ -16,11 +16,11 @@ using Value = LawSpec.Runtime.Value;
 /// <summary>The checked definitions of lawspec.matchers, on native values.</summary>
 public static class LawspecMatchers
 {
-    /// <summary>matchersMatchesRegex — &lt;lawspec.matchers&gt;:47</summary>
-    public static bool MatchersMatchesRegex(string t, LawSpec.Data.Regex r)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawspecMatchers.MatchersMatchesRegex(schema, symbols, Codecs.Text.FromNative.Invoke(t), LawSpec.Data.Codecs.Regex().FromNative.Invoke(r)));
-    }
+  /// <summary>matchersMatchesRegex — &lt;lawspec.matchers&gt;:47</summary>
+  public static bool MatchersMatchesRegex(string t, LawSpec.Data.Regex r)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawspecMatchers.MatchersMatchesRegex(schema, symbols, Codecs.Text.FromNative.Invoke(t), LawSpec.Data.Codecs.Regex().FromNative.Invoke(r)));
+  }
 }

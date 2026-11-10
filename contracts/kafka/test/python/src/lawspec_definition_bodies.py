@@ -21,7 +21,9 @@ def _adapters(module: _builtins.str):
 # boundedInt16 — <lawspec.collections>:358
 def bounded_int16(symbols, value):
     try:
-        return _typed.to_maybe_int16(_typed.bounded_int16(_typed.from_integer(value)))
+        return _typed.to_maybe_int16(
+            _typed.bounded_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -35,7 +37,9 @@ def bounded_int16(symbols, value):
 # boundedInt32 — <lawspec.collections>:371
 def bounded_int32(symbols, value):
     try:
-        return _typed.to_maybe_int32(_typed.bounded_int32(_typed.from_integer(value)))
+        return _typed.to_maybe_int32(
+            _typed.bounded_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -49,7 +53,9 @@ def bounded_int32(symbols, value):
 # boundedInt64 — <lawspec.collections>:384
 def bounded_int64(symbols, value):
     try:
-        return _typed.to_maybe_int64(_typed.bounded_int64(_typed.from_integer(value)))
+        return _typed.to_maybe_int64(
+            _typed.bounded_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -63,7 +69,9 @@ def bounded_int64(symbols, value):
 # boundedInt8 — <lawspec.collections>:345
 def bounded_int8(symbols, value):
     try:
-        return _typed.to_maybe_int8(_typed.bounded_int8(_typed.from_integer(value)))
+        return _typed.to_maybe_int8(
+            _typed.bounded_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -86,8 +94,20 @@ def bounded_int_size(symbols, value):
                 symbols,
             )
             if (
-                ls.binary(">=", value, -9223372036854775808, "Integer", "Integer")
-                and ls.binary("<=", value, 9223372036854775807, "Integer", "Integer")
+                ls.binary(
+                    ">=",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                )
+                and ls.binary(
+                    "<=",
+                    value,
+                    9223372036854775807,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
@@ -159,7 +179,9 @@ def bounded_u_int64(symbols, value):
 # boundedUInt8 — <lawspec.collections>:397
 def bounded_u_int8(symbols, value):
     try:
-        return _typed.to_maybe_u_int8(_typed.bounded_u_int8(_typed.from_integer(value)))
+        return _typed.to_maybe_u_int8(
+            _typed.bounded_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -183,7 +205,13 @@ def bounded_u_int_ptr(symbols, value):
             )
             if (
                 ls.binary(">=", value, 0, "Integer", "Integer")
-                and ls.binary("<=", value, 18446744073709551615, "Integer", "Integer")
+                and ls.binary(
+                    "<=",
+                    value,
+                    18446744073709551615,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
@@ -217,7 +245,13 @@ def bounded_u_int_size(symbols, value):
             )
             if (
                 ls.binary(">=", value, 0, "Integer", "Integer")
-                and ls.binary("<=", value, 18446744073709551615, "Integer", "Integer")
+                and ls.binary(
+                    "<=",
+                    value,
+                    18446744073709551615,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
@@ -241,7 +275,9 @@ def bounded_u_int_size(symbols, value):
 # saturatingInt16 — <lawspec.collections>:354
 def saturating_int16(symbols, value):
     try:
-        return _typed.to_int16(_typed.saturating_int16(_typed.from_integer(value)))
+        return _typed.to_int16(
+            _typed.saturating_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -255,7 +291,9 @@ def saturating_int16(symbols, value):
 # saturatingInt32 — <lawspec.collections>:367
 def saturating_int32(symbols, value):
     try:
-        return _typed.to_int32(_typed.saturating_int32(_typed.from_integer(value)))
+        return _typed.to_int32(
+            _typed.saturating_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -269,7 +307,9 @@ def saturating_int32(symbols, value):
 # saturatingInt64 — <lawspec.collections>:380
 def saturating_int64(symbols, value):
     try:
-        return _typed.to_int64(_typed.saturating_int64(_typed.from_integer(value)))
+        return _typed.to_int64(
+            _typed.saturating_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -283,7 +323,9 @@ def saturating_int64(symbols, value):
 # saturatingInt8 — <lawspec.collections>:341
 def saturating_int8(symbols, value):
     try:
-        return _typed.to_int8(_typed.saturating_int8(_typed.from_integer(value)))
+        return _typed.to_int8(
+            _typed.saturating_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -302,7 +344,13 @@ def saturating_int_size(symbols, value):
             if ls.binary(">", value, 9223372036854775807, "Integer", "Integer")
             else (
                 ls.convert(-9223372036854775808, "IntSize", MACHINE_BITS)
-                if ls.binary("<", value, -9223372036854775808, "Integer", "Integer")
+                if ls.binary(
+                    "<",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                )
                 else ls.helper("IntSize", [value], ["Integer"], MACHINE_BITS)
             )
         )
@@ -320,7 +368,9 @@ def saturating_int_size(symbols, value):
 # saturatingUInt16 — <lawspec.collections>:406
 def saturating_u_int16(symbols, value):
     try:
-        return _typed.to_u_int16(_typed.saturating_u_int16(_typed.from_integer(value)))
+        return _typed.to_u_int16(
+            _typed.saturating_u_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -334,7 +384,9 @@ def saturating_u_int16(symbols, value):
 # saturatingUInt32 — <lawspec.collections>:419
 def saturating_u_int32(symbols, value):
     try:
-        return _typed.to_u_int32(_typed.saturating_u_int32(_typed.from_integer(value)))
+        return _typed.to_u_int32(
+            _typed.saturating_u_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -348,7 +400,9 @@ def saturating_u_int32(symbols, value):
 # saturatingUInt64 — <lawspec.collections>:432
 def saturating_u_int64(symbols, value):
     try:
-        return _typed.to_u_int64(_typed.saturating_u_int64(_typed.from_integer(value)))
+        return _typed.to_u_int64(
+            _typed.saturating_u_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -362,7 +416,9 @@ def saturating_u_int64(symbols, value):
 # saturatingUInt8 — <lawspec.collections>:393
 def saturating_u_int8(symbols, value):
     try:
-        return _typed.to_u_int8(_typed.saturating_u_int8(_typed.from_integer(value)))
+        return _typed.to_u_int8(
+            _typed.saturating_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -422,7 +478,9 @@ def saturating_u_int_size(symbols, value):
 # wrappingInt16 — <lawspec.collections>:349
 def wrapping_int16(symbols, value):
     try:
-        return _typed.to_int16(_typed.wrapping_int16(_typed.from_integer(value)))
+        return _typed.to_int16(
+            _typed.wrapping_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -436,7 +494,9 @@ def wrapping_int16(symbols, value):
 # wrappingInt32 — <lawspec.collections>:362
 def wrapping_int32(symbols, value):
     try:
-        return _typed.to_int32(_typed.wrapping_int32(_typed.from_integer(value)))
+        return _typed.to_int32(
+            _typed.wrapping_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -450,7 +510,9 @@ def wrapping_int32(symbols, value):
 # wrappingInt64 — <lawspec.collections>:375
 def wrapping_int64(symbols, value):
     try:
-        return _typed.to_int64(_typed.wrapping_int64(_typed.from_integer(value)))
+        return _typed.to_int64(
+            _typed.wrapping_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -515,7 +577,15 @@ def wrapping_int_size(symbols, value):
                 if ls.binary("<", r, 0, "Integer", "Integer")
                 else ls.helper(
                     "IntSize",
-                    [ls.binary("+", r, -9223372036854775808, "Integer", "Integer")],
+                    [
+                        ls.binary(
+                            "+",
+                            r,
+                            -9223372036854775808,
+                            "Integer",
+                            "Integer",
+                        ),
+                    ],
                     ["Integer"],
                     MACHINE_BITS,
                 )
@@ -523,7 +593,13 @@ def wrapping_int_size(symbols, value):
         )(
             ls.binary(
                 "rem",
-                ls.binary("-", value, -9223372036854775808, "Integer", "Integer"),
+                ls.binary(
+                    "-",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                ),
                 ls.binary(
                     "+",
                     ls.binary(
@@ -555,7 +631,9 @@ def wrapping_int_size(symbols, value):
 # wrappingUInt16 — <lawspec.collections>:401
 def wrapping_u_int16(symbols, value):
     try:
-        return _typed.to_u_int16(_typed.wrapping_u_int16(_typed.from_integer(value)))
+        return _typed.to_u_int16(
+            _typed.wrapping_u_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -569,7 +647,9 @@ def wrapping_u_int16(symbols, value):
 # wrappingUInt32 — <lawspec.collections>:414
 def wrapping_u_int32(symbols, value):
     try:
-        return _typed.to_u_int32(_typed.wrapping_u_int32(_typed.from_integer(value)))
+        return _typed.to_u_int32(
+            _typed.wrapping_u_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -583,7 +663,9 @@ def wrapping_u_int32(symbols, value):
 # wrappingUInt64 — <lawspec.collections>:427
 def wrapping_u_int64(symbols, value):
     try:
-        return _typed.to_u_int64(_typed.wrapping_u_int64(_typed.from_integer(value)))
+        return _typed.to_u_int64(
+            _typed.wrapping_u_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -597,7 +679,9 @@ def wrapping_u_int64(symbols, value):
 # wrappingUInt8 — <lawspec.collections>:388
 def wrapping_u_int8(symbols, value):
     try:
-        return _typed.to_u_int8(_typed.wrapping_u_int8(_typed.from_integer(value)))
+        return _typed.to_u_int8(
+            _typed.wrapping_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -659,7 +743,13 @@ def wrapping_u_int_ptr(symbols, value):
                 ls.binary("-", value, 0, "Integer", "Integer"),
                 ls.binary(
                     "+",
-                    ls.binary("-", 18446744073709551615, 0, "Integer", "Integer"),
+                    ls.binary(
+                        "-",
+                        18446744073709551615,
+                        0,
+                        "Integer",
+                        "Integer",
+                    ),
                     1,
                     "Integer",
                     "Integer",
@@ -730,7 +820,13 @@ def wrapping_u_int_size(symbols, value):
                 ls.binary("-", value, 0, "Integer", "Integer"),
                 ls.binary(
                     "+",
-                    ls.binary("-", 18446744073709551615, 0, "Integer", "Integer"),
+                    ls.binary(
+                        "-",
+                        18446744073709551615,
+                        0,
+                        "Integer",
+                        "Integer",
+                    ),
                     1,
                     "Integer",
                     "Integer",
@@ -754,7 +850,10 @@ def wrapping_u_int_size(symbols, value):
 def matchers_matches_regex(symbols, t, r):
     try:
         return _typed.to_bool(
-            _typed.matchers_matches_regex(_typed.from_text(t), _typed.from_regex(r)),
+            _typed.matchers_matches_regex(
+                _typed.from_text(t),
+                _typed.from_regex(r),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -770,7 +869,10 @@ def matchers_matches_regex(symbols, t, r):
 def all_at_least(symbols, floor, xs):
     try:
         return _typed.to_bool(
-            _typed.all_at_least(_typed.from_int64(floor), _typed.from_list_int64(xs)),
+            _typed.all_at_least(
+                _typed.from_int64(floor),
+                _typed.from_list_int64(xs),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -826,7 +928,8 @@ def cluster_add_partitions_to_txn_request(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::clusterAddPartitionsToTxnRequest: " + _builtins.str(error),
+            "lawtwin.kafka::clusterAddPartitionsToTxnRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -888,7 +991,8 @@ def cluster_create_partitions_request(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::clusterCreatePartitionsRequest: " + _builtins.str(error),
+            "lawtwin.kafka::clusterCreatePartitionsRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -928,7 +1032,8 @@ def cluster_create_topics_request(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::clusterCreateTopicsRequest: " + _builtins.str(error),
+            "lawtwin.kafka::clusterCreateTopicsRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -966,7 +1071,8 @@ def cluster_describe_group_request(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::clusterDescribeGroupRequest: " + _builtins.str(error),
+            "lawtwin.kafka::clusterDescribeGroupRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1091,7 +1197,8 @@ def cluster_init_producer_id_request(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::clusterInitProducerIdRequest: " + _builtins.str(error),
+            "lawtwin.kafka::clusterInitProducerIdRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1239,7 +1346,14 @@ def cluster_metadata_request(symbols, state, value0):
 
 
 # clusterOffsetCommitRequest — ../src/contract.lawspec:291
-def cluster_offset_commit_request(symbols, state, value0, value1, value2, value3):
+def cluster_offset_commit_request(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_commit_offsets(
@@ -1256,7 +1370,8 @@ def cluster_offset_commit_request(symbols, state, value0, value1, value2, value3
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::clusterOffsetCommitRequest: " + _builtins.str(error),
+            "lawtwin.kafka::clusterOffsetCommitRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1323,7 +1438,9 @@ def cluster_produce_request(symbols, state, value0, value1, value2):
 # clusterStart — ../src/contract.lawspec:274
 def cluster_start(symbols, unit):
     try:
-        return _typed.to_broker_state(_typed.cluster_start(_typed.from_unit(unit)))
+        return _typed.to_broker_state(
+            _typed.cluster_start(_typed.from_unit(unit)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1403,7 +1520,8 @@ def cluster_txn_offset_commit_request(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::clusterTxnOffsetCommitRequest: " + _builtins.str(error),
+            "lawtwin.kafka::clusterTxnOffsetCommitRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1751,7 +1869,9 @@ def follows_one(symbols, a, latest):
 # freshConsumer — ../src/contract.lawspec:557
 def fresh_consumer(symbols, u):
     try:
-        return _typed.to_consumer_state(_typed.fresh_consumer(_typed.from_unit(u)))
+        return _typed.to_consumer_state(
+            _typed.fresh_consumer(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1765,7 +1885,9 @@ def fresh_consumer(symbols, u):
 # freshProducer — ../src/contract.lawspec:542
 def fresh_producer(symbols, u):
     try:
-        return _typed.to_producer_state(_typed.fresh_producer(_typed.from_unit(u)))
+        return _typed.to_producer_state(
+            _typed.fresh_producer(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -1937,7 +2059,8 @@ def kafka_consumer_committed_offset(symbols, consumer_state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::kafkaConsumerCommittedOffset: " + _builtins.str(error),
+            "lawtwin.kafka::kafkaConsumerCommittedOffset: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2016,7 +2139,8 @@ def kafka_consumer_set_isolation_level(symbols, consumer_state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::kafkaConsumerSetIsolationLevel: " + _builtins.str(error),
+            "lawtwin.kafka::kafkaConsumerSetIsolationLevel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2073,7 +2197,8 @@ def kafka_producer_enable_idempotence(symbols, producer_state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::kafkaProducerEnableIdempotence: " + _builtins.str(error),
+            "lawtwin.kafka::kafkaProducerEnableIdempotence: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2081,7 +2206,9 @@ def kafka_producer_enable_idempotence(symbols, producer_state):
 def kafka_producer_flush(symbols, producer_state):
     try:
         return _typed.to_pair_unit_producer_state(
-            _typed.kafka_producer_flush(_typed.from_producer_state(producer_state)),
+            _typed.kafka_producer_flush(
+                _typed.from_producer_state(producer_state),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -2107,7 +2234,8 @@ def kafka_producer_producer_identity(symbols, producer_state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::kafkaProducerProducerIdentity: " + _builtins.str(error),
+            "lawtwin.kafka::kafkaProducerProducerIdentity: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2126,7 +2254,8 @@ def kafka_producer_retry_last_send(symbols, producer_state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::kafkaProducerRetryLastSend: " + _builtins.str(error),
+            "lawtwin.kafka::kafkaProducerRetryLastSend: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2181,12 +2310,17 @@ def kafka_transactions_abort_transaction(symbols, txn_state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::kafkaTransactionsAbortTransaction: " + _builtins.str(error),
+            "lawtwin.kafka::kafkaTransactionsAbortTransaction: "
+            + _builtins.str(error),
         ) from error
 
 
 # kafkaTransactionsAddPartitionsToTransaction — ../src/contract.lawspec:1734
-def kafka_transactions_add_partitions_to_transaction(symbols, txn_state, value0):
+def kafka_transactions_add_partitions_to_transaction(
+    symbols,
+    txn_state,
+    value0,
+):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
             _typed.kafka_transactions_add_partitions_to_transaction(
@@ -2220,7 +2354,8 @@ def kafka_transactions_begin_transaction(symbols, txn_state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::kafkaTransactionsBeginTransaction: " + _builtins.str(error),
+            "lawtwin.kafka::kafkaTransactionsBeginTransaction: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2260,7 +2395,8 @@ def kafka_transactions_init_transactions(symbols, txn_state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::kafkaTransactionsInitTransactions: " + _builtins.str(error),
+            "lawtwin.kafka::kafkaTransactionsInitTransactions: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2286,7 +2422,12 @@ def kafka_transactions_send_in_transaction(symbols, txn_state, value0):
 
 
 # kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736
-def kafka_transactions_send_offsets_to_transaction(symbols, txn_state, value0, value1):
+def kafka_transactions_send_offsets_to_transaction(
+    symbols,
+    txn_state,
+    value0,
+    value1,
+):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
             _typed.kafka_transactions_send_offsets_to_transaction(
@@ -2346,56 +2487,68 @@ def keep_positions(symbols, tps, positions, acc):
 # boundedInt16 — <lawspec.collections>:358
 def lawspec_collections_bounded_int16(symbols, value):
     try:
-        return _typed.to_maybe_int16(_typed.bounded_int16(_typed.from_integer(value)))
+        return _typed.to_maybe_int16(
+            _typed.bounded_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedInt16: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedInt16: "
+            + _builtins.str(error),
         ) from error
 
 
 # boundedInt32 — <lawspec.collections>:371
 def lawspec_collections_bounded_int32(symbols, value):
     try:
-        return _typed.to_maybe_int32(_typed.bounded_int32(_typed.from_integer(value)))
+        return _typed.to_maybe_int32(
+            _typed.bounded_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedInt32: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedInt32: "
+            + _builtins.str(error),
         ) from error
 
 
 # boundedInt64 — <lawspec.collections>:384
 def lawspec_collections_bounded_int64(symbols, value):
     try:
-        return _typed.to_maybe_int64(_typed.bounded_int64(_typed.from_integer(value)))
+        return _typed.to_maybe_int64(
+            _typed.bounded_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedInt64: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedInt64: "
+            + _builtins.str(error),
         ) from error
 
 
 # boundedInt8 — <lawspec.collections>:345
 def lawspec_collections_bounded_int8(symbols, value):
     try:
-        return _typed.to_maybe_int8(_typed.bounded_int8(_typed.from_integer(value)))
+        return _typed.to_maybe_int8(
+            _typed.bounded_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedInt8: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedInt8: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2411,8 +2564,20 @@ def lawspec_collections_bounded_int_size(symbols, value):
                 symbols,
             )
             if (
-                ls.binary(">=", value, -9223372036854775808, "Integer", "Integer")
-                and ls.binary("<=", value, 9223372036854775807, "Integer", "Integer")
+                ls.binary(
+                    ">=",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                )
+                and ls.binary(
+                    "<=",
+                    value,
+                    9223372036854775807,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
@@ -2429,7 +2594,8 @@ def lawspec_collections_bounded_int_size(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedIntSize: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedIntSize: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2445,7 +2611,8 @@ def lawspec_collections_bounded_u_int16(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedUInt16: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedUInt16: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2461,7 +2628,8 @@ def lawspec_collections_bounded_u_int32(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedUInt32: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedUInt32: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2477,21 +2645,25 @@ def lawspec_collections_bounded_u_int64(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedUInt64: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedUInt64: "
+            + _builtins.str(error),
         ) from error
 
 
 # boundedUInt8 — <lawspec.collections>:397
 def lawspec_collections_bounded_u_int8(symbols, value):
     try:
-        return _typed.to_maybe_u_int8(_typed.bounded_u_int8(_typed.from_integer(value)))
+        return _typed.to_maybe_u_int8(
+            _typed.bounded_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedUInt8: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedUInt8: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2508,7 +2680,13 @@ def lawspec_collections_bounded_u_int_ptr(symbols, value):
             )
             if (
                 ls.binary(">=", value, 0, "Integer", "Integer")
-                and ls.binary("<=", value, 18446744073709551615, "Integer", "Integer")
+                and ls.binary(
+                    "<=",
+                    value,
+                    18446744073709551615,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
@@ -2525,7 +2703,8 @@ def lawspec_collections_bounded_u_int_ptr(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedUIntPtr: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedUIntPtr: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2542,7 +2721,13 @@ def lawspec_collections_bounded_u_int_size(symbols, value):
             )
             if (
                 ls.binary(">=", value, 0, "Integer", "Integer")
-                and ls.binary("<=", value, 18446744073709551615, "Integer", "Integer")
+                and ls.binary(
+                    "<=",
+                    value,
+                    18446744073709551615,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
@@ -2559,63 +2744,76 @@ def lawspec_collections_bounded_u_int_size(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsBoundedUIntSize: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsBoundedUIntSize: "
+            + _builtins.str(error),
         ) from error
 
 
 # saturatingInt16 — <lawspec.collections>:354
 def lawspec_collections_saturating_int16(symbols, value):
     try:
-        return _typed.to_int16(_typed.saturating_int16(_typed.from_integer(value)))
+        return _typed.to_int16(
+            _typed.saturating_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsSaturatingInt16: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsSaturatingInt16: "
+            + _builtins.str(error),
         ) from error
 
 
 # saturatingInt32 — <lawspec.collections>:367
 def lawspec_collections_saturating_int32(symbols, value):
     try:
-        return _typed.to_int32(_typed.saturating_int32(_typed.from_integer(value)))
+        return _typed.to_int32(
+            _typed.saturating_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsSaturatingInt32: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsSaturatingInt32: "
+            + _builtins.str(error),
         ) from error
 
 
 # saturatingInt64 — <lawspec.collections>:380
 def lawspec_collections_saturating_int64(symbols, value):
     try:
-        return _typed.to_int64(_typed.saturating_int64(_typed.from_integer(value)))
+        return _typed.to_int64(
+            _typed.saturating_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsSaturatingInt64: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsSaturatingInt64: "
+            + _builtins.str(error),
         ) from error
 
 
 # saturatingInt8 — <lawspec.collections>:341
 def lawspec_collections_saturating_int8(symbols, value):
     try:
-        return _typed.to_int8(_typed.saturating_int8(_typed.from_integer(value)))
+        return _typed.to_int8(
+            _typed.saturating_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsSaturatingInt8: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsSaturatingInt8: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2627,7 +2825,13 @@ def lawspec_collections_saturating_int_size(symbols, value):
             if ls.binary(">", value, 9223372036854775807, "Integer", "Integer")
             else (
                 ls.convert(-9223372036854775808, "IntSize", MACHINE_BITS)
-                if ls.binary("<", value, -9223372036854775808, "Integer", "Integer")
+                if ls.binary(
+                    "<",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                )
                 else ls.helper("IntSize", [value], ["Integer"], MACHINE_BITS)
             )
         )
@@ -2646,7 +2850,9 @@ def lawspec_collections_saturating_int_size(symbols, value):
 # saturatingUInt16 — <lawspec.collections>:406
 def lawspec_collections_saturating_u_int16(symbols, value):
     try:
-        return _typed.to_u_int16(_typed.saturating_u_int16(_typed.from_integer(value)))
+        return _typed.to_u_int16(
+            _typed.saturating_u_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2661,7 +2867,9 @@ def lawspec_collections_saturating_u_int16(symbols, value):
 # saturatingUInt32 — <lawspec.collections>:419
 def lawspec_collections_saturating_u_int32(symbols, value):
     try:
-        return _typed.to_u_int32(_typed.saturating_u_int32(_typed.from_integer(value)))
+        return _typed.to_u_int32(
+            _typed.saturating_u_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2676,7 +2884,9 @@ def lawspec_collections_saturating_u_int32(symbols, value):
 # saturatingUInt64 — <lawspec.collections>:432
 def lawspec_collections_saturating_u_int64(symbols, value):
     try:
-        return _typed.to_u_int64(_typed.saturating_u_int64(_typed.from_integer(value)))
+        return _typed.to_u_int64(
+            _typed.saturating_u_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -2691,14 +2901,17 @@ def lawspec_collections_saturating_u_int64(symbols, value):
 # saturatingUInt8 — <lawspec.collections>:393
 def lawspec_collections_saturating_u_int8(symbols, value):
     try:
-        return _typed.to_u_int8(_typed.saturating_u_int8(_typed.from_integer(value)))
+        return _typed.to_u_int8(
+            _typed.saturating_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsSaturatingUInt8: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsSaturatingUInt8: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2753,42 +2966,51 @@ def lawspec_collections_saturating_u_int_size(symbols, value):
 # wrappingInt16 — <lawspec.collections>:349
 def lawspec_collections_wrapping_int16(symbols, value):
     try:
-        return _typed.to_int16(_typed.wrapping_int16(_typed.from_integer(value)))
+        return _typed.to_int16(
+            _typed.wrapping_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingInt16: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingInt16: "
+            + _builtins.str(error),
         ) from error
 
 
 # wrappingInt32 — <lawspec.collections>:362
 def lawspec_collections_wrapping_int32(symbols, value):
     try:
-        return _typed.to_int32(_typed.wrapping_int32(_typed.from_integer(value)))
+        return _typed.to_int32(
+            _typed.wrapping_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingInt32: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingInt32: "
+            + _builtins.str(error),
         ) from error
 
 
 # wrappingInt64 — <lawspec.collections>:375
 def lawspec_collections_wrapping_int64(symbols, value):
     try:
-        return _typed.to_int64(_typed.wrapping_int64(_typed.from_integer(value)))
+        return _typed.to_int64(
+            _typed.wrapping_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingInt64: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingInt64: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2802,7 +3024,8 @@ def lawspec_collections_wrapping_int8(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingInt8: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingInt8: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2846,7 +3069,15 @@ def lawspec_collections_wrapping_int_size(symbols, value):
                 if ls.binary("<", r, 0, "Integer", "Integer")
                 else ls.helper(
                     "IntSize",
-                    [ls.binary("+", r, -9223372036854775808, "Integer", "Integer")],
+                    [
+                        ls.binary(
+                            "+",
+                            r,
+                            -9223372036854775808,
+                            "Integer",
+                            "Integer",
+                        ),
+                    ],
                     ["Integer"],
                     MACHINE_BITS,
                 )
@@ -2854,7 +3085,13 @@ def lawspec_collections_wrapping_int_size(symbols, value):
         )(
             ls.binary(
                 "rem",
-                ls.binary("-", value, -9223372036854775808, "Integer", "Integer"),
+                ls.binary(
+                    "-",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                ),
                 ls.binary(
                     "+",
                     ls.binary(
@@ -2879,63 +3116,76 @@ def lawspec_collections_wrapping_int_size(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingIntSize: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingIntSize: "
+            + _builtins.str(error),
         ) from error
 
 
 # wrappingUInt16 — <lawspec.collections>:401
 def lawspec_collections_wrapping_u_int16(symbols, value):
     try:
-        return _typed.to_u_int16(_typed.wrapping_u_int16(_typed.from_integer(value)))
+        return _typed.to_u_int16(
+            _typed.wrapping_u_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingUInt16: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingUInt16: "
+            + _builtins.str(error),
         ) from error
 
 
 # wrappingUInt32 — <lawspec.collections>:414
 def lawspec_collections_wrapping_u_int32(symbols, value):
     try:
-        return _typed.to_u_int32(_typed.wrapping_u_int32(_typed.from_integer(value)))
+        return _typed.to_u_int32(
+            _typed.wrapping_u_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingUInt32: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingUInt32: "
+            + _builtins.str(error),
         ) from error
 
 
 # wrappingUInt64 — <lawspec.collections>:427
 def lawspec_collections_wrapping_u_int64(symbols, value):
     try:
-        return _typed.to_u_int64(_typed.wrapping_u_int64(_typed.from_integer(value)))
+        return _typed.to_u_int64(
+            _typed.wrapping_u_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingUInt64: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingUInt64: "
+            + _builtins.str(error),
         ) from error
 
 
 # wrappingUInt8 — <lawspec.collections>:388
 def lawspec_collections_wrapping_u_int8(symbols, value):
     try:
-        return _typed.to_u_int8(_typed.wrapping_u_int8(_typed.from_integer(value)))
+        return _typed.to_u_int8(
+            _typed.wrapping_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingUInt8: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingUInt8: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2990,7 +3240,13 @@ def lawspec_collections_wrapping_u_int_ptr(symbols, value):
                 ls.binary("-", value, 0, "Integer", "Integer"),
                 ls.binary(
                     "+",
-                    ls.binary("-", 18446744073709551615, 0, "Integer", "Integer"),
+                    ls.binary(
+                        "-",
+                        18446744073709551615,
+                        0,
+                        "Integer",
+                        "Integer",
+                    ),
                     1,
                     "Integer",
                     "Integer",
@@ -3006,7 +3262,8 @@ def lawspec_collections_wrapping_u_int_ptr(symbols, value):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawspecCollectionsWrappingUIntPtr: " + _builtins.str(error),
+            "lawtwin.kafka::lawspecCollectionsWrappingUIntPtr: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3061,7 +3318,13 @@ def lawspec_collections_wrapping_u_int_size(symbols, value):
                 ls.binary("-", value, 0, "Integer", "Integer"),
                 ls.binary(
                     "+",
-                    ls.binary("-", 18446744073709551615, 0, "Integer", "Integer"),
+                    ls.binary(
+                        "-",
+                        18446744073709551615,
+                        0,
+                        "Integer",
+                        "Integer",
+                    ),
                     1,
                     "Integer",
                     "Integer",
@@ -3151,7 +3414,11 @@ def lawspec_collections_key_val_delete_int64_key_val_int64_int64(symbols, k, m):
 
 
 # keyValDelete — <lawspec.collections>:319
-def lawspec_collections_key_val_delete_text_key_val_text_list_text(symbols, k, m):
+def lawspec_collections_key_val_delete_text_key_val_text_list_text(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_key_val_text_list_text(
             _typed.lawspec_collections_key_val_delete_text_key_val_text_list_text(
@@ -3209,7 +3476,10 @@ def lawspec_collections_key_val_entries_key_val_text_group(symbols, m):
 
 
 # keyValEntries — <lawspec.collections>:331
-def lawspec_collections_key_val_entries_key_val_text_list_topic_partition(symbols, m):
+def lawspec_collections_key_val_entries_key_val_text_list_topic_partition(
+    symbols,
+    m,
+):
     try:
         return _typed.to_list_entry_text_list_topic_partition(
             _typed.lawspec_collections_key_val_entries_key_val_text_list_topic_partition(
@@ -3516,7 +3786,10 @@ def lawspec_collections_key_val_from_items_list_entry_int64_producer_entry_list_
 
 
 # keyValKeysItems — <lawspec.collections>:293
-def lawspec_collections_key_val_keys_items_list_entry_text_list_text(symbols, es):
+def lawspec_collections_key_val_keys_items_list_entry_text_list_text(
+    symbols,
+    es,
+):
     try:
         return _typed.to_list_text(
             _typed.lawspec_collections_key_val_keys_items_list_entry_text_list_text(
@@ -3602,7 +3875,11 @@ def lawspec_collections_key_val_lookup_items_text_list_entry_text_list_topic_par
 
 
 # keyValLookupItems — <lawspec.collections>:271
-def lawspec_collections_key_val_lookup_items_text_list_entry_text_int32(symbols, k, es):
+def lawspec_collections_key_val_lookup_items_text_list_entry_text_int32(
+    symbols,
+    k,
+    es,
+):
     try:
         return _typed.to_maybe_int32(
             _typed.lawspec_collections_key_val_lookup_items_text_list_entry_text_int32(
@@ -3766,7 +4043,11 @@ def lawspec_collections_key_val_lookup_items_group_partition_list_entry_group_pa
 
 
 # keyValLookupItems — <lawspec.collections>:271
-def lawspec_collections_key_val_lookup_items_text_list_entry_text_group(symbols, k, es):
+def lawspec_collections_key_val_lookup_items_text_list_entry_text_group(
+    symbols,
+    k,
+    es,
+):
     try:
         return _typed.to_maybe_group(
             _typed.lawspec_collections_key_val_lookup_items_text_list_entry_text_group(
@@ -3810,7 +4091,11 @@ def lawspec_collections_key_val_lookup_items_int64_list_entry_int64_int64(
 
 
 # keyValLookupItems — <lawspec.collections>:271
-def lawspec_collections_key_val_lookup_items_text_list_entry_text_int64(symbols, k, es):
+def lawspec_collections_key_val_lookup_items_text_list_entry_text_int64(
+    symbols,
+    k,
+    es,
+):
     try:
         return _typed.to_maybe_int64(
             _typed.lawspec_collections_key_val_lookup_items_text_list_entry_text_int64(
@@ -4058,7 +4343,11 @@ def lawspec_collections_key_val_lookup_topic_partition_key_val_topic_partition_p
 
 
 # keyValLookup — <lawspec.collections>:311
-def lawspec_collections_key_val_lookup_text_key_val_text_list_text(symbols, k, m):
+def lawspec_collections_key_val_lookup_text_key_val_text_list_text(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_maybe_list_text(
             _typed.lawspec_collections_key_val_lookup_text_key_val_text_list_text(
@@ -4098,7 +4387,10 @@ def lawspec_collections_key_val_lookup_text_key_val_text_int64(symbols, k, m):
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_text_list_topic_partition(symbols, es):
+def lawspec_collections_key_val_of_list_entry_text_list_topic_partition(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_text_list_topic_partition(
             _typed.lawspec_collections_key_val_of_list_entry_text_list_topic_partition(
@@ -4136,7 +4428,10 @@ def lawspec_collections_key_val_of_list_entry_text_int64(symbols, es):
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_int64_list_batch_meta(symbols, es):
+def lawspec_collections_key_val_of_list_entry_int64_list_batch_meta(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_int64_list_batch_meta(
             _typed.lawspec_collections_key_val_of_list_entry_int64_list_batch_meta(
@@ -4234,7 +4529,10 @@ def lawspec_collections_key_val_of_list_entry_topic_partition_partition_log(
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_topic_partition_int32(symbols, es):
+def lawspec_collections_key_val_of_list_entry_topic_partition_int32(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_topic_partition_int32(
             _typed.lawspec_collections_key_val_of_list_entry_topic_partition_int32(
@@ -4253,7 +4551,10 @@ def lawspec_collections_key_val_of_list_entry_topic_partition_int32(symbols, es)
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_topic_partition_int64(symbols, es):
+def lawspec_collections_key_val_of_list_entry_topic_partition_int64(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_topic_partition_int64(
             _typed.lawspec_collections_key_val_of_list_entry_topic_partition_int64(
@@ -4272,7 +4573,10 @@ def lawspec_collections_key_val_of_list_entry_topic_partition_int64(symbols, es)
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_group_partition_int64(symbols, es):
+def lawspec_collections_key_val_of_list_entry_group_partition_int64(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_group_partition_int64(
             _typed.lawspec_collections_key_val_of_list_entry_group_partition_int64(
@@ -4667,7 +4971,12 @@ def lawspec_collections_key_val_put_group_partition_int64_key_val_group_partitio
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_int32_key_val_text_int32(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_int32_key_val_text_int32(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_int32(
             _typed.lawspec_collections_key_val_put_text_int32_key_val_text_int32(
@@ -4792,7 +5101,12 @@ def lawspec_collections_key_val_put_int64_list_batch_meta_key_val_int64_list_bat
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_group_key_val_text_group(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_group_key_val_text_group(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_group(
             _typed.lawspec_collections_key_val_put_text_group_key_val_text_group(
@@ -4813,7 +5127,12 @@ def lawspec_collections_key_val_put_text_group_key_val_text_group(symbols, k, v,
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_int64_int64_key_val_int64_int64(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_int64_key_val_int64_int64(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_int64(
             _typed.lawspec_collections_key_val_put_int64_int64_key_val_int64_int64(
@@ -4912,7 +5231,12 @@ def lawspec_collections_key_val_put_topic_partition_int32_key_val_topic_partitio
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_int64_key_val_text_int64(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_int64_key_val_text_int64(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_int64(
             _typed.lawspec_collections_key_val_put_text_int64_key_val_text_int64(
@@ -4933,7 +5257,10 @@ def lawspec_collections_key_val_put_text_int64_key_val_text_int64(symbols, k, v,
 
 
 # keyValValuesItems — <lawspec.collections>:300
-def lawspec_collections_key_val_values_items_list_entry_int64_int64(symbols, es):
+def lawspec_collections_key_val_values_items_list_entry_int64_int64(
+    symbols,
+    es,
+):
     try:
         return _typed.to_list_int64(
             _typed.lawspec_collections_key_val_values_items_list_entry_int64_int64(
@@ -5134,7 +5461,9 @@ def lawspec_collections_set_member_int64_sorted_set_int64(symbols, x, s):
 def lawspec_collections_set_of_list_text(symbols, xs):
     try:
         return _typed.to_set_text(
-            _typed.lawspec_collections_set_of_list_text(_typed.from_list_text(xs)),
+            _typed.lawspec_collections_set_of_list_text(
+                _typed.from_list_text(xs),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -5151,7 +5480,9 @@ def lawspec_collections_set_of_list_text(symbols, xs):
 def lawspec_collections_set_of_list_int32(symbols, xs):
     try:
         return _typed.to_set_int32(
-            _typed.lawspec_collections_set_of_list_int32(_typed.from_list_int32(xs)),
+            _typed.lawspec_collections_set_of_list_int32(
+                _typed.from_list_int32(xs),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -5168,7 +5499,9 @@ def lawspec_collections_set_of_list_int32(symbols, xs):
 def lawspec_collections_set_of_list_int64(symbols, xs):
     try:
         return _typed.to_set_int64(
-            _typed.lawspec_collections_set_of_list_int64(_typed.from_list_int64(xs)),
+            _typed.lawspec_collections_set_of_list_int64(
+                _typed.from_list_int64(xs),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -5222,7 +5555,11 @@ def lawspec_collections_set_remove_text_sorted_set_text(symbols, x, s):
 
 
 # setUnion — <lawspec.collections>:158
-def lawspec_collections_set_union_sorted_set_text_sorted_set_text(symbols, s, t):
+def lawspec_collections_set_union_sorted_set_text_sorted_set_text(
+    symbols,
+    s,
+    t,
+):
     try:
         return _typed.to_set_text(
             _typed.lawspec_collections_set_union_set_text_set_text(
@@ -5242,7 +5579,14 @@ def lawspec_collections_set_union_sorted_set_text_sorted_set_text(symbols, s, t)
 
 
 # lawtwinKafkaModelAddPartitionsToTxn — ../src/model.lawspec:618
-def lawtwin_kafka_model_add_partitions_to_txn(symbols, txid, pid, epoch, tps, b):
+def lawtwin_kafka_model_add_partitions_to_txn(
+    symbols,
+    txid,
+    pid,
+    epoch,
+    tps,
+    b,
+):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.lawtwin_kafka_model_add_partitions_to_txn(
@@ -5300,12 +5644,20 @@ def lawtwin_kafka_model_append_batch(symbols, rs, writer, transactional, l):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelAppendBatch: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelAppendBatch: "
+            + _builtins.str(error),
         ) from error
 
 
 # lawtwinKafkaModelAppendRecords — ../src/model.lawspec:326
-def lawtwin_kafka_model_append_records(symbols, rs, offset, writer, transactional, es):
+def lawtwin_kafka_model_append_records(
+    symbols,
+    rs,
+    offset,
+    writer,
+    transactional,
+    es,
+):
     try:
         return _typed.to_pair_int64_list_log_entry(
             _typed.lawtwin_kafka_model_append_records(
@@ -5322,7 +5674,8 @@ def lawtwin_kafka_model_append_records(symbols, rs, offset, writer, transactiona
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelAppendRecords: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelAppendRecords: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5341,12 +5694,20 @@ def lawtwin_kafka_model_apply_offsets(symbols, os, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelApplyOffsets: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelApplyOffsets: "
+            + _builtins.str(error),
         ) from error
 
 
 # lawtwinKafkaModelAssignPartitions — ../src/model.lawspec:768
-def lawtwin_kafka_model_assign_partitions(symbols, topic, ps, owners, waiting, a):
+def lawtwin_kafka_model_assign_partitions(
+    symbols,
+    topic,
+    ps,
+    owners,
+    waiting,
+    a,
+):
     try:
         return _typed.to_key_val_text_list_topic_partition(
             _typed.lawtwin_kafka_model_assign_partitions(
@@ -5363,7 +5724,8 @@ def lawtwin_kafka_model_assign_partitions(symbols, topic, ps, owners, waiting, a
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelAssignPartitions: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelAssignPartitions: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5404,7 +5766,8 @@ def lawtwin_kafka_model_assign_topics(symbols, topics, subs, b, a):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelAssignTopics: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelAssignTopics: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5425,7 +5788,8 @@ def lawtwin_kafka_model_check_member(symbols, g, member, generation, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelCheckMember: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelCheckMember: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5446,7 +5810,8 @@ def lawtwin_kafka_model_check_txn_producer(symbols, txid, pid, epoch, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelCheckTxnProducer: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelCheckTxnProducer: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5466,7 +5831,8 @@ def lawtwin_kafka_model_commit_all(symbols, g, offsets, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelCommitAll: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelCommitAll: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5506,7 +5872,8 @@ def lawtwin_kafka_model_create_partitions(symbols, name, total, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelCreatePartitions: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelCreatePartitions: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5526,7 +5893,8 @@ def lawtwin_kafka_model_create_topic(symbols, name, n, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelCreateTopic: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelCreateTopic: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5545,7 +5913,8 @@ def lawtwin_kafka_model_describe_group(symbols, g, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelDescribeGroup: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelDescribeGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5564,7 +5933,8 @@ def lawtwin_kafka_model_empty_assignments(symbols, members, a):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelEmptyAssignments: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelEmptyAssignments: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5580,7 +5950,8 @@ def lawtwin_kafka_model_empty_broker(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelEmptyBroker: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelEmptyBroker: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5596,7 +5967,8 @@ def lawtwin_kafka_model_empty_group(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelEmptyGroup: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelEmptyGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5653,7 +6025,8 @@ def lawtwin_kafka_model_expected_sequence(symbols, epoch, ms):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelExpectedSequence: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelExpectedSequence: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5696,7 +6069,8 @@ def lawtwin_kafka_model_find_duplicate(symbols, epoch, first, last, ms):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelFindDuplicate: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelFindDuplicate: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5717,7 +6091,8 @@ def lawtwin_kafka_model_finish_txn(symbols, pid, commit, txn, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelFinishTxn: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelFinishTxn: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5757,7 +6132,8 @@ def lawtwin_kafka_model_heartbeat(symbols, g, member, generation, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelHeartbeat: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelHeartbeat: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5765,7 +6141,9 @@ def lawtwin_kafka_model_heartbeat(symbols, g, member, generation, b):
 def lawtwin_kafka_model_high_watermark(symbols, l):
     try:
         return _typed.to_int64(
-            _typed.lawtwin_kafka_model_high_watermark(_typed.from_partition_log(l)),
+            _typed.lawtwin_kafka_model_high_watermark(
+                _typed.from_partition_log(l),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -5773,7 +6151,8 @@ def lawtwin_kafka_model_high_watermark(symbols, l):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelHighWatermark: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelHighWatermark: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5792,7 +6171,8 @@ def lawtwin_kafka_model_init_producer_id(symbols, txid, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelInitProducerId: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelInitProducerId: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5812,7 +6192,8 @@ def lawtwin_kafka_model_is_aborted(symbols, writer, offset, aborted):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelIsAborted: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelIsAborted: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5833,7 +6214,8 @@ def lawtwin_kafka_model_join_group(symbols, g, member, topics, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelJoinGroup: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelJoinGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5852,7 +6234,8 @@ def lawtwin_kafka_model_known_partition(symbols, tp, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelKnownPartition: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelKnownPartition: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5871,7 +6254,8 @@ def lawtwin_kafka_model_last_offset_of(symbols, rs, fallback_offset):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelLastOffsetOf: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelLastOffsetOf: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5879,7 +6263,9 @@ def lawtwin_kafka_model_last_offset_of(symbols, rs, fallback_offset):
 def lawtwin_kafka_model_last_stable_offset(symbols, l):
     try:
         return _typed.to_int64(
-            _typed.lawtwin_kafka_model_last_stable_offset(_typed.from_partition_log(l)),
+            _typed.lawtwin_kafka_model_last_stable_offset(
+                _typed.from_partition_log(l),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -5887,7 +6273,8 @@ def lawtwin_kafka_model_last_stable_offset(symbols, l):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelLastStableOffset: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelLastStableOffset: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5907,7 +6294,8 @@ def lawtwin_kafka_model_leave_group(symbols, g, member, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelLeaveGroup: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelLeaveGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5928,7 +6316,8 @@ def lawtwin_kafka_model_list_offsets(symbols, tp, spec, isolation, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelListOffsets: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelListOffsets: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -5982,7 +6371,8 @@ def lawtwin_kafka_model_max_partitions(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelMaxPartitions: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelMaxPartitions: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6000,7 +6390,8 @@ def lawtwin_kafka_model_member_views(symbols, a):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelMemberViews: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelMemberViews: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6076,7 +6467,8 @@ def lawtwin_kafka_model_new_producer(symbols, txid, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelNewProducer: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelNewProducer: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6097,12 +6489,20 @@ def lawtwin_kafka_model_next_fetch_offset(symbols, from_, limit, taken, all_):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelNextFetchOffset: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelNextFetchOffset: "
+            + _builtins.str(error),
         ) from error
 
 
 # lawtwinKafkaModelOffsetCommit — ../src/model.lawspec:957
-def lawtwin_kafka_model_offset_commit(symbols, g, member, generation, offsets, b):
+def lawtwin_kafka_model_offset_commit(
+    symbols,
+    g,
+    member,
+    generation,
+    offsets,
+    b,
+):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.lawtwin_kafka_model_offset_commit(
@@ -6119,7 +6519,8 @@ def lawtwin_kafka_model_offset_commit(symbols, g, member, generation, offsets, b
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelOffsetCommit: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelOffsetCommit: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6139,7 +6540,8 @@ def lawtwin_kafka_model_offset_fetch(symbols, g, tp, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelOffsetFetch: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelOffsetFetch: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6157,7 +6559,8 @@ def lawtwin_kafka_model_offset_partitions(symbols, offsets):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelOffsetPartitions: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelOffsetPartitions: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6176,7 +6579,8 @@ def lawtwin_kafka_model_partition_count_of(symbols, topic, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelPartitionCountOf: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelPartitionCountOf: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6192,7 +6596,8 @@ def lawtwin_kafka_model_partitions_below(symbols, n):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelPartitionsBelow: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelPartitionsBelow: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6212,7 +6617,8 @@ def lawtwin_kafka_model_pending_for(symbols, group, offsets, acc):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelPendingFor: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelPendingFor: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6255,7 +6661,8 @@ def lawtwin_kafka_model_produce_tagged(symbols, tp, t, rs, l, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelProduceTagged: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelProduceTagged: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6315,7 +6722,8 @@ def lawtwin_kafka_model_put_producer(symbols, pid, entry, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelPutProducer: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelPutProducer: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6365,7 +6773,8 @@ def lawtwin_kafka_model_rebalance(symbols, group, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelRebalance: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelRebalance: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6386,7 +6795,8 @@ def lawtwin_kafka_model_rebalance_groups(symbols, topic, gs, b, acc):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelRebalanceGroups: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelRebalanceGroups: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6405,7 +6815,8 @@ def lawtwin_kafka_model_rebalance_topic(symbols, topic, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelRebalanceTopic: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelRebalanceTopic: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6425,7 +6836,8 @@ def lawtwin_kafka_model_remember_batch(symbols, writer, meta, l):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelRememberBatch: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelRememberBatch: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6444,7 +6856,8 @@ def lawtwin_kafka_model_reverse_pending(symbols, os, acc):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelReversePending: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelReversePending: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6463,7 +6876,8 @@ def lawtwin_kafka_model_subscribed_topics(symbols, subs, acc):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelSubscribedTopics: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelSubscribedTopics: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6482,7 +6896,8 @@ def lawtwin_kafka_model_subscribers_of(symbols, topic, subs):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelSubscribersOf: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelSubscribersOf: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6501,7 +6916,8 @@ def lawtwin_kafka_model_subscribes_to(symbols, topic, group):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelSubscribesTo: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelSubscribesTo: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6522,7 +6938,8 @@ def lawtwin_kafka_model_sync_group(symbols, g, member, generation, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelSyncGroup: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelSyncGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6541,12 +6958,21 @@ def lawtwin_kafka_model_txn_has_partition(symbols, tp, txn):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelTxnHasPartition: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelTxnHasPartition: "
+            + _builtins.str(error),
         ) from error
 
 
 # lawtwinKafkaModelTxnOffsetCommit — ../src/model.lawspec:645
-def lawtwin_kafka_model_txn_offset_commit(symbols, txid, pid, epoch, group, offsets, b):
+def lawtwin_kafka_model_txn_offset_commit(
+    symbols,
+    txid,
+    pid,
+    epoch,
+    group,
+    offsets,
+    b,
+):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.lawtwin_kafka_model_txn_offset_commit(
@@ -6564,7 +6990,8 @@ def lawtwin_kafka_model_txn_offset_commit(symbols, txid, pid, epoch, group, offs
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelTxnOffsetCommit: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelTxnOffsetCommit: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6583,7 +7010,8 @@ def lawtwin_kafka_model_union_partitions(symbols, xs, ys):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelUnionPartitions: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelUnionPartitions: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6599,7 +7027,8 @@ def lawtwin_kafka_model_valid_topic_name(symbols, name):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelValidTopicName: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelValidTopicName: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6619,7 +7048,8 @@ def lawtwin_kafka_model_write_marker(symbols, pid, commit, l):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelWriteMarker: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelWriteMarker: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6640,7 +7070,8 @@ def lawtwin_kafka_model_write_markers(symbols, pid, commit, tps, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::lawtwinKafkaModelWriteMarkers: " + _builtins.str(error),
+            "lawtwin.kafka::lawtwinKafkaModelWriteMarkers: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -6755,7 +7186,8 @@ def murmur_partitioner_choose_partition(symbols, key, n):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.kafka::murmurPartitionerChoosePartition: " + _builtins.str(error),
+            "lawtwin.kafka::murmurPartitionerChoosePartition: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -7081,7 +7513,9 @@ def sequence_for(symbols, tp, sequences):
 # smallBatch — ../src/contract.lawspec:320
 def small_batch(symbols, batch):
     try:
-        return _typed.to_bool(_typed.small_batch(_typed.from_list_record(batch)))
+        return _typed.to_bool(
+            _typed.small_batch(_typed.from_list_record(batch)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -7213,7 +7647,10 @@ def transactional_offsets(symbols, t, txid, g, offset):
 def transactions_abort(symbols, st):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
-            _typed.transactions_abort(symbols, _typed.from_transaction_state(st)),
+            _typed.transactions_abort(
+                symbols,
+                _typed.from_transaction_state(st),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -7265,7 +7702,10 @@ def transactions_begin(symbols, st):
 def transactions_commit(symbols, st):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
-            _typed.transactions_commit(symbols, _typed.from_transaction_state(st)),
+            _typed.transactions_commit(
+                symbols,
+                _typed.from_transaction_state(st),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -8016,7 +8456,9 @@ def heartbeat(symbols, g, member, generation, b):
 def high_watermark(symbols, l):
     try:
         return _typed.to_int64(
-            _typed.lawtwin_kafka_model_high_watermark(_typed.from_partition_log(l)),
+            _typed.lawtwin_kafka_model_high_watermark(
+                _typed.from_partition_log(l),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -8130,7 +8572,9 @@ def last_offset_of(symbols, rs, fallback_offset):
 def last_stable_offset(symbols, l):
     try:
         return _typed.to_int64(
-            _typed.lawtwin_kafka_model_last_stable_offset(_typed.from_partition_log(l)),
+            _typed.lawtwin_kafka_model_last_stable_offset(
+                _typed.from_partition_log(l),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -8145,7 +8589,9 @@ def last_stable_offset(symbols, l):
 # boundedInt16 — <lawspec.collections>:358
 def lawspec_collections_bounded_int16_2(symbols, value):
     try:
-        return _typed.to_maybe_int16(_typed.bounded_int16(_typed.from_integer(value)))
+        return _typed.to_maybe_int16(
+            _typed.bounded_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8160,7 +8606,9 @@ def lawspec_collections_bounded_int16_2(symbols, value):
 # boundedInt32 — <lawspec.collections>:371
 def lawspec_collections_bounded_int32_2(symbols, value):
     try:
-        return _typed.to_maybe_int32(_typed.bounded_int32(_typed.from_integer(value)))
+        return _typed.to_maybe_int32(
+            _typed.bounded_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8175,7 +8623,9 @@ def lawspec_collections_bounded_int32_2(symbols, value):
 # boundedInt64 — <lawspec.collections>:384
 def lawspec_collections_bounded_int64_2(symbols, value):
     try:
-        return _typed.to_maybe_int64(_typed.bounded_int64(_typed.from_integer(value)))
+        return _typed.to_maybe_int64(
+            _typed.bounded_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8190,7 +8640,9 @@ def lawspec_collections_bounded_int64_2(symbols, value):
 # boundedInt8 — <lawspec.collections>:345
 def lawspec_collections_bounded_int8_2(symbols, value):
     try:
-        return _typed.to_maybe_int8(_typed.bounded_int8(_typed.from_integer(value)))
+        return _typed.to_maybe_int8(
+            _typed.bounded_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8214,8 +8666,20 @@ def lawspec_collections_bounded_int_size_2(symbols, value):
                 symbols,
             )
             if (
-                ls.binary(">=", value, -9223372036854775808, "Integer", "Integer")
-                and ls.binary("<=", value, 9223372036854775807, "Integer", "Integer")
+                ls.binary(
+                    ">=",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                )
+                and ls.binary(
+                    "<=",
+                    value,
+                    9223372036854775807,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
@@ -8291,7 +8755,9 @@ def lawspec_collections_bounded_u_int64_2(symbols, value):
 # boundedUInt8 — <lawspec.collections>:397
 def lawspec_collections_bounded_u_int8_2(symbols, value):
     try:
-        return _typed.to_maybe_u_int8(_typed.bounded_u_int8(_typed.from_integer(value)))
+        return _typed.to_maybe_u_int8(
+            _typed.bounded_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8316,7 +8782,13 @@ def lawspec_collections_bounded_u_int_ptr_2(symbols, value):
             )
             if (
                 ls.binary(">=", value, 0, "Integer", "Integer")
-                and ls.binary("<=", value, 18446744073709551615, "Integer", "Integer")
+                and ls.binary(
+                    "<=",
+                    value,
+                    18446744073709551615,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
@@ -8351,7 +8823,13 @@ def lawspec_collections_bounded_u_int_size_2(symbols, value):
             )
             if (
                 ls.binary(">=", value, 0, "Integer", "Integer")
-                and ls.binary("<=", value, 18446744073709551615, "Integer", "Integer")
+                and ls.binary(
+                    "<=",
+                    value,
+                    18446744073709551615,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
@@ -8376,7 +8854,9 @@ def lawspec_collections_bounded_u_int_size_2(symbols, value):
 # saturatingInt16 — <lawspec.collections>:354
 def lawspec_collections_saturating_int16_2(symbols, value):
     try:
-        return _typed.to_int16(_typed.saturating_int16(_typed.from_integer(value)))
+        return _typed.to_int16(
+            _typed.saturating_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8391,7 +8871,9 @@ def lawspec_collections_saturating_int16_2(symbols, value):
 # saturatingInt32 — <lawspec.collections>:367
 def lawspec_collections_saturating_int32_2(symbols, value):
     try:
-        return _typed.to_int32(_typed.saturating_int32(_typed.from_integer(value)))
+        return _typed.to_int32(
+            _typed.saturating_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8406,7 +8888,9 @@ def lawspec_collections_saturating_int32_2(symbols, value):
 # saturatingInt64 — <lawspec.collections>:380
 def lawspec_collections_saturating_int64_2(symbols, value):
     try:
-        return _typed.to_int64(_typed.saturating_int64(_typed.from_integer(value)))
+        return _typed.to_int64(
+            _typed.saturating_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8421,7 +8905,9 @@ def lawspec_collections_saturating_int64_2(symbols, value):
 # saturatingInt8 — <lawspec.collections>:341
 def lawspec_collections_saturating_int8_2(symbols, value):
     try:
-        return _typed.to_int8(_typed.saturating_int8(_typed.from_integer(value)))
+        return _typed.to_int8(
+            _typed.saturating_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8441,7 +8927,13 @@ def lawspec_collections_saturating_int_size_2(symbols, value):
             if ls.binary(">", value, 9223372036854775807, "Integer", "Integer")
             else (
                 ls.convert(-9223372036854775808, "IntSize", MACHINE_BITS)
-                if ls.binary("<", value, -9223372036854775808, "Integer", "Integer")
+                if ls.binary(
+                    "<",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                )
                 else ls.helper("IntSize", [value], ["Integer"], MACHINE_BITS)
             )
         )
@@ -8460,7 +8952,9 @@ def lawspec_collections_saturating_int_size_2(symbols, value):
 # saturatingUInt16 — <lawspec.collections>:406
 def lawspec_collections_saturating_u_int16_2(symbols, value):
     try:
-        return _typed.to_u_int16(_typed.saturating_u_int16(_typed.from_integer(value)))
+        return _typed.to_u_int16(
+            _typed.saturating_u_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8475,7 +8969,9 @@ def lawspec_collections_saturating_u_int16_2(symbols, value):
 # saturatingUInt32 — <lawspec.collections>:419
 def lawspec_collections_saturating_u_int32_2(symbols, value):
     try:
-        return _typed.to_u_int32(_typed.saturating_u_int32(_typed.from_integer(value)))
+        return _typed.to_u_int32(
+            _typed.saturating_u_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8490,7 +8986,9 @@ def lawspec_collections_saturating_u_int32_2(symbols, value):
 # saturatingUInt64 — <lawspec.collections>:432
 def lawspec_collections_saturating_u_int64_2(symbols, value):
     try:
-        return _typed.to_u_int64(_typed.saturating_u_int64(_typed.from_integer(value)))
+        return _typed.to_u_int64(
+            _typed.saturating_u_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8505,7 +9003,9 @@ def lawspec_collections_saturating_u_int64_2(symbols, value):
 # saturatingUInt8 — <lawspec.collections>:393
 def lawspec_collections_saturating_u_int8_2(symbols, value):
     try:
-        return _typed.to_u_int8(_typed.saturating_u_int8(_typed.from_integer(value)))
+        return _typed.to_u_int8(
+            _typed.saturating_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8568,7 +9068,9 @@ def lawspec_collections_saturating_u_int_size_2(symbols, value):
 # wrappingInt16 — <lawspec.collections>:349
 def lawspec_collections_wrapping_int16_2(symbols, value):
     try:
-        return _typed.to_int16(_typed.wrapping_int16(_typed.from_integer(value)))
+        return _typed.to_int16(
+            _typed.wrapping_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8583,7 +9085,9 @@ def lawspec_collections_wrapping_int16_2(symbols, value):
 # wrappingInt32 — <lawspec.collections>:362
 def lawspec_collections_wrapping_int32_2(symbols, value):
     try:
-        return _typed.to_int32(_typed.wrapping_int32(_typed.from_integer(value)))
+        return _typed.to_int32(
+            _typed.wrapping_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8598,7 +9102,9 @@ def lawspec_collections_wrapping_int32_2(symbols, value):
 # wrappingInt64 — <lawspec.collections>:375
 def lawspec_collections_wrapping_int64_2(symbols, value):
     try:
-        return _typed.to_int64(_typed.wrapping_int64(_typed.from_integer(value)))
+        return _typed.to_int64(
+            _typed.wrapping_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8665,7 +9171,15 @@ def lawspec_collections_wrapping_int_size_2(symbols, value):
                 if ls.binary("<", r, 0, "Integer", "Integer")
                 else ls.helper(
                     "IntSize",
-                    [ls.binary("+", r, -9223372036854775808, "Integer", "Integer")],
+                    [
+                        ls.binary(
+                            "+",
+                            r,
+                            -9223372036854775808,
+                            "Integer",
+                            "Integer",
+                        ),
+                    ],
                     ["Integer"],
                     MACHINE_BITS,
                 )
@@ -8673,7 +9187,13 @@ def lawspec_collections_wrapping_int_size_2(symbols, value):
         )(
             ls.binary(
                 "rem",
-                ls.binary("-", value, -9223372036854775808, "Integer", "Integer"),
+                ls.binary(
+                    "-",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                ),
                 ls.binary(
                     "+",
                     ls.binary(
@@ -8706,7 +9226,9 @@ def lawspec_collections_wrapping_int_size_2(symbols, value):
 # wrappingUInt16 — <lawspec.collections>:401
 def lawspec_collections_wrapping_u_int16_2(symbols, value):
     try:
-        return _typed.to_u_int16(_typed.wrapping_u_int16(_typed.from_integer(value)))
+        return _typed.to_u_int16(
+            _typed.wrapping_u_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8721,7 +9243,9 @@ def lawspec_collections_wrapping_u_int16_2(symbols, value):
 # wrappingUInt32 — <lawspec.collections>:414
 def lawspec_collections_wrapping_u_int32_2(symbols, value):
     try:
-        return _typed.to_u_int32(_typed.wrapping_u_int32(_typed.from_integer(value)))
+        return _typed.to_u_int32(
+            _typed.wrapping_u_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8736,7 +9260,9 @@ def lawspec_collections_wrapping_u_int32_2(symbols, value):
 # wrappingUInt64 — <lawspec.collections>:427
 def lawspec_collections_wrapping_u_int64_2(symbols, value):
     try:
-        return _typed.to_u_int64(_typed.wrapping_u_int64(_typed.from_integer(value)))
+        return _typed.to_u_int64(
+            _typed.wrapping_u_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8751,7 +9277,9 @@ def lawspec_collections_wrapping_u_int64_2(symbols, value):
 # wrappingUInt8 — <lawspec.collections>:388
 def lawspec_collections_wrapping_u_int8_2(symbols, value):
     try:
-        return _typed.to_u_int8(_typed.wrapping_u_int8(_typed.from_integer(value)))
+        return _typed.to_u_int8(
+            _typed.wrapping_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -8814,7 +9342,13 @@ def lawspec_collections_wrapping_u_int_ptr_2(symbols, value):
                 ls.binary("-", value, 0, "Integer", "Integer"),
                 ls.binary(
                     "+",
-                    ls.binary("-", 18446744073709551615, 0, "Integer", "Integer"),
+                    ls.binary(
+                        "-",
+                        18446744073709551615,
+                        0,
+                        "Integer",
+                        "Integer",
+                    ),
                     1,
                     "Integer",
                     "Integer",
@@ -8886,7 +9420,13 @@ def lawspec_collections_wrapping_u_int_size_2(symbols, value):
                 ls.binary("-", value, 0, "Integer", "Integer"),
                 ls.binary(
                     "+",
-                    ls.binary("-", 18446744073709551615, 0, "Integer", "Integer"),
+                    ls.binary(
+                        "-",
+                        18446744073709551615,
+                        0,
+                        "Integer",
+                        "Integer",
+                    ),
                     1,
                     "Integer",
                     "Integer",
@@ -8956,7 +9496,11 @@ def lawspec_collections_key_val_delete_items_text_list_entry_text_list_text_2(
 
 
 # keyValDelete — <lawspec.collections>:319
-def lawspec_collections_key_val_delete_int64_key_val_int64_int64_2(symbols, k, m):
+def lawspec_collections_key_val_delete_int64_key_val_int64_int64_2(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_key_val_int64_int64(
             _typed.lawspec_collections_key_val_delete_int64_key_val_int64_int64(
@@ -8976,7 +9520,11 @@ def lawspec_collections_key_val_delete_int64_key_val_int64_int64_2(symbols, k, m
 
 
 # keyValDelete — <lawspec.collections>:319
-def lawspec_collections_key_val_delete_text_key_val_text_list_text_2(symbols, k, m):
+def lawspec_collections_key_val_delete_text_key_val_text_list_text_2(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_key_val_text_list_text(
             _typed.lawspec_collections_key_val_delete_text_key_val_text_list_text(
@@ -9034,7 +9582,10 @@ def lawspec_collections_key_val_entries_key_val_text_group_2(symbols, m):
 
 
 # keyValEntries — <lawspec.collections>:331
-def lawspec_collections_key_val_entries_key_val_text_list_topic_partition_2(symbols, m):
+def lawspec_collections_key_val_entries_key_val_text_list_topic_partition_2(
+    symbols,
+    m,
+):
     try:
         return _typed.to_list_entry_text_list_topic_partition(
             _typed.lawspec_collections_key_val_entries_key_val_text_list_topic_partition(
@@ -9293,7 +9844,10 @@ def lawspec_collections_key_val_from_items_list_entry_int64_producer_entry_list_
 
 
 # keyValKeysItems — <lawspec.collections>:293
-def lawspec_collections_key_val_keys_items_list_entry_text_list_text_2(symbols, es):
+def lawspec_collections_key_val_keys_items_list_entry_text_list_text_2(
+    symbols,
+    es,
+):
     try:
         return _typed.to_list_text(
             _typed.lawspec_collections_key_val_keys_items_list_entry_text_list_text(
@@ -9667,7 +10221,11 @@ def lawspec_collections_key_val_lookup_group_partition_key_val_group_partition_i
 
 
 # keyValLookup — <lawspec.collections>:311
-def lawspec_collections_key_val_lookup_int64_key_val_int64_int64_2(symbols, k, m):
+def lawspec_collections_key_val_lookup_int64_key_val_int64_int64_2(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_maybe_int64(
             _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_int64(
@@ -9751,7 +10309,11 @@ def lawspec_collections_key_val_lookup_topic_partition_key_val_topic_partition_p
 
 
 # keyValLookup — <lawspec.collections>:311
-def lawspec_collections_key_val_lookup_text_key_val_text_list_text_2(symbols, k, m):
+def lawspec_collections_key_val_lookup_text_key_val_text_list_text_2(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_maybe_list_text(
             _typed.lawspec_collections_key_val_lookup_text_key_val_text_list_text(
@@ -9791,7 +10353,10 @@ def lawspec_collections_key_val_lookup_text_key_val_text_int64_2(symbols, k, m):
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_text_list_topic_partition_2(symbols, es):
+def lawspec_collections_key_val_of_list_entry_text_list_topic_partition_2(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_text_list_topic_partition(
             _typed.lawspec_collections_key_val_of_list_entry_text_list_topic_partition(
@@ -9829,7 +10394,10 @@ def lawspec_collections_key_val_of_list_entry_text_int64_2(symbols, es):
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_int64_list_batch_meta_2(symbols, es):
+def lawspec_collections_key_val_of_list_entry_int64_list_batch_meta_2(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_int64_list_batch_meta(
             _typed.lawspec_collections_key_val_of_list_entry_int64_list_batch_meta(
@@ -9886,7 +10454,10 @@ def lawspec_collections_key_val_of_list_entry_text_int32_2(symbols, es):
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_int64_producer_entry_2(symbols, es):
+def lawspec_collections_key_val_of_list_entry_int64_producer_entry_2(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_int64_producer_entry(
             _typed.lawspec_collections_key_val_of_list_entry_int64_producer_entry(
@@ -9927,7 +10498,10 @@ def lawspec_collections_key_val_of_list_entry_topic_partition_partition_log_2(
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_group_partition_int64_2(symbols, es):
+def lawspec_collections_key_val_of_list_entry_group_partition_int64_2(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_group_partition_int64(
             _typed.lawspec_collections_key_val_of_list_entry_group_partition_int64(
@@ -10270,7 +10844,12 @@ def lawspec_collections_key_val_put_group_partition_int64_key_val_group_partitio
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_int32_key_val_text_int32_2(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_int32_key_val_text_int32_2(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_int32(
             _typed.lawspec_collections_key_val_put_text_int32_key_val_text_int32(
@@ -10369,7 +10948,12 @@ def lawspec_collections_key_val_put_int64_list_batch_meta_key_val_int64_list_bat
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_group_key_val_text_group_2(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_group_key_val_text_group_2(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_group(
             _typed.lawspec_collections_key_val_put_text_group_key_val_text_group(
@@ -10390,7 +10974,12 @@ def lawspec_collections_key_val_put_text_group_key_val_text_group_2(symbols, k, 
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_int64_int64_key_val_int64_int64_2(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_int64_key_val_int64_int64_2(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_int64(
             _typed.lawspec_collections_key_val_put_int64_int64_key_val_int64_int64(
@@ -10463,7 +11052,12 @@ def lawspec_collections_key_val_put_topic_partition_partition_log_key_val_topic_
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_int64_key_val_text_int64_2(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_int64_key_val_text_int64_2(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_int64(
             _typed.lawspec_collections_key_val_put_text_int64_key_val_text_int64(
@@ -10484,7 +11078,10 @@ def lawspec_collections_key_val_put_text_int64_key_val_text_int64_2(symbols, k, 
 
 
 # keyValValuesItems — <lawspec.collections>:300
-def lawspec_collections_key_val_values_items_list_entry_int64_int64_2(symbols, es):
+def lawspec_collections_key_val_values_items_list_entry_int64_int64_2(
+    symbols,
+    es,
+):
     try:
         return _typed.to_list_int64(
             _typed.lawspec_collections_key_val_values_items_list_entry_int64_int64(
@@ -10565,7 +11162,9 @@ def lawspec_collections_set_insert_items_text_list_text_2(symbols, x, xs):
 def lawspec_collections_set_of_list_text_2(symbols, xs):
     try:
         return _typed.to_set_text(
-            _typed.lawspec_collections_set_of_list_text(_typed.from_list_text(xs)),
+            _typed.lawspec_collections_set_of_list_text(
+                _typed.from_list_text(xs),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -10579,7 +11178,11 @@ def lawspec_collections_set_of_list_text_2(symbols, xs):
 
 
 # setUnion — <lawspec.collections>:158
-def lawspec_collections_set_union_sorted_set_text_sorted_set_text_2(symbols, s, t):
+def lawspec_collections_set_union_sorted_set_text_sorted_set_text_2(
+    symbols,
+    s,
+    t,
+):
     try:
         return _typed.to_set_text(
             _typed.lawspec_collections_set_union_set_text_set_text(
@@ -11430,7 +12033,8 @@ def cluster_create_partitions_2(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterCreatePartitions: " + _builtins.str(error),
+            "contracttest.kafka::clusterCreatePartitions: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11491,7 +12095,8 @@ def cluster_create_topics_request_2(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterCreateTopicsRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterCreateTopicsRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11529,7 +12134,8 @@ def cluster_describe_group_request_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterDescribeGroupRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterDescribeGroupRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11635,7 +12241,8 @@ def cluster_heartbeat_request_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterHeartbeatRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterHeartbeatRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11654,7 +12261,8 @@ def cluster_init_producer_id_request_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterInitProducerIdRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterInitProducerIdRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11696,7 +12304,8 @@ def cluster_join_group_request_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterJoinGroupRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterJoinGroupRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11736,7 +12345,8 @@ def cluster_leave_group_request_2(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterLeaveGroupRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterLeaveGroupRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11778,7 +12388,8 @@ def cluster_list_offsets_request_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterListOffsetsRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterListOffsetsRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11797,12 +12408,20 @@ def cluster_metadata_request_2(symbols, state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterMetadataRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterMetadataRequest: "
+            + _builtins.str(error),
         ) from error
 
 
 # clusterOffsetCommitRequest — ../src/contract.lawspec:291
-def cluster_offset_commit_request_2(symbols, state, value0, value1, value2, value3):
+def cluster_offset_commit_request_2(
+    symbols,
+    state,
+    value0,
+    value1,
+    value2,
+    value3,
+):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_commit_offsets(
@@ -11819,7 +12438,8 @@ def cluster_offset_commit_request_2(symbols, state, value0, value1, value2, valu
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterOffsetCommitRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterOffsetCommitRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11839,7 +12459,8 @@ def cluster_offset_fetch_request_2(symbols, state, value0, value1):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterOffsetFetchRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterOffsetFetchRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -11879,14 +12500,17 @@ def cluster_produce_request_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterProduceRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterProduceRequest: "
+            + _builtins.str(error),
         ) from error
 
 
 # clusterStart — ../src/contract.lawspec:274
 def cluster_start_2(symbols, unit):
     try:
-        return _typed.to_broker_state(_typed.cluster_start(_typed.from_unit(unit)))
+        return _typed.to_broker_state(
+            _typed.cluster_start(_typed.from_unit(unit)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -11935,7 +12559,8 @@ def cluster_sync_group_request_2(symbols, state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::clusterSyncGroupRequest: " + _builtins.str(error),
+            "contracttest.kafka::clusterSyncGroupRequest: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -12024,7 +12649,8 @@ def kafka_consumer_commit_sync_2(symbols, consumer_state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaConsumerCommitSync: " + _builtins.str(error),
+            "contracttest.kafka::kafkaConsumerCommitSync: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -12044,7 +12670,8 @@ def kafka_consumer_committed_offset_2(symbols, consumer_state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaConsumerCommittedOffset: " + _builtins.str(error),
+            "contracttest.kafka::kafkaConsumerCommittedOffset: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -12084,7 +12711,8 @@ def kafka_consumer_position_2(symbols, consumer_state, value0):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaConsumerPosition: " + _builtins.str(error),
+            "contracttest.kafka::kafkaConsumerPosition: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -12162,7 +12790,8 @@ def kafka_consumer_subscribe_2(symbols, consumer_state, value0, value1, value2):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaConsumerSubscribe: " + _builtins.str(error),
+            "contracttest.kafka::kafkaConsumerSubscribe: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -12190,7 +12819,9 @@ def kafka_producer_enable_idempotence_2(symbols, producer_state):
 def kafka_producer_flush_2(symbols, producer_state):
     try:
         return _typed.to_pair_unit_producer_state(
-            _typed.kafka_producer_flush(_typed.from_producer_state(producer_state)),
+            _typed.kafka_producer_flush(
+                _typed.from_producer_state(producer_state),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -12236,7 +12867,8 @@ def kafka_producer_retry_last_send_2(symbols, producer_state):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaProducerRetryLastSend: " + _builtins.str(error),
+            "contracttest.kafka::kafkaProducerRetryLastSend: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -12297,7 +12929,11 @@ def kafka_transactions_abort_transaction_2(symbols, txn_state):
 
 
 # kafkaTransactionsAddPartitionsToTransaction — ../src/contract.lawspec:1734
-def kafka_transactions_add_partitions_to_transaction_2(symbols, txn_state, value0):
+def kafka_transactions_add_partitions_to_transaction_2(
+    symbols,
+    txn_state,
+    value0,
+):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
             _typed.kafka_transactions_add_partitions_to_transaction(
@@ -12437,14 +13073,17 @@ def kafka_transactions_start_2(symbols, unit):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::kafkaTransactionsStart: " + _builtins.str(error),
+            "contracttest.kafka::kafkaTransactionsStart: "
+            + _builtins.str(error),
         ) from error
 
 
 # boundedInt16 — <lawspec.collections>:358
 def lawspec_collections_bounded_int16_3(symbols, value):
     try:
-        return _typed.to_maybe_int16(_typed.bounded_int16(_typed.from_integer(value)))
+        return _typed.to_maybe_int16(
+            _typed.bounded_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12459,7 +13098,9 @@ def lawspec_collections_bounded_int16_3(symbols, value):
 # boundedInt32 — <lawspec.collections>:371
 def lawspec_collections_bounded_int32_3(symbols, value):
     try:
-        return _typed.to_maybe_int32(_typed.bounded_int32(_typed.from_integer(value)))
+        return _typed.to_maybe_int32(
+            _typed.bounded_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12474,7 +13115,9 @@ def lawspec_collections_bounded_int32_3(symbols, value):
 # boundedInt64 — <lawspec.collections>:384
 def lawspec_collections_bounded_int64_3(symbols, value):
     try:
-        return _typed.to_maybe_int64(_typed.bounded_int64(_typed.from_integer(value)))
+        return _typed.to_maybe_int64(
+            _typed.bounded_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12489,7 +13132,9 @@ def lawspec_collections_bounded_int64_3(symbols, value):
 # boundedInt8 — <lawspec.collections>:345
 def lawspec_collections_bounded_int8_3(symbols, value):
     try:
-        return _typed.to_maybe_int8(_typed.bounded_int8(_typed.from_integer(value)))
+        return _typed.to_maybe_int8(
+            _typed.bounded_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12513,8 +13158,20 @@ def lawspec_collections_bounded_int_size_3(symbols, value):
                 symbols,
             )
             if (
-                ls.binary(">=", value, -9223372036854775808, "Integer", "Integer")
-                and ls.binary("<=", value, 9223372036854775807, "Integer", "Integer")
+                ls.binary(
+                    ">=",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                )
+                and ls.binary(
+                    "<=",
+                    value,
+                    9223372036854775807,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("IntSize")]),
@@ -12590,7 +13247,9 @@ def lawspec_collections_bounded_u_int64_3(symbols, value):
 # boundedUInt8 — <lawspec.collections>:397
 def lawspec_collections_bounded_u_int8_3(symbols, value):
     try:
-        return _typed.to_maybe_u_int8(_typed.bounded_u_int8(_typed.from_integer(value)))
+        return _typed.to_maybe_u_int8(
+            _typed.bounded_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12615,7 +13274,13 @@ def lawspec_collections_bounded_u_int_ptr_3(symbols, value):
             )
             if (
                 ls.binary(">=", value, 0, "Integer", "Integer")
-                and ls.binary("<=", value, 18446744073709551615, "Integer", "Integer")
+                and ls.binary(
+                    "<=",
+                    value,
+                    18446744073709551615,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntPtr")]),
@@ -12650,7 +13315,13 @@ def lawspec_collections_bounded_u_int_size_3(symbols, value):
             )
             if (
                 ls.binary(">=", value, 0, "Integer", "Integer")
-                and ls.binary("<=", value, 18446744073709551615, "Integer", "Integer")
+                and ls.binary(
+                    "<=",
+                    value,
+                    18446744073709551615,
+                    "Integer",
+                    "Integer",
+                )
             )
             else _lawspec_schema.construct(
                 _schema.Named("Maybe", [_schema.Named("UIntSize")]),
@@ -12675,7 +13346,9 @@ def lawspec_collections_bounded_u_int_size_3(symbols, value):
 # saturatingInt16 — <lawspec.collections>:354
 def lawspec_collections_saturating_int16_3(symbols, value):
     try:
-        return _typed.to_int16(_typed.saturating_int16(_typed.from_integer(value)))
+        return _typed.to_int16(
+            _typed.saturating_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12690,7 +13363,9 @@ def lawspec_collections_saturating_int16_3(symbols, value):
 # saturatingInt32 — <lawspec.collections>:367
 def lawspec_collections_saturating_int32_3(symbols, value):
     try:
-        return _typed.to_int32(_typed.saturating_int32(_typed.from_integer(value)))
+        return _typed.to_int32(
+            _typed.saturating_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12705,7 +13380,9 @@ def lawspec_collections_saturating_int32_3(symbols, value):
 # saturatingInt64 — <lawspec.collections>:380
 def lawspec_collections_saturating_int64_3(symbols, value):
     try:
-        return _typed.to_int64(_typed.saturating_int64(_typed.from_integer(value)))
+        return _typed.to_int64(
+            _typed.saturating_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12720,7 +13397,9 @@ def lawspec_collections_saturating_int64_3(symbols, value):
 # saturatingInt8 — <lawspec.collections>:341
 def lawspec_collections_saturating_int8_3(symbols, value):
     try:
-        return _typed.to_int8(_typed.saturating_int8(_typed.from_integer(value)))
+        return _typed.to_int8(
+            _typed.saturating_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12740,7 +13419,13 @@ def lawspec_collections_saturating_int_size_3(symbols, value):
             if ls.binary(">", value, 9223372036854775807, "Integer", "Integer")
             else (
                 ls.convert(-9223372036854775808, "IntSize", MACHINE_BITS)
-                if ls.binary("<", value, -9223372036854775808, "Integer", "Integer")
+                if ls.binary(
+                    "<",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                )
                 else ls.helper("IntSize", [value], ["Integer"], MACHINE_BITS)
             )
         )
@@ -12759,7 +13444,9 @@ def lawspec_collections_saturating_int_size_3(symbols, value):
 # saturatingUInt16 — <lawspec.collections>:406
 def lawspec_collections_saturating_u_int16_3(symbols, value):
     try:
-        return _typed.to_u_int16(_typed.saturating_u_int16(_typed.from_integer(value)))
+        return _typed.to_u_int16(
+            _typed.saturating_u_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12774,7 +13461,9 @@ def lawspec_collections_saturating_u_int16_3(symbols, value):
 # saturatingUInt32 — <lawspec.collections>:419
 def lawspec_collections_saturating_u_int32_3(symbols, value):
     try:
-        return _typed.to_u_int32(_typed.saturating_u_int32(_typed.from_integer(value)))
+        return _typed.to_u_int32(
+            _typed.saturating_u_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12789,7 +13478,9 @@ def lawspec_collections_saturating_u_int32_3(symbols, value):
 # saturatingUInt64 — <lawspec.collections>:432
 def lawspec_collections_saturating_u_int64_3(symbols, value):
     try:
-        return _typed.to_u_int64(_typed.saturating_u_int64(_typed.from_integer(value)))
+        return _typed.to_u_int64(
+            _typed.saturating_u_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12804,7 +13495,9 @@ def lawspec_collections_saturating_u_int64_3(symbols, value):
 # saturatingUInt8 — <lawspec.collections>:393
 def lawspec_collections_saturating_u_int8_3(symbols, value):
     try:
-        return _typed.to_u_int8(_typed.saturating_u_int8(_typed.from_integer(value)))
+        return _typed.to_u_int8(
+            _typed.saturating_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12867,7 +13560,9 @@ def lawspec_collections_saturating_u_int_size_3(symbols, value):
 # wrappingInt16 — <lawspec.collections>:349
 def lawspec_collections_wrapping_int16_3(symbols, value):
     try:
-        return _typed.to_int16(_typed.wrapping_int16(_typed.from_integer(value)))
+        return _typed.to_int16(
+            _typed.wrapping_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12882,7 +13577,9 @@ def lawspec_collections_wrapping_int16_3(symbols, value):
 # wrappingInt32 — <lawspec.collections>:362
 def lawspec_collections_wrapping_int32_3(symbols, value):
     try:
-        return _typed.to_int32(_typed.wrapping_int32(_typed.from_integer(value)))
+        return _typed.to_int32(
+            _typed.wrapping_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12897,7 +13594,9 @@ def lawspec_collections_wrapping_int32_3(symbols, value):
 # wrappingInt64 — <lawspec.collections>:375
 def lawspec_collections_wrapping_int64_3(symbols, value):
     try:
-        return _typed.to_int64(_typed.wrapping_int64(_typed.from_integer(value)))
+        return _typed.to_int64(
+            _typed.wrapping_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -12964,7 +13663,15 @@ def lawspec_collections_wrapping_int_size_3(symbols, value):
                 if ls.binary("<", r, 0, "Integer", "Integer")
                 else ls.helper(
                     "IntSize",
-                    [ls.binary("+", r, -9223372036854775808, "Integer", "Integer")],
+                    [
+                        ls.binary(
+                            "+",
+                            r,
+                            -9223372036854775808,
+                            "Integer",
+                            "Integer",
+                        ),
+                    ],
                     ["Integer"],
                     MACHINE_BITS,
                 )
@@ -12972,7 +13679,13 @@ def lawspec_collections_wrapping_int_size_3(symbols, value):
         )(
             ls.binary(
                 "rem",
-                ls.binary("-", value, -9223372036854775808, "Integer", "Integer"),
+                ls.binary(
+                    "-",
+                    value,
+                    -9223372036854775808,
+                    "Integer",
+                    "Integer",
+                ),
                 ls.binary(
                     "+",
                     ls.binary(
@@ -13005,7 +13718,9 @@ def lawspec_collections_wrapping_int_size_3(symbols, value):
 # wrappingUInt16 — <lawspec.collections>:401
 def lawspec_collections_wrapping_u_int16_3(symbols, value):
     try:
-        return _typed.to_u_int16(_typed.wrapping_u_int16(_typed.from_integer(value)))
+        return _typed.to_u_int16(
+            _typed.wrapping_u_int16(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -13020,7 +13735,9 @@ def lawspec_collections_wrapping_u_int16_3(symbols, value):
 # wrappingUInt32 — <lawspec.collections>:414
 def lawspec_collections_wrapping_u_int32_3(symbols, value):
     try:
-        return _typed.to_u_int32(_typed.wrapping_u_int32(_typed.from_integer(value)))
+        return _typed.to_u_int32(
+            _typed.wrapping_u_int32(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -13035,7 +13752,9 @@ def lawspec_collections_wrapping_u_int32_3(symbols, value):
 # wrappingUInt64 — <lawspec.collections>:427
 def lawspec_collections_wrapping_u_int64_3(symbols, value):
     try:
-        return _typed.to_u_int64(_typed.wrapping_u_int64(_typed.from_integer(value)))
+        return _typed.to_u_int64(
+            _typed.wrapping_u_int64(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -13050,7 +13769,9 @@ def lawspec_collections_wrapping_u_int64_3(symbols, value):
 # wrappingUInt8 — <lawspec.collections>:388
 def lawspec_collections_wrapping_u_int8_3(symbols, value):
     try:
-        return _typed.to_u_int8(_typed.wrapping_u_int8(_typed.from_integer(value)))
+        return _typed.to_u_int8(
+            _typed.wrapping_u_int8(_typed.from_integer(value)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
@@ -13113,7 +13834,13 @@ def lawspec_collections_wrapping_u_int_ptr_3(symbols, value):
                 ls.binary("-", value, 0, "Integer", "Integer"),
                 ls.binary(
                     "+",
-                    ls.binary("-", 18446744073709551615, 0, "Integer", "Integer"),
+                    ls.binary(
+                        "-",
+                        18446744073709551615,
+                        0,
+                        "Integer",
+                        "Integer",
+                    ),
                     1,
                     "Integer",
                     "Integer",
@@ -13185,7 +13912,13 @@ def lawspec_collections_wrapping_u_int_size_3(symbols, value):
                 ls.binary("-", value, 0, "Integer", "Integer"),
                 ls.binary(
                     "+",
-                    ls.binary("-", 18446744073709551615, 0, "Integer", "Integer"),
+                    ls.binary(
+                        "-",
+                        18446744073709551615,
+                        0,
+                        "Integer",
+                        "Integer",
+                    ),
                     1,
                     "Integer",
                     "Integer",
@@ -13255,7 +13988,11 @@ def lawspec_collections_key_val_delete_items_text_list_entry_text_list_text_3(
 
 
 # keyValDelete — <lawspec.collections>:319
-def lawspec_collections_key_val_delete_int64_key_val_int64_int64_3(symbols, k, m):
+def lawspec_collections_key_val_delete_int64_key_val_int64_int64_3(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_key_val_int64_int64(
             _typed.lawspec_collections_key_val_delete_int64_key_val_int64_int64(
@@ -13275,7 +14012,11 @@ def lawspec_collections_key_val_delete_int64_key_val_int64_int64_3(symbols, k, m
 
 
 # keyValDelete — <lawspec.collections>:319
-def lawspec_collections_key_val_delete_text_key_val_text_list_text_3(symbols, k, m):
+def lawspec_collections_key_val_delete_text_key_val_text_list_text_3(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_key_val_text_list_text(
             _typed.lawspec_collections_key_val_delete_text_key_val_text_list_text(
@@ -13333,7 +14074,10 @@ def lawspec_collections_key_val_entries_key_val_text_group_3(symbols, m):
 
 
 # keyValEntries — <lawspec.collections>:331
-def lawspec_collections_key_val_entries_key_val_text_list_topic_partition_3(symbols, m):
+def lawspec_collections_key_val_entries_key_val_text_list_topic_partition_3(
+    symbols,
+    m,
+):
     try:
         return _typed.to_list_entry_text_list_topic_partition(
             _typed.lawspec_collections_key_val_entries_key_val_text_list_topic_partition(
@@ -13640,7 +14384,10 @@ def lawspec_collections_key_val_from_items_list_entry_int64_producer_entry_list_
 
 
 # keyValKeysItems — <lawspec.collections>:293
-def lawspec_collections_key_val_keys_items_list_entry_text_list_text_3(symbols, es):
+def lawspec_collections_key_val_keys_items_list_entry_text_list_text_3(
+    symbols,
+    es,
+):
     try:
         return _typed.to_list_text(
             _typed.lawspec_collections_key_val_keys_items_list_entry_text_list_text(
@@ -14110,7 +14857,11 @@ def lawspec_collections_key_val_lookup_topic_partition_key_val_topic_partition_i
 
 
 # keyValLookup — <lawspec.collections>:311
-def lawspec_collections_key_val_lookup_int64_key_val_int64_int64_3(symbols, k, m):
+def lawspec_collections_key_val_lookup_int64_key_val_int64_int64_3(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_maybe_int64(
             _typed.lawspec_collections_key_val_lookup_int64_key_val_int64_int64(
@@ -14194,7 +14945,11 @@ def lawspec_collections_key_val_lookup_topic_partition_key_val_topic_partition_p
 
 
 # keyValLookup — <lawspec.collections>:311
-def lawspec_collections_key_val_lookup_text_key_val_text_list_text_3(symbols, k, m):
+def lawspec_collections_key_val_lookup_text_key_val_text_list_text_3(
+    symbols,
+    k,
+    m,
+):
     try:
         return _typed.to_maybe_list_text(
             _typed.lawspec_collections_key_val_lookup_text_key_val_text_list_text(
@@ -14234,7 +14989,10 @@ def lawspec_collections_key_val_lookup_text_key_val_text_int64_3(symbols, k, m):
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_text_list_topic_partition_3(symbols, es):
+def lawspec_collections_key_val_of_list_entry_text_list_topic_partition_3(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_text_list_topic_partition(
             _typed.lawspec_collections_key_val_of_list_entry_text_list_topic_partition(
@@ -14272,7 +15030,10 @@ def lawspec_collections_key_val_of_list_entry_text_int64_3(symbols, es):
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_int64_list_batch_meta_3(symbols, es):
+def lawspec_collections_key_val_of_list_entry_int64_list_batch_meta_3(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_int64_list_batch_meta(
             _typed.lawspec_collections_key_val_of_list_entry_int64_list_batch_meta(
@@ -14329,7 +15090,10 @@ def lawspec_collections_key_val_of_list_entry_text_int32_3(symbols, es):
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_int64_producer_entry_3(symbols, es):
+def lawspec_collections_key_val_of_list_entry_int64_producer_entry_3(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_int64_producer_entry(
             _typed.lawspec_collections_key_val_of_list_entry_int64_producer_entry(
@@ -14370,7 +15134,10 @@ def lawspec_collections_key_val_of_list_entry_topic_partition_partition_log_3(
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_topic_partition_int32_2(symbols, es):
+def lawspec_collections_key_val_of_list_entry_topic_partition_int32_2(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_topic_partition_int32(
             _typed.lawspec_collections_key_val_of_list_entry_topic_partition_int32(
@@ -14389,7 +15156,10 @@ def lawspec_collections_key_val_of_list_entry_topic_partition_int32_2(symbols, e
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_topic_partition_int64_2(symbols, es):
+def lawspec_collections_key_val_of_list_entry_topic_partition_int64_2(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_topic_partition_int64(
             _typed.lawspec_collections_key_val_of_list_entry_topic_partition_int64(
@@ -14408,7 +15178,10 @@ def lawspec_collections_key_val_of_list_entry_topic_partition_int64_2(symbols, e
 
 
 # keyValOf — <lawspec.collections>:307
-def lawspec_collections_key_val_of_list_entry_group_partition_int64_3(symbols, es):
+def lawspec_collections_key_val_of_list_entry_group_partition_int64_3(
+    symbols,
+    es,
+):
     try:
         return _typed.to_key_val_group_partition_int64(
             _typed.lawspec_collections_key_val_of_list_entry_group_partition_int64(
@@ -14803,7 +15576,12 @@ def lawspec_collections_key_val_put_group_partition_int64_key_val_group_partitio
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_int32_key_val_text_int32_3(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_int32_key_val_text_int32_3(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_int32(
             _typed.lawspec_collections_key_val_put_text_int32_key_val_text_int32(
@@ -14928,7 +15706,12 @@ def lawspec_collections_key_val_put_int64_list_batch_meta_key_val_int64_list_bat
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_group_key_val_text_group_3(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_group_key_val_text_group_3(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_group(
             _typed.lawspec_collections_key_val_put_text_group_key_val_text_group(
@@ -14949,7 +15732,12 @@ def lawspec_collections_key_val_put_text_group_key_val_text_group_3(symbols, k, 
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_int64_int64_key_val_int64_int64_3(symbols, k, v, m):
+def lawspec_collections_key_val_put_int64_int64_key_val_int64_int64_3(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_int64_int64(
             _typed.lawspec_collections_key_val_put_int64_int64_key_val_int64_int64(
@@ -15048,7 +15836,12 @@ def lawspec_collections_key_val_put_topic_partition_int32_key_val_topic_partitio
 
 
 # keyValPut — <lawspec.collections>:315
-def lawspec_collections_key_val_put_text_int64_key_val_text_int64_3(symbols, k, v, m):
+def lawspec_collections_key_val_put_text_int64_key_val_text_int64_3(
+    symbols,
+    k,
+    v,
+    m,
+):
     try:
         return _typed.to_key_val_text_int64(
             _typed.lawspec_collections_key_val_put_text_int64_key_val_text_int64(
@@ -15069,7 +15862,10 @@ def lawspec_collections_key_val_put_text_int64_key_val_text_int64_3(symbols, k, 
 
 
 # keyValValuesItems — <lawspec.collections>:300
-def lawspec_collections_key_val_values_items_list_entry_int64_int64_3(symbols, es):
+def lawspec_collections_key_val_values_items_list_entry_int64_int64_3(
+    symbols,
+    es,
+):
     try:
         return _typed.to_list_int64(
             _typed.lawspec_collections_key_val_values_items_list_entry_int64_int64(
@@ -15107,7 +15903,11 @@ def lawspec_collections_key_val_values_key_val_int64_int64_3(symbols, m):
 
 
 # setFromItems — <lawspec.collections>:123
-def lawspec_collections_set_from_items_list_int32_list_int32_2(symbols, xs, acc):
+def lawspec_collections_set_from_items_list_int32_list_int32_2(
+    symbols,
+    xs,
+    acc,
+):
     try:
         return _typed.to_list_int32(
             _typed.lawspec_collections_set_from_items_list_int32_list_int32(
@@ -15190,7 +15990,9 @@ def lawspec_collections_set_insert_items_text_list_text_3(symbols, x, xs):
 def lawspec_collections_set_of_list_text_3(symbols, xs):
     try:
         return _typed.to_set_text(
-            _typed.lawspec_collections_set_of_list_text(_typed.from_list_text(xs)),
+            _typed.lawspec_collections_set_of_list_text(
+                _typed.from_list_text(xs),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -15207,7 +16009,9 @@ def lawspec_collections_set_of_list_text_3(symbols, xs):
 def lawspec_collections_set_of_list_int32_2(symbols, xs):
     try:
         return _typed.to_set_int32(
-            _typed.lawspec_collections_set_of_list_int32(_typed.from_list_int32(xs)),
+            _typed.lawspec_collections_set_of_list_int32(
+                _typed.from_list_int32(xs),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -15261,7 +16065,11 @@ def lawspec_collections_set_remove_text_sorted_set_text_2(symbols, x, s):
 
 
 # setUnion — <lawspec.collections>:158
-def lawspec_collections_set_union_sorted_set_text_sorted_set_text_3(symbols, s, t):
+def lawspec_collections_set_union_sorted_set_text_sorted_set_text_3(
+    symbols,
+    s,
+    t,
+):
     try:
         return _typed.to_set_text(
             _typed.lawspec_collections_set_union_set_text_set_text(
@@ -15284,7 +16092,10 @@ def lawspec_collections_set_union_sorted_set_text_sorted_set_text_3(symbols, s, 
 def lawtwin_kafka_all_at_least(symbols, floor, xs):
     try:
         return _typed.to_bool(
-            _typed.all_at_least(_typed.from_int64(floor), _typed.from_list_int64(xs)),
+            _typed.all_at_least(
+                _typed.from_int64(floor),
+                _typed.from_list_int64(xs),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -15292,7 +16103,8 @@ def lawtwin_kafka_all_at_least(symbols, floor, xs):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaAllAtLeast: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaAllAtLeast: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15311,7 +16123,8 @@ def lawtwin_kafka_assignment_in(symbols, m, ms):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaAssignmentIn: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaAssignmentIn: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15331,7 +16144,8 @@ def lawtwin_kafka_committed_from(symbols, tp, offset):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaCommittedFrom: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaCommittedFrom: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15350,7 +16164,8 @@ def lawtwin_kafka_consumer_assign(symbols, tps, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerAssign: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerAssign: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15366,7 +16181,8 @@ def lawtwin_kafka_consumer_close(symbols, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerClose: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerClose: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15382,7 +16198,8 @@ def lawtwin_kafka_consumer_commit(symbols, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerCommit: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerCommit: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15445,7 +16262,8 @@ def lawtwin_kafka_consumer_join(symbols, g, m, topics, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerJoin: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerJoin: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15465,7 +16283,8 @@ def lawtwin_kafka_consumer_poll(symbols, n, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerPoll: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerPoll: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15485,7 +16304,8 @@ def lawtwin_kafka_consumer_position(symbols, tp, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerPosition: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerPosition: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15525,7 +16345,8 @@ def lawtwin_kafka_consumer_records(symbols, tp, rs):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerRecords: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerRecords: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15541,7 +16362,8 @@ def lawtwin_kafka_consumer_refresh(symbols, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerRefresh: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerRefresh: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15561,7 +16383,8 @@ def lawtwin_kafka_consumer_seek(symbols, tp, offset, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaConsumerSeek: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaConsumerSeek: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15581,7 +16404,8 @@ def lawtwin_kafka_covers_once(symbols, t, n, view):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaCoversOnce: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaCoversOnce: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15636,7 +16460,8 @@ def lawtwin_kafka_follows_batch(symbols, a, batch, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaFollowsBatch: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaFollowsBatch: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15655,35 +16480,42 @@ def lawtwin_kafka_follows_one(symbols, a, latest):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaFollowsOne: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaFollowsOne: "
+            + _builtins.str(error),
         ) from error
 
 
 # lawtwinKafkaFreshConsumer — ../src/contract.lawspec:557
 def lawtwin_kafka_fresh_consumer(symbols, u):
     try:
-        return _typed.to_consumer_state(_typed.fresh_consumer(_typed.from_unit(u)))
+        return _typed.to_consumer_state(
+            _typed.fresh_consumer(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaFreshConsumer: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaFreshConsumer: "
+            + _builtins.str(error),
         ) from error
 
 
 # lawtwinKafkaFreshProducer — ../src/contract.lawspec:542
 def lawtwin_kafka_fresh_producer(symbols, u):
     try:
-        return _typed.to_producer_state(_typed.fresh_producer(_typed.from_unit(u)))
+        return _typed.to_producer_state(
+            _typed.fresh_producer(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaFreshProducer: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaFreshProducer: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15716,7 +16548,8 @@ def lawtwin_kafka_identity_of(symbols, st):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaIdentityOf: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaIdentityOf: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15730,7 +16563,8 @@ def lawtwin_kafka_increasing(symbols, xs):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaIncreasing: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaIncreasing: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15792,7 +16626,8 @@ def lawtwin_kafka_keep_positions(symbols, tps, positions, acc):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaKeepPositions: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaKeepPositions: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15806,7 +16641,8 @@ def lawtwin_kafka_member_ids(symbols, ms):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaMemberIds: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaMemberIds: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15825,12 +16661,20 @@ def lawtwin_kafka_missing_from(symbols, tps, have):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaMissingFrom: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaMissingFrom: "
+            + _builtins.str(error),
         ) from error
 
 
 # lawtwinKafkaModelAddPartitionsToTxn — ../src/model.lawspec:618
-def lawtwin_kafka_model_add_partitions_to_txn_2(symbols, txid, pid, epoch, tps, b):
+def lawtwin_kafka_model_add_partitions_to_txn_2(
+    symbols,
+    txid,
+    pid,
+    epoch,
+    tps,
+    b,
+):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.lawtwin_kafka_model_add_partitions_to_txn(
@@ -15867,7 +16711,8 @@ def lawtwin_kafka_model_all_known_2(symbols, tps, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelAllKnown: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelAllKnown: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15888,7 +16733,8 @@ def lawtwin_kafka_model_append_batch_2(symbols, rs, writer, transactional, l):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelAppendBatch: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelAppendBatch: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -15943,7 +16789,14 @@ def lawtwin_kafka_model_apply_offsets_2(symbols, os, b):
 
 
 # lawtwinKafkaModelAssignPartitions — ../src/model.lawspec:768
-def lawtwin_kafka_model_assign_partitions_2(symbols, topic, ps, owners, waiting, a):
+def lawtwin_kafka_model_assign_partitions_2(
+    symbols,
+    topic,
+    ps,
+    owners,
+    waiting,
+    a,
+):
     try:
         return _typed.to_key_val_text_list_topic_partition(
             _typed.lawtwin_kafka_model_assign_partitions(
@@ -15981,7 +16834,8 @@ def lawtwin_kafka_model_assign_to_2(symbols, member, tp, a):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelAssignTo: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelAssignTo: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16024,7 +16878,8 @@ def lawtwin_kafka_model_check_member_2(symbols, g, member, generation, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelCheckMember: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelCheckMember: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16066,7 +16921,8 @@ def lawtwin_kafka_model_commit_all_2(symbols, g, offsets, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelCommitAll: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelCommitAll: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16127,7 +16983,8 @@ def lawtwin_kafka_model_create_topic_2(symbols, name, n, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelCreateTopic: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelCreateTopic: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16183,7 +17040,8 @@ def lawtwin_kafka_model_empty_broker_2(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelEmptyBroker: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelEmptyBroker: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16199,7 +17057,8 @@ def lawtwin_kafka_model_empty_group_2(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelEmptyGroup: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelEmptyGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16215,7 +17074,8 @@ def lawtwin_kafka_model_empty_log_2(symbols, u):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelEmptyLog: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelEmptyLog: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16237,7 +17097,8 @@ def lawtwin_kafka_model_end_txn_2(symbols, txid, pid, epoch, commit, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelEndTxn: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelEndTxn: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16279,7 +17140,8 @@ def lawtwin_kafka_model_fetch_2(symbols, tp, from_, max_records, isolation, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelFetch: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelFetch: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16322,7 +17184,8 @@ def lawtwin_kafka_model_finish_txn_2(symbols, pid, commit, txn, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelFinishTxn: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelFinishTxn: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16341,7 +17204,8 @@ def lawtwin_kafka_model_group_of_2(symbols, g, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelGroupOf: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelGroupOf: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16362,7 +17226,8 @@ def lawtwin_kafka_model_heartbeat_2(symbols, g, member, generation, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelHeartbeat: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelHeartbeat: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16370,7 +17235,9 @@ def lawtwin_kafka_model_heartbeat_2(symbols, g, member, generation, b):
 def lawtwin_kafka_model_high_watermark_2(symbols, l):
     try:
         return _typed.to_int64(
-            _typed.lawtwin_kafka_model_high_watermark(_typed.from_partition_log(l)),
+            _typed.lawtwin_kafka_model_high_watermark(
+                _typed.from_partition_log(l),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -16419,7 +17286,8 @@ def lawtwin_kafka_model_is_aborted_2(symbols, writer, offset, aborted):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelIsAborted: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelIsAborted: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16440,7 +17308,8 @@ def lawtwin_kafka_model_join_group_2(symbols, g, member, topics, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelJoinGroup: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelJoinGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16488,7 +17357,9 @@ def lawtwin_kafka_model_last_offset_of_2(symbols, rs, fallback_offset):
 def lawtwin_kafka_model_last_stable_offset_2(symbols, l):
     try:
         return _typed.to_int64(
-            _typed.lawtwin_kafka_model_last_stable_offset(_typed.from_partition_log(l)),
+            _typed.lawtwin_kafka_model_last_stable_offset(
+                _typed.from_partition_log(l),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -16517,7 +17388,8 @@ def lawtwin_kafka_model_leave_group_2(symbols, g, member, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelLeaveGroup: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelLeaveGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16538,7 +17410,8 @@ def lawtwin_kafka_model_list_offsets_2(symbols, tp, spec, isolation, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelListOffsets: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelListOffsets: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16557,7 +17430,8 @@ def lawtwin_kafka_model_log_of_2(symbols, tp, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelLogOf: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelLogOf: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16576,7 +17450,8 @@ def lawtwin_kafka_model_max64_2(symbols, a, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMax64: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMax64: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16611,7 +17486,8 @@ def lawtwin_kafka_model_member_views_2(symbols, a):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMemberViews: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMemberViews: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16630,7 +17506,8 @@ def lawtwin_kafka_model_metadata_2(symbols, name, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMetadata: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMetadata: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16649,7 +17526,8 @@ def lawtwin_kafka_model_min64_2(symbols, a, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMin64: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMin64: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16668,7 +17546,8 @@ def lawtwin_kafka_model_min_of_2(symbols, xs, m):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelMinOf: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelMinOf: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16687,7 +17566,8 @@ def lawtwin_kafka_model_new_producer_2(symbols, txid, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelNewProducer: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelNewProducer: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16714,7 +17594,14 @@ def lawtwin_kafka_model_next_fetch_offset_2(symbols, from_, limit, taken, all_):
 
 
 # lawtwinKafkaModelOffsetCommit — ../src/model.lawspec:957
-def lawtwin_kafka_model_offset_commit_2(symbols, g, member, generation, offsets, b):
+def lawtwin_kafka_model_offset_commit_2(
+    symbols,
+    g,
+    member,
+    generation,
+    offsets,
+    b,
+):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.lawtwin_kafka_model_offset_commit(
@@ -16752,7 +17639,8 @@ def lawtwin_kafka_model_offset_fetch_2(symbols, g, tp, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelOffsetFetch: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelOffsetFetch: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16828,7 +17716,8 @@ def lawtwin_kafka_model_pending_for_2(symbols, group, offsets, acc):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelPendingFor: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelPendingFor: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16849,7 +17738,8 @@ def lawtwin_kafka_model_produce_2(symbols, tp, tag, rs, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelProduce: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelProduce: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16892,7 +17782,8 @@ def lawtwin_kafka_model_put_group_2(symbols, g, group, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelPutGroup: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelPutGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16912,7 +17803,8 @@ def lawtwin_kafka_model_put_log_2(symbols, tp, l, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelPutLog: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelPutLog: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16932,7 +17824,8 @@ def lawtwin_kafka_model_put_producer_2(symbols, pid, entry, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelPutProducer: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelPutProducer: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16963,7 +17856,8 @@ def lawtwin_kafka_model_readable_2(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelReadable: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelReadable: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -16982,7 +17876,8 @@ def lawtwin_kafka_model_rebalance_2(symbols, group, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelRebalance: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelRebalance: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17146,7 +18041,8 @@ def lawtwin_kafka_model_sync_group_2(symbols, g, member, generation, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelSyncGroup: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelSyncGroup: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17255,7 +18151,8 @@ def lawtwin_kafka_model_write_marker_2(symbols, pid, commit, l):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaModelWriteMarker: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaModelWriteMarker: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17326,7 +18223,8 @@ def lawtwin_kafka_murmur_chunks(symbols, octets, h):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaMurmurChunks: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaMurmurChunks: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17380,7 +18278,8 @@ def lawtwin_kafka_partition_of(symbols, topic, choice, r):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaPartitionOf: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaPartitionOf: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17422,7 +18321,8 @@ def lawtwin_kafka_poll_partitions(symbols, tps, n, c, acc):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaPollPartitions: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaPollPartitions: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17458,7 +18358,8 @@ def lawtwin_kafka_producer_flush(symbols, st):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaProducerFlush: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaProducerFlush: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17491,7 +18392,8 @@ def lawtwin_kafka_producer_retry(symbols, st):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaProducerRetry: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaProducerRetry: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17511,7 +18413,8 @@ def lawtwin_kafka_producer_send(symbols, pr, st):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaProducerSend: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaProducerSend: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17554,7 +18457,8 @@ def lawtwin_kafka_read_in_order(symbols, a, b, first, second):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaReadInOrder: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaReadInOrder: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17570,7 +18474,8 @@ def lawtwin_kafka_received_offsets(symbols, rs):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaReceivedOffsets: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaReceivedOffsets: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17586,7 +18491,8 @@ def lawtwin_kafka_received_records(symbols, rs):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaReceivedRecords: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaReceivedRecords: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17602,7 +18508,8 @@ def lawtwin_kafka_records_of(symbols, rs):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaRecordsOf: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaRecordsOf: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17644,7 +18551,8 @@ def lawtwin_kafka_same_partition(symbols, a, b):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaSamePartition: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaSamePartition: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17663,21 +18571,25 @@ def lawtwin_kafka_sequence_for(symbols, tp, sequences):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaSequenceFor: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaSequenceFor: "
+            + _builtins.str(error),
         ) from error
 
 
 # lawtwinKafkaSmallBatch — ../src/contract.lawspec:320
 def lawtwin_kafka_small_batch(symbols, batch):
     try:
-        return _typed.to_bool(_typed.small_batch(_typed.from_list_record(batch)))
+        return _typed.to_bool(
+            _typed.small_batch(_typed.from_list_record(batch)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaSmallBatch: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaSmallBatch: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17698,7 +18610,8 @@ def lawtwin_kafka_stable_below_high(symbols, t, txid, batch):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaStableBelowHigh: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaStableBelowHigh: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17750,7 +18663,8 @@ def lawtwin_kafka_to_positive(symbols, h):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaToPositive: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaToPositive: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17804,7 +18718,10 @@ def lawtwin_kafka_transactional_offsets(symbols, t, txid, g, offset):
 def lawtwin_kafka_transactions_abort(symbols, st):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
-            _typed.transactions_abort(symbols, _typed.from_transaction_state(st)),
+            _typed.transactions_abort(
+                symbols,
+                _typed.from_transaction_state(st),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -17833,7 +18750,8 @@ def lawtwin_kafka_transactions_add(symbols, tps, st):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaTransactionsAdd: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaTransactionsAdd: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17858,7 +18776,10 @@ def lawtwin_kafka_transactions_begin(symbols, st):
 def lawtwin_kafka_transactions_commit(symbols, st):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
-            _typed.transactions_commit(symbols, _typed.from_transaction_state(st)),
+            _typed.transactions_commit(
+                symbols,
+                _typed.from_transaction_state(st),
+            ),
         )
     except (
         _builtins.ValueError,
@@ -17887,7 +18808,8 @@ def lawtwin_kafka_transactions_end(symbols, commit, st):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaTransactionsEnd: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaTransactionsEnd: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17907,7 +18829,8 @@ def lawtwin_kafka_transactions_init(symbols, txid, st):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaTransactionsInit: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaTransactionsInit: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17949,7 +18872,8 @@ def lawtwin_kafka_transactions_send(symbols, pr, st):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaTransactionsSend: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaTransactionsSend: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -17969,7 +18893,8 @@ def lawtwin_kafka_uncommitted_from(symbols, tp, offset):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaUncommittedFrom: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaUncommittedFrom: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -18008,7 +18933,8 @@ def lawtwin_kafka_with_assignment(symbols, g, m, gen, topics, tps, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaWithAssignment: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaWithAssignment: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -18028,7 +18954,8 @@ def lawtwin_kafka_with_position(symbols, tp, offset, c):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaWithPosition: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaWithPosition: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -18049,7 +18976,8 @@ def lawtwin_kafka_write_aborted(symbols, tp, txid, r):
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.kafka::lawtwinKafkaWriteAborted: " + _builtins.str(error),
+            "contracttest.kafka::lawtwinKafkaWriteAborted: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -18112,7 +19040,9 @@ def murmur_partitioner_choose_partition_2(symbols, key, n):
 # suiteNamesThePackage — laws/suite.lawspec:9
 def suite_names_the_package(symbols, u):
     try:
-        return _typed.to_unit(_typed.suite_names_the_package(_typed.from_unit(u)))
+        return _typed.to_unit(
+            _typed.suite_names_the_package(_typed.from_unit(u)),
+        )
     except (
         _builtins.ValueError,
         _builtins.TypeError,

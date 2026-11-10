@@ -33,7 +33,9 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_32cb458ab3c301f1bfa1d2dfaccad6b7
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -55,7 +57,9 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_32cb458ab3c301f1bfa1d2dfaccad6b7
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -96,8 +100,12 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_db8e2baf113bbfb228fce8821ce6c64c
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -118,8 +126,12 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_db8e2baf113bbfb228fce8821ce6c64c
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -263,11 +275,9 @@ def lawspec_lawspecCollectionsKeyValEntries_9e91d2555208ebf0d7f58fc191fd99c1a990
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_entries_key_val_label_key_label_4(
-                symbols,
-                m,
-            )
+        result = _definitions.lawspec_collections_key_val_entries_key_val_label_key_label_4(
+            symbols,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -276,7 +286,9 @@ def lawspec_lawspecCollectionsKeyValEntries_9e91d2555208ebf0d7f58fc191fd99c1a990
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -326,8 +338,12 @@ def lawspec_lawspecCollectionsKeyValEntries_dda43aef1d45f51bf3489e99bfc052d9e360
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -361,8 +377,12 @@ def lawspec_lawspecCollectionsKeyValFromItems_30b37de557ccb7dda3e990094ab4cafff2
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -378,8 +398,12 @@ def lawspec_lawspecCollectionsKeyValFromItems_30b37de557ccb7dda3e990094ab4cafff2
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -400,8 +424,12 @@ def lawspec_lawspecCollectionsKeyValFromItems_30b37de557ccb7dda3e990094ab4cafff2
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -435,7 +463,9 @@ def lawspec_lawspecCollectionsKeyValFromItems_b76a8d5ce410c3b1caa1e78ecc2dac9886
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -452,7 +482,9 @@ def lawspec_lawspecCollectionsKeyValFromItems_b76a8d5ce410c3b1caa1e78ecc2dac9886
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -474,7 +506,9 @@ def lawspec_lawspecCollectionsKeyValFromItems_b76a8d5ce410c3b1caa1e78ecc2dac9886
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -515,8 +549,12 @@ def lawspec_lawspecCollectionsKeyValLookupItems_8ce2bbe1457617eed5ddeaa97c037db5
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -570,7 +608,9 @@ def lawspec_lawspecCollectionsKeyValLookupItems_933dc128ed55d1160635af90c2092f10
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -718,8 +758,12 @@ def lawspec_lawspecCollectionsKeyValOf_30002a10bf089a68e4254766dc3577d993b211598
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -768,7 +812,9 @@ def lawspec_lawspecCollectionsKeyValOf_c4faf59fbe6f393f74929a1314d63406c6ed97d8d
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -778,11 +824,9 @@ def lawspec_lawspecCollectionsKeyValOf_c4faf59fbe6f393f74929a1314d63406c6ed97d8d
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_of_list_entry_label_key_label_4(
-                symbols,
-                es,
-            )
+        result = _definitions.lawspec_collections_key_val_of_list_entry_label_key_label_4(
+            symbols,
+            es,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -834,7 +878,9 @@ def lawspec_lawspecCollectionsKeyValPutItems_5caa8fea9cba1a1eb238f0e3022749b0426
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -857,7 +903,9 @@ def lawspec_lawspecCollectionsKeyValPutItems_5caa8fea9cba1a1eb238f0e3022749b0426
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -905,8 +953,12 @@ def lawspec_lawspecCollectionsKeyValPutItems_78850bc1189700049c9816f7cdd2025c4fa
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -928,8 +980,12 @@ def lawspec_lawspecCollectionsKeyValPutItems_78850bc1189700049c9816f7cdd2025c4fa
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -1096,7 +1152,8 @@ def lawtwinGithubModelAfter64(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::lawtwinGithubModelAfter64: " + _builtins.str(error),
+            "contracttest.github::lawtwinGithubModelAfter64: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -1114,7 +1171,10 @@ def lawtwinGithubModelContainsLabel(
             symbols,
         )
         items = _lawspec_schema.from_native(
-            _schema.Named("List", [_schema.Named("lawtwin.github.model::type::Label")]),
+            _schema.Named(
+                "List",
+                [_schema.Named("lawtwin.github.model::type::Label")],
+            ),
             items,
             MACHINE_BITS,
             symbols,
@@ -1191,7 +1251,12 @@ def lawtwinGithubModelEmptyState(
     u: ls.Absence,
 ) -> data.State:
     try:
-        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        u = _lawspec_schema.from_native(
+            _schema.Named("Unit"),
+            u,
+            MACHINE_BITS,
+            symbols,
+        )
         result = _definitions.lawtwin_github_model_empty_state_3(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.github.model::type::State"),
@@ -1295,7 +1360,9 @@ def lawtwinGithubModelModelIssuesCreateMilestone(
             symbols,
         )
         body = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.github.model::type::IssuesCreateMilestoneBody"),
+            _schema.Named(
+                "lawtwin.github.model::type::IssuesCreateMilestoneBody",
+            ),
             body,
             MACHINE_BITS,
             symbols,
@@ -1306,12 +1373,14 @@ def lawtwinGithubModelModelIssuesCreateMilestone(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.lawtwin_github_model_model_issues_create_milestone_3(
-            symbols,
-            owner,
-            repo,
-            body,
-            current,
+        result = (
+            _definitions.lawtwin_github_model_model_issues_create_milestone_3(
+                symbols,
+                owner,
+                repo,
+                body,
+                current,
+            )
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1432,12 +1501,14 @@ def lawtwinGithubModelModelIssuesDeleteMilestone(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.lawtwin_github_model_model_issues_delete_milestone_3(
-            symbols,
-            owner,
-            repo,
-            milestone_number,
-            current,
+        result = (
+            _definitions.lawtwin_github_model_model_issues_delete_milestone_3(
+                symbols,
+                owner,
+                repo,
+                milestone_number,
+                current,
+            )
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1703,7 +1774,11 @@ def lawtwinGithubModelModelIssuesListMilestones(
         sort = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
-                [_schema.Named("lawtwin.github.model::type::IssuesListMilestonesSort")],
+                [
+                    _schema.Named(
+                        "lawtwin.github.model::type::IssuesListMilestonesSort",
+                    ),
+                ],
             ),
             sort,
             MACHINE_BITS,
@@ -1740,16 +1815,18 @@ def lawtwinGithubModelModelIssuesListMilestones(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.lawtwin_github_model_model_issues_list_milestones_3(
-            symbols,
-            owner,
-            repo,
-            state,
-            sort,
-            direction,
-            per_page,
-            page,
-            current,
+        result = (
+            _definitions.lawtwin_github_model_model_issues_list_milestones_3(
+                symbols,
+                owner,
+                repo,
+                state,
+                sort,
+                direction,
+                per_page,
+                page,
+                current,
+            )
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1757,7 +1834,11 @@ def lawtwinGithubModelModelIssuesListMilestones(
                 [
                     _schema.Named(
                         "List",
-                        [_schema.Named("lawtwin.github.model::type::Milestone")],
+                        [
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
+                        ],
                     ),
                     _schema.Named("lawtwin.github.model::type::State"),
                 ],
@@ -1808,7 +1889,11 @@ def lawtwinGithubModelModelIssuesUpdateLabel(
         body = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
-                [_schema.Named("lawtwin.github.model::type::IssuesUpdateLabelBody")],
+                [
+                    _schema.Named(
+                        "lawtwin.github.model::type::IssuesUpdateLabelBody",
+                    ),
+                ],
             ),
             body,
             MACHINE_BITS,
@@ -1898,13 +1983,15 @@ def lawtwinGithubModelModelIssuesUpdateMilestone(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.lawtwin_github_model_model_issues_update_milestone_3(
-            symbols,
-            owner,
-            repo,
-            milestone_number,
-            body,
-            current,
+        result = (
+            _definitions.lawtwin_github_model_model_issues_update_milestone_3(
+                symbols,
+                owner,
+                repo,
+                milestone_number,
+                body,
+                current,
+            )
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1956,7 +2043,9 @@ def lawtwinGithubModelModelLabelsUnder(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::LabelKey"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::LabelKey",
+                            ),
                             _schema.Named("lawtwin.github.model::type::Label"),
                         ],
                     ),
@@ -1973,7 +2062,10 @@ def lawtwinGithubModelModelLabelsUnder(
             entries,
         )
         return _lawspec_schema.to_native(
-            _schema.Named("List", [_schema.Named("lawtwin.github.model::type::Label")]),
+            _schema.Named(
+                "List",
+                [_schema.Named("lawtwin.github.model::type::Label")],
+            ),
             result,
             MACHINE_BITS,
             symbols,
@@ -2016,8 +2108,12 @@ def lawtwinGithubModelModelMilestonesUnder(
                     _schema.Named(
                         "lawspec.collections::type::Entry",
                         [
-                            _schema.Named("lawtwin.github.model::type::MilestoneKey"),
-                            _schema.Named("lawtwin.github.model::type::Milestone"),
+                            _schema.Named(
+                                "lawtwin.github.model::type::MilestoneKey",
+                            ),
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
                         ],
                     ),
                 ],
@@ -2059,7 +2155,9 @@ def lawtwinGithubModelValidIssuesCreateMilestoneBody(
 ) -> _builtins.bool:
     try:
         value = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.github.model::type::IssuesCreateMilestoneBody"),
+            _schema.Named(
+                "lawtwin.github.model::type::IssuesCreateMilestoneBody",
+            ),
             value,
             MACHINE_BITS,
             symbols,
@@ -2092,7 +2190,9 @@ def lawtwinGithubModelValidIssuesUpdateMilestoneBody(
 ) -> _builtins.bool:
     try:
         value = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.github.model::type::IssuesUpdateMilestoneBody"),
+            _schema.Named(
+                "lawtwin.github.model::type::IssuesUpdateMilestoneBody",
+            ),
             value,
             MACHINE_BITS,
             symbols,
@@ -2176,7 +2276,8 @@ def referenceIssuesCreateLabel(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesCreateLabel: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesCreateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2208,7 +2309,9 @@ def referenceIssuesCreateMilestone(
             symbols,
         )
         value2 = _lawspec_schema.from_native(
-            _schema.Named("lawtwin.github.model::type::IssuesCreateMilestoneBody"),
+            _schema.Named(
+                "lawtwin.github.model::type::IssuesCreateMilestoneBody",
+            ),
             value2,
             MACHINE_BITS,
             symbols,
@@ -2301,7 +2404,8 @@ def referenceIssuesDeleteLabel(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesDeleteLabel: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesDeleteLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2426,7 +2530,8 @@ def referenceIssuesGetLabel(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesGetLabel: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesGetLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2488,7 +2593,8 @@ def referenceIssuesGetMilestone(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesGetMilestone: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesGetMilestone: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2613,7 +2719,11 @@ def referenceIssuesListMilestones(
         value3 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
-                [_schema.Named("lawtwin.github.model::type::IssuesListMilestonesSort")],
+                [
+                    _schema.Named(
+                        "lawtwin.github.model::type::IssuesListMilestonesSort",
+                    ),
+                ],
             ),
             value3,
             MACHINE_BITS,
@@ -2661,7 +2771,11 @@ def referenceIssuesListMilestones(
                 [
                     _schema.Named(
                         "List",
-                        [_schema.Named("lawtwin.github.model::type::Milestone")],
+                        [
+                            _schema.Named(
+                                "lawtwin.github.model::type::Milestone",
+                            ),
+                        ],
                     ),
                     _schema.Named("lawtwin.github.model::type::State"),
                 ],
@@ -2718,7 +2832,11 @@ def referenceIssuesUpdateLabel(
         value3 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
-                [_schema.Named("lawtwin.github.model::type::IssuesUpdateLabelBody")],
+                [
+                    _schema.Named(
+                        "lawtwin.github.model::type::IssuesUpdateLabelBody",
+                    ),
+                ],
             ),
             value3,
             MACHINE_BITS,
@@ -2750,7 +2868,8 @@ def referenceIssuesUpdateLabel(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::referenceIssuesUpdateLabel: " + _builtins.str(error),
+            "contracttest.github::referenceIssuesUpdateLabel: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2867,7 +2986,12 @@ def suiteNamesThePackage(
     u: ls.Absence,
 ) -> ls.Absence:
     try:
-        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        u = _lawspec_schema.from_native(
+            _schema.Named("Unit"),
+            u,
+            MACHINE_BITS,
+            symbols,
+        )
         result = _definitions.suite_names_the_package(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("Unit"),
@@ -2881,5 +3005,6 @@ def suiteNamesThePackage(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "contracttest.github::suiteNamesThePackage: " + _builtins.str(error),
+            "contracttest.github::suiteNamesThePackage: "
+            + _builtins.str(error),
         ) from error

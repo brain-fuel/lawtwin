@@ -98,11 +98,15 @@ class Constructor:
     def __post_init__(self):
         if self.native_paths is not None:
             object.__setattr__(
-                self, "native_paths", tuple(tuple(path) for path in self.native_paths)
+                self,
+                "native_paths",
+                tuple(tuple(path) for path in self.native_paths),
             )
         object.__setattr__(self, "fields", tuple(self.fields))
         object.__setattr__(
-            self, "hints", tuple((index, tuple(texts)) for index, texts in self.hints)
+            self,
+            "hints",
+            tuple((index, tuple(texts)) for index, texts in self.hints),
         )
         object.__setattr__(self, "predicates", tuple(self.predicates))
         object.__setattr__(self, "indices", tuple(self.indices))
@@ -256,7 +260,9 @@ def witness_key(reference):
         return reference.name
     return (
         "("
-        + " ".join([reference.name] + [witness_key(a) for a in reference.arguments])
+        + " ".join(
+            [reference.name] + [witness_key(a) for a in reference.arguments]
+        )
         + ")"
     )
 
@@ -341,7 +347,9 @@ def refine(constructor, arguments, parameters):
             isinstance(actual, Named)
             and actual.name == pattern.name
             and len(actual.arguments) == len(pattern.arguments)
-            and all(match(p, a) for p, a in zip(pattern.arguments, actual.arguments))
+            and all(
+                match(p, a) for p, a in zip(pattern.arguments, actual.arguments)
+            )
         )
 
     for index, pattern in constructor.refinements:
@@ -355,7 +363,10 @@ def refine(constructor, arguments, parameters):
 def substitute(reference, arguments):
     if isinstance(reference, Parameter):
         # A witnessed existential stays open until a value supplies it.
-        if reference.index >= len(arguments) or arguments[reference.index] is None:
+        if (
+            reference.index >= len(arguments)
+            or arguments[reference.index] is None
+        ):
             return reference
         return arguments[reference.index]
     return Named(
@@ -404,7 +415,10 @@ class Schema:
         for definition in definitions:
             if definition.name in self._arity:
                 raise ValueError("duplicate type: " + definition.name)
-            if type(definition.parameters) is not int or definition.parameters < 0:
+            if (
+                type(definition.parameters) is not int
+                or definition.parameters < 0
+            ):
                 raise ValueError("invalid parameter count: " + definition.name)
             self._definitions[definition.name] = definition
             self._arity[definition.name] = definition.parameters
@@ -412,9 +426,14 @@ class Schema:
         for definition in self._definitions.values():
             for constructor in definition.constructors:
                 if constructor.tag in tags:
-                    raise ValueError("duplicate constructor: " + constructor.tag)
+                    raise ValueError(
+                        "duplicate constructor: " + constructor.tag
+                    )
                 tags.add(constructor.tag)
-                if definition.name in COLLECTIONS or definition.name == _DURATION:
+                if (
+                    definition.name in COLLECTIONS
+                    or definition.name == _DURATION
+                ):
                     continue  # Native collections and durations convert separately.
                 if not isinstance(constructor.native, type):
                     raise TypeError("native constructor must be a class")
@@ -457,7 +476,9 @@ class Schema:
                 if constructor.native_paths is not None:
                     if constructor.native_fields is None:
                         raise ValueError("native paths require native fields")
-                    self._native_layout(constructor.fields, constructor.native_paths)
+                    self._native_layout(
+                        constructor.fields, constructor.native_paths
+                    )
 
     def _native_layout(self, fields, paths):
         """A complete, nonoverlapping packing tree; leaves keep native order."""
@@ -480,17 +501,25 @@ class Schema:
                         raise ValueError("overlapping native paths")
                     nodes.append((field, direct[0]))
                     continue
-                definition = self._definitions.get(getattr(field.type, "name", None))
+                definition = self._definitions.get(
+                    getattr(field.type, "name", None)
+                )
                 if definition is None or len(definition.constructors) != 1:
                     raise ValueError("native path must enter a record")
                 constructor = definition.constructors[0]
                 if constructor.existentials or constructor.refinements:
-                    raise ValueError("indexed native record path is unsupported")
+                    raise ValueError(
+                        "indexed native record path is unsupported"
+                    )
                 instantiated = tuple(
-                    Field(child.name, substitute(child.type, field.type.arguments))
+                    Field(
+                        child.name, substitute(child.type, field.type.arguments)
+                    )
                     for child in constructor.fields
                 )
-                nodes.append((field, (constructor.tag, build(instantiated, children))))
+                nodes.append(
+                    (field, (constructor.tag, build(instantiated, children)))
+                )
             return tuple(nodes)
 
         return build(fields, tuple(enumerate(paths)))
@@ -532,9 +561,12 @@ class Schema:
         if mode == "native":
             gather(tree, fields)
             converted = [
-                self._walk(ty, value, bits, mode, symbols) for ty, value in leaves
+                self._walk(ty, value, bits, mode, symbols)
+                for ty, value in leaves
             ]
-            return constructor.native(**dict(zip(constructor.native_fields, converted)))
+            return constructor.native(
+                **dict(zip(constructor.native_fields, converted))
+            )
         types(tree)
         converted = [
             self._walk(ty, value, bits, mode, symbols)
@@ -553,7 +585,9 @@ class Schema:
                 raise ValueError("unbound schema parameter")
         elif isinstance(reference, Named):
             if self._arity.get(reference.name) != len(reference.arguments):
-                raise ValueError("unknown type or wrong arity: " + reference.name)
+                raise ValueError(
+                    "unknown type or wrong arity: " + reference.name
+                )
             for child in reference.arguments:
                 self._check(child, parameters)
         else:
@@ -569,7 +603,9 @@ class Schema:
         for constructor in definition.constructors:
             # A GADT constructor whose refinements do not match these
             # arguments builds no value of this type.
-            arguments = refine(constructor, reference.arguments, definition.parameters)
+            arguments = refine(
+                constructor, reference.arguments, definition.parameters
+            )
             if arguments is None:
                 continue
             found.append(
@@ -615,14 +651,18 @@ class Schema:
                 ),
                 None,
             )
-            if constructor is None or len(constructor.fields) != len(item.fields):
+            if constructor is None or len(constructor.fields) != len(
+                item.fields
+            ):
                 raise TypeError("invalid recorded constructor")
             return witnessed(constructor, item.fields)
 
         return ls.recorded_text(value, reference, fields)
 
     def recorded(self, reference, key, value, bits=64, symbols=None):
-        return ls.recorded(key, value, lambda item: self.recorded_text(reference, item))
+        return ls.recorded(
+            key, value, lambda item: self.recorded_text(reference, item)
+        )
 
     def with_native_bindings(self, bindings, codecs=None):
         """Copy this schema with application classes and field names.
@@ -666,7 +706,9 @@ class Schema:
                         native_paths=paths,
                     )
                 constructors.append(constructor)
-            definitions.append(replace(definition, constructors=tuple(constructors)))
+            definitions.append(
+                replace(definition, constructors=tuple(constructors))
+            )
         if bindings:
             raise ValueError("unknown native constructor binding")
         primitives = set(self._arity) - set(self._definitions)
@@ -691,11 +733,17 @@ class Schema:
             right, _ = parse_index_term(tokens, at)
 
             def field(path, index):
-                return self._index_at_path(constructor.fields, fields, path, index)
+                return self._index_at_path(
+                    constructor.fields, fields, path, index
+                )
 
             x = eval_index_term(left, field)
             y = eval_index_term(right, field)
-            if x is None or y is None or (x != y if tokens[0] == "==" else x < y):
+            if (
+                x is None
+                or y is None
+                or (x != y if tokens[0] == "==" else x < y)
+            ):
                 raise RefinementViolation(
                     f"{constructor.tag}: index guard {text} failed"
                 )
@@ -721,7 +769,12 @@ class Schema:
         )
 
     def _index_at_path(self, types, values, path, index):
-        if not path or path[0] < 0 or path[0] >= len(types) or path[0] >= len(values):
+        if (
+            not path
+            or path[0] < 0
+            or path[0] >= len(types)
+            or path[0] >= len(values)
+        ):
             raise ValueError("invalid index field path")
         position, *rest = path
         reference, value = types[position].type, values[position]
@@ -730,11 +783,15 @@ class Schema:
         if not getattr(reference, "name", "").startswith(
             "lawspec::structural::record::"
         ):
-            raise ValueError("index field path must traverse a structural record")
+            raise ValueError(
+                "index field path must traverse a structural record"
+            )
         constructors = self.constructors(reference) or ()
         if len(constructors) != 1 or constructors[0].tag != value.tag:
             raise ValueError("invalid structural record in index field path")
-        return self._index_at_path(constructors[0].fields, value.fields, rest, index)
+        return self._index_at_path(
+            constructors[0].fields, value.fields, rest, index
+        )
 
     def validate(self, reference, value, bits=64, symbols=None):
         """Rejects a value outside the declared type, refinements included,
@@ -743,14 +800,21 @@ class Schema:
         self._check(reference)
         self._bits(bits)
         return self._walk(
-            reference, value, bits, "validate", {} if symbols is None else symbols
+            reference,
+            value,
+            bits,
+            "validate",
+            {} if symbols is None else symbols,
         )
 
     def all_payloads(self, reference, value, predicates, bits=64, symbols=None):
         """Check stored arguments, preserving parameter provenance."""
         self._check(reference)
         structural = ("List", "Maybe", "Either", "Nullable", "Optional")
-        if reference.name not in self._definitions and reference.name not in structural:
+        if (
+            reference.name not in self._definitions
+            and reference.name not in structural
+        ):
             raise ValueError("payload predicates require a data type")
         predicates = tuple(predicates)
         if len(predicates) != len(reference.arguments):
@@ -762,7 +826,9 @@ class Schema:
         def recipe(field, arguments):
             if isinstance(field, Parameter):
                 return arguments[field.index]
-            children = tuple(recipe(child, arguments) for child in field.arguments)
+            children = tuple(
+                recipe(child, arguments) for child in field.arguments
+            )
             return (
                 Named(field.name, children)
                 if any(child is not None for child in children)
@@ -804,7 +870,9 @@ class Schema:
                 )
             definition = self._definitions[name]
             constructor = next(
-                item for item in definition.constructors if item.tag == child.tag
+                item
+                for item in definition.constructors
+                if item.tag == child.tag
             )
             return all(
                 contextual(
@@ -816,7 +884,8 @@ class Schema:
             )
 
         plan = Named(
-            reference.name, tuple(Parameter(index) for index in range(len(predicates)))
+            reference.name,
+            tuple(Parameter(index) for index in range(len(predicates))),
         )
         return walk(plan, checked)
 
@@ -898,7 +967,11 @@ class Schema:
                 return dict(pairs) if hashable(arguments[0]) else tuple(pairs)
             natives = [walk(arguments[0], item) for item in items]
             if short == "Set":
-                return frozenset(natives) if hashable(arguments[0]) else tuple(natives)
+                return (
+                    frozenset(natives)
+                    if hashable(arguments[0])
+                    else tuple(natives)
+                )
             return deque(reversed(natives) if short == "Stack" else natives)
         if short == "KeyVal":
             if isinstance(value, dict):
@@ -914,7 +987,10 @@ class Schema:
                 entries.append(
                     ls.DataValue(
                         _ENTRY,
-                        (walk(arguments[0], pair[0]), walk(arguments[1], pair[1])),
+                        (
+                            walk(arguments[0], pair[0]),
+                            walk(arguments[1], pair[1]),
+                        ),
                     )
                 )
             items = canonical_items(entries, lambda entry: entry.fields[0])
@@ -932,7 +1008,10 @@ class Schema:
         definition = self._definitions.get(reference.name)
         if definition is not None and definition.handle:
             return ls.handle(value, reference.name)
-        if mode in ("native", "logical") and reference.name in self._native_codecs:
+        if (
+            mode in ("native", "logical")
+            and reference.name in self._native_codecs
+        ):
             return self._codec_walk(reference, value, bits, mode, symbols)
         if mode in ("native", "logical") and reference.name in COLLECTIONS:
             return self._collection_walk(reference, value, bits, mode, symbols)
@@ -942,7 +1021,12 @@ class Schema:
         if constructors is not None:
             if mode == "logical":
                 constructor = next(
-                    (item for item in constructors if type(value) is item.native), None
+                    (
+                        item
+                        for item in constructors
+                        if type(value) is item.native
+                    ),
+                    None,
                 )
                 if constructor is None:
                     raise TypeError("invalid native " + reference.name)
@@ -956,26 +1040,38 @@ class Schema:
                 if not isinstance(value, ls.DataValue):
                     raise TypeError("expected " + reference.name)
                 constructor = next(
-                    (item for item in constructors if value.tag == item.tag), None
+                    (item for item in constructors if value.tag == item.tag),
+                    None,
                 )
                 if constructor is None:
-                    raise ValueError("foreign constructor for " + reference.name)
+                    raise ValueError(
+                        "foreign constructor for " + reference.name
+                    )
                 fields = value.fields
-            if constructor.native_paths is not None and mode in ("native", "logical"):
-                return self._layout_walk(constructor, fields, bits, mode, symbols)
+            if constructor.native_paths is not None and mode in (
+                "native",
+                "logical",
+            ):
+                return self._layout_walk(
+                    constructor, fields, bits, mode, symbols
+                )
             if len(fields) != len(constructor.fields):
                 raise ValueError("wrong field count: " + constructor.tag)
             converted = []
             types = witnessed(constructor, fields)
             # A shallow check trusts fields, which were checked when built.
-            for field, field_type, child in zip(constructor.fields, types, fields):
+            for field, field_type, child in zip(
+                constructor.fields, types, fields
+            ):
                 if mode == "shallow":
                     converted.append(child)
                     continue
                 try:
                     if field_type != field.type:
                         self._check(field_type)
-                    converted.append(self._walk(field_type, child, bits, mode, symbols))
+                    converted.append(
+                        self._walk(field_type, child, bits, mode, symbols)
+                    )
                 except (ValueError, TypeError, OverflowError) as error:
                     error_type = (
                         RefinementViolation
@@ -998,7 +1094,11 @@ class Schema:
                     context = f"{constructor.tag}: field refinement {index + 1}"
                     try:
                         accepted = predicate(
-                            self, reference.arguments, tuple(converted), bits, symbols
+                            self,
+                            reference.arguments,
+                            tuple(converted),
+                            bits,
+                            symbols,
                         )
                     except (ValueError, TypeError, ArithmeticError) as error:
                         raise ValueError(f"{context}: {error}") from error
@@ -1016,7 +1116,9 @@ class Schema:
                         ),
                     )
                 ):
-                    raise RefinementViolation("Eq-only set: duplicate equal elements")
+                    raise RefinementViolation(
+                        "Eq-only set: duplicate equal elements"
+                    )
             return ls.DataValue(constructor.tag, converted)
         name, arguments = reference.name, reference.arguments
         if not arguments:
@@ -1027,7 +1129,9 @@ class Schema:
             result = []
             for index, child in enumerate(value):
                 try:
-                    result.append(self._walk(arguments[0], child, bits, mode, symbols))
+                    result.append(
+                        self._walk(arguments[0], child, bits, mode, symbols)
+                    )
                 except (ValueError, TypeError, OverflowError) as error:
                     error_type = (
                         RefinementViolation
@@ -1045,7 +1149,9 @@ class Schema:
                 raise TypeError("invalid tagged presence: " + name)
             payload = None
             if value.present:
-                payload = self._walk(arguments[0], value.value, bits, mode, symbols)
+                payload = self._walk(
+                    arguments[0], value.value, bits, mode, symbols
+                )
             return ls.Presence(name, value.present, payload)
         if name in ("Maybe", "Either"):
             classes = (Absent, Present) if name == "Maybe" else (Left, Right)
@@ -1058,7 +1164,9 @@ class Schema:
                 if type(value) not in classes:
                     raise TypeError("invalid native " + name)
                 index = classes.index(type(value))
-                fields = () if name == "Maybe" and index == 0 else (value.value,)
+                fields = (
+                    () if name == "Maybe" and index == 0 else (value.value,)
+                )
             else:
                 if not isinstance(value, ls.DataValue) or value.tag not in tags:
                     raise ValueError("invalid constructor for " + name)
@@ -1119,7 +1227,9 @@ class Schema:
             return ls.same_members(
                 left.fields[0],
                 right.fields[0],
-                lambda a, b: self.equal(reference.arguments[0], a, b, bits, symbols),
+                lambda a, b: self.equal(
+                    reference.arguments[0], a, b, bits, symbols
+                ),
             )
         definition = self._definitions.get(reference.name)
         if definition is not None and definition.handle:
@@ -1128,10 +1238,14 @@ class Schema:
         if constructors is not None:
             if left.tag != right.tag:
                 return False
-            constructor = next(item for item in constructors if item.tag == left.tag)
+            constructor = next(
+                item for item in constructors if item.tag == left.tag
+            )
             return all(
                 self.equal(field.type, a, b, bits, symbols)
-                for field, a, b in zip(constructor.fields, left.fields, right.fields)
+                for field, a, b in zip(
+                    constructor.fields, left.fields, right.fields
+                )
             )
         name, arguments = reference.name, reference.arguments
         if not arguments:
@@ -1144,7 +1258,9 @@ class Schema:
         if name in ("Nullable", "Optional"):
             return left.present == right.present and (
                 not left.present
-                or self.equal(arguments[0], left.value, right.value, bits, symbols)
+                or self.equal(
+                    arguments[0], left.value, right.value, bits, symbols
+                )
             )
         if left.tag != right.tag:
             return False

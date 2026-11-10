@@ -20,7 +20,12 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_142e693f327da76cb6b13ced49a111b8
     es: _builtins.list[data.Entry[_builtins.str, data.User]],
 ) -> _builtins.list[data.Entry[_builtins.str, data.User]]:
     try:
-        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        k = _lawspec_schema.from_native(
+            _schema.Named("Text"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
         es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
@@ -155,7 +160,9 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_cabed8cd11f3136f1f98e30df55bbf79
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                 ],
@@ -177,7 +184,9 @@ def lawspec_lawspecCollectionsKeyValDeleteItems_cabed8cd11f3136f1f98e30df55bbf79
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                 ],
@@ -204,7 +213,12 @@ def lawspec_lawspecCollectionsKeyValDelete_180599abfb23f062add1f398c77734253776b
     m: _builtins.dict[_builtins.str, data.User],
 ) -> _builtins.dict[_builtins.str, data.User]:
     try:
-        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        k = _lawspec_schema.from_native(
+            _schema.Named("Text"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
         m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -217,12 +231,10 @@ def lawspec_lawspecCollectionsKeyValDelete_180599abfb23f062add1f398c77734253776b
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_delete_text_key_val_text_user_2(
-                symbols,
-                k,
-                m,
-            )
+        result = _definitions.lawspec_collections_key_val_delete_text_key_val_text_user_2(
+            symbols,
+            k,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -272,12 +284,10 @@ def lawspec_lawspecCollectionsKeyValDelete_59887358e6082d38b23002a2c94a03c342994
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_delete_int64_key_val_int64_order_2(
-                symbols,
-                k,
-                m,
-            )
+        result = _definitions.lawspec_collections_key_val_delete_int64_key_val_int64_order_2(
+            symbols,
+            k,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -327,12 +337,10 @@ def lawspec_lawspecCollectionsKeyValDelete_5ce9a3a58573df1ad8ea0947baaa7dceae5d9
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_delete_int64_key_val_int64_pet_2(
-                symbols,
-                k,
-                m,
-            )
+        result = _definitions.lawspec_collections_key_val_delete_int64_key_val_int64_pet_2(
+            symbols,
+            k,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -372,7 +380,9 @@ def lawspec_lawspecCollectionsKeyValFromItems_65eacbcc915c193a39ba7e96c9b4d98015
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                 ],
@@ -389,7 +399,9 @@ def lawspec_lawspecCollectionsKeyValFromItems_65eacbcc915c193a39ba7e96c9b4d98015
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                 ],
@@ -411,7 +423,9 @@ def lawspec_lawspecCollectionsKeyValFromItems_65eacbcc915c193a39ba7e96c9b4d98015
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                 ],
@@ -586,7 +600,12 @@ def lawspec_lawspecCollectionsKeyValLookupItems_a98132adc874e28d5c051b927cc07b24
     es: _builtins.list[data.Entry[_builtins.str, data.User]],
 ) -> _schema.Maybe[data.User]:
     try:
-        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        k = _lawspec_schema.from_native(
+            _schema.Named("Text"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
         es = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
@@ -650,7 +669,9 @@ def lawspec_lawspecCollectionsKeyValLookupItems_d01bcf683a8ba049e28d1915b6382c24
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                 ],
@@ -746,7 +767,12 @@ def lawspec_lawspecCollectionsKeyValLookup_8d65bd0c2734452e6395969d76310ab7cfb54
     m: _builtins.dict[_builtins.str, data.User],
 ) -> _schema.Maybe[data.User]:
     try:
-        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        k = _lawspec_schema.from_native(
+            _schema.Named("Text"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
         m = _lawspec_schema.from_native(
             _schema.Named(
                 "lawspec.collections::type::KeyVal",
@@ -759,12 +785,10 @@ def lawspec_lawspecCollectionsKeyValLookup_8d65bd0c2734452e6395969d76310ab7cfb54
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_lookup_text_key_val_text_user_2(
-                symbols,
-                k,
-                m,
-            )
+        result = _definitions.lawspec_collections_key_val_lookup_text_key_val_text_user_2(
+            symbols,
+            k,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -811,12 +835,10 @@ def lawspec_lawspecCollectionsKeyValLookup_ae11115693cbb35d35b130baa4f5f4bad39a9
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_lookup_int64_key_val_int64_pet_2(
-                symbols,
-                k,
-                m,
-            )
+        result = _definitions.lawspec_collections_key_val_lookup_int64_key_val_int64_pet_2(
+            symbols,
+            k,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -863,12 +885,10 @@ def lawspec_lawspecCollectionsKeyValLookup_dc4b69230473d31ccbd7b40b10cd37174fb98
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_lookup_int64_key_val_int64_order_2(
-                symbols,
-                k,
-                m,
-            )
+        result = _definitions.lawspec_collections_key_val_lookup_int64_key_val_int64_order_2(
+            symbols,
+            k,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -913,9 +933,11 @@ def lawspec_lawspecCollectionsKeyValOf_3cbfcdcf541f43d6063a6e4265a873a5d21447932
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.lawspec_collections_key_val_of_list_entry_text_user_2(
-            symbols,
-            es,
+        result = (
+            _definitions.lawspec_collections_key_val_of_list_entry_text_user_2(
+                symbols,
+                es,
+            )
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -954,7 +976,9 @@ def lawspec_lawspecCollectionsKeyValOf_7a472c842e59e2ccce84f9632b2ae4f26870b48cd
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                 ],
@@ -1013,9 +1037,11 @@ def lawspec_lawspecCollectionsKeyValOf_c7a16b746509e1225dc68d73360319789c4438d3b
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.lawspec_collections_key_val_of_list_entry_int64_pet_2(
-            symbols,
-            es,
+        result = (
+            _definitions.lawspec_collections_key_val_of_list_entry_int64_pet_2(
+                symbols,
+                es,
+            )
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1048,7 +1074,12 @@ def lawspec_lawspecCollectionsKeyValPutItems_d01a79c814f8f913dc0ba0e1ec215cfaa2c
     es: _builtins.list[data.Entry[_builtins.str, data.User]],
 ) -> _builtins.list[data.Entry[_builtins.str, data.User]]:
     try:
-        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        k = _lawspec_schema.from_native(
+            _schema.Named("Text"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
         v = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::User"),
             v,
@@ -1205,7 +1236,9 @@ def lawspec_lawspecCollectionsKeyValPutItems_ebb9b744591ed3ebfcefbce030268d9f983
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                 ],
@@ -1228,7 +1261,9 @@ def lawspec_lawspecCollectionsKeyValPutItems_ebb9b744591ed3ebfcefbce030268d9f983
                         "lawspec.collections::type::Entry",
                         [
                             _schema.Named("Int64"),
-                            _schema.Named("lawtwin.petstore.model::type::Order"),
+                            _schema.Named(
+                                "lawtwin.petstore.model::type::Order",
+                            ),
                         ],
                     ),
                 ],
@@ -1256,7 +1291,12 @@ def lawspec_lawspecCollectionsKeyValPut_14d9f6337e0ec2561d8e030a06ad9c9e9573446c
     m: _builtins.dict[_builtins.str, data.User],
 ) -> _builtins.dict[_builtins.str, data.User]:
     try:
-        k = _lawspec_schema.from_native(_schema.Named("Text"), k, MACHINE_BITS, symbols)
+        k = _lawspec_schema.from_native(
+            _schema.Named("Text"),
+            k,
+            MACHINE_BITS,
+            symbols,
+        )
         v = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::User"),
             v,
@@ -1275,13 +1315,11 @@ def lawspec_lawspecCollectionsKeyValPut_14d9f6337e0ec2561d8e030a06ad9c9e9573446c
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_put_text_user_key_val_text_user_2(
-                symbols,
-                k,
-                v,
-                m,
-            )
+        result = _definitions.lawspec_collections_key_val_put_text_user_key_val_text_user_2(
+            symbols,
+            k,
+            v,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1338,13 +1376,11 @@ def lawspec_lawspecCollectionsKeyValPut_716e4525b608d8fa85d5aa5eaab290869ff2c2a7
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_2(
-                symbols,
-                k,
-                v,
-                m,
-            )
+        result = _definitions.lawspec_collections_key_val_put_int64_pet_key_val_int64_pet_2(
+            symbols,
+            k,
+            v,
+            m,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1457,12 +1493,10 @@ def lawtwinPetstoreHandwrittenCreateUsersWithListInput(
             MACHINE_BITS,
             symbols,
         )
-        result = (
-            _definitions.lawtwin_petstore_handwritten_create_users_with_list_input_2(
-                symbols,
-                body,
-                current,
-            )
+        result = _definitions.lawtwin_petstore_handwritten_create_users_with_list_input_2(
+            symbols,
+            body,
+            current,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1506,10 +1540,12 @@ def lawtwinPetstoreHandwrittenFindPetsByStatus(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.lawtwin_petstore_handwritten_find_pets_by_status_2(
-            symbols,
-            status,
-            current,
+        result = (
+            _definitions.lawtwin_petstore_handwritten_find_pets_by_status_2(
+                symbols,
+                status,
+                current,
+            )
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1756,12 +1792,14 @@ def lawtwinPetstoreHandwrittenUpdatePetWithForm(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.lawtwin_petstore_handwritten_update_pet_with_form_2(
-            symbols,
-            pet_id,
-            name,
-            status,
-            current,
+        result = (
+            _definitions.lawtwin_petstore_handwritten_update_pet_with_form_2(
+                symbols,
+                pet_id,
+                name,
+                status,
+                current,
+            )
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1885,7 +1923,12 @@ def lawtwinPetstoreModelEmptyState(
     u: ls.Absence,
 ) -> data.State:
     try:
-        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        u = _lawspec_schema.from_native(
+            _schema.Named("Unit"),
+            u,
+            MACHINE_BITS,
+            symbols,
+        )
         result = _definitions.lawtwin_petstore_model_empty_state_2(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("lawtwin.petstore.model::type::State"),
@@ -2458,7 +2501,10 @@ def lawtwinPetstoreModelValidOrder(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.lawtwin_petstore_model_valid_order_2(symbols, value)
+        result = _definitions.lawtwin_petstore_model_valid_order_2(
+            symbols,
+            value,
+        )
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,
@@ -2482,7 +2528,12 @@ def noHandWrittenLawsYet(
     u: ls.Absence,
 ) -> ls.Absence:
     try:
-        u = _lawspec_schema.from_native(_schema.Named("Unit"), u, MACHINE_BITS, symbols)
+        u = _lawspec_schema.from_native(
+            _schema.Named("Unit"),
+            u,
+            MACHINE_BITS,
+            symbols,
+        )
         result = _definitions.no_hand_written_laws_yet(symbols, u)
         return _lawspec_schema.to_native(
             _schema.Named("Unit"),
@@ -2496,7 +2547,8 @@ def noHandWrittenLawsYet(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::noHandWrittenLawsYet: " + _builtins.str(error),
+            "lawtwin.petstore.laws::noHandWrittenLawsYet: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2583,7 +2635,8 @@ def referenceCreateUser(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceCreateUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceCreateUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2680,7 +2733,8 @@ def referenceDeleteOrder(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceDeleteOrder: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceDeleteOrder: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2710,7 +2764,12 @@ def referenceDeletePet(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_delete_pet_2(symbols, state, value0, value1)
+        result = _definitions.reference_delete_pet_2(
+            symbols,
+            state,
+            value0,
+            value1,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2729,7 +2788,8 @@ def referenceDeletePet(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceDeletePet: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceDeletePet: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2771,7 +2831,8 @@ def referenceDeleteUser(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceDeleteUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceDeleteUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2794,7 +2855,11 @@ def referenceFindPetsByStatus(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_find_pets_by_status_2(symbols, state, value0)
+        result = _definitions.reference_find_pets_by_status_2(
+            symbols,
+            state,
+            value0,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2816,7 +2881,8 @@ def referenceFindPetsByStatus(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceFindPetsByStatus: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceFindPetsByStatus: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2839,7 +2905,11 @@ def referenceFindPetsByTags(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_find_pets_by_tags_2(symbols, state, value0)
+        result = _definitions.reference_find_pets_by_tags_2(
+            symbols,
+            state,
+            value0,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2861,7 +2931,8 @@ def referenceFindPetsByTags(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceFindPetsByTags: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceFindPetsByTags: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2899,7 +2970,8 @@ def referenceGetInventory(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetInventory: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetInventory: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2922,7 +2994,11 @@ def referenceGetOrderById(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_get_order_by_id_2(symbols, state, value0)
+        result = _definitions.reference_get_order_by_id_2(
+            symbols,
+            state,
+            value0,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2941,7 +3017,8 @@ def referenceGetOrderById(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetOrderById: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetOrderById: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -2983,7 +3060,8 @@ def referenceGetPetById(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetPetById: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetPetById: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3006,7 +3084,11 @@ def referenceGetUserByName(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_get_user_by_name_2(symbols, state, value0)
+        result = _definitions.reference_get_user_by_name_2(
+            symbols,
+            state,
+            value0,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -3025,7 +3107,8 @@ def referenceGetUserByName(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceGetUserByName: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceGetUserByName: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3055,7 +3138,12 @@ def referenceLoginUser(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_login_user_2(symbols, state, value0, value1)
+        result = _definitions.reference_login_user_2(
+            symbols,
+            state,
+            value0,
+            value1,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -3074,7 +3162,8 @@ def referenceLoginUser(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceLoginUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceLoginUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3109,7 +3198,8 @@ def referenceLogoutUser(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceLogoutUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceLogoutUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3154,7 +3244,8 @@ def referencePlaceOrder(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referencePlaceOrder: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referencePlaceOrder: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3225,7 +3316,8 @@ def referenceUpdatePet(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceUpdatePet: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceUpdatePet: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3321,7 +3413,12 @@ def referenceUpdateUser(
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_update_user_2(symbols, state, value0, value1)
+        result = _definitions.reference_update_user_2(
+            symbols,
+            state,
+            value0,
+            value1,
+        )
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -3340,7 +3437,8 @@ def referenceUpdateUser(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceUpdateUser: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceUpdateUser: "
+            + _builtins.str(error),
         ) from error
 
 
@@ -3402,5 +3500,6 @@ def referenceUploadFile(
         _builtins.OverflowError,
     ) as error:
         raise _builtins.ValueError(
-            "lawtwin.petstore.laws::referenceUploadFile: " + _builtins.str(error),
+            "lawtwin.petstore.laws::referenceUploadFile: "
+            + _builtins.str(error),
         ) from error

@@ -6,7 +6,8 @@
 //! logical values (ls::Value), as the runtime's checks use them.
 use crate::lawspec_runtime as ls;
 
-fn wire_types() -> ls::Values {
+fn wire_types() -> ls::Values
+{
     ls::values_table(
         "(data lawspec.matchers::type::Regex (ctor lawspec.matchers::type::Regex::Regex (text))) (data lawtwin.github.model::type::Label (ctor lawtwin.github.model::type::Label::Label (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (text) (maybe (text)) (text) (bool) (maybe (text)) (maybe (ref lawtwin.github.model::type::SimpleUser)))) (data lawtwin.github.model::type::SimpleUser (ctor lawtwin.github.model::type::SimpleUser::SimpleUser (maybe (text)) (maybe (text)) (text) (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (maybe (text)) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (bool) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::Milestone (ctor lawtwin.github.model::type::Milestone::Milestone (text) (text) (text) (int Int64 -9223372036854775808 9223372036854775807) (text) (int Int64 -9223372036854775808 9223372036854775807) (ref lawtwin.github.model::type::MilestoneState) (text) (maybe (text)) (maybe (ref lawtwin.github.model::type::NullableSimpleUser)) (int Int64 -9223372036854775808 9223372036854775807) (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::MilestoneState (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateOpen) (ctor lawtwin.github.model::type::MilestoneState::MilestoneStateClosed)) (data lawtwin.github.model::type::NullableSimpleUser (ctor lawtwin.github.model::type::NullableSimpleUser::NullableSimpleUser (maybe (text)) (maybe (text)) (text) (int Int64 -9223372036854775808 9223372036854775807) (text) (text) (maybe (text)) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (text) (bool) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::IssuesCreateMilestoneBody (ctor lawtwin.github.model::type::IssuesCreateMilestoneBody::IssuesCreateMilestoneBody (text) (maybe (ref lawtwin.github.model::type::MilestoneState)) (maybe (text)) (maybe (text)))) (data lawtwin.github.model::type::IssuesUpdateMilestoneBody (ctor lawtwin.github.model::type::IssuesUpdateMilestoneBody::IssuesUpdateMilestoneBody (maybe (text)) (maybe (ref lawtwin.github.model::type::MilestoneState)) (maybe (text)) (maybe (text))))",
     )
@@ -215,12 +216,14 @@ pub const DEFINITIONS: &ls::RemoteDefinitions = &[
 ];
 
 /// Lets other nodes evaluate these definitions on node.
-pub fn serve(node: &ls::net::Node) -> ls::Result<String> {
+pub fn serve(node: &ls::net::Node) -> ls::Result<String>
+{
     ls::serve_remote(node, DEFINITIONS, wire_types())
 }
 
 /// The content hash of the definition with this qualified name.
-pub fn digest(name: &str) -> Option<&'static str> {
+pub fn digest(name: &str) -> Option<&'static str>
+{
     ls::remote_digest(DEFINITIONS, name)
 }
 
@@ -231,6 +234,7 @@ pub fn evaluate(
     address: &str,
     name: &str,
     args: &[ls::Value],
-) -> ls::Result<ls::Value> {
+) -> ls::Result<ls::Value>
+{
     ls::evaluate_remote(node, address, DEFINITIONS, &wire_types(), name, args)
 }

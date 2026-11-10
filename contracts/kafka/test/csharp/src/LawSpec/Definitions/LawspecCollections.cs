@@ -16,267 +16,267 @@ using Value = LawSpec.Runtime.Value;
 /// <summary>The checked definitions of lawspec.collections, on native values.</summary>
 public static class LawspecCollections
 {
-    /// <summary>boundedInt16 — &lt;lawspec.collections&gt;:358</summary>
-    public static FSharpOption<short> BoundedInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int16).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedInt16 — &lt;lawspec.collections&gt;:358</summary>
+  public static FSharpOption<short> BoundedInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int16).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedInt32 — &lt;lawspec.collections&gt;:371</summary>
-    public static FSharpOption<int> BoundedInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedInt32 — &lt;lawspec.collections&gt;:371</summary>
+  public static FSharpOption<int> BoundedInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedInt64 — &lt;lawspec.collections&gt;:384</summary>
-    public static FSharpOption<long> BoundedInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedInt64 — &lt;lawspec.collections&gt;:384</summary>
+  public static FSharpOption<long> BoundedInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedInt8 — &lt;lawspec.collections&gt;:345</summary>
-    public static FSharpOption<sbyte> BoundedInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int8).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedInt8 — &lt;lawspec.collections&gt;:345</summary>
+  public static FSharpOption<sbyte> BoundedInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int8).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedIntSize — &lt;lawspec.collections&gt;:449</summary>
-    public static FSharpOption<long> BoundedIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedIntSize — &lt;lawspec.collections&gt;:449</summary>
+  public static FSharpOption<long> BoundedIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedUInt16 — &lt;lawspec.collections&gt;:410</summary>
-    public static FSharpOption<ushort> BoundedUInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt16).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedUInt16 — &lt;lawspec.collections&gt;:410</summary>
+  public static FSharpOption<ushort> BoundedUInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt16).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedUInt32 — &lt;lawspec.collections&gt;:423</summary>
-    public static FSharpOption<uint> BoundedUInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt32).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedUInt32 — &lt;lawspec.collections&gt;:423</summary>
+  public static FSharpOption<uint> BoundedUInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt32).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedUInt64 — &lt;lawspec.collections&gt;:436</summary>
-    public static FSharpOption<ulong> BoundedUInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedUInt64 — &lt;lawspec.collections&gt;:436</summary>
+  public static FSharpOption<ulong> BoundedUInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedUInt8 — &lt;lawspec.collections&gt;:397</summary>
-    public static FSharpOption<byte> BoundedUInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt8).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedUInt8 — &lt;lawspec.collections&gt;:397</summary>
+  public static FSharpOption<byte> BoundedUInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt8).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedUIntPtr — &lt;lawspec.collections&gt;:475</summary>
-    public static FSharpOption<ulong> BoundedUIntPtr(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedUIntPtr — &lt;lawspec.collections&gt;:475</summary>
+  public static FSharpOption<ulong> BoundedUIntPtr(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>boundedUIntSize — &lt;lawspec.collections&gt;:462</summary>
-    public static FSharpOption<ulong> BoundedUIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>boundedUIntSize — &lt;lawspec.collections&gt;:462</summary>
+  public static FSharpOption<ulong> BoundedUIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawspecCollections.BoundedUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingInt16 — &lt;lawspec.collections&gt;:354</summary>
-    public static short SaturatingInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int16.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingInt16 — &lt;lawspec.collections&gt;:354</summary>
+  public static short SaturatingInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int16.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingInt32 — &lt;lawspec.collections&gt;:367</summary>
-    public static int SaturatingInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingInt32 — &lt;lawspec.collections&gt;:367</summary>
+  public static int SaturatingInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingInt64 — &lt;lawspec.collections&gt;:380</summary>
-    public static long SaturatingInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingInt64 — &lt;lawspec.collections&gt;:380</summary>
+  public static long SaturatingInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingInt8 — &lt;lawspec.collections&gt;:341</summary>
-    public static sbyte SaturatingInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int8.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingInt8 — &lt;lawspec.collections&gt;:341</summary>
+  public static sbyte SaturatingInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int8.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingIntSize — &lt;lawspec.collections&gt;:445</summary>
-    public static long SaturatingIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingIntSize — &lt;lawspec.collections&gt;:445</summary>
+  public static long SaturatingIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingUInt16 — &lt;lawspec.collections&gt;:406</summary>
-    public static ushort SaturatingUInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt16.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingUInt16 — &lt;lawspec.collections&gt;:406</summary>
+  public static ushort SaturatingUInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt16.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingUInt32 — &lt;lawspec.collections&gt;:419</summary>
-    public static uint SaturatingUInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingUInt32 — &lt;lawspec.collections&gt;:419</summary>
+  public static uint SaturatingUInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingUInt64 — &lt;lawspec.collections&gt;:432</summary>
-    public static ulong SaturatingUInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingUInt64 — &lt;lawspec.collections&gt;:432</summary>
+  public static ulong SaturatingUInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingUInt8 — &lt;lawspec.collections&gt;:393</summary>
-    public static byte SaturatingUInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt8.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingUInt8 — &lt;lawspec.collections&gt;:393</summary>
+  public static byte SaturatingUInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt8.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingUIntPtr — &lt;lawspec.collections&gt;:471</summary>
-    public static ulong SaturatingUIntPtr(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingUIntPtr — &lt;lawspec.collections&gt;:471</summary>
+  public static ulong SaturatingUIntPtr(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>saturatingUIntSize — &lt;lawspec.collections&gt;:458</summary>
-    public static ulong SaturatingUIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>saturatingUIntSize — &lt;lawspec.collections&gt;:458</summary>
+  public static ulong SaturatingUIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.SaturatingUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingInt16 — &lt;lawspec.collections&gt;:349</summary>
-    public static short WrappingInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int16.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingInt16 — &lt;lawspec.collections&gt;:349</summary>
+  public static short WrappingInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int16.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingInt32 — &lt;lawspec.collections&gt;:362</summary>
-    public static int WrappingInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingInt32 — &lt;lawspec.collections&gt;:362</summary>
+  public static int WrappingInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingInt64 — &lt;lawspec.collections&gt;:375</summary>
-    public static long WrappingInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingInt64 — &lt;lawspec.collections&gt;:375</summary>
+  public static long WrappingInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingInt8 — &lt;lawspec.collections&gt;:336</summary>
-    public static sbyte WrappingInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int8.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingInt8 — &lt;lawspec.collections&gt;:336</summary>
+  public static sbyte WrappingInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int8.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingIntSize — &lt;lawspec.collections&gt;:440</summary>
-    public static long WrappingIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingIntSize — &lt;lawspec.collections&gt;:440</summary>
+  public static long WrappingIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingUInt16 — &lt;lawspec.collections&gt;:401</summary>
-    public static ushort WrappingUInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt16.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingUInt16 — &lt;lawspec.collections&gt;:401</summary>
+  public static ushort WrappingUInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt16.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingUInt32 — &lt;lawspec.collections&gt;:414</summary>
-    public static uint WrappingUInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingUInt32 — &lt;lawspec.collections&gt;:414</summary>
+  public static uint WrappingUInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingUInt64 — &lt;lawspec.collections&gt;:427</summary>
-    public static ulong WrappingUInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingUInt64 — &lt;lawspec.collections&gt;:427</summary>
+  public static ulong WrappingUInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingUInt8 — &lt;lawspec.collections&gt;:388</summary>
-    public static byte WrappingUInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt8.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingUInt8 — &lt;lawspec.collections&gt;:388</summary>
+  public static byte WrappingUInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt8.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingUIntPtr — &lt;lawspec.collections&gt;:466</summary>
-    public static ulong WrappingUIntPtr(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingUIntPtr — &lt;lawspec.collections&gt;:466</summary>
+  public static ulong WrappingUIntPtr(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 
-    /// <summary>wrappingUIntSize — &lt;lawspec.collections&gt;:453</summary>
-    public static ulong WrappingUIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
+  /// <summary>wrappingUIntSize — &lt;lawspec.collections&gt;:453</summary>
+  public static ulong WrappingUIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawspecCollections.WrappingUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
 }

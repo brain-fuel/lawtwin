@@ -210,7 +210,9 @@ def convert(x, t, bits=64):
         z = (
             x
             if isinstance(x, complex)
-            else complex(convert(x, "Float32" if t == "Complex64" else "Float64"), 0)
+            else complex(
+                convert(x, "Float32" if t == "Complex64" else "Float64"), 0
+            )
         )
         return complex(f32(z.real), f32(z.imag)) if t == "Complex64" else z
     return validate(x, t, bits)
@@ -218,7 +220,11 @@ def convert(x, t, bits=64):
 
 def valid_unit(t, c):
     maximum = (
-        255 if t == "Bytes" else 65535 if t in ("Utf16Text", "CodeUnit16") else 1114111
+        255
+        if t == "Bytes"
+        else 65535
+        if t in ("Utf16Text", "CodeUnit16")
+        else 1114111
     )
     return (
         type(c) is int
@@ -255,7 +261,11 @@ def validate(x, t, bits=64):
         return [validate(value, t[5:], bits) for value in x]
     if t.startswith(("Nullable ", "Optional ")):
         (k, inner) = t.split(" ", 1)
-        if not isinstance(x, Presence) or x.kind != k or type(x.present) is not bool:
+        if (
+            not isinstance(x, Presence)
+            or x.kind != k
+            or type(x.present) is not bool
+        ):
             raise ValueError("tagged presence required for " + t)
         if x.present:
             return Presence(k, True, validate(x.value, inner, bits))
@@ -323,10 +333,16 @@ def literal(v, symbols=None):
     if t == "Decimal":
         c = parse_integer(v["coefficient"])
         return Decimal(
-            (int(c < 0), tuple(map(int, integer_text(abs(c)))), int(v["exponent"]))
+            (
+                int(c < 0),
+                tuple(map(int, integer_text(abs(c)))),
+                int(v["exponent"]),
+            )
         )
     if t == "Rational":
-        return Fraction(parse_integer(v["numerator"]), parse_integer(v["denominator"]))
+        return Fraction(
+            parse_integer(v["numerator"]), parse_integer(v["denominator"])
+        )
     if t.startswith("Float"):
         return struct.unpack(
             ">f" if t == "Float32" else ">d", bytes.fromhex(v["bits"])
@@ -413,8 +429,16 @@ def binary(op, a, b, ta, tb):
         if op == "/":
             d = rnd(rnd(b.real * b.real) + rnd(b.imag * b.imag))
             return complex(
-                rnd(ieee_div(rnd(rnd(a.real * b.real) + rnd(a.imag * b.imag)), d)),
-                rnd(ieee_div(rnd(rnd(a.imag * b.real) - rnd(a.real * b.imag)), d)),
+                rnd(
+                    ieee_div(
+                        rnd(rnd(a.real * b.real) + rnd(a.imag * b.imag)), d
+                    )
+                ),
+                rnd(
+                    ieee_div(
+                        rnd(rnd(a.imag * b.real) - rnd(a.real * b.imag)), d
+                    )
+                ),
             )
     if op == "pow":
         if a.denominator != 1 or b.denominator != 1:
@@ -483,7 +507,9 @@ def handle_label(value):
 def same_members(left, right, equal):
     return all(
         any(equal(value, candidate) for candidate in right) for value in left
-    ) and all(any(equal(value, candidate) for candidate in left) for value in right)
+    ) and all(
+        any(equal(value, candidate) for candidate in left) for value in right
+    )
 
 
 def distinct_members(items, equal):
@@ -512,7 +538,8 @@ def equal(a, b, ta, tb):
         )
     if ta.startswith("Maybe ") and tb.startswith("Maybe "):
         return a.tag == b.tag and (
-            a.tag == "Maybe::Absent" or equal(a.fields[0], b.fields[0], ta[6:], tb[6:])
+            a.tag == "Maybe::Absent"
+            or equal(a.fields[0], b.fields[0], ta[6:], tb[6:])
         )
     if ta.startswith("List ") and tb.startswith("List "):
         return len(a) == len(b) and all(
@@ -526,7 +553,9 @@ def equal(a, b, ta, tb):
             and a.present == b.present
             and (
                 not a.present
-                or equal(a.value, b.value, ta.split(" ", 1)[1], tb.split(" ", 1)[1])
+                or equal(
+                    a.value, b.value, ta.split(" ", 1)[1], tb.split(" ", 1)[1]
+                )
             )
         )
     if isinstance(a, complex) and isinstance(b, complex):
@@ -622,7 +651,9 @@ def helper(n, args, types, bits=64):
         return recorded(
             args[0],
             args[1],
-            (lambda value: recorded_text(value, types[1])) if len(types) > 1 else None,
+            (lambda value: recorded_text(value, types[1]))
+            if len(types) > 1
+            else None,
         )
     if n == "acquireResource":
         return acquire_resource(args[0])
@@ -665,7 +696,9 @@ def helper(n, args, types, bits=64):
         return x == 0 and math.copysign(1, x) < 0
     if n == "round":
         scale = convert(args[1], "Int32", bits)
-        factor = Fraction(10**scale) if scale >= 0 else Fraction(1, 10 ** (-scale))
+        factor = (
+            Fraction(10**scale) if scale >= 0 else Fraction(1, 10 ** (-scale))
+        )
         return finite_decimal(Fraction(round(ratio(x) * factor), 1) / factor)
     return convert(x, n, bits)
 
@@ -777,7 +810,11 @@ def _regex_parse(pattern):
             ):
                 pos[0] += 1
                 high = escape(True) if peek() == ord("\\") else _literal()
-                if high[0] or len(high[1]) != 1 or high[1][0][0] != high[1][0][1]:
+                if (
+                    high[0]
+                    or len(high[1]) != 1
+                    or high[1][0][0] != high[1][0][1]
+                ):
                     fail("a range ends with one character")
                 if high[1][0][0] < item[1][0][0]:
                     fail("a range must run from low to high")
@@ -853,7 +890,9 @@ def _regex_parse(pattern):
             low = int(low_text)
             high = None if high is None else int(high)
             if low > 1000 or (high is not None and (high > 1000 or high < low)):
-                fail("a repetition count is at most 1000, and n must not exceed m")
+                fail(
+                    "a repetition count is at most 1000, and n must not exceed m"
+                )
             node = ("repeat", node, low, high)
         if peek() is not None and chr(peek()) in "*+?{":
             fail("a repetition cannot itself be repeated")
@@ -1003,15 +1042,15 @@ def recorded_text(value, type_ref, field_types=None):
                     inner = inner[1:-1]
                 return name, (reference(inner),)
         if t.startswith("Either "):
-            return "Either", tuple(reference(child) for child in either_arguments(t))
+            return "Either", tuple(
+                reference(child) for child in either_arguments(t)
+            )
         return t, ()
 
     def float_text(v, width):
         if math.isnan(v):
             return f"float{width}NaN"
-        return (
-            f'float{width}Bits("{struct.pack(">f" if width == 32 else ">d", v).hex()}")'
-        )
+        return f'float{width}Bits("{struct.pack(">f" if width == 32 else ">d", v).hex()}")'
 
     def units(name, values):
         return name + "([" + ", ".join(integer_text(v) for v in values) + "])"
@@ -1020,7 +1059,9 @@ def recorded_text(value, type_ref, field_types=None):
         t = reference(input_type)
         name, arguments = (t.name, t.arguments) if hasattr(t, "name") else t
         if name == "List":
-            return "[" + ", ".join(visit(item, arguments[0]) for item in v) + "]"
+            return (
+                "[" + ", ".join(visit(item, arguments[0]) for item in v) + "]"
+            )
         if name in ("Nullable", "Optional"):
             if not v.present:
                 return "null" if name == "Nullable" else "undefined"
@@ -1040,22 +1081,30 @@ def recorded_text(value, type_ref, field_types=None):
                 if not v.fields
                 else tag
                 + "("
-                + ", ".join(visit(item, child) for item, child in zip(v.fields, types))
+                + ", ".join(
+                    visit(item, child) for item, child in zip(v.fields, types)
+                )
                 + ")"
             )
         if name == "Symbol":
             return f"symbol({identity('symbol', v)}, {quote(v.description)})"
         if name in ("Unit", "Null", "Undefined"):
-            return {"Unit": "()", "Null": "null", "Undefined": "undefined"}[name]
+            return {"Unit": "()", "Null": "null", "Undefined": "undefined"}[
+                name
+            ]
         if name in ("Text", "Char"):
             return quote(v)
         if name == "Bytes":
             return units("bytes", v)
         if name in ("CodePointText", "Utf16Text"):
-            return units("codePoints" if name == "CodePointText" else "utf16", v.units)
+            return units(
+                "codePoints" if name == "CodePointText" else "utf16", v.units
+            )
         if name == "Decimal":
             sign, digits, exponent = v.as_tuple()
-            coefficient = parse_integer("".join(map(str, digits))) * (-1 if sign else 1)
+            coefficient = parse_integer("".join(map(str, digits))) * (
+                -1 if sign else 1
+            )
             if not coefficient:
                 return "0e0"
             while coefficient % 10 == 0:
@@ -1063,9 +1112,7 @@ def recorded_text(value, type_ref, field_types=None):
                 exponent += 1
             return integer_text(coefficient) + "e" + integer_text(exponent)
         if name == "Rational":
-            return (
-                f"rational({integer_text(v.numerator)}, {integer_text(v.denominator)})"
-            )
+            return f"rational({integer_text(v.numerator)}, {integer_text(v.denominator)})"
         if name in ("Float32", "Float64"):
             return float_text(v, 32 if name == "Float32" else 64)
         if name in ("Complex64", "Complex128"):
@@ -1083,7 +1130,9 @@ def recorded_text(value, type_ref, field_types=None):
         if integer_type(name) or name in ("CodePoint", "CodeUnit16"):
             return integer_text(v)
         if is_handle(v):
-            return name.split("::")[-1] + "#" + str(identity("handle:" + name, v))
+            return (
+                name.split("::")[-1] + "#" + str(identity("handle:" + name, v))
+            )
         raise TypeError("unsupported recorded type: " + name)
 
     return visit(value, type_ref)
@@ -1212,7 +1261,10 @@ def exact_float(r, t):
     if e > emax:
         return -math.inf if negative else math.inf
     scale = max(e, emin) - (p - 1)
-    (num, den) = (n << -scale if scale < 0 else n, d << scale if scale > 0 else d)
+    (num, den) = (
+        n << -scale if scale < 0 else n,
+        d << scale if scale > 0 else d,
+    )
     (q, rem) = divmod(num, den)
     if 2 * rem > den or (2 * rem == den and q % 2):
         q += 1
@@ -1225,7 +1277,9 @@ def exact_float(r, t):
     hidden = 1 << p - 1
     exponent = 0 if q < hidden else e + bias
     mantissa = q if q < hidden else q - hidden
-    bits = int(negative) << (31 if single else 63) | exponent << p - 1 | mantissa
+    bits = (
+        int(negative) << (31 if single else 63) | exponent << p - 1 | mantissa
+    )
     return struct.unpack(
         ">f" if single else ">d", bits.to_bytes(4 if single else 8, "big")
     )[0]
@@ -1409,12 +1463,15 @@ def sample(t, seed, bits=64):
     if t.startswith(("Nullable ", "Optional ")):
         (kind, inner) = t.split(" ", 1)
         return Presence(
-            kind, bool(seed % 2), sample(inner, seed // 2, bits) if seed % 2 else None
+            kind,
+            bool(seed % 2),
+            sample(inner, seed // 2, bits) if seed % 2 else None,
         )
     if integer_type(t):
         (lo, hi) = bounds(t, bits)
         return r.randint(
-            lo if lo is not None else -(2**256), hi if hi is not None else 2**256
+            lo if lo is not None else -(2**256),
+            hi if hi is not None else 2**256,
         )
     if t == "Bool":
         return bool(seed % 2)
@@ -1440,7 +1497,11 @@ def sample(t, seed, bits=64):
     if t == "Symbol":
         return Symbol("same")
     maximum = (
-        255 if t == "Bytes" else 65535 if t in ("Utf16Text", "CodeUnit16") else 1114111
+        255
+        if t == "Bytes"
+        else 65535
+        if t in ("Utf16Text", "CodeUnit16")
+        else 1114111
     )
 
     def unit():
@@ -1490,7 +1551,9 @@ def domain_candidates(t, seed, bits, restrictions, hints):
         candidates = [
             v
             for v in candidates
-            if isinstance(v, int) and not isinstance(v, bool) and lower <= v <= upper
+            if isinstance(v, int)
+            and not isinstance(v, bool)
+            and lower <= v <= upper
         ]
     else:
         candidates += [sample(t, seed + j * 7919, bits) for j in range(8)]
@@ -1568,7 +1631,9 @@ def refined_case(domains, seed, attempts, shrinks, check, context="refinement"):
                 if not domains[index][1](prefix):
                     continue
                 try:
-                    trial = generate_tuple(domains, seed, min(attempts, 100), prefix)
+                    trial = generate_tuple(
+                        domains, seed, min(attempts, 100), prefix
+                    )
                 except ValueError as error:
                     if str(error).startswith("refinement-generation-exhausted"):
                         continue
@@ -1801,7 +1866,11 @@ def register_clock_ability(now, sleep, real_time):
 
 def _ability_clock(handler):
     reader = _CLOCK_READER[0]
-    return None if reader is None or handler is None else AbilityClock(handler, reader)
+    return (
+        None
+        if reader is None or handler is None
+        else AbilityClock(handler, reader)
+    )
 
 
 class AbilityClock:
@@ -1993,14 +2062,20 @@ def run_stage(symbols, policy, attempt, key=None):
                 _finish(runtime, policy, passed, False)
             return stage_failure(failure)
     result = _attempts(runtime, policy, attempt)
-    succeeded = not (isinstance(result, DataValue) and result.tag == "Either::Left")
+    succeeded = not (
+        isinstance(result, DataValue) and result.tag == "Either::Left"
+    )
     for gate in gates:
         _finish(runtime, policy, gate, succeeded)
     if succeeded and policy.compensate is not None and runtime.frames:
         value = result.fields[0]
-        runtime.frames[-1].append((policy.stage, lambda: policy.compensate(value)))
+        runtime.frames[-1].append(
+            (policy.stage, lambda: policy.compensate(value))
+        )
     if cached is not None and succeeded:
-        cached[:] = [entry for entry in cached if not equal_values(entry[0], key)]
+        cached[:] = [
+            entry for entry in cached if not equal_values(entry[0], key)
+        ]
         cached.append((key, result, runtime.clock.now() + policy.cache))
     return result
 
@@ -2051,7 +2126,9 @@ def await_step(symbols, start, convert):
     import asyncio
 
     def left():
-        return None if deadline is None else max(0.0, deadline - _time.monotonic())
+        return (
+            None if deadline is None else max(0.0, deadline - _time.monotonic())
+        )
 
     async def within():
         return convert(await asyncio.wait_for(start(), left()))
@@ -2080,7 +2157,8 @@ def await_step(symbols, start, convert):
                     pending.discard(task)
                     value = convert(task.result())
                     if not (
-                        isinstance(value, DataValue) and value.tag == "Either::Left"
+                        isinstance(value, DataValue)
+                        and value.tag == "Either::Left"
                     ):
                         return value
                     last = value
@@ -2196,7 +2274,9 @@ def _scoped(runtime, policy, attempt):
     outer = (runtime.deadline, runtime.hedge)
     if timeout:
         runtime.deadline = _time.monotonic() + policy.timeout / 1_000_000
-    runtime.hedge = None if policy.hedge is None else (policy.stage, policy.hedge)
+    runtime.hedge = (
+        None if policy.hedge is None else (policy.stage, policy.hedge)
+    )
     try:
         return attempt()
     except StageTimedOut:
@@ -2210,7 +2290,9 @@ def _virtually_scoped(runtime, policy, attempt, timeout):
     began = runtime.clock.now()
     runtime.deadline = None
     runtime.hedge = (
-        None if policy.hedge is None else _VirtualHedge(policy.stage, *policy.hedge)
+        None
+        if policy.hedge is None
+        else _VirtualHedge(policy.stage, *policy.hedge)
     )
     try:
         result = attempt()
@@ -2379,28 +2461,38 @@ class Values:
             return random.below(2) == 1
         if kind == "text":
             return "".join(
-                chr(32 + random.below(95)) for _ in range(random.below(size + 1))
+                chr(32 + random.below(95))
+                for _ in range(random.below(size + 1))
             )
         if kind == "unit":
             return UNIT
         if kind == "list":
             return [
-                self.generate(d[1], random, size) for _ in range(random.below(size + 1))
+                self.generate(d[1], random, size)
+                for _ in range(random.below(size + 1))
             ]
         if kind == "maybe":
             if random.below(4) == 0:
                 return DataValue("Maybe::Absent", ())
-            return DataValue("Maybe::Present", (self.generate(d[1], random, size),))
+            return DataValue(
+                "Maybe::Present", (self.generate(d[1], random, size),)
+            )
         if kind == "either":
             if random.below(2) == 0:
-                return DataValue("Either::Left", (self.generate(d[1], random, size),))
-            return DataValue("Either::Right", (self.generate(d[2], random, size),))
+                return DataValue(
+                    "Either::Left", (self.generate(d[1], random, size),)
+                )
+            return DataValue(
+                "Either::Right", (self.generate(d[2], random, size),)
+            )
         if kind == "data":
             choices = self.base(d) if size <= 0 else d[2:]
             ctor = choices[random.below(len(choices))]
             return DataValue(
                 str(ctor[1]),
-                tuple(self.generate(f, random, max(size - 1, 0)) for f in ctor[2:]),
+                tuple(
+                    self.generate(f, random, max(size - 1, 0)) for f in ctor[2:]
+                ),
             )
         raise ValueError("unknown descriptor " + str(d))
 
@@ -2455,7 +2547,10 @@ class Values:
                     + [v[:i] + v[i + 1 :] for i in range(len(v))]
                 )
                 for i, item in enumerate(v):
-                    out += [v[:i] + [c] + v[i + 1 :] for c in self.shrink(d[1], item)]
+                    out += [
+                        v[:i] + [c] + v[i + 1 :]
+                        for c in self.shrink(d[1], item)
+                    ]
         elif kind == "maybe":
             if v.tag == "Maybe::Present":
                 out = [DataValue("Maybe::Absent", ())] + [
@@ -2464,12 +2559,16 @@ class Values:
                 ]
         elif kind == "either":
             inner = d[1] if v.tag == "Either::Left" else d[2]
-            out = [DataValue(v.tag, (c,)) for c in self.shrink(inner, v.fields[0])]
+            out = [
+                DataValue(v.tag, (c,)) for c in self.shrink(inner, v.fields[0])
+            ]
         elif kind == "data":
             ctor = next(c for c in d[2:] if str(c[1]) == v.tag)
             out = [self.minimal(d)]
             # A field of the same type is a smaller value of it.
-            out += [f for f, fd in zip(v.fields, ctor[2:]) if fd == ["ref", d[1]]]
+            out += [
+                f for f, fd in zip(v.fields, ctor[2:]) if fd == ["ref", d[1]]
+            ]
             for i, (field, fd) in enumerate(zip(v.fields, ctor[2:])):
                 out += [
                     DataValue(v.tag, v.fields[:i] + (c,) + v.fields[i + 1 :])
@@ -2568,7 +2667,9 @@ def difference(actual, expected):
 def values_from(text):
     """A descriptor text's data types and its last form, the one generated."""
     forms = read_descriptor(text)
-    table = {str(f[1]): f for f in forms if isinstance(f, list) and f[0] == "data"}
+    table = {
+        str(f[1]): f for f in forms if isinstance(f, list) and f[0] == "data"
+    }
     return Values(table), forms[-1]
 
 
@@ -2583,7 +2684,8 @@ def shrunk(text, seed, size):
     """The shrink candidates of the first value generated, rendered."""
     values, d = values_from(text)
     return [
-        render(c) for c in values.shrink(d, values.generate(d, SplitMix64(seed), size))
+        render(c)
+        for c in values.shrink(d, values.generate(d, SplitMix64(seed), size))
     ]
 
 
@@ -2776,7 +2878,9 @@ class Actor:
     def stop(self):
         """Refuses further messages; those already queued still run. A
         permanent child of a supervisor restarts instead."""
-        if self._supervisor is not None and self._supervisor._child_stopped(self):
+        if self._supervisor is not None and self._supervisor._child_stopped(
+            self
+        ):
             return
         with self._lock:
             already = self._stopped
@@ -2803,7 +2907,11 @@ class Supervisor:
     def __init__(self, strategy="one_for_one", max_restarts=3, period=5.0):
         if strategy not in ("one_for_one", "one_for_all", "rest_for_one"):
             raise ValueError(f"unknown strategy {strategy!r}")
-        self.strategy, self.max_restarts, self.period = strategy, max_restarts, period
+        self.strategy, self.max_restarts, self.period = (
+            strategy,
+            max_restarts,
+            period,
+        )
         self._children = []
         self._restarts = deque()
         self._lock = threading.RLock()
@@ -2986,7 +3094,9 @@ def check_supervision():
     bump(x), bump(y), bump(y)
     fail(x)
     expect(
-        (x.state(), y.state()), (0, 2), "one for one restarts only the crashed child"
+        (x.state(), y.state()),
+        (0, 2),
+        "one for one restarts only the crashed child",
     )
     sup = Supervisor("one_for_all")
     x, y = sup.supervise(counter()), sup.supervise(counter())
@@ -3007,7 +3117,10 @@ def check_supervision():
     fail(t)
     stopped(t, "a temporary child that crashed")
     sup = Supervisor()
-    p, q = sup.supervise(counter(), "permanent"), sup.supervise(counter(), "transient")
+    p, q = (
+        sup.supervise(counter(), "permanent"),
+        sup.supervise(counter(), "transient"),
+    )
     bump(p)
     p.stop()
     expect(p.state(), 0, "a permanent child restarts after a stop")
@@ -3025,7 +3138,9 @@ def check_supervision():
         "a supervisor past its limit tells its monitors",
     )
     outer = Supervisor("one_for_one", max_restarts=5, period=10)
-    inner = outer.supervise(Supervisor("one_for_one", max_restarts=1, period=10))
+    inner = outer.supervise(
+        Supervisor("one_for_one", max_restarts=1, period=10)
+    )
     x, y = inner.supervise(counter()), inner.supervise(counter())
     bump(y)
     fail(x), fail(x)
@@ -3083,7 +3198,9 @@ class Mailbox:
         """The next message; waits up to timeout seconds (forever when None)
         and raises TimeoutError, or ActorStopped once closed and empty."""
         with self._ready:
-            if not self._ready.wait_for(lambda: self._items or self._closed, timeout):
+            if not self._ready.wait_for(
+                lambda: self._items or self._closed, timeout
+            ):
                 raise TimeoutError("no message arrived in time")
             if not self._items:
                 raise ActorStopped("the mailbox is closed")
@@ -3208,7 +3325,8 @@ class ModelCommand:
 
     def shifted(self, indices):
         return [
-            i + s[1] if s[0] == "by" else s[1] for s, i in zip(self.shifts, indices)
+            i + s[1] if s[0] == "by" else s[1]
+            for s, i in zip(self.shifts, indices)
         ]
 
 
@@ -3260,7 +3378,9 @@ class Model:
                 _Crash(run, begin, restarts[0] if restarts else None)
             ]
             if abstract is not None:
-                self.abstract = lambda symbols, actor: abstract(symbols, actor.state())
+                self.abstract = lambda symbols, actor: abstract(
+                    symbols, actor.state()
+                )
             self.invariants = [
                 (
                     k,
@@ -3276,6 +3396,62 @@ class _Invalid(Exception):
     """A command the model does not allow here."""
 
 
+def _model_argument(d, indices):
+    if d[0] != "dependent":
+        return d
+
+    def value(e):
+        if not isinstance(e, list):
+            return int(e)
+        if e[0] == "index":
+            return indices[int(e[1])]
+        a, b = value(e[1]), value(e[2])
+        if e[0] == "+":
+            return a + b
+        if e[0] == "-":
+            return a - b
+        if e[0] == "*":
+            return a * b
+        raise RuntimeError("unsupported model argument bound")
+
+    base = list(d[1])
+    if base[0] != "int":
+        raise RuntimeError("unsupported dependent model argument type")
+    lo, hi = base[2:4]
+    for op, expression in d[2:]:
+        n = value(expression)
+        if op in (">", ">=", "=="):
+            low = n + (1 if op == ">" else 0)
+            lo = low if lo is None else max(lo, low)
+        if op in ("<", "<=", "=="):
+            high = n - (1 if op == "<" else 0)
+            hi = high if hi is None else min(hi, high)
+        if op not in (">", ">=", "<", "<=", "=="):
+            raise RuntimeError(
+                "unsupported dependent model argument comparison"
+            )
+    return base[:2] + [lo, hi]
+
+
+def _model_arguments(command, indices):
+    return [_model_argument(d, indices) for d in command.arguments]
+
+
+def _empty_arguments(ds):
+    return any(
+        d[0] == "int" and d[2] is not None and d[3] is not None and d[2] > d[3]
+        for d in ds
+    )
+
+
+def _valid_arguments(command, indices, args):
+    return all(
+        d[0] != "int"
+        or ((d[2] is None or v >= d[2]) and (d[3] is None or v <= d[3]))
+        for d, v in zip(_model_arguments(command, indices), args)
+    )
+
+
 def _simulate(model, symbols, run):
     """The model states along a run, or _Invalid."""
     start_args, steps = run
@@ -3287,7 +3463,9 @@ def _simulate(model, symbols, run):
     states = [state]
     for index, args in steps:
         command = model.steps[index]
-        if not command.admits(indices):
+        if not command.admits(indices) or not _valid_arguments(
+            command, indices, args
+        ):
             raise _Invalid()
         state, _ = _step_model(command, symbols, args, state)
         indices = command.shifted(indices)
@@ -3311,7 +3489,9 @@ def _step_model(command, symbols, args, state):
 
 def _generate_run(model, random, length, size, crashes=False):
     symbols = {}
-    start_args = [model.values.generate(d, random, size) for d in model.start_arguments]
+    start_args = [
+        model.values.generate(d, random, size) for d in model.start_arguments
+    ]
     try:
         state = model.start_model(symbols, *start_args)
     except Exception:
@@ -3319,18 +3499,36 @@ def _generate_run(model, random, length, size, crashes=False):
     indices = list(model.start_indices)
     steps = []
     for _ in range(length):
-        allowed = [i for i, c in enumerate(model.commands) if c.admits(indices)]
+        allowed = [
+            i
+            for i, c in enumerate(model.commands)
+            if c.admits(indices)
+            and not _empty_arguments(_model_arguments(c, indices))
+        ]
         if not allowed:
             break
         index = allowed[random.below(len(allowed))]
         # One step in eight of an actor's run is a crash.
-        if crashes and len(model.steps) > len(model.commands) and random.below(8) == 0:
+        if (
+            crashes
+            and len(model.steps) > len(model.commands)
+            and random.below(8) == 0
+        ):
             index = len(model.commands)
         command = model.steps[index]
-        args = [model.values.generate(d, random, size) for d in command.arguments]
+        args = [
+            model.values.generate(d, random, size)
+            for d in _model_arguments(command, indices)
+        ]
         try:
             state, _ = _step_model(command, symbols, args, state)
         except _Invalid:
+            if any(d[0] == "dependent" for d in command.arguments) and (
+                command.when is None or command.when(symbols, state)
+            ):
+                raise RuntimeError(
+                    "incomplete model generation: dependent arguments rejected by the reference (1 attempt)"
+                )
             continue
         steps.append((index, args))
         indices = command.shifted(indices)
@@ -3398,7 +3596,9 @@ def _shrink_candidates(model, run):
     for k, (index, args) in enumerate(steps):
         command = model.steps[index]
         for j, (d, arg) in enumerate(zip(command.arguments, args)):
-            for c in model.values.shrink(d, arg):
+            for c in model.values.shrink(
+                d[1] if d[0] == "dependent" else d, arg
+            ):
                 yield (
                     start_args,
                     steps[:k]
@@ -3453,7 +3653,11 @@ def check_model(model, cases=100, max_length=20, max_shrinks=2000, seed=None):
     random = SplitMix64(seed)
     for case in range(cases):
         run = _generate_run(
-            model, random, random.below(max_length + 1), 1 + case % 8, crashes=True
+            model,
+            random,
+            random.below(max_length + 1),
+            1 + case % 8,
+            crashes=True,
         )
         failure = _execute(model, run)
         if failure is not None:
@@ -3498,10 +3702,14 @@ def _parallel_allowed(model, prefix, branches):
             if k < len(branch):
                 index, args = branch[k]
                 try:
-                    after, _ = _step_model(model.commands[index], symbols, args, state)
+                    after, _ = _step_model(
+                        model.commands[index], symbols, args, state
+                    )
                 except _Invalid:
                     return False
-                if not visit(positions[:i] + (k + 1,) + positions[i + 1 :], after):
+                if not visit(
+                    positions[:i] + (k + 1,) + positions[i + 1 :], after
+                ):
                     return False
         return True
 
@@ -3514,7 +3722,9 @@ def _generate_branch(model, random, state, length, size):
     for _ in range(length):
         index = random.below(len(model.commands))
         command = model.commands[index]
-        args = [model.values.generate(d, random, size) for d in command.arguments]
+        args = [
+            model.values.generate(d, random, size) for d in command.arguments
+        ]
         try:
             state, _ = _step_model(command, symbols, args, state)
         except _Invalid:
@@ -3530,7 +3740,9 @@ def _generate_parallel(model, random, size, threads, branch_length):
     except _Invalid:
         return prefix, [[] for _ in range(threads)]
     branches = [
-        _generate_branch(model, random, state, 1 + random.below(branch_length), size)
+        _generate_branch(
+            model, random, state, 1 + random.below(branch_length), size
+        )
         for _ in range(threads)
     ]
     # Drop the last step of the longest branch (the first, among equals)
@@ -3598,7 +3810,9 @@ def _execute_parallel(model, case, shake):
             history[i][k] = (called, tick(), result)
             _perturb(random)
 
-    threads = [threading.Thread(target=branch, args=(i,)) for i in range(len(branches))]
+    threads = [
+        threading.Thread(target=branch, args=(i,)) for i in range(len(branches))
+    ]
     for t in threads:
         t.start()
     for t in threads:
@@ -3606,7 +3820,9 @@ def _execute_parallel(model, case, shake):
     if errors:
         return errors[0]
     expected = _simulate(model, symbols, prefix)[-1]
-    final = model.abstract(symbols, state) if model.abstract is not None else None
+    final = (
+        model.abstract(symbols, state) if model.abstract is not None else None
+    )
     if _linearizable(model, symbols, branches, history, expected, final, state):
         return None
     observed = "; ".join(
@@ -3631,7 +3847,9 @@ def _linearizable(model, symbols, branches, history, expected, final, state):
         if final is not None and compare_values(final, model_state) != 0:
             return False
         for kind, invariant in model.invariants:
-            if not invariant(symbols, model_state if kind == "model" else state):
+            if not invariant(
+                symbols, model_state if kind == "model" else state
+            ):
                 return False
         return True
 
@@ -3690,7 +3908,10 @@ def _linearize(model, symbols, branches, history, expected, finish):
                     state, wanted = _step_model(command, symbols, args, state)
                 except _Invalid:
                     return False
-                if not command.unit and compare_values(history[i][k][2], wanted) != 0:
+                if (
+                    not command.unit
+                    and compare_values(history[i][k][2], wanted) != 0
+                ):
                     return False
         return True
     seen = set()
@@ -3708,7 +3929,8 @@ def _linearize(model, symbols, branches, history, expected, finish):
                 continue
             called = history[i][k][0]
             if mode == "linearizable" and any(
-                positions[j] < len(branches[j]) and history[j][positions[j]][1] < called
+                positions[j] < len(branches[j])
+                and history[j][positions[j]][1] < called
                 for j in range(len(branches))
                 if j != i
             ):
@@ -3746,11 +3968,14 @@ def _shrink_parallel(model, case, failure, repeats, budget, shake):
         candidates = []
         start_args, steps = prefix
         for k in range(len(steps)):
-            candidates.append(((start_args, steps[:k] + steps[k + 1 :]), branches))
+            candidates.append(
+                ((start_args, steps[:k] + steps[k + 1 :]), branches)
+            )
         for i in range(len(branches)):
             for k in range(len(branches[i])):
                 shorter = [
-                    b if j != i else b[:k] + b[k + 1 :] for j, b in enumerate(branches)
+                    b if j != i else b[:k] + b[k + 1 :]
+                    for j, b in enumerate(branches)
                 ]
                 candidates.append((prefix, shorter))
         # Then smaller arguments, branch by branch, step by step.
@@ -3787,7 +4012,8 @@ def _describe_parallel(model, case):
         for i, args in steps
     )
     parts = [
-        f"{_branch_name(i)}: {describe(b) or 'nothing'}" for i, b in enumerate(branches)
+        f"{_branch_name(i)}: {describe(b) or 'nothing'}"
+        for i, b in enumerate(branches)
     ]
     return f"{_describe_run(model, prefix)}, then {', '.join(parts[:-1])} and {parts[-1]} at the same time"
 
@@ -3904,7 +4130,9 @@ class _NetScenarioChannel:
         def wire(sends, d):
             return (sends, ["text"] if d == ["end"] else d)
 
-        self.ends = [self.nodes[0].listen(name, [wire(s, d) for s, d in steps], values)]
+        self.ends = [
+            self.nodes[0].listen(name, [wire(s, d) for s, d in steps], values)
+        ]
         self.ends.append(
             self.nodes[1].dial(
                 f"{self.nodes[0].address}/{name}",
@@ -3952,7 +4180,13 @@ class _ScenarioMailbox:
     node to the receiver's node, each send waiting until it is delivered."""
 
     def __init__(
-        self, name, expected, network=None, descriptor=None, values=None, registry=None
+        self,
+        name,
+        expected,
+        network=None,
+        descriptor=None,
+        values=None,
+        registry=None,
     ):
         self.name, self.expected = name, expected
         self.received, self.abandoned = 0, 0
@@ -4115,7 +4349,10 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
         # Loss, duplication and delay (which reorders); the channels'
         # numbered, acknowledged frames must hide them all.
         net = MemoryNetwork(
-            seed=shake ^ 0x7F4A7C159E3779B9, loss=0.1, duplicate=0.1, delay=0.002
+            seed=shake ^ 0x7F4A7C159E3779B9,
+            loss=0.1,
+            duplicate=0.1,
+            delay=0.002,
         )
         types = Values({str(f[1]): f for f in wire[1:] if f[0] == "data"})
         steps = {
@@ -4130,7 +4367,9 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
             for name in names
         }
         mailboxes = {
-            m: _ScenarioMailbox(m, _all_sends(body, m), net, kinds[m], types, registry)
+            m: _ScenarioMailbox(
+                m, _all_sends(body, m), net, kinds[m], types, registry
+            )
             if m in kinds
             else _ScenarioMailbox(m, _all_sends(body, m))
             for m in boxes
@@ -4212,7 +4451,8 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
             if kind == "call":
                 command = commands[str(act[1])]
                 args = [
-                    env[str(o[1])] if o[0] == "var" else _constant(o) for o in act[3:]
+                    env[str(o[1])] if o[0] == "var" else _constant(o)
+                    for o in act[3:]
                 ]
                 full = list(args)
                 full.insert(command.state, state)
@@ -4259,7 +4499,9 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
                 try:
                     mailboxes[str(act[1])].send(value, dict(clock))
                 except Unreachable as error:
-                    failures.append(f"a send to mailbox {act[1]} failed: {error}")
+                    failures.append(
+                        f"a send to mailbox {act[1]} failed: {error}"
+                    )
                     return "failed"
                 sent[str(act[1])] += 1
             elif kind in ("receive", "receiveor") and str(act[1]) in mailboxes:
@@ -4273,7 +4515,9 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
                 if value is _GONE:
                     if kind == "receive":
                         return "failed"
-                    return steps(act[3][1:], env, ends, random, None, clock, me, sent)
+                    return steps(
+                        act[3][1:], env, ends, random, None, clock, me, sent
+                    )
                 for p, n in carried.items():
                     clock[p] = max(clock.get(p, 0), n)
                 clock[me] = clock.get(me, 0) + 1
@@ -4311,7 +4555,9 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
                     if kind == "receive":
                         return "failed"
                     del ends[str(act[1])]
-                    return steps(act[3][1:], env, ends, random, None, clock, me, sent)
+                    return steps(
+                        act[3][1:], env, ends, random, None, clock, me, sent
+                    )
                 unstamp(channel, side, clock, me)
                 if isinstance(value, _End):
                     ends[str(act[2])] = (value.channel, value.side)
@@ -4347,7 +4593,12 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
                         ),
                     ):
                         outcomes[i] = process(
-                            branch[1:], dict(env), mine, random, id(branch), clocks[i]
+                            branch[1:],
+                            dict(env),
+                            mine,
+                            random,
+                            id(branch),
+                            clocks[i],
                         )
 
                     threads.append(threading.Thread(target=run))
@@ -4385,7 +4636,9 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
         )
     if outcome == "failed" and victim is None:
         return title, "a process failed"
-    final = model.abstract(symbols, state) if model.abstract is not None else None
+    final = (
+        model.abstract(symbols, state) if model.abstract is not None else None
+    )
     if not _linearizes_history(model, symbols, history, expected, final, state):
         observed = "; ".join(
             f"{c.name}({', '.join(render(a) for a in args)}) returned {render(r)}"
@@ -4447,20 +4700,35 @@ def _linearizes_history(model, symbols, history, expected, final, state):
             if done == full:
                 if not judge_final:
                     return True
-                if final is not None and compare_values(final, model_state) != 0:
+                if (
+                    final is not None
+                    and compare_values(final, model_state) != 0
+                ):
                     return False
                 return all(
-                    invariant(symbols, model_state if kind == "model" else state)
+                    invariant(
+                        symbols, model_state if kind == "model" else state
+                    )
                     for kind, invariant in model.invariants
                 )
             for i in members:
                 if done & (1 << i):
                     continue
-                if any(not done & (1 << j) and before(j, i) for j in members if j != i):
+                if any(
+                    not done & (1 << j) and before(j, i)
+                    for j in members
+                    if j != i
+                ):
                     continue
-                command, args, result = history[i][0], history[i][1], history[i][2]
+                command, args, result = (
+                    history[i][0],
+                    history[i][1],
+                    history[i][2],
+                )
                 try:
-                    after, wanted = _step_model(command, symbols, args, model_state)
+                    after, wanted = _step_model(
+                        command, symbols, args, model_state
+                    )
                 except _Invalid:
                     continue
                 if (
@@ -4491,7 +4759,9 @@ def _linearizes_history(model, symbols, history, expected, final, state):
             if not search(seen_by, set(own), False):
                 return False
         return True
-    return search(everything, set() if mode == "eventual" else set(everything), True)
+    return search(
+        everything, set() if mode == "eventual" else set(everything), True
+    )
 
 
 def check_scenario(model, spec, runs=30, seed=None):
@@ -4810,7 +5080,9 @@ def _wire_get(values, d, buf, pos):
             v, pos = _wire_get(values, d[1], buf, pos)
             return DataValue("Maybe::Present", (v,)), pos
         v, pos = _wire_get(values, d[1] if which == 0 else d[2], buf, pos)
-        return DataValue("Either::Left" if which == 0 else "Either::Right", (v,)), pos
+        return DataValue(
+            "Either::Left" if which == 0 else "Either::Right", (v,)
+        ), pos
     if kind == "data":
         index, pos = _get_varint(buf, pos)
         ctors = d[2:]
@@ -4971,7 +5243,9 @@ class MemoryNetwork:
     or duplicated, and is delayed by up to delay seconds (so frames can
     overtake each other); partition(...) cuts nodes off until heal()."""
 
-    def __init__(self, seed=0, loss=0.0, duplicate=0.0, delay=0.0, record=False):
+    def __init__(
+        self, seed=0, loss=0.0, duplicate=0.0, delay=0.0, record=False
+    ):
         self._random = SplitMix64(seed)
         self.loss, self.duplicate, self.delay = loss, duplicate, delay
         # With record, every record sent, as the network saw it.
@@ -5016,11 +5290,14 @@ class MemoryNetwork:
                 return
             copies = 2 if self._chance(self.duplicate) else 1
             delays = [
-                self._random.below(1001) * self.delay / 1000 for _ in range(copies)
+                self._random.below(1001) * self.delay / 1000
+                for _ in range(copies)
             ]
         for wait in delays:
             if wait <= 0:
-                threading.Thread(target=deliver, args=(frame,), daemon=True).start()
+                threading.Thread(
+                    target=deliver, args=(frame,), daemon=True
+                ).start()
             else:
                 timer = threading.Timer(wait, deliver, args=(frame,))
                 timer.daemon = True
@@ -5117,7 +5394,9 @@ class TcpTransport(Transport):
                 except OSError as error:
                     self._connections.pop(node, None)
                     if attempt == 1:
-                        raise Unreachable(f"cannot reach {node}: {error}") from None
+                        raise Unreachable(
+                            f"cannot reach {node}: {error}"
+                        ) from None
 
     def close(self):
         self._closed = True
@@ -5138,7 +5417,9 @@ class HttpTransport(Transport):
 
         class Handler(BaseHTTPRequestHandler):
             def do_POST(self):
-                body = self.rfile.read(int(self.headers.get("Content-Length", "0")))
+                body = self.rfile.read(
+                    int(self.headers.get("Content-Length", "0"))
+                )
                 self.send_response(204 if self.path == "/lawspec" else 404)
                 self.end_headers()
                 if self.path == "/lawspec" and transport._deliver is not None:
@@ -5281,22 +5562,30 @@ class Node:
 
     def _send(self, address, kind, payload, ident=0):
         node, name = _split_address(address)
-        self._transmit(node, _frame_encode(kind, name, self.address, ident, payload))
+        self._transmit(
+            node, _frame_encode(kind, name, self.address, ident, payload)
+        )
 
     def _forward(self, address, kind, source, ident, payload):
         """Passes a frame on to address unchanged, keeping its source."""
         node, name = _split_address(address)
         try:
-            self._transmit(node, _frame_encode(kind, name, source, ident, payload))
+            self._transmit(
+                node, _frame_encode(kind, name, source, ident, payload)
+            )
         except Unreachable:
             pass
 
     def _register(self, name, entity):
         if "/" in name or not name:
-            raise ValueError(f"{name!r} is not a name: use letters, digits and dashes")
+            raise ValueError(
+                f"{name!r} is not a name: use letters, digits and dashes"
+            )
         with self._lock:
             if name in self._entities:
-                raise ValueError(f"{name} is already registered on {self.address}")
+                raise ValueError(
+                    f"{name} is already registered on {self.address}"
+                )
             self._entities[name] = entity
         return f"{self.address}/{name}"
 
@@ -5316,7 +5605,10 @@ class Node:
         if entity is None:
             if ident:
                 self._reply(
-                    source, ident, 3, f"nothing is registered as {to} on {self.address}"
+                    source,
+                    ident,
+                    3,
+                    f"nothing is registered as {to} on {self.address}",
                 )
             return
         if ident:
@@ -5389,7 +5681,9 @@ class Node:
         self._register(name, _MailEntity(box, values, descriptor))
         return box
 
-    def remote_mailbox(self, address, descriptor, values=_NO_TYPES, timeout=5.0):
+    def remote_mailbox(
+        self, address, descriptor, values=_NO_TYPES, timeout=5.0
+    ):
         return RemoteMailbox(self, address, descriptor, values, timeout)
 
     # Actors: calls by message name, with each message's types.
@@ -5426,7 +5720,9 @@ class Node:
         _wire_put(_NO_TYPES, ["text"], digest, payload)
         for d, v in zip(arguments, args):
             _wire_put(values, d, v, payload)
-        status, body = self._request(f"{node}/{name}", "eval", bytes(payload), timeout)
+        status, body = self._request(
+            f"{node}/{name}", "eval", bytes(payload), timeout
+        )
         return _reply_value(status, body, values, result)
 
     # Channels: one side here, the other on any node.
@@ -5475,7 +5771,9 @@ class _MailEntity:
     def _receive(self, node, kind, source, ident, payload):
         if kind == "mail":
             try:
-                self.box.send(wire_decode(self.values, self.descriptor, payload))
+                self.box.send(
+                    wire_decode(self.values, self.descriptor, payload)
+                )
                 status, body = 0, b""
             except WireError as error:
                 status, body = 3, f"not a message of this mailbox: {error}"
@@ -5527,11 +5825,15 @@ class _ActorEntity:
             if pos != len(payload):
                 raise WireError("extra bytes after the arguments")
         except (WireError, KeyError) as error:
-            node._reply(source, ident, 3, f"not a message this actor handles: {error}")
+            node._reply(
+                source, ident, 3, f"not a message this actor handles: {error}"
+            )
             return
         try:
             result = self.actor.call(lambda s: handler(s, *args))
-            node._reply(source, ident, 0, wire_encode(self.values, reply, result))
+            node._reply(
+                source, ident, 0, wire_encode(self.values, reply, result)
+            )
         except ActorCrashed as error:
             node._reply(source, ident, 1, str(error))
         except ActorStopped as error:
@@ -5545,7 +5847,11 @@ class RemoteActor:
 
     def __init__(self, node, address, signatures, values, timeout):
         self._node, self.address = node, address
-        self._signatures, self._values, self.timeout = signatures, values, timeout
+        self._signatures, self._values, self.timeout = (
+            signatures,
+            values,
+            timeout,
+        )
 
     def call(self, message, *args):
         arguments, reply = self._signatures[message]
@@ -5575,12 +5881,18 @@ class _DefinitionEntity:
                 args.append(v)
         except (WireError, KeyError):
             node._reply(
-                source, ident, 3, "this node has no definition with that content hash"
+                source,
+                ident,
+                3,
+                "this node has no definition with that content hash",
             )
             return
         try:
             node._reply(
-                source, ident, 0, wire_encode(self.values, result, function(*args))
+                source,
+                ident,
+                0,
+                wire_encode(self.values, result, function(*args)),
             )
         except Exception as error:  # noqa: BLE001 - reported to the caller
             node._reply(source, ident, 1, f"{type(error).__name__}: {error}")
@@ -5639,7 +5951,12 @@ class _NetEndpoint:
     def __init__(self, node, steps, values, side, deadline):
         import queue
 
-        self._node, self._steps, self._values, self.side = node, steps, values, side
+        self._node, self._steps, self._values, self.side = (
+            node,
+            steps,
+            values,
+            side,
+        )
         self._deadline = deadline
         self.address = None
         self._peer = None
@@ -5686,7 +6003,12 @@ class _NetEndpoint:
 
         payload = self._frame(seq, body)
         with self._lock:
-            self._unacked[seq] = [payload, time.monotonic(), time.monotonic(), body]
+            self._unacked[seq] = [
+                payload,
+                time.monotonic(),
+                time.monotonic(),
+                body,
+            ]
             peer = self._peer
         if peer is not None:
             try:
@@ -5827,7 +6149,9 @@ class _NetEndpoint:
                 return
             if self._moved_to is None:
                 received = [
-                    body for marker, body in list(self._inbox.queue) if marker is None
+                    body
+                    for marker, body in list(self._inbox.queue)
+                    if marker is None
                 ]
                 state = bytearray()
                 _wire_put(_NO_TYPES, _TEXT, token, state)
@@ -5838,7 +6162,9 @@ class _NetEndpoint:
                 _wire_put(_NO_TYPES, _SEQ, self._expected, state)
                 _put_numbered(
                     state,
-                    sorted((seq, entry[3]) for seq, entry in self._unacked.items()),
+                    sorted(
+                        (seq, entry[3]) for seq, entry in self._unacked.items()
+                    ),
                 )
                 _put_numbered(state, sorted(self._early.items()))
                 _put_varint(state, len(received))
@@ -5907,14 +6233,19 @@ class _NetEndpoint:
             return
         now = time.monotonic()
         with self._lock:
-            if self._taking is None or token != self._taking[1] or self._taken.is_set():
+            if (
+                self._taking is None
+                or token != self._taking[1]
+                or self._taken.is_set()
+            ):
                 return
             self._peer = peer or None
             self._history = history
             self._out, self._expected = out, expected
             # Sent again from here at once, under this end's address.
             self._unacked = {
-                seq: [self._frame(seq, body), now, 0.0, body] for seq, body in unacked
+                seq: [self._frame(seq, body), now, 0.0, body]
+                for seq, body in unacked
             }
             self._early = dict(early)
             for body in received:
@@ -6015,7 +6346,9 @@ class NativeChannel:
         self.address = endpoint.address
 
     def _part(self):
-        part = self._parts[self._step] if self._step < len(self._parts) else None
+        part = (
+            self._parts[self._step] if self._step < len(self._parts) else None
+        )
         self._step += 1
         return part
 
@@ -6023,7 +6356,11 @@ class NativeChannel:
         part = self._part()
         if isinstance(part, EndPart):
             value = _offer_end(
-                self._endpoint._node, self._endpoint._values, value, part, self._schema
+                self._endpoint._node,
+                self._endpoint._values,
+                value,
+                part,
+                self._schema,
             )
         elif part is not None:
             value = self._schema.from_native(part, value)
@@ -6074,8 +6411,17 @@ def _relay_end(node, values, channel, side, part, schema):
                     channel.send(side, relayed.receive(0))
                 else:
                     relayed.send(0, channel.receive(side))
-        except (PeerFailed, SessionError, Unreachable, TimeoutError, ActorStopped):
-            for give_up in (lambda: channel.abandon(side), lambda: relay.abandon(0)):
+        except (
+            PeerFailed,
+            SessionError,
+            Unreachable,
+            TimeoutError,
+            ActorStopped,
+        ):
+            for give_up in (
+                lambda: channel.abandon(side),
+                lambda: relay.abandon(0),
+            ):
                 try:
                     give_up()
                 except Exception:  # noqa: BLE001 - already failed

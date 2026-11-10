@@ -16,2627 +16,2627 @@ using Value = LawSpec.Runtime.Value;
 /// <summary>The checked definitions of lawtwin.kafka, on native values.</summary>
 public static class LawtwinKafka
 {
-    /// <summary>allAtLeast — ../src/contract.lawspec:1418</summary>
-    public static bool AllAtLeast(long floor, FSharpList<long> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.AllAtLeast(schema, symbols, Codecs.Int64.FromNative.Invoke(floor), Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>assignmentIn — ../src/contract.lawspec:1618</summary>
-    public static FSharpList<LawSpec.Data.TopicPartition> AssignmentIn(string m, FSharpList<LawSpec.Data.MemberAssignment> ms)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.AssignmentIn(schema, symbols, Codecs.Text.FromNative.Invoke(m), Codecs.List(LawSpec.Data.Codecs.MemberAssignment()).FromNative.Invoke(ms)));
-    }
-
-    /// <summary>clusterAddPartitionsToTxnRequest — ../src/contract.lawspec:283</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterAddPartitionsToTxnRequest(LawSpec.Data.BrokerState state, string value0, long value1, short value2, FSharpList<LawSpec.Data.TopicPartition> value3)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterAddPartitionsToTxnRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1), Codecs.Int16.FromNative.Invoke(value2), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(value3)))));
-    }
-
-    /// <summary>clusterCommitOffsets — ../src/contract.lawspec:302</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCommitOffsets(LawSpec.Data.BrokerState state, string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCommitOffsets(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(value3)))));
-    }
-
-    /// <summary>clusterCreatePartitions — ../src/contract.lawspec:294</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCreatePartitions(LawSpec.Data.BrokerState state, string value0, int value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCreatePartitions(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int32.FromNative.Invoke(value1)))));
-    }
-
-    /// <summary>clusterCreatePartitionsRequest — ../src/contract.lawspec:277</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCreatePartitionsRequest(LawSpec.Data.BrokerState state, string value0, int value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCreatePartitionsRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int32.FromNative.Invoke(value1)))));
-    }
-
-    /// <summary>clusterCreateTopic — ../src/contract.lawspec:293</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCreateTopic(LawSpec.Data.BrokerState state, string value0, int value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCreateTopic(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int32.FromNative.Invoke(value1)))));
-    }
-
-    /// <summary>clusterCreateTopicsRequest — ../src/contract.lawspec:276</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCreateTopicsRequest(LawSpec.Data.BrokerState state, string value0, int value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCreateTopicsRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int32.FromNative.Invoke(value1)))));
-    }
-
-    /// <summary>clusterDescribeGroup — ../src/contract.lawspec:301</summary>
-    public static LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> ClusterDescribeGroup(LawSpec.Data.BrokerState state, string value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.GroupView(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterDescribeGroup(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0)));
-    }
-
-    /// <summary>clusterDescribeGroupRequest — ../src/contract.lawspec:290</summary>
-    public static LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> ClusterDescribeGroupRequest(LawSpec.Data.BrokerState state, string value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.GroupView(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterDescribeGroupRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0)));
-    }
-
-    /// <summary>clusterEndTxnRequest — ../src/contract.lawspec:285</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterEndTxnRequest(LawSpec.Data.BrokerState state, string value0, long value1, short value2, bool value3)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterEndTxnRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1), Codecs.Int16.FromNative.Invoke(value2), Codecs.Bool.FromNative.Invoke(value3)))));
-    }
-
-    /// <summary>clusterFetchOffset — ../src/contract.lawspec:303</summary>
-    public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.BrokerState> ClusterFetchOffset(LawSpec.Data.BrokerState state, string value0, LawSpec.Data.TopicPartition value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterFetchOffset(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value1)));
-    }
-
-    /// <summary>clusterFetchRequest — ../src/contract.lawspec:280</summary>
-    public static FSharpResult<LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterFetchRequest(LawSpec.Data.BrokerState state, LawSpec.Data.TopicPartition value0, long value1, int value2, LawSpec.Data.IsolationLevel value3)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.FetchResult(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterFetchRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(value3)))));
-    }
-
-    /// <summary>clusterHeartbeat — ../src/contract.lawspec:299</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterHeartbeat(LawSpec.Data.BrokerState state, string value0, string value1, int value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterHeartbeat(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>clusterHeartbeatRequest — ../src/contract.lawspec:288</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterHeartbeatRequest(LawSpec.Data.BrokerState state, string value0, string value1, int value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterHeartbeatRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>clusterInitProducerIdRequest — ../src/contract.lawspec:282</summary>
-    public static FSharpResult<LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterInitProducerIdRequest(LawSpec.Data.BrokerState state, FSharpOption<string> value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.ProducerIdAndEpoch(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterInitProducerIdRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Maybe(Codecs.Text).FromNative.Invoke(value0)))));
-    }
-
-    /// <summary>clusterJoinGroup — ../src/contract.lawspec:297</summary>
-    public static FSharpResult<LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterJoinGroup(LawSpec.Data.BrokerState state, string value0, string value1, FSharpList<string> value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int32, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterJoinGroup(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.List(Codecs.Text).FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>clusterJoinGroupRequest — ../src/contract.lawspec:286</summary>
-    public static FSharpResult<LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterJoinGroupRequest(LawSpec.Data.BrokerState state, string value0, string value1, FSharpList<string> value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int32, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterJoinGroupRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.List(Codecs.Text).FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>clusterLeaveGroup — ../src/contract.lawspec:300</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterLeaveGroup(LawSpec.Data.BrokerState state, string value0, string value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterLeaveGroup(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1)))));
-    }
-
-    /// <summary>clusterLeaveGroupRequest — ../src/contract.lawspec:289</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterLeaveGroupRequest(LawSpec.Data.BrokerState state, string value0, string value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterLeaveGroupRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1)))));
-    }
-
-    /// <summary>clusterListOffsets — ../src/contract.lawspec:296</summary>
-    public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterListOffsets(LawSpec.Data.BrokerState state, LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterListOffsets(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), LawSpec.Data.Codecs.OffsetSpec().FromNative.Invoke(value1), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>clusterListOffsetsRequest — ../src/contract.lawspec:281</summary>
-    public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterListOffsetsRequest(LawSpec.Data.BrokerState state, LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterListOffsetsRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), LawSpec.Data.Codecs.OffsetSpec().FromNative.Invoke(value1), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>clusterMetadataRequest — ../src/contract.lawspec:278</summary>
-    public static LawSpec.Data.Pair<FSharpOption<int>, LawSpec.Data.BrokerState> ClusterMetadataRequest(LawSpec.Data.BrokerState state, string value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int32), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterMetadataRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0)));
-    }
-
-    /// <summary>clusterOffsetCommitRequest — ../src/contract.lawspec:291</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterOffsetCommitRequest(LawSpec.Data.BrokerState state, string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterOffsetCommitRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(value3)))));
-    }
-
-    /// <summary>clusterOffsetFetchRequest — ../src/contract.lawspec:292</summary>
-    public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.BrokerState> ClusterOffsetFetchRequest(LawSpec.Data.BrokerState state, string value0, LawSpec.Data.TopicPartition value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterOffsetFetchRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value1)));
-    }
-
-    /// <summary>clusterPartitionsFor — ../src/contract.lawspec:295</summary>
-    public static LawSpec.Data.Pair<FSharpOption<int>, LawSpec.Data.BrokerState> ClusterPartitionsFor(LawSpec.Data.BrokerState state, string value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int32), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterPartitionsFor(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0)));
-    }
-
-    /// <summary>clusterProduceRequest — ../src/contract.lawspec:279</summary>
-    public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterProduceRequest(LawSpec.Data.BrokerState state, LawSpec.Data.TopicPartition value0, FSharpOption<LawSpec.Data.ProducerTag> value1, FSharpList<LawSpec.Data.Record> value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterProduceRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), Codecs.Maybe(LawSpec.Data.Codecs.ProducerTag()).FromNative.Invoke(value1), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>clusterStart — ../src/contract.lawspec:274</summary>
-    public static LawSpec.Data.BrokerState ClusterStart()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterStart(schema, symbols, V.Unit));
-    }
-
-    /// <summary>clusterSyncGroup — ../src/contract.lawspec:298</summary>
-    public static FSharpResult<LawSpec.Data.Pair<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterSyncGroup(LawSpec.Data.BrokerState state, string value0, string value1, int value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.List(LawSpec.Data.Codecs.TopicPartition()), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterSyncGroup(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>clusterSyncGroupRequest — ../src/contract.lawspec:287</summary>
-    public static FSharpResult<LawSpec.Data.Pair<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterSyncGroupRequest(LawSpec.Data.BrokerState state, string value0, string value1, int value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.List(LawSpec.Data.Codecs.TopicPartition()), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterSyncGroupRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterTxnOffsetCommitRequest(LawSpec.Data.BrokerState state, string value0, long value1, short value2, string value3, FSharpList<LawSpec.Data.OffsetEntry> value4)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterTxnOffsetCommitRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1), Codecs.Int16.FromNative.Invoke(value2), Codecs.Text.FromNative.Invoke(value3), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(value4)))));
-    }
-
-    /// <summary>committedFrom — ../src/contract.lawspec:377</summary>
-    public static FSharpList<LawSpec.Data.Record> CommittedFrom(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, long offset)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset)))));
-    }
-
-    /// <summary>consumerAssign — ../src/contract.lawspec:819</summary>
-    public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> ConsumerAssign(FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerAssign(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
-    }
-
-    /// <summary>consumerClose — ../src/contract.lawspec:802</summary>
-    public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> ConsumerClose(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerClose(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
-    }
-
-    /// <summary>consumerCommit — ../src/contract.lawspec:793</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> ConsumerCommit(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerCommit(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
-    }
-
-    /// <summary>consumerCommitted — ../src/contract.lawspec:811</summary>
-    public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.ConsumerState> ConsumerCommitted(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerCommitted(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
-    }
-
-    /// <summary>consumerIsolation — ../src/contract.lawspec:838</summary>
-    public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> ConsumerIsolation(LawSpec.Data.IsolationLevel level, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerIsolation(schema, symbols, LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(level), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
-    }
-
-    /// <summary>consumerJoin — ../src/contract.lawspec:715</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.TopicPartition>>, LawSpec.Data.ConsumerState> ConsumerJoin(LawSpec.Abilities.LawtwinKafka.IBroker broker, string g, string m, FSharpList<string> topics, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.TopicPartition())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerJoin(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(m), Codecs.List(Codecs.Text).FromNative.Invoke(topics), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
-    }
-
-    /// <summary>consumerPoll — ../src/contract.lawspec:783</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>>, LawSpec.Data.ConsumerState> ConsumerPoll(LawSpec.Abilities.LawtwinKafka.IBroker broker, int n, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.ConsumerRecord())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerPoll(schema, symbols, Codecs.Int32.FromNative.Invoke(n), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
-    }
-
-    /// <summary>consumerPosition — ../src/contract.lawspec:753</summary>
-    public static LawSpec.Data.Pair<long, LawSpec.Data.ConsumerState> ConsumerPosition(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerPosition(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
-    }
-
-    /// <summary>consumerPositionOf — ../src/contract.lawspec:831</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, long>, LawSpec.Data.ConsumerState> ConsumerPositionOf(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerPositionOf(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
-    }
-
-    /// <summary>consumerRecords — ../src/contract.lawspec:663</summary>
-    public static FSharpList<LawSpec.Data.ConsumerRecord> ConsumerRecords(LawSpec.Data.TopicPartition tp, FSharpList<LawSpec.Data.FetchedRecord> rs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.ConsumerRecord()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerRecords(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(rs)));
-    }
-
-    /// <summary>consumerRefresh — ../src/contract.lawspec:731</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> ConsumerRefresh(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerRefresh(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
-    }
-
-    /// <summary>consumerSeek — ../src/contract.lawspec:824</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> ConsumerSeek(LawSpec.Data.TopicPartition tp, long offset, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerSeek(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
-    }
-
-    /// <summary>coversOnce — ../src/contract.lawspec:469</summary>
-    public static bool CoversOnce(string t, int n, LawSpec.Data.GroupView view)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.CoversOnce(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Int32.FromNative.Invoke(n), LawSpec.Data.Codecs.GroupView().FromNative.Invoke(view)));
-    }
-
-    /// <summary>created — ../src/contract.lawspec:315</summary>
-    public static bool Created(LawSpec.Abilities.LawtwinKafka.IBroker broker, string t, int n)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Int32.FromNative.Invoke(n)))));
-    }
-
-    /// <summary>fencedBy — ../src/contract.lawspec:348</summary>
-    public static bool FencedBy(LawSpec.Data.ProducerIdAndEpoch old, LawSpec.Data.ProducerIdAndEpoch new_)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FencedBy(schema, symbols, LawSpec.Data.Codecs.ProducerIdAndEpoch().FromNative.Invoke(old), LawSpec.Data.Codecs.ProducerIdAndEpoch().FromNative.Invoke(new_)));
-    }
-
-    /// <summary>followsBatch — ../src/contract.lawspec:329</summary>
-    public static bool FollowsBatch(LawSpec.Either<LawSpec.Data.KafkaError, long> a, FSharpList<LawSpec.Data.Record> batch, LawSpec.Either<LawSpec.Data.KafkaError, long> b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64).FromNative.Invoke(a), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(batch), Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64).FromNative.Invoke(b)));
-    }
-
-    /// <summary>followsOne — ../src/contract.lawspec:1247</summary>
-    public static bool FollowsOne(LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> a, LawSpec.Either<LawSpec.Data.KafkaError, long> latest)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FollowsOne(schema, symbols, Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(a), Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64).FromNative.Invoke(latest)));
-    }
-
-    /// <summary>freshConsumer — ../src/contract.lawspec:557</summary>
-    public static LawSpec.Data.ConsumerState FreshConsumer()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FreshConsumer(schema, symbols, V.Unit));
-    }
-
-    /// <summary>freshProducer — ../src/contract.lawspec:542</summary>
-    public static LawSpec.Data.ProducerState FreshProducer()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.ProducerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FreshProducer(schema, symbols, V.Unit));
-    }
-
-    /// <summary>freshTransactions — ../src/contract.lawspec:573</summary>
-    public static LawSpec.Data.TransactionState FreshTransactions()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.TransactionState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FreshTransactions(schema, symbols, V.Unit));
-    }
-
-    /// <summary>identityOf — ../src/contract.lawspec:658</summary>
-    public static LawSpec.Data.Pair<FSharpOption<LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> IdentityOf(LawSpec.Data.ProducerState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Maybe(LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.IdentityOf(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)));
-    }
-
-    /// <summary>increasing — ../src/contract.lawspec:1407</summary>
-    public static bool Increasing(FSharpList<long> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Increasing(schema, symbols, Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>joinAll — ../src/contract.lawspec:442</summary>
-    public static bool JoinAll(LawSpec.Abilities.LawtwinKafka.IBroker broker, string g, FSharpList<string> ms, FSharpList<string> topics)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.JoinAll(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.List(Codecs.Text).FromNative.Invoke(ms), Codecs.List(Codecs.Text).FromNative.Invoke(topics)))));
-    }
-
-    /// <summary>joinEach — ../src/contract.lawspec:1606</summary>
-    public static bool JoinEach(LawSpec.Abilities.LawtwinKafka.IGroupCoordinator groupCoordinator, string g, FSharpList<string> ms, FSharpList<string> topics)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::GroupCoordinator", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaGroupCoordinatorFromNative(s, symbols, groupCoordinator)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.JoinEach(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.List(Codecs.Text).FromNative.Invoke(ms), Codecs.List(Codecs.Text).FromNative.Invoke(topics)))));
-    }
-
-    /// <summary>kafkaConsumerAssign — ../src/contract.lawspec:1382</summary>
-    public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> KafkaConsumerAssign(LawSpec.Data.ConsumerState consumerState, FSharpList<LawSpec.Data.TopicPartition> value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerAssign(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(value0)));
-    }
-
-    /// <summary>kafkaConsumerClose — ../src/contract.lawspec:1390</summary>
-    public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> KafkaConsumerClose(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerClose(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState)))));
-    }
-
-    /// <summary>kafkaConsumerCommitSync — ../src/contract.lawspec:1385</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> KafkaConsumerCommitSync(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerCommitSync(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState)))));
-    }
-
-    /// <summary>kafkaConsumerCommittedOffset — ../src/contract.lawspec:1388</summary>
-    public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.ConsumerState> KafkaConsumerCommittedOffset(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState, LawSpec.Data.TopicPartition value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerCommittedOffset(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0)))));
-    }
-
-    /// <summary>kafkaConsumerPoll — ../src/contract.lawspec:1384</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>>, LawSpec.Data.ConsumerState> KafkaConsumerPoll(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState, int value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.ConsumerRecord())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerPoll(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), Codecs.Int32.FromNative.Invoke(value0)))));
-    }
-
-    /// <summary>kafkaConsumerPosition — ../src/contract.lawspec:1387</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, long>, LawSpec.Data.ConsumerState> KafkaConsumerPosition(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState, LawSpec.Data.TopicPartition value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerPosition(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0)))));
-    }
-
-    /// <summary>kafkaConsumerSeek — ../src/contract.lawspec:1386</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> KafkaConsumerSeek(LawSpec.Data.ConsumerState consumerState, LawSpec.Data.TopicPartition value0, long value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerSeek(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1)));
-    }
-
-    /// <summary>kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389</summary>
-    public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> KafkaConsumerSetIsolationLevel(LawSpec.Data.ConsumerState consumerState, LawSpec.Data.IsolationLevel value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerSetIsolationLevel(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(value0)));
-    }
-
-    /// <summary>kafkaConsumerStart — ../src/contract.lawspec:1380</summary>
-    public static LawSpec.Data.ConsumerState KafkaConsumerStart()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerStart(schema, symbols, V.Unit));
-    }
-
-    /// <summary>kafkaConsumerSubscribe — ../src/contract.lawspec:1383</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.TopicPartition>>, LawSpec.Data.ConsumerState> KafkaConsumerSubscribe(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState, string value0, string value1, FSharpList<string> value2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.TopicPartition())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerSubscribe(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.List(Codecs.Text).FromNative.Invoke(value2)))));
-    }
-
-    /// <summary>kafkaProducerEnableIdempotence — ../src/contract.lawspec:1230</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> KafkaProducerEnableIdempotence(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ProducerState producerState)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerEnableIdempotence(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState)))));
-    }
-
-    /// <summary>kafkaProducerFlush — ../src/contract.lawspec:1229</summary>
-    public static LawSpec.Data.Pair<Unit, LawSpec.Data.ProducerState> KafkaProducerFlush(LawSpec.Data.ProducerState producerState)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerFlush(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState)));
-    }
-
-    /// <summary>kafkaProducerProducerIdentity — ../src/contract.lawspec:1232</summary>
-    public static LawSpec.Data.Pair<FSharpOption<LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> KafkaProducerProducerIdentity(LawSpec.Data.ProducerState producerState)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Maybe(LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerProducerIdentity(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState)));
-    }
-
-    /// <summary>kafkaProducerRetryLastSend — ../src/contract.lawspec:1231</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> KafkaProducerRetryLastSend(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ProducerState producerState)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerRetryLastSend(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState)))));
-    }
-
-    /// <summary>kafkaProducerSend — ../src/contract.lawspec:1228</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> KafkaProducerSend(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, LawSpec.Data.ProducerState producerState, LawSpec.Data.ProducerRecord value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerSend(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState), LawSpec.Data.Codecs.ProducerRecord().FromNative.Invoke(value0)))));
-    }
-
-    /// <summary>kafkaProducerStart — ../src/contract.lawspec:1226</summary>
-    public static LawSpec.Data.ProducerState KafkaProducerStart()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.ProducerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerStart(schema, symbols, V.Unit));
-    }
-
-    /// <summary>kafkaTransactionsAbortTransaction — ../src/contract.lawspec:1738</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsAbortTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsAbortTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState)))));
-    }
-
-    /// <summary>kafkaTransactionsAddPartitionsToTransaction — ../src/contract.lawspec:1734</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsAddPartitionsToTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState, FSharpList<LawSpec.Data.TopicPartition> value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsAddPartitionsToTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(value0)))));
-    }
-
-    /// <summary>kafkaTransactionsBeginTransaction — ../src/contract.lawspec:1733</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsBeginTransaction(LawSpec.Data.TransactionState txnState)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsBeginTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState)));
-    }
-
-    /// <summary>kafkaTransactionsCommitTransaction — ../src/contract.lawspec:1737</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsCommitTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsCommitTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState)))));
-    }
-
-    /// <summary>kafkaTransactionsInitTransactions — ../src/contract.lawspec:1732</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> KafkaTransactionsInitTransactions(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState, string value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsInitTransactions(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState), Codecs.Text.FromNative.Invoke(value0)))));
-    }
-
-    /// <summary>kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> KafkaTransactionsSendInTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, LawSpec.Data.TransactionState txnState, LawSpec.Data.ProducerRecord value0)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsSendInTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState), LawSpec.Data.Codecs.ProducerRecord().FromNative.Invoke(value0)))));
-    }
-
-    /// <summary>kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsSendOffsetsToTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState, string value0, FSharpList<LawSpec.Data.OffsetEntry> value1)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsSendOffsetsToTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState), Codecs.Text.FromNative.Invoke(value0), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(value1)))));
-    }
-
-    /// <summary>kafkaTransactionsStart — ../src/contract.lawspec:1730</summary>
-    public static LawSpec.Data.TransactionState KafkaTransactionsStart()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.TransactionState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsStart(schema, symbols, V.Unit));
-    }
-
-    /// <summary>keepPositions — ../src/contract.lawspec:688</summary>
-    public static FSharpMap<LawSpec.Data.TopicPartition, long> KeepPositions(FSharpList<LawSpec.Data.TopicPartition> tps, FSharpMap<LawSpec.Data.TopicPartition, long> positions, FSharpMap<LawSpec.Data.TopicPartition, long> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KeepPositions(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(positions), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>boundedInt16 — &lt;lawspec.collections&gt;:358</summary>
-    public static FSharpOption<short> LawspecCollectionsBoundedInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int16).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedInt32 — &lt;lawspec.collections&gt;:371</summary>
-    public static FSharpOption<int> LawspecCollectionsBoundedInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedInt64 — &lt;lawspec.collections&gt;:384</summary>
-    public static FSharpOption<long> LawspecCollectionsBoundedInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedInt8 — &lt;lawspec.collections&gt;:345</summary>
-    public static FSharpOption<sbyte> LawspecCollectionsBoundedInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int8).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedIntSize — &lt;lawspec.collections&gt;:449</summary>
-    public static FSharpOption<long> LawspecCollectionsBoundedIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedUInt16 — &lt;lawspec.collections&gt;:410</summary>
-    public static FSharpOption<ushort> LawspecCollectionsBoundedUInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt16).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedUInt32 — &lt;lawspec.collections&gt;:423</summary>
-    public static FSharpOption<uint> LawspecCollectionsBoundedUInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedUInt64 — &lt;lawspec.collections&gt;:436</summary>
-    public static FSharpOption<ulong> LawspecCollectionsBoundedUInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedUInt8 — &lt;lawspec.collections&gt;:397</summary>
-    public static FSharpOption<byte> LawspecCollectionsBoundedUInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt8).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedUIntPtr — &lt;lawspec.collections&gt;:475</summary>
-    public static FSharpOption<ulong> LawspecCollectionsBoundedUIntPtr(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>boundedUIntSize — &lt;lawspec.collections&gt;:462</summary>
-    public static FSharpOption<ulong> LawspecCollectionsBoundedUIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingInt16 — &lt;lawspec.collections&gt;:354</summary>
-    public static short LawspecCollectionsSaturatingInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int16.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingInt32 — &lt;lawspec.collections&gt;:367</summary>
-    public static int LawspecCollectionsSaturatingInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingInt64 — &lt;lawspec.collections&gt;:380</summary>
-    public static long LawspecCollectionsSaturatingInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingInt8 — &lt;lawspec.collections&gt;:341</summary>
-    public static sbyte LawspecCollectionsSaturatingInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int8.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingIntSize — &lt;lawspec.collections&gt;:445</summary>
-    public static long LawspecCollectionsSaturatingIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingUInt16 — &lt;lawspec.collections&gt;:406</summary>
-    public static ushort LawspecCollectionsSaturatingUInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt16.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingUInt32 — &lt;lawspec.collections&gt;:419</summary>
-    public static uint LawspecCollectionsSaturatingUInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingUInt64 — &lt;lawspec.collections&gt;:432</summary>
-    public static ulong LawspecCollectionsSaturatingUInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingUInt8 — &lt;lawspec.collections&gt;:393</summary>
-    public static byte LawspecCollectionsSaturatingUInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt8.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingUIntPtr — &lt;lawspec.collections&gt;:471</summary>
-    public static ulong LawspecCollectionsSaturatingUIntPtr(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>saturatingUIntSize — &lt;lawspec.collections&gt;:458</summary>
-    public static ulong LawspecCollectionsSaturatingUIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingInt16 — &lt;lawspec.collections&gt;:349</summary>
-    public static short LawspecCollectionsWrappingInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int16.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingInt32 — &lt;lawspec.collections&gt;:362</summary>
-    public static int LawspecCollectionsWrappingInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingInt64 — &lt;lawspec.collections&gt;:375</summary>
-    public static long LawspecCollectionsWrappingInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingInt8 — &lt;lawspec.collections&gt;:336</summary>
-    public static sbyte LawspecCollectionsWrappingInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int8.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingIntSize — &lt;lawspec.collections&gt;:440</summary>
-    public static long LawspecCollectionsWrappingIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingUInt16 — &lt;lawspec.collections&gt;:401</summary>
-    public static ushort LawspecCollectionsWrappingUInt16(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt16.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingUInt32 — &lt;lawspec.collections&gt;:414</summary>
-    public static uint LawspecCollectionsWrappingUInt32(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingUInt64 — &lt;lawspec.collections&gt;:427</summary>
-    public static ulong LawspecCollectionsWrappingUInt64(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingUInt8 — &lt;lawspec.collections&gt;:388</summary>
-    public static byte LawspecCollectionsWrappingUInt8(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt8.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingUIntPtr — &lt;lawspec.collections&gt;:466</summary>
-    public static ulong LawspecCollectionsWrappingUIntPtr(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>wrappingUIntSize — &lt;lawspec.collections&gt;:453</summary>
-    public static ulong LawspecCollectionsWrappingUIntSize(System.Numerics.BigInteger value)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
-    }
-
-    /// <summary>keyValDeleteItems — &lt;lawspec.collections&gt;:258</summary>
-    public static FSharpList<LawSpec.Data.Entry<long, long>> LawspecCollectionsKeyValDeleteItemsInt64ListEntryInt64Int64(long k, FSharpList<LawSpec.Data.Entry<long, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValDeleteItemsInt64ListEntryInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValDeleteItems — &lt;lawspec.collections&gt;:258</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> LawspecCollectionsKeyValDeleteItemsTextListEntryTextListText(string k, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValDeleteItemsTextListEntryTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValDelete — &lt;lawspec.collections&gt;:319</summary>
-    public static FSharpMap<long, long> LawspecCollectionsKeyValDeleteInt64KeyValInt64Int64(long k, FSharpMap<long, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Int64, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValDeleteInt64KeyValInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Int64, Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValDelete — &lt;lawspec.collections&gt;:319</summary>
-    public static FSharpMap<string, FSharpList<string>> LawspecCollectionsKeyValDeleteTextKeyValTextListText(string k, FSharpMap<string, FSharpList<string>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValDeleteTextKeyValTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValEntries — &lt;lawspec.collections&gt;:331</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> LawspecCollectionsKeyValEntriesKeyValTextListText(FSharpMap<string, FSharpList<string>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValEntriesKeyValTextListText(schema, symbols, Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValEntries — &lt;lawspec.collections&gt;:331</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> LawspecCollectionsKeyValEntriesKeyValTextGroup(FSharpMap<string, LawSpec.Data.Group> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValEntriesKeyValTextGroup(schema, symbols, Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValEntries — &lt;lawspec.collections&gt;:331</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> LawspecCollectionsKeyValEntriesKeyValTextListTopicPartition(FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValEntriesKeyValTextListTopicPartition(schema, symbols, Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, long>> LawspecCollectionsKeyValFromItemsListEntryTextInt64ListEntryTextInt64(FSharpList<LawSpec.Data.Entry<string, long>> es, FSharpList<LawSpec.Data.Entry<string, long>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextInt64ListEntryTextInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> LawspecCollectionsKeyValFromItemsListEntryGroupPartitionInt64ListEntryGroupPartitionInt64(FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> es, FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryGroupPartitionInt64ListEntryGroupPartitionInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt32ListEntryTopicPartitionInt32(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> es, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt32ListEntryTopicPartitionInt32(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> LawspecCollectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> es, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> LawspecCollectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> LawspecCollectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition(FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> es, FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, int>> LawspecCollectionsKeyValFromItemsListEntryTextInt32ListEntryTextInt32(FSharpList<LawSpec.Data.Entry<string, int>> es, FSharpList<LawSpec.Data.Entry<string, int>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextInt32ListEntryTextInt32(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<long, long>> LawspecCollectionsKeyValFromItemsListEntryInt64Int64ListEntryInt64Int64(FSharpList<LawSpec.Data.Entry<long, long>> es, FSharpList<LawSpec.Data.Entry<long, long>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryInt64Int64ListEntryInt64Int64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt64ListEntryTopicPartitionInt64(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> es, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt64ListEntryTopicPartitionInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> LawspecCollectionsKeyValFromItemsListEntryInt64ListBatchMetaListEntryInt64ListBatchMeta(FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> es, FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryInt64ListBatchMetaListEntryInt64ListBatchMeta(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> LawspecCollectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> es, FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
-    public static FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> LawspecCollectionsKeyValFromItemsListEntryInt64ProducerEntryListEntryInt64ProducerEntry(FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> es, FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryInt64ProducerEntryListEntryInt64ProducerEntry(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>keyValKeysItems — &lt;lawspec.collections&gt;:293</summary>
-    public static FSharpList<string> LawspecCollectionsKeyValKeysItemsListEntryTextListText(FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValKeysItemsListEntryTextListText(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValKeys — &lt;lawspec.collections&gt;:323</summary>
-    public static FSharpList<string> LawspecCollectionsKeyValKeysKeyValTextListText(FSharpMap<string, FSharpList<string>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValKeysKeyValTextListText(schema, symbols, Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<LawSpec.Data.PartitionLog> LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog(LawSpec.Data.TopicPartition k, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(LawSpec.Data.Codecs.PartitionLog()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<FSharpList<LawSpec.Data.TopicPartition>> LawspecCollectionsKeyValLookupItemsTextListEntryTextListTopicPartition(string k, FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextListTopicPartition(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<int> LawspecCollectionsKeyValLookupItemsTextListEntryTextInt32(string k, FSharpList<LawSpec.Data.Entry<string, int>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextInt32(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<FSharpList<LawSpec.Data.BatchMeta>> LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ListBatchMeta(long k, FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.List(LawSpec.Data.Codecs.BatchMeta())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ListBatchMeta(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<int> LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt32(LawSpec.Data.TopicPartition k, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt32(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<long> LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt64(LawSpec.Data.TopicPartition k, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt64(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<LawSpec.Data.ProducerEntry> LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ProducerEntry(long k, FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(LawSpec.Data.Codecs.ProducerEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ProducerEntry(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<FSharpList<string>> LawspecCollectionsKeyValLookupItemsTextListEntryTextListText(string k, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<long> LawspecCollectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt64(LawSpec.Data.GroupPartition k, FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt64(schema, symbols, LawSpec.Data.Codecs.GroupPartition().FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<LawSpec.Data.Group> LawspecCollectionsKeyValLookupItemsTextListEntryTextGroup(string k, FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextGroup(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<long> LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64Int64(long k, FSharpList<LawSpec.Data.Entry<long, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
-    public static FSharpOption<long> LawspecCollectionsKeyValLookupItemsTextListEntryTextInt64(string k, FSharpList<LawSpec.Data.Entry<string, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextInt64(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<long> LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt64(LawSpec.Data.TopicPartition k, FSharpMap<LawSpec.Data.TopicPartition, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt64(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<FSharpList<LawSpec.Data.BatchMeta>> LawspecCollectionsKeyValLookupInt64KeyValInt64ListBatchMeta(long k, FSharpMap<long, FSharpList<LawSpec.Data.BatchMeta>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.List(LawSpec.Data.Codecs.BatchMeta())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupInt64KeyValInt64ListBatchMeta(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta())).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<FSharpList<LawSpec.Data.TopicPartition>> LawspecCollectionsKeyValLookupTextKeyValTextListTopicPartition(string k, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextListTopicPartition(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<LawSpec.Data.ProducerEntry> LawspecCollectionsKeyValLookupInt64KeyValInt64ProducerEntry(long k, FSharpMap<long, LawSpec.Data.ProducerEntry> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(LawSpec.Data.Codecs.ProducerEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupInt64KeyValInt64ProducerEntry(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry()).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<long> LawspecCollectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt64(LawSpec.Data.GroupPartition k, FSharpMap<LawSpec.Data.GroupPartition, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt64(schema, symbols, LawSpec.Data.Codecs.GroupPartition().FromNative.Invoke(k), Codecs.KeyVal(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<int> LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt32(LawSpec.Data.TopicPartition k, FSharpMap<LawSpec.Data.TopicPartition, int> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt32(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<long> LawspecCollectionsKeyValLookupInt64KeyValInt64Int64(long k, FSharpMap<long, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupInt64KeyValInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Int64, Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<LawSpec.Data.Group> LawspecCollectionsKeyValLookupTextKeyValTextGroup(string k, FSharpMap<string, LawSpec.Data.Group> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextGroup(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<int> LawspecCollectionsKeyValLookupTextKeyValTextInt32(string k, FSharpMap<string, int> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextInt32(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.Int32).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<LawSpec.Data.PartitionLog> LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(LawSpec.Data.TopicPartition k, FSharpMap<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(LawSpec.Data.Codecs.PartitionLog()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog()).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<FSharpList<string>> LawspecCollectionsKeyValLookupTextKeyValTextListText(string k, FSharpMap<string, FSharpList<string>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
-    public static FSharpOption<long> LawspecCollectionsKeyValLookupTextKeyValTextInt64(string k, FSharpMap<string, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextInt64(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawspecCollectionsKeyValOfListEntryTextListTopicPartition(FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextListTopicPartition(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<string, long> LawspecCollectionsKeyValOfListEntryTextInt64(FSharpList<LawSpec.Data.Entry<string, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<long, FSharpList<LawSpec.Data.BatchMeta>> LawspecCollectionsKeyValOfListEntryInt64ListBatchMeta(FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryInt64ListBatchMeta(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<string, LawSpec.Data.Group> LawspecCollectionsKeyValOfListEntryTextGroup(FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextGroup(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<string, int> LawspecCollectionsKeyValOfListEntryTextInt32(FSharpList<LawSpec.Data.Entry<string, int>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextInt32(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<long, LawSpec.Data.ProducerEntry> LawspecCollectionsKeyValOfListEntryInt64ProducerEntry(FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryInt64ProducerEntry(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> LawspecCollectionsKeyValOfListEntryTopicPartitionPartitionLog(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTopicPartitionPartitionLog(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<LawSpec.Data.TopicPartition, int> LawspecCollectionsKeyValOfListEntryTopicPartitionInt32(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTopicPartitionInt32(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<LawSpec.Data.TopicPartition, long> LawspecCollectionsKeyValOfListEntryTopicPartitionInt64(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTopicPartitionInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<LawSpec.Data.GroupPartition, long> LawspecCollectionsKeyValOfListEntryGroupPartitionInt64(FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryGroupPartitionInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<string, FSharpList<string>> LawspecCollectionsKeyValOfListEntryTextListText(FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextListText(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
-    public static FSharpMap<long, long> LawspecCollectionsKeyValOfListEntryInt64Int64(FSharpList<LawSpec.Data.Entry<long, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Int64, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryInt64Int64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> LawspecCollectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(LawSpec.Data.TopicPartition k, LawSpec.Data.PartitionLog v, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> LawspecCollectionsKeyValPutItemsGroupPartitionInt64ListEntryGroupPartitionInt64(LawSpec.Data.GroupPartition k, long v, FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsGroupPartitionInt64ListEntryGroupPartitionInt64(schema, symbols, LawSpec.Data.Codecs.GroupPartition().FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> LawspecCollectionsKeyValPutItemsTextGroupListEntryTextGroup(string k, LawSpec.Data.Group v, FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextGroupListEntryTextGroup(schema, symbols, Codecs.Text.FromNative.Invoke(k), LawSpec.Data.Codecs.Group().FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> LawspecCollectionsKeyValPutItemsInt64ProducerEntryListEntryInt64ProducerEntry(long k, LawSpec.Data.ProducerEntry v, FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsInt64ProducerEntryListEntryInt64ProducerEntry(schema, symbols, Codecs.Int64.FromNative.Invoke(k), LawSpec.Data.Codecs.ProducerEntry().FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, int>> LawspecCollectionsKeyValPutItemsTextInt32ListEntryTextInt32(string k, int v, FSharpList<LawSpec.Data.Entry<string, int>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextInt32ListEntryTextInt32(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.Int32.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, long>> LawspecCollectionsKeyValPutItemsTextInt64ListEntryTextInt64(string k, long v, FSharpList<LawSpec.Data.Entry<string, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextInt64ListEntryTextInt64(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> LawspecCollectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition(string k, FSharpList<LawSpec.Data.TopicPartition> v, FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> LawspecCollectionsKeyValPutItemsInt64ListBatchMetaListEntryInt64ListBatchMeta(long k, FSharpList<LawSpec.Data.BatchMeta> v, FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsInt64ListBatchMetaListEntryInt64ListBatchMeta(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.BatchMeta()).FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> LawspecCollectionsKeyValPutItemsTextListTextListEntryTextListText(string k, FSharpList<string> v, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextListTextListEntryTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(Codecs.Text).FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> LawspecCollectionsKeyValPutItemsTopicPartitionInt64ListEntryTopicPartitionInt64(LawSpec.Data.TopicPartition k, long v, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTopicPartitionInt64ListEntryTopicPartitionInt64(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> LawspecCollectionsKeyValPutItemsTopicPartitionInt32ListEntryTopicPartitionInt32(LawSpec.Data.TopicPartition k, int v, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTopicPartitionInt32ListEntryTopicPartitionInt32(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.Int32.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
-    public static FSharpList<LawSpec.Data.Entry<long, long>> LawspecCollectionsKeyValPutItemsInt64Int64ListEntryInt64Int64(long k, long v, FSharpList<LawSpec.Data.Entry<long, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsInt64Int64ListEntryInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<LawSpec.Data.GroupPartition, long> LawspecCollectionsKeyValPutGroupPartitionInt64KeyValGroupPartitionInt64(LawSpec.Data.GroupPartition k, long v, FSharpMap<LawSpec.Data.GroupPartition, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutGroupPartitionInt64KeyValGroupPartitionInt64(schema, symbols, LawSpec.Data.Codecs.GroupPartition().FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.KeyVal(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<string, int> LawspecCollectionsKeyValPutTextInt32KeyValTextInt32(string k, int v, FSharpMap<string, int> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextInt32KeyValTextInt32(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.Int32.FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, Codecs.Int32).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawspecCollectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(string k, FSharpList<LawSpec.Data.TopicPartition> v, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<LawSpec.Data.TopicPartition, long> LawspecCollectionsKeyValPutTopicPartitionInt64KeyValTopicPartitionInt64(LawSpec.Data.TopicPartition k, long v, FSharpMap<LawSpec.Data.TopicPartition, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTopicPartitionInt64KeyValTopicPartitionInt64(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<long, LawSpec.Data.ProducerEntry> LawspecCollectionsKeyValPutInt64ProducerEntryKeyValInt64ProducerEntry(long k, LawSpec.Data.ProducerEntry v, FSharpMap<long, LawSpec.Data.ProducerEntry> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutInt64ProducerEntryKeyValInt64ProducerEntry(schema, symbols, Codecs.Int64.FromNative.Invoke(k), LawSpec.Data.Codecs.ProducerEntry().FromNative.Invoke(v), Codecs.KeyVal(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry()).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<long, FSharpList<LawSpec.Data.BatchMeta>> LawspecCollectionsKeyValPutInt64ListBatchMetaKeyValInt64ListBatchMeta(long k, FSharpList<LawSpec.Data.BatchMeta> v, FSharpMap<long, FSharpList<LawSpec.Data.BatchMeta>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutInt64ListBatchMetaKeyValInt64ListBatchMeta(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.BatchMeta()).FromNative.Invoke(v), Codecs.KeyVal(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta())).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<string, LawSpec.Data.Group> LawspecCollectionsKeyValPutTextGroupKeyValTextGroup(string k, LawSpec.Data.Group v, FSharpMap<string, LawSpec.Data.Group> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextGroupKeyValTextGroup(schema, symbols, Codecs.Text.FromNative.Invoke(k), LawSpec.Data.Codecs.Group().FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<long, long> LawspecCollectionsKeyValPutInt64Int64KeyValInt64Int64(long k, long v, FSharpMap<long, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Int64, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutInt64Int64KeyValInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.KeyVal(Codecs.Int64, Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<string, FSharpList<string>> LawspecCollectionsKeyValPutTextListTextKeyValTextListText(string k, FSharpList<string> v, FSharpMap<string, FSharpList<string>> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextListTextKeyValTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(Codecs.Text).FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> LawspecCollectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog(LawSpec.Data.TopicPartition k, LawSpec.Data.PartitionLog v, FSharpMap<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(v), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog()).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<LawSpec.Data.TopicPartition, int> LawspecCollectionsKeyValPutTopicPartitionInt32KeyValTopicPartitionInt32(LawSpec.Data.TopicPartition k, int v, FSharpMap<LawSpec.Data.TopicPartition, int> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTopicPartitionInt32KeyValTopicPartitionInt32(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.Int32.FromNative.Invoke(v), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
-    public static FSharpMap<string, long> LawspecCollectionsKeyValPutTextInt64KeyValTextInt64(string k, long v, FSharpMap<string, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextInt64KeyValTextInt64(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>keyValValuesItems — &lt;lawspec.collections&gt;:300</summary>
-    public static FSharpList<long> LawspecCollectionsKeyValValuesItemsListEntryInt64Int64(FSharpList<LawSpec.Data.Entry<long, long>> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValValuesItemsListEntryInt64Int64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
-    }
-
-    /// <summary>keyValValues — &lt;lawspec.collections&gt;:327</summary>
-    public static FSharpList<long> LawspecCollectionsKeyValValuesKeyValInt64Int64(FSharpMap<long, long> m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValValuesKeyValInt64Int64(schema, symbols, Codecs.KeyVal(Codecs.Int64, Codecs.Int64).FromNative.Invoke(m)));
-    }
-
-    /// <summary>setFromItems — &lt;lawspec.collections&gt;:123</summary>
-    public static FSharpList<int> LawspecCollectionsSetFromItemsListInt32ListInt32(FSharpList<int> xs, FSharpList<int> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetFromItemsListInt32ListInt32(schema, symbols, Codecs.List(Codecs.Int32).FromNative.Invoke(xs), Codecs.List(Codecs.Int32).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>setFromItems — &lt;lawspec.collections&gt;:123</summary>
-    public static FSharpList<long> LawspecCollectionsSetFromItemsListInt64ListInt64(FSharpList<long> xs, FSharpList<long> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetFromItemsListInt64ListInt64(schema, symbols, Codecs.List(Codecs.Int64).FromNative.Invoke(xs), Codecs.List(Codecs.Int64).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>setFromItems — &lt;lawspec.collections&gt;:123</summary>
-    public static FSharpList<string> LawspecCollectionsSetFromItemsListTextListText(FSharpList<string> xs, FSharpList<string> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetFromItemsListTextListText(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(xs), Codecs.List(Codecs.Text).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>setInsertItems — &lt;lawspec.collections&gt;:67</summary>
-    public static FSharpList<int> LawspecCollectionsSetInsertItemsInt32ListInt32(int x, FSharpList<int> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetInsertItemsInt32ListInt32(schema, symbols, Codecs.Int32.FromNative.Invoke(x), Codecs.List(Codecs.Int32).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>setInsertItems — &lt;lawspec.collections&gt;:67</summary>
-    public static FSharpList<long> LawspecCollectionsSetInsertItemsInt64ListInt64(long x, FSharpList<long> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetInsertItemsInt64ListInt64(schema, symbols, Codecs.Int64.FromNative.Invoke(x), Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>setInsertItems — &lt;lawspec.collections&gt;:67</summary>
-    public static FSharpList<string> LawspecCollectionsSetInsertItemsTextListText(string x, FSharpList<string> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetInsertItemsTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(x), Codecs.List(Codecs.Text).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>setMemberItems — &lt;lawspec.collections&gt;:89</summary>
-    public static bool LawspecCollectionsSetMemberItemsInt64ListInt64(long x, FSharpList<long> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetMemberItemsInt64ListInt64(schema, symbols, Codecs.Int64.FromNative.Invoke(x), Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>setMember — &lt;lawspec.collections&gt;:146</summary>
-    public static bool LawspecCollectionsSetMemberInt64SetInt64(long x, FSharpSet<long> s_2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetMemberInt64SetInt64(schema, symbols, Codecs.Int64.FromNative.Invoke(x), Codecs.Set(Codecs.Int64).FromNative.Invoke(s_2)));
-    }
-
-    /// <summary>setOf — &lt;lawspec.collections&gt;:144</summary>
-    public static FSharpSet<string> LawspecCollectionsSetOfListText(FSharpList<string> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Set(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetOfListText(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>setOf — &lt;lawspec.collections&gt;:144</summary>
-    public static FSharpSet<int> LawspecCollectionsSetOfListInt32(FSharpList<int> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Set(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetOfListInt32(schema, symbols, Codecs.List(Codecs.Int32).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>setOf — &lt;lawspec.collections&gt;:144</summary>
-    public static FSharpSet<long> LawspecCollectionsSetOfListInt64(FSharpList<long> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Set(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetOfListInt64(schema, symbols, Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>setRemoveItems — &lt;lawspec.collections&gt;:78</summary>
-    public static FSharpList<string> LawspecCollectionsSetRemoveItemsTextListText(string x, FSharpList<string> xs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetRemoveItemsTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(x), Codecs.List(Codecs.Text).FromNative.Invoke(xs)));
-    }
-
-    /// <summary>setRemove — &lt;lawspec.collections&gt;:154</summary>
-    public static FSharpSet<string> LawspecCollectionsSetRemoveTextSetText(string x, FSharpSet<string> s_2)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Set(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetRemoveTextSetText(schema, symbols, Codecs.Text.FromNative.Invoke(x), Codecs.Set(Codecs.Text).FromNative.Invoke(s_2)));
-    }
-
-    /// <summary>setUnion — &lt;lawspec.collections&gt;:158</summary>
-    public static FSharpSet<string> LawspecCollectionsSetUnionSetTextSetText(FSharpSet<string> s_2, FSharpSet<string> t)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Set(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetUnionSetTextSetText(schema, symbols, Codecs.Set(Codecs.Text).FromNative.Invoke(s_2), Codecs.Set(Codecs.Text).FromNative.Invoke(t)));
-    }
-
-    /// <summary>lawtwinKafkaModelAddPartitionsToTxn — ../src/model.lawspec:618</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelAddPartitionsToTxn(string txid, long pid, short epoch, FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAddPartitionsToTxn(schema, symbols, Codecs.Text.FromNative.Invoke(txid), Codecs.Int64.FromNative.Invoke(pid), Codecs.Int16.FromNative.Invoke(epoch), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelAllKnown — ../src/model.lawspec:597</summary>
-    public static bool LawtwinKafkaModelAllKnown(FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAllKnown(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelAppendBatch — ../src/model.lawspec:337</summary>
-    public static LawSpec.Data.PartitionLog LawtwinKafkaModelAppendBatch(FSharpList<LawSpec.Data.Record> rs, long writer, bool transactional, LawSpec.Data.PartitionLog l)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAppendBatch(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(rs), Codecs.Int64.FromNative.Invoke(writer), Codecs.Bool.FromNative.Invoke(transactional), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
-    }
-
-    /// <summary>lawtwinKafkaModelAppendRecords — ../src/model.lawspec:326</summary>
-    public static LawSpec.Data.Pair<long, FSharpList<LawSpec.Data.LogEntry>> LawtwinKafkaModelAppendRecords(FSharpList<LawSpec.Data.Record> rs, long offset, long writer, bool transactional, FSharpList<LawSpec.Data.LogEntry> es)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.LogEntry())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAppendRecords(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(rs), Codecs.Int64.FromNative.Invoke(offset), Codecs.Int64.FromNative.Invoke(writer), Codecs.Bool.FromNative.Invoke(transactional), Codecs.List(LawSpec.Data.Codecs.LogEntry()).FromNative.Invoke(es)));
-    }
-
-    /// <summary>lawtwinKafkaModelApplyOffsets — ../src/model.lawspec:686</summary>
-    public static LawSpec.Data.BrokerState LawtwinKafkaModelApplyOffsets(FSharpList<LawSpec.Data.PendingOffset> os, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelApplyOffsets(schema, symbols, Codecs.List(LawSpec.Data.Codecs.PendingOffset()).FromNative.Invoke(os), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelAssignPartitions — ../src/model.lawspec:768</summary>
-    public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelAssignPartitions(string topic, FSharpList<int> ps, FSharpList<string> owners, FSharpList<string> waiting, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> a)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAssignPartitions(schema, symbols, Codecs.Text.FromNative.Invoke(topic), Codecs.List(Codecs.Int32).FromNative.Invoke(ps), Codecs.List(Codecs.Text).FromNative.Invoke(owners), Codecs.List(Codecs.Text).FromNative.Invoke(waiting), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(a)));
-    }
-
-    /// <summary>lawtwinKafkaModelAssignTo — ../src/model.lawspec:756</summary>
-    public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelAssignTo(string member, LawSpec.Data.TopicPartition tp, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> a)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAssignTo(schema, symbols, Codecs.Text.FromNative.Invoke(member), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(a)));
-    }
-
-    /// <summary>lawtwinKafkaModelAssignTopics — ../src/model.lawspec:799</summary>
-    public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelAssignTopics(FSharpList<string> topics, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> subs, LawSpec.Data.BrokerState b, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> a)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAssignTopics(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(topics), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(subs), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(a)));
-    }
-
-    /// <summary>lawtwinKafkaModelCheckMember — ../src/model.lawspec:882</summary>
-    public static FSharpResult<LawSpec.Data.Group, LawSpec.Data.KafkaError> LawtwinKafkaModelCheckMember(string g, string member, int generation, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Group().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCheckMember(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.Int32.FromNative.Invoke(generation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelCheckTxnProducer — ../src/model.lawspec:581</summary>
-    public static FSharpResult<LawSpec.Data.ProducerEntry, LawSpec.Data.KafkaError> LawtwinKafkaModelCheckTxnProducer(string txid, long pid, short epoch, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.ProducerEntry().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCheckTxnProducer(schema, symbols, Codecs.Text.FromNative.Invoke(txid), Codecs.Int64.FromNative.Invoke(pid), Codecs.Int16.FromNative.Invoke(epoch), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelCommitAll — ../src/model.lawspec:935</summary>
-    public static LawSpec.Data.BrokerState LawtwinKafkaModelCommitAll(string g, FSharpList<LawSpec.Data.OffsetEntry> offsets, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCommitAll(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelComputeAssignment — ../src/model.lawspec:824</summary>
-    public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelComputeAssignment(FSharpMap<string, FSharpList<string>> subscriptions, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelComputeAssignment(schema, symbols, Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(subscriptions), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelCreatePartitions — ../src/model.lawspec:291</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelCreatePartitions(string name, int total, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCreatePartitions(schema, symbols, Codecs.Text.FromNative.Invoke(name), Codecs.Int32.FromNative.Invoke(total), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelCreateTopic — ../src/model.lawspec:280</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelCreateTopic(string name, int n, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCreateTopic(schema, symbols, Codecs.Text.FromNative.Invoke(name), Codecs.Int32.FromNative.Invoke(n), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelDescribeGroup — ../src/model.lawspec:928</summary>
-    public static LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> LawtwinKafkaModelDescribeGroup(string g, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.GroupView(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelDescribeGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelEmptyAssignments — ../src/model.lawspec:815</summary>
-    public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelEmptyAssignments(FSharpList<string> members, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> a)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEmptyAssignments(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(members), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(a)));
-    }
-
-    /// <summary>lawtwinKafkaModelEmptyBroker — ../src/model.lawspec:203</summary>
-    public static LawSpec.Data.BrokerState LawtwinKafkaModelEmptyBroker()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEmptyBroker(schema, symbols, V.Unit));
-    }
-
-    /// <summary>lawtwinKafkaModelEmptyGroup — ../src/model.lawspec:216</summary>
-    public static LawSpec.Data.Group LawtwinKafkaModelEmptyGroup()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Group().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEmptyGroup(schema, symbols, V.Unit));
-    }
-
-    /// <summary>lawtwinKafkaModelEmptyLog — ../src/model.lawspec:210</summary>
-    public static LawSpec.Data.PartitionLog LawtwinKafkaModelEmptyLog()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEmptyLog(schema, symbols, V.Unit));
-    }
-
-    /// <summary>lawtwinKafkaModelEndTxn — ../src/model.lawspec:718</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelEndTxn(string txid, long pid, short epoch, bool commit, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEndTxn(schema, symbols, Codecs.Text.FromNative.Invoke(txid), Codecs.Int64.FromNative.Invoke(pid), Codecs.Int16.FromNative.Invoke(epoch), Codecs.Bool.FromNative.Invoke(commit), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelExpectedSequence — ../src/model.lawspec:372</summary>
-    public static int LawtwinKafkaModelExpectedSequence(short epoch, FSharpList<LawSpec.Data.BatchMeta> ms)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelExpectedSequence(schema, symbols, Codecs.Int16.FromNative.Invoke(epoch), Codecs.List(LawSpec.Data.Codecs.BatchMeta()).FromNative.Invoke(ms)));
-    }
-
-    /// <summary>lawtwinKafkaModelFetch — ../src/model.lawspec:495</summary>
-    public static FSharpResult<LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelFetch(LawSpec.Data.TopicPartition tp, long from, int maxRecords, LawSpec.Data.IsolationLevel isolation, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.FetchResult(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelFetch(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(from), Codecs.Int32.FromNative.Invoke(maxRecords), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(isolation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelFindDuplicate — ../src/model.lawspec:360</summary>
-    public static FSharpOption<long> LawtwinKafkaModelFindDuplicate(short epoch, int first, int last, FSharpList<LawSpec.Data.BatchMeta> ms)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelFindDuplicate(schema, symbols, Codecs.Int16.FromNative.Invoke(epoch), Codecs.Int32.FromNative.Invoke(first), Codecs.Int32.FromNative.Invoke(last), Codecs.List(LawSpec.Data.Codecs.BatchMeta()).FromNative.Invoke(ms)));
-    }
-
-    /// <summary>lawtwinKafkaModelFinishTxn — ../src/model.lawspec:699</summary>
-    public static LawSpec.Data.BrokerState LawtwinKafkaModelFinishTxn(long pid, bool commit, LawSpec.Data.TxnState txn, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelFinishTxn(schema, symbols, Codecs.Int64.FromNative.Invoke(pid), Codecs.Bool.FromNative.Invoke(commit), LawSpec.Data.Codecs.TxnState().FromNative.Invoke(txn), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelGroupOf — ../src/model.lawspec:733</summary>
-    public static LawSpec.Data.Group LawtwinKafkaModelGroupOf(string g, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Group().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelGroupOf(schema, symbols, Codecs.Text.FromNative.Invoke(g), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelHeartbeat — ../src/model.lawspec:903</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelHeartbeat(string g, string member, int generation, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelHeartbeat(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.Int32.FromNative.Invoke(generation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelHighWatermark — ../src/model.lawspec:322</summary>
-    public static long LawtwinKafkaModelHighWatermark(LawSpec.Data.PartitionLog l)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelHighWatermark(schema, symbols, LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
-    }
-
-    /// <summary>lawtwinKafkaModelInitProducerId — ../src/model.lawspec:554</summary>
-    public static FSharpResult<LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelInitProducerId(FSharpOption<string> txid, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.ProducerIdAndEpoch(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelInitProducerId(schema, symbols, Codecs.Maybe(Codecs.Text).FromNative.Invoke(txid), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelIsAborted — ../src/model.lawspec:437</summary>
-    public static bool LawtwinKafkaModelIsAborted(long writer, long offset, FSharpList<LawSpec.Data.AbortedTxn> aborted)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelIsAborted(schema, symbols, Codecs.Int64.FromNative.Invoke(writer), Codecs.Int64.FromNative.Invoke(offset), Codecs.List(LawSpec.Data.Codecs.AbortedTxn()).FromNative.Invoke(aborted)));
-    }
-
-    /// <summary>lawtwinKafkaModelJoinGroup — ../src/model.lawspec:861</summary>
-    public static FSharpResult<LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelJoinGroup(string g, string member, FSharpList<string> topics, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int32, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelJoinGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.List(Codecs.Text).FromNative.Invoke(topics), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelKnownPartition — ../src/model.lawspec:261</summary>
-    public static bool LawtwinKafkaModelKnownPartition(LawSpec.Data.TopicPartition tp, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelKnownPartition(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelLastOffsetOf — ../src/model.lawspec:475</summary>
-    public static long LawtwinKafkaModelLastOffsetOf(FSharpList<LawSpec.Data.FetchedRecord> rs, long fallbackOffset)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelLastOffsetOf(schema, symbols, Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(rs), Codecs.Int64.FromNative.Invoke(fallbackOffset)));
-    }
-
-    /// <summary>lawtwinKafkaModelLastStableOffset — ../src/model.lawspec:312</summary>
-    public static long LawtwinKafkaModelLastStableOffset(LawSpec.Data.PartitionLog l)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelLastStableOffset(schema, symbols, LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
-    }
-
-    /// <summary>lawtwinKafkaModelLeaveGroup — ../src/model.lawspec:908</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelLeaveGroup(string g, string member, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelLeaveGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelListOffsets — ../src/model.lawspec:517</summary>
-    public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelListOffsets(LawSpec.Data.TopicPartition tp, LawSpec.Data.OffsetSpec spec, LawSpec.Data.IsolationLevel isolation, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelListOffsets(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.OffsetSpec().FromNative.Invoke(spec), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(isolation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelLogOf — ../src/model.lawspec:268</summary>
-    public static LawSpec.Data.PartitionLog LawtwinKafkaModelLogOf(LawSpec.Data.TopicPartition tp, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelLogOf(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelMax64 — ../src/model.lawspec:227</summary>
-    public static long LawtwinKafkaModelMax64(long a, long b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMax64(schema, symbols, Codecs.Int64.FromNative.Invoke(a), Codecs.Int64.FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelMaxPartitions — ../src/model.lawspec:231</summary>
-    public static int LawtwinKafkaModelMaxPartitions()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMaxPartitions(schema, symbols, V.Unit));
-    }
-
-    /// <summary>lawtwinKafkaModelMemberViews — ../src/model.lawspec:919</summary>
-    public static FSharpList<LawSpec.Data.MemberAssignment> LawtwinKafkaModelMemberViews(FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> a)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.MemberAssignment()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMemberViews(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(a)));
-    }
-
-    /// <summary>lawtwinKafkaModelMetadata — ../src/model.lawspec:303</summary>
-    public static LawSpec.Data.Pair<FSharpOption<int>, LawSpec.Data.BrokerState> LawtwinKafkaModelMetadata(string name, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int32), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMetadata(schema, symbols, Codecs.Text.FromNative.Invoke(name), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelMin64 — ../src/model.lawspec:225</summary>
-    public static long LawtwinKafkaModelMin64(long a, long b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMin64(schema, symbols, Codecs.Int64.FromNative.Invoke(a), Codecs.Int64.FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelMinOf — ../src/model.lawspec:315</summary>
-    public static long LawtwinKafkaModelMinOf(FSharpList<long> xs, long m)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMinOf(schema, symbols, Codecs.List(Codecs.Int64).FromNative.Invoke(xs), Codecs.Int64.FromNative.Invoke(m)));
-    }
-
-    /// <summary>lawtwinKafkaModelNewProducer — ../src/model.lawspec:536</summary>
-    public static LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> LawtwinKafkaModelNewProducer(FSharpOption<string> txid, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.ProducerIdAndEpoch(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelNewProducer(schema, symbols, Codecs.Maybe(Codecs.Text).FromNative.Invoke(txid), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelNextFetchOffset — ../src/model.lawspec:485</summary>
-    public static long LawtwinKafkaModelNextFetchOffset(long from, long limit, FSharpList<LawSpec.Data.FetchedRecord> taken, FSharpList<LawSpec.Data.FetchedRecord> all)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelNextFetchOffset(schema, symbols, Codecs.Int64.FromNative.Invoke(from), Codecs.Int64.FromNative.Invoke(limit), Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(taken), Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(all)));
-    }
-
-    /// <summary>lawtwinKafkaModelOffsetCommit — ../src/model.lawspec:957</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelOffsetCommit(string g, string member, int generation, FSharpList<LawSpec.Data.OffsetEntry> offsets, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelOffsetCommit(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.Int32.FromNative.Invoke(generation), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelOffsetFetch — ../src/model.lawspec:972</summary>
-    public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.BrokerState> LawtwinKafkaModelOffsetFetch(string g, LawSpec.Data.TopicPartition tp, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelOffsetFetch(schema, symbols, Codecs.Text.FromNative.Invoke(g), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelOffsetPartitions — ../src/model.lawspec:946</summary>
-    public static FSharpList<LawSpec.Data.TopicPartition> LawtwinKafkaModelOffsetPartitions(FSharpList<LawSpec.Data.OffsetEntry> offsets)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelOffsetPartitions(schema, symbols, Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets)));
-    }
-
-    /// <summary>lawtwinKafkaModelPartitionCountOf — ../src/model.lawspec:257</summary>
-    public static FSharpOption<int> LawtwinKafkaModelPartitionCountOf(string topic, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPartitionCountOf(schema, symbols, Codecs.Text.FromNative.Invoke(topic), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelPartitionsBelow — ../src/model.lawspec:233</summary>
-    public static FSharpList<int> LawtwinKafkaModelPartitionsBelow(int n)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPartitionsBelow(schema, symbols, Codecs.Int32.FromNative.Invoke(n)));
-    }
-
-    /// <summary>lawtwinKafkaModelPendingFor — ../src/model.lawspec:634</summary>
-    public static FSharpList<LawSpec.Data.PendingOffset> LawtwinKafkaModelPendingFor(string group, FSharpList<LawSpec.Data.OffsetEntry> offsets, FSharpList<LawSpec.Data.PendingOffset> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.PendingOffset()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPendingFor(schema, symbols, Codecs.Text.FromNative.Invoke(group), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), Codecs.List(LawSpec.Data.Codecs.PendingOffset()).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>lawtwinKafkaModelProduce — ../src/model.lawspec:381</summary>
-    public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelProduce(LawSpec.Data.TopicPartition tp, FSharpOption<LawSpec.Data.ProducerTag> tag, FSharpList<LawSpec.Data.Record> rs, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelProduce(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Maybe(LawSpec.Data.Codecs.ProducerTag()).FromNative.Invoke(tag), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(rs), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelProduceTagged — ../src/model.lawspec:394</summary>
-    public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelProduceTagged(LawSpec.Data.TopicPartition tp, LawSpec.Data.ProducerTag t, FSharpList<LawSpec.Data.Record> rs, LawSpec.Data.PartitionLog l, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelProduceTagged(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.ProducerTag().FromNative.Invoke(t), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(rs), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelPutGroup — ../src/model.lawspec:740</summary>
-    public static LawSpec.Data.BrokerState LawtwinKafkaModelPutGroup(string g, LawSpec.Data.Group group, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPutGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), LawSpec.Data.Codecs.Group().FromNative.Invoke(group), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelPutLog — ../src/model.lawspec:275</summary>
-    public static LawSpec.Data.BrokerState LawtwinKafkaModelPutLog(LawSpec.Data.TopicPartition tp, LawSpec.Data.PartitionLog l, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPutLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelPutProducer — ../src/model.lawspec:613</summary>
-    public static LawSpec.Data.BrokerState LawtwinKafkaModelPutProducer(long pid, LawSpec.Data.ProducerEntry entry, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPutProducer(schema, symbols, Codecs.Int64.FromNative.Invoke(pid), LawSpec.Data.Codecs.ProducerEntry().FromNative.Invoke(entry), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelReadable — ../src/model.lawspec:450</summary>
-    public static FSharpList<LawSpec.Data.FetchedRecord> LawtwinKafkaModelReadable(FSharpList<LawSpec.Data.LogEntry> es, long from, long limit, bool committedOnly, FSharpList<LawSpec.Data.AbortedTxn> aborted, FSharpList<LawSpec.Data.FetchedRecord> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelReadable(schema, symbols, Codecs.List(LawSpec.Data.Codecs.LogEntry()).FromNative.Invoke(es), Codecs.Int64.FromNative.Invoke(from), Codecs.Int64.FromNative.Invoke(limit), Codecs.Bool.FromNative.Invoke(committedOnly), Codecs.List(LawSpec.Data.Codecs.AbortedTxn()).FromNative.Invoke(aborted), Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>lawtwinKafkaModelRebalance — ../src/model.lawspec:834</summary>
-    public static LawSpec.Data.Group LawtwinKafkaModelRebalance(LawSpec.Data.Group group, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Group().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelRebalance(schema, symbols, LawSpec.Data.Codecs.Group().FromNative.Invoke(group), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelRebalanceGroups — ../src/model.lawspec:843</summary>
-    public static FSharpMap<string, LawSpec.Data.Group> LawtwinKafkaModelRebalanceGroups(string topic, FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> gs, LawSpec.Data.BrokerState b, FSharpMap<string, LawSpec.Data.Group> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelRebalanceGroups(schema, symbols, Codecs.Text.FromNative.Invoke(topic), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(gs), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b), Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>lawtwinKafkaModelRebalanceTopic — ../src/model.lawspec:855</summary>
-    public static LawSpec.Data.BrokerState LawtwinKafkaModelRebalanceTopic(string topic, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelRebalanceTopic(schema, symbols, Codecs.Text.FromNative.Invoke(topic), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>lawtwinKafkaModelRememberBatch — ../src/model.lawspec:351</summary>
-    public static LawSpec.Data.PartitionLog LawtwinKafkaModelRememberBatch(long writer, LawSpec.Data.BatchMeta meta, LawSpec.Data.PartitionLog l)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelRememberBatch(schema, symbols, Codecs.Int64.FromNative.Invoke(writer), LawSpec.Data.Codecs.BatchMeta().FromNative.Invoke(meta), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
-    }
-
-    /// <summary>lawtwinKafkaModelReversePending — ../src/model.lawspec:710</summary>
-    public static FSharpList<LawSpec.Data.PendingOffset> LawtwinKafkaModelReversePending(FSharpList<LawSpec.Data.PendingOffset> os, FSharpList<LawSpec.Data.PendingOffset> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.PendingOffset()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelReversePending(schema, symbols, Codecs.List(LawSpec.Data.Codecs.PendingOffset()).FromNative.Invoke(os), Codecs.List(LawSpec.Data.Codecs.PendingOffset()).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>lawtwinKafkaModelSubscribedTopics — ../src/model.lawspec:790</summary>
-    public static FSharpSet<string> LawtwinKafkaModelSubscribedTopics(FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> subs, FSharpSet<string> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Set(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelSubscribedTopics(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(subs), Codecs.Set(Codecs.Text).FromNative.Invoke(acc)));
-    }
-
-    /// <summary>lawtwinKafkaModelSubscribersOf — ../src/model.lawspec:746</summary>
-    public static FSharpList<string> LawtwinKafkaModelSubscribersOf(string topic, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> subs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelSubscribersOf(schema, symbols, Codecs.Text.FromNative.Invoke(topic), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(subs)));
-    }
-
-    /// <summary>lawtwinKafkaModelSubscribesTo — ../src/model.lawspec:839</summary>
-    public static bool LawtwinKafkaModelSubscribesTo(string topic, LawSpec.Data.Group group)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelSubscribesTo(schema, symbols, Codecs.Text.FromNative.Invoke(topic), LawSpec.Data.Codecs.Group().FromNative.Invoke(group)));
-    }
-
-    /// <summary>lawtwinKafkaModelSyncGroup — ../src/model.lawspec:893</summary>
-    public static FSharpResult<LawSpec.Data.Pair<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelSyncGroup(string g, string member, int generation, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.List(LawSpec.Data.Codecs.TopicPartition()), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelSyncGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.Int32.FromNative.Invoke(generation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelTxnHasPartition — ../src/model.lawspec:428</summary>
-    public static bool LawtwinKafkaModelTxnHasPartition(LawSpec.Data.TopicPartition tp, LawSpec.Data.TxnState txn)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelTxnHasPartition(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.TxnState().FromNative.Invoke(txn)));
-    }
-
-    /// <summary>lawtwinKafkaModelTxnOffsetCommit — ../src/model.lawspec:645</summary>
-    public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelTxnOffsetCommit(string txid, long pid, short epoch, string group, FSharpList<LawSpec.Data.OffsetEntry> offsets, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelTxnOffsetCommit(schema, symbols, Codecs.Text.FromNative.Invoke(txid), Codecs.Int64.FromNative.Invoke(pid), Codecs.Int16.FromNative.Invoke(epoch), Codecs.Text.FromNative.Invoke(group), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
-    }
-
-    /// <summary>lawtwinKafkaModelUnionPartitions — ../src/model.lawspec:604</summary>
-    public static FSharpList<LawSpec.Data.TopicPartition> LawtwinKafkaModelUnionPartitions(FSharpList<LawSpec.Data.TopicPartition> xs, FSharpList<LawSpec.Data.TopicPartition> ys)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelUnionPartitions(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(xs), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(ys)));
-    }
-
-    /// <summary>lawtwinKafkaModelValidTopicName — ../src/model.lawspec:251</summary>
-    public static bool LawtwinKafkaModelValidTopicName(string name)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelValidTopicName(schema, symbols, Codecs.Text.FromNative.Invoke(name)));
-    }
-
-    /// <summary>lawtwinKafkaModelWriteMarker — ../src/model.lawspec:662</summary>
-    public static LawSpec.Data.PartitionLog LawtwinKafkaModelWriteMarker(long pid, bool commit, LawSpec.Data.PartitionLog l)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelWriteMarker(schema, symbols, Codecs.Int64.FromNative.Invoke(pid), Codecs.Bool.FromNative.Invoke(commit), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
-    }
-
-    /// <summary>lawtwinKafkaModelWriteMarkers — ../src/model.lawspec:677</summary>
-    public static LawSpec.Data.BrokerState LawtwinKafkaModelWriteMarkers(long pid, bool commit, FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.BrokerState b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelWriteMarkers(schema, symbols, Codecs.Int64.FromNative.Invoke(pid), Codecs.Bool.FromNative.Invoke(commit), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
-    }
-
-    /// <summary>memberIds — ../src/contract.lawspec:325</summary>
-    public static FSharpList<string> MemberIds(FSharpList<string> ms)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MemberIds(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(ms)));
-    }
-
-    /// <summary>missingFrom — ../src/contract.lawspec:884</summary>
-    public static FSharpList<LawSpec.Data.TopicPartition> MissingFrom(FSharpList<LawSpec.Data.TopicPartition> tps, FSharpList<LawSpec.Data.TopicPartition> have)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MissingFrom(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(have)));
-    }
-
-    /// <summary>mul32 — ../src/contract.lawspec:1103</summary>
-    public static uint Mul32(uint a, uint b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Mul32(schema, symbols, Codecs.UInt32.FromNative.Invoke(a), Codecs.UInt32.FromNative.Invoke(b)));
-    }
-
-    /// <summary>murmur2 — ../src/contract.lawspec:1061</summary>
-    public static uint Murmur2(byte[] key)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Codecs.Bytes.FromNative.Invoke(key)));
-    }
-
-    /// <summary>murmurChunks — ../src/contract.lawspec:1071</summary>
-    public static uint MurmurChunks(FSharpList<byte> octets, uint h)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MurmurChunks(schema, symbols, Codecs.List(Codecs.UInt8).FromNative.Invoke(octets), Codecs.UInt32.FromNative.Invoke(h)));
-    }
-
-    /// <summary>murmurM — ../src/contract.lawspec:1069</summary>
-    public static uint MurmurM()
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MurmurM(schema, symbols, V.Unit));
-    }
-
-    /// <summary>murmurPartitionerChoosePartition — ../src/contract.lawspec:1050</summary>
-    public static int MurmurPartitionerChoosePartition(FSharpOption<byte[]> key, int n)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MurmurPartitionerChoosePartition(schema, symbols, Codecs.Maybe(Codecs.Bytes).FromNative.Invoke(key), Codecs.Int32.FromNative.Invoke(n)));
-    }
-
-    /// <summary>ownedOf — ../src/contract.lawspec:451</summary>
-    public static FSharpList<int> OwnedOf(string t, FSharpList<LawSpec.Data.MemberAssignment> ms)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.OwnedOf(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.List(LawSpec.Data.Codecs.MemberAssignment()).FromNative.Invoke(ms)));
-    }
-
-    /// <summary>partitionOf — ../src/contract.lawspec:597</summary>
-    public static LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition> PartitionOf(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, string topic, LawSpec.Data.PartitionChoice choice, LawSpec.Data.Record r)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.PartitionOf(schema, symbols, Codecs.Text.FromNative.Invoke(topic), LawSpec.Data.Codecs.PartitionChoice().FromNative.Invoke(choice), LawSpec.Data.Codecs.Record().FromNative.Invoke(r)))));
-    }
-
-    /// <summary>partitionsOfTopic — ../src/contract.lawspec:458</summary>
-    public static FSharpList<int> PartitionsOfTopic(string t, FSharpList<LawSpec.Data.TopicPartition> tps)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.PartitionsOfTopic(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps)));
-    }
-
-    /// <summary>pollPartitions — ../src/contract.lawspec:767</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>>, LawSpec.Data.ConsumerState> PollPartitions(LawSpec.Abilities.LawtwinKafka.IBroker broker, FSharpList<LawSpec.Data.TopicPartition> tps, int n, LawSpec.Data.ConsumerState c, FSharpList<LawSpec.Data.ConsumerRecord> acc)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.ConsumerRecord())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.PollPartitions(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), Codecs.Int32.FromNative.Invoke(n), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c), Codecs.List(LawSpec.Data.Codecs.ConsumerRecord()).FromNative.Invoke(acc)))));
-    }
-
-    /// <summary>positionsToCommit — ../src/contract.lawspec:674</summary>
-    public static FSharpList<LawSpec.Data.OffsetEntry> PositionsToCommit(FSharpList<LawSpec.Data.TopicPartition> tps, FSharpMap<LawSpec.Data.TopicPartition, long> positions)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.PositionsToCommit(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(positions)));
-    }
-
-    /// <summary>producerFlush — ../src/contract.lawspec:656</summary>
-    public static LawSpec.Data.Pair<Unit, LawSpec.Data.ProducerState> ProducerFlush(LawSpec.Data.ProducerState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ProducerFlush(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)));
-    }
-
-    /// <summary>producerIdempotent — ../src/contract.lawspec:647</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> ProducerIdempotent(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ProducerState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ProducerIdempotent(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>producerRetry — ../src/contract.lawspec:633</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> ProducerRetry(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ProducerState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ProducerRetry(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>producerSend — ../src/contract.lawspec:612</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> ProducerSend(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, LawSpec.Data.ProducerRecord pr, LawSpec.Data.ProducerState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ProducerSend(schema, symbols, LawSpec.Data.Codecs.ProducerRecord().FromNative.Invoke(pr), LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>readFrom — ../src/contract.lawspec:363</summary>
-    public static FSharpList<LawSpec.Data.Record> ReadFrom(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, long offset, LawSpec.Data.IsolationLevel isolation)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ReadFrom(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(isolation)))));
-    }
-
-    /// <summary>readInOrder — ../src/contract.lawspec:1261</summary>
-    public static bool ReadInOrder(LawSpec.Abilities.LawtwinKafka.IConsumer consumer, LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> a, LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> b, LawSpec.Data.Record first, LawSpec.Data.Record second)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Consumer", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaConsumerFromNative(s, symbols, consumer)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ReadInOrder(schema, symbols, Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(a), Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(b), LawSpec.Data.Codecs.Record().FromNative.Invoke(first), LawSpec.Data.Codecs.Record().FromNative.Invoke(second)))));
-    }
-
-    /// <summary>receivedOffsets — ../src/contract.lawspec:1393</summary>
-    public static FSharpList<long> ReceivedOffsets(FSharpList<LawSpec.Data.ConsumerRecord> rs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, Codecs.List(LawSpec.Data.Codecs.ConsumerRecord()).FromNative.Invoke(rs)));
-    }
-
-    /// <summary>receivedRecords — ../src/contract.lawspec:1400</summary>
-    public static FSharpList<LawSpec.Data.Record> ReceivedRecords(FSharpList<LawSpec.Data.ConsumerRecord> rs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ReceivedRecords(schema, symbols, Codecs.List(LawSpec.Data.Codecs.ConsumerRecord()).FromNative.Invoke(rs)));
-    }
-
-    /// <summary>recordsOf — ../src/contract.lawspec:354</summary>
-    public static FSharpList<LawSpec.Data.Record> RecordsOf(FSharpList<LawSpec.Data.FetchedRecord> rs)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.RecordsOf(schema, symbols, Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(rs)));
-    }
-
-    /// <summary>resumesAtCommitted — ../src/contract.lawspec:1427</summary>
-    public static bool ResumesAtCommitted(LawSpec.Abilities.LawtwinKafka.IConsumer consumer, string t, string g, string m, int n)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Consumer", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaConsumerFromNative(s, symbols, consumer)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ResumesAtCommitted(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(m), Codecs.Int32.FromNative.Invoke(n)))));
-    }
-
-    /// <summary>samePartition — ../src/contract.lawspec:1235</summary>
-    public static bool SamePartition(LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> a, LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.SamePartition(schema, symbols, Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(a), Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(b)));
-    }
-
-    /// <summary>sequenceFor — ../src/contract.lawspec:579</summary>
-    public static int SequenceFor(LawSpec.Data.TopicPartition tp, FSharpMap<LawSpec.Data.TopicPartition, int> sequences)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.SequenceFor(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).FromNative.Invoke(sequences)));
-    }
-
-    /// <summary>smallBatch — ../src/contract.lawspec:320</summary>
-    public static bool SmallBatch(FSharpList<LawSpec.Data.Record> batch)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.SmallBatch(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(batch)));
-    }
-
-    /// <summary>stableBelowHigh — ../src/contract.lawspec:475</summary>
-    public static bool StableBelowHigh(LawSpec.Abilities.LawtwinKafka.IBroker broker, string t, string txid, FSharpList<LawSpec.Data.Record> batch)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.StableBelowHigh(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Text.FromNative.Invoke(txid), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(batch)))));
-    }
-
-    /// <summary>tagFor — ../src/contract.lawspec:587</summary>
-    public static FSharpOption<LawSpec.Data.ProducerTag> TagFor(FSharpOption<LawSpec.Data.ProducerIdAndEpoch> identity, int sequence)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.Maybe(LawSpec.Data.Codecs.ProducerTag()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TagFor(schema, symbols, Codecs.Maybe(LawSpec.Data.Codecs.ProducerIdAndEpoch()).FromNative.Invoke(identity), Codecs.Int32.FromNative.Invoke(sequence)));
-    }
-
-    /// <summary>tagOf — ../src/contract.lawspec:341</summary>
-    public static LawSpec.Data.ProducerTag TagOf(LawSpec.Data.ProducerIdAndEpoch pe, int sequence)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.ProducerTag().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, LawSpec.Data.Codecs.ProducerIdAndEpoch().FromNative.Invoke(pe), Codecs.Int32.FromNative.Invoke(sequence)));
-    }
-
-    /// <summary>toPositive — ../src/contract.lawspec:1100</summary>
-    public static uint ToPositive(uint h)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ToPositive(schema, symbols, Codecs.UInt32.FromNative.Invoke(h)));
-    }
-
-    /// <summary>transactionThenRead — ../src/contract.lawspec:384</summary>
-    public static bool TransactionThenRead(LawSpec.Abilities.LawtwinKafka.IBroker broker, string t, string txid, FSharpList<LawSpec.Data.Record> batch, bool commit)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Text.FromNative.Invoke(txid), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(batch), Codecs.Bool.FromNative.Invoke(commit)))));
-    }
-
-    /// <summary>transactionalOffsets — ../src/contract.lawspec:414</summary>
-    public static bool TransactionalOffsets(LawSpec.Abilities.LawtwinKafka.IBroker broker, string t, string txid, string g, long offset)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionalOffsets(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Text.FromNative.Invoke(txid), Codecs.Text.FromNative.Invoke(g), Codecs.Int64.FromNative.Invoke(offset)))));
-    }
-
-    /// <summary>transactionsAbort — ../src/contract.lawspec:954</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsAbort(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsAbort(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>transactionsAdd — ../src/contract.lawspec:867</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsAdd(LawSpec.Abilities.LawtwinKafka.IBroker broker, FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.TransactionState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsAdd(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>transactionsBegin — ../src/contract.lawspec:855</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsBegin(LawSpec.Data.TransactionState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsBegin(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)));
-    }
-
-    /// <summary>transactionsCommit — ../src/contract.lawspec:952</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsCommit(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsCommit(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>transactionsEnd — ../src/contract.lawspec:934</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsEnd(LawSpec.Abilities.LawtwinKafka.IBroker broker, bool commit, LawSpec.Data.TransactionState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsEnd(schema, symbols, Codecs.Bool.FromNative.Invoke(commit), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>transactionsInit — ../src/contract.lawspec:845</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> TransactionsInit(LawSpec.Abilities.LawtwinKafka.IBroker broker, string txid, LawSpec.Data.TransactionState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsInit(schema, symbols, Codecs.Text.FromNative.Invoke(txid), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>transactionsOffsets — ../src/contract.lawspec:917</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsOffsets(LawSpec.Abilities.LawtwinKafka.IBroker broker, string g, FSharpList<LawSpec.Data.OffsetEntry> offsets, LawSpec.Data.TransactionState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsOffsets(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>transactionsSend — ../src/contract.lawspec:893</summary>
-    public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> TransactionsSend(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, LawSpec.Data.ProducerRecord pr, LawSpec.Data.TransactionState st)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsSend(schema, symbols, LawSpec.Data.Codecs.ProducerRecord().FromNative.Invoke(pr), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
-    }
-
-    /// <summary>uncommittedFrom — ../src/contract.lawspec:372</summary>
-    public static FSharpList<LawSpec.Data.Record> UncommittedFrom(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, long offset)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.UncommittedFrom(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset)))));
-    }
-
-    /// <summary>viewOf — ../src/contract.lawspec:1615</summary>
-    public static FSharpList<LawSpec.Data.TopicPartition> ViewOf(string m, LawSpec.Data.GroupView view)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ViewOf(schema, symbols, Codecs.Text.FromNative.Invoke(m), LawSpec.Data.Codecs.GroupView().FromNative.Invoke(view)));
-    }
-
-    /// <summary>withAssignment — ../src/contract.lawspec:701</summary>
-    public static LawSpec.Data.ConsumerState WithAssignment(FSharpOption<string> g, string m, int gen, FSharpList<string> topics, FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.WithAssignment(schema, symbols, Codecs.Maybe(Codecs.Text).FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(m), Codecs.Int32.FromNative.Invoke(gen), Codecs.List(Codecs.Text).FromNative.Invoke(topics), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
-    }
-
-    /// <summary>withPosition — ../src/contract.lawspec:709</summary>
-    public static LawSpec.Data.ConsumerState WithPosition(LawSpec.Data.TopicPartition tp, long offset, LawSpec.Data.ConsumerState c)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.WithPosition(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
-    }
-
-    /// <summary>writeAborted — ../src/contract.lawspec:1452</summary>
-    public static FSharpOption<long> WriteAborted(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, string txid, LawSpec.Data.Record r)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.WriteAborted(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Text.FromNative.Invoke(txid), LawSpec.Data.Codecs.Record().FromNative.Invoke(r)))));
-    }
-
-    /// <summary>xor32 — ../src/contract.lawspec:1106</summary>
-    public static uint Xor32(uint a, uint b)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Xor32(schema, symbols, Codecs.UInt32.FromNative.Invoke(a), Codecs.UInt32.FromNative.Invoke(b)));
-    }
-
-    /// <summary>xorBits — ../src/contract.lawspec:1110</summary>
-    public static System.Numerics.BigInteger XorBits(System.Numerics.BigInteger a, System.Numerics.BigInteger b, System.Numerics.BigInteger bit)
-    {
-        var schema = LawSpec.Generated.Program.Schema;
-        var symbols = new Scalar.SymbolContext();
-        return Codecs.BigInteger.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.XorBits(schema, symbols, Codecs.BigInteger.FromNative.Invoke(a), Codecs.BigInteger.FromNative.Invoke(b), Codecs.BigInteger.FromNative.Invoke(bit)));
-    }
+  /// <summary>allAtLeast — ../src/contract.lawspec:1418</summary>
+  public static bool AllAtLeast(long floor, FSharpList<long> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.AllAtLeast(schema, symbols, Codecs.Int64.FromNative.Invoke(floor), Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>assignmentIn — ../src/contract.lawspec:1618</summary>
+  public static FSharpList<LawSpec.Data.TopicPartition> AssignmentIn(string m, FSharpList<LawSpec.Data.MemberAssignment> ms)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.AssignmentIn(schema, symbols, Codecs.Text.FromNative.Invoke(m), Codecs.List(LawSpec.Data.Codecs.MemberAssignment()).FromNative.Invoke(ms)));
+  }
+
+  /// <summary>clusterAddPartitionsToTxnRequest — ../src/contract.lawspec:283</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterAddPartitionsToTxnRequest(LawSpec.Data.BrokerState state, string value0, long value1, short value2, FSharpList<LawSpec.Data.TopicPartition> value3)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterAddPartitionsToTxnRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1), Codecs.Int16.FromNative.Invoke(value2), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(value3)))));
+  }
+
+  /// <summary>clusterCommitOffsets — ../src/contract.lawspec:302</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCommitOffsets(LawSpec.Data.BrokerState state, string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCommitOffsets(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(value3)))));
+  }
+
+  /// <summary>clusterCreatePartitions — ../src/contract.lawspec:294</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCreatePartitions(LawSpec.Data.BrokerState state, string value0, int value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCreatePartitions(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int32.FromNative.Invoke(value1)))));
+  }
+
+  /// <summary>clusterCreatePartitionsRequest — ../src/contract.lawspec:277</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCreatePartitionsRequest(LawSpec.Data.BrokerState state, string value0, int value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCreatePartitionsRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int32.FromNative.Invoke(value1)))));
+  }
+
+  /// <summary>clusterCreateTopic — ../src/contract.lawspec:293</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCreateTopic(LawSpec.Data.BrokerState state, string value0, int value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCreateTopic(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int32.FromNative.Invoke(value1)))));
+  }
+
+  /// <summary>clusterCreateTopicsRequest — ../src/contract.lawspec:276</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterCreateTopicsRequest(LawSpec.Data.BrokerState state, string value0, int value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterCreateTopicsRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int32.FromNative.Invoke(value1)))));
+  }
+
+  /// <summary>clusterDescribeGroup — ../src/contract.lawspec:301</summary>
+  public static LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> ClusterDescribeGroup(LawSpec.Data.BrokerState state, string value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.GroupView(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterDescribeGroup(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0)));
+  }
+
+  /// <summary>clusterDescribeGroupRequest — ../src/contract.lawspec:290</summary>
+  public static LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> ClusterDescribeGroupRequest(LawSpec.Data.BrokerState state, string value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.GroupView(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterDescribeGroupRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0)));
+  }
+
+  /// <summary>clusterEndTxnRequest — ../src/contract.lawspec:285</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterEndTxnRequest(LawSpec.Data.BrokerState state, string value0, long value1, short value2, bool value3)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterEndTxnRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1), Codecs.Int16.FromNative.Invoke(value2), Codecs.Bool.FromNative.Invoke(value3)))));
+  }
+
+  /// <summary>clusterFetchOffset — ../src/contract.lawspec:303</summary>
+  public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.BrokerState> ClusterFetchOffset(LawSpec.Data.BrokerState state, string value0, LawSpec.Data.TopicPartition value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterFetchOffset(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value1)));
+  }
+
+  /// <summary>clusterFetchRequest — ../src/contract.lawspec:280</summary>
+  public static FSharpResult<LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterFetchRequest(LawSpec.Data.BrokerState state, LawSpec.Data.TopicPartition value0, long value1, int value2, LawSpec.Data.IsolationLevel value3)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.FetchResult(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterFetchRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(value3)))));
+  }
+
+  /// <summary>clusterHeartbeat — ../src/contract.lawspec:299</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterHeartbeat(LawSpec.Data.BrokerState state, string value0, string value1, int value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterHeartbeat(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>clusterHeartbeatRequest — ../src/contract.lawspec:288</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterHeartbeatRequest(LawSpec.Data.BrokerState state, string value0, string value1, int value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterHeartbeatRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>clusterInitProducerIdRequest — ../src/contract.lawspec:282</summary>
+  public static FSharpResult<LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterInitProducerIdRequest(LawSpec.Data.BrokerState state, FSharpOption<string> value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.ProducerIdAndEpoch(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterInitProducerIdRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Maybe(Codecs.Text).FromNative.Invoke(value0)))));
+  }
+
+  /// <summary>clusterJoinGroup — ../src/contract.lawspec:297</summary>
+  public static FSharpResult<LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterJoinGroup(LawSpec.Data.BrokerState state, string value0, string value1, FSharpList<string> value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int32, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterJoinGroup(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.List(Codecs.Text).FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>clusterJoinGroupRequest — ../src/contract.lawspec:286</summary>
+  public static FSharpResult<LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterJoinGroupRequest(LawSpec.Data.BrokerState state, string value0, string value1, FSharpList<string> value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int32, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterJoinGroupRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.List(Codecs.Text).FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>clusterLeaveGroup — ../src/contract.lawspec:300</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterLeaveGroup(LawSpec.Data.BrokerState state, string value0, string value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterLeaveGroup(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1)))));
+  }
+
+  /// <summary>clusterLeaveGroupRequest — ../src/contract.lawspec:289</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterLeaveGroupRequest(LawSpec.Data.BrokerState state, string value0, string value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterLeaveGroupRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1)))));
+  }
+
+  /// <summary>clusterListOffsets — ../src/contract.lawspec:296</summary>
+  public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterListOffsets(LawSpec.Data.BrokerState state, LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterListOffsets(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), LawSpec.Data.Codecs.OffsetSpec().FromNative.Invoke(value1), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>clusterListOffsetsRequest — ../src/contract.lawspec:281</summary>
+  public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterListOffsetsRequest(LawSpec.Data.BrokerState state, LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterListOffsetsRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), LawSpec.Data.Codecs.OffsetSpec().FromNative.Invoke(value1), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>clusterMetadataRequest — ../src/contract.lawspec:278</summary>
+  public static LawSpec.Data.Pair<FSharpOption<int>, LawSpec.Data.BrokerState> ClusterMetadataRequest(LawSpec.Data.BrokerState state, string value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int32), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterMetadataRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0)));
+  }
+
+  /// <summary>clusterOffsetCommitRequest — ../src/contract.lawspec:291</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterOffsetCommitRequest(LawSpec.Data.BrokerState state, string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterOffsetCommitRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(value3)))));
+  }
+
+  /// <summary>clusterOffsetFetchRequest — ../src/contract.lawspec:292</summary>
+  public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.BrokerState> ClusterOffsetFetchRequest(LawSpec.Data.BrokerState state, string value0, LawSpec.Data.TopicPartition value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterOffsetFetchRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value1)));
+  }
+
+  /// <summary>clusterPartitionsFor — ../src/contract.lawspec:295</summary>
+  public static LawSpec.Data.Pair<FSharpOption<int>, LawSpec.Data.BrokerState> ClusterPartitionsFor(LawSpec.Data.BrokerState state, string value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int32), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterPartitionsFor(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0)));
+  }
+
+  /// <summary>clusterProduceRequest — ../src/contract.lawspec:279</summary>
+  public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterProduceRequest(LawSpec.Data.BrokerState state, LawSpec.Data.TopicPartition value0, FSharpOption<LawSpec.Data.ProducerTag> value1, FSharpList<LawSpec.Data.Record> value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterProduceRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), Codecs.Maybe(LawSpec.Data.Codecs.ProducerTag()).FromNative.Invoke(value1), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>clusterStart — ../src/contract.lawspec:274</summary>
+  public static LawSpec.Data.BrokerState ClusterStart()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterStart(schema, symbols, V.Unit));
+  }
+
+  /// <summary>clusterSyncGroup — ../src/contract.lawspec:298</summary>
+  public static FSharpResult<LawSpec.Data.Pair<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterSyncGroup(LawSpec.Data.BrokerState state, string value0, string value1, int value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.List(LawSpec.Data.Codecs.TopicPartition()), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterSyncGroup(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>clusterSyncGroupRequest — ../src/contract.lawspec:287</summary>
+  public static FSharpResult<LawSpec.Data.Pair<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterSyncGroupRequest(LawSpec.Data.BrokerState state, string value0, string value1, int value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.List(LawSpec.Data.Codecs.TopicPartition()), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterSyncGroupRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.Int32.FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> ClusterTxnOffsetCommitRequest(LawSpec.Data.BrokerState state, string value0, long value1, short value2, string value3, FSharpList<LawSpec.Data.OffsetEntry> value4)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ClusterTxnOffsetCommitRequest(schema, symbols, LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(state), Codecs.Text.FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1), Codecs.Int16.FromNative.Invoke(value2), Codecs.Text.FromNative.Invoke(value3), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(value4)))));
+  }
+
+  /// <summary>committedFrom — ../src/contract.lawspec:377</summary>
+  public static FSharpList<LawSpec.Data.Record> CommittedFrom(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, long offset)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.CommittedFrom(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset)))));
+  }
+
+  /// <summary>consumerAssign — ../src/contract.lawspec:819</summary>
+  public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> ConsumerAssign(FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerAssign(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
+  }
+
+  /// <summary>consumerClose — ../src/contract.lawspec:802</summary>
+  public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> ConsumerClose(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerClose(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
+  }
+
+  /// <summary>consumerCommit — ../src/contract.lawspec:793</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> ConsumerCommit(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerCommit(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
+  }
+
+  /// <summary>consumerCommitted — ../src/contract.lawspec:811</summary>
+  public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.ConsumerState> ConsumerCommitted(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerCommitted(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
+  }
+
+  /// <summary>consumerIsolation — ../src/contract.lawspec:838</summary>
+  public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> ConsumerIsolation(LawSpec.Data.IsolationLevel level, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerIsolation(schema, symbols, LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(level), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
+  }
+
+  /// <summary>consumerJoin — ../src/contract.lawspec:715</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.TopicPartition>>, LawSpec.Data.ConsumerState> ConsumerJoin(LawSpec.Abilities.LawtwinKafka.IBroker broker, string g, string m, FSharpList<string> topics, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.TopicPartition())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerJoin(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(m), Codecs.List(Codecs.Text).FromNative.Invoke(topics), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
+  }
+
+  /// <summary>consumerPoll — ../src/contract.lawspec:783</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>>, LawSpec.Data.ConsumerState> ConsumerPoll(LawSpec.Abilities.LawtwinKafka.IBroker broker, int n, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.ConsumerRecord())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerPoll(schema, symbols, Codecs.Int32.FromNative.Invoke(n), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
+  }
+
+  /// <summary>consumerPosition — ../src/contract.lawspec:753</summary>
+  public static LawSpec.Data.Pair<long, LawSpec.Data.ConsumerState> ConsumerPosition(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerPosition(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
+  }
+
+  /// <summary>consumerPositionOf — ../src/contract.lawspec:831</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, long>, LawSpec.Data.ConsumerState> ConsumerPositionOf(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerPositionOf(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
+  }
+
+  /// <summary>consumerRecords — ../src/contract.lawspec:663</summary>
+  public static FSharpList<LawSpec.Data.ConsumerRecord> ConsumerRecords(LawSpec.Data.TopicPartition tp, FSharpList<LawSpec.Data.FetchedRecord> rs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.ConsumerRecord()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerRecords(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(rs)));
+  }
+
+  /// <summary>consumerRefresh — ../src/contract.lawspec:731</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> ConsumerRefresh(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerRefresh(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)))));
+  }
+
+  /// <summary>consumerSeek — ../src/contract.lawspec:824</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> ConsumerSeek(LawSpec.Data.TopicPartition tp, long offset, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ConsumerSeek(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
+  }
+
+  /// <summary>coversOnce — ../src/contract.lawspec:469</summary>
+  public static bool CoversOnce(string t, int n, LawSpec.Data.GroupView view)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.CoversOnce(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Int32.FromNative.Invoke(n), LawSpec.Data.Codecs.GroupView().FromNative.Invoke(view)));
+  }
+
+  /// <summary>created — ../src/contract.lawspec:315</summary>
+  public static bool Created(LawSpec.Abilities.LawtwinKafka.IBroker broker, string t, int n)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Created(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Int32.FromNative.Invoke(n)))));
+  }
+
+  /// <summary>fencedBy — ../src/contract.lawspec:348</summary>
+  public static bool FencedBy(LawSpec.Data.ProducerIdAndEpoch old, LawSpec.Data.ProducerIdAndEpoch new_)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FencedBy(schema, symbols, LawSpec.Data.Codecs.ProducerIdAndEpoch().FromNative.Invoke(old), LawSpec.Data.Codecs.ProducerIdAndEpoch().FromNative.Invoke(new_)));
+  }
+
+  /// <summary>followsBatch — ../src/contract.lawspec:329</summary>
+  public static bool FollowsBatch(LawSpec.Either<LawSpec.Data.KafkaError, long> a, FSharpList<LawSpec.Data.Record> batch, LawSpec.Either<LawSpec.Data.KafkaError, long> b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FollowsBatch(schema, symbols, Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64).FromNative.Invoke(a), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(batch), Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64).FromNative.Invoke(b)));
+  }
+
+  /// <summary>followsOne — ../src/contract.lawspec:1247</summary>
+  public static bool FollowsOne(LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> a, LawSpec.Either<LawSpec.Data.KafkaError, long> latest)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FollowsOne(schema, symbols, Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(a), Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64).FromNative.Invoke(latest)));
+  }
+
+  /// <summary>freshConsumer — ../src/contract.lawspec:557</summary>
+  public static LawSpec.Data.ConsumerState FreshConsumer()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FreshConsumer(schema, symbols, V.Unit));
+  }
+
+  /// <summary>freshProducer — ../src/contract.lawspec:542</summary>
+  public static LawSpec.Data.ProducerState FreshProducer()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.ProducerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FreshProducer(schema, symbols, V.Unit));
+  }
+
+  /// <summary>freshTransactions — ../src/contract.lawspec:573</summary>
+  public static LawSpec.Data.TransactionState FreshTransactions()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.TransactionState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.FreshTransactions(schema, symbols, V.Unit));
+  }
+
+  /// <summary>identityOf — ../src/contract.lawspec:658</summary>
+  public static LawSpec.Data.Pair<FSharpOption<LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> IdentityOf(LawSpec.Data.ProducerState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Maybe(LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.IdentityOf(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)));
+  }
+
+  /// <summary>increasing — ../src/contract.lawspec:1407</summary>
+  public static bool Increasing(FSharpList<long> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Increasing(schema, symbols, Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>joinAll — ../src/contract.lawspec:442</summary>
+  public static bool JoinAll(LawSpec.Abilities.LawtwinKafka.IBroker broker, string g, FSharpList<string> ms, FSharpList<string> topics)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.JoinAll(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.List(Codecs.Text).FromNative.Invoke(ms), Codecs.List(Codecs.Text).FromNative.Invoke(topics)))));
+  }
+
+  /// <summary>joinEach — ../src/contract.lawspec:1606</summary>
+  public static bool JoinEach(LawSpec.Abilities.LawtwinKafka.IGroupCoordinator groupCoordinator, string g, FSharpList<string> ms, FSharpList<string> topics)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::GroupCoordinator", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaGroupCoordinatorFromNative(s, symbols, groupCoordinator)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.JoinEach(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.List(Codecs.Text).FromNative.Invoke(ms), Codecs.List(Codecs.Text).FromNative.Invoke(topics)))));
+  }
+
+  /// <summary>kafkaConsumerAssign — ../src/contract.lawspec:1382</summary>
+  public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> KafkaConsumerAssign(LawSpec.Data.ConsumerState consumerState, FSharpList<LawSpec.Data.TopicPartition> value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerAssign(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(value0)));
+  }
+
+  /// <summary>kafkaConsumerClose — ../src/contract.lawspec:1390</summary>
+  public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> KafkaConsumerClose(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerClose(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState)))));
+  }
+
+  /// <summary>kafkaConsumerCommitSync — ../src/contract.lawspec:1385</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> KafkaConsumerCommitSync(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerCommitSync(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState)))));
+  }
+
+  /// <summary>kafkaConsumerCommittedOffset — ../src/contract.lawspec:1388</summary>
+  public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.ConsumerState> KafkaConsumerCommittedOffset(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState, LawSpec.Data.TopicPartition value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerCommittedOffset(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0)))));
+  }
+
+  /// <summary>kafkaConsumerPoll — ../src/contract.lawspec:1384</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>>, LawSpec.Data.ConsumerState> KafkaConsumerPoll(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState, int value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.ConsumerRecord())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerPoll(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), Codecs.Int32.FromNative.Invoke(value0)))));
+  }
+
+  /// <summary>kafkaConsumerPosition — ../src/contract.lawspec:1387</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, long>, LawSpec.Data.ConsumerState> KafkaConsumerPosition(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState, LawSpec.Data.TopicPartition value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Int64), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerPosition(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0)))));
+  }
+
+  /// <summary>kafkaConsumerSeek — ../src/contract.lawspec:1386</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.ConsumerState> KafkaConsumerSeek(LawSpec.Data.ConsumerState consumerState, LawSpec.Data.TopicPartition value0, long value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerSeek(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(value0), Codecs.Int64.FromNative.Invoke(value1)));
+  }
+
+  /// <summary>kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389</summary>
+  public static LawSpec.Data.Pair<Unit, LawSpec.Data.ConsumerState> KafkaConsumerSetIsolationLevel(LawSpec.Data.ConsumerState consumerState, LawSpec.Data.IsolationLevel value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerSetIsolationLevel(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(value0)));
+  }
+
+  /// <summary>kafkaConsumerStart — ../src/contract.lawspec:1380</summary>
+  public static LawSpec.Data.ConsumerState KafkaConsumerStart()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerStart(schema, symbols, V.Unit));
+  }
+
+  /// <summary>kafkaConsumerSubscribe — ../src/contract.lawspec:1383</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.TopicPartition>>, LawSpec.Data.ConsumerState> KafkaConsumerSubscribe(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ConsumerState consumerState, string value0, string value1, FSharpList<string> value2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.TopicPartition())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaConsumerSubscribe(schema, symbols, LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(consumerState), Codecs.Text.FromNative.Invoke(value0), Codecs.Text.FromNative.Invoke(value1), Codecs.List(Codecs.Text).FromNative.Invoke(value2)))));
+  }
+
+  /// <summary>kafkaProducerEnableIdempotence — ../src/contract.lawspec:1230</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> KafkaProducerEnableIdempotence(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ProducerState producerState)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerEnableIdempotence(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState)))));
+  }
+
+  /// <summary>kafkaProducerFlush — ../src/contract.lawspec:1229</summary>
+  public static LawSpec.Data.Pair<Unit, LawSpec.Data.ProducerState> KafkaProducerFlush(LawSpec.Data.ProducerState producerState)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerFlush(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState)));
+  }
+
+  /// <summary>kafkaProducerProducerIdentity — ../src/contract.lawspec:1232</summary>
+  public static LawSpec.Data.Pair<FSharpOption<LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> KafkaProducerProducerIdentity(LawSpec.Data.ProducerState producerState)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Maybe(LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerProducerIdentity(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState)));
+  }
+
+  /// <summary>kafkaProducerRetryLastSend — ../src/contract.lawspec:1231</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> KafkaProducerRetryLastSend(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ProducerState producerState)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerRetryLastSend(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState)))));
+  }
+
+  /// <summary>kafkaProducerSend — ../src/contract.lawspec:1228</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> KafkaProducerSend(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, LawSpec.Data.ProducerState producerState, LawSpec.Data.ProducerRecord value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerSend(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(producerState), LawSpec.Data.Codecs.ProducerRecord().FromNative.Invoke(value0)))));
+  }
+
+  /// <summary>kafkaProducerStart — ../src/contract.lawspec:1226</summary>
+  public static LawSpec.Data.ProducerState KafkaProducerStart()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.ProducerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaProducerStart(schema, symbols, V.Unit));
+  }
+
+  /// <summary>kafkaTransactionsAbortTransaction — ../src/contract.lawspec:1738</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsAbortTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsAbortTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState)))));
+  }
+
+  /// <summary>kafkaTransactionsAddPartitionsToTransaction — ../src/contract.lawspec:1734</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsAddPartitionsToTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState, FSharpList<LawSpec.Data.TopicPartition> value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsAddPartitionsToTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(value0)))));
+  }
+
+  /// <summary>kafkaTransactionsBeginTransaction — ../src/contract.lawspec:1733</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsBeginTransaction(LawSpec.Data.TransactionState txnState)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsBeginTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState)));
+  }
+
+  /// <summary>kafkaTransactionsCommitTransaction — ../src/contract.lawspec:1737</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsCommitTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsCommitTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState)))));
+  }
+
+  /// <summary>kafkaTransactionsInitTransactions — ../src/contract.lawspec:1732</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> KafkaTransactionsInitTransactions(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState, string value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsInitTransactions(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState), Codecs.Text.FromNative.Invoke(value0)))));
+  }
+
+  /// <summary>kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> KafkaTransactionsSendInTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, LawSpec.Data.TransactionState txnState, LawSpec.Data.ProducerRecord value0)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsSendInTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState), LawSpec.Data.Codecs.ProducerRecord().FromNative.Invoke(value0)))));
+  }
+
+  /// <summary>kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> KafkaTransactionsSendOffsetsToTransaction(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState txnState, string value0, FSharpList<LawSpec.Data.OffsetEntry> value1)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsSendOffsetsToTransaction(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(txnState), Codecs.Text.FromNative.Invoke(value0), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(value1)))));
+  }
+
+  /// <summary>kafkaTransactionsStart — ../src/contract.lawspec:1730</summary>
+  public static LawSpec.Data.TransactionState KafkaTransactionsStart()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.TransactionState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KafkaTransactionsStart(schema, symbols, V.Unit));
+  }
+
+  /// <summary>keepPositions — ../src/contract.lawspec:688</summary>
+  public static FSharpMap<LawSpec.Data.TopicPartition, long> KeepPositions(FSharpList<LawSpec.Data.TopicPartition> tps, FSharpMap<LawSpec.Data.TopicPartition, long> positions, FSharpMap<LawSpec.Data.TopicPartition, long> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.KeepPositions(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(positions), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>boundedInt16 — &lt;lawspec.collections&gt;:358</summary>
+  public static FSharpOption<short> LawspecCollectionsBoundedInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int16).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedInt32 — &lt;lawspec.collections&gt;:371</summary>
+  public static FSharpOption<int> LawspecCollectionsBoundedInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedInt64 — &lt;lawspec.collections&gt;:384</summary>
+  public static FSharpOption<long> LawspecCollectionsBoundedInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedInt8 — &lt;lawspec.collections&gt;:345</summary>
+  public static FSharpOption<sbyte> LawspecCollectionsBoundedInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int8).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedIntSize — &lt;lawspec.collections&gt;:449</summary>
+  public static FSharpOption<long> LawspecCollectionsBoundedIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedUInt16 — &lt;lawspec.collections&gt;:410</summary>
+  public static FSharpOption<ushort> LawspecCollectionsBoundedUInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt16).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedUInt32 — &lt;lawspec.collections&gt;:423</summary>
+  public static FSharpOption<uint> LawspecCollectionsBoundedUInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedUInt64 — &lt;lawspec.collections&gt;:436</summary>
+  public static FSharpOption<ulong> LawspecCollectionsBoundedUInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedUInt8 — &lt;lawspec.collections&gt;:397</summary>
+  public static FSharpOption<byte> LawspecCollectionsBoundedUInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt8).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedUIntPtr — &lt;lawspec.collections&gt;:475</summary>
+  public static FSharpOption<ulong> LawspecCollectionsBoundedUIntPtr(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>boundedUIntSize — &lt;lawspec.collections&gt;:462</summary>
+  public static FSharpOption<ulong> LawspecCollectionsBoundedUIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.UInt64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsBoundedUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingInt16 — &lt;lawspec.collections&gt;:354</summary>
+  public static short LawspecCollectionsSaturatingInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int16.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingInt32 — &lt;lawspec.collections&gt;:367</summary>
+  public static int LawspecCollectionsSaturatingInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingInt64 — &lt;lawspec.collections&gt;:380</summary>
+  public static long LawspecCollectionsSaturatingInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingInt8 — &lt;lawspec.collections&gt;:341</summary>
+  public static sbyte LawspecCollectionsSaturatingInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int8.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingIntSize — &lt;lawspec.collections&gt;:445</summary>
+  public static long LawspecCollectionsSaturatingIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingUInt16 — &lt;lawspec.collections&gt;:406</summary>
+  public static ushort LawspecCollectionsSaturatingUInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt16.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingUInt32 — &lt;lawspec.collections&gt;:419</summary>
+  public static uint LawspecCollectionsSaturatingUInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingUInt64 — &lt;lawspec.collections&gt;:432</summary>
+  public static ulong LawspecCollectionsSaturatingUInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingUInt8 — &lt;lawspec.collections&gt;:393</summary>
+  public static byte LawspecCollectionsSaturatingUInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt8.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingUIntPtr — &lt;lawspec.collections&gt;:471</summary>
+  public static ulong LawspecCollectionsSaturatingUIntPtr(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>saturatingUIntSize — &lt;lawspec.collections&gt;:458</summary>
+  public static ulong LawspecCollectionsSaturatingUIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSaturatingUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingInt16 — &lt;lawspec.collections&gt;:349</summary>
+  public static short LawspecCollectionsWrappingInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int16.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingInt32 — &lt;lawspec.collections&gt;:362</summary>
+  public static int LawspecCollectionsWrappingInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingInt64 — &lt;lawspec.collections&gt;:375</summary>
+  public static long LawspecCollectionsWrappingInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingInt8 — &lt;lawspec.collections&gt;:336</summary>
+  public static sbyte LawspecCollectionsWrappingInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int8.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingIntSize — &lt;lawspec.collections&gt;:440</summary>
+  public static long LawspecCollectionsWrappingIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingUInt16 — &lt;lawspec.collections&gt;:401</summary>
+  public static ushort LawspecCollectionsWrappingUInt16(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt16.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUInt16(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingUInt32 — &lt;lawspec.collections&gt;:414</summary>
+  public static uint LawspecCollectionsWrappingUInt32(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUInt32(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingUInt64 — &lt;lawspec.collections&gt;:427</summary>
+  public static ulong LawspecCollectionsWrappingUInt64(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUInt64(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingUInt8 — &lt;lawspec.collections&gt;:388</summary>
+  public static byte LawspecCollectionsWrappingUInt8(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt8.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUInt8(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingUIntPtr — &lt;lawspec.collections&gt;:466</summary>
+  public static ulong LawspecCollectionsWrappingUIntPtr(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUIntPtr(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>wrappingUIntSize — &lt;lawspec.collections&gt;:453</summary>
+  public static ulong LawspecCollectionsWrappingUIntSize(System.Numerics.BigInteger value)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsWrappingUIntSize(schema, symbols, Codecs.BigInteger.FromNative.Invoke(value)));
+  }
+
+  /// <summary>keyValDeleteItems — &lt;lawspec.collections&gt;:258</summary>
+  public static FSharpList<LawSpec.Data.Entry<long, long>> LawspecCollectionsKeyValDeleteItemsInt64ListEntryInt64Int64(long k, FSharpList<LawSpec.Data.Entry<long, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValDeleteItemsInt64ListEntryInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValDeleteItems — &lt;lawspec.collections&gt;:258</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> LawspecCollectionsKeyValDeleteItemsTextListEntryTextListText(string k, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValDeleteItemsTextListEntryTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValDelete — &lt;lawspec.collections&gt;:319</summary>
+  public static FSharpMap<long, long> LawspecCollectionsKeyValDeleteInt64KeyValInt64Int64(long k, FSharpMap<long, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Int64, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValDeleteInt64KeyValInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Int64, Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValDelete — &lt;lawspec.collections&gt;:319</summary>
+  public static FSharpMap<string, FSharpList<string>> LawspecCollectionsKeyValDeleteTextKeyValTextListText(string k, FSharpMap<string, FSharpList<string>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValDeleteTextKeyValTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValEntries — &lt;lawspec.collections&gt;:331</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> LawspecCollectionsKeyValEntriesKeyValTextListText(FSharpMap<string, FSharpList<string>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValEntriesKeyValTextListText(schema, symbols, Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValEntries — &lt;lawspec.collections&gt;:331</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> LawspecCollectionsKeyValEntriesKeyValTextGroup(FSharpMap<string, LawSpec.Data.Group> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValEntriesKeyValTextGroup(schema, symbols, Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValEntries — &lt;lawspec.collections&gt;:331</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> LawspecCollectionsKeyValEntriesKeyValTextListTopicPartition(FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValEntriesKeyValTextListTopicPartition(schema, symbols, Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, long>> LawspecCollectionsKeyValFromItemsListEntryTextInt64ListEntryTextInt64(FSharpList<LawSpec.Data.Entry<string, long>> es, FSharpList<LawSpec.Data.Entry<string, long>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextInt64ListEntryTextInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> LawspecCollectionsKeyValFromItemsListEntryGroupPartitionInt64ListEntryGroupPartitionInt64(FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> es, FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryGroupPartitionInt64ListEntryGroupPartitionInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt32ListEntryTopicPartitionInt32(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> es, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt32ListEntryTopicPartitionInt32(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> LawspecCollectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> es, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> LawspecCollectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> LawspecCollectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition(FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> es, FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, int>> LawspecCollectionsKeyValFromItemsListEntryTextInt32ListEntryTextInt32(FSharpList<LawSpec.Data.Entry<string, int>> es, FSharpList<LawSpec.Data.Entry<string, int>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextInt32ListEntryTextInt32(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<long, long>> LawspecCollectionsKeyValFromItemsListEntryInt64Int64ListEntryInt64Int64(FSharpList<LawSpec.Data.Entry<long, long>> es, FSharpList<LawSpec.Data.Entry<long, long>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryInt64Int64ListEntryInt64Int64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt64ListEntryTopicPartitionInt64(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> es, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTopicPartitionInt64ListEntryTopicPartitionInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> LawspecCollectionsKeyValFromItemsListEntryInt64ListBatchMetaListEntryInt64ListBatchMeta(FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> es, FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryInt64ListBatchMetaListEntryInt64ListBatchMeta(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> LawspecCollectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> es, FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValFromItems — &lt;lawspec.collections&gt;:284</summary>
+  public static FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> LawspecCollectionsKeyValFromItemsListEntryInt64ProducerEntryListEntryInt64ProducerEntry(FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> es, FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValFromItemsListEntryInt64ProducerEntryListEntryInt64ProducerEntry(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(es), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>keyValKeysItems — &lt;lawspec.collections&gt;:293</summary>
+  public static FSharpList<string> LawspecCollectionsKeyValKeysItemsListEntryTextListText(FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValKeysItemsListEntryTextListText(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValKeys — &lt;lawspec.collections&gt;:323</summary>
+  public static FSharpList<string> LawspecCollectionsKeyValKeysKeyValTextListText(FSharpMap<string, FSharpList<string>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValKeysKeyValTextListText(schema, symbols, Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<LawSpec.Data.PartitionLog> LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog(LawSpec.Data.TopicPartition k, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(LawSpec.Data.Codecs.PartitionLog()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<FSharpList<LawSpec.Data.TopicPartition>> LawspecCollectionsKeyValLookupItemsTextListEntryTextListTopicPartition(string k, FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextListTopicPartition(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<int> LawspecCollectionsKeyValLookupItemsTextListEntryTextInt32(string k, FSharpList<LawSpec.Data.Entry<string, int>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextInt32(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<FSharpList<LawSpec.Data.BatchMeta>> LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ListBatchMeta(long k, FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.List(LawSpec.Data.Codecs.BatchMeta())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ListBatchMeta(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<int> LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt32(LawSpec.Data.TopicPartition k, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt32(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<long> LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt64(LawSpec.Data.TopicPartition k, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt64(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<LawSpec.Data.ProducerEntry> LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ProducerEntry(long k, FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(LawSpec.Data.Codecs.ProducerEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64ProducerEntry(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<FSharpList<string>> LawspecCollectionsKeyValLookupItemsTextListEntryTextListText(string k, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<long> LawspecCollectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt64(LawSpec.Data.GroupPartition k, FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt64(schema, symbols, LawSpec.Data.Codecs.GroupPartition().FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<LawSpec.Data.Group> LawspecCollectionsKeyValLookupItemsTextListEntryTextGroup(string k, FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextGroup(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<long> LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64Int64(long k, FSharpList<LawSpec.Data.Entry<long, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsInt64ListEntryInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookupItems — &lt;lawspec.collections&gt;:271</summary>
+  public static FSharpOption<long> LawspecCollectionsKeyValLookupItemsTextListEntryTextInt64(string k, FSharpList<LawSpec.Data.Entry<string, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupItemsTextListEntryTextInt64(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<long> LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt64(LawSpec.Data.TopicPartition k, FSharpMap<LawSpec.Data.TopicPartition, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt64(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<FSharpList<LawSpec.Data.BatchMeta>> LawspecCollectionsKeyValLookupInt64KeyValInt64ListBatchMeta(long k, FSharpMap<long, FSharpList<LawSpec.Data.BatchMeta>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.List(LawSpec.Data.Codecs.BatchMeta())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupInt64KeyValInt64ListBatchMeta(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta())).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<FSharpList<LawSpec.Data.TopicPartition>> LawspecCollectionsKeyValLookupTextKeyValTextListTopicPartition(string k, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextListTopicPartition(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<LawSpec.Data.ProducerEntry> LawspecCollectionsKeyValLookupInt64KeyValInt64ProducerEntry(long k, FSharpMap<long, LawSpec.Data.ProducerEntry> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(LawSpec.Data.Codecs.ProducerEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupInt64KeyValInt64ProducerEntry(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry()).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<long> LawspecCollectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt64(LawSpec.Data.GroupPartition k, FSharpMap<LawSpec.Data.GroupPartition, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt64(schema, symbols, LawSpec.Data.Codecs.GroupPartition().FromNative.Invoke(k), Codecs.KeyVal(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<int> LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt32(LawSpec.Data.TopicPartition k, FSharpMap<LawSpec.Data.TopicPartition, int> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt32(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<long> LawspecCollectionsKeyValLookupInt64KeyValInt64Int64(long k, FSharpMap<long, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupInt64KeyValInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Int64, Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<LawSpec.Data.Group> LawspecCollectionsKeyValLookupTextKeyValTextGroup(string k, FSharpMap<string, LawSpec.Data.Group> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextGroup(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<int> LawspecCollectionsKeyValLookupTextKeyValTextInt32(string k, FSharpMap<string, int> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextInt32(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.Int32).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<LawSpec.Data.PartitionLog> LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(LawSpec.Data.TopicPartition k, FSharpMap<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(LawSpec.Data.Codecs.PartitionLog()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog()).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<FSharpList<string>> LawspecCollectionsKeyValLookupTextKeyValTextListText(string k, FSharpMap<string, FSharpList<string>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValLookup — &lt;lawspec.collections&gt;:311</summary>
+  public static FSharpOption<long> LawspecCollectionsKeyValLookupTextKeyValTextInt64(string k, FSharpMap<string, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValLookupTextKeyValTextInt64(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.KeyVal(Codecs.Text, Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawspecCollectionsKeyValOfListEntryTextListTopicPartition(FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextListTopicPartition(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<string, long> LawspecCollectionsKeyValOfListEntryTextInt64(FSharpList<LawSpec.Data.Entry<string, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<long, FSharpList<LawSpec.Data.BatchMeta>> LawspecCollectionsKeyValOfListEntryInt64ListBatchMeta(FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryInt64ListBatchMeta(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<string, LawSpec.Data.Group> LawspecCollectionsKeyValOfListEntryTextGroup(FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextGroup(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<string, int> LawspecCollectionsKeyValOfListEntryTextInt32(FSharpList<LawSpec.Data.Entry<string, int>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextInt32(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<long, LawSpec.Data.ProducerEntry> LawspecCollectionsKeyValOfListEntryInt64ProducerEntry(FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryInt64ProducerEntry(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> LawspecCollectionsKeyValOfListEntryTopicPartitionPartitionLog(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTopicPartitionPartitionLog(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<LawSpec.Data.TopicPartition, int> LawspecCollectionsKeyValOfListEntryTopicPartitionInt32(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTopicPartitionInt32(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<LawSpec.Data.TopicPartition, long> LawspecCollectionsKeyValOfListEntryTopicPartitionInt64(FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTopicPartitionInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<LawSpec.Data.GroupPartition, long> LawspecCollectionsKeyValOfListEntryGroupPartitionInt64(FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryGroupPartitionInt64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<string, FSharpList<string>> LawspecCollectionsKeyValOfListEntryTextListText(FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryTextListText(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValOf — &lt;lawspec.collections&gt;:307</summary>
+  public static FSharpMap<long, long> LawspecCollectionsKeyValOfListEntryInt64Int64(FSharpList<LawSpec.Data.Entry<long, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Int64, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValOfListEntryInt64Int64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> LawspecCollectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(LawSpec.Data.TopicPartition k, LawSpec.Data.PartitionLog v, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog())).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> LawspecCollectionsKeyValPutItemsGroupPartitionInt64ListEntryGroupPartitionInt64(LawSpec.Data.GroupPartition k, long v, FSharpList<LawSpec.Data.Entry<LawSpec.Data.GroupPartition, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsGroupPartitionInt64ListEntryGroupPartitionInt64(schema, symbols, LawSpec.Data.Codecs.GroupPartition().FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> LawspecCollectionsKeyValPutItemsTextGroupListEntryTextGroup(string k, LawSpec.Data.Group v, FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextGroupListEntryTextGroup(schema, symbols, Codecs.Text.FromNative.Invoke(k), LawSpec.Data.Codecs.Group().FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> LawspecCollectionsKeyValPutItemsInt64ProducerEntryListEntryInt64ProducerEntry(long k, LawSpec.Data.ProducerEntry v, FSharpList<LawSpec.Data.Entry<long, LawSpec.Data.ProducerEntry>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsInt64ProducerEntryListEntryInt64ProducerEntry(schema, symbols, Codecs.Int64.FromNative.Invoke(k), LawSpec.Data.Codecs.ProducerEntry().FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry())).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, int>> LawspecCollectionsKeyValPutItemsTextInt32ListEntryTextInt32(string k, int v, FSharpList<LawSpec.Data.Entry<string, int>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextInt32ListEntryTextInt32(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.Int32.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int32)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, long>> LawspecCollectionsKeyValPutItemsTextInt64ListEntryTextInt64(string k, long v, FSharpList<LawSpec.Data.Entry<string, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextInt64ListEntryTextInt64(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> LawspecCollectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition(string k, FSharpList<LawSpec.Data.TopicPartition> v, FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> LawspecCollectionsKeyValPutItemsInt64ListBatchMetaListEntryInt64ListBatchMeta(long k, FSharpList<LawSpec.Data.BatchMeta> v, FSharpList<LawSpec.Data.Entry<long, FSharpList<LawSpec.Data.BatchMeta>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsInt64ListBatchMetaListEntryInt64ListBatchMeta(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.BatchMeta()).FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta()))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> LawspecCollectionsKeyValPutItemsTextListTextListEntryTextListText(string k, FSharpList<string> v, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTextListTextListEntryTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(Codecs.Text).FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> LawspecCollectionsKeyValPutItemsTopicPartitionInt64ListEntryTopicPartitionInt64(LawSpec.Data.TopicPartition k, long v, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTopicPartitionInt64ListEntryTopicPartitionInt64(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> LawspecCollectionsKeyValPutItemsTopicPartitionInt32ListEntryTopicPartitionInt32(LawSpec.Data.TopicPartition k, int v, FSharpList<LawSpec.Data.Entry<LawSpec.Data.TopicPartition, int>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsTopicPartitionInt32ListEntryTopicPartitionInt32(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.Int32.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPutItems — &lt;lawspec.collections&gt;:245</summary>
+  public static FSharpList<LawSpec.Data.Entry<long, long>> LawspecCollectionsKeyValPutItemsInt64Int64ListEntryInt64Int64(long k, long v, FSharpList<LawSpec.Data.Entry<long, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutItemsInt64Int64ListEntryInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<LawSpec.Data.GroupPartition, long> LawspecCollectionsKeyValPutGroupPartitionInt64KeyValGroupPartitionInt64(LawSpec.Data.GroupPartition k, long v, FSharpMap<LawSpec.Data.GroupPartition, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutGroupPartitionInt64KeyValGroupPartitionInt64(schema, symbols, LawSpec.Data.Codecs.GroupPartition().FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.KeyVal(LawSpec.Data.Codecs.GroupPartition(), Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<string, int> LawspecCollectionsKeyValPutTextInt32KeyValTextInt32(string k, int v, FSharpMap<string, int> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextInt32KeyValTextInt32(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.Int32.FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, Codecs.Int32).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawspecCollectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(string k, FSharpList<LawSpec.Data.TopicPartition> v, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<LawSpec.Data.TopicPartition, long> LawspecCollectionsKeyValPutTopicPartitionInt64KeyValTopicPartitionInt64(LawSpec.Data.TopicPartition k, long v, FSharpMap<LawSpec.Data.TopicPartition, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTopicPartitionInt64KeyValTopicPartitionInt64(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<long, LawSpec.Data.ProducerEntry> LawspecCollectionsKeyValPutInt64ProducerEntryKeyValInt64ProducerEntry(long k, LawSpec.Data.ProducerEntry v, FSharpMap<long, LawSpec.Data.ProducerEntry> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutInt64ProducerEntryKeyValInt64ProducerEntry(schema, symbols, Codecs.Int64.FromNative.Invoke(k), LawSpec.Data.Codecs.ProducerEntry().FromNative.Invoke(v), Codecs.KeyVal(Codecs.Int64, LawSpec.Data.Codecs.ProducerEntry()).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<long, FSharpList<LawSpec.Data.BatchMeta>> LawspecCollectionsKeyValPutInt64ListBatchMetaKeyValInt64ListBatchMeta(long k, FSharpList<LawSpec.Data.BatchMeta> v, FSharpMap<long, FSharpList<LawSpec.Data.BatchMeta>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutInt64ListBatchMetaKeyValInt64ListBatchMeta(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.List(LawSpec.Data.Codecs.BatchMeta()).FromNative.Invoke(v), Codecs.KeyVal(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.BatchMeta())).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<string, LawSpec.Data.Group> LawspecCollectionsKeyValPutTextGroupKeyValTextGroup(string k, LawSpec.Data.Group v, FSharpMap<string, LawSpec.Data.Group> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextGroupKeyValTextGroup(schema, symbols, Codecs.Text.FromNative.Invoke(k), LawSpec.Data.Codecs.Group().FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<long, long> LawspecCollectionsKeyValPutInt64Int64KeyValInt64Int64(long k, long v, FSharpMap<long, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Int64, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutInt64Int64KeyValInt64Int64(schema, symbols, Codecs.Int64.FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.KeyVal(Codecs.Int64, Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<string, FSharpList<string>> LawspecCollectionsKeyValPutTextListTextKeyValTextListText(string k, FSharpList<string> v, FSharpMap<string, FSharpList<string>> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextListTextKeyValTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.List(Codecs.Text).FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> LawspecCollectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog(LawSpec.Data.TopicPartition k, LawSpec.Data.PartitionLog v, FSharpMap<LawSpec.Data.TopicPartition, LawSpec.Data.PartitionLog> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(v), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), LawSpec.Data.Codecs.PartitionLog()).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<LawSpec.Data.TopicPartition, int> LawspecCollectionsKeyValPutTopicPartitionInt32KeyValTopicPartitionInt32(LawSpec.Data.TopicPartition k, int v, FSharpMap<LawSpec.Data.TopicPartition, int> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTopicPartitionInt32KeyValTopicPartitionInt32(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(k), Codecs.Int32.FromNative.Invoke(v), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValPut — &lt;lawspec.collections&gt;:315</summary>
+  public static FSharpMap<string, long> LawspecCollectionsKeyValPutTextInt64KeyValTextInt64(string k, long v, FSharpMap<string, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValPutTextInt64KeyValTextInt64(schema, symbols, Codecs.Text.FromNative.Invoke(k), Codecs.Int64.FromNative.Invoke(v), Codecs.KeyVal(Codecs.Text, Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>keyValValuesItems — &lt;lawspec.collections&gt;:300</summary>
+  public static FSharpList<long> LawspecCollectionsKeyValValuesItemsListEntryInt64Int64(FSharpList<LawSpec.Data.Entry<long, long>> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValValuesItemsListEntryInt64Int64(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Int64, Codecs.Int64)).FromNative.Invoke(es)));
+  }
+
+  /// <summary>keyValValues — &lt;lawspec.collections&gt;:327</summary>
+  public static FSharpList<long> LawspecCollectionsKeyValValuesKeyValInt64Int64(FSharpMap<long, long> m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsKeyValValuesKeyValInt64Int64(schema, symbols, Codecs.KeyVal(Codecs.Int64, Codecs.Int64).FromNative.Invoke(m)));
+  }
+
+  /// <summary>setFromItems — &lt;lawspec.collections&gt;:123</summary>
+  public static FSharpList<int> LawspecCollectionsSetFromItemsListInt32ListInt32(FSharpList<int> xs, FSharpList<int> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetFromItemsListInt32ListInt32(schema, symbols, Codecs.List(Codecs.Int32).FromNative.Invoke(xs), Codecs.List(Codecs.Int32).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>setFromItems — &lt;lawspec.collections&gt;:123</summary>
+  public static FSharpList<long> LawspecCollectionsSetFromItemsListInt64ListInt64(FSharpList<long> xs, FSharpList<long> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetFromItemsListInt64ListInt64(schema, symbols, Codecs.List(Codecs.Int64).FromNative.Invoke(xs), Codecs.List(Codecs.Int64).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>setFromItems — &lt;lawspec.collections&gt;:123</summary>
+  public static FSharpList<string> LawspecCollectionsSetFromItemsListTextListText(FSharpList<string> xs, FSharpList<string> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetFromItemsListTextListText(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(xs), Codecs.List(Codecs.Text).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>setInsertItems — &lt;lawspec.collections&gt;:67</summary>
+  public static FSharpList<int> LawspecCollectionsSetInsertItemsInt32ListInt32(int x, FSharpList<int> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetInsertItemsInt32ListInt32(schema, symbols, Codecs.Int32.FromNative.Invoke(x), Codecs.List(Codecs.Int32).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>setInsertItems — &lt;lawspec.collections&gt;:67</summary>
+  public static FSharpList<long> LawspecCollectionsSetInsertItemsInt64ListInt64(long x, FSharpList<long> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetInsertItemsInt64ListInt64(schema, symbols, Codecs.Int64.FromNative.Invoke(x), Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>setInsertItems — &lt;lawspec.collections&gt;:67</summary>
+  public static FSharpList<string> LawspecCollectionsSetInsertItemsTextListText(string x, FSharpList<string> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetInsertItemsTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(x), Codecs.List(Codecs.Text).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>setMemberItems — &lt;lawspec.collections&gt;:89</summary>
+  public static bool LawspecCollectionsSetMemberItemsInt64ListInt64(long x, FSharpList<long> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetMemberItemsInt64ListInt64(schema, symbols, Codecs.Int64.FromNative.Invoke(x), Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>setMember — &lt;lawspec.collections&gt;:146</summary>
+  public static bool LawspecCollectionsSetMemberInt64SetInt64(long x, FSharpSet<long> s_2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetMemberInt64SetInt64(schema, symbols, Codecs.Int64.FromNative.Invoke(x), Codecs.Set(Codecs.Int64).FromNative.Invoke(s_2)));
+  }
+
+  /// <summary>setOf — &lt;lawspec.collections&gt;:144</summary>
+  public static FSharpSet<string> LawspecCollectionsSetOfListText(FSharpList<string> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Set(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetOfListText(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>setOf — &lt;lawspec.collections&gt;:144</summary>
+  public static FSharpSet<int> LawspecCollectionsSetOfListInt32(FSharpList<int> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Set(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetOfListInt32(schema, symbols, Codecs.List(Codecs.Int32).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>setOf — &lt;lawspec.collections&gt;:144</summary>
+  public static FSharpSet<long> LawspecCollectionsSetOfListInt64(FSharpList<long> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Set(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetOfListInt64(schema, symbols, Codecs.List(Codecs.Int64).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>setRemoveItems — &lt;lawspec.collections&gt;:78</summary>
+  public static FSharpList<string> LawspecCollectionsSetRemoveItemsTextListText(string x, FSharpList<string> xs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetRemoveItemsTextListText(schema, symbols, Codecs.Text.FromNative.Invoke(x), Codecs.List(Codecs.Text).FromNative.Invoke(xs)));
+  }
+
+  /// <summary>setRemove — &lt;lawspec.collections&gt;:154</summary>
+  public static FSharpSet<string> LawspecCollectionsSetRemoveTextSetText(string x, FSharpSet<string> s_2)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Set(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetRemoveTextSetText(schema, symbols, Codecs.Text.FromNative.Invoke(x), Codecs.Set(Codecs.Text).FromNative.Invoke(s_2)));
+  }
+
+  /// <summary>setUnion — &lt;lawspec.collections&gt;:158</summary>
+  public static FSharpSet<string> LawspecCollectionsSetUnionSetTextSetText(FSharpSet<string> s_2, FSharpSet<string> t)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Set(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawspecCollectionsSetUnionSetTextSetText(schema, symbols, Codecs.Set(Codecs.Text).FromNative.Invoke(s_2), Codecs.Set(Codecs.Text).FromNative.Invoke(t)));
+  }
+
+  /// <summary>lawtwinKafkaModelAddPartitionsToTxn — ../src/model.lawspec:618</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelAddPartitionsToTxn(string txid, long pid, short epoch, FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAddPartitionsToTxn(schema, symbols, Codecs.Text.FromNative.Invoke(txid), Codecs.Int64.FromNative.Invoke(pid), Codecs.Int16.FromNative.Invoke(epoch), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelAllKnown — ../src/model.lawspec:597</summary>
+  public static bool LawtwinKafkaModelAllKnown(FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAllKnown(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelAppendBatch — ../src/model.lawspec:337</summary>
+  public static LawSpec.Data.PartitionLog LawtwinKafkaModelAppendBatch(FSharpList<LawSpec.Data.Record> rs, long writer, bool transactional, LawSpec.Data.PartitionLog l)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAppendBatch(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(rs), Codecs.Int64.FromNative.Invoke(writer), Codecs.Bool.FromNative.Invoke(transactional), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
+  }
+
+  /// <summary>lawtwinKafkaModelAppendRecords — ../src/model.lawspec:326</summary>
+  public static LawSpec.Data.Pair<long, FSharpList<LawSpec.Data.LogEntry>> LawtwinKafkaModelAppendRecords(FSharpList<LawSpec.Data.Record> rs, long offset, long writer, bool transactional, FSharpList<LawSpec.Data.LogEntry> es)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Int64, Codecs.List(LawSpec.Data.Codecs.LogEntry())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAppendRecords(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(rs), Codecs.Int64.FromNative.Invoke(offset), Codecs.Int64.FromNative.Invoke(writer), Codecs.Bool.FromNative.Invoke(transactional), Codecs.List(LawSpec.Data.Codecs.LogEntry()).FromNative.Invoke(es)));
+  }
+
+  /// <summary>lawtwinKafkaModelApplyOffsets — ../src/model.lawspec:686</summary>
+  public static LawSpec.Data.BrokerState LawtwinKafkaModelApplyOffsets(FSharpList<LawSpec.Data.PendingOffset> os, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelApplyOffsets(schema, symbols, Codecs.List(LawSpec.Data.Codecs.PendingOffset()).FromNative.Invoke(os), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelAssignPartitions — ../src/model.lawspec:768</summary>
+  public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelAssignPartitions(string topic, FSharpList<int> ps, FSharpList<string> owners, FSharpList<string> waiting, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> a)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAssignPartitions(schema, symbols, Codecs.Text.FromNative.Invoke(topic), Codecs.List(Codecs.Int32).FromNative.Invoke(ps), Codecs.List(Codecs.Text).FromNative.Invoke(owners), Codecs.List(Codecs.Text).FromNative.Invoke(waiting), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(a)));
+  }
+
+  /// <summary>lawtwinKafkaModelAssignTo — ../src/model.lawspec:756</summary>
+  public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelAssignTo(string member, LawSpec.Data.TopicPartition tp, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> a)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAssignTo(schema, symbols, Codecs.Text.FromNative.Invoke(member), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(a)));
+  }
+
+  /// <summary>lawtwinKafkaModelAssignTopics — ../src/model.lawspec:799</summary>
+  public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelAssignTopics(FSharpList<string> topics, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> subs, LawSpec.Data.BrokerState b, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> a)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelAssignTopics(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(topics), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(subs), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(a)));
+  }
+
+  /// <summary>lawtwinKafkaModelCheckMember — ../src/model.lawspec:882</summary>
+  public static FSharpResult<LawSpec.Data.Group, LawSpec.Data.KafkaError> LawtwinKafkaModelCheckMember(string g, string member, int generation, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Group().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCheckMember(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.Int32.FromNative.Invoke(generation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelCheckTxnProducer — ../src/model.lawspec:581</summary>
+  public static FSharpResult<LawSpec.Data.ProducerEntry, LawSpec.Data.KafkaError> LawtwinKafkaModelCheckTxnProducer(string txid, long pid, short epoch, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.ProducerEntry().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCheckTxnProducer(schema, symbols, Codecs.Text.FromNative.Invoke(txid), Codecs.Int64.FromNative.Invoke(pid), Codecs.Int16.FromNative.Invoke(epoch), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelCommitAll — ../src/model.lawspec:935</summary>
+  public static LawSpec.Data.BrokerState LawtwinKafkaModelCommitAll(string g, FSharpList<LawSpec.Data.OffsetEntry> offsets, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCommitAll(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelComputeAssignment — ../src/model.lawspec:824</summary>
+  public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelComputeAssignment(FSharpMap<string, FSharpList<string>> subscriptions, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelComputeAssignment(schema, symbols, Codecs.KeyVal(Codecs.Text, Codecs.List(Codecs.Text)).FromNative.Invoke(subscriptions), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelCreatePartitions — ../src/model.lawspec:291</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelCreatePartitions(string name, int total, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCreatePartitions(schema, symbols, Codecs.Text.FromNative.Invoke(name), Codecs.Int32.FromNative.Invoke(total), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelCreateTopic — ../src/model.lawspec:280</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelCreateTopic(string name, int n, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelCreateTopic(schema, symbols, Codecs.Text.FromNative.Invoke(name), Codecs.Int32.FromNative.Invoke(n), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelDescribeGroup — ../src/model.lawspec:928</summary>
+  public static LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> LawtwinKafkaModelDescribeGroup(string g, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.GroupView(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelDescribeGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelEmptyAssignments — ../src/model.lawspec:815</summary>
+  public static FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> LawtwinKafkaModelEmptyAssignments(FSharpList<string> members, FSharpMap<string, FSharpList<LawSpec.Data.TopicPartition>> a)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEmptyAssignments(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(members), Codecs.KeyVal(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition())).FromNative.Invoke(a)));
+  }
+
+  /// <summary>lawtwinKafkaModelEmptyBroker — ../src/model.lawspec:203</summary>
+  public static LawSpec.Data.BrokerState LawtwinKafkaModelEmptyBroker()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEmptyBroker(schema, symbols, V.Unit));
+  }
+
+  /// <summary>lawtwinKafkaModelEmptyGroup — ../src/model.lawspec:216</summary>
+  public static LawSpec.Data.Group LawtwinKafkaModelEmptyGroup()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Group().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEmptyGroup(schema, symbols, V.Unit));
+  }
+
+  /// <summary>lawtwinKafkaModelEmptyLog — ../src/model.lawspec:210</summary>
+  public static LawSpec.Data.PartitionLog LawtwinKafkaModelEmptyLog()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEmptyLog(schema, symbols, V.Unit));
+  }
+
+  /// <summary>lawtwinKafkaModelEndTxn — ../src/model.lawspec:718</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelEndTxn(string txid, long pid, short epoch, bool commit, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelEndTxn(schema, symbols, Codecs.Text.FromNative.Invoke(txid), Codecs.Int64.FromNative.Invoke(pid), Codecs.Int16.FromNative.Invoke(epoch), Codecs.Bool.FromNative.Invoke(commit), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelExpectedSequence — ../src/model.lawspec:372</summary>
+  public static int LawtwinKafkaModelExpectedSequence(short epoch, FSharpList<LawSpec.Data.BatchMeta> ms)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelExpectedSequence(schema, symbols, Codecs.Int16.FromNative.Invoke(epoch), Codecs.List(LawSpec.Data.Codecs.BatchMeta()).FromNative.Invoke(ms)));
+  }
+
+  /// <summary>lawtwinKafkaModelFetch — ../src/model.lawspec:495</summary>
+  public static FSharpResult<LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelFetch(LawSpec.Data.TopicPartition tp, long from, int maxRecords, LawSpec.Data.IsolationLevel isolation, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.FetchResult(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelFetch(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(from), Codecs.Int32.FromNative.Invoke(maxRecords), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(isolation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelFindDuplicate — ../src/model.lawspec:360</summary>
+  public static FSharpOption<long> LawtwinKafkaModelFindDuplicate(short epoch, int first, int last, FSharpList<LawSpec.Data.BatchMeta> ms)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelFindDuplicate(schema, symbols, Codecs.Int16.FromNative.Invoke(epoch), Codecs.Int32.FromNative.Invoke(first), Codecs.Int32.FromNative.Invoke(last), Codecs.List(LawSpec.Data.Codecs.BatchMeta()).FromNative.Invoke(ms)));
+  }
+
+  /// <summary>lawtwinKafkaModelFinishTxn — ../src/model.lawspec:699</summary>
+  public static LawSpec.Data.BrokerState LawtwinKafkaModelFinishTxn(long pid, bool commit, LawSpec.Data.TxnState txn, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelFinishTxn(schema, symbols, Codecs.Int64.FromNative.Invoke(pid), Codecs.Bool.FromNative.Invoke(commit), LawSpec.Data.Codecs.TxnState().FromNative.Invoke(txn), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelGroupOf — ../src/model.lawspec:733</summary>
+  public static LawSpec.Data.Group LawtwinKafkaModelGroupOf(string g, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Group().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelGroupOf(schema, symbols, Codecs.Text.FromNative.Invoke(g), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelHeartbeat — ../src/model.lawspec:903</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelHeartbeat(string g, string member, int generation, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelHeartbeat(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.Int32.FromNative.Invoke(generation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelHighWatermark — ../src/model.lawspec:322</summary>
+  public static long LawtwinKafkaModelHighWatermark(LawSpec.Data.PartitionLog l)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelHighWatermark(schema, symbols, LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
+  }
+
+  /// <summary>lawtwinKafkaModelInitProducerId — ../src/model.lawspec:554</summary>
+  public static FSharpResult<LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelInitProducerId(FSharpOption<string> txid, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.ProducerIdAndEpoch(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelInitProducerId(schema, symbols, Codecs.Maybe(Codecs.Text).FromNative.Invoke(txid), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelIsAborted — ../src/model.lawspec:437</summary>
+  public static bool LawtwinKafkaModelIsAborted(long writer, long offset, FSharpList<LawSpec.Data.AbortedTxn> aborted)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelIsAborted(schema, symbols, Codecs.Int64.FromNative.Invoke(writer), Codecs.Int64.FromNative.Invoke(offset), Codecs.List(LawSpec.Data.Codecs.AbortedTxn()).FromNative.Invoke(aborted)));
+  }
+
+  /// <summary>lawtwinKafkaModelJoinGroup — ../src/model.lawspec:861</summary>
+  public static FSharpResult<LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelJoinGroup(string g, string member, FSharpList<string> topics, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int32, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelJoinGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.List(Codecs.Text).FromNative.Invoke(topics), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelKnownPartition — ../src/model.lawspec:261</summary>
+  public static bool LawtwinKafkaModelKnownPartition(LawSpec.Data.TopicPartition tp, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelKnownPartition(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelLastOffsetOf — ../src/model.lawspec:475</summary>
+  public static long LawtwinKafkaModelLastOffsetOf(FSharpList<LawSpec.Data.FetchedRecord> rs, long fallbackOffset)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelLastOffsetOf(schema, symbols, Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(rs), Codecs.Int64.FromNative.Invoke(fallbackOffset)));
+  }
+
+  /// <summary>lawtwinKafkaModelLastStableOffset — ../src/model.lawspec:312</summary>
+  public static long LawtwinKafkaModelLastStableOffset(LawSpec.Data.PartitionLog l)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelLastStableOffset(schema, symbols, LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
+  }
+
+  /// <summary>lawtwinKafkaModelLeaveGroup — ../src/model.lawspec:908</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelLeaveGroup(string g, string member, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelLeaveGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelListOffsets — ../src/model.lawspec:517</summary>
+  public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelListOffsets(LawSpec.Data.TopicPartition tp, LawSpec.Data.OffsetSpec spec, LawSpec.Data.IsolationLevel isolation, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelListOffsets(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.OffsetSpec().FromNative.Invoke(spec), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(isolation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelLogOf — ../src/model.lawspec:268</summary>
+  public static LawSpec.Data.PartitionLog LawtwinKafkaModelLogOf(LawSpec.Data.TopicPartition tp, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelLogOf(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelMax64 — ../src/model.lawspec:227</summary>
+  public static long LawtwinKafkaModelMax64(long a, long b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMax64(schema, symbols, Codecs.Int64.FromNative.Invoke(a), Codecs.Int64.FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelMaxPartitions — ../src/model.lawspec:231</summary>
+  public static int LawtwinKafkaModelMaxPartitions()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMaxPartitions(schema, symbols, V.Unit));
+  }
+
+  /// <summary>lawtwinKafkaModelMemberViews — ../src/model.lawspec:919</summary>
+  public static FSharpList<LawSpec.Data.MemberAssignment> LawtwinKafkaModelMemberViews(FSharpList<LawSpec.Data.Entry<string, FSharpList<LawSpec.Data.TopicPartition>>> a)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.MemberAssignment()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMemberViews(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(LawSpec.Data.Codecs.TopicPartition()))).FromNative.Invoke(a)));
+  }
+
+  /// <summary>lawtwinKafkaModelMetadata — ../src/model.lawspec:303</summary>
+  public static LawSpec.Data.Pair<FSharpOption<int>, LawSpec.Data.BrokerState> LawtwinKafkaModelMetadata(string name, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int32), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMetadata(schema, symbols, Codecs.Text.FromNative.Invoke(name), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelMin64 — ../src/model.lawspec:225</summary>
+  public static long LawtwinKafkaModelMin64(long a, long b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMin64(schema, symbols, Codecs.Int64.FromNative.Invoke(a), Codecs.Int64.FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelMinOf — ../src/model.lawspec:315</summary>
+  public static long LawtwinKafkaModelMinOf(FSharpList<long> xs, long m)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelMinOf(schema, symbols, Codecs.List(Codecs.Int64).FromNative.Invoke(xs), Codecs.Int64.FromNative.Invoke(m)));
+  }
+
+  /// <summary>lawtwinKafkaModelNewProducer — ../src/model.lawspec:536</summary>
+  public static LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> LawtwinKafkaModelNewProducer(FSharpOption<string> txid, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.ProducerIdAndEpoch(), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelNewProducer(schema, symbols, Codecs.Maybe(Codecs.Text).FromNative.Invoke(txid), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelNextFetchOffset — ../src/model.lawspec:485</summary>
+  public static long LawtwinKafkaModelNextFetchOffset(long from, long limit, FSharpList<LawSpec.Data.FetchedRecord> taken, FSharpList<LawSpec.Data.FetchedRecord> all)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int64.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelNextFetchOffset(schema, symbols, Codecs.Int64.FromNative.Invoke(from), Codecs.Int64.FromNative.Invoke(limit), Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(taken), Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(all)));
+  }
+
+  /// <summary>lawtwinKafkaModelOffsetCommit — ../src/model.lawspec:957</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelOffsetCommit(string g, string member, int generation, FSharpList<LawSpec.Data.OffsetEntry> offsets, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelOffsetCommit(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.Int32.FromNative.Invoke(generation), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelOffsetFetch — ../src/model.lawspec:972</summary>
+  public static LawSpec.Data.Pair<FSharpOption<long>, LawSpec.Data.BrokerState> LawtwinKafkaModelOffsetFetch(string g, LawSpec.Data.TopicPartition tp, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelOffsetFetch(schema, symbols, Codecs.Text.FromNative.Invoke(g), LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelOffsetPartitions — ../src/model.lawspec:946</summary>
+  public static FSharpList<LawSpec.Data.TopicPartition> LawtwinKafkaModelOffsetPartitions(FSharpList<LawSpec.Data.OffsetEntry> offsets)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelOffsetPartitions(schema, symbols, Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets)));
+  }
+
+  /// <summary>lawtwinKafkaModelPartitionCountOf — ../src/model.lawspec:257</summary>
+  public static FSharpOption<int> LawtwinKafkaModelPartitionCountOf(string topic, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPartitionCountOf(schema, symbols, Codecs.Text.FromNative.Invoke(topic), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelPartitionsBelow — ../src/model.lawspec:233</summary>
+  public static FSharpList<int> LawtwinKafkaModelPartitionsBelow(int n)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPartitionsBelow(schema, symbols, Codecs.Int32.FromNative.Invoke(n)));
+  }
+
+  /// <summary>lawtwinKafkaModelPendingFor — ../src/model.lawspec:634</summary>
+  public static FSharpList<LawSpec.Data.PendingOffset> LawtwinKafkaModelPendingFor(string group, FSharpList<LawSpec.Data.OffsetEntry> offsets, FSharpList<LawSpec.Data.PendingOffset> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.PendingOffset()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPendingFor(schema, symbols, Codecs.Text.FromNative.Invoke(group), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), Codecs.List(LawSpec.Data.Codecs.PendingOffset()).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>lawtwinKafkaModelProduce — ../src/model.lawspec:381</summary>
+  public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelProduce(LawSpec.Data.TopicPartition tp, FSharpOption<LawSpec.Data.ProducerTag> tag, FSharpList<LawSpec.Data.Record> rs, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelProduce(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Maybe(LawSpec.Data.Codecs.ProducerTag()).FromNative.Invoke(tag), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(rs), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelProduceTagged — ../src/model.lawspec:394</summary>
+  public static FSharpResult<LawSpec.Data.Pair<long, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelProduceTagged(LawSpec.Data.TopicPartition tp, LawSpec.Data.ProducerTag t, FSharpList<LawSpec.Data.Record> rs, LawSpec.Data.PartitionLog l, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelProduceTagged(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.ProducerTag().FromNative.Invoke(t), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(rs), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelPutGroup — ../src/model.lawspec:740</summary>
+  public static LawSpec.Data.BrokerState LawtwinKafkaModelPutGroup(string g, LawSpec.Data.Group group, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPutGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), LawSpec.Data.Codecs.Group().FromNative.Invoke(group), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelPutLog — ../src/model.lawspec:275</summary>
+  public static LawSpec.Data.BrokerState LawtwinKafkaModelPutLog(LawSpec.Data.TopicPartition tp, LawSpec.Data.PartitionLog l, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPutLog(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelPutProducer — ../src/model.lawspec:613</summary>
+  public static LawSpec.Data.BrokerState LawtwinKafkaModelPutProducer(long pid, LawSpec.Data.ProducerEntry entry, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelPutProducer(schema, symbols, Codecs.Int64.FromNative.Invoke(pid), LawSpec.Data.Codecs.ProducerEntry().FromNative.Invoke(entry), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelReadable — ../src/model.lawspec:450</summary>
+  public static FSharpList<LawSpec.Data.FetchedRecord> LawtwinKafkaModelReadable(FSharpList<LawSpec.Data.LogEntry> es, long from, long limit, bool committedOnly, FSharpList<LawSpec.Data.AbortedTxn> aborted, FSharpList<LawSpec.Data.FetchedRecord> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelReadable(schema, symbols, Codecs.List(LawSpec.Data.Codecs.LogEntry()).FromNative.Invoke(es), Codecs.Int64.FromNative.Invoke(from), Codecs.Int64.FromNative.Invoke(limit), Codecs.Bool.FromNative.Invoke(committedOnly), Codecs.List(LawSpec.Data.Codecs.AbortedTxn()).FromNative.Invoke(aborted), Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>lawtwinKafkaModelRebalance — ../src/model.lawspec:834</summary>
+  public static LawSpec.Data.Group LawtwinKafkaModelRebalance(LawSpec.Data.Group group, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Group().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelRebalance(schema, symbols, LawSpec.Data.Codecs.Group().FromNative.Invoke(group), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelRebalanceGroups — ../src/model.lawspec:843</summary>
+  public static FSharpMap<string, LawSpec.Data.Group> LawtwinKafkaModelRebalanceGroups(string topic, FSharpList<LawSpec.Data.Entry<string, LawSpec.Data.Group>> gs, LawSpec.Data.BrokerState b, FSharpMap<string, LawSpec.Data.Group> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelRebalanceGroups(schema, symbols, Codecs.Text.FromNative.Invoke(topic), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, LawSpec.Data.Codecs.Group())).FromNative.Invoke(gs), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b), Codecs.KeyVal(Codecs.Text, LawSpec.Data.Codecs.Group()).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>lawtwinKafkaModelRebalanceTopic — ../src/model.lawspec:855</summary>
+  public static LawSpec.Data.BrokerState LawtwinKafkaModelRebalanceTopic(string topic, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelRebalanceTopic(schema, symbols, Codecs.Text.FromNative.Invoke(topic), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>lawtwinKafkaModelRememberBatch — ../src/model.lawspec:351</summary>
+  public static LawSpec.Data.PartitionLog LawtwinKafkaModelRememberBatch(long writer, LawSpec.Data.BatchMeta meta, LawSpec.Data.PartitionLog l)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelRememberBatch(schema, symbols, Codecs.Int64.FromNative.Invoke(writer), LawSpec.Data.Codecs.BatchMeta().FromNative.Invoke(meta), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
+  }
+
+  /// <summary>lawtwinKafkaModelReversePending — ../src/model.lawspec:710</summary>
+  public static FSharpList<LawSpec.Data.PendingOffset> LawtwinKafkaModelReversePending(FSharpList<LawSpec.Data.PendingOffset> os, FSharpList<LawSpec.Data.PendingOffset> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.PendingOffset()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelReversePending(schema, symbols, Codecs.List(LawSpec.Data.Codecs.PendingOffset()).FromNative.Invoke(os), Codecs.List(LawSpec.Data.Codecs.PendingOffset()).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>lawtwinKafkaModelSubscribedTopics — ../src/model.lawspec:790</summary>
+  public static FSharpSet<string> LawtwinKafkaModelSubscribedTopics(FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> subs, FSharpSet<string> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Set(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelSubscribedTopics(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(subs), Codecs.Set(Codecs.Text).FromNative.Invoke(acc)));
+  }
+
+  /// <summary>lawtwinKafkaModelSubscribersOf — ../src/model.lawspec:746</summary>
+  public static FSharpList<string> LawtwinKafkaModelSubscribersOf(string topic, FSharpList<LawSpec.Data.Entry<string, FSharpList<string>>> subs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelSubscribersOf(schema, symbols, Codecs.Text.FromNative.Invoke(topic), Codecs.List(LawSpec.Data.Codecs.Entry(Codecs.Text, Codecs.List(Codecs.Text))).FromNative.Invoke(subs)));
+  }
+
+  /// <summary>lawtwinKafkaModelSubscribesTo — ../src/model.lawspec:839</summary>
+  public static bool LawtwinKafkaModelSubscribesTo(string topic, LawSpec.Data.Group group)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelSubscribesTo(schema, symbols, Codecs.Text.FromNative.Invoke(topic), LawSpec.Data.Codecs.Group().FromNative.Invoke(group)));
+  }
+
+  /// <summary>lawtwinKafkaModelSyncGroup — ../src/model.lawspec:893</summary>
+  public static FSharpResult<LawSpec.Data.Pair<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelSyncGroup(string g, string member, int generation, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.List(LawSpec.Data.Codecs.TopicPartition()), LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelSyncGroup(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(member), Codecs.Int32.FromNative.Invoke(generation), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelTxnHasPartition — ../src/model.lawspec:428</summary>
+  public static bool LawtwinKafkaModelTxnHasPartition(LawSpec.Data.TopicPartition tp, LawSpec.Data.TxnState txn)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelTxnHasPartition(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), LawSpec.Data.Codecs.TxnState().FromNative.Invoke(txn)));
+  }
+
+  /// <summary>lawtwinKafkaModelTxnOffsetCommit — ../src/model.lawspec:645</summary>
+  public static FSharpResult<LawSpec.Data.Pair<Unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> LawtwinKafkaModelTxnOffsetCommit(string txid, long pid, short epoch, string group, FSharpList<LawSpec.Data.OffsetEntry> offsets, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.NativeTry("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", LawSpec.Data.Codecs.KafkaError().ToNative, Fn.F0(() => LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelTxnOffsetCommit(schema, symbols, Codecs.Text.FromNative.Invoke(txid), Codecs.Int64.FromNative.Invoke(pid), Codecs.Int16.FromNative.Invoke(epoch), Codecs.Text.FromNative.Invoke(group), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)))));
+  }
+
+  /// <summary>lawtwinKafkaModelUnionPartitions — ../src/model.lawspec:604</summary>
+  public static FSharpList<LawSpec.Data.TopicPartition> LawtwinKafkaModelUnionPartitions(FSharpList<LawSpec.Data.TopicPartition> xs, FSharpList<LawSpec.Data.TopicPartition> ys)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelUnionPartitions(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(xs), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(ys)));
+  }
+
+  /// <summary>lawtwinKafkaModelValidTopicName — ../src/model.lawspec:251</summary>
+  public static bool LawtwinKafkaModelValidTopicName(string name)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelValidTopicName(schema, symbols, Codecs.Text.FromNative.Invoke(name)));
+  }
+
+  /// <summary>lawtwinKafkaModelWriteMarker — ../src/model.lawspec:662</summary>
+  public static LawSpec.Data.PartitionLog LawtwinKafkaModelWriteMarker(long pid, bool commit, LawSpec.Data.PartitionLog l)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.PartitionLog().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelWriteMarker(schema, symbols, Codecs.Int64.FromNative.Invoke(pid), Codecs.Bool.FromNative.Invoke(commit), LawSpec.Data.Codecs.PartitionLog().FromNative.Invoke(l)));
+  }
+
+  /// <summary>lawtwinKafkaModelWriteMarkers — ../src/model.lawspec:677</summary>
+  public static LawSpec.Data.BrokerState LawtwinKafkaModelWriteMarkers(long pid, bool commit, FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.BrokerState b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.LawtwinKafkaModelWriteMarkers(schema, symbols, Codecs.Int64.FromNative.Invoke(pid), Codecs.Bool.FromNative.Invoke(commit), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.BrokerState().FromNative.Invoke(b)));
+  }
+
+  /// <summary>memberIds — ../src/contract.lawspec:325</summary>
+  public static FSharpList<string> MemberIds(FSharpList<string> ms)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Text).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MemberIds(schema, symbols, Codecs.List(Codecs.Text).FromNative.Invoke(ms)));
+  }
+
+  /// <summary>missingFrom — ../src/contract.lawspec:884</summary>
+  public static FSharpList<LawSpec.Data.TopicPartition> MissingFrom(FSharpList<LawSpec.Data.TopicPartition> tps, FSharpList<LawSpec.Data.TopicPartition> have)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MissingFrom(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(have)));
+  }
+
+  /// <summary>mul32 — ../src/contract.lawspec:1103</summary>
+  public static uint Mul32(uint a, uint b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Mul32(schema, symbols, Codecs.UInt32.FromNative.Invoke(a), Codecs.UInt32.FromNative.Invoke(b)));
+  }
+
+  /// <summary>murmur2 — ../src/contract.lawspec:1061</summary>
+  public static uint Murmur2(byte[] key)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Murmur2(schema, symbols, Codecs.Bytes.FromNative.Invoke(key)));
+  }
+
+  /// <summary>murmurChunks — ../src/contract.lawspec:1071</summary>
+  public static uint MurmurChunks(FSharpList<byte> octets, uint h)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MurmurChunks(schema, symbols, Codecs.List(Codecs.UInt8).FromNative.Invoke(octets), Codecs.UInt32.FromNative.Invoke(h)));
+  }
+
+  /// <summary>murmurM — ../src/contract.lawspec:1069</summary>
+  public static uint MurmurM()
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MurmurM(schema, symbols, V.Unit));
+  }
+
+  /// <summary>murmurPartitionerChoosePartition — ../src/contract.lawspec:1050</summary>
+  public static int MurmurPartitionerChoosePartition(FSharpOption<byte[]> key, int n)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.MurmurPartitionerChoosePartition(schema, symbols, Codecs.Maybe(Codecs.Bytes).FromNative.Invoke(key), Codecs.Int32.FromNative.Invoke(n)));
+  }
+
+  /// <summary>ownedOf — ../src/contract.lawspec:451</summary>
+  public static FSharpList<int> OwnedOf(string t, FSharpList<LawSpec.Data.MemberAssignment> ms)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.OwnedOf(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.List(LawSpec.Data.Codecs.MemberAssignment()).FromNative.Invoke(ms)));
+  }
+
+  /// <summary>partitionOf — ../src/contract.lawspec:597</summary>
+  public static LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition> PartitionOf(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, string topic, LawSpec.Data.PartitionChoice choice, LawSpec.Data.Record r)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.PartitionOf(schema, symbols, Codecs.Text.FromNative.Invoke(topic), LawSpec.Data.Codecs.PartitionChoice().FromNative.Invoke(choice), LawSpec.Data.Codecs.Record().FromNative.Invoke(r)))));
+  }
+
+  /// <summary>partitionsOfTopic — ../src/contract.lawspec:458</summary>
+  public static FSharpList<int> PartitionsOfTopic(string t, FSharpList<LawSpec.Data.TopicPartition> tps)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int32).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.PartitionsOfTopic(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps)));
+  }
+
+  /// <summary>pollPartitions — ../src/contract.lawspec:767</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>>, LawSpec.Data.ConsumerState> PollPartitions(LawSpec.Abilities.LawtwinKafka.IBroker broker, FSharpList<LawSpec.Data.TopicPartition> tps, int n, LawSpec.Data.ConsumerState c, FSharpList<LawSpec.Data.ConsumerRecord> acc)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.List(LawSpec.Data.Codecs.ConsumerRecord())), LawSpec.Data.Codecs.ConsumerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.PollPartitions(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), Codecs.Int32.FromNative.Invoke(n), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c), Codecs.List(LawSpec.Data.Codecs.ConsumerRecord()).FromNative.Invoke(acc)))));
+  }
+
+  /// <summary>positionsToCommit — ../src/contract.lawspec:674</summary>
+  public static FSharpList<LawSpec.Data.OffsetEntry> PositionsToCommit(FSharpList<LawSpec.Data.TopicPartition> tps, FSharpMap<LawSpec.Data.TopicPartition, long> positions)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.PositionsToCommit(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int64).FromNative.Invoke(positions)));
+  }
+
+  /// <summary>producerFlush — ../src/contract.lawspec:656</summary>
+  public static LawSpec.Data.Pair<Unit, LawSpec.Data.ProducerState> ProducerFlush(LawSpec.Data.ProducerState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ProducerFlush(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)));
+  }
+
+  /// <summary>producerIdempotent — ../src/contract.lawspec:647</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.ProducerState> ProducerIdempotent(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ProducerState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ProducerIdempotent(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>producerRetry — ../src/contract.lawspec:633</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> ProducerRetry(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.ProducerState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ProducerRetry(schema, symbols, LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>producerSend — ../src/contract.lawspec:612</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> ProducerSend(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, LawSpec.Data.ProducerRecord pr, LawSpec.Data.ProducerState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.ProducerState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ProducerSend(schema, symbols, LawSpec.Data.Codecs.ProducerRecord().FromNative.Invoke(pr), LawSpec.Data.Codecs.ProducerState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>readFrom — ../src/contract.lawspec:363</summary>
+  public static FSharpList<LawSpec.Data.Record> ReadFrom(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, long offset, LawSpec.Data.IsolationLevel isolation)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ReadFrom(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset), LawSpec.Data.Codecs.IsolationLevel().FromNative.Invoke(isolation)))));
+  }
+
+  /// <summary>readInOrder — ../src/contract.lawspec:1261</summary>
+  public static bool ReadInOrder(LawSpec.Abilities.LawtwinKafka.IConsumer consumer, LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> a, LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> b, LawSpec.Data.Record first, LawSpec.Data.Record second)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Consumer", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaConsumerFromNative(s, symbols, consumer)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ReadInOrder(schema, symbols, Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(a), Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(b), LawSpec.Data.Codecs.Record().FromNative.Invoke(first), LawSpec.Data.Codecs.Record().FromNative.Invoke(second)))));
+  }
+
+  /// <summary>receivedOffsets — ../src/contract.lawspec:1393</summary>
+  public static FSharpList<long> ReceivedOffsets(FSharpList<LawSpec.Data.ConsumerRecord> rs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ReceivedOffsets(schema, symbols, Codecs.List(LawSpec.Data.Codecs.ConsumerRecord()).FromNative.Invoke(rs)));
+  }
+
+  /// <summary>receivedRecords — ../src/contract.lawspec:1400</summary>
+  public static FSharpList<LawSpec.Data.Record> ReceivedRecords(FSharpList<LawSpec.Data.ConsumerRecord> rs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ReceivedRecords(schema, symbols, Codecs.List(LawSpec.Data.Codecs.ConsumerRecord()).FromNative.Invoke(rs)));
+  }
+
+  /// <summary>recordsOf — ../src/contract.lawspec:354</summary>
+  public static FSharpList<LawSpec.Data.Record> RecordsOf(FSharpList<LawSpec.Data.FetchedRecord> rs)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.RecordsOf(schema, symbols, Codecs.List(LawSpec.Data.Codecs.FetchedRecord()).FromNative.Invoke(rs)));
+  }
+
+  /// <summary>resumesAtCommitted — ../src/contract.lawspec:1427</summary>
+  public static bool ResumesAtCommitted(LawSpec.Abilities.LawtwinKafka.IConsumer consumer, string t, string g, string m, int n)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Consumer", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaConsumerFromNative(s, symbols, consumer)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ResumesAtCommitted(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Text.FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(m), Codecs.Int32.FromNative.Invoke(n)))));
+  }
+
+  /// <summary>samePartition — ../src/contract.lawspec:1235</summary>
+  public static bool SamePartition(LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> a, LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.SamePartition(schema, symbols, Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(a), Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()).FromNative.Invoke(b)));
+  }
+
+  /// <summary>sequenceFor — ../src/contract.lawspec:579</summary>
+  public static int SequenceFor(LawSpec.Data.TopicPartition tp, FSharpMap<LawSpec.Data.TopicPartition, int> sequences)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Int32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.SequenceFor(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.KeyVal(LawSpec.Data.Codecs.TopicPartition(), Codecs.Int32).FromNative.Invoke(sequences)));
+  }
+
+  /// <summary>smallBatch — ../src/contract.lawspec:320</summary>
+  public static bool SmallBatch(FSharpList<LawSpec.Data.Record> batch)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.SmallBatch(schema, symbols, Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(batch)));
+  }
+
+  /// <summary>stableBelowHigh — ../src/contract.lawspec:475</summary>
+  public static bool StableBelowHigh(LawSpec.Abilities.LawtwinKafka.IBroker broker, string t, string txid, FSharpList<LawSpec.Data.Record> batch)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.StableBelowHigh(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Text.FromNative.Invoke(txid), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(batch)))));
+  }
+
+  /// <summary>tagFor — ../src/contract.lawspec:587</summary>
+  public static FSharpOption<LawSpec.Data.ProducerTag> TagFor(FSharpOption<LawSpec.Data.ProducerIdAndEpoch> identity, int sequence)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.Maybe(LawSpec.Data.Codecs.ProducerTag()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TagFor(schema, symbols, Codecs.Maybe(LawSpec.Data.Codecs.ProducerIdAndEpoch()).FromNative.Invoke(identity), Codecs.Int32.FromNative.Invoke(sequence)));
+  }
+
+  /// <summary>tagOf — ../src/contract.lawspec:341</summary>
+  public static LawSpec.Data.ProducerTag TagOf(LawSpec.Data.ProducerIdAndEpoch pe, int sequence)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.ProducerTag().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TagOf(schema, symbols, LawSpec.Data.Codecs.ProducerIdAndEpoch().FromNative.Invoke(pe), Codecs.Int32.FromNative.Invoke(sequence)));
+  }
+
+  /// <summary>toPositive — ../src/contract.lawspec:1100</summary>
+  public static uint ToPositive(uint h)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ToPositive(schema, symbols, Codecs.UInt32.FromNative.Invoke(h)));
+  }
+
+  /// <summary>transactionThenRead — ../src/contract.lawspec:384</summary>
+  public static bool TransactionThenRead(LawSpec.Abilities.LawtwinKafka.IBroker broker, string t, string txid, FSharpList<LawSpec.Data.Record> batch, bool commit)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionThenRead(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Text.FromNative.Invoke(txid), Codecs.List(LawSpec.Data.Codecs.Record()).FromNative.Invoke(batch), Codecs.Bool.FromNative.Invoke(commit)))));
+  }
+
+  /// <summary>transactionalOffsets — ../src/contract.lawspec:414</summary>
+  public static bool TransactionalOffsets(LawSpec.Abilities.LawtwinKafka.IBroker broker, string t, string txid, string g, long offset)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Bool.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionalOffsets(schema, symbols, Codecs.Text.FromNative.Invoke(t), Codecs.Text.FromNative.Invoke(txid), Codecs.Text.FromNative.Invoke(g), Codecs.Int64.FromNative.Invoke(offset)))));
+  }
+
+  /// <summary>transactionsAbort — ../src/contract.lawspec:954</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsAbort(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsAbort(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>transactionsAdd — ../src/contract.lawspec:867</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsAdd(LawSpec.Abilities.LawtwinKafka.IBroker broker, FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.TransactionState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsAdd(schema, symbols, Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>transactionsBegin — ../src/contract.lawspec:855</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsBegin(LawSpec.Data.TransactionState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsBegin(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)));
+  }
+
+  /// <summary>transactionsCommit — ../src/contract.lawspec:952</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsCommit(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TransactionState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsCommit(schema, symbols, LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>transactionsEnd — ../src/contract.lawspec:934</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsEnd(LawSpec.Abilities.LawtwinKafka.IBroker broker, bool commit, LawSpec.Data.TransactionState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsEnd(schema, symbols, Codecs.Bool.FromNative.Invoke(commit), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>transactionsInit — ../src/contract.lawspec:845</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> TransactionsInit(LawSpec.Abilities.LawtwinKafka.IBroker broker, string txid, LawSpec.Data.TransactionState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.ProducerIdAndEpoch()), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsInit(schema, symbols, Codecs.Text.FromNative.Invoke(txid), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>transactionsOffsets — ../src/contract.lawspec:917</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, Unit>, LawSpec.Data.TransactionState> TransactionsOffsets(LawSpec.Abilities.LawtwinKafka.IBroker broker, string g, FSharpList<LawSpec.Data.OffsetEntry> offsets, LawSpec.Data.TransactionState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsOffsets(schema, symbols, Codecs.Text.FromNative.Invoke(g), Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).FromNative.Invoke(offsets), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>transactionsSend — ../src/contract.lawspec:893</summary>
+  public static LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> TransactionsSend(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Abilities.LawtwinKafka.IPartitioner partitioner, LawSpec.Data.ProducerRecord pr, LawSpec.Data.TransactionState st)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker))), Fn.Tuple("lawtwin.kafka::ability::Partitioner", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaPartitionerFromNative(s, symbols, partitioner)))), Fn.F1((Schema.Schema schema) => LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), LawSpec.Data.Codecs.RecordMetadata()), LawSpec.Data.Codecs.TransactionState()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.TransactionsSend(schema, symbols, LawSpec.Data.Codecs.ProducerRecord().FromNative.Invoke(pr), LawSpec.Data.Codecs.TransactionState().FromNative.Invoke(st)))));
+  }
+
+  /// <summary>uncommittedFrom — ../src/contract.lawspec:372</summary>
+  public static FSharpList<LawSpec.Data.Record> UncommittedFrom(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, long offset)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.UncommittedFrom(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset)))));
+  }
+
+  /// <summary>viewOf — ../src/contract.lawspec:1615</summary>
+  public static FSharpList<LawSpec.Data.TopicPartition> ViewOf(string m, LawSpec.Data.GroupView view)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.ViewOf(schema, symbols, Codecs.Text.FromNative.Invoke(m), LawSpec.Data.Codecs.GroupView().FromNative.Invoke(view)));
+  }
+
+  /// <summary>withAssignment — ../src/contract.lawspec:701</summary>
+  public static LawSpec.Data.ConsumerState WithAssignment(FSharpOption<string> g, string m, int gen, FSharpList<string> topics, FSharpList<LawSpec.Data.TopicPartition> tps, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.WithAssignment(schema, symbols, Codecs.Maybe(Codecs.Text).FromNative.Invoke(g), Codecs.Text.FromNative.Invoke(m), Codecs.Int32.FromNative.Invoke(gen), Codecs.List(Codecs.Text).FromNative.Invoke(topics), Codecs.List(LawSpec.Data.Codecs.TopicPartition()).FromNative.Invoke(tps), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
+  }
+
+  /// <summary>withPosition — ../src/contract.lawspec:709</summary>
+  public static LawSpec.Data.ConsumerState WithPosition(LawSpec.Data.TopicPartition tp, long offset, LawSpec.Data.ConsumerState c)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(LawSpec.Generated.LawtwinKafka.WithPosition(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Int64.FromNative.Invoke(offset), LawSpec.Data.Codecs.ConsumerState().FromNative.Invoke(c)));
+  }
+
+  /// <summary>writeAborted — ../src/contract.lawspec:1452</summary>
+  public static FSharpOption<long> WriteAborted(LawSpec.Abilities.LawtwinKafka.IBroker broker, LawSpec.Data.TopicPartition tp, string txid, LawSpec.Data.Record r)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Effects.WithScope(schema, Fn.List(Fn.Tuple("lawtwin.kafka::ability::Broker", Fn.F1((Schema.Schema s) => LawSpec.Generated.Abilities.LawtwinKafkaBrokerFromNative(s, symbols, broker)))), Fn.F1((Schema.Schema schema) => Codecs.Maybe(Codecs.Int64).ToNative.Invoke(LawSpec.Generated.LawtwinKafka.WriteAborted(schema, symbols, LawSpec.Data.Codecs.TopicPartition().FromNative.Invoke(tp), Codecs.Text.FromNative.Invoke(txid), LawSpec.Data.Codecs.Record().FromNative.Invoke(r)))));
+  }
+
+  /// <summary>xor32 — ../src/contract.lawspec:1106</summary>
+  public static uint Xor32(uint a, uint b)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.UInt32.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.Xor32(schema, symbols, Codecs.UInt32.FromNative.Invoke(a), Codecs.UInt32.FromNative.Invoke(b)));
+  }
+
+  /// <summary>xorBits — ../src/contract.lawspec:1110</summary>
+  public static System.Numerics.BigInteger XorBits(System.Numerics.BigInteger a, System.Numerics.BigInteger b, System.Numerics.BigInteger bit)
+  {
+    var schema = LawSpec.Generated.Program.Schema;
+    var symbols = new Scalar.SymbolContext();
+    return Codecs.BigInteger.ToNative.Invoke(LawSpec.Generated.LawtwinKafka.XorBits(schema, symbols, Codecs.BigInteger.FromNative.Invoke(a), Codecs.BigInteger.FromNative.Invoke(b), Codecs.BigInteger.FromNative.Invoke(bit)));
+  }
 }
