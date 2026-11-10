@@ -8,6 +8,15 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- Contracts and maintained native consumers require LawSpec 0.32.0. The
+  regenerated test projects carry the compiler's current Allman layout, and Go
+  ability interfaces appear only in the packages that own them. Generation now
+  needs each target's toolchain: run `make python-env` first and put Gradle 9.3
+  on the path or in `GRADLE_HOME`. The retained 0.3.0 conformance receipts are
+  unchanged and were recorded with LawSpec 0.31.0 consumers.
+
 ## [0.3.0] - 2026-10-26
 
 ### Added
