@@ -169,6 +169,20 @@ let private baseConstructors cs =
 
 let private below (n: BigInteger) state = Random.below n state
 
+/// One of a oneof descriptor's choices: an integer, or a text's code points
+/// (codes c ...).
+let private choice (option: Descriptor) =
+    match option with
+    | Number n -> Int n
+    | Forms(Atom "codes" :: codes) ->
+        codes
+        |> List.map (function
+            | Number c -> int c
+            | _ -> fail "InvalidOneofDescriptor")
+        |> Scalar.textOfPoints
+        |> Text
+    | _ -> fail "InvalidOneofDescriptor"
+
 let private drawN count draw state =
     let mutable s = state
 
@@ -258,6 +272,9 @@ let rec generate
 
         let v, s2 = generate inner table s1 size
         Data(tag, [ v ]), s2
+    | Forms(Atom "oneof" :: _ :: options) ->
+        let i, s1 = below (BigInteger(List.length options)) state
+        choice (List.item (int i) options), s1
     | Forms(Atom "data" :: _ :: cs) ->
         let choices = if size = 0 then baseConstructors cs else cs
         let i, s1 = below (BigInteger(List.length choices)) state
@@ -284,6 +301,7 @@ let rec minimal (d: Descriptor) (table: Map<string, Descriptor>) : Value =
     | Forms [ Atom "list"; _ ] -> List []
     | Forms [ Atom "maybe"; _ ] -> Data("Maybe::Absent", [])
     | Forms [ Atom "either"; left; _ ] -> Data("Either::Left", [ minimal left table ])
+    | Forms(Atom "oneof" :: _ :: first :: _) -> choice first
     | Forms(Atom "data" :: _ :: cs) ->
         match baseConstructors cs with
         | Forms(Atom "ctor" :: tag :: fields) :: _ -> Data(unquote tag, fields |> List.map (fun f -> minimal f table))
@@ -368,7 +386,96 @@ and private shrinkResolved d value table =
                 for c in shrink fd (List.item i fields) table -> Data(tag, List.updateAt i c fields)
         ]
     | Forms [ Atom "unit" ], Unit -> []
+    | Forms(Atom "oneof" :: _ :: options), v ->
+        // The choices before this one, first first.
+        options
+        |> List.map choice
+        |> List.takeWhile (fun c -> Scalar.compareValues c v <> 0)
     | _ -> fail "InvalidShrinkValue"
+
+/// Every tuple of one value from each domain, the last varying fastest; None
+/// past the limit.
+[<CompiledName("Product")>]
+let product (domains: 'a list list) (limit: int) : 'a list list option =
+    let extend tuples domain =
+        tuples
+        |> Option.bind (fun prefixes ->
+            let next =
+                [
+                    for prefix in prefixes do
+                        for v in domain -> prefix @ [ v ]
+                ]
+
+            if List.length next > limit then None else Some next)
+
+    List.fold extend (Some [ [] ]) domains
+
+let rec private finiteWithin
+    (d: Descriptor)
+    (table: Map<string, Descriptor>)
+    (limit: int)
+    (expanding: Set<string>)
+    : Value list option =
+    let values =
+        match d with
+        | Forms [ Atom "ref"; name ] ->
+            let key = unquote name
+
+            if expanding.Contains key then
+                None
+            else
+                finiteWithin table.[key] table limit (expanding.Add key)
+        | Forms [ Atom "int"; _; Number lo; Number hi ] ->
+            if hi - lo >= BigInteger limit then
+                None
+            else
+                Some [ for n in lo..hi -> Int n ]
+        | Forms [ Atom "bool" ] -> Some [ Bool false; Bool true ]
+        | Forms [ Atom "unit" ] -> Some [ Unit ]
+        | Forms(Atom "oneof" :: _ :: options) -> Some(List.map choice options)
+        | Forms [ Atom "maybe"; item ] ->
+            finiteWithin item table limit expanding
+            |> Option.map (fun inner ->
+                Data("Maybe::Absent", []) :: [ for v in inner -> Data("Maybe::Present", [ v ]) ])
+        | Forms [ Atom "either"; left; right ] ->
+            (match finiteWithin left table limit expanding, finiteWithin right table limit expanding with
+             | Some ls, Some rs ->
+                 Some(
+                     [ for v in ls -> Data("Either::Left", [ v ]) ]
+                     @ [ for v in rs -> Data("Either::Right", [ v ]) ]
+                 )
+             | _ -> None)
+        | Forms(Atom "data" :: _ :: cs) ->
+            let ofConstructor c =
+                match c with
+                | Forms(Atom "ctor" :: tag :: fields) ->
+                    let domains =
+                        fields |> List.map (fun field -> finiteWithin field table limit expanding)
+
+                    if List.forall Option.isSome domains then
+                        product (List.choose id domains) limit
+                        |> Option.map (List.map (fun t -> Data(unquote tag, t)))
+                    else
+                        None
+                | _ -> fail "InvalidConstructorDescriptor"
+
+            let all = List.map ofConstructor cs
+
+            if List.forall Option.isSome all then
+                Some(List.concat (List.choose id all))
+            else
+                None
+        | _ -> None
+
+    values |> Option.filter (fun vs -> List.length vs <= limit)
+
+/// Every value of a descriptor, in a fixed order, when there are at most
+/// limit of them; None when there are more, or infinitely many. Integers
+/// ascend, false comes before true, and constructors come in their declared
+/// order with their fields' values varying last field fastest.
+[<CompiledName("Finite")>]
+let finite (d: Descriptor) (table: Map<string, Descriptor>) (limit: int) : Value list option =
+    finiteWithin d table limit Set.empty
 
 let private quote (s: string) =
     "\"" + s.Replace("\\", "\\\\").Replace("\"", "\\\"") + "\""

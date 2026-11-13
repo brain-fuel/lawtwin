@@ -833,3 +833,19 @@ func lsfTextOfInt(x lsfInt) string {
 func lsfJoin(separator string, parts *lsfList[string]) string {
 	return strings.Join(parts.slice(), separator)
 }
+
+func lsfSplit(separator, text string) *lsfList[string] {
+	return lsfListOf(lsTextSplit(separator, text))
+}
+
+func lsfTrim(text string) string {
+	return lsTextTrim(text)
+}
+
+func lsfWords(text string) *lsfList[string] {
+	return lsfListOf(lsTextWords(text))
+}
+
+func lsfLines(text string) *lsfList[string] {
+	return lsfListOf(lsTextLines(text))
+}

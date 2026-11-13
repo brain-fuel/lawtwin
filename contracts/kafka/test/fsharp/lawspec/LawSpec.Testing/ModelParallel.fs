@@ -64,26 +64,16 @@ let allowed (model: Model.Model) (((startArgs, _) as prefix, branches): Case) =
             allOrders (Array.zeroCreate bs.Length) (List.last ss))
 
 let private generateBranch (model: Model.Model) (context: Context) random size count state =
-    let rec go random remaining state steps =
-        if remaining = 0 || model.Commands.Length = 0 then
-            List.rev steps, random
+    let rec go random remaining state steps rejected =
+        if remaining = 0 then
+            List.rev steps, rejected, random
         else
-            let index, r1 = Random.below (BigInteger model.Commands.Length) random
-            let c = command model (int index)
-            let mutable r = r1
+            match nextStep model context random state model.StartIndices size false with
+            | NoneEnabled, drawn, r -> List.rev steps, rejected + drawn, r
+            | NoStep, drawn, r -> go r (remaining - 1) state steps (rejected + drawn)
+            | Taken(s, next), drawn, r -> go r (remaining - 1) next (s :: steps) (rejected + drawn)
 
-            let args =
-                c.Arguments
-                |> List.map (fun d ->
-                    let v, next = generate d model.Table r size
-                    r <- next
-                    v)
-
-            match step c context args state with
-            | None -> go r (remaining - 1) state steps
-            | Some(next, _) -> go r (remaining - 1) next ((int index, args) :: steps)
-
-    go random count state []
+    go random count state [] 0
 
 let rec private trim (model: Model.Model) ((prefix, branches): Case) : Case =
     if allowed model (prefix, branches) then
@@ -94,7 +84,8 @@ let rec private trim (model: Model.Model) ((prefix, branches): Case) : Case =
         trim model (prefix, List.updateAt i (List.take (length - 1) branches.[i]) branches)
 
 /// A case drawn from a random state: a prefix of up to three steps, then a
-/// branch for each thread of one to the branch length steps.
+/// branch for each thread of one to the branch length steps. Also how many
+/// of its drawn steps the reference rejected.
 [<CompiledName("Generate")>]
 let generateCase
     (model: Model.Model)
@@ -102,32 +93,36 @@ let generateCase
     (size: int)
     (threads: int)
     (branchLength: int)
-    : Case * Random.Seed =
+    : Case * int * Random.Seed =
     let length, r1 = Random.below (BigInteger 4) random
-    let ((startArgs, _) as prefix), r2 = generateRun model r1 (int length) size false
+
+    let ((startArgs, _) as prefix), prefixRejected, r2 =
+        generateRun model r1 (int length) size false
 
     match states model prefix with
-    | None -> (prefix, List.replicate threads []), r2
+    | None -> (prefix, List.replicate threads []), prefixRejected, r2
     | Some ss ->
-        let branches, r3 =
+        let branches, rejected, r3 =
             withCase model startArgs (fun context ->
                 let mutable r = r2
+                let mutable rejected = prefixRejected
 
                 let branches =
                     [
                         for _ in 1..threads ->
                             let n, next = Random.below (BigInteger branchLength) r
 
-                            let branch, after =
+                            let branch, drawn, after =
                                 generateBranch model context next size (int n + 1) (List.last ss)
 
                             r <- after
+                            rejected <- rejected + drawn
                             branch
                     ]
 
-                branches, r)
+                branches, rejected, r)
 
-        trim model (prefix, branches), r3
+        trim model (prefix, branches), rejected, r3
 
 let private perturb (random: Random.Seed) =
     let choice, next = Random.below (BigInteger 4) random
@@ -568,23 +563,36 @@ let checkWith (options: Options) (model: Model.Model) =
 
     let start = Model.seed options.Seed
 
-    let rec go n random =
+    let rec go n random steps rejectedTotal =
         if n < options.Cases then
-            let case, r1 =
+            let (((_, prefix), branches) as case), rejected, r1 =
                 generateCase model random (1 + n % 8) options.Threads options.BranchLength
+
+            let accepted = List.length prefix + List.sumBy List.length branches
+            let steps = steps + accepted
+            let rejectedTotal = rejectedTotal + rejected
+
+            if rejected > accepted then
+                reportModel model "parallel" (n + 1) steps rejectedTotal "incomplete"
+
+                Fail.raiseWith
+                    "IncompleteModelGeneration"
+                    (incompleteRun model (sprintf "parallel case %d of %d" (n + 1) options.Cases) accepted rejected)
 
             let shake, r2 = Random.next r1
 
             match repeats model case options.Repeats shake with
-            | Ok() -> go (n + 1) r2
+            | Ok() -> go (n + 1) r2 steps rejectedTotal
             | Error failure ->
+                reportModel model "parallel" (n + 1) steps rejectedTotal "failed"
+
                 let smaller, found =
                     shrinkCase model case failure (max 2 (options.Repeats / 2)) options.MaxShrinks shake
 
                 Fail.raiseWith
                     "ModelInconsistent"
                     (sprintf
-                        "model %s is not %s: seed %d (LAWSPEC_SEED=%d replays it), case %d, shake %d: %s; %s"
+                        "model %s is not %s: seed %d (LAWSPEC_SEED=%d replays it), case %d, shake %d: %s; %s%s"
                         model.Name
                         model.Consistency
                         (seedValue start)
@@ -592,9 +600,12 @@ let checkWith (options: Options) (model: Model.Model) =
                         n
                         shake
                         (describeCase model smaller)
-                        found)
+                        found
+                        (rejectedNote rejected))
+        else
+            reportModel model "parallel" options.Cases steps rejectedTotal "passed"
 
-    go 0 (Random.Seed(seedValue start ^^^ 0x5bd1e995UL))
+    go 0 (Random.Seed(seedValue start ^^^ 0x5bd1e995UL)) 0 0
 
 /// Check a shared model's concurrent histories.
 [<CompiledName("Check")>]

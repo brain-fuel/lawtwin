@@ -793,6 +793,49 @@ public final class LawSpecRuntime
     return bool(true);
   }
 
+  /** The list of the body's value for each element, in order. */
+  public static Value mapElements(String type, Value value, Function<Value, Value> body)
+  {
+    var values = listElements(value);
+    var results = new ArrayList<Value>(values.size());
+    for (int index = 0; index < values.size(); index++)
+    {
+      try
+      {
+        results.add(body.apply(values.get(index)));
+      }
+      catch (RuntimeException error)
+      {
+        throw new IllegalArgumentException("List element " + index + ": " + error.getMessage(),
+            error);
+      }
+    }
+    return list(type, results);
+  }
+
+  /** The elements the predicate accepts, in order. */
+  public static Value filterElements(Value value, Function<Value, Value> predicate)
+  {
+    var values = listElements(value);
+    var kept = new ArrayList<Value>();
+    for (int index = 0; index < values.size(); index++)
+    {
+      try
+      {
+        if (truth(predicate.apply(values.get(index))))
+        {
+          kept.add(values.get(index));
+        }
+      }
+      catch (RuntimeException error)
+      {
+        throw new IllegalArgumentException("List element " + index + ": " + error.getMessage(),
+            error);
+      }
+    }
+    return list(value.type, kept);
+  }
+
   public static Value searchElements(boolean universal, Value value,
       Function<Value, Value> predicate)
   {
@@ -1658,6 +1701,14 @@ public final class LawSpecRuntime
         }
         return textValue(String.join(codePointsText(args[0]), parts));
       }
+      case "split":
+        return textList(textSplit(codePointsText(args[0]), codePointsText(args[1])));
+      case "trim":
+        return textValue(textTrim(codePointsText(args[0])));
+      case "words":
+        return textList(textWords(codePointsText(args[0])));
+      case "lines":
+        return textList(textLines(codePointsText(args[0])));
       default:
         return null;
     }
@@ -3480,8 +3531,141 @@ public final class LawSpecRuntime
         case "list" -> "List " + typeName(d.get(1));
         case "maybe" -> "Maybe " + typeName(d.get(1));
         case "either" -> "Either (" + typeName(d.get(1)) + ") (" + typeName(d.get(2)) + ")";
+        case "oneof" -> typeName(d.get(1));
         default -> atomText(d.get(1));
       };
+    }
+
+    /** One of a oneof descriptor's choices: an integer, or a text's code points (codes c ...). */
+    private Value choice(Object base, Object option)
+    {
+      if (option instanceof BigInteger n)
+      {
+        return new Value(typeName(base), n);
+      }
+      var units = new ArrayList<Integer>();
+      for (var c : form(option).subList(1, form(option).size()))
+      {
+        units.add(((BigInteger) c).intValueExact());
+      }
+      return text(units);
+    }
+
+    /**
+     * Every value of a descriptor, in a fixed order, when there are at most limit of them; null
+     * when there are more, or infinitely many. Integers ascend, false comes before true, and
+     * constructors come in their declared order with their fields' values varying last field
+     * fastest.
+     */
+    public List<Value> finite(Object descriptor, int limit)
+    {
+      return finite(descriptor, limit, new java.util.HashSet<String>());
+    }
+
+    private List<Value> finite(Object descriptor, int limit, java.util.Set<String> open)
+    {
+      var f = form(descriptor);
+      if (atomText(f.get(0)).equals("ref"))
+      {
+        var name = atomText(f.get(1));
+        if (!open.add(name))
+        {
+          return null;
+        }
+        var out = finite(table.get(name), limit, open);
+        open.remove(name);
+        return out;
+      }
+      var d = f;
+      var type = typeName(d);
+      var out = new ArrayList<Value>();
+      switch (atomText(d.get(0)))
+      {
+        case "int" -> {
+          if (d.get(2) == null || d.get(3) == null)
+          {
+            return null;
+          }
+          var lo = (BigInteger) d.get(2);
+          var hi = (BigInteger) d.get(3);
+          if (hi.subtract(lo).compareTo(BigInteger.valueOf(limit)) >= 0)
+          {
+            return null;
+          }
+          for (var n = lo; n.compareTo(hi) <= 0; n = n.add(BigInteger.ONE))
+          {
+            out.add(new Value(type, n));
+          }
+        }
+        case "bool" -> {
+          out.add(bool(false));
+          out.add(bool(true));
+        }
+        case "unit" -> out.add(absent("Unit"));
+        case "oneof" -> {
+          for (var option : d.subList(2, d.size()))
+          {
+            out.add(choice(d.get(1), option));
+          }
+        }
+        case "maybe" -> {
+          var inner = finite(d.get(1), limit, open);
+          if (inner == null)
+          {
+            return null;
+          }
+          out.add(data(type, "Maybe::Absent", List.of()));
+          for (var v : inner)
+          {
+            out.add(data(type, "Maybe::Present", List.of(v)));
+          }
+        }
+        case "either" -> {
+          var left = finite(d.get(1), limit, open);
+          var right = finite(d.get(2), limit, open);
+          if (left == null || right == null)
+          {
+            return null;
+          }
+          for (var v : left)
+          {
+            out.add(data(type, "Either::Left", List.of(v)));
+          }
+          for (var v : right)
+          {
+            out.add(data(type, "Either::Right", List.of(v)));
+          }
+        }
+        case "data" -> {
+          for (var c : d.subList(2, d.size()))
+          {
+            var ctor = form(c);
+            var fields = new ArrayList<List<Value>>();
+            for (var field : ctor.subList(2, ctor.size()))
+            {
+              var values = finite(field, limit, open);
+              if (values == null)
+              {
+                return null;
+              }
+              fields.add(values);
+            }
+            var tuples = product(fields, limit);
+            if (tuples == null)
+            {
+              return null;
+            }
+            for (var t : tuples)
+            {
+              out.add(data(type, atomText(ctor.get(1)), t));
+            }
+          }
+        }
+        default -> {
+          return null;
+        }
+      }
+      return out.size() > limit ? null : out;
     }
 
     private static Value text(List<Integer> units)
@@ -3550,6 +3734,10 @@ public final class LawSpecRuntime
           }
           return data(type, "Either::Right", List.of(generate(d.get(2), random, size)));
         }
+        case "oneof" -> {
+          var options = d.subList(2, d.size());
+          return choice(d.get(1), options.get((int) random.below(options.size())));
+        }
         case "data" -> {
           var choices = size <= 0 ? base(d) : d.subList(2, d.size());
           var ctor = form(choices.get((int) random.below(choices.size())));
@@ -3592,6 +3780,9 @@ public final class LawSpecRuntime
         case "either" -> {
           return data(type, "Either::Left", List.of(minimal(d.get(1))));
         }
+        case "oneof" -> {
+          return choice(d.get(1), d.get(2));
+        }
         default -> {
           var ctor = form(base(d).get(0));
           var fields = new ArrayList<Value>();
@@ -3628,6 +3819,18 @@ public final class LawSpecRuntime
           if ((Boolean) v.data())
           {
             out.add(bool(false));
+          }
+        }
+        case "oneof" -> {
+          // The choices before this one, first first.
+          for (var option : d.subList(2, d.size()))
+          {
+            var c = choice(d.get(1), option);
+            if (compareValues(c, v) == 0)
+            {
+              break;
+            }
+            out.add(c);
           }
         }
         case "text" -> {
@@ -4893,6 +5096,9 @@ public final class LawSpecRuntime
     /** The injected crash of an actor model (a step with no arguments). */
     final boolean crash;
 
+    /** A step only a sequential run takes, such as time passing for an actor on virtual time. */
+    boolean sequential;
+
     ModelCallback run;
     final ModelCallback reference;
     final ModelCallback when;
@@ -5003,6 +5209,17 @@ public final class LawSpecRuntime
     public Model(String spec, ModelCallback[] start, ModelCallback[][] commands,
         ModelCallback abstractState, ModelCallback[] invariants)
     {
+      this(spec, start, commands, abstractState, invariants, null);
+    }
+
+    /**
+     * An actor model whose runs drive the given backend, such as a native actor, in place of
+     * LawSpec's own actor; null keeps LawSpec's actor. A backend that cannot read the actor's state
+     * admits no abstraction and no invariant on the state.
+     */
+    public Model(String spec, ModelCallback[] start, ModelCallback[][] commands,
+        ModelCallback abstractState, ModelCallback[] invariants, ActorBackend driver)
+    {
       var forms = readDescriptor(spec);
       var machine = form(forms.get(0));
       name = atomText(machine.get(1));
@@ -5091,13 +5308,20 @@ public final class LawSpecRuntime
           built.add(c);
         }
       }
+      ActorBackend backend = null;
+      if (driver != null && !actor)
+      {
+        throw new IllegalArgumentException("model " + name + " is not an actor's model");
+      }
       if (actor)
       {
         var run = start[0];
         var begin = start[1];
+        backend = driver != null ? driver : new LawSpecActorBackend(run, built, restart);
+        var driven = backend;
         startRun = (symbols, args) -> {
           symbols.put(START_ARGUMENTS, args);
-          return handle(ACTOR_HANDLE, new Actor<Value>(run.apply(symbols, args)));
+          return driven.spawn(symbols, args);
         };
         startModel = (symbols, args) -> {
           symbols.put(START_ARGUMENTS, args);
@@ -5105,10 +5329,11 @@ public final class LawSpecRuntime
         };
         for (var c : built)
         {
-          c.run = actorCommand(c.run, c.unit);
+          c.run = actorCommand(driven, c.name);
+          c.sequential = driven.sequentialOnly(c.name);
         }
         var steps = new ArrayList<ModelCommand>(built);
-        steps.add(crashStep(run, begin, restart));
+        steps.add(crashStep(driven, begin, restart));
         this.steps = steps;
       }
       else
@@ -5118,8 +5343,13 @@ public final class LawSpecRuntime
         this.steps = built;
       }
       this.commands = built;
+      if (driver != null && abstractState != null)
+      {
+        throw new IllegalArgumentException(
+            "model " + name + ": a native actor's state cannot be abstracted; it is private");
+      }
       this.abstractState =
-          actor && abstractState != null ? actorRead(abstractState) : abstractState;
+          actor && abstractState != null ? actorRead(backend, abstractState) : abstractState;
       var kinds = new ArrayList<String>();
       var checks = new ArrayList<ModelCallback>();
       var invariantList = invariants == null ? new ModelCallback[0] : invariants;
@@ -5128,7 +5358,12 @@ public final class LawSpecRuntime
       {
         kinds.add(atomText(invariantForm.get(k + 1)));
         boolean onState = !atomText(invariantForm.get(k + 1)).equals("model");
-        checks.add(actor && onState ? actorRead(invariantList[k]) : invariantList[k]);
+        if (driver != null && onState)
+        {
+          throw new IllegalArgumentException(
+              "model " + name + ": a native actor's state is private, so no invariant reads it");
+        }
+        checks.add(actor && onState ? actorRead(backend, invariantList[k]) : invariantList[k]);
       }
       invariantKinds = kinds;
       this.invariants = checks;
@@ -5136,6 +5371,52 @@ public final class LawSpecRuntime
       consistency = declaredConsistency;
     }
   }
+
+  /**
+   * What an actor model's runs drive: LawSpec's own actor, or an existing native actor (such as a
+   * Pekko behaviour) checked against the same model. The runner generates, shrinks and checks runs
+   * the same way whichever backend runs them. ref:DEC-native-actor-binding
+   */
+  public interface ActorBackend
+  {
+    /** Starts a fresh actor for one run, given the start's arguments, and returns its handle. */
+    Value spawn(Map<String, Object> symbols, List<Value> startArguments);
+
+    /**
+     * Sends the actor one handler's message with its arguments (after the state) and waits for the
+     * reply: the result, or Unit's value for a handler without one. A reply that never comes is an
+     * exception naming the handler and its arguments, never a pass.
+     */
+    Value call(Map<String, Object> symbols, Value actor, String handler, List<Value> arguments);
+
+    /**
+     * Crashes the actor between messages and returns once it has restarted, so the messages after
+     * it reach the restarted actor.
+     */
+    void crash(Map<String, Object> symbols, Value actor);
+
+    /**
+     * The actor's state between messages, for an abstraction or an invariant on the state; a
+     * native actor keeps its state private and throws.
+     */
+    Value state(Value actor);
+
+    /**
+     * Whether a handler runs only in a sequential run, where the model's result for the step is
+     * known before it runs (under EXPECTED_RESULT), as time passing on virtual time needs.
+     * ref:DEC-time-passes
+     */
+    default boolean sequentialOnly(String handler)
+    {
+      return false;
+    }
+  }
+
+  /**
+   * The symbol under which a sequential run gives a step's backend the model's result for it
+   * before the step runs: how long time passes, for an actor's time step.
+   */
+  public static final String EXPECTED_RESULT = "_lawspec_expected";
 
   private static final String ACTOR_HANDLE = "lawspec.actor";
 
@@ -5153,20 +5434,83 @@ public final class LawSpecRuntime
     return (List<Value>) symbols.getOrDefault(START_ARGUMENTS, List.of());
   }
 
-  /** An injected crash of an actor model, as a step with no arguments. */
-  private static ModelCommand crashStep(ModelCallback startRun, ModelCallback startModel,
-      ModelCommand restart)
+  /**
+   * LawSpec's own actor running the handler bridges (the state first, returning Pair reply state,
+   * or the state alone for a Unit reply). A crash restarts it from its last state (restart from) or
+   * its start.
+   */
+  private static final class LawSpecActorBackend implements ActorBackend
   {
-    ModelCallback run = (symbols, args) -> {
-      var actor = actorOf(args.get(0));
+    /** A handler's bridge, kept before the model's command runs through the backend. */
+    private record Handler(ModelCallback run, boolean unit)
+    {
+    }
+
+    private final ModelCallback start;
+    private final Map<String, Handler> handlers = new java.util.HashMap<>();
+    private final ModelCallback restart;
+
+    LawSpecActorBackend(ModelCallback start, List<ModelCommand> handlers, ModelCommand restart)
+    {
+      this.start = start;
+      for (var c : handlers)
+      {
+        this.handlers.put(c.name, new Handler(c.run, c.unit));
+      }
+      this.restart = restart == null ? null : restart.run;
+    }
+
+    @Override
+    public Value spawn(Map<String, Object> symbols, List<Value> startArguments)
+    {
+      return handle(ACTOR_HANDLE, new Actor<Value>(start.apply(symbols, startArguments)));
+    }
+
+    @Override
+    public Value call(Map<String, Object> symbols, Value actor, String handler,
+        List<Value> arguments)
+    {
+      var command = handlers.get(handler);
+      return actorOf(actor).call(state -> {
+        var full = new ArrayList<Value>();
+        full.add(state);
+        full.addAll(arguments);
+        var out = command.run.apply(symbols, full);
+        if (command.unit)
+        {
+          return new Next<>(absent("Unit"), out);
+        }
+        var pair = (Data) out.data();
+        return new Next<>(pair.fields().get(0), pair.fields().get(1));
+      });
+    }
+
+    @Override
+    public void crash(Map<String, Object> symbols, Value actor)
+    {
       if (restart != null)
       {
-        actor.restart(s -> restart.run.apply(symbols, List.of(s)));
+        actorOf(actor).restart(s -> restart.apply(symbols, List.of(s)));
       }
       else
       {
-        actor.restart(s -> startRun.apply(symbols, startArguments(symbols)));
+        actorOf(actor).restart(s -> start.apply(symbols, startArguments(symbols)));
       }
+    }
+
+    @Override
+    public Value state(Value actor)
+    {
+      return actorOf(actor).state();
+    }
+  }
+
+  /** An injected crash of an actor model, as a step with no arguments. */
+  private static ModelCommand crashStep(ActorBackend backend, ModelCallback startModel,
+      ModelCommand restart)
+  {
+    ModelCallback run = (symbols, args) -> {
+      backend.crash(symbols, args.get(0));
       return absent("Unit");
     };
     ModelCallback reference =
@@ -5175,31 +5519,19 @@ public final class LawSpecRuntime
     return new ModelCommand(run, reference);
   }
 
-  /**
-   * A handler bridge (the state first, returning Pair reply state, or the state alone for a Unit
-   * reply) as a command on an actor.
-   */
-  private static ModelCallback actorCommand(ModelCallback run, boolean unit)
+  /** A handler as a command on an actor: the handle first, then the message's arguments. */
+  private static ModelCallback actorCommand(ActorBackend backend, String handler)
   {
-    return (symbols, args) -> actorOf(args.get(0)).call(state -> {
-      var full = new ArrayList<Value>(args);
-      full.set(0, state);
-      var out = run.apply(symbols, full);
-      if (unit)
-      {
-        return new Next<>(absent("Unit"), out);
-      }
-      var pair = (Data) out.data();
-      return new Next<>(pair.fields().get(0), pair.fields().get(1));
-    });
+    return (symbols, args) -> backend.call(symbols, args.get(0), handler,
+        args.subList(1, args.size()));
   }
 
   /** A callback over the system state that reads an actor's state instead. */
-  private static ModelCallback actorRead(ModelCallback callback)
+  private static ModelCallback actorRead(ActorBackend backend, ModelCallback callback)
   {
     return (symbols, args) -> {
       var full = new ArrayList<Value>(args);
-      full.set(0, actorOf(args.get(0)).state());
+      full.set(0, backend.state(args.get(0)));
       return callback.apply(symbols, full);
     };
   }
@@ -5282,6 +5614,10 @@ public final class LawSpecRuntime
       var d = form(descriptor);
       if (atomText(d.get(0)).equals("int") && d.get(2) != null && d.get(3) != null
           && ((BigInteger) d.get(2)).compareTo((BigInteger) d.get(3)) > 0)
+      {
+        return true;
+      }
+      if (atomText(d.get(0)).equals("oneof") && d.size() == 2)
       {
         return true;
       }
@@ -5406,12 +5742,183 @@ public final class LawSpecRuntime
     return out;
   }
 
-  private static ModelRun generateRun(Model model, SplitMix64 random, long length, long size)
+  // Generation honours the reference. A step is drawn among the commands
+  // enabled at the model state: typestate admits them, their precondition
+  // holds, and some arguments are inside the reference's refinements. When a
+  // command's argument tuples are few (FINITE_STEPS), each is tried against
+  // the reference and one valid tuple is chosen, as QuickCheck state machines
+  // generate from a precondition. Otherwise arguments are drawn and checked
+  // again, up to STEP_ATTEMPTS times, and every draw the reference rejects is
+  // counted. A run where the reference rejected more draws than it accepted
+  // shows little, so its check is incomplete, never passed.
+  // ref:DEC-honest-model-steps
+
+  /** The most argument tuples of one step that are enumerated instead of drawn. */
+  private static final int FINITE_STEPS = 64;
+
+  /** How many times a step's arguments are drawn before the step is given up. */
+  private static final int STEP_ATTEMPTS = 8;
+
+  /** Every tuple of one value from each domain, the last varying fastest; null past limit. */
+  private static <T> List<List<T>> product(List<List<T>> domains, int limit)
+  {
+    List<List<T>> out = new ArrayList<>();
+    out.add(List.of());
+    for (var domain : domains)
+    {
+      List<List<T>> next = new ArrayList<>();
+      for (var prefix : out)
+      {
+        for (var v : domain)
+        {
+          var tuple = new ArrayList<T>(prefix);
+          tuple.add(v);
+          next.add(List.copyOf(tuple));
+        }
+        if (next.size() > limit)
+        {
+          return null;
+        }
+      }
+      out = next;
+    }
+    return out;
+  }
+
+  /** A command enabled at a state, with its valid argument tuples, or null to draw them. */
+  private record Enabled(int index, List<List<Value>> tuples)
+  {
+  }
+
+  /** A branch of a parallel case never takes a sequential-only step. */
+  private static List<Enabled> enabledSteps(Model model, Map<String, Object> symbols, Value state,
+      List<BigInteger> indices, boolean branch)
+  {
+    var out = new ArrayList<Enabled>();
+    for (int i = 0; i < model.commands.size(); i++)
+    {
+      var command = model.commands.get(i);
+      if ((branch && command.sequential) || !command.admits(indices))
+      {
+        continue;
+      }
+      var descriptors = modelArguments(command, indices);
+      if (emptyArguments(descriptors))
+      {
+        continue;
+      }
+      if (command.when != null)
+      {
+        boolean holds;
+        try
+        {
+          holds = truth(command.when.apply(symbols, List.of(state)));
+        }
+        catch (Exception e)
+        {
+          holds = false;
+        }
+        if (!holds)
+        {
+          continue;
+        }
+      }
+      var domains = new ArrayList<List<Value>>();
+      for (var d : descriptors)
+      {
+        var values = model.values.finite(d, FINITE_STEPS);
+        if (values == null)
+        {
+          domains = null;
+          break;
+        }
+        domains.add(values);
+      }
+      var tuples = domains == null ? null : product(domains, FINITE_STEPS);
+      if (tuples == null)
+      {
+        out.add(new Enabled(i, null));
+        continue;
+      }
+      var valid = new ArrayList<List<Value>>();
+      for (var t : tuples)
+      {
+        try
+        {
+          stepModel(command, symbols, t, state);
+          valid.add(t);
+        }
+        catch (InvalidStep e)
+        {
+          // Outside the reference: not a step here.
+        }
+      }
+      if (!valid.isEmpty())
+      {
+        out.add(new Enabled(i, valid));
+      }
+    }
+    return out;
+  }
+
+  /** A generated step and the model state after it; step is null when every draw was rejected. */
+  private record Taken(ModelStep step, Value state)
+  {
+  }
+
+  /** Null when no command is enabled; rejected counts the draws the reference rejects. */
+  private static Taken nextStep(Model model, Map<String, Object> symbols, SplitMix64 random,
+      Value state, List<BigInteger> indices, long size, boolean crashes, boolean branch,
+      int[] rejected)
+  {
+    var enabled = enabledSteps(model, symbols, state, indices, branch);
+    if (enabled.isEmpty())
+    {
+      return null;
+    }
+    var chosen = enabled.get((int) random.below(enabled.size()));
+    // One step in eight of an actor's run is a crash.
+    if (crashes && model.steps.size() > model.commands.size() && random.below(8) == 0)
+    {
+      var crash = model.steps.get(model.commands.size());
+      return new Taken(new ModelStep(model.commands.size(), List.of()),
+          stepModel(crash, symbols, List.of(), state).state());
+    }
+    var command = model.steps.get(chosen.index());
+    var tuples = chosen.tuples();
+    if (tuples != null)
+    {
+      var args = tuples.size() == 1 ? tuples.get(0) : tuples.get((int) random.below(tuples.size()));
+      return new Taken(new ModelStep(chosen.index(), args),
+          stepModel(command, symbols, args, state).state());
+    }
+    for (int attempt = 0; attempt < STEP_ATTEMPTS; attempt++)
+    {
+      var args = generateAll(model.values, modelArguments(command, indices), random, size);
+      try
+      {
+        return new Taken(new ModelStep(chosen.index(), args),
+            stepModel(command, symbols, args, state).state());
+      }
+      catch (InvalidStep e)
+      {
+        rejected[0]++;
+      }
+    }
+    return new Taken(null, state);
+  }
+
+  /** A generated run, and how many of its drawn steps the reference rejected. */
+  private record Generated(ModelRun run, int rejected)
+  {
+  }
+
+  private static Generated generateRun(Model model, SplitMix64 random, long length, long size)
   {
     return generateRun(model, random, length, size, false);
   }
 
-  private static ModelRun generateRun(Model model, SplitMix64 random, long length, long size,
+  private static Generated generateRun(Model model, SplitMix64 random, long length, long size,
       boolean crashes)
   {
     Map<String, Object> symbols = new java.util.HashMap<String, Object>();
@@ -5423,51 +5930,74 @@ public final class LawSpecRuntime
     }
     catch (Exception e)
     {
-      return new ModelRun(startArgs, List.of());
+      return new Generated(new ModelRun(startArgs, List.of()), 0);
     }
     var indices = model.startIndices;
     var steps = new ArrayList<ModelStep>();
+    var rejected = new int[] {0};
     for (long n = 0; n < length; n++)
     {
-      var allowed = new ArrayList<Integer>();
-      for (int i = 0; i < model.commands.size(); i++)
-      {
-        if (model.commands.get(i).admits(indices)
-            && !emptyArguments(modelArguments(model.commands.get(i), indices)))
-        {
-          allowed.add(i);
-        }
-      }
-      if (allowed.isEmpty())
+      var taken =
+          nextStep(model, symbols, random, state, indices, size, crashes, false, rejected);
+      if (taken == null)
       {
         break;
       }
-      int index = allowed.get((int) random.below(allowed.size()));
-      // One step in eight of an actor's run is a crash.
-      if (crashes && model.steps.size() > model.commands.size() && random.below(8) == 0)
+      if (taken.step() != null)
       {
-        index = model.commands.size();
+        steps.add(taken.step());
+        state = taken.state();
+        indices = model.steps.get(taken.step().index()).shifted(indices);
       }
-      var command = model.steps.get(index);
-      var args = generateAll(model.values, modelArguments(command, indices), random, size);
-      try
-      {
-        state = stepModel(command, symbols, args, state).state();
-      }
-      catch (InvalidStep e)
-      {
-        if (command.arguments.stream().anyMatch(d -> atomText(form(d).get(0)).equals("dependent"))
-            && (command.when == null || truth(command.when.apply(symbols, List.of(state)))))
-        {
-          throw new IllegalStateException("incomplete model generation: dependent arguments "
-              + "rejected by the reference (1 attempt)");
-        }
-        continue;
-      }
-      steps.add(new ModelStep(index, args));
-      indices = command.shifted(indices);
     }
-    return new ModelRun(startArgs, steps);
+    return new Generated(new ModelRun(startArgs, steps), rejected[0]);
+  }
+
+  /** Whether the reference rejected more of a run's drawn steps than it accepted. */
+  private static boolean mostlyRejected(int accepted, int rejected)
+  {
+    return rejected > accepted;
+  }
+
+  private static String incompleteRun(Model model, String run, int accepted, int rejected)
+  {
+    return "incomplete model generation: model " + model.name + "'s " + run + " drew " + rejected
+        + " steps its reference rejected and " + accepted
+        + " it accepted; fewer than half of its steps are valid, so it shows little of the system";
+  }
+
+  /** How a failing run's rejected draws read after its failure. */
+  private static String rejectedNote(int rejected)
+  {
+    return rejected == 0
+        ? ""
+        : " (the reference rejected " + rejected + " drawn steps of this run)";
+  }
+
+  /**
+   * One line of JSON per model check, appended to the file LAWSPEC_MODEL_REPORT names: how many
+   * runs and steps it checked, and how many drawn steps the reference rejected.
+   */
+  private static void reportModel(Model model, String check, int runs, int steps, int rejected,
+      String outcome)
+  {
+    String path = System.getenv("LAWSPEC_MODEL_REPORT");
+    if (path == null || path.isEmpty())
+    {
+      return;
+    }
+    String line = "{\"model\":\"" + model.name + "\",\"check\":\"" + check + "\",\"runs\":" + runs
+        + ",\"steps\":" + steps + ",\"rejected\":" + rejected + ",\"outcome\":\"" + outcome
+        + "\"}\n";
+    try
+    {
+      java.nio.file.Files.writeString(java.nio.file.Path.of(path), line,
+          java.nio.file.StandardOpenOption.CREATE, java.nio.file.StandardOpenOption.APPEND);
+    }
+    catch (java.io.IOException e)
+    {
+      // The report is a side channel; the check's own result stands.
+    }
   }
 
   /**
@@ -5493,6 +6023,9 @@ public final class LawSpecRuntime
         var command = model.steps.get(s.index());
         var full = new ArrayList<Value>(s.args());
         full.add(command.state, state);
+        // The model steps first, so the step can see its result.
+        var stepped = stepModel(command, symbols, s.args(), expected);
+        symbols.put(EXPECTED_RESULT, stepped.result());
         var out = command.run.apply(symbols, full);
         Value result;
         if (model.shared)
@@ -5505,7 +6038,6 @@ public final class LawSpecRuntime
           result = command.unit ? absent("Unit") : fields.get(0);
           state = fields.get(fields.size() - 1);
         }
-        var stepped = stepModel(command, symbols, s.args(), expected);
         expected = stepped.state();
         var wanted = stepped.result();
         if (!command.unit && compareValues(result, wanted) != 0)
@@ -5683,18 +6215,32 @@ public final class LawSpecRuntime
   public static void checkModel(Model model, int cases, int maxLength, int maxShrinks, long seed)
   {
     var random = new SplitMix64(seed);
+    int steps = 0;
+    int rejected = 0;
     for (int c = 0; c < cases; c++)
     {
       long length = random.below((long) maxLength + 1);
-      var run = generateRun(model, random, length, 1 + c % 8, true);
+      var generated = generateRun(model, random, length, 1 + c % 8, true);
+      var run = generated.run();
+      steps += run.steps().size();
+      rejected += generated.rejected();
+      if (mostlyRejected(run.steps().size(), generated.rejected()))
+      {
+        reportModel(model, "sequential", c + 1, steps, rejected, "incomplete");
+        throw new IllegalStateException(incompleteRun(model, "run " + (c + 1) + " of " + cases,
+            run.steps().size(), generated.rejected()));
+      }
       var failure = execute(model, run);
       if (failure != null)
       {
+        reportModel(model, "sequential", c + 1, steps, rejected, "failed");
         var shrunk = shrinkRun(model, run, failure, maxShrinks);
         throw new AssertionError("model " + model.name + " fails at step " + shrunk.failure().step()
-            + " of " + describeRun(model, shrunk.run()) + ": " + shrunk.failure().message());
+            + " of " + describeRun(model, shrunk.run()) + ": " + shrunk.failure().message()
+            + rejectedNote(generated.rejected()));
       }
     }
+    reportModel(model, "sequential", cases, steps, rejected, "passed");
   }
 
   // Parallel runs of a shared model. A case is a sequential prefix and one
@@ -5784,32 +6330,33 @@ public final class LawSpecRuntime
   }
 
   private static List<ModelStep> generateBranch(Model model, SplitMix64 random, Value state,
-      long length, long size)
+      long length, long size, int[] rejected)
   {
     Map<String, Object> symbols = new java.util.HashMap<String, Object>();
     var steps = new ArrayList<ModelStep>();
     for (long n = 0; n < length; n++)
     {
-      int index = (int) random.below(model.commands.size());
-      var command = model.commands.get(index);
-      var args = generateAll(model.values, command.arguments, random, size);
-      try
+      var taken = nextStep(
+          model, symbols, random, state, model.startIndices, size, false, true, rejected);
+      if (taken == null)
       {
-        state = stepModel(command, symbols, args, state).state();
+        break;
       }
-      catch (InvalidStep e)
+      if (taken.step() != null)
       {
-        continue;
+        steps.add(taken.step());
+        state = taken.state();
       }
-      steps.add(new ModelStep(index, args));
     }
     return steps;
   }
 
   private static ParallelCase generateParallel(Model model, SplitMix64 random, long size,
-      int threads, int branchLength)
+      int threads, int branchLength, int[] rejected)
   {
-    var prefix = generateRun(model, random, random.below(4), size);
+    var generated = generateRun(model, random, random.below(4), size);
+    var prefix = generated.run();
+    rejected[0] += generated.rejected();
     Value state;
     try
     {
@@ -5828,7 +6375,8 @@ public final class LawSpecRuntime
     var branches = new ArrayList<List<ModelStep>>();
     for (int i = 0; i < threads; i++)
     {
-      branches.add(generateBranch(model, random, state, 1 + random.below(branchLength), size));
+      branches.add(
+          generateBranch(model, random, state, 1 + random.below(branchLength), size, rejected));
     }
     // Drop the last step of the longest branch (the first, among equals)
     // until every interleaving is allowed.
@@ -5883,11 +6431,15 @@ public final class LawSpecRuntime
     try
     {
       started = model.startRun.apply(symbols, prefix.startArgs());
+      var expected = model.startModel.apply(symbols, prefix.startArgs());
       for (var s : prefix.steps())
       {
         var command = model.commands.get(s.index());
         var full = new ArrayList<Value>(s.args());
         full.add(command.state, started);
+        var stepped = stepModel(command, symbols, s.args(), expected);
+        symbols.put(EXPECTED_RESULT, stepped.result());
+        expected = stepped.state();
         command.run.apply(symbols, full);
       }
     }
@@ -6334,18 +6886,37 @@ public final class LawSpecRuntime
       long seed, int threads, int branchLength)
   {
     var random = new SplitMix64(seed ^ 0x5BD1E995L);
+    int steps = 0;
+    int rejectedTotal = 0;
     for (int n = 0; n < cases; n++)
     {
-      var c = generateParallel(model, random, 1 + n % 8, threads, branchLength);
+      var rejected = new int[] {0};
+      var c = generateParallel(model, random, 1 + n % 8, threads, branchLength, rejected);
+      int accepted = c.prefix().steps().size();
+      for (var b : c.branches())
+      {
+        accepted += b.size();
+      }
+      steps += accepted;
+      rejectedTotal += rejected[0];
+      if (mostlyRejected(accepted, rejected[0]))
+      {
+        reportModel(model, "parallel", n + 1, steps, rejectedTotal, "incomplete");
+        throw new IllegalStateException(incompleteRun(model,
+            "parallel case " + (n + 1) + " of " + cases, accepted, rejected[0]));
+      }
       long shake = random.next();
       var failure = parallelFails(model, c, repeats, shake);
       if (failure != null)
       {
+        reportModel(model, "parallel", n + 1, steps, rejectedTotal, "failed");
         var shrunk = shrinkParallel(model, c, failure, Math.max(2, repeats / 2), maxShrinks, shake);
         throw new AssertionError("model " + model.name + " is not " + consistent(model.consistency)
-            + ": " + describeParallel(model, shrunk.c()) + ": " + shrunk.failure());
+            + ": " + describeParallel(model, shrunk.c()) + ": " + shrunk.failure()
+            + rejectedNote(rejected[0]));
       }
     }
+    reportModel(model, "parallel", cases, steps, rejectedTotal, "passed");
   }
 
   // Scenarios: processes that drive a shared model's commands at the same time
@@ -8919,6 +9490,106 @@ public final class LawSpecRuntime
   public static Value textValue(String text)
   {
     return sequence("Text", text.codePoints().toArray());
+  }
+
+  static Value textList(java.util.List<String> texts)
+  {
+    var values = new ArrayList<Value>();
+    for (String text : texts)
+    {
+      values.add(textValue(text));
+    }
+    return new Value("List Text", List.copyOf(values));
+  }
+
+  /** Unicode White_Space, the same set on every target. */
+  public static boolean textWhiteSpace(int point)
+  {
+    return (point >= 0x09 && point <= 0x0D)
+        || point == 0x20
+        || point == 0x85
+        || point == 0xA0
+        || point == 0x1680
+        || (point >= 0x2000 && point <= 0x200A)
+        || point == 0x2028
+        || point == 0x2029
+        || point == 0x202F
+        || point == 0x205F
+        || point == 0x3000;
+  }
+
+  /** The pieces between occurrences of a separator; an empty separator divides nothing. */
+  public static java.util.List<String> textSplit(String separator, String text)
+  {
+    var out = new ArrayList<String>();
+    if (separator.isEmpty())
+    {
+      out.add(text);
+      return out;
+    }
+    int from = 0;
+    for (int at = text.indexOf(separator, from); at >= 0; at = text.indexOf(separator, from))
+    {
+      out.add(text.substring(from, at));
+      from = at + separator.length();
+    }
+    out.add(text.substring(from));
+    return out;
+  }
+
+  /** The text without the white space at its two ends. */
+  public static String textTrim(String text)
+  {
+    int[] points = text.codePoints().toArray();
+    int start = 0;
+    int end = points.length;
+    while (start < end && textWhiteSpace(points[start]))
+    {
+      start++;
+    }
+    while (end > start && textWhiteSpace(points[end - 1]))
+    {
+      end--;
+    }
+    return new String(points, start, end - start);
+  }
+
+  /** The runs of a text that hold no white space. */
+  public static java.util.List<String> textWords(String text)
+  {
+    var out = new ArrayList<String>();
+    var word = new StringBuilder();
+    for (int point : text.codePoints().toArray())
+    {
+      if (textWhiteSpace(point))
+      {
+        if (word.length() > 0)
+        {
+          out.add(word.toString());
+          word.setLength(0);
+        }
+      }
+      else
+      {
+        word.appendCodePoint(point);
+      }
+    }
+    if (word.length() > 0)
+    {
+      out.add(word.toString());
+    }
+    return out;
+  }
+
+  /** The pieces between line feeds, without a last empty piece. */
+  public static java.util.List<String> textLines(String text)
+  {
+    java.util.List<String> pieces = textSplit("\n", text);
+    if (pieces.get(pieces.size() - 1).isEmpty())
+    {
+      pieces.remove(pieces.size() - 1);
+    }
+    return pieces;
   }
 
   @SuppressWarnings("unchecked")

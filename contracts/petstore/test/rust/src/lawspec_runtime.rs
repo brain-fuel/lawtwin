@@ -2487,6 +2487,47 @@ pub fn all_elements(
     Ok(Value::Bool(true))
 }
 
+/// The list of the body's value for each element, in order.
+pub fn map_elements(value: Value, mut body: impl FnMut(Value) -> Result<Value>) -> Result<Value>
+{
+    let Value::List(values) = value
+    else
+    {
+        return Err("expected List in map".into());
+    };
+    let mut results = Vec::with_capacity(values.len());
+    for (index, item) in values.into_iter().enumerate()
+    {
+        results.push(body(item).map_err(|error| format!("List element {index}: {error}"))?);
+    }
+    Ok(Value::List(results))
+}
+
+/// The elements the predicate accepts, in order.
+pub fn filter_elements(
+    value: Value,
+    mut predicate: impl FnMut(Value) -> Result<Value>,
+) -> Result<Value>
+{
+    let Value::List(values) = value
+    else
+    {
+        return Err("expected List in filter".into());
+    };
+    let mut kept = Vec::new();
+    for (index, item) in values.into_iter().enumerate()
+    {
+        let accepted = predicate(item.clone())
+            .and_then(|result| result.boolean())
+            .map_err(|error| format!("List element {index}: {error}"))?;
+        if accepted
+        {
+            kept.push(item);
+        }
+    }
+    Ok(Value::List(kept))
+}
+
 pub fn search_elements(
     universal: bool,
     value: Value,
@@ -4342,8 +4383,80 @@ fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>>
                 .collect::<Result<Vec<String>>>()?
                 .join(separator),
         ),
+        ("split", [Text(separator), Text(text)]) => List(
+            text_split(separator, text)
+                .into_iter()
+                .map(|piece| Text(piece.to_string()))
+                .collect(),
+        ),
+        ("trim", [Text(text)]) => Text(text_trim(text).to_string()),
+        ("words", [Text(text)]) => List(
+            text_words(text)
+                .into_iter()
+                .map(|piece| Text(piece.to_string()))
+                .collect(),
+        ),
+        ("lines", [Text(text)]) => List(
+            text_lines(text)
+                .into_iter()
+                .map(|piece| Text(piece.to_string()))
+                .collect(),
+        ),
         _ => return Ok(None),
     }))
+}
+
+/// Unicode White_Space, the same set on every target.
+pub fn text_white_space(point: char) -> bool
+{
+    matches!(
+        point as u32,
+        0x09..=0x0D
+            | 0x20
+            | 0x85
+            | 0xA0
+            | 0x1680
+            | 0x2000..=0x200A
+            | 0x2028
+            | 0x2029
+            | 0x202F
+            | 0x205F
+            | 0x3000
+    )
+}
+
+/// The pieces between occurrences of a separator; an empty separator divides
+/// nothing.
+pub fn text_split<'a>(separator: &str, text: &'a str) -> Vec<&'a str>
+{
+    if separator.is_empty()
+    {
+        return vec![text];
+    }
+    text.split(separator).collect()
+}
+
+pub fn text_trim(text: &str) -> &str
+{
+    text.trim_matches(text_white_space)
+}
+
+pub fn text_words(text: &str) -> Vec<&str>
+{
+    text.split(text_white_space)
+        .filter(|piece| !piece.is_empty())
+        .collect()
+}
+
+/// The pieces between line feeds, without a last empty piece.
+pub fn text_lines(text: &str) -> Vec<&str>
+{
+    let mut pieces: Vec<&str> = text.split('\n').collect();
+    if pieces.last() == Some(&"")
+    {
+        pieces.pop();
+    }
+    pieces
 }
 
 fn matcher_helper(name: &str, args: &[Value]) -> Result<Option<Value>>
@@ -5447,6 +5560,122 @@ impl Values
         }
     }
 
+    /// One of a oneof descriptor's choices: an integer, or a text's code
+    /// points (codes c ...).
+    fn choice(&self, option: &Sexp) -> Value
+    {
+        match option
+        {
+            Sexp::Int(n) => Value::Integer(n.clone()),
+            codes => Value::Text(
+                codes.items()[1..]
+                    .iter()
+                    .map(|c| {
+                        c.bound()
+                            .and_then(|n| n.to_u32())
+                            .and_then(char::from_u32)
+                            .unwrap_or_else(|| panic!("expected a code point, got {c:?}"))
+                    })
+                    .collect(),
+            ),
+        }
+    }
+
+    /// Every value of a descriptor, in a fixed order, when there are at most
+    /// limit of them; None when there are more, or infinitely many. Integers
+    /// ascend, false comes before true, and constructors come in their
+    /// declared order with their fields' values varying last field fastest.
+    pub fn finite(&self, d: &Sexp, limit: usize) -> Option<Vec<Value>>
+    {
+        self.finite_open(d, limit, &mut std::collections::HashSet::new())
+    }
+
+    fn finite_open(
+        &self,
+        d: &Sexp,
+        limit: usize,
+        open: &mut std::collections::HashSet<String>,
+    ) -> Option<Vec<Value>>
+    {
+        if d.kind() == "ref"
+        {
+            let name = d.items()[1].name();
+            if !open.insert(name.clone())
+            {
+                return None;
+            }
+            let out = self.finite_open(self.resolve(d), limit, open);
+            open.remove(&name);
+            return out;
+        }
+        let items = d.items();
+        let mut out = Vec::new();
+        match d.kind()
+        {
+            "int" =>
+            {
+                let (Some(lo), Some(hi)) = (items[2].bound(), items[3].bound())
+                else
+                {
+                    return None;
+                };
+                if &hi - &lo >= BigInt::from(limit)
+                {
+                    return None;
+                }
+                let mut n = lo;
+                while n <= hi
+                {
+                    out.push(Value::Integer(n.clone()));
+                    n += BigInt::one();
+                }
+            }
+            "bool" =>
+            {
+                out.push(Value::Bool(false));
+                out.push(Value::Bool(true));
+            }
+            "unit" => out.push(Value::Unit),
+            "oneof" => out.extend(items[2..].iter().map(|option| self.choice(option))),
+            "maybe" =>
+            {
+                let inner = self.finite_open(&items[1], limit, open)?;
+                out.push(Value::Maybe(None));
+                out.extend(inner.into_iter().map(|v| Value::Maybe(Some(Box::new(v)))));
+            }
+            "either" =>
+            {
+                let left = self.finite_open(&items[1], limit, open);
+                let right = self.finite_open(&items[2], limit, open);
+                let (Some(left), Some(right)) = (left, right)
+                else
+                {
+                    return None;
+                };
+                out.extend(left.into_iter().map(|v| Value::Left(Box::new(v))));
+                out.extend(right.into_iter().map(|v| Value::Right(Box::new(v))));
+            }
+            "data" =>
+            {
+                for c in &items[2..]
+                {
+                    let ctor = c.items();
+                    let mut fields = Vec::new();
+                    for field in &ctor[2..]
+                    {
+                        fields.push(self.finite_open(field, limit, open)?);
+                    }
+                    for tuple in product(&fields, limit)?
+                    {
+                        out.push(Value::Data(ctor[1].name(), tuple));
+                    }
+                }
+            }
+            _ => return None,
+        }
+        (out.len() <= limit).then_some(out)
+    }
+
     pub fn generate(&self, d: &Sexp, random: &mut SplitMix64, size: i64) -> Value
     {
         let d = self.resolve(d);
@@ -5505,6 +5734,11 @@ impl Values
                 }
                 Value::Right(Box::new(self.generate(&items[2], random, size)))
             }
+            "oneof" =>
+            {
+                let options = &items[2..];
+                self.choice(&options[random.below(options.len() as u64) as usize])
+            }
             "data" =>
             {
                 let choices: Vec<&Sexp> = if size <= 0
@@ -5543,6 +5777,7 @@ impl Values
             "list" => Value::List(Vec::new()),
             "maybe" => Value::Maybe(None),
             "either" => Value::Left(Box::new(self.minimal(&items[1]))),
+            "oneof" => self.choice(&items[2]),
             _ =>
             {
                 let ctor = self.base(d)[0].items();
@@ -5591,6 +5826,19 @@ impl Values
                 if *b
                 {
                     out = vec![Value::Bool(false)];
+                }
+            }
+            ("oneof", _) =>
+            {
+                // The choices before this one, first first.
+                for option in &items[2..]
+                {
+                    let c = self.choice(option);
+                    if c == *v
+                    {
+                        break;
+                    }
+                    out.push(c);
                 }
             }
             ("text", Value::Text(s)) =>
@@ -6336,6 +6584,7 @@ fn empty_model_arguments(ds: &[Sexp]) -> bool
     ds.iter().any(|d| {
         d.kind() == "int"
             && matches!((d.items()[2].bound(),d.items()[3].bound()), (Some(lo),Some(hi)) if lo>hi)
+            || d.kind() == "oneof" && d.items().len() == 2
     })
 }
 fn valid_model_arguments(ds: &[Sexp], args: &[Value]) -> bool
@@ -6506,6 +6755,115 @@ enum ModelFault
 
 // A run: the start's arguments, then each command's index and arguments.
 type ModelRun = (Vec<Value>, Vec<(usize, Vec<Value>)>);
+
+// Generation honours the reference. A step is drawn among the commands
+// enabled at the model state: typestate admits them, their precondition
+// holds, and some arguments are inside the reference's refinements. When a
+// command's argument tuples are few (FINITE_STEPS), each is tried against
+// the reference and one valid tuple is chosen, as QuickCheck state machines
+// generate from a precondition. Otherwise arguments are drawn and checked
+// again, up to STEP_ATTEMPTS times, and every draw the reference rejects is
+// counted. A run where the reference rejected more draws than it accepted
+// shows little, so its check is incomplete, never passed.
+// ref:DEC-honest-model-steps
+
+/// The most argument tuples of one step that are enumerated instead of drawn.
+const FINITE_STEPS: usize = 64;
+
+/// How many times a step's arguments are drawn before the step is given up.
+const STEP_ATTEMPTS: usize = 8;
+
+/// Every tuple of one value from each domain, the last varying fastest;
+/// None past limit.
+fn product<T: Clone>(domains: &[Vec<T>], limit: usize) -> Option<Vec<Vec<T>>>
+{
+    let mut out: Vec<Vec<T>> = vec![Vec::new()];
+    for domain in domains
+    {
+        let mut next = Vec::new();
+        for prefix in &out
+        {
+            for v in domain
+            {
+                let mut tuple = prefix.clone();
+                tuple.push(v.clone());
+                next.push(tuple);
+            }
+            if next.len() > limit
+            {
+                return None;
+            }
+        }
+        out = next;
+    }
+    Some(out)
+}
+
+/// A command enabled at a state, with its valid argument tuples, or None to
+/// draw them.
+type Enabled = (usize, Option<Vec<Vec<Value>>>);
+
+/// What generating one step gave.
+enum Drawn
+{
+    /// No command is enabled: the run stops.
+    NoneEnabled,
+    /// Every draw was rejected: the run goes on from the same state.
+    NoStep,
+    /// A step and the model state after it.
+    Step((usize, Vec<Value>), Value),
+}
+
+/// Whether the reference rejected more of a run's drawn steps than it
+/// accepted.
+fn mostly_rejected(accepted: usize, rejected: usize) -> bool
+{
+    rejected > accepted
+}
+
+fn incomplete_run(name: &str, run: &str, accepted: usize, rejected: usize) -> String
+{
+    format!(
+        "incomplete model generation: model {name}'s {run} drew {rejected} steps its reference rejected and {accepted} it accepted; fewer than half of its steps are valid, so it shows little of the system"
+    )
+}
+
+/// How a failing run's rejected draws read after its failure.
+fn rejected_note(rejected: usize) -> String
+{
+    if rejected == 0
+    {
+        String::new()
+    }
+    else
+    {
+        format!(" (the reference rejected {rejected} drawn steps of this run)")
+    }
+}
+
+/// One line of JSON per model check, appended to the file
+/// LAWSPEC_MODEL_REPORT names: how many runs and steps it checked, and how
+/// many drawn steps the reference rejected.
+fn report_model(name: &str, check: &str, runs: u64, steps: usize, rejected: usize, outcome: &str)
+{
+    use std::io::Write;
+    let Some(path) = std::env::var_os("LAWSPEC_MODEL_REPORT").filter(|p| !p.is_empty())
+    else
+    {
+        return;
+    };
+    let line = format!(
+        "{{\"model\":\"{name}\",\"check\":\"{check}\",\"runs\":{runs},\"steps\":{steps},\"rejected\":{rejected},\"outcome\":\"{outcome}\"}}\n"
+    );
+    // The report is a side channel; the check's own result stands.
+    if let Ok(mut file) = std::fs::OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open(path)
+    {
+        let _ = file.write_all(line.as_bytes());
+    }
+}
 
 struct Machine<'a>
 {
@@ -6764,13 +7122,142 @@ impl<'a> Machine<'a>
         }
     }
 
+    fn enabled_steps(&self, ctx: &mut Context, state: &Value, indices: &[i64]) -> Vec<Enabled>
+    {
+        let mut out = Vec::new();
+        for (i, command) in self.commands.iter().enumerate()
+        {
+            if !command.admits(indices)
+            {
+                continue;
+            }
+            let descriptors: Vec<Sexp> = command
+                .arguments
+                .iter()
+                .map(|d| model_argument(d, indices))
+                .collect();
+            if empty_model_arguments(&descriptors)
+            {
+                continue;
+            }
+            if let Some(when) = command.when
+            {
+                let holds = when(ctx, vec![state.clone()])
+                    .and_then(|v| v.boolean())
+                    .unwrap_or(false);
+                if !holds
+                {
+                    continue;
+                }
+            }
+            let tuples = descriptors
+                .iter()
+                .map(|d| self.values.finite(d, FINITE_STEPS))
+                .collect::<Option<Vec<_>>>()
+                .and_then(|domains| product(&domains, FINITE_STEPS));
+            let Some(tuples) = tuples
+            else
+            {
+                out.push((i, None));
+                continue;
+            };
+            let mut valid = Vec::new();
+            for t in tuples
+            {
+                match step_model(command, ctx, &t, state.clone())
+                {
+                    Ok(_) => valid.push(t),
+                    // Outside the reference: not a step here.
+                    Err(ModelFault::Invalid) =>
+                    {}
+                    Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
+                }
+            }
+            if !valid.is_empty()
+            {
+                out.push((i, Some(valid)));
+            }
+        }
+        out
+    }
+
+    /// The next generated step; rejected counts the draws the reference
+    /// rejects.
+    #[allow(clippy::too_many_arguments)]
+    fn next_step(
+        &self,
+        ctx: &mut Context,
+        random: &mut SplitMix64,
+        start_args: &[Value],
+        state: &Value,
+        indices: &[i64],
+        size: i64,
+        crashes: bool,
+        rejected: &mut usize,
+    ) -> Drawn
+    {
+        let enabled = self.enabled_steps(ctx, state, indices);
+        if enabled.is_empty()
+        {
+            return Drawn::NoneEnabled;
+        }
+        let (index, tuples) = &enabled[random.below(enabled.len() as u64) as usize];
+        // One step in eight of an actor's run is a crash.
+        if crashes && self.actor && random.below(8) == 0
+        {
+            return match self.crash_model(ctx, start_args, state.clone())
+            {
+                Ok(next) => Drawn::Step((self.commands.len(), Vec::new()), next),
+                Err(_) => Drawn::NoStep,
+            };
+        }
+        let command = &self.commands[*index];
+        if let Some(tuples) = tuples
+        {
+            let args = if tuples.len() == 1
+            {
+                tuples[0].clone()
+            }
+            else
+            {
+                tuples[random.below(tuples.len() as u64) as usize].clone()
+            };
+            return match step_model(command, ctx, &args, state.clone())
+            {
+                Ok((next, _)) => Drawn::Step((*index, args), next),
+                Err(ModelFault::Invalid) => Drawn::NoStep,
+                Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
+            };
+        }
+        for _ in 0..STEP_ATTEMPTS
+        {
+            let args: Vec<Value> = command
+                .arguments
+                .iter()
+                .map(|d| {
+                    self.values
+                        .generate(&model_argument(d, indices), random, size)
+                })
+                .collect();
+            match step_model(command, ctx, &args, state.clone())
+            {
+                Ok((next, _)) => return Drawn::Step((*index, args), next),
+                Err(ModelFault::Invalid) => *rejected += 1,
+                Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
+            }
+        }
+        Drawn::NoStep
+    }
+
+    /// A generated run, and how many of its drawn steps the reference
+    /// rejected.
     fn generate_run(
         &self,
         random: &mut SplitMix64,
         length: u64,
         size: i64,
         crashes: bool,
-    ) -> ModelRun
+    ) -> (ModelRun, usize)
     {
         let mut ctx = Context::testing();
         let start_args: Vec<Value> = self
@@ -6781,73 +7268,40 @@ impl<'a> Machine<'a>
         let Ok(mut state) = (self.model.start[1])(&mut ctx, start_args.clone())
         else
         {
-            return (start_args, Vec::new());
+            return ((start_args, Vec::new()), 0);
         };
         let mut indices = self.start_indices.clone();
         let mut steps = Vec::new();
+        let mut rejected = 0;
         for _ in 0..length
         {
-            let allowed: Vec<usize> = (0..self.commands.len())
-                .filter(|&i| {
-                    self.commands[i].admits(&indices)
-                        && !empty_model_arguments(
-                            &self.commands[i]
-                                .arguments
-                                .iter()
-                                .map(|d| model_argument(d, &indices))
-                                .collect::<Vec<_>>(),
-                        )
-                })
-                .collect();
-            if allowed.is_empty()
+            match self.next_step(
+                &mut ctx,
+                random,
+                &start_args,
+                &state,
+                &indices,
+                size,
+                crashes,
+                &mut rejected,
+            )
             {
-                break;
-            }
-            let index = allowed[random.below(allowed.len() as u64) as usize];
-            // One step in eight of an actor's run is a crash.
-            if crashes && self.actor && random.below(8) == 0
-            {
-                match self.crash_model(&mut ctx, &start_args, state.clone())
+                Drawn::NoneEnabled => break,
+                Drawn::NoStep =>
+                {}
+                Drawn::Step((index, args), next) =>
                 {
-                    Ok(next) => state = next,
-                    Err(_) => continue,
-                }
-                steps.push((self.commands.len(), Vec::new()));
-                continue;
-            }
-            let command = &self.commands[index];
-            let args: Vec<Value> = command
-                .arguments
-                .iter()
-                .map(|d| {
-                    self.values
-                        .generate(&model_argument(d, &indices), random, size)
-                })
-                .collect();
-            match step_model(command, &mut ctx, &args, state.clone())
-            {
-                Ok((next, _)) => state = next,
-                Err(ModelFault::Invalid) =>
-                {
-                    if command.arguments.iter().any(|d| d.kind() == "dependent")
-                        && command.when.is_none_or(|guard| {
-                            guard(&mut ctx, vec![state.clone()])
-                                .and_then(|v| v.boolean())
-                                .unwrap_or(false)
-                        })
+                    // An injected crash keeps the indices.
+                    if index < self.commands.len()
                     {
-                        panic!(
-                            "incomplete model generation: dependent arguments rejected by the reference (1 attempt)"
-                        );
+                        indices = self.commands[index].shifted(&indices);
                     }
-                    continue;
+                    steps.push((index, args));
+                    state = next;
                 }
-                Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
             }
-            steps.push((index, args));
-            indices = command.shifted(&indices);
         }
-        (start_args, steps)
+        ((start_args, steps), rejected)
     }
 
     /// None when the system agrees with the model along the run; otherwise
@@ -7154,22 +7608,63 @@ pub fn check_model(model: &Model) -> std::result::Result<(), String>
         .unwrap_or(0);
     let machine = Machine::new(model);
     let mut random = SplitMix64::new(seed);
+    let (mut steps, mut rejected) = (0, 0);
     for case in 0..cases
     {
         let length = random.below(max_length + 1);
-        let run = machine.generate_run(&mut random, length, 1 + (case % 8) as i64, true);
+        let (run, run_rejected) =
+            machine.generate_run(&mut random, length, 1 + (case % 8) as i64, true);
+        steps += run.1.len();
+        rejected += run_rejected;
+        if mostly_rejected(run.1.len(), run_rejected)
+        {
+            report_model(
+                &machine.name,
+                "sequential",
+                case + 1,
+                steps,
+                rejected,
+                "incomplete",
+            );
+            panic!(
+                "{}",
+                incomplete_run(
+                    &machine.name,
+                    &format!("run {} of {}", case + 1, cases),
+                    run.1.len(),
+                    run_rejected
+                )
+            );
+        }
         if let Some(failure) = machine.execute(&run)
         {
+            report_model(
+                &machine.name,
+                "sequential",
+                case + 1,
+                steps,
+                rejected,
+                "failed",
+            );
             let (run, (step, message)) = machine.shrink_run(run, failure, max_shrinks);
             return Err(format!(
-                "model {} fails at step {} of {}: {}",
+                "model {} fails at step {} of {}: {}{}",
                 machine.name,
                 step,
                 machine.describe_run(&run),
-                message
+                message,
+                rejected_note(run_rejected)
             ));
         }
     }
+    report_model(
+        &machine.name,
+        "sequential",
+        cases,
+        steps,
+        rejected,
+        "passed",
+    );
     Ok(())
 }
 
@@ -7304,26 +7799,33 @@ impl<'a> Machine<'a>
         mut state: Value,
         length: u64,
         size: i64,
+        rejected: &mut usize,
     ) -> ModelBranch
     {
         let mut ctx = Context::testing();
         let mut steps = Vec::new();
         for _ in 0..length
         {
-            let index = random.below(self.commands.len() as u64) as usize;
-            let command = &self.commands[index];
-            let args: Vec<Value> = command
-                .arguments
-                .iter()
-                .map(|d| self.values.generate(d, random, size))
-                .collect();
-            match step_model(command, &mut ctx, &args, state.clone())
+            match self.next_step(
+                &mut ctx,
+                random,
+                &[],
+                &state,
+                &self.start_indices,
+                size,
+                false,
+                rejected,
+            )
             {
-                Ok((next, _)) => state = next,
-                Err(ModelFault::Invalid) => continue,
-                Err(ModelFault::Error(e)) => panic!("model {}: {e}", self.name),
+                Drawn::NoneEnabled => break,
+                Drawn::NoStep =>
+                {}
+                Drawn::Step(step, next) =>
+                {
+                    steps.push(step);
+                    state = next;
+                }
             }
-            steps.push((index, args));
         }
         steps
     }
@@ -7334,10 +7836,12 @@ impl<'a> Machine<'a>
         size: i64,
         threads: usize,
         branch_length: u64,
+        rejected: &mut usize,
     ) -> ParallelCase
     {
         let length = random.below(4);
-        let prefix = self.generate_run(random, length, size, false);
+        let (prefix, prefix_rejected) = self.generate_run(random, length, size, false);
+        *rejected += prefix_rejected;
         let Some(state) = self.simulate_state(&mut Context::testing(), &prefix)
         else
         {
@@ -7347,7 +7851,7 @@ impl<'a> Machine<'a>
         for _ in 0..threads
         {
             let length = 1 + random.below(branch_length);
-            branches.push(self.generate_branch(random, state.clone(), length, size));
+            branches.push(self.generate_branch(random, state.clone(), length, size, rejected));
         }
         // Drop the last step of the longest branch (the first, among equals)
         // until every interleaving is allowed.
@@ -7852,28 +8356,71 @@ pub fn check_model_parallel_with(
 {
     let machine = Machine::new(model);
     let mut random = SplitMix64::new(seed ^ 0x5bd1e995);
+    let (mut steps, mut rejected_total) = (0, 0);
     for case_number in 0..cases
     {
+        let mut rejected = 0;
         let case = machine.generate_parallel(
             &mut random,
             1 + (case_number % 8) as i64,
             threads,
             branch_length,
+            &mut rejected,
         );
+        let accepted = case.0.1.len() + case.1.iter().map(Vec::len).sum::<usize>();
+        steps += accepted;
+        rejected_total += rejected;
+        if mostly_rejected(accepted, rejected)
+        {
+            report_model(
+                &machine.name,
+                "parallel",
+                case_number + 1,
+                steps,
+                rejected_total,
+                "incomplete",
+            );
+            panic!(
+                "{}",
+                incomplete_run(
+                    &machine.name,
+                    &format!("parallel case {} of {}", case_number + 1, cases),
+                    accepted,
+                    rejected
+                )
+            );
+        }
         let shake = random.next();
         if let Some(failure) = machine.parallel_fails(&case, repeats, shake)
         {
+            report_model(
+                &machine.name,
+                "parallel",
+                case_number + 1,
+                steps,
+                rejected_total,
+                "failed",
+            );
             let (case, failure) =
                 machine.shrink_parallel(case, failure, (repeats / 2).max(2), max_shrinks, shake);
             return Err(format!(
-                "model {} is not {}: {}: {}",
+                "model {} is not {}: {}: {}{}",
                 machine.name,
                 consistent_words(&machine.consistency),
                 machine.describe_parallel(&case),
-                failure
+                failure,
+                rejected_note(rejected)
             ));
         }
     }
+    report_model(
+        &machine.name,
+        "parallel",
+        cases,
+        steps,
+        rejected_total,
+        "passed",
+    );
     Ok(())
 }
 
@@ -17381,6 +17928,31 @@ pub mod fast
     {
         let items: Vec<&str> = parts.iter().map(|t| &**t).collect();
         Arc::from(items.join(separator))
+    }
+
+    fn texts(pieces: Vec<&str>) -> List<Text>
+    {
+        List::from_vec(pieces.into_iter().map(Arc::from).collect())
+    }
+
+    pub fn split(separator: &str, text: &str) -> List<Text>
+    {
+        texts(super::text_split(separator, text))
+    }
+
+    pub fn trim(text: &str) -> Text
+    {
+        Arc::from(super::text_trim(text))
+    }
+
+    pub fn words(text: &str) -> List<Text>
+    {
+        texts(super::text_words(text))
+    }
+
+    pub fn lines(text: &str) -> List<Text>
+    {
+        texts(super::text_lines(text))
     }
 
     // A dynamic call of a typed definition: its arguments from Values, its

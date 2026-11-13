@@ -405,6 +405,52 @@ func lsAllElements(value LawSpecValue, predicate func(LawSpecValue) LawSpecValue
 	return lsBool(true)
 }
 
+// lsMapElements gives the list of the body's value for each element.
+func lsMapElements(t string, value LawSpecValue, body func(LawSpecValue) LawSpecValue) LawSpecValue {
+	values, ok := value.Data.([]LawSpecValue)
+	if !ok {
+		panic("expected List in map")
+	}
+	index := 0
+	defer func() {
+		if failure := recover(); failure != nil {
+			if raised, ok := failure.(*LawSpecFailure); ok {
+				panic(raised)
+			}
+			panic(fmt.Sprintf("List element %d: %v", index, failure))
+		}
+	}()
+	results := make([]LawSpecValue, len(values))
+	for index = range values {
+		results[index] = body(values[index])
+	}
+	return LawSpecValue{t, results}
+}
+
+// lsFilterElements gives the elements the predicate accepts, in order.
+func lsFilterElements(value LawSpecValue, predicate func(LawSpecValue) LawSpecValue) LawSpecValue {
+	values, ok := value.Data.([]LawSpecValue)
+	if !ok {
+		panic("expected List in filter")
+	}
+	index := 0
+	defer func() {
+		if failure := recover(); failure != nil {
+			if raised, ok := failure.(*LawSpecFailure); ok {
+				panic(raised)
+			}
+			panic(fmt.Sprintf("List element %d: %v", index, failure))
+		}
+	}()
+	kept := []LawSpecValue{}
+	for index = range values {
+		if lsTruth(predicate(values[index])) {
+			kept = append(kept, values[index])
+		}
+	}
+	return LawSpecValue{value.Type, kept}
+}
+
 func lsSearchElements(universal bool, value LawSpecValue, predicate func(LawSpecValue) LawSpecValue) LawSpecValue {
 	decisive := int64(1)
 	if universal {
@@ -539,6 +585,14 @@ func lsSequenceHelper(n string, args []LawSpecValue) (LawSpecValue, bool) {
 			parts = append(parts, lsCodePointsText(v.Data.([]int)))
 		}
 		return LawSpecValue{"Text", lsTextUnits(strings.Join(parts, lsCodePointsText(args[0].Data.([]int))))}, true
+	case "split":
+		return lsTextList(lsTextSplit(lsCodePointsText(args[0].Data.([]int)), lsCodePointsText(args[1].Data.([]int)))), true
+	case "trim":
+		return LawSpecValue{"Text", lsTextUnits(lsTextTrim(lsCodePointsText(args[0].Data.([]int))))}, true
+	case "words":
+		return lsTextList(lsTextWords(lsCodePointsText(args[0].Data.([]int)))), true
+	case "lines":
+		return lsTextList(lsTextLines(lsCodePointsText(args[0].Data.([]int)))), true
 	}
 	return LawSpecValue{}, false
 }
@@ -3002,8 +3056,115 @@ func (s lawSpecValues) typeOf(d any) string {
 		return "Maybe " + s.typeOf(form[1])
 	case "either":
 		return "Either (" + s.typeOf(form[1]) + ") (" + s.typeOf(form[2]) + ")"
+	case "oneof":
+		return s.typeOf(form[1])
 	}
 	return lsAtom(form[1])
+}
+
+// choice is one of a oneof descriptor's choices: an integer, or a text's code
+// points (codes c ...).
+func (s lawSpecValues) choice(base, option any) LawSpecValue {
+	if n, ok := option.(*big.Int); ok {
+		return LawSpecValue{s.typeOf(base), new(big.Int).Set(n)}
+	}
+	units := []int{}
+	for _, c := range option.([]any)[1:] {
+		units = append(units, int(c.(*big.Int).Int64()))
+	}
+	return LawSpecValue{"Text", units}
+}
+
+// finite is every value of a descriptor, in a fixed order, when there are at
+// most limit of them; ok is false when there are more, or infinitely many.
+// Integers ascend, false comes before true, and constructors come in their
+// declared order with their fields' values varying last field fastest.
+func (s lawSpecValues) finite(d any, limit int) ([]LawSpecValue, bool) {
+	return s.finiteOpen(d, limit, map[string]bool{})
+}
+
+func (s lawSpecValues) finiteOpen(d any, limit int, open map[string]bool) ([]LawSpecValue, bool) {
+	form := d.([]any)
+	if lsAtom(form[0]) == "ref" {
+		name := lsAtom(form[1])
+		if open[name] {
+			return nil, false
+		}
+		open[name] = true
+		out, ok := s.finiteOpen(s.table[name], limit, open)
+		delete(open, name)
+		return out, ok
+	}
+	t := s.typeOf(form)
+	out := []LawSpecValue{}
+	switch lsAtom(form[0]) {
+	case "int":
+		lo, _ := form[2].(*big.Int)
+		hi, _ := form[3].(*big.Int)
+		if lo == nil || hi == nil {
+			return nil, false
+		}
+		if new(big.Int).Sub(hi, lo).Cmp(big.NewInt(int64(limit))) >= 0 {
+			return nil, false
+		}
+		for n := new(big.Int).Set(lo); n.Cmp(hi) <= 0; n = new(big.Int).Add(n, big.NewInt(1)) {
+			out = append(out, LawSpecValue{t, n})
+		}
+	case "bool":
+		out = append(out, lsBool(false), lsBool(true))
+	case "unit":
+		out = append(out, lsAbsent("Unit"))
+	case "oneof":
+		for _, option := range form[2:] {
+			out = append(out, s.choice(form[1], option))
+		}
+	case "maybe":
+		inner, ok := s.finiteOpen(form[1], limit, open)
+		if !ok {
+			return nil, false
+		}
+		out = append(out, lsSum(t, "Maybe::Absent"))
+		for _, v := range inner {
+			out = append(out, lsSum(t, "Maybe::Present", v))
+		}
+	case "either":
+		left, okLeft := s.finiteOpen(form[1], limit, open)
+		right, okRight := s.finiteOpen(form[2], limit, open)
+		if !okLeft || !okRight {
+			return nil, false
+		}
+		for _, v := range left {
+			out = append(out, lsSum(t, "Either::Left", v))
+		}
+		for _, v := range right {
+			out = append(out, lsSum(t, "Either::Right", v))
+		}
+	case "data":
+		for _, c := range form[2:] {
+			ctor := c.([]any)
+			fields := [][]LawSpecValue{}
+			for _, field := range ctor[2:] {
+				values, ok := s.finiteOpen(field, limit, open)
+				if !ok {
+					return nil, false
+				}
+				fields = append(fields, values)
+			}
+			tuples, ok := lsProduct(fields, limit)
+			if !ok {
+				return nil, false
+			}
+			for _, tuple := range tuples {
+				out = append(out, lsSum(t, lsAtom(ctor[1]), tuple...))
+			}
+		}
+	default:
+		return nil, false
+	}
+	if len(out) > limit {
+		return nil, false
+	}
+	return out, true
 }
 
 // bounds is an integer's range: a missing bound is 1,000,000 from zero, or
@@ -3123,6 +3284,9 @@ func (s lawSpecValues) generate(d any, random *LawSpecSplitMix64, size int64) La
 			return lsSum(t, "Either::Left", s.generate(form[1], random, size))
 		}
 		return lsSum(t, "Either::Right", s.generate(form[2], random, size))
+	case "oneof":
+		options := form[2:]
+		return s.choice(form[1], options[random.Below(uint64(len(options)))])
 	case "data":
 		choices := form[2:]
 		if size <= 0 {
@@ -3157,6 +3321,8 @@ func (s lawSpecValues) minimal(d any) LawSpecValue {
 		return lsSum(t, "Maybe::Absent")
 	case "either":
 		return lsSum(t, "Either::Left", s.minimal(form[1]))
+	case "oneof":
+		return s.choice(form[1], form[2])
 	}
 	ctor := s.base(form)[0].([]any)
 	fields := []LawSpecValue{}
@@ -3194,6 +3360,15 @@ func (s lawSpecValues) shrink(d any, v LawSpecValue) []LawSpecValue {
 	case "bool":
 		if v.Data.(bool) {
 			out = []LawSpecValue{lsBool(false)}
+		}
+	case "oneof":
+		// The choices before this one, first first.
+		for _, option := range form[2:] {
+			c := s.choice(form[1], option)
+			if lsCompareValues(c, v) == 0 {
+				break
+			}
+			out = append(out, c)
 		}
 	case "text":
 		units := v.Data.([]int)
@@ -5304,6 +5479,9 @@ func lsEmptyArguments(ds []any) bool {
 				return true
 			}
 		}
+		if f[0] == "oneof" && len(f) == 2 {
+			return true
+		}
 	}
 	return false
 }
@@ -5339,7 +5517,149 @@ func (m *lawSpecMachine) simulate(run lawSpecModelRun) bool {
 	})
 }
 
-func (m *lawSpecMachine) generateRun(random *LawSpecSplitMix64, length, size int64, crashes bool) lawSpecModelRun {
+// Generation honours the reference. A step is drawn among the commands
+// enabled at the model state: typestate admits them, their precondition
+// holds, and some arguments are inside the reference's refinements. When a
+// command's argument tuples are few (lawSpecFiniteSteps), each is tried
+// against the reference and one valid tuple is chosen, as QuickCheck state
+// machines generate from a precondition. Otherwise arguments are drawn and
+// checked again, up to lawSpecStepAttempts times, and every draw the
+// reference rejects is counted. A run where the reference rejected more draws
+// than it accepted shows little, so its check is incomplete, never passed.
+// ref:DEC-honest-model-steps
+
+const (
+	// lawSpecFiniteSteps is the most argument tuples of one step that are
+	// enumerated instead of drawn.
+	lawSpecFiniteSteps = 64
+	// lawSpecStepAttempts is how many times a step's arguments are drawn
+	// before the step is given up.
+	lawSpecStepAttempts = 8
+)
+
+// lsProduct is every tuple of one value from each domain, the last varying
+// fastest; ok is false past limit.
+func lsProduct[T any](domains [][]T, limit int) ([][]T, bool) {
+	out := [][]T{{}}
+	for _, domain := range domains {
+		next := [][]T{}
+		for _, prefix := range out {
+			for _, v := range domain {
+				tuple := append(append([]T{}, prefix...), v)
+				next = append(next, tuple)
+			}
+			if len(next) > limit {
+				return nil, false
+			}
+		}
+		out = next
+	}
+	return out, true
+}
+
+// lawSpecEnabled is a command enabled at a state, with its valid argument
+// tuples, or nil tuples to draw them.
+type lawSpecEnabled struct {
+	index  int
+	tuples [][]LawSpecValue
+}
+
+func (m *lawSpecMachine) enabledSteps(symbols map[string]*LawSpecSymbol, state LawSpecValue, indices []int64) []lawSpecEnabled {
+	out := []lawSpecEnabled{}
+	for i := range m.commands {
+		c := &m.commands[i]
+		if !c.admits(indices) {
+			continue
+		}
+		descriptors := lsModelArguments(c, indices)
+		if lsEmptyArguments(descriptors) {
+			continue
+		}
+		if c.when != nil {
+			holds := func() (holds bool) {
+				defer func() {
+					if recover() != nil {
+						holds = false
+					}
+				}()
+				return lsTruth(c.when(symbols, []LawSpecValue{state}))
+			}()
+			if !holds {
+				continue
+			}
+		}
+		domains := [][]LawSpecValue{}
+		finite := true
+		for _, d := range descriptors {
+			values, ok := m.values.finite(d, lawSpecFiniteSteps)
+			if !ok {
+				finite = false
+				break
+			}
+			domains = append(domains, values)
+		}
+		var tuples [][]LawSpecValue
+		if finite {
+			tuples, finite = lsProduct(domains, lawSpecFiniteSteps)
+		}
+		if !finite {
+			out = append(out, lawSpecEnabled{i, nil})
+			continue
+		}
+		valid := [][]LawSpecValue{}
+		for _, t := range tuples {
+			// Outside the reference: not a step here.
+			if lsAllowed(func() { lsStepModel(c, symbols, t, state) }) {
+				valid = append(valid, t)
+			}
+		}
+		if len(valid) > 0 {
+			out = append(out, lawSpecEnabled{i, valid})
+		}
+	}
+	return out
+}
+
+// nextStep is a generated step and the model state after it; enabled is
+// false when no command is enabled, and taken is false when every draw was
+// rejected. rejected counts the draws the reference rejects.
+func (m *lawSpecMachine) nextStep(symbols map[string]*LawSpecSymbol, random *LawSpecSplitMix64, state LawSpecValue, indices []int64, size int64, crashes bool, rejected *int) (step lawSpecModelStep, next LawSpecValue, taken, enabled bool) {
+	options := m.enabledSteps(symbols, state, indices)
+	if len(options) == 0 {
+		return lawSpecModelStep{}, state, false, false
+	}
+	chosen := options[random.Below(uint64(len(options)))]
+	// One step in eight of an actor's run is a crash.
+	if crashes && len(m.steps) > len(m.commands) && random.Below(8) == 0 {
+		crash := &m.steps[len(m.commands)]
+		next, _ = lsStepModel(crash, symbols, []LawSpecValue{}, state)
+		return lawSpecModelStep{len(m.commands), []LawSpecValue{}}, next, true, true
+	}
+	c := &m.steps[chosen.index]
+	if chosen.tuples != nil {
+		args := chosen.tuples[0]
+		if len(chosen.tuples) != 1 {
+			args = chosen.tuples[random.Below(uint64(len(chosen.tuples)))]
+		}
+		next, _ = lsStepModel(c, symbols, args, state)
+		return lawSpecModelStep{chosen.index, args}, next, true, true
+	}
+	for attempt := 0; attempt < lawSpecStepAttempts; attempt++ {
+		args := []LawSpecValue{}
+		for _, d := range lsModelArguments(c, indices) {
+			args = append(args, m.values.generate(d, random, size))
+		}
+		if lsAllowed(func() { next, _ = lsStepModel(c, symbols, args, state) }) {
+			return lawSpecModelStep{chosen.index, args}, next, true, true
+		}
+		*rejected++
+	}
+	return lawSpecModelStep{}, state, false, true
+}
+
+// generateRun is a generated run, and how many of its drawn steps the
+// reference rejected.
+func (m *lawSpecMachine) generateRun(random *LawSpecSplitMix64, length, size int64, crashes bool) (lawSpecModelRun, int) {
 	symbols := map[string]*LawSpecSymbol{}
 	start := []LawSpecValue{}
 	for _, d := range m.startArguments {
@@ -5348,41 +5668,58 @@ func (m *lawSpecMachine) generateRun(random *LawSpecSplitMix64, length, size int
 	run := lawSpecModelRun{start: start}
 	var state LawSpecValue
 	if !lsAllowed(func() { state = m.startState(symbols, start) }) {
-		return run
+		return run, 0
 	}
 	indices := append([]int64{}, m.startIndices...)
+	rejected := 0
 	for ; length > 0; length-- {
-		allowed := []int{}
-		for i := range m.commands {
-			if m.commands[i].admits(indices) && !lsEmptyArguments(lsModelArguments(&m.commands[i], indices)) {
-				allowed = append(allowed, i)
-			}
-		}
-		if len(allowed) == 0 {
+		step, next, taken, enabled := m.nextStep(symbols, random, state, indices, size, crashes, &rejected)
+		if !enabled {
 			break
 		}
-		index := allowed[random.Below(uint64(len(allowed)))]
-		// One step in eight of an actor's run is a crash.
-		if crashes && len(m.steps) > len(m.commands) && random.Below(8) == 0 {
-			index = len(m.commands)
+		if taken {
+			run.steps = append(run.steps, step)
+			state = next
+			indices = m.steps[step.index].shifted(indices)
 		}
-		c := &m.steps[index]
-		args := []LawSpecValue{}
-		for _, d := range lsModelArguments(c, indices) {
-			args = append(args, m.values.generate(d, random, size))
-		}
-		if !lsAllowed(func() { state, _ = lsStepModel(c, symbols, args, state) }) {
-			for _, d := range c.arguments {
-				if d.([]any)[0] == "dependent" && (c.when == nil || lsTruth(c.when(symbols, []LawSpecValue{state}))) {
-					panic("incomplete model generation: dependent arguments rejected by the reference (1 attempt)")
-				}
-			}
-			continue
-		}
-		run.steps = append(run.steps, lawSpecModelStep{index, args})
-		indices = c.shifted(indices)
 	}
-	return run
+	return run, rejected
+}
+
+// lsMostlyRejected is whether the reference rejected more of a run's drawn
+// steps than it accepted.
+func lsMostlyRejected(accepted, rejected int) bool {
+	return rejected > accepted
+}
+
+func (m *lawSpecMachine) incompleteRun(run string, accepted, rejected int) string {
+	return fmt.Sprintf("incomplete model generation: model %s's %s drew %d steps its reference rejected and %d it accepted; fewer than half of its steps are valid, so it shows little of the system", m.name, run, rejected, accepted)
+}
+
+// lsRejectedNote is how a failing run's rejected draws read after its failure.
+func lsRejectedNote(rejected int) string {
+	if rejected == 0 {
+		return ""
+	}
+	return fmt.Sprintf(" (the reference rejected %d drawn steps of this run)", rejected)
+}
+
+// reportModel appends one line of JSON per model check to the file
+// LAWSPEC_MODEL_REPORT names: how many runs and steps it checked, and how
+// many drawn steps the reference rejected.
+func (m *lawSpecMachine) reportModel(check string, runs, steps, rejected int, outcome string) {
+	path := os.Getenv("LAWSPEC_MODEL_REPORT")
+	if path == "" {
+		return
+	}
+	line := fmt.Sprintf("{\"model\":\"%s\",\"check\":\"%s\",\"runs\":%d,\"steps\":%d,\"rejected\":%d,\"outcome\":\"%s\"}\n", m.name, check, runs, steps, rejected, outcome)
+	// The report is a side channel; the check's own result stands.
+	file, err := os.OpenFile(path, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0o644)
+	if err != nil {
+		return
+	}
+	defer file.Close()
+	_, _ = file.WriteString(line)
 }
 
 // execute is the failing step's number and what went wrong, or failed false
@@ -5551,14 +5888,23 @@ func LawSpecCheckModel(model LawSpecModel) error {
 func lsCheckModel(model LawSpecModel, cases, maxLength, maxShrinks int, seed uint64) error {
 	m := lsNewMachine(model)
 	random := &LawSpecSplitMix64{seed}
+	steps, rejected := 0, 0
 	for c := 0; c < cases; c++ {
 		length := int64(random.Below(uint64(maxLength + 1)))
-		run := m.generateRun(random, length, int64(1+c%8), true)
+		run, runRejected := m.generateRun(random, length, int64(1+c%8), true)
+		steps += len(run.steps)
+		rejected += runRejected
+		if lsMostlyRejected(len(run.steps), runRejected) {
+			m.reportModel("sequential", c+1, steps, rejected, "incomplete")
+			panic(m.incompleteRun(fmt.Sprintf("run %d of %d", c+1, cases), len(run.steps), runRejected))
+		}
 		if step, message, failed := m.execute(run); failed {
+			m.reportModel("sequential", c+1, steps, rejected, "failed")
 			run, step, message = m.shrinkRun(run, step, message, maxShrinks)
-			return fmt.Errorf("model %s fails at step %d of %s: %s", m.name, step, m.describeRun(run), message)
+			return fmt.Errorf("model %s fails at step %d of %s: %s%s", m.name, step, m.describeRun(run), message, lsRejectedNote(runRejected))
 		}
 	}
+	m.reportModel("sequential", cases, steps, rejected, "passed")
 	return nil
 }
 
@@ -5652,26 +5998,25 @@ func (m *lawSpecMachine) parallelAllowed(c lawSpecParallelCase) bool {
 	return visit(make([]int, len(c.branches)), start)
 }
 
-func (m *lawSpecMachine) generateBranch(random *LawSpecSplitMix64, state LawSpecValue, length, size int64) []lawSpecModelStep {
+func (m *lawSpecMachine) generateBranch(random *LawSpecSplitMix64, state LawSpecValue, length, size int64, rejected *int) []lawSpecModelStep {
 	symbols := map[string]*LawSpecSymbol{}
 	steps := []lawSpecModelStep{}
 	for ; length > 0; length-- {
-		index := int(random.Below(uint64(len(m.commands))))
-		c := &m.commands[index]
-		args := []LawSpecValue{}
-		for _, d := range c.arguments {
-			args = append(args, m.values.generate(d, random, size))
+		step, next, taken, enabled := m.nextStep(symbols, random, state, m.startIndices, size, false, rejected)
+		if !enabled {
+			break
 		}
-		if !lsAllowed(func() { state, _ = lsStepModel(c, symbols, args, state) }) {
-			continue
+		if taken {
+			steps = append(steps, step)
+			state = next
 		}
-		steps = append(steps, lawSpecModelStep{index, args})
 	}
 	return steps
 }
 
-func (m *lawSpecMachine) generateParallel(random *LawSpecSplitMix64, size int64, threads, branchLength int) lawSpecParallelCase {
-	prefix := m.generateRun(random, int64(random.Below(4)), size, false)
+func (m *lawSpecMachine) generateParallel(random *LawSpecSplitMix64, size int64, threads, branchLength int, rejected *int) lawSpecParallelCase {
+	prefix, prefixRejected := m.generateRun(random, int64(random.Below(4)), size, false)
+	*rejected += prefixRejected
 	c := lawSpecParallelCase{prefix: prefix, branches: make([][]lawSpecModelStep, threads)}
 	for i := range c.branches {
 		c.branches[i] = []lawSpecModelStep{}
@@ -5681,7 +6026,7 @@ func (m *lawSpecMachine) generateParallel(random *LawSpecSplitMix64, size int64,
 		return c
 	}
 	for i := range c.branches {
-		c.branches[i] = m.generateBranch(random, state, 1+int64(random.Below(uint64(branchLength))), size)
+		c.branches[i] = m.generateBranch(random, state, 1+int64(random.Below(uint64(branchLength))), size, rejected)
 	}
 	// Drop the last step of the longest branch (the first, among equals)
 	// until every interleaving is allowed.
@@ -6054,14 +6399,28 @@ func LawSpecCheckModelParallel(model LawSpecModel) error {
 func lsCheckModelParallel(model LawSpecModel, cases, repeats, maxShrinks, threads, branchLength int, seed uint64) error {
 	m := lsNewMachine(model)
 	random := &LawSpecSplitMix64{seed ^ 0x5BD1E995}
+	steps, rejectedTotal := 0, 0
 	for n := 0; n < cases; n++ {
-		c := m.generateParallel(random, int64(1+n%8), threads, branchLength)
+		rejected := 0
+		c := m.generateParallel(random, int64(1+n%8), threads, branchLength, &rejected)
+		accepted := len(c.prefix.steps)
+		for _, b := range c.branches {
+			accepted += len(b)
+		}
+		steps += accepted
+		rejectedTotal += rejected
+		if lsMostlyRejected(accepted, rejected) {
+			m.reportModel("parallel", n+1, steps, rejectedTotal, "incomplete")
+			panic(m.incompleteRun(fmt.Sprintf("parallel case %d of %d", n+1, cases), accepted, rejected))
+		}
 		shake := random.Next()
 		if failure, failed := m.parallelFails(c, repeats, shake); failed {
+			m.reportModel("parallel", n+1, steps, rejectedTotal, "failed")
 			c, failure = m.shrinkParallel(c, failure, max(2, repeats/2), maxShrinks, shake)
-			return fmt.Errorf("model %s is not %s: %s: %s", m.name, lsConsistent[m.consistency], m.describeParallel(c), failure)
+			return fmt.Errorf("model %s is not %s: %s: %s%s", m.name, lsConsistent[m.consistency], m.describeParallel(c), failure, lsRejectedNote(rejected))
 		}
 	}
+	m.reportModel("parallel", cases, steps, rejectedTotal, "passed")
 	return nil
 }
 
@@ -9490,4 +9849,45 @@ func lsPairFields(pair LawSpecValue) (LawSpecValue, LawSpecValue) {
 		panic("a handler clause must give Pair result state")
 	}
 	return data.fields[0], data.fields[1]
+}
+
+func lsTextList(texts []string) LawSpecValue {
+	values := []LawSpecValue{}
+	for _, text := range texts {
+		values = append(values, LawSpecValue{"Text", lsTextUnits(text)})
+	}
+	return lsList("List Text", values)
+}
+
+// lsTextWhiteSpace is Unicode White_Space, the same set on every target.
+func lsTextWhiteSpace(point rune) bool {
+	return (point >= 0x09 && point <= 0x0D) || point == 0x20 || point == 0x85 || point == 0xA0 ||
+		point == 0x1680 || (point >= 0x2000 && point <= 0x200A) || point == 0x2028 || point == 0x2029 ||
+		point == 0x202F || point == 0x205F || point == 0x3000
+}
+
+// lsTextSplit gives the pieces between occurrences of a separator; an empty
+// separator divides nothing.
+func lsTextSplit(separator, text string) []string {
+	if separator == "" {
+		return []string{text}
+	}
+	return strings.Split(text, separator)
+}
+
+func lsTextTrim(text string) string {
+	return strings.TrimFunc(text, lsTextWhiteSpace)
+}
+
+func lsTextWords(text string) []string {
+	return strings.FieldsFunc(text, lsTextWhiteSpace)
+}
+
+// lsTextLines gives the pieces between line feeds, without a last empty piece.
+func lsTextLines(text string) []string {
+	pieces := strings.Split(text, "\n")
+	if pieces[len(pieces)-1] == "" {
+		pieces = pieces[:len(pieces)-1]
+	}
+	return pieces
 }

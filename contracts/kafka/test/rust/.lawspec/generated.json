@@ -10,7 +10,7 @@
     "src/lawspec_schema.rs": "bacffa5064862893696e7bea8882584c6ecc3f67978f516520d0db051d30257d",
     "src/lawspec_definitions.rs": "1f48d5eba3267a4809f6b91abb28cd9d2be3550b5e93c94a095cded6a4e9952f",
     "src/lawspec_abilities.rs": "43e5b34e9c3e1b5381df875732477574143aa2879eaaa58b6d3941aac416de57",
-    "src/lawspec_runtime.rs": "8fffb33ed88e758e172ed91198936f470fe55fcc408607be598d31a6c2b8983b",
+    "src/lawspec_runtime.rs": "589ebfb1da0ca20bb77f945a751b9830c0a565be3ef7af25d989f1de34d32c01",
     "src/lawspec_modules.rs": "91dfe5cfa584cdf77778f3be99836567aaa8335de84ea69fd3b12310f8fb7eb5",
     "tests/support/lawspec_strategies.rs": "625bdd707e7f1768e6642b14b9733a48a985b250703c64e946abec87b6a26269",
     "src/lawspec_remote.rs": "83d2f7dede666dd2b377977e64aeed97b421dbc3eee210525ea5f1f2b9c10a30"

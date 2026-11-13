@@ -58,6 +58,20 @@ let allElements (value: Value) (predicate: Value -> Value) =
     | List items -> Bool(items |> List.forall (predicate >> truth))
     | _ -> Fail.raiseWith "ListRequired" ""
 
+/// The list of the body's value for each element, in order.
+[<CompiledName("MapElements")>]
+let mapElements (value: Value) (body: Value -> Value) =
+    match value with
+    | List items -> List(items |> List.map body)
+    | _ -> Fail.raiseWith "ListRequired" ""
+
+/// The elements the predicate accepts, in order.
+[<CompiledName("FilterElements")>]
+let filterElements (value: Value) (predicate: Value -> Value) =
+    match value with
+    | List items -> List(items |> List.filter (predicate >> truth))
+    | _ -> Fail.raiseWith "ListRequired" ""
+
 /// Fold a finite search once, preserving incomplete inner outcomes.
 [<CompiledName("SearchElements")>]
 let searchElements (universal: bool) (value: Value) (predicate: Value -> Value) =

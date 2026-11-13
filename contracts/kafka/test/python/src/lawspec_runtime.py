@@ -724,6 +724,46 @@ def _at(x, i):
     return construct("Maybe::Absent", [])
 
 
+# Unicode White_Space, the same set on every target.
+_TEXT_WHITE_SPACE = frozenset(
+    [0x20, 0x85, 0xA0, 0x1680, 0x2028, 0x2029, 0x202F, 0x205F, 0x3000]
+    + list(range(0x09, 0x0E))
+    + list(range(0x2000, 0x200B))
+)
+
+
+def _text_split(separator, text):
+    return text.split(separator) if separator else [text]
+
+
+def _text_lines(text):
+    pieces = text.split("\n")
+    return pieces[:-1] if pieces[-1] == "" else pieces
+
+
+def _text_trim(text):
+    start, end = 0, len(text)
+    while start < end and ord(text[start]) in _TEXT_WHITE_SPACE:
+        start += 1
+    while end > start and ord(text[end - 1]) in _TEXT_WHITE_SPACE:
+        end -= 1
+    return text[start:end]
+
+
+def _text_words(text):
+    out, word = [], []
+    for character in text:
+        if ord(character) in _TEXT_WHITE_SPACE:
+            if word:
+                out.append("".join(word))
+                word = []
+        else:
+            word.append(character)
+    if word:
+        out.append("".join(word))
+    return out
+
+
 _SEQUENCE_HELPERS = {
     "append": _append,
     "slice": _slice,
@@ -734,6 +774,10 @@ _SEQUENCE_HELPERS = {
     "utf8": lambda t: t.encode("utf-8"),
     "textOf": lambda n: str(n),
     "join": lambda separator, parts: separator.join(parts),
+    "split": lambda separator, text: _text_split(separator, text),
+    "trim": lambda text: _text_trim(text),
+    "words": lambda text: _text_words(text),
+    "lines": lambda text: _text_lines(text),
 }
 
 
@@ -1685,6 +1729,34 @@ def construct(tag, fields):
     raise ValueError("invalid constructor or arity: " + tag)
 
 
+def map_elements(value, body):
+    if not isinstance(value, list):
+        raise TypeError("expected List in map")
+    results = []
+    for index, item in enumerate(value):
+        try:
+            results.append(body(item))
+        except Exception as error:
+            raise ValueError(f"List element {index}: {error}") from error
+    return results
+
+
+def filter_elements(value, predicate):
+    if not isinstance(value, list):
+        raise TypeError("expected List in filter")
+    kept = []
+    for index, item in enumerate(value):
+        try:
+            accepted = predicate(item)
+            if type(accepted) is not bool:
+                raise TypeError("element predicate must return Bool")
+            if accepted:
+                kept.append(item)
+        except Exception as error:
+            raise ValueError(f"List element {index}: {error}") from error
+    return kept
+
+
 def all_elements(value, predicate):
     if not isinstance(value, list):
         raise TypeError("expected List in element predicate")
@@ -2448,6 +2520,74 @@ class Values:
         found = [c for c in d[2:] if not any(_mentions_data(f) for f in c[2:])]
         return found or d[2:]
 
+    @staticmethod
+    def choice(base, option):
+        """One of a oneof descriptor's choices: an integer, or a text's code
+        points (codes c ...)."""
+        if isinstance(option, int):
+            return option
+        return "".join(chr(c) for c in option[1:])
+
+    def finite(self, d, limit, open_names=None):
+        """Every value of a descriptor, in a fixed order, when there are at
+        most limit of them; None when there are more, or infinitely many.
+        Integers ascend, false comes before true, and constructors come in
+        their declared order with their fields' values varying last field
+        fastest."""
+        if open_names is None:
+            open_names = set()
+        if d[0] == "ref":
+            name = d[1]
+            if name in open_names:
+                return None
+            open_names.add(name)
+            out = self.finite(self.table[name], limit, open_names)
+            open_names.discard(name)
+            return out
+        kind = d[0]
+        out = []
+        if kind == "int":
+            lo, hi = d[2], d[3]
+            if lo is None or hi is None or hi - lo >= limit:
+                return None
+            out = list(range(lo, hi + 1))
+        elif kind == "bool":
+            out = [False, True]
+        elif kind == "unit":
+            out = [UNIT]
+        elif kind == "oneof":
+            out = [self.choice(d[1], option) for option in d[2:]]
+        elif kind == "maybe":
+            inner = self.finite(d[1], limit, open_names)
+            if inner is None:
+                return None
+            out = [DataValue("Maybe::Absent", ())] + [
+                DataValue("Maybe::Present", (v,)) for v in inner
+            ]
+        elif kind == "either":
+            left = self.finite(d[1], limit, open_names)
+            right = self.finite(d[2], limit, open_names)
+            if left is None or right is None:
+                return None
+            out = [DataValue("Either::Left", (v,)) for v in left] + [
+                DataValue("Either::Right", (v,)) for v in right
+            ]
+        elif kind == "data":
+            for ctor in d[2:]:
+                fields = []
+                for field in ctor[2:]:
+                    values = self.finite(field, limit, open_names)
+                    if values is None:
+                        return None
+                    fields.append(values)
+                tuples = _product(fields, limit)
+                if tuples is None:
+                    return None
+                out += [DataValue(str(ctor[1]), tuple(t)) for t in tuples]
+        else:
+            return None
+        return None if len(out) > limit else out
+
     def generate(self, d, random, size):
         d = self.resolve(d)
         kind = d[0]
@@ -2485,6 +2625,9 @@ class Values:
             return DataValue(
                 "Either::Right", (self.generate(d[2], random, size),)
             )
+        if kind == "oneof":
+            options = d[2:]
+            return self.choice(d[1], options[random.below(len(options))])
         if kind == "data":
             choices = self.base(d) if size <= 0 else d[2:]
             ctor = choices[random.below(len(choices))]
@@ -2514,6 +2657,8 @@ class Values:
             return DataValue("Maybe::Absent", ())
         if kind == "either":
             return DataValue("Either::Left", (self.minimal(d[1]),))
+        if kind == "oneof":
+            return self.choice(d[1], d[2])
         ctor = self.base(d)[0]
         return DataValue(str(ctor[1]), tuple(self.minimal(f) for f in ctor[2:]))
 
@@ -2532,6 +2677,13 @@ class Values:
                 ]
         elif kind == "bool":
             out = [False] if v else []
+        elif kind == "oneof":
+            # The choices before this one, first first.
+            for option in d[2:]:
+                c = self.choice(d[1], option)
+                if _same(c, v):
+                    break
+                out.append(c)
         elif kind == "text":
             if v:
                 out = (
@@ -2580,6 +2732,20 @@ class Values:
                 seen.append(c)
                 unique.append(c)
         return unique
+
+
+def _product(domains, limit):
+    """Every tuple of one value from each domain, the last varying fastest;
+    None past limit."""
+    out = [[]]
+    for domain in domains:
+        following = []
+        for prefix in out:
+            following += [prefix + [v] for v in domain]
+            if len(following) > limit:
+                return None
+        out = following
+    return out
 
 
 def _toward_zero(n, d):
@@ -3439,7 +3605,13 @@ def _model_arguments(command, indices):
 
 def _empty_arguments(ds):
     return any(
-        d[0] == "int" and d[2] is not None and d[3] is not None and d[2] > d[3]
+        (
+            d[0] == "int"
+            and d[2] is not None
+            and d[3] is not None
+            and d[2] > d[3]
+        )
+        or (d[0] == "oneof" and len(d) == 2)
         for d in ds
     )
 
@@ -3487,7 +3659,110 @@ def _step_model(command, symbols, args, state):
     return out.fields[1], out.fields[0]
 
 
+# Generation honours the reference. A step is drawn among the commands
+# enabled at the model state: typestate admits them, their precondition
+# holds, and some arguments are inside the reference's refinements. When a
+# command's argument tuples are few (_FINITE_STEPS), each is tried against
+# the reference and one valid tuple is chosen, as QuickCheck state machines
+# generate from a precondition. Otherwise arguments are drawn and checked
+# again, up to _STEP_ATTEMPTS times, and every draw the reference rejects is
+# counted. A run where the reference rejected more draws than it accepted
+# shows little, so its check is incomplete, never passed.
+# ref:DEC-honest-model-steps
+
+# The most argument tuples of one step that are enumerated instead of drawn.
+_FINITE_STEPS = 64
+
+# How many times a step's arguments are drawn before the step is given up.
+_STEP_ATTEMPTS = 8
+
+
+def _enabled_steps(model, symbols, state, indices):
+    """The commands enabled at a state, each with its valid argument tuples,
+    or None to draw them."""
+    out = []
+    for i, command in enumerate(model.commands):
+        if not command.admits(indices):
+            continue
+        descriptors = _model_arguments(command, indices)
+        if _empty_arguments(descriptors):
+            continue
+        if command.when is not None:
+            try:
+                holds = command.when(symbols, state)
+            except Exception:
+                holds = False
+            if not holds:
+                continue
+        domains = []
+        for d in descriptors:
+            values = model.values.finite(d, _FINITE_STEPS)
+            if values is None:
+                domains = None
+                break
+            domains.append(values)
+        tuples = None if domains is None else _product(domains, _FINITE_STEPS)
+        if tuples is None:
+            out.append((i, None))
+            continue
+        valid = []
+        for t in tuples:
+            try:
+                _step_model(command, symbols, t, state)
+            except _Invalid:
+                # Outside the reference: not a step here.
+                continue
+            valid.append(t)
+        if valid:
+            out.append((i, valid))
+    return out
+
+
+# What _next_step returns when no command is enabled; the run stops.
+_NONE_ENABLED = object()
+
+
+def _next_step(model, symbols, random, state, indices, size, crashes, rejected):
+    """_NONE_ENABLED when no command is enabled; otherwise the step and the
+    model state after it, the step None when every draw was rejected.
+    rejected[0] counts the draws the reference rejects."""
+    enabled = _enabled_steps(model, symbols, state, indices)
+    if not enabled:
+        return _NONE_ENABLED
+    index, tuples = enabled[random.below(len(enabled))]
+    # One step in eight of an actor's run is a crash.
+    if (
+        crashes
+        and len(model.steps) > len(model.commands)
+        and random.below(8) == 0
+    ):
+        crash = model.steps[len(model.commands)]
+        after, _ = _step_model(crash, symbols, [], state)
+        return (len(model.commands), []), after
+    command = model.steps[index]
+    if tuples is not None:
+        args = (
+            tuples[0] if len(tuples) == 1 else tuples[random.below(len(tuples))]
+        )
+        after, _ = _step_model(command, symbols, args, state)
+        return (index, args), after
+    for _ in range(_STEP_ATTEMPTS):
+        args = [
+            model.values.generate(d, random, size)
+            for d in _model_arguments(command, indices)
+        ]
+        try:
+            after, _ = _step_model(command, symbols, args, state)
+        except _Invalid:
+            rejected[0] += 1
+            continue
+        return (index, args), after
+    return None, state
+
+
 def _generate_run(model, random, length, size, crashes=False):
+    """A generated run, and how many of its drawn steps the reference
+    rejected."""
     symbols = {}
     start_args = [
         model.values.generate(d, random, size) for d in model.start_arguments
@@ -3495,44 +3770,65 @@ def _generate_run(model, random, length, size, crashes=False):
     try:
         state = model.start_model(symbols, *start_args)
     except Exception:
-        return (start_args, [])
+        return (start_args, []), 0
     indices = list(model.start_indices)
     steps = []
+    rejected = [0]
     for _ in range(length):
-        allowed = [
-            i
-            for i, c in enumerate(model.commands)
-            if c.admits(indices)
-            and not _empty_arguments(_model_arguments(c, indices))
-        ]
-        if not allowed:
+        taken = _next_step(
+            model, symbols, random, state, indices, size, crashes, rejected
+        )
+        if taken is _NONE_ENABLED:
             break
-        index = allowed[random.below(len(allowed))]
-        # One step in eight of an actor's run is a crash.
-        if (
-            crashes
-            and len(model.steps) > len(model.commands)
-            and random.below(8) == 0
-        ):
-            index = len(model.commands)
-        command = model.steps[index]
-        args = [
-            model.values.generate(d, random, size)
-            for d in _model_arguments(command, indices)
-        ]
-        try:
-            state, _ = _step_model(command, symbols, args, state)
-        except _Invalid:
-            if any(d[0] == "dependent" for d in command.arguments) and (
-                command.when is None or command.when(symbols, state)
-            ):
-                raise RuntimeError(
-                    "incomplete model generation: dependent arguments rejected by the reference (1 attempt)"
-                )
-            continue
-        steps.append((index, args))
-        indices = command.shifted(indices)
-    return (start_args, steps)
+        step, after = taken
+        if step is not None:
+            steps.append(step)
+            state = after
+            indices = model.steps[step[0]].shifted(indices)
+    return (start_args, steps), rejected[0]
+
+
+def _mostly_rejected(accepted, rejected):
+    """Whether the reference rejected more of a run's drawn steps than it
+    accepted."""
+    return rejected > accepted
+
+
+def _incomplete_run(model, run, accepted, rejected):
+    return (
+        f"incomplete model generation: model {model.name}'s {run} drew "
+        f"{rejected} steps its reference rejected and {accepted} it "
+        "accepted; fewer than half of its steps are valid, so it shows "
+        "little of the system"
+    )
+
+
+def _rejected_note(rejected):
+    """How a failing run's rejected draws read after its failure."""
+    if rejected == 0:
+        return ""
+    return f" (the reference rejected {rejected} drawn steps of this run)"
+
+
+def _report_model(model, check, runs, steps, rejected, outcome):
+    """One line of JSON per model check, appended to the file
+    LAWSPEC_MODEL_REPORT names: how many runs and steps it checked, and how
+    many drawn steps the reference rejected."""
+    import os
+
+    path = os.environ.get("LAWSPEC_MODEL_REPORT")
+    if not path:
+        return
+    line = (
+        f'{{"model":"{model.name}","check":"{check}","runs":{runs},'
+        f'"steps":{steps},"rejected":{rejected},"outcome":"{outcome}"}}\n'
+    )
+    try:
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(line)
+    except OSError:
+        # The report is a side channel; the check's own result stands.
+        pass
 
 
 def _execute(model, run):
@@ -3651,21 +3947,45 @@ def check_model(model, cases=100, max_length=20, max_shrinks=2000, seed=None):
     if seed is None:
         seed = int(os.environ.get("LAWSPEC_SEED", "0"))
     random = SplitMix64(seed)
+    steps = 0
+    rejected_total = 0
     for case in range(cases):
-        run = _generate_run(
+        run, rejected = _generate_run(
             model,
             random,
             random.below(max_length + 1),
             1 + case % 8,
             crashes=True,
         )
+        accepted = len(run[1])
+        steps += accepted
+        rejected_total += rejected
+        if _mostly_rejected(accepted, rejected):
+            _report_model(
+                model,
+                "sequential",
+                case + 1,
+                steps,
+                rejected_total,
+                "incomplete",
+            )
+            raise RuntimeError(
+                _incomplete_run(
+                    model, f"run {case + 1} of {cases}", accepted, rejected
+                )
+            )
         failure = _execute(model, run)
         if failure is not None:
+            _report_model(
+                model, "sequential", case + 1, steps, rejected_total, "failed"
+            )
             run, (step, message) = _shrink_run(model, run, failure, max_shrinks)
             raise AssertionError(
                 f"model {model.name} fails at step {step} of "
                 f"{_describe_run(model, run)}: {message}"
+                f"{_rejected_note(rejected)}"
             )
+    _report_model(model, "sequential", cases, steps, rejected_total, "passed")
 
 
 # Parallel runs of a shared model. A case is a sequential prefix and one
@@ -3716,32 +4036,46 @@ def _parallel_allowed(model, prefix, branches):
     return visit(tuple(0 for _ in branches), state)
 
 
-def _generate_branch(model, random, state, length, size):
+def _generate_branch(model, random, state, length, size, rejected):
     symbols = {}
     steps = []
     for _ in range(length):
-        index = random.below(len(model.commands))
-        command = model.commands[index]
-        args = [
-            model.values.generate(d, random, size) for d in command.arguments
-        ]
-        try:
-            state, _ = _step_model(command, symbols, args, state)
-        except _Invalid:
-            continue
-        steps.append((index, args))
+        taken = _next_step(
+            model,
+            symbols,
+            random,
+            state,
+            model.start_indices,
+            size,
+            False,
+            rejected,
+        )
+        if taken is _NONE_ENABLED:
+            break
+        step, after = taken
+        if step is not None:
+            steps.append(step)
+            state = after
     return steps
 
 
-def _generate_parallel(model, random, size, threads, branch_length):
-    prefix = _generate_run(model, random, random.below(4), size)
+def _generate_parallel(model, random, size, threads, branch_length, rejected):
+    prefix, prefix_rejected = _generate_run(
+        model, random, random.below(4), size
+    )
+    rejected[0] += prefix_rejected
     try:
         state = _simulate(model, {}, prefix)[-1]
     except _Invalid:
         return prefix, [[] for _ in range(threads)]
     branches = [
         _generate_branch(
-            model, random, state, 1 + random.below(branch_length), size
+            model,
+            random,
+            state,
+            1 + random.below(branch_length),
+            size,
+            rejected,
         )
         for _ in range(threads)
     ]
@@ -4039,19 +4373,53 @@ def check_model_parallel(
     if seed is None:
         seed = int(os.environ.get("LAWSPEC_SEED", "0"))
     random = SplitMix64(seed ^ 0x5BD1E995)
+    steps = 0
+    rejected_total = 0
     for case_number in range(cases):
+        rejected = [0]
         case = _generate_parallel(
-            model, random, 1 + case_number % 8, threads, branch_length
+            model, random, 1 + case_number % 8, threads, branch_length, rejected
         )
+        prefix, branches = case
+        accepted = len(prefix[1]) + sum(len(b) for b in branches)
+        steps += accepted
+        rejected_total += rejected[0]
+        if _mostly_rejected(accepted, rejected[0]):
+            _report_model(
+                model,
+                "parallel",
+                case_number + 1,
+                steps,
+                rejected_total,
+                "incomplete",
+            )
+            raise RuntimeError(
+                _incomplete_run(
+                    model,
+                    f"parallel case {case_number + 1} of {cases}",
+                    accepted,
+                    rejected[0],
+                )
+            )
         shake = random.next()
         failure = _parallel_fails(model, case, repeats, shake)
         if failure is not None:
+            _report_model(
+                model,
+                "parallel",
+                case_number + 1,
+                steps,
+                rejected_total,
+                "failed",
+            )
             case, failure = _shrink_parallel(
                 model, case, failure, max(2, repeats // 2), max_shrinks, shake
             )
             raise AssertionError(
                 f"model {model.name} is not {_CONSISTENT[model.consistency]}: {_describe_parallel(model, case)}: {failure}"
+                f"{_rejected_note(rejected[0])}"
             )
+    _report_model(model, "parallel", cases, steps, rejected_total, "passed")
 
 
 # Scenarios: processes that drive a shared model's commands at the same time

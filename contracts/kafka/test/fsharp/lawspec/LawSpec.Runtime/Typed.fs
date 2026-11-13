@@ -229,6 +229,18 @@ let textOf (n: BigInteger) =
 [<CompiledName("Join")>]
 let join (separator: string) (parts: string list) = String.Join(separator, parts)
 
+[<CompiledName("Split")>]
+let split (separator: string) (text: string) = Scalar.textSplit separator text
+
+[<CompiledName("Trim")>]
+let trim (text: string) = Scalar.textTrim text
+
+[<CompiledName("Words")>]
+let words (text: string) = Scalar.textWords text
+
+[<CompiledName("Lines")>]
+let lines (text: string) = Scalar.textLines text
+
 [<CompiledName("StartsWith")>]
 let startsWith (text: string) (prefix: string) =
     text.StartsWith(prefix, StringComparison.Ordinal)

@@ -202,6 +202,52 @@ def join(separator, parts):
     return separator.join(items(parts))
 
 
+# Unicode White_Space, the same set on every target.
+_WHITE_SPACE = frozenset(
+    [0x20, 0x85, 0xA0, 0x1680, 0x2028, 0x2029, 0x202F, 0x205F, 0x3000]
+    + list(range(0x09, 0x0E))
+    + list(range(0x2000, 0x200B))
+)
+
+
+def _is_space(character):
+    return ord(character) in _WHITE_SPACE
+
+
+def split(separator, text):
+    return list_of(text.split(separator) if separator else [text])
+
+
+def trim(text):
+    start, end = 0, len(text)
+    while start < end and _is_space(text[start]):
+        start += 1
+    while end > start and _is_space(text[end - 1]):
+        end -= 1
+    return text[start:end]
+
+
+def words(text):
+    out, word = [], []
+    for character in text:
+        if _is_space(character):
+            if word:
+                out.append("".join(word))
+                word = []
+        else:
+            word.append(character)
+    if word:
+        out.append("".join(word))
+    return list_of(out)
+
+
+def lines(text):
+    pieces = text.split("\n")
+    if pieces[-1] == "":
+        pieces.pop()
+    return list_of(pieces)
+
+
 def regex_matches(pattern, text):
     return ls.regex_matches(pattern, text)
 

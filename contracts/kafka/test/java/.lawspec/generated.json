@@ -50,7 +50,7 @@
     "src/main/java/lawspec/runtime/LawSpecSchema.java": "4e214c84f7ef2c764ca178e87b4b1bf4ae856c5f26928725ec396b7d1f748fe1",
     "src/main/java/lawspec/runtime/LawSpecDefinitionBodies.java": "bad27fd38d8e238b236d11cb43baf83d375670aec0765db3b221189370d30daa",
     "src/main/java/lawspec/runtime/LawSpecTyped.java": "fd3d9757587ed610d993973b5c137e3ba77ede86b714e858570910c727eea632",
-    "src/main/java/lawspec/runtime/LawSpecFast.java": "01e188cf321676d373730fce86ba3b2e2a337065688f43bf746c8a9f7189e0f4",
+    "src/main/java/lawspec/runtime/LawSpecFast.java": "718bf20792fc5075488c68f3a245a9b87b6a175b903441374493a268c6030725",
     "src/main/java/lawspec/definitions/lawspec/Collections.java": "6fc0072f0f05bd840fc9440ac2ea165d42d80ae639e70e1ea33271b21d533966",
     "src/main/java/lawspec/definitions/lawspec/Matchers.java": "cb715399c0a8cd258ef8b0adf2a5c44402e093019b2e3f95a64dbd7dfd93e9c8",
     "src/main/java/lawspec/definitions/lawtwin/Kafka.java": "b6c957ae969e8168a72ee028dfa1bcf9b55f60030d3b1c104eca2a9a3a0ad6ee",
@@ -58,7 +58,7 @@
     "src/main/java/lawspec/definitions/contracttest/Kafka.java": "011459cc50c18fa525c2c36ddd67f74a93d357458dfab2379c059ed1798b7a9e",
     "src/test/java/lawspec/testing/LawSpecDataStrategies.java": "5347aa21f22f76458b82b147df54d26b5be7cf02c473a8be3d397dfaa216efc2",
     "src/test/java/lawspec/testing/LawSpecScalars.java": "10cf159ff711bd48b90e8d8ef1a6641a791d6a71f3cf3127e94e16b70f8089e3",
-    "src/main/java/lawspec/runtime/LawSpecRuntime.java": "91d75a71020910b06d9cd5587c88f3ace952ae2d7a6fe9b51aa505133c119f85",
+    "src/main/java/lawspec/runtime/LawSpecRuntime.java": "9f1eb528b2c8437551e006ee17b01a63571dac62051edd9c623fe9bd1acb04f0",
     "src/main/java/lawspec/abilities/lawtwin/Kafka.java": "7225c49cf8816956040736c5be42a6a09e991cfa8eb44872c85ab8d26ab59cc4",
     "src/main/java/lawspec/abilities/contracttest/Kafka.java": "86599adab00b1cff16d98d4f8fb00246ebcf31acc3201f28276568aac4959b0b",
     "src/main/java/lawspec/remote/LawSpecRemote.java": "f53e9b75b7437bf77eeb9156f1fd6f317325fd7cc47efa904685a9650d5fe94a"

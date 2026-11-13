@@ -414,6 +414,26 @@ public final class LawSpecFast
     return String.join(separator, parts);
   }
 
+  public static List<String> split(String separator, String text)
+  {
+    return List.of(lawspec.runtime.LawSpecRuntime.textSplit(separator, text));
+  }
+
+  public static String trim(String text)
+  {
+    return lawspec.runtime.LawSpecRuntime.textTrim(text);
+  }
+
+  public static List<String> words(String text)
+  {
+    return List.of(lawspec.runtime.LawSpecRuntime.textWords(text));
+  }
+
+  public static List<String> lines(String text)
+  {
+    return List.of(lawspec.runtime.LawSpecRuntime.textLines(text));
+  }
+
   // Bytes.
 
   /** Bytes, compared by content, octets unsigned. */

@@ -15,9 +15,9 @@
     "src/lawspec_definitions/lawtwin/kafka/model.py": "58cfb563372ed15c837d89bb6dd50ec898307cdc686fb22466e1a693f762f8f3",
     "src/lawspec_definitions/contracttest/kafka.py": "cf56765680148439829625282e3fe6b80fcc0599aa1433d8ae8868c2a17e5353",
     "src/lawspec_typed.py": "5ec8308018d35d68d93662239b78dbff76582a80f084bc74e94f48e819bce907",
-    "src/lawspec_fast.py": "2b38aeb6e3e62c3be40fe6745309ceef48f02ddf0190dbe6aac3e0795a5ad0d6",
+    "src/lawspec_fast.py": "04b44903448838577f15655e738459fc79ee9682e8af5fd5b95f5c0927f17ee8",
     "tests/lawspec_data_strategies.py": "4968507dd47b6e48f4db688eb128994bb52cd452265f4b786a3aa704c379209d",
-    "src/lawspec_runtime.py": "d7996de5cdc5b882b3ed47571520ddee825ae82439b0e1025e45ccfa15d39fff",
+    "src/lawspec_runtime.py": "6ab673f54f1050e1fa7bfbfcb3a65f665d08173f9d2ed7ae95c3948f6894ae03",
     "src/lawspec_abilities/lawtwin/kafka/__init__.py": "e5a65ebda4b4a0c73b2cb8e7a63d9ad3143b80bb0eeb0cc1c30705f638236f93",
     "src/lawspec_abilities/contracttest/kafka.py": "be0740057c577a89dbd29cbce97f160c101c91729a833adf83b85eb3ea11062c",
     "src/lawspec_remote.py": "1613d899617523562042fd7ebfd0202504dc8f4c2e39d3c767f5544328e2333d"

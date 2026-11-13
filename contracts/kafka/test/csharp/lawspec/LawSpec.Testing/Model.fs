@@ -450,6 +450,7 @@ let private emptyModelArguments ds =
     ds
     |> List.exists (function
         | Forms [ Atom "int"; _; Number lo; Number hi ] -> lo > hi
+        | Forms [ Atom "oneof"; _ ] -> true
         | _ -> false)
 
 let private validModelArguments ds args =
@@ -505,10 +506,132 @@ let private arguments (model: Model) (ds: Descriptor list) (random: Random.Seed)
 
     values, r
 
+// Generation honours the reference. A step is drawn among the commands
+// enabled at the model state: typestate admits them, their precondition
+// holds, and some arguments are inside the reference's refinements. When a
+// command's argument tuples are few (finiteSteps), each is tried against the
+// reference and one valid tuple is chosen, as QuickCheck state machines
+// generate from a precondition. Otherwise arguments are drawn and checked
+// again, up to stepAttempts times, and every draw the reference rejects is
+// counted. A run where the reference rejected more draws than it accepted
+// shows little, so its check is incomplete, never passed.
+// ref:DEC-honest-model-steps
+
+/// The most argument tuples of one step that are enumerated instead of drawn.
+let private finiteSteps = 64
+
+/// How many times a step's arguments are drawn before the step is given up.
+let private stepAttempts = 8
+
+/// The commands enabled at a state, each with its valid argument tuples, or
+/// None to draw them.
+let private enabledSteps (model: Model) (context: Context) (state: Value) (indices: BigInteger list) =
+    let holds (c: Step) =
+        match c.When with
+        | None -> true
+        | Some guard ->
+            try
+                callback guard context [ state ] = Bool true
+            with _ ->
+                false
+
+    [
+        for i, c in Array.indexed model.Commands do
+            if admits c indices then
+                let descriptors = modelArguments indices c
+
+                if not (emptyModelArguments descriptors) && holds c then
+                    let domains = descriptors |> List.map (fun d -> finite d model.Table finiteSteps)
+
+                    let tuples =
+                        if List.forall Option.isSome domains then
+                            product (List.choose id domains) finiteSteps
+                        else
+                            None
+
+                    match tuples with
+                    | None -> yield i, None
+                    | Some tuples ->
+                        // A tuple outside the reference is not a step here.
+                        let valid = tuples |> List.filter (fun t -> (step c context t state).IsSome)
+
+                        if not (List.isEmpty valid) then
+                            yield i, Some valid
+    ]
+
+/// One drawn step: no command enabled (the run stops), every draw rejected
+/// (the run goes on from the same state), or a step and the model state
+/// after it.
+type Next =
+    | NoneEnabled
+    | NoStep
+    | Taken of step: (int * Value list) * state: Value
+
+/// The next step of a run at a state and indices, how many of its drawn
+/// arguments the reference rejected, and the next random state.
+[<CompiledName("NextStep")>]
+let nextStep
+    (model: Model)
+    (context: Context)
+    (random: Random.Seed)
+    (state: Value)
+    (indices: BigInteger list)
+    (size: int)
+    (crashes: bool)
+    : Next * int * Random.Seed =
+    match enabledSteps model context state indices with
+    | [] -> NoneEnabled, 0, random
+    | enabled ->
+        let choice, r1 = Random.below (BigInteger(List.length enabled)) random
+        let index, tuples = List.item (int choice) enabled
+
+        let taken c (i, args) =
+            match step c context args state with
+            | Some(next, _) -> Taken((i, args), next)
+            | None -> NoStep
+
+        // One step in eight of an actor's run is a crash.
+        let crash, r2 =
+            if crashes && model.Actor then
+                let n, r = Random.below (BigInteger 8) r1
+                n.IsZero, r
+            else
+                false, r1
+
+        if crash then
+            taken (command model model.Commands.Length) (model.Commands.Length, []), 0, r2
+        else
+            let c = command model index
+
+            match tuples with
+            | Some [ only ] -> taken c (index, only), 0, r2
+            | Some tuples ->
+                let k, r3 = Random.below (BigInteger(List.length tuples)) r2
+                taken c (index, List.item (int k) tuples), 0, r3
+            | None ->
+                let rec attempt n random rejected =
+                    if n = stepAttempts then
+                        NoStep, rejected, random
+                    else
+                        let args, r = arguments model (modelArguments indices c) random size
+
+                        match taken c (index, args) with
+                        | NoStep -> attempt (n + 1) r (rejected + 1)
+                        | found -> found, rejected, r
+
+                attempt 0 r2 0
+
 /// A run drawn from a random state, of at most a length, at a size; crashes
 /// are injected (one step in eight) only when asked, and only for actors.
+/// Also how many of its drawn steps the reference rejected.
 [<CompiledName("Generate")>]
-let generateRun (model: Model) (random: Random.Seed) (length: int) (size: int) (crashes: bool) : Run * Random.Seed =
+let generateRun
+    (model: Model)
+    (random: Random.Seed)
+    (length: int)
+    (size: int)
+    (crashes: bool)
+    : Run * int * Random.Seed =
     let startArgs, r1 = arguments model model.StartArguments random size
 
     withCase model startArgs (fun context ->
@@ -519,62 +642,65 @@ let generateRun (model: Model) (random: Random.Seed) (length: int) (size: int) (
                 None
 
         match started with
-        | None -> (startArgs, []), r1
+        | None -> (startArgs, []), 0, r1
         | Some state ->
-            let rec go random remaining indices state steps =
+            let rec go random remaining indices state steps rejected =
                 if remaining = 0 then
-                    List.rev steps, random
+                    List.rev steps, rejected, random
                 else
-                    let allowed =
-                        model.Commands
-                        |> Array.indexed
-                        |> Array.filter (fun (_, c) ->
-                            admits c indices && not (emptyModelArguments (modelArguments indices c)))
-                        |> Array.map fst
+                    match nextStep model context random state indices size crashes with
+                    | NoneEnabled, drawn, r -> List.rev steps, rejected + drawn, r
+                    | NoStep, drawn, r -> go r (remaining - 1) indices state steps (rejected + drawn)
+                    | Taken((index, _) as s, next), drawn, r ->
+                        let indices = shifted (command model index) indices
+                        go r (remaining - 1) indices next (s :: steps) (rejected + drawn)
 
-                    if allowed.Length = 0 then
-                        List.rev steps, random
-                    else
-                        let choice, r1 = Random.below (BigInteger allowed.Length) random
+            let steps, rejected, last = go r1 length model.StartIndices state [] 0
+            (startArgs, steps), rejected, last)
 
-                        let index, r2 =
-                            if crashes && model.Actor then
-                                let crash, r = Random.below (BigInteger 8) r1
+/// The message of a run whose reference rejected more of its drawn steps
+/// than it accepted.
+[<CompiledName("IncompleteRun")>]
+let incompleteRun (model: Model) (run: string) (accepted: int) (rejected: int) =
+    sprintf
+        "incomplete model generation: model %s's %s drew %d steps its reference rejected and %d it accepted; fewer than half of its steps are valid, so it shows little of the system"
+        model.Name
+        run
+        rejected
+        accepted
 
-                                (if crash.IsZero then
-                                     model.Commands.Length
-                                 else
-                                     allowed.[int choice]),
-                                r
-                            else
-                                allowed.[int choice], r1
+/// How a failing run's rejected draws read after its failure.
+[<CompiledName("RejectedNote")>]
+let rejectedNote (rejected: int) =
+    if rejected = 0 then
+        ""
+    else
+        sprintf " (the reference rejected %d drawn steps of this run)" rejected
 
-                        let c = command model index
-                        let args, r3 = arguments model (modelArguments indices c) r2 size
+/// One line of JSON per model check, appended to the file
+/// LAWSPEC_MODEL_REPORT names: how many runs and steps it checked, and how
+/// many drawn steps the reference rejected.
+[<CompiledName("ReportModel")>]
+let reportModel (model: Model) (check: string) (runs: int) (steps: int) (rejected: int) (outcome: string) =
+    match Environment.GetEnvironmentVariable "LAWSPEC_MODEL_REPORT" with
+    | null
+    | "" -> ()
+    | path ->
+        let line =
+            sprintf
+                "{\"model\":\"%s\",\"check\":\"%s\",\"runs\":%d,\"steps\":%d,\"rejected\":%d,\"outcome\":\"%s\"}\n"
+                model.Name
+                check
+                runs
+                steps
+                rejected
+                outcome
 
-                        match step c context args state with
-                        | None ->
-                            let dependent =
-                                c.Arguments
-                                |> List.exists (function
-                                    | Forms(Atom "dependent" :: _) -> true
-                                    | _ -> false)
-
-                            let allowed =
-                                match c.When with
-                                | None -> true
-                                | Some guard -> callback guard context [ state ] = Bool true
-
-                            if dependent && allowed then
-                                fail
-                                    "IncompleteModelGeneration"
-                                    "dependent arguments rejected by the reference (1 attempt)"
-
-                            go r3 (remaining - 1) indices state steps
-                        | Some(next, _) -> go r3 (remaining - 1) (shifted c indices) next ((index, args) :: steps)
-
-            let steps, last = go r1 length model.StartIndices state []
-            (startArgs, steps), last)
+        try
+            IO.File.AppendAllText(path, line)
+        with _ ->
+            // The report is a side channel; the check's own result stands.
+            ()
 
 let private hostOf (model: Model) =
     match model.Actors with
@@ -845,29 +971,43 @@ let checkWith (options: Options) (model: Model) =
     require (options.MaxShrinks >= 0) "ModelInvalidShrinks"
     let start = seed options.Seed
 
-    let rec go n random =
+    let rec go n random steps rejected =
         if n < options.Cases then
             let length, r1 = Random.below (BigInteger(options.MaxLength + 1)) random
-            let run, r2 = generateRun model r1 (int length) (1 + n % 8) true
+            let run, drawn, r2 = generateRun model r1 (int length) (1 + n % 8) true
+            let accepted = List.length (snd run)
+            let steps = steps + accepted
+            let rejected = rejected + drawn
+
+            if drawn > accepted then
+                reportModel model "sequential" (n + 1) steps rejected "incomplete"
+
+                Fail.raiseWith
+                    "IncompleteModelGeneration"
+                    (incompleteRun model (sprintf "run %d of %d" (n + 1) options.Cases) accepted drawn)
 
             match execute model run with
-            | Ok() -> go (n + 1) r2
+            | Ok() -> go (n + 1) r2 steps rejected
             | Error failure ->
+                reportModel model "sequential" (n + 1) steps rejected "failed"
                 let smaller, found = shrinkRun model run failure options.MaxShrinks
 
                 Fail.raiseWith
                     "ModelFailed"
                     (sprintf
-                        "model %s: seed %d (LAWSPEC_SEED=%d replays it), case %d: %s; at step %d: %s"
+                        "model %s: seed %d (LAWSPEC_SEED=%d replays it), case %d: %s; at step %d: %s%s"
                         model.Name
                         (seedValue start)
                         (seedValue start)
                         n
                         (describe model smaller)
                         found.Step
-                        found.Reason)
+                        found.Reason
+                        (rejectedNote drawn))
+        else
+            reportModel model "sequential" options.Cases steps rejected "passed"
 
-    go 0 start
+    go 0 start 0 0
 
 /// Check a model's sequential runs.
 [<CompiledName("Check")>]

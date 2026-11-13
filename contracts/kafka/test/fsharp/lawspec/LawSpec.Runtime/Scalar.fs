@@ -840,6 +840,72 @@ let private clamp (n: BigInteger) (lo: BigInteger) (hi: BigInteger) =
     elif n > hi then hi
     else n
 
+/// Unicode White_Space, the same set on every target.
+[<CompiledName("TextWhiteSpace")>]
+let textWhiteSpace (c: char) =
+    let point = int c
+
+    (point >= 0x09 && point <= 0x0D)
+    || point = 0x20
+    || point = 0x85
+    || point = 0xA0
+    || point = 0x1680
+    || (point >= 0x2000 && point <= 0x200A)
+    || point = 0x2028
+    || point = 0x2029
+    || point = 0x202F
+    || point = 0x205F
+    || point = 0x3000
+
+/// The pieces between occurrences of a separator; an empty separator divides
+/// nothing.
+[<CompiledName("TextSplit")>]
+let textSplit (separator: string) (text: string) : string list =
+    if separator = "" then
+        [ text ]
+    else
+        text.Split([| separator |], StringSplitOptions.None) |> List.ofArray
+
+[<CompiledName("TextTrim")>]
+let textTrim (text: string) : string =
+    let mutable first = 0
+    let mutable last = text.Length
+
+    while first < last && textWhiteSpace text[first] do
+        first <- first + 1
+
+    while last > first && textWhiteSpace text[last - 1] do
+        last <- last - 1
+
+    text.Substring(first, last - first)
+
+[<CompiledName("TextWords")>]
+let textWords (text: string) : string list =
+    let words = ResizeArray<string>()
+    let mutable start = -1
+
+    for i in 0 .. text.Length - 1 do
+        if textWhiteSpace text[i] then
+            if start >= 0 then
+                words.Add(text.Substring(start, i - start))
+                start <- -1
+        elif start < 0 then
+            start <- i
+
+    if start >= 0 then
+        words.Add(text.Substring start)
+
+    List.ofSeq words
+
+/// The pieces between line feeds, without a last empty piece.
+[<CompiledName("TextLines")>]
+let textLines (text: string) : string list =
+    let pieces = text.Split('\n') |> List.ofArray
+
+    match List.rev pieces with
+    | "" :: rest -> List.rev rest
+    | _ -> pieces
+
 /// A built-in helper by name, with its arguments and their type keys.
 [<CompiledName("Helper")>]
 let helper (name: string) (values: Value list) (types: string list) (bits: int) : Value =
@@ -917,6 +983,10 @@ let helper (name: string) (values: Value list) (types: string list) (bits: int) 
     | "utf8", [ Text t ] -> Bytes(Encoding.UTF8.GetBytes t)
     | "textOf", [ Int n ] -> Text(n.ToString())
     | "join", [ Text separator; List parts ] -> Text(String.Join(separator, parts |> List.map text))
+    | "split", [ Text separator; Text t ] -> List(textSplit separator t |> List.map Text)
+    | "trim", [ Text t ] -> Text(textTrim t)
+    | "words", [ Text t ] -> List(textWords t |> List.map Text)
+    | "lines", [ Text t ] -> List(textLines t |> List.map Text)
     | ("quot" | "rem" | "pow"), [ a; b ] -> binary name a b (List.item 0 types) (List.item 1 types)
     | _, [ v ] -> convert v (typeOf name) bits
     | _ -> fail "UnknownHelper" name
