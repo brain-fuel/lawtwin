@@ -5,17 +5,18 @@
 # run against (docs/how-to/record-and-replay-http.md).
 #   podman build -t lawtwin/petstore3-native examples/http/petstore3
 #   podman run --rm -p 8888:8080 lawtwin/petstore3-native
-FROM docker.io/library/maven:3.9-eclipse-temurin-11 AS build
+FROM docker.io/library/maven:3.9-eclipse-temurin-17 AS build
 RUN apt-get update -q && apt-get install -yq git >/dev/null
 RUN git clone --depth 1 https://github.com/swagger-api/swagger-petstore /src
 WORKDIR /src
 RUN mvn -q -B package -DskipTests
 
-FROM docker.io/library/eclipse-temurin:11-jre
-COPY --from=build /src/target/lib/jetty-runner.jar /swagger-petstore/jetty-runner.jar
-COPY --from=build /src/target/*.war /swagger-petstore/server.war
+FROM docker.io/library/eclipse-temurin:17-jre
+COPY --from=build /src/target/jetty-home /opt/jetty-home
+WORKDIR /swagger-petstore
+RUN java -jar /opt/jetty-home/start.jar --add-modules=http,ee8-deploy
+COPY --from=build /src/target/*.war /swagger-petstore/webapps/ROOT.war
 COPY --from=build /src/src/main/resources/openapi.yaml /swagger-petstore/openapi.yaml
 COPY --from=build /src/inflector.yaml /swagger-petstore/inflector.yaml
-WORKDIR /swagger-petstore
 EXPOSE 8080
-CMD ["java", "-jar", "-DswaggerUrl=openapi.yaml", "/swagger-petstore/jetty-runner.jar", "/swagger-petstore/server.war"]
+CMD ["java", "-DswaggerUrl=openapi.yaml", "-jar", "/opt/jetty-home/start.jar"]
